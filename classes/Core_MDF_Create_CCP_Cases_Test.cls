@@ -92,8 +92,7 @@ public class Core_MDF_Create_CCP_Cases_Test {
         {
             cccBank = Core_MDF_CCP_TestDataUtility.createBank(cccIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
         }
-        // Highlight: Unused Local Variable 
-       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(cccEMEAFrance.Id,cccBank.Id,true);
+        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(cccEMEAFrance.Id,cccBank.Id,true);
         
         
         Campaign cccCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', cccCCFVC.Id, '2-in-1', false);
@@ -219,8 +218,6 @@ public class Core_MDF_Create_CCP_Cases_Test {
         PartnerFundClaim franceClaim = [select id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_BackendReviewSelection_Ind__c from PartnerFundClaim limit 1];            
         franceClaim.Core_MDF_Status__c ='Paid';
         Database.update(franceClaim);
-        // Unit Test Method should include System.Assert 
-        System.assertEquals('Paid', franceClaim.Core_MDF_Status__c, 'Claim status should be updated to Paid');
        
         Core_MDF_Create_CCP_Cases_Schedulable test = new Core_MDF_Create_CCP_Cases_Schedulable();
         test.execute(null);            
@@ -228,10 +225,7 @@ public class Core_MDF_Create_CCP_Cases_Test {
     
     @isTest static void testShouldExecuteBatchJob_EmptyCalendar() {
         Date batchRunDate = Date.newInstance(2024, 1, 6);
-        // Unit Test Method should include System.Assert
-        System.assertNotEquals(null,batchRunDate,'Batch run date should not be null');
-        // Highlight: Unused Local Variable
-    	/*Boolean result = */ Core_MDF_Create_CCP_Cases_Schedulable.shouldExecuteBatchJob(batchRunDate);
+    	Boolean result = Core_MDF_Create_CCP_Cases_Schedulable.shouldExecuteBatchJob(batchRunDate);
         
 	}
     

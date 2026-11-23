@@ -13,10 +13,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
     static final String promoted = 'Promoted';
     public Integer retryCounter=0;
     public List<Id> casesIds = new List<Id>();
-    // Start ------ Tushar Garg
-    public List<Id> listCasesIds = new List<Id>();
-    Integer batchSize = String.isBlank(System.Label.Core_IPS_MyIntel_3_0_Batch_Size) ? 20 : Integer.valueOf(System.Label.Core_IPS_MyIntel_3_0_Batch_Size);
-    // End ------ Tushar Garg
     @testVisible
     private static Boolean doChainJob = true;
     public List<Core_IPS_Project_Member__c> projectMemberList = new List<Core_IPS_Project_Member__c>();
@@ -25,16 +21,14 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
     public Map<Id,List<Map<String,String>>> intrestedPartiesMap = new Map<Id,List<Map<String,String>>>();
     //Constructor..1
     public Core_IPS_MyIntel_3_0(List<Id> caseIds, String operationMsg, List<Core_IPS_Project_Member__c> projMembers) {
-        //casesIds = caseIds;
-        listCasesIds = caseIds;// Start ------ Tushar Garg
+        casesIds = caseIds;
         operationType = operationMsg; 
         this.projectMemberList = projMembers;
     }
     //Constructor..2
     // start----US1005799----23-06-2021----Niyazuddin----Initiated parametarized constructor
     public Core_IPS_MyIntel_3_0(List<Id> caseIds, String operationMsg,List<Core_IPS_Project_Member__c> projMembers,Integer retryCount) {
-        //casesIds = caseIds;
-        listCasesIds = caseIds;// Start ------ Tushar Garg
+        casesIds = caseIds;
         operationType = operationMsg; 
         this.retryCounter= retryCount+1;
         this.projectMemberList = projMembers;
@@ -42,8 +36,7 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
     //Constructor..3
     // start----   ----25-06-2021----Farooq----Initiated parametarized constructor
     public Core_IPS_MyIntel_3_0(List<Id> caseIds, String operationMsg,List<Core_IPS_Project_Member__c> projMembers, List<Core_IPS_Case_Interested_Party__c> intrestedParties) {
-        //casesIds = caseIds;
-        listCasesIds = caseIds;// Start ------ Tushar Garg
+        casesIds = caseIds;
         operationType = operationMsg; 
         this.intrestedPartiesList = intrestedParties;
         this.projectMemberList = projMembers;
@@ -51,20 +44,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
     //End----US1005799
     //Queueable Execute Method
     public void execute(QueueableContext context) {
-         // Start ------ Tushar Garg
-        casesIds = new List<Id>();
-            List<Id> remainingCaseIds = listCasesIds;
-            if (listCasesIds.size() > batchSize) {
-                // casesIds = listCasesIds.subList(0, batchSize);
-                for (Integer i = 0; i < batchSize; i++) {
-                    casesIds.add(listCasesIds[i]);
-                    remainingCaseIds.remove(i);
-                }
-            } else {
-                casesIds = listCasesIds;
-                remainingCaseIds = new List<Id>();
-            }
-         // End ------ Tushar Garg
         jsonString =  generateJsonBody(casesIds,operationType);
         if(!String.isBlank(jsonString)) {
             // start----US1005775----23-06-2021----Niyazuddin----IPS Exception Handling : Ability to store JSON in outbound msg
@@ -209,8 +188,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
                         att.parentId = OutboundMsg.Id;
                     }
                     if(Schema.sObjectType.Attachment.fields.Body.isCreateable()){
-                        System.debug('Blob value'+Blob.valueOf(jsonString));
-                        System.debug('JSON String >>'+jsonString);
                         att.Body = Blob.valueOf(jsonString);
                     }
                     
@@ -257,11 +234,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
             }
             //End-------US1005775----23-06-2021
         }
-        // Start ----- Tushar
-        if (remainingCaseIds.size() > 0) {
-            System.enqueueJob(new Core_IPS_MyIntel_3_0(remainingCaseIds, operationType, projectMemberList, intrestedPartiesList));
-        }
-        // End ---- Tushar
     }
     
     /*
@@ -310,9 +282,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
 **************************************************/
     public String generateJsonBody(List<Id> casesIds,String operationType){
         String jsonData = '';
-
-        // Added By Mohan
-        if(operationType <> null && casesIds <> null){
         List<Id> projectIds = new List<Id>();
         List<Case> caseList = new List<Case>();
         List<String> contactIds = new List<String>();
@@ -425,8 +394,7 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
                 if(!caseIntrestedPartiesMap.isEmpty()){ jsonGen.writeObject(caseIntrestedPartiesMap);
                 }else if(!projectProjectMemberMap.isEmpty()){
                     jsonGen.writeObject(projectProjectMemberMap);
-                    //Added by tushar for null check (casecontactMap != null)
-                }else if(casecontactMap != null && !casecontactMap.isEmpty()){
+                }else if(!casecontactMap.isEmpty()){
                     jsonGen.writeObject(casecontactMap);
                 }else{
                     jsonGen.writeObject(new List<String>());
@@ -439,7 +407,6 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
             jsonGen.writeEndArray();
             jsonGen.writeEndObject();
             jsonData = jsonGen.getAsString();
-        }
         }
         return jsonData;
     }

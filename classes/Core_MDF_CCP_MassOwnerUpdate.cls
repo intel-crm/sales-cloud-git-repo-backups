@@ -16,17 +16,13 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
             mdtList = [select Core_MDF_App_nm__c, Core_MDF_Program_nm__c, Core_MDF_Object_apiName_nm__c, Core_MDF_Object_Label_nm__c, Core_MDF_Filter_Criteria_txt__c,Core_MDF_Int_PermisionSet_Names_txt__c, Core_MDF_Ext_PermissionSet_Names_txt__c, Core_MDF_System_User_Name_txt__c, Core_MDF_isProgramApplicable_Ind__c,Core_MDF_requiredQueryFields_txt__c,Core_MDF_Mandatory_Filter_Fields_txt__c,Core_MDF_Record_Types_nm__c,Core_MDF_Name_field_nm__c,Core_MDF_Account_Field_nm__c,Core_MDF_Profiles_nm__c,Core_MDF_Column_Headers_txt__c,
                                                                                                 Core_MDF_Batch_Size_nbr__c,Core_MDF_Type_of_From_User_nm__c,Core_MDF_Type_of_To_User_nm__c,Core_MDF_Ultimate_Account_Field_txt__c,Core_MDF_Free_Search_Ind__c,Core_MDF_Enable_Account_Filter_Ind__c from Core_MDF_Custom_Utility_Config__c where Core_MDF_isActive_Ind__c = true
                                                                                                 order by Core_MDF_App_nm__c];
-            //ATHR - Deeply Nested if 16209
-            if(mdtList.isEmpty()){
-                return massOwnerWrapper;
-            }
-            //if(!mdtList.isEmpty()) {
+            if(!mdtList.isEmpty()) {
                 for(Core_MDF_Custom_Utility_Config__c mdt: mdtList) {
                     String key=mdt.Core_MDF_App_nm__c;
                     if(mdt.Core_MDF_isProgramApplicable_Ind__c){
                         key+=mdt.Core_MDF_Program_nm__c;
-                            //ATHR - Deeply Nested if 16209
-                            /*if(appProgramMap.containsKey(mdt.Core_MDF_App_nm__c)){
+                        
+                            if(appProgramMap.containsKey(mdt.Core_MDF_App_nm__c)){
                                 //appProgramMap.get(mdt.Core_MDF_App_nm__c).put(mdt.Core_MDF_Program_nm__c,mdt.Core_MDF_Program_nm__c);
                                 Map<String, String> innerMap = appProgramMap.get(mdt.Core_MDF_App_nm__c);
     
@@ -40,15 +36,9 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                                 Map<String,String> innerMap = new Map<String,String>();
                                 innerMap.put(mdt.Core_MDF_Program_nm__c,mdt.Core_MDF_Program_nm__c);
                                 appProgramMap.put(mdt.Core_MDF_App_nm__c,innerMap);
-                            }*/
-                           // programMap.put(mdt.Core_MDF_Program_nm__c,mdt.Core_MDF_Program_nm__c);
-                            if(!appProgramMap.containsKey(mdt.Core_MDF_App_nm__c)) {
-                                appProgramMap.put(mdt.Core_MDF_App_nm__c, new Map<String,String>());
                             }
-                            Map<String,String> innerMap = appProgramMap.get(mdt.Core_MDF_App_nm__c);
-                            if(!innerMap.containsKey(mdt.Core_MDF_Program_nm__c)) {
-                               innerMap.put(mdt.Core_MDF_Program_nm__c, mdt.Core_MDF_Program_nm__c);
-                            }                       
+                           // programMap.put(mdt.Core_MDF_Program_nm__c,mdt.Core_MDF_Program_nm__c);
+                       
                     }
                     if(finalMdtList.containsKey(key)){
                         finalMdtList.get(key).add(mdt);
@@ -80,7 +70,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                 massOwnerWrapper.applicationList = applicationDropdownOptions;
                 massOwnerWrapper.mdtList = finalMdtList;
                 massOwnerWrapper.appWithProgramList = appProgramDropdownOptions;
-            //}
+            }
         } catch(Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
             throw new AuraHandledException(ex.getMessage());
@@ -167,7 +157,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
             String query='select Id, Name, Core_MDF_Parent_Fund_Account__r.name,Core_MDF_Parent_Fund_Account__c from Account Where';
             if(program != ''){ 
                  query += ' Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketingActive__c = true ';
-                query+=' and Core_MDF_Channel_Program__r.name ='+'\''+String.escapeSingleQuotes(program)+'\''+'  and Core_MDF_Active_Ind__c = true and Core_MDF_Parent_Fund_Account__r.name like ';//ATHR-WW09
+                query+=' and Core_MDF_Channel_Program__r.name ='+'\''+program+'\''+'  and Core_MDF_Active_Ind__c = true and Core_MDF_Parent_Fund_Account__r.name like ';
             }
             else{
                 query += ' RecordType.DeveloperName in '+crm_RecType;
@@ -229,10 +219,9 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
 
         //fromUserfreesearch as a ind is true: directly query on user: if not: rely on PS with profile if it is not blank, if not we can query on profile & PS level
         if(objConfigRec.Core_MDF_Free_Search_Ind__c){
-            if(typeOfUser=='Internal User' && String.isNotEmpty(userName)) {
-                //ATHR - Deeply Nested if 16209
-                //if(String.isNotEmpty(userName))
-                //{
+            if(typeOfUser=='Internal User') {
+                if(String.isNotEmpty(userName))
+                {
                     //query on user with Name or email Id or WW1d check with the entered text for From User
                     List<Id> userWithGenericPS = new List<Id>();
                     boolean isNumber = String.escapeSingleQuotes(userName).isNumeric();
@@ -247,11 +236,10 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                     for(user usr:Database.Query(query)){
                         sObjectResultList.add(new SObjectResult(usr.name, usr.id, usr.email));
                     }
-                //}
+                }
             }
-            else if(typeOfUser=='External User' && String.isNotEmpty(userName)) {
-                //ATHR - Deeply Nested if 16209
-                //if(String.isNotEmpty(userName)){
+            else if(typeOfUser=='External User') {
+                if(String.isNotEmpty(userName)){
                     string searchText = '\'%' + String.escapeSingleQuotes(userName) +'%\'';
                     String query='select id,Core_MDF_User__c,Core_MDF_User__r.Name,Core_MDF_User__r.Email, Core_MDF_Account__r.Name from Core_MDF_Partner_Node_User_Mapping__c where Core_MDF_Account__c='+'\''+nodeAccountId+'\''+'and  Core_MDF_Active_Ind__c =true and Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name='+'\''+program+'\''+'and Core_MDF_Account__r.Core_MDF_Active_Ind__c = true ' ;
                     query=query+'and (Core_MDF_User__r.Name like'+searchText.trim()+ 'or Core_MDF_User__r.Email like'+searchText.trim()+') LIMIT 10';
@@ -277,17 +265,16 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                         }  
                     }
                     
-                //}
+                }
                 //query on user with powerpartner type for other APT
             }
-            else if(typeOfUser=='System User' && String.isNotEmpty(userName)) {
-                //ATHR - Deeply Nested if 16209
-                //if(String.isNotEmpty(userName))
-                //{
+            else if(typeOfUser=='System User') {
+                if(String.isNotEmpty(userName))
+                {
                     string searchText = '\'%' + String.escapeSingleQuotes(userName) +'%\'';
                         User usr=[select id,name from User where name=:systemUser];
                         sObjectResultList.add(new SObjectResult(usr.name, usr.Id, ''));
-                //}
+                }
             }
         }
         else if (profileStr!=''){
@@ -347,17 +334,17 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         List<dtFilterFldWrapper> dtFilterFldWrapperList = new List<dtFilterFldWrapper>();
         List<txtFilterFldWrapper> txtFilterFldWrapperList = new List<txtFilterFldWrapper>();
         String query = '';
-		//ATHR - Deeply Nested if 16209
-        //if(objectName == 'Reports' || objectName == 'Dashboards'){
+
+        if(objectName == 'Reports' || objectName == 'Dashboards'){
             //call the respestive methods
             if(objectName == 'Reports')   {
                 trans = UserReports( fromUser, toUser);
             } 
-            else if(objectName == 'Dashboards'){
+            if(objectName == 'Dashboards'){
                 return CRM_Create_Dashbord_detail.Create_Dasboard_Data(fromUser, toUser);
             }
                 
-            //}
+            }
         else{
             query ='Select ';
             if(queryFieldsString!=''){
@@ -389,8 +376,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                 if(ultAccField!='' && ultimateAccId!=null){
                     query+=' and '+ultAccField+' =:ultimateAccId';
                 }
-                
-                if(filtFldWrapper!=null){
+                if(filtFldWrapper!=null && filtFldWrapper!=null){
                     if(filtFldWrapper.picklistFiltFldWrapList!=null){
                         picklistFldWrpList = filtFldWrapper.picklistFiltFldWrapList;
                         for(picklistFilterFldWrapper pickWrp:picklistFldWrpList){
@@ -418,7 +404,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                         for(txtFilterFldWrapper txtWrp:txtFilterFldWrapperList){
                             if(txtWrp.value != null && txtWrp.value != ''){
                                 //query+= ' and '+txtWrp.apiName + ' ='+ '\''+txtWrp.value+'\'';
-                                query+= ' and '+String.escapeSingleQuotes(txtWrp.apiName) + ' like '+ '\'%'+txtWrp.value+'%\'';//ATHR-WW09
+                                query+= ' and '+txtWrp.apiName + ' like '+ '\'%'+txtWrp.value+'%\'';
                             }
                             
                         }
@@ -599,14 +585,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         String objectNm = objConfigRec.Core_MDF_Object_Label_nm__c;
         List<Id> updatedRecIdList = new List<Id>();
         String objApiName = objConfigRec.Core_MDF_Object_apiName_nm__c;
-        //ATHR-WW09
-        Set<Id> selectedRowIdsValues = new Set<Id>();
-        if(selectedRowIds!=null && !selectedRowIds.isEmpty()){
-            for (Id val : selectedRowIds) {
-            selectedRowIdsValues.add(String.escapeSingleQuotes(val));
-            }
-        }
-        //ATHR-WW09
+        
         try
         {
             Integer batchSize = objConfigRec.Core_MDF_Batch_Size_nbr__c!=null?Integer.valueOf(objConfigRec.Core_MDF_Batch_Size_nbr__c):20;
@@ -614,7 +593,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
             {
             
                 List<sObject> sObjectsToUpdate = new List<sObject>();
-                String sQuery = 'SELECT Id,OwnerId FROM ' + obj + ' WHERE ' + ' Id IN : '+ 'selectedRowIdsValues';//ATHR-WW09
+                String sQuery = 'SELECT Id,OwnerId FROM ' + obj + ' WHERE ' + ' Id IN : '+ 'selectedRowIds';
                 List<sObject> scope = Database.Query(sQuery);
                 for(sObject objDetail : scope){
                     objDetail.put('OwnerId', toUser);
@@ -731,10 +710,9 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         set<Id>FinalReId = new Set<Id>();
         
         set<Report>FinalReport = new Set<Report>(); 
-        //List<Report> frUsRep= [SELECT Id,Name, FolderName, CreatedDate,CreatedBy.Name,CreatedBy.IsActive,CreatedBy.Profile.Name,OwnerId,LastRunDate  FROM Report where CreatedById =: FromUser ];
-        //ATHR - Deeply Nested if 16209
-        //if(!frUsRep.isEmpty()){
-            for( Report Repot: [SELECT Id,Name, FolderName, CreatedDate,CreatedBy.Name,CreatedBy.IsActive,CreatedBy.Profile.Name,OwnerId,LastRunDate  FROM Report where CreatedById =: FromUser]){
+        List<Report> frUsRep= [SELECT Id,Name, FolderName, CreatedDate,CreatedBy.Name,CreatedBy.IsActive,CreatedBy.Profile.Name,OwnerId,LastRunDate  FROM Report where CreatedById =: FromUser ];
+        if(!frUsRep.isEmpty()){
+            for( Report Repot: frUsRep){
                 if(Repot.FolderName != 'Public Reports'){
                     set<Report> rept = new Set<Report>();
                     if(refolsetIdMap.containsKey(Repot.FolderName)){
@@ -744,7 +722,7 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
                     refolsetIdMap.put(Repot.FolderName,rept);
                 }
             }
-        //}
+        }
         if(refolsetIdMap != null){
             for(folder FolDevelName : [SELECT Id,Name from folder where name IN: refolsetIdMap.keySet() and Type='Report']){
                 foldNmIdmap.put(FolDevelName.Id , FolDevelName.Name);

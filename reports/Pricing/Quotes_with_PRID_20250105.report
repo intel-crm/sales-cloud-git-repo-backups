@@ -16,6 +16,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_pricing_cb__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_upper_bound_qty_nbr__c</field>
     </columns>
     <columns>
@@ -41,6 +45,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c$SBQQ__Distributor__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$core_cpq_quote_line_type_txt__c</field>

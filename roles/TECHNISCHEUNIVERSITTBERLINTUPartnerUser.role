@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>TECHNISCHE UNIVERSITÄT BERLIN (TU) Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>TECHNISCHE UNIVERSITÄT BERLIN (TU) Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_12074377_Nadja_Schiffl</parentRole>
+</Role>

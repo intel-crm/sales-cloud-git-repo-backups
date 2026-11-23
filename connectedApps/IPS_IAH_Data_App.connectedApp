@@ -4,12 +4,12 @@
     <label>IPS IAH Data App</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6vdV2zYFAGv6R_lJbty.Y0uRY.fBjrhvf5.khrxdB_.j3sybag.INE0RgvK0</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKjmV24i3WAVvbrTIuk2r_GWrscBScxbc3Hwzmqs4oBqBpznsgkf9aFh.rcyp</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
-        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
         <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
@@ -22,7 +22,6 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>iah.ips@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>Full</scopes>
     </oauthConfig>

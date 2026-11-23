@@ -5,19 +5,7 @@
 * Description : When an BES error log is created, this class sends the error details to trasaction tracking API.
 *   
 ************************************************/ 
-public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000KywA changes 22102024
-    /* Start ---- Tushar----Added part of vanuability changes*/
-    @TestVisible
-    private static Boolean isValidSalesforceId(String idStr) {
-        if (String.isBlank(idStr)) return false;
-        try {
-            Id validId = Id.valueOf(idStr);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-	/* End ---- Tushar----Added part of vanuability changes*/
+public with sharing class Core_IPS_BES_Transaction_Track {
     @future(callout=true)
     public static void sendTransactionDetails(String errorId, String outboundId, String inboundId, String errorCode) {
         List<Core_IPS_BES_Error_Log__c> errorRec = new List<Core_IPS_BES_Error_Log__c>() ;
@@ -26,19 +14,15 @@ public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000Kyw
         try {
             
 	    String endPointURL = 'callout:Core_IPS_Transaction_Tracking_NamedCred';
-			// Tushar ---- Added isValidSalesforceId as part of vanuability
-            if (isValidSalesforceId(errorId) && Core_IPS_BES_Error_Log__c.SObjectType.getDescribe().isAccessible()) {
-                errorRec = [SELECT Core_IPS_Status__c, Core_IPS_Error_Description__c FROM Core_IPS_BES_Error_Log__c WHERE Id = :errorId];
+            if(Core_IPS_BES_Error_Log__c.SObjectType.getDescribe().isAccessible()){
+            errorRec = [select Core_IPS_Status__c,Core_IPS_Error_Description__c from Core_IPS_BES_Error_Log__c where Id=:errorId];
             }
-            // Tushar ---- Added isValidSalesforceId as part of vanuability
-            if (isValidSalesforceId(outboundId) && Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isAccessible()) {
-                outboundRec = [SELECT Core_IPS_Case_ID__c, Name FROM Core_IPS_BES_Outbound_Message__c WHERE Id = :outboundId];
+            if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isAccessible()){
+            outboundRec = [select Core_IPS_Case_ID__c,Name from Core_IPS_BES_Outbound_Message__c where Id=:outboundId];
             }
-            // Tushar ---- Added isValidSalesforceId as part of vanuability
-            if (isValidSalesforceId(inboundId) && Core_IPS_BES_Inbound_Message__c.SObjectType.getDescribe().isAccessible()) {
-                inboundRec = [SELECT Name FROM Core_IPS_BES_Inbound_Message__c WHERE Id = :inboundId];
+            if(Core_IPS_BES_Inbound_Message__c.SObjectType.getDescribe().isAccessible()){
+            inboundRec = [select Name from Core_IPS_BES_Inbound_Message__c where Id=:outboundId];
             }
-
             String jsonBody = formJson((errorRec.size() > 0) ? errorRec[0] : null, (outboundRec.size() > 0) ? outboundRec[0] : null, (inboundRec.size() > 0) ? inboundRec[0] : null, errorCode);
             
             

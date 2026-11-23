@@ -124,7 +124,12 @@
                 <componentName>core_MDF_CustomLayoutConfig</componentName>
                 <identifier>core_MDF_CustomLayoutConfig</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -145,20 +150,8 @@
                     <value>Core_MDF_Active_Ind__c=true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>criteriaFieldAPIName</name>
                     <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedobjectApiName</name>
@@ -180,16 +173,10 @@
                     <name>strFields</name>
                     <value>Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strLabels</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List4</identifier>
+                <componentName>core_MDF_Campaign_Related_List</componentName>
+                <identifier>c_core_MDF_Campaign_Related_List4</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 5) OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -210,66 +197,7 @@
                         <operator>EQUAL</operator>
                         <rightValue>Retail Marketing Funds</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
                 </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                    <value>Core_MDF_Active_Ind__c=true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                    <value>Core_MDF_Program__c = &apos;Intel Partner Alliance&apos;;Core_MDF_Proposal_Based_Ind__c = true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                    <value>1 AND 2</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                    <value>Core_MDF_Outcome_Criteria_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                    <value>Core_MDF_Campaign_Purpose_Desc_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>Core_MDF_Campaign_Outcomes__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                    <value>Core_MDF_CampOutcomeOpt_In_Ind__c = true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                    <value>Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                    <value>Core_MDF_Activity_Purpose_Header</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -300,11 +228,8 @@
                     <name>strFields</name>
                     <value>Core_MDF_Activating_Partner_Account_id__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List3</identifier>
+                <componentName>core_MDF_Campaign_Related_List</componentName>
+                <identifier>c_core_MDF_Campaign_Related_List3</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
@@ -319,10 +244,21 @@
                 <componentName>Core_MDF_DisplayActivities</componentName>
                 <identifier>Core_MDF_DisplayActivities</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR (2 AND 3)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -334,30 +270,12 @@
                     <value>Core_MDF_Inactive_Ind__c = false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>criteriaFieldAPIName</name>
                     <value>Core_MDF_Campaign_Id__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>relatedobjectApiName</name>
                     <value>Core_MDF_Contract_Line_Item__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sharingFlag</name>
@@ -367,14 +285,8 @@
                     <name>strFields</name>
                     <value>Core_MDF_Contract_Section_Details_txt__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strLabels</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List2</identifier>
+                <componentName>core_MDF_Campaign_Related_List</componentName>
+                <identifier>c_core_MDF_Campaign_Related_List2</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
@@ -392,7 +304,7 @@
                 <componentName>core_MDF_CampaignBudgets</componentName>
                 <identifier>core_MDF_CampaignBudgets</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR (3 AND 4) OR 5 OR 6</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -402,6 +314,16 @@
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Data Center CoMarketing Fund</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>psg_manage_bm_threshold_for_business_admin</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Giving all the BM Approval Thershold object records access for PSG Business Admin Group.</description>
+        <label>Manage BM Threshold for Business Admin</label>
+        <sharedTo>
+            <group>ags_business_admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

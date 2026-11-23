@@ -70,6 +70,9 @@
         <field>SBQQ__Quote__c.core_cpq_approved_by_nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__QuoteLine__c.core_cpq_product_family_txt__c</field>
     </columns>
     <columns>

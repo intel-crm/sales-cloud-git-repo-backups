@@ -1,0 +1,1136 @@
+<apex:component controller="PSG_DpaApproved" access="global" >
+    <apex:attribute name="parentdpaID" type="Id" description="DPA id of the dpa line" assignTo="{!dpaId}"/>
+    <apex:attribute name="notificationType" type="String" description="Type of Notification"/>
+    <apex:outputPanel rendered="{!If(notificationType =='DPAApproved',true,false)}">
+         <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }  
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t">
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">SAP #</th>
+                <td class="t1">{!dpa.core_cpq_dpa_aln_no_nbr__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">DPA Approved Date</th>
+                <td class="t1">{!dpa.core_cpq_dpa_approved_date__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Contract Manufacturer</th>
+                <td class="t1">{!dpa.core_cpq_sap_cm_txt__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+                <th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>
+                <th class="t2">Value Added</th>
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">                
+                <tr>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_value_added_amt__c}</td>                    
+                </tr>
+            </apex:repeat>
+        </table>
+    </apex:outputPanel>  
+    <apex:outputPanel rendered="{!If(notificationType =='ALNApproved',true,false)}">    
+         <style>         
+             .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }  
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">SAP #</th>
+                <td class="t1">{!dpa.core_cpq_dpa_aln_no_nbr__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">ALN Approved Date</th>
+                <td class="t1">{!dpa.core_cpq_aln_approved_date__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>            
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+    <!-- Added for New Submitted Notification Request for DPAs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='DPANew',true,false)}">
+         <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }  
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t">
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Requested Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.createddate}"/></apex:outputText></td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Contract Manufacturer</th>
+                <td class="t1">{!dpa.core_cpq_sap_cm_txt__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <!--
+        <table class="t">
+            <tr>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+                <th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>
+                <th class="t2">Value Added</th>
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">                
+                <tr>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_value_added_amt__c}</td>                    
+                </tr>
+            </apex:repeat>
+        </table>
+		-->
+    </apex:outputPanel>
+    <!-- Added for New Submitted Notification Request for ALNs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='ALNNew',true,false)}">
+             <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }   
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rev #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_revision_nbr__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>            
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Requested Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.createddate}"/></apex:outputText></td>
+            </tr>
+            <!--
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+			-->
+        </table>
+        <br/>
+        <!--
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+		-->
+    </apex:outputPanel>
+    <!-- Added for Expiry & Extension Notification Request for DPAs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='DPAExpiryRequest',true,false)}">
+         <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }  
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t">
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">CIS #</th>
+                <td class="t1">{!dpa.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+            	<th class="t1">Ship End Date(Old)</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_previous_ship_end_date__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date(New)</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>          
+            <tr>
+                <th class="t1">Contract Manufacturer</th>
+                <td class="t1">{!dpa.core_cpq_sap_cm_txt__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+                <th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>
+                <th class="t2">Book Cost</th>
+                <th class="t2">Value Added</th>
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">                
+                <tr>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_cost_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_value_added_amt__c}</td>                    
+                </tr>
+            </apex:repeat>
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Expiry & Extension Notification Request for ALNs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='ALNExpiryRequest',true,false)}">
+             <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }   
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>            
+           <tr>
+            	<th class="t1">Ship End Date(Old)</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_previous_ship_end_date__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date(New)</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>           
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Expiry Nearby Notification for DPAs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='DPAExpiry',true,false)}">
+         <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }  
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t">
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">SAP #</th>
+                <td class="t1">{!dpa.core_cpq_dpa_aln_no_nbr__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+     </table>
+        <br/>
+        <table class="t">
+            <tr>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+                <th class="t2">Claimed Qty</th>            
+                <th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>
+                <th class="t2">Value Added</th>
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">                
+                <tr>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_claimed_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_value_added_amt__c}</td>                    
+                </tr>
+            </apex:repeat>
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Expiry Nearby Notification Request for ALNs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='ALNExpiry',true,false)}">
+             <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }   
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Quote Type</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_quote_type_nm__c}</td>
+            </tr>         
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>           
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Hold, Replaced Notification Request for ALNs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='HoldReplace',true,false)}">
+           <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }    
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Quote Type</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_quote_type_nm__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>           
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Rejected Notification Request for ALNs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='ALNRejected',true,false)}">
+           <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }    
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Quote Type</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_quote_type_nm__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Ship Start Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_start_date_dt__c}"/></apex:outputText></td>
+            </tr>
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>           
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+            	<th class="t1">Comments</th>
+                <td class="t1">{!dpa.core_cpq_comments_txt__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Final Ship To Customer</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_customer_nm__r.name}</td>
+            </tr>            
+            <tr>
+                <th class="t1">Final Ship To Country</th>
+                <td class="t1">{!dpa.core_cpq_final_ship_to_country_pl__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">ALN Type</th>
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaLine.core_cpq_cis_no_nbr__r.core_cpq_aln_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+    <!-- Added for Rejected Notification Request for DPAs - Bishal Singh -->
+    <apex:outputPanel rendered="{!If(notificationType =='DPARejected',true,false)}">
+            <style>         
+            .t {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+             text-indent: 4px;
+            }    
+            
+            .t1 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: left;
+            
+            }  
+            
+            .t2 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;   
+            } 
+            
+            .t3 {
+            background-color:rgb(240,240,240);
+            border: 1px solid black;
+            font-size: 15px;
+            text-align: center;
+            }
+        </style>
+        <table class="t"> 
+            <tr>
+                <th class="t1">Quote #</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.name}</td>
+            </tr>
+            <tr>
+                <th class="t1">Quote Type</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_quote_type_nm__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">DPA Rejected Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_dpa_Rejection_Date_dt__c}"/></apex:outputText></td>
+            </tr>            
+            <tr>
+                <th class="t1">Ship End Date</th>
+                <td class="t1"><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!dpa.core_cpq_ship_end_date_dt__c}"/></apex:outputText></td>
+            </tr>           
+            <tr>
+                <th class="t1">Disty Name</th>
+                <td class="t1">{!dpa.core_cpq_sap_distributor__c}</td>
+            </tr>
+            <tr>
+            	<th class="t1">End Customer</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_end_customer_nm__r.Name}</td>
+            </tr>
+            <tr>
+                <th class="t1">End Customer Parent</th>
+                <td class="t1">{!dpa.core_cpq_active_quote__r.core_cpq_sap_ecp_nm__r.Name}</td>
+            </tr>
+            <tr>
+            	<th class="t1">Comments</th>
+                <td class="t1">{!dpa.core_cpq_comments_txt__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Rep Contact</th>
+                <td class="t1">{!dpa.core_cpq_submitter_disty__c}</td>
+            </tr>
+            <tr>
+                <th class="t1">Contract Manufacturer</th>
+                <td class="t1">{!dpa.core_cpq_sap_cm_txt__c}</td>
+            </tr>
+        </table>
+        <br/>
+        <table class="t">
+            <tr>       
+                <th class="t2">Quote Line #</th>
+                <th class="t2">QL Type</th>
+                <th class="t2">Device</th>
+                <th class="t2">OPN</th>
+                <th class="t2">Approved Qty</th>
+				<th class="t2">Disti Margin</th>
+                <th class="t2">Broken Cost</th>
+                <th class="t2">Sugg Resale</th>
+				<th class="t2">Value Added</th>                
+            </tr>
+            <apex:repeat value="{!dpaLines}" var="dpaline">
+                <tr>                    
+                    <td class="t3">{!dpaline.core_cpq_quote_item_line_no__r.Name}</td>
+                    <td class="t3">{!dpaline.core_cpq_quoteline_type__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.name}</td>
+                    <td class="t3">{!dpaline.core_cpq_device_nm__r.Core_OPN__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_approved_qty_nbr__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_disty_margin_pct__c}</td>
+                    <td class="t3">{!dpaline.price_broken_cost_disty_amt__c}</td>
+                    <td class="t3">{!dpaline.core_cpq_resale_amt__c}</td>
+                    <td class="t3">{!dpaline.price_disty_value_added_amt__c}</td>
+                </tr>                
+            </apex:repeat>            
+        </table>
+    </apex:outputPanel>
+</apex:component>

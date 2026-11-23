@@ -46,10 +46,10 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>031871b5-5958-4250-9317-b6245c18dfca$#$b7ccdad7-6d0e-4f93-97b7-b9b76b07ce59</groupName>
+            <groupName>031871b5-5958-4250-9317-b6245c18dfca$#$f50aed12-619c-42a2-b1ff-4d22503d9b12</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Campaign_Standard_Detail_core_MDF_Custom_Related_List_Component</targetValue>
+            <targetValue>Campaign_Standard_Detail_core_MDF_Campaign_Related_List_1_Component</targetValue>
         </target>
     </targets>
 </Audience>

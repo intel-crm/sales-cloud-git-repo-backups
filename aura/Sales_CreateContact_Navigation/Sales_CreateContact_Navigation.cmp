@@ -1,0 +1,23 @@
+<!--
+Component Name    : Sales_CreateContact_Navigation
+Created Date  : Jun 2021
+Function      : US960930
+
+Modification Log :
+Developer                 		Date                    Description
+ananga.mohan.sen@accenture.com  15/06/2021				custom navigation in flow
+-->
+
+<aura:component access="global" implements="lightning:availableForFlowScreens">
+   <aura:attribute name="canNext" type="Boolean" />
+   <aura:handler name="init" value="{!this}" action="{!c.init}" />
+        
+   <div aura:id="actionButtonBar" class="slds-clearfix slds-p-top_medium">
+      
+         <aura:if isTrue="{!v.canNext}">
+            <lightning:button aura:id="NEXT" label="Confirm" 
+               variant="brand" class="slds-float_right"
+               onclick="{!c.onButtonPressed}" />
+         </aura:if>
+   </div>
+</aura:component>

@@ -3,5 +3,5 @@
     <description>PIM Service POST callout</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://eip-generic-proxy1.us-w2.cloudhub.io</url>
+    <url>https://eip-generic-proxy1-qa.us-w2.cloudhub.io</url>
 </RemoteSiteSetting>

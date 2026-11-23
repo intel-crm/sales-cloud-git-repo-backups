@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
+        <label><!-- BT_User_EPIM --></label>
+        <name>BT_User_EPIM</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- CPQ_Lookup --></label>
         <name>CPQ_Lookup</name>
     </fieldSets>
@@ -120,10 +124,6 @@
         <help><!-- Count of partner leads rejected by the current user in current year. --></help>
         <label><!-- Leads Rejected Current Year --></label>
         <name>Core_Leads_Rejected_Current_Year__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Reclaimed on Creation --></label>
-        <name>Core_License_Reclaimed_on_Creation__c</name>
     </fields>
     <fields>
         <label>Login ID</label>
@@ -279,46 +279,6 @@
     <fields>
         <label><!-- User_loggedIN --></label>
         <name>User_loggedIN__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingAnonWebActivityList --></label>
-        <name>mkto_si__IsCachingAnonWebActivityList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingBestBets --></label>
-        <name>mkto_si__IsCachingBestBets__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingEmailActivityList --></label>
-        <name>mkto_si__IsCachingEmailActivityList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingGroupedWebActivityList --></label>
-        <name>mkto_si__IsCachingGroupedWebActivityList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingInterestingMomentsList --></label>
-        <name>mkto_si__IsCachingInterestingMomentsList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingScoringList --></label>
-        <name>mkto_si__IsCachingScoringList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingStreamList --></label>
-        <name>mkto_si__IsCachingStreamList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingWatchList --></label>
-        <name>mkto_si__IsCachingWatchList__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsCachingWebActivityList --></label>
-        <name>mkto_si__IsCachingWebActivityList__c</name>
-    </fields>
-    <fields>
-        <label><!-- Marketo Sales Insight Welcome Counter --></label>
-        <name>mkto_si__Sales_Insight_Counter__c</name>
     </fields>
     <fields>
         <label><!-- User Search Option --></label>

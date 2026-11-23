@@ -193,9 +193,6 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         }
     }
     
-   static testMethod void dummyTest(){
-        Core_SendContact_to_AGS_onGECChange.dummyMethod();
-    }
     
     
 }

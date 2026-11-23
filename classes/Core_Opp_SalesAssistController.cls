@@ -34,7 +34,7 @@ public without sharing class Core_Opp_SalesAssistController { //TWC3123-5376: co
                 }
             }
         }catch(Exception exp){
-            PMP_Utility.logError(exp, 'Core_Opp_SalesAssistController.getEOLData');      
+            system.debug(exp.getMessage());          
         }finally {
             Core_Opp_Bypass_Validation_Rule__c   cs = Core_Opp_Bypass_Validation_Rule__c.getInstance(UserInfo.getUserId());
             if(cs!=null && !Test.isRunningTest()){ //TWC3123-5376: code scan fix: Avoid Deeply Nested IF Statements
@@ -64,6 +64,7 @@ public without sharing class Core_Opp_SalesAssistController { //TWC3123-5376: co
         String cimId = '';
         if(!String.isBlank(OppId)){
             List<opportunitylineitem> prList = [select product2id,TotalPrice,Quantity from opportunitylineitem where Core_Status__c in ('On Hold','Pending','Win Submitted') and opportunityid =: OppId and Core_Is_Product_EOL__c = true];
+            //System.debug(prList);
             if(prList.size()>0){
                 //prodList = JSON.serialize(prList);
                 oplineList.addall(prList);
@@ -95,6 +96,7 @@ public without sharing class Core_Opp_SalesAssistController { //TWC3123-5376: co
         userSession.cimId = cimId;
         Map<Id, opportunitylineitem> mapFromList  = new Map<Id, opportunitylineitem>(oplineList);
         userSession.prodJSON = mapFromList.values();
+        //system.debug('userSession-> '+userSession);
         return (userSession);
     }
     

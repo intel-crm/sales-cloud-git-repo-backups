@@ -29,11 +29,6 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>EMEA_CPL</assignedTo>
@@ -47,11 +42,6 @@
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>EMEA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -67,11 +57,6 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_PSG_Leads_PRC</assignedTo>
@@ -86,11 +71,6 @@
                 <operation>equals</operation>
                 <value>PRC</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_NAR</assignedTo>
@@ -99,11 +79,6 @@
                 <field>Lead.Core_Sub_Geo__c</field>
                 <operation>equals</operation>
                 <value>NAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -114,11 +89,6 @@
                 <operation>equals</operation>
                 <value>BRA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_LAR</assignedTo>
@@ -127,11 +97,6 @@
                 <field>Lead.Core_Sub_Geo__c</field>
                 <operation>equals</operation>
                 <value>LAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -142,11 +107,6 @@
                 <operation>equals</operation>
                 <value>FRA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_French</assignedTo>
@@ -155,11 +115,6 @@
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
                 <value>BEL</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -170,11 +125,6 @@
                 <operation>equals</operation>
                 <value>DEU</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_German</assignedTo>
@@ -183,11 +133,6 @@
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
                 <value>AUT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -198,11 +143,6 @@
                 <operation>equals</operation>
                 <value>CHE</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_Russian</assignedTo>
@@ -211,11 +151,6 @@
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
                 <value>RUS</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -226,11 +161,6 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_JAPAN</assignedTo>
@@ -239,11 +169,6 @@
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
                 <value>JPN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -254,11 +179,6 @@
                 <operation>equals</operation>
                 <value>KOR</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_Indonesia</assignedTo>
@@ -267,11 +187,6 @@
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
                 <value>IDN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -282,11 +197,6 @@
                 <operation>equals</operation>
                 <value>TWN</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MGL_LDR_APJ</assignedTo>
@@ -295,11 +205,6 @@
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>APJ</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -310,24 +215,14 @@
                 <operation>equals</operation>
                 <value>PRC</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_ALL_GLOBAL_Catch_All</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1</booleanFilter>
             <criteriaItems>
                 <field>Lead.LastName</field>
                 <operation>notEqual</operation>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>

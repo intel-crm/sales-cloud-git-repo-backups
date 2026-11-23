@@ -245,10 +245,6 @@
         <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Activity Level --></label>
-        <name>Core_MDF_Activity_Level_nm__c</name>
-    </fields>
-    <fields>
         <label>活動號碼</label>
         <name>Core_MDF_Activity_Number__c</name>
     </fields>
@@ -616,10 +612,6 @@
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Ecosystem Modified --></label>
-        <name>Core_MDF_Ecosystem_Modified_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Effective Date/Time --></label>
         <name>Core_MDF_EffectiveDateTime__c</name>
     </fields>
@@ -804,7 +796,7 @@
         <name>Core_MDF_Is_Field_Modified__c</name>
     </fields>
     <fields>
-        <label>是否基於結果？</label>
+        <label><!-- Is Outcome-Based? --></label>
         <name>Core_MDF_Is_Outcome_Based_Ind__c</name>
     </fields>
     <fields>
@@ -859,10 +851,6 @@
         <help>Intel 將為此執行支付的最高金額。</help>
         <label>Intel 最大投資</label>
         <name>Core_MDF_Maximum_Intel_Investment_amt__c</name>
-    </fields>
-    <fields>
-        <label>測量方法</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>會員接受者</label>
@@ -1036,10 +1024,6 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Outcome Node Acc Mapping Modified --></label>
-        <name>Core_MDF_Node_Acc_Map_Modified_ind__c</name>
-    </fields>
-    <fields>
         <label>優勝者人數</label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
@@ -1114,10 +1098,6 @@
     <fields>
         <label>其他活動名稱</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label>其他測量方法</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
         <label>其他數量</label>
@@ -1196,15 +1176,6 @@
     <fields>
         <label>POP 需求</label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Activity --></label>
-        <name>Core_MDF_Parent_Activity_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activties --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>夥伴聯絡</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <label>置放</label>
@@ -1375,11 +1346,6 @@
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
     </fields>
     <fields>
-        <help>100% 以競賽為基礎的激勵機制，得獎者人數上限為參與者的 33%</help>
-        <label>100% 競賽制獎勵</label>
-        <name>Core_MDF_Skip_PCT_Approval_ind__c</name>
-    </fields>
-    <fields>
         <label>社群媒體按讚/分享次數</label>
         <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
     </fields>
@@ -1544,7 +1510,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>用戶端共同行銷基金</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1559,7 +1525,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>資料中心共同行銷基金</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

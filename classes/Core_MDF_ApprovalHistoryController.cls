@@ -85,18 +85,14 @@ public without sharing class Core_MDF_ApprovalHistoryController {
                 jsonSwitch = true;
                 String jsonVariableTemp = configMDList[0].Core_MDF_Custom_Label_Configration__c;//Core_MDF_CAMPAIGN_APPROVAL_HISTORY_JSON
     
-               /* if(string.isNotBlank(jsonVariableTemp)){
+                if(string.isNotBlank(jsonVariableTemp)){
                     Core_MDF_Custom_Label_Configration__mdt customMdt = [SELECT id, DeveloperName, Core_MDF_Value_Txt__c, Core_MDF_Value2_Txt__c 
                                                                         FROM Core_MDF_Custom_Label_Configration__mdt 
                                                                         WHERE id =: jsonVariableTemp];
                     if(customMdt.Core_MDF_Value_Txt__c != null){
                         jsonVariable = customMdt.Core_MDF_Value_Txt__c;
                     }
-                }*/ //ATHR comment
-
-                //ATHR Fix- Deeply nested if
-                Core_MDF_Custom_Label_Configration__mdt customMdt =!String.isBlank(jsonVariableTemp) ? [SELECT id, DeveloperName, Core_MDF_Value_Txt__c, Core_MDF_Value2_Txt__c FROM Core_MDF_Custom_Label_Configration__mdt WHERE id =: jsonVariableTemp]  : null;
-                jsonVariable = customMdt?.Core_MDF_Value_Txt__c;                
+                }
             }
             if(test.isRunningTest()){
                 jsonVariable='CAMPAIGN_APPROVAL_HISTORY_JSON';
@@ -107,16 +103,11 @@ public without sharing class Core_MDF_ApprovalHistoryController {
             {
                 Map<String,String> stepfrmclientcnst = new Map<String,String>();
                 List<deserializejson> deserializedlst = new List<deserializejson>();
-               /* if(jsonSwitch){
+                if(jsonSwitch){
                     deserializedlst = (List<deserializejson>)JSON.deserialize(jsonVariable,List<deserializejson>.class);
                 }else{
                     deserializedlst = (List<deserializejson>)JSON.deserialize((String)cnst.getValue(jsonVariable),List<deserializejson>.class);
-                } */
-                //ATHR Fix-Deeply nested if
-                deserializedlst = (List<deserializejson>)JSON.deserialize(
-                jsonSwitch ? jsonVariable : (String)cnst.getValue(jsonVariable),
-                List<deserializejson>.class
-                );
+                } 
                 
                 
                 for (deserializejson fld :deserializedlst)
@@ -132,20 +123,15 @@ public without sharing class Core_MDF_ApprovalHistoryController {
                     //Boolean isallowed = checkUserPermissionSet(permset);
 
                     Boolean isallowed = false;
-                   /* if (customPermissionList != null && customPermissionList.contains('ALLUSERS')) {
+                    if (customPermissionList != null && customPermissionList.contains('ALLUSERS')) {
                         isallowed = true;
                     } else {
                         List<String> permset = customPermissionList.split(';');
                         isallowed = checkUserPermissionSet(permset);
-                    }*/ //ATHR comment
-                    //ATHR Fix -Deeply nested if
-                    isallowed = (customPermissionList != null && customPermissionList.contains('ALLUSERS')) ? true : checkUserPermissionSet(customPermissionList?.split(';'));
-                    if (!isallowed){
-                        continue;
                     }
                    
-                    //if (isallowed)
-                    //{
+                    if (isallowed)
+                    {
                         integer i=0;
                         for(i=0;i<fld.record.size();i++){
                             
@@ -159,7 +145,7 @@ public without sharing class Core_MDF_ApprovalHistoryController {
                         }
                         
                         
-                    //}
+                    }
                 }
             }
             
@@ -168,14 +154,10 @@ public without sharing class Core_MDF_ApprovalHistoryController {
             List<DataTableColumns> sortedLstDataColumns = new List<DataTableColumns>();
             // List<string> customPermissionList= configMDList[0].Core_MDF_Permissions__c.split(',');
             Boolean isallowed = true;//checkUserPermissionSet(customPermissionList);
-            //ATHR Fix- Deeply nested if
-            if(!isallowed){
-                return finalWrapper;
-            }
-            //if(isallowed){
+            if(isallowed){
                 List<String> apiNameList=new List<String>();
                 List<String> apiNameList_workitem=new List<String>();
-                //if(!configMDList.isEmpty()){//ATHR Fix- we can comment this as null check is done before
+                if(!configMDList.isEmpty()){
                     finalWrapper.MDFound=true;
                     if(configMDList[0].Core_MDF_CreatedDate__c){
                         apiNameList.add('format(CreatedDate)');
@@ -333,16 +315,6 @@ public without sharing class Core_MDF_ApprovalHistoryController {
                               FROM ProcessInstance WHERE TargetObjectId = :recordId ORDER BY Id DESC];*/
                     
                        piList=Database.query(String.escapeSingleQuotes(piListQuery));        
-            //16852 starts
-            Boolean isProcessComplete = true;
-            if (!piList.isEmpty()) {
-                ProcessInstance latestPI = piList[0];
-                if (latestPI.Status == 'Pending') {
-                    isProcessComplete = false;
-                }
-            }
-            finalWrapper.isApprovalProcessComplete = isProcessComplete;
-            //16852 ends
                     for(ProcessInstance piL: piList){
                         List<ProcessInstanceHistory> pihList2 = new List<ProcessInstanceHistory>();
                         pihList2 = piL.StepsAndWorkitems;
@@ -425,12 +397,12 @@ public without sharing class Core_MDF_ApprovalHistoryController {
                         }
                    // } 
                   
-                //}
+                }
                 finalWrapper.TableTitle          = configMDList[0].Core_MDF_Title__c;
                 finalWrapper.lstDataTableColumns = lstDataColumns;
                 finalWrapper.records    = listTotalNew;
             }
-    	//}
+    	}
         return finalWrapper;
     }
 
@@ -490,274 +462,6 @@ Modified By:        Date:      Changes:
         public String TableTitle {get;set;} 
         @AuraEnabled
         public Boolean MDFound {get;set;}       
-        @AuraEnabled
-        public Boolean isApprovalProcessComplete { get; set; } //16852
     }
     
-    //16852 starts
-    @AuraEnabled
-    public static ApprovalFlowData getApprovalFlowData(Id recordId) {
-        ApprovalFlowData flowData = new ApprovalFlowData();
-        try {
-            ProcessInstance pi = [SELECT Id, Status, ProcessDefinition.Name,(SELECT Id, StepStatus, ActorId, Actor.Name, OriginalActorId, OriginalActor.Name, Comments, CreatedDate FROM StepsAndWorkitems ORDER BY CreatedDate ASC) FROM ProcessInstance WHERE TargetObjectId = :recordId ORDER BY CreatedDate DESC LIMIT 1];
-            if (pi == null) {
-                return flowData;
-            }
-            List<ProcessInstanceNode> piNodes = [SELECT Id, NodeStatus, ProcessNodeName, CreatedDate, ProcessNodeId FROM ProcessInstanceNode WHERE ProcessInstanceid= :pi.Id ORDER BY CreatedDate ASC];
-            flowData.processName = pi.ProcessDefinition.Name;
-            flowData.processStatus = pi.Status;
-            Map<String, List<String>> eligibleApproversMap = Core_MDF_CampaignPFR_Controller.getEligibleApproversForRecord(recordId);
-            flowData.eligibleApprovers = eligibleApproversMap;            
-            getExternalApproversForCustomerAcceptance(recordId, eligibleApproversMap);
-            getProgramOfficeApprovers(recordId,eligibleApproversMap);//indu
-            processExistingSteps(pi, piNodes, flowData, eligibleApproversMap);
-            return flowData;  
-        }
-        catch (Exception e) {
-	    throw new AuraHandledException('Error fetching approval data: ' + e.getMessage());
-	}
-    }
-    
-    private static void getExternalApproversForCustomerAcceptance(Id recordId, Map<String, List<String>> eligibleApproversMap) {
-        String sObjName = recordId.getSObjectType().getDescribe().getName();
-        Id accountId;
-        Set<Id> eligibleUserIds = new Set<Id>();
-
-        if (sObjName == 'Campaign'){ 
-            List<Campaign> cmpList = [SELECT RecordTypeId, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c,Status, Core_MDF_Account__c FROM Campaign WHERE Id = :recordId LIMIT 1];
-            if (cmpList.isEmpty()) return;
-            Campaign cmp = cmpList[0];
-            if (!(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM || cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM) || cmp.Core_MDF_Proposal_Based_Ind__c == false || cmp.Status != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm') || cmp.Core_MDF_Account__c == null) return;
-            accountId = cmp.Core_MDF_Account__c;
-
-            Set<Id> pnumUserIds = getPnumUserIds(accountId, true);
-            if (pnumUserIds.isEmpty()) return;
- 
-            String customPermName = cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM ? 'Core_MDF_ExternalProposalApprover' : 'Core_MDF_CCP_External_Co_GTM_Project_Approver';
- 
-            Set<Id> permSetIds = new Set<Id>();
-            for (SetupEntityAccess sea : [SELECT ParentId FROM SetupEntityAccess WHERE SetupEntityType = 'CustomPermission' AND SetupEntityId IN (SELECT Id FROM CustomPermission WHERE DeveloperName = :customPermName)]) {
-                permSetIds.add(sea.ParentId);
-            }
-            if (permSetIds.isEmpty()) return;
-            for (PermissionSetAssignment psa : [SELECT AssigneeId FROM PermissionSetAssignment WHERE PermissionSetId IN :permSetIds AND AssigneeId IN :pnumUserIds AND Assignee.IsActive = true]) {
-                eligibleUserIds.add(psa.AssigneeId);
-            }
-        }
-
-        if (sObjName == 'PartnerFundRequest'){
-            PartnerFundRequest pfr = [SELECT Id, ChannelPartnerId, Core_MDF_Campaign_Account_Id__c,Core_MDF_Approval_Stage__c, Core_MDF_Fund_Request_Status__c,Core_MDF_Member_Acceptor_Id__c FROM PartnerFundRequest WHERE Id = :recordId LIMIT 1];
-            
-	    if(pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.PFR_CUSTOMER_ACCEPTANCE && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_ACTIVATING_PARTNER && pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm')) return;
-            accountId = pfr.ChannelPartnerId;
-
-            if(pfr.Core_MDF_Campaign_Account_Id__c != null && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_ACTIVATING_PARTNER || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm'))) {
-                accountId = pfr.Core_MDF_Campaign_Account_Id__c;
-            }
-            if(accountId == null) return;
-            Set<Id> pnumUserIds = getPnumUserIds(accountId, true);
-            if (pnumUserIds.isEmpty()) return;
-
-            for(PermissionSetAssignment psa : [SELECT AssigneeId, PermissionSet.Name FROM PermissionSetAssignment WHERE AssigneeId IN :pnumUserIds]) {
-                if(psa.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_External_Activity_Approver') || psa.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_External_Activity_Submitter') || psa.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_IPA_Activity_Manager') || psa.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Primary_Partner_User')) {
-                    eligibleUserIds.add(psa.AssigneeId);
-                }
-            }
-            if (pfr.Core_MDF_Member_Acceptor_Id__c != null) {
-                eligibleUserIds.add(pfr.Core_MDF_Member_Acceptor_Id__c);
-            }
-        }
-
-        if (eligibleUserIds.isEmpty()) return;
-
-        String stepKey = 'Customer Acceptance';
-        if (!eligibleApproversMap.containsKey(stepKey)) {
-            eligibleApproversMap.put(stepKey, new List<String>());
-        }
-        for (User u : [SELECT Name FROM User WHERE  Id IN :eligibleUserIds ORDER BY Name ASC]) {
-                eligibleApproversMap.get(stepKey).add(u.Name);
-        }
-    }
-    
-    private static void getProgramOfficeApprovers(Id recordId, Map<String, List<String>> eligibleApproversMap) {
-
-        if(recordId.getSObjectType().getDescribe().getName() != 'PartnerFundRequest'){
-            return;
-        }
-
-        PartnerFundRequest pfr = [SELECT Core_MDF_Approval_Stage__c FROM PartnerFundRequest WHERE Id = :recordId LIMIT 1];
-
-        if(pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.PROGRAM_OFFICE_REVIEWER){
-            return;
-        }
-
-        String stepKey = 'Program Office Review';
-
-        if(!eligibleApproversMap.containsKey(stepKey)){
-            eligibleApproversMap.put(stepKey, new List<String>());
-        }
-
-        Group porGroup = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_Program_Office_Grp' LIMIT 1];
-
-        Set<Id> userIds = new Set<Id>();
-
-        for(GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :porGroup.Id]){
-            userIds.add(gm.UserOrGroupId);
-        }
-
-        for(User u : [SELECT Name FROM User WHERE Id IN :userIds AND IsActive = true ORDER BY Name]){
-            eligibleApproversMap.get(stepKey).add(u.Name);
-        }
-     }//indu
-
-    private static Set<Id> getPnumUserIds(Id accountId, Boolean includeReclaimedLicenses) {
-        Set<Id> pnumUserIds = new Set<Id>();
-        String pnumQuery = 'SELECT Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__c = :accountId AND Core_MDF_Active_Ind__c = true';
-        if (includeReclaimedLicenses) {
-            pnumQuery += ' AND (Core_MDF_User__r.IsActive = true OR Core_MDF_User__r.Partner_License_Reclaimed__c = true)';
-        }
-        for (Core_MDF_Partner_Node_User_Mapping__c pnum : Database.query(pnumQuery)) {
-            pnumUserIds.add(pnum.Core_MDF_User__c);
-        }
-        return pnumUserIds;
-    }
-    
-    private static void processExistingSteps(ProcessInstance pi, List<ProcessInstanceNode> piNodes, ApprovalFlowData flowData, Map<String, List<String>> eligibleApproversMap) {
-        Set<Id> queueIds = new Set<Id>();
-        for (ProcessInstanceHistory step : pi.StepsAndWorkitems) {
-            if (step.ActorId != null && step.ActorId.getSObjectType() == Group.SObjectType) {
-                queueIds.add(step.ActorId);
-            }
-            if (step.OriginalActorId != null && step.OriginalActorId.getSObjectType() == Group.SObjectType) {
-                queueIds.add(step.OriginalActorId);
-            }
-        }
-        // Fetch queue members
-        Map<Id, String> queueNames = new Map<Id, String>();
-        Map<Id, List<String>> queueMembersMap = new Map<Id, List<String>>();
-        if (!queueIds.isEmpty()) {
-            for (Group queue : [SELECT Id, Name FROM Group WHERE Id IN :queueIds AND Type = 'Queue']) {
-                queueNames.put(queue.Id, queue.Name);
-            }
-            Map<Id, String> userNames = new Map<Id, String>();
-            List<GroupMember> members = [SELECT GroupId, UserOrGroupId FROM GroupMember WHERE GroupId IN :queueIds];                
-            for (User u : [SELECT Id, Name FROM User WHERE Id IN (SELECT UserOrGroupId FROM GroupMember WHERE GroupId IN :queueIds)]) {
-                userNames.put(u.Id, u.Name);
-            }
-            for (GroupMember gm : members) {
-                if (!queueMembersMap.containsKey(gm.GroupId)) {
-                    queueMembersMap.put(gm.GroupId, new List<String>());
-                }                    
-                if (userNames.containsKey(gm.UserOrGroupId)) {
-                    queueMembersMap.get(gm.GroupId).add(userNames.get(gm.UserOrGroupId));
-                }
-            }
-        }
-        // Process steps
-        Integer stepCounter = 0;
-        for (ProcessInstanceHistory step : pi.StepsAndWorkitems) {                
-            if (step.StepStatus == 'Started') {
-                continue;
-            }
-            StepInfo info = new StepInfo();
-            info.stepNumber = stepCounter;
-            info.status = step.StepStatus;
-            info.comments = step.Comments;
-            info.createdDate = step.CreatedDate;
-            // Assign step name from node
-            if (stepCounter < piNodes.size()) {
-                info.stepName = piNodes[stepCounter].ProcessNodeName;
-                info.status = piNodes[stepCounter].NodeStatus;
-                info.processNodeId = piNodes[stepCounter].ProcessNodeId;
-                // Add eligible approvers for current step
-                if (step.StepStatus == 'Pending') {
-                    List<String> eligibleForThisStep = getEligibleApproversForCurrentStep(info.stepName, eligibleApproversMap);
-                    info.eligibleApprovers = eligibleForThisStep;
-                }
-            }
-            resolveActor(step.ActorId, step.Actor, info, true, queueNames, queueMembersMap);
-            resolveActor(step.OriginalActorId, step.OriginalActor, info, false, queueNames, queueMembersMap);
-            // Separate current vs completed
-            if (step.StepStatus == 'Pending') {
-                flowData.currentSteps.add(info);
-            } else {
-                flowData.completedSteps.add(info);
-            }
-            stepCounter++;
-        }
-    }
-@TestVisible
-    private static List<String> getEligibleApproversForCurrentStep(String currentStepName, Map<String, List<String>> eligibleApproversMap) {
-        if (eligibleApproversMap.containsKey(currentStepName)) {
-            return eligibleApproversMap.get(currentStepName);
-        }
-        if (currentStepName == 'L2 Reviewer' && eligibleApproversMap.containsKey('L2 Approval')) {
-            return eligibleApproversMap.get('L2 Approval');
-        }
-        for (String approvalStage : eligibleApproversMap.keySet()) {
-            if (approvalStage.equalsIgnoreCase(currentStepName)) {
-                return eligibleApproversMap.get(approvalStage);
-            }
-        }
-        for (String approvalStage : eligibleApproversMap.keySet()) {
-            if (currentStepName.toLowerCase().contains(approvalStage.toLowerCase())) {
-                return eligibleApproversMap.get(approvalStage);
-            }
-        }
-        for (String approvalStage : eligibleApproversMap.keySet()) {
-            if (approvalStage.toLowerCase().contains(currentStepName.toLowerCase())) {
-                return eligibleApproversMap.get(approvalStage);
-            }
-        }
-        return new List<String>();
-    }
-@TestVisible
-    private static void resolveActor(Id actorId, Name actor, StepInfo info, Boolean isActual, Map<Id, String> queueNames, Map<Id, List<String>> queueMembersMap) {
-        if (actorId == null) return;
-        if (actorId.getSObjectType() == Group.SObjectType) {
-            String name = queueNames.get(actorId) + ' (Queue)';
-            info.isQueue = true;
-            info.queueMembers = queueMembersMap.get(actorId);
-            if (isActual) info.actualApprover = name;
-            else info.assignedApprover = name;
-        }
-        else {
-            if (isActual) info.actualApprover = actor.Name;
-            else info.assignedApprover = actor.Name;
-        }
-    }
-    // ================= Wrapper Classes =================
-    public class ApprovalFlowData {
-        @AuraEnabled public String processName;
-        @AuraEnabled public String processStatus;
-        @AuraEnabled public List<StepInfo> completedSteps;
-        @AuraEnabled public List<StepInfo> currentSteps;   
-        @AuraEnabled public StepInfo nextStep;
-        @AuraEnabled public Map<String, List<String>> eligibleApprovers;     
-        public ApprovalFlowData() {
-            completedSteps = new List<StepInfo>();
-            currentSteps = new List<StepInfo>();
-            eligibleApprovers = new Map<String, List<String>>();
-        }
-    }
-    public class StepInfo {
-        @AuraEnabled public Integer stepNumber;
-        @AuraEnabled public String stepName;
-        @AuraEnabled public String status;
-        @AuraEnabled public String actualApprover;
-        @AuraEnabled public String assignedApprover;
-        @AuraEnabled public Boolean isQueue;
-        @AuraEnabled public List<String> queueMembers;
-        @AuraEnabled public List<String> eligibleApprovers;
-        @AuraEnabled public String comments;
-        @AuraEnabled public Datetime createdDate;   
-        @AuraEnabled public Boolean isFutureStep;   
-        @AuraEnabled public Id processNodeId;  
-        public StepInfo() {
-            queueMembers = new List<String>();
-            eligibleApprovers = new List<String>();
-            isQueue = false;
-        }
-    }
-    //16852 ends
 }

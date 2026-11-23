@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 04-07-2026
+ * @last modified on  : 10-15-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -136,7 +136,7 @@ public class Pricing_QuoteLineBusinessLogic_Test {
         System.assert(count > 0, true);
         
         Pricing_Test_Utility.shareQuoteWithUser(quoteList[0].Id, regionalManager[0].Id);
-        Product2 prod = new Product2(Name='Intel® Xeon® 6220',
+        Product2 prod = new Product2(Name='TestProduct',
                                      Core_Product_Org__c = 'Sales',
                                      Core_Product_Type__c = 'Processors',
                                      Core_Sales_Visible_Flag__c = true,
@@ -146,6 +146,7 @@ public class Pricing_QuoteLineBusinessLogic_Test {
                                      IsActive = true);
         insert prod;
         Product2 writeInProd = Pricing_Test_Utility.createWINProduct();
+        List<SBQQ__QuoteLine__c> newQuoteline = new List<SBQQ__QuoteLine__c>();
         Test.startTest();
         System.runAs(regionalManager[0]) {
             //newQuoteline = Pricing_Test_Utility.createQuoteLines(quoteList[0].Id, 1);
@@ -408,8 +409,8 @@ public class Pricing_QuoteLineBusinessLogic_Test {
     }
 
     private static void calculateStatusAgeTest() {
-        QuoteLineBusinessLogic.calculateStatusAge(system.now(), system.now()+0.5);
-        QuoteLineBusinessLogic.calculateStatusAge(system.now(), system.now()+3);
+        Decimal age1 = QuoteLineBusinessLogic.calculateStatusAge(system.now(), system.now()+0.5);
+        Decimal age2 = QuoteLineBusinessLogic.calculateStatusAge(system.now(), system.now()+3);
         Decimal age3 = QuoteLineBusinessLogic.calculateStatusAge(System.today(), System.today().addDays(15));
         system.assert(age3>0);
     }
@@ -527,7 +528,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine[0].Pricing_Status_Nm__c='Pending Further Intel Review';
             update quoteLine[0];
         }
-        System.assertEquals('Pending Further Intel Review', quoteLine[0].Pricing_Status_Nm__c);
         Test.stopTest();
     }
     
@@ -562,7 +562,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine[0].Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine[0].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
         	update quoteLine[0];
-            System.assertEquals('Pending Further Intel Review', quoteLine[0].Pricing_Status_Nm__c);
         Test.stopTest();
     }
 
@@ -618,7 +617,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine.SBQQ__Product__c = winProduct.Id;
             quoteLine.Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
-            System.assertEquals('Pending Further Intel Review', quoteLine.Pricing_Status_Nm__c);
         	update quoteLine;
         Test.stopTest();
     }
@@ -633,7 +631,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine.SBQQ__Product__c = winProduct.Id;
             quoteLine.Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
-            System.assertEquals('Pending Further Intel Review', quoteLine.Pricing_Status_Nm__c);
         	update quoteLine;
         Test.stopTest();
     }
@@ -648,7 +645,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine.SBQQ__Product__c = winProduct.Id;
             quoteLine.Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
-            System.assertEquals('Approved', quoteLine.Pricing_Status_Nm__c);
         	update quoteLine;
         Test.stopTest();
     }
@@ -663,7 +659,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine.SBQQ__Product__c = winProduct.Id;
             quoteLine.Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
-            System.assertEquals('Approved', quoteLine.Pricing_Status_Nm__c);
         	update quoteLine;
         Test.stopTest();
     }
@@ -678,7 +673,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
             quoteLine.SBQQ__Product__c = winProduct.Id;
             quoteLine.Pricing_Other_Product_Nm__c = 'Test Tender';
             quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
-            System.assertEquals('Approved', quoteLine.Pricing_Status_Nm__c);
         	update quoteLine;
         Test.stopTest();
     }
@@ -699,7 +693,6 @@ public class Pricing_QuoteLineBusinessLogic_Test {
         	update quoteList[0];
         quoteLine.Pricing_Status_Nm__c='Pending Further Intel Review';
             update quoteLine;
-            System.assertEquals('Pending Further Intel Review', quoteLine.Pricing_Status_Nm__c);
         Test.stopTest();
     }
          

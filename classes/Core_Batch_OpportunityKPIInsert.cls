@@ -160,7 +160,7 @@ global class Core_Batch_OpportunityKPIInsert implements Database.Batchable<sObje
                 update updateInvalidKPI;
             }
             if(oppKPIList.size()>0){
-                //integer count = 0;
+                integer count = 0;
                 integer i=0;
                 
                 Database.SaveResult[] srr = database.insert(oppKPIList,false);

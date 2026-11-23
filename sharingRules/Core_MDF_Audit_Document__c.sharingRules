@@ -73,24 +73,4 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Share_Documents_To_CDB_Intg_User</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This rule is to share the Case review Documents to CDB Integration User</description>
-        <label>Core_MDF_Share_Documents_To_CDB_Intg_User</label>
-        <sharedTo>
-            <group>Core_AI_CDB_Integrations_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>{empty}</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_SFT_File_Download_Ind__c</field>
-            <operation>equals</operation>
-            <value>False</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
 </SharingRules>

@@ -20,8 +20,6 @@
             //isClaimEligibleForPICReview -> true when the claim is any of the following statuses - resubmission required, pending documents, paid and pending documents, paid and resubmission required
             let isClaimEligibleForPICReview = manageAuditComponent.get("v.isClaimEligibleForPICReview");
             component.set("v.isClaimEligibleForPICReview", isClaimEligibleForPICReview);
-            let isOutcomeBasedAccountBasedAct = manageAuditComponent.get("v.isOutcomeBasedAccountBasedAct");
-            component.set("v.isOutcomeBasedAccountBasedAct", isOutcomeBasedAccountBasedAct);
             //isDocSubmissionMandatory - true for non legacy claims and legacy claims(with only PIC Pending and paid and PIC Pending status)
             let isDocSubmissionMandatory = manageAuditComponent.get("v.isDocSubmissionMandatory");
             component.set("v.isDocSubmissionMandatory", isDocSubmissionMandatory);

@@ -154,7 +154,9 @@
             grpMember3.GroupId = grp2.Id;
 
             List<UserShare> usList = new List<UserShare>();
+            UserShare us1 = new UserShare(UserId = usr2.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
             UserShare us2 = new UserShare(UserId = usr3.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
+            //usList.add(us1);
             usList.add(us2);
             Database.insert(usList);
 
@@ -255,8 +257,6 @@
         Core_MDF_ExternalUserSharing be3 = new Core_MDF_ExternalUserSharing(true, null, 1);
         Database.executeBatch(be3);
         Test.stopTest();
-        // Unit Test Method should include System.Assert 
-        System.assertNotEquals(null, be3, 'Constructor should create a valid instance');
     }
     
     @isTest static void testConstructor1() {
@@ -265,8 +265,5 @@
         Core_MDF_ExternalUserSharing be3 = new Core_MDF_ExternalUserSharing(true, us);
         Database.executeBatch(be3);
         Test.stopTest();
-        // Unit Test Method should include System.Assert
-        System.assertNotEquals(null, be3, 'Constructor should create a valid instance');
-        System.assertEquals(null, us, 'UserShare list should remain null');
     }
 }

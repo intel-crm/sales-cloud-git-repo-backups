@@ -46,8 +46,7 @@ import Core_MDF_Help_Engineering_Activity_Link from '@salesforce/label/c.Core_MD
 import { NavigationMixin } from 'lightning/navigation';
 import { CurrentPageReference } from 'lightning/navigation';//made changes-Alekhya
 import OTHER_ENGINEERING_VALUES from '@salesforce/label/c.Core_MDF_Other_Engineering_Activity_Values';//made changes-ALekhya
-import CO_ENGINEERING_LABEL from '@salesforce/label/c.Core_MDF_Co_Engineering';
-import INNOVATION_LABEL from '@salesforce/label/c.Core_MDF_Innovation';
+
 
 
 export default class Core_MDF_PFR_Grid extends NavigationMixin(LightningElement) {
@@ -65,7 +64,6 @@ disableCreateActivity = true;
 @track campaignStartDate;
 @track campaignEndDate;
 @track campaignAccountId;
-@track campaignActivityCategory;
 hasCreateAccess = false;
 @api showCreateActivity = false;
 @api showNewActivity = false;
@@ -95,8 +93,6 @@ limittenActvitiesLabel = Core_MDF_limit10ActvitiesLabel;
 validationErrorLabel = Core_MDF_validationErrorLabel;
 nreGridHeader = NRE_GRID_HEADER;
 coGtmProgramName = coGtmProgramName;
-coEngineeringLabel = CO_ENGINEERING_LABEL;
-innovationLabel = INNOVATION_LABEL;
 @track showOtherActivityColumn = false;
 @track newRowCount = 0;
 showGrid = true;
@@ -373,7 +369,6 @@ fetchExistingActivityDetails() {
                         this.campaignStartDate = new Date(data.activityOrCampaignList[0].Campaign.StartDate);
                         this.campaignEndDate = new Date(data.activityOrCampaignList[0].Campaign.EndDate);
                         this.campaignAccountId = data.activityOrCampaignList[0].Campaign.Core_MDF_Account__c;
-                        this.campaignActivityCategory = data.activityOrCampaignList[0].Campaign.Core_MDF_Activity_Category__c;
                     }else{
                         this.showGrid = data.activityOrCampaignList[0].Core_MDF_Channel_Program__r.Name == this.coGtmProgramName ? true : false;
                         var allowedStatuses = ['Draft', 'Revision Required', 'Planned', 'In Progress'];
@@ -385,7 +380,6 @@ fetchExistingActivityDetails() {
                         this.campaignStartDate = new Date(data.activityOrCampaignList[0].StartDate);
                         this.campaignEndDate = new Date(data.activityOrCampaignList[0].EndDate);
                         this.campaignAccountId = data.activityOrCampaignList[0].Core_MDF_Account__c;
-                        this.campaignActivityCategory = data.activityOrCampaignList[0].Core_MDF_Activity_Category__c;
                     }
                 }
                 this.isLoading = false;
@@ -880,7 +874,7 @@ handleCreateRecords() {
             rowCopy.Core_MDF_Exchange_Rate_ptc__c = 1;
             rowCopy.RecordTypeId = this.recordTypeId;
             rowCopy.CampaignId = this.recordId;
-            rowCopy.Core_MDF_Budget_Type_nm__c = this.coEngineeringLabel;
+            rowCopy.Core_MDF_Budget_Type_nm__c = 'Co-Engineering';
             rowCopy.ChannelPartnerId = this.campaignAccountId;
 
             //To populate BudgetId in the final list
@@ -890,9 +884,6 @@ handleCreateRecords() {
                     rowCopy.BudgetId = budgetId;
                 }
             }
-                if(this.campaignActivityCategory === this.innovationLabel){
-                    rowCopy.Core_MDF_Activity_Classification_nm__c = this.coEngineeringLabel; 
-             }
 
             delete rowCopy.Id;
             createRecords.push(rowCopy);

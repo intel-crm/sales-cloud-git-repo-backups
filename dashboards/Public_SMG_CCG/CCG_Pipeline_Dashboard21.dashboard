@@ -22,6 +22,29 @@
         </dashboardFilterOptions>
         <name>Region</name>
     </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>1/1/2025</values>
+            <values>3/31/2025</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>4/1/2025</values>
+            <values>6/30/2025</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>7/1/2025</values>
+            <values>9/30/2025</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>10/1/2025</values>
+            <values>12/31/2025</values>
+        </dashboardFilterOptions>
+        <name>KPI - Date</name>
+    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -36,10 +59,13 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>Gov won $</header>
+                <header>Gov won &amp;</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
@@ -65,6 +91,9 @@
                 <componentType>Column</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -104,6 +133,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -133,6 +165,9 @@
                 <componentType>Column</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -174,6 +209,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -212,6 +250,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -239,6 +280,9 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -268,6 +312,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -296,6 +343,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -319,6 +369,9 @@
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CLOSE_DATE</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>0</decimalPrecision>
@@ -363,6 +416,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CLOSE_DATE</column>
+                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>0</decimalPrecision>
                     <flexTableColumn>
@@ -391,7 +447,7 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>Gov Top Pipeline Opportunities</header>
+                <header>Gov Top Opportunities</header>
                 <report>unfiled$public/CCG_Gov_Pipeline_List</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
@@ -411,6 +467,9 @@
                 <componentType>LineCumulative</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -450,6 +509,9 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CLOSE_DATE</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -466,7 +528,7 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
+            <colSpan>4</colSpan>
             <columnIndex>2</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -474,60 +536,8 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
                 </dashboardFilterColumns>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>EXP_AMOUNT</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>CLOSE_DATE</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>ACCOUNT_NAME</sortColumn>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>CCG Gov At Risk List</header>
-                <report>unfiled$public/CCG_Gov_At_Risk_List</report>
-            </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>5</colSpan>
-            <columnIndex>7</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Geo__c</column>
+                    <column>CLOSE_DATE</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -544,40 +554,28 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Opportunity_U_Base__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>CLOSE_DATE</reportColumn>
+                        <reportColumn>AMOUNT</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
-                        <sortColumn>CLOSE_DATE</sortColumn>
+                        <sortColumn>AMOUNT</sortColumn>
                         <sortOrder>2</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>CCG Gov Lost List</header>
-                <report>unfiled$public/CCG_Gov_Lost_List</report>
+                <header>Gov At Risk Opportunities</header>
+                <report>unfiled$public/X2024_CCG_Gov_At_Risk_List</report>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
-            <columnIndex>0</columnIndex>
+            <columnIndex>6</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
@@ -587,6 +585,9 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -600,17 +601,20 @@
                 <report>unfiled$public/CCG_Government_opportunities1</report>
                 <showRange>false</showRange>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Geo__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CLOSE_DATE</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -627,96 +631,23 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
                         <reportColumn>Opportunity.Core_Opportunity_U_Base__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>AMOUNT</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>CLOSE_DATE</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
                     <flexTableSortInfo>
-                        <sortColumn>CLOSE_DATE</sortColumn>
+                        <sortColumn>Opportunity.Core_Opportunity_U_Base__c</sortColumn>
                         <sortOrder>2</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>Wins Last 30 Days</header>
-                <report>unfiled$public/CCG_Gov_Won_Last_30_Days</report>
+                <header>Gov Opportunities Lost</header>
+                <report>unfiled$public/X2024_CCG_Gov_Lost_List</report>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Geo__c</column>
-                </dashboardFilterColumns>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Opportunity_U_Base__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>CREATED_DATE</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>CREATED_DATE</sortColumn>
-                        <sortOrder>2</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>New Last 30 Days</header>
-                <report>unfiled$public/CCG_Gov_New_Lat_30_Days</report>
-            </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>

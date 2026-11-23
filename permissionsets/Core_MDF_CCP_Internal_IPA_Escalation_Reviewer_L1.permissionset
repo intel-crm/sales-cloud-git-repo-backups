@@ -134,11 +134,6 @@
     </customPermissions>
     <description>Permission Set for IPA L1 Escalation Reviewer with Salesforce License</description>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Escalation__c.Core_MDF_Activity_Name_url__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Approved_Amount_amt__c</field>
         <readable>true</readable>

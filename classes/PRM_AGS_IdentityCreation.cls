@@ -764,7 +764,7 @@ acrListforUpdate.add(updateACR);
                             }
                         }
                         if(acctContRel.PRM_Source_Agent__c == null){
-                            acctContRel.PRM_Source_Agent__c = 'Admin Partner Invite';
+                            acctContRel.PRM_Source_Agent__c = 'Partner Invite';
                             acctContRel.PRM_CampaignId__c = null;
                             acctContRel.Bulk_Data_Upload__c=null;
                         }
@@ -941,8 +941,6 @@ acrListforUpdate.add(updateACR);
     }*/
     /*Utkarsh - TWC727-695 - This method creates batch entitlement record to Send invite email to user after 5 minutes of B2C creation*/
   public static void CreateBatchEntitlements(Contact contId,String evToken,String strTags,String source){
-     PRM_Account_Contact_Relationship__c acr = [Select id,PRM_Source_Agent__c from PRM_Account_Contact_Relationship__c where PRM_InActive_Ind__c =false and PRM_Relationship_Id__r.name='Employee' and PRM_Contact_Id__c=:contId.id  limit 1];
-    if(acr!=null && acr.PRM_Source_Agent__c!='Auto Granted IPA for DZP'){
     PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();
     be.PRM_Contact_Id__c = contId.Id;
     be.PRM_EV_Token__c = evToken;
@@ -951,6 +949,5 @@ acrListforUpdate.add(updateACR);
     be.PRM_Status_Reason_Txt__c ='PRM_AGS_IdentityCreation - Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ 
     be.Source__c = source;
     insert be;
-    }
   }  
 }

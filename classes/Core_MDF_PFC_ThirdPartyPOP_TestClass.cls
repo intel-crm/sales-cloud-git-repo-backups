@@ -319,13 +319,13 @@ public class Core_MDF_PFC_ThirdPartyPOP_TestClass {
         claimList.add(franceClaim2);
         Database.insert(franceClaim2);
         Test.stopTest();
-        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
         
         
         Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper clonePFC = new Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper();
         clonePFC = Core_MDF_PartnerFundClaim_Edit.prepareCloneData(ThirdPartyClaim.Id);
 
-        PartnerFundClaim ThirdPartyClaim123 = [Select Id,Core_MDF_Program__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Currency__c,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Type_Txt__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Taxes_Local__c,Amount,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :clonePFC.claimObj.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim123 = [Select Id,Core_MDF_Program__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Currency__c,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Taxes_Local__c,Amount,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :clonePFC.claimObj.Id LIMIT 1];
         obj= Core_MDF_PFC_ThirdPartyPOP.isValidThirdPartyPOPClaim(ThirdPartyClaim123);
         
         System.assertEquals(obj.isThirdPartyPOP, true);
@@ -334,7 +334,7 @@ public class Core_MDF_PFC_ThirdPartyPOP_TestClass {
         //List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();
         //claimList1.add(ThirdPartyClaim123);            
         //database.insert(claimList1);
-        //PartnerFundClaim ThirdPartyClaim456 = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :ThirdPartyClaim123.Id LIMIT 1];
+        //PartnerFundClaim ThirdPartyClaim456 = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :ThirdPartyClaim123.Id LIMIT 1];
        
         obj = Core_MDF_PFC_ThirdPartyPOP.isClaimFlagedForThirdPartyPOP(ThirdPartyClaim123.Id);
         System.assertEquals(obj.isThirdPartyPOP , false);
@@ -372,12 +372,12 @@ public class Core_MDF_PFC_ThirdPartyPOP_TestClass {
         claimList.add(franceClaim2);
         Database.insert(franceClaim2);
         Test.stopTest();
-        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
         
         Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper clonePFC = new Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper();
         clonePFC = Core_MDF_PartnerFundClaim_Edit.prepareCloneData(ThirdPartyClaim.Id);
 
-        PartnerFundClaim ThirdPartyClaim123 = [Select Id,Core_MDF_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Currency__c,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Type_Txt__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Taxes_Local__c,Amount,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :clonePFC.claimObj.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim123 = [Select Id,Core_MDF_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Currency__c,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Taxes_Local__c,Amount,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :clonePFC.claimObj.Id LIMIT 1];
         obj= Core_MDF_PFC_ThirdPartyPOP.isValidThirdPartyPOPClaim(ThirdPartyClaim123);
         
         System.assertEquals(obj.isThirdPartyPOP, false);       

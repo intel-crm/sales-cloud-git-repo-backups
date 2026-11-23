@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : Rajesh Gajul
- * @group             : 
- * @last modified on  : 04-14-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 global without sharing class Pricing_BatchPricingRetriggerInboundMsg  implements Database.Batchable<sObject>{
     public DateTime dtWhen;
     global integer resursiveCounter;
@@ -35,6 +28,8 @@ global without sharing class Pricing_BatchPricingRetriggerInboundMsg  implements
     }
     public void finish(Database.BatchableContext bc){
           // Get the batch job information
+          AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
+          FROM AsyncApexJob WHERE Id =:bc.getJobId()];
           List<Core_Integration_Inbound_Message__c> inboundList = new List<Core_Integration_Inbound_Message__c>();
           inboundList = [SELECT Id,Name,CreatedDate,Core_Error_Code__c,Core_Retry_Counter__c,Core_Message_Type__c,Core_Log_Entry__c,Core_Payload__c,Core_Source_System__c from Core_Integration_Inbound_Message__c 
                                          where Core_Processing_Status__c =: Label.Pricing_Tender_Inbound_Status_Failed

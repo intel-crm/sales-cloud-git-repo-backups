@@ -101,9 +101,8 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
             Database.insert(pgm1);
             
         
-        //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-        // Highlight: Unused Local Variable 
-       // String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
+        String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
+        String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
             
         
         Campaign ipaCampaign = new Campaign(); 
@@ -116,9 +115,9 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
         ipaCampaign.Core_MDF_Audience__c= 'Channel Partner'; 
         ipaCampaign.Core_MDF_Total_Campaign_Cost_Amt__c = 110000;
         ipaCampaign.Description = 'IPA Campaign Description';
-        ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Account Plan';
+        ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c = budgetType;
         ipaCampaign.Core_MDF_Reimbursement_Rate__c = '100%';                                                 
-        ipaCampaign.Core_MDF_Technology__c = 'Other';
+        ipaCampaign.Core_MDF_Technology__c = 'Apollo Lake';
         ipaCampaign.Core_MDF_Market__c = 'India';
         ipaCampaign.Status = 'Pending Approval';
         Insert ipaCampaign;
@@ -139,16 +138,15 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
         Campaign dcfcmp = [Select id,Recordtype.Developername from Campaign where Name='DCF Opal Campaign' limit 1];
         
         Campaign cmp = Core_MDF_Campaign_QuickActionController.loadCampaignRecord(c.Id);
-       // Highlight: Unused Local Variable 
-      /*  String x = */ Core_MDF_Campaign_QuickActionController.getRtFieldSetMappings('Campaign','Core_MDF_Intel_Partner_Alliance');
-      /*  Boolean b = */ Core_MDF_Campaign_QuickActionController.checkSObjectEditPermission('Campaign');
-      /*  Boolean y = */ Core_MDF_Campaign_QuickActionController.isCommunity();
-      /*  Campaign rt = */ Core_MDF_Campaign_QuickActionController.loadRecTypeInfo(c.id);
-      /*  Boolean hasCloneAccess = */ Core_MDF_Campaign_QuickActionController.checkForCloneAccess(c.Recordtype.Developername,'Planned');
-      /*  Boolean hasCloneAccess1 = */ Core_MDF_Campaign_QuickActionController.checkForCloneAccess(ccfcmp.Recordtype.Developername,'Planned');
-      /*  Boolean hasCloneAccess2 = */ Core_MDF_Campaign_QuickActionController.checkForCloneAccess(dcfcmp.Recordtype.Developername,'Planned');
-      /*  Boolean hasUserIPAExtUser = */ Core_MDF_Campaign_QuickActionController.isUserIPAExtUser();
-      /*  Boolean hasEditAccess = */ Core_MDF_Campaign_QuickActionController.checkForEditAccess('Campaign','Core_MDF_Intel_Partner_Alliance','Draft',cmp.Id,true,true);
+        String x = Core_MDF_Campaign_QuickActionController.getRtFieldSetMappings('Campaign','Core_MDF_Intel_Partner_Alliance');
+        Boolean b = Core_MDF_Campaign_QuickActionController.checkSObjectEditPermission('Campaign');
+        Boolean y = Core_MDF_Campaign_QuickActionController.isCommunity();
+        Campaign rt = Core_MDF_Campaign_QuickActionController.loadRecTypeInfo(c.id);
+        Boolean hasCloneAccess = Core_MDF_Campaign_QuickActionController.checkForCloneAccess(c.Recordtype.Developername,'Planned');
+        Boolean hasCloneAccess1 = Core_MDF_Campaign_QuickActionController.checkForCloneAccess(ccfcmp.Recordtype.Developername,'Planned');
+        Boolean hasCloneAccess2 = Core_MDF_Campaign_QuickActionController.checkForCloneAccess(dcfcmp.Recordtype.Developername,'Planned');
+       	Boolean hasUserIPAExtUser = Core_MDF_Campaign_QuickActionController.isUserIPAExtUser();
+        Boolean hasEditAccess = Core_MDF_Campaign_QuickActionController.checkForEditAccess('Campaign','Core_MDF_Intel_Partner_Alliance','Draft',cmp.Id,true,true);
         Assert.areEqual(true, cmp != null);   
         Test.stopTest();
             }
@@ -195,9 +193,8 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
             pgm1.Core_MDF_Region_cd__C = 'APJ';
             pgm1.Core_MDF_AccountIdGroupName__c = ipaUltimateAccount.Id+'Core_MDF_CCP_IPA_External';
             Database.insert(pgm1);
-        //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-        // Highlight: Unused Local Variable 
-       // String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
+        String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
+        String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
         
            
         Campaign ipaCampaign = new Campaign(); 
@@ -210,9 +207,9 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
         ipaCampaign.Core_MDF_Audience__c= 'Channel Partner'; 
         ipaCampaign.Core_MDF_Total_Campaign_Cost_Amt__c = 110000;
         ipaCampaign.Description = 'IPA Campaign Description';
-        ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Account Plan';
+        ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c = budgetType;
         ipaCampaign.Core_MDF_Reimbursement_Rate__c = '100%';                                                 
-        ipaCampaign.Core_MDF_Technology__c = 'Other';
+        ipaCampaign.Core_MDF_Technology__c = 'Apollo Lake';
         ipaCampaign.Core_MDF_Market__c = 'India';
         ipaCampaign.Status = 'Pending Approval';
         Insert ipaCampaign;
@@ -238,6 +235,7 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
          try {
           Core_MDF_Campaign_QuickActionController.loadPFRRecords(null, null);    
         } catch(Exception e) {
+            //System.debug('Exception '+e);
         }
         
     }

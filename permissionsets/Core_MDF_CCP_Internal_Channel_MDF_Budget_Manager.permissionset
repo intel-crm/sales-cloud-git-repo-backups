@@ -10,6 +10,10 @@
     </customPermissions>
     <customPermissions>
         <enabled>true</enabled>
+        <name>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</name>
+    </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
         <name>Core_MDF_User_With_Activity_Access</name>
     </customPermissions>
     <description>Budget Manager permission for Channel MDF program</description>
@@ -761,6 +765,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

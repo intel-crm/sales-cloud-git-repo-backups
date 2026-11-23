@@ -88,8 +88,6 @@ global class PCC_Wrapper {
         Public String productGroup{get;set;}
         Public String productSegment{get;set;}
         Public String productApplication{get;set;}
-        Public String designType { get; set; }
-        Public String odmBoardPartner { get; set; }
         Public String militaryAerospaceGvrnmtUseInd{get;set;}
         Public String verticalMarket{get;set;}
         Public String externalId{get;set;}

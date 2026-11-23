@@ -40,10 +40,6 @@
             <translation>共同マーケティング活動履歴</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Disbursement Status</masterLabel>
-            <translation>支出状況</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>保留基準リスト履歴</translation>
         </picklistValues>
@@ -66,14 +62,6 @@
         <picklistValues>
             <masterLabel>Partner Group Mapping History</masterLabel>
             <translation>パートナー・グループ・マッピング履歴</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Breakdown</masterLabel>
-            <translation>支払いの内訳</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Details</masterLabel>
-            <translation>支払いの詳細</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment History</masterLabel>

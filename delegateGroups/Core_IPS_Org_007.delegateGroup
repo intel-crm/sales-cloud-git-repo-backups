@@ -48,7 +48,6 @@
     <groups>EMBED - HW-SW L3 (ECSI) India</groups>
     <groups>EMBED - L4 CASE Team Central</groups>
     <groups>EMBED - HW L2 (ADC) EMEA POD</groups>
-    <groups>EMBED - Device Management TK</groups>
     <groups>IPS - Org Admin - EMBED</groups>
     <groups>OSC - APJ</groups>
     <groups>EMBED - L1 (Contract) APJ</groups>
@@ -72,5 +71,5 @@
     <label>IPS - Org Admin - EMBED</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

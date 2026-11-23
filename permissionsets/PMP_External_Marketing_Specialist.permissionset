@@ -9,11 +9,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>MarketplaceCreateProductController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>MarketplaceImageUploader</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>MarketplaceMessagingController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MarketplaceProductDetailsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -73,6 +81,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PMP_SearchFeaturedCarouselController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PMP_SearchMarketplaceController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -97,6 +109,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PMP_SearchResponseResultCountStore</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PMP_SearchSpecialistGroupListController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -112,10 +128,6 @@
         <apexClass>PMP_TaxonomyStore</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>PMP_Manage_Storefront</name>
-    </customPermissions>
     <customPermissions>
         <enabled>true</enabled>
         <name>PMP_View_Dashboard</name>

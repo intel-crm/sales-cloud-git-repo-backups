@@ -3,7 +3,7 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
     
     @TestSetup
     static void createTestData(){
-
+        Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1]; 
         User user2 = Core_MDF_CCP_TestDataUtility.createUser(false);       
         user2.LastName = 'Test Budget User';
         insert user2; 
@@ -53,7 +53,6 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
         Campaign MDFcamp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCampOpal','Consumer','Intel® Corporate Logo', 'MDF or both CMP & MDF',
                                                                        Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today()-250 , 
                                                                        System.today()+90, 200000, 'Unite', acc.Id,'2-in-1', false);
-        MDFcamp.Core_MDF_Activity_Category_Type__c = null;
         
         campList.add(MDFcamp);
         system.runAs(systemAdmin){
@@ -118,10 +117,8 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
         OemCmpPfr1.Core_MDF_End_Date__c =  system.today()-30;
         OemCmpPfr1.Core_MDF_Channel_Partner_Led__c = True;
         OemCmpPfr1.Core_MDF_Approval_Step_Completed__c = 0;
-        //US - TWC702-14285: Worked on this test class (no logic/structure change)
-        OemCmpPfr1.Core_MDF_ActivityCategory__c = ''; //by sumalatha
-        //US - TWC702-14285: Worked on this test class (no logic/structure change)
-        OemCmpPfr1.Core_MDF_Activity_Types__c = ''; //by sumalatha
+        OemCmpPfr1.Core_MDF_ActivityCategory__c = 'Purchase Incentive';
+        OemCmpPfr1.Core_MDF_Activity_Types__c = 'Buyer - Bundle Offer';
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_txt__c = '100%';
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%'; 
         OemCmpPfr1.RequestedAmount = 1001;
@@ -158,10 +155,12 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
             ipaCampaignForAP.Core_Approval_Status__c = 'Price Reviewer';
-            ipaCampaignForAP.Core_MDF_Technology__c='';//US - TWC702-14285: Worked on this test class (no logic/structure change)
             database.insert(ipaCampaignForAP);
             
-            //PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);//14285 suma
+            PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),false);
+            ipaPFR5.Core_MDF_ActivityCategory__c='Audio 2025';
+            ipaPFR5.Core_MDF_Activity_Types__c='Podcast';
+			insert ipaPFR5;
         }
     }
     
@@ -181,11 +180,8 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
             Test.startTest();
             List<PartnerFundRequest> pfrList = Core_MDF_IUPGM_ApprovalRequestData.getPfrRecordData(paramWrap);
             Test.stopTest();
-            //Assert.areEqual('Test Activity OEMCMP1',pfrList[0].Title);
            
-            // US - TWC702-14285: Unit Test Method should include System.Assert   
-            System.assertEquals(1, pfrList.size(), 'Should return 1 PartnerFundRequest record');
-            System.assertEquals('Test Activity OEMCMP1', pfrList[0].Title, 'Title should match expected value');
+            Assert.areEqual('Test Activity OEMCMP1',pfrList[0].Title);
         }
     }
     
@@ -214,7 +210,7 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
     static void getPIRecordDataTest(){
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         system.runAs(systemAdmin){
-
+            List<string> objectList = new List<string>();
             Set<string> objRecIds = new Set<string>();
             List<PartnerFundRequest> pfrList = [select Id,Title from PartnerFundRequest];
             

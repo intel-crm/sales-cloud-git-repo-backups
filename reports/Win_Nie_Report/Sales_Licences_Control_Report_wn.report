@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Sales_License_Control__c$Name</field>
+    </columns>
+    <columns>
+        <field>Sales_License_Control__c$Sales_Account_Competitor__c</field>
+    </columns>
+    <columns>
+        <field>Sales_License_Control__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Sales_License_Control__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Sales_License_Control__c$Sales_OPN__c</field>
+    </columns>
+    <columns>
+        <field>Sales_License_Control__c$Id</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Sales Licences Control Report_wn</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Sales_Licences_Control__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Sales_License_Control__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

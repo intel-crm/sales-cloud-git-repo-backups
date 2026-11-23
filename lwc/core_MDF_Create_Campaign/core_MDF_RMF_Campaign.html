@@ -117,7 +117,6 @@
 											label={campaignFieldLabel.Core_MDF_Budget_Amount_amt__c}
 											required={campaignRequiredFields.Core_MDF_Budget_Amount_amt__c}
 											disabled={campaignFieldDisabled.Core_MDF_Budget_Amount_amt__c}
-											formatter="currency"
 											onchange={handleBudgetAmountChangeForRMF}>
 										</lightning-input>
 										<!-- <template if:true={negativeValueError}>
@@ -211,23 +210,6 @@
 											</lightning-input>
 									</lightning-layout-item>
 								</template>
-								<!-- TWC3117-16406 changes -->
-									<template if:true={campaignFieldVisibility.Core_MDF_CampOutcomeOpt_In_Ind__c}>
-										<lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
-											medium-device-size="6" large-device-size="6" padding="around-small">
-											<lightning-input type="checkbox" name="Core_MDF_CampOutcomeOpt_In_Ind__c"
-												checked={campaignFieldValue.Core_MDF_CampOutcomeOpt_In_Ind__c}
-												label={campaignFieldLabel.Core_MDF_CampOutcomeOpt_In_Ind__c}
-												field-level-help={campaignFieldHelpText.Core_MDF_CampOutcomeOpt_In_Ind__c}
-												disabled={campaignFieldDisabled.Core_MDF_CampOutcomeOpt_In_Ind__c}
-												onchange={handleOptInChange} label-position="top"></lightning-input>
-											<p class="slds-form-element__help informative-text">
-												<a href={outcomeSalesMarketingGuidebookLink}
-													target="_blank">{clickHere}</a>
-												<span class="slds-text-color_default"> {outcomeSalesMarketingGuidebook}</span>
-											</p>
-										</lightning-layout-item>
-									</template>
                                  <template if:true={campaignFieldVisibility.Core_MDF_Outcomes_nm__c}>
                                         <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
                                             <lightning-dual-listbox name="Core_MDF_Outcomes_nm__c"
@@ -250,10 +232,6 @@
                                             <template if:true={multipleValuesSelected}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">
                                                     {label.Core_MDF_Campaign_Outcome_Validation}</p>
-                                            </template>
-											<!-- TWC3117-16406 changes -->
-											<template if:true={outcomeBasedError}>
-                                                <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>
 												<template if:true={campaignFieldValue.Core_MDF_Outcomes_nm__c}>
 													<c-core_-m-d-f_-custom-data-table title={title} columns={columns} table-data={rows}

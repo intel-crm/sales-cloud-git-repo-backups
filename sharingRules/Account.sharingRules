@@ -910,10 +910,10 @@
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>SWS_Marketo_Account_Access</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <accountSettings>
             <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
             <opportunityAccessLevel>None</opportunityAccessLevel>
         </accountSettings>
         <label>SWS Marketo Account Access</label>

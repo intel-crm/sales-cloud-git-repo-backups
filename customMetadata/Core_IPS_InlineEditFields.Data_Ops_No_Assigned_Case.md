@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">Core_IPS_Classification__c,Core_Case_Co_Owner__c,Core_IPS_Support_Level__c,Core_Intel_Sup_Owner__c,Core_IPS_Restricted_Secret_Content__c,Core_IPS_Knowledge_Base_Link__c,Core_IPS_BackendID__c,Core_IPS_Issue_source__c,Status</value>
+        <value xsi:type="xsd:string">Core_IPS_Classification__c,Core_Case_Co_Owner__c,Core_Intel_Sup_Owner__c,Core_IPS_Restricted_Secret_Content__c,Core_IPS_Knowledge_Base_Link__c,Core_IPS_BackendID__c,Core_IPS_Issue_source__c,Status</value>
     </values>
     <values>
         <field>Profile_Name__c</field>

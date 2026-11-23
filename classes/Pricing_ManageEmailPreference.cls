@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Rajesh Gajul
  * @group             : 
- * @last modified on  : 04-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 12-25-2023
+ * @last modified by  : Rajesh Gajul
 **/
 public without sharing class Pricing_ManageEmailPreference {
     @AuraEnabled(cacheable=true)
@@ -19,6 +19,7 @@ public without sharing class Pricing_ManageEmailPreference {
             List<String> externalUserPermissionSet = label.Pricing_Tender_PermissionSets_AllExternal.split(':');
             
             Boolean isExternalUser = false;
+            List<String> templateAPIName = new List<String>();
             Map<String, Pricing_IQR_Email_Preferences__c> emailPreferMap = new Map<String, Pricing_IQR_Email_Preferences__c>();
             
             List<Pricing_EmailNotificationPreference__mdt> emailAccRegionPrefList = [SELECT Id,Account_Id__c,Pricing_Template_API_Name_Nm__c,Pricing_Optin_Ind__c,Pricing_Region__c 
@@ -118,7 +119,7 @@ public without sharing class Pricing_ManageEmailPreference {
                     emailPreferUpsert.add(pe);
                 }
             }
-            List<Pricing_EmailNotificationTemplate__mdt> emailPrefMtd = [Select MasterLabel, Template_API_Name__c from Pricing_EmailNotificationTemplate__mdt  limit 50];
+            List<Pricing_EmailNotificationTemplate__mdt> emailPrefMtd = [Select MasterLabel, Template_API_Name__c from Pricing_EmailNotificationTemplate__mdt];
             for(Pricing_EmailNotificationTemplate__mdt peMtd: emailPrefMtd){
                 Pricing_IQR_Email_Preferences__c pe = new Pricing_IQR_Email_Preferences__c();
                 for(Preference pref: prefList.preferences){

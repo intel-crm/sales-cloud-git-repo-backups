@@ -93,10 +93,6 @@
             <translation>インセンティブ - 登録されたディール数</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>インセンティブ - デザイン獲得数</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation>インセンティブ - 販売されたユニット数</translation>
         </picklistValues>
@@ -149,24 +145,8 @@
             <translation>過去のメディアの割合支出</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>小売アクティベーション - 人日数</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>テクニカル・アクティベーション - 契約獲得数</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>テクニカルアクティベーション - 導入数</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>テクニカル・アクティベーション - デザイン獲得数</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -206,10 +186,6 @@
         <name>Core_MDF_Is_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Amount --></label>
-        <name>Core_MDF_Spending_Amount_amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
         <picklistValues>
@@ -235,10 +211,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation>レガシーメディア</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>小売アクティベーション</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

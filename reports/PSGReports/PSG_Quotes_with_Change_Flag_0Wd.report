@@ -22,6 +22,9 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__ProductName__c</field>
     </columns>
     <columns>

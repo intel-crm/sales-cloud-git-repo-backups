@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRID Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRID Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PSG_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Type --></label>
+        <name>PSG_PRID_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Fields For QL-QL --></label>
+        <name>PSG_Revision_Fields_For_QL_QL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Triggering fields --></label>
+        <name>PSG_Triggering_fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update PRID --></label>
+        <name>PSG_Update_PRID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update QuoteLine --></label>
+        <name>PSG_Update_QuoteLine__c</name>
+    </fields>
+    <fields>
+        <label><!-- Updation Trigger Field PRID --></label>
+        <name>core_cpq_updation_trigger_field_prid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Trigger Field QL --></label>
+        <name>psg_cpq_revision_trigger_field_ql__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Fields For QL-PRID --></label>
+        <name>psg_revision_fields_QL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Fields PRID --></label>
+        <name>psg_revision_fields_prid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Trigger Field PRID --></label>
+        <name>psg_revision_trigger_field_prid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Updation Trigger Field QL --></label>
+        <name>psg_updation_trigger_field_ql__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

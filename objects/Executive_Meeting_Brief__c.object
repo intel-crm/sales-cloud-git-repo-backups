@@ -211,27 +211,6 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
-        <fullName>CRM_Agentic_Account_EmailIds__c</fullName>
-        <description>Field to store the email Ids which CDB team is fetching from Account and Opportunity</description>
-        <label>Agentic Account EmailIds</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>CRM_Agentic_Attendee_Bio__c</fullName>
-        <label>Agentic Attendee Bio(s)</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>CRM_Agentic_Drafting_Status__c</fullName>
         <label>Agentic Drafting Status</label>
         <required>false</required>
@@ -411,28 +390,6 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>CRM_Scheduled_End_Date__c</fullName>
-        <description>The end date of the customer meeting for the selected time zone corresponding to the meeting location</description>
-        <inlineHelpText>The end date of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
-        <label>Scheduled End Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>CRM_Scheduled_End_Time_Only__c</fullName>
-        <description>The end time of the customer meeting for the selected time zone corresponding to the meeting location</description>
-        <inlineHelpText>The end time of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
-        <label>Scheduled End Time</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
         <fullName>CRM_Scheduled_End_Time_txt__c</fullName>
         <description>The date and end time of the customer meeting in the local time zone corresponding to the meeting location</description>
         <externalId>false</externalId>
@@ -461,28 +418,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CRM_Start_Date__c</fullName>
-        <description>The start date of the customer meeting for the selected time zone corresponding to the meeting location</description>
-        <inlineHelpText>The start date of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
-        <label>Scheduled Start Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>CRM_Start_Time__c</fullName>
-        <description>The start time of the customer meeting for the selected time zone corresponding to the meeting location</description>
-        <inlineHelpText>The start time of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
-        <label>Scheduled Start Time</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
         <fullName>CRM_Technical_Assistant__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <inlineHelpText>The name of the Technical Assistant (TA) supporting the Exec  or meeting. The TA helps facilitate content accuracy and coordinates with Executives.</inlineHelpText>
@@ -494,17 +429,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CRM_Time_Zone__c</fullName>
-        <inlineHelpText>Timezone for the customer meeting corresponding to the meeting location</inlineHelpText>
-        <label>Meeting Timezone</label>
-        <length>131072</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_Document_Link__c</fullName>
@@ -571,18 +495,15 @@
         <columns>Core_Executive_Meeting_Brief_Name__c</columns>
         <columns>Brief_Status__c</columns>
         <columns>Account__c</columns>
-        <columns>CRM_Start_Date__c</columns>
-        <columns>CRM_Start_Time__c</columns>
-        <columns>CRM_Scheduled_End_Date__c</columns>
-        <columns>CRM_Scheduled_End_Time_Only__c</columns>
-        <columns>CRM_Time_Zone__c</columns>
+        <columns>CRM_Scheduled_Start_Time_txt__c</columns>
+        <columns>CRM_Scheduled_End_Time_txt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
             <value>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</value>
         </filters>
-        <label>Agentic Executive Meeting Brief</label>
+        <label>New Executive Meeting Brief</label>
     </listViews>
     <nameField>
         <displayFormat>EX-{0000}</displayFormat>
@@ -597,8 +518,8 @@
     <recordTypes>
         <fullName>CRM_New_Executive_Meeting_Brief</fullName>
         <active>true</active>
-        <description>AI-curated brief with synthesized insights and recommendations.</description>
-        <label>Agentic Executive Meeting Brief</label>
+        <description>Record type to handle new executive meeting brief functionality</description>
+        <label>New Executive Meeting Brief</label>
         <picklistValues>
             <picklist>Brief_Status__c</picklist>
             <values>
@@ -640,13 +561,13 @@
     <recordTypes>
         <fullName>Executive_Meeting_Brief</fullName>
         <active>true</active>
-        <description>Manually curated meeting brief and account details.</description>
+        <description>This is the standard Exec Meeting Brief Record</description>
         <label>Executive Meeting Brief</label>
         <picklistValues>
             <picklist>Brief_Status__c</picklist>
             <values>
                 <fullName>Draft</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
             <values>
                 <fullName>Final</fullName>
@@ -692,31 +613,6 @@
     ISBLANK(CRM_Rating__c)
 )</errorConditionFormula>
         <errorMessage>Agentic Brief Generation must be completed before updating status</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>CRM_StartDate_EndDate_Validation</fullName>
-        <active>true</active>
-        <description>Validation to check the Endate &amp; Startdate</description>
-        <errorConditionFormula>OR(
-    CRM_Scheduled_End_Date__c &lt; CRM_Start_Date__c,
-    AND(
-        CRM_Scheduled_End_Date__c = CRM_Start_Date__c,
-        CRM_Scheduled_End_Time_Only__c &lt;= CRM_Start_Time__c
-    )
-)</errorConditionFormula>
-        <errorMessage>Scheduled Start Date and Time must not be greater than Scheduled End Date and Time.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>CRM_Timezone_Validation</fullName>
-        <active>false</active>
-        <errorConditionFormula>AND(
-NOT(ISNEW()),
-OR(ISCHANGED(CRM_Start_Time__c),ISCHANGED(CRM_Scheduled_End_Time_Only__c), ISCHANGED(CRM_Start_Date__c), ISCHANGED(CRM_Scheduled_End_Date__c)),
-RecordType.DeveloperName = &apos;CRM_New_Executive_Meeting_Brief&apos;,
-$Permission.CRM_New_Executive_Meeting_Brief_Custom_Permission,
-ISBLANK(CRM_Time_Zone__c)
-)</errorConditionFormula>
-        <errorMessage>Please select the Meeting Timezone</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

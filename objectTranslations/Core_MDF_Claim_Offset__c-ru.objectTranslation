@@ -85,11 +85,6 @@
         <name>Core_MDF_Offset_Claim_Nbr__c</name>
         <relationshipLabel><!-- Claim Offsets --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Claim Offsets (Sub Claim) --></relationshipLabel>
-    </fields>
     
     <nameFieldLabel><!-- Claim Offset Number --></nameFieldLabel>
 </CustomObjectTranslation>

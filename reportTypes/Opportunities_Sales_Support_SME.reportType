@@ -91,11 +91,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Design_Type__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_3__c</field>
             <table>Opportunity</table>
         </columns>
@@ -456,6 +451,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Geo_INDIA__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Entry_SPP_US__c</field>
             <table>Opportunity</table>
         </columns>
@@ -467,6 +467,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Exclude_From_KPIs__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -601,6 +606,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Is_Influenced__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IsBlank_Competitive_Arch__c</field>
             <table>Opportunity</table>
         </columns>
@@ -712,6 +722,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LeadSource</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1807,16 +1822,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Multi_boarded__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sustainability_Compliance__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Not_Progressed__c</field>
             <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

@@ -28,7 +28,7 @@
             <name>Lead</name>
             <conditionLogic>(1 OR 2 )</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lead</stringValue>
@@ -128,7 +128,7 @@ Workflow rule description: US203595: New Lead Process : New hidden field to dist
         <connector>
             <targetReference>Partner_Lead</targetReference>
         </connector>
-        <filterFormula>AND( (ISNULL({!$Record.Core_lead_Id__c}) || ISBLANK({!$Record.Core_lead_Id__c})),OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;, {!$Record.RecordType.Name} = &quot;Partner Lead&quot;))</filterFormula>
+        <filterFormula>AND( (ISNULL({!$Record.Core_lead_Id__c}) || ISBLANK({!$Record.Core_lead_Id__c})),OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;, {!$Record.RecordType.Name} = &quot;Partner Lead&quot;))</filterFormula>
         <object>Lead</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

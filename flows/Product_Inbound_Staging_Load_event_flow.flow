@@ -31,20 +31,6 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>senderType</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>wsm-postmaster@intel.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>emailSubject</name>
             <value>
                 <stringValue>Mulesoft Product Staging Load Batch Failure</stringValue>
@@ -119,11 +105,10 @@
         <connector>
             <targetReference>Load_is_successful</targetReference>
         </connector>
-        <flowRunAsUser>TriggeringUser</flowRunAsUser>
         <object>Product_Inbound_Staging_Load__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <name>failureEmailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>

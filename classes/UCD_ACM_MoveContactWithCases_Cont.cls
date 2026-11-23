@@ -107,12 +107,12 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
         return entitlementResult;
     }
     
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Contact> getAccRelatedContacts(Id contactId, Id accountId) {
         List <Contact> result = new List <Contact>();
         try{
             if(Contact.SObjectType.getDescribe().isAccessible()){
-                result = [SELECT Id, Name FROM Contact WHERE Id !=: contactId and AccountId =: accountId and Core_Login_Status__c = 'Active' and Core_Enterprise_Id__c != NULL LIMIt 49999]; //Ganesh Changes
+                result = [SELECT Id, Name FROM Contact WHERE Id !=: contactId and AccountId =: accountId];
             }
             
         }catch(Exception ex){
@@ -177,9 +177,7 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
                     currContact.AccountId = accountId;
                     currContact.Core_Account_Changeable__c= true;
                     Core_Contact_AccountChange_Handler.IS_CHANGE_ACCOUNT = true;
-                    if(Schema.sObjectType.Contact.isUpdateable()){
                     update currContact;
-                    }
                     
                     updateTargetAccountAdditionalFields(currContact, keepEntitlements, targetAccountObj);
                     
@@ -208,12 +206,8 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
                             
                         }
                         if(createNewPCRList.size()>0 && deletePCRList.size()>0){
-                            if(Schema.sObjectType.PRM_Account_Contact_Relationship__c.isCreateable()){
                             insert createNewPCRList;
-                            }
-                            if(Schema.sObjectType.PRM_Account_Contact_Relationship__c.isDeletable()){
                             delete deletePCRList;
-                            }
                         }
                     }
                 }
@@ -310,7 +304,7 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
                 if(checkRecursion && !newLstUpdateCase.isEmpty()) {
                     finalLstUpdateCase.addAll(newLstUpdateCase);
                 }
-                if(lstCreateAsset.size()>0 && Schema.sObjectType.Asset.isCreateable()){
+                if(lstCreateAsset.size()>0){
                     insert lstCreateAsset;
                     if(lstCaseForReupdate.size()>0) {
                         //updateAssetsToCase(lstCaseForReupdate,accId); // Commented by Ganapati for US436541
@@ -331,9 +325,7 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
                             Core_IPS_Account_Change_Status__c accChangeSts = new Core_IPS_Account_Change_Status__c();
                             accChangeSts.Core_IPS_Contact__c = currContact.Id;
                             accChangeSts.Core_IPS_Status__c = 'In Progress';
-                            if(Schema.sObjectType.Contact.isCreateable()){
                             insert accChangeSts;
-                            }
                             Core_IPS_MoveContactWithCases_Batch moveContactsBatch = new Core_IPS_MoveContactWithCases_Batch(finalLstUpdateCase, accId, targetAccountObj, currContact);
                             Database.executeBatch(moveContactsBatch, Integer.valueOf(Label.Core_IPS_caseUpdateBatchSize));
                         }
@@ -391,7 +383,7 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
                 }
                 
                 //Update acc Only if IPSFlag or B2B flag is set.
-                if(String.isNotBlank(acc.Id) && Schema.sObjectType.Account.isUpdateable()) {
+                if(String.isNotBlank(acc.Id)) {
                     update acc;
                 }
             } catch(Exception ex){
@@ -404,7 +396,7 @@ public without sharing class UCD_ACM_MoveContactWithCases_Cont {
         public static void updateCntEntitlementInFuture(string strList){
             try {
                 List<Core_Contact_Entitlement__c > newCntEntList = (List<Core_Contact_Entitlement__c >)JSON.deserialize(strList, List<Core_Contact_Entitlement__c >.class);
-                if(newCntEntList !=null && newCntEntList .size()>0 && Schema.sObjectType.Core_Contact_Entitlement__c.isUpdateable()){
+                if(newCntEntList !=null && newCntEntList .size()>0){
                     database.update(newCntEntList);
                 }
             } catch(Exception ex){

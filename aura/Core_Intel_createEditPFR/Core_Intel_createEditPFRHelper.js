@@ -56,8 +56,7 @@
                 "BudId": component.get("v.selAvailableBudget"),
                 "isPropIndicator":component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c"),
                 "mdfReimbursement":newPFR.Core_MDF_MDFReimbursement_Amt__c,
-                "tacticMetrics": this.isNotBlank(component.get("v.tacticMetricsValues")) ? component.get("v.tacticMetricsValues") : null,
-                "ecosystemPartner": this.isNotBlank(component.get("v.ecosystemAllocations")) ? component.get("v.ecosystemAllocations") : null
+                "tacticMetrics": this.isNotBlank(component.get("v.tacticMetricsValues")) ? component.get("v.tacticMetricsValues") : null
             });
             
             
@@ -285,99 +284,13 @@
         }
         // constructing the filter  -- RecordType
         if (recordtype == $A.get("$Label.c.Core_MDF_PFR_DCF")) { //DCF_Label      
-        sFilter = "RecordType.DeveloperName = @quote;Core_MDF_Data_Center_CoMarketing_Fund@quote;";
-        
-        // DCF - Restrict accounts to Campaign Account hierarchy
-        var dcfCampId = component.get("v.selectedLookUpRecord.Id");
-        
-        if(this.isNotBlank(dcfCampId)) {
-            var actionfetchDCFHierarchyAccts = component.get("c.getHierarchyAccountIds");
-            actionfetchDCFHierarchyAccts.setParams({
-                "campId": dcfCampId
-            });
-            
-            actionfetchDCFHierarchyAccts.setCallback(this, $A.getCallback(function(response) {
-                var result = response.getReturnValue();
-                var status = response.getState();
-                
-                if(result != null && status == "SUCCESS" && result.length > 0) {
-                    component.set("v.hierarchyAcctList", result);
-                    let hierAccList = "(@quote;" + 
-                                      component.get("v.hierarchyAcctList").join("@quote;,@quote;") + 
-                                      "@quote;)";
-                    var dcfAFilter = "Id IN " + hierAccList +
-                                    " AND RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                                    " AND isPartner=true" +
-                                    " AND Core_MDF_Active_Ind__c = true" +
-                                    " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                                    DCF_NonTranslateLabel + "@quote;";
-                    component.set("v.additionalAccFilter", dcfAFilter);
-                } else {
-                    // Fallback - if no hierarchy accounts found use original filter
-                    var dcfAFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                                    " AND isPartner=true" +
-                                    " AND Core_MDF_Active_Ind__c = true" +
-                                    " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                                    DCF_NonTranslateLabel + "@quote;";
-                    component.set("v.additionalAccFilter", dcfAFilter);
-                }
-            }));
-            $A.enqueueAction(actionfetchDCFHierarchyAccts);
-        } else {
-            // No Campaign selected yet - use original filter
-            aFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                      " AND isPartner=true" +
-                      " AND Core_MDF_Active_Ind__c = true" +
-                      " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                      DCF_NonTranslateLabel + "@quote;";
-        }
-    } else if (recordtype == $A.get("$Label.c.Core_MDF_PFR_CCF")) { // CCF_Label
-        sFilter = "RecordType.DeveloperName = @quote;Core_MDF_Client_CoMarketing_Fund@quote;";
-        
-        // CCF - Restrict accounts to Campaign Account hierarchy
-        var ccfCampId = component.get("v.selectedLookUpRecord.Id");
-        
-        if(this.isNotBlank(ccfCampId)) {
-            var actionfetchCCFHierarchyAccts = component.get("c.getHierarchyAccountIds");
-            actionfetchCCFHierarchyAccts.setParams({
-                "campId": ccfCampId
-            });
-            
-            actionfetchCCFHierarchyAccts.setCallback(this, $A.getCallback(function(response) {
-                var result = response.getReturnValue();
-                var status = response.getState();
-                
-                if(result != null && status == "SUCCESS" && result.length > 0) {
-                    component.set("v.hierarchyAcctList", result);
-                    let hierAccList = "(@quote;" + 
-                                      component.get("v.hierarchyAcctList").join("@quote;,@quote;") + 
-                                      "@quote;)";
-                    var ccfAFilter = "Id IN " + hierAccList +
-                                    " AND RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                                    " AND isPartner=true" +
-                                    " AND Core_MDF_Active_Ind__c = true" +
-                                    " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                                    CCF_NonTranslateLabel + "@quote;";
-                    component.set("v.additionalAccFilter", ccfAFilter);
-                } else {
-                    // Fallback - if no hierarchy accounts found use original filter
-                    var ccfAFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                                    " AND isPartner=true" +
-                                    " AND Core_MDF_Active_Ind__c = true" +
-                                    " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                                    CCF_NonTranslateLabel + "@quote;";
-                    component.set("v.additionalAccFilter", ccfAFilter);
-                }
-            }));
-            $A.enqueueAction(actionfetchCCFHierarchyAccts);
-        } else {
-            // No Campaign selected yet - use original filter
-            aFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote;" +
-                      " AND isPartner=true" +
-                      " AND Core_MDF_Active_Ind__c = true" +
-                      " AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
-                      CCF_NonTranslateLabel + "@quote;";
-        }
+            sFilter = "RecordType.DeveloperName = @quote;Core_MDF_Data_Center_CoMarketing_Fund@quote;";
+            aFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote; AND isPartner=true AND Core_MDF_Active_Ind__c = true AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
+                DCF_NonTranslateLabel + "@quote;";
+        } else if (recordtype == $A.get("$Label.c.Core_MDF_PFR_CCF")) { //CCF_Label
+            sFilter = "RecordType.DeveloperName = @quote;Core_MDF_Client_CoMarketing_Fund@quote;";
+            aFilter = "RecordType.DeveloperName= @quote;Core_MDF_Co_Marketing@quote; AND isPartner=true AND Core_MDF_Active_Ind__c = true AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c=@quote;" +
+                CCF_NonTranslateLabel + "@quote;";
         } else if (recordtype == $A.get("$Label.c.Core_MDF_PFR_Retail")) { //Retail_Label
                 sFilter = "RecordType.DeveloperName = @quote;Core_MDF_Retail_Marketing_Funds@quote;";
             } 
@@ -422,13 +335,9 @@
         }
         
         component.set("v.additionalFilter", sFilter);
-        // For CCF, DCF and EEF - additionalAccFilter is set inside async callbacks above
-        // For Retail and other record types - set it here
-        if (recordtype != $A.get("$Label.c.Core_MDF_EEF_RecordType") && 
-            recordtype != $A.get("$Label.c.Core_MDF_PFR_CCF") && 
-            recordtype != $A.get("$Label.c.Core_MDF_PFR_DCF")) {
-            component.set("v.additionalAccFilter", aFilter);
-            }
+        if (recordtype != $A.get("$Label.c.Core_MDF_EEF_RecordType")){
+        component.set("v.additionalAccFilter", aFilter);
+        }
     },
     // Helper Method called from the custom save function in order to display the popups
     activityPicker: function (component, recordType) {
@@ -497,8 +406,6 @@
                 else{
                     component.set("v.isPropBasedCampaign",false);
                 }
-                
-                this.setCampaignOutcomeBasedOptIn(component);
             }else{
                 var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
                 this.displaySuccessErrorMsg(errorMessage, "Error", "error");
@@ -1280,8 +1187,7 @@
                 //Ayush - RR change - RMF defaulting to 100% only on create
                 //Ayush - RR change - Added mode != edit for defect fix - to default 100% RR both on create and clone for RMF
                 else if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_PFR_Retail") && component.get("v.mode") != 'edit'){
-                    //Akash - TWC702-14284
-					component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_BudgetType_RRate100"));
+					component.set("v.SelReimbursementRate", '100%');
 				}
             }    
             
@@ -1394,7 +1300,7 @@
             
             if (validSelectedTactics.length !== selectedTactics.length) {
                 component.set("v.selectedTacticsOptions", validSelectedTactics);
-                this.checkSPIFActSecVisible(component);
+                helper.checkSPIFActSecVisible(component);
 
         var selectedTactics = component.get("v.selectedTacticsOptions");
         var selectedTacticsOptions = "";
@@ -1638,13 +1544,7 @@
         if(mode == 'edit' && !isPlannedEditLoaded && actStatus == 'Planned'){
             dispActiveOnly = false;
         }
-        if ((this.isNotBlank(budType) && 
-             (budType == $A.get("$Label.c.Core_MDF_BudgetType_CMP") ||
-              budType == $A.get("$Label.c.Core_MDF_BudgetType_SP_CMP") ||
-              budType == 'MDF' ||
-              budType == 'MDF+')) ||
-            (this.isNotBlank(recordTypeDeveloperName) && 
-             recordTypeDeveloperName == 'Core_MDF_Retail_Marketing_Funds')) {
+        if(/*budType != null && budType != undefined*/ this.isNotBlank(budType) && (budType == $A.get("$Label.c.Core_MDF_BudgetType_CMP") || budType == $A.get("$Label.c.Core_MDF_BudgetType_SP_CMP") || budType == 'MDF' || budType == 'MDF+')){
             this.calculateIntelContribution(component);
         }	
         var intelContri = component.get("v.intelContribution");
@@ -1867,8 +1767,6 @@
         var RR = reimbursementRate.replace('%', '');
         var intelContri = "";
         var incentivePercent = component.get("v.incentive");
-        var mdfReimbursementAmtUsd = component.get("v.FlexiReimbursementAmt"); // Rishabh
-        
         if((component.get("v.selBudgetType") == 'OEM CMP' || component.get("v.selBudgetType") == 'Service Provider CMP') && component.get("v.hideCompetitiveQuest") || component.get("v.renderVRQuestion")){
             if(component.get("v.newPFR.Core_MDF_Incentive_Opted_In_ind__c") == 'Yes' && component.get("v.newPFR.Core_MDF_Competitive_Elements__c") == 'Yes'){
                 intelContri = (((reqAmnt * (+RR + +incentivePercent)/2))/100);   
@@ -1883,16 +1781,11 @@
                         intelContri = ((reqAmnt * RR)/100);
                     }
         }
-        else 
-        {
+		else 
+		{
 		intelContri = ((reqAmnt * RR)/100);
-        }
-        
-        if((budType == "MDF" || budType == "MDF+") &&  (mdfReimbursementAmtUsd !== null && mdfReimbursementAmtUsd !== undefined && mdfReimbursementAmtUsd.toString().trim() !== "" && !isNaN(mdfReimbursementAmtUsd))){
-            component.set("v.intelContribution",mdfReimbursementAmtUsd);
-        }else{
-            component.set("v.intelContribution",intelContri);
-        }
+		}
+        component.set("v.intelContribution",intelContri);
     },
     
     checkIsApproverActive: function(component){
@@ -2167,32 +2060,13 @@
         var campaign = component.get("v.selectedLookUpRecord");
         var ultimateAccId = component.get("v.selectedLookUpRecord.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c");
         console.log(ultimateAccId);
-
-        var mode = component.get("v.mode");
-        var currentBudgetIdVal = null;
-
-        // Only include current selected Budget if in EDIT mode
-        if(mode && mode.toLowerCase() === 'edit') {
-            var oldPfrRef = component.get("v.oldPFR");
-            var newPfrRef = component.get("v.newPFR");
-
-            if (oldPfrRef && oldPfrRef.BudgetId ) {
-                currentBudgetIdVal = oldPfrRef.BudgetId ;
-            } else if (newPfrRef && newPfrRef.BudgetId) {
-                currentBudgetIdVal = newPfrRef.BudgetId ;
-            } else if (component.get("v.selAvailableBudget")) {
-                currentBudgetIdVal = component.get("v.selAvailableBudget");
-            }
-        }
-
         var action = component.get("c.fetchBudgetInfo");
             action.setParams({
                 accountId: ultimateAccId,
                 startDate: component.get("v.newPFR.Core_MDF_Start_Date__c"),
                 endDate: component.get("v.newPFR.Core_MDF_End_Date__c"),
                 budgetType: component.get("v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c"),
-                isIPAAccBased: false,
-                currentBudgetId: currentBudgetIdVal
+                isIPAAccBased: false
             });
     
             action.setCallback(this, function (response) {
@@ -2905,7 +2779,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
         mapVar.initiative = false;
         mapVar.category =false;
         mapVar.type= false;
-        mapVar.tactics =false;
         mapVar.cpled= cpLed;
         mapVar.cp= false;
         mapVar.ocp= false;
@@ -2942,7 +2815,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             mapVar.initiative = true;
             mapVar.category = true;
             mapVar.type = true;
-            mapVar.tactics = true;
             mapVar.EventOtherName = true;
             mapVar.EventName = true;
             mapVar.cpled = true;
@@ -2976,7 +2848,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             mapVar.initiative = false;
             mapVar.category = true;
             mapVar.type = true;
-            mapVar.tactics = true;
             mapVar.EventOtherName = true;
             mapVar.EventName = true;
             mapVar.cpled = true;
@@ -3007,7 +2878,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                 mapVar.initiative = false;
                 mapVar.category = false;
                 mapVar.type = false;
-                mapVar.tactics = false;
                 mapVar.EventOtherName = false;
                 mapVar.EventName = false;
                 mapVar.cpled = false;
@@ -3046,7 +2916,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             mapVar.initiative = false;
             mapVar.category = false;
             mapVar.type = false;
-            mapVar.tactics = false;
             mapVar.EventOtherName = false;
             mapVar.EventName = false;
             mapVar.cpled = false;
@@ -3082,7 +2951,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                 mapVar.initiative = true
                 mapVar.category = true;
                 mapVar.type = true;
-                mapVar.tactics = true;
                 mapVar.EventOtherName = true;
                 mapVar.EventName = true;
                 mapVar.cpled = true;
@@ -3113,7 +2981,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                     mapVar.initiative = false;
                     mapVar.category = false;
                     mapVar.type = false;
-                    mapVar.tactics = false;
                     mapVar.EventOtherName = false;
                     mapVar.EventName = false;
                     mapVar.cpled = false;
@@ -3150,7 +3017,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                     mapVar.initiative = true;
                     mapVar.category = true;
                     mapVar.type = true;
-                    mapVar.tactics = true;
                     mapVar.EventOtherName = true;
                     mapVar.EventName = true;
                     mapVar.cpled = true;
@@ -3631,9 +3497,7 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
         var spifModified = component.get("v.newPFR.Core_MDF_SPIF_Modified_ind__c") ;
         var metricsModified = component.get("v.newPFR.Core_MDF_Metrics_Modified_ind__c") 
         var spifEdited = spifActivityTypes.split(";").includes(component.get("v.newPFR.Core_MDF_Activity_Types__c"));
-        var otherEdited = otherActivityTypes.split(";").includes(component.get("v.newPFR.Core_MDF_Activity_Types__c"));
-        //Akash - ecosystem 
-        var ecosystemModified = component.get("v.newPFR.Core_MDF_Ecosystem_Modified_Ind__c"); 
+        var otherEdited = otherActivityTypes.split(";").includes(component.get("v.newPFR.Core_MDF_Activity_Types__c")); 
         
         if((pctFieldsMod && spifEdited) ||(!oldSpifEdited && spifEdited)){
             component.set("v.newPFR.Core_MDF_Price_reviewer_check_ind__c", true);
@@ -3643,7 +3507,7 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             component.set("v.newPFR.Core_MDF_Program_Office_Check_ind__c", true);
             isApprovalReqd = true;
         } 
-        if(plannedFieldMod ||spifModified||metricsModified ||ecosystemModified){
+        if(plannedFieldMod ||spifModified||metricsModified){
             isApprovalReqd = true;
         }
         
@@ -3936,9 +3800,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                 if(result.Core_MDF_Exchange_Rate_ptc__c != null && result.RequestedAmount != null ){ // If Return PFR has exchange rate and USD amuont
                     component.set("v.newPFR.Core_MDF_Exchange_Rate_ptc__c", result.Core_MDF_Exchange_Rate_ptc__c);
                     component.set("v.newPFR.RequestedAmount", result.RequestedAmount);
-                    if(component.get('v.mode') == 'edit' && component.get("v.newPFR.RequestedAmount") != component.get("v.oldPFR.RequestedAmount")){ // Rishabh
-                        this.calculateIntelContribution(component);
-                    }
                     if(component.get('v.mode') == 'edit' && component.get("v.externalper") && (component.get("v.selBudgetType") == $A.get("$Label.c.Core_MDF_BudgetType_CMP") || component.get("v.selBudgetType") == $A.get("$Label.c.Core_MDF_BudgetType_SP_CMP")) && (component.get("v.SelCategory") == $A.get("$Label.c.Core_MDF_2025_Domain_Type_ActivityCategory") && component.get("v.SelDomainType") ==$A.get("$Label.c.Core_MDF_Domain_Type_Form_Values"))){
                         this.fetchApprovers(component);
                     }            
@@ -4185,17 +4046,14 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
         //then Activity re approval is getting triggered
         var startDate = component.get("v.newPFR.Core_MDF_Start_Date__c");
         var today = this.getTodayDateLocalTime();
-        //Akash - TWC702-14284
-        var reqAmt250K = parseFloat($A.get("$Label.c.Core_MDF_PFR_ReqAmount_250K"));
-        var reqAmt1000K = parseFloat($A.get("$Label.c.Core_MDF_PFR_ReqAmount_1000K"));
+        
         var priceRevChk = component.get("v.newPFR.Core_MDF_Price_reviewer_check_ind__c");
         var reqAmount = component.get("v.newPFR.RequestedAmount");
         
         var spifActivityTypes = $A.get("$Label.c.Core_MDF_SPIF_Activity_Types");
         var newActivityType =  component.get("v.SelActivityType");
         if(component.get("v.retailgeouserper")){
-            //Akash - TWC702-14284
-                if(reqAmount < reqAmt250K){
+                if(reqAmount < 250000){
                     if(spifActivityTypes.includes(newActivityType)){ 
                         //Production Issue: ATF flow still  failing to next step once ATF approver approves from L1 step
                         component.set("v.newPFR.Core_MDF_Fund_Request_Status__c", $A.get("$Label.c.Core_MDF_PFR_Status_PendingReview"));
@@ -4222,8 +4080,8 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                         }  
                     }
                 }
-                //Akash - TWC702-14284
-                if((reqAmount >= reqAmt250K && reqAmount < reqAmt1000K) || (reqAmount >= reqAmt1000K)){
+                
+                if((reqAmount >= 250000 && reqAmount < 1000000) || (reqAmount >= 1000000)){
                     component.set("v.newPFR.Core_MDF_Fund_Request_Status__c", $A.get("$Label.c.Core_MDF_PFR_Status_PendingReview"));
                     //Production Issue: ATF flow still  failing to next step once ATF approver approves from L1 step
                     if(component.get("v.newPFR.Core_MDF_Region_nm__c") == 'EMEA' && !component.get("v.activityInApproval")){
@@ -4352,16 +4210,12 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
     // OPAL Changes - on budget amount, mdf reimbursement amount
     calculateReimbursementRatePercent: function(component,budgetAmount,flexAmount){
         var flexRRMap=[];
-        //Akash - TWC702-14284
-        var maxActReimbRate = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNum"));
-        var maxActReimbRatezero = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNumzero"));
         var flexRR =(parseFloat(flexAmount) / parseFloat(budgetAmount))*100 ;
         flexRR = (budgetAmount == 0 && flexAmount == 0)?0:flexRR;
         var newRRPercent = parseFloat(flexRR.toFixed(2));
         var flexRRDecValue = newRRPercent +"%";
         component.set("v.newRRValue",newRRPercent);
-        //Akash - TWC702-14284
-        if(newRRPercent > maxActReimbRate){
+        if(newRRPercent > 100){
             var toastEvent = $A.get("e.force:showToast");
             toastEvent.setParams({
                 title: "Error..!!",
@@ -4373,8 +4227,7 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             component.set("v.FlexiReimbursementAmt","");
             component.set("v.disableRRPercent",false);
             this.updateRRPickValues(component,this.getDefaultReimbursementRate(component));
-            //Akash - TWC702-14284
-        } else if(flexRR <= maxActReimbRatezero){ // To calculate zero percent or not from formula
+        } else if(flexRR <= 0){ // To calculate zero percent or not from formula
             var toastEvent = $A.get("e.force:showToast");
             toastEvent.setParams({
                 title: "Error..!!",
@@ -4397,8 +4250,7 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
             if(component.get("v.disableRRPercent") == false && this.isNotBlank(budgetAmount) && this.isNotBlank(flexAmount)){
                 component.set("v.disableRRPercent", true);
             } 
-            this.getActivityAmount(component);
-            this.calculateIntelContribution(component); // Rishabh
+            this.getActivityAmount(component);    
         }
     },
     
@@ -5243,10 +5095,6 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
                 if(component.get("v.newPFR.Core_MDF_Metrics_Modified_ind__c")){ // If Metrics modified return true
                     isfieldsedited = true;
                 }
-                //Akash - ecosystem
-                if(component.get("v.newPFR.Core_MDF_Ecosystem_Modified_Ind__c")){ // If Metrics modified return true
-                    isfieldsedited = true;
-                }
             }
             if(isfieldsedited){
                 component.set("v.isEditPlanned",true);
@@ -5267,13 +5115,11 @@ fileUploadMandatoryAndEventFormVisibility : function(component){
         var opts = [];
         var existingSelectedOption=[] ;
         var selectedValues = component.get("v.selectedIndPartnerOptions");
-        var programName = component.get("v.programName");
-        var programNameToPass = (programName === 'Datacenter') ? 'Data Center' : programName;
       
         var action = component.get("c.fetchIndPartnerCtryPgmMapping");
         action.setParams({
             "country": country,
-            "prgName": programNameToPass
+            "prgName": component.get("v.programName")
         });
         
         action.setCallback(this, function (response) {
@@ -5497,8 +5343,7 @@ if((component.get("v.componentAttributes.isLoggedInUserApprover") || component.g
         
         
          if (component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_RetailProgram") || component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_EEF_RecordType")) {
-            //Akash - TWC702-14284
-            rRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
+            rRate = '100%';
         } else {
             rRate = component.get("v.SelReimbursementRate");
         }
@@ -5826,11 +5671,6 @@ if((component.get("v.componentAttributes.isLoggedInUserApprover") || component.g
                             if (child && component.get("v.disabledMap.tactics")) {
                                   child.handleEdit(component.get("v.disabledMap.tactics"));
                             }
-                            //Akash - Ecosystem
-                            var child = component.find("ecosystemAllocation");
-                            if (child && component.get("v.disabledMap.cp")) {
-                                child.handleEdit(component.get("v.disabledMap.cp"));
-                            }
                             console.log('Editability Confiq-->',JSON.stringify(result.fieldEditability));
                             
                         }else{
@@ -5934,13 +5774,5 @@ if((component.get("v.componentAttributes.isLoggedInUserApprover") || component.g
                 return null;
             }
         },
-                    
-    setCampaignOutcomeBasedOptIn: function(component) {
-    // Set outcome based opt-in from Campaign
-    if(this.isNotBlank(component.get("v.selectedLookUpRecord")) && 
-       this.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c"))){
-        component.set("v.outcomeBasedOptInInd", component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c"));
-    } 
-		},
 
     });

@@ -35,7 +35,7 @@ public class Core_AcceptReject_Lead_LexCon_test{
         insert bypass;
         
         List<Lead> lstLeads = new List<Lead>();
-        RecordType LeadrecordType = [SELECT Id, DeveloperName FROM RecordType where DeveloperName = 'Lead'];        
+        RecordType LeadrecordType = [SELECT Id FROM RecordType where name = 'Lead'];        
         Lead lead1 = new Lead();
         lead1.RecordTypeId = LeadrecordType.id;
         lead1.FirstName = 'Test1';

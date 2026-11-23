@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-20-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 public without sharing class Pricing_SendAdvanceApprovalEmail {
     public static void sendNotification(List<Id> approvalIds, String orgWideEmailAddress, String emailTemplateName) {
         // Validate inputs
@@ -53,7 +46,7 @@ public without sharing class Pricing_SendAdvanceApprovalEmail {
         }
 
         // Log errors if any
-        logFailedEmails(failedEmails);
+        //logFailedEmails(failedEmails);
     }
     
     private static void handleSoftwareAndServices(sbaa__Approval__c approval, List<Messaging.SingleEmailMessage> emailsToSend, Id templateId, Id orgWideEmailId) {
@@ -141,7 +134,7 @@ public without sharing class Pricing_SendAdvanceApprovalEmail {
 
     // Create email messages for each approval
 
-    private static Messaging.SingleEmailMessage constructEmailMessage(sbaa__Approval__c approval, List<String> recipientEmails, Id templateId, Id orgWideEmailId) {
+    private static Messaging.SingleEmailMessage constructEmailMessage(sbaa__Approval__c approval, List<String> recipientEmails, Id templateId, Id orgWideEmailId) {    
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
         email.setTemplateId(templateId);
         email.setTargetObjectId(approval.OwnerId);
@@ -168,9 +161,9 @@ public without sharing class Pricing_SendAdvanceApprovalEmail {
     }
     
     // Log any failed email sends
-    private static void logFailedEmails(Map<Id, String> failedEmails) {
+    /*private static void logFailedEmails(Map<Id, String> failedEmails) {
         if (!failedEmails.isEmpty()) {
-            Pricing_Tender_Utility.createCoreLogEntrySW(
+            PSG_Utility.createCoreLogEntry(
                 'Pricing_SendAdvanceApprovalEmail',
                 'SendNotification',
                 'Email sending failed for the following approvals:',
@@ -180,5 +173,5 @@ public without sharing class Pricing_SendAdvanceApprovalEmail {
                 ''
             );
         }
-    }    
+    }*/    
 }

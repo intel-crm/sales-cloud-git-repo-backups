@@ -47,9 +47,11 @@
             </containers>
         </primaryTabComponents>
     </customConsoleComponents>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -515,11 +517,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>CallHighlightAction</actionName>
             <actionType>ProductivityAction</actionType>
             <sortOrder>1</sortOrder>
@@ -595,14 +592,14 @@
             <sortOrder>15</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Account.Create_ICS_Case_LWC</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>16</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Account.View_ICS_Cases_LWC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>17</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Account.Create_Associate_1PID</actionName>
@@ -613,6 +610,11 @@
             <actionName>Account.Delink_OPID</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>19</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.View_ICS_Cases_LWC</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>17</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -694,10 +696,6 @@
         <fields>RECORDTYPE</fields>
         <fields>CREATED_DATE</fields>
         <fields>LAST_UPDATE</fields>
-        <fields>CRM_Start_Date__c</fields>
-        <fields>CRM_Start_Time__c</fields>
-        <fields>CRM_Scheduled_End_Date__c</fields>
-        <fields>CRM_Scheduled_End_Time_Only__c</fields>
         <relatedList>Executive_Meeting_Brief__c.Account__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -711,6 +709,13 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Account_Revenue__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Is_Active__c</fields>
+        <fields>PMP_Storefront_Published_Copy__c</fields>
+        <fields>PMP_Storefront_Working_Copy__c</fields>
+        <relatedList>PMP_OPID_MPI_Rel__c.PMP_One_Partner_ID__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>ACCOUNT.NAME</fields>

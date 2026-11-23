@@ -2444,10 +2444,6 @@
             <translation>財務 / 調達</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
             <translation>ハードウェアの開発 / エンジニアリング</translation>
         </picklistValues>
@@ -2514,10 +2510,6 @@
         <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
             <translation>科学者 / 研究調査員</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
@@ -2656,6 +2648,51 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Languages --></label>
+        <name>LID__Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>LID__Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share. --></help>
+        <label><!-- Not at Company Flag --></label>
+        <name>LID__No_longer_at_Company__c</name>
+        <picklistValues>
+            <masterLabel>Ignore</masterLabel>
+            <translation><!-- Ignore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not at Company</masterLabel>
+            <translation><!-- Not at Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Session Id --></label>
+        <name>LID__Session_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Mailing Country/Region --></label>
         <name>Mailing_Country_Region__c</name>
     </fields>
@@ -2709,10 +2746,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Impartner Deal Sync --></label>
-        <name>PRM_Impartner_Deal_Sync__c</name>
-    </fields>
-    <fields>
         <label><!-- Wechat Union Id --></label>
         <name>PRM_Wechat_Union_Id__c</name>
     </fields>
@@ -2731,86 +2764,6 @@
     <fields>
         <label><!-- Username --></label>
         <name>Username__c</name>
-    </fields>
-    <fields>
-        <label><!-- Add to Marketo Campaign --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign__c</name>
-    </fields>
-    <fields>
-        <label><!-- Current Sales Campaign --></label>
-        <name>mkto_si__Current_Sales_Campaign__c</name>
-    </fields>
-    <fields>
-        <label><!-- Hide Date --></label>
-        <name>mkto_si__HideDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Activity by Sales --></label>
-        <name>mkto_si__Last_Activity_By_Sales__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Date --></label>
-        <name>mkto_si__Last_Interesting_Moment_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Desc --></label>
-        <name>mkto_si__Last_Interesting_Moment_Desc__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Source --></label>
-        <name>mkto_si__Last_Interesting_Moment_Source__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Type --></label>
-        <name>mkto_si__Last_Interesting_Moment_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment --></label>
-        <name>mkto_si__Last_Interesting_Moment__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Sales Engagement --></label>
-        <name>mkto_si__Last_Sales_Engagement__c</name>
-    </fields>
-    <fields>
-        <label><!-- Mkto Lead Score --></label>
-        <name>mkto_si__Mkto_Lead_Score__c</name>
-    </fields>
-    <fields>
-        <label><!-- Engagement --></label>
-        <name>mkto_si__Priority__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score Value --></label>
-        <name>mkto_si__Relative_Score_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score --></label>
-        <name>mkto_si__Relative_Score__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Insight --></label>
-        <name>mkto_si__Sales_Insight__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Last Replied --></label>
-        <name>mkto_si__Sales_Last_Replied__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Opt Out --></label>
-        <name>mkto_si__Sales_Opt_Out__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency Value --></label>
-        <name>mkto_si__Urgency_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency --></label>
-        <name>mkto_si__Urgency__c</name>
-    </fields>
-    <fields>
-        <label><!-- View in Marketo --></label>
-        <name>mkto_si__View_in_Marketo__c</name>
     </fields>
     <recordTypes>
         <description><!-- If Do Not Contact flag is selected --></description>
@@ -2926,6 +2879,14 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Embargoed_Country</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Mailing Country/Region signifies where the Contact currently resides and is mandatory --></errorMessage>
         <name>Mailing_Country_cannot_be_blank</name>
     </validationRules>
@@ -3000,33 +2961,5 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- Jifflenow_Meetings --></label>
         <name>jiffle__Jifflenow_Meetings</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Details --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Lightning --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Sales_Campaign --></label>
-        <name>mkto_si__Add_to_Sales_Campaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Watch_List --></label>
-        <name>mkto_si__Add_to_Watch_List</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Details --></label>
-        <name>mkto_si__Send_Marketo_Email_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Lightning --></label>
-        <name>mkto_si__Send_Marketo_Email_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Sales_Email --></label>
-        <name>mkto_si__Send_Sales_Email</name>
     </webLinks>
 </CustomObjectTranslation>

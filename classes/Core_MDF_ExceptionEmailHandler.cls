@@ -20,21 +20,21 @@ public without sharing class Core_MDF_ExceptionEmailHandler{
             List<String> hostGeoList = new List<String>();
             List<String> budgetTypeList = new List<String>();
             List<String> accountIdList = new List<String>();
-
+            List<String> geoList = new List<String>();
             Map<String, set<Id>> iupgmGeoUserIdsMap = new Map<String, set<Id>>();
             Map<String, set<Id>> iupgmGeoBudgetUserIdsMap  = new Map<String, set<Id>>();
             String iupgmGeoKey ='';
             String geo='';
             String role= '';
             String iupgmGeoBudgetKey ='';
-
-            
+            String exceptionGeoKey ='';
+            String exceptionBudgetKey ='';
             Boolean sendEmailOnce = true;
             String region='';
             String program='';
-
+            Boolean allIUPGMAccountCheck = false;
             string objName = System.Label.Core_MDF_ObjectName;
-
+            List<Id> userIds = new List<Id>();
             IUPGMInputWrapper iupgmInputs = new IUPGMInputWrapper();
             for(Core_MDF_Exception__c excp : expPendingReviewList){
                 region = (String.isNotBlank(excp.Core_MDF_HostRegion_txt__c)) ? excp.Core_MDF_HostRegion_txt__c : excp.Core_MDF_Region_txt__c;
@@ -58,33 +58,30 @@ public without sharing class Core_MDF_ExceptionEmailHandler{
                     String prgAcc = (iupgm.Core_MDF_Account_id__c != null) ? iupgm.Core_MDF_Program_nm__c+iupgm.Core_MDF_Account_id__c : iupgm.Core_MDF_Program_nm__c;
                     String prgAccRegBudType = (iupgm.Core_MDF_Account_id__c != null) ? iupgm.Core_MDF_Program_nm__c+iupgm.Core_MDF_Account_id__c : iupgm.Core_MDF_Program_nm__c;
               for(string regionIupgm :iupgm.Core_MDF_Region_cd__c.split(';')){
-                        // US - TWC702-14285: Flatten nested IFs (no logic change)
-                        // Handle case when user has all budget type access
-                        if(iupgm.Core_MDF_All_Budget_Type_Access_Ind__c && iupgm.Core_MDF_Region_cd__c != null){
-            
+                        if(iupgm.Core_MDF_All_Budget_Type_Access_Ind__c){
+                            if(iupgm.Core_MDF_Region_cd__c != null){
                                 iupgmGeoKey = prgAcc+regionIupgm;
                                 if(!iupgmGeoUserIdsMap.containsKey(iupgmGeoKey)){
                                     iupgmGeoUserIdsMap.put(iupgmGeoKey,new set<Id>());  
                                 }
                                 iupgmGeoUserIdsMap.get(iupgmGeoKey).add(iupgm.Core_MDF_User_id__c);
-                            continue; // Skip to next iteration since we handled this case
-                        }
-                        // US - TWC702-14285: Flatten nested IFs (no logic change)s
-                        // Handle case when user doesn't have all budget type access
-                        if(!iupgm.Core_MDF_All_Budget_Type_Access_Ind__c && iupgm.Core_MDF_Budget_Type_nm__c != null){
-            
-                                for(string budgetTypeIupgm :iupgm.Core_MDF_Budget_Type_nm__c.split(';')){
-            
+                            }                     
+                        }else{
+                            if(iupgm.Core_MDF_Budget_Type_nm__c != null){
+                                for(string  budgetTypeIupgm :iupgm.Core_MDF_Budget_Type_nm__c.split(';')){
                                     iupgmGeoBudgetKey = prgAccRegBudType+regionIupgm+budgetTypeIupgm;
                                     if(!iupgmGeoBudgetUserIdsMap.containsKey(iupgmGeoBudgetKey)){
                                         iupgmGeoBudgetUserIdsMap.put(iupgmGeoBudgetKey,new set<Id>());  
                                     }
                                     iupgmGeoBudgetUserIdsMap.get(iupgmGeoBudgetKey).add(iupgm.Core_MDF_User_id__c);
+                                }
                             }
                         }
                     }
                 }
             }
+ 
+            List<string> regList = new List<String>{region};
                 for(Core_MDF_Exception__c exp : expPendingReviewList){
                     set<Id> userIdSet =  new Set<Id>();
                     List<Id> userIdList =  new List<Id>();
@@ -137,7 +134,7 @@ public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIUPGMRecords(IU
         String allAccountsNo = 'No';
         List<String> geoStr = new List<String>();
         List<string> accountId = new List<String>();
-        // OLD: String geoString=''; (removed - replaced with escapedGeoStr list in secure fix)
+        String geoString='';
         string geoIupgm='';
         
         if(iupgmInputs != null){
@@ -150,15 +147,8 @@ public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIUPGMRecords(IU
             geoStr.add(str);
         }
             geoStr.add('WW');
-            // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - BEGIN
-            // OLD: geoString ='(\'' + String.join(geoStr, '\', \'') + '\')';
-            // OLD: String region = String.escapeSingleQuotes(geoString).replaceAll('\\\\','');
-            List<String> escapedGeoStr = new List<String>();
-            for(String geoVal : geoStr) {
-                escapedGeoStr.add(String.escapeSingleQuotes(geoVal));
-            }
-            String region = '(\'' + String.join(escapedGeoStr, '\', \'') + '\')';
-            // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - END
+            geoString ='(\'' + String.join(geoStr, '\', \'') + '\')';
+            String region = String.escapeSingleQuotes(geoString).replaceAll('\\\\','');
 
         qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Region_cd__c, '+
             ' Core_MDF_Program_nm__c,Core_MDF_All_Budget_Type_Access_Ind__c,Core_MDF_Region_Sub_Region_nm__c, Core_MDF_Role_nm__c, ' +

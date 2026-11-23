@@ -45,10 +45,6 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Dup_Id__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Unit_Qty__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
@@ -82,6 +78,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <interval>INTERVAL_LASTWEEK</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

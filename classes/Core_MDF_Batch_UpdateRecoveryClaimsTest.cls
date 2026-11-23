@@ -36,8 +36,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         
         //Create Channel Program
         ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-       // Highlight: Unused Local Variable 
-       // ChannelProgram rmfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
+        ChannelProgram rmfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
         
         //Create Intel Account
         List<Account> intelAccList = new List<Account>();
@@ -120,9 +119,9 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         bankList.add(recoveryBank);
         bankList.add(recoveryBank2);
         Database.insert(bankList);
-        // Highlight: Unused Local Variable
-       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryEMEAFrance.Id,recoveryBank.Id,true);
-       // Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryCCFVC2.Id,recoveryBank2.Id,true);
+        
+        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryEMEAFrance.Id,recoveryBank.Id,true);
+        Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryCCFVC2.Id,recoveryBank2.Id,true);
         Test.startTest();
         List<Campaign> campList = new List<Campaign>();
         Campaign recoveryCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', recoveryCCFVC.Id, '2-in-1', false);
@@ -189,7 +188,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Broadcast (Pre-2025)',
+                                                                                                          'Broadcast',
                                                                                                           'Podcast',
                                                                                                           'Draft',
                                                                                                           false);
@@ -211,7 +210,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Broadcast (Pre-2025)',
+                                                                                                           'Broadcast',
                                                                                                            'Podcast',
                                                                                                            'Draft',
                                                                                                            false);
@@ -234,7 +233,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
                                                                                                               'Consumer',
                                                                                                               'Desktop',
                                                                                                               'Intel® Core™ i5 Processor',
-                                                                                                              'Broadcast (Pre-2025)',
+                                                                                                              'Broadcast',
                                                                                                               'Podcast',
                                                                                                               'Draft',
                                                                                                               false);
@@ -293,7 +292,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
                                                                                     recoveryFranceActivity.Core_MDF_Start_Date__c,300,System.today(),null,false);
         recoveryClaimSP.Core_MDF_Document_Submission_Missed_Ind__c = true;
         recoveryClaimSP.Amount = 300;
-        recoveryClaimSP.Core_MDF_Currency__c='USD'; 
+        recoveryClaimSP.Core_MDF_Currency__c='USD';
 		recoveryClaimSP.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(recoveryClaimSP);
         Database.insert(pfcList);
@@ -318,39 +317,40 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         partnershipScore2.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(recoveryIntelAcc2.id) +  'Q2 2023';
         insert partnershipScore2;
         
+        List<Core_MDF_Partnership_Score__c> pssList = [select id, Core_MDF_Account_Id__c from Core_MDF_Partnership_Score__c];
         List<Core_MDF_Partnership_Score_Detail__c> psdList = new List<Core_MDF_Partnership_Score_Detail__c>();
         Core_MDF_Partnership_Score_Detail__c psd1 = new Core_MDF_Partnership_Score_Detail__c();
         psd1.Core_MDF_Budget_Type_nm__c = 'MDF';
         psd1.Core_MDF_Region_Cd__c = 'APJ';
         psd1.Core_MDF_Recovered_Amt__c=0.00;
-        psd1.Core_MDF_Partnership_Score_Id__c = partnershipScore.Id;
-        psd1.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(partnershipScore.Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'APJ';
+        psd1.Core_MDF_Partnership_Score_Id__c = pssList[0].id;
+        psd1.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(pssList[0].Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'APJ';
         psdList.add(psd1);  
         
         Core_MDF_Partnership_Score_Detail__c psd2 = new Core_MDF_Partnership_Score_Detail__c();
         psd2.Core_MDF_Budget_Type_nm__c = 'MDF';
         psd2.Core_MDF_Region_Cd__c = 'ASMO';
         psd2.Core_MDF_Recovered_Amt__c=0.00;
-        psd2.Core_MDF_Partnership_Score_Id__c = partnershipScore.Id;
-        psd2.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(partnershipScore.Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'ASMO';
+        psd2.Core_MDF_Partnership_Score_Id__c = pssList[0].id;
+        psd2.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(pssList[0].Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'ASMO';
         psdList.add(psd2);
         Core_MDF_Partnership_Score_Detail__c psd3 = new Core_MDF_Partnership_Score_Detail__c();
         psd3.Core_MDF_Budget_Type_nm__c = 'MDF+';
         psd3.Core_MDF_Region_Cd__c = 'ASMO';
         psd3.Core_MDF_Recovered_Amt__c =0.00;
-        psd3.Core_MDF_Partnership_Score_Id__c = partnershipScore.Id;
-        psd3.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(partnershipScore.Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF+'+'ASMO';
+        psd3.Core_MDF_Partnership_Score_Id__c = pssList[0].id;
+        psd3.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(pssList[0].Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF+'+'ASMO';
         psdList.add(psd3);
         Core_MDF_Partnership_Score_Detail__c psd4 = new Core_MDF_Partnership_Score_Detail__c();
         psd4.Core_MDF_Budget_Type_nm__c = 'MDF';
         psd4.Core_MDF_Region_Cd__c = 'APJ';
         psd4.Core_MDF_Recovered_Amt__c=0.00;
-        psd4.Core_MDF_Partnership_Score_Id__c = partnershipScore2.Id;
-        psd4.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(partnershipScore2.Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'APJ';
+        psd4.Core_MDF_Partnership_Score_Id__c = pssList[1].id;
+        psd4.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(pssList[1].Core_MDF_Account_Id__c) + 'Q2 2023'+'MDF'+'APJ';
         psdList.add(psd4);  
         insert psdList;
         List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-        for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim limit 1]){ //ATHR Fix - WW16
+        for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim]){
             claim.Core_MDF_Status__c = 'Payment Due';
             claimList.add(claim);
         }
@@ -360,14 +360,13 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
     @isTest static void testRecoveryBatch1() {
         Test.startTest(); 
         Set<Id> claimIdSet = new Set<Id>();
-        for(PartnerFundClaim claim : [select Id,Core_MDF_Status__c,Core_MDF_Region_Cd__c, Amount from PartnerFundClaim limit 1]) //ATHR Fix - WW16
+        for(PartnerFundClaim claim : [select Id,Core_MDF_Status__c,Core_MDF_Region_Cd__c, Amount from PartnerFundClaim])
         {
             claimIdSet.add(claim.Id);
         }
-        // Highlight: Unused Local Variable
-      /*  final List<Core_MDF_Partnership_Score__c> psList =[Select Id, Core_MDF_Account_Id__c,Core_MDF_Program_nm__c, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Balance_Amount_Amt__c
+        final List<Core_MDF_Partnership_Score__c> psList =[Select Id, Core_MDF_Account_Id__c,Core_MDF_Program_nm__c, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Balance_Amount_Amt__c
              From Core_MDF_Partnership_Score__c Where Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund'  
-             and Core_MDF_Quarter_Year_Nm__c = 'Q2 2023']; //and Core_MDF_Balance_Amount_Amt__c > 0];  */
+             and Core_MDF_Quarter_Year_Nm__c = 'Q2 2023']; //and Core_MDF_Balance_Amount_Amt__c > 0];
         final Core_MDF_Recovery_Batch obj = new Core_MDF_Recovery_Batch('Client CoMarketing Fund','MDF','Q2 2023');
         Assert.areEqual('Client CoMarketing Fund',obj.program,'Expected');
         database.executeBatch(obj);
@@ -379,8 +378,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         Set<Id> claimIdSet = new Set<Id>();
         List<id> accountIds = new List<id>();
         Account accountRecord = [select id from Account limit 1];
-        // Highlight: Unused Local Variable 
-       // List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
+        List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
         PartnerFundClaim claim2 = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF+' limit 1];
         accountIds.add(accountRecord.id);
         
@@ -408,8 +406,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         database.executeBatch(obj3);
         Core_MDF_Recovery_Batch obj4 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  ''    ,  '');
         database.executeBatch(obj4);
-        // Highlight: Unused Local Variable
-       // String acc =  accountIds.toString();
+        String acc =  accountIds.toString();
         Core_MDF_Recovery_Batch obj5 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  '' ,''   , '');
         database.executeBatch(obj5);
         Core_MDF_Recovery__c recoveryObj = new Core_MDF_Recovery__c();

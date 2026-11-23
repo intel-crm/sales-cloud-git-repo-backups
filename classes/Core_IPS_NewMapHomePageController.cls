@@ -9,7 +9,7 @@
 * Ganapati                 16/01/2019             Modified for US534513
 ****************************************************************************************************/
 
-public with sharing class Core_IPS_NewMapHomePageController {  
+public without sharing class Core_IPS_NewMapHomePageController {  
     private static String currentUserId = UserInfo.getUserId();
     private static Id currentProfileID = Userinfo.getProfileId();
     @AuraEnabled(cacheable=true)
@@ -33,10 +33,8 @@ public with sharing class Core_IPS_NewMapHomePageController {
         List<DataTableWrapper> response = new list<DataTableWrapper>();
         
         try {
-            // Venrublity Fix - Refering query to service class
-            // sObjLst = Database.query(queryString);
-            sObjLst = Core_IPS_QueryService.queryRecords(queryString);
-            
+            sObjLst = Database.query(queryString);
+           
             for(Core_IPS_MAP_PAR__c mapResults : (List<Core_IPS_MAP_PAR__c>)sObjLst) {                
                 DataTableWrapper obj = new DataTableWrapper();
                 obj.mapName = mapResults.Core_Name__c;
@@ -94,17 +92,12 @@ public with sharing class Core_IPS_NewMapHomePageController {
     @AuraEnabled
     public static Core_IPS_MAP_PAR__c updateMAPRecord(Core_IPS_MAP_PAR__c mapRecord) {
         
-        // Venrublity Fix - Refering query to service class
-        // update mapRecord;
-        List<SObject> updatedRecords = Core_IPS_QueryService.updateRecords(new List<SObject>{ mapRecord });
-        mapRecord = (Core_IPS_MAP_PAR__c) updatedRecords[0];
+        update mapRecord;
         return mapRecord;
     } 
     @AuraEnabled
     public static String deleteMAPRecord(sObject rec) {
-        // Venrublity Fix - Refering query to service class
-        // delete rec;
-        Core_IPS_QueryService.deleteRecords(new List<SObject>{ rec });
+        delete rec;
         return 'Success';
     }
     
@@ -112,9 +105,7 @@ public with sharing class Core_IPS_NewMapHomePageController {
     public static List<sObject> getQueryResult(String queryString) {
         //SOQL SOSL Injection Fix cannot be done here as it is handled in javascript controller.       
         List<sObject> sObjLst = new list<sObject>();
-        // Venrublity Fix - Refering query to service class
-        // sObjLst = Database.query(queryString);
-        sObjLst = Core_IPS_QueryService.queryRecords(queryString);
+        sObjLst = Database.query(queryString);
         return sObjLst;
     }
     
@@ -221,39 +212,32 @@ Description : This method takes list MAP line items and inserts.
             }
         }
         
-        // Venrublity Fix - Refering query to service class
-        // Map<Id,Core_IPS_MAP_PAR__c> mapRecords=new Map<Id,Core_IPS_MAP_PAR__c>([
-        //     SELECT 
-        //     Id, 
-        //     RecordType.Name,
-        //     Core_Product_Organization__c,
-        //     (
-        //         SELECT          
-        //         Id, 
-        //         Core_MAP_Supported_Product__c,
-        //         Core_MAP_Supported_Product__r.Core_Supported_Product_Name__c,
-        //         Core_MAP_Supported_Product__r.Id, 
-        //         Core_MAP_Supported_Product__r.Core_Product__c,
-        //         Core_MAP_PAR__c,Core_MAP_PAR__r.RecordType.Name 
-        //         FROM MAP_Supported_Products__r
-        //     ), 
-        //     (
-        //         SELECT 
-        //         Id, 
-        //         Core_Account__c, 
-        //         Core_MAP_PAR__c, 
-        //         Core_MAP_PAR__r.RecordType.Name 
-        //         FROM MAP_Accounts__r
-        //     ) 
-        //     FROM Core_IPS_MAP_PAR__c 
-        //     WHERE Id IN : mapIds
-        // ]);
-        Map<Id,Core_IPS_MAP_PAR__c> mapRecords = new Map<Id,Core_IPS_MAP_PAR__c>(
-            (List<Core_IPS_MAP_PAR__c>) Core_IPS_QueryService.queryRecords(
-                'SELECT Id, RecordType.Name, Core_Product_Organization__c, (SELECT Id, Core_MAP_Supported_Product__c, Core_MAP_Supported_Product__r.Core_Supported_Product_Name__c, Core_MAP_Supported_Product__r.Id, Core_MAP_Supported_Product__r.Core_Product__c, Core_MAP_PAR__c,Core_MAP_PAR__r.RecordType.Name FROM MAP_Supported_Products__r), (SELECT Id, Core_Account__c, Core_MAP_PAR__c, Core_MAP_PAR__r.RecordType.Name FROM MAP_Accounts__r) FROM Core_IPS_MAP_PAR__c WHERE Id IN :mapIds',
-                new Map<String, Object>{ 'mapIds' => mapIds }
-            )
-        );
+        Map<Id,Core_IPS_MAP_PAR__c> mapRecords=new Map<Id,Core_IPS_MAP_PAR__c>([
+            SELECT 
+            Id, 
+            RecordType.Name,
+            Core_Product_Organization__c,
+            (
+                SELECT          
+                Id, 
+                Core_MAP_Supported_Product__c,
+                Core_MAP_Supported_Product__r.Core_Supported_Product_Name__c,
+                Core_MAP_Supported_Product__r.Id, 
+                Core_MAP_Supported_Product__r.Core_Product__c,
+                Core_MAP_PAR__c,Core_MAP_PAR__r.RecordType.Name 
+                FROM MAP_Supported_Products__r
+            ), 
+            (
+                SELECT 
+                Id, 
+                Core_Account__c, 
+                Core_MAP_PAR__c, 
+                Core_MAP_PAR__r.RecordType.Name 
+                FROM MAP_Accounts__r
+            ) 
+            FROM Core_IPS_MAP_PAR__c 
+            WHERE Id IN : mapIds
+        ]);
         
         for(Core_IPS_MAP_PAR__c mapRec : mapRecords.values()) {
             supportOrgIdSet.add(mapRec.Core_Product_Organization__c);
@@ -283,32 +267,23 @@ Description : This method takes list MAP line items and inserts.
                }
            }
         
-        // Venrublity Fix - Refering query to service class
-        // for(Core_IPS_Map_Par_Line_Item__c lineItem : [
-        //     SELECT 
-        //     Id, 
-        //     Name,
-        //     Core_Account__c, 
-        //     Core_Supported_Product_EOIS__c, 
-        //     RecordTypeId, 
-        //     RecordType.Name, 
-        //     Core_Supported_Product__c,
-        //     Core_Status__c 
-        //     FROM Core_IPS_Map_Par_Line_Item__c 
-        //     WHERE (Core_Status__c = 'INACTIVE'
-        //            OR Core_Status__c = 'ACTIVE' )
-        //     AND Core_MAP_PAR__c IN: mapIds
-        //     AND Core_Supported_Product__c IN: draftLineItemProductIdSet  
-        //     AND Core_Account__c IN: draftLineItemAccountIdSet 
-        // ]) {
-        for(Core_IPS_Map_Par_Line_Item__c lineItem : (List<Core_IPS_Map_Par_Line_Item__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, Core_Account__c, Core_Supported_Product_EOIS__c, RecordTypeId, RecordType.Name, Core_Supported_Product__c, Core_Status__c FROM Core_IPS_Map_Par_Line_Item__c WHERE (Core_Status__c = \'INACTIVE\' OR Core_Status__c = \'ACTIVE\') AND Core_MAP_PAR__c IN :mapIds AND Core_Supported_Product__c IN :draftLineItemProductIdSet AND Core_Account__c IN :draftLineItemAccountIdSet',
-            new Map<String, Object>{
-                'mapIds' => mapIds,
-                'draftLineItemProductIdSet' => draftLineItemProductIdSet,
-                'draftLineItemAccountIdSet' => draftLineItemAccountIdSet
-            }
-        )) {
+        for(Core_IPS_Map_Par_Line_Item__c lineItem : [
+            SELECT 
+            Id, 
+            Name,
+            Core_Account__c, 
+            Core_Supported_Product_EOIS__c, 
+            RecordTypeId, 
+            RecordType.Name, 
+            Core_Supported_Product__c,
+            Core_Status__c 
+            FROM Core_IPS_Map_Par_Line_Item__c 
+            WHERE (Core_Status__c = 'INACTIVE'
+                   OR Core_Status__c = 'ACTIVE' )
+            AND Core_MAP_PAR__c IN: mapIds
+            AND Core_Supported_Product__c IN: draftLineItemProductIdSet  
+            AND Core_Account__c IN: draftLineItemAccountIdSet 
+        ]) {
             if(lineItem.Core_Status__c == 'INACTIVE') {
                 inActiveLineItemLst.add(lineItem);
             }
@@ -417,39 +392,27 @@ Description : This method takes the support org Id and return a true ot false ba
         Boolean isOrgAdminMember = false;
         //String currentUserId = UserInfo.getUserId();
         //Id currentProfileID = Userinfo.getProfileId();
-        // Venrublity Fix - Refering query to service class
-        List<Profile> currentProfileList= [SELECT Name from Profile where ID =:currentProfileID LIMIT 1];
-       
-        Profile currentProfile = currentProfileList.isEmpty() ? null : currentProfileList[0];
+        Profile currentProfile = [SELECT Name from Profile where ID =:currentProfileID LIMIT 1];
         if(currentProfile != null){
             if(System.Label.Core_IPS_System_Admin_Profile_Name.equalsIgnoreCase(currentProfile.Name) || System.Label.Core_IT_Admin_Profile_Name.equalsIgnoreCase(currentProfile.Name)) {
                 return true;
             }
         }
-        // Venrublity Fix - Refering query to service class
-        // Core_IPS_Product_Organization__c supportOrg = [
-        //     SELECT 
-        //     Id,
-        //     OwnerId,
-        //     Owner.Type, 
-        //     (
-        //         SELECT 
-        //         Id,
-        //         Core_Product_Organization__c,
-        //         Core_Admin__c 
-        //         From Product_Organization_Admins__r
-        //     ) 
-        //     FROM Core_IPS_Product_Organization__c 
-        //     WHERE Id = :supportOrgId
-        // ];
-        List<Core_IPS_Product_Organization__c> supportOrgList = (List<Core_IPS_Product_Organization__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, OwnerId, Owner.Type, (SELECT Id, Core_Product_Organization__c, Core_Admin__c From Product_Organization_Admins__r) FROM Core_IPS_Product_Organization__c WHERE Id = :supportOrgId',
-            new Map<String, Object>{ 'supportOrgId' => supportOrgId }
-        );
-        if (supportOrgList.isEmpty()) {
-            return false;
-        }
-        Core_IPS_Product_Organization__c supportOrg = supportOrgList[0];
+        Core_IPS_Product_Organization__c supportOrg = [
+            SELECT 
+            Id,
+            OwnerId,
+            Owner.Type, 
+            (
+                SELECT 
+                Id,
+                Core_Product_Organization__c,
+                Core_Admin__c 
+                From Product_Organization_Admins__r
+            ) 
+            FROM Core_IPS_Product_Organization__c 
+            WHERE Id = :supportOrgId
+        ];
         
         if(supportOrg.Owner.Type == 'User' && String.valueOf(supportOrg.OwnerId).contains(currentUserId)) {
             isOrgAdminMember = true;
@@ -487,33 +450,18 @@ Description : This method returns list off account for which current user affili
         //String currentUserId = UserInfo.getUserId();
         Set<Id> accIdSet = new Set<Id>();
         List<Account> accounts = new List<Account>(); 
-        // Venrublity Fix - Refering query to service class
-        // for(Account accRec : [SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where OwnerId = :currentUserId AND (Core_CNDA_Number__c !='' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true]) {
-        for(Account accRec : (List<Account>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where OwnerId = :currentUserId AND (Core_CNDA_Number__c != \'\' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true',
-            new Map<String, Object>{ 'currentUserId' => currentUserId }
-        )) {
+        for(Account accRec : [SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where OwnerId = :currentUserId AND (Core_CNDA_Number__c !='' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true]) {
             accounts.add(accRec);
             accIdSet.add(accRec.Id);
         }
-        // Venrublity Fix - Refering query to service class
-        // for(AccountTeamMember accTeamMember : [
-        //     SELECT Id, AccountId from AccountTeamMember where (CaseAccessLevel = 'Edit' OR CaseAccessLevel = 'Read') AND userId = :currentUserId]
-        //    ) {
-        for(AccountTeamMember accTeamMember : (List<AccountTeamMember>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, AccountId from AccountTeamMember where (CaseAccessLevel = \'Edit\' OR CaseAccessLevel = \'Read\') AND userId = :currentUserId',
-            new Map<String, Object>{ 'currentUserId' => currentUserId }
-        )) {
+        for(AccountTeamMember accTeamMember : [
+            SELECT Id, AccountId from AccountTeamMember where (CaseAccessLevel = 'Edit' OR CaseAccessLevel = 'Read') AND userId = :currentUserId]
+           ) {
                if(!accIdSet.contains(accTeamMember.AccountId)) {
                    accIdSet.add(accTeamMember.AccountId);   
                }
            }
-        // Venrublity Fix - Refering query to service class
-        // accounts.addAll([SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where Id IN :accIdSet AND (Core_CNDA_Number__c !='' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true]);
-        accounts.addAll((List<Account>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where Id IN :accIdSet AND (Core_CNDA_Number__c != \'\' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true',
-            new Map<String, Object>{ 'accIdSet' => accIdSet }
-        ));
+        accounts.addAll([SELECT Id, Name, Core_CNDA_Number__c, Core_IPS_Active__c, Owner.Name FROM Account where Id IN :accIdSet AND (Core_CNDA_Number__c !='' OR Core_CNDA_Number__c != Null) AND Core_IPS_Active__c=true]);
         return accounts;
     } 
     
@@ -528,17 +476,12 @@ Description : This method takes the Queue or Public Group Id and return set of u
 ****************************************************************************************************/         
     public static Set<Id> getUserIdsFromQPB(Id queueId) {
         Set<Id> userIds = new Set<Id>();
-        // Venrublity Fix - Refering query to service class
-        // for(GroupMember grpMem : [
-        //     SELECT 
-        //     UserOrGroupId 
-        //     FROM GroupMember 
-        //     WHERE GroupId = :queueId
-        // ]) {
-        for(GroupMember grpMem : (List<GroupMember>) Core_IPS_QueryService.queryRecords(
-            'SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :queueId',
-            new Map<String, Object>{ 'queueId' => queueId }
-        )) {
+        for(GroupMember grpMem : [
+            SELECT 
+            UserOrGroupId 
+            FROM GroupMember 
+            WHERE GroupId = :queueId
+        ]) {
             if(String.valueOf(grpMem.UserOrGroupId).startsWith('00G')){
                 userIds.addAll(getUserIdsFromQPB(grpMem.UserOrGroupId));
             } else {
@@ -559,7 +502,7 @@ Description : This method takes the MAP Id and QueryString and returns the MAP A
 ****************************************************************************************************/  
     @AuraEnabled     
     public static List<sObject> getFAEAffiliatedMapAccounts(String queryString) {
-        //SOQL SOSL Injection Fix cannot be done here as it is handled in javascript controller.          
+    //SOQL SOSL Injection Fix cannot be done here as it is handled in javascript controller.          
         Set<Id> accountIdSet = new Set<Id>();
         List<sObject> sObjLst = new list<sObject>();
         List<Account> accounts = getFAEAffiliatedAccounts();
@@ -567,16 +510,11 @@ Description : This method takes the MAP Id and QueryString and returns the MAP A
             accountIdSet.add(acc.Id);
         }
         queryString = queryString + ' AND Core_Account__c IN :accountIdSet ORDER BY LastModifiedDate DESC'; 
-        
-        // Venrublity Fix - Refering query to service class
-        // sObjLst = Database.query(queryString);
-        sObjLst = Core_IPS_QueryService.queryRecords(
-            queryString,
-            new Map<String, Object>{ 'accountIdSet' => accountIdSet }
-        );
+ 
+        sObjLst = Database.query(queryString);
         return sObjLst;
     } 
-    /***************************************************************************************************
+  /***************************************************************************************************
 Method Name : getLabel
 Version     : 1.0 
 Created Date: 22 Jan 2020
@@ -609,14 +547,12 @@ Description : This method maps API name and value with a map
     
     public without sharing class AdminOperations {
         public List<Core_IPS_Map_Par_Line_Item__c> updateLineItems(List<Core_IPS_Map_Par_Line_Item__c> mapLineItemList) {
-            // Venrublity Fix - Refering query to service class
-            // update mapLineItemList;
-            mapLineItemList = (List<Core_IPS_Map_Par_Line_Item__c>) Core_IPS_QueryService.updateRecords((List<SObject>) mapLineItemList);
+            update mapLineItemList;
             return mapLineItemList;
         }
         
     }
-    
+
     
      @AuraEnabled
      public static string getCase(Id recordId){
@@ -633,12 +569,7 @@ Description : This method maps API name and value with a map
       public static List<Core_IPS_Case_Attachments__c> getattachments(String caseID){
         List<Core_IPS_Case_Attachments__c> cdoc = new List<Core_IPS_Case_Attachments__c>();
         String strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Category__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,CreatedBy.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c where Core_Case__c =:caseID ORDER BY CreatedDate DESC ';
-        // Venrublity Fix - Refering query to service class
-        // cdoc = Database.Query(strqry);
-        cdoc = (List<Core_IPS_Case_Attachments__c>) Core_IPS_QueryService.queryRecords(
-            strqry,
-            new Map<String, Object>{ 'caseID' => caseID }
-        );
+        cdoc = Database.Query(strqry);
         for(Core_IPS_Case_Attachments__c att:cdoc ){
             if(att.Core_Upload_Status__c == 'Pending'){
                 String url = att.Core_File_Hyperlink__c;
@@ -653,66 +584,5 @@ Description : This method maps API name and value with a map
 
         }
         return cdoc;
-    }
-    /*Start -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
-    @AuraEnabled(cacheable=true)
-    public static List<Core_IPS_Case_Interested_Party__c> getInterestedParties(Id caseId) {
-        // Venrublity Fix - Refering query to service class
-        // return [
-        //     SELECT Id, Name, First_Name__c, Last_Name__c, 
-        //     User__r.FirstName, User__r.LastName, Active__c
-        //     FROM Core_IPS_Case_Interested_Party__c
-        //     WHERE Case__c = :caseId
-        //     WITH USER_MODE
-        //     LIMIT 49999
-        // ];
-        return (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId WITH USER_MODE LIMIT 49999',
-            new Map<String, Object>{ 'caseId' => caseId }
-        );
-    }
- 	/*END -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
-    /*Start -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
-    @AuraEnabled(cacheable = true)
-    public static List<Core_IPS_Account__c> getProjectsForOpportunity(String recordId, String projStatus) {
-        Id oppId = (Id) recordId; // type-safe cast prevents injection via Id format validation
-        // Venrublity Fix - Refering query to service class
-        // List<Core_IPS_Account__c> results = [
-        //     SELECT Core_IPS_Project__r.Name, Core_IPS_Project__r.Id, Core_IPS_Project__r.CreatedDate
-        //     FROM Core_IPS_Account__c
-        //     WHERE Core_IPS_Project__r.Core_Status__c = :projStatus
-        //     AND Core_Account__c IN (SELECT AccountId FROM Opportunity WHERE Id = :oppId)
-        //     WITH USER_MODE
-        //     ORDER BY Core_IPS_Project__r.CreatedDate DESC
-        // ];
-        List<Core_IPS_Account__c> results = (List<Core_IPS_Account__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Core_IPS_Project__r.Name, Core_IPS_Project__r.Id, Core_IPS_Project__r.CreatedDate FROM Core_IPS_Account__c WHERE Core_IPS_Project__r.Core_Status__c = :projStatus AND Core_Account__c IN (SELECT AccountId FROM Opportunity WHERE Id = :oppId) ORDER BY Core_IPS_Project__r.CreatedDate DESC',
-            new Map<String, Object>{ 'projStatus' => projStatus, 'oppId' => oppId }
-        );
-        return results;
-    }
-    /*END -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
-    @AuraEnabled(cacheable=true)
-    public static List<Core_IPS_Supported_Product__c> getSupportedProducts(String searchKey) {
-        
-        if (String.isBlank(searchKey)) {
-            return new List<Core_IPS_Supported_Product__c>();
-        }
-        
-        String searchPattern = '%' + String.escapeSingleQuotes(searchKey.trim()) + '%';
-        
-        // Venrublity Fix - Refering query to service class
-         return [
-             SELECT Id,
-             Name,
-             Core_Supported_Product_Name__c,
-             Core_Product_Application__c,
-             Core_Support_Org_Name__c
-             FROM Core_IPS_Supported_Product__c
-             WHERE Core_Flag_Status__c != 'EOIS'
-             AND Core_Flag_Status__c != 'Par Hidden'
-             AND Core_Supported_Product_Name__c LIKE :searchPattern
-             LIMIT 1000
-         ];
-    }
+      }
 }

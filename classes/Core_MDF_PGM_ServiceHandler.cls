@@ -158,41 +158,39 @@ public without sharing class Core_MDF_PGM_ServiceHandler {
             
             //2. Create a Map with key : Channel Program + Type of Access ; value : Sub CCP group Name
             for(Core_MDF_Partner_Group_Mapping__c pgmRecord: pgmList){
-                if(pgmRecord.Core_MDF_Source_Txt__c != 'ProcessEntitlement'){
-                    //DE62015 fix: Separate the Internal groups
-                    if(pgmRecord.Core_MDF_Type_of_Access__c == 'Internal'){
-                        string key = pgmRecord.Core_MDF_Channel_Program_Name_Txt__c;
-                        key+= pgmRecord.Core_MDF_Type_of_Access__c;
-                        
-                        //DE61641 fix: Creating a list of group names for a single Channel Program + Type of Access
-                        List<string> subGroupNames = channelProgramAccessToSubGroupNameInternalList.get(key);
-                        if(subGroupNames == null){
-                            subGroupNames = new List<string>();
-                            subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
-                        }
-                        else{
-                            subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
-                        }
-                        channelProgramAccessToSubGroupNameInternalList.put(key,subGroupNames);
-                        
+                //DE62015 fix: Separate the Internal groups
+                if(pgmRecord.Core_MDF_Type_of_Access__c == 'Internal'){
+                    string key = pgmRecord.Core_MDF_Channel_Program_Name_Txt__c;
+                    key+= pgmRecord.Core_MDF_Type_of_Access__c;
+                    
+                    //DE61641 fix: Creating a list of group names for a single Channel Program + Type of Access
+                    List<string> subGroupNames = channelProgramAccessToSubGroupNameInternalList.get(key);
+                    if(subGroupNames == null){
+                        subGroupNames = new List<string>();
+                        subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
                     }
-                    else if(pgmRecord.Core_MDF_Type_of_Access__c == 'External'){
-                        string key = pgmRecord.Core_MDF_Channel_Program_Name_Txt__c;
-                        key+= pgmRecord.Core_MDF_Type_of_Access__c;
-                        
-                        //DE61641 fix: Creating a list of group names for a single Channel Program + Type of Access
-                        List<string> subGroupNames = channelProgramAccessToSubGroupNameExternalList.get(key);
-                        if(subGroupNames == null){
-                            subGroupNames = new List<string>();
-                            subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
-                        }
-                        else{
-                            subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
-                        }
-                        channelProgramAccessToSubGroupNameExternalList.put(key,subGroupNames);
+                    else{
+                        subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
                     }
-                    groupNames.add(pgmRecord.Core_MDF_Group_Name__c);
+                    channelProgramAccessToSubGroupNameInternalList.put(key,subGroupNames);
+                    
                 }
+                else if(pgmRecord.Core_MDF_Type_of_Access__c == 'External'){
+                    string key = pgmRecord.Core_MDF_Channel_Program_Name_Txt__c;
+                    key+= pgmRecord.Core_MDF_Type_of_Access__c;
+                    
+                    //DE61641 fix: Creating a list of group names for a single Channel Program + Type of Access
+                    List<string> subGroupNames = channelProgramAccessToSubGroupNameExternalList.get(key);
+                    if(subGroupNames == null){
+                        subGroupNames = new List<string>();
+                        subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
+                    }
+                    else{
+                        subGroupNames.add(pgmRecord.Core_MDF_Group_Name__c);
+                    }
+                    channelProgramAccessToSubGroupNameExternalList.put(key,subGroupNames);
+                }
+                groupNames.add(pgmRecord.Core_MDF_Group_Name__c);
             }
             
             //3. Query all the Sub and Master group names and obtain the groupID
@@ -232,8 +230,8 @@ toBeInserted.putall(internalRecordsToBeInserted);
         
         try{
             
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt record: [select Core_MDF_Channel_Program_txt__c,Core_MDF_Internal_Master_Group_Name_Txt__c,Core_MDF_External_Master_Group_Name_Txt__c 
-                                                                   from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){ //TWC3117-18333
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt record: [select Core_MDF_Channel_Program_txt__c,Core_MDF_Internal_Master_Group_Name_Txt__c,Core_MDF_External_Master_Group_Name_Txt__c 
+                                                                   from Core_MDF_ClaimActAllocRecTypeMapping__mdt LIMIT 1000]){ 
                                                                        string key = record.Core_MDF_Channel_Program_txt__c;
                                                                        key+= 'Internal';
                                                                        channelProgramAcessToMasterGroupName.put(key,record.Core_MDF_Internal_Master_Group_Name_Txt__c);
@@ -380,6 +378,7 @@ return internalRecordsToBeInserted;
             userGroupMappingList.add(new Core_MDF_UserGroupMapping_Log__c(Core_MDF_Error_Message_txt__c = record.Id, Core_MDF_Virtual_Account_id__c = record.Core_MDF_Virtual_Corp_nm__c, Core_MDF_Account_id__c = record.Core_MDF_Account__c, Core_MDF_Channel_Program_id__c = record.Core_MDF_Channel_Program__c, Core_MDF_Action_nm__c= 'PNUM Addition', Core_MDF_Status_nm__c = 'In Progress'));                                                
         }
 
+        //system.debug('userGroupMappingList@@@' + userGroupMappingList);
         //Create User Group mapping log record to add users to PGM Account Group(By using Batch)
         if(!userGroupMappingList.isEmpty()){
             Database.insert(userGroupMappingList, false);
@@ -409,7 +408,7 @@ return internalRecordsToBeInserted;
 
         List<Core_MDF_Partner_Group_Mapping__c> groupsToBeAdded = new List<Core_MDF_Partner_Group_Mapping__c>();
         try{
-            for(Core_MDF_Partner_Group_Mapping__c record: [SELECT Id,Core_MDF_Virtual_Corp_nm__c, Core_MDF_Group_Id__c, Core_MDF_Group_Name__c, Core_MDF_Inactive_Ind__c, Core_MDF_Type_of_Access__c, Core_MDF_Channel_Program_Name_Txt__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_CoMarketingActive__c, Core_MDF_Channel_Program__c, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Source_Txt__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Id IN: pgmMap.keySet() AND Core_MDF_Type_of_Access__c =: externalType ORDER BY Core_MDF_Type_of_Access__c desc]){
+            for(Core_MDF_Partner_Group_Mapping__c record: [SELECT Id,Core_MDF_Virtual_Corp_nm__c, Core_MDF_Group_Id__c, Core_MDF_Group_Name__c, Core_MDF_Inactive_Ind__c, Core_MDF_Type_of_Access__c, Core_MDF_Channel_Program_Name_Txt__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_CoMarketingActive__c, Core_MDF_Channel_Program__c, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Id IN: pgmMap.keySet() AND Core_MDF_Type_of_Access__c =: externalType ORDER BY Core_MDF_Type_of_Access__c desc]){
                 if(record.Core_MDF_Inactive_Ind__c){
                     if(record.Core_MDF_Account__r.Core_MDF_CoMarketingActive__c){
                         groupsToBeRemoved.add(record.Core_MDF_Group_Id__c);

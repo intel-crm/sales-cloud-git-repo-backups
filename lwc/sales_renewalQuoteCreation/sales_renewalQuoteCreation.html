@@ -1,0 +1,33 @@
+<template>
+
+		  <div if:false={isLoaded} class="slds-is-relative">  
+    <lightning-spinner alternative-text="Loading...">  
+    </lightning-spinner>  
+</div> 
+   <template if:true={errorMsg}>
+    <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+     <span class="slds-assistive-text">error</span>
+        <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+       
+        <lightning-icon icon-name="utility:error" alternative-text="Error!" title="Error" variant="inverse"></lightning-icon>
+       
+        </span>
+        <h2>{res}
+        </h2>
+      </div> 
+        <div class="slds-notify__close" style="position: absolute;top: 40%;  right: 0.5%; margin-left: var(--lwc-spacingXxSmall,0.25rem);transform: translateY(-50%); aligned:left">
+          <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right" style="background: grey;" title="Close" onclick={closeAction}>
+            
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                  size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+         </div>
+       
+     </template>
+     <template if:true={confirmDigCheck}>
+      <c-sales_-confirm-dialog title={label.Sales_ConfirmationTitle}  contractrecordid={recordId} onchildmethod={callFromChild} onclose={closeEvent}></c-sales_-confirm-dialog>
+  </template>
+	
+  </template>

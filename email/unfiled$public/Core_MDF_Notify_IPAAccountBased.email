@@ -42,17 +42,8 @@
                         <apex:outputText value="{0, date, MMMM d','  yyyy}"> <apex:param value="{!RelatedTo.Core_MDF_ToBeClosedDate__c}" /> </apex:outputText> .
                     </span></p>
                     
-                    <p>
-                        <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                       value="{!$Label.Core_MDF_Outcome_Community_Link + RelatedTo.Id}">
-                            {!$Label.Core_MDF_IPA_EmailTemp_Link1}
-                        </apex:outputLink>
-                        <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                       value="{!$Label.Core_MDF_PFRCommunityLink + RelatedTo.Id}">
-                            {!$Label.Core_MDF_IPA_EmailTemp_Link1}
-                        </apex:outputLink>
-                    </p>
-                    
+                    <p><apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_IPA_EmailTemp_Link1} 
+                    </apex:outputLink></p>
                     <p>{!$Label.Core_MDF_IPA_EmailTemp_Body8}</p>
                     <p></p>
                     

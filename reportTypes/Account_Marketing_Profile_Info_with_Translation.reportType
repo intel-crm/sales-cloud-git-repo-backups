@@ -5,6 +5,10 @@
     <deployed>true</deployed>
     <description>Account, Marketing Profile Info with Translations</description>
     <join>
+        <join>
+            <outerJoin>true</outerJoin>
+            <relationship>PMP_Company_Information_Translations__r</relationship>
+        </join>
         <outerJoin>false</outerJoin>
         <relationship>Company_Informations__r</relationship>
     </join>
@@ -349,5 +353,63 @@
             <table>Account.Company_Informations__r</table>
         </columns>
         <masterLabel>Marketing Profile Informations</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Chinese_Static_Txt__c</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Chinese_Txt__c</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_English_Txt__c</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Field_Nm__c</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Japanese_Txt__c</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Account.Company_Informations__r.PMP_Company_Information_Translations__r</table>
+        </columns>
+        <masterLabel>Marketing  Profile Translations</masterLabel>
     </sections>
 </ReportType>

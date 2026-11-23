@@ -13,10 +13,6 @@
         <name>Core_MDF_AccountIdProgramRoleUserId_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account_id__c</name>
         <relationshipLabel><!-- Internal Users Partner Geo Mappings --></relationshipLabel>
@@ -222,6 +218,58 @@
             <translation><!-- EMEA-&gt;SOEM Data Center MDF --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA-&gt;Account Plan</masterLabel>
+            <translation><!-- INDIA-&gt;Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- INDIA-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Client Specialties MDF</masterLabel>
+            <translation><!-- INDIA-&gt;Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Cloud</masterLabel>
+            <translation><!-- INDIA-&gt;Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Co-Engineering</masterLabel>
+            <translation><!-- INDIA-&gt;Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- INDIA-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;IoT Premier - MDF</masterLabel>
+            <translation><!-- INDIA-&gt;IoT Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;IoT Targeted - MDF</masterLabel>
+            <translation><!-- INDIA-&gt;IoT Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- INDIA-&gt;ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Proposal I MDF</masterLabel>
+            <translation><!-- INDIA-&gt;Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;Proposal II MDF</masterLabel>
+            <translation><!-- INDIA-&gt;Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- INDIA-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- INDIA-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC-&gt;Account Plan</masterLabel>
             <translation><!-- PRC-&gt;Account Plan --></translation>
         </picklistValues>
@@ -352,6 +400,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>

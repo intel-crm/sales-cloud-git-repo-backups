@@ -247,7 +247,7 @@
             <div style="display: block;">
                 <lightning-dual-listbox class="selectProdOptions" name="Select Options" source-label="Intel Products"
                     options={availableProductOptions} selected-label="Included in Project" id="dualbox"
-                    onchange={handleChangeProducts} value={defalutprodvalues}  size=10 disable-reordering>
+                    onchange={handleChangeProducts} value={defalutprodvalues} size=10 disable-reordering>
                 </lightning-dual-listbox>
                 <p class="slds-m-top_small slds-m-bottom_small">You can select multiple products at a time</p>
                 <template if:true={showaddProd}>
@@ -274,15 +274,10 @@
             <div class="slds-grid">
                 <lightning-dual-listbox add-button-label="Add" remove-button-label="Remove" name="Select Options"
                     source-label="Available Project Members" options={tempProjMembersOptions}
-                    selected-label="Included in Project" onchange={handleChangeProjectmembers}
-                    onclick={handleClickProjectmembers} class="selectProjOptions"
+                    selected-label="Included in Project" onchange={handleChangeProjectmembers} class="selectProjOptions"
                     value={defalutprojvalues} size=5 disable-reordering>
                 </lightning-dual-listbox>
             </div>
-            <template if:true={showProjectMemberOwnerNote}>
-                <p class="projectMemberOwnerNote">{projectMemberOwnerNote}</p>
-            </template>
-
             <p class="slds-m-top_small slds-m-bottom_small">You can select multiple members at a time</p>
             <template if:true={showaddProj}>
                 <lightning-button

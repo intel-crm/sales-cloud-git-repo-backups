@@ -419,8 +419,8 @@ false - if profile response is getting created
                 if(toBeUpdatedABA!=null && !toBeUpdatedABA.isEmpty()){
                     Database.update(toBeUpdatedABA);
                 }
-        system.debug('activdatebenefit accountids-->'+accountids);
-        contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
+				system.debug('activdatebenefit accountids-->'+accountids);
+				contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
                 system.debug('contactIdsForCompPCR--->'+contactIdsForCompPCR);
                 for(Core_Contact_Entitlement__c ce : [select id,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in: contactIdsForCompPCR and Core_Selected__c=FALSE and Core_Status__c='Complete' and Core_Contact_Id__r.AccountId in :actABAtobeUpdated.keySet() and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';')  ]){                
                     ce.Core_Selected__c = true;
@@ -688,7 +688,7 @@ false - if profile response is getting created
         }
     }*/
     public static void activateInactiveBenefit(List<PRM_Profile_Responses__c> newProfileReponse, Map<id, PRM_Profile_Responses__c>oldMap){
-  try{
+	try{
         activateInactivateBenefitExecuted = true;
         if(!fromPointsCalculation && fromOPID){
             Set<String> questionCodes = new Set<String>();
@@ -710,18 +710,18 @@ false - if profile response is getting created
                 }
                 if(label.PRM_Question_Code_OptIn.contains(pq.PRM_Question_Cd__c)){
                     pointsOptInQstnCdIds.add(pq.Id);                
-      }              
-    }  
+			}							
+		}  
 
-    for(PRM_Profile_Responses__c profResp :newProfileReponse){
+		for(PRM_Profile_Responses__c profResp :newProfileReponse){
            
-      if(pointsNotEligibleQstnCdIds.contains(profResp.PRM_Profile_Questions_Id__c) 
+			if(pointsNotEligibleQstnCdIds.contains(profResp.PRM_Profile_Questions_Id__c) 
                && String.isNotBlank(profResp.PRM_Response_Txt__c) 
                && profResp.PRM_Response_Txt__c != 'false' 
                && (oldMap == null || oldMap.get(profResp.id).PRM_Response_Txt__c == 'false' || oldMap.get(profResp.id).PRM_Response_Txt__c == null)){
-        inactivateBenefitAccIds.add(profResp.PRM_Account_Id__c);
-        activateBenefitAccIds.remove(profResp.PRM_Account_Id__c);
-      }
+				inactivateBenefitAccIds.add(profResp.PRM_Account_Id__c);
+				activateBenefitAccIds.remove(profResp.PRM_Account_Id__c);
+			}
             
             else if(pointsNotEligibleQstnCdIds.contains(profResp.PRM_Profile_Questions_Id__c) 
                     && String.isNotBlank(profResp.PRM_Response_Txt__c)
@@ -732,57 +732,57 @@ false - if profile response is getting created
                     && profResp.PRM_Response_Txt__c != 'false' 
                             && (oldMap == null || (oldMap.get(profResp.id).PRM_Response_Txt__c == 'false' &&  oldMap.get(profResp.id).PRM_Response_Txt__c != profResp.PRM_Response_Txt__c ) || oldMap.get(profResp.id).PRM_Response_Txt__c == null)
                     ){
-        activateBenefitAccIds.add(profResp.PRM_Account_Id__c);
-      }            
-    }
-    if(!activateBenefitAccIds.IsEmpty() || !inactivateBenefitAccIds.IsEmpty()){          
-      for(Account actRec: [select id, Core_IPA_One_Partner_Id__c from Account where id in : inactivateBenefitAccIds or id in : activateBenefitAccIds]){   //QUERY -1 - Account       
-        if(!String.IsBlank(actRec.Core_IPA_One_Partner_Id__c) && actRec.Core_IPA_One_Partner_Id__c != actRec.id){
-          mapOfOpidAccIdLocId.put(actRec.Core_IPA_One_Partner_Id__c, actRec.id);
-        }
-      }        
-      if(!mapOfOpidAccIdLocId.isEmpty()){
-        for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
+				activateBenefitAccIds.add(profResp.PRM_Account_Id__c);
+			}            
+		}
+		if(!activateBenefitAccIds.IsEmpty() || !inactivateBenefitAccIds.IsEmpty()){      		
+			for(Account actRec: [select id, Core_IPA_One_Partner_Id__c from Account where id in : inactivateBenefitAccIds or id in : activateBenefitAccIds]){   //QUERY -1 - Account       
+				if(!String.IsBlank(actRec.Core_IPA_One_Partner_Id__c) && actRec.Core_IPA_One_Partner_Id__c != actRec.id){
+					mapOfOpidAccIdLocId.put(actRec.Core_IPA_One_Partner_Id__c, actRec.id);
+				}
+			}    		
+			if(!mapOfOpidAccIdLocId.isEmpty()){
+				for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
                                                                  from PRM_AccountChannelMembership__c 
                                                                  where PRM_Account_Id__c in:mapOfOpidAccIdLocId.keySet() and PRM_Status_Nm__c='Approved' and PRM_Account_Id__r.RecordType.DeveloperName ='Core_Partner_Account_Group'
                                                                 ]){
-          if(inactivateBenefitAccIds.contains(mapOfOpidAccIdLocId.get(acmrecord.PRM_Account_Id__c))){
-            inactivateBenefitAccIds.add(acmrecord.PRM_Account_Id__c);
-          }else{
-            activateBenefitAccIds.add(acmrecord.PRM_Account_Id__c);
-          }
-          
-        }
-      }
-      
-      List<PRM_AccountBenefitAssociation__c> actABAtobeUpdated = new List<PRM_AccountBenefitAssociation__c>();  
-      Set<Id> abaAccIdsUpdated = new Set<Id>();  
-			for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name,PRM_Status_Reason_Txt__c 
+					if(inactivateBenefitAccIds.contains(mapOfOpidAccIdLocId.get(acmrecord.PRM_Account_Id__c))){
+						inactivateBenefitAccIds.add(acmrecord.PRM_Account_Id__c);
+					}else{
+						activateBenefitAccIds.add(acmrecord.PRM_Account_Id__c);
+					}
+					
+				}
+			}
+			
+			List<PRM_AccountBenefitAssociation__c> actABAtobeUpdated = new List<PRM_AccountBenefitAssociation__c>();	
+			Set<Id> abaAccIdsUpdated = new Set<Id>();	
+			for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name 
                                                         from PRM_AccountBenefitAssociation__c 
                                                         where (PRM_Account_Id__c in:activateBenefitAccIds or PRM_Account_Id__c in:inactivateBenefitAccIds) AND PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :System.Label.PRM_benefits_for_point_not_eligible_flag.split(';')
                                                        ]){
-        if(inactivateBenefitAccIds.contains(aba.PRM_Account_Id__c) && aba.PRM_Status_Nm__c=='Active'){
-          aba.PRM_Status_Nm__c = System.label.PRM_Status_Inactive;
-          aba.PRM_Status_Reason_Txt__c =System.label.PRM_Points_Not_eligible_Flag_checked;
-          actABAtobeUpdated.add(aba);
-          abaAccIdsUpdated.add(aba.PRM_Account_Id__c);
-        }else if(activateBenefitAccIds.contains(aba.PRM_Account_Id__c) && aba.PRM_Status_Nm__c=='Inactive'){
-          aba.PRM_Status_Nm__c = System.label.PRM_Status_Active;
-          aba.PRM_Status_Reason_Txt__c ='';
-          actABAtobeUpdated.add(aba);
-          abaAccIdsUpdated.add(aba.PRM_Account_Id__c);
-        }                          
-      }      
-      if(!actABAtobeUpdated.isEmpty()){
+				if(inactivateBenefitAccIds.contains(aba.PRM_Account_Id__c) && aba.PRM_Status_Nm__c=='Active'){
+					aba.PRM_Status_Nm__c = System.label.PRM_Status_Inactive;
+					aba.PRM_Status_Reason_Txt__c =System.label.PRM_Points_Not_eligible_Flag_checked;
+					actABAtobeUpdated.add(aba);
+					abaAccIdsUpdated.add(aba.PRM_Account_Id__c);
+				}else if(activateBenefitAccIds.contains(aba.PRM_Account_Id__c) && aba.PRM_Status_Nm__c=='Inactive'){
+					aba.PRM_Status_Nm__c = System.label.PRM_Status_Active;
+					aba.PRM_Status_Reason_Txt__c ='';
+					actABAtobeUpdated.add(aba);
+					abaAccIdsUpdated.add(aba.PRM_Account_Id__c);
+				}													
+			}			
+			if(!actABAtobeUpdated.isEmpty()){
                 Database.update(actABAtobeUpdated,false);
-      }      
-      accountids.addAll(activateBenefitAccIds);
-      accountids.addAll(inactivateBenefitAccIds);
-      
-      contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
-      if(!contactIdsForCompPCR.isEmpty()){
+			}			
+			accountids.addAll(activateBenefitAccIds);
+			accountids.addAll(inactivateBenefitAccIds);
+			
+			contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
+			if(!contactIdsForCompPCR.isEmpty()){
                 // commented as part of soql 101 fix.
-        //Database.update(ceList) 
+				//Database.update(ceList) 
 
                 //added this logic as part of soql 101 fix - 6 May 2025 : TWC729-7872
                 if(System.isBatch() || System.isQueueable() || System.isFuture()) {
@@ -791,14 +791,14 @@ false - if profile response is getting created
                 else{
                     updateCERecordsAsync(contactIdsForCompPCR,abaAccIdsUpdated,inactivateBenefitAccIds,activateBenefitAccIds);
                 }
-      }
-      
+			}
+			
+		}
     }
-    }
-  }catch(Exception e){
-    //System.debug('The following exception has occurred: ' + e.getMessage());
+	}catch(Exception e){
+		//System.debug('The following exception has occurred: ' + e.getMessage());
         Core_Log_Entry.logEntryWithException('PRM_ProfileResponse', 'IPA', 'ProfileResponse', 'Medium',logEntryMsg,'' , '', '', '',e);     
-  }
+	}
 }
 
     /**
@@ -809,14 +809,13 @@ false - if profile response is getting created
         * @userstory         : TWC729-7967
     **/
     public static void activateInactiveBenefit_IPAR(List<PRM_IPAMembership_Attributes__c> newIpaMemAtt, Map<id, PRM_IPAMembership_Attributes__c>oldMap){
-        String logEntryMsg = 'Inside activateInactiveBenefit_IPAR:newIpaMemAtt:'+newIpaMemAtt+'::\noldMap:'+oldMap;
         try{
             activateInactivateBenefitExecuted = true;
-            List<PRM_AccountBenefitAssociation__c> actABAtobeUpdated = new List<PRM_AccountBenefitAssociation__c>();  
+            List<PRM_AccountBenefitAssociation__c> actABAtobeUpdated = new List<PRM_AccountBenefitAssociation__c>();	
             Set<Id> abaAccIdsUpdated = new Set<Id>();
             Map<Id,PRM_IPAMembership_Attributes__c> allAccountIds = new Map<Id,PRM_IPAMembership_Attributes__c>();
             Set<Id> opidAccountids = new Set<Id>();
-            Set<Id> intelAccountIds = new Set<Id>();  
+            Set<Id> intelAccountIds = new Set<Id>();	
             Set<id> contactIdsForCompPCR = new Set<Id>();
             Set<Id> inactiveIntelAccts = new Set<ID>();
             Set<Id> activeIntelAccts = new Set<ID>();
@@ -824,7 +823,7 @@ false - if profile response is getting created
             if(!fromPointsCalculation && fromOPID){
                 Set<Id> inactivateBenefitAccIds = new Set<Id>();
                 Set<Id> activateBenefitAccIds = new Set<Id>();
-                Set<Id> allOpidAccts = new Set<Id>();        
+                Set<Id> allOpidAccts = new Set<Id>();				
                 for(PRM_IPAMembership_Attributes__c ipaMemAtt: newIpaMemAtt){
                     allAccountIds.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }
@@ -846,12 +845,11 @@ false - if profile response is getting created
                             activateBenefitAccIds.add(acmrecord.PRM_Account_Id__c);
                         }
                     }
-                }  
-                logEntryMsg += '\nInside activateInactiveBenefit_IPAR:inactivateBenefitAccIds:'+inactivateBenefitAccIds+'::\nactivateBenefitAccIds:'+activateBenefitAccIds;         
-                if(!activateBenefitAccIds.IsEmpty() || !inactivateBenefitAccIds.IsEmpty()){          
+                }           
+                if(!activateBenefitAccIds.IsEmpty() || !inactivateBenefitAccIds.IsEmpty()){      		
                     allOpidAccts.addAll(activateBenefitAccIds);
-                    allOpidAccts.addAll(inactivateBenefitAccIds);     
-                    for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name,PRM_Status_Reason_Txt__c 
+                    allOpidAccts.addAll(inactivateBenefitAccIds); 		
+                    for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name 
                                                             from PRM_AccountBenefitAssociation__c 
                                                             where (PRM_Account_Id__c in:activateBenefitAccIds or PRM_Account_Id__c in:inactivateBenefitAccIds) AND PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :System.Label.PRM_benefits_for_point_not_eligible_flag.split(';')
                                                         ]){
@@ -865,15 +863,13 @@ false - if profile response is getting created
                              aba.PRM_Status_Reason_Txt__c ='Points Optin flag checked';//TWC729-8089 : Adding reason text : NJ
                             actABAtobeUpdated.add(aba);
                             abaAccIdsUpdated.add(aba.PRM_Account_Id__c);
-                        }                          
+                        }													
                     }
-                    logEntryMsg += '\nInside activateInactiveBenefit_IPAR:actABAtobeUpdated:'+actABAtobeUpdated+'::\nabaAccIdsUpdated:'+abaAccIdsUpdated; 
                     if(!actABAtobeUpdated.isEmpty()){
                         Database.update(actABAtobeUpdated,false);
-                    }      
+                    }			
                     opidAccountids.addAll(activateBenefitAccIds);
                     opidAccountids.addAll(inactivateBenefitAccIds);
-                    logEntryMsg += '\nInside activateInactiveBenefit_IPAR:opidAccountids:'+opidAccountids; 
                     
                     for(Core_Account_Group_member__c cag : [SELECT id,Core_Intel_Account_Id__c,Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in: opidAccountids and Core_Intel_Partner_Alliance_PartnerGroup__c = true]){
                         if(abaAccIdsUpdated.contains(cag.Core_Partner_Account_Id__c)){
@@ -886,10 +882,7 @@ false - if profile response is getting created
                             activeIntelAccts.add(cag.Core_Intel_Account_Id__c);
                         }
                     }
-                    logEntryMsg += '\nInside activateInactiveBenefit_IPAR:intelAccountIds:'+intelAccountIds+'::\ninactiveIntelAccts:'+inactiveIntelAccts+'::\nactiveIntelAccts:'+activeIntelAccts;
                     contactIdsForCompPCR=getContactsOfCompStatusPCR(intelAccountIds);
-
-                    logEntryMsg += '\nInside activateInactiveBenefit_IPAR:contactIdsForCompPCR:'+contactIdsForCompPCR; 
 
                     if(!contactIdsForCompPCR.isEmpty()){
                         // commented as part of soql 101 fix.
@@ -909,33 +902,24 @@ false - if profile response is getting created
             //System.debug('The following exception has occurred: ' + e.getMessage());
             Core_Log_Entry.logEntryWithException('PRM_ProfileResponse', 'IPA', 'ProfileResponse', 'Medium',logEntryMsg,'' , '', '', '',e);     
         }
-
-        PRM_ProfileResponseOptIn.createLogEntry(logEntryMsg,'PRM_ProfileResponse');
     }
     public static void updateCERecords_IPAR(Set<Id> contactIdsForCompPCR, Set<Id> abaAccIdsUpdated, Set<Id> inactivateBenefitAccIds, Set<Id> activateBenefitAccIds){
-
-        String logEntryMsg = 'Inside updateCERecords_IPAR:contactIdsForCompPCR:'+contactIdsForCompPCR+'::\nabaAccIdsUpdated:'+abaAccIdsUpdated+'::\ninactivateBenefitAccIds:'+inactivateBenefitAccIds+'::\nactivateBenefitAccIds:'+activateBenefitAccIds;
-
         List<Core_Contact_Entitlement__c> ceList = new List<Core_Contact_Entitlement__c>();
             
-      for(Core_Contact_Entitlement__c ce : [select id,Core_Status__c,Core_Data_Loaded__c,Core_Selected__c,Core_Contact_Id__r.AccountId, Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c from Core_Contact_Entitlement__c where Core_Contact_Id__c in:contactIdsForCompPCR and  
+			for(Core_Contact_Entitlement__c ce : [select id,Core_Status__c,Core_Data_Loaded__c,Core_Selected__c,Core_Contact_Id__r.AccountId, Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c from Core_Contact_Entitlement__c where Core_Contact_Id__c in:contactIdsForCompPCR and  
                                                   Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c in :abaAccIdsUpdated and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';') ]){
-        if(inactivateBenefitAccIds.contains(ce.Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c) && ce.Core_Selected__c == TRUE && ce.Core_Status__c == 'Complete'){
-          ce.Core_Selected__c = false;
-          ce.Core_Status__c ='Pending';
-          ce.Core_Data_Loaded__c=true;
-          ceList.add(ce);        
-        }else if(activateBenefitAccIds.contains(ce.Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c) && ce.Core_Selected__c == FALSE){
+				if(inactivateBenefitAccIds.contains(ce.Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c) && ce.Core_Selected__c == TRUE && ce.Core_Status__c == 'Complete'){
+					ce.Core_Selected__c = false;
+					ce.Core_Status__c ='Pending';
+					ce.Core_Data_Loaded__c=true;
+					ceList.add(ce);				
+				}else if(activateBenefitAccIds.contains(ce.Core_Contact_Id__r.Account.Core_IPA_One_Partner_Id__c) && ce.Core_Selected__c == FALSE){
                     ce.Core_Selected__c = true;
-          ce.Core_Status__c ='Pending';
-          ce.Core_Data_Loaded__c =true;
-          ceList.add(ce);
-        }
-      }
-
-       logEntryMsg += 'Inside updateCERecords_IPAR:ceList:'+ceList;
-      
-
+					ce.Core_Status__c ='Pending';
+					ce.Core_Data_Loaded__c =true;
+					ceList.add(ce);
+				}
+			}
             if (ceList != null) {
                 List<Database.SaveResult> saveResultList = Database.update(ceList,false);
                 for (Database.SaveResult sr : saveResultList ) {
@@ -946,9 +930,6 @@ false - if profile response is getting created
                     }
                 }
             }
-
-            PRM_ProfileResponseOptIn.createLogEntry(logEntryMsg,'PRM_ProfileResponse');
-
     }
     //added this new future method as part of soql 101 fix - 6 May 2025 : TWC729-7872
     @future
@@ -959,20 +940,20 @@ false - if profile response is getting created
     public static void updateCERecords(Set<Id> contactIdsForCompPCR, Set<Id> abaAccIdsUpdated, Set<Id> inactivateBenefitAccIds, Set<Id> activateBenefitAccIds){
         List<Core_Contact_Entitlement__c> ceList = new List<Core_Contact_Entitlement__c>();
             
-      for(Core_Contact_Entitlement__c ce : [select id,Core_Status__c,Core_Data_Loaded__c,Core_Selected__c,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in:contactIdsForCompPCR and  
+			for(Core_Contact_Entitlement__c ce : [select id,Core_Status__c,Core_Data_Loaded__c,Core_Selected__c,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in:contactIdsForCompPCR and  
                                                   Core_Contact_Id__r.AccountId in :abaAccIdsUpdated and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';') ]){
-        if(inactivateBenefitAccIds.contains(ce.Core_Contact_Id__r.AccountId) && ce.Core_Selected__c == TRUE && ce.Core_Status__c == 'Complete'){
-          ce.Core_Selected__c = false;
-          ce.Core_Status__c ='Pending';
-          ce.Core_Data_Loaded__c=true;
-          ceList.add(ce);        
-        }else if(activateBenefitAccIds.contains(ce.Core_Contact_Id__r.AccountId) && ce.Core_Selected__c == FALSE){
+				if(inactivateBenefitAccIds.contains(ce.Core_Contact_Id__r.AccountId) && ce.Core_Selected__c == TRUE && ce.Core_Status__c == 'Complete'){
+					ce.Core_Selected__c = false;
+					ce.Core_Status__c ='Pending';
+					ce.Core_Data_Loaded__c=true;
+					ceList.add(ce);				
+				}else if(activateBenefitAccIds.contains(ce.Core_Contact_Id__r.AccountId) && ce.Core_Selected__c == FALSE){
                     ce.Core_Selected__c = true;
-          ce.Core_Status__c ='Pending';
-          ce.Core_Data_Loaded__c =true;
-          ceList.add(ce);
-        }
-      }
+					ce.Core_Status__c ='Pending';
+					ce.Core_Data_Loaded__c =true;
+					ceList.add(ce);
+				}
+			}
             if (ceList != null) {
                 List<Database.SaveResult> saveResultList = Database.update(ceList,false);
                 for (Database.SaveResult sr : saveResultList ) {
@@ -990,14 +971,14 @@ false - if profile response is getting created
         updateCERecords(contactIdsForCompPCR,abaAccIdsUpdated,inactivateBenefitAccIds,activateBenefitAccIds);
     }
      /* This method is used for fetching contact Ids of PCRS with complete status
-     added by LATA for scenario: Flag updates - when flag is updated at account level, 
-    entitlements belonging to inactive contact are also getting updated.
-    Developer : LATA */
+	 	added by LATA for scenario: Flag updates - when flag is updated at account level, 
+		entitlements belonging to inactive contact are also getting updated.
+		Developer : LATA */
                      
     public static set<Id> getContactsOfCompStatusPCR(set<Id> accIds){
               set<Id> contactIdsForCompPCR=new set<Id>();
                 for(PRM_Account_Contact_Relationship__c acrRec : [select id,PRM_Relationship_Id__r.name,PRM_Account_Id__r.Core_IPA_Partner_Segment__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Contact_Id__c, PRM_Contact_Id__r.Core_IPA_PartnerRole__c , PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Contact_Id__r.Core_IPA_Contact_Segment__c from PRM_Account_Contact_Relationship__c where PRM_InActive_Ind__c=false and PRM_Status_Nm__c='Complete' and PRM_Account_Id__c in: accIds]){
-                  contactIdsForCompPCR.add(acrRec.PRM_Contact_Id__c);
+          				contactIdsForCompPCR.add(acrRec.PRM_Contact_Id__c);
                 }
                 return contactIdsForCompPCR;
     }
@@ -1121,8 +1102,7 @@ false - if profile response is getting created
         * @userstory         : TWC729-7967
     **/
      public static void OPIDToLoctionRollDown_IPAR(List<PRM_IPAMembership_Attributes__c> opidIPAMemAttr, Map<id, PRM_IPAMembership_Attributes__c> oldMap){  
-        string errorMsgonRolldown =''; 
-        errorMsgonRolldown+='\ninside OPIDToLocationRollDown_IPAR, opidIPAMemAttr: '+opidIPAMemAttr;     
+        string errorMsgonRolldown ='';      
         Set<ID> opidRecordId = new Set<ID>();
         List<PRM_IPAMembership_Attributes__c> opidIpaMemAttrList = new List<PRM_IPAMembership_Attributes__c>();
         Map<Id,List<Core_Account_Group_member__c>> opidCagMap = new Map<Id,List<Core_Account_Group_member__c>>();
@@ -1130,6 +1110,7 @@ false - if profile response is getting created
         Map<Id,PRM_IPAMembership_Attributes__c> locAcctIpaMemAttMap = new Map<Id,PRM_IPAMembership_Attributes__c>();
         Set<PRM_IPAMembership_Attributes__c> locIpaMemAttrSet = new Set<PRM_IPAMEMbership_Attributes__c>();
         List<PRM_IPAMembership_Attributes__c> listofIpaMemtoUpsert = new List<PRM_IPAMembership_Attributes__c>();
+        String errorMsg = '';
         Id inteIpaMemAttrRecordId = Schema.SObjectType.PRM_IPAMembership_Attributes__c.getRecordTypeInfosByName().get('Intel Account Attributes').getRecordTypeId();
         
         for(PRM_IPAMembership_Attributes__c newIpaMemAtt :  opidIPAMemAttr )  {
@@ -1159,8 +1140,6 @@ false - if profile response is getting created
                 locAcctIpaMemAttMap.put(locIpaMemAtt.PRM_Account_Id__c,locIpaMemAtt);        
             }
         }         
-        errorMsgonRolldown+='opidCagMap: '+opidCagMap;
-        errorMsgonRolldown+='opidRecordId: '+opidRecordId;
         if(!opidCagMap.IsEmpty() && !opidRecordId.IsEmpty()){
             for(PRM_IPAMembership_Attributes__c ipaMemAtt:opidIpaMemAttrList ){
                 if(!opidCagMap.isEmpty() && opidCagMap.containsKey(ipaMemAtt.PRM_Account_Id__c)){
@@ -1184,9 +1163,6 @@ false - if profile response is getting created
             fromOPID = true;
             fromPointsCalculation = false;
             if(!listofIpaMemtoUpsert.IsEmpty()){
-                errorMsgonRolldown+='listofIpaMemtoUpsert: '+listofIpaMemtoUpsert;
-                errorMsgonRolldown+='fromOPID: '+fromOPID;
-                errorMsgonRolldown+='fromPointsCalculation: '+fromPointsCalculation;
                 //upsert all ipa membership attributes for OPID and intel account
                 Database.UpsertResult[] result = Database.upsert(listofIpaMemtoUpsert,false);
                 for(Database.UpsertResult sr : result){
@@ -1202,7 +1178,7 @@ false - if profile response is getting created
         }catch(Exception ex){
             errorMsgonRolldown+=ex.getMessage();   
         }finally{
-            PRM_ProfileResponseOptIn.createLogEntry(errorMsgonRolldown,'PRM_ProfileResponse');
+            Core_Log_Entry.logEntryWithDetails('ProfileResponse','IPA','ProfileResponse','Error','',errorMsgonRolldown ,'', '', '');
         }   
     }     
      /**
@@ -1381,13 +1357,13 @@ false - if profile response is getting created
                 }
                 
                 else{
-          
+					
                     if(optin == 'TRUE'){ 
-            if(OPIDList.contains(acntId)){
+						if(OPIDList.contains(acntId)){
                         if(tncLocSigned.get(acntId)!=null) 
                             isSigned = tncLocSigned.get(acntId);
-            }
-            else if(tncSigned.get(acntId)!=null){
+						}
+						else if(tncSigned.get(acntId)!=null){
                             isSigned = tncSigned.get(acntId);
                         }
                         if(isSigned){
@@ -1433,7 +1409,7 @@ false - if profile response is getting created
                             }
                         }
                         else{
-              
+							
                             if(pStatus!= null){ 
                                 if(pStatus.PRM_Response_Txt__c == 'Not Eligible')
                                 { tochange = false;}
@@ -1477,15 +1453,15 @@ false - if profile response is getting created
                         }
                     }
                     else{
-            if(OPIDList.contains(acntId)){
+						if(OPIDList.contains(acntId)){
                         if(tncLocSigned.get(acntId)!=null) 
                             isSigned = tncLocSigned.get(acntId);
-            }
-            else if(tncSigned.get(acntId)!=null){
+						}
+						else if(tncSigned.get(acntId)!=null){
                             isSigned = tncSigned.get(acntId);
                         }
                         if(isSigned){
-              if(pStatus!= null){  
+							if(pStatus!= null){  
                                /* if(pStatus.PRM_Response_Txt__c == 'Eligible')
                                 { tochange = false;}
                                 if(pStatus.PRM_Response_Txt__c == 'Not Eligible' || pStatus.PRM_Response_Txt__c == 'Active' || pStatus.PRM_Response_Txt__c =='')
@@ -1525,36 +1501,36 @@ false - if profile response is getting created
                                 statusDate.PRM_Account_Id__c = acntId;
                                 listProfileResponse.add(statusDate);
                             }
-            }
-            else{
-              if(pStatus!= null){                        
-                if(pStatus.PRM_Response_Txt__c !='Not Eligible'){
-                  pStatus.PRM_Response_Txt__c='Not Eligible';                    
-                  listProfileResponse.add(pStatus);      
-                }              
-              } 
-              else{
-                PRM_Profile_Responses__c statusResp = new PRM_Profile_Responses__c();                    
-                statusResp.PRM_Response_Txt__c='Not Eligible';
-                statusResp.PRM_Account_Id__c = acntId;
-                statusResp.PRM_Profile_Questions_Id__c =questionCodeIdMap.get('PRM_Status');                  
-                listProfileResponse.add(statusResp);                            
-              }
-              
-              if(pStatusDate!=null){
-                if(pStatus.PRM_Response_Txt__c != NEDate){
+						}
+						else{
+							if(pStatus!= null){                        
+								if(pStatus.PRM_Response_Txt__c !='Not Eligible'){
+									pStatus.PRM_Response_Txt__c='Not Eligible';                    
+									listProfileResponse.add(pStatus);      
+								}              
+							} 
+							else{
+								PRM_Profile_Responses__c statusResp = new PRM_Profile_Responses__c();                    
+								statusResp.PRM_Response_Txt__c='Not Eligible';
+								statusResp.PRM_Account_Id__c = acntId;
+								statusResp.PRM_Profile_Questions_Id__c =questionCodeIdMap.get('PRM_Status');                  
+								listProfileResponse.add(statusResp);                            
+							}
+							
+							if(pStatusDate!=null){
+								if(pStatus.PRM_Response_Txt__c != NEDate){
                                     pStatusDate.PRM_Response_Txt__c = NEDate != null? NEDate: String.valueOf(System.Today());
-                  listProfileResponse.add(pStatusDate);
-                }
-              } 
-              else{
-                PRM_Profile_Responses__c statusDate = new PRM_Profile_Responses__c();
-                statusDate.PRM_Response_Txt__c = NEDate;
-                statusDate.PRM_Profile_Questions_Id__c =questionCodeIdMap.get('PRM_Status_date');
-                statusDate.PRM_Account_Id__c = acntId;
-                listProfileResponse.add(statusDate);
-              }
-            }
+									listProfileResponse.add(pStatusDate);
+								}
+							} 
+							else{
+								PRM_Profile_Responses__c statusDate = new PRM_Profile_Responses__c();
+								statusDate.PRM_Response_Txt__c = NEDate;
+								statusDate.PRM_Profile_Questions_Id__c =questionCodeIdMap.get('PRM_Status_date');
+								statusDate.PRM_Account_Id__c = acntId;
+								listProfileResponse.add(statusDate);
+							}
+						}
                     }
                 }          
             }
@@ -1563,7 +1539,6 @@ false - if profile response is getting created
                 pointsRun=false;
                 fromPointsCalculation = true; 
                 PRM_ProfileResponses_TriggerHandler.fromPoints = true;
-                //system.debug('updated here with '+listProfileResponse);
                 Database.upsert(listProfileResponse,false);
             }
          }
@@ -1583,7 +1558,6 @@ false - if profile response is getting created
     /*------- IPA 2.0 Profile Response Design Change Starts ----------*/
     public static void createResponse_IPAR(List<PRM_Registration_Request__c> regRequest,List<Account> accList){//TWC727-2858 : IPA 2.0 : Profile Responses- Points Status Calculations
      string errorMsgCreateRsp =''; 
-     errorMsgCreateRsp+=' inside createResponse_IPAR, regRequest: '+regRequest;
     Map<Id,PRM_IPAMembership_Attributes__c> existingPRMap = new Map<Id,PRM_IPAMembership_Attributes__c>();
     List<PRM_IPAMembership_Attributes__c> profResponseList = new List<PRM_IPAMembership_Attributes__c>();
     Schema.RecordTypeInfo prLocRecTypeInfo = Schema.SObjectType.PRM_IPAMembership_Attributes__c.getRecordTypeInfosByDeveloperName().get('Intel_Account_Attributes');
@@ -1613,8 +1587,6 @@ false - if profile response is getting created
                         profResponse.PRM_Account_Id__c = accountId;
                         profResponse.RecordTypeId = prLocRecTypeId;
                     }
-                    //  Always re-activate IPA Membership
-                    profResponse.PRM_Inactive_ind__c = false;
                     //If the codes matches from Registration and the metadata, populate the corresponding responsevalue from Profile Response from Registration
                     Map<String, Object> qstnAnsCodeMap= PRM_IPAR_ProfileResponse_Utility.getProfResponsemdt();
                     System.debug('qstnAnsCodeMap--'+qstnAnsCodeMap);
@@ -1636,23 +1608,13 @@ false - if profile response is getting created
         
     }
         try{
-            errorMsgCreateRsp+='profResponseList: '+profResponseList;
     if(profResponseList.size()>0){
-        //upsert profResponseList;
-        Database.UpsertResult[] result = Database.Upsert(profResponseList,false);
-        for (Database.UpsertResult sr : result ) {
-                    if(!sr.isSuccess()){
-                        for(Database.Error err : sr.getErrors()){
-                            errorMsgCreateRsp += err.getMessage()+' ';
-                        }
-                    }
-                }
-
+        upsert profResponseList;
     }
     }catch(Exception ex){
             errorMsgCreateRsp+=ex.getMessage();   
-    }finally{
-        PRM_ProfileResponseOptIn.createLogEntry(errorMsgCreateRsp,'PRM_ProfileResponse');
+        }finally{
+            Core_Log_Entry.logEntryWithDetails('ProfileResponse','IPA','ProfileResponse','Error','',errorMsgCreateRsp ,'', '', '');
     }
     }
 

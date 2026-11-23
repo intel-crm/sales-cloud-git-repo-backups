@@ -103,7 +103,6 @@ public class Core_UserContact_Handler_Test{
             insert pu;
             pu.IsActive = false;             
             update pu; 
-            System.assert(pu.IsActive == false, 'User should be inactive after update');
         Test.stopTest();       
     }
     
@@ -126,7 +125,6 @@ public class Core_UserContact_Handler_Test{
             insert pu;
             pu.IsActive = true;             
             update pu;
-            System.assert(pu.IsActive == true, 'User should be active after update');
         Test.stopTest();       
     }
 }

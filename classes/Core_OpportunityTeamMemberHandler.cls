@@ -29,7 +29,7 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
         Boolean bASMO = false;
         Boolean bEMEA = false;
         Boolean bPRC = false;
-        //Boolean bINDIA = false;
+        Boolean bINDIA = false;
     }
     
     public static void updateGeoFlags(List<OpportunityTeamMember> lstOldTeamMembers,
@@ -66,7 +66,7 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
         // Use that set to pull current geo flags where team members are changing
         Map<Id,Opportunity> mapOppsAndOldFlags =
             new Map<Id,Opportunity>([select Id, Core_Opportunity_Team_Geo_APJ__c, Core_Opportunity_Team_Geo_ASMO__c,
-                                     Core_Opportunity_Team_Geo_EMEA__c, Core_Opportunity_Team_Geo_PRC__c/*,CRM_Opportunity_Team_Geo_INDIA__c*/
+                                     Core_Opportunity_Team_Geo_EMEA__c, Core_Opportunity_Team_Geo_PRC__c,CRM_Opportunity_Team_Geo_INDIA__c
                                      from Opportunity where Id in :setOpportunityIDs]);
         
         // Also for that set of ID values, get the current list of team members and their geos, where Role != Viewer and Profile != IT@Intel
@@ -97,8 +97,8 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
                 newGeoFlags.bEMEA = true;
             else if (member.User.Core_User_Geo__c == 'PRC')
                 newGeoFlags.bPRC = true;
-            /*else if(member.User.Core_User_Geo__c== 'INDIA')
-                newGeoFlags.bINDIA = true;*/
+            else if(member.User.Core_User_Geo__c == 'INDIA')
+                newGeoFlags.bINDIA = true;
             
             mapOppsAndNewGeoFlags.put(member.OpportunityId, newGeoFlags);
         }
@@ -116,8 +116,8 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
                 bUpdateOpp = true;
             else if (mapOppsAndOldFlags.get(oppId).Core_Opportunity_Team_Geo_PRC__c != mapOppsAndNewGeoFlags.get(oppId).bPRC)
                 bUpdateOpp = true;
-            /*else if (mapOppsAndOldFlags.get(oppId).CRM_Opportunity_Team_Geo_INDIA__c != mapOppsAndNewGeoFlags.get(oppId).bINDIA)
-                bUpdateOpp = true;*/
+            else if (mapOppsAndOldFlags.get(oppId).CRM_Opportunity_Team_Geo_INDIA__c != mapOppsAndNewGeoFlags.get(oppId).bINDIA)
+                bUpdateOpp = true;
             
             if (bUpdateOpp)
                 setOppIDsToUpdate.add(oppId);
@@ -131,7 +131,7 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
             opp.Core_Opportunity_Team_Geo_ASMO__c = mapOppsAndNewGeoFlags.get(opp.Id).bASMO;
             opp.Core_Opportunity_Team_Geo_EMEA__c = mapOppsAndNewGeoFlags.get(opp.Id).bEMEA;
             opp.Core_Opportunity_Team_Geo_PRC__c = mapOppsAndNewGeoFlags.get(opp.Id).bPRC;
-            //opp.CRM_Opportunity_Team_Geo_INDIA__c = mapOppsAndNewGeoFlags.get(opp.Id).bINDIA;
+            opp.CRM_Opportunity_Team_Geo_INDIA__c = mapOppsAndNewGeoFlags.get(opp.Id).bINDIA;
         }
         update lstOppsToUpdate;
     }

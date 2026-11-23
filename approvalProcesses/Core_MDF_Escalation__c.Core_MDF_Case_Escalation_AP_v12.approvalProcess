@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>creator</type>
@@ -617,7 +617,7 @@ ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;ASMO&apos;))</
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Escalation Approval for Case</label>
-    <processOrder>3</processOrder>
+    <processOrder>2</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Cancel_Status</name>

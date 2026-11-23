@@ -18,10 +18,10 @@ public class Core_AccountTeamMemberHandler extends TriggerHandler{
     */  
     
     public static Boolean bypassValidationonAccountTeam = false;
-  public override void afterInsert(){
-      Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-    if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
-           
+	public override void afterInsert(){
+	    Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
+		if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
+		       
             Core_AccountTeamMemberServiceHandler.sharingAccountTeamList((List<AccountTeamMember>) Trigger.new , Trigger.isDelete );
            }
            
@@ -30,7 +30,6 @@ public class Core_AccountTeamMemberHandler extends TriggerHandler{
                     Core_AccountTeamMemberServiceHandler.restrictDuplicateCategory((Map<Id, AccountTeamMember>)Trigger.newMap, (Map<Id, AccountTeamMember>)Trigger.oldMap);
                 }
            }
-           PRM_PartnerDealOpportunitySharingService.createShares(Trigger.new);
 
 
         }
@@ -41,12 +40,12 @@ public class Core_AccountTeamMemberHandler extends TriggerHandler{
     * Description  :  List of AccountTeamMember updated to Account Sending that list to Core_AccountTeamMemberServiceHandler class .
     * Return Type  :  VOID
     * Parameter    : 
-    */      
+    */  		
     
     public override void afterUpdate(){
        Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-    if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
-           
+		if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
+		       
             Core_AccountTeamMemberServiceHandler.sharingAccountTeamList((List<AccountTeamMember>) Trigger.new, Trigger.isDelete);
         }
         // new custom setting record will create 
@@ -66,15 +65,14 @@ public class Core_AccountTeamMemberHandler extends TriggerHandler{
     * Description  :  List of AccountTeamMember deleted to Account Sending that list to Core_AccountTeamMemberServiceHandler class .
     * Return Type  :  VOID
     * Parameter    : 
-    */      
+    */  		
     
     public override void afterDelete(){
        Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-    if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
-           
+		if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
+		       
             Core_AccountTeamMemberServiceHandler.sharingAccountTeamList((List<AccountTeamMember>) Trigger.old, Trigger.isDelete);
-           }
-        PRM_PartnerDealOpportunitySharingService.removeShares(Trigger.old);
+           } 
     }
-  
-  }
+	
+	}

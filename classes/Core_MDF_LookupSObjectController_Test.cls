@@ -12,7 +12,6 @@ private class Core_MDF_LookupSObjectController_Test {
     private static final String SOBJECT_API_NAME = 'ChannelProgram';
     private static final String FIELDS_TO_RETURN = 'id,Name,Core_MDF_Technical_Program_Name__c';
     private static final String WHERE_CLAUSE = 'Name LIKE @quote;%Client%@quote;';
-    private static final String SEARCH_FIELDS = 'Core_MDF_Technical_Program_Name__c';
     
     @testSetup
     private static void createTestData(){
@@ -32,7 +31,6 @@ private class Core_MDF_LookupSObjectController_Test {
         Test.setFixedSearchResults(fixedSearchResults);
         system.runas(usr){
             List<Core_MDF_LookupSObjectController.Result> results = Core_MDF_LookupSObjectController.lookup(SEARCH_STRING,SOBJECT_API_NAME,FIELDS_TO_RETURN,WHERE_CLAUSE);  
-            List<Core_MDF_LookupSObjectController.Result> results1 = Core_MDF_LookupSObjectController.lookup(SEARCH_STRING,SOBJECT_API_NAME,FIELDS_TO_RETURN,WHERE_CLAUSE,SEARCH_FIELDS);  
             //Assertions
             if(!results.isEmpty()){
                 System.assert(results != null);

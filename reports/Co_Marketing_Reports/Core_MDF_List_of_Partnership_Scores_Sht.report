@@ -27,7 +27,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
+            <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_MDF_Partnership_Score__c$Core_MDF_Quarter_nm__c</column>

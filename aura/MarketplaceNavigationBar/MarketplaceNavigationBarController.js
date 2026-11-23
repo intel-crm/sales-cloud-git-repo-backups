@@ -84,8 +84,7 @@
         var is_PMP_Manage_Partners = false;
         var is_PMP_View_Dashboard = false;
         // var is_Offering_Page =false; //IPA2.0 + US TWC4497-1631
-        var is_PMP_Manage_Solutions = false;
-        var is_PMP_Manage_Storefront = false;
+        var is_PMP_Manage_Solutions = false;	
         // Added by Subash for US842248
         var pageName = window.document.title;
         
@@ -121,10 +120,6 @@
                     if(storeResponse.PMP_Manage_Solutions !== undefined){
                         is_PMP_Manage_Solutions = true;
                     }
-                     if(storeResponse.PMP_Manage_Storefront !== undefined){
-                        is_PMP_Manage_Storefront = true;
-                    }
-                    
                 }
                 
                 var action = component.get("c.checkBenefitLevel");
@@ -146,17 +141,13 @@
                         var actionInternalPermCheck = component.get("c.fetchPermissionSetName");
                         actionInternalPermCheck.setCallback(this, function(response) {
                             var state = response.getState();
-                            
                             if (state === "SUCCESS") {
                                 var storeResponse = response.getReturnValue();
-                               
                                 // if(storeResponse != null && storeResponse.includes("PMP_Internal_Intel_Admin")){ 
                                // IPA2.0 + US TWC729-8177 - View Dashboard Removal
                                 if(storeResponse != null && (storeResponse.includes("PMP_Internal_Intel_Admin") || storeResponse.includes("PMP_Internal_Intel_Admin_Read_Only") || storeResponse.includes("PMP_Internal_Intel_Read_Only"))){
                                     is_Intel_Admin_Profile = true;
-                                     
                                 }
-                              
                                 // IPA2.0 + US TWC729-8177 - View Dashboard Removal
                                 // Check if current page is dashboard and user is admin - redirect if admin
                                 var currentUrl = window.location.href;
@@ -187,7 +178,6 @@
                                         
                                           var isPortal = component.get("v.portal");
        									  var isLoggedincmp = component.get("v.loggedInCompany");
-                                        
                                         //Visibility of buttons logic
                                         if(isPartnerUser == false){
                                             // IPA2.0 + US TWC4497-1631
@@ -209,9 +199,9 @@
                                         }else{
                                            // if(!isBasicAccess){
                                                 // Added isPortal == 'Partner Admin' to show manager storefront button on lead portal -27/01/2022
-                                             if(is_PMP_Manage_Storefront == true) {
-                                                component.set('v.showManageStorefront', true);
-                                            }
+                                                if((isPortal == 'Marketplace'||isPortal == 'Partner Admin') && isLoggedincmp == true){
+                                                    component.set('v.showManageStorefront', true);
+                                                }    
                                                 // IPA2.0 + US TWC4497-1631
                                                 // if(is_PMP_Manage_Offerings == true /*&& isEnhanced == true*/){                                          
                                                 //     component.set('v.showManageOfferings', true);

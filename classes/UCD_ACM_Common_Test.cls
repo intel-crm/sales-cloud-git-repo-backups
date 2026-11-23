@@ -72,6 +72,12 @@ public class UCD_ACM_Common_Test {
         }
         insert accountBusinessTypes;
         
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
+        
         // Create Parent Account With Business Party Id
         List<Account> accountToInsertForBpId = new List<Account>();
         Account parentAccountWithBpId1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId1','Intel Account','UNFD_GLBL_CUST');
@@ -203,6 +209,14 @@ public class UCD_ACM_Common_Test {
         
         System.assertNotEquals(20,intMessageQueue.size(),'size should equal');
       //  System.assertNotEquals('New', integrationMessage[0].Message_Status__c, 'Update Successful');
+    }
+    
+    
+	 @isTest
+    private static void getCWLLabelTest(){
+        List<String> cwl = new List<String>{'EC'};
+        List<String> cwlLabel = UCD_ACM_Common.getCWLLabel(cwl);
+        System.assertNotEquals(cwlLabel,null);
     }
     
     @isTest

@@ -55,6 +55,9 @@
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
+    <columns>
         <field>DUE_DATE</field>
     </columns>
     <columns>

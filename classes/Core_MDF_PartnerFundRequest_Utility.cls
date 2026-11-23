@@ -126,8 +126,8 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
         
         ClaimActAllocRecTypeMappingWrapper claimActAllocRecTypeMappingInstance = new ClaimActAllocRecTypeMappingWrapper();
         //Avoid using Soql / Sosl queries without filters and limits
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt mtrecord : [SELECT Id, Core_MDF_Activity_Close_Days__c,Core_MDF_Activity_RecordType_txt__c, Core_MDF_Region_cd__c
-                                                                    FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt Limit 5000])
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt mtrecord : [SELECT Id, Core_MDF_Activity_Close_Days__c,Core_MDF_Activity_RecordType_txt__c, Core_MDF_Region_cd__c
+                                                                    FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt Limit 5000])
         {
             if (!metadtMap.containsKey(mtrecord.Core_MDF_Activity_RecordType_txt__c))
             {

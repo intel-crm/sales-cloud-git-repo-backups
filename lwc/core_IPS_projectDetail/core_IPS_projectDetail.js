@@ -20,9 +20,6 @@ import interestedpartiesGradeout from '@salesforce/apex/Core_IPS_PrefPage_CTRL.C
 import editProjectRecord from '@salesforce/apex/Core_IPS_Portal_ProjectUtility_LWC.editProjectRecord';
 import Custom from '@salesforce/resourceUrl/CustomCSS_LWC';
 import PortalSiteURL from '@salesforce/label/c.Core_IPS_PortalSiteURL_LWC';
-import getErrorMsg from '@salesforce/label/c.Core_IPS_Error_Msg';
-import getErrorNoteMsg from '@salesforce/label/c.Core_IPS_Error_Notes_Msg';
-
 import TIME_ZONE from '@salesforce/i18n/timeZone';
 import Core_IPS_Required from '@salesforce/label/c.Core_IPS_Required';
 const timezone = TIME_ZONE;
@@ -126,8 +123,8 @@ connectedCallback() {
     let projectURL = encodeURI(testURL1);
     let newURL = new URL(projectURL).searchParams;
     this.recordId = newURL.get('recordId');
-    this.AvailIPSProducts()
-        .then(() => this.existingIPSProducts());
+    this.AvailIPSProducts();
+    this.existingIPSProducts();
     this.AvailabcontactsforaddingtoprojectMembers();
     this.existingProjectMembers();
     this.getChildIPSProdctsToProject();
@@ -385,12 +382,9 @@ getCurrproj({ error, data }) {
         } else {
             this.gradeout = false;
         }*/
-
-       // start Kamala on 28-04-2026 - TWC745-9174 as part of Lightening Component exception 
-        /** projData.forEach(item => {
-            this.RequiredName = projData?.Name;
-        }); **/
-        //end Kamala
+        projData.forEach(item => {
+            this.RequiredName = item.Name;
+        });
     }
     else if (error) {
         this.hasAccess = false;
@@ -404,7 +398,7 @@ getCurrproj({ error, data }) {
 availableProductOptions = [];
 initialRecords = [];
 AvailIPSProducts() {
-    return AvailableIPSProducts({ projIdfromJS: this.recordId })
+    AvailableIPSProducts({ projIdfromJS: this.recordId })
         .then(result => {
             if (result) {
                 let options = [];
@@ -420,11 +414,11 @@ AvailIPSProducts() {
         })
 }
 selectedexistingProds = [];
-defalutprodvalues = [];
+defalutprodvalues;
 @api initialProds;
 storedProdValues;
 existingIPSProducts() {
-    return existingIPSProducts({ projIdfromJS: this.recordId })
+    existingIPSProducts({ projIdfromJS: this.recordId })
         .then(result => {
             if (result) {
                 this.initialProds = result;
@@ -434,15 +428,9 @@ existingIPSProducts() {
                     options.push({ label: eachRecord.Core_Supported_Product_Name__c, value: eachRecord.Core_Intel_Product__c });
                     values.push(eachRecord.Core_Intel_Product__c);
                 });
-                let mergedOptions = [...this.availableProductOptions];
                 for (let i = 0; i < options.length; i++) {
-                    if (!mergedOptions.some(option => option.value === options[i].value)) {
-                        mergedOptions.push(options[i]);
-                    }
+                    this.selectedexistingProds = this.availableProductOptions.push(options[i]);
                 }
-                this.selectedexistingProds = options;
-                this.availableProductOptions = mergedOptions;
-                this.initialRecords = mergedOptions;
                 this.defalutprodvalues = values;
                 this.storedProdValues = values;
             }
@@ -522,39 +510,30 @@ existingProjectMembers() {
  * Date: 22/4/2022
  * Description: Search the Project members based on the given input.
  */
-//defproj = [];//commented by sabira on  30-10-2026 as part of TWC745-9523
-//countProjSearch = 0;//commented by on 30-10-2026  sabira as part of TWC745-9523
+defproj = [];
+countProjSearch = 0;
 projMemSearchChangeHandler(event) {
-  //commented by sabira on  30-10-2026  as part of TWC745-9523
-    /* let tempSelectedValues = this.defalutprojvalues;
+    let tempSelectedValues = this.defalutprojvalues;
     let tempVar = event.detail.value;
-     if (tempVar) {
-         if (this.countProjSearch == 0) {
-             this.defproj = this.defalutprojvalues;
-             this.countProjSearch = 1;
-         }
-         this.tempProjMembersOptions = this.initialMemberRecords;
-         if (this.tempProjMembersOptions) {
-             let recs = [];
-             for (let rec of this.tempProjMembersOptions) {
-                 if (rec.label.toLowerCase().includes(tempVar.toLowerCase())) {
-                     recs.push(rec);
-                 }
-             }
-             this.tempProjMembersOptions = recs;
-         }
-        this.defalutprojvalues = tempSelectedValues ; //commented by sabira on  30-10-2026  as part of TWC745-9523*/
- // Begin Change by Sabira on  30-10-2026 as Part of TWC745-9523
-    const searchValue = event.detail.value || '';
- 
-    if (searchValue) {
-        this.tempProjMembersOptions = this.initialMemberRecords.filter(
-            rec => rec.label.toLowerCase().includes(searchValue.toLowerCase())
-        );
-	} /* end change by sabira on  30-10-2026 part of TWC745-9523 */
-	else {
+    if (tempVar) {
+        if (this.countProjSearch == 0) {
+            this.defproj = this.defalutprojvalues;
+            this.countProjSearch = 1;
+        }
         this.tempProjMembersOptions = this.initialMemberRecords;
-         // this.defalutprojvalues = tempSelectedValues;//commented by sabira on  30-10-2026 as a  part of TWC745-9523
+        if (this.tempProjMembersOptions) {
+            let recs = [];
+            for (let rec of this.tempProjMembersOptions) {
+                if (rec.label.toLowerCase().includes(tempVar.toLowerCase())) {
+                    recs.push(rec);
+                }
+            }
+            this.tempProjMembersOptions = recs;
+        }
+        this.defalutprojvalues = tempSelectedValues;
+    } else {
+        this.tempProjMembersOptions = this.initialMemberRecords;
+        this.defalutprojvalues = tempSelectedValues;
     }
 }
 @api productsArray = [];
@@ -615,15 +594,9 @@ handleAddOrRemoveProd(event) {
 @api projectsMembersArray = [];
 @api showaddProj = false;
 selectedProjMembers = [];
-showProjectMemberOwnerNote = false;
-projectMemberOwnerNote = getErrorNoteMsg;
 userId = Id;
- 
 handleChangeProjectmembers(event) {
-     // arrow button clicks move items and always dispatch change before the click bubbles to handleClickProjectmembers
-    this.suppressProjMemberClick = true;
-    //commented by sabira on  30-10-2026 as part of TWC745-9523
-     /* this.projectsMembersArray = JSON.stringify(event.detail.value);
+    this.projectsMembersArray = JSON.stringify(event.detail.value);
     this.selectedProjMembers = event.detail.value;
     if (this.defproj) {
         this.selectedProjMembers = [...this.selectedProjMembers, ...this.defproj];
@@ -631,80 +604,14 @@ handleChangeProjectmembers(event) {
         this.defproj = [];
         this.countProjSearch = 0;
     }
-    this.validateProjectOwner();
-} //commented upto here  by sabira on  30-10-2026 as part of TWC745-9523 */ 
- //Begin change  by sabira on  30-10-2026  part of TWC745-9523
-    const changedValues = event.detail.value || [];
-    // Identify the options currently visible in the filtered list.
-    const visibleValues = new Set(
-        this.tempProjMembersOptions.map(option => option.value)
-    );
-    // Keep previously selected members that are hidden by the filter.added 
-    const previouslySelected = this.defalutprojvalues || [];
- 
-    const hiddenSelectedValues = previouslySelected.filter(
-        memberId => !visibleValues.has(memberId)
-    );
-    // Combine the current selection with hidden selected members.
-    this.selectedProjMembers = [...new Set([
-        ...changedValues,
-        ...hiddenSelectedValues
-    ])];
-    // Save the complete, latest selection for the next operation.added 
-    this.defalutprojvalues = [...this.selectedProjMembers];
-    this.projectsMembersArray = JSON.stringify(this.selectedProjMembers);
-    this.validateProjectOwner();
- /* End  change upto here   by sabira on  30-10-2026 part of TWC745-9523 */ 
-}
- 
-suppressProjMemberClick = false;
-// fires on click of a member row, separate from the onchange handler
-handleClickProjectmembers() {
-    // skip this click, it belongs to an arrow button that already fired onchange
-    if (this.suppressProjMemberClick) {
-        this.suppressProjMemberClick = false;
-        return;
-    }
-    // click fires before onchange updates selectedProjMembers, so read the live value from the DOM
-    const dualListbox = this.template.querySelector('.selectProjOptions');
-    const currentValues = dualListbox ? dualListbox.value : this.selectedProjMembers;
-    this.projectsMembersArray = JSON.stringify(currentValues);
-    this.selectedProjMembers = currentValues;
- //commented this if block by sabira  on  30-10-2026 as a part of TWC745-9523 
-   /* if (this.defproj) {
-        this.selectedProjMembers = [...this.selectedProjMembers, ...this.defproj];
-        this.defalutprojvalues = [...new Set(this.selectedProjMembers)];
-        this.defproj = [];
-        this.countProjSearch = 0;
-    }//commented by sabira on  30-10-2026 as a part of TWC745-9523  */ 
-    
     getOwnerOfProject({
         projId: this.recordId
     })
         .then(result => {
             let memIdIsThere = this.selectedProjMembers.includes(result);
             if (memIdIsThere == false) {
-                this.showProjectMemberOwnerNote = true;
-            } else {
-                this.showProjectMemberOwnerNote = false;
-            }
-        })
-        .catch(error => {
-            this.errorMsg = error;
-            this.showToast('ERROR', error.body.message, 'error');
-            this.showToast('ERROR', JSON.stringify(error));
-        })
-}
-validateProjectOwner() {
-    getOwnerOfProject({
-        projId: this.recordId
-    })
-        .then(result => {
-           console.log('testing results',result );
-            let memIdIsThere = this.selectedProjMembers.includes(result);
-            if (memIdIsThere == false) {
-                this.showToast('Error', getErrorMsg, 'error');
-               setTimeout(() => window.location.reload(), 1000);
+                this.showToast('Error', 'You cannot remove the Project owner from the Project Member.', 'error');
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 if (this.projectsMembersArray != null && this.projectsMembersArray != undefined) {
                     this.showaddProj = true;
@@ -714,7 +621,6 @@ validateProjectOwner() {
         .catch(error => {
             this.errorMsg = error;
             this.showToast('ERROR', error.body.message, 'error');
-            this.showToast('ERROR', JSON.stringify(error));
         })
 }
 initialProjMem = [];

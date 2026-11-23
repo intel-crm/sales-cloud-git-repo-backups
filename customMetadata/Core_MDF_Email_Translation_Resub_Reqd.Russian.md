@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Последнее напоминание: заявка №</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Событие&quot;,&quot;Lead Cultivation&quot;:&quot;Развитие лидов&quot;,&quot;Technical Activation&quot;:&quot;Техническая активация&quot;,&quot;Incentive&quot;:&quot;Поощрение&quot;,&quot;Training&quot;:&quot;Обучение&quot;,&quot;Digital Media&quot;:&quot;Цифровые медиа&quot;,&quot;Legacy Media&quot;:&quot;Традиционные медиа&quot;,&quot;Funded Headcount&quot;:&quot;Финансирование персонала&quot;,&quot;Brand Awareness&quot;:&quot;Осведомлённость о бренде&quot;,&quot;Consideration&quot;:&quot;Рассмотрение&quot;,&quot;Purchase Intent&quot;:&quot;Покупательское намерение&quot;,&quot;Preference&quot;:&quot;Предпочтение&quot;,&quot;Share of Voice&quot;:&quot;Доля голоса&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Благодарим Вас,</value>
     </values>

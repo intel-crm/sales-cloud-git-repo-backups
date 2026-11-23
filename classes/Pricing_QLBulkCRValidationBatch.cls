@@ -2,8 +2,8 @@
 * @description       : Batch class is created to validate, clone and insert Quote Line and Performance Matrix records and send result email with CSV attached, and to call Pricing_QLBulkCRSendPayloadBatch to send request to MyDeals for the newly created Change Requests.
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 04-27-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 03-05-2025
+* @last modified by  : Vrushabh Uprikar
 **/
 
 public class Pricing_QLBulkCRValidationBatch implements Database.Batchable<sObject>, Database.Stateful{
@@ -75,8 +75,7 @@ public class Pricing_QLBulkCRValidationBatch implements Database.Batchable<sObje
         }
         csvColumnHeader = 'Result, New Quote Line ID, New Quote Line Number, Reference Quote Line Number, Deal ID, Product, Approved Pricing Start Date, Approved Pricing End Date, Effective Pricing Start Date, Approved ECAP Price, Billing Start Date (for consumption), Billing End Date (for consumption), Approved Quantity, Payable Quantity, Backdate Reason, My Deals Meet Comp Price, Pricing Manager WWID, Deal Description, Additional Ts and Cs, Additional Comments\n';
         String csvFile = csvColumnHeader + String.join(csvRowValues,'\n');
-        List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
-        Id orgWideEmailAddId = orgWideEmailAdd[0].id;
+        
         //send email
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         Messaging.EmailFileAttachment attach1 = new Messaging.EmailFileAttachment();
@@ -96,7 +95,6 @@ public class Pricing_QLBulkCRValidationBatch implements Database.Batchable<sObje
         String[] ccAddresses = new String[] {ccemailAddress};
         message.setToAddresses(toAddresses);
         message.setccAddresses(ccAddresses);
-        message.setOrgWideEmailAddressId(orgWideEmailAddId);
         message.setSubject('Result : Bulk Change Request Operation'); 
         message.setHtmlBody('Please see attached Bulk CR sucess error csv files');
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { message });

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>Retail Core Ultra Consumption Volume</fullName>
+        <default>false</default>
+        <label>Retail Core Ultra Consumption Volume</label>
+    </customValue>
+    <customValue>
         <fullName>Regional Priority</fullName>
         <default>false</default>
         <label>Regional Priority</label>
@@ -186,12 +191,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>One Intel OEM Consumption $</label>
-    </customValue>
-    <customValue>
-        <fullName>Retail Core Ultra Consumption Volume</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Retail Core Ultra Consumption Volume</label>
     </customValue>
     <description>Global picklist for KPI names linked to Sales OKR Objectives.</description>
     <masterLabel>Objective KPIs</masterLabel>

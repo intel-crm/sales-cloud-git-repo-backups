@@ -32,19 +32,10 @@ public with sharing class Core_IPS_DeflectedObject_LWC_Ctrl {
         {
             deflectedObj.Core_IPS_Search_JSON__c = cleanedCaseInfo;
         }
-        // Contact contactRecord;
-        // if (Schema.sObjectType.Contact.isAccessible()) { //FLS Read added -Gangadhar 29/09/2023
-        // 	contactRecord = [SELECT Id, Contact.Email FROM Contact WHERE Id = :caseInfoJSON.contactId];
-        // }
-        Contact contactRecord = new Contact(); // Exception Handling - 10-06-2026 Nuthana
-        List<Contact> contactRecordList = new List<Contact>();
-        if (Schema.sObjectType.Contact.isAccessible()) { 
-        	contactRecordList = [SELECT Id, Contact.Email FROM Contact WHERE Id = :caseInfoJSON.contactId];
-            if(contactRecordList.size()>0){ // Start If
-                contactRecord=contactRecordList[0];
-            } //End If
-         }
-
+        Contact contactRecord;
+        if (Schema.sObjectType.Contact.isAccessible()) { //FLS Read added -Gangadhar 29/09/2023
+        	contactRecord = [SELECT Id, Contact.LastName, Contact.Email FROM Contact WHERE Id = :caseInfoJSON.contactId];
+        }
         if(!String.isBlank(caseInfoJSON.Subject)){ //FLS Create/Update added -Gangadhar 29/09/2023
             if (Schema.sObjectType.Core_IPS_Deflected_Object__c.fields.Core_IPS_Description__c.isCreateable()||
                 Schema.sObjectType.Core_IPS_Deflected_Object__c.fields.Core_IPS_Description__c.isupdateable()) {
@@ -67,13 +58,7 @@ public with sharing class Core_IPS_DeflectedObject_LWC_Ctrl {
             	deflectedObj.Core_IPS_Product__c = caseInfoJSON.Product;
         	}
         }
-        //upsert deflectedObj;
-// Niyaz -vulnerability fix-refering to service class
-       List<Core_IPS_Deflected_Object__c> deflectedObjList = new List<Core_IPS_Deflected_Object__c>{ deflectedObj };
-Core_IPS_QueryService.upsertRecords(deflectedObjList);
-deflectedObj = deflectedObjList[0];
-//return deflectedObj.Id;
- 
+        upsert deflectedObj;
         return deflectedObj.Id; 
     }
     
@@ -122,12 +107,7 @@ deflectedObj = deflectedObjList[0];
         deflectedObj.id = deflectedId;
         JSON2Apex caseInfoJSON = JSON2Apex.parse(caseInfo);
         String cleanedCaseInfo = '{"Subject":"'+caseInfoJSON.Subject+'","Sub_Category_Name":"'+caseInfoJSON.SubCategoryName+'","Sub_Category_ID":"'+caseInfoJSON.SubCategoryId+'","Project_Name":"'+caseInfoJSON.projectName+'","Project_ID":"'+caseInfoJSON.project+'","Product_Variant_Name":"'+caseInfoJSON.productvariantName+'","IntelProduct_Name"":"'+caseInfoJSON.ProductName+'","IntelProduct_ID":"'+caseInfoJSON.Product+'","Category_Name":"'+caseInfoJSON.CategoryName+'","Category_ID":"'+caseInfoJSON.CategoryId+'"}';
-        // Niyaz -- 12/06/2025 --- added as part of vulnerability fix
-        if (Schema.sObjectType.Core_IPS_Deflected_Object__c.fields.Core_IPS_Search_JSON__c.isCreateable() || Schema.sObjectType.Core_IPS_Deflected_Object__c.fields.Core_IPS_Search_JSON__c.isupdateable())
-        {
-            deflectedObj.Core_IPS_Search_JSON__c = cleanedCaseInfo;
-        }
-        
+        deflectedObj.Core_IPS_Search_JSON__c = cleanedCaseInfo;
         try{
             upsert deflectedObj;  
             return true;

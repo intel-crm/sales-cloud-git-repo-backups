@@ -234,7 +234,6 @@ public with sharing class PMP_ParseGeoRegionsJSON {
             try{
                 Schema.SObjectField upsertSpecKey = PMP_Specification__c.Fields.PMP_Partner_Product_Specification_Key__c;//fetch the spec ExternalKey
                 specUpsertResultData = Database.upsert(uploadableSpecifications,upsertSpecKey,false);//upsert the specifications
-                PMP_Utility.logDmlErrors((Object[]) specUpsertResultData, 'PMP_ParseGeoRegionsJSON-parseGeoRegionsJSON');
             }
             catch(Exception exp1){
                 throw exp1;
@@ -245,7 +244,6 @@ public with sharing class PMP_ParseGeoRegionsJSON {
             try{
                 Schema.SObjectField upsertSpecValKey = PMP_Specification_Value__c.Fields.PMP_Product_Specification_Value_Key__c;//fetch the specValue ExternalKey
                 specValueUpsertResultData = Database.upsert(uploadableSpecificationValues,upsertSpecValKey,false);//upsert the specification values
-                PMP_Utility.logDmlErrors((Object[]) specValueUpsertResultData, 'PMP_ParseGeoRegionsJSON-parseGeoRegionsJSON');
             }
             catch(Exception exp2){
                 throw exp2;
@@ -280,9 +278,7 @@ public with sharing class PMP_ParseGeoRegionsJSON {
         }
         
         if(!specValUpdateList.isEmpty()){
-            Database.SaveResult[] srList = Database.update(specValUpdateList, false);
-			PMP_Utility.logDmlErrors((Object[]) srList, 'PMP_ParseGeoRegionsJSON-parseGeoRegionsJSON');
-           //update specValUpdateList;
+           update specValUpdateList;
         }
 
         

@@ -8,8 +8,7 @@
             <recipient>Core_IT_Intel_APJ</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Testt/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
@@ -20,8 +19,7 @@
             <recipient>Core_IT_Intel_ASMO</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Testt/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
@@ -32,8 +30,7 @@
             <recipient>Core_IT_Intel_EMEA</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>CurrentUser</senderType>
         <template>Testt/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
@@ -44,8 +41,7 @@
             <recipient>Core_IT_Intel_PRC</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Testt/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
@@ -56,8 +52,7 @@
             <field>Core_IT_Geo_Manager__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Testt/Core_IT_Intel_Mgr_Assignment</template>
     </alerts>
     <alerts>

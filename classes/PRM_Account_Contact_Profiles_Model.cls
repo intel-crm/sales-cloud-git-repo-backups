@@ -170,8 +170,6 @@ public String  SLSCLDRecord {set;get;}
         public String ContactPhoneNumber {set;get;}
         public String Country {set;get;}
         public String ContactCountry {set;get;}
-        public String CompanyNameEng {set;get;}
-        public String AltCompanyNameEng {set;get;}
         public String DuplicateAccountCheck {set;get;}
         public String DuplicateAccountStatus {set;get;}
         public String DuplicateContact {set;get;}
@@ -211,7 +209,6 @@ public String  SLSCLDRecord {set;get;}
         public String ZipPostalCode {set;get;}
         public String WeChatUnionId {set; get;}
         public String JobTitle {set; get;}
-        public String TaxNumber {set;get;}
         //-----------------------------We chat-----------------------------
         /*
 public  String WechatOpenId {set; get;}
@@ -238,7 +235,7 @@ public AccountProfileWrapper AccountProfile {set;get;}
         //public List<OnePartnerIDGroupMember> OnePartnerIDGroupMembers {set;get;}
         public List<AccountLegalAgreement> AccountLegalAgreements {set;get;}
         public List<AccountBusinessType> AccountBusinessTypes {set;get;}    //Step 1 
-        //public List<ComplianceWatchList> ComplianceWatchLists{get;set;} //Commenting as part of TWC729-8872
+        public List<ComplianceWatchList> ComplianceWatchLists{get;set;}
     }
   //step 2  
      public class AccountBusinessType
@@ -306,33 +303,9 @@ public ContactAccountWrapper ContactAccount {set;get;}
         public  AccountInformationWrapper AccountInformation {set;get;}  
         //public  ContactBasicInformationWrapper ContactBasicInformation {set;get;}
         public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
-        public RegistrationRequestDetails RegReqConsolidated {set;get;}//@NJ Req req payload consolidated wrapper 
         //public List<ContactBusinessType> ContactBusinessType {set;get;} //step 1
         //AccountBusinessTypesController();
     }
-
-    /*@NJ Req req payload consolidated wrapper start*/
-    public class RegistrationRequestDetails{
-        public String FirstName {set;get;}
-        public String LastName {set;get;}
-        public String Email {set;get;}
-        public String PartnerRole {set;get;}
-        public String EnterpriseId {set;get;}
-        public String AddressLine1 {set;get;}
-        public String City {set;get;}
-        public String Country {set;get;}
-        public String StateProvince {set;get;}
-        public String ZipPostalCode {set;get;}
-        public String AccountName {set;get;}
-        public String AccountUrl {set;get;}
-        public String PreferredLanguage {set;get;}
-        public String Profession {set;get;}
-        public String AccountPhone {set;get;}
-        public String ContactCountry {set;get;}
-        public String LoginStatus {set;get;}
-        public String SalesforceId {set;get;}
-    }
-    /*@NJ Req req payload consolidated wrapper end*/
        
     public class AccountInformationWrapper{
         public String AccountId {set;get;}
@@ -344,8 +317,6 @@ public ContactAccountWrapper ContactAccount {set;get;}
         public String PartnerRole {set;get;}
         public String PartnerRoleLabel {set;get;}
         public String ParentAccount {set;get;}
-        public String OwnerName {set;get;}      
-        public String OwnerEmail {set;get;}
         
         public  String EnglishOnlyName {set;get;}
         public  boolean IsDeactivated {set;get;}
@@ -396,7 +367,7 @@ public  String AltLanguagePostalCode {set;get;}
         public List<PartnerAssist> PartnerAssist {set;get;}
         
         public List<AccountBusinessType> AccountBusinessTypes {set;get;}    //Step 3
-        //public List<ComplianceWatchList> ComplianceWatchLists{get;set;}  //Commenting as part of TWC729-8872
+        public List<ComplianceWatchList> ComplianceWatchLists{get;set;}
         //UCD Changes
         public string UnifiedId{get;set;}
         public string SimplifiedAccountName{get;set;}
@@ -574,11 +545,11 @@ public  String RegistrationSource {set; get;}
         public String msg {set;get;}
     }
     //UCD Changes
-   /* public class ComplianceWatchList{
+    public class ComplianceWatchList{
         public string ComplianceType{get;set;}
         public string ComplianceName{get;set;}
          public DateTime EffectiveStartDate{get;set;}
          public DateTime EffectiveEndDate{get;set;}
-    }*/ //Commenting as part of TWC729-8872
+    }
     /********************** End of Wrapper Classes **************************/
 }

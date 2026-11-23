@@ -15,15 +15,15 @@ public without sharing class Core_MDF_BankUtility {
     ******************************************************************************************************/
     public class BankClaimMappingWrapper
     {   
-        public Map<Id,Set<String>> bankIdProgramStrSetMap;
+     	public Map<Id,Set<String>> bankIdProgramStrSetMap;
         public Set<String> bankIdAccountIdStringSet;
     }    
     /***************************************************************************************************** 
     Method Name	:       validateClaimAssociationWithABM
     @return  	:     	bankClaimMappingWrapper
     @parameters	:       Set<Id> eligibleBankSet - Set of Bank
-                        Set<String> eligibleBankProgramSet - Set of Program
-                        Set<Id> accountIdSet - Set of Account
+						Set<String> eligibleBankProgramSet - Set of Program
+						Set<Id> accountIdSet - Set of Account
     Description	:       Validate if Claim are assocaited with Bank or ABM and store info in Wrapper
     Added By	:       Accenture - NZ - 02/10/2020
     Modified By	:       Date:       Changes: 
@@ -34,9 +34,8 @@ public without sharing class Core_MDF_BankUtility {
         Map<String,String> programMap = new Map<String,String>();
 
         //Fetching the Program Mapping Metadata
-        //TWC3117-18333
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt programMapping : [SELECT Id, Core_MDF_Channel_Program_txt__c, Core_MDF_Channel_Program_Name_txt__c
-                                                                        FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt programMapping : [SELECT Id, Core_MDF_Channel_Program_txt__c, Core_MDF_Channel_Program_Name_txt__c
+                                                                        FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt LIMIT 1000]){
             programMap.put(programMapping.Core_MDF_Channel_Program_Name_txt__c, programMapping.Core_MDF_Channel_Program_txt__c);
         }
 
@@ -46,16 +45,16 @@ public without sharing class Core_MDF_BankUtility {
         //List to Store claim status on which bank sud not be de-actiated -- Submitted;Pending Available Fund;Payment Due;Hold;PIC Pending;Resubmission Required;Pending Payment
         List<String> claimStatusStrList = Label.Core_MDF_Claim_Status_for_Inactive_Bank.split(';');
         
-        String claimBankAssociateQueryStr = '';         
+        String claimBankAssociateQueryStr = '';     	
         //String adjustmentClaimTypeStr = Label.Core_MDF_Claim_Adjustment_Type;
         //Build Query to fetch Claim
         /* claimBankAssociateQueryStr = 	'SELECT Id,Core_MDF_Status__c, Core_MDF_Bank__c, Core_MDF_Program__c,ChannelPartnerId ' +
-                                        'FROM PartnerFundClaim ' +
-                                        'WHERE Core_MDF_Bank__c IN : eligibleBankIdSet AND ' +
-                                        'Core_MDF_Status__c IN : claimStatusStrList AND ' + 
+                                    	'FROM PartnerFundClaim ' +
+                                    	'WHERE Core_MDF_Bank__c IN : eligibleBankIdSet AND ' +
+                                    	'Core_MDF_Status__c IN : claimStatusStrList AND ' + 
                                         'ChannelPartnerId IN :eligibleAccountIdSet AND ' +
                                         'Core_MDF_Type_Txt__c != :adjustmentClaimTypeStr AND ' +
-                                        'Core_MDF_Program__c IN : eligibleBankProgramSet '; */
+                                   		'Core_MDF_Program__c IN : eligibleBankProgramSet '; */
         
         for(PartnerFundClaim pfc : [SELECT Id,Core_MDF_Status__c, Core_MDF_Bank__c, Core_MDF_Program__c,ChannelPartnerId 
                                     FROM PartnerFundClaim

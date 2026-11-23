@@ -5,6 +5,10 @@
         <name>Core_MDF_CCF_Campaign_Fieldset</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Core_MDF_Channel_MDF_Campaign_Fieldset --></label>
+        <name>Core_MDF_Channel_MDF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- CoGTM Campaign Fields To Be Synced --></label>
         <name>Core_MDF_CoGTM_CampaignFieldsToBeSynced</name>
     </fieldSets>
@@ -235,11 +239,6 @@
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
-        <label><!-- Activity Approval Required --></label>
-        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Activity Budget Amount --></label>
         <name>Core_MDF_Activity_Budget_Amount_amt__c</name>
     </fields>
@@ -451,7 +450,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>行銷活動參考編號</label>
+        <label>企劃案參考編號</label>
         <name>Core_MDF_Campaign_Reference_Number__c</name>
     </fields>
     <fields>
@@ -568,11 +567,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
-        <label><!-- IPA Co-Engineering Campaign? --></label>
-        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Program Office Check --></label>
         <name>Core_MDF_IPA_NonSPIF_Apprval_Ind__c</name>
     </fields>
@@ -670,10 +664,6 @@
     <fields>
         <label>行銷目標/策略</label>
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
-    </fields>
-    <fields>
-        <label>測量方法</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>會員接受者</label>
@@ -782,14 +772,6 @@
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
     <fields>
-        <label>其他測量方法</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
-    </fields>
-    <fields>
-        <label>其他結果標準</label>
-        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
-    </fields>
-    <fields>
         <help>如果在清單中找不到此企劃案的主要成功指標/KPI，您可以在此處輸入自定義指標。選擇可以計算的內容，例如展示次數、點擊次數、互動次數、下載次數等。</help>
         <label>其他結果指標</label>
         <name>Core_MDF_Other_Outcome_txt__c</name>
@@ -822,10 +804,6 @@
     <fields>
         <label><!-- Parent_Account_Id --></label>
         <name>Core_MDF_Parent_Account_Id__c</name>
-    </fields>
-    <fields>
-        <label>夥伴聯絡</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <help>啟動支援此行銷活動的夥伴。</help>
@@ -897,12 +875,12 @@
         <name>Core_MDF_ReimbursementRate_pct__c</name>
     </fields>
     <fields>
-        <help>總投資（Intel + 夥伴）x 報銷率 = 最大 Intel 投資額。</help>
-        <label>最大英特爾投資</label>
+        <help>行銷活動總成本 x 報銷率 = 報銷金額。</help>
+        <label>報銷金額</label>
         <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
     </fields>
     <fields>
-        <label>最大英特爾投資</label>
+        <label>報銷金額</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
@@ -1046,7 +1024,7 @@
         <name>Core_MDF_Terminal_Rejection_Ind__c</name>
     </fields>
     <fields>
-        <label>總投資（Intel + 夥伴）</label>
+        <label>行銷活動總成本</label>
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
     </fields>
     <fields>
@@ -1227,6 +1205,11 @@
         <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
     </fields>
     <recordTypes>
+        <description><!-- This record type is for Channel MDF Program --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Record type for CCP Client Program --></description>
         <label>用戶端共同行銷基金</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
@@ -1287,10 +1270,6 @@
     <validationRules>
         <errorMessage>必須先批准銷售企劃案，然後才能將其設定為「正在進行」。</errorMessage>
         <name>Core_Campaign_Only_Approved_In_Progress</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>建立活動需要一個帳號。請選擇一個帳號並重新嘗試。</errorMessage>
-        <name>Core_MDF_CampaignAccountValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage>提案在待審查或待核准狀態時不可取消</errorMessage>

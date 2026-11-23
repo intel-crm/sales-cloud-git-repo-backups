@@ -1,0 +1,14 @@
+<apex:page standardController="SBQQ__Quote__c" showHeader="true" recordSetVar="quote" standardStylesheets="false">
+    <apex:includeLightning />    
+    <div id="LightningCompid" />    
+    <script>
+    $Lightning.use("c:PSG_QuoteRequestApp", function() {
+        $Lightning.createComponent("c:psg_requestQuote",
+          {},
+          "LightningCompid",
+          function(cmp) {
+             console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+</apex:page>

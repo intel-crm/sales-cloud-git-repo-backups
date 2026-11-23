@@ -36,13 +36,10 @@ public with sharing class Core_MDF_ExceptionAccountsController {
                 // Storing the status value In Order to reduce query during Save 
                 exceptWrapper.statusStr = exceptionList[0].Core_MDF_Exception_Status_nm__c;
                 //Avoid using Soql / Sosl queries without filters and limits
-                /*for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, 
+                for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, 
                                                                                   Core_MDF_Entitlement_Name__c
                                                                            FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 5000])){
                     channelProgramMap.put(bpem.Core_MDF_Bank_Program_Name__c, bpem.Core_MDF_Channel_Program__c);                    
-                }*/
-                for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label,Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                    channelProgramMap.put(bpem.Core_MDF_Bank_Program_Value__c, bpem.Label);                    
                 }
                 //Avoid Deeply Nested IF Statements
                 //if(exceptionList != NULL && exceptionList.size() > 0){                
@@ -100,6 +97,7 @@ public with sharing class Core_MDF_ExceptionAccountsController {
     public static ExceptionErrorsWrapper saveExceptionAccountMappingRecords(Id recordId, List<String> accountIdList, String exceptionStatus, Boolean addAccountCheck, String strSelectedAccountNames)
     {
         ExceptionErrorsWrapper exceptErrorWrapper = new ExceptionErrorsWrapper();
+        String selAccts = '';
         //Boolean isSuccess = false;
         List<Core_MDF_Exception_Account_Mapping__c> eamList = new List<Core_MDF_Exception_Account_Mapping__c>();
         try {
@@ -160,9 +158,11 @@ public with sharing class Core_MDF_ExceptionAccountsController {
                     eamList.add(eamRecord);
                 }
                 //Insert the New Exception Account Mapping Records
+                List<Boolean> checkIfExceptionAccountMappingInsertedlist= new List<Boolean>();
                 if(eamList.size() > 0){
                     Database.insert(eamList);
                     //Update the Company Name field for the Exception Record
+		    //Avoid Deeply Nested IF Statements
                     // Core_MDF_Exception__c eamRec = new Core_MDF_Exception__c(Id = recordId);//, Core_MDF_Company_Name_txt__c = strSelectedAccountNames);
                     // if(('Draft').equalsIgnoreCase(exceptionStatus)){
                     //     eamRec.Core_MDF_Exception_Status_nm__c = 'Pending Review';

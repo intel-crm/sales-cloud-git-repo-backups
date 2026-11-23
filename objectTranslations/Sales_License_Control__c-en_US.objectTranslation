@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales License Control</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Licences Control</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Only End Customer and active Intel Accounts are allowed. --></errorMessage>
+            <informationalMessage><!-- Only End Customer and active Intel Accounts are allowed. --></informationalMessage>
+        </lookupFilter>
+        <name>Sales_Account_Competitor__c</name>
+        <relationshipLabel><!-- Sales Licences Control --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- InActive --></label>
+        <name>Sales_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Vendor --></label>
+        <name>Sales_License_Vendor_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN --></label>
+        <name>Sales_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Sales_Product__c</name>
+        <relationshipLabel><!-- Sales Licences Control --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

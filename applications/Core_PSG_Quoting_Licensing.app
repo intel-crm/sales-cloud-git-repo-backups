@@ -39,6 +39,42 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PSG_Status_History_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_quote_history__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PSG_Status_History_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_quote_history__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Host_Information_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -190,7 +226,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>intellogo</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -1114,6 +1149,474 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
@@ -1903,6 +2406,58 @@
         <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -3157,6 +3712,15 @@
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -3168,6 +3732,60 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>PSG_Quote_Int_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
@@ -3330,6 +3948,15 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>PSG_Quote_Int_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
@@ -3447,6 +4074,357 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_msvp__c</pageOrSobjectType>
+        <recordType>price_msvp__c.PSG_MSVP_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Disti_Margin_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_distributor_margin__c</pageOrSobjectType>
+        <recordType>core_cpq_distributor_margin__c.PSG_Distributor_Margin_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>Host_Information_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
@@ -3512,6 +4490,69 @@
         <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Forward_Cost_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>price_forward_cost__c</pageOrSobjectType>
+        <recordType>price_forward_cost__c.PSG_Forward_Cost_Record_Type</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -3704,6 +4745,87 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>Intel_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
@@ -3791,6 +4913,15 @@
         <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -5118,6 +6249,58 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_ALN</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>DPA_ALN_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_dpa_aln__c</pageOrSobjectType>
+        <recordType>core_cpq_dpa_aln__c.PSG_DPA</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>PSG_Quote_Int_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
@@ -5792,6 +6975,24 @@
         <recordType>Account.Core_Direct_Account</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -15419,9 +16620,15 @@
     <tabs>Sales_License__c</tabs>
     <tabs>standard-Contract</tabs>
     <tabs>standard-File</tabs>
+    <tabs>PSG_Upload_File</tabs>
+    <tabs>PSG_Manage_Price_Books</tabs>
+    <tabs>price_prid__c</tabs>
     <tabs>core_cpq_list_price__c</tabs>
     <tabs>standard-report</tabs>
+    <tabs>Sales_License_Control__c</tabs>
+    <tabs>Generate_License_By_Activation_Code</tabs>
     <tabs>Sales_Host__c</tabs>
+    <tabs>PSG_Analytics</tabs>
     <tabs>Sales_Feedback__c</tabs>
     <tabs>SBQQ__Subscription__c</tabs>
     <tabs>Account_Create_Request__c</tabs>

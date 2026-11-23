@@ -1,9 +1,7 @@
 @isTest
 public class ER_RetriggerEVMail_Test {
-	 @isTest
-    static void testIsWorking() {
-    }
-   /* @isTest 
+	
+    @isTest 
     public static  void  ValidateEntitlementBasedEVRetriggerTest(){
  		String reqBody = '';       
         RestRequest req = new RestRequest(); 
@@ -132,5 +130,5 @@ public class ER_RetriggerEVMail_Test {
         RestContext.response = res; 
         ER_RetriggerEVMail.RetriggerEV(); 
         Test.stopTest(); 
-    }*/
+    }
 }

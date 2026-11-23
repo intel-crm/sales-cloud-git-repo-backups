@@ -730,11 +730,6 @@
             <field>Core_MDF_Region_Cd__c</field>
             <table>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests</table>
-        </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
 </ReportType>

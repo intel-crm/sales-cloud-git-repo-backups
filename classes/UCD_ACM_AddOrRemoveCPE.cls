@@ -71,7 +71,7 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
                     businessTypes.Id = mapOfBusinessTypesByAccountId.get(accStag.AccountId__c).get(accStag.Account_Action_Refrence__c);
                     businessTypes.Account_Staging_Id__c = accStag.Id;
                     acctBusinessTypeToDelete.add(businessTypes);
-                }else{
+                }else{System.debug('Cancelled : '+accStag.AccountId__c);
                     Core_ACM_Account_Staging__c staging = new Core_ACM_Account_Staging__c();
                     staging.Id = accStag.Id;
                     staging.Core_Status__c = 'CANCELLED';
@@ -84,7 +84,7 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
                 Database.DeleteResult[] deletedCpe = database.delete(acctBusinessTypeToDelete,false);
                 accountWrapper.deletedResult = deletedCpe;
                 accountWrapper.accountBusinessTypes = acctBusinessTypeToDelete;
-                accountWrapper.accStagingToCancel = accStagingToCancel;
+                accountWrapper.accStagingToCancel = accStagingToCancel;System.debug('cancel : '+accStagingToCancel);
             }
         }catch(Exception ex){
             UCD_ACM_Logger.error('UCD_ACM_AddOrRemoveCPE','deleteCpeToAccount','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'ACM Account StgingIds: '+accountIdSet.toString());
@@ -110,7 +110,7 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
     }
 
     public static Map<Id,Map<String,Id>> getActiveBusinessTypeForAccount(Set<Id> accountIdSet){
-        List<Account_Business_Types__c> activeAccountBusinessType = [SELECT Account__c,Effective_Start_Date__c,Business_Types__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Is_Active__c FROM Account_Business_Types__c Where Account__c IN : accountIdSet AND Business_Types__r.Is_Active__c = true];
+        List<Account_Business_Types__c> activeAccountBusinessType = [SELECT Account__c,Effective_Start_Date__c,Business_Types__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Is_Active__c FROM Account_Business_Types__c Where Account__c IN : accountIdSet AND Business_Types__r.Is_Active__c = true ];
         Map<Id,Map<String,Id>> accActiveBusinessType = new Map<Id,Map<String,Id>>();
         if(activeAccountBusinessType.size()>0){
             for(Account_Business_Types__c businessType : activeAccountBusinessType){

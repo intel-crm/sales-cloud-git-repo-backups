@@ -190,13 +190,11 @@ private class Core_MDF_PIC_TestClass {
         Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
         arpCamp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         arpCamp.Core_MDF_Supports_legacy_program__c='MDF or both CMP & MDF';
-        arpCamp.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
         arpCamp.Core_MDF_Region_cd__c = 'APJ';
         campList.add(arpCamp);
         Campaign arpCampLegacy = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Legacy Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
         arpCampLegacy.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         arpCampLegacy.Core_MDF_Region_cd__c = 'APJ';
-        arpCampLegacy.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
         campList.add(arpCampLegacy);
         Database.insert(campList);
         
@@ -257,8 +255,6 @@ private class Core_MDF_PIC_TestClass {
         arpFranceActivity.Core_MDF_Reimbursement_Rate_pct__c='50%';
         arpFranceActivity.Core_MDF_Reimbursement_Rate_txt__c = '50%';
         arpFranceActivity.Core_MDF_Channel_Partner_Led__c = true;
-        arpFranceActivity.Core_MDF_Activity_Types__c='Joint Event';
-        arpFranceActivity.Core_MDF_ActivityCategory__c='Event';
         
         PartnerFundRequest arpFranceActivityLegacy = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(arpCampLegacy.Id), 
                                                                                                   Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
@@ -282,8 +278,6 @@ private class Core_MDF_PIC_TestClass {
         arpFranceActivityLegacy.Core_MDF_Reimbursement_Rate_pct__c='50%';
         arpFranceActivityLegacy.Core_MDF_Reimbursement_Rate_txt__c = '50%';
         arpFranceActivityLegacy.Core_MDF_Channel_Partner_Led__c = true;
-        arpFranceActivityLegacy.Core_MDF_Activity_Types__c='Joint Event';
-        arpFranceActivityLegacy.Core_MDF_ActivityCategory__c='Event';
         pfrList.add(arpFranceActivityLegacy);
         pfrList.add(arpFranceActivity);
         Database.insert(pfrList);
@@ -358,8 +352,8 @@ private class Core_MDF_PIC_TestClass {
        	claimList.add(franceClaimLegacy);
         Database.insert(claimList);
         
-        PartnerFundClaim reservedClaim12 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaim.Id LIMIT 1];
-       PartnerFundClaim reservedClaim2 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy.Id LIMIT 1];
+        PartnerFundClaim reservedClaim12 = [Select Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaim.Id LIMIT 1];
+       PartnerFundClaim reservedClaim2 = [Select Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy.Id LIMIT 1];
                 System.assertEquals(reservedClaim12.Status, 'Submitted'); 
                // System.assertEquals(reservedClaim12.Core_MDF_Status__c, 'PIC Pending'); 
                 System.assertEquals(reservedClaim12.Core_MDF_ESD_Hold__c, true);
@@ -406,7 +400,7 @@ private class Core_MDF_PIC_TestClass {
         Database.insert(franceClaim2);
         //claimList.add(franceClaim);
         Test.stopTest();
-        PartnerFundClaim reservedClaim11 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
+        PartnerFundClaim reservedClaim11 = [Select Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
 
                 System.assertEquals(reservedClaim11.Status, 'Submitted'); 
                 System.assertEquals(reservedClaim11.Core_MDF_Status__c, 'PIC Pending'); 
@@ -449,7 +443,7 @@ private class Core_MDF_PIC_TestClass {
         franceClaimLegacy2.Core_MDF_Currency__c='USD';
         Database.insert(franceClaimLegacy2);
         Test.stopTest();
-        PartnerFundClaim reservedClaim10 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy2.Id LIMIT 1];
+        PartnerFundClaim reservedClaim10 = [Select Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy2.Id LIMIT 1];
                 System.assertEquals(reservedClaim10.Status, 'Submitted'); 
               //  System.assertEquals(reservedClaim.Core_MDF_Status__c, 'PIC Pending'); 
                 System.assertEquals(reservedClaim10.Core_MDF_ESD_Hold__c, false);

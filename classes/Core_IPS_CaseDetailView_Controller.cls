@@ -15,7 +15,7 @@ public with sharing class Core_IPS_CaseDetailView_Controller {
         
         inlineEditFields = [Select Id,Field_Name__c,Profile_Name__c,Record_Type__c From Core_IPS_InlineEditFields__mdt Where Record_Type__c = :exCase.RecordType.Name And Profile_Name__c = :profileName];
         //if(Core_IPS_Inline_SectionName__mdt.SObjectType.getDescribe().isAccessible()){
-        	inlineSections = [Select Id,Label,Fields_Name__c From Core_IPS_Inline_SectionName__mdt Limit 49999]; //Limit Added by Tushar
+        	inlineSections = [Select Id,Label,Fields_Name__c From Core_IPS_Inline_SectionName__mdt];
         //}
         
         List<String> fieldList = inlineEditFields.Field_Name__c.split(',');

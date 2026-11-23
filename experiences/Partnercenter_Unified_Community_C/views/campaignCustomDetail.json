@@ -71,41 +71,16 @@
         }, {
           "componentAttributes" : {
             "additionalCriteria" : "Core_MDF_Active_Ind__c=true",
-            "componentVisibilityCriteria" : "Core_MDF_Program__c != 'Intel Partner Alliance';Core_MDF_Program__c = 'Intel Partner Alliance';Core_MDF_Proposal_Based_Ind__c = false",
-            "componentVisibilityCriteriaLogic" : "1 AND (2 OR 3)",
             "criteriaFieldAPIName" : "Core_MDF_Campaign_Id__c",
             "recordId" : "{!recordId}",
             "relatedobjectApiName" : "Core_MDF_Campaign_Outcomes__c",
             "restrictFieldVisiblityCriteriaFieldAPIName" : "Core_MDF_CampOutcomeOpt_In_Ind__c = true",
             "restrictFieldVisiblityFieldAPIName" : "Core_MDF_Initial_Baseline_Quantity_nbr__c",
             "sharingFlag" : "true",
-            "strFields" : "Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c",
-            "strLabels" : "",
-            "tableHeader" : ""
+            "strFields" : "Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c"
           },
-          "componentName" : "c:core_MDF_Custom_Related_List",
-          "id" : "8e54c3b4-9d29-453b-aaf9-146545f1b7e7",
-          "renditionMap" : { },
-          "type" : "component"
-        }, {
-          "componentAttributes" : {
-            "additionalCriteria" : "Core_MDF_Active_Ind__c=true",
-            "componentVisibilityCriteria" : "Core_MDF_Program__c = 'Intel Partner Alliance';Core_MDF_Proposal_Based_Ind__c = true",
-            "componentVisibilityCriteriaLogic" : "1 AND 2",
-            "criteriaFieldAPIName" : "Core_MDF_Campaign_Id__c",
-            "hideColumnIfNoData" : "Core_MDF_Outcome_Criteria_txt__c",
-            "messageBelowTable" : "Core_MDF_Campaign_Purpose_Desc_txt__c",
-            "recordId" : "{!recordId}",
-            "relatedobjectApiName" : "Core_MDF_Campaign_Outcomes__c",
-            "restrictFieldVisiblityCriteriaFieldAPIName" : "Core_MDF_CampOutcomeOpt_In_Ind__c = true",
-            "restrictFieldVisiblityFieldAPIName" : "Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c",
-            "sharingFlag" : "true",
-            "strFields" : "Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c",
-            "strLabels" : "",
-            "tableHeader" : "Core_MDF_Activity_Purpose_Header"
-          },
-          "componentName" : "c:core_MDF_Custom_Related_List",
-          "id" : "e39d6198-d5f1-4b09-8c72-9a7164623b24",
+          "componentName" : "c:core_MDF_Campaign_Related_List",
+          "id" : "0ab4db22-2e59-4a88-8ba6-6f93acb03d7e",
           "renditionMap" : { },
           "type" : "component"
         }, {
@@ -115,12 +90,10 @@
             "recordId" : "{!recordId}",
             "relatedobjectApiName" : "Core_MDF_Contract_Line_Item__c",
             "sharingFlag" : "true",
-            "strFields" : "Core_MDF_Contract_Section_Details_txt__c",
-            "strLabels" : "",
-            "tableHeader" : ""
+            "strFields" : "Core_MDF_Contract_Section_Details_txt__c"
           },
-          "componentName" : "c:core_MDF_Custom_Related_List",
-          "id" : "33e4e3d7-77f5-4f64-976f-d6352f86c9a7",
+          "componentName" : "c:core_MDF_Campaign_Related_List",
+          "id" : "1b0534d0-fefc-44ca-a665-f953e1456442",
           "renditionMap" : { },
           "type" : "component"
         }, {

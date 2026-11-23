@@ -6,7 +6,7 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
         
         PMP_Static_Constants__c st = new PMP_Static_Constants__c();
         st.Name = 'PMP_PIM_Industry_Id';
-        st.PMP_Value__c = 'NPP_01_Industry'; 
+        st.PMP_Value__c = 'NPP_01_Industry';
         stList.add(st);
         
         st = new PMP_Static_Constants__c();
@@ -226,8 +226,8 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
         offering1.PMP_Partner_Offering_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Published;
         update offering1;*/
         
-        //TranslationEOL
-        /*PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
+        
+        PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
         compTrans.Name = 'compTransTest';
         
         compTrans.PMP_Company_Information_Id__c = cmp2.Id;
@@ -247,7 +247,7 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
             +'scsdvdfgffhashcdishichfsdihfisdifvdifjvsidjfciosdjiocjfsoijdcfojseofjcseoifwsuidywiedwe8few8f8e8fwefwe9yf9wef9qw9';
         compTrans2.PMP_Field_Nm__c = 'PMP_Account_Tag_Line__c';
         insert compTrans2;       
-        */
+        
         
         //IPA2.0:US-4497-1631_OfferingEOL
         /*PMP_Partner_Offering_Translation__c offTrans = new PMP_Partner_Offering_Translation__c();
@@ -292,8 +292,8 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
     @isTest static void partnerDetailsWithLongDesc(){
         
         
-        List<PMP_Company__c> compinfo = [Select Id, Name, PMP_Account_Specialty__c, PMP_Account_Id__c, PMP_Is_Working_Copy_Ind__c FROM PMP_Company__c where Name='TestCompany2'];
-        List<PMP_Company__c> compinfoWc = [Select Id, Name, PMP_Account_Specialty__c, PMP_Account_Id__c,PMP_Is_Working_Copy_Ind__c FROM PMP_Company__c where Name='TestCompany1'];
+        List<PMP_Company__c> compinfo = [Select Id, Name, PMP_Account_Specialty__c, PMP_Account_Id__c FROM PMP_Company__c where Name='TestCompany2'];
+        List<PMP_Company__c> compinfoWc = [Select Id, Name, PMP_Account_Specialty__c, PMP_Account_Id__c FROM PMP_Company__c where Name='TestCompany1'];
         Test.startTest();
         If(compinfo.size() > 0) {
             compinfo[0].PMP_Account_Dsc__c =  'Testing with text longer than 255 Testing with text longer than 255Testing with text longer than 255'+
@@ -408,14 +408,7 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
            newPagAccount.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
            accts.add(newPagAccount);
            insert accts;
-           PMP_Company__c partner_wc = new PMP_Company__c(Name='testPartner', 
-                                                       PMP_Is_Working_Copy_Ind__c = true,
-                                                       PMP_Is_Enabled_Lead_Gen_Nm__c = 'true',
-                                                       PMP_Is_Lead_Gen_Limited_Nm__c = 'true',
-                                                       PMP_Company_Lead_Gen_Language_Nm__c = 'English',
-                                                       PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile,
-                                                       PMP_Company_Lifecycle_Status_Nm__c = 'Draft',PMP_Account_Program_Membership__c ='isa - general');
-        insert partner_wc;
+           
            PMP_Company__c company=new PMP_Company__c();
            company.Name=accObj.Name;
            //company.PMP_Account_Id__c=accObj.id;
@@ -423,24 +416,12 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
            company.PMP_Benefit_Update_Ind__c=False;
            company.PMP_Partner_Inactive_Ind__c = False;
            company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-           //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
            company.PMP_Is_Published_Ind__c=true;
            company.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
-           company.PMP_Published_Copy_Id__c = company.id;
-        company.PMP_Working_Copy_Id__c =  partner_wc.id;
-        company.PMP_Company_Status_Update_Dt__c = system.today();
-        company.PMP_Is_Working_Copy_Ind__c = true;
-        company.PMP_Initial_Storefront_Submit_Date_Dt__c =system.today();
-        company.PMP_Company_Status_Published_Date_Dt__c=system.today();
            insert company;
            System.assertNotEquals(company, Null);
-   partner_wc.PMP_Published_Copy_Id__c=company.id;
-        partner_wc.PMP_Company_Status_Update_Dt__c = system.today();
-        partner_wc.PMP_Is_Working_Copy_Ind__c = true;
-        partner_wc.PMP_Initial_Storefront_Submit_Date_Dt__c =system.today();
-        partner_wc.PMP_Company_Status_Published_Date_Dt__c=system.today();
-        update partner_wc;
+   
 			//IPA2.0:US-4497-1631_OfferingEOL
            /*PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
                                                                                         'TestDuplicate',company.Id, true,'Draft','');
@@ -453,13 +434,14 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
            //offering1.PMP_Offering_Language_Nm__c = 'English';
            update offering1;*/
            
-          /* PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+           PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
            acm.PRM_Account_Id__c=newPagAccount.id;
            acm.PRM_Status_Nm__c='Approved';
            acm.PRM_Channel_Program_Id__c=cpIPA.Id;
            acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
            acm.PRM_Partner_Role__c='Service Provider';
-           insert acm;*/
+           acm.PRM_Status_Reason_Txt__c='Testing';
+           insert acm;
            
            Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
            coreAccnt.Core_Partner_Account_Id__c = newPagAccount.id;
@@ -494,11 +476,12 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
       insert bem1;
       
     
-      /*   PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
+         PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
          aba.PRM_Account_Id__c = newPagAccount.Id;
          aba.PRM_Partner_Benefit_Id__c = pb.id;
          aba.PRM_Status_Nm__c = 'Active';
-         insert aba;*/
+        aba.PRM_Status_Reason_Txt__c='Testing';
+         insert aba;
       
            PMP_OPID_MPI_Rel__c jun= new PMP_OPID_MPI_Rel__c();
            jun.PMP_One_Partner_ID__c= newPagAccount.Id;
@@ -506,7 +489,7 @@ public class PMP_SearchPartnerDetailsController_Test extends PMP_SearchWrapperSt
            jun.Is_Active__c=true;     
            insert jun;
         
-    PMP_SearchPartnerDetailsController.getPartnerDetails(company.Id,'');
+    PMP_SearchPartnerDetailsController.getPartnerDetails(company.Id,'ja');
            Test.stopTest();
     }
 }

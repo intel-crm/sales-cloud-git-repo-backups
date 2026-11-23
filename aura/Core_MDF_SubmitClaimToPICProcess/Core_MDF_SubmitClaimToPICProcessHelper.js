@@ -12,7 +12,6 @@
                 component.set("v.isValidClaimUser", wrapper.isValidClaimUser);
                 component.set("v.isClaimEligibleForPIC", wrapper.isClaimEligibleForPIC);
                 component.set("v.AreDocsAvailable", wrapper.AreDocsAvailable);
-                component.set("v.isOutComeBased", wrapper.isOutComeBased);
                 component.set("v.spinner", false);
             } else {
                 component.set("v.spinner", false);
@@ -33,7 +32,7 @@
             var state = res.getState();
             if (state === "SUCCESS") {
                 component.set("v.spinner", false);
-			 	var message = component.get("v.isOutComeBased") ? $A.get("$Label.c.Core_MDF_Submit_For_PaymentClearance_ToastMessage") : $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
+                var message = $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
                 this.fireToastEvent(message, "3000", "success");
 
                 //Roshan - close popup explicitly

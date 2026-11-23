@@ -93,10 +93,6 @@
             <translation>刺激購買計畫：已註冊的交易數目</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>獎勵 - 設計定案數</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation>刺激購買計畫：已售出的單位數目</translation>
         </picklistValues>
@@ -149,24 +145,8 @@
             <translation>舊版數位媒體支出百分比</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>零售啟用 - 人數天數</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>技術啟動 - 交易成功數</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>技術啟用 - 部署數量</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>技術啟動 - 設計定案數</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -206,10 +186,6 @@
         <name>Core_MDF_Is_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Amount --></label>
-        <name>Core_MDF_Spending_Amount_amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
         <picklistValues>
@@ -235,10 +211,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation>舊版媒體</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>零售活動</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

@@ -36,7 +36,6 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     @api activityAmount;
     @api isCommunity;
     @api isOutcomeBased=false; // atribute to control which error message to show for SPIF amount validation
-    @api useOutcomeBasedSpifError = false; //Indu IPA Proposal
 
     @track selectedSegment;
     @track segmentNameList = [];
@@ -73,7 +72,7 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     noSPIFErrorMsg = Core_MDF_ErrIfNoSegment;
     
     get spifAmountErrMsg() {
-        return this.isOutcomeBased || this.useOutcomeBasedSpifError ? Core_MDF_OutcomeBased_SPIF_Amount_ErrMsg : Core_MDF_SPIF_Amount_ErrMsg;
+        return this.isOutcomeBased ? Core_MDF_OutcomeBased_SPIF_Amount_ErrMsg : Core_MDF_SPIF_Amount_ErrMsg;
     }
 
     customLabelValueMap = new Map();

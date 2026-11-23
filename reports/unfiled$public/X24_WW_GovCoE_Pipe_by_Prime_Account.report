@@ -135,7 +135,7 @@
         <field>Opportunity.Core_IOGM_Opportunity__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 OR 3) AND 2) AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Vertical_Market__c</column>
             <columnToColumn>false</columnToColumn>
@@ -156,34 +156,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Defense and Space,Education,Government</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Rob Gillis</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Decision_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Decision_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>12/31/2026</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>PSG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

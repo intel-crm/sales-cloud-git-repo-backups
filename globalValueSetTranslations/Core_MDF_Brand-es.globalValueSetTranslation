@@ -17,10 +17,6 @@
         <translation><!-- 11ᵗʰ Gen --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>4th Gen Intel® Xeon® Scalable processors with Intel® vRAN Boost</masterLabel>
-        <translation>Procesadores escalables Intel® Xeon® de 4ª generación con Intel® vRAN Boost</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>6ᵗʰ – 7ᵗʰ Gen</masterLabel>
         <translation><!-- 6ᵗʰ – 7ᵗʰ Gen --></translation>
     </valueTranslation>
@@ -121,10 +117,6 @@
         <translation><!-- Intel® 9ᵗʰ Gen --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® AI</masterLabel>
-        <translation><!-- Intel® AI --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® Agilex™</masterLabel>
         <translation><!-- Intel® Agilex™ --></translation>
     </valueTranslation>
@@ -135,14 +127,6 @@
     <valueTranslation>
         <masterLabel>Intel® Arc™</masterLabel>
         <translation><!-- Intel® Arc™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Arc™ G3 Extreme Processor</masterLabel>
-        <translation>Procesador Intel® Arc™ G3 Extreme</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Arc™ G3 Processor</masterLabel>
-        <translation>Procesador Intel® Arc™ G3</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ GPU</masterLabel>
@@ -207,14 +191,6 @@
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Processor Family</masterLabel>
         <translation><!-- Intel® Core™ Ultra Processor Family --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra X7</masterLabel>
-        <translation><!-- Intel® Core™ Ultra X7 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra X9</masterLabel>
-        <translation><!-- Intel® Core™ Ultra X9 --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ X-Series Processor Family</masterLabel>
@@ -405,10 +381,6 @@
         <translation><!-- Intel® Infrastructure Power Manager --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Infrastructure Processing Unit (Intel® IPU)</masterLabel>
-        <translation><!-- Intel® Infrastructure Processing Unit (Intel® IPU) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® IoT Market Ready Solutions</masterLabel>
         <translation><!-- Intel® IoT Market Ready Solutions --></translation>
     </valueTranslation>
@@ -497,10 +469,6 @@
         <translation><!-- Intel® RealSense™ --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Robotics</masterLabel>
-        <translation><!-- Intel® Robotics --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® SGX</masterLabel>
         <translation><!-- Intel® SGX --></translation>
     </valueTranslation>
@@ -545,14 +513,6 @@
         <translation><!-- Intel® Xeon® --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 processors with Performance‑cores (P‑cores), 6700/6500 Series</masterLabel>
-        <translation>Procesadores Intel® Xeon® 6 con núcleos de rendimiento (P‑cores), serie 6700/6500</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 system‑on‑chip (SoC)</masterLabel>
-        <translation>Sistema en chip Intel® Xeon® 6 (SoC)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® Xeon® Bronze Processor</masterLabel>
         <translation><!-- Intel® Xeon® Bronze Processor --></translation>
     </valueTranslation>
@@ -594,7 +554,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>Otro</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pentium® Gold/Silver &amp; Celeron®</masterLabel>

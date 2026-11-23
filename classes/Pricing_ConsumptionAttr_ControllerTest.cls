@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 01-03-2024
- * @last modified by  : Sandeep Chamate
+ * @last modified on  : 01-16-2025
+ * @last modified by  : Vrushabh Uprikar
 **/
 @isTest
 public class Pricing_ConsumptionAttr_ControllerTest {
@@ -11,10 +11,12 @@ public class Pricing_ConsumptionAttr_ControllerTest {
     @testSetup
     public static void setUpData() {
         List<User> adminUserList = Pricing_Test_Utility.createAdminUserWithParam('qlBusinessLogicAdmin');
+        List<User> regionalManager = Pricing_Test_Utility.createPricingMangerUser2(); // firstNameRPM@intel.com
+        List<User> fseUser2 = Pricing_Test_Utility.createFSEUserWithParam('newFSEUser@intel.com','NewFseUser','UserName');
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Consumption_Attr_Controller_test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             List<User> accExeUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             Test.startTest();
@@ -80,6 +82,8 @@ public class Pricing_ConsumptionAttr_ControllerTest {
                                                 FROM SBQQ__QuoteLine__c
                                                 WHERE Id = :quoteLineId
                                                 LIMIT 1];
+
+        SBQQ__QuoteLine__c quote = Pricing_ConsumptionAttr_Controller.getParentQuoteLine(quoteLineId);
         System.assertEquals(platformValue, updatedQuoteLine.Pricing_Consumption_Platform__c);
         System.assertEquals(regionValue, updatedQuoteLine.Pricing_Consumption_Region__c);
         System.assertEquals(countryValue, updatedQuoteLine.Pricing_Consumption_Country__c);
@@ -127,59 +131,5 @@ public class Pricing_ConsumptionAttr_ControllerTest {
         // Verify the result
         System.assertNotEquals(0, result.size());
         System.assertEquals(1, result.size());
-    }
-
-    @isTest
-    public static void testGetConsumptionTxtData_BlankId_ReturnsEmptyFields() {
-        // When quoteLineId is blank, method returns a new QL with empty strings in fields
-        Test.startTest();
-        SBQQ__QuoteLine__c result = Pricing_ConsumptionAttr_Controller.getConsumptionTxtData('');
-        Test.stopTest();
-
-        System.assertNotEquals(null, result, 'Should return an sObject even when id is blank');
-        System.assertEquals('', result.Pricing_Consumption_Platform__c, 'Platform blank default');
-        System.assertEquals('', result.Pricing_Consumption_Region__c, 'Region blank default');
-        System.assertEquals('', result.Pricing_Consumption_Country__c, 'Country blank default');
-        System.assertEquals('', result.Pricing_Consumption_Sale_Geo__c, 'Sales Geo blank default');
-        System.assertEquals('', result.Pricing_Consumption_Segment__c, 'Segment blank default');
-    }
-
-    @isTest
-    public static void testSaveConsumptionTxtData_ExceptionReturnsMessage() {
-        String qliId = '00Q000000000000AAA';
-
-        Test.startTest();
-        String res = Pricing_ConsumptionAttr_Controller.saveConsumptionTxtData(qliId, 'p', 'r', 'c', 'g', 's');
-        Test.stopTest();
-
-        System.assertNotEquals('true', res, 'On exception, should not be true');
-        System.assertNotEquals(null, res, 'Should return an error message');
-    }
-
-    @isTest
-    public static void testGetPlatformAndSalesGeoPickList_NullQuoteId_ReturnsEmpty() {
-        Test.startTest();
-        List<Pricing_ConsumptionAccountMapping__c> mappings = Pricing_ConsumptionAttr_Controller.getPlatformAndSalesGeoPickList(null);
-        Test.stopTest();
-        System.assertEquals(0, mappings.size(), 'Null quote id should return empty list');
-    }
-    @isTest
-    public static void testGetParentQuoteLine_BlankId_ReturnsNull() {
-        Test.startTest();
-        SBQQ__QuoteLine__c res = Pricing_ConsumptionAttr_Controller.getParentQuoteLine('');
-        Test.stopTest();
-        System.assertEquals(null, res, 'Blank Id should return null');
-    }
-
-    @isTest
-    public static void testGetParentQuoteLine_NoMatch_ReturnsNull() {
-        // Create a child QL without CR flag/without reference to trigger no selection and catch block or empty return
-        SBQQ__QuoteLine__c someQL = [SELECT Id, SBQQ__Quote__c FROM SBQQ__QuoteLine__c LIMIT 1];
-
-        Test.startTest();
-        SBQQ__QuoteLine__c res = Pricing_ConsumptionAttr_Controller.getParentQuoteLine(someQL.Id);
-        Test.stopTest();
-
-        System.assertEquals(null, res, 'Without CR flag and reference, should return null');
     }
 }

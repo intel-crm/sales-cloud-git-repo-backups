@@ -34,6 +34,9 @@
         <field>Activity$Core_Activity_Source__c</field>
     </columns>
     <columns>
+        <field>Activity$LID__Date_Sent__c</field>
+    </columns>
+    <columns>
         <field>Activity$ActivityDateTime</field>
     </columns>
     <columns>

@@ -35,7 +35,6 @@
     <aura:attribute name="isValidAddComment" type="Boolean" default="false" />
     <aura:attribute name="isValidDealDesc" type="Boolean" default="false" />
     <aura:attribute name="isValidAdditionalTc" type="Boolean" default="false" />
-    <aura:attribute name="isValidRecipients" type="Boolean" default="false" />
     <aura:attribute name="isMeetCompMandatory" type="Boolean" default="true" />
     <aura:attribute name="hide" type="String" default="slds-hide" />
     <lightning:input name="scroll" class="{!v.hide}" aura:id="scrollHelper" />
@@ -497,29 +496,8 @@
                     </div>
                     
                 </lightning:layoutItem>
+
             </lightning:layout>
-            <aura:if isTrue="{!v.isRPM}">
-            <lightning:layout>
-            <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12">
-
-                    <div class="slds-p-around_small ">
-                        <label class="slds-form-element__label" for="text-input-id-1">Additional RPM Notification Recipients</label>
-                        <lightning:helptext content="{!$Label.c.Pricing_Tender_ToolTip_Additional_RPM_Notification_Recipients}"
-                            class="customIcon" />
-                        <lightning:textarea aura:id="addRecipientsCmp" onchange="{!c.onAdditionalRecipientsChange}" name="addRecipients"
-                            label="Additional RPM Notification Recipients" variant="label-hidden"
-                            value="{!v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c}" maxlength="255">
-                        </lightning:textarea>
-                        <aura:if isTrue="{!v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c.length}">
-                            <span class="floatToRight">{!255 - v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c.length}
-                                characters remaining</span>
-                        </aura:if>
-                    </div>
-                    
-                </lightning:layoutItem>
-             </lightning:layout>
-             </aura:if>
-
             <!-- footer -->
             <div class="slds-float_right slds-p-around_small" slot="footer">
                 <lightning:button variant="Neutral" label="Cancel" title="Cancel" disabled="{!v.isSpinner}"

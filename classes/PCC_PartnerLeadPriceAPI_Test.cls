@@ -33,7 +33,7 @@ public class PCC_PartnerLeadPriceAPI_Test {
         insert priceRec;
     }
     }
-     
+	 
     @isTest 
     static void testgetpartnerleadprice() {
         

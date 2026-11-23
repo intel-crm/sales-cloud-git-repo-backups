@@ -6,15 +6,13 @@ import getLabel from '@salesforce/apex/core_S2S_CaseExternalFeedController.getLa
 import { EnclosingUtilityId, getInfo,open,getAllUtilityInfo ,updatePanel,updateUtility } from 'lightning/platformUtilityBarApi';
 import chatUrlLabel from '@salesforce/label/c.sales_CRM_ChatUrl';
 import chatUrlMDFLabel from '@salesforce/label/c.core_MDF_ChatUrl';
-import chatUrlIPALabel from '@salesforce/label/c.core_IPA_ChatUrl';
 import chatHeader from '@salesforce/label/c.sales_CRM_ChatHeader';
 import chatBanner from '@salesforce/label/c.chatBanner';
 import chatTooltipSalesCRM from '@salesforce/label/c.chatTooltipSalesCRM';
 import chatTooltipAE from '@salesforce/label/c.chatTooltipAE';
 import chatTooltipIPS from '@salesforce/label/c.chatTooltipIPS';
 import chatTooltipMDF from '@salesforce/label/c.chatTooltipMDF';
-import chatTooltipIPA from '@salesforce/label/c.chatTooltipIPA';
-import chatTooltipIQR from '@salesforce/label/c.chatTooltipIQR';//IQR AAQ
+
 // Removed fallback string constants for labels
 
 export default class Core_AAQ_TabOverride extends NavigationMixin(LightningElement) {
@@ -23,14 +21,12 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
     @track isChatModalOpen = false;
     chatUrl = chatUrlLabel; // Use your actual chat URL
     MDFChatUrl = chatUrlMDFLabel;
-    IPAChatUrl = chatUrlIPALabel;
     chatHeader = chatHeader;
     chatBanner = chatBanner;
     chatTooltipSalesCRM = chatTooltipSalesCRM;
     chatTooltipAE = chatTooltipAE;
     chatTooltipIPS = chatTooltipIPS;
     chatTooltipMDF = chatTooltipMDF;
-    chatTooltipIQR = chatTooltipIQR;//IQR AAQ
     @track showIframe = false;
 
 
@@ -92,9 +88,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
                         item.Name === 'Sales CRM' ||
                         item.Name === 'Access & Entitlement for Salesforce' ||
                         item.Name === 'Intel® Premier Support' ||
-                        item.Name === 'Partner Investment Center'||
-                        item.Name === 'Intel Partner Alliance'||
-                        item.Name === 'Intel Quote Request';//IQR AAQ
+                        item.Name === 'Partner Investment Center';
                     let tooltipText = '';
                     if (item.Name === 'Sales CRM') {
                         tooltipText = chatTooltipSalesCRM;
@@ -104,19 +98,12 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
                         tooltipText = chatTooltipIPS;
                     } else if (item.Name === 'Partner Investment Center') {
                         tooltipText = chatTooltipMDF;
-                    }else if (item.Name === 'Intel Partner Alliance') {
-                        tooltipText = chatTooltipIPA;
-                    }else if (item.Name === 'Intel Quote Request') {
-                        tooltipText = chatTooltipIQR; //IQR AAQ
                     }
-                
                     // Add rowClass for first 3 rows and 5th row
                     const rowClass = (index < 3 || index == 4) ? 'aaq-row-pr2' : '';
                     // Add a flag for the 5th row (index 4) to use a different chat URL
                     const isMDFRow = index === 4;
-                    // Add a flag for the 8th row (index 7) to use IPA chat URL
-                    const isIPARow = index === 7;
-                    const chatUrl = isMDFRow ? this.MDFChatUrl : isIPARow ? this.IPAChatUrl : this.chatUrl; //IQR AAQ
+                    const chatUrl = isMDFRow ? this.MDFChatUrl : this.chatUrl;
                     return Object.assign(
                         {},
                         item,

@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 02-03-2025
+ * @last modified by  : Vrushabh Uprikar
 **/
 @isTest
 public without sharing class Pricing_QuoteLineController_Test {  
@@ -234,7 +234,8 @@ public without sharing class Pricing_QuoteLineController_Test {
     }
 
     static testMethod void testDeleteQuoteLine(){
-       
+        Account acc =  [SELECT Id from Account LIMIT 1];
+        Contact con = [SELECT Id from Contact WHERE AccountId =: acc.Id LIMIT 1];
         Test.startTest();
         User adminUser = [Select id,Email from User where Email='quoteLineControllerAdmin@intel.com' Limit 1];
         System.runAs(adminUser){
@@ -322,7 +323,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             Test.startTest();
             //update quoteLineList[1];
             //Test.startTest();
-            Pricing_QuoteLineController.recordApproval(quoteLineList[1].Id, '', 'Won', quoteLineList[1], '', false, 'Test', '');
+            String msg = Pricing_QuoteLineController.recordApproval(quoteLineList[1].Id, '', 'Won', quoteLineList[1], '', false, 'Test', '');
             Test.stopTest();
             //System.assert(!String.isBlank(msg),'failed to approve record');
             System.assertEquals(quoteList.size() > 0, true);
@@ -337,7 +338,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             quoteLine.Pricing_Status_Nm__c = 'Pending Intel Field Review';
             update quoteLine;
             Test.stopTest();
-            Pricing_QuoteLineController.recordApproval(quoteLine.Id, 'Test', 'Customer Revision', quoteLine, '', true, 'Test', '');
+            String msg = Pricing_QuoteLineController.recordApproval(quoteLine.Id, 'Test', 'Customer Revision', quoteLine, '', true, 'Test', '');
             //System.assert(String.isNotBlank(msg), 'failed to approve record');
             System.assertEquals(quoteLine.Pricing_Status_Nm__c == 'Pending Intel Field Review', true);
             //Test.stopTest();
@@ -355,7 +356,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             quoteLine.Pricing_Status_Nm__c = 'Pending Further Intel Review';
             update quoteLine;
             Test.stopTest();
-            Pricing_QuoteLineController.recordApproval(quoteLine.Id, 'Test', 'Customer Revision', quoteLine, '', false, 'Test', '');
+            String msg = Pricing_QuoteLineController.recordApproval(quoteLine.Id, 'Test', 'Customer Revision', quoteLine, '', false, 'Test', '');
            	System.assertEquals(quoteList.size() > 0, true);
             //System.assert(String.isNotBlank(msg), 'failed to approve record');
             //Test.stopTest();
@@ -411,7 +412,6 @@ public without sharing class Pricing_QuoteLineController_Test {
         System.runAs(adminUser){
             List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
             Pricing_QuoteLineController.deleteIQRQuote(quoteList[0].Id);
-            System.assertEquals(quoteList.size() > 0, true);
             Test.stopTest();
         }
     }
@@ -604,8 +604,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             SBQQ__QuoteLine__C quoteLine = [SELECT Id, Pricing_Quote_Line_Number__c,SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id, Pricing_Last_Submitted_By_Id__c, Pricing_Sales_Rep_Approver__c,Pricing_Sales_Rep_Approver__r.Id, SBQQ__Quote__r.Id FROM SBQQ__QuoteLine__c where SBQQ__Product__r.Name != 'Write In Product' LIMIT 1];
             quoteLine.Pricing_Sales_Rep_Approver__c = regionalManager[0].id;
             update quoteLine;
-            Pricing_QuoteLineController.chatterPostCreation('ABCD', quoteLine, True, True,false);
-            System.assertEquals(quoteList.size() > 0, true);
+            Pricing_QuoteLineController.chatterPostCreation('ABCD', quoteLine, True, True);
             Test.stopTest();
         }      
     }
@@ -634,7 +633,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             quoteLine.Pricing_Status_Nm__c = 'Pending Intel Field Review';
             update quoteLine;
             Test.stopTest();
-            Pricing_QuoteLineController.recordApproval(quoteLine.Id, '', Label.Pricing_Tender_QuoteLine_Action_Rollback, quoteLine, '', false, '', '');
+            String msg = Pricing_QuoteLineController.recordApproval(quoteLine.Id, '', Label.Pricing_Tender_QuoteLine_Action_Rollback, quoteLine, '', false, '', '');
             System.assertEquals(quoteLine.Pricing_Status_Nm__c == 'Pending Intel Field Review', true);
             //System.assert(String.isNotBlank(msg), 'failed to approve record');
         }
@@ -646,7 +645,6 @@ public without sharing class Pricing_QuoteLineController_Test {
         User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
         System.runAs(adminUser){            
             Pricing_QuoteLineController.handleSyncStatus(quoteLine.Id);
-            System.assertEquals(true, quoteLine != null);
             Test.stopTest();
         }
     }

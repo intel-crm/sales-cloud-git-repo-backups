@@ -21,6 +21,11 @@
  */
 @isTest
 private class PMP_PublishTranslationsToPIMBatchTest {
+    @isTest
+    static void testIsWorking() {
+        Boolean result = PMP_PublishTranslationsToPIMBatch.isWorking();
+        System.assertEquals(true, result);
+    }
 //IPA2.0:US-4497-1631_OfferingEOL  
     /*static testMethod  void testMethod1() {
 		List<PMP_Partner_Offering__c> offeringList = new List<PMP_Partner_Offering__c>();

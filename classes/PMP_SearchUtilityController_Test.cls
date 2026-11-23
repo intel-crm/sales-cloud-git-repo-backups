@@ -96,7 +96,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         cmp1.PMP_Company_Lifecycle_Status_Nm__c = 'Published';
         cmp1.PMP_Is_Enabled_Lead_Gen_Nm__c = 'True';
         cmp1.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
-       // PMP_Company_Info_TriggerHandler.offeringSharingOpidRecursive = true;
+        PMP_Company_Info_TriggerHandler.offeringSharingOpidRecursive = true;
         update cmp1;
         
         List<PMP_Category__c> catList = new List<PMP_Category__c>();
@@ -948,8 +948,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         PMP_Category__c cat = [SELECT id, Name,PMP_Partner_Offering_Category_Dsc__c,PMP_Category_Chinese_Nm__c,PMP_Category_Chinese_Dsc__c,PMP_Category_Japanese_Dsc__c, PMP_Category_Japanese_Nm__c from PMP_Category__c where Name='Component'];
         PMP_Partner_Offering__c off = [SELECT id, Name from PMP_Partner_Offering__c where PMP_Partner_Offering_Nm__c = 'TestDuplicateOffering1'];
         PMP_Company__c partner = [SELECT id, PMP_Account_Id__c, Name, PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Is_Lead_Gen_Limited_Nm__c from PMP_Company__c where Name='TestCompany1'];
-        //TranslationEOL 
-        /*
+        
         PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
         compTrans.Name = 'compTransTest';
         compTrans.PMP_Company_Information_Id__c = partner.Id;
@@ -957,7 +956,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         compTrans.PMP_Japanese_Txt__c = 'japanese';
         compTrans.PMP_English_Txt__c = 'english';
         compTrans.PMP_Field_Nm__c = 'Name';
-        insert compTrans;*/   
+        insert compTrans;   
         
         PMP_Partner_Segment__c partnerSegment = new PMP_Partner_Segment__c();
         partnerSegment.PMP_Partner_Segment_Value_Txt__c = 'compTransTest';
@@ -1070,8 +1069,8 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         PMP_SearchUtilityController.getLocalisedName(offTrans, PMP_StaticConstants_Partner.CAT_NAME_FIELD, '');
        // PMP_SearchUtilityController.getLocalisedName(offTrans, PMP_StaticConstants_Partner.CAT_NAME_FIELD, 'zh_CN');
         //PMP_SearchUtilityController.getLocalisedName(offTrans, PMP_StaticConstants_Partner.CAT_NAME_FIELD, 'ja');
-//TranslationEOL        
-       // PMP_SearchUtilityController.getLocalisedName(compTrans, '', '');
+        
+        PMP_SearchUtilityController.getLocalisedName(compTrans, '', '');
         //PMP_SearchUtilityController.getLocalisedName(compTrans, PMP_StaticConstants_Partner.CAT_NAME_FIELD, 'zh_CN');
        // PMP_SearchUtilityController.getLocalisedName(compTrans, PMP_StaticConstants_Partner.CAT_NAME_FIELD, 'ja');
         
@@ -1112,15 +1111,15 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         PMP_SearchUtilityController.getLocalisedName(spec, PMP_StaticConstants_Partner.CAT_NAME_FIELD, '');// SHIVA
        
        
-        //TranslationEOL 
-        /*PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
+        
+        PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
         compTrans.Name = 'compTransTest';
         compTrans.PMP_Company_Information_Id__c = partner.Id;
         compTrans.PMP_Chinese_Txt__c = 'chinese';
         compTrans.PMP_Japanese_Txt__c = 'japanese';
         compTrans.PMP_English_Txt__c = 'english';
         compTrans.PMP_Field_Nm__c = 'Name';
-        insert compTrans;*/
+        insert compTrans;
         
         PMP_Partner_Offering_Category__c offCat = new PMP_Partner_Offering_Category__c();
         offCat.Name = 'Test';
@@ -1188,8 +1187,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         
         PMP_Partner_Offering_Translation__c offTrans = [SELECT id, name,PMP_Chinese_Txt__c from PMP_Partner_Offering_Translation__c where name = 'test'];
         PMP_SearchUtilityController.getLocalisedName(offTrans, '', 'zh_CN');
-        //TranslationEOL 
-       // PMP_SearchUtilityController.getLocalisedName(compTrans, '', 'zh_CN');
+        PMP_SearchUtilityController.getLocalisedName(compTrans, '', 'zh_CN');
         Test.stopTest();
     }
     
@@ -1217,15 +1215,15 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         PMP_Specification__c spec = [SELECT id, Name,PMP_Specification_Chinese_Nm__c,PMP_Specification_Japanese_Nm__c from PMP_Specification__c where Name='Geo1']; 
         PMP_SearchUtilityController.getLocalisedName(spec, PMP_StaticConstants_Partner.CAT_NAME_FIELD, 'ja');
         PMP_SearchUtilityController.getLocalisedName(spec, PMP_StaticConstants_Partner.CAT_NAME_FIELD, '');// JOYDEEP
-        //TranslationEOL 
-        /*PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
+        
+        PMP_Company_Translation__c compTrans = new PMP_Company_Translation__c();
         compTrans.Name = 'compTransTest';
         compTrans.PMP_Company_Information_Id__c = partner.Id;
         compTrans.PMP_Chinese_Txt__c = 'chinese';
         compTrans.PMP_Japanese_Txt__c = 'japanese';
         compTrans.PMP_English_Txt__c = 'english';
         compTrans.PMP_Field_Nm__c = 'Name';
-        insert compTrans;*/
+        insert compTrans;
         
         PMP_Partner_Offering_Category__c offCat = new PMP_Partner_Offering_Category__c();
         offCat.Name = 'Test';
@@ -1292,8 +1290,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         
         PMP_Partner_Offering_Translation__c offTrans = [SELECT id, name,PMP_English_Txt__c,PMP_Japanese_Txt__c from PMP_Partner_Offering_Translation__c where name = 'test'];
         PMP_SearchUtilityController.getLocalisedName(offTrans,'','ja');
-        //TranslationEOL 
-       // PMP_SearchUtilityController.getLocalisedName(compTrans,'','ja');
+        PMP_SearchUtilityController.getLocalisedName(compTrans,'','ja');
         Test.stopTest();
     }   
 

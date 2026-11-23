@@ -801,8 +801,6 @@ public without sharing class Core_MDF_Recovery_Utility {
         public String budgettype = '';
         public String region = '';
         public String onlyReadyToRecoverMonths = '';
-        public String surePayExeTime ='';
-        public String recoveryExeTime ='';
     }
 
     public class RecoveryAdminProgramMapping {        

@@ -158,6 +158,991 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fieldSets>
+        <fullName>PSG_BM_Field_set</fullName>
+        <description>Field set to be utilized specifically for BM profile users</description>
+        <displayedFields>
+            <field>core_cpq_line_name_nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PSG_Restricted_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_smi_flag_ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_years_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_peak_annual_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_std_fwd_cost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_intel_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_intel_margin_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_config_dm_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__ListPrice__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l1_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l2_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_above_msvp_l2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_active_Pricing__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG BM Field set</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_BO_Field_set</fullName>
+        <description>Field set to be utilized specifically for BO profile users</description>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PSG_Restricted_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_years_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_registration_product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_master_ddr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_reg_status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_OPN__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_active_Pricing__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_config_dm_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_intel_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_pricing_start_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_pricing_end_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l1_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l2_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_above_msvp_l2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_std_fwd_cost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_eol_flag_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_peak_annual_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG BO Field set</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_SOS_Field_Set_DR</fullName>
+        <description>Field set to be utilized specifically for SOS profile users with DR</description>
+        <displayedFields>
+            <field>core_cpq_line_name_nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PSG_Restricted_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__ProductName__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_goal_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l1_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l2_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_above_msvp_l2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_config_dm_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_registration_product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_master_ddr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_reg_status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_smi_flag_ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_orderable_ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_external_comments_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG SOS Field Set DR</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_SOS_Field_Set_DR_with_Comp</fullName>
+        <description>Field set to be utilized specifically for SOS profile users with DR Comp</description>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_registerable_flag__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_goal_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_reg_status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_design_registration_product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_OPN_Concatenation_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_product_hierarchy_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_internal_comments_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_name_nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_part_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG SOS Field Set DR with Comp</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_SOS_Field_Set_No_DR</fullName>
+        <description>Field set to be utilized specifically for SOS with no DR profile users</description>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_goal_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l1_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l2_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_above_msvp_l2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_years_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_smi_flag_ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_eol_flag_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_minimum_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_multiple_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG SOS Field Set No DR</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_SOS_Field_Set_No_DR_with_Comp</fullName>
+        <description>Field set to be utilized specifically for SOS  profile users  no DR with Comp</description>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_goal_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_prid_alert__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_dollar_change_flag_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l1_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_msvp_l2_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_above_msvp_l2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_years_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_smi_flag_ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_eol_flag_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_name_nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_part_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_competitor_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG SOS Field Set No DR with Comp</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>PSG_TOOLS_FIELD_SET</fullName>
+        <description>Field set to be utilized specifically for Tools Quote type</description>
+        <displayedFields>
+            <field>core_cpq_line_name_nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_select_ql_cb__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_PSG_Restricted_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__ProductName__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_opn__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_quote_line_type_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_price_eligibility_date_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_lower_bound_qty_qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_upper_bound_qty_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_goal_price_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_suggested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_requested_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__ListPrice__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_disty_cost_nbr__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_brokencost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_config_dm_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_distributor_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_margin_exception_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_intel_margin_pct__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_std_fwd_cost_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>price_peak_annual_resale_amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_internal_comments_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_external_comments_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>PSG TOOLS FIELD SET</label>
+    </fieldSets>
+    <fieldSets>
         <fullName>Pricing_Client_Additional_Details</fullName>
         <description>Quote Line Additional fields for Client Product.</description>
         <displayedFields>
@@ -481,17 +1466,42 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Approved_Unit_Dup_Qty__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Pricing_Approved_Unit_Qty__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>Pricing_Approved_Unit_Dup_Qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Pricing_Payable_Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_Backdate_Reason_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_Meet_Comp_Price_Amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_Recommended_Price_Amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_Recommendation_FeedBack_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_SDM_Fast_Track__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -506,47 +1516,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Backdate_Reason_Txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_SDM_Fast_Track__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Meet_Comp_Price_Amt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Price_Interval_Txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Recommendation_FeedBack_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Reason_for_FeedBack_Txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Rationale_for_Pricing__c</field>
+            <field>Pricing_FSE_Recommended_Price_Nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
             <field>Pricing_pm_approval_comments_nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_FSE_Recommended_Price_Nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -571,22 +1546,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Workload_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Approval_Price_Rule_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Pricing_Price_Rule_Error_Message__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Change_Request_Type__c</field>
+            <field>Pricing_Workload_Nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -1126,22 +2091,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Workload_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Approval_Price_Rule_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Pricing_Price_Rule_Error_Message__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Change_Request_Type__c</field>
+            <field>Pricing_Workload_Nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -1646,22 +2601,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_SDM_Fast_Track__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Pricing_Meet_Comp_Price_Amt__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Price_Interval_Txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_HPC_Eligible_Pricing_Envelope__c</field>
+            <field>Pricing_Recommended_Price_Amt__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -1671,17 +2616,7 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Reason_for_FeedBack_Txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Rationale_for_Pricing__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Request_Discount_Unit_Price_qty__c</field>
+            <field>Pricing_SDM_Fast_Track__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -1691,12 +2626,17 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_pm_approval_comments_nm__c</field>
+            <field>Pricing_Request_Discount_Unit_Price_qty__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
             <field>Pricing_FSE_Recommended_Price_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Pricing_pm_approval_comments_nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -1721,22 +2661,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Workload_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Pricing_Approval_Price_Rule_Name__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Pricing_Price_Rule_Error_Message__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Pricing_Change_Request_Type__c</field>
+            <field>Pricing_Workload_Nm__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -2963,6 +3893,11 @@ Quote Program: Software</description>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>core_cpq_PRID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>core_cpq_prid_alert__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -3808,6 +4743,11 @@ Quote Program: Software</description>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>core_cpq_distributor_margin__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>core_cpq_comments_for_customer_txt__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -3829,6 +4769,11 @@ Quote Program: Software</description>
         </displayedFields>
         <displayedFields>
             <field>core_cpq_internal_comments_txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>core_cpq_DM_End_Date__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -4062,46 +5007,6 @@ Quote Program: Software</description>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Pricing_Application_Agent_Status__c</fullName>
-        <label>Application Agent Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Success</fullName>
-                    <default>false</default>
-                    <label>Success</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>In Progress</fullName>
-                    <default>false</default>
-                    <label>In Progress</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Pricing_Approval_Price_Rule_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Approval Price Rule Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Pricing_Approved_End_Date_Dt__c</fullName>
@@ -4343,55 +5248,6 @@ null)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Pricing_Change_Request_Ind__c</fullName>
-        <formula>If((LEN(Pricing_Quote_Line_Number__c) - LEN(SUBSTITUTE(Pricing_Quote_Line_Number__c, &quot;-&quot;, &quot;&quot;)) &gt; 2), true, false)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Is Of Change Request ?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Pricing_Change_Request_Type__c</fullName>
-        <label>Change Request Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Consumption Reason Change</fullName>
-                    <default>false</default>
-                    <label>Consumption Reason Change</label>
-                </value>
-                <value>
-                    <fullName>Date Change</fullName>
-                    <default>false</default>
-                    <label>Date Change</label>
-                </value>
-                <value>
-                    <fullName>Payable Quantity Change</fullName>
-                    <default>false</default>
-                    <label>Payable Quantity Change</label>
-                </value>
-                <value>
-                    <fullName>Price Change</fullName>
-                    <default>false</default>
-                    <label>Price Change</label>
-                </value>
-                <value>
-                    <fullName>Volume Change</fullName>
-                    <default>false</default>
-                    <label>Volume Change</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Pricing_Change_Request_cb__c</fullName>
@@ -5313,18 +6169,6 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Pricing_HPC_Eligible_Pricing_Envelope__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Displays the approved pricing range for HPC based on HPC historical pricing and applicable CAP/YCS2 ceiling thresholds.</inlineHelpText>
-        <label>HPC Eligible Pricing Envelope</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Pricing_IA_Bid_Discount_Pct__c</fullName>
@@ -6288,8 +7132,8 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
     <fields>
         <fullName>Pricing_Price_Interval_Txt__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Displays the approved pricing range based on historical pricing and applicable CAP/YCS2 ceiling thresholds.</inlineHelpText>
-        <label>Eligible Pricing Envelope</label>
+        <inlineHelpText>+/- 10% of the Recommended Price</inlineHelpText>
+        <label>Price Interval</label>
         <length>100</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -6650,16 +7494,6 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Pricing_Rationale_for_Pricing__c</fullName>
-        <inlineHelpText>Explanation for the recommended price and eligible pricing envelope. Data and deals referenced</inlineHelpText>
-        <label>Rationale for Pricing</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Pricing_Ready_for_QuoteLetter_T_C_cb__c</fullName>
         <description>Checkbox to check if Quote Line T&amp;C is ready for Quote Letter generation. used for Filter Field in IQR Quote Letter T&amp;C Line Items.</description>
         <formula>if(OR(ISPICKVAL( Pricing_Program_Type_Nm__c , &quot;Financial Incentive&quot;),NOT(ISBLANK(Pricing_Deal_RFQ_Id__c))) &amp;&amp; ((TEXT(Pricing_Status_Nm__c) = &apos;Won&apos;) || (TEXT(Pricing_Status_Nm__c) = &apos;Approved&apos;) || (TEXT(Pricing_Status_Nm__c) = &apos;Cancelled&apos;)) &amp;&amp; Pricing_Is_Additional_T_C_Not_Blank_cb__c = TRUE , TRUE , FALSE )</formula>
@@ -6701,7 +7535,7 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
     <fields>
         <fullName>Pricing_Recommendation_FeedBack_Nm__c</fullName>
         <inlineHelpText>Feedback to help the Pricing AI team understand why the AI model&apos;s recommendation was or was not used. If feedback reason is not listed, select &apos;Other&apos; option and type the feedback in the Reason for Feedback field.</inlineHelpText>
-        <label>User Feedback on Agent Recommended Price</label>
+        <label>AI Recommendation Feedback</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -6711,14 +7545,14 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Strategic deal/Pricing influenced by AE or market insights</fullName>
-                    <default>false</default>
-                    <label>Strategic deal/Pricing influenced by AE or market insights</label>
-                </value>
-                <value>
                     <fullName>Aligning to historical customer pricing</fullName>
                     <default>false</default>
                     <label>Aligning to historical customer pricing</label>
+                </value>
+                <value>
+                    <fullName>Boreas recommendation too high/low</fullName>
+                    <default>false</default>
+                    <label>Boreas recommendation too high/low</label>
                 </value>
                 <value>
                     <fullName>Multiple sku alignment</fullName>
@@ -6731,26 +7565,20 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
                     <label>Sku not in scope</label>
                 </value>
                 <value>
+                    <fullName>Strategic deal/Pricing influenced by AE or market insights</fullName>
+                    <default>false</default>
+                    <label>Strategic deal/Pricing influenced by AE or market insights</label>
+                </value>
+                <value>
                     <fullName>Other – Please provide comments</fullName>
                     <default>false</default>
                     <label>Other – Please provide comments</label>
-                </value>
-                <value>
-                    <fullName>Pricing Application Agent recommendation too high/low</fullName>
-                    <default>false</default>
-                    <label>Pricing Application Agent recommendation too high/low</label>
                 </value>
                 <value>
                     <fullName>Aggressive competitive pricing, Boreas not competitive</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Aggressive competitive pricing, Boreas not competitive</label>
-                </value>
-                <value>
-                    <fullName>Boreas recommendation too high/low</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Boreas recommendation too high/low</label>
                 </value>
                 <value>
                     <fullName>Comp/Intel sku not in Boreas scope</fullName>
@@ -9600,6 +10428,65 @@ IF(SBQQ__Quantity__c == SBQQ__PriorQuantity__c, 0, (SBQQ__ProratedListPrice__c *
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>core_cpq_DM_End_Date__c</fullName>
+        <formula>core_cpq_distributor_margin__r.core_cpq_end_date__c</formula>
+        <label>DM End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_DM_Validity_Check__c</fullName>
+        <formula>IF(
+      NOT(ISBLANK(core_cpq_distributor_margin__c)),
+      NOT(
+	  OR(
+		core_cpq_distributor_margin__r.core_cpq_end_date__c &lt;TODAY(),
+		core_cpq_distributor_margin__r.core_cpq_Effective_Date_Dt__c&gt;TODAY(), 
+		core_cpq_config_dm_pct__c &lt;&gt; core_cpq_distributor_margin__r.core_cpq_Disty_Margin_Pct__c ,
+		TEXT(core_cpq_distributor_margin_type__c) &lt;&gt; 
+                TEXT(core_cpq_distributor_margin__r.core_cpq_dm_type__c) ,
+		core_cpq_distributor_margin__r.core_cpq_Active_Cb__c=false,
+		AND(
+			NOT(ISBLANK(core_cpq_PRID__c)), 
+			core_cpq_PRID__r.core_cpq_prid_validity_date_dt__c&lt;TODAY(),
+			ISPICKVAL( core_cpq_distributor_margin__r.core_cpq_dm_type__c,&quot;Hunter&quot;)
+		),
+		NOT(CONTAINS(SBQQ__Quote__r.core_cpq_account_program__c, 
+                TEXT(core_cpq_distributor_margin__r.core_cpq_Partner_Program_Txt__c))),
+		SBQQ__Quote__r.SBQQ__PriceBook__c &lt;&gt; core_cpq_distributor_margin__r.core_cpq_Price_Book__c,
+	NOT( 
+            CONTAINS(SBQQ__Quote__r.core_cpq_account_tier__c,
+            TEXT(core_cpq_distributor_margin__r.core_cpq_Account_Tier_Txt__c))),
+	    TEXT(SBQQ__Quote__r.core_cpq_margin_geo_txt__c) 
+             &lt;&gt;TEXT(core_cpq_distributor_margin__r.core_cpq_Margin_GEO_Txt__c),
+			 
+            core_cpq_distributor_margin__r.core_cpq_Registered_Product_Txt__c&lt;&gt;core_cpq_registerable_flag__c,
+	OR(
+	   AND(
+	       OR(core_cpq_design_reg_status__c=&apos;Approved&apos;,NOT(ISBLANK(core_cpq_master_ddr__c ))), 
+		NOT(ISPICKVAL(core_cpq_distributor_margin__r.core_cpq_Approved_Registration_Txt__c, &apos;Yes&apos;))),
+	     AND(
+	         AND(core_cpq_design_reg_status__c &lt;&gt; &apos;Approved&apos;, ISBLANK(core_cpq_master_ddr__c )),
+		 ISPICKVAL(core_cpq_distributor_margin__r.core_cpq_Approved_Registration_Txt__c, &apos;Yes&apos;)
+		    )
+		),
+		  AND(
+			core_cpq_distributor_margin__r.core_cpq_product_family_txt__c &lt;&gt; null, 
+			core_cpq_product_family_txt__c &lt;&gt; 
+                        core_cpq_distributor_margin__r.core_cpq_product_family_txt__c 
+		     )
+		) 
+      ),
+	true
+)</formula>
+        <label>DM Validity Check</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>core_cpq_Last_DM_Refresh_Date__c</fullName>
         <label>Last DM% Refresh Date</label>
         <required>false</required>
@@ -9621,6 +10508,74 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_PRID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to PRID</description>
+        <label>PRID</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((7 AND 9) OR 8 OR (6 AND 10))</booleanFilter>
+            <filterItems>
+                <field>price_prid__c.core_cpq_active_cb__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.core_cpq_sap_ecp_nm__c</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.SBQQ__Product__c</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.core_cpq_sap_ecp_nm__c</field>
+                <operation>equals</operation>
+                <valueField>price_prid__c.core_cpq_sap_ecp_nm__c</valueField>
+            </filterItems>
+            <filterItems>
+                <field>$Source.SBQQ__Product__c</field>
+                <operation>equals</operation>
+                <valueField>price_prid__c.core_cpq_device__c</valueField>
+            </filterItems>
+            <filterItems>
+                <field>price_prid__c.core_cpq_cps_cb__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.core_cpq_quote_type__c</field>
+                <operation>equals</operation>
+                <value>Design Win</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.core_cpq_quote_type__c</field>
+                <operation>equals</operation>
+                <value>Transfer Pricing</value>
+            </filterItems>
+            <filterItems>
+                <field>price_prid__c.core_cpq_cps_cb__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.core_cpq_quote_type__c</field>
+                <operation>notEqual</operation>
+                <value>Design Win, Transfer Pricing</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>price_prid__c</referenceTo>
+        <relationshipLabel>Quote Lines</relationshipLabel>
+        <relationshipName>Quote_Lines</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>core_cpq_PSG_Restricted_Product__c</fullName>
@@ -9818,6 +10773,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_ccf_flag_cb__c</fullName>
+        <formula>core_cpq_PRID__r.core_cpq_cps_cb__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CCF Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>core_cpq_change_flag_for_reporting__c</fullName>
@@ -10096,6 +11060,18 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_distributor_margin__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Distributor Margin #</label>
+        <referenceTo>core_cpq_distributor_margin__c</referenceTo>
+        <relationshipLabel>Quote Lines</relationshipLabel>
+        <relationshipName>Quote_Lines</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>core_cpq_distributor_margin_pct__c</fullName>
@@ -10707,6 +11683,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_prid_active_cb__c</fullName>
+        <formula>core_cpq_PRID__r.core_cpq_active_cb__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PRID Active Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>core_cpq_prid_alert__c</fullName>
@@ -11661,9 +12646,29 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <columns>Pricing_Intel_Response_Requested_By_Date__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </filters>
+        <filters>
+            <field>Pricing_End_Customer_Country__c</field>
+            <operation>equals</operation>
+            <value>Canada,United States</value>
+        </filters>
+        <filters>
+            <field>Pricing_Region_Nm__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
             <field>Pricing_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Pending Further Intel Review</value>
+        </filters>
+        <filters>
+            <field>Pricing_Market_Segment_values_Nm__c</field>
+            <operation>equals</operation>
+            <value>Corp,Government,SMB,Education</value>
         </filters>
         <label>IQR Pending Pricing Review</label>
         <sharedTo>
@@ -11887,6 +12892,25 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>PSG_Quote_Lines</fullName>
+        <columns>NAME</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>SBQQ__ListPrice__c</columns>
+        <columns>SBQQ__Quantity__c</columns>
+        <columns>core_cpq_distributor_margin_pct__c</columns>
+        <columns>price_disty_cost_nbr__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__QuoteLine__c.PSG_Quote_Line_Create,SBQQ__QuoteLine__c.PSG_Quote_Line_Submitted</value>
+        </filters>
+        <label>PSG Quote Lines</label>
+        <sharedTo>
+            <group>PSG_Internal_Users_ReadEdit</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Pricing_FI_Pending_Pricing_Review</fullName>
         <columns>SBQQ__Quote__c</columns>
         <columns>Pricing_Quote_Line_Number_Txt__c</columns>
@@ -12035,21 +13059,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>PSG records types for new quote line</description>
         <label>PSG Quote Line - Create</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -12077,29 +13086,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14204,21 +15190,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>PSG records types for read only fields</description>
         <label>PSG Quote Line - Read Only</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -14246,29 +15217,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -16373,21 +17321,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents PSG Quotes lines in submitted state.</description>
         <label>PSG Quote Line - Submitted</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -16415,29 +17348,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -18542,21 +19452,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Client Quote Line in Create Status</description>
         <label>Client</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -18584,29 +19479,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -20056,15 +20928,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20726,21 +21598,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Data Center GPU Quote Line in Create Status</description>
         <label>Data Center GPU</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -20768,29 +21625,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -22252,15 +23086,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22982,21 +23816,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Financial IncentiveTender Quote Line in Edit Status</description>
         <label>Pricing Financial Incentive Quote Line - Edit</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -23024,29 +23843,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -25198,21 +25994,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Financial Incentive Tender Quote Line in ReadOnly Status</description>
         <label>Pricing Financial Incentive Quote Line - Read Only</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -25240,29 +26021,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -27410,21 +28168,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Ethernet Quote Line in Create Status</description>
         <label>Ethernet</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -27452,29 +28195,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -28920,15 +29640,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -29590,21 +30310,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Optane™ PMem Quote Line in Create Status</description>
         <label>Optane™ PMem</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -29632,29 +30337,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -31100,15 +31782,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -31770,21 +32452,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Optane™ SSD Quote Line in Create Status</description>
         <label>Optane™ SSD</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -31812,29 +32479,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -33280,15 +33924,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33950,21 +34594,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender SVD Quote Line in Create Status</description>
         <label>Small Volume Quote Line</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -33992,29 +34621,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -35457,6 +36063,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             <picklist>Pricing_Recommendation_FeedBack_Nm__c</picklist>
             <values>
                 <fullName>Aligning to historical customer pricing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36126,21 +36736,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender SVD Quote Line in Edit Status</description>
         <label>Pricing SVD Quote Line - Edit</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -36168,29 +36763,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -37633,6 +38205,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             <picklist>Pricing_Recommendation_FeedBack_Nm__c</picklist>
             <values>
                 <fullName>Aligning to historical customer pricing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -38302,21 +38878,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender SVD Quote Line in ReadOnly Status</description>
         <label>Pricing SVD Quote Line - Read Only</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -38344,29 +38905,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -39809,6 +40347,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             <picklist>Pricing_Recommendation_FeedBack_Nm__c</picklist>
             <values>
                 <fullName>Aligning to historical customer pricing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -40478,21 +41020,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender SVD Quote Line in Submitted Status</description>
         <label>Pricing SVD Quote Line - Submitted</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -40520,29 +41047,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -41985,6 +42489,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             <picklist>Pricing_Recommendation_FeedBack_Nm__c</picklist>
             <values>
                 <fullName>Aligning to historical customer pricing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42654,21 +43162,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender Quote Line in Create Status</description>
         <label>Standard Quote Line</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -42696,29 +43189,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -44161,6 +44631,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             <picklist>Pricing_Recommendation_FeedBack_Nm__c</picklist>
             <values>
                 <fullName>Aligning to historical customer pricing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -44826,21 +45300,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender Quote Line in Edit Status</description>
         <label>Pricing Tender Quote Line - Edit</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -44868,29 +45327,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -46344,15 +46780,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -47014,21 +47450,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender Quote Line in ReadOnly Status</description>
         <label>Pricing Tender Quote Line - ReadOnly</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -47056,29 +47477,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -48532,15 +48930,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -49202,21 +49600,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Tender Quote Line in Submitted Status</description>
         <label>Pricing Tender Quote Line - Submitted</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -49244,29 +49627,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -50720,15 +51080,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Other %E2%80%93 Please provide comments</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pricing Application Agent recommendation too high%2Flow</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -51390,21 +51750,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Software CPQ Quote Line</description>
         <label>Software &amp; Services</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -51432,29 +51777,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -52916,6 +53238,10 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>Boreas recommendation too high%2Flow</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multiple sku alignment</fullName>
                 <default>false</default>
             </values>
@@ -53642,21 +53968,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <description>Represents Contract Pricing for PSG Program.</description>
         <label>PSG CP Quote Line</label>
         <picklistValues>
-            <picklist>Pricing_Application_Agent_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Backdate_Reason_Txt__c</picklist>
             <values>
                 <fullName>Data Entry Error</fullName>
@@ -53684,29 +53995,6 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
             </values>
             <values>
                 <fullName>Volume Increase</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Change_Request_Type__c</picklist>
-            <values>
-                <fullName>Consumption Reason Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Date Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payable Quantity Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Price Change</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Volume Change</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

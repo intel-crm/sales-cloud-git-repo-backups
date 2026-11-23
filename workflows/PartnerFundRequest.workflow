@@ -8,7 +8,7 @@
             <field>Core_MDF_Activity_First_Approver_txt__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_StatusUpdate</template>
     </alerts>
@@ -19,7 +19,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_MDF_StatusUpdate_Internal</template>
     </alerts>
@@ -30,7 +30,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_MDF_ExternalStatusChange</template>
     </alerts>
@@ -42,7 +42,7 @@
             <recipient>Core_MDF_AfterTheFact_Users_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_StatusUpdate</template>
     </alerts>
@@ -53,7 +53,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_RMF_StatusUpdate</template>
     </alerts>

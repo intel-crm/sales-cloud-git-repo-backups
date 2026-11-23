@@ -487,9 +487,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
        PageReference pg;
         if(preURL.indexof('assetid') > -1)
            pg = new PageReference('/02i/o'); 
-        //else if(retURL !=null && retURL !='')
-        //Modified by Rakshitha as part of ATHR fix added('/')
-        else if (retURL != null && retURL != '' && retURL.startsWith('/'))
+        else if(retURL !=null && retURL !='')
            pg = new PageReference(retURL);
         else
            pg = new PageReference('/500/o'); 

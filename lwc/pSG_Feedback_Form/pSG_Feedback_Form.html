@@ -1,0 +1,104 @@
+<template>
+    <!-- Toggle Feature to control the visiblity of the feedback template-->
+    <template if:true={isbuttonvisible}>
+   <div class="Give_Feedback">
+    <button 
+    class="slds-button slds-button_brand" 
+    name="Give Feedback" 
+    title="Please click to provide feedback" 
+    type="submit" onclick={Buttonvisibility}>Give Feedback</button>
+   </div>
+   <!--<div class="Feedbackclickme">
+    <div class="slds-size_1-of-7">
+        <img src={feedbackclick}>
+    </div>-->   
+ </template>
+ <!-- Template for Feedback with Stars-->
+ <template if:false={isbuttonvisible}>    
+    <template if:true={isStar}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-describedby="modal-contained-id-1" aria-labelledby="modal-heading-01" aria-modal="true">
+            <div class="slds-modal__container" style="flex-direction: row;">
+                <div class="slds-modal__content slds-modal__content_headless" id="modal-content-01" style="font-family: Work-Sans;display: flex;flex-direction: column;justify-content: center; padding: 2%; height: max-content ; width:80%">
+                    <div style="display: flex;padding:0.5rem;background:#0961e6; color: white;border-radius: 5px">
+                        <p style="font-size: 22px;font-weight: 500;"><b>Feedback</b></p>
+                        <button class="slds-button" style="width:fit-content;margin-left: auto;margin-right: 15px;border: 1px solid white;padding: 4px;box-sizing: border-box;border-radius: 50%;background-color:white" onclick={Buttonvisibility}>
+                            <lightning-icon icon-name="utility:dash" size="small" title="minimize" style="--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+                        </button>
+                    </div>
+                    <!--<canvas class="confetti-canvas"></canvas>-->
+                    <div><p style="font-size: 16px;font-weight: 500; padding: 2%;">How would you rate your experience with us?</p>
+                         <p style="font-size: 14px;font-weight: 500; padding: 2%;color: red">{errorMessage}</p>
+                    </div>
+                        <div class="slds-grid slds-grid_align-center" style="width:80%;margin:auto">
+                                <div class="feedback-starRating">
+                                    <input type="radio" name="rate" id="rate-5" data-val="Extremely Satisfied" onclick={handleFeedbackVal}><label class="ExtremelySatisfied" title="Extremely Satisfied" for="rate-5"><span class="starRating-star promoter2">★</span><span class="feedbackLabel fontDesign0">Extremely Satisfied</span></label>
+                                    <input type="radio" name="rate" id="rate-4" data-val="Satisfied" onclick={handleFeedbackVal}><label class="Satisfied" title="Satisfied" for="rate-4"><span class="starRating-star promoter1">★</span><span class="feedbackLabel fontDesign1">Satisfied</span></label>
+                                    <input type="radio" name="rate" id="rate-3" data-val="Neutral" onclick={handleFeedbackVal}><label class="Neutral" title="Neutral" for="rate-3"><span class="starRating-star passive">★</span><span class="feedbackLabel fontDesign2">Neutral</span></label>
+                                    <input type="radio" name="rate" id="rate-2" data-val="Dissatisfied" onclick={handleFeedbackVal}><label class="Dissatisfied" title="Dissatisfied" for="rate-2"><span class="starRating-star dector1">★</span><span class="feedbackLabel fontDesign3">Dissatisfied</span></label>
+                                    <input type="radio" name="rate" id="rate-1" data-val="Extremely Unsatisfied" onclick={handleFeedbackVal}><label class="ExtremelyDissatisfied" title="Extremely Dissatisfied" for="rate-1"><span class="starRating-star dector">★</span><span class="feedbackLabel fontDesign4">Extremely Dissatisfied</span></label>    
+                                </div>
+                            </div>
+                        <div class="slds-p-around_medium">
+                            <lightning-textarea class="feedback-comment-section" placeholder="Describe your experience.." onchange={handeleComment} max-length=500>{comment}</lightning-textarea>
+                            <p>{output} Characters remaining.</p>
+                        </div>
+                        
+                        <div class="slds-grid slds-p-around_medium slds-grid_align-center">
+                            <div class="slds-col">
+                                <lightning-button variant="brand" type="submit" label="Submit Feedback" data-id="Feedback" onclick={handleFeedbackSubmit} style="font-size: 16px"></lightning-button>
+                            </div>
+                            <div class="slds-p-left_x-small">    
+                                <lightning-button variant="destructive" type="submit" label="Skip For Now" data-id="Skipped" onclick={handleFeedbackSubmit} style="font-size: 16px"></lightning-button>
+                            </div>
+                        </div>
+            </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    </template>
+<!-- Template for Feedback with Emoji-->
+    <template if:false={isbuttonvisible}>
+    <template if:true={isEmoji}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-describedby="modal-contained-id-1" aria-labelledby="modal-heading-02" aria-modal="true">
+            <div class="slds-modal__container" style="flex-direction: row;">
+                <div class="slds-modal__content slds-p-vertical_xx-large slds-modal__content_headless" id="modal-content-02" style="font-family:Work-Sans;display: flex;flex-direction: column;justify-content: center;padding: 2%; height: max-content;width:60%">
+                    <div style="display: flex;padding:0.5rem;background:#0961e6; color: white;border-radius: 5px">
+                        <p style="font-size: 22px;font-weight: 500;"><b>&nbsp;Feedback</b></p>
+                        <button class="slds-button" style="width:fit-content;margin-left: auto;margin-right: 15px;border: 1px solid white;padding: 4px;box-sizing: border-box;border-radius: 50%;background-color:white" onclick={Buttonvisibility}>
+                            <lightning-icon icon-name="utility:dash" size="small" title="minimize" style="--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+                        </button>
+                    </div>  
+                     <!--<canvas class="confetti-canvas"></canvas> -->
+
+                    <div class="slds-p-around_small"><p style="font-size: 16px;font-weight: 500;padding: 2%;">How would you rate your experience with us?</p>
+                        <p style="font-size: 14px;font-weight: 500; padding: 2%;color: red">{errorMessage}</p>
+                    </div>
+                        <div class="slds-grid slds-grid_align-center" style="width:60%;margin:auto">
+                                <div class="feedback-emojiRating">
+                                    <input type="radio" name="rate" id="emoji-5" data-val="Extremely Satisfied" onclick={handleFeedbackVal}><label title="Extremely Satisfied" for="emoji-5"><span class="feedback-emoji">&#128512;</span><span class="feedbackLabel fontDesign0">Extremely Satisfied</span></label>
+                                    <input type="radio" name="rate" id="emoji-4" data-val="Satisfied" onclick={handleFeedbackVal}><label title="Satisfied" for="emoji-4"><span class="feedback-emoji">&#128578;</span><span class="feedbackLabel fontDesign1">Satisfied</span></label>
+                                    <input type="radio" name="rate" id="emoji-3" data-val="Neutral"  onclick={handleFeedbackVal}><label title="Neutral" for="emoji-3"><span class="feedback-emoji">&#128528;</span><span class="feedbackLabel fontDesign2">Neutral</span></label>
+                                    <input type="radio" name="rate" id="emoji-2" data-val="Dissatisfied" onclick={handleFeedbackVal}><label title="Dissatisfied"  for="emoji-2"><span class="feedback-emoji">&#128577;</span><span class="feedbackLabel fontDesign3">Dissatisfied</span></label>
+                                    <input type="radio" name="rate" id="emoji-1" data-val="Extremely Dissatisfied" onclick={handleFeedbackVal}><label title="Extremely Dissatisfied" for="emoji-1"><span class="feedback-emoji">&#128549;</span><span class="feedbackLabel fontDesign4">Extremely Dissatisfied</span></label>    
+                                </div>
+                            </div>
+                        <div class="slds-p-around_medium">
+                            <lightning-textarea class="feedback-comment-section" placeholder="Describe your experience.." onchange={handeleComment} max-length="500">{comment}</lightning-textarea>
+                            <p>{output} Characters remaining</p>
+                        </div>
+                        <div class="slds-grid slds-p-around_medium slds-grid_align-center">
+                            <div class="slds-col">
+                                <lightning-button variant="brand" type="submit" label="Submit Feedback" data-id="Feedback" onclick={handleFeedbackSubmit} style="font-size: 16px"></lightning-button>
+                            </div>
+                            <div class="slds-p-left_x-small">    
+                                <lightning-button variant="destructive" type="submit" label="Skip For Now" data-id="Skipped" onclick={handleFeedbackSubmit} style="font-size: 16px"></lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </template>  
+</template>

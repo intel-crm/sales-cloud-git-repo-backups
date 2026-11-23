@@ -15,6 +15,7 @@ public Without Sharing class ER_EmailNotification_Utility
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'ER_EmailNotificationUtility';
+    public static List<OrgWideEmailAddress> fromEmail = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
     public static List<Messaging.SingleEmailMessage> allmails = new List<Messaging.SingleEmailMessage>();
     public class EmailNotification
     {
@@ -135,7 +136,7 @@ public Without Sharing class ER_EmailNotification_Utility
                 mail.setSenderDisplayName('Sender Display Name');
                 mail.setSubject('Subject');
                 mail.setPlainTextBody('Body');
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
+                
                 resultList = Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }, false);
             }
             if(Test.isRunningTest() && (ER_EmailNotification_Utility_Test.IsErrorTest ||ER_AcknowledgementEmailUtility_Test.IsErrorTest || ER_RejectionEmailUtility_Test.IsErrorTest||ER_WelcomeEmailUtility_Test.IsErrorTest))
@@ -226,12 +227,14 @@ public Without Sharing class ER_EmailNotification_Utility
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setTemplateId(emailTemp.Id);
         mail.setSubject(emailTemp.Subject);
+        if ( fromEmail.size() > 0 ) {
+            mail.setOrgWideEmailAddressId(fromEmail.get(0).Id);
+        } 
         mail.saveAsActivity = false;
         mail.setHtmlBody(htmlValue);
         mail.setCharset('UTF-8');
         mail.setToAddresses(new List<String> {conWrapp.contId});
-        mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
-
+        
         allmails.add(mail);
        
         prmlogList.put(conWrapp.contId,createEmailLogs(mail,conWrapp,objDetailsMap));

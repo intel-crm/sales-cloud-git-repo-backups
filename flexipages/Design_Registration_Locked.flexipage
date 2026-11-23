@@ -9,10 +9,16 @@
                         <valueListItems>
                             <value>Edit</value>
                             <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.DDR_Read_Only}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>false</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -91,10 +97,16 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Core_Approve_Design_Lex</value>
                             <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Approve_High_Touch_Button_Visible__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -111,7 +123,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Set_as_Expired</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -121,6 +133,11 @@
                                     <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -148,6 +165,20 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;em style=&quot;color: rgb(224, 14, 14);&quot;&gt;Important Note for &lt;/em&gt;&lt;strong style=&quot;color: rgb(224, 14, 14); font-size: 14px;&quot;&gt;&lt;em&gt;&lt;u&gt;Altera/PSG Users Only&lt;/u&gt;&lt;/em&gt;&lt;/strong&gt;&lt;em style=&quot;color: rgb(224, 14, 14);&quot;&gt; : As part of the Altera CRM R1 release from Jul 17-28, we are in the process of moving data and functionality to a new Altera Salesforce instance. During this time, please do not create new accounts/contacts/products/leads/opportunities/quotes/DPAs. From July 28 onwards, the new system will be available and you will receive an email with the new URL and instructions.&lt;/em&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -188,7 +188,6 @@
     </columns>
     <description>Co-Marketing Claim Details</description>
     <filter>
-        <booleanFilter>1 AND 2 AND ((3 AND 5) OR (11 AND 12)) AND 4 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -207,8 +206,8 @@
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>APJ,ASMO,EMEA,PRC,INDIA</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Sub_Region_Cd__c</column>
@@ -222,7 +221,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
+            <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Ecosystem Extension Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Activity_Start_Date__c</column>
@@ -257,21 +256,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Account Plan,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,DCF 1.0,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,OEM CMP,Proposal I MDF,Proposal II MDF,RSA MD,Retail MDF,SOEM Client MDF,SOEM Data Center MDF,Service Provider CMP,Co-Engineering</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CoGTM</value>
+            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

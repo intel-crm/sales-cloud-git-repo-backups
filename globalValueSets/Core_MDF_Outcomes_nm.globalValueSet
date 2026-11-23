@@ -50,31 +50,6 @@
         <default>false</default>
         <label>Design Wins</label>
     </customValue>
-    <customValue>
-        <fullName>Brand Awareness</fullName>
-        <default>false</default>
-        <label>Brand Awareness</label>
-    </customValue>
-    <customValue>
-        <fullName>Consideration</fullName>
-        <default>false</default>
-        <label>Consideration</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Intent</fullName>
-        <default>false</default>
-        <label>Purchase Intent</label>
-    </customValue>
-    <customValue>
-        <fullName>Preference</fullName>
-        <default>false</default>
-        <label>Preference</label>
-    </customValue>
-    <customValue>
-        <fullName>Share of Voice</fullName>
-        <default>false</default>
-        <label>Share of Voice</label>
-    </customValue>
     <masterLabel>Outcomes</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

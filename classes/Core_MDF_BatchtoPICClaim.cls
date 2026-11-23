@@ -22,10 +22,7 @@ public class Core_MDF_BatchtoPICClaim implements Queueable, Database.AllowsCallo
             Map<Id,PartnerFundClaim> legacyClaimsMap = new Map<Id,PartnerFundClaim>();
             Map<Id,PartnerFundClaim> claimsMap = new Map<Id,PartnerFundClaim>();
             Map<string,Set<Id>> inputForRuleEngine= new Map<string,Set<Id>>();
-            //ATHR - Deeply Nested if 16209
-            if(allClaimsList == null || allClaimsList.isEmpty()){
-                return;
-            }
+            if(allClaimsList != NULL && allClaimsList.size() > 0){
                 List<PartnerFundClaim> claimsToBeProcessedList = new List<PartnerFundClaim>();
                 for(PartnerFundClaim pfc : allClaimsList)
                 {
@@ -70,9 +67,8 @@ public class Core_MDF_BatchtoPICClaim implements Queueable, Database.AllowsCallo
                                 claim1.Core_MDF_Review_Hold_Rule_Nm__c = string.valueof(rule1.get(claimID).ruleRecord.Name);
                             }
                             claim1.Core_MDF_Reprocess_Claim__c = false;//Added to avoid conflict with validation rule preventing reprocessing for other statuses
-							claim1.Core_MDF_Claim_EvalInProgress_Ind__c = false;
-                            if((claim1.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && (claim1.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c == FALSE && claim1.Request.Core_MDF_Is_Outcome_Based_Ind__c == FALSE))
-                            || (claim1.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM && claim1.Core_MDF_Budget_Type_Options_Nm__c == System.Label.Core_MDF_Retail_RSAMD_UnTranslated)){
+			    claim1.Core_MDF_Claim_EvalInProgress_Ind__c = false;
+                            if(claim1.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && (claim1.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c == FALSE && claim1.Request.Core_MDF_Is_Outcome_Based_Ind__c == FALSE)){  //Roshan
                                 claim1.Core_MDF_Eligible_for_PIC__c = true;
                                 claim1.Core_MDF_PIC_Review_Completed__c = true;
                             }
@@ -123,6 +119,7 @@ public class Core_MDF_BatchtoPICClaim implements Queueable, Database.AllowsCallo
                 }
 
                 Database.update(claimsToBeUpdated);
+        }
         }
         catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e); throw e;

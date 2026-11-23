@@ -1,14 +1,13 @@
 /**
-* @description       : 
-* @author            : ChangeMeIn@UserSettingsUnder.SFDoc
-* @group             : 
-* @last modified on  : 01-31-2025
-* @last modified by  : Vrushabh Uprikar
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+* @last modified on  : 06-10-2025
+* @last modified by  : Deepthi Kambam
 **/
 @isTest
 public without sharing class Pricing_Test_Utility {
     Public static PermissionSet permissionRec;
-    //Get perm record by label
     Static{
         permissionRec = [SELECT Id, Name FROM PermissionSet where Name=:Label.Pricing_CPQ_Managed_License_User Limit 1];
     }
@@ -22,7 +21,7 @@ public without sharing class Pricing_Test_Utility {
         acc.BillingCity = 'Texas';
         acc.BillingCountry = 'USA';
         acc.BillingStreet = 'G-210';
-        acc.Core_Sales_Groups__c = 'APJ Japan Sales Group';
+        acc.Core_Sales_Groups__c = 'Americas Partner Led';
         insert acc;
         return acc;
     }
@@ -31,23 +30,23 @@ public without sharing class Pricing_Test_Utility {
         Account acct = [SELECT Id, Name FROM Account WHERE Name = 'Test Account' Limit 1];
         Id newOppRecTypeId = [select Id,DeveloperName from RecordType where DeveloperName = 'Core_Deal_Opportunity' limit 1][0].Id;
         Opportunity opps = new Opportunity(Name = 'test opp', Core_Product_Application__c ='Business Mobility', Core_Opportunity_Type__c='Deal: Sell-to',
-                                           RecordTypeId = newOppRecTypeId, AccountId = acct.Id, Opportunity_Focus__c='Growth',Core_Product_Segment__c='Client Computing', 
-                                           Core_Consumption_Market__c = 'Education', Description = 'test', Core_Opportunity_Coverage_Nm__c = 'Intel-Led Opportunity', StageName = 'Qualify',
-                                           CloseDate = System.Today().addDays(24), Desired_End_State__c='Test OppName',Technology_and_Readiness_Gaps__c='Design',Business_Need__c='Yes',
-                                           Technical_Need__c ='Approved');
+            RecordTypeId = newOppRecTypeId, AccountId = acct.Id, Opportunity_Focus__c='Growth',Core_Product_Segment__c='Client Computing', 
+            Core_Consumption_Market__c = 'Education', Description = 'test', Core_Opportunity_Coverage_Nm__c = 'Intel-Led Opportunity', StageName = 'Qualify',
+            CloseDate = System.Today().addDays(24), Desired_End_State__c='Test OppName',Technology_and_Readiness_Gaps__c='Design',Business_Need__c='Yes',
+            Technical_Need__c ='Approved');
         return opps;
     }
     
     // This method creates Account Team Members and Account Share Settings
     Public static List<AccountTeamMember> createAccountTeamMember(Id accId, Id userId){
-        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();        
+        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
         AccountShare accShare = new AccountShare(AccountId = accId, AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
                                                  CaseAccessLevel='Edit', UserOrGroupId = userId);
         insert accShare;        
         AccountTeamMember accountTeamMember = new AccountTeamMember(AccountId = accId, TeamMemberRole = 'Team Member (100%)',
                                                                     AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
                                                                     CaseAccessLevel='Edit', UserId = userId);
-        lstAccountTeamMember.add(accountTeamMember);
+        lstAccountTeamMember.add(accountTeamMember);        
         
         insert lstAccountTeamMember;
         return lstAccountTeamMember;
@@ -146,7 +145,7 @@ public without sharing class Pricing_Test_Utility {
             quote.Pricing_ShipmentEndDate_Dt__c = quote.Pricing_ShipmentStDate_Dt__c.addDays(30);
             quote.Pricing_End_Customer_Country_Nm__c = 'Afghanistan';
             quote.Pricing_Region_Nm__c = 'APJ';
-            quote.Pricing_Quote_Program_Nm__c = system.label.Pricing_Tender_Quote_Program;
+            quote.Pricing_Quote_Program_Nm__c = system.label.Pricing_Tender_Quote_Program;           
             quote.Pricing_End_Customer_URL__c = 'www.test.com';
             lstQuote.add(quote);
         }
@@ -184,7 +183,7 @@ public without sharing class Pricing_Test_Utility {
         return lstQuote;
     }
     
-    public static Pricing_UnifiedEndCustomerAccountMapping__c createL1ObjPartial(Id accId){
+     public static Pricing_UnifiedEndCustomerAccountMapping__c createL1ObjPartial(Id accId){
         Pricing_UnifiedEndCustomerAccountMapping__c uniEndCustomerL1 = new Pricing_UnifiedEndCustomerAccountMapping__c();
         uniEndCustomerL1.Name = 'End Customer Partial';
         uniEndCustomerL1.Pricing_Active_cb__c = true;
@@ -192,7 +191,7 @@ public without sharing class Pricing_Test_Utility {
         uniEndCustomerL1.Pricing_Unified_EndCustomer_Id__c = '1456';
         insert uniEndCustomerL1;
         return uniEndCustomerL1;
-    }
+     }
     
     
     //This method creates product
@@ -241,7 +240,7 @@ public without sharing class Pricing_Test_Utility {
             products.add(prod);
         }
         insert products;
-        
+       
         Id quoteLineCreateRecordId =  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c',Label.Pricing_Tender_QuoteLine_RecordType_Create);
         List<SBQQ__QuoteLine__c> quoteLines = new List<SBQQ__QuoteLine__c>();
         for(Product2 prod1:products){
@@ -323,7 +322,7 @@ public without sharing class Pricing_Test_Utility {
     //This method creates an User
     public static List<User> createUser(){
         Set<String> profileNameSet = new Set<String>{Label.Pricing_Tender_Profiles_SalesRepBB};            
-            PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderUser];
+        PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderUser];
         PermissionSet ps2 = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderPartner];
         Set<Id> userProfileIdSet=new Set<Id>();
         for(Profile proId : [SELECT id , Name  FROM Profile  WHERE Name IN: profileNameSet]){
@@ -374,10 +373,10 @@ public without sharing class Pricing_Test_Utility {
         System.runAs(thisUser){
             User u1 = new User();
             for(Id profileId : userProfileIdSet){
-                u1 = new User(Alias = 'newUser', Email= 'firstNameFSE@intel.com',
-                              EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                              LocaleSidKey='en_US', ProfileId = profileId,IsActive = true,
-                              TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameFSE@Intel.com' + Math.floor(Math.random() * 1000));
+                 u1 = new User(Alias = 'newUser', Email= 'firstNameFSE@intel.com',
+                                   EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+                                   LocaleSidKey='en_US', ProfileId = profileId,IsActive = true,
+                                   TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameFSE@Intel.com' + Math.floor(Math.random() * 1000));
                 
                 lstUser.add(u1);
                 
@@ -447,13 +446,14 @@ public without sharing class Pricing_Test_Utility {
         }
         
         List<User> lstUser = new List<User>();
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         //System.runAs(thisUser){
         User u1 = new User();
         for(Id profileId : userProfileIdSet){
-            u1 = new User(Alias = 'newUser', Email= 'firstNameSalesRep@intel.com',
-                          EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                          LocaleSidKey='en_US', ProfileId = profileId,
-                          TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameSalesRep@Intel.com' + Math.floor(Math.random() * 1000));
+             u1 = new User(Alias = 'newUser', Email= 'firstNameSalesRep@intel.com',
+                               EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+                               LocaleSidKey='en_US', ProfileId = profileId,
+                               TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameSalesRep@Intel.com' + Math.floor(Math.random() * 1000));
             
             lstUser.add(u1);
             
@@ -462,7 +462,7 @@ public without sharing class Pricing_Test_Utility {
             insert lstUser;
         }
         catch(Exception ex){
-            u1.UserName = 'NewFSEUserUnique@Intel.com' + Math.floor(Math.random() * 1000);   
+             u1.UserName = 'NewFSEUserUnique@Intel.com' + Math.floor(Math.random() * 1000);   
             insert lstUser;
         } 
         List<PermissionSetAssignment> permissionList = new List<PermissionSetAssignment>();
@@ -484,6 +484,7 @@ public without sharing class Pricing_Test_Utility {
         
         System.runAs(lstUser2[0]){
             Account acc = createAccount();
+            Contact con = createContact(acc.Id);
             Set<String> profileNameSet=new Set<String>{Label.Pricing_Tender_Profiles_Partner}; 
                 Id p = [select id from profile where name =: Label.Pricing_Tender_Profiles_PartnerCommunityUser].id;
             PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderPartner];
@@ -522,7 +523,7 @@ public without sharing class Pricing_Test_Utility {
     //This method creates Admin User
     public static List<User> createAdminUser(){
         Set<String> profileNameSet=new Set<String>{Label.Pricing_Tender_Profiles_SystemAdministrator};
-            UserRole role = [SELECT Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];        
+        UserRole role = [SELECT Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];        
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderUser];
         Set<Id> userProfileIdSet=new Set<Id>();
         for(Profile proId : [SELECT id  FROM Profile  WHERE Name IN: profileNameSet]){
@@ -534,10 +535,10 @@ public without sharing class Pricing_Test_Utility {
         System.runAs(thisUser){
             User u1 = new User();
             for(Id profileId : userProfileIdSet){
-                u1 = new User(Alias = 'newUser', Email = 'firstName@intel.com',
-                              EmailEncodingKey='UTF-8', LastName='testing admin', LanguageLocaleKey='en_US',
-                              LocaleSidKey='en_US', ProfileId = profileId, UserRoleId = role.Id,IsActive = true,
-                              TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName@Intel.com' + Math.floor(Math.random() * 1000));
+                 u1 = new User(Alias = 'newUser', Email = 'firstName@intel.com',
+                                   EmailEncodingKey='UTF-8', LastName='testing admin', LanguageLocaleKey='en_US',
+                                   LocaleSidKey='en_US', ProfileId = profileId, UserRoleId = role.Id,IsActive = true,
+                                   TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName@Intel.com' + Math.floor(Math.random() * 1000));
                 
                 lstUser.add(u1);
             }
@@ -560,11 +561,11 @@ public without sharing class Pricing_Test_Utility {
         }  
         return lstUser;
     }
-    
+
     //This method creates Admin User With param by assigning particular permissions
     public static List<User> createAdminUserWithParam(String userName){
         Set<String> profileNameSet=new Set<String>{Label.Pricing_Tender_Profiles_SystemAdministrator};
-            UserRole role = [SELECT Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];        
+        UserRole role = [SELECT Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];        
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderUser];
         Set<Id> userProfileIdSet=new Set<Id>();
         for(Profile proId : [SELECT id  FROM Profile  WHERE Name IN: profileNameSet]){
@@ -595,7 +596,7 @@ public without sharing class Pricing_Test_Utility {
     }
     public static List<User> createAdminUser2(){
         Set<String> profileNameSet=new Set<String>{Label.Pricing_Tender_Profiles_SystemAdministrator};
-            
+        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderUser];
         Set<Id> userProfileIdSet=new Set<Id>();
         for(Profile proId : [SELECT id  FROM Profile  WHERE Name IN: profileNameSet]){
             userProfileIdSet.add(proId.Id);
@@ -624,7 +625,7 @@ public without sharing class Pricing_Test_Utility {
         }
         return lstUser;
     }
-    
+
     public static User createPartnerUser(Id accountId){
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =: Label.Pricing_Tender_PermissionSets_TenderPartner];
         
@@ -805,6 +806,7 @@ public without sharing class Pricing_Test_Utility {
         }
         
         List<User> lstUser = new List<User>();
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         
         for(Id profileId : userProfileIdSet){
             User u1 = new User(Alias = 'newUser', Email= 'firstName@intel.com',
@@ -836,6 +838,7 @@ public without sharing class Pricing_Test_Utility {
         }
         
         List<User> lstUser = new List<User>();
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         
         for(Id profileId : userProfileIdSet){
             User u1 = new User(Alias = 'newUser', Email= 'firstName@intel.com',
@@ -870,12 +873,12 @@ public without sharing class Pricing_Test_Utility {
         List<User> lstUser = new List<User>();
         User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         System.runAs(thisUser){
-            User u1 = new User();
+             User u1 = new User();
             for(Id profileId : userProfileIdSet){
-                u1 = new User(Alias = 'newUser', Email= 'firstName@intel.com',
-                              EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                              LocaleSidKey='en_US', ProfileId = profileId,
-                              TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName@Intel.com' + Math.floor(Math.random() * 1000));
+                 u1 = new User(Alias = 'newUser', Email= 'firstName@intel.com',
+                                   EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+                                   LocaleSidKey='en_US', ProfileId = profileId,
+                                   TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName@Intel.com' + Math.floor(Math.random() * 1000));
                 
                 lstUser.add(u1);
             }
@@ -914,10 +917,10 @@ public without sharing class Pricing_Test_Utility {
         System.runAs(thisUser){
             User u1 = new User();
             for(Id profileId : userProfileIdSet){
-                u1 = new User(Alias = 'newUser', Email= 'firstNameRPM@intel.com',
-                              EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                              LocaleSidKey='en_US', ProfileId = profileId,
-                              TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName_RPM@Intel.com' + Math.floor(Math.random() * 1000));
+                 u1 = new User(Alias = 'newUser', Email= 'firstNameRPM@intel.com',
+                                   EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+                                   LocaleSidKey='en_US', ProfileId = profileId,
+                                   TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstName_RPM@Intel.com' + Math.floor(Math.random() * 1000));
                 
                 lstUser.add(u1);
             }
@@ -984,13 +987,14 @@ public without sharing class Pricing_Test_Utility {
         }
         
         List<User> lstUser = new List<User>();
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         //System.runAs(thisUser){
-        User u1 = new User();
+         User u1 = new User();
         for(Id profileId : userProfileIdSet){
-            u1 = new User(Alias = 'newUser', Email= 'firstNameAE@intel.com',
-                          EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                          LocaleSidKey='en_US', ProfileId = profileId,IsActive = true,
-                          TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameAE@Intel.com' + Math.floor(Math.random() * 1000));
+             u1 = new User(Alias = 'newUser', Email= 'firstNameAE@intel.com',
+                               EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+                               LocaleSidKey='en_US', ProfileId = profileId,IsActive = true,
+                               TimeZoneSidKey='America/Los_Angeles', UserName = 'FirstNameAE@Intel.com' + Math.floor(Math.random() * 1000));
             
             lstUser.add(u1);
             
@@ -1025,6 +1029,7 @@ public without sharing class Pricing_Test_Utility {
         }
         
         List<User> lstUser = new List<User>();
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         //System.runAs(thisUser){
         
         for(Id profileId : userProfileIdSet){
@@ -1190,24 +1195,24 @@ et.Body = '';
 insert et; 
 */
     }
-    Public static  List<Pricing_Competitor_Product_Price__c> createCompetitorProductPrice(){
-        
-        Id compRecordId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Competitor_Product__c','Pricing_Data_Center');
-        Pricing_Competitor_Product__c compProduct1 = new Pricing_Competitor_Product__c(Name='TestCompProduct1',   RecordTypeId = compRecordId, Pricing_Active_cb__c = true);
-        insert compProduct1;
-        Pricing_Competitor_Product__c compProduct2 = new Pricing_Competitor_Product__c(Name='TestCompProduct2',   RecordTypeId = compRecordId, Pricing_Active_cb__c = true);
-        insert compProduct2;
-        
-        List<Pricing_Competitor_Product_Price__c> compProductsPriceList = new List<Pricing_Competitor_Product_Price__c>();
-        Pricing_Competitor_Product_Price__c compProductPrice;
-        compProductPrice = new Pricing_Competitor_Product_Price__c(Pricing_Competitor_Product__c=compProduct1.Id,Pricing_Region_Nm__c='APJ',Pricing_Final_Meet_Comp_Price__c = 20,Pricing_Application_Nm__c = 'Enterprise');
-        compProductsPriceList.add(compProductPrice);
-        compProductPrice = new Pricing_Competitor_Product_Price__c(Pricing_Competitor_Product__c=compProduct2.Id,Pricing_Region_Nm__c='APJ',Pricing_Final_Meet_Comp_Price__c = 250,Pricing_Application_Nm__c = 'Enterprise');
-        compProductsPriceList.add(compProductPrice);    
-        
-        insert compProductsPriceList;
-        return compProductsPriceList;
-    }
+     Public static  List<Pricing_Competitor_Product_Price__c> createCompetitorProductPrice(){
+         
+         Id compRecordId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Competitor_Product__c','Pricing_Data_Center');
+          Pricing_Competitor_Product__c compProduct1 = new Pricing_Competitor_Product__c(Name='TestCompProduct1',   RecordTypeId = compRecordId, Pricing_Active_cb__c = true);
+                    insert compProduct1;
+          Pricing_Competitor_Product__c compProduct2 = new Pricing_Competitor_Product__c(Name='TestCompProduct2',   RecordTypeId = compRecordId, Pricing_Active_cb__c = true);
+                    insert compProduct2;
+                           
+                List<Pricing_Competitor_Product_Price__c> compProductsPriceList = new List<Pricing_Competitor_Product_Price__c>();
+                    Pricing_Competitor_Product_Price__c compProductPrice;
+                    compProductPrice = new Pricing_Competitor_Product_Price__c(Pricing_Competitor_Product__c=compProduct1.Id,Pricing_Region_Nm__c='APJ',Pricing_Final_Meet_Comp_Price__c = 20,Pricing_Application_Nm__c = 'Enterprise');
+                    compProductsPriceList.add(compProductPrice);
+                    compProductPrice = new Pricing_Competitor_Product_Price__c(Pricing_Competitor_Product__c=compProduct2.Id,Pricing_Region_Nm__c='APJ',Pricing_Final_Meet_Comp_Price__c = 250,Pricing_Application_Nm__c = 'Enterprise');
+                    compProductsPriceList.add(compProductPrice);    
+
+                insert compProductsPriceList;
+                return compProductsPriceList;
+     }
     Public static  List<Pricing_Competitor_Product_Price_Staging__c> createCompetitorProductPriceStaging(){
         
         Id compRecordId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Competitor_Product__c','Pricing_Data_Center');
@@ -1228,56 +1233,56 @@ insert et;
     }
     Public static Pricing_Quote_Hold_Status_Age__c createQuoteHoldStatusAge(Id quoteId,String comments,String role){
         Pricing_Quote_Hold_Status_Age__c quoteHoldAge = new Pricing_Quote_Hold_Status_Age__c();
-        quoteHoldAge.Name = 'Test Quote Age';
-        quoteHoldAge.Pricing_QuoteOnHold__c = quoteId;
-        quoteHoldAge.Pricing_QuoteOnHold_Start_Time__c = system.today();
-        quoteHoldAge.Pricing_QuoteOnHold_End_Time__c = system.today() + 2;
-        quoteHoldAge.Pricing_Is_On_Hold__c = true;
-        quoteHoldAge.Pricing_Quote_On_Hold_Comment__c = comments;
-        quoteHoldAge.Pricing_QuoteOnHold_User_Role__c = 'role';
-        insert quoteHoldAge;
+            quoteHoldAge.Name = 'Test Quote Age';
+            quoteHoldAge.Pricing_QuoteOnHold__c = quoteId;
+            quoteHoldAge.Pricing_QuoteOnHold_Start_Time__c = system.today();
+            quoteHoldAge.Pricing_QuoteOnHold_End_Time__c = system.today() + 2;
+            quoteHoldAge.Pricing_Is_On_Hold__c = true;
+        	quoteHoldAge.Pricing_Quote_On_Hold_Comment__c = comments;
+            quoteHoldAge.Pricing_QuoteOnHold_User_Role__c = 'role';
+            insert quoteHoldAge;
         return quoteHoldAge;
-    }
-    
+   }
+
     Public static Group createGroupRecord(){
         Group grp = new Group();
-        grp.name = 'Test_Group1';
-        grp.Type = 'Regular';
-        grp.DeveloperName = 'Test_Group1'; 
-        Insert grp;
+            grp.name = 'Test_Group1';
+            grp.Type = 'Regular';
+            grp.DeveloperName = 'Test_Group1'; 
+            Insert grp;
         return grp;
-    }
-    
+   }
+
     Public static ChannelProgram createChannelProgramRecord(){
         ChannelProgram chProg = new ChannelProgram();
-        chProg.Name = Label.Pricing_Tender_PGM_Channel;
-        chProg.isActive = true;
-        insert chProg;
+            chProg.Name = Label.Pricing_Tender_PGM_Channel;
+            chProg.isActive = true;
+            insert chProg;
         return chProg;
     }
-    
+
     public static List<Core_MDF_Partner_Group_Mapping__c> createPGMRecord(Account acc,Group grp,ChannelProgram chProg, Integer numberOfPGMRecs){
         try{
-            list <Core_MDF_Partner_Group_Mapping__c> partnerGroupList = new list<Core_MDF_Partner_Group_Mapping__c>();
-            for(Integer i=0;i<numberOfPGMRecs;i++){
-                Core_MDF_Partner_Group_Mapping__c partnerGroup = new Core_MDF_Partner_Group_Mapping__c();
-                partnerGroup.Core_MDF_Account__c = acc.Id;
-                partnerGroup.Core_MDF_Group_Name__c = grp.DeveloperName;
-                partnerGroup.Core_MDF_Type_of_Access__c = Label.Pricing_Tender_PGM_Type;
-                partnerGroup.Core_MDF_Channel_Program__c=chProg.id;
-                partnerGroup.Core_MDF_AccountIdGroupName__c='Test Group1';
-                partnerGroup.Core_MDF_Group_Id__c=grp.id;
-                partnerGroupList.add(partnerGroup);
-            }
-            insert partnerGroupList;
-            return partnerGroupList;
+        list <Core_MDF_Partner_Group_Mapping__c> partnerGroupList = new list<Core_MDF_Partner_Group_Mapping__c>();
+        for(Integer i=0;i<numberOfPGMRecs;i++){
+            Core_MDF_Partner_Group_Mapping__c partnerGroup = new Core_MDF_Partner_Group_Mapping__c();
+            partnerGroup.Core_MDF_Account__c = acc.Id;
+            partnerGroup.Core_MDF_Group_Name__c = grp.DeveloperName;
+            partnerGroup.Core_MDF_Type_of_Access__c = Label.Pricing_Tender_PGM_Type;
+            partnerGroup.Core_MDF_Channel_Program__c=chProg.id;
+            partnerGroup.Core_MDF_AccountIdGroupName__c='Test Group1';
+            partnerGroup.Core_MDF_Group_Id__c=grp.id;
+            partnerGroupList.add(partnerGroup);
+        }
+        insert partnerGroupList;
+        return partnerGroupList;
         }catch(Exception e){
                         return null;
         }
     }
-    
-    //methods for Financial Incentive
-    public static Product_Additional_Attribute__c createDealRegProduct(){
+
+   //methods for Financial Incentive
+   public static Product_Additional_Attribute__c createDealRegProduct(){
         try{
             Product2 prod = new Product2(Name='Deal Reg Product',
                                          Core_Product_Org__c = 'Sales',
@@ -1300,7 +1305,7 @@ insert et;
             return null;
         }
     }
-    
+
     public static List<OpportunityLineItem> createOpportunityProduct(Id oppId, Integer noOfRecs){
         try{
             List<OpportunityLineItem> oppItemList = new List<OpportunityLineItem>();
@@ -1312,7 +1317,7 @@ insert et;
             testPBE.Product2Id = dealRegProd.Product__c;      
             testPBE.UseStandardPrice = false;
             insert testPBE;
-            
+
             for(Integer i=0; i < noOfRecs; i++) {
                 OpportunityLineItem oppRec = new OpportunityLineItem();
                 oppRec.OpportunityId = oppId;
@@ -1363,7 +1368,7 @@ insert et;
         designReg.PCC_End_Customer_Country__c = 'India';
         insert designReg;
         return designReg;
-    }
+	}
     
     public static List<SBQQ__Quote__c> createFIQuoteWithParam(Id accId,Id conId, Integer numberOfQuotes, String salesRepEmail, String accountExecutiveEmail){
         List<SBQQ__Quote__c> lstQuote = new List<SBQQ__Quote__c>();    
@@ -1410,8 +1415,8 @@ insert et;
             products.add(prod);
         }
         insert products;
-        
-        
+       
+     
         Id quoteLineCreateRecordId =  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c',Label.Pricing_Financial_Incentive_Quote_Line_Edit);
         List<SBQQ__QuoteLine__c> quoteLines = new List<SBQQ__QuoteLine__c>();
         Integer count = 0;
@@ -1456,11 +1461,11 @@ insert et;
                                          Core_Group_Code_Short_Name__c = 'DCG~DCAI',
                                          Core_Processor_Number_Nm__c = 'P6500',
                                          IsActive = true);
-            
-            insert prod;
-            
-            Id quoteLineCreateRecordId =  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c',Label.Pricing_Tender_QuoteLine_RecordType_Create);
-            
+
+        insert prod;
+       
+        Id quoteLineCreateRecordId =  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c',Label.Pricing_Tender_QuoteLine_RecordType_Create);
+        
             SBQQ__QuoteLine__c quoteLine = new SBQQ__QuoteLine__c(); 
             quoteLine.RecordTypeId=quoteLineCreateRecordId;//Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Create);
             quoteLine.Pricing_Product_Nm__c = prod.Id;
@@ -1483,9 +1488,9 @@ insert et;
             quoteLine.Pricing_Consumption_Platform__c = 'Test platform 1,test platform 2';
             quoteLine.Pricing_Consumption_Region__c = 'ASMO';
             quoteLine.Pricing_Project_Nm__c = 'test project';
-            
-            insert quoteLine;
-            return quoteLine;
+
+        insert quoteLine;
+        return quoteLine;
         }catch(Exception exp){
             return null;
         }        

@@ -129,7 +129,7 @@ Modified By:        Date:       Changes:
                 }
             }            
             if(shareRecordList!=Null && shareRecordList.size()>0){
-                Core_MDF_Batch_ShareRecordInsert batchInstance = new Core_MDF_Batch_ShareRecordInsert(shareRecordList);
+                Core_MDF_Batch_ShareRecordInsert batchInstance = new Core_MDF_Batch_ShareRecordInsert(shareRecordList); 
                 Id batchId = Database.executeBatch(batchInstance,500);// custom  setting - 2000
             }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
@@ -370,9 +370,9 @@ Modified By:        Date:       Changes:
 ******************************************************************************************************/    
     public static Map<String,String> fetchClaimActAllocRecType(){
         Map<String,String> mapOfRecordTypes = new Map<String,String>();
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recTypeMetaData:[Select Id,Core_MDF_Region_cd__c,Core_MDF_Activity_RecordType_txt__c,Core_MDF_Allocation_RecordType_txt__c,
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Id,Core_MDF_Region_cd__c,Core_MDF_Activity_RecordType_txt__c,Core_MDF_Allocation_RecordType_txt__c,
                                                                        Core_MDF_Claim_RecordType_txt__c,Core_MDF_Channel_Program_txt__c,Core_MDF_Enable_Fund_Reservation_chk__c 
-                                                                       from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){ //TWC3117-18333
+                                                                       from Core_MDF_ClaimActAllocRecTypeMapping__mdt LIMIT 1000]){
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Channel_Program_txt__c,recTypeMetaData.Core_MDF_Region_cd__c);  
                                                                        }
         return mapOfRecordTypes;

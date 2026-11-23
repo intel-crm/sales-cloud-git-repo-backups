@@ -105,12 +105,12 @@ public with sharing class Core_SalesSupportHomeController {
     // Intel Altera Phase1:
     //Below getter setter fields are added for Phas1 implementation
     
-    //public Boolean bPSGQuoteHistoryExist {get;set;} // This field is used for indicating the PSGQuoteHistory exist or not 
+    public Boolean bPSGQuoteHistoryExist {get;set;} // This field is used for indicating the PSGQuoteHistory exist or not 
     //public Boolean bSalesSupportHomePageAccessible {get;set;} // Field used for indicating Sales Support Home is accessible 
     @AuraEnabled public static Boolean bOpportunityValidForQuoteCreation {get;set;}// To indicate opportunity valid for Quote Creation //Shivini
-    //public Boolean bPSGQuoteTabVisible {get;set;}
-    //public List<Core_PSG_Quote_Generation_History__c> lstPSGQuoteGenarationHistory {get;set;} // Displays the PSG Quote History related to a opportunity
-    //public boolean bPSGQuoteProcessingInfoDisp {get;set;} //This bit decides which error message to be displayed on the PSG Quote History Tab. 
+    public Boolean bPSGQuoteTabVisible {get;set;}
+    public List<Core_PSG_Quote_Generation_History__c> lstPSGQuoteGenarationHistory {get;set;} // Displays the PSG Quote History related to a opportunity
+    public boolean bPSGQuoteProcessingInfoDisp {get;set;} //This bit decides which error message to be displayed on the PSG Quote History Tab. 
     
     
     // SMG-DRD Support Request Integration *** Start
@@ -128,9 +128,9 @@ public with sharing class Core_SalesSupportHomeController {
         
         URLPMT = System.currentPagereference().getParameters().get('producttype');  //TWC3123-4227
             
-        //bPSGQuoteTabVisible = false; // Bit to indicate whether the PSG Quote tab has to be show or not .
+        bPSGQuoteTabVisible = false; // Bit to indicate whether the PSG Quote tab has to be show or not .
         mapStringToCS = new map<String,Core_System_Credentials__c>{};
-        //lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
+        lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
         userId = UserInfo.getUserId();
         // Set the boolean values to default values 
         bUserHasAccess = true;
@@ -154,8 +154,8 @@ public with sharing class Core_SalesSupportHomeController {
         //Intel Altera Phase1:
         //Below field will be initialized to default value.
         bOpportunityValidForQuoteCreation  = true;
-        //bPSGQuoteProcessingInfoDisp = false;
-        //bPSGQuoteHistoryExist = false;
+        bPSGQuoteProcessingInfoDisp = false;
+        bPSGQuoteHistoryExist = false;
         
         // These are used to identify Custom Settings for Samples system credentials and will likely be replaced with Custom Labels
         final String mySamplesRequestPlacement = 'My Samples Request Placement';
@@ -193,7 +193,7 @@ public with sharing class Core_SalesSupportHomeController {
                 sOppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
                 sOppRecName = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityName);     
                 //Called pullPSGQuoteHistory method for getting the PSG Quote history associated with Opportunity.
-                //pullPSGQuoteHistory();
+                pullPSGQuoteHistory();
                 if(!String.isEmpty(sOppRecName))
                     sOppRecName = sOppRecName.replace('+',' ');
                 //As part of TWC3123-6731 CIM ID replaced with Account ID
@@ -208,7 +208,7 @@ public with sharing class Core_SalesSupportHomeController {
                 
                 //Intel Altera Phase1:
                 //Below block of code used  for checking the PSG Quote Processing and existence of PSG Quote History of an Opportunity.
-                /*sobjOppt = [Select id,name,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:sOppId];
+                sobjOppt = [Select id,name,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:sOppId];
                 
                 if(sobjOppt.Core_PSG_Quote_Last_Processed_Status__c =='Processing') {
                       if(lstPSGQuoteGenarationHistory.isEmpty()) {
@@ -223,7 +223,7 @@ public with sharing class Core_SalesSupportHomeController {
                 if(lstPSGQuoteGenarationHistory.isEmpty() && (!(sobjOppt.Core_PSG_Quote_Last_Processed_Status__c =='Processing'))) {
                     bPSGQuoteHistoryExist = true;
                     bPSGQuoteProcessingInfoDisp = false;
-                }*/
+                }
                 
                 
                 // If the user doesn't have read access to the Opportunity
@@ -337,7 +337,7 @@ public with sharing class Core_SalesSupportHomeController {
                      
                 //Intel Altera Phase1: 
                 //Default the Tab to Seed if the page is loaded  from Account or from click of SalesSupport Tab  
-                if( /*sCurrentTab == 'tabPSGQuote' &&*/  (!String.isEmpty(sAcctId) || (String.isEmpty(sAcctId) && String.isEmpty(sOppId))))  {
+                if( sCurrentTab == 'tabPSGQuote' &&  (!String.isEmpty(sAcctId) || (String.isEmpty(sAcctId) && String.isEmpty(sOppId))))  {
                     sCurrentTab = 'tabSeeds';
                 }
                 
@@ -393,7 +393,7 @@ public with sharing class Core_SalesSupportHomeController {
         else
            return null;
         //End- Added and edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-     }
+    }
     
    
     /********************************** 
@@ -404,11 +404,11 @@ public with sharing class Core_SalesSupportHomeController {
     *               Below method is used for getting the PSG Quote History associated with Opportunity.
     *        
     ***********************************/
-    /*public void pullPSGQuoteHistory() {
+    public void pullPSGQuoteHistory() {
           lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
           lstPSGQuoteGenarationHistory = [SELECT Id, Name, Core_RFQ_ID__c, Core_Opportunity__c, Core_Quote_URL__c, Core_Message_Status__c,CreatedDate, LastModifiedDate FROM Core_PSG_Quote_Generation_History__c where Core_Opportunity__c=:sOppId   order by LastModifiedDate desc  limit 10];
 
-    }*/
+    }
     
     /**********************************
     * Method Name : createQuotes 
@@ -419,7 +419,7 @@ public with sharing class Core_SalesSupportHomeController {
     ***********************************/
     
     /*public void createQuotes(){
-            String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
+            /*String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
             String quoteName = PSG_CreateQuoteController.createQuote(opptyId);
             ApexPages.Message myMsg;
             if(quoteName!=null){ quoteName = 'Quote Created Successfully - ' + quoteName;
@@ -438,8 +438,8 @@ public with sharing class Core_SalesSupportHomeController {
     *               Below method is used for validating the opportunity and 
     *               for creating the Payload before sending the data to Siebel.
     ***********************************/
-   /* public void createPSGQuoteonSiebel() {
-        String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
+    public void createPSGQuoteonSiebel() {
+        /*String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
      
         try{ 
             UserRecordAccess recordAccessObj = [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId = :UserInfo.getUserId() AND RecordId = :soppId];
@@ -472,12 +472,13 @@ public with sharing class Core_SalesSupportHomeController {
         finally{
             SharingInnerClass innClass = new SharingInnerClass();
             innClass.deleteSharing(string.valueof(opptyId), UserInfo.getUserID());
-        }
-    }*/
+        }*/
+    }
 //Shivini
 /*
 @AuraEnabled
 public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
+    
     Boolean bOpportunityValidForQuoteCreation = false;
     Boolean isPartner = false;
     User userObj = [SELECT Id, Core_WWID__c, Core_User_Geo__c, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
@@ -544,6 +545,7 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
         innClass.deleteSharing(String.valueOf(soppId), UserInfo.getUserId());
     }
     return new PSGQuoteCreationResult(bOpportunityValidForQuoteCreation, isPartner, errorMessage);
+
 }
 */
     public void loadFirstTab() {

@@ -97,6 +97,9 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__TrackingNumber__c</field>
+    </columns>
+    <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <customDetailFormulas>

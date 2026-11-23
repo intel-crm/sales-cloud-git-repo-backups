@@ -7,7 +7,6 @@ public with sharing class Core_IPS_MindSectionController {
     @AuraEnabled(cacheable=true)
     public static List<String> getDefaultCountry(String contactdata) {
         List<String> returnDefault = new List<String>();
-        if(contactdata!=null){
         // SOQL Injection Fix  - Start -  Shipra
         String abc =  String.escapeSingleQuotes(contactdata);
         String temp = abc.replace('"', '');
@@ -23,7 +22,7 @@ public with sharing class Core_IPS_MindSectionController {
         else {
             returnDefault.add('No');
         }
-        }
+        
         return returnDefault;
         
     }

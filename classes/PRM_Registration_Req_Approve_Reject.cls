@@ -119,27 +119,14 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
     @AuraEnabled
     public static String validateData(Id regReqId) {
         String responseMessage = 'Success';
-        List<UCD_GenericAcctSearch_SBR.DuplicateRecordWrapper> dupAqrList=new List<UCD_GenericAcctSearch_SBR.DuplicateRecordWrapper>();
         Map<String,Boolean> systemaccountcheck = new Map<String,Boolean>();
-        string countryCode='';
         try {
-            for (PRM_Registration_Request__c regreq : [SELECT Id,PRM_Email_ID__c,PRM_Company_Nm_Eng__c,PRM_Alt_CompanyNameLang__c,
-                                                       PRM_Country__c,PRM_City__c,PRM_State_Province__c, PRM_Address_Line_1__c 
-                                                       from PRM_Registration_Request__c WHERE id = :regReqId]
+            for (PRM_Registration_Request__c regreq : [SELECT Id,PRM_Email_ID__c from PRM_Registration_Request__c WHERE id = :regReqId]
             ) {
                 systemaccountcheck = PRM_IPA_Utility.systemAccountDetails(new List<String>{regreq.PRM_Email_ID__c});
                 if (systemaccountcheck.containsKey(regreq.PRM_Email_ID__c) && systemaccountcheck.get(regreq.PRM_Email_ID__c)) {
                     responseMessage = 'This request cannot be approved as it is associated with a system account';
                     break;
-                }
-                countryCode= Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c)!= null ? Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c).ISO_Code__c : null;
-              	system.debug('countryCode');
-                dupAqrList=UCD_GenericAcctSearch_SBR.checkForDuplicates(
-                   		   regreq.PRM_Company_Nm_Eng__c,regreq.PRM_Alt_CompanyNameLang__c,countryCode,
-						   regreq.PRM_Address_Line_1__c,regreq.PRM_City__c,regreq.PRM_State_Province__c);
-				if(!dupAqrList.isEmpty() && dupAqrList.size()>0){
-				responseMessage='Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.';
-				break;
                 }
             }
         }catch(exception ex) { throw new AuraHandledException('exceptionText-> ' + ex );
@@ -168,9 +155,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
             Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
 
             workItems = [ SELECT Id, ProcessInstanceId,ActorId FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
-            
             apWrp.workItemId = workItems.isEmpty()? null : workItems[0].Id;
-            PRM_Registration_Request__c regRec = [SELECT Id, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c, PRM_Salesforce_ID__c, PRM_Email_ID__c, Geo_Code__c, PRM_Country__c,
+            PRM_Registration_Request__c regRec = [SELECT Id, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c, PRM_Salesforce_ID__c, PRM_Email_ID__c, Geo_Code__c,
             PRM_Matching_Contact__c,PRM_Matching_Contact__r.email,PRM_Matching_Contact__r.AccountId,RecordTypeId, PRM_Channel_Program_Level_txt__c
                                                         FROM PRM_Registration_Request__c 
                                                         WHERE Id =: regReqId];
@@ -191,24 +177,13 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
             if(String.IsNotBlank(regRec.PRM_Email_ID__c) && regRec.PRM_Email_ID__c.contains('@') && regRec.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance'){
                 emailDomain = regRec.PRM_Email_ID__c.split('@')[1];
             }
-            
-            //@NJ
-             // Retrieve country-level domain bypass configuration from Custom Metadata
-            Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
-            Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
-             // Check if this domain should bypass the blocked domain validation for the registration country
-            Boolean shouldBypass = PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck(regRec.PRM_Country__c, emailDomain,bypassRecords);
-            
-            // Only perform blocked domain validation if the domain is NOT in the bypass list for this country
-            if(!shouldBypass && String.IsNotBlank(emailDomain)) {
-                if(regRec.Geo_Code__c=='PRC'){
-                    if(system.label.Blocked_Domains_Prc1.split(';').contains(emailDomain) || system.label.Blocked_Domains_Prc2.split(';').contains(emailDomain)){
-                            isBlocked = true;
-                    }
-                }else{
-                    if(system.label.Blocked_Domains_Non_Prc1.split(';').contains(emailDomain) || system.label.Blocked_Domains_Non_Prc2.split(';').contains(emailDomain)|| system.label.Blocked_Domains_Non_Prc3.split(';').contains(emailDomain)){
+            if(String.IsNotBlank(emailDomain) && regRec.Geo_Code__c=='PRC'){
+                if(system.label.Blocked_Domains_Prc1.split(';').contains(emailDomain) || system.label.Blocked_Domains_Prc2.split(';').contains(emailDomain)){
                         isBlocked = true;
-                    }
+                }
+            }else if(String.IsNotBlank(emailDomain)){
+                if(system.label.Blocked_Domains_Non_Prc1.split(';').contains(emailDomain) || system.label.Blocked_Domains_Non_Prc2.split(';').contains(emailDomain)|| system.label.Blocked_Domains_Non_Prc3.split(';').contains(emailDomain)){
+                        isBlocked = true;
                 }
             }
 
@@ -410,7 +385,6 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
             // create log entry record of failed acr record
             for (Database.Error err : result.getErrors()) {
                 errMsg = 'fieldName: '+ err.Fields.toString() + '\n'+ 'error: '+ err.getStatusCode();
-                // to check duplicate AQR and throw errorTWC729-6948
                 if(String.valueOf(err.getStatusCode()) == 'FIELD_CUSTOM_VALIDATION_EXCEPTION' 
                 && err.getMessage().contains(LabelConfiguration__mdt.getInstance('PRM_UCD_DuplicateAQRError').Value__c)){
                     acrOrErrWrp.errorMsg = LabelConfiguration__mdt.getInstance('PRM_DuplicateARQ').Value__c;

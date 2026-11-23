@@ -4,9 +4,9 @@ Version     : 1.0
 Created Date: 18th Nov 2024
 Description : Batch to cleanup partner user licenses
 * Modification Log : 
-* Developer                 Date                   Description
+* Developer                 Date               		Description
 * ----------------------------------------------------------------------------
-* Sharmila-Team Draco       18-Nov-2024               Original Version
+* Sharmila-Team Draco       18-Nov-2024             	Original Version
 *************************************************************************************/
 global without sharing class Core_Draco_PartnerLicenseCleanupBatch implements Database.Batchable<sObject>, Database.Stateful {
     List<User> deactivationLst = new List<User>();
@@ -16,7 +16,6 @@ global without sharing class Core_Draco_PartnerLicenseCleanupBatch implements Da
     String partnerLicenseMdt='Core_PartnerLicenseReclaim__mdt';
     Integer queryLimit = Integer.valueOf(Label.Core_Draco_PartnerLicenseCleanupBatchLimit);
     Integer conUpdLimit = Integer.valueOf(Label.Core_PartnerLicenseConUpdBatchLimit);
-    Integer lastLoginDays = Integer.ValueOf(Label.Core_Draco_PartLicCleanup_Threshold_Days);
     
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
@@ -34,9 +33,9 @@ global without sharing class Core_Draco_PartnerLicenseCleanupBatch implements Da
         
         String query = '';
         if(Test.isRunningTest()){
-            query='Select Id,Email,LastName,LastLoginDate, ContactId, Profile.Name,IsActive,Partner_License_Reclaimed__c from User Where IsActive =TRUE AND UserType = \'PowerPartner\' AND FederationIdentifier !=null AND Id not in (select AssigneeId from PermissionSetAssignment where PermissionSet.Name IN :permissionSetNameSetting) AND ((LastLoginDate=null AND CreatedDate < LAST_N_DAYS:'+lastLoginDays+')  or LastLoginDate < LAST_N_DAYS:'+lastLoginDays+') AND (Profile.Name NOT IN :excludedProfileLst) LIMIT 1';
+            query='Select Id,Email,LastName,LastLoginDate, ContactId, Profile.Name,IsActive,Partner_License_Reclaimed__c from User Where IsActive =TRUE AND UserType = \'PowerPartner\' AND FederationIdentifier !=null AND Id not in (select AssigneeId from PermissionSetAssignment where PermissionSet.Name IN :permissionSetNameSetting) AND ((LastLoginDate=null AND CreatedDate < LAST_N_DAYS:182)  or LastLoginDate < LAST_N_DAYS:182) AND (Profile.Name NOT IN :excludedProfileLst) LIMIT 1';
         } else{
-            query='Select Id,Email,LastName,LastLoginDate, ContactId, Profile.Name,IsActive,Partner_License_Reclaimed__c from User Where IsActive =TRUE AND UserType = \'PowerPartner\' AND FederationIdentifier !=null AND Id not in (select AssigneeId from PermissionSetAssignment where PermissionSet.Name IN :permissionSetNameSetting) AND ((LastLoginDate=null AND CreatedDate < LAST_N_DAYS:'+lastLoginDays+')  or LastLoginDate < LAST_N_DAYS:'+lastLoginDays+') AND (Profile.Name NOT IN :excludedProfileLst) LIMIT :queryLimit';
+            query='Select Id,Email,LastName,LastLoginDate, ContactId, Profile.Name,IsActive,Partner_License_Reclaimed__c from User Where IsActive =TRUE AND UserType = \'PowerPartner\' AND FederationIdentifier !=null AND Id not in (select AssigneeId from PermissionSetAssignment where PermissionSet.Name IN :permissionSetNameSetting) AND ((LastLoginDate=null AND CreatedDate < LAST_N_DAYS:182)  or LastLoginDate < LAST_N_DAYS:182) AND (Profile.Name NOT IN :excludedProfileLst) LIMIT :queryLimit';
         }
         return Database.getQueryLocator(query);
     }

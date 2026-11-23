@@ -60,13 +60,12 @@
         let addComment = component.get('v.isValidAddComment'); //NOSONAR
         let dealDesc = component.get('v.isValidDealDesc'); //NOSONAR
         let additionalTs = component.get('v.isValidAdditionalTc'); //NOSONAR
-        let isValidRecipients = component.get('v.isValidRecipients'); //NOSONAR
         let isApprovedStartDateChange = component.get('v.approvedStartDateChange'); //NOSONAR
         component.set('v.errors', []);
         let errorList = []; //NOSONAR
 
         //Validate the non Latin characters
-        if ((addComment === 'true') || (dealDesc === 'true') || (additionalTs === 'true') || (isValidRecipients === 'true')) {
+        if ((addComment === 'true') || (dealDesc === 'true') || (additionalTs === 'true')) {
             allValid = false;
             component.find('mySpinner').set('v.class', 'slds-hide');
             component.set('v.isSpinner', false);
@@ -503,39 +502,6 @@
             }
         }
         field.reportValidity();
-    },
-    validateMultipleEmailCheck: function (component, event, helper, fieldLabel) {
-        let field = component.find(fieldLabel);
-        let value = field ? field.get('v.value') : '';
-        let isValid = true;
-        const errorMessage = $A.get("$Label.c.Pricing_Multiple_Email_Validation_Error");
-
-        if ((!$A.util.isEmpty(value)) && value.trim() !== '') {
-            let trimmedValue = value.trim();
-            if (trimmedValue.endsWith(';')) {
-                isValid = false;
-            }
-            const intelEmailRegex = $A.get('$Label.c.Pricing_Multiple_Email_Regex_Label');
-            if (isValid && !trimmedValue.match(intelEmailRegex)) {
-                isValid = false;
-            }
-        }
-
-        if (!isValid) {
-            component.set('v.isValidRecipients', 'true');
-            if (field) {
-                field.setCustomValidity(errorMessage);
-            }
-        } else {
-            component.set('v.isValidRecipients', 'false');
-            if (field) {
-                field.setCustomValidity('');
-            }
-        }
-
-        if (field) {
-            field.reportValidity();
-        }
     },
     searchProductsHelper: function (component, event, helper, selectedProductId) {
         $A.util.removeClass(component.find("Spinner"), "slds-hide");

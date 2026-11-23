@@ -36,8 +36,6 @@
     <aura:attribute name="disableSubmitButton" type="Boolean" default="true" />
     <aura:attribute name="isLegacyClaim" type="Boolean" default="false"
         description="Indicates whether the claim is legacy or not" />
-    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false" />
-
     <!--Aura Handlers-->
     <!--To handle the submit and close from document submission confirmation popup-->
     <aura:handler name="popSubmitEvent" event="c:popSubmitEvent" action="{!c.handlePopSubmitEvent}" />
@@ -65,36 +63,29 @@
                     <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
                         {!$Label.c.Core_MDF_Upload_Documents}</h1>
                     <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeManageAuditDocPopup }"
-                        alternativeText="close" variant="bare" class="slds-button slds-button_icon slds-modal__close"
-                        size="small" />
+                        alternativeText="close" variant="bare-inverse" class="slds-modal__close"
+                        iconClass="slds-icon_small" />
                 </div>
                 <div class="slds-modal__content slds-var-p-around_medium manageAuditDocumentPopup_modalContent"
                     id="modal-content-id-1">
                     <!--Render Manage Audit document section within the content/body of the manage audit document wrapper popup-->
-                    <c:Core_MDF_ManageAuditDocument_Revamp isOutcomeBasedAccountBasedAct = "{!v.isOutcomeBasedAccountBasedAct}" recordIdForPop="{!v.recordId}" budgetType="{!v.budgetType}"
+                    <c:Core_MDF_ManageAuditDocument_Revamp recordIdForPop="{!v.recordId}" budgetType="{!v.budgetType}"
                         programName="{!v.programName}" aura:id="manageAuditComponent" claimRefName="{!v.claimRefName}"
                         actyPOPDescReq="{!v.actyPOPDescReq}" simpleNewClaim="{!v.claimDetails}"
                         existingAuditDocuments="{!v.existingAuditDocuments}" />
                 </div>
                 <!--footer-->
                 <div class="slds-modal__footer">
-                                            
                     <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Close}"
                         title="{!$Label.c.Core_MDF_Close}" onclick="{!c.closeManageAuditDocPopup}" />
-                        <lightning:button variant="Brand" 
-                        label="{!v.isCoGtm ? $Label.c.Core_MDF_Save_Button : (and(v.isOutcomeBasedAccountBasedAct, v.claimDetails.Core_MDF_Status__c != 'Pending Account Manager Clarification') ? $Label.c.Core_MDF_Save_Button : $Label.c.Core_MDF_Submit_Button_Label)}"
-                        title="{!v.isCoGtm ? $Label.c.Core_MDF_Save_Button : (and(v.isOutcomeBasedAccountBasedAct, v.claimDetails.Core_MDF_Status__c != 'Pending Account Manager Clarification') ? $Label.c.Core_MDF_Save_Button : $Label.c.Core_MDF_Submit_Button_Label)}" onclick="{!c.handleClickOnSubmit}"
-                        disabled="{!v.disableSubmitButton}" /> <!--Ajinkya TWC3117-16656 TWC3117-18655 added isCoGtm -->
-                        
+                    <lightning:button variant="Brand" label="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                        title="{!$Label.c.Core_MDF_Submit_Button_Label}" onclick="{!c.handleClickOnSubmit}"
+                        disabled="{!v.disableSubmitButton}" />
                 </div>
             </div>
             <!--Confirm upload Modal - Document Submission confirmation popup-->
             <aura:if isTrue="{!v.isDocSubmissionPopupVisible}">
-                <c:Core_MDF_UploadDocConfirmation
-                    isThirdParty="{!v.isThirdPartyClaim}"
-                    isCoGtm="{!v.isCoGtm}"
-                    isOutcomeBasedAccountBasedAct="{!v.isOutcomeBasedAccountBasedAct}"
-                    claimStatus="{!v.claimDetails.Core_MDF_Status__c}"/> <!--Ajinkya TWC3117-16656-->
+                <c:Core_MDF_UploadDocConfirmation isThirdParty="{!v.isThirdPartyClaim}" isCoGtm = "{!v.isCoGtm}"/>
             </aura:if>
 
             <!--Confirmation popup  to set the claim for PIC Review - Submit for PIC popup -->
@@ -105,11 +96,10 @@
                     <div class="slds-modal__container submitForPIC-modal">
                         <header class="slds-modal__header">
                             <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
-                            	{! if(v.isOutcomeBasedAccountBasedAct, $Label.c.Core_MDF_Submit_For_Payment_Clearance, $Label.c.Core_MDF_Submit_For_PIC )}    
-                            </h2>
+                                {!$Label.c.Core_MDF_Submit_For_PIC}</h2>
                         </header>
                         <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
-                            <div>{! if(v.isOutcomeBasedAccountBasedAct, $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message, $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message )}</div>
+                            <div>{!$Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
                         </div>
                         <footer class="slds-modal__footer">
                             <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_DQNo}"
@@ -130,7 +120,7 @@
                             <h2 class="slds-text-heading_medium">{!$Label.c.Core_MDF_Close}</h2>
                         </header>
                         <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center">
-                            <aura:unescapedHtml value="{!v.isCoGtm ? $Label.c.Core_MDF_DocUploadClose : $Label.c.Core_MDF_DocUploadCancel}"></aura:unescapedHtml> <!--TWC3117-18655 added isCoGtm -->
+                            <aura:unescapedHtml value="{!$Label.c.Core_MDF_DocUploadCancel}"></aura:unescapedHtml>
                         </div>
                         <footer class="slds-modal__footer">
                             <lightning:button variant="Brand" class="slds-var-m-right_small" label="{!$Label.c.Core_OK}"

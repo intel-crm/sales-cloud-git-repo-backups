@@ -1,4 +1,4 @@
-<aura:component implements="force:lightningQuickAction,force:hasRecordId,lightning:isUrlAddressable" access="global"
+<aura:component implements="force:lightningQuickAction,force:hasRecordId" access="global"
   controller="Core_MDF_CloseActivity">
   <aura:attribute name="userEligible" type="Boolean" default="false" />
   <aura:attribute name="serverFilure" type="Boolean" default="false" />
@@ -10,8 +10,6 @@
   <aura:attribute name="activityhasActiveClaim" type="String" default="" />
   <aura:attribute name="countOfClaimRecords" type="Integer" default="0" />
   <aura:attribute name="activityerrors" type="String" default="" />
-  <aura:attribute name="pageReference" type="Object"/>
-	<aura:attribute name="isOutcomeBased" type="Boolean" default="false"/>
 
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 

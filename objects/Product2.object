@@ -362,19 +362,6 @@
         <label>Search Results</label>
     </fieldSets>
     <fields>
-        <fullName>AvailabilityDate</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>BasedOnId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ConfigureDuringSale</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>Core_Avail_for_New_Designs__c</fullName>
         <defaultValue>true</defaultValue>
         <description>This flag is being used for New design product.</description>
@@ -820,24 +807,6 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Line_Of_Business_Description__c</fullName>
-        <label>Line Of Business Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Line_of_Business__c</fullName>
-        <externalId>false</externalId>
-        <label>Line of Business</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Max_TDP__c</fullName>
         <description>Max_TDP</description>
         <externalId>false</externalId>
@@ -1160,14 +1129,6 @@ VPH lvl 1</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Profit_Center_Description__c</fullName>
-        <label>Profit Center Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_Profit_Center__c</fullName>
         <description>Represents Profit center</description>
         <externalId>false</externalId>
@@ -1258,29 +1219,14 @@ VPH lvl 1</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Deactivation_Date__c</fullName>
-        <label>Deactivation Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
         <description>Product Description</description>
         <inlineHelpText>Explanation of the product</inlineHelpText>
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
-        <fullName>DiscontinuedDate</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>DisplayUrl</fullName>
         <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>EndOfLifeDate</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>ExternalDataSourceId</fullName>
@@ -1297,10 +1243,6 @@ VPH lvl 1</description>
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>HelpText</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>INTUCASE_CodeName__c</fullName>
         <externalId>false</externalId>
         <formula>INITCAP( Core_Code_Name__c )</formula>
@@ -1315,14 +1257,6 @@ VPH lvl 1</description>
         <fullName>IsActive</fullName>
         <inlineHelpText>Indicates if a product is available for transaction in SFDC, the flag is managed via integration. Flag is unchecked when product is either retired regardless of product hierarchy or new equal product created in VPH.</inlineHelpText>
         <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>IsAssetizable</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>IsSoldOnlyWithOtherProds</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Name</fullName>
@@ -2505,15 +2439,8 @@ VPH lvl 1</description>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>SpecificationType</fullName>
-    </fields>
-    <fields>
         <fullName>StockKeepingUnit</fullName>
         <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Type</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>UCASE_CodeName__c</fullName>
@@ -2525,15 +2452,6 @@ VPH lvl 1</description>
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>UnitOfMeasureId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>UsedFor</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <listViews>
         <fullName>APTS_CSM_Products_Desktop</fullName>
@@ -2631,6 +2549,11 @@ VPH lvl 1</description>
             <field>Core_Sales_Visible_Flag__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>PRODUCT2.NAME</field>
+            <operation>contains</operation>
+            <value>Gaudi</value>
         </filters>
         <label>All Products</label>
     </listViews>

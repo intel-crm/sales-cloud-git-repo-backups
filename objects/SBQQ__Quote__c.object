@@ -768,48 +768,6 @@ Quote Program: Software</description>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Pricing_AI_RFP_Scraping_Status__c</fullName>
-        <label>AI RFP Scraping Status</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Success</fullName>
-                    <default>false</default>
-                    <label>Success</label>
-                </value>
-                <value>
-                    <fullName>In Progress</fullName>
-                    <default>false</default>
-                    <label>In Progress</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Pricing_AI_Scraping_Recommendation_Nm__c</fullName>
-        <description>This field holds the AI Recommendation that will be reviewed by the RPM before performing the Create Deal action</description>
-        <inlineHelpText>This field holds the AI Recommendation that will be reviewed by the RPM before performing the Create Deal action</inlineHelpText>
-        <label>AI Scraping Recommendation</label>
-        <length>131072</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
         <fullName>Pricing_Account_Division_Nm__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Selecting an Account Division limits the billings that can be used for this quote to those of the account divisions selected. Leaving Account Divisions blank means all billings are eligible for this quote.</inlineHelpText>
@@ -951,30 +909,6 @@ Quote Program: Software</description>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Pricing_ChangeRequest_Summary__c</fullName>
-        <description>Roll-up summary field to check/get the count of quote lines with change request enabled</description>
-        <label>Change Request Summary</label>
-        <summaryFilterItems>
-            <field>SBQQ__QuoteLine__c.Pricing_Change_Request_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </summaryFilterItems>
-        <summaryForeignKey>SBQQ__QuoteLine__c.SBQQ__Quote__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>Pricing_Change_Request_cb__c</fullName>
-        <description>Formula field to return true/false based on the change request field from the associated quote line records</description>
-        <formula>If(Pricing_ChangeRequest_Summary__c &gt; 0, true,false)</formula>
-        <label>Change Request</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Pricing_Competition_Assumptions__c</fullName>
@@ -1342,16 +1276,6 @@ Quote Program: Software</description>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Pricing_Is_Covered_Account_cb__c</fullName>
-        <defaultValue>false</defaultValue>
-        <inlineHelpText>If checked, this end customer is covered by an Intel Account Executive. If not checked, the end customer is uncovered.</inlineHelpText>
-        <label>Is Covered Account</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Pricing_Is_Sanctioned__c</fullName>
         <formula>Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Is_Sanctioned__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -1466,21 +1390,6 @@ Quote Program: Software</description>
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Pricing_Maximum_Approved_Rejected_Date__c</fullName>
-        <label>Maximum Approved Rejected Date</label>
-        <summarizedField>SBQQ__QuoteLine__c.Pricing_Last_Approved_Date_dt__c</summarizedField>
-        <summaryFilterItems>
-            <field>SBQQ__QuoteLine__c.Pricing_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Approved, Rejected, Won</value>
-        </summaryFilterItems>
-        <summaryForeignKey>SBQQ__QuoteLine__c.SBQQ__Quote__c</summaryForeignKey>
-        <summaryOperation>max</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
     </fields>
     <fields>
         <fullName>Pricing_My_Deals_Folio_Name_Nm__c</fullName>
@@ -1609,65 +1518,6 @@ Quote Program: Software</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Pricing_Pricing_Manager_Group_Label_Txt__c</fullName>
-        <description>This field holds the Pricing Manager Group Label</description>
-        <externalId>false</externalId>
-        <label>Pricing Manager Group Label</label>
-        <length>80</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Pricing_Pricing_Manager_Group_Name_Txt__c</fullName>
-        <description>This field holds the Pricing Manager Group Name</description>
-        <externalId>false</externalId>
-        <label>Pricing Manager Group Name</label>
-        <length>50</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Pricing_Pricing_Manager_Group__c</fullName>
-        <description>This field holds the Pricing Manager Group Name as hyperlink and on Click of it, navigates to the List view</description>
-        <externalId>false</externalId>
-        <formula>IF(
-  ISBLANK(Pricing_Pricing_Manager_Group_Name_Txt__c),
-  &quot;&quot;,
-HYPERLINK(
-    &quot;/lightning/o/SBQQ__Quote__c/list?filterName=&quot; + Pricing_Pricing_Manager_Group_Name_Txt__c, 
-    Pricing_Pricing_Manager_Group_Label_Txt__c,
-    &quot;_blank&quot;
-)
-)</formula>
-        <label>Pricing Manager Group</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Pricing_Pricing_Manager__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Indicates the Regional Pricing Manager that gets assigned once a Routing Rule criteria is satisfied.</description>
-        <label>Pricing Manager</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Quotes_User</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Pricing_Primary_Contact_Email__c</fullName>
         <externalId>false</externalId>
         <label>Primary Contact Email</label>
@@ -1793,37 +1643,6 @@ HYPERLINK(
         </valueSet>
     </fields>
     <fields>
-        <fullName>Pricing_Quote_Routing_Category_Nm__c</fullName>
-        <description>This field holds the Quote Routing Category</description>
-        <label>Quote Segmentation</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>High Touch</fullName>
-                    <default>false</default>
-                    <label>High Touch</label>
-                </value>
-                <value>
-                    <fullName>Low Touch</fullName>
-                    <default>false</default>
-                    <label>Low Touch</label>
-                </value>
-                <value>
-                    <fullName>No Touch</fullName>
-                    <default>false</default>
-                    <label>No Touch</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Pricing_Quote_To_Mark_As_Won__c</fullName>
         <label>Quote To Mark As Won</label>
         <summarizedField>SBQQ__QuoteLine__c.Pricing_QuoteLine_Won_Prediction__c</summarizedField>
@@ -1842,52 +1661,6 @@ HYPERLINK(
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>Pricing_ReRouting_Reason_Nm__c</fullName>
-        <description>This Field holds the reason for Re-Routing the Pricing Manager</description>
-        <label>Re-Routing Reason</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>2nd Review</fullName>
-                    <default>false</default>
-                    <label>2nd Review</label>
-                </value>
-                <value>
-                    <fullName>CR Re-Route</fullName>
-                    <default>false</default>
-                    <label>CR Re-Route</label>
-                </value>
-                <value>
-                    <fullName>Incorrect Routing</fullName>
-                    <default>false</default>
-                    <label>Incorrect Routing</label>
-                </value>
-                <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
-                    <fullName>Owner Exception</fullName>
-                    <default>false</default>
-                    <label>Owner Exception</label>
-                </value>
-                <value>
-                    <fullName>RPM Coverage</fullName>
-                    <default>false</default>
-                    <label>RPM Coverage</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Pricing_Region_Nm__c</fullName>
@@ -2166,53 +1939,6 @@ HYPERLINK(
                 <valueName>PRC</valueName>
             </valueSettings>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Pricing_Route_Rule_Id_Txt__c</fullName>
-        <description>This field holds the Route Rule Record Id</description>
-        <externalId>false</externalId>
-        <label>Route Rule Id</label>
-        <length>18</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Pricing_Route_Rule_Name_Txt__c</fullName>
-        <description>This field holds the Route Rule Name</description>
-        <externalId>false</externalId>
-        <label>Route Rule Name</label>
-        <length>10</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Pricing_Route_Rule_Name__c</fullName>
-        <description>This field holds the Lookup of the Route Rule Record</description>
-        <externalId>false</externalId>
-        <formula>IF(
-  ISBLANK(Pricing_Route_Rule_Id_Txt__c),
-  &quot;&quot;,
- HYPERLINK(
-    &quot;/&quot; &amp; Pricing_Route_Rule_Id_Txt__c, 
-    Pricing_Route_Rule_Name_Txt__c, 
-    &quot;_blank&quot;
-)
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Route Rule Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Pricing_SW_Account_Name__c</fullName>
@@ -8716,6 +8442,44 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
     </fields>
     <label>Quote</label>
     <listViews>
+        <fullName>All_PSG_Quotes</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>Pricing_End_Customer_Country_Nm__c</columns>
+        <columns>core_cpq_parent_account__c</columns>
+        <columns>core_cpq_opportunity_disty_view_nm__c</columns>
+        <columns>core_cpq_cm_name_disty_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>core_cpq_quote_owner_disty_txt__c</columns>
+        <columns>core_cpq_date_submitted_dt__c</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
+        </filters>
+        <label>01 - PSG All Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>All_PSG_Quotes_Budgetary</fullName>
         <columns>NAME</columns>
         <columns>core_cpq_ultimate_quote_number_nbr__c</columns>
@@ -8746,6 +8510,32 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
         <label>All FPGA &amp; eASIC Quotes - Budgetary</label>
         <sharedTo>
             <group>ags_extrenal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_PSG_Quotes_Contract_Pricing</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_sap_ecp_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_pricing_start_date_dt__c</columns>
+        <columns>core_cpq_pricing_end_date_dt__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</value>
+        </filters>
+        <label>01 - PSG Contract Pricing Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -9955,6 +9745,52 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>PSG_ASMO_ABOS_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-ABOS</label>
+        <queue>PSG_ASMO_ABOS</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_ACAN_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-ACAN</label>
+        <queue>PSG_ASMO_ACAN</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>PSG_ASMO_AZ_NM_Quote</fullName>
         <columns>NAME</columns>
         <columns>core_cpq_revision_nbr__c</columns>
@@ -9978,211 +9814,586 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_APJ_CCG_SEANZ_PricingManager_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_ASMO_CA_Quote</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_APJ_CCG_SEANZ_PricingManager_Grp</value>
-        </filters>
-        <label>IQR APJ CCG SEANZ Pricing Manager Quotes</label>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-CA</label>
+        <queue>PSG_ASMO_CA</queue>
         <sharedTo>
-            <group>Pricing_APJ_CCG_SEANZ_PricingManager_Grp</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_APJ_DCG_HighTouch_PricingMgr_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_ASMO_HI_Quote</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_APJ_DCG_HighTouch_PricingMgr_Grp</value>
-        </filters>
-        <label>IQR APJ DCG HighTouch Pricing Mgr Quotes</label>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-HI</label>
+        <queue>PSG_ASMO_HI</queue>
         <sharedTo>
-            <group>Pricing_APJ_DCG_HighTouch_PricingMgr_Grp</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_APJ_DCG_NonHighTouch_PM_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_ASMO_IA_Quote</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_APJ_DCG_NonHighTouch_PM_Grp</value>
-        </filters>
-        <label>IQR APJ DCG Low Touch Pricing Mgr Quotes</label>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>core_cpq_distributor_disty_view_nm__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-IA</label>
+        <queue>PSG_ASMO_IA</queue>
         <sharedTo>
-            <group>Pricing_APJ_DCG_NonHighTouch_PM_Grp</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_ASMO_DCG_CSP_Pricing_Mgr_Group</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_ASMO_MID_Quote</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-MID</label>
+        <queue>PSG_ASMO_MID</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_MINN_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>core_cpq_distributor_disty_view_nm__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-MINN</label>
+        <queue>PSG_ASMO_MINN</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_NV_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-NV</label>
+        <queue>PSG_ASMO_NV</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_NW_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-NW</label>
+        <queue>PSG_ASMO_NW</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_OHIO_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-OHIO</label>
+        <queue>PSG_ASMO_OHIO</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_RM_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-RM</label>
+        <queue>PSG_ASMO_RM</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_SC_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-SC</label>
+        <queue>PSG_ASMO_SC</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_SE_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-SE</label>
+        <queue>PSG_ASMO_SE</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ASMO_WI_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-ASMO-WI</label>
+        <queue>PSG_ASMO_WI</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_CISCO_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-CISCO</label>
+        <queue>PSG_CISCO</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_INTEL_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_end_customer_disty_nm__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_disty_view_nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-INTEL</label>
+        <queue>PSG_INTEL</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_MICROSOFT_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_class_cat__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>core_cpq_distributor_disty_view_nm__c</columns>
+        <columns>core_cpq_requestor_disty_view_nm__c</columns>
         <columns>Pricing_Created_Date__c</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_ASMO_DCG_CSP_Pricing_Mgr_Group</value>
-        </filters>
-        <label>IQR ASMO DCG CSP List Pricing Mgr Quotes</label>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-MICROSOFT</label>
+        <queue>PSG_MICROSOFT</queue>
         <sharedTo>
-            <group>Pricing_ASMO_DCG_CSP_Pricing_Mgr_Group</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_ASMO_DCG_HPC_Pricing_Mgr_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_My_Quotes_This_Year</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Mine</filterScope>
         <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_ASMO_DCG_HPC_Pricing_Mgr_Grp</value>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
         </filters>
-        <label>IQR ASMO DCG HPC Pricing Manager Quotes</label>
+        <label>PSG My Quotes - Recent</label>
         <sharedTo>
-            <group>Pricing_ASMO_DCG_HPC_Pricing_Mgr_Grp</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_ASMO_DCG_Non_HPC_Pricing_Mgr_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_PRC_Uniquest_Quote</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
-        <columns>SBQQ__Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Pricing_ASMO_DCG_Non_HPC_Pricing_Mgr_Grp</value>
-        </filters>
-        <label>IQR ASMO DCG Non HPC Pricing Mgr Quotes</label>
+        <filterScope>Queue</filterScope>
+        <label>PSG-PRC-Uniquest</label>
+        <queue>PSG_PRC_Uniquest</queue>
         <sharedTo>
-            <group>Pricing_ASMO_DCG_Non_HPC_Pricing_Mgr_Grp</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_My_Segmented_Quotes</fullName>
-        <columns>Pricing_Pricing_Manager__c</columns>
+        <fullName>PSG_Quotes_Active</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Pricing_Pricing_Manager__c</field>
+            <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>$USER</value>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
         </filters>
-        <label>My Segmented Quotes</label>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>core_cpq_parent_account__c</field>
+            <operation>contains</operation>
+        </filters>
+        <filters>
+            <field>SBQQ__Distributor__c</field>
+            <operation>contains</operation>
+        </filters>
+        <label>01 - PSG Active Quotes</label>
         <sharedTo>
-            <group>Pricing_Manager_Group</group>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Pricing_PRC_DCG_CSP_CoSP_PricingMgr_Grp</fullName>
-        <columns>Pricing_Pricing_Manager_Group__c</columns>
+        <fullName>PSG_Quotes_Cancelled</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Overall_Quote_Quantity__c</columns>
-        <columns>Pricing_Unified_Global_End_Customer_Nm__c</columns>
-        <columns>Pricing_Customer_Nm__c</columns>
-        <columns>Pricing_End_Customer_Name__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
         <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Market_Segment_values_Nm__c</columns>
-        <columns>Pricing_Server_Deal_Type_Nm__c</columns>
-        <columns>Pricing_Region_Nm__c</columns>
-        <columns>Pricing_End_Customer_Country_Nm__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
+            <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>Pricing_PRC_DCG_CSP_CoSP_PricingMgr_Grp</value>
+            <value>SBQQ__Quote__c.PSG_Quote_ReadOnly</value>
         </filters>
-        <label>IQR PRC DCG CSP CoSP Pricing Mgr Quotes</label>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled</value>
+        </filters>
+        <label>02 - PSG Cancelled Quotes</label>
         <sharedTo>
-            <group>Pricing_PRC_DCG_CSP_CoSP_PricingMgr_Grp</group>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Quotes_InActive</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</value>
+        </filters>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>notEqual</operation>
+            <value>Cancelled</value>
+        </filters>
+        <label>02 - PSG InActive Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_SOS_APJ_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-APJ</label>
+        <queue>PSG_SOS_APJ</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_SOS_PRC_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-PRC</label>
+        <queue>PSG_SOS_PRC</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_SOS_Transfer_Pricing_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG SOS Transfer Pricing</label>
+        <queue>psg_tp_sos_prc</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Submitted_quotes</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>03 - PSG Submitted quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -10222,6 +10433,687 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
         <label>IQR Quotes</label>
         <sharedTo>
             <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Approved</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
+        </filters>
+        <label>02 - PSG Approved Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Budgetary</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Budgetary</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
+        </filters>
+        <label>01 - PSG Budgetary Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Design_Win</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Design Win</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
+        </filters>
+        <label>01 - PSG Design Win Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_In_Progress</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>In Progress</value>
+        </filters>
+        <label>02 - PSG In Progress Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_In_Review</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>In Review</value>
+        </filters>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>02 - PSG In Review Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_New</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </filters>
+        <label>02 - PSG New Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Pending</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </filters>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>02 - PSG Pending Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Rejected</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </filters>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>02 - PSG Rejected Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_All_Quotes_Transfer_Pricing</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Transfer Pricing</value>
+        </filters>
+        <label>01 - PSG Transfer Pricing Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_My_PSG_Quotes</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>01 - PSG My Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X04_PSG_Review_Quotes</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>core_cpq_active_cb__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>In Review</value>
+        </filters>
+        <label>04 - PSG Review Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X05_PSG_Quote_Tools</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Tools</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </filters>
+        <filters>
+            <field>core_cpq_corporate_flag__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>01 - PSG Tools Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_prc_arw_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-PRC-Arrow</label>
+        <queue>psg_sos_prc_arw</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_prc_cytech_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-PRC-Cytech</label>
+        <queue>psg_sos_prc_cytech</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_ap_south_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-AP-South</label>
+        <queue>psg_sos_ap_south</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_asmo_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_disty_view_nm__c</columns>
+        <columns>core_cpq_price_book_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>core_cpq_status_txt__c</field>
+            <operation>equals</operation>
+            <value>Draft,New,In Progress,Pending</value>
+        </filters>
+        <label>PSG-SOS-ASMO</label>
+        <queue>psg_sos_asmo</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_emea_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_end_customer_disty_nm__c</columns>
+        <columns>core_cpq_end_customer_country_disty_nm__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_end_customer_country__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_comments_by_disty_txt__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>core_cpq_date_submitted_dt__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>core_cpq_status_txt__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </filters>
+        <label>PSG-EMEA NEW</label>
+        <queue>psg_sos_emea</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_japan_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-Japan</label>
+        <queue>psg_sos_japan</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_korea_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-Korea</label>
+        <queue>psg_sos_korea</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_na_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_ultimate_parent_quote__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_account_tier__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>03 - PSG ASMO Quotes</label>
+        <queue>psg_sos_asmo</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_prc_arw_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_price_book_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-SOS-PRC-Arw</label>
+        <queue>psg_sos_prc_arw</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_prc_cytech_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>core_cpq_price_book_nm__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-SOS-PRC-Cytech</label>
+        <queue>psg_sos_prc_cytech</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>psg_sos_taiwan_Quote</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_end_customer_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_requestor_nm__c</columns>
+        <columns>SBQQ__PriceBook__c</columns>
+        <columns>Pricing_Project_Name_Nm__c</columns>
+        <columns>core_cpq_quote_created_date__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>PSG-Taiwan</label>
+        <queue>psg_sos_taiwan</queue>
+        <sharedTo>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <nameField>
@@ -10275,21 +11167,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <picklist>HeaderFieldSetName__c</picklist>
             <values>
                 <fullName>Pricing_SW_Line_Editor</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -11390,48 +12267,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -17543,21 +18378,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -18634,48 +19454,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -24668,7 +25446,7 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
     </recordTypes>
     <recordTypes>
         <fullName>PSG_Quote_Cancelled</fullName>
-        <active>false</active>
+        <active>true</active>
         <compactLayoutAssignment>PSG_Quote_Highlight</compactLayoutAssignment>
         <label>PSG Quote Cancelled</label>
         <picklistValues>
@@ -24694,21 +25472,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <picklist>HeaderFieldSetName__c</picklist>
             <values>
                 <fullName>Pricing_SW_Line_Editor</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -25789,48 +26552,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -31822,21 +32543,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -32910,48 +33616,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>PSG</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -38922,21 +39586,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -40013,48 +40662,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -45653,21 +46260,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -46756,48 +47348,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -52405,21 +52955,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -53496,48 +54031,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -59536,21 +60029,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -60639,48 +61117,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
             <values>
                 <fullName>Tender</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -66288,21 +66724,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -67400,48 +67821,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Financial Incentive</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -73552,21 +73931,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -74664,48 +75028,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Financial Incentive</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -80815,21 +81137,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -81919,48 +82226,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -88030,21 +88295,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -89130,48 +89380,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -95241,21 +95449,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -96345,48 +96538,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -102456,21 +102607,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -103564,48 +103700,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -109543,21 +109637,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -110715,48 +110794,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Software %26 Services</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -116818,21 +116855,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -117990,48 +118012,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Software %26 Services</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -124097,21 +124077,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -125269,48 +125234,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Software %26 Services</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -131380,21 +131303,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -132552,48 +132460,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Software %26 Services</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -138663,21 +138529,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -139831,48 +139682,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -145958,21 +145767,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -147126,48 +146920,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -153253,21 +153005,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -154421,48 +154158,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -160548,21 +160243,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -161716,48 +161396,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -167844,21 +167482,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -168952,48 +168575,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -174916,21 +174497,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -176024,48 +175590,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -181988,21 +181512,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -183096,48 +182605,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -189060,21 +188527,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Pricing_AI_RFP_Scraping_Status__c</picklist>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Pricing_Additional_Components_Nm__c</picklist>
             <values>
                 <fullName>NIC</fullName>
@@ -190168,48 +189620,6 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
             <values>
                 <fullName>Tender</fullName>
                 <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_Quote_Routing_Category_Nm__c</picklist>
-            <values>
-                <fullName>High Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low Touch</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No Touch</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Pricing_ReRouting_Reason_Nm__c</picklist>
-            <values>
-                <fullName>2nd Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CR Re-Route</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect Routing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Owner Exception</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Coverage</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -196405,6 +195815,21 @@ NOT(ISPICKVAL(core_cpq_original_quote__r.core_cpq_quote_type_nm__c , &apos;Trans
         <errorMessage>Quote Types should have equivalent Design Win Quotes as Parent Quotes.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>PSG_Restrict_Distributor_Edit</fullName>
+        <active>true</active>
+        <description>It will restrict edit access on Distributor field to PSG System User only.</description>
+        <errorConditionFormula>AND(
+  NOT( ISNEW()),
+  ISPICKVAL( Pricing_Quote_Program_Nm__c , &apos;PSG&apos;),
+  ISCHANGED( SBQQ__Distributor__c ),
+  NOT(ISBLANK(PRIORVALUE(SBQQ__Distributor__c))) ,
+  $User.Id  &lt;&gt;    LEFT($Label.PSG_System_User,
+                  LEN($Label.PSG_System_User) - 3 )
+)</errorConditionFormula>
+        <errorDisplayField>SBQQ__Distributor__c</errorDisplayField>
+        <errorMessage>You cannot edit the Distributor field on the Quote. Please contact &lt;psg.iqr.l2.support@intel.com&gt; for any changes.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PSG_Restrict_Quote_Edit</fullName>
         <active>false</active>
         <description>It restricts users from creating new record and editing existing records during freeze period.</description>
@@ -196575,13 +196000,6 @@ Pricing_Intel_Response_Requested_By_Date__c &lt; TODAY()
         <errorMessage>The Intel Response Requested By Date has already passed. Please enter a Intel Response Requested By Date more than one day in the future.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Pricing_MandateReason_OnPricingMgrEdit</fullName>
-        <active>true</active>
-        <description>This validation rule is to restrict the save of quote when the Pricing Manager is updated without giving the Re-routing Reason and Vice Versa.</description>
-        <errorConditionFormula>AND($Permission.Pricing_Tender_Regional_Pricing_Manager,ISCHANGED(Pricing_Pricing_Manager__c), ISBLANK (TEXT(Pricing_ReRouting_Reason_Nm__c)),  NOT( ISCHANGED(Pricing_Route_Rule_Name_Txt__c)))</errorConditionFormula>
-        <errorMessage>Please provide a reason for re-routing the quote.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Pricing_MarketSegment_Validation</fullName>
         <active>true</active>
         <description>Market Segment cannot be edited after deal is created in My Deals.</description>
@@ -196627,13 +196045,6 @@ CONTAINS(Pricing_AdditionalRecipients__c , &quot;@intel.com&quot;)
 )</errorConditionFormula>
         <errorDisplayField>Pricing_AdditionalRecipients__c</errorDisplayField>
         <errorMessage>Value must be one or multiple email addresses separated by semi-colons. Intel email addresses are not allowed.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Pricing_PricingMgrEdit_Restriction</fullName>
-        <active>true</active>
-        <description>This validation rule is to restrict the save of quote when the Pricing Manager is updated by Tender User Instead of Pricing Manager.</description>
-        <errorConditionFormula>AND(NOT($Permission.Pricing_Tender_Regional_Pricing_Manager),OR(ISCHANGED (Pricing_Pricing_Manager__c),ISCHANGED( Pricing_ReRouting_Reason_Nm__c)),NOT(ISCHANGED( Pricing_Route_Rule_Name_Txt__c)))</errorConditionFormula>
-        <errorMessage>Pricing Manager and Re-Routing Reason is not editable for your role.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Pricing_QuotaExclude_ExcludeReason_Check</fullName>
@@ -197013,31 +196424,6 @@ ISPICKVAL(Pricing_Quota_Exclusion_Reason__c, &apos;&apos;)
 )</errorConditionFormula>
         <errorDisplayField>Pricing_Quota_Exclusion_Reason__c</errorDisplayField>
         <errorMessage>Quota Exclusion Reason is required whenever Exclude from Volume Exception Quota is checked.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Pricing_WriteInEndCustomer_NoPipeCheck</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-OR(
-RecordType.DeveloperName =&apos;Pricing_Tender_Quote_Create&apos;,
-RecordType.DeveloperName =&apos;Pricing_Small_Volume_Quote_Create&apos;,
-RecordType.DeveloperName=&apos;Pricing_Tender_Quote_Submitted&apos;,
-RecordType.DeveloperName =&apos;Pricing_Tender_Quote_Edit&apos;,
-RecordType.DeveloperName =&apos;Pricing_Tender_Client_Quote_Create&apos;,
-RecordType.DeveloperName =&apos;Pricing_Tender_Client_Quote_Edit&apos;,
-RecordType.DeveloperName =&apos;Pricing_Tender_Client_Quote_Submitted&apos;
-),
-OR(
-ISNEW(),
-ISCHANGED(Pricing_Customer_Nm__c)
-),
-AND(
-NOT(ISNULL( Pricing_End_Customer__c )),
-Pricing_End_Customer__r.Name = &apos;Write In End Customer&apos;,
-CONTAINS (Pricing_Customer_Nm__c, &quot;|&quot;)
-)
-)</errorConditionFormula>
-        <errorMessage>The pipe (|) character is not allowed in the Write In End Customer field; Please enter a valid value.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Pricing_opportunity_Lookup_Validation</fullName>

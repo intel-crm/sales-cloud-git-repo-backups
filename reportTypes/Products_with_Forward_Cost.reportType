@@ -4,6 +4,10 @@
     <category>other</category>
     <deployed>true</deployed>
     <description>This report type used to get products with or without forward cost records.</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>price_forward_costs__r</relationship>
+    </join>
     <label>Products with Forward Cost</label>
     <sections>
         <columns>
@@ -672,5 +676,98 @@
             <table>Product2</table>
         </columns>
         <masterLabel>Products</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_fc_active_cb__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_fc_end_date_dt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_fc_start_date_dt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>price_forward_cost_amt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_forward_cost_period_name_nm__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_data_loaded__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_product_opn_txt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_product_name_txt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_product_type_txt__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_unique_id__c</field>
+            <table>Product2.price_forward_costs__r</table>
+        </columns>
+        <masterLabel>Forward Costs(Product)</masterLabel>
     </sections>
 </ReportType>

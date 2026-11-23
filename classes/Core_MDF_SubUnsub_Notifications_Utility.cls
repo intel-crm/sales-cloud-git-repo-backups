@@ -1,5 +1,5 @@
 public without sharing class Core_MDF_SubUnsub_Notifications_Utility {
-    //Test Class: Core_MDF_SubscriptionUtility_Test
+    
     //Query Notification Subscription records based on user access
     @AuraEnabled
     public static List<notificationData> getSubscriptionDetails(Id usrId, String application) 
@@ -282,11 +282,7 @@ Added By      :        Accenture - Akanksha - 4 Jun 2024
         Set<Id> unsubscribedUserIds = new Set<Id>();
         try{
             // Query to fetch user subscriptions who do not want notifications
-            //ATHR Fix- Deeply nested if
-            if(notificationType == null || objectName == null || inputUserIds == null || inputUserIds.isEmpty()){
-                finalListOfSubscribedUsers.addAll(inputUserIds);
-                return finalListOfSubscribedUsers;
-            }
+            if(notificationType!=null && objectName!=null && inputUserIds!=null && inputUserIds.size() > 0){
                 
                 List<Pricing_IQR_Email_Preferences__c> unsubscribedUsersList = [SELECT  Id,Pricing_User__c,Core_MDF_Module_Nm__c, Pricing_Notification_Name_Nm__c
                                                                                            FROM Pricing_IQR_Email_Preferences__c
@@ -296,23 +292,28 @@ Added By      :        Accenture - Akanksha - 4 Jun 2024
                                                                                 		   AND Pricing_Opt_In_Ind__c = False
                                                                                 		   AND Core_MDF_Active_Ind__c = True
                                                                                           ];
-                //ATHR Fix- Deeply nested if
-                if(unsubscribedUsersList == null || unsubscribedUsersList.isEmpty()){
-                    finalListOfSubscribedUsers.addAll(inputUserIds);
-                    return finalListOfSubscribedUsers;
-                }
+                if(unsubscribedUsersList!=null && unsubscribedUsersList.size() > 0){
                     for (Pricing_IQR_Email_Preferences__c subscription : unsubscribedUsersList) {
                         unsubscribedUserIds.add(subscription.Pricing_User__c); 
                     }
                     // Iterate through the original usersList and add only those who are not in unsubscribedUserIds to finalList
-            		if(unsubscribedUserIds==null || unsubscribedUserIds.isEmpty()){
-                		finalListOfSubscribedUsers.addAll(inputUserIds);
-                        return finalListOfSubscribedUsers;
-            		}
+                    if(unsubscribedUserIds!=null && unsubscribedUserIds.size()>0){
+                        //change to incomingUserLst
                         for (Id userId : inputUserIds) {
                             if (!unsubscribedUserIds.contains(userId)) {
                                 finalListOfSubscribedUsers.add(userId);
                             }
+                        }
+                    }else{
+                        finalListOfSubscribedUsers.addAll(inputUserIds);
+                    }
+                }else{
+                    //if there exist no records for the user in the notification subscription object, add all the users to the final list
+                    finalListOfSubscribedUsers.addAll(inputUserIds);
+                }
+            }
+            else{
+                finalListOfSubscribedUsers.addAll(inputUserIds);
             }
             
         }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e);} 
@@ -414,18 +415,11 @@ Added By      :        Accenture - Akanksha - 4 Jun 2024
     
                 if(String.isNotEmpty(userName))
                 {
-                    // Remove special characters and escape single quotes to prevent SQL injection
-                    String cleanedUserName = userName.replaceAll('[^a-zA-Z0-9\\s.-]', '').trim();
-                    String escapedUserName = String.escapeSingleQuotes(cleanedUserName);
-                    string searchText = '\'%' + escapedUserName + '%\'';
+                    string searchText = '\'%' + userName + '%\'';
                     String fields = ' Id,AssigneeId,Assignee.Name, Assignee.Email, Assignee.IsActive, Assignee.Partner_License_Reclaimed__c ';  //License Reclaim changes - Roshan
-                    String whereClause = ' PermissionSet.Name IN ' +  requiredPerSetStr + ' and Assignee.Name like ' + searchText.trim() + ' and (Assignee.IsActive = true or Assignee.Partner_License_Reclaimed__c = true) LIMIT 10';  //License Reclaim changes - Roshan
-                    try {
-                        assignedPermissionSets = Core_MDF_CCP_GenericUtility.getPermSetAssignmentList(fields, whereClause);
-                    } catch(Exception e) {
-                        Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, ('Input userName:'+userName+'; searchText:'+searchText+'; whereClause:'+whereClause));
-                    }
+                    String whereClause = ' PermissionSet.Name IN ' +  requiredPerSetStr + ' and Assignee.Name like ' + searchText.trim()+' and (Assignee.IsActive = true or Assignee.Partner_License_Reclaimed__c = true) LIMIT 10';  //License Reclaim changes - Roshan
                     
+                    assignedPermissionSets = Core_MDF_CCP_GenericUtility.getPermSetAssignmentList(fields, whereClause);
                     for(PermissionSetAssignment psa : assignedPermissionSets) 
                     {
                         sObjectResultList.add(new SObjectResult(psa.Assignee.Name, psa.AssigneeId, psa.Assignee.Email, psa.Assignee.IsActive, psa.Assignee.Partner_License_Reclaimed__c));

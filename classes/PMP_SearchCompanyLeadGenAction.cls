@@ -71,20 +71,19 @@ public without sharing class PMP_SearchCompanyLeadGenAction {
                     }   
                 }	
             }
-                
-        	//update workPubMap.values();
-            Database.SaveResult[] wpList = Database.update(workPubMap.values(), false);
-			PMP_Utility.logDmlErrors((Object[]) wpList, 'PMP_SearchCompanyLeadGenAction-updatePublishedCopy');
+        
+        
+        	update workPubMap.values();
             //system.debug('Lead Gen Updated in PC');
             //system.debug('Clearing platform Cache for offerings attached to this partner: Initiated');
-            // if(!pubOfferings.isEmpty())
-            // {
-            //     offeringIdCacheClear = ( new Map<Id,PMP_Partner_Offering__c>(pubOfferings)).keySet();
-            //    if(!offeringIdCacheClear.isEmpty())
-            //      {
-            //         PMP_OfferingTriggerHelper.clearPlatformCache(offeringIdCacheClear);
-            //      }
-            // }
+           /* if(!pubOfferings.isEmpty())
+            {
+                offeringIdCacheClear = ( new Map<Id,PMP_Partner_Offering__c>(pubOfferings)).keySet();
+               if(!offeringIdCacheClear.isEmpty())
+                 {
+                    PMP_OfferingTriggerHelper.clearPlatformCache(offeringIdCacheClear);
+                 }
+            }*/
         }
     }
 }

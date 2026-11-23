@@ -192,9 +192,6 @@
 		var fcWrapListForEditQtyDummy = [];
         component.set("v.QuantityEditRestriction", false);
         
-        var saveBtn = event.getSource();
-        saveBtn.set("v.disabled", true);
-        
         if(component.get("v.isAddQuarter") == true){
                 actType = 'addQuarter';
                 fcWrapList = component.get("v.dummyFcDisplayWrapList");

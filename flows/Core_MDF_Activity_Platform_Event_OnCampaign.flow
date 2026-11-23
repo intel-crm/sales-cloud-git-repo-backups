@@ -44,10 +44,10 @@
             <name>Revision_Required</name>
             <conditionLogic>(1 AND 2) OR (4 AND (2 OR 3))</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Core_MDF_Program_txt__c</leftValueReference>
-                <operator>Contains</operator>
+                <leftValueReference>$Label.Core_MDF_Co_GTM_program_name</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>$Label.Core_MDF_Co_GTM_program_name</elementReference>
+                    <elementReference>$Record.Core_MDF_Program_txt__c</elementReference>
                 </rightValue>
             </conditions>
             <conditions>

@@ -12,15 +12,8 @@
            if (state === "SUCCESS") {            
             if (result != null) {
                 component.set('v.externalUser', result.userPermissionsPowerPartner);
-                component.set('v.isOutcomebaseActivity', result.isOutcomebaseActivity);
                     // Set the new attribute for the dual role
                     component.set('v.isIPAAccountMgrAndPCTApprover', result.isIPAAccountMgrAndPCTApprover);
-                
-                // UPDATED: Store current PFR status and check if AI should be loaded
-                if (result.pfrInstance && result.pfrInstance.Core_MDF_Fund_Request_Status__c) {
-                    component.set('v.currentPFRStatus', result.pfrInstance.Core_MDF_Fund_Request_Status__c);
-                    }
-                    
                 //US946280 : [Opal CCF/DCF] - Activity Edits - Activity Status = Pending Approval - Show Reject button for Internal Account Manager
                 //Ramapriya - Approve/Reject/Recall button visibility for In-Progress Pending Review / In-Progress Pending Approval Status
                 if((result.pfrInstance.Core_MDF_Program__c == 'Client' 
@@ -186,32 +179,6 @@
                 else {
                     component.set('v.buttonToBeVisible', false);
                 }
-                    // MOVED HERE: Set all permission flags first, then check AI permissions
-                    component.set('v.isPCTReviewer', result.isUserPCTApprover && result.isPriceReviewer);
-                    component.set('v.isLevel1Approver', result.isLevel1Approver);
-                    component.set('v.isLevel2Approver', result.isLevel2Approver);
-                    component.set('v.isPORApprover', result.isPORApprover);
-                    component.set('v.isGeoLeadApprover', result.isGeoLeadApprover);
-                    component.set('v.isRmfL1Approver', result.isRmfL1Approver);
-                    component.set('v.isRmfL2Approver', result.isRmfL2Approver);
-                    component.set('v.isAdditionalReviewer', result.isAdditionalReviewer);
-                    component.set('v.isL1ActivatingPartnerApprover', result.isL1ActivatingPartnerApprover);
-                    component.set('v.isL1PrimaryPartnerApprover', result.isL1PrimaryPartnerApprover);
-                    component.set('v.isL2PrimaryApprover', result.isL2PrimaryApprover);
-                    component.set('v.isPrimaryPartnerApprover', result.isPrimaryPartnerApprover);
-                    component.set('v.isActivatingPartnerApprover', result.isActivatingPartnerApprover);
-                    component.set('v.isOpalActApprovalRequired', result.isIntelActivityApprover || result.isAdditionalReviewer);
-                    
-                    // NOW check if user has approval permissions and load AI if needed
-                    var hasApprovalPermissions = this.checkUserHasApprovalPermissions(component, result);
-                    component.set('v.hasApprovalPermissions', hasApprovalPermissions);
-                    
-                    // NEW: Auto-load AI suggestion for Pending Review status and isoutcomebased activity
-                   
-                    if (result.pfrInstance.Core_MDF_Fund_Request_Status__c === 'Pending Review' && hasApprovalPermissions &&
-                        result.pfrInstance.Core_MDF_Is_Outcome_Based_Ind__c === true) {
-                        this.initializeAISuggestion(component);
-                    }
                 component.set('v.pfrMapInstance', result.pfrMapInstance);
           }
 	  }
@@ -221,238 +188,6 @@
             }
         });
             $A.enqueueAction(action);
-    },
-    
-    // UPDATED: Check if user has approval permissions
-    checkUserHasApprovalPermissions: function(component, result) {
-        var hasPermissions = (result.userPermissionsPowerPartner && !result.showRecallOnly) ||
-               result.isGeoLeadApprover || (result.isUserPCTApprover && result.isPriceReviewer) || 
-               result.isLevel1Approver || result.isLevel2Approver || result.isPORApprover || 
-               result.isIntelActivityApprover || result.isAdditionalReviewer ||
-               result.isL1PrimaryPartnerApprover || result.isL2PrimaryApprover ||
-               result.isL1ActivatingPartnerApprover || result.isPrimaryPartnerApprover ||
-               result.isActivatingPartnerApprover || result.isIPAAccountMgrAndPCTApprover ||
-               result.isRmfL1Approver || result.isRmfL2Approver;
-        
-        return hasPermissions;
-    },
-
-    // NEW: Initialize AI suggestion for Pending Review records
-    initializeAISuggestion: function(component) {
-        component.set("v.isLoadingAISuggestion", true);
-        
-        var recordId = component.get("v.recordId");
-        this.callAISuggestionService(component, recordId);
-    },
-
-    // UPDATED: AI Suggestion Service Method with proper table formatting
-    callAISuggestionService: function(component, recordId) {
-        
-        // Call Apex method to get AI suggestion
-        var action = component.get("c.getAISuggestionWithDecision");
-        action.setParams({
-            "recordId": recordId
-        });
-        
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            component.set("v.isLoadingAISuggestion", false);
-            
-            if (state === "SUCCESS") {
-                var aiResponse = response.getReturnValue();
-                
-                if (aiResponse && aiResponse.success) {
-                    // UPDATED: Parse and format the actual AI response content
-                    var formattedContent = this.parseAndFormatAIResponse(aiResponse.formattedContent, aiResponse.decision);
-                    component.set("v.aiSuggestionText", formattedContent);
-                    
-                    // Set the AI decision for disclaimer
-                    if (aiResponse.decision) {
-                        component.set("v.aiDecision", aiResponse.decision);
-                        component.set("v.showAIDisclaimer", true);
-                        
-                        // *** NEW: Store AI recommendation when successfully loaded ***
-                        this.storeAIRecommendation(component, recordId, aiResponse.decision, aiResponse.formattedContent);
-                    }
-                } else {
-                    this.handleAIError(component, aiResponse ? aiResponse.errorMessage : "No AI recommendation available");
-                }
-                
-            } else {
-                var errorMessage = "Unable to get AI recommendation";
-                var errors = response.getError();
-                
-                if (errors && errors.length > 0) {
-                    errorMessage = errors[0].message;
-                }
-                
-                this.handleAIError(component, errorMessage);
-            }
-        });
-        
-        $A.enqueueAction(action);
-    },
-
-    /**
-     * Store AI recommendation when it's first generated
-     */
-    storeAIRecommendation: function(component, recordId, aiDecision, aiDetails) {
-        
-        var action = component.get("c.storeAIRecommendation");
-        action.setParams({
-            recordId: recordId,
-            aiRecommendation: aiDecision,
-            aiDetails: aiDetails
-        });
-        
-        $A.enqueueAction(action);
-    },
-
-    /**
-     * Track AI recommendation usage when user makes a decision
-     */
-    trackRecommendationUsage: function(component, aiRecommendation, aiDetails, userDecision) {
-        
-        var recordId = component.get("v.recordId");
-        
-        var action = component.get("c.trackAIRecommendationUsage");
-        action.setParams({
-            recordId: recordId,
-            aiRecommendation: aiRecommendation,
-            aiDetails: aiDetails,
-            userDecision: userDecision
-        });
-        
-        $A.enqueueAction(action);
-    },
-
-    // NEW: Parse and format the actual AI response content
-    parseAndFormatAIResponse: function(aiContent, decision) {
-        
-        var tableHtml = '<div class="slds-card slds-p-around_medium">';
-        
-        // Add decision header with color coding
-        if (decision) {
-            var decisionClass = '';
-            var decisionText = decision.toUpperCase();
-            
-            // Color coding based on decision
-            if (decisionText.includes('APPROVE')) {
-                decisionClass = 'color: #4bca81; font-weight: bold;'; // Green
-            } else if (decisionText.includes('REJECT')) {
-                decisionClass = 'color: #ea001e; font-weight: bold;'; // Red
-            } else if (decisionText.includes('REQUEST CLARIFICATION') || decisionText.includes('CLARIFICATION')) {
-                decisionClass = 'color: #ffb75d; font-weight: bold;'; // Orange
-            } else {
-                decisionClass = 'color: #333; font-weight: bold;'; // Black for default
-            }
-            
-            tableHtml += '<div class="slds-text-heading_small slds-m-bottom_medium" style="' + decisionClass + '">';
-            tableHtml += 'Decision: ' + decisionText;
-            tableHtml += '</div>';
-        }
-        
-        // Create the table with borders
-        tableHtml += '<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" style="border: 2px solid #dddbda; border-collapse: collapse;">';
-        tableHtml += '<thead>';
-        tableHtml += '<tr class="slds-line-height_reset" style="background-color: #f3f2f2;">';
-        tableHtml += '<th class="slds-text-title_caps slds-p-around_small" scope="col" style="width: 25%; border: 1px solid #dddbda; font-weight: bold; color: #333;">FIELD</th>';
-        tableHtml += '<th class="slds-text-title_caps slds-p-around_small" scope="col" style="width: 75%; border: 1px solid #dddbda; font-weight: bold; color: #333;">JUSTIFICATION</th>';
-        tableHtml += '</tr>';
-        tableHtml += '</thead>';
-        tableHtml += '<tbody>';
-        
-        // Parse the AI response content to extract table data
-        var violations = this.extractViolationsFromAIContent(aiContent);
-        
-        if (violations && violations.length > 0) {
-            violations.forEach(function(violation) {
-                tableHtml += '<tr>';
-                tableHtml += '<td class="slds-p-around_small" style="border: 1px solid #dddbda; font-weight: bold; color: #333;">' + violation.field + '</td>';
-                tableHtml += '<td class="slds-p-around_small" style="border: 1px solid #dddbda; color: #333;">' + violation.rule + '</td>';
-                tableHtml += '</tr>';
-            });
-        } else {
-            // If no violations found, show "No violations" message
-            tableHtml += '<tr>';
-            tableHtml += '<td class="slds-p-around_small" style="border: 1px solid #dddbda; font-weight: bold; color: #333;">None</td>';
-            tableHtml += '<td class="slds-p-around_small" style="border: 1px solid #dddbda; color: #333;">No violations found</td>';
-            tableHtml += '</tr>';
-        }
-        
-        tableHtml += '</tbody>';
-        tableHtml += '</table>';
-        tableHtml += '</div>';
-        
-        return tableHtml;
-    },
-
-    // NEW: Extract violations from AI content using the actual response format
-    extractViolationsFromAIContent: function(content) {
-        var violations = [];
-        
-        if (!content) {
-            return violations;
-        }
-        
-        try {
-            // Split content by lines and look for table rows
-            var lines = content.split('\n');
-            var inTable = false;
-            
-            for (var i = 0; i < lines.length; i++) {
-                var line = lines[i].trim();
-                
-                // Skip empty lines and headers
-                if (!line || line.includes('Field Name') || line.includes('----') || line.includes('Decision:') || line.includes('Justification:')) {
-                    continue;
-                }
-                
-                // Look for table rows with | separators (from your AI response format)
-                if (line.includes('|') && !line.includes('Field Name')) {
-                    // Parse the table row: | Field Name | Rule Violation Details |
-                    var parts = line.split('|');
-                    
-                    if (parts.length >= 3) {
-                        var field = parts[1].trim();
-                        var rule = parts[2].trim();
-                        
-                        // Skip empty fields or header separators
-                        if (field && rule && field !== '' && rule !== '' && !field.includes('-')) {
-                            violations.push({
-                                field: field,
-                                rule: rule
-                            });
-                        }
-                    }
-                }
-            }
-            
-        } catch (e) {
-            // Fallback: If parsing fails, create a simple message
-            violations.push({
-                field: 'Parsing Error',
-                rule: 'Unable to parse AI response. Please review the activity manually.'
-            });
-        }
-        
-        return violations;
-    },
-
-    // UPDATED: Handle AI errors with consistent styling
-    handleAIError: function(component, errorMessage) {
-        component.set("v.aiDecision", "Error");
-        component.set("v.showAIDisclaimer", true);
-        
-        var errorHtml = '<div class="slds-card slds-p-around_medium slds-text-align_center">';
-        errorHtml += '<div class="slds-text-heading_small slds-m-bottom_medium" style="color: #ea001e; font-weight: bold;">';
-        errorHtml += 'Error loading AI recommendation';
-        errorHtml += '</div>';
-        errorHtml += '<p class="slds-m-bottom_small" style="color: #333;">' + errorMessage + '</p>';
-        errorHtml += '<p style="color: #333;">Please proceed with manual review based on standard approval guidelines.</p>';
-        errorHtml += '</div>';
-        
-        component.set("v.aiSuggestionText", errorHtml);
     },
 
     //Function to validate the approval comments heave been entered or not
@@ -514,12 +249,7 @@
                         else if (btnValue == 'Recall') {
                             msgTxt = $A.get("$Label.c.Core_MDF_Activity_Recall_Msg");
                         }
-                        // *** TRACK AI RECOMMENDATION ONLY AFTER ACTUAL APPROVAL SUCCESS ***
-                        var aiDecision = component.get("v.aiDecision");
-                        var aiDetails = component.get("v.aiSuggestionText");
-                        if (aiDecision) {
-                            this.trackRecommendationUsage(component, aiDecision, aiDetails, btnValue);
-                        }                           
+                            
                     this.toastMessage($A.get("$Label.c.Core_MDF_Success"),'success',msgTxt);
                     this.windowTimeOut();
                     }else{

@@ -43,7 +43,6 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -66,11 +65,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Email_Txt__c</column>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Ben.karr@intel.com,jarred.l.abreo@intel.com,richard.t.trinh@intel.com,stephen.m.bigbee@intel.com,almanzo.t.ortiz@intel.com,terry.harper@intel.com,christopher.r.blevins@intel.com</value>
+            <value>Landi,Corredor</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -223,16 +223,9 @@ global class Core_MDF_CreateBatchShareRecords implements Database.Batchable<sObj
                
             Core_MDF_Partner_Node_User_Mapping__c pnumInstance;
             List<Core_MDF_Partner_Node_User_Mapping__c> pnumInstanceList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
-            //ATHR - Deeply Nested if 16209
-            if((errorMessage != null || errorFlag || Test.IsRunningTest()) && pnumList != null){
-                //if(pnumList != null) {
-                    for(Core_MDF_Partner_Node_User_Mapping__c pnum:pnumList) {
-                        if(!pnumFinalList.contains(pnum)) {
-                            pnumFinalList.add(pnum);
-                        }
-                    }
-                //}
-            }
+                
+            if(errorMessage != null || errorFlag || Test.IsRunningTest()){
+                if(pnumList != null) {for(Core_MDF_Partner_Node_User_Mapping__c pnum:pnumList) {if(!pnumFinalList.contains(pnum)) {pnumFinalList.add(pnum);} } }}
             if(errorFlag || Test.IsRunningTest()) {
                 /*In case of Inserting or Editing Account User record, 
                 if Exception occurred, updating field & sending support mail -1.3, 3_1.3*/                

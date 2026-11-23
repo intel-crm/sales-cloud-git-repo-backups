@@ -24,51 +24,19 @@
                     <apex:outputPanel rendered="{!if(OR(RelatedTo.Core_MDF_Fund_Request_Status__c = 'Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed'),true,false)}">
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body1}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="RecType"/> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body2} {!RelatedTo.Core_MDF_Activity_Number__c}
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body3}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="PriorStatus"/>&nbsp;{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body4}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="Status"/> .
-                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} 
-                        
-                        <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                       value="{!$Label.Core_MDF_Outcome_Community_Link + RelatedTo.Id}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                       value="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        
+                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} <a href="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}"> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}</a>
                         {!$Label.Core_MDF_EmailTemp_Activity_Details}
                     </apex:outputPanel>
-                    
                      <apex:outputPanel rendered="{!if(RelatedTo.Core_MDF_Fund_Request_Status__c = 'Pending Approval',true,false)}">
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body1}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="RecType"/> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body2} {!RelatedTo.Core_MDF_Activity_Number__c}
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body3}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="PriorStatus"/>&nbsp;{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body4}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="Status"/> .
-                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} 
-                        
-                        <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                       value="{!$Label.Core_MDF_Outcome_Community_Link + RelatedTo.Id}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                       value="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        
+                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} <a href="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}"> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}</a>
                         {!$Label.Core_MDF_EmailTemp_Activity_Details}
                     </apex:outputPanel>
-                    
                     <apex:outputPanel rendered="{!if(NOT(OR(RelatedTo.Core_MDF_Fund_Request_Status__c = 'Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Pending Approval')),true,false)}">
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body1}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="RecType"/> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body2} {!RelatedTo.Core_MDF_Activity_Number__c}
                         {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body3}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="PriorStatus"/>&nbsp;{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body4}&nbsp;<c:Core_MDF_EmailTemplateDataComponent actId="{!RelatedTo.Id}" flag="Status"/> {!$Label.Core_MDF_EmailTemp_Ext_StatusChange}
-                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} 
-                        
-                        <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                       value="{!$Label.Core_MDF_Outcome_Community_Link + RelatedTo.Id}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                       value="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}">
-                            {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}
-                        </apex:outputLink>
-                        
+                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5} <a href="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}"> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}</a>
                         {!$Label.Core_MDF_EmailTemp_Activity_Details}
                     </apex:outputPanel>
                     

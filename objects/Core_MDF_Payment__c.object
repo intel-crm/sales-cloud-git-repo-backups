@@ -207,15 +207,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Comments_txt__c</fullName>
-        <label>Comments</label>
-        <length>5000</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Conversion_Rate_Nbr__c</fullName>
         <description>Conversion Rate of USD into local Bank Currency . It is used in Retail MDF payment record and in payment file .</description>
         <externalId>false</externalId>
@@ -367,7 +358,7 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
 &apos;IPA&apos;,
 
 &apos;Co-GTM&apos;,
-&apos;COGTM&apos;,
+&apos;Co-GTM&apos;,
 &apos;&apos;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Payment Number</label>
@@ -495,7 +486,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
         <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
         <columns>Core_MDF_Payment_Status_Txt__c</columns>
-        <columns>Core_MDF_AccountCompany_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -912,6 +902,42 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
     </nameField>
     <pluralLabel>Payments</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Channel_MDF</fullName>
+        <active>true</active>
+        <description>Channel MDF Record Type</description>
+        <label>Channel MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Client_Co_Marketing_Fund</fullName>
         <active>true</active>
@@ -1694,7 +1720,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
-        <listViewButtons>Core_MDF_Bulk_Update_Payment_Status</listViewButtons>
         <lookupDialogsAdditionalFields>Core_MDF_Payment_Run_Id__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Core_MDF_Payment_No_Txt__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Core_MDF_Paid_Amt__c</lookupDialogsAdditionalFields>
@@ -1726,29 +1751,8 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <searchResultsAdditionalFields>Core_MDF_Payment_Made_Dt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_RMF_Actual_Payment_Amt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Payment_Status_Txt__c</searchResultsAdditionalFields>
-        <searchResultsCustomButtons>Core_MDF_Bulk_Update_Payment_Status</searchResultsCustomButtons>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Core_COGTM_Payment_Edit_Validation</fullName>
-        <active>false</active>
-        <description>Payment Nature Should be Vistex cash or Credit</description>
-        <errorConditionFormula>AND(
-  RecordType.DeveloperName = &apos;Core_MDF_Co_GTM&apos;,
-  NOT(ISBLANK(Core_MDF_Payment_Run_Id__c)),
-  NOT(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Payment_Nature_nm__c, &apos;Contra Vistex&apos;),
-         INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Payment_Nature_nm__c, &apos;Contra CSAR&apos;))),
-  $Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm,
-NOT($Permission.Core_MDF_CCP_Internal_Payment_Admin_Manager),
-  OR(
-    ISCHANGED(Core_MDF_EFT_Nbr__c),
-    ISCHANGED(Core_MDF_Payment_Made_Dt__c),
-    ISCHANGED(Core_MDF_Payment_Status_Txt__c),
-    ISCHANGED(Core_MDF_RMF_Actual_Payment_Amt__c)
-  )
-)</errorConditionFormula>
-        <errorMessage>Payment status update is only allowed for Vistex Cash and Vistex Credit payments.</errorMessage>
-    </validationRules>
     <validationRules>
         <fullName>Core_MDF_ActualAmtGreaterThanProposedAmt</fullName>
         <active>true</active>
@@ -1765,16 +1769,6 @@ Core_MDF_RMF_Proposed_Payment_Amt__c)</errorConditionFormula>
         <errorMessage>This user does not have access to edit the MDF Payment.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_MDF_BlockPaidToPendingPayment</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-ISCHANGED(Core_MDF_Payment_Status_Txt__c),
-TEXT(PRIORVALUE(Core_MDF_Payment_Status_Txt__c)) = &quot;Paid&quot;,
-TEXT(Core_MDF_Payment_Status_Txt__c) = &quot;Pending Payment&quot;
-)</errorConditionFormula>
-        <errorMessage>A payment marked as Paid cannot be reverted to Pending Payment.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_MDF_CheckActualPaymentAmtNotBlank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;RSA MD&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF+&quot;)),
@@ -1783,19 +1777,6 @@ TEXT(Core_MDF_Payment_Status_Txt__c) = &quot;Pending Payment&quot;
         <errorMessage>Actual Payment Amount is mandatory.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
-    <webLinks>
-        <fullName>Core_MDF_Bulk_Update_Payment_Status</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Bulk Update Payment Status</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/flow/Core_MDF_Bulk_Update_Payment_Status</url>
-    </webLinks>
     <webLinks>
         <fullName>Core_MDF_Export_List_View</fullName>
         <availability>online</availability>

@@ -24,9 +24,10 @@
        <div class="slds-modal__container custom-width">
         <!-- modal header start -->
           <header class="slds-modal__header">
-             <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={hideModalBox}>
+             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
                 <lightning-icon icon-name="utility:close"
                    alternative-text="close"
+                   variant="inverse"
                    size="small" ></lightning-icon>
                 <span class="slds-assistive-text">{closeLabel}</span>
              </button>
@@ -81,8 +82,8 @@
    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container offsetTable">
          <header class="slds-modal__header">
-            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeOffsetModal}>
-                  <lightning-icon icon-name="utility:close" alternative-text="close"
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeOffsetModal}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                      size="small"></lightning-icon>
                   <span class="slds-assistive-text">{closeLabel}</span>
             </button>
@@ -147,8 +148,8 @@
    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
          <header class="slds-modal__header modal-heading-04">
-            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeOffsetModals}>
-                  <lightning-icon icon-name="utility:close" alternative-text="close"
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeOffsetModals}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                      size="small"></lightning-icon>
                   <span class="slds-assistive-text">{closeLabel}</span>
             </button>
@@ -172,8 +173,8 @@
    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
          <header class="slds-modal__header modal-heading-04">
-            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeCommentPopup}>
-                  <lightning-icon icon-name="utility:close" alternative-text="close"
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeCommentPopup}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                      size="small"></lightning-icon>
                   <span class="slds-assistive-text">{closeLabel}</span>
             </button>
@@ -193,22 +194,15 @@
 <!-- modal end -->
 
 <!--Modal Popup-->
-         <template if:true={showRecoveryMessage}>
-            <div class="slds-m-top_small slds-m-left_medium slds-m-bottom_medium">
-               {surePayRecForCurrQuarter} ({currentQuarterYear}) = <strong>{surePayRecoveryAmount}</strong>
-            </div>
-         </template>
-
          <div style="height:500px;">
-            <lightning-datatable
-            class="seventyfive-percent"
-            key-field="id"
-            data={data}
-            columns={columns}
-            hide-checkbox-column>
+                    <lightning-datatable
+                    class="seventyfive-percent"
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    hide-checkbox-column>
             </lightning-datatable>
-         </div>
-         
+                </div>
        
 </lightning-card>
 

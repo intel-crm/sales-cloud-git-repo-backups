@@ -89,7 +89,7 @@ public class Core_MDF_SurePayBatch_Test {
         System.runAs(usr){
             PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp.Id, 200000, System.today(),System.today(), false);
         //pbm.IsIgnoreValidation = true;
-        pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+        pbm.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
         insert pbm;
             
         // Creating a map of PS names and PS
@@ -139,11 +139,11 @@ public class Core_MDF_SurePayBatch_Test {
         PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
             
             PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
-            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'New MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today(), 20000, 'Always Connected PC', acc2.Id,'Desktop', false);
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today(), 20000, 'Always Connected PC', acc2.Id,'Desktop', false);
             camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             database.insert(camp);
             
-            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Podcast','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Podcast','Draft',false);
             testPartnerFundRequestRecord.Title = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Activity_Description__c = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today();
@@ -151,7 +151,7 @@ public class Core_MDF_SurePayBatch_Test {
             testPartnerFundRequestRecord.RequestedAmount = 10000;
             testPartnerFundRequestRecord.Core_MDF_Channel_Partner_Led__c = True;
             testPartnerFundRequestRecord.Amount=10000;
-            testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
+            testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
             //testPartnerFundRequestRecord.Core_MDF_Region_cd__c = 'APJ';
             testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c='60%';
             insert testPartnerFundRequestRecord;
@@ -165,7 +165,7 @@ public class Core_MDF_SurePayBatch_Test {
             claim1.Core_MDF_Currency__c = 'USD';
             claim1.Status = 'Approved';
         	claim1.Core_MDF_Status__c = 'Payment Due';
-            claim1.Core_MDF_Budget_Type_Options_Nm__c = 'OEM CMP';
+            claim1.Core_MDF_Budget_Type_Options_Nm__c = 'CCF 1.0';
             claim1.Core_MDF_Country_Location_nm__c = 'INDIA';
             claim1.Core_MDF_Region_Cd__c = 'APJ';
             claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
@@ -176,6 +176,9 @@ public class Core_MDF_SurePayBatch_Test {
         
             Test.stopTest();
             
+        for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim]){
+            System.debug('sgrdgtb '+claim);
+        }
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
         cs.Status = 'Open';
@@ -184,11 +187,11 @@ public class Core_MDF_SurePayBatch_Test {
         cs.Core_MDF_Claim_ID__c=claimList[0].Id;
         cs.Core_MDF_Claim_Lookup_Id__c = claimList[0].Id;
         cs.Core_MDF_Channel_Program_txt__c = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
-        cs.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
+        cs.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
         cs.Core_MDF_Country_Region__c = 'INDIA';
         cs.Core_MDF_Scorecard_Score_Nbr__c = 0;
         insert cs;
-            for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim where Core_MDF_Status__c != null]){ //ATHR Fix - WW16
+            for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim]){
             claim.Core_MDF_Status__c = 'Payment Due';
             claim.Core_MDF_Claim_Review_Case__c = cs.id;
             claimList1.add(claim);
@@ -245,6 +248,7 @@ public class Core_MDF_SurePayBatch_Test {
         
         
         Group claimCaseReviewerGrp = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group' limit 1];
+        system.debug(claimCaseReviewerGrp);
         
         system.runAs(usr2){
          	GroupMember groupMember = new GroupMember( GroupId = claimCaseReviewerGrp.Id, UserOrGroupId = usr1.Id);

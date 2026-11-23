@@ -41,11 +41,6 @@
         <label>Incentive</label>
     </customValue>
     <customValue>
-        <fullName>Retail Activation</fullName>
-        <default>false</default>
-        <label>Retail Activation</label>
-    </customValue>
-    <customValue>
         <fullName>Technical Services</fullName>
         <default>false</default>
         <isActive>false</isActive>

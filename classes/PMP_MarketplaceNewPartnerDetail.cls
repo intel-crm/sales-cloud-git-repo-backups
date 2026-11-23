@@ -3,9 +3,6 @@ public with sharing class PMP_MarketplaceNewPartnerDetail extends PMP_SearchWrap
     public static PartnerDetail getPartnerDetails(String partnerId, String langCode){
         PartnerDetail partnerDetail=new PartnerDetail();
         PMP_Company__c company = new PMP_Company__c();
-        //TranslationEOL
-        string description='';
-        string tagline = '';
         
         //To get company information
         if(Schema.sObjectType.PMP_Company__c.isAccessible()){
@@ -20,9 +17,6 @@ public with sharing class PMP_MarketplaceNewPartnerDetail extends PMP_SearchWrap
                      PMP_Published_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Enhanced_Login_Users_Txt__c,
                      toLabel(PMP_Disti_Components_Nm__c),toLabel(PMP_Disti_Sys_Solutions_Nm__c),PMP_Is_Distributor_Ind__c,PMP_Company_Status_Published_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c
                      FROM PMP_Company__c where id=:partnerId LIMIT 1];
-             //TranslationEOL
-                description=company.PMP_Account_Dsc__c;
-                tagline=company.PMP_Account_Tag_Line__c;
         }
         if(company.PMP_Is_Working_Copy_Ind__c == true){
             try{
@@ -38,9 +32,6 @@ public with sharing class PMP_MarketplaceNewPartnerDetail extends PMP_SearchWrap
                              FROM PMP_Company__c where PMP_Working_Copy_Id__c =: partnerId LIMIT 1];
                 }
                 partnerId = company.Id;
-                 //TranslationEOL
-                description=company.PMP_Account_Dsc__c;
-                tagline=company.PMP_Account_Tag_Line__c;
             }catch(Exception e){
                 //system.debug('error while fetching company records' + e);
             }
@@ -57,7 +48,7 @@ public with sharing class PMP_MarketplaceNewPartnerDetail extends PMP_SearchWrap
         partnerDetail.isDistributor = company.PMP_Is_Distributor_Ind__c;
         
         //To get Company Tagline and Description with translation
-       /* String userLanguage =  langCode;
+        String userLanguage =  langCode;
         String description = '';
         String tagline = '';
         List<PMP_Company_Translation__c> transList = new List<PMP_Company_Translation__c>();
@@ -112,17 +103,6 @@ public with sharing class PMP_MarketplaceNewPartnerDetail extends PMP_SearchWrap
                 shortDescription = description.unescapeHtml4().stripHtmlTags();
             }
             partnerDetail.partnerShortDescription = shortDescription;
-        }*/
-         if(tagline != null){
-            partnerDetail.tagline = tagline.unescapeHtml4(); 
-        }
-        
-        
-        //Logic to show more or show less is handled at the UI level
-        if (description != null)
-        {   
-            partnerDetail.partnerDescription= description.unescapeHtml4();
-            partnerDetail.partnerShortDescription = description.unescapeHtml4().stripHtmlTags(); //Sending striped string to display in intro section ()
         }
         
         //To get company attributes

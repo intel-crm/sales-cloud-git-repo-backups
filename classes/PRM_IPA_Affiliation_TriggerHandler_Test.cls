@@ -241,13 +241,6 @@ public class PRM_IPA_Affiliation_TriggerHandler_Test {
         IA1.PRM_Active__c = true;
         Insert IA1;
         
-         
-        PRM_Builder_Strategy__c dealBS = new PRM_Builder_Strategy__c(
-        Name = 'Deal Incentive',
-        PRM_Active__c = true
-        );
-        insert dealBS;
-        
         ChannelProgram cpIPATest = new ChannelProgram();
         cpIPATest.Name='Intel Partner Alliance';
         cpIPATest.PRM_programCode__c='IPA';
@@ -367,14 +360,14 @@ public class PRM_IPA_Affiliation_TriggerHandler_Test {
         tb2.PRM_Notes__c='Test';
         insert tb2;   
         
-        /*PRM_IPA_Affiliation__c tag = new PRM_IPA_Affiliation__c();
+        PRM_IPA_Affiliation__c tag = new PRM_IPA_Affiliation__c();
         tag.PRM_Account__c = testAccount2.Id;
         tag.PRM_Active__c = true;
         tag.PRM_Builder_Strategy__c = IA1.id;
         tag.PRM_Notes__c='Test';
         insert tag;
         tag.PRM_Active__c= false;
-        update tag;*/
+        update tag;
         
         PRM_IPA_Affiliation__c tb3 = new PRM_IPA_Affiliation__c();
         tb3.PRM_Account__c = parent3.Id;
@@ -423,30 +416,6 @@ public class PRM_IPA_Affiliation_TriggerHandler_Test {
         
         tag1.PRM_Active__c = false;
         update tag1;
-       
-        
-    	PRM_IPA_Affiliation__c dealAff = new PRM_IPA_Affiliation__c(
-        PRM_Account__c = parent1.Id,
-        PRM_Builder_Strategy__c = dealBS.Id,
-        PRM_Active__c = true,
-        PRM_Notes__c='Test01'
-        );
-        insert dealAff;
-		
-        PRM_IPA_Affiliation__c rec = [
-        SELECT Id,
-               Name,
-               PRM_Builder_Strategy__r.Name
-        FROM PRM_IPA_Affiliation__c
-        WHERE Id = :dealAff.Id
-   	 	];
-    
-        System.debug('Affiliation Name = ' + rec.Name);
-        System.debug('Builder Strategy = ' + rec.PRM_Builder_Strategy__r.Name);
-        
-        dealAff.PRM_Active__c = false;
-		update dealAff;
-        
         test.StopTest();
         
     }

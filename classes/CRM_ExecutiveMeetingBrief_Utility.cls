@@ -48,6 +48,8 @@ public static String checkMandatoryFields(Id recordId){
         return 'ERROR: ' + e.getMessage();
     }
 }
+
+    
     public static void createSharingRecords(List<Executive_Meeting_Brief__c> newRecords, Map<Id, Executive_Meeting_Brief__c> oldMap) {
         List<Executive_Meeting_Brief__Share> sharesToInsert = new List<Executive_Meeting_Brief__Share>();
         List<Executive_Meeting_Brief__Share> sharesToDelete = new List<Executive_Meeting_Brief__Share>();
@@ -127,7 +129,7 @@ public static String checkMandatoryFields(Id recordId){
         List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
         try {
         // Get ContentDocumentLink - fixed the isEmpty() check
-        List<ContentDocumentLink> cdlList = [SELECT Id, LinkedEntityId, ContentDocument.Title,ContentDocument.LatestPublishedVersion.FileExtension, ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :requests[0].whatId AND ContentDocument.Title LIKE '%Briefing for%' AND ContentDocument.LatestPublishedVersion.FileExtension='pdf' limit 1];
+        List<ContentDocumentLink> cdlList = [SELECT Id, LinkedEntityId, ContentDocument.Title, ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :requests[0].whatId AND ContentDocument.Title LIKE '%Briefing for%' LIMIT 1];
         
         List<ContentVersion> contentVersions = new List<ContentVersion>();
         List<Id> attachmentIds = new List<Id>();
@@ -157,7 +159,7 @@ public static String checkMandatoryFields(Id recordId){
                 }
                 mails.add(mail);
             }
-                        // Send emails
+            // Send emails
             List<Messaging.SendEmailResult> sendResults = Messaging.sendEmail(mails);
             
             // Process results
@@ -185,69 +187,7 @@ public static String checkMandatoryFields(Id recordId){
         
         return results;
     }
-
-    /*****************************************
-    Method name:- getExecutiveMeetingBriefData
-    Added by & Date:- Aswin Selvaraj & 07-May-2026
-    Release:- WW22'2026'
-    Description:- Method to fetch the backend timezone field value to show it on the UI
-    ******************************************/
-     @AuraEnabled(cacheable=true)
-    public static Executive_Meeting_Brief__c getExecutiveMeetingBriefData(Id executiveMeetingId){
-    	Executive_Meeting_Brief__c executiveMeetingRec =[SELECT Id,CRM_Time_Zone__c FROM Executive_Meeting_Brief__c WHERE Id=:executiveMeetingId];
-        return executiveMeetingRec;
-    }
     
-     public class TimezoneOption {
-        @AuraEnabled public String label;
-        @AuraEnabled public String value;
-
-        public TimezoneOption(String label, String value) {
-            this.label = label;
-            this.value = value;
-        }
-    }
-
-    /*****************************************
-    Method name:- getAllTimezones
-    Added by & Date:- Aswin Selvaraj & 07-May-2026
-    Release:- WW22'2026'
-    Description:- Method to fetch all the timezones from user object
-    ******************************************/
-    @AuraEnabled(cacheable=true)
-    public static List<TimezoneOption> getAllTimezones() {
-        List<TimezoneOption> options = new List<TimezoneOption>();
-
-        Schema.DescribeFieldResult fld =
-            User.TimeZoneSidKey.getDescribe();
-
-        for (Schema.PicklistEntry ple : fld.getPicklistValues()) {
-            options.add(new TimezoneOption(
-                ple.getLabel(), // Friendly label (GMT info)
-                ple.getValue()  // Stored value (e.g. America/Los_Angeles)
-            ));
-        }
-        return options;
-    }
-    /*****************************************
-    Method name:- saveTimezone
-    Added by & Date:- Aswin Selvaraj & 07-May-2026
-    Release:- WW22'2026'
-    Description:- Method to update the EMB with the selected timezone during onchange
-    ******************************************/
-    @AuraEnabled
-    public static void saveTimezone(Id recordId, String timezone) {
-        List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
-        try{
-            update new Executive_Meeting_Brief__c(
-                Id = recordId,
-                CRM_Time_Zone__c = timezone
-            );
-        } catch(Exception e) {
-            logEntries.add(new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_ExecutiveMeetingBrief_Utility.saveTimezone', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM'));          
-    		insert logEntries;
-        }
-    }
     // Input wrapper class
     public class EmailRequest {
         @InvocableVariable(label='Email Address' description='Email address to send email to' required=true)

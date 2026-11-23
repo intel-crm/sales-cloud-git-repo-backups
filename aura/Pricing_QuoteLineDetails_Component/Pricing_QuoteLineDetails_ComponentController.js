@@ -342,8 +342,6 @@
             component.set("v.showConsumptionParametersEdit", true);
         } else if (menuValue == $A.get("$Label.c.Pricing_Tender_QuoteLine_RollBack")) {
             helper.sendRequest(component, event, helper, quoteLineId, "Rollback");
-        } else if(menuValue == $A.get("$Label.c.Pricing_Get_Price_Button")) {//Added by VB
-            helper.getRecommendedPrice(component, event, helper, quoteLineId);
         }
     },
     onMenuOpen: function (component, event) {

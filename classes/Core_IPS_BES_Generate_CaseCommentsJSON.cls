@@ -11,7 +11,7 @@ public with sharing class Core_IPS_BES_Generate_CaseCommentsJSON{
         try{
             if(IPS_Case_Comment_Fields__c.SObjectType.getDescribe().isQueryable()) {
                 if(commentsIdList.size()>0){                            
-                    List<IPS_Case_Comment_Fields__c> commentCustomSettings =[Select id, Object_Name__c, Comment_Field_Type__c, Comment_Field_API_Name__c, JSON_Field_Name__c from IPS_Case_Comment_Fields__c order by name DESC Limit 49999]; // Limit Added by Tushar
+                    List<IPS_Case_Comment_Fields__c> commentCustomSettings =[Select id, Object_Name__c, Comment_Field_Type__c, Comment_Field_API_Name__c, JSON_Field_Name__c from IPS_Case_Comment_Fields__c order by name DESC ];
                     for(IPS_Case_Comment_Fields__c cc : commentCustomSettings) {                   
                         ccfieldMap.put(cc.Comment_Field_API_Name__c, cc.JSON_Field_Name__c); 
                         

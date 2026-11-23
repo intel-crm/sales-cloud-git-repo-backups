@@ -171,25 +171,23 @@ export default class Core_IPS_caseCreation_Form extends NavigationMixin(Lightnin
             this.showcasedetails_form1 = true;
             isValid = false;
         }
-        // Added By tushar garg for vanuability changes changed uploadStatus
         if (this.caseInfo.isBugAssitCase === true && this.caseInfo.sstLogvalueTF === true && ( this.bugAssistAttachmentSessionId !== undefined || this.bugAssistAttachmentSessionId !== null || this.bugAssistAttachmentSessionId !=='')) {
             this.bugAssistAttachmentSessionId = sessionStorage.getItem('bugAssistRecId');
             this.bugAssistRecord = await fetchBugAssistRecord({recordId : this.bugAssistAttachmentSessionId});
-            /* tushar------ use uploadStatus for vanuability */
-            if ((this.bugAssistRecord !== null || this.bugAssistRecord !== undefined || this.bugAssistRecord !== '') && this.caseInfo.sstLogvalueTF === true && this.bugAssistRecord.uploadStatus !== 'Complete' ) {
+
+            if ((this.bugAssistRecord !== null || this.bugAssistRecord !== undefined || this.bugAssistRecord !== '') && this.caseInfo.sstLogvalueTF === true && this.bugAssistRecord.Core_Upload_Status__c !== 'Complete' /*&& this.sstFileUploadStatus == false*/) {
                 this.isWaitingBugAssistForResponse = true;
                 this.showcheckAnswers_form2 = false;
                 this.showcasedetails_form1 = true;
                 isValid = false;
             }
-            if (this.bugAssistRecord && this.bugAssistRecord.uploadStatus === 'Complete' && this.sstFileUploadStatus == false) {                
+            if (this.bugAssistRecord && this.bugAssistRecord.Core_Upload_Status__c === 'Complete' && this.sstFileUploadStatus == false) {
                 this.isWaitingBugAssistForResponse = true;
                 this.showcheckAnswers_form2 = false;
                 this.showcasedetails_form1 = true;
                 isValid = false;
             }
-            /* tushar------ use uploadStatus for vanuability*/
-            if ((this.bugAssistRecord !== null || this.bugAssistRecord !== undefined || this.bugAssistRecord !== '') && (this.bugAssistRecord.uploadStatus === 'Complete' || this.caseInfo.sstLogvalueTF === false)) {                
+            if ((this.bugAssistRecord !== null || this.bugAssistRecord !== undefined || this.bugAssistRecord !== '') && (this.bugAssistRecord.Core_Upload_Status__c === 'Complete' || this.caseInfo.sstLogvalueTF === false)) {
                 this.template.querySelector('c-core_-i-p-s_case-creation_form1_-l-w-c').bugAssistRecordData(this.bugAssistRecord);
                 this.isWaitingBugAssistForResponse = false;
             }

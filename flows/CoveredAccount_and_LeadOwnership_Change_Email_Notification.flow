@@ -98,12 +98,12 @@
         <name>F_Core_CoveredAccount_Email_Notification</name>
         <dataType>Boolean</dataType>
         <expression>OR(
-     AND( ISNEW(), OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+     AND( ISNEW(), OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
 	 OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)), 
      {!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ),
 	 AND( 
 		 OR(ISCHANGED({!$Record.Core_Existing_Covered_Account__c}), ISCHANGED({!$Record.OwnerId})), 
-		{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+		{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
 		OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
 		{!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ))</expression>
     </formulas>
@@ -112,12 +112,12 @@
         <name>F_Core_Email_Notification_For_LeadOwnership_Change</name>
         <dataType>Boolean</dataType>
         <expression>OR(
-AND( OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),
+AND( OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),
 ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
 ISCHANGED({!$Record.OwnerId}), {!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,
 OR({!$Record.Core_Covered_account_owner__c} &lt;&gt; {!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Covered_account_owner__c} = null) ),
 
-AND( OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),
+AND( OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),
 ISPICKVAL( {!$Record.Status}, &quot;Sales Accepted Lead&quot; ), ISCHANGED({!$Record.OwnerId}),
 {!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot; ))</expression>
     </formulas>

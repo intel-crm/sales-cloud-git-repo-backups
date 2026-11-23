@@ -13,15 +13,13 @@ public class Core_MDF_PFC_RetailClaim_Test {
     /* Method to Setup Test Data */
     @testSetup 
     static void setup() {  
-        User tempUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-    	insert tempUser;
-		List<Core_Trigger_Executions__c> transactions = new List<Core_Trigger_Executions__c>();
-		transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Budget_Check','Bypass_GeoBased_Budget_Sharing'}, true, false));		
-		transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Allocation_Reservation','Bypass_GeoBased_Allocation_Sharing'}, true, false));	
-		transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Bank_Check','Bypass_Bank_Internal_Sharing',
-					'Bypass_Bank_External_Sharing','Bypass_Bank_Program_InActivation_Check','Bypass_Bank_ABM_Sharing','Bypass_MDF_Budget_Access_Validation'}, true, false));
-		transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_ABM_Internal_Sharing','Bypass_ABM_External_Sharing','Bypass_ABM_NodeGroup_Sharing'}, true, false));	
-		Database.insert(transactions);
+        List<Core_Trigger_Executions__c> transactions = new List<Core_Trigger_Executions__c>();
+        transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Budget_Check','Bypass_GeoBased_Budget_Sharing'}, true, false));       
+        transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Allocation_Reservation','Bypass_GeoBased_Allocation_Sharing'}, true, false));   
+        transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Bank_Check','Bypass_Bank_Internal_Sharing',
+                    'Bypass_Bank_External_Sharing','Bypass_Bank_Program_InActivation_Check','Bypass_Bank_ABM_Sharing','Bypass_MDF_Budget_Access_Validation'}, true, false));
+        transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_ABM_Internal_Sharing','Bypass_ABM_External_Sharing','Bypass_ABM_NodeGroup_Sharing'}, true, false)); 
+        Database.insert(transactions);
 
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
         
@@ -108,9 +106,9 @@ public class Core_MDF_PFC_RetailClaim_Test {
         usr.LastName='Claim Case User';
         usr.profile=ccpCoreProfile;
         listUser.add(usr);
-        System.runAs(tempUser){
+        
         Database.insert(listUser);    
-        }
+        
         //asigning permission set to claim case user        
         List<PermissionSetAssignment> assignPermissionList = new List<PermissionSetAssignment>();    
         PermissionSetAssignment assignPermissionSetObj = new PermissionSetAssignment();
@@ -238,7 +236,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         List<PartnerFundRequest> pFR = new List<PartnerFundRequest>();        
         PartnerFundRequest testPartnerFundRequest = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(rSAMDCampaign.Id),
                                                                                                           Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc2.id),NULL,NULL,'AFGHANISTAN','Enthusiast Gaming','Traditional Notebook',
-                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','Collateral','Draft',false);      
+                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);      
         
         testPartnerFundRequest.Title ='Retail RSA MD Activity';
         testPartnerFundRequest.Core_MDF_Activity_Description__c ='Retail RSA MD Activity';
@@ -259,7 +257,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         
         PartnerFundRequest testPartnerFundRequest1 =Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(reatailMDFCampaign.Id),
                                                                                                           Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc2.id),NULL,NULL,'AFGHANISTAN','Enthusiast Gaming','Traditional Notebook',
-                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','Collateral','Draft',false);
+                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
         
         testPartnerFundRequest1.Title ='Retail MDF Activity';
         testPartnerFundRequest1.Core_MDF_Activity_Description__c ='Retail MDF Activity';
@@ -283,7 +281,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         //Ameya
         PartnerFundRequest testPartnerFundRequestOnLevelOneNode =Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(rSAMDCampaignOnLevelOneNode.Id),
                                                                                                           Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc3.id),NULL,NULL,'AFGHANISTAN','Enthusiast Gaming','Traditional Notebook',
-                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','Collateral','Draft',false);
+                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
         
         testPartnerFundRequestOnLevelOneNode.Title ='RSA MD Level One Node Activity';
         testPartnerFundRequestOnLevelOneNode.Core_MDF_Activity_Description__c ='RSA MD Activity';
@@ -305,7 +303,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         //Ameya
         PartnerFundRequest testPartnerFundRequestOnLevelTwoNode =Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(rSAMDCampaignOnLevelTwoNode.Id),
                                                                                                           Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc4.id),NULL,NULL,'AFGHANISTAN','Enthusiast Gaming','Traditional Notebook',
-                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','Collateral','Draft',false);
+                                                                                                              'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
         
         testPartnerFundRequestOnLevelTwoNode.Title ='RSA MD Level Two Node Activity';
         testPartnerFundRequestOnLevelTwoNode.Core_MDF_Activity_Description__c ='RSA MD Activity';
@@ -347,13 +345,13 @@ public class Core_MDF_PFC_RetailClaim_Test {
         
         
         //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
-        	
+            
             Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
         }
         Core_MDF_CCP_TestDataUtility.createPartnerGroupMapping(acc1.Id,'Internal',acc1.Id,cp.Id,'PGM_Retail_TEST',true);
-        system.runAs(sysAdmUsr){
+        
         Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
-        }
+       
         test.stopTest();        
         
         Core_MDF_CCP_TestDataUtility.createTriggerExecutionRecords();
@@ -427,15 +425,15 @@ public class Core_MDF_PFC_RetailClaim_Test {
     static void testRetailRsaMDSaveClaimSuccessMethod()
     {
         test.startTest();
-		Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+        Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
                 'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
                 'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
                 'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser)
-        {			
+        {           
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
-            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];            			
+            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];                      
 
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, false);
             claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -446,7 +444,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
             String str1 = claim1.Id+';#'+'Test Doc1';
             String str2 = claim1.Id+';#'+'Test Doc2';
            
@@ -474,7 +472,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             }
             
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
- 			res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);            
             //System.assertEquals(claim1.ID,res.claimDetail.id);            
@@ -485,16 +483,16 @@ public class Core_MDF_PFC_RetailClaim_Test {
   /* @isTest
     static void testRetailCRRPositiveClaim()
     {
-        test.startTest();	
-		Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+        test.startTest();   
+        Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
                 'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
                 'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
-                'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);		
-		Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
-		PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];
+                'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);        
+        Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
+        PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];
         User usr2 = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         System.runAs(usr2)
-        {          	
+        {           
 
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, false);
             claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -542,16 +540,16 @@ public class Core_MDF_PFC_RetailClaim_Test {
     {      
         test.startTest();
         try{
-			Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
-						'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
-						'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
-						'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
+            Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+                        'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
+                        'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
+                        'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
             User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
             System.runAs(sysAdminUser)
             {
-                	
+                    
                 Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
-                PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];               		
+                PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'Retail RSA MD Activity'];                      
 
                 PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, false);
                 claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -560,7 +558,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
                 //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList); 
                 String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
                 Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
- 				res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+                res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
            
                 System.assertEquals(claim1.ID,res.claimDetail.id);            
                 
@@ -581,7 +579,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
                 'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser)
-        {					
+        {                   
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
             PartnerFundRequest pfr = [Select Id,Title,RequestedAmount,Amount from PartnerFundRequest where Title = 'Retail RSA MD Activity']; // 1000$
           //  test.startTest();
@@ -594,7 +592,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();            
             List<PartnerFundClaim> pfcList = [Select id,Amount,Request.Amount from PartnerFundClaim where RequestId =: pfr.Id];
             test.startTest();
-                   	
+                    
 
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id,
                                                                                           System.today(), System.today(), 500.00, false);
@@ -604,7 +602,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             //pfc.add(claim1);
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
- 			res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);            
             //System.assertEquals(claim1.ID,res.claimDetail.id);
@@ -656,7 +654,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
     {
         test.startTest();
         try{
-			Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+            Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
                     'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
                     'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
                     'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
@@ -673,7 +671,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
                 List<String> documentIdWithTitle = new List<String>();
                 list<String> tempString = new list<String>();
                 list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();    
-                			
+                            
 
                 PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 2500.00, false);
                 //Claim1 2500$
@@ -742,15 +740,15 @@ public class Core_MDF_PFC_RetailClaim_Test {
     static void testRsaMDSaveClaimOnLevelOneNode()
     {
         test.startTest();
-		Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+        Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
                 'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
                 'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
                 'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser)
-        {		
-		   Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
-            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'RSA MD Level One Node Activity'];            		
+        {       
+           Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
+            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'RSA MD Level One Node Activity'];                  
 
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, false);
             claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -762,7 +760,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
             
             String str1 = claim1.Id+';#'+'Test Doc1';
             String str2 = claim1.Id+';#'+'Test Doc2';
@@ -792,7 +790,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
- 			res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null);
             //System.assertEquals(claim1.ID,res.claimDetail.id);                        
         }
         test.stopTest();
@@ -803,16 +801,16 @@ public class Core_MDF_PFC_RetailClaim_Test {
     static void testRsaMDSaveClaimOnLevelTwoNode()
     {
         test.startTest();
-		Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
-		'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
-		'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
-		'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
+        Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
+        'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
+        'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
+        'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser)
         {           
 
-			Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
-            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'RSA MD Level Two Node Activity'];            			
+            Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
+            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'RSA MD Level Two Node Activity'];                      
 
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, false);
             claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -824,7 +822,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
             
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+            res1 = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
             String str1 = claim1.Id+';#'+'Test Doc1';
             String str2 = claim1.Id+';#'+'Test Doc2';
             
@@ -852,11 +850,11 @@ public class Core_MDF_PFC_RetailClaim_Test {
             }
             try{
                 Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
- 				res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null, false, null, null, null, false);
+                res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5,null);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);            
             //System.assertEquals(claim1.ID,res);  
-            }Catch(Exception e){}
+            }Catch(Exception e){System.debug('Exception is'+e.getMessage());}
         }
         test.stopTest();
     }    
@@ -865,7 +863,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
                 'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
                 'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
-                'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);			
+                'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);            
 
         Account acc = [Select Id, BillingCountry from Account where Name ='Test RetailAccount 1' limit 1];
         acc.BillingCountry = 'RUS';
@@ -874,7 +872,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         test.starttest();
         PartnerFundRequest pfr = [Select Id,Title,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Title = 'Retail MDF Activity'];
         
-        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today().addDays(-1), System.today().addDays(-1), 50.00, System.today(), null, false);
+        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), null, false);
         claim1.Core_MDF_Type_Txt__c ='Claim';
         claim1.Core_MDF_Currency__c='USD';
         claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN'; 

@@ -452,13 +452,6 @@
     </relatedLists>
     <relatedLists>
         <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Offset_Amount_Amt__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Claim_Offset__c.Core_MDF_Sub_Claim_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Account_Node_nm__c</fields>
         <fields>Core_MDF_Amount_Amt__c</fields>
         <fields>Core_MDF_Reason_Cd__c</fields>
         <fields>Core_MDF_Adjustment_Status_nm__c</fields>
@@ -467,21 +460,11 @@
     </relatedLists>
     <relatedLists>
         <fields>Core_MDF_Reference_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Account_Node_nm__c</fields>
         <fields>Core_MDF_Amount_Amt__c</fields>
         <fields>Core_MDF_Reason_Cd__c</fields>
         <fields>Core_MDF_Adjustment_Status_nm__c</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Claim_Nbr__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Account_Node_nm__c</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_Reason_Cd__c</fields>
-        <fields>Core_MDF_Adjustment_Status_nm__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Adjustment_Request__c.Core_MDF_Sub_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>Core_MDF_Budget_Type_Txt__c</fields>

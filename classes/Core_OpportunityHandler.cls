@@ -1278,18 +1278,6 @@ opptyId.add(opp.Id);
         Boolean nextLineFlag=false;          
         Id designRecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Design Opportunity').getRecordTypeId();
         Id dealRecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
-        Set<Id> OppIdstoGet = new Set<Id>();
-        for (Opportunity OppRecs : NewOppList){
-            OppIdstoGet.add(OppRecs.Id);
-        }
-       
-        Set<Id> OppOcrSet = new Set<Id>();
-        for(OpportunityContactRole OppOcr : [select opportunityid from OpportunityContactRole where opportunityid IN :OppIdstoGet and role='Business Decision Maker']){
-            OppOcrSet.add(OppOcr.opportunityid);
-        }
-        // Cache Schema describes once to avoid schema method calls within loops
-        Schema.DescribeSObjectResult oppDescribe = Opportunity.SObjectType.getDescribe();
-        Map<String, Schema.SObjectField> oppFieldMap = oppDescribe.fields.getMap();
         for(Opportunity OppRec : NewOppList )
         {
             String strfieldLabels='';
@@ -1302,7 +1290,7 @@ opptyId.add(opp.Id);
                         if(!fieldsToDisplay.isEmpty()){
                             for(String fields:fieldsToDisplay){
                                 if(String.isEmpty((String)oppRec.get(fields))){
-                                    FieldLabel = oppFieldMap.containsKey(fields) ? oppFieldMap.get(fields).getDescribe().getLabel() : fields;
+                                    FieldLabel =(String)Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(fields).getDescribe().getLabel();
                                     strfieldLabels+=' '+FieldLabel+',';
                                 }
                             }
@@ -1334,7 +1322,7 @@ opptyId.add(opp.Id);
                         if(!fieldsToDisplay.isEmpty()){
                             for(String fields:fieldsToDisplay){
                                 if(String.isEmpty((String)oppRec.get(fields)) && oppRec.get(fields) != OldOppRec.get(fields)) {
-                                    FieldLabel = oppFieldMap.containsKey(fields) ? oppFieldMap.get(fields).getDescribe().getLabel() : fields;
+                                    FieldLabel =(String)Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(fields).getDescribe().getLabel();
                                     strfieldLabels+=' '+FieldLabel+',';
                                 }
                             }
@@ -1346,7 +1334,7 @@ opptyId.add(opp.Id);
                         if(!fieldsToDisplay.isEmpty()) {
                             for(String fields:fieldsToDisplay) {
                                 if(String.isEmpty((String)oppRec.get(fields))){
-                                    FieldLabel = oppFieldMap.containsKey(fields) ? oppFieldMap.get(fields).getDescribe().getLabel() : fields;
+                                    FieldLabel =(String)Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(fields).getDescribe().getLabel();
                                     strfieldLabels+=' '+FieldLabel+',';
                                 }
                             }
@@ -1375,8 +1363,8 @@ opptyId.add(opp.Id);
                                OppRec.Core_Opportunity_Coverage_Nm__c=='Intel-Led Opportunity' && 
                                ((OppRec.Core_Opportunity_Type__c == 'Deal: Sell-to'||OppRec.Core_Opportunity_Type__c == 'Deal: Sell-through') && 
                                 (OppRec.StageName=='Develop' || OppRec.StageName=='Design'))) {
-                                    /*List<OpportunityContactRole> ocr = new List<OpportunityContactRole>();
-                                    ocr = [select id from OpportunityContactRole where opportunityid =:OppRec.Id and role='Business Decision Maker'];*/
+                                    List<OpportunityContactRole> ocr = new List<OpportunityContactRole>();
+                                    ocr = [select id from OpportunityContactRole where opportunityid =:OppRec.Id and role='Business Decision Maker'];
                                     if((OppRec.Core_Write_In_Product_Count__c > 0)&& OppRec.Core_VBS_Potential__c==False && !strfieldLabels.contains(System.Label.Core_Oppo_Approval_Write_in_Product_count)){ //|| OppRec.Core_Product_Count__c <1
                                         strfieldLabels+=System.Label.Core_Oppo_Approval_Write_in_Product_count;
                                         nextLineFlag=true;
@@ -1385,7 +1373,7 @@ opptyId.add(opp.Id);
                                         strfieldLabels+=System.Label.Core_Opp_Product_Count;
                                         nextLineFlag=true;
                                     }
-                                    if(!(OppOcrSet.contains(OppRec.Id))) {
+                                    if(ocr.size()== 0) {
                                         strfieldLabels+=System.Label.Core_Opp_Deal_SellTo_Error_Message;
                                         nextLineFlag=true;
                                     }

@@ -24,14 +24,6 @@ public without sharing class Core_MDF_SendPFREmailNotification{
     Modified By:        Ayush    12-18-2024  -  Added changes for "Reclaiming SF Partner License"
     *******************************************************************************************************/
     public static void pfrStatusChangeEmail(List<PartnerFundRequest> newPFRList, Map<Id, PartnerFundRequest> oldPfrMap){
-        //Akash changes
-        List<PartnerFundRequest> filteredPFRList = new List<PartnerFundRequest>();
-        for(PartnerFundRequest pfr : newPFRList) {
-            // Skip sub-activities (outcome-based sub-activities)
-            if(pfr.Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
-                filteredPFRList.add(pfr);
-            }
-        }
         Map<String, String> emailTemplateMap = new Map<String, String>();
         Map<String, User> userMap = new Map<String, User>();
         Set<String> userIds = new Set<String>();
@@ -41,7 +33,7 @@ public without sharing class Core_MDF_SendPFREmailNotification{
                 emailTemplateMap.put(template.DeveloperName, template.Id);
         }
         if(oldPfrMap != null){
-            for(PartnerFundRequest newPfr: filteredPFRList){
+            for(PartnerFundRequest newPfr: newPFRList){
                 userIds.add(newPfr.createdByID);
                 if(newPfr.Core_MDF_Activity_First_Approver_txt__c != null && 
                    newPfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
@@ -53,7 +45,7 @@ public without sharing class Core_MDF_SendPFREmailNotification{
                 userMap.put(createdByUser.Id, createdByUser);
         }
         if(oldPfrMap != null){
-            for(PartnerFundRequest pfr: filteredPFRList){
+            for(PartnerFundRequest pfr: newPFRList){
                 String userType = userMap.get(pfr.CreatedById).UserType;
                 //Ayush - Created below boolean to check if activity's created by user is manually deactivated for "Reclaiming SF Partner License"
                 Boolean isPartnerLiscenceReclaimed = userMap.get(pfr.CreatedById).Partner_License_Reclaimed__c; 

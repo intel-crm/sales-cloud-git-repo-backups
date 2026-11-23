@@ -1,0 +1,31 @@
+<template>
+    
+        
+            <lightning-record-edit-form object-api-name="Sales_Host__c" record-id={recordId} onload={handleOnLoad} >
+        
+        
+            <template if:true={visible}>
+           
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.SalesHostHtml}</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p>{label.SalesHostconfirmationHtml}</p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button variant="neutral"
+                                              name="Yes"
+                                              label={label.Sales_yes}
+                                              title='Yes'
+                                              onclick={handleDeactivate} ></lightning-button>
+                            <lightning-button variant="brand"
+                                              name="No"
+                                              label={label.Sales_no}
+                                              title='No'
+                                              onclick={handleCancel} ></lightning-button>
+                        </footer>
+                  
+                    </template>
+                </lightning-record-edit-form>
+
+</template>

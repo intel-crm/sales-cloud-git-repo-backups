@@ -21,11 +21,9 @@ public with sharing class Core_IPS_Portal_Project_Controller{
         List<Contact> sobjListAPM;
         try{
             Core_IPS_Project__c ipsProject = new Core_IPS_Project__c();
-   // Venrublity Fix - Refering query to service class
-            loggedInUser = (User)Core_IPS_QueryService.queryRecords(
-                'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
-                new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
-            )[0];
+            loggedInUser = [Select Id, Name, profileId, ContactId, Contact.AccountId
+                            From User
+                            where Id = :UserInfo.getUserId()];
             String loggedInUserAcctId = loggedInUser.Contact.AccountId;
             String loggedInUserContId = loggedInUser.ContactId;
             Integer projMemberDataLimit = Integer.valueOf(System.Label.Core_IPS_Portal_ProjMember_Limit);
@@ -33,8 +31,8 @@ public with sharing class Core_IPS_Portal_Project_Controller{
             String query = null;
             // SOQL Injection Fix - Start -  Shipra
             Map<String, Object> bindMap = new Map<String, Object>{ 'LoggedInUserAcctId' => loggedInUserAcctId, 'LoggedInUserContId' => loggedInUserContId, 'Status' => 'Active', 'ProjMemberDataLimit' => projMemberDataLimit, 'queryString' =>(queryStr == null ? '' : queryStr) };
-            query = 'Select id,Name,LastName, FirstName,Core_Status__c, Email, Account.Name, Core_IPS_Active__c,Core_IPS_Email_Opt_Out__c From Contact Where AccountId =:loggedInUserAcctId  AND ID != :loggedInUserContId   AND Core_IPS_Active__c  = true';
-            query += ' AND ID NOT IN ( Select Core_IPS_Contact__c FROM Core_IPS_Project_Member__c where  Core_Status__c = :Status AND Core_IPS_Project__c =  :queryString ) And ID in (SELECT ContactId FROM User) LIMIT :projMemberDataLimit'; // IsActive remove by tushar garg because of Inactive Users (due to UIOLI) should be added as Project members
+            query = 'Select id,Name,LastName, FirstName,Core_Status__c, Email, Account.Name, Core_IPS_Active__c,Core_IPS_Email_Opt_Out__c From Contact Where AccountId =:loggedInUserAcctId  AND ID != :loggedInUserContId   AND Core_IPS_Active__c  = true  ';
+            query += ' AND ID NOT IN ( Select Core_IPS_Contact__c FROM Core_IPS_Project_Member__c where  Core_Status__c = :Status AND Core_IPS_Project__c =  :queryString ) And ID in (SELECT ContactId FROM User WHERE IsActive = true) LIMIT :projMemberDataLimit';
             sobjListAPM = Database.queryWithBinds(query, bindMap, AccessLevel.USER_MODE);
             // SOQL Injection Fix - End -  Shipra
         } catch (Exception e){
@@ -53,11 +51,9 @@ public with sharing class Core_IPS_Portal_Project_Controller{
 
         List<Asset> sobjListAprdos;
         try{
-            // Venrublity Fix - Refering query to service class
-            loggedInUser = (User)Core_IPS_QueryService.queryRecords(
-                'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
-                new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
-            )[0];
+            loggedInUser = [Select Id, Name, profileId, ContactId, Contact.AccountId
+                            From User
+                            where Id = :UserInfo.getUserId()];
 
             String loggedInUserAcctId = loggedInUser.Contact.AccountId;
             String loggedInUserContId = loggedInUser.ContactId;
@@ -83,11 +79,9 @@ public with sharing class Core_IPS_Portal_Project_Controller{
     //create IPS Project
     @AuraEnabled
     public static Core_IPS_Project__c createProjects(String projName, String projDes, boolean parties, boolean notify, String userName){
- // Venrublity Fix - Refering query to service class        
-             loggedInUser = (User)Core_IPS_QueryService.queryRecords(
-            'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
-            new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
-        )[0];
+        loggedInUser = [Select Id, Name, profileId, ContactId, Contact.AccountId
+                        From User
+                        where Id = :UserInfo.getUserId()];
         String loggedInUserAcctId = loggedInUser.Contact.AccountId;
         String loggedInUserContId = loggedInUser.ContactId;
         ipsProject = new Core_IPS_Project__c();
@@ -111,9 +105,7 @@ public with sharing class Core_IPS_Portal_Project_Controller{
                 ipsProject.Core_IPS_Partner_Support_Owner__c = loggedInUser.id;
             }
         }
-        // Venrublity Fix - Refering query to service class
-        // upsert ipsProject;
-        ipsProject = (Core_IPS_Project__c)Core_IPS_QueryService.upsertRecords(new List<SObject>{ ipsProject })[0];
+        upsert ipsProject;
 
         createIPSProject(ipsProject, loggedInUser);
 
@@ -170,18 +162,14 @@ public with sharing class Core_IPS_Portal_Project_Controller{
                          lstCoreIipsProjectrojectMembers.add(coreMember);*/
                     }
                 }
-                // Venrublity Fix - Refering query to service class
-                // Database.insert (lstCoreIpsAccount, false);
-                lstCoreIpsAccount = (List<Core_IPS_Account__c>) Core_IPS_QueryService.insertRecords((List<SObject>) lstCoreIpsAccount);
+                Database.insert (lstCoreIpsAccount, false);
 
                 // Database.SaveResult[] results = Database.insert( lstCoreIipsProjectrojectMembers,false);
                 //Added by Hassan
                 for (Id coreIpsProjectUpdate : projectMap.Keyset()){
                     projectMap.get(coreIpsProjectUpdate).Core_Status__c = 'Active';
                 }
-                // Venrublity Fix - Refering query to service class
-                // Upsert projectMap.values();
-                Core_IPS_QueryService.upsertRecords((List<SObject>) projectMap.values());
+                Upsert projectMap.values();
             } catch (exception ex){
                 String exceptionMessage = ex.getTypeName() + ': ' + ex.getMessage() + ', ' + ex.getStackTraceString();
                 Core_IPS_ExceptionHandling.logEntryWithException(ex, 'Core_IPS_Portal_Project_Controller', 'GroupMember');
@@ -192,11 +180,9 @@ public with sharing class Core_IPS_Portal_Project_Controller{
     //Insert Project Members,Activate Members
     @AuraEnabled
     public static List<Core_IPS_Project_Member__c> upsertProjectMembers(list<Id> selectedIdsInsecondPage, string ipsProject){
- // Venrublity Fix - Refering query to service class        
-   loggedInUser = (User)Core_IPS_QueryService.queryRecords(
-            'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
-            new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
-        )[0];
+        loggedInUser = [Select Id, Name, profileId, ContactId, Contact.AccountId
+                        From User
+                        where Id = :UserInfo.getUserId()];
         List<Core_IPS_Project_Member__c> lProjMembers = new List<Core_IPS_Project_Member__c>();
         Map<Id, Id> contactUserMap = new Map<Id, Id>();
         List<User> userList = [SELECT ID, ContactID
@@ -225,27 +211,19 @@ public with sharing class Core_IPS_Portal_Project_Controller{
             lProjMembers.add(pm);
         }
         if (lProjMembers != null){
-            // Venrublity Fix - Refering query to service class
-            // upsert lProjMembers;
-            lProjMembers = (List<Core_IPS_Project_Member__c>) Core_IPS_QueryService.upsertRecords((List<SObject>) lProjMembers);
+            upsert lProjMembers;
         }
         return lProjMembers;
     }
 
-    public static Map<Id, Asset> mapofIdAsset;
+    public static Map<Id, Asset> MapofIdAsset;
     @AuraEnabled
     public static List<Core_IPS_Product__c> upsertIPSProducts(list<Id> selectedIdsInThirdPage, string ipsProject){
         List<Core_IPS_Product__c> lIPSProducts = new List<Core_IPS_Product__c>();
-       if (Asset.SObjectType.getDescribe().isAccessible()){
-         /* mapofIdAsset = new Map<Id, Asset>([Select Name, Account.Name, Core_Supported_Product__r.Core_Product_Organization__r.Name, core_Product_Application__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_Code_Name__c, InstallDate, Status, Description, Core_IPS_Asset__c, Core_IPS_Project__c, Core_Supported_Product__c, Core_Product_Organization__c
+        if (Asset.SObjectType.getDescribe().isAccessible()){
+            MapofIdAsset = new Map<Id, Asset>([Select Name, Account.Name, Core_Supported_Product__r.Core_Product_Organization__r.Name, core_Product_Application__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_Code_Name__c, InstallDate, Status, Description, Core_IPS_Asset__c, Core_IPS_Project__c, Core_Supported_Product__c, Core_Product_Organization__c
                                                From Asset
-                                               where Id IN:selectedIdsInThirdPage]); */
-        //added by sabira 21-07-2026
-String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_Product_Organization__r.Name, core_Product_Application__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_Code_Name__c, InstallDate, Status, Description, Core_IPS_Asset__c, Core_IPS_Project__c, Core_Supported_Product__c, Core_Product_Organization__c From Asset where Id IN :selectedIdsInThirdPage';
-    mapofIdAsset = new Map<Id, Asset>(
-        (List<Asset>) Core_IPS_QueryService.queryRecords(assetQuery, new Map<String, Object>{ 'selectedIdsInThirdPage' => selectedIdsInThirdPage })
-    ); //sabira
- 
+                                               where Id IN:selectedIdsInThirdPage]);
         }
         Id IPSProductBasicRecordType = [SELECT Id
                                         FROM RecordType
@@ -256,7 +234,7 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
                 prod.Core_IPS_Project__c = ipsProject;
             }
             if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isUpdateable()){
-                prod.Core_Supported_Product__c = mapofIdAsset.get(Assetid).Core_Supported_Product__c;
+                prod.Core_Supported_Product__c = MapofIdAsset.get(Assetid).Core_Supported_Product__c;
             }
             if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isupdateable()){
                 prod.Core_IPS_Product_Status__c = 'Active';
@@ -279,10 +257,7 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
             lIPSProducts.add(prod);
         }
         if (lIPSProducts != null){
-         // Venrublity Fix - Refering query to service class
-         // upsert lIPSProducts;
-           lIPSProducts = (List<Core_IPS_Product__c>) Core_IPS_QueryService.upsertRecords((List<SObject>) lIPSProducts);//added by sabira 21-07-2026
-          
+            upsert lIPSProducts;
         }
         return lIPSProducts;
     }
@@ -292,11 +267,10 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
     public static List<id> getChildIPSProdctsToProject(string ipsProject){
         List<id> prodIds = new List<id>();
         if (Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-            // Venrublity Fix - Refering query to service class
-            lstIPSProject = (List<Core_IPS_Project__c>)Core_IPS_QueryService.queryRecords(
-                'select id, (select id, Core_Intel_Product__c from IPS_Products__r) from Core_IPS_Project__c where id = :ipsProject',
-                new Map<String, Object>{ 'ipsProject' => ipsProject }
-            );
+            lstIPSProject = [select id, (select id, Core_Intel_Product__c
+                                         from IPS_Products__r)
+                             from Core_IPS_Project__c
+                             where id = :ipsProject];
         }
         for (Core_IPS_Project__c lstproj : lstIPSProject){
             for (Core_IPS_Product__c lst : lstproj.IPS_Products__r){
@@ -304,8 +278,7 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
             }
         }
         if (prodIds != null){
-           return prodIds;          
-            
+            return prodIds;
         }
         return null;
     }
@@ -332,14 +305,14 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
 
     @AuraEnabled(cacheable = true)
     public static Core_IPS_Project__c getCurrentproj(Id pId){
-        // Hassan Khan make a "List<Core_IPS_Project__c> projRecord" to fix (List has no rows for assignment to Sobject) Exception Handling issue.
-        List<Core_IPS_Project__c> projRecord = [SELECT Id, Name, Core_MPNDA__c, Core_Project_Description__c, Core_Status__c, Core_IPS_EnableMemberasInterestedParties__c, Core_IPS_Enable_ISTasInterested_Parties__c, Core_IPS_Project_ID__c, Core_IPS_Remove_Notification_Details__c
+        Core_IPS_Project__c projRecord = [SELECT Id, Name, Core_MPNDA__c, Core_Project_Description__c, Core_Status__c, Core_IPS_EnableMemberasInterestedParties__c, Core_IPS_Enable_ISTasInterested_Parties__c, Core_IPS_Project_ID__c, Core_IPS_Remove_Notification_Details__c
                                           FROM Core_IPS_Project__c
                                           where id = :pId];
 
-        if (!projRecord.isEmpty() && projRecord != null){
-            return projRecord[0];
+        if (projRecord != null){
+            return projRecord;
         }
         return null;
     }
+
 }

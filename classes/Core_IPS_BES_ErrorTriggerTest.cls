@@ -35,7 +35,7 @@ public class Core_IPS_BES_ErrorTriggerTest {
             // Intentionally adding the test logic here for failure case
             // If the insert fails, we should check the exception handling logic
         } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
+            System.debug('Expected exception: ' + e.getMessage());
         }
         
         Test.stopTest();

@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-18-2026
+* @last modified on  : 09-16-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class QuoteLineBusinessLogic { 
@@ -27,7 +27,6 @@ public without sharing class QuoteLineBusinessLogic {
     public static Boolean isFinancialIncentive=false;
     public static  Boolean isBillingStartDateUpdate = false;
     public static String accountId;
-    public static Boolean hasAIIntegrationRun = false;//Citrus change
 
     public static void validateChangeRequestEdit(List < SBQQ__QuoteLine__c > lstquoteLines, boolean isInsert, Map < id, SBQQ__QuoteLine__c > oldMap) {
         if(lstquoteLines!=null && !lstquoteLines.isEmpty()){
@@ -187,11 +186,7 @@ public without sharing class QuoteLineBusinessLogic {
                     //Validation for Write in paired CPU
                     if(!hasPermissionSetAPI && quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
                         validateWriteInPairedCPU(quoteLine, writeInProdId);
-                    }
-                    //PAA V2 - Rationale for Pricing default value is set if the quoteline is not eligible for Pricing 
-                    if(quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine)){
-                        quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
-                    }
+                    }                  
                 }
             } else {
                 Map<String,Decimal> accountIdMtdRecordMap = new Map<String,Decimal>();
@@ -262,11 +257,6 @@ public without sharing class QuoteLineBusinessLogic {
                         if(!quoteNotifyMap.containsKey(quoteLine.SBQQ__Quote__c) && quotelinemap.get(quoteline.id).SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Submitted && oldMap.get(quoteLine.id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_Quote_Status_Approved && quotelinemap.get(quoteline.id).SBQQ__Quote__r.SBQQ__Opportunity2__c == null && !String.isBlank(quotelinemap.get(quoteline.id).SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c) && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
                             quoteNotifyMap.put(quoteLine.SBQQ__Quote__c, quoteLine.Id);
                         }
-                    }
-                    //PAA V2 - Rationale for Pricing default value is set if the quoteline is not eligible for Pricing 
-                    if(oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c &&  quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine)){
-                        quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
-                    
                     }
                     
                     if(!System.isBatch() && !System.isFuture() && TriggerHandler.isActive('Pricing_Won_Prediction_Switch') && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == 'Pending Further Intel Review' && quoteLine.Pricing_Status_Nm__c == 'Approved'){
@@ -974,10 +964,8 @@ public without sharing class QuoteLineBusinessLogic {
                         if(referenceQuoteLineUpdateMap.containsKey(referenceQuoteLine.Id)){
                             referenceQuoteLineUpdateMap.get(referenceQuoteLine.Id).Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
                         }else{
-                            if(referenceQuoteLine.Pricing_Status_Nm__c != Label.Pricing_Tender_QuoteLine_Status_Revised){
-                                referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
-                                referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);
-                            }
+                           referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
+                           referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);
                         }
                     }
 
@@ -1450,7 +1438,8 @@ public without sharing class QuoteLineBusinessLogic {
             startDate = startDate.toStartOfWeek();
             endDate = endDate.toStartOfWeek();
             
-           
+            integer dayss = date.newinstance(startDateTime.year(), startDateTime.month(), startDateTime.day()).
+                daysBetween(date.newinstance(endDateTime.year(), endDateTime.month(), endDateTime.day()));
             
             integer weeksbetween = startDate.daysBetween(endDate)/7;
             
@@ -1896,27 +1885,6 @@ public static Set<String> getFieldsFromLayout(){
             quoteLine.Pricing_Deal_RFQ_Status_Nm__c = oldMap.get(quoteLine.Id).Pricing_Deal_RFQ_Status_Nm__c;
             quoteLine.Pricing_Last_Approved_Date_dt__c = DateTime.now();
         }
-
-         //revert status fix Cancelled ==> Approved
-        if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Cancelled && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved) {
-            quoteLine.Pricing_Status_Nm__c =  Label.Pricing_Tender_QuoteLine_Status_Cancelled;
-            //Duplicate filelds populating
-            quoteLine.Pricing_Approved_Start_Date_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dup_Dt__c = oldMap.get(quoteLine.Id).Pricing_Approved_Start_Date_Dt__c;
-            quoteLine.Pricing_Approved_End_Date_Dt__c = quoteLine.Pricing_Approved_End_Date_Dup_Dt__c = oldMap.get(quoteLine.Id).Pricing_Approved_End_Date_Dt__c;
-            quoteLine.Pricing_Approved_Unit_Qty__c = quoteLine.Pricing_Approved_Unit_Dup_Qty__c = oldMap.get(quoteLine.Id).Pricing_Approved_Unit_Qty__c;
-            quoteLine.Pricing_ECAP_Price_Amt__c = quoteLine.Pricing_ECAP_Price_Dup_Amt__c = oldMap.get(quoteLine.Id).Pricing_ECAP_Price_Amt__c;
-            quoteLine.Pricing_Billing_Start_Date_Dt__c = oldMap.get(quoteLine.Id).Pricing_Billing_Start_Date_Dt__c;
-            quoteLine.Pricing_Billing_End_Date_Dt__c = oldMap.get(quoteLine.Id).Pricing_Billing_End_Date_Dt__c;
-            quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c = quoteLine.Pricing_Revised_Pricing_Start_Date_D_dt__c = oldMap.get(quoteLine.Id).Pricing_Revised_Pricing_Start_Date_dt__c;
-            quoteLine.Pricing_Deal_RFQ_Id__c = quoteLine.Pricing_Deal_RFQ_Dup_Id__c = oldMap.get(quoteLine.Id).Pricing_Deal_RFQ_Id__c;
-            quoteLine.Pricing_Deal_RFQ_Status_Nm__c = oldMap.get(quoteLine.Id).Pricing_Deal_RFQ_Status_Nm__c;
-            quoteLine.Pricing_Last_Approved_Date_dt__c = DateTime.now();
-        }
-        
-        //revert fix pricing manager value ==> null
-        if((oldMap.get(quoteLine.Id).Pricing_Manager__c != quoteLine.Pricing_Manager__c) && oldMap.get(quoteLine.Id).Pricing_Manager__c != null && quoteLine.Pricing_Manager__c == null) {
-            quoteLine.Pricing_Manager__c = oldMap.get(quoteLine.Id).Pricing_Manager__c;
-        }
         
         //revert status fix Rejected ==> PFIR
         if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Rejected && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview) {
@@ -1972,48 +1940,5 @@ public static Set<String> getFieldsFromLayout(){
         }
         return hasAPIPermissionSet;
     }
-    
-    /*****************************************************************************************************************************************
-    Method Name:        handleAIIntegrationForPricing
-    Description:        To invoke method for Pricing Application AI Integration
-    @Added By:          Sinduja - 30-April-2026
-    Modified By:        Date:       Changes:
-    ******************************************************************************************************************************************/
-    public static void handleAIIntegrationForPricing(List<SBQQ__QuoteLine__c> lstquoteLines, Map<Id, SBQQ__QuoteLine__c> oldMap,Boolean isInsert) {
-        try {
-            // Recursion control - exit if AI integration has already run in this transaction
-            if(hasAIIntegrationRun) {
-                return;
-            }
-            
-            List<Id> quoteLineIdsForAI = new List<Id>();
-            
-            // Check for status change to 'Pending Further Intel Review'
-            for(SBQQ__QuoteLine__c quoteLine : lstquoteLines) {
-                Boolean notEligibleForPricing = Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine);
-                if(isInsert){
-                    if(quoteLine.Pricing_New_Change_Request_cb__c == false && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && !notEligibleForPricing) {
-                        quoteLineIdsForAI.add(quoteLine.Id);
-                    }
-                }
-                else if(oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && quoteLine.Pricing_New_Change_Request_cb__c == false &&
-                   quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && !notEligibleForPricing) {
-                    quoteLineIdsForAI.add(quoteLine.Id);
-                }
-            }
-            
-            // Call AI Integration if we have quote lines to process
-            if(!quoteLineIdsForAI.isEmpty()) {
-                // Set the flag to prevent recursion
-                hasAIIntegrationRun = true;
-                
-                system.debug('Inside populateJSON calling method');
-                Pricing_Application_Agent_AI_Integration.populateJSON(quoteLineIdsForAI, new Map<String,Integer>());
-            }
-            
-        } catch(Exception e) {
-            Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Core_Message__c = 'Error in handleAIIntegrationForPricing method', Core_Details__c = e.getMessage() + ' | Stack Trace: ' + e.getStackTraceString(), Core_Origin__c='handleAIIntegrationForPricing', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'IQR');
-            insert logEntry;
-        }
-    }
+
 }

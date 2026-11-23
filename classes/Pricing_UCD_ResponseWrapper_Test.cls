@@ -1,10 +1,3 @@
-/**
- * @description       :
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 09-27-2024
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
 @isTest
 public class Pricing_UCD_ResponseWrapper_Test{
     static testmethod void testUCDResponseWrapper(){
@@ -18,7 +11,7 @@ public class Pricing_UCD_ResponseWrapper_Test{
         ucdResponseObject1.MasteredSimplifiedAccountName = 'Test End Customer';
         ucdResponseObject1.BusinessPartyIdentifier = '56789';
         ucdResponseObject1.RecordType = 'Intel Account';
-        
+   
         Pricing_UCD_ResponseWrapper.AccountAddress  primaryAddress1 = new Pricing_UCD_ResponseWrapper.AccountAddress();
         primaryAddress1.TypeCode ='';
         primaryAddress1.CountryCode ='AFG';
@@ -28,6 +21,7 @@ public class Pricing_UCD_ResponseWrapper_Test{
         Pricing_UCD_ResponseWrapper.MasteredBusinessPhysicalAddress  physicalAddress1 = new Pricing_UCD_ResponseWrapper.MasteredBusinessPhysicalAddress('AFG','Afghanistan');
         ucdResponseObject1.MasteredBusinessPhysicalAddress = physicalAddress1;
         
+        Pricing_UCD_ResponseWrapper.AccountAddress  secondaryAddress1 = new Pricing_UCD_ResponseWrapper.AccountAddress();
         ucdResponseObject1.SecondaryAddress = primaryAddress1;
         
         Pricing_UCD_ResponseWrapper.ResponseData parentAcount1 = new Pricing_UCD_ResponseWrapper.ResponseData();
@@ -45,11 +39,11 @@ public class Pricing_UCD_ResponseWrapper_Test{
         ucdResponseObject1.complianceWatchList = cwlList;
         
         Pricing_UCD_ResponseWrapper.CustomerAggregationType custAgg = new Pricing_UCD_ResponseWrapper.CustomerAggregationType('UNFD_CTRY_CUST','');
-        ucdResponseObject1.CustomerAggregationType = custAgg;
+        ucdResponseObject1.CustomerAggregationType = custAgg;    
         Pricing_UCD_ResponseWrapper.CustomerProcessEngagement custPro = new Pricing_UCD_ResponseWrapper.CustomerProcessEngagement('DIR_PRC_EXCPT','');
         ucdResponseObject1.CustomerProcessEngagement = new List<Pricing_UCD_ResponseWrapper.CustomerProcessEngagement>{custPro};
         System.assert(custAgg != null);
         
     }
-    
+
 }

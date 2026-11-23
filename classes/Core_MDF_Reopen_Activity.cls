@@ -24,7 +24,7 @@ public without sharing class Core_MDF_Reopen_Activity {
         Boolean hasPermission = false;
         string budgetType,program;
         
-       Date activityCloseDate;
+        date actCloseDays; Date activityCloseDate;
         Decimal claimedAmount = 0.0;
         Decimal escAmount = 0.0;
         Decimal totalConsumedAmt = 0.0;
@@ -41,8 +41,7 @@ public without sharing class Core_MDF_Reopen_Activity {
                            Core_MDF_Program__c,Core_MDF_Budget_Type_nm__c,Budget.EndDate,Allocation.Core_MDF_Available_Activity_Alloc_Amt__c,Campaign.Core_MDF_Reimbursement_Amt__c,
                            Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_End_Date_Is_Changed_ind__c,Core_MDF_ATF_Flag_nm__c,CreatedDate,
                            ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c,Core_MDF_Proposal_Based_Ind__c,
-                           BudgetId,CampaignId,Campaign.Core_MDF_Budget__r.EndDate,Core_MDF_PriorValueOfStatus__c,Core_MDF_Campaign_Amount__c,Budget.Core_MDF_Budget_Partner__c,
-                           Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Activity_Level_nm__c, Core_MDF_Parent_Activity_Id__c // Added outcome-based fields
+                           BudgetId,CampaignId,Campaign.Core_MDF_Budget__r.EndDate,Core_MDF_PriorValueOfStatus__c,Core_MDF_Campaign_Amount__c,Budget.Core_MDF_Budget_Partner__c,Core_MDF_Is_Outcome_Based_Ind__c // Rishabh
                            FROM PartnerFundRequest 
                            WHERE Id =: activityId LIMIT 1];
             }
@@ -151,7 +150,7 @@ public without sharing class Core_MDF_Reopen_Activity {
                     returnMsg = System.Label.Core_MDF_No_Matching_Budgets_Available;
                 }
                 //Check $ available in Partner Fund Allocation
-                else if((isOutcomeBasedParentActivity(pfrList[0]) ? hasAnySubActivityWithZeroAllocation(activityId) : pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c == 0)
+                else if(pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c == 0
                         && pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated')
                         && !cmpBudgetType.contains(pfrList[0].Core_MDF_Budget_Type_nm__c)
                         && !(multipleBTProg.contains(pfrList[0].Core_MDF_Program__c) && pfrList[0].Core_MDF_Proposal_Based_Ind__c == True)
@@ -167,54 +166,16 @@ public without sharing class Core_MDF_Reopen_Activity {
                 if(returnMsg == 'success' && pfrList[0].Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
                     returnMsg = validatePfrWithAllocationForAutoTransfer(pfrList[0], false);
                 }
-                
-                //Calculate amount to be claimed - Enhanced for outcome-based activities
+                //Calcute amount to be claimed
                 string claimStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityClose');
                 if(returnMsg == 'success'){
                     claimCloseStatus = claimStatus.split(';');
                     
-                    // Check if this is an outcome-based parent activity
-                    if(isOutcomeBasedParentActivity(pfrList[0])) {
-                        // For outcome-based activities, validate each sub-activity individually
-                        List<SubActivityValidationResult> subActivityResults = validateOutcomeBasedSubActivities(activityId, claimCloseStatus, pfrList[0]);
-                        
-                        // Check if any sub-activity has validation errors
-                        Boolean hasValidationError = false;
-                        String validationErrorMsg = '';
-                        Decimal totalParentReimbursementAmt = 0;
-                        Decimal totalParentAvailableAmt = 0;
-                        Decimal totalParentClaimedAmount = 0;
-                        Decimal totalParentEscAmount = 0;
-                        
-                        for(SubActivityValidationResult result : subActivityResults) {
-                            if(result.hasError) {
-                                hasValidationError = true;
-                                validationErrorMsg = result.errorMessage;
-                                break; // Stop at first error
-                            }
-                            totalParentReimbursementAmt += result.reimbursementAmount;
-                            totalParentAvailableAmt += result.availableAmount;
-                            totalParentClaimedAmount += result.claimedAmount;
-                            totalParentEscAmount += result.escAmount;
-                        }
-                        
-                        if(hasValidationError) {
-                            returnMsg = validationErrorMsg;
-                        } else {
-                            // Set parent activity values as sum of all sub-activities
-                            reimbursementAmt = totalParentReimbursementAmt;
-                            totalAvailableAmt = totalParentAvailableAmt;
-                            reopenWrap.intelContribution = reimbursementAmt;
-                            reopenWrap.pendingClaimableAmount = totalAvailableAmt;
-                            reopenWrap.totalClaimAmount = totalParentClaimedAmount + totalParentEscAmount;
-                        }
-                    } else {
-                        // Regular activity calculation (existing logic)
-                        List<AggregateResult> pfcAmountList = [SELECT RequestId Id ,sum(Amount)amt 
-                                                               FROM PartnerFundClaim 
-                                                               WHERE RequestId =: activityId AND Core_MDF_Status__c IN: claimCloseStatus AND Core_MDF_Type_Txt__c =: TYPE_CLAIM
-                                                               AND Core_MDF_Escalation_Id__c = null  
-                                                               GROUP BY RequestId];
+                    List<AggregateResult> pfcAmountList = [SELECT RequestId Id ,sum(Amount)amt 
+                                                           FROM PartnerFundClaim 
+                                                           WHERE RequestId =: activityId AND Core_MDF_Status__c IN: claimCloseStatus AND Core_MDF_Type_Txt__c =: TYPE_CLAIM
+                                                           AND Core_MDF_Escalation_Id__c = null  
+                                                           GROUP BY RequestId];
 
 
                     List<AggregateResult> escAmountList = [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
@@ -229,45 +190,45 @@ public without sharing class Core_MDF_Reopen_Activity {
                         claimedAmount = (Decimal)pfcAmountList[0].get('amt');
                     }
 
-                        if(escAmountList != null && !escAmountList.isEmpty()){
-                            escAmount = (Decimal)escAmountList[0].get('amt');
-                        }
-                        
-                        if(pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c != null){
-                            allocationAvailAmt = pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c;   
-                        }
-                        
-                        if(pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c != null && pfrList[0].Amount != null){
-                            reimbursementAmt = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                            reopenWrap.intelContribution = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;    
-                        }
-
-                        totalConsumedAmt = claimedAmount + escAmount;
-                        totalConsumedAmt = totalConsumedAmt >= reimbursementAmt ? reimbursementAmt : totalConsumedAmt;
-                    
-                        reopenWrap.intelContribution = reimbursementAmt;
-
-                       Decimal availableAmount = 0;
-                       availableAmount = (reimbursementAmt - totalConsumedAmt);
-                    
-                        if(availableAmount <= 0){
-                            returnMsg = System.Label.Core_MDF_Claims_Exceeds_The_Activity_Spending_Limit;
-                        }
-                    
-                        if((availableAmount > allocationAvailAmt) 
-                           && pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated')
-                           && !cmpBudgetType.contains(pfrList[0].Core_MDF_Budget_Type_nm__c)
-                           && !(multipleBTProg.contains(pfrList[0].Core_MDF_Program__c) && pfrList[0].Core_MDF_Proposal_Based_Ind__c == True)
-                           && pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM
-                           && pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
-                            returnMsg = System.Label.Core_MDF_Activities_Exceeds_The_Allocated_Budget;
-                        }else{
-                            totalAvailableAmt = availableAmount;
-                        }
-                        
-                        reopenWrap.pendingClaimableAmount = totalAvailableAmt;
-                        reopenWrap.totalClaimAmount = totalConsumedAmt;
+                    if(escAmountList != null && !escAmountList.isEmpty()){
+                        escAmount = (Decimal)escAmountList[0].get('amt');
                     }
+
+                    totalConsumedAmt = claimedAmount + escAmount;
+
+                    totalConsumedAmt = totalConsumedAmt >= pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c 
+                                     ? pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c : totalConsumedAmt;
+
+                    
+                    if(pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c != null){
+                        allocationAvailAmt = pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c;   
+                    }
+                    
+                    if(pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c != null && pfrList[0].Amount != null){
+                        reimbursementAmt = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;    
+                        reopenWrap.intelContribution = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                    }
+
+                   Decimal availableAmount = 0;
+                   availableAmount = (reimbursementAmt - totalConsumedAmt);
+                    
+                    if(availableAmount <= 0){
+                        returnMsg = System.Label.Core_MDF_Claims_Exceeds_The_Activity_Spending_Limit;
+                    }
+                    
+                    if((availableAmount > allocationAvailAmt) 
+                       && pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated')
+                       && !cmpBudgetType.contains(pfrList[0].Core_MDF_Budget_Type_nm__c)
+                       && !(multipleBTProg.contains(pfrList[0].Core_MDF_Program__c) && pfrList[0].Core_MDF_Proposal_Based_Ind__c == True)
+                       && pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM
+                       && pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
+                        returnMsg = System.Label.Core_MDF_Activities_Exceeds_The_Allocated_Budget;
+                    }else{
+                        totalAvailableAmt = availableAmount;
+                    }
+                    
+                    reopenWrap.pendingClaimableAmount = totalAvailableAmt;
+                    reopenWrap.totalClaimAmount = totalConsumedAmt;
                 }
                 
             }
@@ -279,88 +240,13 @@ public without sharing class Core_MDF_Reopen_Activity {
         reopenWrap.validationMsg = returnMsg;
         return JSON.serialize(reopenWrap);
     }
-
-    /**
-     * @description Validate each sub-activity individually for outcome-based activities
-     * @param parentActivityId The parent activity ID
-     * @param claimCloseStatus List of claim statuses to consider
-     * @param parentActivity The parent activity record
-     * @return List<SubActivityValidationResult> List of validation results for each sub-activity
-     */
-    public static List<SubActivityValidationResult> validateOutcomeBasedSubActivities(Id parentActivityId, List<String> claimCloseStatus, PartnerFundRequest parentActivity) {
-        List<SubActivityValidationResult> results = new List<SubActivityValidationResult>();
-        
-        try {
-            // Get all closed sub-activities
-            List<PartnerFundRequest> subActivities = [SELECT Id, Core_MDF_Activity_Reimbursement_Amt_nbr__c, Allocation.Core_MDF_Available_Activity_Alloc_Amt__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c FROM PartnerFundRequest WHERE Core_MDF_Parent_Activity_Id__c = :parentActivityId AND Core_MDF_Activity_Level_nm__c = 'Sub Activity' AND Core_MDF_Fund_Request_Status__c = 'Closed'];
-            Set<Id> subActivityIds = new Set<Id>();
-            for(PartnerFundRequest subActivity : subActivities) {
-                subActivityIds.add(subActivity.Id);
-            }
-            // Get claim amounts for all sub-activities
-            Map<Id, Decimal> subActivityClaimAmounts = new Map<Id, Decimal>();
-            for(AggregateResult ar : [SELECT RequestId, SUM(Amount) totalAmount FROM PartnerFundClaim WHERE RequestId IN :subActivityIds AND Core_MDF_Status__c IN :claimCloseStatus AND Core_MDF_Type_Txt__c = :TYPE_CLAIM AND Core_MDF_Escalation_Id__c = null GROUP BY RequestId]) {
-                Id requestId = (Id)ar.get('RequestId');
-                Decimal claimAmount = (Decimal)ar.get('totalAmount');
-                subActivityClaimAmounts.put(requestId, claimAmount != null ? claimAmount : 0);
-            }
-            // Get escalation amounts for all sub-activities
-            Map<Id, Decimal> subActivityEscAmounts = new Map<Id, Decimal>();
-            for(AggregateResult ar : [SELECT Core_MDF_Co_Marketing_Activity_id__c, SUM(Core_MDF_Approved_Amount_amt__c) totalAmount  FROM Core_MDF_Escalation__c WHERE Core_MDF_Co_Marketing_Activity_id__c IN :subActivityIds AND Core_MDF_Escalation_Status_nm__c = :ESC_APPROVED_STATUS GROUP BY Core_MDF_Co_Marketing_Activity_id__c
-            ]) {
-                Id activityId = (Id)ar.get('Core_MDF_Co_Marketing_Activity_id__c');
-                Decimal escAmount = (Decimal)ar.get('totalAmount');
-                subActivityEscAmounts.put(activityId, escAmount != null ? escAmount : 0);
-            }
-            // Validate each sub-activity individually
-            for(PartnerFundRequest subActivity : subActivities) {
-                SubActivityValidationResult result = new SubActivityValidationResult();
-                result.subActivityId = subActivity.Id;
-                // Get amounts for this specific sub-activity
-                result.claimedAmount = subActivityClaimAmounts.containsKey(subActivity.Id) ? subActivityClaimAmounts.get(subActivity.Id) : 0;
-                result.escAmount = subActivityEscAmounts.containsKey(subActivity.Id) ? subActivityEscAmounts.get(subActivity.Id) : 0;
-                result.reimbursementAmount = subActivity.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null ? subActivity.Core_MDF_Activity_Reimbursement_Amt_nbr__c : 0;
-                result.allocationAvailAmount = subActivity.Allocation.Core_MDF_Available_Activity_Alloc_Amt__c != null ? subActivity.Allocation.Core_MDF_Available_Activity_Alloc_Amt__c : 0;
-                // Calculate consumed and available amounts for this sub-activity
-                Decimal totalConsumedAmt = result.claimedAmount + result.escAmount;
-                totalConsumedAmt = totalConsumedAmt >= result.reimbursementAmount ? result.reimbursementAmount : totalConsumedAmt;
-                Decimal availableAmount = result.reimbursementAmount - totalConsumedAmt;
-                // Validate this sub-activity
-                if(availableAmount <= 0) {
-                    result.hasError = true;
-                    result.errorMessage = System.Label.Core_MDF_Claims_Exceeds_The_Activity_Spending_Limit;
-                } else if((availableAmount > result.allocationAvailAmount)
-                         && !(multipleBTProg.contains(parentActivity.Core_MDF_Program__c) && parentActivity.Core_MDF_Proposal_Based_Ind__c == True)) {
-                    result.hasError = true;
-                    result.errorMessage = System.Label.Core_MDF_Activities_Exceeds_The_Allocated_Budget;
-                } else {
-                    result.availableAmount = availableAmount;
-                    result.hasError = false;
-                }
-                results.add(result);
-            }
-            
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-        return results;
-    }
-
-    /**
-     * @description Check if any sub-activity has zero allocation amount
-     */
-    private static Boolean hasAnySubActivityWithZeroAllocation(Id parentActivityId) {
-        List<AggregateResult> results = [SELECT COUNT(Id) cnt FROM PartnerFundRequest WHERE Core_MDF_Parent_Activity_Id__c = :parentActivityId AND Core_MDF_Activity_Level_nm__c = 'Sub Activity' AND Core_MDF_Fund_Request_Status__c = 'Closed'
-            AND (Allocation.Core_MDF_Available_Activity_Alloc_Amt__c = 0 OR Allocation.Core_MDF_Available_Activity_Alloc_Amt__c = null)];
-        return (Integer)results[0].get('cnt') > 0;
-    }
     
     @AuraEnabled
     public static string reOpenActivity(string actId){
         string returnMsg = '';
-
+        Map<Id,String> accIdRegMap = new Map<Id,String>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
- 
+        Map<String,Date> quarterEndMap = new Map<String,Date>(); 
         
         try{
             String reopenStatus = System.Label.Core_MDF_ATF_Reopen_Status;
@@ -368,8 +254,7 @@ public without sharing class Core_MDF_Reopen_Activity {
                 pfrList = [SELECT Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Manual_Closure_Prior_Status_txt__c,Core_MDF_ATF_Flag_nm__c,Core_MDF_Start_Date__c,
                            RecordType.DeveloperName,RecordTypeId,ChannelPartnerId,Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_Activity_Reimbursement_Amt_nbr__c,BudgetId,
                            ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c,Core_MDF_Ultimate_Account_Name__c,Core_MDF_Activity_Closure_Type__c,Budget.Core_MDF_Budget_Partner__c,
-                           Core_MDF_Budget_Type_nm__c,CreatedDate,Core_MDF_End_Date_Is_Changed_ind__c,Amount,Core_MDF_ToBeClosedDate__c,Core_MDF_Program__c,Core_MDF_End_Date__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Actual_closedt_beforeclosure_dt__c,
-                           Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Activity_Level_nm__c, Core_MDF_Parent_Activity_Id__c // Added outcome-based fields
+                           Core_MDF_Budget_Type_nm__c,CreatedDate,Core_MDF_End_Date_Is_Changed_ind__c,Amount,Core_MDF_ToBeClosedDate__c,Core_MDF_Program__c,Core_MDF_End_Date__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Actual_closedt_beforeclosure_dt__c
                            FROM PartnerFundRequest 
                            WHERE Id =: actId LIMIT 1]; 
             }
@@ -379,146 +264,61 @@ public without sharing class Core_MDF_Reopen_Activity {
                 if(pfrList[0].Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
                     returnMsg = validatePfrWithAllocationForAutoTransfer(pfrList[0], true);
                 }
-                // Check if this is an outcome-based parent activity
-                if(isOutcomeBasedParentActivity(pfrList[0])) {
-                    // Handle outcome-based activity reopening
-                    returnMsg = handleOutcomeBasedActivityReopen(pfrList[0], reopenStatus);
-                } else {
-                    // Handle regular activity reopening (existing logic)
-                    returnMsg = handleRegularActivityReopen(pfrList[0], reopenStatus);
+                accIdRegMap.put(pfrList[0].ChannelPartnerId,pfrList[0].ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c);
+                Core_MDF_Process_PartnerFundRequest.accIdRegionMap = accIdRegMap;
+                
+                quarterEndMap = getActClosureDate(pfrList);
+                autoClosurekeyStr = Core_MDF_Process_PartnerFundRequest.buildKeyForActivityClosure(pfrList[0],pfrList[0].RecordType.DeveloperName); 
+                pfrList[0].Core_MDF_ToBeClosedDate__c = quarterEndMap.get(autoClosurekeyStr);
+                
+                List<PartnerFundRequestHistory> pfrHistoryList = new List<PartnerFundRequestHistory>();
+                PartnerFundRequestHistory pfrHistory = new PartnerFundRequestHistory();
+                
+                if(pfrList[0].Core_MDF_ToBeClosedDate__c < system.today() && pfrList[0].Core_MDF_ATF_Flag_nm__c != null && pfrList[0].Core_MDF_ATF_Flag_nm__c.contains(System.Label.Core_MDF_ATF_Closed_Status)){
+                     pfrHistoryList =  [select Id,NewValue,OldValue,Field,PartnerFundRequestId 
+                                                             from PartnerFundRequestHistory 
+                                                             Where Field =: 'Core_MDF_ToBeClosedDate__c' AND PartnerFundRequestId =:pfrList[0].Id 
+                                                             order By CreatedDate Desc Limit 1];
+                    if(pfrHistoryList != null && !pfrHistoryList.isEmpty()){
+                        pfrHistory = pfrHistoryList[0];
+                        //Avoid Deeply Nested IF Statements
+                        Date oldValueDate = (Date)pfrHistory.OldValue;
+                        pfrList[0].Core_MDF_ToBeClosedDate__c = (oldValueDate == null) ? (Date)pfrHistory.NewValue : (oldValueDate >= System.today()) ? oldValueDate : getCloseDate(pfrList[0]);
+                    }
+                    else
+                    {
+                        pfrList[0].Core_MDF_ToBeClosedDate__c = getCloseDate(pfrList[0]);
+                    }
                 }
+                
+                
+                if(string.isNotBlank(pfrList[0].Core_MDF_Manual_Closure_Prior_Status_txt__c)){
+                    pfrList[0].Core_MDF_Fund_Request_Status__c = pfrList[0].Core_MDF_Manual_Closure_Prior_Status_txt__c;
+                }
+                
+                if(pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated') &&
+                   !cmpBudgetType.contains(pfrList[0].Core_MDF_Budget_Type_nm__c) && pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CoGTM_BudgetType')){
+                    pfrList[0].Amount = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                }
+                
+                if(pfrList[0].Core_MDF_Start_Date__c < System.today()){
+                    if(string.isBlank(pfrList[0].Core_MDF_ATF_Flag_nm__c)){
+                        pfrList[0].Core_MDF_ATF_Flag_nm__c = reopenStatus;}
+                    else if(!pfrList[0].Core_MDF_ATF_Flag_nm__c.contains(reopenStatus))
+                    {pfrList[0].Core_MDF_ATF_Flag_nm__c = pfrList[0].Core_MDF_ATF_Flag_nm__c+';'+reopenStatus;}
+                } 
+                // While reopening the activity we made the Activity Closure Type field as Blank
+                if(pfrList[0].Core_MDF_Activity_Closure_Type__c != ''){
+                    pfrList[0].Core_MDF_Activity_Closure_Type__c = '';
+                    pfrList[0].Core_MDF_Actual_closedt_beforeclosure_dt__c = null;
+                }
+                update pfrList; 
+                returnMsg = 'success';
             }
-        }catch(Exception ex){
-            Core_MDF_CCP_UtilityClass.logError(ex);
-            return ex.getMessage();
-        }
+        }catch(Exception ex){returnMsg = ex.getMessage();
+                                if(returnMsg.Contains('_EXCEPTION')){String errorMsg = returnMsg.substringAfter('_EXCEPTION,');errorMsg = errorMsg.Substring(0, (errorMsg.length()-4));returnMsg = errorMsg;
+                            }}
         return returnMsg;
-    }
-    
-    /**
-     * @description Check if the activity is an outcome-based parent activity
-     * @param activity The PartnerFundRequest record to check
-     * @return Boolean True if it's an outcome-based parent activity
-     */
-    private static Boolean isOutcomeBasedParentActivity(PartnerFundRequest activity) {
-        return (activity.Core_MDF_Is_Outcome_Based_Ind__c == true && 
-                (activity.Core_MDF_Activity_Level_nm__c == null || activity.Core_MDF_Activity_Level_nm__c != 'Sub Activity'));
-    }
-
-    /**
-     * @description Handle reopening of outcome-based activities with sub-activities
-     * @param parentActivity The parent activity to reopen
-     * @param reopenStatus The reopen status flag
-     * @return String Success message or error message
-     */
-    private static String handleOutcomeBasedActivityReopen(PartnerFundRequest parentActivity, String reopenStatus) {
-        try {
-            Map<Id,String> accIdRegMap = new Map<Id,String>();
-            accIdRegMap.put(parentActivity.ChannelPartnerId, parentActivity.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c);
-            Core_MDF_Process_PartnerFundRequest.accIdRegionMap = accIdRegMap;
-            List<PartnerFundRequest> subActivities = [SELECT Id, Core_MDF_Fund_Request_Status__c, Core_MDF_Manual_Closure_Prior_Status_txt__c,Core_MDF_ATF_Flag_nm__c, Core_MDF_Start_Date__c, Core_MDF_Activity_Closure_Type__c, Core_MDF_Activity_Reimbursement_Amt_nbr__c, Amount, Core_MDF_ToBeClosedDate__c, Core_MDF_Actual_closedt_beforeclosure_dt__c, RecordType.DeveloperName, Core_MDF_Budget_Type_nm__c, Core_MDF_End_Date__c, CreatedDate, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c FROM PartnerFundRequest WHERE Core_MDF_Parent_Activity_Id__c = :parentActivity.Id AND Core_MDF_Activity_Level_nm__c = 'Sub Activity' AND Core_MDF_Fund_Request_Status__c = 'Closed'];
-            
-            List<PartnerFundRequest> activitiesToUpdate = new List<PartnerFundRequest>();
-            // Process parent activity - keep amount as 0
-            PartnerFundRequest updatedParent = processActivityReopen(parentActivity, reopenStatus);
-            // Ensure parent amount stays 0
-            updatedParent.Amount = 0;
-            activitiesToUpdate.add(updatedParent);
-            // Process each sub-activity
-            for(PartnerFundRequest subActivity : subActivities) {
-                PartnerFundRequest updatedSubActivity = processActivityReopen(subActivity, reopenStatus);
-                activitiesToUpdate.add(updatedSubActivity);
-            }
-            if(!activitiesToUpdate.isEmpty()) {
-                update activitiesToUpdate;
-            }
-            return 'success';
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-            return e.getMessage();
-        }
-    }
-    
-    /**
-     * @description Handle reopening of regular (non-outcome-based) activities
-     * @param activity The activity to reopen
-     * @param reopenStatus The reopen status flag
-     * @return String Success message or error message
-     */
-    private static String handleRegularActivityReopen(PartnerFundRequest activity, String reopenStatus) {
-        try {
-            Map<Id,String> accIdRegMap = new Map<Id,String>();
-            accIdRegMap.put(activity.ChannelPartnerId, activity.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c);
-            Core_MDF_Process_PartnerFundRequest.accIdRegionMap = accIdRegMap;
-            
-            PartnerFundRequest updatedActivity = processActivityReopen(activity, reopenStatus);
-            update updatedActivity;
-            
-            return 'success';
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-            return e.getMessage();
-        }
-    }
-    
-    /**
-     * @description Process individual activity reopening logic
-     * @param activity The activity to process
-     * @param reopenStatus The reopen status flag
-     * @return PartnerFundRequest Updated activity record
-     */
-    private static PartnerFundRequest processActivityReopen(PartnerFundRequest activity, String reopenStatus) {
-        Map<String,Date> quarterEndMap = new Map<String,Date>();
-        List<PartnerFundRequest> tempList = new List<PartnerFundRequest>{activity};
-        
-        quarterEndMap = getActClosureDate(tempList);
-        String autoClosurekeyStr = Core_MDF_Process_PartnerFundRequest.buildKeyForActivityClosure(activity, activity.RecordType.DeveloperName);
-        activity.Core_MDF_ToBeClosedDate__c = quarterEndMap.get(autoClosurekeyStr);
-        
-        List<PartnerFundRequestHistory> pfrHistoryList = new List<PartnerFundRequestHistory>();
-        
-        if(activity.Core_MDF_ToBeClosedDate__c < system.today() && activity.Core_MDF_ATF_Flag_nm__c != null && activity.Core_MDF_ATF_Flag_nm__c.contains(System.Label.Core_MDF_ATF_Closed_Status)){
-             pfrHistoryList = [select Id,NewValue,OldValue,Field,PartnerFundRequestId 
-                               from PartnerFundRequestHistory 
-                               Where Field = 'Core_MDF_ToBeClosedDate__c' AND PartnerFundRequestId = :activity.Id 
-                               order By CreatedDate Desc Limit 1];
-            if(pfrHistoryList != null && !pfrHistoryList.isEmpty()){
-                PartnerFundRequestHistory pfrHistory = pfrHistoryList[0];
-                Date oldValueDate = (Date)pfrHistory.OldValue;
-                activity.Core_MDF_ToBeClosedDate__c = (oldValueDate == null) ? (Date)pfrHistory.NewValue : (oldValueDate >= System.today()) ? oldValueDate : getCloseDate(activity);
-            }
-            else
-            {
-                activity.Core_MDF_ToBeClosedDate__c = getCloseDate(activity);
-            }
-        }
-        
-        if(string.isNotBlank(activity.Core_MDF_Manual_Closure_Prior_Status_txt__c)){
-            activity.Core_MDF_Fund_Request_Status__c = activity.Core_MDF_Manual_Closure_Prior_Status_txt__c;
-        }
-        
-        if(activity.Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated') &&
-           !cmpBudgetType.contains(activity.Core_MDF_Budget_Type_nm__c) && activity.Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CoGTM_BudgetType')){
-            activity.Amount = activity.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-        }
-        
-        if(activity.Core_MDF_Start_Date__c < System.today()){
-            if(string.isBlank(activity.Core_MDF_ATF_Flag_nm__c)){
-                activity.Core_MDF_ATF_Flag_nm__c = reopenStatus;
-            }
-            else if(!activity.Core_MDF_ATF_Flag_nm__c.contains(reopenStatus))
-            {
-                activity.Core_MDF_ATF_Flag_nm__c = activity.Core_MDF_ATF_Flag_nm__c+';'+reopenStatus;
-            }
-        } 
-        
-        // While reopening the activity we made the Activity Closure Type field as Blank
-        if(activity.Core_MDF_Activity_Closure_Type__c != ''){
-            activity.Core_MDF_Activity_Closure_Type__c = '';
-            activity.Core_MDF_Actual_closedt_beforeclosure_dt__c = null;
-        }
-        
-        return activity;
     }
     
     Public static Date getCloseDate(PartnerFundRequest pfr){
@@ -911,30 +711,6 @@ public without sharing class Core_MDF_Reopen_Activity {
             Core_MDF_CCP_UtilityClass.logError(e); returnMsg = e.getMessage();
         }
         return returnMsg;
-    }
-    
-    /**
-     * @description Wrapper class for sub-activity validation results
-     */
-    public class SubActivityValidationResult {
-        public Id subActivityId { get; set; }
-        public Decimal claimedAmount { get; set; }
-        public Decimal escAmount { get; set; }
-        public Decimal reimbursementAmount { get; set; }
-        public Decimal allocationAvailAmount { get; set; }
-        public Decimal availableAmount { get; set; }
-        public Boolean hasError { get; set; }
-        public String errorMessage { get; set; }
-        
-        public SubActivityValidationResult() {
-            this.claimedAmount = 0;
-            this.escAmount = 0;
-            this.reimbursementAmount = 0;
-            this.allocationAvailAmount = 0;
-            this.availableAmount = 0;
-            this.hasError = false;
-            this.errorMessage = '';
-        }
     }
     
     Public class ReopenWrapper {

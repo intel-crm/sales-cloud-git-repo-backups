@@ -32,8 +32,7 @@
 
     // Method is called on click of Finish and Save Button
     finish: function (component, event, helper) {
-        var actionType = event.getSource().get("v.name");
-        helper.saveClaim(component, event, helper, actionType);
+        helper.saveClaim(component);
     },
 
     //This function is used to moveNext/KPI/Document uploade section from duplicate OK button
@@ -173,51 +172,5 @@
     },
     handleDocumentTypeChange: function(component, event) {
         component.set("v.hasAnyChangeOnAuditDoc", !event.getParam("disableSubmitButton"));
-    },
-    handleSubClaimChange : function(component, event, helper) {
-        try {
-            const subClaims = event.getParam('subClaims'); 
-            if (!Array.isArray(subClaims)) {
-                return;
-            }
-            var subClaimList;
-            if (component.get("v.isEdit")) {
-            subClaimList = subClaims.map(claim => ({
-                sobjectType: 'PartnerFundClaim',
-                Id: claim.claimId,
-                Core_MDF_Bank__c: claim.selectedBank === $A.get("$Label.c.Core_MDF_CreditBased_BankNotApplicable") ? '' : claim.selectedBank,
-                Core_MDF_VAT_Opt_In__c: claim.vatValue,
-                RequestId: claim.requestId,
-                ChannelPartnerId: claim.nodeaccId,
-                Core_MDF_Total_Invoice_Amount_Local__c: claim.nodeAmount,
-                Core_MDF_OtherCostsnotReimbursable_Local__c : claim.reimbursableAmount,
-                Core_MDF_Amount_Percentage__c: claim.percentage,
-                Core_MDF_Paid_By_Payment_Type_nm__c: claim.paymentType,
-                Core_MDF_Applicable_VAT_Percentage_nm__c: claim.vatPercentage
-            }));
-            }
-            else {
-            subClaimList = subClaims.map(node => ({
-                sobjectType: 'PartnerFundClaim',
-                ChannelPartnerId: node.accountNodeId,
-                Core_MDF_Amount_Percentage__c: node.percentage,
-                Core_MDF_Total_Invoice_Amount_Local__c: node.nodeAmount,
-                Core_MDF_Bank__c: node.selectedBank === $A.get("$Label.c.Core_MDF_CreditBased_BankNotApplicable") ? '' : node.selectedBank,
-                RequestId: node.requestId,
-                Core_MDF_OtherCostsnotReimbursable_Local__c : node.reimbursableAmount,
-                Core_MDF_VAT_Opt_In__c: node.vatValue,
-                Core_MDF_Paid_By_Payment_Type_nm__c: node.paymentType,
-                Core_MDF_Applicable_VAT_Percentage_nm__c: node.vatPercentage
-            }));
-            }
-            component.set("v.subClaimList", subClaimList);
-        } catch (err) {
-            console.error('Error in handleSubClaimChange:', err);
-        }
-    },
-    
-    handleBlur:function (component, event, helper) {
-        helper.formatToTwoDecimals(event.getSource());
-    },
-
+    }
 })

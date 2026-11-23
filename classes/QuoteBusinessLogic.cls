@@ -27,8 +27,6 @@ public without sharing class QuoteBusinessLogic{
     public static Map<Id, Opportunity> quoteIdToOppRecdMap = new Map<Id, Opportunity>();
     public static Map<Id, Set<Id>> quoteIdtoProdMap = new Map<Id, Set<Id>>();
     public static Boolean isVolumeExceptionCheck = false;
-    public static Boolean skipMethodExecution = false;
-    public static Set<Id> quoteIdsWithInvalidEndCustomerOpportunityId = new Set<Id>();
     /**
     * @description Share the Quote with Account Team Members
     * @author Subhanku | 12-19-2022 
@@ -81,6 +79,7 @@ public without sharing class QuoteBusinessLogic{
                                                                   }
             
             for(SBQQ__Quote__c pvt : pvtMap.values()){
+                List<Pricing_Comments__c> comments;
                 if(accountToGroupIdMap.containsKey(pvt.SBQQ__Account__c) && !(accountToGroupIdMap.get(pvt.SBQQ__Account__c)).isEmpty()){ 
                     createQuoteAndCmntShare(pvt.Id,externalGroupIdSet,accountToGroupIdMap.get(pvt.SBQQ__Account__c),false,mapQuotesWithComments,quoteShares,commentShares);
                 }
@@ -195,10 +194,7 @@ public without sharing class QuoteBusinessLogic{
             Map<Id,SBQQ__Quote__c> quoteIdToQuoteMap = new Map<Id,SBQQ__Quote__c>();
             Map<Id,Id> quoteCommentShareToDeleteMap = new Map<Id,Id>();
             Boolean isUpdate = !isInsert;
-            // Track Quotes where Unified Global End Customer changed and is not null
-            Map<Id, SBQQ__Quote__c> ugEndCustomerChangedQuotes = new Map<Id, SBQQ__Quote__c>();
-            List<SBQQ__Quote__c> quoteList = new  List<SBQQ__Quote__c>();
-            
+            Set<String> permissionSetAssigned = new Set<String>();
             Boolean currentUserIsAE = false;
             Boolean currentUserIsSalesRep = false;
             Boolean currentUserIsITS = false;
@@ -213,7 +209,7 @@ public without sharing class QuoteBusinessLogic{
             List<Pricing_Quote_Team__c> qtmToBeDeleted = new List<Pricing_Quote_Team__c>();
             Map<Id,SBQQ__Quote__c> quotewithOwnerChangeMap = new Map<Id,SBQQ__Quote__c>();
             List<Id> quoteIdForOnHoldUpdate = new List<Id>();
-      List<Pricing_Quote_Hold_Status_Age__c> insertOnHoldRec = new List<Pricing_Quote_Hold_Status_Age__c>();
+			List<Pricing_Quote_Hold_Status_Age__c> insertOnHoldRec = new List<Pricing_Quote_Hold_Status_Age__c>();
            
             
             Id currentLoggedInUserId = currentUser.Id;
@@ -247,10 +243,6 @@ public without sharing class QuoteBusinessLogic{
                     if(currentUserIsAE && currentLoggedInUserId != quote.Pricing_Account_Executive_Nm__c){
                         quoteCommentShareToDeleteMap.put(quote.Id,currentLoggedInUserId);
                     }
-                     // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
-                    if(quote.Pricing_Unified_Global_End_Customer_Nm__c != null){
-                    	ugEndCustomerChangedQuotes.put(quote.Pricing_Unified_Global_End_Customer_Nm__c, quote);
-                    }
                     
                     if (quote.SBQQ__SalesRep__c != null){
                         quoteIdToQuoteMap.put(quote.id,quote);
@@ -275,10 +267,6 @@ public without sharing class QuoteBusinessLogic{
                 }
                 if(!quoteIdITSAddToQTMMap.isEmpty()){
                     qtmTobeInserted.addAll(createITSDefaultQuoteTeamMember(quoteIdITSAddToQTMMap));
-                }
-                //Citrus change insert
-                if(!ugEndCustomerChangedQuotes.isEmpty()){
-                    autoPopulateIntelAccountExceutive(ugEndCustomerChangedQuotes,lstquote);
                 }
 
             }
@@ -342,10 +330,6 @@ public without sharing class QuoteBusinessLogic{
                             quoteIdFSEUserIdRemoveQTMMap.put(quote.Id,oldMap.get(quote.id).SBQQ__SalesRep__c);
                         }
                     }
-                    // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
-                    if(oldMap.get(quote.id).Pricing_Unified_Global_End_Customer_Nm__c != quote.Pricing_Unified_Global_End_Customer_Nm__c && quote.Pricing_Unified_Global_End_Customer_Nm__c != null){
-                        ugEndCustomerChangedQuotes.put(quote.Pricing_Unified_Global_End_Customer_Nm__c, quote);
-                    }
                     if(oldMap.get(quote.id).Pricing_On_Hold_Cb__c != quote.Pricing_On_Hold_Cb__c && quote.Pricing_On_Hold_Cb__c == true){
                         Pricing_Quote_Hold_Status_Age__c onHoldEntry = new Pricing_Quote_Hold_Status_Age__c();
                         onHoldEntry.Pricing_QuoteOnHold__c = quote.Id;
@@ -375,11 +359,6 @@ public without sharing class QuoteBusinessLogic{
                 if(!quoteIdForOnHoldUpdate.isEmpty()){
                     updateQuoteHoldHistory(quoteIdForOnHoldUpdate);
                 }
-                
-                // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
-                autoPopulateIntelAccountExceutive(ugEndCustomerChangedQuotes,lstquote);
-               
-                skipMethodExecution = false;
             }
             
             if(!quoteIdFSEUserIdAddQTMMap.isEmpty()){   
@@ -434,75 +413,8 @@ public without sharing class QuoteBusinessLogic{
             }
             
         }
-        
     }
     
-    /**
-* @description Resolve Intel Account for Quotes by Unified Global End Customer change
-* @param Map<Id, SBQQ__Quote__c> ugEndCustomerChangedQuotes
-* @return Map<Id, Account> QuoteId to Intel Account record
-*/
-    private static Map<Id, Account> getIntelAccByUnifiedEndCustomer(Map<Id, SBQQ__Quote__c> ugEndCustomerChangedQuotes){
-        Map<Id, Account> quoteToIntelAccMap = new Map<Id, Account>();
-        Set<String> accountOwnerEmail = new Set<String>();
-        Map<String, Id> accountExecutiveAssignment = new Map<String, Id>();
-        Map<String, Id> userEmailToUserHaveAEPermission = new Map<String, Id>();
-        Set<String> validEmailIds = new Set<String>();      
-        Map<String, Account> ownerEmailToAccount = new Map<String, Account>();
-        if(ugEndCustomerChangedQuotes.isEmpty()){
-            return quoteToIntelAccMap;
-        }
-        
-        //Query Unified End Customer Country Mapping records (L2) for the L2 Ids on the quotes
-        Map<Id, Pricing_UnifiedEndCustomerCountryMapping__c> l2IdToRecMap = new Map<Id, Pricing_UnifiedEndCustomerCountryMapping__c>(
-            [SELECT Id, Pricing_RequestID__c,Pricing_RequestID__r.Core_Parent_Business_Party_Id__c
-             FROM Pricing_UnifiedEndCustomerCountryMapping__c
-             WHERE Id IN :ugEndCustomerChangedQuotes.keySet()]
-        );
-        
-        //Collect Parent Unified Id (Parent Business Party Id )
-        Set<String> parentUnifiedIds = new Set<String>();
-        for(Id qId : ugEndCustomerChangedQuotes.keySet()){
-            if(l2IdToRecMap.containsKey(qId) && l2IdToRecMap.get(qId).Pricing_RequestID__c!=null && String.isNotBlank(l2IdToRecMap.get(qId).Pricing_RequestID__r.Core_Parent_Business_Party_Id__c) ){
-                parentUnifiedIds.add(l2IdToRecMap.get(qId).Pricing_RequestID__r.Core_Parent_Business_Party_Id__c);
-            }
-        }
-        if(parentUnifiedIds.isEmpty()){
-            return quoteToIntelAccMap;
-        }
-        
-        //Query Intel Accounts with Business Party Id and Record Type = Intel Account
-        Id intelRtId = Pricing_Tender_Utility.getRecordTypeId('Account', 'Mastered_Account');
-        Map<String, Account> bpIdToAccount = new Map<String, Account>();
-        for(Account acc : [SELECT Id, OwnerId, Owner.Email, Core_Business_Party_Id__c,Core_Covered_Account__c
-                           FROM Account
-                           WHERE Core_Business_Party_Id__c IN :parentUnifiedIds and RecordTypeId = :intelRtId and Core_Covered_Account__c = true]){
-                               if(acc.Owner!=null && String.isNotBlank(acc.Owner.Email)){
-                                   accountOwnerEmail.add(acc.Owner.Email);
-                                   ownerEmailToAccount.put(acc.Owner.Email , acc);
-                               }
-                           }
-        
-        getAccountExecutiveMap(accountOwnerEmail, accountExecutiveAssignment, validEmailIds, userEmailToUserHaveAEPermission);
-        skipMethodExecution = true;
-        
-        for(String ownerEmail : ownerEmailToAccount.keyset()){
-            
-            
-            if(validEmailIds.contains(ownerEmail) && userEmailToUserHaveAEPermission.containsKey(ownerEmail) && String.isNotBlank(ownerEmailToAccount.get(ownerEmail).Core_Business_Party_Id__c)){
-                bpIdToAccount.put(ownerEmailToAccount.get(ownerEmail).Core_Business_Party_Id__c, ownerEmailToAccount.get(ownerEmail));
-            }
-        }
-        
-        //Map back Intel Account to respective Quotes
-        for(Id ugECId : ugEndCustomerChangedQuotes.keySet()){
-            Pricing_UnifiedEndCustomerCountryMapping__c l2Record = l2IdToRecMap.get(ugECId);
-            if(l2Record != null && bpIdToAccount.containsKey(l2Record.Pricing_RequestID__r.Core_Parent_Business_Party_Id__c)){
-                quoteToIntelAccMap.put(ugEndCustomerChangedQuotes.get(ugECId).Id, bpIdToAccount.get(l2Record.Pricing_RequestID__r.Core_Parent_Business_Party_Id__c));
-            }
-        }
-        return quoteToIntelAccMap;
-    }    
     @future
     public static void updateQuoteHoldHistory(List<Id> quoteIdForOnHoldUpdate){
         List<Pricing_Quote_Hold_Status_Age__c> onHoldRec = [select id,Pricing_QuoteOnHold__r.Pricing_On_Hold_Comment__c,Pricing_QuoteOnHold__r.Pricing_On_Hold_Cb__c from Pricing_Quote_Hold_Status_Age__c where Pricing_QuoteOnHold__c in : quoteIdForOnHoldUpdate and Pricing_Is_On_Hold__c = true and Pricing_QuoteOnHold_End_Time__c = null order by createdDate desc];
@@ -516,9 +428,7 @@ public without sharing class QuoteBusinessLogic{
                 onHold.Pricing_Quote_On_Hold_Comment__c = onHold.Pricing_QuoteOnHold__r.Pricing_On_Hold_Comment__c;
             }
         }
-        SBQQ.TriggerControl.disable();
         update onHoldRec;
-        SBQQ.TriggerControl.enable();
     }
 
     @future
@@ -535,13 +445,7 @@ public without sharing class QuoteBusinessLogic{
         for(SBQQ__Quote__c quote: quotePrimaryContactUpdate){
             quote.OwnerId = emailToUsrIdMap.get(quote.Pricing_Primary_Contact_Email__c);
         }
-        try {
-             SBQQ.TriggerControl.disable();
-            update quotePrimaryContactUpdate;
-            SBQQ.TriggerControl.enable();
-        } catch (exception ex){
-              Pricing_Tender_Utility.logError(ex);
-        }
+        update quotePrimaryContactUpdate;
     }
     
     /**
@@ -600,7 +504,7 @@ public without sharing class QuoteBusinessLogic{
         Map<String,List<Core_CPQ_Tender_Comments__mdt>> commentsMetaDataMap = new Map<String,List<Core_CPQ_Tender_Comments__mdt>>();
         try{
             result = [select Pricing_Question__c,Label,Pricing_Business_Unit_Pkl__c,Pricing_Required_Ind__c,Pricing_Comment_Ref_Id__c 
-                      from Core_CPQ_Tender_Comments__mdt ORDER BY Label LIMIT 50];
+                      from Core_CPQ_Tender_Comments__mdt ORDER BY Label];
             commentsMetaDataMap.put(Label.Pricing_Tender_CCG_Quote,new List<Core_CPQ_Tender_Comments__mdt>());
             commentsMetaDataMap.put(Label.Pricing_Tender_Standard_Quote,new List<Core_CPQ_Tender_Comments__mdt>());
             for(Core_CPQ_Tender_Comments__mdt comm: result){
@@ -750,28 +654,7 @@ public without sharing class QuoteBusinessLogic{
                     if(quote.SBQQ__PrimaryContact__c != null){
                         primaryContactIdList.add (quote.SBQQ__PrimaryContact__c);
                     }
-                   
-                    
-                    //Low Touch No Touch
-                    if (isUpdate && quote.Pricing_Route_Rule_Name_Txt__c != oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && !String.isBlank(quote.Pricing_Pricing_Manager__c) 
-                         && (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
-                            quote.Pricing_Pricing_Manager_Group_Name_Txt__c = null;
-                            quote.Pricing_Pricing_Manager_Group_Label_Txt__c = null;
-                           
-                        }else if (isUpdate && quote.Pricing_Route_Rule_Name_Txt__c != oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && !String.isBlank(quote.Pricing_Pricing_Manager_Group_Name_Txt__c) 
-                         && (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
-                            quote.Pricing_Pricing_Manager__c = null;
-                           
-                        }
-                    if (isUpdate && FeatureManagement.checkPermission('Pricing_Tender_Regional_Pricing_Manager') && quote.Pricing_Route_Rule_Name_Txt__c == oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && quote.Pricing_Pricing_Manager__c != oldMap.get(quote.Id).Pricing_Pricing_Manager__c && !String.isBlank(quote.Pricing_ReRouting_Reason_Nm__c) &&
-                        (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
-                            quote.Pricing_Route_Rule_Name_Txt__c = null;
-                            quote.Pricing_Pricing_Manager_Group_Name_Txt__c = null;
-                            quote.Pricing_Pricing_Manager_Group_Label_Txt__c = null;
-                            quote.Pricing_Route_Rule_Id_Txt__c = null;
-                        }
                 }
-               
                 List<String> apiUserPermissionSets = label.Pricing_IQR_API_UserPermissionSets.split(',');
                 for (PermissionSetAssignment psa : currentUser.PermissionSetAssignments) {
                     if(apiUserPermissionSets.contains(psa.PermissionSet.Name)){
@@ -785,8 +668,9 @@ public without sharing class QuoteBusinessLogic{
                     }
                 }
 
-                for(Pricing_Quote_Hold_Status_Age__c quoteHoldAge: [Select Id, Pricing_QuoteOnHold__c, Pricing_QuoteOnHold_User_Role__c
-                                                                    FROM Pricing_Quote_Hold_Status_Age__c WHERE Pricing_QuoteOnHold__c IN: quotesMap.keySet() AND Pricing_Is_On_Hold__c = true ORDER By CreatedDate DESC]){
+                for(Pricing_Quote_Hold_Status_Age__c quoteHoldAge: [Select Id, CreatedById, Pricing_QuoteOnHold__c,Pricing_QuoteOnHold__r.Pricing_On_Hold_Cb__c ,
+                                                                    Pricing_QuoteOnHold_User_Role__c, Pricing_QuoteOnHold_Start_Time__c,Pricing_QuoteOnHold_End_Time__c,
+                                                                    Pricing_OnHold_Cummulative_Time__c,Pricing_Is_On_Hold__c FROM Pricing_Quote_Hold_Status_Age__c WHERE Pricing_QuoteOnHold__c IN: quotesMap.keySet() AND Pricing_Is_On_Hold__c = true ORDER By CreatedDate DESC]){
                                                                   
                                                                     if(quoteHoldAge.Pricing_QuoteOnHold_User_Role__c == 'SDM'){
                                                                         quoteIdtoIsFSEUserMap.put(quoteHoldAge.Pricing_QuoteOnHold__c, true);
@@ -1030,8 +914,8 @@ public without sharing class QuoteBusinessLogic{
                     if(!hasAPIPermissionSet && !oemEmailIds.isEmpty()) {              
                         accountToValidEmailMap = getSalesrepMap(oemEmailIds,accountIdToSalesRepEmailMap, salesRepAssignment);
                     }
-                   
-                    if(!accountExecutiveEmailId.isEmpty() && !skipMethodExecution) {              
+                    
+                    if(!accountExecutiveEmailId.isEmpty()) {              
                         getAccountExecutiveMap(accountExecutiveEmailId, accountExecutiveAssignment, validEmailIdSet ,accountExecutiveSelfAssignment);
                     }
                     
@@ -1062,13 +946,13 @@ public without sharing class QuoteBusinessLogic{
                         if(!hasAPIPermissionSet && quote.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote && quoteIdWithSalesRepChange.contains(quote.Id) && quote.Pricing_Intel_Sales_Rep_Email_Txt__c != null){
                             validateSalesRep(accountToValidEmailMap,quote,salesRepAssignment);
                         }
-                        if(quoteIdWithaccountExecutiveChange.contains(quote.Id) && (quote.Pricing_Intel_Account_Exec_Email_Txt__c != oldMap.get(quote.Id).Pricing_Intel_Account_Exec_Email_Txt__c) && !skipMethodExecution){
+                        if(quoteIdWithaccountExecutiveChange.contains(quote.Id) && (quote.Pricing_Intel_Account_Exec_Email_Txt__c != oldMap.get(quote.Id).Pricing_Intel_Account_Exec_Email_Txt__c)){
                             validateAccountExecutive(accountExecutiveAssignment, quote, accountExecutiveSelfAssignment, quote.Pricing_Intel_Sales_Rep_Email_Txt__c);
                             checkValidAccountExecutiveEmail(validEmailIdSet, quote); 
                         }
                         if(!quoteIdWithPrecedenceNumber.isEmpty()&& !contactIdWithDrafterLimitedSet.isEmpty())
                         {
-                            checkPrimaryContactIsDrafterLimited(quoteIdWithPrecedenceNumber,contactIdWithDrafterLimitedSet,quote,currentUser);          
+                            checkPrimaryContactIsDrafterLimited(quoteIdWithPrecedenceNumber,contactIdWithDrafterLimitedSet,quote,currentUser);					
                         }
                         if(quote.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote && quoteIdWithPrimaryContactChange.contains(quote.Id)){
                             validatePrimaryContact(userContactDtls, quote);
@@ -1084,9 +968,7 @@ public without sharing class QuoteBusinessLogic{
                            quote.ownerid != userContactDtls.get(quote.SBQQ__PrimaryContact__c).Id){
                                quote.addError(Label.Pricing_Tender_Owner_Change_Error);
                            }
-                        if(!quoteIdsWithInvalidEndCustomerOpportunityId.contains(quote.Id)){
-                             validateOpportunity(opportunityDetails, quote);
-			}     
+                        validateOpportunity(opportunityDetails, quote);  
                         statusRevertFix( quote,quoteLineNumberToStatusMap,quoteLineNumberToRecordTypeMap,quoteLineNumberToClientRecordTypeMap,quoteLineNumberToFinancialIncentiveRecordTypeMap);
                         //Validate Quote Text fields and throw error if Non latin character is present
                         validateQuoteTextFieldsForLatinChars(quote,oldMap,false);
@@ -1398,7 +1280,7 @@ public without sharing class QuoteBusinessLogic{
         Map<String,Id> userEmailToUserIdMap = new Map<String,Id>();
         Map<Id,Id> quoteIdToUserIdMap = new Map<Id,Id>();
         if(!quoteIdToEmailMap.isEmpty()){   
-            for(User userRec :[SELECT Id,Email from User where Email IN : quoteIdToEmailMap.values() and IsActive = true]){
+            for(User userRec :[SELECT Id,Email,Name from User where Email IN : quoteIdToEmailMap.values() and IsActive = true]){
                 userEmailToUserIdMap.put(userRec.Email,userRec.Id);
             }
             for(Id quoteId : quoteIdToEmailMap.keySet()){
@@ -1670,9 +1552,7 @@ public without sharing class QuoteBusinessLogic{
             }
             try{
                 if(updatedPWItems.size() > 0){
-                    SBQQ.TriggerControl.disable();
                     update updatedPWItems;
-                    SBQQ.TriggerControl.enable();
                     Pricing_QuoteTeam_Trigger_Handler.isApprovalReassign = true;
                 } 
                 
@@ -1737,21 +1617,14 @@ public without sharing class QuoteBusinessLogic{
     {
         if(lstQuote != null && !lstquote.isEmpty()){
             for(SBQQ__Quote__c q: lstQuote){ 
-                Boolean endCustomerOpportunityChanged = q.Pricing_End_Customer_Opportunity_Txt__c != oldQuoteMap.get(q.Id).Pricing_End_Customer_Opportunity_Txt__c;
-                Boolean cpqOpportunityChanged = q.SBQQ__Opportunity2__c != oldQuoteMap.get(q.Id).SBQQ__Opportunity2__c;
-
-                if(endCustomerOpportunityChanged && !isValidEndCustomerOpportunityId(q)){
-                    quoteIdsWithInvalidEndCustomerOpportunityId.add(q.Id);
-                    continue;
-                }
-
-                if(!String.isBlank(q.Pricing_End_Customer_Opportunity_Txt__c) && q.SBQQ__Opportunity2__c != null && endCustomerOpportunityChanged && cpqOpportunityChanged){
+                //if(q.Pricing_End_Customer_Opportunity_Txt__c != null && q.SBQQ__Opportunity2__c != oldQuoteMap.get(q.Id).Pricing_End_Customer_Opportunity_Txt__c)               
+                if(!String.isBlank(q.Pricing_End_Customer_Opportunity_Txt__c) && q.SBQQ__Opportunity2__c != null && q.Pricing_End_Customer_Opportunity_Txt__c != oldQuoteMap.get(q.Id).Pricing_End_Customer_Opportunity_Txt__c && q.SBQQ__Opportunity2__c != oldQuoteMap.get(q.Id).SBQQ__Opportunity2__c){
                     q.addError(Label.Pricing_opportunityDependentFieldsErrorMsg);
                 }
-                else if(endCustomerOpportunityChanged){
+                else if(q.Pricing_End_Customer_Opportunity_Txt__c != oldQuoteMap.get(q.Id).Pricing_End_Customer_Opportunity_Txt__c){
                     q.SBQQ__Opportunity2__c = q.Pricing_End_Customer_Opportunity_Txt__c;
                 }
-                else if(cpqOpportunityChanged){
+                else if(q.SBQQ__Opportunity2__c != oldQuoteMap.get(q.Id).SBQQ__Opportunity2__c){
                     q.Pricing_End_Customer_Opportunity_Txt__c = q.SBQQ__Opportunity2__c;
                 }
                                              
@@ -1882,9 +1755,7 @@ public without sharing class QuoteBusinessLogic{
             commentListtoUpdate.add(cmt);
         }
         if(commentListtoUpdate.size() > 0){
-             SBQQ.TriggerControl.disable();
             update commentListtoUpdate;
-            SBQQ.TriggerControl.enable();
         }
     }
 
@@ -2315,57 +2186,6 @@ public without sharing class QuoteBusinessLogic{
             Pricing_EmailUtility.sendEmailToReciepents(new Set<Id>(quoteNotifyMap.values()),Label.Pricing_QuoteLine_Approve_OppWonLost_Notification);
         }
     }
-
-/**
-* @description: Method to validate if End Customer Opportunity ID text field contains a valid 15- or 18-character Salesforce ID or is blank.
-* @author Deepthi | 21-09-2026 
-* @param q 
-* @return Boolean
-**/
-public static Boolean isValidEndCustomerOpportunityId(SBQQ__Quote__c q) {
-    if (String.isBlank(q.Pricing_End_Customer_Opportunity_Txt__c)) {
-        return true;
-    }
-
-    String val = q.Pricing_End_Customer_Opportunity_Txt__c.trim();
-
-    // Validates against the Custom Label regex pattern
-    Boolean isValidFormat = Pattern.matches(Label.Pricing_SalesforceId_Regex, val);
-
-    if (!isValidFormat) {
-        q.Pricing_End_Customer_Opportunity_Txt__c.addError(
-            Label.Pricing_InvalidSalesforceIdErrorMsg
-        );
-        return false;
-    }
-
-    return true;
 }
+
 //-----------------------End - Refactored code------------------------------------------------------------------------------------//
-
-//Citrus change
-public static void autoPopulateIntelAccountExceutive(Map<Id, SBQQ__Quote__c> ugEndCustomerChangedQuotes,List<SBQQ__Quote__c> lstquote){
-     List<SBQQ__Quote__c> quoteList = new  List<SBQQ__Quote__c>();
-     // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
-     if (!ugEndCustomerChangedQuotes.isEmpty()) {
-     	Map<Id, Account> quoteToIntelAccRecMap = getIntelAccByUnifiedEndCustomer(ugEndCustomerChangedQuotes);
-        for (SBQQ__Quote__c q : lstquote) {
-            String salesRepEmail = q.Pricing_Intel_Sales_Rep_Email_Txt__c;
-            Account acc = quoteToIntelAccRecMap.get(q.Id);
-            Boolean isAccountExecutiveAndEmailBlank = q.Pricing_Account_Executive_Nm__c == null && q.Pricing_Intel_Account_Exec_Email_Txt__c == null;
-			quoteList.add(new SBQQ__Quote__c(
-                            Id = q.Id,
-                            Pricing_Account_Executive_Nm__c = isAccountExecutiveAndEmailBlank ? (acc != null ? (acc.Owner !=null && acc.Owner.Email != salesRepEmail ? acc.OwnerId: null): null) : q.Pricing_Account_Executive_Nm__c,
-                            Pricing_Intel_Account_Exec_Email_Txt__c = isAccountExecutiveAndEmailBlank ? (acc != null && acc.Owner !=null && acc.Owner.Email !=null && acc.Owner.Email != salesRepEmail ? acc.Owner.Email : null) : q.Pricing_Intel_Account_Exec_Email_Txt__c,
-                            Pricing_Is_Covered_Account_cb__c = acc != null ? acc.Core_Covered_Account__c : false
-                            
-                        ));
-              }
-         }
-      if (!quoteList.isEmpty()) {
-     	SBQQ.TriggerControl.disable();
-        update quoteList;
-		SBQQ.TriggerControl.enable();
-       }
-	}
-}

@@ -123,8 +123,7 @@ public class Core_MDF_BudgetCapShare_Test {
             insert pmbList;
             
             // Creating Allocation using utility class
-           // Highlight: Unused Local Variable 
-          //  PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb1,dcfAcc,1000000.0,true);
+            PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb1,dcfAcc,1000000.0,true);
             
             // Creating BudgetCap Record
             Core_MDF_Budget_Cap__c budgetCap = new Core_MDF_Budget_Cap__c();

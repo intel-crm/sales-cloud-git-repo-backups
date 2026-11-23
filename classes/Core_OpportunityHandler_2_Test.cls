@@ -79,7 +79,7 @@ public class Core_OpportunityHandler_2_Test {
                             TimeZoneSidKey='America/Los_Angeles', UserName='OSOTOwner@mail.com', Department='OSC');
         insert OSOTOwner;
         //Added partner user for Portal role sharing fix
-        //Profile profile1 = [select Id from Profile where Name = 'Partner'];
+        Profile profile1 = [select Id from Profile where Name = 'Partner'];
  
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
@@ -156,7 +156,7 @@ public class Core_OpportunityHandler_2_Test {
     }
     
     static testmethod void testOppoTO() { 
-        //List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
+        List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
         Opportunity oppo = [select id from Opportunity where Name = 'OppoHandler'  limit 1]; 
         User usr = [select id from User where Email='OSOTOwner@apttus.com' limit 1];
         
@@ -243,7 +243,6 @@ public class Core_OpportunityHandler_2_Test {
         Core_OpportunityHandler_2.invokeAccount360OpportunitySharingforOnwerChange(lstInput);
         }
         Test.stopTest();
-        System.assertEquals(true,true);
  
     }
 

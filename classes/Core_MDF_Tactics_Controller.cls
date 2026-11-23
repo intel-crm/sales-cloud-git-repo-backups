@@ -33,15 +33,15 @@ public without sharing class Core_MDF_Tactics_Controller {
         @AuraEnabled
         public static KpiSaveResponse saveKpiData(Object rawRecords, Id pfrId, Boolean isProposalBased) {
             List<Core_MDF_Activity_Attributes__c> recordsToUpsert = new List<Core_MDF_Activity_Attributes__c>();
+            List<Core_MDF_Activity_Attributes__c> recordsToDeactivate = new List<Core_MDF_Activity_Attributes__c>();
+
             // Deserialize input
             List<Object> records = (List<Object>) JSON.deserializeUntyped(JSON.serialize(rawRecords));
             Map<String, Boolean> tacticToHasKpiValue = new Map<String, Boolean>();
             Set<String> incomingTactics = new Set<String>();
             Set<String> processedKeys = new Set<String>(); // tactic|field|type
             Decimal totalPercentage = 0;
-            //Rishabh
-            Decimal totalSpendingAmount = 0;
-           	Decimal maximumIntelInvestment = 0;
+
             // Query existing records
             Map<String, Core_MDF_Activity_Attributes__c> existingMap = new Map<String, Core_MDF_Activity_Attributes__c>();
             for (Core_MDF_Activity_Attributes__c existing : [
@@ -71,35 +71,22 @@ public without sharing class Core_MDF_Tactics_Controller {
                 //String percentageField = (String) record.get('percentageField');
 
                 Map<String, Object> percentageFieldObj = (Map<String, Object>) record.get('percentageField');
-                String percentageFieldApi = (String) percentageFieldObj.get('api');               
+                String percentageFieldApi = (String) percentageFieldObj.get('api');
+                String percentageFieldLabel = (String) percentageFieldObj.get('label');
+
                 Object pctVal = record.get('percentageValue');
                 Decimal percentageValue; //= record.containsKey('percentageValue') ? Decimal.valueOf(String.valueOf(record.get('percentageValue'))) : null;
-                //Rishabh
-                Object spdngAmount = record.get('intelContri');
-                Object maxIntelContribution = record.get('maxIntelInvest');
-				Decimal spendingAmount = 0;
-                Decimal maxIntelCon = 0;
-                
-				
-               
-                
-                if (pctVal != null && String.valueOf(pctVal).trim() != '' && !String.isBlank(String.valueOf(spdngAmount)) && !String.isBlank(String.valueOf(maxIntelContribution))) {
+
+                if (pctVal != null && String.valueOf(pctVal).trim() != '') {
                     percentageValue = Decimal.valueOf(String.valueOf(pctVal));
-                    spendingAmount = Decimal.valueOf(String.valueOf(spdngAmount));
-                    maxIntelCon = Decimal.valueOf(String.valueOf(maxIntelContribution));
-                    
                     if (percentageValue < 0 || percentageValue > 100) {
                         throw new AuraHandledException(System.Label.Core_MDF_Spending_Percentage_Range_Error); //Spending Percentage must be between 0 and 100
                     }
                     if (percentageValue.scale() > 2) {
                         throw new AuraHandledException(System.Label.Core_MDF_Spending_Percentage_Decimal_Error); //Spending Percentage must be decimals.
                     }
-                    if(maximumIntelInvestment == 0){
-                        maximumIntelInvestment = maxIntelCon;
-                    }
         
-                   // totalPercentage += percentageValue;
-						totalSpendingAmount += spendingAmount; // Rishabh
+                    totalPercentage += percentageValue;
 
                     String key = tactic + '|' + percentageFieldApi + '|Percentage';
                     processedKeys.add(key);
@@ -107,7 +94,6 @@ public without sharing class Core_MDF_Tactics_Controller {
                     Core_MDF_Activity_Attributes__c existing = existingMap.get(key);
                     if (existing != null && pfrId != null) {
                         existing.Core_MDF_Field_Value_nbr__c = percentageValue;
-                        existing.Core_MDF_Spending_Amount_amt__c = spendingAmount; //rishabh
                         existing.Core_MDF_Is_Active_Ind__c = true;
                         recordsToUpsert.add(existing);
                     } else {
@@ -115,7 +101,6 @@ public without sharing class Core_MDF_Tactics_Controller {
                             Core_MDF_Co_Marketing_Activity__c = pfrId,
                             Core_MDF_Field_Name_nm__c = percentageFieldApi,
                             Core_MDF_Field_Value_nbr__c = percentageValue,
-                            Core_MDF_Spending_Amount_amt__c = spendingAmount, //rishabh
                             Core_MDF_Is_Active_Ind__c = true,
                             Core_MDF_Type_nm__c = 'Percentage',
                             Core_MDF_Tactics_nm__c = tactic
@@ -135,6 +120,8 @@ public without sharing class Core_MDF_Tactics_Controller {
                     //String label = (String) firstKpi.get('label');
 
                     String firstkpiApi = (String) firstKpi.get('api');
+                    String firstkpiLabel = (String) firstKpi.get('label');
+
                     Object val = firstKpi.get('value');
                     Decimal firstKpiValue;
                     if (val != null && String.valueOf(val).toLowerCase().trim() != 'null' && String.valueOf(val).trim() != '') {
@@ -174,9 +161,11 @@ public without sharing class Core_MDF_Tactics_Controller {
                 //if (otherKpis != null) {
                     for (Object kpiObj : otherKpis) {
                         Map<String, Object> kpi = (Map<String, Object>) kpiObj;
-                        
+                        //String otherKpiLabel = (String) kpi.get('label');
+
                             String otherKpiApi = (String) kpi.get('api');
-                           
+                            String otherKpiLabel = (String) kpi.get('label');
+
                         Object otherKpiVal = kpi.get('value');
                         Decimal otherKpiValue;
                         if (otherKpiVal != null && String.valueOf(otherKpiVal).trim() != '') {
@@ -215,13 +204,8 @@ public without sharing class Core_MDF_Tactics_Controller {
                 tacticToHasKpiValue.put(tactic, hasAtLeastOneKPIValue);
             }
 
-           /* if (totalPercentage != 100) {
+            if (totalPercentage != 100) {
                 throw new AuraHandledException(System.Label.Core_MDF_Percentage_Sum_Error); //The percentage values must total 100%. Please adjust the fields to ensure the sum equals 100%.
-            }*/
-           
-            
-            if (maximumIntelInvestment.setScale(2) != totalSpendingAmount.setScale(2)) {
-                throw new AuraHandledException(System.Label.Core_MDF_Percentage_Sum_Error); 
             }
 
             // Final KPI validation
@@ -277,7 +261,7 @@ public static List<Map<String, Object>> getSavedKpiData(Id pfrId) {
 
     List<Core_MDF_Activity_Attributes__c> records = [
         SELECT Id, Core_MDF_Co_Marketing_Activity__c, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Activity_Reimbursement_Amt_nbr__c, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c,
-               Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c,Core_MDF_Spending_Amount_amt__c //rishabh
+               Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c
         FROM Core_MDF_Activity_Attributes__c
         WHERE Core_MDF_Co_Marketing_Activity__c = :pfrId AND Core_MDF_Is_Active_Ind__c = TRUE
     ];
@@ -298,7 +282,6 @@ public static List<Map<String, Object>> getSavedKpiData(Id pfrId) {
                 'percentageField' => '',
                 'percentageFieldLabel' => '',
                 'percentageValue' => null,
-                'spendingAmount' => null,   //Risabh
                 'firstKpi' => null,
                 'otherKpis' => new List<Map<String, Object>>(),
                 'intelContribution' => intelContribution
@@ -310,7 +293,6 @@ public static List<Map<String, Object>> getSavedKpiData(Id pfrId) {
             tacticData.put('percentageField', fieldApi);
             tacticData.put('percentageFieldLabel', fieldLabel);
             tacticData.put('percentageValue', rec.Core_MDF_Field_Value_nbr__c);
-            tacticData.put('spendingAmount', rec.Core_MDF_Spending_Amount_amt__c); //Rishabh
         } else if (rec.Core_MDF_Type_nm__c == 'KPI') {
             Map<String, Object> kpiEntry = new Map<String, Object>{
                 'api' => fieldApi,
@@ -438,7 +420,6 @@ public static Map<String, String> getPicklistLabels() {
     public static List<TacticSpendingWrpper> getTacticSpending(Boolean editable , String claimId, String activityId) {//@@Amount field checks
         Map<String, TacticSpendingWrpper> tacticToTacticSpendingMap = new Map<String, TacticSpendingWrpper>();
         Map<String, String> picklistValueToLocalizedLabelMap = getLocalizedPicklistLabels('Core_MDF_Activity_Attributes__c', new List<String>{'Core_MDF_Tactics_nm__c','Core_MDF_Field_Name_nm__c'});
-		List<String> programList = Label.Core_MDF_Program_Enabled_Tactics.split(',');
 
         //PartnerFundRequest activity = [SELECT Id, RequestedAmount, Core_MDF_Program__c, Core_MDF_ActivityCategory__c, Core_MDF_Reimbursement_Rate__c FROM PartnerFundRequest WHERE Id =: activityId LIMIT 1];
 
@@ -452,8 +433,11 @@ public static Map<String, String> getPicklistLabels() {
         if(String.isNotBlank(claimId)){
             for(Core_MDF_Claim_Attributes__c claimAttribute : [SELECT Id, Core_MDF_Claim_Id__r.Request.Core_MDF_Reimbursement_Rate__c, Core_MDF_Claim_Id__r.Request.RequestedAmount, Core_MDF_Claim_Id__r.Request.Core_MDF_Program__c, Core_MDF_Claim_Id__r.Request.Core_MDF_ActivityCategory__c,   Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c FROM Core_MDF_Claim_Attributes__c WHERE Core_MDF_Type_nm__c IN ('Percentage','Total Planned Spend' ,'Spend This Period', 'Previous Period Spends' ) AND Core_MDF_Is_Active_Ind__c = true AND Core_MDF_Claim_Id__c =: claimId ORDER BY Core_MDF_Tactics_nm__c]){
                 
-                if(!ipaOutcomeBased){ // Rishabh
-                    ipaOutcomeBased = (programList.contains(claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_Program__c) && claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;
+                if(!ipaOutcomeBased){
+                    ipaOutcomeBased = ((claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_Program__c == 'Intel Partner Alliance' ||
+                                       claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_Program__c == 'Datacenter' ||
+                                       claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_Program__c == 'Client')
+                                       && claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;
                     requestedAmount = claimAttribute.Core_MDF_Claim_Id__r.Request.RequestedAmount;
                     reimbursementRate = claimAttribute.Core_MDF_Claim_Id__r.Request.Core_MDF_Reimbursement_Rate__c;
                 }
@@ -496,9 +480,8 @@ public static Map<String, String> getPicklistLabels() {
 
             //Calculate Previous Period Spend
             Map<String, Decimal> tacticToPreviousPeriodSpendAmount = new Map<String, Decimal>();
-            List<String> notAllowedCancelStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimAllowedCancelStatuses').split(';');
-            //Id latestActiveClaimId;
-            /*Boolean isFirstRecord = true;
+            Id latestActiveClaimId;
+            Boolean isFirstRecord = true;
             for(Core_MDF_Claim_Attributes__c claimAttribute : [SELECT Id, Core_MDF_Claim_Id__c, Core_MDF_Tactics_nm__c, Core_MDF_Type_nm__c, Core_MDF_Field_Value_nbr__c, Core_MDF_Claim_Id__r.RequestId FROM Core_MDF_Claim_Attributes__c WHERE Core_MDF_Type_nm__c IN ('Spend This Period', 'Previous Period Spends' ) AND Core_MDF_Claim_Id__r.RequestId =: activityId AND Core_MDF_Is_Active_Ind__c = true ORDER BY Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c DESC, Core_MDF_Tactics_nm__c]){
                 if(isFirstRecord){
                     latestActiveClaimId = claimAttribute.Core_MDF_Claim_Id__c;
@@ -515,23 +498,16 @@ public static Map<String, String> getPicklistLabels() {
                 }else{
                     break;
                 }
-            }*/
-            for( Core_MDF_Claim_Attributes__c claimAttribute : [Select Core_MDF_Tactics_nm__c,Core_MDF_Field_Value_nbr__c,Core_MDF_Claim_Id__c,Core_MDF_Claim_Id__r.Core_MDF_Status__c from Core_MDF_Claim_Attributes__c where Core_MDF_Type_nm__c = 'Spend This Period' and Core_MDF_Is_Active_Ind__c = true and Core_MDF_Claim_Id__r.RequestId = :activityId and Core_MDF_Claim_Id__r.Core_MDF_Status__c NOT IN :notAllowedCancelStatuses]){
-               String tactic = claimAttribute.Core_MDF_Tactics_nm__c;
-               Decimal value = claimAttribute.Core_MDF_Field_Value_nbr__c;
-               if(tacticToPreviousPeriodSpendAmount.containsKey(tactic)){
-                Decimal existingValue = tacticToPreviousPeriodSpendAmount.get(tactic); 
-                tacticToPreviousPeriodSpendAmount.put(tactic,existingValue + value);
-               }else{
-                tacticToPreviousPeriodSpendAmount.put(tactic,value); 
-               } // indu defect fix
             }
-            Decimal reimbursementRateDecimal ;
 
-            for(Core_MDF_Activity_Attributes__c activityAttribute : [SELECT Id, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c, Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c, Core_MDF_Co_Marketing_Activity__r.RequestedAmount, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Reimbursement_Rate__c, Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c, Core_MDF_Co_Marketing_Activity__c, Core_MDF_Is_Active_Ind__c, Core_MDF_Spending_Amount_amt__c FROM Core_MDF_Activity_Attributes__c WHERE Core_MDF_Co_Marketing_Activity__c =: activityId AND Core_MDF_Type_nm__c ='Percentage' AND Core_MDF_Field_Value_nbr__c > 0 AND Core_MDF_Is_Active_Ind__c = true AND Core_MDF_Tactics_nm__c != null ORDER BY Core_MDF_Tactics_nm__c]){
+
+            for(Core_MDF_Activity_Attributes__c activityAttribute : [SELECT Id, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c, Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c, Core_MDF_Co_Marketing_Activity__r.RequestedAmount, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Reimbursement_Rate__c, Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c, Core_MDF_Co_Marketing_Activity__c, Core_MDF_Is_Active_Ind__c FROM Core_MDF_Activity_Attributes__c WHERE Core_MDF_Co_Marketing_Activity__c =: activityId AND Core_MDF_Type_nm__c ='Percentage' AND Core_MDF_Field_Value_nbr__c > 0 AND Core_MDF_Is_Active_Ind__c = true AND Core_MDF_Tactics_nm__c != null ORDER BY Core_MDF_Tactics_nm__c]){
                 
                 if(!ipaOutcomeBased){
-                    ipaOutcomeBased = (programList.contains(activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c) && activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;
+                    ipaOutcomeBased = ((activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Intel Partner Alliance' ||
+                                       activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Datacenter' ||
+                                       activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Client') 
+                                       && activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;
                     requestedAmount = activityAttribute.Core_MDF_Co_Marketing_Activity__r.RequestedAmount;
                     reimbursementRate = activityAttribute.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Reimbursement_Rate__c;
                 }
@@ -545,13 +521,8 @@ public static Map<String, String> getPicklistLabels() {
                 TacticSpendingWrpper spendingWrapper = new TacticSpendingWrpper();
                 spendingWrapper.tactic = activityAttribute.Core_MDF_Tactics_nm__c;
                 spendingWrapper.tacticLabel = picklistValueToLocalizedLabelMap.containsKey(activityAttribute.Core_MDF_Tactics_nm__c) ? picklistValueToLocalizedLabelMap.get(activityAttribute.Core_MDF_Tactics_nm__c) : activityAttribute.Core_MDF_Tactics_nm__c;
-                //For new records(where spending amount is not blank), Calculate TotalPlannedSpend based on Core_MDF_Spending_Amount_amt__c and RR%
-                //For older records(where spending amount is blank), Calculate TotalPlannedSpend based on requestedAmount, RR% and spending percentage
-                reimbursementRateDecimal = Decimal.valueOf(reimbursementRate.replace('%',''));
-                spendingWrapper.totalPlannedSpend = activityAttribute.Core_MDF_Spending_Amount_amt__c != null ? (activityAttribute.Core_MDF_Spending_Amount_amt__c * 100) / reimbursementRateDecimal : (requestedAmount * activityAttribute.Core_MDF_Field_Value_nbr__c) / 100;
-                spendingWrapper.totalPlannedSpend = spendingWrapper.totalPlannedSpend.setScale(2); 
-				//spendingWrapper.totalPlannedSpend = String.isNotBlank(String.valueOf(activityAttribute.Core_MDF_Spending_Amount_amt__c)) ? activityAttribute.Core_MDF_Spending_Amount_amt__c : (requestedAmount * activityAttribute.Core_MDF_Field_Value_nbr__c) / 100;
-                spendingWrapper.previousSpend = previousPeriodSpend.setScale(2);
+                spendingWrapper.totalPlannedSpend = (requestedAmount * activityAttribute.Core_MDF_Field_Value_nbr__c) / 100;
+                spendingWrapper.previousSpend = previousPeriodSpend;
                 spendingWrapper.remainingSpend = spendingWrapper.totalPlannedSpend - spendingWrapper.previousSpend;
                 spendingWrapper.reimbursementRate = Decimal.valueOf(reimbursementRate.replace('%',''));
                 spendingWrapper.editable = editable;
@@ -642,8 +613,6 @@ public static Map<String, String> getPicklistLabels() {
             
             List<Core_MDF_Claim_Attributes__c> claimAttributeUpdateList = new List<Core_MDF_Claim_Attributes__c>();
             List<String> allowedStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_AllowedStatsTacticMetric').split(',');
-            List<String> notAllowedCancelStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimAllowedCancelStatuses').split(';');
-            allowedStatuses.addAll(notAllowedCancelStatuses); // Indu - Added for including cancelled and RWC statuses
             
             // Step 5: For each cancelled claim
             for (Id cancelledId : cancelledClaims.keySet()) {
@@ -690,14 +659,13 @@ public static Map<String, String> getPicklistLabels() {
                             if (otherAttrs.containsKey(ppsKey)) {
                                 Decimal diffValue = tacticDiffs.get(tactic);
                                 if (diffValue != null && diffValue != 0) {
-                                    diffValue = diffValue * -1;
                                     Core_MDF_Claim_Attributes__c targetAttr = otherAttrs.get(ppsKey);
-                                    targetAttr.Core_MDF_Field_Value_nbr__c += diffValue; // add if -, subtract if +
-                                    /*if (diffValue > 0) {
+                                    //targetAttr.Core_MDF_Field_Value_nbr__c += diffValue; // add if -, subtract if +
+                                    if (diffValue > 0) {
                                         targetAttr.Core_MDF_Field_Value_nbr__c -= diffValue;
                                     } else {
                                         targetAttr.Core_MDF_Field_Value_nbr__c += diffValue;
-                                    }*/
+                                    }
                                     claimAttributeUpdateList.add(targetAttr);
                                 }
                             }

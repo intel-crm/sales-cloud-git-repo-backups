@@ -41,7 +41,7 @@ public without sharing class Core_LeadRoutingHandler{
     */
     public static void reprocessLeadRoutingOnUpdate(List<PMP_OPID_MPI_Rel__c> newList,Map<Id, PMP_OPID_MPI_Rel__c> oldMapOPIDList){
         Set<id> mpIdSet = new Set<id>();
-       // Set<String> opIdSet = new Set<String>();
+        Set<String> opIdSet = new Set<String>();
         for(PMP_OPID_MPI_Rel__c opmp: newList){
             if(opmp.Is_Active__c <> oldMapOPIDList.get(opmp.id).Is_Active__c){
                 mpIdSet.add(opmp.PMP_Marketing_Profile_Id__c);

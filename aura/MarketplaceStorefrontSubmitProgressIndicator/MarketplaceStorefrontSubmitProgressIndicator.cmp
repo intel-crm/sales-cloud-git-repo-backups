@@ -51,8 +51,9 @@
                     </p>
                 </li>
                 <aura:if isTrue="{!!v.isOffering}">
-<!--TranslationEOL<li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer6}</p></li>-->
-			<!--As part of defect fix(DE53264) - Removing the final node--><!--US514657 uncommented-->
+                    <li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer6}
+                        
+                        </p></li><!--As part of defect fix(DE53264) - Removing the final node--><!--US514657 uncommented-->
                 </aura:if>
             </ul>
         </div>

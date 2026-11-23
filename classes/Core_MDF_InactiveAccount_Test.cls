@@ -58,7 +58,7 @@ Accenture – VD        3-28-2019                 Created.
         }
         
         // Creating channel program with utility class
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
         
         // Creating IntelAccount with utility class
         Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Intel Account',Core_MDF_CCP_TestDataUtility.intel_Account_Record_Type, true);
@@ -323,8 +323,7 @@ Accenture – VD              05/Mar/2020         Created.
         User usr = [SELECT Id FROM User WHERE LastName='User Test' LIMIT 1];
         Core_MDF_Bank__c bank = [Select id,Core_MDF_Supplier_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='9966467890'];
         PartnerFundRequest pfr2 = [Select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId from PartnerFundRequest where ChannelPartnerId =:acc4.Id];
-        // Highlight: Unused Local Variable
-       // PartnerFundClaim pfc = [Select id from PartnerFundClaim where title='Test Claim2'];
+        PartnerFundClaim pfc = [Select id from PartnerFundClaim where title='Test Claim2'];
         Core_MDF_Account_Bank_Mapping__c bankMap2= [Select Core_MDF_Account__c,Core_MDF_Bank__c,Core_MDF_Active_ind__c from Core_MDF_Account_Bank_Mapping__c where Core_MDF_Bank__c=:bank.Id and Core_MDF_Account__c=:acc4.Id];
         System.runAs(usr){
             //Core_MDF_Adjustment_Request__c adjustmentRec = Core_MDF_CCP_TestDataUtility.createAdjustmentReq(pfc.Id,'Overpaid Claim',10,true);            
@@ -338,8 +337,7 @@ Accenture – VD              05/Mar/2020         Created.
         }        
         //inactivating Node
         System.runAs(usr1){
-            // Highlight: Unused Local Variable 
-           /* Core_MDF_InactivateAccount.accountInactivationWrapper result = */ Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acc4.Id);
+            Core_MDF_InactivateAccount.accountInactivationWrapper result = Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acc4.Id);
             //System.assertEquals(FALSE, result.hasActiveClaims);
         }
         test.stopTest();               
@@ -378,8 +376,7 @@ Accenture – VD              03/28/2019         Created.
        System.runAs(usr1){
            Core_MDF_InactivateAccount.accountInactivationWrapper resultTopVirtual = Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acct.Id);
            System.assertEquals(TRUE, resultTopVirtual.isTopVirtualNode);
-          // Highlight: Unused Local Variable
-         /*  Core_MDF_InactivateAccount.accountInactivationWrapper resultNotTopVirtual = */ Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acct1.Id);
+           Core_MDF_InactivateAccount.accountInactivationWrapper resultNotTopVirtual = Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acct1.Id);
            //System.assertEquals(FALSE, resultNotTopVirtual.isTopVirtualNode);
        }
        test.stopTest();
@@ -464,8 +461,7 @@ Accenture – VD              03/28/2019         Created.
         
         //Creating account instance
         Account act1 = [SELECT Id FROM Account WHERE Name='Test Account1' LIMIT 1];
-       // Highlight: Unused Local Variable 
-       // Account act = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
+        Account act = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
         User usr1 = [SELECT Id FROM User WHERE LastName='ProgAdmUser' LIMIT 1];
         System.runAs(usr1){
             //Checking when account is not top virtual account and not deactivated

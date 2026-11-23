@@ -709,6 +709,9 @@
         <field>FK_$Account.Core_MDF_Parent_Fund_Account__c</field>
     </columns>
     <columns>
+        <field>FK_$Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>FK_$Account.Core_Lead_to_Account_Conversion__c</field>
     </columns>
     <columns>
@@ -1080,7 +1083,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Q4 2026 - Q3 2027,Q4 2025 - Q3 2026</value>
+            <value>Q4 2024 - Q3 2025,Q4 2025 - Q3 2026</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

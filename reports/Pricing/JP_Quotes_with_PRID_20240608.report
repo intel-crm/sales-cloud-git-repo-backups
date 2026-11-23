@@ -13,6 +13,17 @@
         <field>SBQQ__Quote__c$core_cpq_quote_type_nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_pricing_cb__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_cb__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
     </columns>
     <columns>
@@ -47,6 +58,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_pricing_cb__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$core_cpq_approved_on_dt__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

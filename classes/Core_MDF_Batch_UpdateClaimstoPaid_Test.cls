@@ -191,7 +191,7 @@ private class Core_MDF_Batch_UpdateClaimstoPaid_Test {
             Database.insert(auditDocList);                
         }
     
-        Core_MDF_PartnerFundClaim.saveClaim(claimRSAMd, auditDocList, null, null, false, null, false, null, false);   
+        Core_MDF_PartnerFundClaim.saveClaim(claimRSAMd, auditDocList,null);   
         
         
         
@@ -235,7 +235,6 @@ private class Core_MDF_Batch_UpdateClaimstoPaid_Test {
         database.update(paymentRecord);
         Map<Id, Core_MDF_Payment__c> map1 = new Map<Id, Core_MDF_Payment__c>();
         map1.put(paymentRecord.Id, paymentRecord);
-        // Highlight: Unused Local Variable
-       /* Id batchJobId = */ Database.executeBatch(new Core_MDF_Batch_RollbackPaidPaymentClaims(map1),200); 
+        Id batchJobId = Database.executeBatch(new Core_MDF_Batch_RollbackPaidPaymentClaims(map1),200); 
     }
 }

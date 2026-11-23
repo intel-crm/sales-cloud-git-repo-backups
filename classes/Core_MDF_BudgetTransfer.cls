@@ -20,8 +20,7 @@ Modified By:        Date:       Changes:
     @AuraEnabled
     public static boolean checkAccess(){
         
-        String rawLabelValue = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Transfer_Access');
-        List<String> permissionSets = rawLabelValue.split(';');
+        List<string> permissionSets = Label.Core_MDF_Budget_Transfer_Access.split(';');
         List<PermissionSetAssignment> validPermissionSet = new List<PermissionSetAssignment>();
         
         validPermissionSet = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :userinfo.getuserid() AND 
@@ -47,7 +46,8 @@ Modified By:  Accenture - Sandesh H       Date: 24-05-2022      Changes: Removed
         //check the current user has custom permission or not
         Boolean hasMDFBudgetCreationPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_MDF_Budget_Loader_Approver'); 
         
-        Boolean hasIPABudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_IPA_Budget_Loader_Approver');          
+        Boolean hasIPABudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_IPA_Budget_Loader_Approver');  
+        Boolean hasCoGTMBudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Loader_Approver');
         Boolean hasCoGTMBudgetTransferAccess=FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Loader') || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver') ||FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Manager');
         Boolean hasFinanceUserPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Finance_User_Manager') || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Retail_Finance_Usr') || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Retail_Finance_Manager'); 
         Boolean hasEEFBudgetTransferAccess = FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Manager') || FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Loader') ||FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Approver');
@@ -154,9 +154,11 @@ Modified By: Accenture - Sandesh H       Date: 24-05-2022      Changes: Added Or
         Boolean primaryBudgetApprover = FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Approver') ;
         String ACTIVATING_PARTNER = Core_MDF_CCP_ConstantClass.ACTIVATING_PARTNER ;            
 	   String PRIMARY_PARTNER = Core_MDF_CCP_ConstantClass.PRIMARY_PARTNER ;   
-       Id primaryPartnerId ;
+        List<PartnerMarketingBudget> budgetList = new List<PartnerMarketingBudget>();
+        Id primaryPartnerId ;
         String str = '';
-       	Set<String> toAccountIds = new Set<String>();
+       	PartnerMarketingBudget budget;
+        Set<String> toAccountIds = new Set<String>();
 
         try
         {
@@ -433,9 +435,7 @@ Accenture- HP       07-02-2019   Modified check for SPCF Record Type
             Core_MDF_BudgetTransferWrapper budgetTransferWrap = new Core_MDF_BudgetTransferWrapper(partnerFrom,partnerTo,pbmId,amount,typeOfTransfer);
             List<Core_MDF_BudgetTransferWrapper> budgetTransferWrapLst = new List<Core_MDF_BudgetTransferWrapper>();
             budgetTransferWrapLst.add(budgetTransferWrap);
-            Core_MDF_BudgetTransferUtility.skipBudgetUpdate = true;
             transactionStatus = Core_MDF_BudgetTransferUtility.budgetTransfer(budgetTransferWrapLst);
-            Core_MDF_BudgetTransferUtility.skipBudgetUpdate = false;
         }else{
             transactionStatus =Label.Core_MDF_NoIUPGMExists;
         }

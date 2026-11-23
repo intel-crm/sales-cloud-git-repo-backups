@@ -459,12 +459,6 @@
             <field>Core_MDF_Activity_SubType_nm__c</field>
             <table>PartnerFundClaim</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign ID</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
     <sections>
@@ -476,11 +470,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Id__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Claims</masterLabel>

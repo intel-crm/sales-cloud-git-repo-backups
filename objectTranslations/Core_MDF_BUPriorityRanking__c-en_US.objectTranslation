@@ -13,10 +13,6 @@
         <name>Core_MDF_Label__c</name>
     </fields>
     <fields>
-        <label><!-- Program Name --></label>
-        <name>Core_MDF_Program_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Ranking --></label>
         <name>Core_MDF_Ranking_nbr__c</name>
     </fields>

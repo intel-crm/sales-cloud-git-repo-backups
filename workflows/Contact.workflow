@@ -15,7 +15,7 @@
         <ccEmails>Field.Intel.Support@Intel.com</ccEmails>
         <description>Core IPS Contact Notif RDC Access EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Contact_RDC_Access</template>
     </alerts>
@@ -27,7 +27,7 @@
             <field>Core_IPS_Intel_Support_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Contact</template>
     </alerts>
@@ -36,14 +36,10 @@
         <description>Partner Agent Holding Account Alert</description>
         <protected>false</protected>
         <recipients>
-            <recipient>10700597@intel.com.crm</recipient>
+            <recipient>12186499@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <recipients>
-            <recipient>11248723@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_Partner_Agent_Holding_Account_Notification</template>
     </alerts>
@@ -345,7 +341,7 @@
     <outboundMessages>
         <fullName>Core_Intmsg_Contact_New</fullName>
         <apiVersion>32.0</apiVersion>
-        <endpointUrl>https://proxydefault:WJ$K1ZmrZug7@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
+        <endpointUrl>https://dummydefault:WJ$K1ZmrZug7@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
         <fields>AccountId</fields>
         <fields>Core_Account_Legal_Name__c</fields>
         <fields>Core_Account_Primary_City__c</fields>

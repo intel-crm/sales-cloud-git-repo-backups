@@ -29,11 +29,11 @@ export default class crm_Executive_Meeting_Brief_Agentic extends LightningElemen
 
     async handleNext() {
         // Check if generation is already in progress
-        /*if (this.isGenerationInProgress) {
+        if (this.isGenerationInProgress) {
             this.showInProgressToast();
             this.dispatchEvent(new CloseActionScreenEvent());
             return;
-        }*/
+        }
 
         try {
             this.isLoading = true;

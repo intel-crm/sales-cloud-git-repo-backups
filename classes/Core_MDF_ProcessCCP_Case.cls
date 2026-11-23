@@ -11,12 +11,6 @@
 * Accenture - Harika            30/07/2020                    US742525 Populating Claim Case Reviewer Field Value if any edits happen on case
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_ProcessCCP_Case {
-
-    //Roshan - TWC3117-18451
-    private static final String STATUS_UNDER_REVIEW = Core_MDF_CCP_ConstantClass.CASE_OPEN_STATUS;
-    private static final String STATUS_REVIEW_COMPLETED = Core_MDF_CCP_ConstantClass.REVIEW_COMPLETED;
-    private static final String NOTE_DIVIDER = '________________________________';
-
     /*******************************************************************************************************************************************
 Method Name:                                             caseReviewerCheck
 @return  :                                               Void
@@ -50,8 +44,6 @@ Accenture – Shridhar K        03/28/2019                   Created.
                    //Co-Marketing RecordTypeId Check
                    for(Case cs: caseList){
                        if(ccpCaseRecordTypeIdList.contains(cs.RecordTypeId)){
-                        
-                            if (isUpdate) { maintainClosureNotes(cs, oldMap); }  //Roshan - TWC3117-12884
                            
                            //Added for Checklist completion check  
                            if(isUpdate && (cs.Core_MDF_Review_Case_Status__c == 'Compliant' || cs.Core_MDF_Review_Case_Status__c =='Non-compliant' || cs.Core_MDF_Review_Case_Status__c=='Review Completed')){
@@ -138,63 +130,7 @@ Accenture – Shridhar K        03/28/2019                   Created.
            }
     }
     
-    //Roshan - TWC3117-18451 - append date and maintain history for closure note fields
-    public static void maintainClosureNotes(Case newCase, Map<Id, Case> oldMap) {
-
-        Case oldCase = oldMap.get(newCase.Id);
-        Boolean isClosing = oldCase.Core_MDF_Status__c == STATUS_UNDER_REVIEW && newCase.Core_MDF_Status__c == STATUS_REVIEW_COMPLETED;
-        Boolean isReopening = oldCase.Core_MDF_Status__c == STATUS_REVIEW_COMPLETED && newCase.Core_MDF_Status__c == STATUS_UNDER_REVIEW;
-
-        if (newCase.Core_MDF_Status__c != STATUS_UNDER_REVIEW && !isClosing) { return; }
-
-        // Claim Review Closure Note logic
-        if (isClosing) {
-            // case is closed: append the date and maintain the history fields
-            String note = String.isNotBlank(newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c) ? newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c : oldCase.Core_MDF_Claim_Review_Closure_Note__c;
-            if (String.isNotBlank(note)) {
-                String datedEntry = stampNoteWithCurrentDate(note);
-                newCase.Core_MDF_Claim_Review_Closure_Note__c = datedEntry;
-                newCase.Core_MDF_ClaimReviewClosureHistory_txt__c = prependNoteEntry(oldCase.Core_MDF_ClaimReviewClosureHistory_txt__c, datedEntry);
-            }
-            newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c = null;
-        } else if (isReopening || newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c != oldCase.Core_MDF_AddClaimReviewClosure_Note_txt__c) {
-            // TWC3117-18342 - Preserve closure notes created before Core_MDF_ClaimReviewClosureHistory_txt__c was created
-            if (isReopening && String.isBlank(oldCase.Core_MDF_ClaimReviewClosureHistory_txt__c) && String.isNotBlank(oldCase.Core_MDF_Claim_Review_Closure_Note__c)) {
-                newCase.Core_MDF_ClaimReviewClosureHistory_txt__c = oldCase.Core_MDF_Claim_Review_Closure_Note__c.trim();
-            }
-            newCase.Core_MDF_Claim_Review_Closure_Note__c = String.isBlank(newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c) ? null : newCase.Core_MDF_AddClaimReviewClosure_Note_txt__c.trim();
-        }
-
-        // Internal Case Closure Note logic
-        String internalHistory = removeCurrentDraftNote(oldCase.Core_MDF_Internal_Case_Closure_Notes__c, oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-        if (isClosing) {
-            // case is closed: append the date
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? internalHistory : prependNoteEntry(internalHistory, stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c));
-            newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c = null;
-        } else if (newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c != oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) {
-            // update new note if provided
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = prependNoteEntry(internalHistory, String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim());
-        }
-    }
-
-    // appends the current date in UTC to a note: "28/08/2026: <note>".
-    private static String stampNoteWithCurrentDate(String note) { return Datetime.now().formatGMT('dd/MM/yyyy') + ':\n' + note.trim(); }
-
-    // add current note to the top of history fields, separated from older entries by a divider line
-    private static String prependNoteEntry(String existingHistory, String entry) {
-        if (String.isBlank(entry)) { return existingHistory; }
-        if (String.isBlank(existingHistory)) { return entry.trim(); }
-        return entry.trim() + '\n' + NOTE_DIVIDER + '\n' + existingHistory.trim();
-    }
-
-    // returns the historic note without the current draft and divider
-    private static String removeCurrentDraftNote(String accumulatedNote, String draftNote) {
-        if (String.isBlank(accumulatedNote) || String.isBlank(draftNote)) { return accumulatedNote; }
-        if (accumulatedNote.trim() == draftNote.trim()) { return null; }
-
-        String currentNoteWithDivider = draftNote.trim() + '\n' + NOTE_DIVIDER + '\n';
-        return accumulatedNote.trim().startsWith(currentNoteWithDivider) ? accumulatedNote.trim().substring(currentNoteWithDivider.length()) : accumulatedNote;
-    }
+    
     
     //Method calculates the Checklist completion percentage of a given case
     public static Map<id,decimal> validateChecklistCompletion(set<id> caseList){
@@ -259,18 +195,9 @@ Accenture – Shridhar K        03/28/2019                   Created.
                     previousQuarterPSDSet.add(previousQuarterPsdKey);
                     currentToPreviousQtrPsdKey.put(psdKey, previousQuarterPsdKey);
                     psdKeyToPsKeyMap.put(psdKey, psKey);
-                                                            
-                    //Swati-Added to Skip PSD/RD creation for RMF when budget is RSA MD starting Q2 2026
-                    Boolean isRetailMarketingFunds = scoreCard.Core_MDF_Case_Id__r.Core_MDF_Channel_Program_txt__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM;
-                    Boolean isBudgetRsaMd      = scoreCard.Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.RMF_RSA_MD_BUDGET_TYPE;
-                    Boolean isAfter_Q2_2026 = Date.today() >= Date.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Exclude_RSA_MD'));
-                    Boolean skipRSA_MD = isRetailMarketingFunds && isBudgetRsaMd && isAfter_Q2_2026;
-                    if (!skipRSA_MD) {
-                        // Skip creating PSD/RD for RMF when budget is RSA MD starting Q2 2026 
-                        scoreCardIdToPartnershipScoreDetailKeyMap.put(scorecard.Id, psdKey);
-                        scoreCardIdToRecordMap.put(scorecard.Id, scorecard);
-                    }//END -Swati
-                    
+
+                    scoreCardIdToPartnershipScoreDetailKeyMap.put(scorecard.Id, psdKey);
+                    scoreCardIdToRecordMap.put(scorecard.Id, scorecard);
                     psKeyToScoreCardMap.put(psKey, scorecard);
                     psdKeyToScoreCardMap.put(psdKey, scorecard);
                 }

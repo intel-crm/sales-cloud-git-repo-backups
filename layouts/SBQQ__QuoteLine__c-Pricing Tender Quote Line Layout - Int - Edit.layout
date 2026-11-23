@@ -51,12 +51,8 @@
                 <field>Pricing_Meet_Comp_Price_Amt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_HPC_Eligible_Pricing_Envelope__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Reason_for_FeedBack_Txt__c</field>
+                <behavior>Readonly</behavior>
+                <field>Pricing_Recommendation_FeedBack_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -69,14 +65,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_Workload_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Pricing_Approval_Price_Rule_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Change_Request_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -113,24 +101,16 @@
                 <field>Pricing_Payable_Quantity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Pricing_Request_Discount_Unit_Price_qty__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_SDM_Fast_Track__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Price_Interval_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Recommendation_FeedBack_Nm__c</field>
+                <behavior>Readonly</behavior>
+                <field>Pricing_Request_Discount_Unit_Price_qty__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Pricing_Rationale_for_Pricing__c</field>
+                <field>Pricing_Recommended_Price_Amt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

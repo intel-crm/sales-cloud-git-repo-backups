@@ -23,14 +23,6 @@
         //Changes for claim :Checking PFR/PFC
         
         helper.getPageUrl(component);
-
-        // Payment Run New button: launch the Normal/OOC selection flow in a popup first.
-        // The instance embedded inside that flow passes isFromScreenFlow=true, so it skips this.
-        if(component.get("v.isPaymentRunPage") && !component.get("v.isFromScreenFlow")){
-            helper.openScreenFlow(component, "Core_MDF_Payment_Run_Screen_Flow", $A.get("$Label.c.Core_MDF_Payment_Run"), []);
-            return;
-        }
-
         // to get the object - rectype - fieldset mapping
         if(component.get("v.isCampaignPage")) {
             var action = component.get("c.getRtFieldSetMappings");
@@ -57,11 +49,7 @@
             objName = $A.get("$Label.c.Core_MDF_PFRText");
         }else if(component.get("v.isCampaignPage")){ 				//Changes for Create Campaign
             objName = $A.get("$Label.c.Core_MDF_CampaignText");
-        }else if(component.get("v.isPaymentRunPage")){
-            objName = $A.get("$Label.c.Core_MDF_Payment_Run"); 
-        }else if(component.get("v.isAdjustmentPage")){
-            objName = $A.get("$Label.c.Core_MDF_Adjustment");
-        }else{
+         }else{
             objName = $A.get("$Label.c.Core_MDF_PFCText");
          }
         action.setParams({
@@ -92,29 +80,7 @@
                         if(key == newKey){
                             component.set("v.selrecordtypeDeveloperName",key);
                             component.set("v.selrecordtypeName",mapOfRecordTypesStringString[key]);
-                            component.set("v.selrecordtype",mapOfRecordTypesStringId[newKey]);
-                            if(component.get("v.isPaymentRunPage")){  
-                                var selectedRecordTypeName = component.get("v.selrecordtypeDeveloperName");
-                                var selectedRecordTypeId = component.get("v.selrecordtype");
-                                // CoGTM Record Type -> Open Flow
-                                if(selectedRecordTypeName == $A.get("$Label.c.Core_MDF_Cogtm_PaymentRT")){                                    
-                                    helper.openScreenFlow(
-                                        component,
-                                        "Core_MDF_Co_GTM_Payment_Run_Screen_Flow",
-                                        "",
-                                        [{
-                                            name: "recordTypeId",
-                                            type: "String",
-                                            value: selectedRecordTypeId
-                                        }]
-                                    );
-                                }else{  
-                                    helper.createPaymentRunRecord(component);                                    
-                                }
-                            }else if(component.get("v.isAdjustmentPage")){
-                                // Adjustment only has Master RT; skip form rendering, launch screen flow
-                                helper.openScreenFlow(component, "Core_MDF_Claim_Adjustment_Screen_Flow", "Core_MDF_Adjustment_Request__c", []);
-                            }
+                            component.set("v.selrecordtype",mapOfRecordTypesStringId[newKey]);  
                         }  
                     } 
                 }
@@ -145,26 +111,21 @@
                 //Close Quick Action Modal here
                 console.log('record type size-- inside else if block');
                 //alert($A.get("$Label.c.Core_MDF_NoRecordTypeAccess"));
-                if(component.get("v.isAdjustmentPage")){
-                    component.set("v.checkForMultiRecordTypeAccess", false);
-                    helper.openScreenFlow(component, "Core_MDF_Claim_Adjustment_Screen_Flow", "Core_MDF_Adjustment_Request__c", []);
-                    return;
-                }else{
-                    var toastEvent = $A.get("e.force:showToast");
+                var toastEvent = $A.get("e.force:showToast");
                     toastEvent.setParams({
                         title: "Error",
                         duration: 5000,
                         message: $A.get("$Label.c.Core_MDF_NoRecordTypeAccessError"),
                         type: "error"
                     });
-                    toastEvent.fire();
-                    //helper.closeModal();
-                    var homeEvent = $A.get("e.force:navigateToObjectHome");
-                    homeEvent.setParams({
-                        "scope": objName
-                    });
-                    homeEvent.fire();
-                }
+                toastEvent.fire();
+                //helper.closeModal();
+                var homeEvent = $A.get("e.force:navigateToObjectHome");
+                 homeEvent.setParams({
+                   "scope": objName
+                });
+                homeEvent.fire();
+                
             }
             else {
                     console.log("hasCampAccess->",component.get("v.hasNoCampRecordType"));
@@ -313,36 +274,17 @@
     createRecord: function(component, event, helper, sObjectRecord) {
         // Changes for Claim
         var isPfr = component.get("v.isPfrUrl");
-        var isPaymentRunPage = component.get("v.isPaymentRunPage");
         var excludedRecordType;
         //console.log('is pfr--' +isPfr);
         var selectedRecordTypeName = component.find("recordTypePickList").get("v.value");
         //alert("selectedRecordTypeName-->"+selectedRecordTypeName);
         //var excludedRecordType = $A.get("$Label.c.Core_MDF_PFR_RecordtypeCustomUI"); // Call Custom Label to which stores record type name
-        if(isPaymentRunPage){
-            var selectRecordTypeMap = component.get("v.mapOfRecordType");
-            var selectedRecordTypeId = selectRecordTypeMap[selectedRecordTypeName];    
-            // CoGTM Record Type -> Open Flow
-            if(selectedRecordTypeName == $A.get("$Label.c.Core_MDF_Cogtm_PaymentRT")){ 
-                helper.openScreenFlow(
-                    component,
-                    "Core_MDF_Co_GTM_Payment_Run_Screen_Flow",
-                    "",
-                    [{
-                        name: "recordTypeId",
-                        type: "String",
-                        value: selectedRecordTypeId
-                    }]
-                );
-                return;
-            }                
-        }		
+        
+
         if(Boolean(isPfr)){
             excludedRecordType =$A.get("$Label.c.Core_MDF_PFR_RecordTypeUI");
         }else if(component.get("v.isCampaignPage")){
             excludedRecordType =$A.get("$Label.c.Core_MDF_Cmpgn_RecTypeCustomUI");
-        }else if(component.get("v.isPaymentRunPage")){
-            excludedRecordType = $A.get("$Label.c.Core_MDF_Cogtm_PaymentRT");        
         }else{
              excludedRecordType=$A.get("$Label.c.Core_MDF_PFC_RecordtypeCustomUI");
         }
@@ -370,8 +312,6 @@
                 helper.showCreateRecordModal(component, selectedRecordTypeId, $A.get("$Label.c.Core_MDF_PFRText"));
             }else if(component.get("v.isCampaignPage")){ //Changes done for Create Campaign
                 helper.showCreateRecordModal(component, selectedRecordTypeId, $A.get("$Label.c.Core_MDF_CampaignText"));
-            }else if(component.get("v.isPaymentRunPage")){
-                helper.showCreateRecordModal(component,selectedRecordTypeId, $A.get("$Label.c.Core_MDF_Payment_Run"));        
             }else{
                 helper.showCreateRecordModal(component, selectedRecordTypeId, $A.get("$Label.c.Core_MDF_PFCText"));    
             }
@@ -423,10 +363,6 @@
                 objName =  $A.get("$Label.c.Core_MDF_PFRText");
             }else if(component.get("v.isCampaignPage")){
                 objName = $A.get("$Label.c.Core_MDF_CampaignText");
-            }else if(component.get("v.isPaymentRunPage")){
-                objName = $A.get("$Label.c.Core_MDF_Payment_Run"); 
-            }else if(component.get("v.isAdjustmentPage")){
-                objName = $A.get("$Label.c.Core_MDF_Adjustment"); 
             }else{
                 objName = $A.get("$Label.c.Core_MDF_PFCText");
             }
@@ -436,7 +372,7 @@
             });
             homeEvent.fire();
         }        
-    },
+    }
     /*closeModalFormCampaign: function(component, event, helper) {
         var pageReference = component.get("v.pageReference");
         var homeEvent = $A.get("e.force:navigateToSObject");
@@ -446,24 +382,4 @@
         homeEvent.fire();
         $A.get("e.force:refreshView").fire();
     }*/
-
-    // Called when the LWC screen flow modal fires 'close' or 'finished'
-    handleScreenFlowDismiss : function(component, event, helper) {
-        component.set("v.showScreenFlow", false);
-        var navTarget = component.get("v.activeFlowNavigateTo");
-        if (navTarget) {
-            var homeEvent = $A.get("e.force:navigateToObjectHome");
-            homeEvent.setParams({ "scope": navTarget });
-            homeEvent.fire();
-        }
-        component.set("v.activeFlowName", "");
-        component.set("v.activeFlowHeader", "");
-        component.set("v.activeFlowNavigateTo", "");
-        component.set("v.activeFlowInputVariables", []);
-    },
-
-    // Called when the LWC screen flow modal fires 'error'
-    handleScreenFlowError : function(component, event, helper) {
-        component.set("v.showScreenFlow", false);
-    }
 });

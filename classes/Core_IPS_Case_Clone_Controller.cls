@@ -677,11 +677,11 @@ query += f.getFieldPath() + ', ';
              // SOQL Injection Fix - End -  Shipra
         }
         catch(Exception e){
+            System.debug('exception'+e.getMessage());
             //Utility.addError('There is error while Fetching existing Question using Dynamic SOQL in Field Set. Error Detail - '+e.getMessage()); //This is Utility Method to display error message on VF Page
-            //return null;
-            throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
+            return null;
         }
-        //return null;
+        return null;
     }
     
     public PageReference cancelCaseDetails(){

@@ -2,12 +2,12 @@
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
     <contactEmail>support@microsoft.com</contactEmail>
     <description>Connected App for API Integration</description>
-    <label>M365 Copilot Sales Connected App</label>
+    <label>Copilot for Sales Connected App</label>
     <oauthConfig>
         <callbackUrl>https://contoso.com</callbackUrl>
-        <consumerKey>U2uT9KDhIvXecAIuMV8d9jjsY3S70812pCVogfMbc0U0KtMG95fNSDgE2HhQvtJl</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKjmV24i3WAVvwlGnGK9_y86FL0mVGzYDwFHzoOGY3hCU_7yVbcaCJpSt9mOs</consumerKey>
         <isAdminApproved>true</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -23,7 +23,6 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>c4suser11052025120611@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
     </oauthConfig>
     <oauthPolicy>

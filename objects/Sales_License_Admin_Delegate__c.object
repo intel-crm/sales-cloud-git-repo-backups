@@ -387,6 +387,7 @@
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>IsotopeSubscription</excludedStandardButtons>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Sales_License_DlgAdmin_FirstName_Txt__c</searchFilterFields>
         <searchFilterFields>Sales_License_DlgAdmin_LastName_Txt__c</searchFilterFields>

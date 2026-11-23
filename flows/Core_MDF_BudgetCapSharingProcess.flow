@@ -57,10 +57,17 @@
                     <stringValue>Core_MDF_IPA_Budget_Type_Cap</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_MDF_Channel_MDF_Budget_Type_Cap</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_Update_Program_On_Budget_Cap</targetReference>
             </connector>
-            <label>If non IPA</label>
+            <label>If non IPA and non ChannelMDF</label>
         </rules>
     </decisions>
     <description>This flow is used to create Budget Cap share records - converted process builder &apos;Core_MDF_BudgetCapSharing_Process&apos; into flow.</description>

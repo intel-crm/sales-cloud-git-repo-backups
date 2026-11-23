@@ -37,7 +37,6 @@ public class Core_Opportunity_KPI_Delete_Batch_Test {
         Core_Opportunity_KPI_Delete_Batch obj = new Core_Opportunity_KPI_Delete_Batch();
         DataBase.executeBatch(obj);         
         Test.stopTest();
-        System.assertEquals(true,true);
     }
     
     

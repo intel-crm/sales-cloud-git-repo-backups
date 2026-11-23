@@ -1,6 +1,6 @@
 import {LightningElement, wire} from 'lwc';
 //import getPdfDownloadLink from '@salesforce/apex/PSG_fileDownloadController.getPdfDownloadLink';
-/*import { NavigationMixin } from 'lightning/navigation'; 
+import { NavigationMixin } from 'lightning/navigation'; 
 
 const Columns = [
     { label: 'File Name', fieldName: 'fileTitle',wrapText:true,
@@ -19,9 +19,9 @@ const Columns = [
         }
     }
 ];
-*/
+
 export default class psg_downloadPriceBooks extends  NavigationMixin(LightningElement) {
-   /*pdfDownloadLink;
+   //pdfDownloadLink;
     tableData
     columns=Columns
     recordId
@@ -36,7 +36,7 @@ export default class psg_downloadPriceBooks extends  NavigationMixin(LightningEl
            }
        }
    }*/
-   /*callRowAction( event ) {  
+   callRowAction( event ) {  
     
      let row = event.detail.row;
      this.recordId= row.fileId; 
@@ -60,7 +60,7 @@ export default class psg_downloadPriceBooks extends  NavigationMixin(LightningEl
                 //url:window.location.assign(row.fileurl),
                 //actionName: 'download_file'  
             }  
-        }) ;
+        }) ;*/
     
-   }*/
+   }
 }

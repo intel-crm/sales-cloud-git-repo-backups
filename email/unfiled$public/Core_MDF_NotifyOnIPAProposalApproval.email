@@ -4,23 +4,23 @@
                                  $Label.Core_MDF_Proposal_Status_Approved)}"
                          recipientType="User"  
                          relatedToType="Campaign"
-                         language="{!IF(recipient.UserType != 'PowerPartner', 'en_US', recipient.LanguageLocaleKey)}">           
+                         language="{!relatedTo.Owner.LanguageLocaleKey}">
     <messaging:htmlEmailBody >
         <html>
             <body>     
-                <p>{!IF(recipient.UserType == 'PowerPartner',$Label.Core_MDF_EmailTemp_DearIntelPartner,$Label.Core_MDF_EmailTemp_DearIntelemployee)}</p>
+                <p>{!IF(relatedTo.Owner.UserType == 'PowerPartner',$Label.Core_MDF_EmailTemp_DearIntelPartner,$Label.Core_MDF_EmailTemp_DearIntelemployee)}</p>
                 
-                <p>{!IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name,IF(recipient.UserType == 'PowerPartner',$Label.Core_MDF_CoGTM_EmailTemp_Body1,$Label.Core_MDF_CoGTM_EmailTemp_Body2),
-                    IF(recipient.UserType == 'PowerPartner',$Label.Core_MDF_IPA_EmailTemp_Body1,$Label.Core_MDF_IPA_EmailTemp_Body2))}</p>
+                <p>{!IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name,IF(relatedTo.Owner.UserType == 'PowerPartner',$Label.Core_MDF_CoGTM_EmailTemp_Body1,$Label.Core_MDF_CoGTM_EmailTemp_Body2),
+                    IF(relatedTo.Owner.UserType == 'PowerPartner',$Label.Core_MDF_IPA_EmailTemp_Body1,$Label.Core_MDF_IPA_EmailTemp_Body2))}</p>
 
-                <apex:outputPanel rendered="{!IF(recipient.UserType != 'PowerPartner',true,false)}">   
+                <apex:outputPanel rendered="{!IF(RelatedTo.CreatedBy.UserType != 'PowerPartner',true,false)}">   
                     <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field1} </span>{!relatedTo.Core_MDF_Account__r.Name}</p>
                 </apex:outputPanel> 
                 <p>&nbsp; &nbsp; &nbsp; {!IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name,$Label.Core_MDF_CoGTM_EmailTemp_Field2+ ' ',$Label.Core_MDF_IPA_EmailTemp_Field2+ ' ')} 
-                    <apex:outputLink rendered="{!IF(recipient.UserType == 'PowerPartner',true,false)}"
+                    <apex:outputLink rendered="{!IF(relatedTo.Owner.UserType == 'PowerPartner',true,false)}"
                         value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!relatedTo.Name}
                     </apex:outputLink>
-                    <apex:outputLink rendered="{!IF(recipient.UserType != 'PowerPartner',true,false)}"
+                    <apex:outputLink rendered="{!IF(relatedTo.Owner.UserType != 'PowerPartner',true,false)}"
                         value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!relatedTo.Name}                  
                     </apex:outputLink>
                 </p>
@@ -49,10 +49,10 @@
                 <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_Comments}:&nbsp;{!IF(relatedto.Core_MDF_Comments_Appvr_Only_txt__c != null,relatedto.Core_MDF_Comments_Appvr_Only_txt__c, "")}</span></p>
      
                 <p>
-                    <apex:outputLink rendered="{!IF(recipient.UserType == 'PowerPartner',true,false)}"
+                    <apex:outputLink rendered="{!IF(relatedTo.Owner.UserType == 'PowerPartner',true,false)}"
                         value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_IPA_EmailTemp_Link1} 
                     </apex:outputLink>
-                    <apex:outputLink rendered="{!IF(recipient.UserType != 'PowerPartner',true,false)}"
+                    <apex:outputLink rendered="{!IF(relatedTo.Owner.UserType != 'PowerPartner',true,false)}"
                         value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!$Label.Core_MDF_IPA_EmailTemp_Link1}                    
                     </apex:outputLink>&nbsp;{!IF(relatedTo.Core_MDF_Program__c = $Label.Core_MDF_Co_GTM_Technical_program_name,$Label.Core_MDF_CoGTM_EmailTemp_Link4,$Label.Core_MDF_IPA_EmailTemp_Link4)}                  
                 </p>

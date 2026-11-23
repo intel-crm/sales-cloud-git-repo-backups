@@ -9,7 +9,7 @@
             <field>Core_Support_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Internal_Backend_Integration_Error</template>
     </alerts>
@@ -22,9 +22,21 @@
             <field>Core_Support_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_CCP_Error_Notification_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Tech_team_on_Error_Logged</fullName>
+        <description>Notify Tech team on Error Logged</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>coe-integration-user@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_Error_Log_Entry_Notification</template>
     </alerts>
     <alerts>
         <fullName>Pricing_IQR_Trigger_Error_Notification</fullName>
@@ -34,7 +46,7 @@
             <field>Core_Support_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CPQ_Email_Templates/IQR_Error_Notification_Template</template>
     </alerts>
@@ -51,7 +63,7 @@
             <recipient>11710633@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Quality_Builder_Emails_For_Survey_Failure</template>
     </alerts>

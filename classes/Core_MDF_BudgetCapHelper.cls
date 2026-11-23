@@ -101,10 +101,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                 
                 for(PartnerFundRequest pfr: pfrList){
                     SObject sObj = (SObject)pfr;
-                    //ATHR - Deeply Nested if 16209
-                    if(!programSpecificMDT.containsKey(pfr.Campaign.Core_MDF_Program__c)){
-                        continue;
-                    }
+                    if(programSpecificMDT.containsKey(pfr.Campaign.Core_MDF_Program__c)){
                         for(Core_MDF_CCP_Activity_Budget_Cap_Window__mdt mdt: programSpecificMDT.get(pfr.Campaign.Core_MDF_Program__c)){
                             isCriteriaMatched = false;
                             sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_1_txt__c).getDescribe();
@@ -120,10 +117,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                             
                            
     
-                            //ATHR - Deeply Nested if 16209
-                            if(!isCriteriaMatched){
-                                continue;
-                            }
+                            if(isCriteriaMatched){
                                 prfIdSet.add(pfr.Id);   
                                 //pfrIdWithCapType.put(pfr.Id,mdt.Cap_Type__c);
                                 pfrIdWithBudgetId.put(pfr.Id,pfr.BudgetId);
@@ -137,8 +131,8 @@ public without sharing class Core_MDF_BudgetCapHelper{
                                 }  
                             }                       
                         }
-                                       
-        
+                    }
+                }
                 Map<Id,Core_MDF_Budget_Cap__c> budgetCapToBeUpdatedMap = new Map<Id,Core_MDF_Budget_Cap__c>();
                 
                 //Validation Begins
@@ -328,13 +322,21 @@ public without sharing class Core_MDF_BudgetCapHelper{
                 }
                 if(operator == 'In'){
                     list<String> mainString = crtValue.toLowerCase().split(';');
-                    //ATHR - Deeply Nested if 16209
-                    return mainString.contains(recValue.toLowerCase());
+                    if(mainString.contains(recValue.toLowerCase())){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
                 }
                 if(operator == 'Not In'){
                     list<String> mainString = crtValue.toLowerCase().split(';');
-                    //ATHR - Deeply Nested if 16209
-                    return !mainString.contains(recValue.toLowerCase());
+                    if(!mainString.contains(recValue.toLowerCase())){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
                 }               
                 return false;
             }
@@ -366,16 +368,12 @@ public without sharing class Core_MDF_BudgetCapHelper{
                 }
             }
             //Multi-Select type comparison with all appropriate operators
-            //ATHR - Deeply Nested if 16209
-            if (!multiSelectType.contains(fieldType)) {
+            if(multiSelectType.contains(fieldType)){
+                if(operator == 'Equal'){
+                    if(crtValue.split(';').size() != recValue.split(';').size()){
                         return false;
                     }
                     list<String> mainString = crtValue.toLowerCase().split(';');
-            switch on operator {
-                when 'Equal' {
-                if (mainString.size() != recValue.split(';').size()) {
-                    return false;
-                }
                     for(String str: recValue.split(';')){
                         if(!mainString.contains(str.toLowerCase())){
                             return false;
@@ -383,8 +381,8 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     }
                     return true;
                 }
-
-                when 'Not Equal' {
+                if(operator == 'Not Equal'){
+                    list<String> mainString = crtValue.toLowerCase().split(';');                
                     for(String str: recValue.split(';')){
                         if(!mainString.contains(str.toLowerCase())){
                             return true;
@@ -392,8 +390,8 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     }
                     return false;
                 }
-
-                when 'In' {
+                if(operator == 'In'){
+                    list<String> mainString = crtValue.toLowerCase().split(';');           
                     for(String str: recValue.toLowerCase().split(';')){  
                         if(!mainString.contains(str.toLowerCase())){
                             return false;
@@ -401,8 +399,8 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     }
                     return true;
                 }
-
-                when 'Not In' {
+                if(operator == 'Not In'){
+                    list<String> mainString = crtValue.toLowerCase().split(';');
                     for(String str: recValue.toLowerCase().split(';')){                 
                         if(mainString.contains(str.toLowerCase())){
                             return false;
@@ -410,9 +408,9 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     }
                     return true;
                 }           
-                when else {
                 return false;
-                }
             }
+            //Returning false if user selects inappropriate operator 
+            return false;
         }          
     }

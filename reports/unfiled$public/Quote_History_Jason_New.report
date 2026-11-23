@@ -81,6 +81,9 @@
         <field>SBQQ__QuoteLine__c.core_cpq_design_registration_product__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_approved_on_dt__c</field>
     </columns>
     <columns>

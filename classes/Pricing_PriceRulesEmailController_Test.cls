@@ -16,7 +16,9 @@ public class Pricing_PriceRulesEmailController_Test {
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
             List<Contact> drLimitedConList = Pricing_Test_Utility.createDrafterLimitedContact(acc.Id,1);
+            Contact con =drLimitedConList[0];
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
+            List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
                                                               TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
@@ -39,8 +41,8 @@ public class Pricing_PriceRulesEmailController_Test {
             insert prod;
             
             Pricing_Approval_Price_Rules__c approvalPriceRule = new Pricing_Approval_Price_Rules__c(
-                Pricing_Rule_Name__c = 'Test Rule',
-            Pricing_Approval_Status__c = 'Draft',
+            Pricing_Rule_Name__c = 'Test Rule',
+            Pricing_Approval_Status__c = 'Pending',
             Pricing_End_Date__c = Date.today().addMonths(1),
             Pricing_Quote_Type__c = 'Client',
             Pricing_Account__c = acc.Id,

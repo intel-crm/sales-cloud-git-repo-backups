@@ -35,7 +35,6 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
     @track isInternalUser;
     @track isExternalUser;
     @track campaignCSS = '';
-    @api fieldAPIoperator;
 
     connectedCallback() {
          loadStyle(this, Core_MDF_Custom_LayoutCSS);
@@ -51,7 +50,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
             }
             console.log('objAPIName--LWC--->>>>>', this.objAPIName);
             this.getObjFields();
-            this.campaignCSS = (this.objAPIName === 'Campaign' && this.campaignCSS === '') ? 'slds-p-horizontal_medium' : ''; 
+            this.campaignCSS = (this.objAPIName === 'Campaign' && this.campaignCSS === '') ? 'slds-p-horizontal_medium' : '';
         }
     }
 
@@ -60,7 +59,6 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
             recordId: this.recordId,
             objAPIName: this.objAPIName,
             fieldAPIName: this.fieldAPIName,
-            fieldAPIoperator : this.fieldAPIoperator,
             fieldView: this.fieldView
         }).then((result) => {
             console.log('Result-->' , result);
@@ -85,15 +83,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                         let type;
                         if (result[key][i].fieldValue != '' && result[key][i].fieldValue != null) {
                             if (result[key][i].fieldType == 'REFERENCE') {
-                                
-                                //record.url = key == 'Internal User' ? `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view` : portalBaseURL + communityURLSection + result[key][i].fieldValue;
-                                const hasCustomUrl = !!result[key][i].lookupCustomUrlInd;                                
-                                if (key == 'Internal User') {                                    
-                                    record.url = hasCustomUrl ? `/lightning/n/${result[key][i].lookupCustomUrlValue}?c__recordId=${result[key][i].fieldValue}` : `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view`;
-                                } else {                                    
-                                    record.url = hasCustomUrl ? portalBaseURL +'s/'+ result[key][i].lookupCustomUrlValue + '?recordId=' + result[key][i].fieldValue : portalBaseURL + communityURLSection + result[key][i].fieldValue;
-                                }
-                                
+                                record.url = key == 'Internal User' ? `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view` : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 record.urlName = result[key][i].fieldValueName;
                                 record.parentObjectId = result[key][i].fieldValue;
                                 record.parentObjectName = result[key][i].parentObjectName;
@@ -114,9 +104,6 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                             } else if (result[key][i].fieldType == 'CURRENCY') {
                                 result[key][i].fieldValue = formatter.format(result[key][i].fieldValue);
                                 type = 'STRING';
-                            } else if (result[key][i].fieldApiName == 'Core_MDF_Budget_Amount_Local_amt__c') { //Akash changes for $ and %
-                                result[key][i].fieldValue = formatter.format(result[key][i].fieldValue);
-                                type = 'STRING';
                             } else if (result[key][i].fieldType == 'DOUBLE') {
                                 let value = result[key][i].fieldValue;
                                 if(value.indexOf('.') !== -1){
@@ -134,20 +121,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
 
                         let loc;
                         if(this.standardFieldAlign){
-                            //TWC3117-18842
-                            if(this.objAPIName === 'Campaign') {
-                                const noOfColumns = result[key][i].noOfColumns;
-                                if (noOfColumns === '2') {
-                                    loc = i % 2 === 0 ? 'standard-align-right-camp' : 'standard-align-left-camp';
-                                } else if (noOfColumns === '1') {
-                                    loc = 'standard-align-right-camp';
-                                } else {
-                                    loc = 'standard-align-section2';
-                                }
-                            } else {
-                                loc = result[key][i].noOfColumns == '2' ? i % 2 == 0 ? 'standard-align-right' : 'standard-align-left' : 'standard-align-section2';
-                            }
-							//TWC3117-18842
+                            loc = result[key][i].noOfColumns == '2' ? i%2 == 0 ? 'standard-align-right' : 'standard-align-left' : 'standard-align-section2';
                         }else{
                             loc = result[key][i].fieldPosition;
                         }

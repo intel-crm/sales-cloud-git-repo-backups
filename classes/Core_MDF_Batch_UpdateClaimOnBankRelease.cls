@@ -18,7 +18,7 @@ public class Core_MDF_Batch_UpdateClaimOnBankRelease implements Database.Batchab
         strQuery = 'SELECT Id,Core_MDF_ESD_Hold__c,Core_MDF_Audit_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,'
             +'Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,'
             +'Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Bank_Status__c,Core_MDF_Bank__r.Core_MDF_Hold_Payments_from_AP_file_ind__c,'
-            +'Core_MDF_Bank__r.Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c, Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Core_MDF_Bank__c IN:bankIds '
+            +'Core_MDF_Bank__r.Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c FROM PartnerFundClaim where Core_MDF_Bank__c IN:bankIds '
             +'AND Core_MDF_Type_Txt__c=\'Claim\'';
         return Database.getQueryLocator(strQuery);         
     }

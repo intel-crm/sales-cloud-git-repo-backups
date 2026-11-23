@@ -45,11 +45,6 @@
             <field>Core_MDF_NEX_Ind__c</field>
             <table>PartnerFundRequest</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
         <masterLabel>PartnerFundRequest</masterLabel>
     </sections>
     <sections>
@@ -136,11 +131,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Amount</field>
-            <table>PartnerFundRequest.PartnerFundClaims</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Id__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>

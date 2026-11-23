@@ -558,8 +558,7 @@ Modified By:        Date:       Changes:
         Map<Id,PartnerFundClaim> partnerFundClaimMap = new Map<Id,PartnerFundClaim>([Select id,Core_MDF_Type_Txt__c,Core_MDF_Status__c,Core_MDF_VAT_Eligibility_Ind__c from PartnerFundClaim where id in : adjustmentClaims]);
         
         for(Core_MDF_Adjustment_Request__c adjRequest : adjReqIdToAdjReqMap.values()){
-           //if(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_Type_Txt__c.equals(Label.Core_MDF_Negative_Claim)){ //ATHR Comment
-            if(!partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_Type_Txt__c.equals(Label.Core_MDF_Negative_Claim)){continue;}//ATHR Fix- Deeply nested if
+            if(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_Type_Txt__c.equals(Label.Core_MDF_Negative_Claim)){
                 if(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_Status__c != Label.Core_MDF_Status_Cancelled){
                     PartnerFundClaim claimToBeCancelled = new PartnerFundClaim(id = adjReqIdToAdjReqMap.get(adjRequest.Id).Core_MDF_Adjustment_Claim_Nbr__c);
                     claimToBeCancelled.Core_MDF_Claim_Previous_Status__c = partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_Status__c;
@@ -570,7 +569,7 @@ Modified By:        Date:       Changes:
                     if(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_VAT_Eligibility_Ind__c){ VatToBeCancelled.add(claimToBeCancelled.Id);}
                    
                 }
-           // } //ATHR Comment
+            }
         }
         if(listOfClaimsToBeCancelled!=null && listOfClaimsToBeCancelled.size()>0){            
             Database.update(listOfClaimsToBeCancelled); 

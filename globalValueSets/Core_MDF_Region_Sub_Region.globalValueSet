@@ -36,10 +36,9 @@
         <label>ASMO-NAR</label>
     </customValue>
     <customValue>
-        <fullName>EMEA-*</fullName>
+        <fullName>INDIA</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>EMEA-*</label>
+        <label>INDIA</label>
     </customValue>
     <customValue>
         <fullName>ASMO-*</fullName>
@@ -96,12 +95,6 @@
         <label>APJ-IJKK</label>
     </customValue>
     <customValue>
-        <fullName>INDIA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>INDIA</label>
-    </customValue>
-    <customValue>
         <fullName>APJ-SA</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -142,6 +135,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>APJ-*</label>
+    </customValue>
+    <customValue>
+        <fullName>EMEA-*</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>EMEA-*</label>
     </customValue>
     <masterLabel>Region - Sub Region</masterLabel>
     <sorted>false</sorted>

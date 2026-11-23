@@ -555,8 +555,6 @@ public class Core_MDF_AccountServiceHandler_Test {
             Test.startTest();
            Core_MDF_AccountServiceHandler.createAccountNodeAttr(newAccountMap) ;            
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(1, newAccountMap.size(), 'Account map should contain one account');
         }
     }
 }

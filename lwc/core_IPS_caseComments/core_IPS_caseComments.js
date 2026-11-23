@@ -1,7 +1,6 @@
 import { LightningElement,track,wire,api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult'; // Changed by tushar for security venuability 
-import getCaseCommentsForLWC from '@salesforce/apex/core_IPS_LEXAddCommentController.getCaseCommentsForLWC';// Changed by tushar for security venuability 
+import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult';
 import search from '@salesforce/apex/core_IPS_LEXAddCommentController.search';
 import getCase from '@salesforce/apex/Core_IPS_NewMapHomePageController.getCase';
 //mport getSearchResults from '@salesforce/apex/Core_IPS_NewMapHomePageController.getSearchResults';
@@ -63,21 +62,23 @@ export default class Core_IPS_caseComments extends NavigationMixin(LightningElem
                 this.getRecentComments();
             }
         })
-        .catch(error =>{ 
+        .catch(error =>{
             console.log('  Error : ', error.message);
         })
     }
+
     getRecentComments() {
         var commentAuthoredBy;
         var commentAccountBy;
         var authoredByEmail;
         var createdOnDate;
         this.caseId = this.recordId;
-        /*Start -- Tushar -- 14/05/2026 --- CRUD Added as part of vulnerability fix. */
-        getCaseCommentsForLWC({ caseId: this.recordId })
+        let searchQueryStr = 'select id,CreatedBy.name,CreatedBy.Email,Core_IPS_Case__c,Core_IPS_Comment_Authored_By_Email__c, Core_IPS_Comment__c,Core_IPS_Rich_Comment__c,Core_IPS_Comment_Authored_By_Name__c,Core_IPS_Case_Comment_Type__c, Core_IPS_Comment_Author_Type__c, CreatedDate from Core_IPS_Case_Comments__c WHERE Core_IPS_Case__c = \'' + this.caseId + '\' Order By CreatedDate DESC ';
+        getQueryResult({
+                queryString: searchQueryStr
+            })
             .then(data => {
                 if (data) {
-                    /*END -- Tushar -- 14/05/2026 --- CRUD Added as part of vulnerability fix. */
                     //console.log('data debug cs for ips agent '+ JSON.stringify(data));
                     this.records = data;     
                     this.hasRendered = false;  

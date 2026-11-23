@@ -1,4 +1,4 @@
-<aura:component controller="Core_MDF_LookupSObjectController" implements="lightning:availableForFlowScreens" access="global">
+<aura:component controller="Core_MDF_LookupSObjectController" >
    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
     <!-- Attributes -->
     <aura:attribute name="sObjectAPIName" type="String" required="true" 
@@ -21,10 +21,6 @@
                     description="The coma seprated API name(s) of the fields to returned" default="id,name"/>
     <aura:attribute name="filterCriteria" type="String" required="false" 
                     description="Where Clause " default=""/>
-    <aura:attribute name="searchFields" type="String" required="false"
-                    description="Comma-separated fields to search. For example: Title,Core_MDF_Claim_Ref_Number__c." />
-    <aura:attribute name="selectedId" type="String" access="global"
-                    description="The selected record Id for Flow output." />
     <aura:attribute name="searchString" type="String" 
                     description="The search string to find." />
     <aura:attribute name="matches" type="Core_MDF_LookupSObjectController.Result[]"

@@ -97,10 +97,6 @@
             <translation>Incentivo - Nº de ofertas registradas</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>Incentivo — Nº de vitórias de design</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation>Incentivo - Nº de unidades vendidas</translation>
         </picklistValues>
@@ -153,24 +149,8 @@
             <translation>Percentual gastos mídia legada</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>Ativação varejo — n.º de dias-pessoa</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>Ativação técnica — # acordos vencidos</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>Ativação técnica - Nº de implantações</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>Ativação técnica — # vitórias projeto</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -210,10 +190,6 @@
         <name>Core_MDF_Is_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Amount --></label>
-        <name>Core_MDF_Spending_Amount_amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
         <picklistValues>
@@ -239,10 +215,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation>Mídia tradicional</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>Ativação de varejo</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

@@ -19,6 +19,13 @@
     <description>AM Account Owner Loren</description>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>United States</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Covered_Account__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -29,8 +36,15 @@
             <column>USERS.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Account Consolidation SystemUser</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Jose Monroy</value>
+            <value>Chelsea Brooks</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

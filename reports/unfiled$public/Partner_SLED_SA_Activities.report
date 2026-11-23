@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>ACCOUNT</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>Activity.Core_Subtype_of_Activity__c</field>
-    </columns>
-    <columns>
         <field>DUE_DATE</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT</field>
     </columns>
     <columns>
         <field>CONTACT</field>
@@ -47,49 +65,30 @@
     </columns>
     <description>SLED Activity Report</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <column>ACCOWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Alan Rose,Hugues Morin,Alastair Duncan,David Minnaar,Rick Lisa,Michael OBrien</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_BY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Michael OBrien,Hugues Morin,Alan Rose,David Minnaar,Alastair Duncan,Rick Lisa</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>#MMOKR,#EVOKR</value>
+            <value>Michael OBrien,Hugues Morin,Katherine Heidelman,David Minnaar,Alan Rose,Alastair Duncan,Rick Lisa,Anna Scott,Darren Pulsipher,David Richard,Burnie Legette,Tanya Pelletier; Joseph Rodriguez,Christina Daubeneck,Ricardo Dutton,John Haag,Jason Dunn-Potter</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>LAST_UPDATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsAcross>
-        <dateGranularity>Year</dateGranularity>
-        <field>CREATED_DATE</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Activity.Core_Subtype_of_Activity__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>CREATED_BY</field>
+        <field>ACCOWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOWNER</field>
+        <field>ACCOUNT</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Partner/SLED/SA Activities</name>

@@ -249,10 +249,6 @@
         <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Activity Level --></label>
-        <name>Core_MDF_Activity_Level_nm__c</name>
-    </fields>
-    <fields>
         <label>Attività N.</label>
         <name>Core_MDF_Activity_Number__c</name>
     </fields>
@@ -620,10 +616,6 @@
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Ecosystem Modified --></label>
-        <name>Core_MDF_Ecosystem_Modified_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Effective Date/Time --></label>
         <name>Core_MDF_EffectiveDateTime__c</name>
     </fields>
@@ -808,7 +800,7 @@
         <name>Core_MDF_Is_Field_Modified__c</name>
     </fields>
     <fields>
-        <label>È basato sui risultati?</label>
+        <label><!-- Is Outcome-Based? --></label>
         <name>Core_MDF_Is_Outcome_Based_Ind__c</name>
     </fields>
     <fields>
@@ -863,10 +855,6 @@
         <help>La somma massima che Intel pagherà per questa esecuzione.</help>
         <label>Massimo investimento Intel</label>
         <name>Core_MDF_Maximum_Intel_Investment_amt__c</name>
-    </fields>
-    <fields>
-        <label>Approccio di misurazione</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>Membro accettatore</label>
@@ -1040,10 +1028,6 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Outcome Node Acc Mapping Modified --></label>
-        <name>Core_MDF_Node_Acc_Map_Modified_ind__c</name>
-    </fields>
-    <fields>
         <label>Numero di vincitori</label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
@@ -1118,10 +1102,6 @@
     <fields>
         <label>Altro nome evento</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label>Altri approcci di misurazione</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
         <label>Quantità altri</label>
@@ -1200,15 +1180,6 @@
     <fields>
         <label>Requisiti POP</label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Activity --></label>
-        <name>Core_MDF_Parent_Activity_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activties --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>Contatto Partner</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <label>Posizionamento</label>
@@ -1379,11 +1350,6 @@
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
     </fields>
     <fields>
-        <help>Incentivo basato sul concorso al 100%, vincitori limitati al 33% dei partecipanti</help>
-        <label>Incentivo basato sul concorso al 100%</label>
-        <name>Core_MDF_Skip_PCT_Approval_ind__c</name>
-    </fields>
-    <fields>
         <label>N. di like/condivisioni sui social media</label>
         <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
     </fields>
@@ -1549,7 +1515,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>Fondo di co-marketing per i clienti</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1564,7 +1530,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>Fondo di co-marketing per data center</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

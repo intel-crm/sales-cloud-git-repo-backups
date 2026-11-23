@@ -392,20 +392,15 @@ public  String getReportUrl(){
     String endDate;
     
     reportId = getReportId(varReportName); 
-        PageReference pr;
     
     if(isExternal){
-                //url= System.Label.Core_MDF_PFRCommunityLink +'s/report'+'/' + reportId; //commented for ATHR fix
-                pr = new PageReference(System.Label.Core_MDF_PFRCommunityLink + 's/report/' + reportId);
-            	return pr.getUrl();
+            url= System.Label.Core_MDF_PFRCommunityLink +'s/report'+'/' + reportId;
     }
     else{            
         //url='https://'+ System.URL.getSalesforceBaseUrl().getHost() + '/' + reportId;
-            //url='https://'+ System.URL.getOrgDomainUrl().getHost() + '/' + reportId; //commented for ATHR fix
-            pr = new PageReference('/' + reportId);
-            return System.URL.getOrgDomainUrl().toExternalForm() + pr.getUrl();            
+         url='https://'+ System.URL.getOrgDomainUrl().getHost() + '/' + reportId;
     } 
-        //return url;
+    return url;
 }
 
 public string getReportId(String reportName){
@@ -583,7 +578,7 @@ public static void  createEmailLogEntry(List<Messaging.SingleEmailMessage> listO
             }
             
             wrap.templateName = mail != null ? mail.getTemplateName() : '';
-            wrap.templateValue = (mail != null && mail.getHtmlBody() != null) ? (mail.getHtmlBody()).stripHtmlTags() : '';                    
+            wrap.templateValue = mail != null ? (mail.getHtmlBody()).stripHtmlTags() : '';                    
             
             Core_Log_Entry__c logEntryObj = createEmailLogInstance(wrap);
             listEvenPlatform.add(createBulkTransactionPlatEventInstance(logEntryObj));

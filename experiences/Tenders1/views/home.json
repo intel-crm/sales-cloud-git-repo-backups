@@ -72,6 +72,14 @@
     "regionName" : "sidebar",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pSG_Feedback_Form",
+      "id" : "74eec065-cf1e-4432-9e7d-24d3d71ad747",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "1017fc65-76a7-488d-81f7-42baa812ee67",
     "regionName" : "footer",
     "type" : "region"

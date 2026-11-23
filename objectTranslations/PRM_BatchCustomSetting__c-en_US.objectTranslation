@@ -25,10 +25,6 @@
         <name>PRM_MP_Benefits__c</name>
     </fields>
     <fields>
-        <label><!-- PRM_Manual_Benefits --></label>
-        <name>PRM_Manual_Benefits__c</name>
-    </fields>
-    <fields>
         <label><!-- NoOfBatchEntRecords --></label>
         <name>PRM_NoOfBatchEntRecords__c</name>
     </fields>
@@ -47,10 +43,6 @@
     <fields>
         <label><!-- PRM_SchedulingHour --></label>
         <name>PRM_SchedulingHour__c</name>
-    </fields>
-    <fields>
-        <label><!-- PRM_Total_sales_value --></label>
-        <name>PRM_Total_sales_value__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

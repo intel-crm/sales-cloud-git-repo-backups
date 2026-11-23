@@ -69,7 +69,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>daniel goh,Gavin Heng,Sherill hong,Jerrard hou,Vanessa ng,Pratik ranadive,Malcolm Chan</value>
+            <value>daniel goh,Gavin Heng,Sherill hong,Jerrard hou,Kalaiselvam Mohan,Vanessa ng,Gary tan,Guan Hao,Pratik,Hoe Kean</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -104,6 +104,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_NEXT60</interval>
     </timeFrameFilter>
 </Report>

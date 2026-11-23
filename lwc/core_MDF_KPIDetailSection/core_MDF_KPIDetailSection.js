@@ -5,7 +5,6 @@ import plannedKPIMetrics from "@salesforce/label/c.Core_MDF_PlannedKPILabel";
 import actualKPIMetrics from "@salesforce/label/c.Core_MDF_ActualMetricsLabel";
 import ipaRecTypeName from "@salesforce/label/c.Core_MDF_IPA_RecordType";
 import {OLD_KPI_FIELDS_PB, OLD_KPI_FIELDS_AB, OLD_KPI_FIELDS_ALL} from 'c/core_MDF_utilityModule';
-import logErrorImperative from '@salesforce/apex/Core_MDF_KPIDetailPage.logErrorImperative'; //Unhandeled Exception fix added by Shravani
 
 export default class Core_MDF_KPIDetailSection extends LightningElement {
   @track KPIdata = [];
@@ -104,21 +103,6 @@ export default class Core_MDF_KPIDetailSection extends LightningElement {
       this.haserror = true;
       /* eslint-disable no-console*/
       console.log(this.error);
-      //START: Unhandled exception fix added by Sharavani 
-      // Logs error received from Apex and persists it for tracking purposes
-      const errorPayload = {
-          message: error?.body?.message,
-          stackTrace: error?.body?.stackTrace,
-          exceptionType: error?.body?.exceptionType,
-          pageErrors: error?.body?.pageErrors,
-          fieldErrors: error?.body?.fieldErrors
-      };
-
-      logErrorImperative({
-          errorMessage: JSON.stringify(errorPayload),
-          objectApiName: this.objectApiName
-      });
-      //END: Unhandled exception fix added by Sharavani 
     }
   }
 

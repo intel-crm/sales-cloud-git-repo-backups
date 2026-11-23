@@ -6,7 +6,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>it admin</profile>
+                <profile>admin</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -14,7 +14,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>admin</profile>
+                <profile>it admin</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>

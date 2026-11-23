@@ -233,6 +233,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>core_cpq_PRID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>core_cpq_review_date_dt__c</field>
             </layoutItems>
             <layoutItems>
@@ -362,6 +366,20 @@
     </quickActionList>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>core_cpq_active_pricing_cb__c</fields>
+        <fields>core_cpq_active_cb__c</fields>
+        <fields>core_cpq_prid_eligiblity_date_dt__c</fields>
+        <fields>core_cpq_prid_pos__c</fields>
+        <fields>core_cpq_prid_review_date_dt__c</fields>
+        <fields>core_cpq_prid_reviewer__c</fields>
+        <fields>core_cpq_price_start_date_dt__c</fields>
+        <fields>core_cpq_price_end_date_dt__c</fields>
+        <fields>core_cpq_quantity_eau_nbr__c</fields>
+        <relatedList>price_prid__c.core_cpq_quoteline__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

@@ -50,9 +50,6 @@ import claimStatusPaidAndPICPending from '@salesforce/label/c.Core_MDF_Claim_Sta
 import locale from '@salesforce/i18n/locale';
 import timeZone from '@salesforce/i18n/timeZone';
 import ipaProgram from '@salesforce/label/c.Core_MDF_IPA_Technical_program_name';  //Roshan - added for IPA OutcomeBased claims
-import claimStatusPaymentClearanceProcessing from '@salesforce/label/c.Core_MDF_Claim_Status_Payment_Clearance_Processing';//Swati-PIC Pending Label update
-import paymentClearanceStatus from '@salesforce/label/c.Core_MDF_Payment_Clearance_Status';//16654
-import aiFeedbackOptions from '@salesforce/label/c.Core_MDF_AI_Feedback_Options';
 
 export default class Core_MDF_PICDocumentDetails extends NavigationMixin(LightningElement) {
     auditDocuments;
@@ -68,7 +65,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     label = {
         radioYes, radioNo, applicationError, claimDocumentTypes, claim, claimReviewDocuments, fileType, fileName, uploadedDate, issues, response, filesAffected, applicationErrorText, noIssues, noClaimReviewDocuments, errorMessageOnCompletePICReview, picReviewStatus, picReviewProcess,
         completePICReview, startPICReview, picInternalComments, picInternalCommentsplaceholder, recommendForClaimReview, downloadAllDocuments, confirmationPopupMessage1, confirmationPopupMessage2, confirmationPopupMessage3, confirmationPopupLabel1, confirmationPopupLabel2, confirmationPopupLabel3,
-        claimStatusPICPending, ipaProgram, claimStatusPaidAndPICPending, claimStatusPaymentClearanceProcessing, paymentClearanceStatus, aiFeedbackOptions
+        claimStatusPICPending, ipaProgram, claimStatusPaidAndPICPending,  //Roshan - added for IPA OutcomeBased claims - ipaProgram
     };
     @api claimLabel = this.label.claim;
     disableResponse = true;
@@ -129,8 +126,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     @track claimIdToRecordMap = new Map();
     @track claimIdToReviewToCDBLogRec = new Map();
     aiResponseMetadata =[];
-   isOutComeBasedSuperClaim;
-    overallAIConfScore;//MDF POP confidence Score Changes
+
 
     //To fetch the audit documents from apex controller
     @wire(fetchAuditDocuments, { claimId: '$claimId' })
@@ -212,7 +208,6 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         //this.isOutcomeBasedClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c;
         this.isOutcomeBasedClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_OutcomeBased_Ind__c;  //Roshan
         this.claimOutcomeBasedInd = this.claimDetails.Core_MDF_OutcomeBased_Ind__c;//Added By Sham - AI MDF POP
-        this.isOutComeBasedSuperClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_OutcomeBased_Ind__c && this.claimDetails.Core_MDF_Campaign_Id__c == null;//16654
         if (this.isOutcomeBasedClaim) {
             this.loadTactics();
         }
@@ -325,9 +320,6 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                             questionData.cssClassName = qnMdt.Core_MDF_Third_Party_Ind__c ? 'issueWithBackground' : 'issueWithOutBackground';
                             questionData.displayFileSelOnParent = false;
 
-                    //Added by VB - MDF POP Confidence Score Changes
-                    questionData.agreementToAIResponse = '';
-                    questionData.feedbackCmtToAIResponse = '';
                             //Sham - AI Generated Response
                     questionData.hasAIQnResponse = false;
                     questionData.aiQnComment = this.aiDefaultComment;
@@ -335,22 +327,19 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                         const aiResponse = this.aiResponseMetadata.find(response => response.aiQnId === questionData.id);
 
                         if (aiResponse) {
-                            const { aiQnResponse, aiQnComment,aiPicReviewResId, aiConfidenceScore } = aiResponse;
+                            const { aiQnResponse, aiQnComment } = aiResponse;
                             // Always copy comment
                             questionData.aiQnComment = aiQnComment;
-                            questionData.aiPicReviewResId = aiPicReviewResId;
-                            questionData.aiConfidenceScore = aiConfidenceScore;
                             // Normalize the response to lower case
                             const normResponse = (aiQnResponse ?? '').toString().trim().toLowerCase();
                             if (qnMdt.Core_MDF_Sub_Question_Ind__c === false) {
                                 // Main question
                                 const isYes = normResponse === 'yes';
                                 const isNo = normResponse === 'no';
-                                const isNull = normResponse === 'null';
 
                                 //assign Response value Yes/No
-                                questionData.aiQnResponse = (isYes) ? 'Yes' : (isNo) ? 'No' : (isNull) ? 'None' : '';
-                                questionData.hasAIQnResponse = (isYes || isNo || isNull);
+                                questionData.aiQnResponse = (isYes) ? 'Yes' : (isNo) ? 'No' : '';
+                                questionData.hasAIQnResponse = (isYes || isNo);
                             } else {
                                 // Sub-question
                                 //get the parent's response
@@ -825,7 +814,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             if (needsComment) {
                 const errorToastEvent = new ShowToastEvent({
                     title: 'Submit Error',
-                    message: this.isOutComeBasedSuperClaim ? 'Please provide valid Payment Clearance rejection comments' : 'Please provide valid PIC rejection comments',
+                    message: 'Please provide valid PIC rejection comments',
                     variant: 'error'
                 });
                 this.dispatchEvent(errorToastEvent);
@@ -882,21 +871,12 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             //submit the response only if all the validations are true
             if (!validationArray.includes(false)) {
                 //toast to display on successful submission of review
-                let toastEvent;
-                if(this.isOutComeBasedSuperClaim){
-                    toastEvent = new ShowToastEvent({
-                        title: this.label.paymentClearanceStatus,
-                        message: this.isReviewFeedbackFailed ? `The Payment Clearance for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result Payment Clearance Failed` : `The Payment Clearance for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result Payment Clearance Passed`,
-                        variant: this.isReviewFeedbackFailed ? 'error' : 'success'
-                    });
-                }
-                else{
-                    toastEvent = new ShowToastEvent({
+                let toastEvent = new ShowToastEvent({
                     title: this.label.picReviewStatus,
                     message: this.isReviewFeedbackFailed ? `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Failed` : `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Passed`,
                     variant: this.isReviewFeedbackFailed ? 'error' : 'success'
                 });
-                }
+
 
                 //passing required data to controller for new record creation
                 
@@ -936,8 +916,8 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     
                     //Roshan
                     this.campPurposeValuesOnStartReview = this.claimDetailOnStartReview.Core_MDF_Quantity_to_Date_Nbr__c;
-
-                    if (this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaidAndPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaymentClearanceProcessing.toLowerCase()) { 
+                    
+                    if (this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaidAndPICPending.toLowerCase()) {
                         //1st way - show PIC completed POP
                         this.isClaimStatusChanged = true;
                         this.claimReviewerName = this.claimDetailOnStartReview.Core_MDF_Last_Reviewed_By_id__r.Name;
@@ -1158,9 +1138,6 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         if (normalized === 'no' || normalized === 'true') {
             return 'ai-response-no';
         }
-        if (normalized === 'none') {
-            return 'ai-response-none';
-        }
         return '';
     }
 
@@ -1205,14 +1182,11 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                         this.aiResponseMetadata = results.map(result => ({
                             aiQnId: result.Core_MDF_Question_id__c,
                             aiQnResponse: result.Core_MDF_Response_txt__c,
-                            aiQnComment: result.Core_MDF_Comment_txt__c || this.aiDefaultComment,
-                            aiPicReviewResId: result.Id,
-                            aiConfidenceScore: result.Core_MDF_AI_Confidence_Score_Nm__c
+                            aiQnComment: result.Core_MDF_Comment_txt__c || this.aiDefaultComment
                         }));
                         
                         // latest AI PIC review id for manual Pic Review 
                         this.latestAIPICReviewId = aiResult.picReviewId;
-                        this.overallAIConfScore = aiResult.overallAIConfScore;
                         setAIResponseAndLoadUI({ isAIResAvailable: true, disableGenAI: false, errMessage: '' });
                     } else {
                         const errMsg = aiResult?.status === 'INPROGRESS' ? this.inProgressErrorMsg : this.failedErrorMsg;
@@ -1263,48 +1237,5 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             this.showSpinner = false;
             this.setAIResponsefromResult();
         }
-    }    
-    get headerLabel() {
-        return this.isOutComeBasedSuperClaim
-            ? 'Payment Clearance Process'
-            : this.label.picReviewProcess;
-    }
-    get descriptionLabel() {
-        return this.isOutComeBasedSuperClaim
-            ? 'Payment Clearance Review'
-            : 'PIC Review';
-	}	
-    //Added by VB - MDF POP Confidence Score Changes
-    handleAgreementToAIResponse(event) {
-        let selectedResponse = event.target.value;
-        let qnId = event.target.name;
-        this.questionMetadata.map(qnMdt => {
-            if (qnMdt.id === qnId) {
-                qnMdt.agreementToAIResponse = selectedResponse;
-            }
-        });
-
-        (this.subQuestionMetadata || []).map(qnMdt => {
-            if (qnMdt.id === qnId) {
-                qnMdt.agreementToAIResponse = selectedResponse;
-            }
-        });
-    }
-
-    //Added by VB - MDF POP Confidence Score Changes
-    handleFeedbackCommentToAIRes(event) {
-        event.stopPropagation();
-        const qnToUpdate = this.questionMetadata.find(qnMdt => qnMdt.name === event.target.name);
-        const subQnToUpdate = (this.subQuestionMetadata || []).find(qn => qn.name === event.target.name);
-        if (qnToUpdate) {
-            qnToUpdate.feedbackCmtToAIResponse = event.target.value;
-        }
-        if (subQnToUpdate) {
-            subQnToUpdate.feedbackCmtToAIResponse = event.target.value;
-        }
-    }
-
-    get aiFeedbackOptions() {
-       return JSON.parse(this.label.aiFeedbackOptions);
     }
 }

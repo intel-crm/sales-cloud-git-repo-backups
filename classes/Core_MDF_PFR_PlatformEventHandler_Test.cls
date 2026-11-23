@@ -102,7 +102,8 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);           
             ipaCoMarketingAccount.Core_Geo__c = 'APJ';
             insert ipaCoMarketingAccount;
-
+            
+            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
             List<Account> accountList = new List<Account>();
             Account ccfVc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing CCF Test Account', 
@@ -164,16 +165,15 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ccfVc.Id,usr1.Id,true);
             
             string budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
-            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today().addDays(-30), System.today().adddays(300),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
+            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
             ipaCampaignForAP.Core_MDF_Region_cd__c = 'APJ';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
             ipaCampaignForAP.Core_Approval_Status__c = 'Price Reviewer';
-            ipaCampaignForAP.Core_MDF_Technology__c=''; // 14285 Indira
             database.insert(ipaCampaignForAP);
             
             Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
-            PartnerMarketingBudget opalbudget = Core_MDF_CCP_TestDataUtility.createBudget('TestOpalPMB',recordTypeIdPMB,ccfVc.Id,ccfCp.Id,12345678,System.today().addDays(-100),System.today().addDays(+190),false);
+            PartnerMarketingBudget opalbudget = Core_MDF_CCP_TestDataUtility.createBudget('TestOpalPMB',recordTypeIdPMB,ccfVc.Id,ccfCp.Id,12345678,System.today().addDays(-90),System.today().addDays(+90),false);
             opalbudget.Core_MDF_Budget_Type__c='MDF';
             opalbudget.Core_MDF_Budget_Type_Txt__c='MDF';
             System.runAs(systemAdmin){
@@ -207,26 +207,9 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
                 insert oemcmpBudget;
             }
             Test.startTest();
-            
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-           /* PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
-            ipaPFR.Core_MDF_ActivityCategory__c = 'Outcome-Based';
-			ipaPFR.Core_MDF_Activity_Types__c='Outcome-Based';
-            pfrList.add(ipaPFR);*/
+            PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
             
-            PartnerFundRequest pfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.Id,ipaCoMarketingAccount.Id,System.today().addDays(-25),System.today().addDays(25),false);
-            pfr.Core_MDF_BU_Split__c ='CCG';
-           /* pfr.Core_MDF_ActivityCategory__c='Sales Incentive (Pre-2025)';
-            pfr.Core_MDF_Activity_Types__c='Seller - Contest SPIF';*/
-            pfr.Core_MDF_ActivityCategory__c='Print';
-            pfr.Core_MDF_Activity_Types__c='Collateral';
-            pfr.Core_MDF_Is_Outcome_Based_Ind__c=true;
-            pfr.Core_MDF_BU1_Split_Percent_nbr__c=100;
-            pfr.amount = 500;
-            pfr.Core_MDF_Reimbursement_Rate_txt__c='60%';
-            pfr.Core_MDF_Budget_Type_nm__c = budgetType;
-            Database.insert(pfr);
-           
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(ccfVc.id),null,null,'INDIA','Small Business','Desktop',
                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
@@ -247,8 +230,6 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             MDFpfr.Core_MDF_Intel_Activity_Owner_Id__c=systemAdmin.id;
             MDFpfr.Core_MDF_Fund_Request_Status__c = 'Planned';
             MDFpfr.Core_MDF_MDFReimbursement_Amt__c = 1000;
-            MDFpfr.Core_MDF_ActivityCategory__c='Print';
-            MDFpfr.Core_MDF_Activity_Types__c='Collateral';
             MDFpfr.RequestedAmount = 1000;
             pfrList.add(MDFpfr);
             System.runAs(systemAdmin){
@@ -279,10 +260,6 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             esc3.Core_MDF_Co_Marketing_Activity_id__c=MDFpfr.id;
             esc3.Core_MDF_Claim_Submitter_Id__c	=  usr1.Id;
             esc3.Core_MDF_Escalation_Status_nm__c = 'Approved';
-          //  esc3.Core_MDF_Escalation_Type_nm__c = 'Late Claim';
-           // esc3.Core_MDF_Escalation_Status_nm__c= 'Expired';
-          
-
             escList.add(esc3);
             
             Core_MDF_Escalation__c esc4 = new Core_MDF_Escalation__c();
@@ -294,8 +271,6 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             esc4.Core_MDF_Co_Marketing_Activity_id__c=MDFpfr.id;
             esc4.Core_MDF_Claim_Submitter_Id__c	=  usr1.Id;
             esc4.Core_MDF_Escalation_Status_nm__c = 'Approved';
-            
-                  
             escList.add(esc4);
             System.runAs(systemAdmin){
                 insert escList;
@@ -335,31 +310,16 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             claim2.Core_MDF_Escalation_Id__c = esc4.id;
             //claim1.Core_MDF_Escalation_Id__c = NULL;
             pfcList.add(claim2);
-            
-            PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('Paid Claim CCFRis', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, MDFpfr.Id, MDFpfr.Core_MDF_Start_Date__c, MDFpfr.Core_MDF_End_Date__c, 500.00, System.today(), null, false);
-            claim3.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
-            //claim1.Status = Label.Core_MDF_Status_Submitted;
-            claim3.Core_MDF_Type_Txt__c ='Claim';
-            claim3.Core_MDF_Currency__c='USD';
-            claim3.Core_MDF_Country_Location_nm__c= 'India'; 
-            claim3.Core_MDF_Quarter_Year_Txt__c = 'Q3-2020';
-            claim3.Core_MDF_VAT_Eligibility_Ind__c = false;
-            claim3.Core_MDF_To_Be_Audited_Ind__c=false;
-            claim3.Core_MDF_Region_Cd__c='APJ';
-            claim3.Core_MDF_Status__c ='PIC Pending';
-            claim3.Core_MDF_PIC_Review_Completed__c = false;
-            claim3.Core_MDF_Bank_Doc_Hold_Ind__c = false;
-            pfcList.add(claim3);
             System.runAs(systemAdmin){
                 insert pfcList;
             }
             Test.stopTest();
             
             esc3.Core_MDF_Claim_Number_id__c = Claim1.id;
-           // database.update(esc3);
+            database.update(esc3);
             
             esc4.Core_MDF_Claim_Number_id__c = claim2.id;
-          //  database.update(esc4);
+            //database.update(esc4);
             
             
             
@@ -379,7 +339,6 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest Where campaign.name = 'Test Campaign - AP' limit 1];
             ipaPFR.Core_MDF_Fund_Request_Status__c = 'Planned';
             ipaPFR.Core_MDF_Region_nm__c = 'APJ';
-           // ipaPFR.Core_MDF_ActivityCategory__c = 'Outcome-Based';
             pfrList.add(ipaPFR);
             Database.update(pfrList);
             
@@ -387,134 +346,29 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             pfrList.add(opalPFR);
             Database.update(pfrList);
             
-            PartnerFundClaim canClaim = [Select id,RequestId,Core_MDF_Status__c,Core_MDF_Type_Txt__c,Core_MDF_Escalation_Id__c From PartnerFundClaim where Title = 'Paid Claim CCFRis' Limit 1];
-            canClaim.Core_MDF_Status__c ='Closed';
-          //  canClaim.Core_MDF_Escalation_Id__c='';
-            canClaim.Core_MDF_Type_Txt__c='Claim';
+            PartnerFundClaim canClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Core_MDF_Country_Location_nm__c = 'India' Limit 1];
+            canClaim.Core_MDF_Status__c ='Cancelled';
             Database.update(canClaim);
             
             PartnerFundClaim reSubClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Title = 'Paid Claim CCF2' Limit 1];
             reSubClaim.Core_MDF_Status__c ='Resubmission Window Closed';
             Database.update(reSubClaim);
             
-            system.debug('canClaim--'+canClaim);
-          
+            Core_MDF_Escalation__c opalEsc = [Select id,Core_MDF_Escalation_Status_nm__c,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test212' limit 1];
+            Core_MDF_Escalation__c opalEsc2 = [Select id,Core_MDF_Escalation_Status_nm__c,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test200' limit 1];
+            escList.add(opalEsc);
+            escList.add(opalEsc2);
+            
+            
+            
             pfrIds.add(ipaPFR.id);
-         //   escIds.add(opalEsc.id);
-         //   escIds.add(opalEsc2.id);
+            escIds.add(opalEsc.id);
+            escIds.add(opalEsc2.id);
             Core_MDF_PFR_PlatformEventHandler.updateActivityAmount(pfrIds);
-           // Core_MDF_PFR_PlatformEventHandler.updateEscalationStatus(escIds);
-           // Core_MDF_PFR_PlatformEventHandler.updateActivityStatus(pfrIds);
+            Core_MDF_PFR_PlatformEventHandler.updateEscalationStatus(escIds);
             Test.stopTest();
             Assert.isNotNull(pfrIds);
         }
         
-    }
-     @isTest
-    static void testMethod2(){
-        User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
-        system.runAs(systemAdmin){
-            Test.startTest();
-            set<Id> pfrIds= new set<Id>();
-            set<Id> escIds = new set<Id>();
-            List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-            List<Core_MDF_Escalation__c> escList = new List<Core_MDF_Escalation__c>();
-            
-            PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest Where campaign.name = 'Test Campaign - AP' limit 1];
-            ipaPFR.Core_MDF_Fund_Request_Status__c = 'Planned';
-            ipaPFR.Core_MDF_Region_nm__c = 'APJ';
-           // ipaPFR.Core_MDF_ActivityCategory__c = 'Outcome-Based';
-            pfrList.add(ipaPFR);
-            Database.update(pfrList);
-            
-            PartnerFundRequest opalPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title = 'Test Activity' limit 1];
-            pfrList.add(opalPFR);
-            Database.update(pfrList);
-            
-            PartnerFundClaim canClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Core_MDF_Country_Location_nm__c = 'India' Limit 1];
-            canClaim.Core_MDF_Status__c ='Cancelled';
-            Database.update(canClaim);
-            
-            PartnerFundClaim reSubClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Title = 'Paid Claim CCF2' Limit 1];
-            reSubClaim.Core_MDF_Status__c ='Resubmission Window Closed';
-            Database.update(reSubClaim);
-            
-            Core_MDF_Escalation__c opalEsc = [Select id,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c,Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Status_nm__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test212' limit 1];
-            opalEsc.Core_MDF_Escalation_Status_nm__c = 'Approved';
-            Database.update(opalEsc);
-            Core_MDF_Escalation__c opalEsc2 = [Select id,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c,Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Status_nm__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test200' limit 1];
-            opalEsc.Core_MDF_Escalation_Status_nm__c = 'Approved';
-            Database.update(opalEsc2);
-            
-            escList.add(opalEsc);
-            escList.add(opalEsc2);
-            
-            system.debug('opalEsc--'+opalEsc);
-            system.debug('opalEsc--'+opalEsc2);
-            
-            pfrIds.add(ipaPFR.id);
-            escIds.add(opalEsc.id);
-            escIds.add(opalEsc2.id);
-            Core_MDF_PFR_PlatformEventHandler.updateActivityAmount(null);
-            Core_MDF_PFR_PlatformEventHandler.updateEscalationStatus(escIds);
-           // Core_MDF_PFR_PlatformEventHandler.updateActivityStatus(pfrIds);
-            Test.stopTest();
-            Assert.isNotNull(pfrIds);
-        }
-        
-    }
-     @isTest
-    static void testMethod3(){
-        User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
-        system.runAs(systemAdmin){
-            Test.startTest();
-            set<Id> pfrIds= new set<Id>();
-            set<Id> escIds = new set<Id>();
-            List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-            List<Core_MDF_Escalation__c> escList = new List<Core_MDF_Escalation__c>();
-            
-            PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest Where campaign.name = 'Test Campaign - AP' limit 1];
-            ipaPFR.Core_MDF_Fund_Request_Status__c = 'Planned';
-            ipaPFR.Core_MDF_Region_nm__c = 'APJ';
-           // ipaPFR.Core_MDF_ActivityCategory__c = 'Outcome-Based';
-            pfrList.add(ipaPFR);
-            Database.update(pfrList);
-            
-            PartnerFundRequest opalPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title = 'Test Activity' limit 1];
-            pfrList.add(opalPFR);
-            Database.update(pfrList);
-            
-            PartnerFundClaim canClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Core_MDF_Country_Location_nm__c = 'India' Limit 1];
-            canClaim.Core_MDF_Status__c ='Cancelled';
-            Database.update(canClaim);
-            
-            PartnerFundClaim reSubClaim = [Select id,Core_MDF_Status__c From PartnerFundClaim where Title = 'Paid Claim CCF2' Limit 1];
-            reSubClaim.Core_MDF_Status__c ='Resubmission Window Closed';
-            Database.update(reSubClaim);
-            
-            Core_MDF_Escalation__c opalEsc = [Select id,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c,Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Status_nm__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test212' limit 1];
-            opalEsc.Core_MDF_Escalation_Status_nm__c = 'Approved';
-            opalEsc.Core_MDF_Claim_Number_id__r.Core_MDF_Status__c='';
-            Database.update(opalEsc);
-            Core_MDF_Escalation__c opalEsc2 = [Select id,Core_MDF_Issue_Description_txt__c,Core_MDF_Claim_Number_id__r.Core_MDF_Status__c,Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Status_nm__c from Core_MDF_Escalation__c where Core_MDF_Escalation_Name_txt__c = 'Test200' limit 1];
-            opalEsc.Core_MDF_Escalation_Status_nm__c = 'Approved';
-            opalEsc.Core_MDF_Claim_Number_id__r.Core_MDF_Status__c='';
-            Database.update(opalEsc2);
-            
-            escList.add(opalEsc);
-            escList.add(opalEsc2);
-            
-            system.debug('opalEsc--'+opalEsc);
-            system.debug('opalEsc--'+opalEsc2);
-            
-            pfrIds.add(ipaPFR.id);
-            escIds.add(opalEsc.id);
-            escIds.add(opalEsc2.id);
-            Core_MDF_PFR_PlatformEventHandler.updateActivityAmount(null);
-            Core_MDF_PFR_PlatformEventHandler.updateEscalationStatus(escIds);
-            Core_MDF_PFR_PlatformEventHandler.updateActivityStatus(pfrIds);
-            Test.stopTest();
-            Assert.isNotNull(pfrIds);
-        } 
     }
 }

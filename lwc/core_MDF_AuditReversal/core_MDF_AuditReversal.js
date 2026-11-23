@@ -1,11 +1,10 @@
-import { LightningElement, track, api, wire } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import { getRecord, getRecordNotifyChange } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import reverseAuditDecision from '@salesforce/apex/Core_MDF_ReverseAuditDecision.reverseAuditDecision';
 import Core_MDF_Reverse_Audit_Confirm_Message from '@salesforce/label/c.Core_MDF_Reverse_Audit_Confirm_Message';
 import Core_MDF_Success_Msg from '@salesforce/label/c.Core_MDF_CCF_DCF_SUCCESS';
 import Core_MDF_Error_Msg from '@salesforce/label/c.Core_MDF_ApplicationErrorMessage';
-import getScorecardRecord from '@salesforce/apex/Core_MDF_ReverseAuditDecision.getScorecardRecord';
 
 export default class Core_MDF_AuditReversal extends LightningElement {
 
@@ -17,17 +16,6 @@ successMsg = Core_MDF_Success_Msg;
 errorMsg = Core_MDF_Error_Msg;
 @track isModalOpen = false;
 @track isLoading = false;
-@track scorecardRecord;
-
-// Wire method to automatically call getScorecardRecord when component loads
-@wire(getScorecardRecord, { caseId: '$recordId' })
-    wiredScorecardRecord({ error, data }) {
-        if (data) {
-            this.scorecardRecord = data;
-        } else if (error) {
-            console.log('Error loading scorecard record:', error);
-        }
-}
 
 handleClick() {
     // to open modal set isModalOpen tarck value as true
@@ -40,7 +28,7 @@ closeModal() {
 }
 callReverseAudit(){
     this.isLoading = true;
-    reverseAuditDecision({caseId: this.recordId, scorecardRecord: this.scorecardRecord})
+    reverseAuditDecision({caseId: this.recordId})
                         .then((result) => {
                             console.log('**test**',result);
                             if(result=='Success'){

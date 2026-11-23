@@ -376,7 +376,7 @@ private class Core_MDF_Bank_Test {
             newBank.Core_MDF_Supplier_Name__c='TEST SUPPLIER NAME';
             newBank.Core_MDF_Bank_Location__c = 'IN';
             newBank.Name = 'TEST BANK';
-            newBank.Core_MDF_Currency_cd__c ='TZS';
+            newBank.Core_MDF_Currency_cd__c ='INR';
 
             insert newBank;
 
@@ -389,8 +389,8 @@ private class Core_MDF_Bank_Test {
             bankShare.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare;
 
-           // Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+            //Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
+            //DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
@@ -428,9 +428,9 @@ private class Core_MDF_Bank_Test {
             bankShare2.RowCause = Schema.Core_MDF_Bank__Share.RowCause.AccountBudgetAdmin__c;
             bankShare2.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare2;
-            // Highlight: Unused Local Variable 
+
             //Core_MDF_ShareBanktoBudgetAdmins obj2 = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+            //DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords2 = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
@@ -543,7 +543,7 @@ private class Core_MDF_Bank_Test {
             Core_MDF_Bank__c bankRec = Core_MDF_CCP_TestDataUtility.createBank(testIntelAccount.Id, 'Core_MDF_Client_CoMarketing_Fund;Core_MDF_Data_Center_CoMarketing_Fund', TRUE,'1001288000');
 
             bankRec.Core_MDF_Program__c = 'Core_MDF_Client_CoMarketing_Fund;Core_MDF_Data_Center_CoMarketing_Fund';
-            bankRec.Core_MDF_Currency_cd__c = 'TZS';
+            bankRec.Core_MDF_Currency_cd__c = 'INR';
             update(bankRec);
 
             bankRec.Core_MDF_Ineffective_Selection_ind__c = true;
@@ -782,7 +782,7 @@ private class Core_MDF_Bank_Test {
         newBank.Core_MDF_Supplier_Name__c='TEST SUPPLIER NAME';
         newBank.Core_MDF_Bank_Location__c = 'IN';
         newBank.Name = 'TEST BANK';
-        newBank.Core_MDF_Currency_cd__c = 'TZS';
+        newBank.Core_MDF_Currency_cd__c = 'INR';
         insert newBank;
 
         //Change Bank Program ESD Update = false
@@ -900,8 +900,7 @@ private class Core_MDF_Bank_Test {
                 try{
                     insert(bankList);
                 }catch(Exception ex){
-                    // Highlight: Unused Local Variable
-                  //  Boolean expectedExceptionThrown =  ex.getMessage().contains('No issues found for this record but this has been failed because of some other duplicate records in the batch.') ? true : false;
+                    Boolean expectedExceptionThrown =  ex.getMessage().contains('No issues found for this record but this has been failed because of some other duplicate records in the batch.') ? true : false;
                   //System.assertEquals(expectedExceptionThrown, true, ex.getMessage());
                 }
               Core_MDF_Bank__c bank3 = Core_MDF_CCP_TestDataUtility.createBank(testIntelAccount.id, 'Core_MDF_Retail_Marketing_Funds', false,'1200567233');
@@ -959,7 +958,7 @@ private class Core_MDF_Bank_Test {
             newBank.Core_MDF_Supplier_Name__c='TEST SUPPLIER NAME';
             newBank.Core_MDF_Bank_Location__c = 'IN';
             newBank.Name = 'TEST BANK';
-            newBank.Core_MDF_Currency_cd__c ='TZS';
+            newBank.Core_MDF_Currency_cd__c ='INR';
             insert newBank;
 
             
@@ -967,8 +966,8 @@ private class Core_MDF_Bank_Test {
             update newBank;
             
             System.assertEquals(newBank.Core_MDF_Bank_Status__c, 'Active');
-           // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
+
+            Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
 
             //Change Bank Program when ESD Update = false
             newBank.Core_MDF_Program__c = 'Core_MDF_Client_CoMarketing_Fund';

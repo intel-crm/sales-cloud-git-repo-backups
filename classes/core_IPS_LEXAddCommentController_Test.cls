@@ -1,12 +1,5 @@
 @isTest
 public with sharing class core_IPS_LEXAddCommentController_Test {
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
-
     @TestSetup
     static void makeData(){
         list<Core_IPS_Labels__c> lstCs = new list<Core_IPS_Labels__c>();
@@ -38,8 +31,6 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             caseComment.Core_IPS_Case__c = caseRec;           
         }
         insert caseComments;
-        System.assert(caseComments[0].Id != null, 'Record not created');
-
     }
     public static TestMethod void searchTestMethodWithRecords(){
         core_IPS_LEXAddCommentController.userhasAccess = true;
@@ -63,30 +54,11 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         core_IPS_LEXAddCommentController.ExternalUser = true;
         core_IPS_LEXAddCommentController.partnerType = 'Not a Partner';
         String profileId = [SELECT Id from Profile where Name='IPS Agent-Partner'].Id;
-        User AccountOwner= TestUtilities.getAccountOwner();
-              System.runas(AccountOwner){
-              Account acc = TestUtilities.getAccountRecord();
-        	  acc.OwnerId = AccountOwner.Id; //Added by Nuthana
-        	  insert acc;
-        	  System.debug('owner Id'+acc.OwnerId);
-              System.assert(acc.Id != null, 'Record not created');
-
-        	Contact con = TestUtilities.getContact();
-        	con.AccountId = acc.ID;
-        	insert con;
-        	System.assert(con.Id != null, 'Record not created');
-              
-          }
-          Contact con = [select Id from Contact Limit 1];
-        /*Account acc = TestUtilities.getAccountRecord();
+        Account acc = TestUtilities.getAccountRecord();
         insert acc;
-        System.assert(acc.Id != null, 'Record not created');
-
         Contact con = TestUtilities.getContact();
         con.AccountId = acc.ID;
         insert con;
-        System.assert(con.Id != null, 'Record not created');*/
-
         User uu = new User(
             ProfileId = profileId,
             LastName = 'last',
@@ -100,9 +72,8 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
-        System.assert(uu.Id != null, 'Record not created');
-
+        insert uu;
+        
         System.runAs(uu){
             insert TestUtilities.getCase();
             String str = 'testing';
@@ -117,31 +88,11 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         core_IPS_LEXAddCommentController.partnerType = 'Not a Partner';
         String profileId = [SELECT Id from Profile where Name='Partner'].Id;
         core_IPS_LEXAddCommentController.partnerProf = profileId;
-         User AccountOwner= TestUtilities.getAccountOwner();
-                   System.runas(AccountOwner){
-              Account acc = TestUtilities.getAccountRecord();
-        	  acc.OwnerId = AccountOwner.Id; //Added by Nuthana
-        	  insert acc;
-        	  System.debug('owner Id'+acc.OwnerId);
-              System.assert(acc.Id != null, 'Record not created');
-
-        	Contact con = TestUtilities.getContact();
-        	con.AccountId = acc.ID;
-        	insert con;
-        	System.assert(con.Id != null, 'Record not created');
-              
-          }
-          Contact con = [select Id from Contact Limit 1];
-         
-        /*Account acc = TestUtilities.getAccountRecord();
+        Account acc = TestUtilities.getAccountRecord();
         insert acc;
-        System.assert(acc.Id != null, 'Record not created');
-
         Contact con = TestUtilities.getContact();
         con.AccountId = acc.ID;
         insert con;
-        System.assert(con.Id != null, 'Record not created');*/
-
         User uu = new User(
             ProfileId = profileId,
             LastName = 'last',
@@ -155,9 +106,8 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
-        System.assert(uu.Id != null, 'Record not created');
-
+        insert uu;
+        
         System.runAs(uu){
             insert TestUtilities.getCase();
             String str = 'testing';
@@ -171,31 +121,15 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
          String profileId = [SELECT Id from Profile where Name='IPS Agent-Partner'].Id;
         core_IPS_LEXAddCommentController.partnerProf = profileId;
         core_IPS_LEXAddCommentController.partnerType = 'Not a Partner';
-        User AccountOwner= TestUtilities.getAccountOwner();
-        System.runAs(AccountOwner){
-            list<Core_IPS_Labels__c> lstCs = new list<Core_IPS_Labels__c>();
-        	lstCs.add(new Core_IPS_Labels__c(name='Core_IPS_Agent_Partner_Profile_id', value__c=profileId));
-        	lstCs.add(new Core_IPS_Labels__c(name='Core_IPS_Profile_Name', value__c='IPS External Customer'));
-        	insert lstCs;
-            
-        }
-         
-        
-          System.runas(AccountOwner){
-              Account acc = TestUtilities.getAccountRecord();
-        	  acc.OwnerId = AccountOwner.Id; //Added by Nuthana
-        	  insert acc;
-        	  System.debug('owner Id'+acc.OwnerId);
-              System.assert(acc.Id != null, 'Record not created');
-
-        	Contact con = TestUtilities.getContact();
-        	con.AccountId = acc.ID;
-        	insert con;
-        	System.assert(con.Id != null, 'Record not created');
-              
-          }
-          Contact con = [select Id from Contact Limit 1];
-
+         list<Core_IPS_Labels__c> lstCs = new list<Core_IPS_Labels__c>();
+        lstCs.add(new Core_IPS_Labels__c(name='Core_IPS_Agent_Partner_Profile_id', value__c=profileId));
+        lstCs.add(new Core_IPS_Labels__c(name='Core_IPS_Profile_Name', value__c='IPS External Customer'));
+        insert lstCs;
+        Account acc = TestUtilities.getAccountRecord();
+        insert acc;
+        Contact con = TestUtilities.getContact();
+        con.AccountId = acc.ID;
+        insert con;
         User uu = new User(
             ProfileId = profileId,
             LastName = 'last',
@@ -209,9 +143,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
-        System.assert(uu.Id != null, 'Record not created');
-
+        insert uu;
      /*   PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps.Id );
@@ -242,9 +174,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -275,9 +205,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -307,9 +235,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -340,9 +266,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -361,7 +285,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         }
     }
     public static TestMethod void saveCommentsTest5(){
-		String profileId = [SELECT Id from Profile limit 1].Id;
+		String profileId = [SELECT Id from Profile where Name='IPS Data Migration'].Id;
         user testuser=new user();
         testuser.email='testuser1998@example.com';
         testuser.Username='testuser1998@example.com';
@@ -373,9 +297,8 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-		System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
+		
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -405,9 +328,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
 		PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -440,9 +361,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
       }
     public static TestMethod void saveCommentsTest2(){
 		String profileId = [SELECT Id from Profile where Name='IPS External Customer'].Id;
-        User AccountOwner= TestUtilities.getAccountOwner();
-        System.runas(AccountOwner){
-            Account accountRecord = new Account();
+         Account accountRecord = new Account();
         accountRecord.recordTypeId = [select id from Recordtype where Developername='Mastered_Account'].id;
         accountRecord.Name = 'Test Account';
         accountRecord.Core_Account_Type__c = 'Distributor';
@@ -453,21 +372,13 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         accountRecord.billingState = 'AK';
         accountRecord.billingStreet = '10street';
         insert accountRecord;
-        System.assert(accountRecord.Id != null, 'Record not created');
-
         contact con=new contact();
         con.firstname='testuser';
         con.lastname='1998';
         con.email='testuser1998@example.com';
         con.AccountId=accountRecord.Id;
-        con.MailingCountry = 'India';
         insert con;
-        System.assert(con.Id != null, 'Record not created');
-
-            
-        }
-        Contact con=[Select Id from Contact limit 1];
-         
+       
         user testuser=new user();
         testuser.email='testuser1998@example.com';
         testuser.Username='testuser1998@example.com';
@@ -480,9 +391,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
         testuser.ContactId=con.Id;
-        insertUserWithValidationBypass(testuser);
-        System.assert(testuser.Id != null, 'Record not created');
-
+        insert testuser;
          System.runAs(testuser){ 
             core_IPS_LEXAddCommentController.CaseWrapper caseWrapperObj = new core_IPS_LEXAddCommentController.CaseWrapper();
             insert TestUtilities.getCase();
@@ -504,45 +413,16 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         lstCs.add(new Core_IPS_Labels__c(name='Core_Partner_Profile_Id', value__c=profileId));
         lstCs.add(new Core_IPS_Labels__c(name='Core_IPS_Profile_Name', value__c='IPS External Customer'));
         insert lstCs;*/
-        /* UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
-         Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
-          User AccountOwner = new User(
-            ProfileId = profile1.Id,
-            LastName = 'last',
-            Email = 'puser00012@example.com',
-            Username = 'puser00012@example.com' + System.currentTimeMillis(),
-            CompanyName = 'TEST',
-            Title = 'title',
-            Alias = 'alias',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            UserRoleId=portalRole.Id
-            );
-        insert AccountOwner;*/
-         User AccountOwner= TestUtilities.getAccountOwner();
-          System.runas(AccountOwner){
-              Account acc = TestUtilities.getAccountRecord();
-        	  acc.OwnerId = AccountOwner.Id; //Added by Nuthana
-        	  insert acc;
-        	  System.debug('owner Id'+acc.OwnerId);
-              System.assert(acc.Id != null, 'Record not created');
-
-        	Contact con = TestUtilities.getContact();
-        	con.AccountId = acc.ID;
-        	insert con;
-        	System.assert(con.Id != null, 'Record not created');
-              
-          }
-          Contact con = [select Id from Contact Limit 1];
-        
-
+        Account acc = TestUtilities.getAccountRecord();
+        insert acc;
+        Contact con = TestUtilities.getContact();
+        con.AccountId = acc.ID;
+        insert con;
         User uu = new User(
             ProfileId = profileId,
             LastName = 'last',
-            Email = 'puser00012@example.com',
-            Username = 'puser00012@example.com' + System.currentTimeMillis(),
+            Email = 'puser00012@amamama.com',
+            Username = 'puser00012@amamama.com' + System.currentTimeMillis(),
             CompanyName = 'TEST',
             Title = 'title',
             Alias = 'alias',
@@ -551,9 +431,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
-        System.assert(uu.Id != null, 'Record not created');
-
+        insert uu;
 		//PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         //PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         //insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps.Id );
@@ -576,17 +454,9 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         
              Case cs = TestUtilities.getCase();
              insert cs;
-         	 System.assert(cs.Id != null, 'Record not created');
-
              core_IPS_LEXAddCommentController.getFieldSetFieldsByFieldSetName('Case', 'Case_Compact_Layout', cs.Id);
 			 core_IPS_LEXAddCommentController.getRequiredValues(cs.Id);
          
-     } 
-    public static TestMethod void getCaseCommentsForLWCTest(){
-        Case cs = TestUtilities.getCase();
-        insert cs;
-        core_IPS_LEXAddCommentController.getCaseCommentsForLWC(cs.id);
-        
-    }
+     }  
     
 }

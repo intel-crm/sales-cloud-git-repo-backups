@@ -1,11 +1,11 @@
 /**
- * @description       :
- * @author            : Rajesh Gajul
- * @group             :
- * @last modified on  : 12-25-2023
- * @last modified by  : Rajesh Gajul
- **/
-public without sharing class Pricing_DataScrubBatch implements Database.Batchable<sObject>, Database.Stateful {
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 10-15-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
+public without sharing class Pricing_DataScrubBatch implements Database.Batchable<sObject>, Database.Stateful { 
     public Database.QueryLocator start(Database.BatchableContext bc){
         return Database.getQueryLocator([SELECT Id, Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c, Pricing_Rejection_Comments_nm__c, Pricing_Rejection_Reason__c, Pricing_pm_approval_comments_nm__c 
                                          FROM SBQQ__QuoteLine__c WHERE Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program AND 
@@ -49,7 +49,9 @@ public without sharing class Pricing_DataScrubBatch implements Database.Batchabl
     }
     public void finish(Database.BatchableContext bc)
     {
-        // Batch job completion - no additional processing required
+        // Get the batch job information
+        AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
+                          FROM AsyncApexJob WHERE Id =:bc.getJobId()];
     }
     public static void createLogEntry(Map<Id, String> errorQLIToMsgMap){
         List<Core_Log_Entry__c> logEntryList =  new List<Core_Log_Entry__c>();

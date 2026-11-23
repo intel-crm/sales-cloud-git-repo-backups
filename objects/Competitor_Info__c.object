@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Competitor Quote Information for a Quote Header</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>competitor_name_pl__c</fullName>
+        <label>Competitor Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Achronix</fullName>
+                    <default>false</default>
+                    <label>Achronix</label>
+                </value>
+                <value>
+                    <fullName>AGM</fullName>
+                    <default>false</default>
+                    <label>AGM</label>
+                </value>
+                <value>
+                    <fullName>Analog Devices</fullName>
+                    <default>false</default>
+                    <label>Analog Devices</label>
+                </value>
+                <value>
+                    <fullName>Anlogic</fullName>
+                    <default>false</default>
+                    <label>Anlogic</label>
+                </value>
+                <value>
+                    <fullName>ASIC</fullName>
+                    <default>false</default>
+                    <label>ASIC</label>
+                </value>
+                <value>
+                    <fullName>Aspeed</fullName>
+                    <default>false</default>
+                    <label>Aspeed</label>
+                </value>
+                <value>
+                    <fullName>Broadcom</fullName>
+                    <default>false</default>
+                    <label>Broadcom</label>
+                </value>
+                <value>
+                    <fullName>CYPRESS SEMICONDUCTOR</fullName>
+                    <default>false</default>
+                    <label>CYPRESS SEMICONDUCTOR</label>
+                </value>
+                <value>
+                    <fullName>EFINIX</fullName>
+                    <default>false</default>
+                    <label>EFINIX</label>
+                </value>
+                <value>
+                    <fullName>Elitestek</fullName>
+                    <default>false</default>
+                    <label>Elitestek</label>
+                </value>
+                <value>
+                    <fullName>FREESCALE</fullName>
+                    <default>false</default>
+                    <label>FREESCALE</label>
+                </value>
+                <value>
+                    <fullName>Fudan Microelectronics</fullName>
+                    <default>false</default>
+                    <label>Fudan Microelectronics</label>
+                </value>
+                <value>
+                    <fullName>GOWIN</fullName>
+                    <default>false</default>
+                    <label>GOWIN</label>
+                </value>
+                <value>
+                    <fullName>Intersil / Renesas</fullName>
+                    <default>false</default>
+                    <label>Intersil / Renesas</label>
+                </value>
+                <value>
+                    <fullName>Lattice</fullName>
+                    <default>false</default>
+                    <label>Lattice</label>
+                </value>
+                <value>
+                    <fullName>Linear Technology / Linear Tech / LTC / LT / ADI / Analog Devices</fullName>
+                    <default>false</default>
+                    <label>Linear Technology / Linear Tech / LTC / LT / ADI / Analog Devices</label>
+                </value>
+                <value>
+                    <fullName>Macom</fullName>
+                    <default>false</default>
+                    <label>Macom</label>
+                </value>
+                <value>
+                    <fullName>Micrel</fullName>
+                    <default>false</default>
+                    <label>Micrel</label>
+                </value>
+                <value>
+                    <fullName>Microchip</fullName>
+                    <default>false</default>
+                    <label>Microchip</label>
+                </value>
+                <value>
+                    <fullName>Monolithic Power / MPS</fullName>
+                    <default>false</default>
+                    <label>Monolithic Power / MPS</label>
+                </value>
+                <value>
+                    <fullName>Nvidia</fullName>
+                    <default>false</default>
+                    <label>Nvidia</label>
+                </value>
+                <value>
+                    <fullName>NXP</fullName>
+                    <default>false</default>
+                    <label>NXP</label>
+                </value>
+                <value>
+                    <fullName>Onsemi</fullName>
+                    <default>false</default>
+                    <label>Onsemi</label>
+                </value>
+                <value>
+                    <fullName>ONSEMICONDUCTOR</fullName>
+                    <default>false</default>
+                    <label>ONSEMICONDUCTOR</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Pangomicro</fullName>
+                    <default>false</default>
+                    <label>Pangomicro</label>
+                </value>
+                <value>
+                    <fullName>Texas Instruments / TI</fullName>
+                    <default>false</default>
+                    <label>Texas Instruments / TI</label>
+                </value>
+                <value>
+                    <fullName>Xilinx</fullName>
+                    <default>false</default>
+                    <label>Xilinx</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>competitor_part_pl__c</fullName>
+        <label>Competitor Family</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>competitor_name_pl__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AL3</fullName>
+                    <default>false</default>
+                    <label>AL3</label>
+                </value>
+                <value>
+                    <fullName>Analog Module</fullName>
+                    <default>false</default>
+                    <label>Analog Module</label>
+                </value>
+                <value>
+                    <fullName>Arora-V</fullName>
+                    <default>false</default>
+                    <label>Arora-V</label>
+                </value>
+                <value>
+                    <fullName>Artix 7</fullName>
+                    <default>false</default>
+                    <label>Artix 7</label>
+                </value>
+                <value>
+                    <fullName>Artix Ultrascale Plus</fullName>
+                    <default>false</default>
+                    <label>Artix Ultrascale Plus</label>
+                </value>
+                <value>
+                    <fullName>Avant E</fullName>
+                    <default>false</default>
+                    <label>Avant E</label>
+                </value>
+                <value>
+                    <fullName>Avant G</fullName>
+                    <default>false</default>
+                    <label>Avant G</label>
+                </value>
+                <value>
+                    <fullName>Avant X</fullName>
+                    <default>false</default>
+                    <label>Avant X</label>
+                </value>
+                <value>
+                    <fullName>Certus-NX</fullName>
+                    <default>false</default>
+                    <label>Certus-NX</label>
+                </value>
+                <value>
+                    <fullName>CertusPro-NX</fullName>
+                    <default>false</default>
+                    <label>CertusPro-NX</label>
+                </value>
+                <value>
+                    <fullName>Compa</fullName>
+                    <default>false</default>
+                    <label>Compa</label>
+                </value>
+                <value>
+                    <fullName>CrossLink</fullName>
+                    <default>false</default>
+                    <label>CrossLink</label>
+                </value>
+                <value>
+                    <fullName>CrossLink NX</fullName>
+                    <default>false</default>
+                    <label>CrossLink NX</label>
+                </value>
+                <value>
+                    <fullName>Digital Module</fullName>
+                    <default>false</default>
+                    <label>Digital Module</label>
+                </value>
+                <value>
+                    <fullName>Eagle</fullName>
+                    <default>false</default>
+                    <label>Eagle</label>
+                </value>
+                <value>
+                    <fullName>ECP3</fullName>
+                    <default>false</default>
+                    <label>ECP3</label>
+                </value>
+                <value>
+                    <fullName>ECP5</fullName>
+                    <default>false</default>
+                    <label>ECP5</label>
+                </value>
+                <value>
+                    <fullName>ECP5-5G</fullName>
+                    <default>false</default>
+                    <label>ECP5-5G</label>
+                </value>
+                <value>
+                    <fullName>EF2</fullName>
+                    <default>false</default>
+                    <label>EF2</label>
+                </value>
+                <value>
+                    <fullName>EF3</fullName>
+                    <default>false</default>
+                    <label>EF3</label>
+                </value>
+                <value>
+                    <fullName>EFINIX</fullName>
+                    <default>false</default>
+                    <label>EFINIX</label>
+                </value>
+                <value>
+                    <fullName>GW1N</fullName>
+                    <default>false</default>
+                    <label>GW1N</label>
+                </value>
+                <value>
+                    <fullName>GW1N-A</fullName>
+                    <default>false</default>
+                    <label>GW1N-A</label>
+                </value>
+                <value>
+                    <fullName>GW1NR</fullName>
+                    <default>false</default>
+                    <label>GW1NR</label>
+                </value>
+                <value>
+                    <fullName>GW1NS </fullName>
+                    <default>false</default>
+                    <label>GW1NS </label>
+                </value>
+                <value>
+                    <fullName>GW1NSR </fullName>
+                    <default>false</default>
+                    <label>GW1NSR </label>
+                </value>
+                <value>
+                    <fullName>GW1NZ </fullName>
+                    <default>false</default>
+                    <label>GW1NZ </label>
+                </value>
+                <value>
+                    <fullName>GW2A</fullName>
+                    <default>false</default>
+                    <label>GW2A</label>
+                </value>
+                <value>
+                    <fullName>GW2A-A</fullName>
+                    <default>false</default>
+                    <label>GW2A-A</label>
+                </value>
+                <value>
+                    <fullName>GW2AN</fullName>
+                    <default>false</default>
+                    <label>GW2AN</label>
+                </value>
+                <value>
+                    <fullName>GW2ANR</fullName>
+                    <default>false</default>
+                    <label>GW2ANR</label>
+                </value>
+                <value>
+                    <fullName>GW2AR</fullName>
+                    <default>false</default>
+                    <label>GW2AR</label>
+                </value>
+                <value>
+                    <fullName>iCE40 Ultra</fullName>
+                    <default>false</default>
+                    <label>iCE40 Ultra</label>
+                </value>
+                <value>
+                    <fullName>iCE40 UltraLite</fullName>
+                    <default>false</default>
+                    <label>iCE40 UltraLite</label>
+                </value>
+                <value>
+                    <fullName>iCE40 UltraPLus</fullName>
+                    <default>false</default>
+                    <label>iCE40 UltraPLus</label>
+                </value>
+                <value>
+                    <fullName>IGLOO2 </fullName>
+                    <default>false</default>
+                    <label>IGLOO2 </label>
+                </value>
+                <value>
+                    <fullName>ispMACH 4000</fullName>
+                    <default>false</default>
+                    <label>ispMACH 4000</label>
+                </value>
+                <value>
+                    <fullName>Kintex 7</fullName>
+                    <default>false</default>
+                    <label>Kintex 7</label>
+                </value>
+                <value>
+                    <fullName>Kintex UltraSCALE</fullName>
+                    <default>false</default>
+                    <label>Kintex UltraSCALE</label>
+                </value>
+                <value>
+                    <fullName>Kintex Ultrascale+</fullName>
+                    <default>false</default>
+                    <label>Kintex Ultrascale+</label>
+                </value>
+                <value>
+                    <fullName>Logos</fullName>
+                    <default>false</default>
+                    <label>Logos</label>
+                </value>
+                <value>
+                    <fullName>LOGOS-2</fullName>
+                    <default>false</default>
+                    <label>LOGOS-2</label>
+                </value>
+                <value>
+                    <fullName>LP Series (Low Power)</fullName>
+                    <default>false</default>
+                    <label>LP Series (Low Power)</label>
+                </value>
+                <value>
+                    <fullName>MachXO</fullName>
+                    <default>false</default>
+                    <label>MachXO</label>
+                </value>
+                <value>
+                    <fullName>MachXO2</fullName>
+                    <default>false</default>
+                    <label>MachXO2</label>
+                </value>
+                <value>
+                    <fullName>MachXO3</fullName>
+                    <default>false</default>
+                    <label>MachXO3</label>
+                </value>
+                <value>
+                    <fullName>MachXO5</fullName>
+                    <default>false</default>
+                    <label>MachXO5</label>
+                </value>
+                <value>
+                    <fullName>MIcroModule</fullName>
+                    <default>false</default>
+                    <label>MIcroModule</label>
+                </value>
+                <value>
+                    <fullName>MicroSIP Module</fullName>
+                    <default>false</default>
+                    <label>MicroSIP Module</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>PolarFire</fullName>
+                    <default>false</default>
+                    <label>PolarFire</label>
+                </value>
+                <value>
+                    <fullName>Polarfire SoC</fullName>
+                    <default>false</default>
+                    <label>Polarfire SoC</label>
+                </value>
+                <value>
+                    <fullName>Simple Switcher Nano Module</fullName>
+                    <default>false</default>
+                    <label>Simple Switcher Nano Module</label>
+                </value>
+                <value>
+                    <fullName>Spartan 6</fullName>
+                    <default>false</default>
+                    <label>Spartan 6</label>
+                </value>
+                <value>
+                    <fullName>Spartan 7</fullName>
+                    <default>false</default>
+                    <label>Spartan 7</label>
+                </value>
+                <value>
+                    <fullName>Spartan III</fullName>
+                    <default>false</default>
+                    <label>Spartan III</label>
+                </value>
+                <value>
+                    <fullName>Spartan UltraScale+</fullName>
+                    <default>false</default>
+                    <label>Spartan UltraScale+</label>
+                </value>
+                <value>
+                    <fullName>Speedster7t</fullName>
+                    <default>false</default>
+                    <label>Speedster7t</label>
+                </value>
+                <value>
+                    <fullName>Titan</fullName>
+                    <default>false</default>
+                    <label>Titan</label>
+                </value>
+                <value>
+                    <fullName>Titanium </fullName>
+                    <default>false</default>
+                    <label>Titanium </label>
+                </value>
+                <value>
+                    <fullName>Trion</fullName>
+                    <default>false</default>
+                    <label>Trion</label>
+                </value>
+                <value>
+                    <fullName>Versal AI Core</fullName>
+                    <default>false</default>
+                    <label>Versal AI Core</label>
+                </value>
+                <value>
+                    <fullName>Versal HBM</fullName>
+                    <default>false</default>
+                    <label>Versal HBM</label>
+                </value>
+                <value>
+                    <fullName>Versal Premium Series</fullName>
+                    <default>false</default>
+                    <label>Versal Premium Series</label>
+                </value>
+                <value>
+                    <fullName>Versal Prime</fullName>
+                    <default>false</default>
+                    <label>Versal Prime</label>
+                </value>
+                <value>
+                    <fullName>Virtex-7</fullName>
+                    <default>false</default>
+                    <label>Virtex-7</label>
+                </value>
+                <value>
+                    <fullName>Virtex UltraScale</fullName>
+                    <default>false</default>
+                    <label>Virtex UltraScale</label>
+                </value>
+                <value>
+                    <fullName>Virtex Ultrascale+</fullName>
+                    <default>false</default>
+                    <label>Virtex Ultrascale+</label>
+                </value>
+                <value>
+                    <fullName>Virtex Ultrascale+ 58G PAM4</fullName>
+                    <default>false</default>
+                    <label>Virtex Ultrascale+ 58G PAM4</label>
+                </value>
+                <value>
+                    <fullName>Virtex Ultrascale+ HBM (16GB)</fullName>
+                    <default>false</default>
+                    <label>Virtex Ultrascale+ HBM (16GB)</label>
+                </value>
+                <value>
+                    <fullName>Virtex Ultrascale+ HBM (4GB)</fullName>
+                    <default>false</default>
+                    <label>Virtex Ultrascale+ HBM (4GB)</label>
+                </value>
+                <value>
+                    <fullName>Virtex Ultrascale+ HBM (8GB)</fullName>
+                    <default>false</default>
+                    <label>Virtex Ultrascale+ HBM (8GB)</label>
+                </value>
+                <value>
+                    <fullName>XP2</fullName>
+                    <default>false</default>
+                    <label>XP2</label>
+                </value>
+                <value>
+                    <fullName>Zync UltraScale+ MPSoC CG</fullName>
+                    <default>false</default>
+                    <label>Zync UltraScale+ MPSoC CG</label>
+                </value>
+                <value>
+                    <fullName>Zync UltraScale+ MPSoC EG</fullName>
+                    <default>false</default>
+                    <label>Zync UltraScale+ MPSoC EG</label>
+                </value>
+                <value>
+                    <fullName>Zync UltraScale+ MPSoC EV</fullName>
+                    <default>false</default>
+                    <label>Zync UltraScale+ MPSoC EV</label>
+                </value>
+                <value>
+                    <fullName>Zynq</fullName>
+                    <default>false</default>
+                    <label>Zynq</label>
+                </value>
+                <value>
+                    <fullName>Zynq (Single CPU)</fullName>
+                    <default>false</default>
+                    <label>Zynq (Single CPU)</label>
+                </value>
+                <value>
+                    <fullName>Zynq UltraScale+ RFSoC Gen 1</fullName>
+                    <default>false</default>
+                    <label>Zynq UltraScale+ RFSoC Gen 1</label>
+                </value>
+                <value>
+                    <fullName>Zynq UltraScale+ RFSoC Gen 2</fullName>
+                    <default>false</default>
+                    <label>Zynq UltraScale+ RFSoC Gen 2</label>
+                </value>
+                <value>
+                    <fullName>Zynq UltraScale+ RFSoC Gen 3</fullName>
+                    <default>false</default>
+                    <label>Zynq UltraScale+ RFSoC Gen 3</label>
+                </value>
+                <value>
+                    <fullName>μModule Regulator</fullName>
+                    <default>false</default>
+                    <label>μModule Regulator</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Fudan Microelectronics</controllingFieldValue>
+                <controllingFieldValue>Macom</controllingFieldValue>
+                <controllingFieldValue>Nvidia</controllingFieldValue>
+                <controllingFieldValue>NXP</controllingFieldValue>
+                <controllingFieldValue>Onsemi</controllingFieldValue>
+                <controllingFieldValue>ONSEMICONDUCTOR</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>AGM</controllingFieldValue>
+                <controllingFieldValue>ASIC</controllingFieldValue>
+                <controllingFieldValue>Aspeed</controllingFieldValue>
+                <controllingFieldValue>Broadcom</controllingFieldValue>
+                <controllingFieldValue>CYPRESS SEMICONDUCTOR</controllingFieldValue>
+                <controllingFieldValue>Analog Devices</controllingFieldValue>
+                <controllingFieldValue>Anlogic</controllingFieldValue>
+                <controllingFieldValue>Intersil / Renesas</controllingFieldValue>
+                <controllingFieldValue>Elitestek</controllingFieldValue>
+                <controllingFieldValue>FREESCALE</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Microchip</controllingFieldValue>
+                <valueName>IGLOO2 </valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Microchip</controllingFieldValue>
+                <valueName>PolarFire</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Microchip</controllingFieldValue>
+                <valueName>Polarfire SoC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Monolithic Power / MPS</controllingFieldValue>
+                <controllingFieldValue>Texas Instruments / TI</controllingFieldValue>
+                <controllingFieldValue>Intersil / Renesas</controllingFieldValue>
+                <controllingFieldValue>Micrel</controllingFieldValue>
+                <valueName>Analog Module</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Monolithic Power / MPS</controllingFieldValue>
+                <controllingFieldValue>Intersil / Renesas</controllingFieldValue>
+                <valueName>Digital Module</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pangomicro</controllingFieldValue>
+                <valueName>Compa</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pangomicro</controllingFieldValue>
+                <valueName>Logos</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pangomicro</controllingFieldValue>
+                <valueName>LOGOS-2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pangomicro</controllingFieldValue>
+                <valueName>Titan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas Instruments / TI</controllingFieldValue>
+                <valueName>MicroSIP Module</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas Instruments / TI</controllingFieldValue>
+                <valueName>Simple Switcher Nano Module</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Artix 7</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Artix Ultrascale Plus</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Kintex 7</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Kintex UltraSCALE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Kintex Ultrascale+</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Spartan 6</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Spartan 7</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Spartan III</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Spartan UltraScale+</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Versal AI Core</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Versal HBM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Versal Premium Series</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Versal Prime</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex-7</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex UltraScale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex Ultrascale+</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex Ultrascale+ 58G PAM4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex Ultrascale+ HBM (16GB)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex Ultrascale+ HBM (4GB)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Virtex Ultrascale+ HBM (8GB)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zync UltraScale+ MPSoC CG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zync UltraScale+ MPSoC EG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zync UltraScale+ MPSoC EV</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zynq</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zynq (Single CPU)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zynq UltraScale+ RFSoC Gen 1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zynq UltraScale+ RFSoC Gen 2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Xilinx</controllingFieldValue>
+                <valueName>Zynq UltraScale+ RFSoC Gen 3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Achronix</controllingFieldValue>
+                <valueName>Speedster7t</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Analog Devices</controllingFieldValue>
+                <valueName>μModule Regulator</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Anlogic</controllingFieldValue>
+                <valueName>AL3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Anlogic</controllingFieldValue>
+                <valueName>Eagle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Anlogic</controllingFieldValue>
+                <valueName>EF2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Anlogic</controllingFieldValue>
+                <valueName>EF3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EFINIX</controllingFieldValue>
+                <valueName>EFINIX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EFINIX</controllingFieldValue>
+                <valueName>Titanium </valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EFINIX</controllingFieldValue>
+                <valueName>Trion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>Arora-V</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1N</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1N-A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1NR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1NS </valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1NSR </valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW1NZ </valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW2A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW2A-A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW2AN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW2ANR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GOWIN</controllingFieldValue>
+                <valueName>GW2AR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>Avant E</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>Avant G</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>Avant X</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>Certus-NX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>CertusPro-NX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>CrossLink</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>CrossLink NX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>ECP3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>ECP5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>ECP5-5G</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>iCE40 Ultra</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>iCE40 UltraLite</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>iCE40 UltraPLus</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>ispMACH 4000</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>LP Series (Low Power)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>MachXO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>MachXO2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>MachXO3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>MachXO5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lattice</controllingFieldValue>
+                <valueName>XP2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Linear Technology / Linear Tech / LTC / LT / ADI / Analog Devices</controllingFieldValue>
+                <valueName>MIcroModule</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>core_cpq_competitor_name__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitor Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_competitor_part__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitor Part</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_price__c</fullName>
+        <description>Competitor product price</description>
+        <label>Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_quote__c</fullName>
+        <label>Quote</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Competitor Info</relationshipLabel>
+        <relationshipName>Competitor_Info</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>core_cpq_src_sys_id_c__c</fullName>
+        <description>External system id. ROW_ID, Quote number  separated with | symbol</description>
+        <externalId>false</externalId>
+        <label>core_cpq_src_sys_id__c</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>cpq_core_quantity__c</fullName>
+        <description>Competitor  Quantity</description>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Competitor Info</label>
+    <nameField>
+        <displayFormat>CQL-{000000}</displayFormat>
+        <label>Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Competitor Info</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

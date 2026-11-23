@@ -76,10 +76,6 @@
             <translation>Co-Marketing Aktivitätsgeschichte</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Disbursement Status</masterLabel>
-            <translation>Auszahlungsstatus</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>Verlauf der Haltekriterienliste</translation>
         </picklistValues>
@@ -102,14 +98,6 @@
         <picklistValues>
             <masterLabel>Partner Group Mapping History</masterLabel>
             <translation>Verlauf des Partnergruppen-Mappings</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Breakdown</masterLabel>
-            <translation>Aufschlüsselung der Zahlung</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Details</masterLabel>
-            <translation>Zahlungsdaten</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment History</masterLabel>

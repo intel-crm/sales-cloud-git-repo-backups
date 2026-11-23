@@ -36,10 +36,7 @@ public without sharing class PMP_SearchCompanyTranslationAction {
             }
             try{
             	if(Schema.sObjectType.PMP_Company_Translation__c.isCreateable()){
-                	//insert translationRecordList;
-                	Database.SaveResult[] tRList = Database.insert(translationRecordList, false);
-					PMP_Utility.logDmlErrors((Object[]) tRList, 'PMP_SearchCompanyTranslationAction-insertTranslation');
-
+                	insert translationRecordList;
             	}
             }catch(Exception e){
                PMP_Utility.logError(e,'PMP_SearchCompanyTranslationAction');

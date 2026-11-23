@@ -206,11 +206,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Core_Opportunity_Facts__c.Core_Sustainability_Compliance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Core_Opportunity_Support__c.CRM_Business_Challenge_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -410,8 +405,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.CRM_Opportunity_Geo_INDIA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.CRM_Opportunity_Revenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.CRM_Opportunity_Team_Geo_INDIA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -476,11 +481,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Opportunity.Core_Design_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Opportunity.Core_Intel_Platform__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -512,11 +512,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Core_Solution_Focus__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.Core_Sustainability_Compliance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

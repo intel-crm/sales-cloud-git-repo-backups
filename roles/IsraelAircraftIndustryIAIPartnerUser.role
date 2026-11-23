@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Israel Aerospace Industries (IAI) Partner User</description>
+    <description>Israel Aircraft Industry (IAI) Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Israel Aerospace Industries (IAI) Partner User</name>
+    <name>Israel Aircraft Industry (IAI) Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>A_E_Users_do_not_nest_users</parentRole>
 </Role>

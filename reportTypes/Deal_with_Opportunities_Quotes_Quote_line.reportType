@@ -2248,6 +2248,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Is_Influenced__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Lead_to_Opportunity_Conversion__c</field>
             <table>Core_Design_Registration__c.Opportunities__r</table>
         </columns>
@@ -2469,6 +2479,46 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CventEvents__Event__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__CurrentGenerators__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__DeliveryInstallationStatus__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__MainCompetitors__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_DateTime__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Latitude__s</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Longitude__s</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__OrderNumber__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__TrackingNumber__c</field>
             <table>Core_Design_Registration__c.Opportunities__r</table>
         </columns>
         <columns>
@@ -5649,6 +5699,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_Parent_Quote_Flag_for_documen__c</field>
             <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
         </columns>
@@ -5685,6 +5740,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_authcode_product_txt__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_ccf_flag_cb__c</field>
             <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
         </columns>
         <columns>
@@ -6424,6 +6484,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_prid_active_cb__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_disti_margin_changed__c</field>
             <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
         </columns>
@@ -6524,12 +6589,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_distributor_margin__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_master_ddr__c</field>
             <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_tools_nc_bm_routing_check__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_DM_End_Date__c</field>
+            <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_DM_Validity_Check__c</field>
             <table>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
         </columns>
         <columns>

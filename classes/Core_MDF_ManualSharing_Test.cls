@@ -30,8 +30,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         
         List<User> userList = new List<User>();
         List<Account> acctList = new List<Account>();
-        // Highlight: Unused Local Variable 
-       // List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
+        List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
         
         //Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -396,8 +395,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         User usr2 = [SELECT ID From User where Email = 'sysadmin2@example.com'];
         
         Core_MDF_Budget_Transfer_Log__c atl = [SELECT ID,Core_MDF_Target_Account__c, Core_MDF_Source_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account.Id];
-        // Highlight: Unused Local Variable
-       // Core_MDF_Budget_Transfer_Log__c atl2 = [SELECT ID,Core_MDF_Target_Account__c, Core_MDF_Source_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account3.Id]; 
+        Core_MDF_Budget_Transfer_Log__c atl2 = [SELECT ID,Core_MDF_Target_Account__c, Core_MDF_Source_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account3.Id]; 
         List<Core_MDF_Budget_Transfer_Log__c> accountTransferList = [SELECT ID, Core_MDF_Source_Account__c,Core_MDF_Source_Account__r.Core_MDF_Channel_Program__r.Name,Core_MDF_Target_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account1.Id];
         
         Test.startTest();

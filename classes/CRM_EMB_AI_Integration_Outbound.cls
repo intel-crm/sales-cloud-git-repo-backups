@@ -20,18 +20,6 @@ public class CRM_EMB_AI_Integration_Outbound {
     {
         try{
             List<Executive_Meeting_Brief__c> briefRecords = new List<Executive_Meeting_Brief__c>();
-            
-            //Aswin
-            List<Executive_Meeting_Brief__c> briefRecordsForAcc = new List<Executive_Meeting_Brief__c>();
-            List<ContentDocumentLink> historyContentDocLinksList = new List<ContentDocumentLink>();
-            Map<Id, List<String>> briefIdToHistoryContentVersionsMap = new Map<Id, List<String>>();
-            
-            Map<Id, Executive_Meeting_Brief__c> historicalBriefMap = new Map<Id, Executive_Meeting_Brief__c>();
-            Map<Id,List<CRM_Meeting_Brief_Attendee__c>> mapOfEMBToAttendees = new Map<Id,List<CRM_Meeting_Brief_Attendee__c>>();
-            
-            Set<Id> setOfAccountIds = new Set<Id>();
-            Map<Id, Id> mapOfAccIdToBriefId = new Map<Id, Id>();
-            
             List<CRM_Meeting_Brief_Attendee__c> attendees = new List<CRM_Meeting_Brief_Attendee__c>();
             Map<Id, List<CRM_Meeting_Brief_Attendee__c>> briefIdToAttendeesMap = new Map<Id, List<CRM_Meeting_Brief_Attendee__c>>();
             List<ContentDocumentLink> contentDocLinksList = new List<ContentDocumentLink>();
@@ -39,47 +27,11 @@ public class CRM_EMB_AI_Integration_Outbound {
             Map<String,String> executiveBriefIdToJsonMap = new Map<String,String>();
             Map<String,Object> executiveBriefIdToAccPulseMap = new Map<String,Object>();
             if(briefRecordIds != null){
-                briefRecords = [SELECT Id, Account__c,Account__r.Name,CRM_Intels_Meeting_Objectives__c, CRM_Other_Partys_Meeting_Objectives__c,CRM_Most_Critical_Messages_to_Get_Across__c,
-                                Industry_Insights_Political_Climate__c, LastModifiedDate,How_They_Buy_Sell__c,CRM_Investor_Scouting_Report__c, CRM_Additional_Legal_Guidance__c
+                briefRecords = [SELECT Id, Account__c,CRM_Intels_Meeting_Objectives__c, CRM_Other_Partys_Meeting_Objectives__c,CRM_Most_Critical_Messages_to_Get_Across__c,
+                                Industry_Insights_Political_Climate__c, How_They_Buy_Sell__c,CRM_Investor_Scouting_Report__c, CRM_Additional_Legal_Guidance__c
                                 FROM Executive_Meeting_Brief__c WHERE Id IN :briefRecordIds];
                 
-                //Aswin start
-                for(Executive_Meeting_Brief__c briefRecord:briefRecords){
-                  setOfAccountIds.add(briefRecord.Account__c);  
-                }
-                briefRecordsForAcc = [SELECT Id, Account__c,Account__r.Name,CRM_Intels_Meeting_Objectives__c, CRM_Other_Partys_Meeting_Objectives__c,CRM_Most_Critical_Messages_to_Get_Across__c,
-                                        Industry_Insights_Political_Climate__c,LastModifiedDate, How_They_Buy_Sell__c,CRM_Investor_Scouting_Report__c, CRM_Additional_Legal_Guidance__c
-                                        FROM Executive_Meeting_Brief__c WHERE Account__c IN :setOfAccountIds and Brief_Status__c='Final' and RecordType.DeveloperName = 'CRM_New_Executive_Meeting_Brief' order by Name desc limit 1];
                 
-        
-                
-                if(briefRecordsForAcc!=null && briefRecordsForAcc.size()>0){
-                    
-                    mapOfAccIdToBriefId.put(briefRecordsForAcc[0].Account__c,briefRecordsForAcc[0].Id);
-                    historyContentDocLinksList = [SELECT Id,LinkedEntityId,ContentDocument.LatestPublishedVersionId,ContentDocument.LatestPublishedVersion.FileExtension,
-                                                ContentDocument.Title from ContentDocumentLink WHERE ContentDocument.Title like 'Briefing for%' and LinkedEntityId =:briefRecordsForAcc[0].Id order by ContentDocument.CreatedDate desc limit 1];
-                    // Initialize map for all brief IDs
-                    for(Executive_Meeting_Brief__c briefId : briefRecordsForAcc) {
-                        briefIdToHistoryContentVersionsMap.put(briefId.Id, new List<String>()); 
-                        historicalBriefMap.put(briefId.Id,briefId);
-                    }
-                    
-                    for(ContentDocumentLink cdl : historyContentDocLinksList) {
-                        String fileExtension = cdl.ContentDocument.LatestPublishedVersion.FileExtension;
-                        String title = cdl.ContentDocument.Title;
-                        //allowed formats
-                        Set<String> allowedFormatsForBrief = new Set<String>{'doc','pdf','docx'};
-                        if(fileExtension != null && allowedFormatsForBrief.contains(fileExtension.toLowerCase()) && title.startsWith(System.Label.CRM_BriefingFor)) {
-                            if(!briefIdToHistoryContentVersionsMap.containsKey(cdl.LinkedEntityId)) {
-                                briefIdToHistoryContentVersionsMap.put(cdl.LinkedEntityId, new List<String>{cdl.ContentDocument.LatestPublishedVersionId});
-                            }
-                            else{
-                                briefIdToHistoryContentVersionsMap.get(cdl.LinkedEntityId).add(cdl.ContentDocument.LatestPublishedVersionId);
-                            }
-                        }
-                    }
-                    
-                } //Aswin end
                 contentDocLinksList = [SELECT Id,LinkedEntityId,ContentDocument.LatestPublishedVersionId,ContentDocument.LatestPublishedVersion.FileExtension,
                                        ContentDocument.Title from ContentDocumentLink WHERE LinkedEntityId IN:briefRecordIds];
                 
@@ -94,7 +46,7 @@ public class CRM_EMB_AI_Integration_Outbound {
                     for(ContentDocumentLink cdl : contentDocLinksList) {
                         String fileExtension = cdl.ContentDocument.LatestPublishedVersion.FileExtension;
                         String title = cdl.ContentDocument.Title;
-                        if(fileExtension != null && allowedFormats.contains(fileExtension.toLowerCase()) && !title.startsWith(System.Label.CRM_BriefingFor)) {
+                        if(fileExtension != null && allowedFormats.contains(fileExtension.toLowerCase()) && !title.startsWith('Briefing for')) {
                             if(!briefIdToContentVersionsMap.containsKey(cdl.LinkedEntityId)) {
                                 briefIdToContentVersionsMap.put(cdl.LinkedEntityId, new List<String>{cdl.ContentDocument.LatestPublishedVersionId});
                             }
@@ -103,22 +55,9 @@ public class CRM_EMB_AI_Integration_Outbound {
                             }
                         }
                     }
-                
+				
                 //Account pulse callout
                 executiveBriefIdToAccPulseMap= CRM_Account_Pulse_Integration.getAccountPulse(briefRecordIds);
-                
-                //Logic to fetch the external attendees
-                for(CRM_Meeting_Brief_Attendee__c meetingBrfAttendee : [Select id,CRM_Executive_Meeting_Brief__c,CRM_External_Attendee__c,CRM_External_Attendee__r.FirstName,
-                                                                        CRM_External_Attendee__r.LastName,CRM_External_Attendee__r.Email,
-                                                                        CRM_External_Attendee__r.Account.Website from CRM_Meeting_Brief_Attendee__c 
-                                                                        where CRM_Executive_Meeting_Brief__c IN:briefRecordIds and CRM_External_Attendee__c!=null]){
-                                                                            system.debug('inside-->');
-                    if (!mapOfEMBToAttendees.containsKey(meetingBrfAttendee.CRM_Executive_Meeting_Brief__c)) {
-                            mapOfEMBToAttendees.put(meetingBrfAttendee.CRM_Executive_Meeting_Brief__c, new List<CRM_Meeting_Brief_Attendee__c>());
-                        }
-                        mapOfEMBToAttendees.get(meetingBrfAttendee.CRM_Executive_Meeting_Brief__c).add(meetingBrfAttendee);
-                                                                                system.debug('mapOfEMBToAttendees-->'+mapOfEMBToAttendees);
-                }
             }
             // Creating mainWrapper for each brief
             for(Executive_Meeting_Brief__c briefRecord:briefRecords){
@@ -131,29 +70,8 @@ public class CRM_EMB_AI_Integration_Outbound {
                 briefWrap.mostCriticalMessage = briefRecord.CRM_Most_Critical_Messages_to_Get_Across__c;
                 briefWrap.howTheyBuySell = briefRecord.How_They_Buy_Sell__c;
                 briefWrap.investorScoutingReport = briefRecord.CRM_Investor_Scouting_Report__c;
-                briefWrap.accountName = briefRecord.Account__r.Name;
-                 if(briefIdToHistoryContentVersionsMap.containsKey(mapOfAccIdToBriefId.get(briefRecord.Account__c)) && !briefIdToHistoryContentVersionsMap.get(mapOfAccIdToBriefId.get(briefRecord.Account__c)).isEmpty()){
 
-                     if(historicalBriefMap.containsKey(mapOfAccIdToBriefId.get(briefRecord.Account__c)) && historicalBriefMap.get(mapOfAccIdToBriefId.get(briefRecord.Account__c)) !=null){
-
-                         briefWrap.historicalBriefLatestDate = historicalBriefMap.get(mapOfAccIdToBriefId.get(briefRecord.Account__c)).LastModifiedDate.date();
-                         briefWrap.historicalBriefId = historicalBriefMap.get(mapOfAccIdToBriefId.get(briefRecord.Account__c)).Id;
-                     }
-                    // Initialize the list if it's null
-                    if(briefWrap.contentVersionDetails == null) {
-                        briefWrap.contentVersionDetails = new List<ContentVersionDetailsWrapper>();
-                    }
-                    for(String cdId : briefIdToHistoryContentVersionsMap.get(mapOfAccIdToBriefId.get(briefRecord.Account__c))) {
-                        ContentVersionDetailsWrapper cdWrapper = new ContentVersionDetailsWrapper();
-                        cdWrapper.contentVersionId = cdId;
-                        cdWrapper.historicalBrief ='Yes';
-                        briefWrap.contentVersionDetails.add(cdWrapper);
-                    }
-                    
-                }
-                
                 if(briefIdToContentVersionsMap.containsKey(briefRecord.Id)){
-                   
                     // Initialize the list if it's null
                     if(briefWrap.contentVersionDetails == null) {
                         briefWrap.contentVersionDetails = new List<ContentVersionDetailsWrapper>();
@@ -161,31 +79,15 @@ public class CRM_EMB_AI_Integration_Outbound {
                     for(String cdId : briefIdToContentVersionsMap.get(briefRecord.Id)) {
                         ContentVersionDetailsWrapper cdWrapper = new ContentVersionDetailsWrapper();
                         cdWrapper.contentVersionId = cdId;
-                        cdWrapper.historicalBrief ='No';
                         briefWrap.contentVersionDetails.add(cdWrapper);
-                        
                     }
                     
-                }
-                
-                if(mapOfEMBToAttendees.containsKey(briefRecord.Id)){
-                    // Initialize the list if it's null
-                    if(briefWrap.externalAttendeeDetails == null) {
-                        briefWrap.externalAttendeeDetails = new List<ExternalAttendeesWrapper>();
-                    }
-                    for(CRM_Meeting_Brief_Attendee__c attendee : mapOfEMBToAttendees.get(briefRecord.Id)){
-                        ExternalAttendeesWrapper eaWrapper = new ExternalAttendeesWrapper();
-                        eaWrapper.firstName = attendee.CRM_External_Attendee__r.FirstName;
-                        eaWrapper.LastName = attendee.CRM_External_Attendee__r.LastName;
-                        eaWrapper.email = attendee.CRM_External_Attendee__r.email;
-                        eaWrapper.website = attendee.CRM_External_Attendee__r.Account.Website;
-                        briefWrap.externalAttendeeDetails.add(eaWrapper);    
-                    }
                 }
                 Object accPulseValue = executiveBriefIdToAccPulseMap.get(briefRecord.Id);
                 if (accPulseValue != null) {
                     briefWrap.acc_pulse = accPulseValue;
                 }
+                
                 // Add content version IDs for this brief
                 String jsonPayload = JSON.serialize(briefWrap);
                 executiveBriefIdToJsonMap.put(briefRecord.Id,jsonPayload);
@@ -219,7 +121,8 @@ Modified By:        Date:       Changes:
                 
                 String payload = executiveBriefIdToJsonMap.get(execBriefId);
                 
-                if (String.isBlank(payload)) {continue;
+                if (String.isBlank(payload)) {
+                    continue;
                 }
                 // Send payload to CDB
                 HttpResponse res = sendCDBPayload(payload);
@@ -242,7 +145,8 @@ Modified By:        Date:       Changes:
                 cdbLogList.add(logRec);
                 
             }
-            if(!executiveMeetingBriefList.isEmpty()){update executiveMeetingBriefList;
+            if(!executiveMeetingBriefList.isEmpty()){
+                update executiveMeetingBriefList;
             }
             // Insert log records if we have any
             if (!cdbLogList.isEmpty()) {
@@ -267,7 +171,8 @@ Modified By:        Date:       Changes:
           
         }
         catch (Exception exp) {
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.makeCDBCallout', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');insert logEntry;
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.makeCDBCallout', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');          
+            insert logEntry;
         }
     }
     
@@ -291,7 +196,8 @@ Modified By:        Date:       Changes:
             HttpResponse resp = new Http().send(req);
             return resp;
         }catch(Exception exp){
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.sendCDBPayload', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');insert logEntry;
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.sendCDBPayload', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');          
+            insert logEntry;
             return null;
         }
     }
@@ -313,7 +219,8 @@ Modified By:        Date:       Changes:
         List<Map<String, String>> coreLogMaps = new List<Map<String, String>>();
         for (String recordIdentifier : errorsByRecordKeyMap.keySet()) {
             List<Database.Error> errors = errorsByRecordKeyMap.get(recordIdentifier);
-            if (errors == null || errors.isEmpty()) {continue;
+            if (errors == null || errors.isEmpty()) {
+                continue;
             }
             List<String> errorMessages = new List<String>();
             for (Database.Error err : errors) {
@@ -322,7 +229,8 @@ Modified By:        Date:       Changes:
                     String.valueOf(err.getMessage());
                 errorMessages.add(errorMessage);
             }
-            if (errorMessages.isEmpty()) {continue;
+            if (errorMessages.isEmpty()) {
+                continue;
             }
             List<String> errorMsgs = new List<String>{
                 'Record ' + recordIdentifier + ' | ' + String.join(errorMessages, ' | ')
@@ -378,7 +286,8 @@ Modified By:        Date:       Changes:
                 Database.insert(logsToInsert, false);
             }
         } catch(Exception e) {
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.createLogEntries', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');insert logEntry;
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_EMB_AI_Integration_Outbound.createLogEntries', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');          
+            insert logEntry;
         }
     }  
      /***********************************************************************************************************
@@ -407,11 +316,14 @@ Modified By:        Date:       Changes:
             }
         } catch (Exception exp) {
             Core_Log_Entry__c logEntry = new Core_Log_Entry__c(
-                Core_Message__c = 'Error', Core_Details__c = exp.getMessage(), 
+                Core_Message__c = 'Error', 
+                Core_Details__c = exp.getMessage(), 
                 Core_Origin__c = 'CRM_EMB_AI_Integration_Outbound.deleteExistingRecords', 
-                Core_Severity__c = 'Low', Core_When__c = System.Now(), 
+                Core_Severity__c = 'Low', 
+                Core_When__c = System.Now(), 
                 Core_Project__c = 'Sales CRM'
-            );  insert logEntry;
+            );          
+            insert logEntry;
         }
     }
     /***********************************************************************************************************
@@ -440,15 +352,6 @@ Modified By:        Date:       Changes:
     //ContentVersion Wrapper
     public class ContentVersionDetailsWrapper{
         public String contentVersionId;
-        public String historicalBrief;
-    }
-    
-    //ContentVersion Wrapper
-    public class ExternalAttendeesWrapper{
-        public String firstName;
-        public String LastName;
-        public String email;
-        public String website;
     }
     
     //Executive Meeting Brief Wrapper
@@ -462,11 +365,7 @@ Modified By:        Date:       Changes:
         public String industryInsights;
         public String howTheyBuySell;
         public String investorScoutingReport;
-        public Date historicalBriefLatestDate;
-        public String accountName;
-        public Id historicalBriefId;
         public List<ContentVersionDetailsWrapper> contentVersionDetails;
-        public List<ExternalAttendeesWrapper> externalAttendeeDetails;
         public Object acc_pulse;
     }
 }

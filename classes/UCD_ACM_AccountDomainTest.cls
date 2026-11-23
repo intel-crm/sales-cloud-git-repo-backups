@@ -20,12 +20,12 @@ public class UCD_ACM_AccountDomainTest {
         intParentAccountWithBpId2.Core_Business_Party_Id__c = '11';
         insert intParentAccountWithBpId2;
         
-        Account ECDParentAccountWithBpId1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId2','End Customer Deal Account','UNFD_INTRMD_CUST');
+        Account ECDParentAccountWithBpId1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId3','End Customer Deal Account','UNFD_INTRMD_CUST');
         ECDParentAccountWithBpId1.Core_Business_Party_Id__c = '11';
         insert ECDParentAccountWithBpId1;
         
         
-        Account ecdParentAccountWithBpId2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId2','End Customer Deal Account','UNFD_INTRMD_CUST');
+        Account ecdParentAccountWithBpId2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId4','End Customer Deal Account','UNFD_INTRMD_CUST');
         ecdParentAccountWithBpId2.Core_Business_Party_Id__c = '12';
         ecdParentAccountWithBpId2.ParentId = acc.Id;
         insert ecdParentAccountWithBpId2;
@@ -62,6 +62,12 @@ public class UCD_ACM_AccountDomainTest {
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc1.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'DPL'));
+        insert complianceWatchLists;
     }
     
 	@isTest

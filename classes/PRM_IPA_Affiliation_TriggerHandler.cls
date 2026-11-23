@@ -14,7 +14,6 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
     public static final String ORIGIN = 'PRM_IPA_Affiliation_TriggerHandler';
     public static final String SEVERITY = 'Critical';
     public static final String PROJECT = 'IPA';    
-    public static final Id recordTypeIdLocAccount = Schema.SObjectType.PRM_IPA_Affiliation__c.getRecordTypeInfosByName().get('Intel Account Affiliation').getRecordTypeId();    
     public override void beforeinsert() {
         
         //string Inactivestatus='InActive', program='Intel Partner Alliance', masterAccount = 'Mastered_Account';
@@ -30,12 +29,13 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
         Set<String> uniqueIds = new Set<String>();
         Map<ID, ID> accIdToOpIds = new Map<ID, ID>();
         Set<ID> builderIdsFOrQuery = new Set<ID>();
-        //Map<Id, List<Id>> accIdsToAffiliations = new Map<Id, List<Id>>();
-        //Map<String, PRM_IPA_Affiliation__c> OPIDsToAffiliations = new Map<String, PRM_IPA_Affiliation__c>();
+        Map<Id, List<Id>> accIdsToAffiliations = new Map<Id, List<Id>>();
+        Map<String, PRM_IPA_Affiliation__c> OPIDsToAffiliations = new Map<String, PRM_IPA_Affiliation__c>();
         List<PRM_IPA_Affiliation__c> listAffToUpsert = new List<PRM_IPA_Affiliation__c>();
-        //Map<Id, String> mapAccIdtoRecTypeName = new Map<Id, String>();
+        Map<Id, String> mapAccIdtoRecTypeName = new Map<Id, String>();
         List<String> existingaffUnique = new List<String>();
         Id recordTypeIdOPIDAccount = Schema.SObjectType.PRM_IPA_Affiliation__c.getRecordTypeInfosByName().get('Partner Account Group Affiliation').getRecordTypeId();
+        Id recordTypeIdLocAccount = Schema.SObjectType.PRM_IPA_Affiliation__c.getRecordTypeInfosByName().get('Intel Account Affiliation').getRecordTypeId();
         Map<String, PRM_IPA_Affiliation__c> mapOpidToLocAff = new Map<String, PRM_IPA_Affiliation__c>();
 
         for (PRM_IPA_Affiliation__c aff : tagBuilderList) {
@@ -45,7 +45,7 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
             uniqueIds.add(aff.Unique_Key__c);
             accIds.add(aff.PRM_Account__c);
             builderIdsFOrQuery.add(aff.PRM_Builder_Strategy__C);
-            /*if (accIdsToAffiliations.containsKey(aff.PRM_Account__c)) {
+            if (accIdsToAffiliations.containsKey(aff.PRM_Account__c)) {
                 accIdsToAffiliations.get(aff.PRM_Account__c)
                     .add(aff.PRM_Builder_Strategy__c);
             } else {
@@ -53,7 +53,7 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
                     aff.PRM_Account__c,
                     new List<Id>{ aff.PRM_Builder_Strategy__c }
                 );
-            }*/
+            }
         }
         
         /*if (!accIds.isEmpty()){
@@ -87,7 +87,7 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
                 ) {
                     accIdToOpIds.put(acc.id, acc.Core_IPA_One_Partner_Id__c);
                 }
-                //mapAccIdtoRecTypeName.put(acc.Id, acc.RecordType.Name);
+                mapAccIdtoRecTypeName.put(acc.Id, acc.RecordType.Name);
             }
         }
         if ((!accIdToOpIds.isEmpty() && !builderIdsFOrQuery.isEmpty()) || !uniqueIds.isEmpty()) {
@@ -109,7 +109,10 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
                 if(uniqueIds.contains(aff.Unique_Key__c)){
                     existingaffUnique.add(aff.Unique_Key__c);
                 }
-                //OPIDsToAffiliations.put((String)aff.PRM_Account__c + (String)aff.PRM_Builder_Strategy__c,aff);
+                OPIDsToAffiliations.put(
+                    (String)aff.PRM_Account__c + (String)aff.PRM_Builder_Strategy__c,
+                    aff
+                );
             }
             
         }
@@ -121,7 +124,7 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
             else if(existingaffUnique.contains(aff.Unique_Key__c)){
                 aff.addError('This Account already has this Affiliation.');
             }
-           /* else if(mapAccIdtoRecTypeName.get(aff.PRM_Account__c) == 'Intel Account'){
+            else if(mapAccIdtoRecTypeName.get(aff.PRM_Account__c) == 'Intel Account'){
                 aff.RecordTypeId = recordTypeIdLocAccount;
                 if (accIdToOpIds.containsKey(aff.PRM_Account__c))
                 {
@@ -145,7 +148,10 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
                         tag.PRM_Account__c = accIdToOpIds.get(aff.PRM_Account__c);
                         tag.PRM_Builder_Strategy__c = aff.PRM_Builder_Strategy__c;
                         tag.RecordTypeId = recordTypeIdOPIDAccount;
-                        tag.PRM_Notes__c = 'Roll up to 1PID from Intel account';
+                        if(aff.PRM_Notes__c == null || aff.PRM_Notes__c == ''){
+                            aff.PRM_Notes__c = 'new affiliation added';
+                        }
+                        tag.PRM_Notes__c = aff.PRM_Notes__c;
                         if(!listAffToUpsert.contains(tag)){
                             listAffToUpsert.add(tag);
                             mapOpidToLocAff.put(tag.PRM_Account__c, aff);
@@ -163,12 +169,12 @@ public with sharing class PRM_IPA_Affiliation_TriggerHandler extends TriggerHand
                     mapOpidToLocAff.get(listAffToUpsert[count].PRM_Account__c).addError(ur.getErrors()[0].getMessage());
                 }
                 count++;
-            } */
-        } 
+            }
+        }  
 
     }
     
-    /*public override void beforeupdate() {
+    public override void beforeupdate() {
         List<PRM_IPA_Affiliation__c> listTagBuilderToUpdate = new List<PRM_IPA_Affiliation__c>();
         Map<Id, String> mapAccIdtoRecTypeName = new Map<Id, String>();
         Set<Id> setAccIds = new Set<Id>();
@@ -349,7 +355,7 @@ tagBuilder.PRM_Builder_Strategy__c
 }
 );
 }
-} else 
+} else */
                     if (setOpIds.contains(tagBuilder.PRM_Account__c)) {
                         if (
                             mapOPIDInactiveAff.containsKey(
@@ -461,247 +467,6 @@ tagBuilder.PRM_Builder_Strategy__c
                 }
             }
             index++;
-        }
-    }*/
-    public override void afterinsert() {
-        opidToIntelAffiliationRolldown(Trigger.new,null);
-		updateDealIncFlgOnAccs(Trigger.new,null);
-    }
-    public override void afterUpdate() {
-        opidToIntelAffiliationRolldown(Trigger.new,(Map<Id,PRM_IPA_Affiliation__c>)Trigger.oldMap); 
-		
-		updateDealIncFlgOnAccs(Trigger.new,(Map<Id,PRM_IPA_Affiliation__c>)Trigger.oldMap);
-    }
-public static void updateDealIncFlgOnAccs(List<PRM_IPA_Affiliation__c> newList,Map<Id,PRM_IPA_Affiliation__c> oldMap){
-		set<id> opidIds=new set<id>();
-		Map<Id, Account> accountMap = new Map<Id, Account>();
-        Map<Id, boolean> mapOpidWithAffActive = new Map<Id, boolean>();
-    	Map<Id,PRM_IPA_Affiliation__c> mapAfftoStrategy =new Map<Id,PRM_IPA_Affiliation__c>([Select id,PRM_Account__c,PRM_Active__c,PRM_Builder_Strategy__c,
-                                                                                             PRM_Builder_Strategy__r.Name from PRM_IPA_Affiliation__c where id IN:newList]);
-    
-		for(PRM_IPA_Affiliation__c aff:mapAfftoStrategy.values()){
-		if(aff.PRM_Builder_Strategy__r !=null && aff.PRM_Builder_Strategy__r.Name=='Deal Incentive' &&
-           	((oldmap==null && aff.PRM_Active__c==true)
-            || (aff.PRM_Active__c!=oldmap.get(aff.id).PRM_Active__c && aff.PRM_Active__c==true) || 
-               (aff.PRM_Active__c!=oldmap.get(aff.id).PRM_Active__c && aff.PRM_Active__c==false))
-          )
-        {
-			opidIds.add(aff.PRM_Account__c);
-            mapOpidWithAffActive.put(aff.PRM_Account__c,aff.PRM_Active__c);
-		}
-		} 
-		if(!opidIds.isEmpty()){
-			//getAccountswith opids
-			for (Core_Account_Group_Member__c cag:[select id,name,Intel_Account_Name__c,Core_Intel_Account_Id__c, Core_Partner_Account_Id__c,
-            Core_Partner_Account_Id__r.name,Core_Partner_Account_Id__r.PRM_Impartner_Deal_Sync__c , Core_Intel_Account_Id__r.PRM_Impartner_Deal_Sync__c,
-            Core_Intel_Account_Id__r.name, Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Intel_Account_Id__r.RecordType.name,
-			Core_Intel_Account_Id__r.ParentId, Core_Intel_Account_Id__r.Parent.name,Core_Intel_Account_Id__r.Parent.PRM_Impartner_Deal_Sync__c,
-			Primary_Account__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in :opidIds 
-			and (Primary_Account__c =true or Core_Intel_Partner_Alliance_PartnerGroup__c =true or Core_Intel_Account_Id__r.ParentId !=null)]){
-					if (cag.Core_Partner_Account_Id__c != null && !accountMap.containsKey(cag.Core_Partner_Account_Id__c) 
-                    && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==true) {
-					accountMap.put(
-						cag.Core_Partner_Account_Id__c,
-						new Account(
-							Id = cag.Core_Partner_Account_Id__c,
-							PRM_Impartner_Deal_Sync__c=true
-						)
-					);
-				}else if(cag.Core_Partner_Account_Id__c != null && !accountMap.containsKey(cag.Core_Partner_Account_Id__c) 
-                    && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) 
-                    && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==false){
-                        accountMap.put(
-						cag.Core_Partner_Account_Id__c,
-						new Account(
-							Id = cag.Core_Partner_Account_Id__c,
-							PRM_Impartner_Deal_Sync__c=false
-						)
-					);
-                    }
-
-				if (cag.Core_Intel_Account_Id__c != null && !accountMap.containsKey(cag.Core_Intel_Account_Id__c) 
-                && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==true) {
-					accountMap.put(
-						cag.Core_Intel_Account_Id__c,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__c,
-							PRM_Impartner_Deal_Sync__c=true
-						)
-					);
-				}
-                else if(cag.Core_Intel_Account_Id__c != null && !accountMap.containsKey(cag.Core_Intel_Account_Id__c) 
-                && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==false) {
-					accountMap.put(
-						cag.Core_Intel_Account_Id__c,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__c,
-							PRM_Impartner_Deal_Sync__c=false
-						)
-					);
-				}
-				
-				if (cag.Core_Intel_Account_Id__r.parentId!=null && !accountMap.containsKey(cag.Core_Intel_Account_Id__r.parentId) && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==true){
-					accountMap.put(
-						cag.Core_Intel_Account_Id__r.parentId,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__r.parentId,
-							PRM_Impartner_Deal_Sync__c=true
-						)
-					);
-				}
-				
-				else if(cag.Core_Intel_Account_Id__r.parentId!=null && !accountMap.containsKey(cag.Core_Intel_Account_Id__r.parentId) && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==false){
-					accountMap.put(
-						cag.Core_Intel_Account_Id__r.parentId,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__r.parentId,
-							PRM_Impartner_Deal_Sync__c=false
-						)
-					);
-				}
-				}
-			}
-			if (!accountMap.isEmpty()) {
-				update accountMap?.values();
-			}
-			
-		}
-	
-    public static void opidToIntelAffiliationRolldown(List<PRM_IPA_Affiliation__c> newList,Map<Id,PRM_IPA_Affiliation__c> oldMap){
-        Map<String,Set<String>> opidIntelMap = new Map<String,Set<String>>();
-        Map<String,Set<String>> opidBuildStratMap = new Map<String,Set<String>>();
-        Map<String,Set<String>> intelBuildStratMap = new Map<String,Set<String>>();
-	    Map<String,Set<String>> opidInactiveBuildStratMap = new Map<String,Set<String>>();//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts
-        Map<String,PRM_IPA_Affiliation__c> intelAffMap = new Map<String,PRM_IPA_Affiliation__c>();
-        Set<String> builderStratSet = new Set<String>();
-        Set<String> intelAccSet = new Set<String>();
-        list<PRM_IPA_Affiliation__c> tagList=new list<PRM_IPA_Affiliation__c>();
-        String errorMsg = '';
-
-        for(PRM_IPA_Affiliation__c aff : newList){
-            if((oldMap==null || (oldMap!=null && oldMap.containsKey(aff.id) && oldMap.get(aff.id).PRM_Active__c!=aff.PRM_Active__c) ) && aff.PRM_Active__c==true){
-                if(opidBuildStratMap.containskey(aff.PRM_Account__c)){
-                    opidBuildStratMap.get(aff.PRM_Account__c).add(aff.PRM_Builder_Strategy__c);
-                }else{
-                    Set<String> buildStratSet = new Set<String>();
-                    buildStratSet.add(aff.PRM_Builder_Strategy__c);
-                    opidBuildStratMap.put(aff.PRM_Account__c,buildStratSet);
-                }
-                builderStratSet.add(aff.PRM_Builder_Strategy__c);
-            }
-            if(oldMap != null && oldMap.containsKey(aff.Id) && oldMap.get(aff.Id).PRM_Active__c == true && aff.PRM_Active__c == false){//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts-start
-                if(opidInactiveBuildStratMap.containsKey(aff.PRM_Account__c))
-                {
-                    opidInactiveBuildStratMap.get(aff.PRM_Account__c).add(aff.PRM_Builder_Strategy__c);
-                }
-                else
-                {
-                    opidInactiveBuildStratMap.put(aff.PRM_Account__c,new Set<String>{aff.PRM_Builder_Strategy__c});
-                }
-                
-                builderStratSet.add(aff.PRM_Builder_Strategy__c);
-            }
-            
-        }
-	Set<String> opidSet = new Set<String>();
-        opidSet.addAll(opidBuildStratMap.keySet());
-		opidSet.addAll(opidInactiveBuildStratMap.keySet());
-        if(!opidSet.isEmpty()){//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts-end
-        //if(opidBuildStratMap!=null && !opidBuildStratMap.isEmpty()){
-            List<PRM_AccountChannelMembership__c> intelAcmList = [SELECT Id,PRM_Account_Id__r.RecordType.DeveloperName,PRM_Account_Id__c, PRM_Partner_Role__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
-                                                                    FROM PRM_AccountChannelMembership__c where PRM_Channel_Program_Id__r.Name='Intel Partner Alliance' AND PRM_Status_Nm__c ='Approved' 
-                                                                    AND PRM_Account_Id__r.RecordType.DeveloperName ='Mastered_Account' AND PRM_Account_Id__r.Core_Deactivated__c = false and 
-                                                                    PRM_Account_Id__r.Core_IPA_One_Partner_Id__c in: opidSet /*opidBuildStratMap.keySet()*/];
-            if(intelAcmList!=null && !intelAcmList.isEmpty()){
-                for(PRM_AccountChannelMembership__c acm: intelAcmList){
-                    if(opidIntelMap.containskey(acm.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)){
-                        opidIntelMap.get(acm.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c).add(acm.PRM_Account_Id__c);
-                    }else{
-                        Set<String> intelAcc = new Set<String>();
-                        intelAcc.add(acm.PRM_Account_Id__c);
-                        opidIntelMap.put(acm.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c,intelAcc);
-                    }
-                    intelAccSet.add(acm.PRM_Account_Id__c);
-                }
-            }
-        }
-        if(builderStratSet!=null && !builderStratSet.isEmpty() && intelAccSet!=null && !intelAccSet.isEmpty() ){
-            for(PRM_IPA_Affiliation__c tgb : [select id, Name, PRM_Account__c, PRM_Account__r.id, PRM_Active__c, PRM_Builder_Strategy__c, PRM_Builder_Strategy__r.Name 
-                                            from PRM_IPA_Affiliation__c where PRM_Account__c IN :intelAccSet  AND PRM_Builder_Strategy__c In : builderStratSet]){
-                String key = tgb.PRM_Account__c +':'+tgb.PRM_Builder_Strategy__c;
-                if(intelBuildStratMap.containskey(tgb.PRM_Account__c)){
-                        intelBuildStratMap.get(tgb.PRM_Account__c).add(tgb.PRM_Builder_Strategy__c);
-                }else{
-                        Set<String> buldStratSet = new Set<String>();
-                        buldStratSet.add(tgb.PRM_Builder_Strategy__c);
-                        intelBuildStratMap.put(tgb.PRM_Account__c,buldStratSet);
-                }
-                intelAffMap.put(key,tgb);
-            }
-        }
-        if(opidIntelMap!=null && !opidIntelMap.isEmpty() && opidBuildStratMap!=null && !opidBuildStratMap.isEmpty()){
-            for(String opid:opidIntelMap.keySet() ){
-                Set<String> opidBuildStratSet = opidBuildStratMap.get(opid);
-                for(String intel: opidIntelMap.get(opid)){
-                    Set<String> intelBuildStratSet = intelBuildStratMap.containsKey(intel)? intelBuildStratMap.get(intel):null;
-                    for(String buildStrat: opidBuildStratSet){
-                        String key=intel+':'+buildStrat;
-                        if(intelBuildStratSet!=null && intelBuildStratSet.contains(buildStrat) && intelAffMap.containsKey(key) && intelAffMap.get(key).PRM_Builder_Strategy__c==buildStrat && !intelAffMap.get(key).PRM_Active__c ){
-                            PRM_IPA_Affiliation__c tag = intelAffMap.get(key);
-                            tag.PRM_Notes__c = 'Rolled down from 1PID';
-                            tag.PRM_Active__c= true;
-                            tagList.add(tag);
-                        }else if(intelBuildStratSet==null || !intelBuildStratSet.contains(buildStrat)){
-                            PRM_IPA_Affiliation__c tag=new PRM_IPA_Affiliation__c();
-                            tag.PRM_Account__c = intel;
-                            tag.PRM_Builder_Strategy__c = buildStrat;
-                            tag.RecordTypeId = recordTypeIdLocAccount;
-                            tag.PRM_Notes__c = 'Rolled down from 1PID';
-                            tag.PRM_Active__c= true;
-                            tagList.add(tag);
-                        }
-                    }
-                }
-            }
-        }
-        if(!opidInactiveBuildStratMap.isEmpty())//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts-start
-        {
-            for(String opid : opidInactiveBuildStratMap.keySet())
-            {
-                if(opidIntelMap.containsKey(opid))
-                {
-                    for(String intel : opidIntelMap.get(opid))
-                    {
-                        for(String buildStrat :opidInactiveBuildStratMap.get(opid))
-                        {
-                            String key = intel + ':' + buildStrat;
-                            if(intelAffMap.containsKey(key) && intelAffMap.get(key).PRM_Active__c)
-                            {
-                                PRM_IPA_Affiliation__c intelAff = intelAffMap.get(key);
-                                intelAff.PRM_Active__c = false;
-                                intelAff.PRM_Notes__c ='Rolled down inactive from 1PID';
-                                tagList.add(intelAff);
-                            }
-                        }
-                    }
-                }
-            }
-        }//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts-end
-        
-        try{
-            if(tagList.size()>0){
-                    for(Database.UpsertResult sr: Database.Upsert(tagList, false)){
-                        if(!sr.isSuccess()){
-                            errorMsg +=  sr.getErrors()[0].getMessage() + '<br/>';
-
-                        }
-                    }
-                }
-        }catch (Exception e) {
-            errorMsg+='Error -->'+e.getMessage();
-        }
-        finally{
-            Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, 'Message', SEVERITY, errorMsg,'', '', '', '');
         }
     }
 }

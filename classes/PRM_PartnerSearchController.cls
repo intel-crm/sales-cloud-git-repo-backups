@@ -17,6 +17,7 @@ public without sharing class PRM_PartnerSearchController {
         public static List<PRM_PartnerSearchResultWrapper> getDistributors(String searchInput, String country, String tier){
             try{
             List<PRM_PartnerSearchResultWrapper> result = new  List<PRM_PartnerSearchResultWrapper>();
+            //system.debug('searchInput-->'+searchInput+'\n'+'tier--->'+tier+'country-->'+country);
     
             User ur = [
                 SELECT 
@@ -24,6 +25,7 @@ public without sharing class PRM_PartnerSearchController {
                     AccountId 
                 FROM User
                 WHERE Id =:UserInfo.getUserId()];
+            System.debug('userId=>>>>>>'+ur);
             Account ac = [
                 SELECT 
                     Id,
@@ -32,6 +34,7 @@ public without sharing class PRM_PartnerSearchController {
                 WHERE ID =: ur.AccountId];
             
             String userRegion = ac.Core_Geo__c;
+            //System.debug('userRegion=>>>>'+userRegion);
             String tempInput = '%' + searchInput + '%';
             String query = 'SELECT'+
             ' Id,'+
@@ -52,6 +55,7 @@ public without sharing class PRM_PartnerSearchController {
             ' AND (Core_Geo__c =:userRegion)'+
             ' AND Core_Intel_Partner_Alliance_PartnerGroup__c= true'+
             ' AND Core_Deactivated__c = false';       
+            //System.debug(query);
     
             if(String.isNotBlank(country) && country != System.Label.PRM_DefaultValue_Picklist){
                 query+= ' AND toLabel(BillingCountryCode) =:country';
@@ -70,6 +74,7 @@ public without sharing class PRM_PartnerSearchController {
 
                 if(accRecords.Name.equals(searchInput) || accRecords.AccountNumber == searchInput){
                     accFirstSeachrec.add(accRecords) ;
+                    //system.debug('accFirstSeachrec'+accFirstSeachrec);
                     accountIndex++;
                 }
             }
@@ -163,6 +168,7 @@ public without sharing class PRM_PartnerSearchController {
             for (Account accRecords : accounts) {
                 if (accRecords.Name.equals(searchInput) || accRecords.AccountNumber == searchInput) {
                     accFirstSeachrec.add(accRecords);
+                    System.debug('accFirstSeachrec: ' + accFirstSeachrec);
                     accountIndex++;
                 }
             }
@@ -244,10 +250,12 @@ public without sharing class PRM_PartnerSearchController {
         @AuraEnabled
         public static List<String> getCountryList(List<PRM_PartnerSearchResultWrapper> accountDetails){
             try{
+                //System.debug('Account details apex=>>>>'+accountDetails);
                 List<String> countries = new List<String>();
                 for(PRM_PartnerSearchResultWrapper acc: accountDetails){
                     countries.add(acc.billingCountry);
                 }
+                System.debug('Country list apex=>>>>>>>>'+countries);
                 return countries;
     
             }catch (Exception e) {
@@ -282,7 +290,7 @@ public without sharing class PRM_PartnerSearchController {
                     (SELECT Id, Name FROM IPA_Affiliations__r where PRM_Builder_Strategy__r.name = 'MOA Pre-Launch Partner' and PRM_Active__c = true),
                     (Select Id,PRM_Contact_Id__r.FirstName,PRM_Contact_Id__r.LastName,PRM_Contact_Id__r.Email FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c = false AND PRM_Status_Nm__c = 'Complete' AND PRM_Relationship_Id__r.Name = 'Partner Admin'),
                     (select Id, PRM_Agreement_Sign_Dt__c, PRM_InActive_Ind__c,PRM_Account_Id__c from AccountLegalAgreementAssociations__r where PRM_InActive_Ind__c=false and PRM_Agreement_Sign_Dt__c<>null),
-                    (select id,PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c,PRM_Point_Status_Reason_Txt__c FROM PRM_IPAMembership_Attributes__r where PRM_InActive_Ind__c=false )
+                    (select id,PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c,PRM_Point_Status_Reason_Txt__c FROM PRM_IPAMembership_Attributes__r)
                     FROM Account WHERE Id=:recordId ];
                 //}
               

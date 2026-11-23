@@ -48,7 +48,7 @@ Modified By:        Date:      Changes:
         
         criteriaManualHoldWrapper holdWrap = new criteriaManualHoldWrapper();
         try{
-            holdWrap.pfc = [SELECT Id, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Audit_Hold__c, Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Claim_Previous_Status__c, Core_MDF_Status__c, Status, Core_MDF_ESD_Hold__c,Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Payment_Hold_ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim WHERE Id=: pfcId];
+            holdWrap.pfc = [SELECT Id, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Audit_Hold__c, Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Claim_Previous_Status__c, Core_MDF_Status__c, Status, Core_MDF_ESD_Hold__c,Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Payment_Hold_ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c FROM PartnerFundClaim WHERE Id=: pfcId];
             //Checking for user's permission from custom permission
             holdWrap.hasAccess = FeatureManagement.checkPermission(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PermToRelease_CritAndManualHold')); 
             holdWrap.hasAccessForBankDocumentHold = FeatureManagement.checkPermission(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PermToRelease_BankDocumentHold'));

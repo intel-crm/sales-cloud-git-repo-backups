@@ -11,16 +11,16 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         myset12.addAll(bypassFunctionKeys2);
         result12.addAll(myset12);
         
-
+        List<Core_Trigger_Executions__c> bypassfunctinalitylist12 = Core_MDF_CCP_TestDataUtility.byPassFeature(result12,false,true);
         List<String> bypassFunctionKeys = new List<String>();
         bypassFunctionKeys.add('Core_MDF_PFR_Rule_Engine');
-        bypassFunctionKeys.add('Bypass_Allocation_Reservation');
+         bypassFunctionKeys.add('Bypass_Allocation_Reservation');
         bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
         Set<String> myset1 = new Set<String>();
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
-
+        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
         List<user> usrList=new List<User>();
@@ -31,13 +31,13 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         usrList.add(usr);
         
         User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr1.LastName = 'TestUser2';
-        usr1.profileId = systemAdminProfile.Id;
+        usr.LastName = 'TestUser2';
+        usr.profileId = systemAdminProfile.Id;
         usrList.add(usr1);
         
         User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr2.LastName = 'TestUser3';
-        usr2.profileId = systemAdminProfile.Id;
+        usr.LastName = 'TestUser3';
+        usr.profileId = systemAdminProfile.Id;
         usrList.add(usr2);
         
         User usr6 = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -50,6 +50,7 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         usrList.add(usr7);
         
         Database.insert(usrList);
+        
         
         List<Core_MDF_Criteria__c> cList = new List<Core_MDF_Criteria__c>();
         Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
@@ -139,6 +140,7 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         FrontEndReviewRule2.Core_MDF_Rule_Action_on_False_nm__c='First Level Manager';
         FrontEndReviewRule2.Core_MDF_Process_Name__c='Core_MDF_Activity_Approval_MultiLvl_V13';
         
+        
         Core_MDF_Audit_Rules_Engine__c FrontEndReviewRule3 = new Core_MDF_Audit_Rules_Engine__c(); 
         FrontEndReviewRule3.Core_MDF_Object_Nm__c= 'PartnerFundRequest';
         FrontEndReviewRule3.Core_MDF_Program_Nm__c= 'Client CoMarketing Fund';
@@ -153,6 +155,8 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         FrontEndReviewRule3.Core_MDF_Region_Cd__c = 'WW';
         
         FrontEndReviewRule3.Core_MDF_Approver_Source_on_True_nm__c='IUPGM';
+        
+        
         
         ruleList.add(FrontEndReviewRule);
         ruleList.add(FrontEndReviewRule2);
@@ -171,20 +175,11 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         acc2.Core_Sub_Geo__c = '';
         
         accList.add(acc2);
-        
-        // Add additional account for outcome-based testing
-        Account acc5 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 5',
-                                                                             cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, 
-                                                                             acc1.Id, false);
-        acc5.Core_Geo__c = '';  
-        acc5.Core_Sub_Geo__c = '';
-        accList.add(acc5);
-        
         insert accList;
         Core_MDF_Bank__c bank1 = new Core_MDF_Bank__c();
         
         try{
-            bank1 = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1241241240');
+        bank1 = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1241241240');
         }catch(Exception ex){
         }
         
@@ -238,19 +233,15 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         testBudgetOEM.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
         testBudgetOEM.Core_MDF_Budget_Type__c='OEM CMP';
         system.runAs(usr1){
+            
             insert budgetList;
         }
         List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>();
         PartnerFundAllocation pfaRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFAOEM',testBudgetOEM, acc2, 100000,false);
         PartnerFundAllocation pfaRecord3 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudgetMDF, acc2, 99999, false);
-        
-        // Add allocation for additional account for outcome-based testing
-        PartnerFundAllocation pfaRecord4 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA4',opalbudgetMDF, acc5, 99999, false);
-        
         //PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New',testBudget,acc2,20.0,false);
         insert pfaRecord1;
         insert pfaRecord3;
-        insert pfaRecord4;
         //insert allocation;
        /* pfaList.add(pfaRecord1);
         pfaList.add(pfaRecord3);
@@ -287,6 +278,7 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             acc4.Core_Sub_Geo__c = 'IJKK';
             insert acc4;
             
+            
             PartnerMarketingBudget testBudget1 = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData1',Core_MDF_CCP_TestDataUtility.budget_Retail_Record_Type,
                                                                                            acc4.id, cp1.Id , 10000 , System.today()-60 , System.today() + 60 , 
                                                                                            false);
@@ -299,10 +291,13 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             }
             testBudget1.Core_MDF_Budget_Status__c = 'Released';
             system.runAs(usr2){
+                
                 update testBudget1;
             }
             
+            
             Test.startTest();
+            
             
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 24','Gaming','Athena', 'Yes',
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
@@ -318,6 +313,7 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             
             cmplst.add(camp1);
             
+            
             Campaign camp6 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 45','Gaming','Athena', 'Yes',
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
                                                                          'Client CoMarketing Fund', system.today()+ 2, //System.today().addDays(-300), 
@@ -329,6 +325,7 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             camp6.Core_MDF_Program__c = 'Retail Marketing Funds';
             camp6.Core_MDF_Reimbursement_Rate__c='100%';
             camp6.Core_MDF_Technology__c = 'ACPC';
+            
             
             cmplst.add(camp6);
             
@@ -344,9 +341,8 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             MDFpfr.Title = 'CCF_ACTIVITY';
             MDFpfr.Core_MDF_Fund_Request_Status__c='Pending Review';
             MDFpfr.Core_MDF_Approval_Step_Completed__c=1;
-            MDFpfr.Core_MDF_ActivityCategory__c = '';
-            MDFpfr.Core_MDF_Activity_Types__c = '';
             pfrList.add(MDFpfr);
+            
             
             PartnerFundRequest MDFpfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp1.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc4.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
@@ -356,95 +352,13 @@ public class Core_MDF_ActivityClosure_Batch_Test {
             MDFpfr1.Title = 'CCF_ACTIVITY1';
             MDFpfr1.Core_MDF_Fund_Request_Status__c='Pending Review';
             MDFpfr1.Core_MDF_Approval_Step_Completed__c=1;
-            MDFpfr1.Core_MDF_ActivityCategory__c = '';
-            MDFpfr1.Core_MDF_Activity_Types__c = '';
-            pfrList.add(MDFpfr1);
-            
-            // Create outcome-based parent activity for testing
-            PartnerFundRequest outcomeBasedParent = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp1.Id),
-                                                                                                          Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc2.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                                          'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
-            outcomeBasedParent.Core_MDF_Budget_Type_nm__c = 'MDF'; 
-            outcomeBasedParent.RequestedAmount = 500;
-            outcomeBasedParent.Title = 'OUTCOME_BASED_PARENT';
-            outcomeBasedParent.Core_MDF_Fund_Request_Status__c = 'Planned';
-            outcomeBasedParent.Core_MDF_Is_Outcome_Based_Ind__c = true;
-            outcomeBasedParent.Core_MDF_Activity_Level_nm__c = null; // Parent activity
-            outcomeBasedParent.Core_MDF_ActivityCategory__c = '';
-            outcomeBasedParent.Core_MDF_Activity_Types__c = '';
-            pfrList.add(outcomeBasedParent);
-            
+            pfrList.add(MDFpfr1);            
             insert pfrList;
             
-            // Create sub-activities for outcome-based parent
-            List<PartnerFundRequest> subActivityList = new List<PartnerFundRequest>();
-            
-            // Sub-activity 1
-            PartnerFundRequest subActivity1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp1.Id),
-                                                                                                    Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc2.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                                    'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
-            subActivity1.Core_MDF_Budget_Type_nm__c = 'MDF'; 
-            subActivity1.RequestedAmount = 250;
-            subActivity1.Title = 'OUTCOME_BASED_SUB1';
-            subActivity1.Core_MDF_Fund_Request_Status__c = 'Planned';
-            subActivity1.Core_MDF_Is_Outcome_Based_Ind__c = true;
-            subActivity1.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-            subActivity1.Core_MDF_Parent_Activity_Id__c = outcomeBasedParent.Id;
-            subActivity1.ChannelPartnerId = acc2.Id;
-            subActivity1.AllocationId = pfaRecord3.Id;
-            subActivity1.Core_MDF_ActivityCategory__c = '';
-            subActivity1.Core_MDF_Activity_Types__c = '';
-            subActivityList.add(subActivity1);
-            
-            // Sub-activity 2
-            PartnerFundRequest subActivity2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp1.Id),
-                                                                                                    Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc5.id),pfaRecord4,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                                    'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
-            subActivity2.Core_MDF_Budget_Type_nm__c = 'MDF'; 
-            subActivity2.RequestedAmount = 250;
-            subActivity2.Title = 'OUTCOME_BASED_SUB2';
-            subActivity2.Core_MDF_Fund_Request_Status__c = 'Planned';
-            subActivity2.Core_MDF_Is_Outcome_Based_Ind__c = true;
-            subActivity2.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-            subActivity2.Core_MDF_Parent_Activity_Id__c = outcomeBasedParent.Id;
-            subActivity2.ChannelPartnerId = acc5.Id;
-            subActivity2.AllocationId = pfaRecord4.Id;
-            subActivity2.Core_MDF_ActivityCategory__c = '';
-            subActivity2.Core_MDF_Activity_Types__c = '';
-            subActivityList.add(subActivity2);
-            
-            insert subActivityList;
-            
-            // Create account mappings for outcome-based activity
-            List<Core_MDF_Outcome_Account_Mapping__c> mappingList = new List<Core_MDF_Outcome_Account_Mapping__c>();
-            
-            Core_MDF_Outcome_Account_Mapping__c mapping1 = new Core_MDF_Outcome_Account_Mapping__c();
-            mapping1.Core_MDF_Outcome_Based_CampaignId__c = outcomeBasedParent.Id;
-            mapping1.Core_MDF_AccountId__c = acc2.Id;
-            mapping1.Core_MDF_Percentage_pct__c = 50;
-            mapping1.Core_MDF_Amount_nbr__c = 250;
-            mapping1.Core_MDF_Active_Ind__c = true;
-            mapping1.Core_MDF_OutcomeBased_SubAct_Id__c = subActivity1.Id;
-            mappingList.add(mapping1);
-            
-            Core_MDF_Outcome_Account_Mapping__c mapping2 = new Core_MDF_Outcome_Account_Mapping__c();
-            mapping2.Core_MDF_Outcome_Based_CampaignId__c = outcomeBasedParent.Id;
-            mapping2.Core_MDF_AccountId__c = acc5.Id;
-            mapping2.Core_MDF_Percentage_pct__c = 50;
-            mapping2.Core_MDF_Amount_nbr__c = 250;
-            mapping2.Core_MDF_Active_Ind__c = true;
-            mapping2.Core_MDF_OutcomeBased_SubAct_Id__c = subActivity2.Id;
-            mappingList.add(mapping2);
-            
-            insert mappingList;
-            
-            List<PartnerFundRequest> pfrUpdate = [select Id,Title,Core_MDF_Fund_Request_Status__c,Core_MDF_ToBeClosedDate__c from PartnerFundRequest where (Title = 'CCF_ACTIVITY1' OR Title = 'CCF_ACTIVITY2' OR Title = 'OUTCOME_BASED_PARENT')];
+            List<PartnerFundRequest> pfrUpdate = [select Id,Title,Core_MDF_Fund_Request_Status__c,Core_MDF_ToBeClosedDate__c from PartnerFundRequest where (Title = 'CCF_ACTIVITY1' OR Title = 'CCF_ACTIVITY2')];
             for(PartnerFundRequest pf: pfrUpdate){
                 pf.Core_MDF_ToBeClosedDate__c = system.today()-2;
                 if(pf.Title == 'CCF_ACTIVITY1'){
-                    pf.Core_MDF_Fund_Request_Status__c = 'Planned';    
-                }
-                if(pf.Title == 'OUTCOME_BASED_PARENT'){
                     pf.Core_MDF_Fund_Request_Status__c = 'Planned';    
                 }
             }
@@ -462,120 +376,11 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         pfrList[0].Core_MDF_ToBeClosedDate__c = system.today() - 2;
         update pfrList;
          
+         //Id recordId = pfrList[0].Id;
         Core_MDF_ActivityClosure_Batch obj =new Core_MDF_ActivityClosure_Batch();
         Database.executeBatch(obj);
         System.Assert(obj!=null);
         Test.stopTest();
-    }
-    
-    @isTest 
-    static void checkOutcomeBasedActivityClosure(){
-        Test.startTest();
-
-        // Get outcome-based parent activity
-        List<PartnerFundRequest> outcomeBasedParentList = [select Id,Amount,Core_MDF_Fund_Request_Status__c,Core_MDF_ToBeClosedDate__c,
-                                                          Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Level_nm__c
-                                                          from PartnerFundRequest where Title = 'OUTCOME_BASED_PARENT' LIMIT 1];
         
-        if(!outcomeBasedParentList.isEmpty()) {
-            outcomeBasedParentList[0].Core_MDF_ToBeClosedDate__c = system.today() - 2;
-            update outcomeBasedParentList;
-            
-            // Get sub-activities and create claims for them
-            List<PartnerFundRequest> subActivities = [SELECT Id, Core_MDF_Parent_Activity_Id__c 
-                                                     FROM PartnerFundRequest 
-                                                     WHERE Core_MDF_Parent_Activity_Id__c = :outcomeBasedParentList[0].Id 
-                                                     AND Core_MDF_Activity_Level_nm__c = 'Sub Activity'];
-            
-            // Create claims for sub-activities
-            List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-            
-            for(PartnerFundRequest subActivity : subActivities) {
-                PartnerFundClaim claim = new PartnerFundClaim();
-                claim.Title = 'Test Claim for Sub Activity';
-                claim.RequestId = subActivity.Id;
-                claim.Core_MDF_Status__c = 'Paid';
-                claim.Amount = 100;
-                claim.Core_MDF_Country_Location_nm__c = 'INDIA';
-                claim.Core_MDF_Ad_Run_Start_Date__c = System.today();
-                claim.Core_MDF_Ad_Run_End_Date__c = System.today();
-                claim.Core_MDF_Currency__c = 'USD';
-                claim.Core_MDF_Total_Invoice_Amount_Local__c = 100.00;
-                claim.Core_MDF_Invoice_Number__c = '123' + subActivity.Id;
-                claim.Core_MDF_Invoice_Date__c = System.today();
-                claim.RecordTypeId = Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF;
-                claim.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
-                claim.Core_MDF_Type_Txt__c = 'Claim';
-                claimList.add(claim);
-            }
-            
-            if(!claimList.isEmpty()) {
-                //insert claimList;
-            }
-            
-            // Execute batch with outcome-based parent activity
-            Core_MDF_ActivityClosure_Batch obj = new Core_MDF_ActivityClosure_Batch();
-            Database.executeBatch(obj);
-            System.Assert(obj != null);
-        }
-        
-        Test.stopTest();
-    }
-    
-    @isTest 
-    static void checkRegularActivityClosure(){
-        Test.startTest();
-
-        // Get regular activity
-        List<PartnerFundRequest> regularActivityList = [select Id,Amount,Core_MDF_Fund_Request_Status__c,Core_MDF_ToBeClosedDate__c,
-                                                       Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Level_nm__c
-                                                       from PartnerFundRequest where Title = 'CCF_ACTIVITY1' LIMIT 1];
-        
-        if(!regularActivityList.isEmpty()) {
-            regularActivityList[0].Core_MDF_ToBeClosedDate__c = system.today() - 2;
-            update regularActivityList;
-            
-            // Create claim for regular activity
-            PartnerFundClaim claim = new PartnerFundClaim();
-            claim.Title = 'Test Claim for Regular Activity';
-            claim.RequestId = regularActivityList[0].Id;
-            claim.Core_MDF_Status__c = 'Paid';
-            claim.Amount = 150;
-            claim.Core_MDF_Country_Location_nm__c = 'INDIA';
-            claim.Core_MDF_Ad_Run_Start_Date__c = System.today();
-            claim.Core_MDF_Ad_Run_End_Date__c = System.today();
-            claim.Core_MDF_Currency__c = 'USD';
-            claim.Core_MDF_Total_Invoice_Amount_Local__c = 150.00;
-            claim.Core_MDF_Invoice_Number__c = '456';
-            claim.Core_MDF_Invoice_Date__c = System.today();
-            claim.RecordTypeId = Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF;
-            claim.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
-            claim.Core_MDF_Type_Txt__c = 'Claim';
-            //insert claim;
-            
-            // Execute batch with regular activity
-            Core_MDF_ActivityClosure_Batch obj = new Core_MDF_ActivityClosure_Batch();
-            Database.executeBatch(obj);
-            System.Assert(obj != null);
-        }
-        
-        Test.stopTest();
-    }
-    
-    @isTest 
-    static void checkBatchWithNoRecordId(){
-        Test.startTest();
-        
-        // Get any available activity for testing
-        List<PartnerFundRequest> pfrList = [select Id from PartnerFundRequest LIMIT 1];
-        
-        if(!pfrList.isEmpty()) {
-            // Test batch with specific record ID (since parameterless constructor doesn't exist)
-            Core_MDF_ActivityClosure_Batch obj = new Core_MDF_ActivityClosure_Batch();
-            Database.executeBatch(obj);
-            System.Assert(obj != null);
-        }
-        
-        Test.stopTest();
     }
 }

@@ -35,14 +35,6 @@
         <name>CRM_Additional_Legal_Guidance__c</name>
     </fields>
     <fields>
-        <label><!-- Agentic Account EmailIds --></label>
-        <name>CRM_Agentic_Account_EmailIds__c</name>
-    </fields>
-    <fields>
-        <label><!-- Agentic Attendee Bio(s) --></label>
-        <name>CRM_Agentic_Attendee_Bio__c</name>
-    </fields>
-    <fields>
         <label><!-- Agentic Drafting Status --></label>
         <name>CRM_Agentic_Drafting_Status__c</name>
         <picklistValues>
@@ -124,16 +116,6 @@
         <name>CRM_Recommendation__c</name>
     </fields>
     <fields>
-        <help><!-- The end date of the customer meeting for the selected time zone corresponding to the meeting location --></help>
-        <label><!-- Scheduled End Date --></label>
-        <name>CRM_Scheduled_End_Date__c</name>
-    </fields>
-    <fields>
-        <help><!-- The end time of the customer meeting for the selected time zone corresponding to the meeting location --></help>
-        <label><!-- Scheduled End Time --></label>
-        <name>CRM_Scheduled_End_Time_Only__c</name>
-    </fields>
-    <fields>
         <help><!-- The date and end time of the customer meeting in the local time zone corresponding to the meeting location --></help>
         <label><!-- Scheduled End Time (MM/dd/YYYY HH:mm) --></label>
         <name>CRM_Scheduled_End_Time_txt__c</name>
@@ -144,25 +126,10 @@
         <name>CRM_Scheduled_Start_Time_txt__c</name>
     </fields>
     <fields>
-        <help><!-- The start date of the customer meeting for the selected time zone corresponding to the meeting location --></help>
-        <label><!-- Scheduled Start Date --></label>
-        <name>CRM_Start_Date__c</name>
-    </fields>
-    <fields>
-        <help><!-- The start time of the customer meeting for the selected time zone corresponding to the meeting location --></help>
-        <label><!-- Scheduled Start Time --></label>
-        <name>CRM_Start_Time__c</name>
-    </fields>
-    <fields>
         <help><!-- The name of the Technical Assistant (TA) supporting the Exec  or meeting. The TA helps facilitate content accuracy and coordinates with Executives. --></help>
         <label><!-- Technical Assistant --></label>
         <name>CRM_Technical_Assistant__c</name>
         <relationshipLabel><!-- Executive Meeting Briefs (Technical Assistant) --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- Timezone for the customer meeting corresponding to the meeting location --></help>
-        <label><!-- Meeting Timezone --></label>
-        <name>CRM_Time_Zone__c</name>
     </fields>
     <fields>
         <label><!-- Document Link --></label>
@@ -188,12 +155,12 @@
         <name>Quip_Document_URL__c</name>
     </fields>
     <recordTypes>
-        <description><!-- AI-curated brief with synthesized insights and recommendations. --></description>
-        <label><!-- Agentic Executive Meeting Brief --></label>
+        <description><!-- Record type to handle new executive meeting brief functionality --></description>
+        <label><!-- New Executive Meeting Brief --></label>
         <name>CRM_New_Executive_Meeting_Brief</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Manually curated meeting brief and account details. --></description>
+        <description><!-- This is the standard Exec Meeting Brief Record --></description>
         <label><!-- Executive Meeting Brief --></label>
         <name>Executive_Meeting_Brief</name>
     </recordTypes>
@@ -201,13 +168,5 @@
     <validationRules>
         <errorMessage><!-- Agentic Brief Generation must be completed before updating status --></errorMessage>
         <name>CRM_Agentic_Brief_Generation_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Scheduled Start Date and Time must not be greater than Scheduled End Date and Time. --></errorMessage>
-        <name>CRM_StartDate_EndDate_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select the Meeting Timezone --></errorMessage>
-        <name>CRM_Timezone_Validation</name>
     </validationRules>
 </CustomObjectTranslation>

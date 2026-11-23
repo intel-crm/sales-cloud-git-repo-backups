@@ -141,8 +141,6 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
                     oppFact.put(fieldName, fieldValue);
                 }
                 catch (Exception e) {
-                    Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.Core_OpportunityPartnerHandler.opportunityPartnerFactsUpdate',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunityPartnerHandler', Core_Severity__c='Medium', Core_When__c=System.Now(), Core_Project__c = 'Core_OpportunityPartnerHandler.opportunityPartnerFactsUpdate');
-                    Database.insert(logEntry, false);
                 }
                 mapOppIdsToFacts.put(oppId, oppFact);
             }

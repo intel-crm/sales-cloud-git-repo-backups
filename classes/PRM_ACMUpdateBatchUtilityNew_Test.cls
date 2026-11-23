@@ -237,10 +237,7 @@ public class PRM_ACMUpdateBatchUtilityNew_Test {
         testACM.PRM_Status_Reason_Txt__c = 'Testclass';
         testLst.add(testACM);
 
-
-        
-
-        Triggerhandler.bypass('PRM_aba_TriggerHandler'); 
+        Triggerhandler.bypass('PRM_aba_TriggerHandler');
         PRM_ACMUpdateUtility.upsertData(testLst);
         Triggerhandler.clearbypass('PRM_aba_TriggerHandler');
         
@@ -537,6 +534,7 @@ public class PRM_ACMUpdateBatchUtilityNew_Test {
         
         
         
+        
         TriggerHandler.bypass('PRM_aba_TriggerHandler');
         insert abaLst;
         Triggerhandler.clearbypass('PRM_aba_TriggerHandler');
@@ -565,12 +563,11 @@ public class PRM_ACMUpdateBatchUtilityNew_Test {
         asa.PRM_InActive_Ind__c=false;
         insert asa;*/
        
-       
         
+    
         aba1.PRM_Status_Nm__c='Inactive';
         aba1.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         update aba1;
-        
         
         
         Core_AGS_Role__c ags = new Core_AGS_Role__c();
@@ -892,9 +889,9 @@ public class PRM_ACMUpdateBatchUtilityNew_Test {
         asa.PRM_Partner_Role__c='Service Provider';
         asa.PRM_InActive_Ind__c=false;
         insert asa;
-		
-		
-		PRM_Specialty__c spec2 = new PRM_Specialty__c();
+    
+    
+    PRM_Specialty__c spec2 = new PRM_Specialty__c();
        // spec2.recordtypeId = specid;
         spec2.name='Center Specialty';
         spec2.PRM_Description_Txt__c='This is description1';

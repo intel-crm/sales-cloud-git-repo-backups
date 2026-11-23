@@ -9,7 +9,7 @@ contact entitlemnets and removing the members based contact entitlement removal
 * ----------------------------------------------------------------------------
 * Raushan                  20/05/2019               Original Version
 * Vaibhav                   14/06/2020              Refactored Code v2
-* Manikanta         10/07/2020        Refactored Code v3
+* Manikanta 				10/07/2020				Refactored Code v3
 * Akshay [Draco]            08/06/2022              Added logic to keep Membership Change Ind Flag to TRUE in case of any APEX Exception
 *************************************************************************************/
 
@@ -31,7 +31,7 @@ public without sharing class PMP_Batch_Group_Management {
                                                                 Core_Contact_Id__r.AccountId, Core_Selected__c, 
                                                                 Core_Contact_Id__r.Core_IPA_One_Partner_Id__c, 
                                                                 Core_Contact_Id__r.Core_IPA_Contact_Segment__c,
-                                                            Core_Entitlement_Id__r.Name
+                                                        		Core_Entitlement_Id__r.Name
                                                                 FROM Core_Contact_Entitlement__c
                                                                WHERE Core_Status__c = :STR_COMPLETE AND Core_Selected__c = true 
                                                                AND Core_Entitlement_Id__r.Name IN :setEntitlementNames 
@@ -82,7 +82,7 @@ public without sharing class PMP_Batch_Group_Management {
         } 
         return lstQueriedGrps;
     }
-  
+	
     public static Map<String,Set<Id>> getPublicGroupExpectedMap(List<Core_Contact_Entitlement__c> lstMPConEnts, 
                                                                 List<PMP_Public_Group_Management_Settings__c> lstActivePGMgmSettingsForAddition,
                                                                 Map<Id,Id> mapConIdtoUsrId,List<Account> lstAllPartnerAccountScope ) {
@@ -90,14 +90,14 @@ public without sharing class PMP_Batch_Group_Management {
         Map<String,Set<Id>> mapPGToUserExpectedForAddition = new Map<String,Set<Id>>();
                                                                     
         for(PMP_Public_Group_Management_Settings__c PGMgmsetting : lstActivePGMgmSettingsForAddition) {
-          for(Account acc : lstAllPartnerAccountScope) {
-            if(PGMgmsetting.PMP_Public_Group_Nm__c != NULL) {
-              String strGroupName = trimGroupName(PGMgmsetting.PMP_Public_Group_Nm__c.replace(STR_PUBLIC_GROUP_ROOT,acc.Id));
-              if(!mapPGToUserExpectedForAddition.containsKey(strGroupName)) {
-                mapPGToUserExpectedForAddition.put(strGroupName, new Set<ID>());
-              }
-            }   
-          }
+        	for(Account acc : lstAllPartnerAccountScope) {
+        		if(PGMgmsetting.PMP_Public_Group_Nm__c != NULL) {
+        			String strGroupName = trimGroupName(PGMgmsetting.PMP_Public_Group_Nm__c.replace(STR_PUBLIC_GROUP_ROOT,acc.Id));
+        			if(!mapPGToUserExpectedForAddition.containsKey(strGroupName)) {
+        				mapPGToUserExpectedForAddition.put(strGroupName, new Set<ID>());
+        			}
+        		}   
+        	}
         }
         
         for(PMP_Public_Group_Management_Settings__c PGMgmsetting : lstActivePGMgmSettingsForAddition) {
@@ -107,17 +107,17 @@ public without sharing class PMP_Batch_Group_Management {
                         String strGroupName = trimGroupName(PGMgmsetting.PMP_Public_Group_Nm__c.replace(STR_PUBLIC_GROUP_ROOT,conEnt.Core_Contact_Id__r.Core_IPA_One_Partner_Id__c));
                         if(mapPGToUserExpectedForAddition.containsKey(strGroupName) && mapConIdtoUsrId.containsKey(conEnt.Core_Contact_Id__c)) {
                             //if(mapConIdtoUsrId.containsKey(conEnt.Core_Contact_Id__c)){
-                              mapPGToUserExpectedForAddition.get(strGroupName).add(mapConIdtoUsrId.get(conEnt.Core_Contact_Id__c)); 
+                            	mapPGToUserExpectedForAddition.get(strGroupName).add(mapConIdtoUsrId.get(conEnt.Core_Contact_Id__c)); 
                             //}
                         }
                     }
                        
                     if(PGMgmsetting.PMP_Contributing_Entitlement_Nm__c == conEnt.Core_Entitlement_Id__r.Name && PGMgmsetting.PMP_Contributing_Field_API_Nm__c != null){
                         if(conEnt.Core_Contact_Id__r.get(PGMgmsetting.PMP_Contributing_Field_API_Nm__c) != null && conEnt.Core_Contact_Id__r.get(PGMgmsetting.PMP_Contributing_Field_API_Nm__c).toString().contains(PGMgmsetting.PMP_Contributing_Field_Value_Txt__c)){
-                          String strGroupName = trimGroupName(PGMgmsetting.PMP_Public_Group_Nm__c.replace(STR_PUBLIC_GROUP_ROOT,conEnt.Core_Contact_Id__r.Core_IPA_One_Partner_Id__c));
+                        	String strGroupName = trimGroupName(PGMgmsetting.PMP_Public_Group_Nm__c.replace(STR_PUBLIC_GROUP_ROOT,conEnt.Core_Contact_Id__r.Core_IPA_One_Partner_Id__c));
                             if(mapPGToUserExpectedForAddition.containsKey(strGroupName) && mapConIdtoUsrId.containsKey(conEnt.Core_Contact_Id__c)) {
                                 //if(mapConIdtoUsrId.containsKey(conEnt.Core_Contact_Id__c)){
-                                mapPGToUserExpectedForAddition.get(strGroupName).add(mapConIdtoUsrId.get(conEnt.Core_Contact_Id__c));
+                            		mapPGToUserExpectedForAddition.get(strGroupName).add(mapConIdtoUsrId.get(conEnt.Core_Contact_Id__c));
                                 //}
                             }
                         }
@@ -167,7 +167,7 @@ public without sharing class PMP_Batch_Group_Management {
         if(mapPGToUserExpectedForAddition.keySet() != null && !mapPGToUserExpectedForAddition.keySet().isEmpty()) {
             lstQueriedGrpsMembers = [SELECT Id,GroupId,UserOrGroupID, Group.DeveloperName FROM GroupMember where Group.DeveloperName IN: mapPGToUserExpectedForAddition.keySet() OR UserOrGroupID IN:setUserIds];
         }
-    
+		
         System.debug('lstQueriedGrpsMembers*** ='+lstQueriedGrpsMembers);
         for(GroupMember grpMem : lstQueriedGrpsMembers) {
             System.debug('$$$$grpMem'+grpMem);
@@ -223,7 +223,7 @@ public without sharing class PMP_Batch_Group_Management {
                 }
             }
         }
-    System.debug('mapGroupToGroupMember*** ='+mapGroupToGroupMember);
+		System.debug('mapGroupToGroupMember*** ='+mapGroupToGroupMember);
         System.debug('mapGrpDevNameToGrpId*** ='+mapGrpDevNameToGrpId);
         System.debug('mapUserIdToGrpMember*** ='+mapUserIdToGrpMember);
         
@@ -234,10 +234,10 @@ public without sharing class PMP_Batch_Group_Management {
                 for(Id usrId : mapGroupToGroupMember.get(grpName)){             
                     if(!mapPGToUserExpectedForAddition.get(grpName).contains(usrId) && mapUserIdToGrpMember.containsKey(usrId)){
                         for(GroupMember grpMem : mapUserIdToGrpMember.get(usrId)){
-              if(grpmem.Group.DeveloperName == grpName){
-                setDeleteGrpMembers.add(grpmem);
-              }
-            } 
+							if(grpmem.Group.DeveloperName == grpName){
+								setDeleteGrpMembers.add(grpmem);
+							}
+						} 
                     }                               
                 }
             }
@@ -260,15 +260,13 @@ public without sharing class PMP_Batch_Group_Management {
                     if(mapPGToConExpectedForRemoval.get(grpName).contains(usrId) && mapUserIdToGrpMember.containsKey(usrId)){
                         for(GroupMember grpMem : mapUserIdToGrpMember.get(usrId)) {
                             if(grpmem.Group.DeveloperName == grpName){
-                setDeleteGrpMembers.add(grpmem);
-              }
+								setDeleteGrpMembers.add(grpmem);
+							}
                         }
                     }
                 }
             }
         }
-        
-        
         
         //System.debug('lstInsertGrpMembers*** ='+lstInsertGrpMembers);
         if(lstInsertGrpMembers.size() > 0 && !test.isRunningTest()){
@@ -343,7 +341,7 @@ public without sharing class PMP_Batch_Group_Management {
     }*/
     
   /*  public static void assignRemoveGrpsToODMNonODM(List<Group> lstODMGroups, List<Group> lstNonODMGroups, String ODM_GROUP,String NON_ODM_GROUP){
-      
+    	
         List<GroupMember> lstDeleteGrpMembers = new List<GroupMember>();
         List<GroupMember> lstInsertGrpMembers = new List<GroupMember>();
         Set<Id> setNonODMGroupIds = new Set<Id>();
@@ -361,7 +359,7 @@ public without sharing class PMP_Batch_Group_Management {
         setAllGroupIds.addAll(setNonODMGroupIds);
         List<GroupMember> lstAllOdmNonODMGrpMembers  = [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE 
                                                         (GroupId = : ODM_GROUP OR GroupId = : NON_ODM_GROUP) 
-                                                          AND UserOrGroupID IN :setAllGroupIds];
+                                                       	 AND UserOrGroupID IN :setAllGroupIds];
         
         Map<string,Set<Id>> mapODMGroupToPAG = new Map<string,Set<Id>>();
         Map<Id,GroupMember> mapPAGToGrpMemberNonODM = new Map<Id,GroupMember>();
@@ -474,7 +472,7 @@ public without sharing class PMP_Batch_Group_Management {
         }            
     }*/
     
-   /* Public static List<Account> refineIntelAccounts(Set<Id> setIntelAccIds,  Set<String> setEntitlementNames){
+    Public static List<Account> refineIntelAccounts(Set<Id> setIntelAccIds,  Set<String> setEntitlementNames){
         Set<Id> setPAGIntelAcctIds = new Set<Id>();
         Set<Id> setRefinedIntelAccIds = new Set<Id>();
         for(Core_Account_Group_Member__c agm :[SELECT Id, Core_Intel_Account_Id__c FROM Core_Account_Group_Member__c 
@@ -504,7 +502,7 @@ public without sharing class PMP_Batch_Group_Management {
         for(Group grp: lstGrps){
             setGrpsToDelFromGrps.add(grp.Id);
         }*/
-       /* List<GroupMember> lstGrpMemToDel = [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE UserOrGroupID IN: setGrpsToDelFromGrps AND (GroupId =: ODM_GROUP OR GroupId =: NON_ODM_GROUP)];
+        List<GroupMember> lstGrpMemToDel = [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE UserOrGroupID IN: setGrpsToDelFromGrps AND (GroupId =: ODM_GROUP OR GroupId =: NON_ODM_GROUP)];
         //System.debug('delete if acc becomes part of PAG'+lstGrpMemToDel);
         if(!lstGrpMemToDel.isEmpty()){
             //Database.delete(lstGrpMemToDel);
@@ -519,10 +517,10 @@ public without sharing class PMP_Batch_Group_Management {
                 }
             }
         }
-    }*/
+    }
     
     /*******Logics to Sharing Partner/Intel Account with Partner Account Group*************/
-   /* public static void shareAccountwithMainPAGGroup(List<Group> lstAllPublicGrps, Set<Id> setAllPartnerAccId) {
+    public static void shareAccountwithMainPAGGroup(List<Group> lstAllPublicGrps, Set<Id> setAllPartnerAccId) {
         
         List<AccountShare> sharePartAccountWithAccGroups  = new List<AccountShare>();
         List<AccountShare> lstDelAccShare  = new List<AccountShare>();
@@ -537,7 +535,7 @@ public without sharing class PMP_Batch_Group_Management {
         for(Account acc: [SELECT Id, Core_IPA_One_Partner_Id__c FROM Account WHERE Core_IPA_One_Partner_Id__c IN : setAllPartnerAccId ]) {
             Id groupId = mapGrpDevNameToGrpId.get(CORE_MP_STR + acc.Core_IPA_One_Partner_Id__c);
             if(mapGroupIdToAccExpected.containsKey(groupId)) {
-              mapGroupIdToAccExpected.get(groupId).add(acc.Id);
+            	mapGroupIdToAccExpected.get(groupId).add(acc.Id);
             } else {
                 mapGroupIdToAccExpected.put(groupId, new set<Id>{acc.Id});
             }
@@ -585,13 +583,13 @@ public without sharing class PMP_Batch_Group_Management {
             }
         }
         
-        //System.debug('$$$$lstDelAccShare'+lstDelAccShare);
+      	//System.debug('$$$$lstDelAccShare'+lstDelAccShare);
         
         System.enqueueJob(new PMPBatchQueueableClass(sharePartAccountWithAccGroups, lstDelAccShare));
-    }*/
+    }
     
     /******* Implementation of Queueable Interface to PMPBatchQueueableClass*************/ 
-   /* public class PMPBatchQueueableClass implements Queueable {        
+    public class PMPBatchQueueableClass implements Queueable {        
         List<AccountShare> lstRecords;
         List<AccountShare> lstDelAccShare;
         public PMPBatchQueueableClass(List<AccountShare> lstRecords, List<AccountShare> lstDelAccShare) {
@@ -601,13 +599,13 @@ public without sharing class PMP_Batch_Group_Management {
         
         public void execute(QueueableContext context) {
             try{
-                 Database.insert(lstRecords, false);
+               	Database.insert(lstRecords, false);
                 Database.delete(lstDelAccShare, false);
             }catch(Exception terrException){
                 //System.debug('exception getMessage = '+ terrException.getMessage());
             }
         }
-    }*/
+    }
     
     public static String trimGroupName(String strGroupName) {
         if(strGroupName != null && strGroupName.length() > 40){
@@ -618,8 +616,8 @@ public without sharing class PMP_Batch_Group_Management {
     }
 
     //ipa 2.0 simplification: sharing all partner users as odm non odm EOL-LATA
-/* public static void assignRemoveToAllPartnerUsersGroup(List<Group> LstSharingMPPublicGroups, string ALL_PARTNERS_GROUP){
-    set<id> setMPOPIDGroupIds=new set<id>();
+ public static void assignRemoveToAllPartnerUsersGroup(List<Group> LstSharingMPPublicGroups, string ALL_PARTNERS_GROUP){
+	  set<id> setMPOPIDGroupIds=new set<id>();
       List<GroupMember> lstInsertGrpMembers = new List<GroupMember>();
       Map<string,Set<Id>> mapPartnerGroupToUserOrGrp = new Map<string,Set<Id>>();
      Map<Id,GroupMember> mapPartnerGroupIdToGrp = new Map<Id,GroupMember>();
@@ -628,11 +626,11 @@ public without sharing class PMP_Batch_Group_Management {
      for(Group grp : LstSharingMPPublicGroups) {
             setMPOPIDGroupIds.add(grp.Id);
         }
-  List<GroupMember> lstAllPartnerGrpMembers   = [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE 
+	List<GroupMember> lstAllPartnerGrpMembers 	= [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE 
                                                         (GroupId = : ALL_PARTNERS_GROUP) 
-                                                          AND UserOrGroupID IN :setMPOPIDGroupIds];
-      for(GroupMember gm : lstAllPartnerGrpMembers){                       
-        if(mapPartnerGroupToUserOrGrp.containsKey(gm.GroupId)){
+                                                       	 AND UserOrGroupID IN :setMPOPIDGroupIds];
+			for(GroupMember gm : lstAllPartnerGrpMembers){											 
+				if(mapPartnerGroupToUserOrGrp.containsKey(gm.GroupId)){
                     mapPartnerGroupToUserOrGrp.get(gm.GroupId).add(gm.UserOrGroupID);
                     mapPartnerGroupIdToGrp.put(gm.UserOrGroupID, gm);
                 }
@@ -641,7 +639,7 @@ public without sharing class PMP_Batch_Group_Management {
                     grpId.add(gm.UserOrGroupID);
                     mapPartnerGroupToUserOrGrp.put(gm.GroupId, grpId);// all partner group, pmp_opid group
                     mapPartnerGroupIdToGrp.put(gm.UserOrGroupID, gm); //pmp_opid group, group record
-                }                             
+                }														 
 
  }
    system.debug('lstAllPartnerGrpMembers'+lstAllPartnerGrpMembers);
@@ -667,7 +665,7 @@ public without sharing class PMP_Batch_Group_Management {
                 gm.UserOrGroupId = opidGrp;
                 lstInsertGrpMembers.add(gm);
             }
-      
+			
  }
   System.debug('lstInsertGrpMembers'+lstInsertGrpMembers+'lstInsertGrpMemberssize'+lstInsertGrpMembers.size());
  if(lstInsertGrpMembers.size() > 0 && !test.isRunningTest()){
@@ -688,15 +686,15 @@ public without sharing class PMP_Batch_Group_Management {
                         if (err.getFields() != null && !err.getFields().isEmpty()) {
                             System.debug('Fields causing error: ' + String.join(err.getFields(), ', '));
                         }
-              }
+       			 }
                 }
             }
      system.debug('list of errors'+PMP_Batch_Group_Management_Scheduler.lstSaveResultErrors+'\n');
         }
-  }*/
+	}
 
     //IPA 2.0 simplification
-  /*  public static void removeUsersFromAllPartnersGrp(list<Core_Account_Group_Member__c> lstPAGInactive,set<string> setMPOPIDGroupIds){
+    public static void removeUsersFromAllPartnersGrp(list<Core_Account_Group_Member__c> lstPAGInactive,set<string> setMPOPIDGroupIds){
         map<string,boolean> mapAccIdInactive=new  map<string,boolean>();
         map<Id,GroupMember> mapOPIDGrpUser=new  map<Id,GroupMember>();
         List<GroupMember> lstOPIDGrpMembers =new List<GroupMember> (); 
@@ -704,30 +702,30 @@ public without sharing class PMP_Batch_Group_Management {
          list<Id> lstUserIds=new list<Id>();
       List<GroupMember>  lstdeleteusersfromopidGrp=new List<GroupMember>();
       for (Core_Account_Group_Member__c pag: lstPAGInactive){
-      mapAccIdInactive.put(pag.Core_Partner_Account_Id__c,pag.Core_Inactive_Ind__c);
+			mapAccIdInactive.put(pag.Core_Partner_Account_Id__c,pag.Core_Inactive_Ind__c);
            setIntelAccs.add(pag.Core_Intel_Account_Id__c);
-    }
+		}
         for(user usr:[select id,accountId,account.Core_IPA_One_Partner_Id__c,contactId from user 
                     where AccountId in:setIntelAccs and contactId!=null and UserRole.PortalType = 'Partner' 
                     AND UserRole.PortalRole = 'Worker']){
                         lstUserIds.add(usr.id);
         }
-      lstOPIDGrpMembers   = [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE 
+	    lstOPIDGrpMembers 	= [SELECT Id,UserOrGroupID,GroupId FROM GroupMember WHERE 
                                                         (GroupId in : setMPOPIDGroupIds) 
-                                                           AND UserOrGroupID in: lstUserIds];
-    for(GroupMember grp:lstOPIDGrpMembers){
+                                                       	  AND UserOrGroupID in: lstUserIds];
+		for(GroupMember grp:lstOPIDGrpMembers){
              mapOPIDGrpUser.put(grp.GroupId,grp);
-    }
-                            
-     for(string opidGrp : setMPOPIDGroupIds){// pmp_opid groups
-      String opid_id  = opidGrp.split('_')[1];
-      if(mapAccIdInactive.containskey(opid_id) && mapAccIdInactive.get(opid_id)==TRUE){
-          if(mapOPIDGrpUser.containskey(opidGrp) && lstUserIds.contains(mapOPIDGrpUser.get(opidGrp).UserOrGroupID)){
-          lstdeleteusersfromopidGrp.add(mapOPIDGrpUser.get(opidGrp));// user from pmp_opid
+		}
+														
+		 for(string opidGrp : setMPOPIDGroupIds){// pmp_opid groups
+			String opid_id  = opidGrp.split('_')[1];
+			if(mapAccIdInactive.containskey(opid_id) && mapAccIdInactive.get(opid_id)==TRUE){
+					if(mapOPIDGrpUser.containskey(opidGrp) && lstUserIds.contains(mapOPIDGrpUser.get(opidGrp).UserOrGroupID)){
+					lstdeleteusersfromopidGrp.add(mapOPIDGrpUser.get(opidGrp));// user from pmp_opid
                 }
             }
         }
-     Database.DeleteResult[] drList = Database.delete(lstdeleteusersfromopidGrp, false);
+		 Database.DeleteResult[] drList = Database.delete(lstdeleteusersfromopidGrp, false);
             //System.debug('Insert Group Member - DeleteResult List - ' + drList);
             for(Database.DeleteResult dr : drList) {
                 if(!dr.isSuccess()) {
@@ -736,6 +734,6 @@ public without sharing class PMP_Batch_Group_Management {
                     PMP_Batch_Group_Management_Scheduler.setFailedGrpMembrIds.add(dr.getId());
                 }
             }
-   
-  }*/
+	 
+	}
 }

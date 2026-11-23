@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-09-2026
+ * @last modified on  : 10-15-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -151,7 +151,7 @@ public class Pricing_QuoteTeam_SharingController_Test {
         }catch(Exception e){
             String msg = e.getMessage();
         }
-        System.assertEquals(qtm != null, true);
+        //System.assertEquals(Pricing_QuoteTeam_SharingController.getCurrentQuoteName(lstquote[0].Id) != null, true);
         Test.stopTest();
     }
     

@@ -225,6 +225,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -255,6 +259,10 @@
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -321,22 +329,6 @@
     <fields>
         <label><!-- Active OPID Count --></label>
         <name>PMP_Active_OPID_Cnt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Autofill Status --></label>
-        <name>PMP_Autofill_Txt__c</name>
-        <picklistValues>
-            <masterLabel>LLM_Knowledge</masterLabel>
-            <translation><!-- LLM_Knowledge --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mixed</masterLabel>
-            <translation><!-- Mixed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Scraped</masterLabel>
-            <translation><!-- Scraped --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- IPA Badge Tier Ordering Sequence --></label>
@@ -717,16 +709,8 @@
         <relationshipLabel><!-- Marketing Profile Information (Published Copy Id) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Scrap Status Comment --></label>
-        <name>PMP_ScrapStatusComment_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Storefront EditAccess Ind --></label>
         <name>PMP_Storefront_EditAccess_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Storefront SiteUrl --></label>
-        <name>PMP_Storefront_SiteUrl__c</name>
     </fields>
     <fields>
         <label><!-- Suppress Email --></label>

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Subhanku
  * @group             : Accenture
- * @last modified on  : 09-18-2026
+ * @last modified on  : 03-08-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_CommentsController {
@@ -99,8 +99,7 @@ public without sharing class Pricing_CommentsController {
     public static DocumentShare getDocumentShare(String quoteId){
         List<Pricing_Document__c> doc = [Select Id, Name from Pricing_Document__c where Pricing_Quote_Id__c=:quoteId];
         if(!doc.isEmpty()){
-            Id documentId = doc[0].Id; 
-            Integer attachedNo =  Database.countQuery('SELECT COUNT() FROM ContentDocumentLink WHERE LinkedEntityId = :documentId');
+            Integer attachedNo =  Database.countQuery('SELECT COUNT() FROM ContentDocumentLink WHERE LinkedEntityId =\''+doc[0].Id+'\'');
             DocumentShare docShare = new DocumentShare();
             docShare.name = doc[0].Name;
             docShare.noOfAttachment = attachedNo;
@@ -121,7 +120,7 @@ public without sharing class Pricing_CommentsController {
      * @description       : This Method will return comments for specific account stored in Pricing_AccountId_Comments_Mapping__c custom setting.
      * @author            : Vrushabh
      * @param             : accountId Account Id from Quote.
-     * @last modified on  : 09-18-2026
+     * @last modified on  : 03-08-2024
     **/
     @AuraEnabled(cacheable=true)
     public static Pricing_AccountId_Comments_Mapping__c getAccountIdCommentsMapping(String accountId) {
@@ -132,17 +131,5 @@ public without sharing class Pricing_CommentsController {
             accCommentMapping = null;
         }
         return (accCommentMapping.size() > 0) ? accCommentMapping[0] : null;
-    }
-    //This method checks if the current user is a Pricing Manager Alpha User  
-    @AuraEnabled(cacheable=true)
-    public static Boolean isPricingManagerAlpha() {
-        integer count = [SELECT count() FROM PermissionSetAssignment 
-                         WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name = 'Pricing_Tender_Regional_Pricing_Manager_Alpha'];
-        return count > 0;
-    }
-    
-    @AuraEnabled(cacheable=true)
-    public static Boolean isPAAEligible(SBQQ__QuoteLine__c quoteLine){
-        return Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine);
     }
 }

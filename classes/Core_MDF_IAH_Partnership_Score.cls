@@ -271,7 +271,7 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
     	List<Links> getnextlink = new List<Links>();
           
             wrapperPartnershipScoreObj nextlinks = (wrapperPartnershipScoreObj)JSON.deserialize(resp1.getBody(),wrapperPartnershipScoreObj.class);
-            getnextlink = nextlinks.links != null ? nextlinks.links : new List<Links>();
+            getnextlink =nextlinks.links;
            
             for(Links rec:getnextlink)
             {

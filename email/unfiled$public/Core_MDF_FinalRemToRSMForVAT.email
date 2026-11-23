@@ -1,4 +1,4 @@
-<messaging:emailTemplate subject="{!$Label.Core_MDF_VAT_EmailSubject_Reminder} {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_Sub_Claim_Id__c)), RelatedTo.Core_MDF_Account_nm__c,'')} {!$Label.Core_MDF_EmailTemp_Subj1} {!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c}: {!relatedTo.Core_MDF_Claim_Id__r.Title} - {!$Label.Core_MDF_VAT_EmailSubject}" 
+<messaging:emailTemplate subject="{!$Label.Core_MDF_VAT_EmailSubject_Reminder} {!$Label.Core_MDF_EmailTemp_Subj1} {!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c}: {!relatedTo.Core_MDF_Claim_Id__r.Title} - {!$Label.Core_MDF_VAT_EmailSubject}" 
                      recipientType="User"
                      relatedToType="Core_MDF_Claim_VAT_Info__c"
                      language="en_US"
@@ -18,17 +18,10 @@
                     </apex:outputText>
                                                             
                     <ul>
-                       <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body4}&nbsp;{!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_AccountCompany__c}</li> 
                        <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body3}&nbsp;{!RelatedTo.Core_MDF_Claim_Id__r.Title}<br/></li>    
-                       <apex:outputPanel rendered="{!NOT(ISBLANK(RelatedTo.Core_MDF_Sub_Claim_Id__c))}">
-                           <li>{!$Label.Core_MDF_AccountNodeName}&nbsp;{!RelatedTo.Core_MDF_Account_nm__c}</li>
-                       </apex:outputPanel>
-                       <li>{!IF(RelatedTo.Core_MDF_Claim_Id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ' :', $Label.Core_MDF_EmailTemp_Claim_Activity_Name)}&nbsp;{!relatedTo.Core_MDF_Claim_Id__r.Request.Title}</li>
-                        <apex:outputPanel rendered="{!NOT(RelatedTo.Core_MDF_Claim_Id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c)}">
-                            <li>{!$Label.Core_MDF_EmailTemp_Activity_Type}
-                                {!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_Activity_Types__c}
-                            </li>
-                        </apex:outputPanel>   
+                       <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body4}&nbsp;{!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_AccountCompany__c}</li>                   
+                       <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name} {!relatedTo.Core_MDF_Claim_Id__r.Request.Title}</li>
+                        <li>{!$Label.Core_MDF_EmailTemp_Activity_Type} {!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_Activity_Types__c}</li>    
                         <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Claim_Id__r.Core_MDF_Country_Location_nm__c != null,true,false)}">
                         <li>{!$Label.Core_MDF_CountryLocation}&nbsp;: {!relatedTo.Core_MDF_Claim_Id__r.Core_MDF_Country_Location_nm__c}</li>
                         </apex:outputPanel>

@@ -78,7 +78,7 @@ public class Core_Opportunity_KPI_Handler_Test {
         insert lstkpiCustSetting;
         
         List<Core_Commission_KPI_Mappings__c> listFunctionalityNameKPIMappings = [Select Id,Name,Core_KPI_Name_Nm__c,Core_Event_Type__c,Core_Aggregate_Type__c,Core_KPI_Field__c,Core_IsActive__c,Core_KPI_Start_Dt__c,Core_KPI_End_Dt__c,Core_KPI_Type__c
-                                                                                  From Core_Commission_KPI_Mappings__c limit 1000];
+                                                                                  From Core_Commission_KPI_Mappings__c];
         
         Core_Commissions_Percent_Contribution__c commPercent = new Core_Commissions_Percent_Contribution__c();
         commPercent.Name = 'Team Member';

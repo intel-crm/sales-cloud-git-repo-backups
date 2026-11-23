@@ -57,155 +57,88 @@ public without sharing class Core_ProactiveAlertAandEFailures {
         
         //Loop through the Log Entries and add them to respective categories
         Map<String,List<AlertDetails>> mapErrorAlertDetail = new Map<String,List<AlertDetails>>();
-        processLogEntries(logEntryList, contactMap, lstProactiveAlertMtd, mapErrorAlertDetail, otherErrorThreshold);
+        for(Core_Log_Entry__c logEntry : logEntryList) {
+            // Proceed further only when AGS Integration status is still Failed, else ignore that log entry
+            if(contactMap.get(logEntry.Core_sObjectId__c).Core_AGS_Integration_Status__c != 'Successful'){
+                Boolean errorCategorised = false;
+                Boolean errorTobeIgnored = false;
+                String inboundMessageId	= 'Inbound message Id not found for this record ' + logEntry.Id;
+                Id someId = logEntry.Id;
+                //Get the inbound message if from the tag
+                if(logEntry.Core_Tags__c != null && logEntry.Core_Tags__c.contains(';')){
+                    for(String splitString : logEntry.Core_Tags__c.split(';')){
+                        if(splitString instanceOf Id){
+                            someId = splitString;
+                            if(someId.getSObjectType().getDescribe().getName() == 'Core_Integration_Inbound_Message__c'){
+                                inboundMessageId = '' + someId;
+                            }
+                        }
+                    }
+                }
+                //Loop across the metadata and see if we can categorise the error from Log Entry into a category
+                for(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert : lstProactiveAlertMtd){
+                    
+                        //If error in the log entry is found in custom metadata, add its details under that category
+                        if((ProActAlert.Core_Is_Active__c && ProActAlert.DeveloperName != 'Other_Errors') && logEntry.Core_Details__c != null && logEntry.Core_Details__c.containsIgnoreCase(ProActAlert.Core_Error_Text__c) && !ProActAlert.IsIgnore__c){
+                            AlertDetails alrtDet = new AlertDetails();
+                            alrtDet.ErrorCategory = ProActAlert.label;
+                            alrtDet.contactId = contactMap.get(logEntry.Core_sObjectId__c).Id;
+                            alrtDet.contactName = contactMap.get(logEntry.Core_sObjectId__c).Name;
+                            alrtDet.contactEmail = contactMap.get(logEntry.Core_sObjectId__c).Email;
+                            alrtDet.contactAGSIntStatus = contactMap.get(logEntry.Core_sObjectId__c).Core_AGS_Integration_Status__c;
+                            alrtDet.InboundMsgId = inboundMessageId;
+                            alrtDet.EntitlementName = logEntry.Core_Details__c.split('-->').get(0);
+                            alrtDet.EntitlementError = logEntry.Core_Details__c.split('-->').get(1);
+
+                            if(mapErrorAlertDetail.containsKey(ProActAlert.label)) {
+                                mapErrorAlertDetail.get(ProActAlert.label).add(alrtDet);
+                            } else {
+                                List<AlertDetails> tempAlertDetList = new List<AlertDetails>();
+                                tempAlertDetList.add(alrtDet);
+                                mapErrorAlertDetail.put(ProActAlert.label,tempAlertDetList);
+                            }
+                            errorCategorised = true;
+                        } else if((ProActAlert.Core_Is_Active__c && ProActAlert.DeveloperName != 'Other_Errors') && logEntry.Core_Details__c != null && logEntry.Core_Details__c.containsIgnoreCase(ProActAlert.Core_Error_Text__c) && ProActAlert.IsIgnore__c){
+                            errorTobeIgnored = true;
+                        }
+
+                    //For current custom metadata, check if count of errors logged is more than its threshold. If yes, then mark triggerProActiveAlert flag to TRUE
+                    if(mapErrorAlertDetail.containsKey(ProActAlert.label) && mapErrorAlertDetail.get(ProActAlert.label).size() >=  ProActAlert.Core_Minimum_count_for_Alert__c){
+                    
+                        triggerProActiveAlert = true;
+                    }
+                }
+                //If error in the log entry is not found in custom metadata, add its details under "Other Errors" category
+                if(!errorCategorised && !errorTobeIgnored){
+                    AlertDetails alrtDet = new AlertDetails();
+                    alrtDet.ErrorCategory = OTHER_ERROR;
+                    alrtDet.contactId = contactMap.get(logEntry.Core_sObjectId__c).Id;
+                    alrtDet.contactName = contactMap.get(logEntry.Core_sObjectId__c).Name;
+                    alrtDet.contactEmail = contactMap.get(logEntry.Core_sObjectId__c).Email;
+                    alrtDet.contactAGSIntStatus = contactMap.get(logEntry.Core_sObjectId__c).Core_AGS_Integration_Status__c;
+                    alrtDet.InboundMsgId = inboundMessageId;
+                    alrtDet.EntitlementName = logEntry.Core_Details__c.split('-->').get(0);
+                    alrtDet.EntitlementError = logEntry.Core_Details__c.split('-->').get(1);
+
+                    if(mapErrorAlertDetail.containsKey(OTHER_ERROR)) {
+                        mapErrorAlertDetail.get(OTHER_ERROR).add(alrtDet);
+                    } else {
+                        List<AlertDetails> tempAlertDetList = new List<AlertDetails>();
+                        tempAlertDetList.add(alrtDet);
+                        mapErrorAlertDetail.put(OTHER_ERROR,tempAlertDetList);
+                    }
+                    //For "Other Errors" custom metadata, check if count of errors logged is more than its threshold. If yes, then mark triggerProActiveAlert flag to TRUE
+                    if(mapErrorAlertDetail.containsKey('Other Errors') && mapErrorAlertDetail.get('Other Errors').size() >=  otherErrorThreshold){
+                       
+                        triggerProActiveAlert = true;
+                    }
+                }
+            }
+        }
      
         if(triggerProActiveAlert){
             sendProactiveAlert(mapErrorAlertDetail,lstProactiveAlertMtd);
        
-        }
-    }
-    
-    // Extract method to process log entries and reduce cognitive complexity
-    private static void processLogEntries(List<Core_Log_Entry__c> logEntryList, Map<Id,Contact> contactMap, 
-                                         List<Proactive_Alerts_on_A_E_Integration__mdt> lstProactiveAlertMtd,
-                                         Map<String,List<AlertDetails>> mapErrorAlertDetail,
-                                         Decimal otherErrorThreshold) {
-        for(Core_Log_Entry__c logEntry : logEntryList) {
-            // Proceed further only when AGS Integration status is still Failed, else ignore that log entry
-            if(!isSuccessfulIntegration(logEntry, contactMap)) {
-                continue;
-            }
-            
-            Boolean errorCategorised = false;
-            Boolean errorTobeIgnored = false;
-            String inboundMessageId = getInboundMessageId(logEntry);
-            
-            //Loop across the metadata and see if we can categorise the error from Log Entry into a category
-            for(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert : lstProactiveAlertMtd){
-                if(shouldCategorizeError(ProActAlert, logEntry)) {
-                    categorizeError(logEntry, ProActAlert, contactMap, inboundMessageId, mapErrorAlertDetail);
-                    errorCategorised = true;
-                } else if(shouldIgnoreError(ProActAlert, logEntry)) {
-                    errorTobeIgnored = true;
-                }
-                
-                //For current custom metadata, check if count of errors logged is more than its threshold. If yes, then mark triggerProActiveAlert flag to TRUE
-                checkAndUpdateAlertThreshold(ProActAlert, mapErrorAlertDetail);
-            }
-            
-            //If error in the log entry is not found in custom metadata, add its details under "Other Errors" category
-            if(!errorCategorised && !errorTobeIgnored){
-                handleOtherErrors(logEntry, contactMap, inboundMessageId, mapErrorAlertDetail, otherErrorThreshold);
-            }
-        }
-    }
-    
-    // Helper method to check if integration is successful
-    private static Boolean isSuccessfulIntegration(Core_Log_Entry__c logEntry, Map<Id,Contact> contactMap) {
-        return contactMap.get(logEntry.Core_sObjectId__c).Core_AGS_Integration_Status__c != 'Successful';
-    }
-    
-    // Extract method to get inbound message ID - reduces nesting from 4 to 2 levels
-    private static String getInboundMessageId(Core_Log_Entry__c logEntry) {
-        String inboundMessageId = 'Inbound message Id not found for this record ' + logEntry.Id;
-        Id someId = logEntry.Id;
-        
-        if(logEntry.Core_Tags__c == null || !logEntry.Core_Tags__c.contains(';')) {
-            return inboundMessageId;
-        }
-        
-        for(String splitString : logEntry.Core_Tags__c.split(';')){
-            if(!(splitString instanceOf Id)) {
-                continue;
-            }
-            
-            someId = splitString;
-            if(someId.getSObjectType().getDescribe().getName() == 'Core_Integration_Inbound_Message__c'){
-                inboundMessageId = '' + someId;
-            }
-        }
-        
-        return inboundMessageId;
-    }
-    
-    // Helper method to check if error should be categorized
-    private static Boolean shouldCategorizeError(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert, Core_Log_Entry__c logEntry) {
-        return (ProActAlert.Core_Is_Active__c && ProActAlert.DeveloperName != 'Other_Errors') && 
-               logEntry.Core_Details__c != null && 
-               logEntry.Core_Details__c.containsIgnoreCase(ProActAlert.Core_Error_Text__c) && 
-               !ProActAlert.IsIgnore__c;
-    }
-    
-    // Helper method to check if error should be ignored
-    private static Boolean shouldIgnoreError(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert, Core_Log_Entry__c logEntry) {
-        return (ProActAlert.Core_Is_Active__c && ProActAlert.DeveloperName != 'Other_Errors') && 
-               logEntry.Core_Details__c != null && 
-               logEntry.Core_Details__c.containsIgnoreCase(ProActAlert.Core_Error_Text__c) && 
-               ProActAlert.IsIgnore__c;
-    }
-    
-    // Extract method to categorize error - reduces complexity
-    private static void categorizeError(Core_Log_Entry__c logEntry, Proactive_Alerts_on_A_E_Integration__mdt ProActAlert,
-                                       Map<Id,Contact> contactMap, String inboundMessageId,
-                                       Map<String,List<AlertDetails>> mapErrorAlertDetail) {
-        AlertDetails alrtDet = createAlertDetails(logEntry, ProActAlert.label, contactMap, inboundMessageId);
-        
-        if(mapErrorAlertDetail.containsKey(ProActAlert.label)) {
-            mapErrorAlertDetail.get(ProActAlert.label).add(alrtDet);
-        } else {
-            List<AlertDetails> tempAlertDetList = new List<AlertDetails>();
-            tempAlertDetList.add(alrtDet);
-            mapErrorAlertDetail.put(ProActAlert.label,tempAlertDetList);
-        }
-    }
-    
-    // Extract method to create AlertDetails - reduces duplication
-    private static AlertDetails createAlertDetails(Core_Log_Entry__c logEntry, String errorCategory,
-                                                  Map<Id,Contact> contactMap, String inboundMessageId) {
-        AlertDetails alrtDet = new AlertDetails();
-        alrtDet.ErrorCategory = errorCategory;
-        alrtDet.contactId = contactMap.get(logEntry.Core_sObjectId__c).Id;
-        alrtDet.contactName = contactMap.get(logEntry.Core_sObjectId__c).Name;
-        alrtDet.contactEmail = contactMap.get(logEntry.Core_sObjectId__c).Email;
-        alrtDet.contactAGSIntStatus = contactMap.get(logEntry.Core_sObjectId__c).Core_AGS_Integration_Status__c;
-        alrtDet.InboundMsgId = inboundMessageId;
-        alrtDet.EntitlementName = logEntry.Core_Details__c.split('-->').get(0);
-        alrtDet.EntitlementError = logEntry.Core_Details__c.split('-->').get(1);
-        return alrtDet;
-    }
-    
-    // Extract method to check and update alert threshold
-    private static void checkAndUpdateAlertThreshold(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert,
-                                                    Map<String,List<AlertDetails>> mapErrorAlertDetail) {
-        if(mapErrorAlertDetail.containsKey(ProActAlert.label) && 
-           mapErrorAlertDetail.get(ProActAlert.label).size() >= ProActAlert.Core_Minimum_count_for_Alert__c){
-               try{
-            triggerProActiveAlert = true;
-               }catch(exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'updateUser', Core_Project__c = 'Core_UserJITHandler' , Core_Details__c = 'In User JIT Handler class', Core_Severity__c = 'info', Core_When__c = System.Now());     
-            insert excepLog;
-        }
-        }
-    }
-    
-    // Extract method to handle "Other Errors" category
-    private static void handleOtherErrors(Core_Log_Entry__c logEntry, Map<Id,Contact> contactMap,
-                                         String inboundMessageId, Map<String,List<AlertDetails>> mapErrorAlertDetail,
-                                         Decimal otherErrorThreshold) {
-        AlertDetails alrtDet = createAlertDetails(logEntry, OTHER_ERROR, contactMap, inboundMessageId);
-        
-        if(mapErrorAlertDetail.containsKey(OTHER_ERROR)) {
-            mapErrorAlertDetail.get(OTHER_ERROR).add(alrtDet);
-        } else {
-            List<AlertDetails> tempAlertDetList = new List<AlertDetails>();
-            tempAlertDetList.add(alrtDet);
-            mapErrorAlertDetail.put(OTHER_ERROR,tempAlertDetList);
-        }
-        
-        //For "Other Errors" custom metadata, check if count of errors logged is more than its threshold. If yes, then mark triggerProActiveAlert flag to TRUE
-        if(mapErrorAlertDetail.containsKey('Other Errors') && 
-           mapErrorAlertDetail.get('Other Errors').size() >= otherErrorThreshold){
-            triggerProActiveAlert = true;
         }
     }
     
@@ -292,11 +225,7 @@ public without sharing class Core_ProactiveAlertAandEFailures {
         mail.setHtmlBody(msgBody);
         
         // Send the Proactive Alert email you have created.
-        Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    mail.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
+        Messaging.SendEmailResult [] emailResult = Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
        
     }
 

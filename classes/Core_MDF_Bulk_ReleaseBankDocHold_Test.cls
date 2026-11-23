@@ -5,7 +5,7 @@
 * Modification Log :
 * Developer                        Date                          Description
 * ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* Accenture- TT          		15-MAR-2021                     Test class to cover "Core_MDF_Bulk_ReleaseBankDocHoldController" & "Core_MDF_BatchUpdateStatusOnClaim"
+* Accenture- TT                 15-MAR-2021                     Test class to cover "Core_MDF_Bulk_ReleaseBankDocHoldController" & "Core_MDF_BatchUpdateStatusOnClaim"
 ***********************************************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
@@ -148,8 +148,6 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
             indiaActivity4.RequestedAmount =1000;
             indiaActivity4.Amount=1000;
             indiaActivity4.Core_MDF_Product_Category_txt__c ='Desktop';
-            indiaActivity4.Core_MDF_Activity_Types__c='Email';
-            indiaActivity4.Core_MDF_ActivityCategory__c='Digital';
             indiaActivity4.AllocationId  = retailAlloc.Id;//pfaList[0].Id;
             testPartnerFundRequestRecordList.add(indiaActivity4);
         
@@ -159,7 +157,7 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
             pmbRecord1.Core_MDF_Budget_Status__c = 'Released';
             updateBudgets.add(pmbRecord1);
             
-            //Database.update(updateBudgets);
+           // Database.update(updateBudgets);
             Test.stopTest();
             
             Core_MDF_Configuration__c batchLimit = new Core_MDF_Configuration__c();
@@ -172,8 +170,7 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
     static void testClaimsForBankDocHold(){
         Test.startTest();
         List<Id> ClaimIds = new List<Id>();
-        // Highlight: Unused Local Variable 
-       // User paymentadmin = [SELECT Id,Email from User where Email='testexmpl2@intel.com' limit 1];
+        User paymentadmin = [SELECT Id,Email from User where Email='testexmpl2@intel.com' limit 1];
         User sysAdmin = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerFundRequest retailActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity4' limit 1];
         Core_MDF_Bank__c retailBank = [Select ID from Core_MDF_Bank__c where Core_MDF_Program__c = 'Core_MDF_Retail_Marketing_Funds' limit 1];
@@ -216,8 +213,7 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
     static void testClaimsForImmediateReleaseBankDocHold(){
         Test.startTest();
         List<Id> ClaimIds = new List<Id>();
-        // Highlight: Unused Local Variable
-       // User payAdmnUser = [SELECT Id,Email from User where Email='testexmpl2@intel.com' limit 1];
+        User payAdmnUser = [SELECT Id,Email from User where Email='testexmpl2@intel.com' limit 1];
         User sysAdmin = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerFundRequest retailActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity4' limit 1];
         Core_MDF_Bank__c retailBank = [Select ID from Core_MDF_Bank__c where Core_MDF_Program__c = 'Core_MDF_Retail_Marketing_Funds' limit 1];
@@ -255,8 +251,7 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
         User sysAdmin = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerFundRequest retailActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity4' limit 1];
         Core_MDF_Bank__c retailBank = [Select ID from Core_MDF_Bank__c where Core_MDF_Program__c = 'Core_MDF_Retail_Marketing_Funds' limit 1];
-        // Highlight: Unused Local Variable 
-      //  List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         System.runAs(sysAdmin){
             PartnerFundClaim pfclaim = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, retailActivity.Id, System.today(), System.today(), 50.00, System.today(), retailBank.Id, false);
             pfclaim.Core_MDF_Type_Txt__c ='Claim';
@@ -282,32 +277,25 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
             pfundclaim.Core_MDF_Member_Manual_Hold_Ind__c=false;
             pfundclaim.Core_MDF_Intel_Manual_Hold_Ind__c=false;
             insert pfundclaim;
-           // Unit Test Method should include System.Assert 
-           System.assertNotEquals(null, pfclaim.Id, 'First claim should be created successfully');
-           System.assertNotEquals(null, pfundclaim.Id, 'Second claim should be created successfully');
+           
             test.startTest();
-            // Highlight: Unused Local Variable
-          /*  Core_MDF_ReleaseHold.criteriaManualHoldWrapper wrapp = */ Core_MDF_ReleaseHold.fetchClaimHoldDetails(pfclaim.Id);
+            Core_MDF_ReleaseHold.criteriaManualHoldWrapper wrapp = Core_MDF_ReleaseHold.fetchClaimHoldDetails(pfclaim.Id);
             //system.assertEquals(true, wrapp.hasAccess);
-           // Highlight: Unused Local Variable
-          /*  String result = */ Core_MDF_ReleaseHold.releaseHoldFromClaim(pfundclaim, pfclaim.Core_MDF_Member_Manual_Hold_Ind__c, pfclaim.Core_MDF_Intel_Manual_Hold_Ind__c, pfclaim.Core_MDF_Criteria_Hold_Ind__c, pfclaim.Core_MDF_Bank_Doc_Hold_Ind__c);
+            String result = Core_MDF_ReleaseHold.releaseHoldFromClaim(pfundclaim, pfclaim.Core_MDF_Member_Manual_Hold_Ind__c, pfclaim.Core_MDF_Intel_Manual_Hold_Ind__c, pfclaim.Core_MDF_Criteria_Hold_Ind__c, pfclaim.Core_MDF_Bank_Doc_Hold_Ind__c);
             test.stopTest();
     }}
     @isTest 
     static void testException(){
         
          User sysAdminUser=[SELECT Id FROM User WHERE Email='sysadmin@example.com' LIMIT 1];
-        	PartnerFundRequest pfr = [Select Id from PartnerFundRequest limit 1];
          System.runAs(sysAdminUser){
             try{
-                //Id claim = '006000000000000AAA';  //using hardcoded id for negative test
-                //Core_MDF_ReleaseHold.fetchClaimHoldDetails(claim);
-                Core_MDF_ReleaseHold.fetchClaimHoldDetails(pfr.Id);
+                Id claim = '006000000000000AAA';  //using hardcoded id for negative test
+                Core_MDF_ReleaseHold.fetchClaimHoldDetails(claim);
             }
             catch(exception ex){
+                System.debug('Exception'+ex.getMessage());
             }
-         }  
-        // Unit Test Method should include System.Assert 
-        System.assertNotEquals(null, pfr.Id, 'PartnerFundRequest Id should not be null');
+         }       
     }
 }

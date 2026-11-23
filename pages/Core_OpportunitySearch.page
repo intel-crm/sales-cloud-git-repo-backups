@@ -235,7 +235,7 @@ Modification Log :
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_ASMO__c}" label="ASMO" required="false"/>
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_EMEA__c}" label="EMEA" required="false"/>
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_PRC__c}"  label="PRC"  required="false"/>
-                <!--<apex:inputField value="{!inputOpp.CRM_Opportunity_Geo_INDIA__c}"  label="INDIA"  required="false"/>  -->
+                <apex:inputField value="{!inputOpp.CRM_Opportunity_Geo_INDIA__c}"  label="INDIA"  required="false"/>  
             </apex:pageblockSection>
             <br/>
             <hr class="lightWeightDivider"/>

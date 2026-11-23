@@ -99,18 +99,13 @@ global without sharing class Pricing_RestAPI_GetAllQuotesV2 {
 				String currentUserAccountId = currentUser.AccountId;
                 String query = Label.Pricing_RestAPI_LenovoAPIQuoteQuery + Label.Pricing_RestAPI_LenovoAPIQuoteQuery2 + Label.Pricing_RestAPI_LenovoAPIQuoteLineQuery  + Label.Pricing_RestAPI_LenovoAPIQuoteLineQuery2 + Label.Pricing_RestAPI_LenovoAPIQuoteLineQuery4 + Label.Pricing_RestAPI_LenovoAPIQuoteLineQuery3; 
                 query = String.isEmpty(whereCaluse) ? query.replace('{{filter}}','') : query.replace('{{filter}}',whereCaluse);
-                try {
-                    List<SBQQ__QuoteLine__c> quotelines = database.query(query);
-                    if(quotelines.size()>0) {
-                        response.totalRecords = quotelines.size();
-                        response.successContent = getFinalList(quotelines) ;                           
-                    }
-                    else {
-                        Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.NO_DATA_EXCEPTION_9001, response, RESTAPI_NAME, ENTRY_TIME);
-                    }
-                } catch (Exception e) {
-                    // Handle heap limit exception specifically
-                    Pricing_Tender_Utility.logError(e);
+                List<SBQQ__QuoteLine__c> quotelines = database.query(query);
+                if(quotelines.size()>0) {
+                    response.totalRecords = quotelines.size();
+                    response.successContent = getFinalList(quotelines) ;                           
+                }
+                else {
+                    Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.NO_DATA_EXCEPTION_9001, response, RESTAPI_NAME, ENTRY_TIME);
                 }
             }
             else {

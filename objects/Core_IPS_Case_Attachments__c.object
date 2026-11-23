@@ -742,7 +742,7 @@ ISPICKVAL(PRIORVALUE( Core_Upload_Status__c ),&quot;Complete&quot;), NOT(ISPICKV
         <fullName>IPS_Altera_Go_Live_Attmt_Restriction</fullName>
         <active>true</active>
         <description>Restricting the user to add attachments on a case with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_Case__r.Core_IPS_Product_name__c &lt;&gt;&apos;Licensed Products&apos;)</errorConditionFormula>
         <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

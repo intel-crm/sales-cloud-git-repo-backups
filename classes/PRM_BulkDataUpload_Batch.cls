@@ -19,7 +19,7 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
     global static List<Messaging.SingleEmailMessage> mapEmailMessaging = new List<Messaging.SingleEmailMessage>();
 
     public static String sanitizedSearchKey = String.escapeSingleQuotes(UserInfo.getUserId());
-    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
+    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
     public static string userEmail=string.valueOf(user.email);
     public static boolean isExtPartnerInvite=false;
     public static boolean IsPortalUser=user.IsPortalEnabled;
@@ -51,7 +51,6 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
             + ' FROM PRM_Bulk_Data_Upload__c'
             + ' Where PRM_Status__c=:status'
             + ' and createdBy.Email=:userEmail'
-            + ' and PRM_Upload_Type__c!=\'Auto Granted IPA for DZP\''
             + ' ORDER BY PRM_BatchID__c,createdDate '
             + ' LIMIT :batchLimit';
         
@@ -100,11 +99,17 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                 
                 if(bulkDataUpload.PRM_OperationType__c == 'Insert'){
                     insertContacts.put(bulkDataUpload.PRM_ContactEmail__c, emailType != null 
-                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c: languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c): languageToDefaultTemplateMap.get('ENG'));
+                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c
+                        : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)
+                            ? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c)
+                            : languageToDefaultTemplateMap.get('ENG'));
                 } 
                 else{
                     updateContacts.put(bulkDataUpload.PRM_ContactEmail__c, emailType != null 
-                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c): languageToDefaultTemplateMap.get('ENG'));
+                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c 
+                        : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)
+                            ? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c)
+                            : languageToDefaultTemplateMap.get('ENG'));
                 }                             
             }
             if(mapContactEmailToBDU.size()>0){
@@ -197,7 +202,9 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                 for(PRM_Account_Contact_Relationship__c acr1:listAcrUpdateAGSfailure){
                     if(acr1.PRM_AGS_Response_Status__c==System.Label.PRM_retry){
                         conEmails.add(acr1.PRM_Contact_Id__r.Email);
-                    }}}
+                    }
+            }
+        }
         if(!conEmails.isEmpty()){
             for(PRM_Bulk_Data_Upload__c bulkFailRec:[select id, PRM_Status__c,PRM_First_Name__c, PRM_Last_Name__c,  PRM_ContactEmail__c,PRM_Comments__c,PRM_Mailing_Country__c 
                                                     from PRM_Bulk_Data_Upload__c where PRM_ContactEmail__c in: conEmails  and 
@@ -206,7 +213,9 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                     bulkFailRec.PRM_Status__c=System.Label.PRM_Discarded;
                     bulkFailRec.PRM_Comments__c=System.Label.PRM_Integration_Fail_Bulk;
                     bulkFailLstUpdate.add(bulkFailRec);
-                }}}
+                }
+               }
+            }
        
             if(!bulkFailLstUpdate.isEmpty()){
                 update bulkFailLstUpdate;

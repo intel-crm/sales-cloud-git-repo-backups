@@ -10,16 +10,7 @@ public class Core_MDF_Batch_PNUMRefresh implements Database.Batchable<sObject> {
         try{
             
             if(!pnumList.isEmpty()){
-                Database.SaveResult[] updateResults = Database.update(pnumList, false);
-                List<Id> recordIds = new List<Id>();                
-                for (Core_MDF_Partner_Node_User_Mapping__c pnum : pnumList) {
-                    recordIds.add(pnum.Id);
-                }
-                List<String> failedRecordDetails = Core_MDF_CCP_UtilityClass.collectDmlFailureDetails(recordIds, updateResults);
-
-                if(!failedRecordDetails.isEmpty()){
-                    Core_MDF_CCP_UtilityClass.logErrorinLogObject('Core_MDF_Batch_PNUMRefresh partial update failures: ' + String.join(failedRecordDetails, ' | '), 'Class.Core_MDF_Batch_PNUMRefresh.execute');
-                }
+                Database.update(pnumList);
             }
         }catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);}
     }

@@ -192,7 +192,7 @@
     <emailTemplate>unfiled$public/Core_MDF_NotifyPaymentAdminsOnVATInvoice</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
-        <booleanFilter>(1 OR 2) AND (3 OR 4 OR 6) AND (5 OR 7)</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4 OR 6) AND 5</booleanFilter>
         <criteriaItems>
             <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_Status_Txt__c</field>
             <operation>equals</operation>
@@ -222,11 +222,6 @@
             <field>PartnerFundClaim.Core_MDF_Program__c</field>
             <operation>equals</operation>
             <value>Co-GTM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Has_Sub_Claims_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
         </criteriaItems>
     </entryCriteria>
     <finalApprovalActions>

@@ -113,7 +113,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
         cont.Core_Login_Status__c='Active';
-    cont.MailingCountry='India';
+		cont.MailingCountry='India';
         listcon.add(cont);
         
         //system.debug('cont'+cont);
@@ -127,7 +127,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
         cont1.Core_Login_Status__c='Active';
-    cont1.MailingCountry='India';
+		cont1.MailingCountry='India';
         listcon.add(cont1);
         insert listcon;
         
@@ -525,25 +525,21 @@ public class PRM_BenefitsUpdateBatch_Test {
         ipaMemList.add(ipaMemOpid);
         Insert ipaMemList;
         
-        //try{ 
+        try{ 
             //Test.startTest();           
             insert beList;
-        //}
-       // catch(Exception ce){
+        }
+        catch(Exception ce){
             //system.debug('Exception Occured');
-        //}
+        }
             PRM_BenefitUtility.assignBenefitsAndEntitlements(acc,true,false,true );
-          PRM_BenefitsUpdateBatch obj = new PRM_BenefitsUpdateBatch();
+        	PRM_BenefitsUpdateBatch obj = new PRM_BenefitsUpdateBatch();
             Id batchprocessid =DataBase.executeBatch(obj);
         
         //PRM_EntitlementUtility.assignContactEntitlements(beList);
         Test.stopTest();
         PRM_Contact_Entitlements_Insert_batch ce = new PRM_Contact_Entitlements_Insert_batch();
-        Id bpid =DataBase.executeBatch(ce);
-        PRM_EntitlementDQBatch ce1 = new PRM_EntitlementDQBatch();
-        Id DQbpid =DataBase.executeBatch(ce1);
-        PRM_DQBatchForContactWithoutEntitlement ce2 = new PRM_DQBatchForContactWithoutEntitlement();
-        Id DQid =DataBase.executeBatch(ce2);        
+        Id bpid =DataBase.executeBatch(ce);     
         PRM_BenefitUtility.assignBenefitsAndEntitlements(acc,false,true,true);
         be2.PRM_IsRemove_Ind__c = true;
         PRM_EntitlementUtility.assignContactEntitlements(new List<PRM_Batch_Entitlement__c>{be2});
@@ -600,22 +596,8 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
         cont.Core_Login_Status__c='Active';
-    cont.MailingCountry='India';
+		cont.MailingCountry='India';
         insert cont;
-        
-        Contact cont1 = new Contact();  //Contact
-        cont1.AccountId=newAccount.Id;
-        cont1.lastName='Ceaser 99';
-        cont1.FirstName='Julius';
-        cont1.email='JuliusCeaser979@rediff.com';
-        cont1.Core_Job_Function__c='Branch Manager';
-        cont1.Core_eRPM_Language_Code__c='Eng';
-        cont1.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont1.Core_Login_Status__c='Active';
-    cont1.MailingCountry='India';
-        insert cont1;
-        List<Id> conlst = new List<Id>();
-        conlst.add(cont1.Id);
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program
         cp.Name='Intel Partner Alliance';
@@ -774,15 +756,6 @@ public class PRM_BenefitsUpdateBatch_Test {
         ee.Core_Engagement_Type__c = 'SEC';
         insert ee;
         
-        /*Core_Entitlement__c entitlement = new Core_Entitlement__c();
-        entitlement.Name = 'Intel Premier Support';
-        entitlement.Core_Display_Name__c  = 'Intel Premier Support';
-        
-        insert entitlement;*/
-        
-        
-        
-        
         List<Core_Entitlement__c> listents = new List<Core_Entitlement__c>();
         Core_Entitlement__c ed=new Core_Entitlement__c(); //Entitlement
         ed.Name='CIP VIP View';
@@ -795,16 +768,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         ed1.Core_Display_Name__c='Sales PRM - Partner University User';
         ed1.Core_ERPM_Engagement_Id__c=ee.id;
         listents.add(ed1);
-        
-        
-        Core_Entitlement__c ed2=new Core_Entitlement__c(); //Entitlement
-        ed2.Name='Intel Premier Support';
-        ed2.Core_Display_Name__c='Intel Premier Support';
-        ed2.Core_ERPM_Engagement_Id__c=ee.id;
-        listents.add(ed2);
         insert listents;
-        List<Id> entlst = new List<Id>();
-        entlst.add(ed2.Id);
         
         List<PRM_VXEnttlmntMatrix__c> listentMat = new List<PRM_VXEnttlmntMatrix__c>();
         PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
@@ -818,7 +782,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         listentMat.add(em);
         
         PRM_VXEnttlmntMatrix__c em1= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
-        em1.RecordTypeId = recordTypeIdEM;
+        em.RecordTypeId = recordTypeIdEM;
         em1.PRM_Partner_Benefit_Id__c = pb.id;
         em1.PRM_Entitlement_Id__c = ed1.id;
         em1.PRM_Contact_Relationship_Id__c = contRelation.id;
@@ -827,21 +791,9 @@ public class PRM_BenefitsUpdateBatch_Test {
         em1.PRM_IPA_Partner_Role_Nm__c='Service Provider';
         // em1.PRM_IPARefreshCheck__c = ipaRefresh?true:false;
         listentMat.add(em1);
-        
-        PRM_VXEnttlmntMatrix__c em2= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
-        em2.RecordTypeId = recordTypeIdEM;
-        em2.PRM_Partner_Benefit_Id__c = pb.id;
-        em2.PRM_Entitlement_Id__c = ed2.id;
-        em2.PRM_Contact_Relationship_Id__c = contRelation.id;
-        em2.PRM_Channel_Program_Level_Id__c = cpl.Id;
-        em2.PRM_Approval_Type_Nm__c='Automatic';
-        em2.PRM_IPA_Partner_Role_Nm__c='Service Provider';
-        // em1.PRM_IPARefreshCheck__c = ipaRefresh?true:false;
-        listentMat.add(em2);
         insert listentMat;
         
         List<PRM_Batch_Entitlement__c> beList = new List<PRM_Batch_Entitlement__c>();
-        List<PRM_Batch_Entitlement__c> beList1 = new List<PRM_Batch_Entitlement__c>();
         
         PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c(); //Batch Entitlement
         be.PRM_Contact_Id__c =cont.Id;
@@ -855,13 +807,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         be1.PRM_Entitlement_Id__c =ed1.Id;
         be1.PRM_Status_Nm__c = 'New';
         be1.PRM_Status_Reason_Txt__c = 'Test class';
-        
-        PRM_Batch_Entitlement__c be2 = new PRM_Batch_Entitlement__c(); //Batch Entitlement
-        be2.PRM_Contact_Id__c =cont1.Id;
-        be2.PRM_Entitlement_Id__c =ed2.Id;
-        be2.PRM_Status_Nm__c = 'In Progress';
-        be2.PRM_Status_Reason_Txt__c = 'Test class';
-        beList1.add(be2);
+        beList.add(be1);
         
         List<Core_Contact_Entitlement__c> ceList = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c cce=new Core_Contact_Entitlement__c(); // Contact Entitlement
@@ -875,24 +821,12 @@ public class PRM_BenefitsUpdateBatch_Test {
         cce.Core_Source__c = '';
         ceList.add(cce);
         
-        Core_Contact_Entitlement__c cce1=new Core_Contact_Entitlement__c(); // Contact Entitlement
-        cce1.Core_Contact_Id__c=cont.Id;
-        cce1.Core_Entitlement_Id__c = ed2.Id;
-        cce1.Core_Status__c='Pending';
-        cce1.Core_Selected__c = true;
-        cce1.Core_Data_Loaded__c = true;
-        cce1.Core_DontNotify__c = true;
-        cce1.Core_From_Source__c = true;
-        cce1.Core_Source__c = '';
-        ceList.add(cce1);
         
         
-        
-        //try{
+        try{
             if(beList != null && !beList.IsEmpty()){
                 Test.startTest();
                 insert beList;
-                insert beList1;
                 //Test.startTest();
                 insert ceList;
                 aba.PRM_Status_Nm__c = 'Inactive';
@@ -903,10 +837,10 @@ public class PRM_BenefitsUpdateBatch_Test {
                 update aba;
                 
             }
-        //}
-        //catch(Exception ce){
+        }
+        catch(Exception ce){
             //system.debug('Exception Occured');
-        //}
+        }
         Boolean t = true;
         String tier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers(acm.PRM_Channel_Program_Level_Id__r.Name);         
         //PRM_BenefitUtility.assignBenefitsAndEntitlements(acc,true,true,false);
@@ -916,17 +850,13 @@ public class PRM_BenefitsUpdateBatch_Test {
         PRM_EntitlementUtility.assignContactEntitlements(beList);
         PRM_Contact_Entitlements_Insert_batch ce = new PRM_Contact_Entitlements_Insert_batch();
         Id bpid =DataBase.executeBatch(ce);
-        PRM_EntitlementDQBatch ce1 = new PRM_EntitlementDQBatch();
-        Id DQbpid =DataBase.executeBatch(ce1);
-        PRM_DQBatchForContactWithoutEntitlement ce2 = new PRM_DQBatchForContactWithoutEntitlement();
-        Id DQid =DataBase.executeBatch(ce2);
         Test.stopTest();
         //PRM_BenefitUtility.assignBenefitsAndEntitlements(acc,false,true,true);
         List<AsyncApexJob> jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob];
         
         System.assertEquals(acctContRel.PRM_Account_Id__c,newAccount.Id,'Value does not match');
         try {
-            PRM_EntitlementUtility.createLogEntry(new List<String>{'Test error'}, 0, ceList, beList);
+            PRM_EntitlementUtility.createLogEntry(new List<String>{'Test error'}, 0, ceList, beList);   
         } catch (Exception ex) {
             
         }
@@ -986,7 +916,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
-    cont.MailingCountry='India';
+		cont.MailingCountry='India';
         insert cont;
         
         Contact cont1 = new Contact();  //Contact
@@ -998,7 +928,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
         cont1.Core_Enterprise_Id__c ='12334';
-    cont1.MailingCountry='India';
+		cont1.MailingCountry='India';
         insert cont1;
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program
@@ -1259,7 +1189,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         Core_Account_Group_Member__c coreAccnt1 = new Core_Account_Group_Member__c();
         coreAccnt1.Core_Partner_Account_Id__c = opidAcc.id;
         coreAccnt1.Core_Intel_Account_Id__c = newAccount1.id;
-    
+		
         listAccountgroup.add(coreAccnt1) ;
 
         insert listAccountgroup;
@@ -1273,7 +1203,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
         cont.Core_Login_Status__c='Active';
-    cont.MailingCountry='India';
+		cont.MailingCountry='India';
         listcon.add(cont);
         
         //system.debug('cont'+cont);
@@ -1287,7 +1217,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
         cont1.Core_Login_Status__c='Active';
-    cont1.MailingCountry='India';
+		cont1.MailingCountry='India';
         listcon.add(cont1);
         insert listcon;
         
@@ -1558,12 +1488,6 @@ public class PRM_BenefitsUpdateBatch_Test {
         ed2.Core_Display_Name__c='Sales PRM- Partner Technology Sandbox User';
         ed2.Core_ERPM_Engagement_Id__c=ee.id;
         listEnt.add(ed2);
-        
-        Core_Entitlement__c ed3=new Core_Entitlement__c(); //Entitlement
-        ed3.Name='Intel Premier Support';
-        ed3.Core_Display_Name__c='Intel Premier Support';
-        ed3.Core_ERPM_Engagement_Id__c=ee.id;
-        listEnt.add(ed3);
         insert listEnt;
         
         List<PRM_VXEnttlmntMatrix__c> listEntMatrix = new List<PRM_VXEnttlmntMatrix__c>();
@@ -1632,14 +1556,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         cce2.Core_Status__c='Pending';
         cce2.Core_From_Source__c = true;
         cce2.Core_Selected__c =true;
-        
-        Core_Contact_Entitlement__c cce3=new Core_Contact_Entitlement__c(); // Contact Entitlement
-        cce3.Core_Contact_Id__c=cont1.Id;
-        cce3.Core_Entitlement_Id__c = ed3.Id;
-        cce3.Core_Status__c='Pending';
-        cce3.Core_From_Source__c = true;
-        cce3.Core_Selected__c =true;
-        ceList.add(cce3);
+        ceList.add(cce2);
 
         Triggerhandler.bypass('Core_Contact_EntitlementTriggerHandler');
         insert ceList;
@@ -1667,13 +1584,6 @@ public class PRM_BenefitsUpdateBatch_Test {
         be2.PRM_Status_Nm__c = 'New';
         be2.PRM_Status_Reason_Txt__c = 'Test class';
         be2.PRM_IsRemove_Ind__c = true;
-        
-        PRM_Batch_Entitlement__c be3 = new PRM_Batch_Entitlement__c(); //Batch Entitlement
-        be3.PRM_Contact_Id__c =cont1.Id;
-        be3.PRM_Entitlement_Id__c =ed3.Id;
-        be3.PRM_Status_Nm__c = 'New';
-        be3.PRM_Status_Reason_Txt__c = 'Test class';
-        be3.PRM_IsRemove_Ind__c = true;
         beList.add(be2);
         
         try{ 

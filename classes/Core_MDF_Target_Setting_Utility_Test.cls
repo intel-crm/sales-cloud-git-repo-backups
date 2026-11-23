@@ -5,22 +5,13 @@ public class Core_MDF_Target_Setting_Utility_Test {
     public static Id CCF_RecordType = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_Co_Marketing_Fund').getRecordTypeId();
     public static Id DCF_RecordType = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Data_Center_Co_Marketing_Fund').getRecordTypeId();
     @TestSetup static void setUpData(){
-
+        List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test11';
         usr.IsActive = true;
         insert usr;
         
         System.runAs(usr){
-            // 14285 Indira - start
-            List<String> bypassFunctionKeys = new List<String>();
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-            // 14285 Indira - end
             PermissionSet ccfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             PermissionSet cmpPLanAdminPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CMP_Plan_Administrator' LIMIT 1];  
             List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();

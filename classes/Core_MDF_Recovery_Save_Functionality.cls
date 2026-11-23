@@ -74,9 +74,7 @@ public without sharing class Core_MDF_Recovery_Save_Functionality {
         try{
             //Loop through the recovery requests
             for(Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows record:rrr){
-                if(String.isNotBlank(record.recoveryAmount)){
-                    rrToBgtConsumedList.put(record.id,record.recoveryBudAmt);
-                }
+                rrToBgtConsumedList.put(record.id,record.recoveryBudAmt);                
             }              
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 

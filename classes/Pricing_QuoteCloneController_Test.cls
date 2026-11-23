@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 03-06-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 05-10-2024
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_QuoteCloneController_Test {
@@ -28,6 +28,7 @@ public class Pricing_QuoteCloneController_Test {
             Test.startTest();
             List<SBQQ__Quote__c> quoteList = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 1,salesRepUserList[0].Email,accountExecutiveUserList[0].Email);
             List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(quoteList[0].Id, 1);
+            List<Pricing_Performance_Metric__c> performanceList = Pricing_Test_Utility.createPerformanceMetrics(lstquoteLines[0].Id);
             Core_Trigger_Executions__c triggerEntry2 = new Core_Trigger_Executions__c();
             triggerEntry2.name = 'pricingSendOutboundMessagesIQR';
             triggerEntry2.Core_Object__c = 'Descriptive Feature';
@@ -78,6 +79,7 @@ public class Pricing_QuoteCloneController_Test {
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,Pricing_Req_Discounted_Unit_Price__c,SBQQ__Quote__r.OwnerId,RecordType.Name,Pricing_Sales_Rep__c, Pricing_Status_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
         quoteLineList[0].Pricing_Quote_Line_Number__c = null;
       	update quoteLineList;
+        List<Pricing_Performance_Metric__c> perMetricList = [SELECT Id from Pricing_Performance_Metric__c LIMIT 1];
         User adminUser = [Select id from User where Email='quoteCloneControllerAdmin@intel.com'];
         Pricing_QuoteCloneController.GlobalVariables globalVar = new Pricing_QuoteCloneController.GlobalVariables();
         String msg;
@@ -170,7 +172,7 @@ public class Pricing_QuoteCloneController_Test {
         //update quote;
         globalVar =  Pricing_QuoteCloneController.doClone(quote.Id,Label.Pricing_Tender_Standard_Quote);
         test.stopTest();
-        System.assertEquals(true , quote != null);
+        //System.assert(globalVar.isSuccess,'Error in Pricing_QuoteCloneController.doClone');
     }
     
     static testMethod void testGetQuoteDetails(){

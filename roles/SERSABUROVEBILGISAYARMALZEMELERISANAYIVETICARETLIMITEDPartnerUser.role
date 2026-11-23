@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>SERSA BURO VE BILGISAYARMALZEMELERI SANAYI VE TICARET LIMITED  Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>SERSA BURO VE BILGISAYARMALZEMELERI SANAYI VE TICARET LIMITED  Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Inactive_Accounts_Role</parentRole>
+</Role>

@@ -127,7 +127,7 @@ Accenture – VD        10-05-2019                Created.
             PartnerFundRequest pfrCCF = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(ccfAccount.id),pfaCCF,budgetCCF,'INDIA','Small and Medium Business',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                            'Radio','Draft',false);
             pfrCCF.Title = 'Activity CCF';
             pfrCCF.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -234,15 +234,14 @@ Accenture – VD        10-05-2019                Created.
     static void testException(){
         
         
-         User sysAdminUser=[SELECT Id FROM User WHERE LastName='Claim Case User' LIMIT 1];
-        PartnerFundRequest pfr = [Select Id from PartnerFundRequest limit 1];
+        User sysAdminUser=[SELECT Id FROM User WHERE LastName='Claim Case User' LIMIT 1];
          System.runAs(sysAdminUser){
             try{
-                //Id claim = '006000000000000AAA';
-                //Core_MDF_ReleaseHold.fetchClaimHoldDetails(claim);
-                Core_MDF_ReleaseHold.fetchClaimHoldDetails(pfr.Id);
+                Id claim = '006000000000000AAA';
+                Core_MDF_ReleaseHold.fetchClaimHoldDetails(claim);
             }
             catch(exception ex){
+                System.debug('Exception'+ex.getMessage());
             }
          }       
     }

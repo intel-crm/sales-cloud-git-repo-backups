@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Avviso finale: Richiesta n.</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Evento&quot;,&quot;Lead Cultivation&quot;:&quot;Coltivazione dei lead&quot;,&quot;Technical Activation&quot;:&quot;Attivazione tecnica&quot;,&quot;Incentive&quot;:&quot;Incentivo&quot;,&quot;Training&quot;:&quot;Training&quot;,&quot;Digital Media&quot;:&quot;Media digitali&quot;,&quot;Legacy Media&quot;:&quot;Media tradizionali&quot;,&quot;Funded Headcount&quot;:&quot;Addetti finanziati&quot;,&quot;Brand Awareness&quot;:&quot;Brand Awareness&quot;,&quot;Consideration&quot;:&quot;Considerazione&quot;,&quot;Purchase Intent&quot;:&quot;Intenzione di acquisto&quot;,&quot;Preference&quot;:&quot;Preferenza&quot;,&quot;Share of Voice&quot;:&quot;Quota di voce&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Grazie dell&apos;attenzione,</value>
     </values>

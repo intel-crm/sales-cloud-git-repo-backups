@@ -238,22 +238,6 @@
             <field>Core_MDF_Latest_Review_Cycle_Number_nbr__c</field>
             <table>PartnerFundClaim</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_OutcomeBased_Ind__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign ID</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Id__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
         <masterLabel>PartnerFundClaim</masterLabel>
     </sections>
 </ReportType>

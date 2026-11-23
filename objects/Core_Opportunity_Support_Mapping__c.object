@@ -429,6 +429,11 @@
                     <label>EMEA</label>
                 </value>
                 <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
+                <value>
                     <fullName>PRC</fullName>
                     <default>false</default>
                     <label>PRC</label>
@@ -448,6 +453,11 @@
                 <controllingFieldValue>CSA</controllingFieldValue>
                 <controllingFieldValue>TSS</controllingFieldValue>
                 <valueName>EMEA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CSA</controllingFieldValue>
+                <controllingFieldValue>TSS</controllingFieldValue>
+                <valueName>INDIA</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CSA</controllingFieldValue>

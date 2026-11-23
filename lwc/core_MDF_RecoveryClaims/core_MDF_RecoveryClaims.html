@@ -29,7 +29,6 @@
         <template if:true={hasData}>
         <h2 style="font-size: 15px;padding:10px;display: inline-block;color:green">{source}</h2>
         <div><h2 style="font-size: 15px;padding:10px;display: inline-block;color:red">{readyToRecoverMessage}</h2></div>
-        <h2 style="font-size: 15px;padding:10px;display: inline-block;color:black">{processingPrefMessage}</h2>
         </template>
 
         <template if:true={hasData}>
@@ -56,9 +55,6 @@
                                 <div class="slds-truncate" title="Row"></div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="Processing Preferrence">{processingPrefLabel}</div>
-                            </th>
-                            <th scope="col">
                                 <div class="slds-truncate" title={selectedForRecHelpTxt}>{selectedForRecovery}</div>
                             </th>
                             <th scope="col">
@@ -81,9 +77,6 @@
                             </th>
                             <th scope="col">
                                 <div class="slds-truncate" title="Claim Amount">{claimAmtLabel}</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Settle, then get paid recovery amount">{surePayRecoveryAmtLabel}</div>
                             </th>
                             <th scope="col">
                                 <div class="slds-truncate" title={recoveryAmtHelpTxt}>{recoveryAmtLabel}</div>
@@ -118,24 +111,38 @@
                                     <div></div>
                                 </td>
                                 <td>
-                                    <div>{con.processingPref}</div>
+                                    <template if:true={con.selected}>
+                                        <div>
+                                            <lightning-input type="checkbox" onchange={checkboxActions}
+                                                value={con.claimID} data-id={con.Id} checked disabled={isDisabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+                                    <template if:false={con.selected}>
+                                        <div>
+                                            <lightning-input type="checkbox" onchange={checkboxActions}
+                                                value={con.claimID} data-id={con.Id} disabled={isDisabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
                                 </td>
                                 <td>
-                                    <div>
-                                        <lightning-input type="checkbox" onchange={checkboxActions}
-                                            value={con.claimID} data-id={con.Id} checked={con.selected} disabled={con.isSelectedDisabled}>
-                                        </lightning-input>
-                                    </div>
-                                </td>
-                                <td>
-                                    <lightning-input type="checkbox"  data-id={con.Id} disabled checked={con.recoveryHold}>
+                                    <lightning-input type="checkbox"  data-id={con.Id} disabled="true" checked={con.recoveryHold}>
                                     </lightning-input>                  
                                 </td>
-                                <td>                                    
-                                    <div>
-                                        <lightning-input type="checkbox" onchange={rightToRecoverActions}  data-id={con.Id} disabled={con.isRowDisabled} checked={con.righttoRecover}>
-                                        </lightning-input>
-                                    </div>                                    
+                                <td>
+                                    <template if:true={isDisabled}>
+                                        <div>
+                                            <lightning-input type="checkbox" onchange={rightToRecoverActions}  data-id={con.Id} disabled={isDisabled} checked={con.righttoRecover}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+                                    <template if:false={isDisabled}>
+                                        <div>
+                                            <lightning-input type="checkbox" onchange={rightToRecoverActions}  data-id={con.Id} disabled={con.isDisabled} checked={con.righttoRecover}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>                                    
                                 </td>
                                 <td>
                                     <div>{con.claimID}</div>
@@ -151,10 +158,6 @@
                                 </td>
                                 <td>
                                     <lightning-formatted-number value={con.claimAmt} format-style="currency"
-                                        currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
-                                </td>
-                                <td>
-                                    <lightning-formatted-number value={con.surePayRecAmt} format-style="currency"
                                         currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
                                 </td>
                                 <td>
@@ -177,16 +180,16 @@
                                 <td>
                                     <lightning-button label={recoveryLabel}
                                         title={recoveryLabel} onclick={showModalBox} data-name={con.recoveryBudAmtMap} data-id={con.Id}
-                                        disabled={con.isRowDisabled} class="recoveryCmp">
+                                        disabled={isDisabled} class="recoveryCmp">
                                     </lightning-button>
                                     <template if:true={con.showCustomValidation}>
                                         <div>{recoveryAmtError}</div>
                                     </template>                        
                                 </td>
                                 <td>
-                                    <lightning-input data-id={con.Id} name="input1" title={con.comments} label="Name"
+                                    <lightning-input key={con.key} data-id={con.Id} name="input1" title={con.comments} label="Name"
                                         value={con.comments} variant="label-hidden" onchange={commentActions}
-                                        disabled={con.isRowDisabled} maxlength="255"></lightning-input>
+                                        disabled={isDisabled} maxlength="255"></lightning-input>
                                 </td>
                                 <td>
                                     <div>{con.clmStatus}</div>
@@ -216,9 +219,10 @@
                 <div class="slds-modal__container">
                     <!-- Modal/Popup Box LWC header here -->
                     <header class="slds-modal__header">
-                        <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={hideModalBox}>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
                             <lightning-icon icon-name="utility:close"
                                alternative-text="close"
+                               variant="inverse"
                                size="small" ></lightning-icon>
                             <span class="slds-assistive-text">{closeLabel}</span>
                          </button>
@@ -228,20 +232,12 @@
                     <!-- Modal/Popup Box LWC body starts here -->
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                         <template if:true={showError}>
-                            <div class="slds-box slds-theme--error slds-var-m-bottom_medium">{recoveryUIError}
-                                <span class="slds-m-left_xx-small"><lightning-formatted-number value={availableBalance} format-style="currency"
-                                currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span>
-                            </div>
+                            <div class="slds-box slds-theme--error slds-var-m-bottom_medium">{recoveryUIError}</div>
                         </template>
                         <div class="slds-grid slds-gutters slds-var-m-bottom_medium">
                             <div class="slds-col">
                                 <span class="recovery-amount">{claimAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
                                     <lightning-formatted-number value={claimAmount} format-style="currency"
-                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
-                            </div>
-                            <div class="slds-col">
-                                <span class="recovery-amount">{surePayRecoveryAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
-                                    <lightning-formatted-number value={surePayRecAmt} format-style="currency"
                                     currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
                             </div>
                             <div class="slds-col">
@@ -305,8 +301,8 @@
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container custom-width">
                 <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeHoldClaimPopup}>
-                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeHoldClaimPopup}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                             size="small"></lightning-icon>
                         <span class="slds-assistive-text">{closeLabel}</span>
                     </button>
@@ -417,8 +413,8 @@
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <header class="slds-modal__header modal-heading-04">
-                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeRecoveryHoldConfirmationModel}>
-                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeRecoveryHoldConfirmationModel}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                             size="small"></lightning-icon>
                         <span class="slds-assistive-text">{closeLabel}</span>
                     </button>

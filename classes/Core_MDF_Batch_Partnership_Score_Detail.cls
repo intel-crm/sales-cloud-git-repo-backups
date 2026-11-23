@@ -68,7 +68,6 @@ global without sharing class Core_MDF_Batch_Partnership_Score_Detail implements 
                 mail.setToAddresses(toAddresses);
                 mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce Core_MDF_Batch_Partnership_Score_Detail Insertion child Job ');
                 mail.setHtmlBody(returnMessage);
-				mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
         		Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
             }
         

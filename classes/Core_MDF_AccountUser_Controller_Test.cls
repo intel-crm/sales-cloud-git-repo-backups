@@ -136,8 +136,7 @@ private class Core_MDF_AccountUser_Controller_Test {
         //Creating Contact for Partner User
         Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
         Contact conRecord2 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
-        // Highlight: Unused Local Variable 
-       // Contact conRecord3 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
+        Contact conRecord3 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
         Id sysAdminProfileID = [select id from Profile where Name = 'System Administrator' limit 1].id;
         
         List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
@@ -249,7 +248,7 @@ private class Core_MDF_AccountUser_Controller_Test {
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                        Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                        string.valueof(acc.id),pfaRecord,null,'INDIA','Creator',
-                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                        'Radio','Draft',false);
         pfr.RequestedAmount = 1200;
         pfr.Amount = 1200;
@@ -270,8 +269,7 @@ private class Core_MDF_AccountUser_Controller_Test {
 		update bank;
         
         //Creating ABM
-       // Highlight: Unused Local Variable 
-       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,TRUE);            
+        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,TRUE);            
         
         //Creating Claims
         PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today()-1,System.today()-1,40,System.today()-1,bank.Id,false);
@@ -354,8 +352,7 @@ private class Core_MDF_AccountUser_Controller_Test {
                 System.assertEquals(true,Core_MDF_AccountUser_Controller.isAccountUserEligibleForDelete(pnumRecord.Id));
                 deleteRecordList.add(pnumRecord.Id);
                 Core_MDF_AccountUser_Controller.deleteAccountUsers(deleteRecordList);
-                // Highlight: Unused Local Variable 
-              // List<Core_MDF_Partner_Node_User_Mapping__c> pnumRecordList = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c where Core_MDF_Account__r.Name = 'Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com']; 
+                List<Core_MDF_Partner_Node_User_Mapping__c> pnumRecordList = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c where Core_MDF_Account__r.Name = 'Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com']; 
                 
                 //System.assertEquals(pnumRecordList.size(),0);                       
             }
@@ -444,8 +441,7 @@ private class Core_MDF_AccountUser_Controller_Test {
                 Core_MDF_LWC_AccountUserController.saveAccountUserMapping(acc.Id, userIdsList, 'AccountToUser', cp.Id);
                 Core_MDF_LWC_AccountUserController.saveAccountUserMapping(acc1.Id, userIdsList, 'AccountToUser', cp.Id);
                 Core_MDF_LWC_AccountUserController.saveAccountUserMapping(user.Id, accountIdsList, 'UserToAccount', cp.Id);
-                // Highlight: Unused Local Variable 
-              /*  String returnString = */ Core_MDF_LWC_AccountUserController.saveAccountUserMapping(user1.Id,accountIdsList, 'UserToAccount', cp.Id);
+                String returnString = Core_MDF_LWC_AccountUserController.saveAccountUserMapping(user1.Id,accountIdsList, 'UserToAccount', cp.Id);
             }
             Test.stopTest();
         }catch(Exception e){
@@ -458,9 +454,8 @@ private class Core_MDF_AccountUser_Controller_Test {
     @isTest static void deletePNUMRecords(){
         Test.startTest();
         User usr = [SELECT Id,Email FROM User WHERE Email='sysadmin@example.com' LIMIT 1];
-        Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c,Core_MDF_Error_Details_txt__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__r.Name ='Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com'];    
-        // Highlight: Unused Local Variable 
-       // List<Id> deleteRecordList = new List<Id>();
+        Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c,Core_MDF_Error_Details_txt__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__r.Name ='Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com'];                                             
+        List<Id> deleteRecordList = new List<Id>();
         Map<Id, Core_MDF_Partner_Node_User_Mapping__c> newPNUMappingMap = new Map<Id,Core_MDF_Partner_Node_User_Mapping__c>();
         newPNUMappingMap.put(pnumRecord.Id,pnumRecord);
         Map<Id, List<Id>> accountIdUserIdListMapCreateBatch = new Map<Id,List<Id>>();

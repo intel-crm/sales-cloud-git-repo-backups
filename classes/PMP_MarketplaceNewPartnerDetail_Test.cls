@@ -69,8 +69,8 @@ public class PMP_MarketplaceNewPartnerDetail_Test {
         cmp1.PMP_Is_Published_Ind__c = true;
         cmp1.PMP_Account_Id__c = acc1.Id;
         insert cmp1;
-        //TranslationEOL
-       /* PMP_Company_Translation__c trans = new PMP_Company_Translation__c();
+        
+        PMP_Company_Translation__c trans = new PMP_Company_Translation__c();
         trans.Name = 'test';
         trans.PMP_English_Txt__c = 'test';
         trans.PMP_Japanese_Txt__c = 'test';
@@ -86,7 +86,7 @@ public class PMP_MarketplaceNewPartnerDetail_Test {
         trans1.PMP_Chinese_Txt__c = 'test';
         trans1.PMP_Field_Nm__c = PMP_StaticConstants_Partner.Tagline;
         trans1.PMP_Company_Information_Id__c = cmp1.Id;
-        insert trans1;*/
+        insert trans1;
 		
         List<ContentDocument> doc=PMP_TestDataUtility.createContentDocument(true);
         ContentDocument document=[select Id from ContentDocument limit 1];
@@ -114,7 +114,7 @@ public class PMP_MarketplaceNewPartnerDetail_Test {
         partner1.PMP_Partner_Primary_Street_Txt__c = 'Acc Address';
         partner1.PMP_Disti_Country_Coverage_Txt__c = 'India';
         insert partner1;
-        
+        //IPA2.0:US-4497-1631_OfferingEOL
         /*PMP_Partner_Offering__c off = new PMP_Partner_Offering__c();
         off.Name = 'Test_Off';
         off.PMP_Company_Id__c = cmp1.Id;

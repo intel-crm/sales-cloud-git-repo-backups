@@ -49,30 +49,9 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <help>Der Baseline-Zeitraum beschreibt einen Zeitpunkt vor dieser Kampagne, in dem der Baseline-Wert erfasst oder geschätzt wurde. Beispiel: Wenn diese Kampagne im August endet und der Basiswert im vorherigen August erfasst wurde, wähle die erste Option. Wenn der Basiswert null ist, wählen Sie die erste Option.</help>
-        <label>Basiszeitraum</label>
-        <name>Core_MDF_Baseline_Period_nm__c</name>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one half before</masterLabel>
-            <translation>Gleiche Zeit wie diese Kampagne, eine Hälfte davor</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
-            <translation>Im gleichen Zeitraum wie diese Kampagne, ein Quartal davor</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one year before</masterLabel>
-            <translation>Gleiche Zeit wie diese Kampagne, ein Jahr zuvor</translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Campaign Purpose Description --></label>
-        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
     </fields>
     <fields>
         <help>Wert der Ergebnismetrik nach der Werbekampagnen, die wir als Erfolg definieren. Vor der Ausführung eingegeben.</help>

@@ -73,7 +73,7 @@
     </columns>
     <description>NEX NESG and NEX CG</description>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5) AND 6 AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -109,20 +109,6 @@
             <operator>contains</operator>
             <value>Stiles</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>Embedded</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Coverage_Type_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Disti Design Registration High,Device Builder Registration High</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -146,7 +132,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ECG AMR Design WON STILES</name>
+    <name>AMR Design WON STILES</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -170,6 +156,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_Claim_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

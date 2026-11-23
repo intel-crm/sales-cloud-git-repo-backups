@@ -150,7 +150,7 @@ private class Core_MDF_PFC_CampaignCAP_Test {
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Broadcast (Pre-2025)',
+                                                                                                          'Broadcast',
                                                                                                           'Podcast',
                                                                                                           'Draft',
                                                                                                           false);
@@ -248,6 +248,7 @@ private class Core_MDF_PFC_CampaignCAP_Test {
                     database.update(c3); 
                 
                 }catch(Exception e){
+                    system.debug(' Exception :'+e.getMessage());
                 //System.assertNotEquals(null,e);
                 }
                 

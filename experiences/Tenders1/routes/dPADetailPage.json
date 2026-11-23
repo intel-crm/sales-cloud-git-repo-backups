@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "3e61fb28-cc82-4b72-a74a-6b202caee014",
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "configurationTags" : [ ],
+  "devName" : "DPA_Detail_Page__c",
+  "id" : "14c977f6-008c-4855-bdca-5d84b6c81ce0",
+  "label" : "DPA Detail Page",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-dpa-detail-page",
+  "type" : "route",
+  "urlPrefix" : "dpa-detail-page"
+}

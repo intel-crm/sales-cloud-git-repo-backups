@@ -5,10 +5,6 @@
         <value>付款单据</value>
     </caseValues>
     <fields>
-        <label>账户名称</label>
-        <name>Core_MDF_Account_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved File Id --></label>
         <name>Core_MDF_Approved_File_Id__c</name>
     </fields>
@@ -89,11 +85,6 @@
             <masterLabel>Under Review</masterLabel>
             <translation>正在审核</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>税款金额</help>

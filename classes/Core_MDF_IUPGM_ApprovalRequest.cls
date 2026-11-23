@@ -287,17 +287,9 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                 if(objectToApprovalStageMap.containsKey('PartnerFundRequest') && !objectToApprovalStageMap.get('PartnerFundRequest').isEmpty()){
                     set<string> approvalStage = new set<string>();
                     approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundRequest');
-                    
-                    // Get regular PFR approvers (excluding outcome-based)
-                    ApprovalWrapper appWrapObj = getPFRApprovers(programNameSet,approvalStage,'PartnerFundRequest', false);
+                    ApprovalWrapper appWrapObj = getPFRApprovers(programNameSet,approvalStage,'PartnerFundRequest');
                     if(appWrapObj != null){
                         approvalWrapList.add(appWrapObj);
-                    }
-                    
-                    // Gayathri-Get outcome-based PFR approvers separately
-                    ApprovalWrapper outcomeBasedWrapObj = getPFRApprovers(programNameSet,approvalStage,'PartnerFundRequest', true);
-                    if(outcomeBasedWrapObj != null){
-                        approvalWrapList.add(outcomeBasedWrapObj);
                     }
                 }
                 if(objectToApprovalStageMap.containsKey('Campaign') && !objectToApprovalStageMap.get('Campaign').isEmpty()){
@@ -385,7 +377,7 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
      
         //Approval Region is populated for IPA Price Reviewer role.
         if(iupgm.Core_MDF_Program_nm__c=='CoGTM'){
-           geoSubGeoList.add('EMEA;PRC;APJ;ASMO');geoSubGeoList.add('WW');
+           geoSubGeoList.add('EMEA;PRC;APJ;ASMO;INDIA');geoSubGeoList.add('WW');
            //geoSubGeoList.add(Core_MDF_CCP_ConstantClass.CAMPAIGN_ALL_REGION);
         }else{
         geoSubGeoList = iupgm.Core_MDF_Approval_Region_nm__c != null 
@@ -474,8 +466,7 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         return keyWrap;
     }
     
-    // Gayathri-handles both normal and outcome-based PFR
-    Public static ApprovalWrapper getPFRApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName, Boolean isOutcomeBased){
+    Public static ApprovalWrapper getPFRApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         
@@ -485,14 +476,8 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);
-    
-	    // Gayathri-Set object name based on whether it's outcome-based or not
-	    if(isOutcomeBased != null && isOutcomeBased) {
-	        approvalWrap.objectName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OutcomeBased_Campaign');
-	    } else {
         approvalWrap.objectName = String.valueOf(mdtValues.Core_MDF_Field_9_txt__c);
-	    }
-    
+        
         ParamWrapper paramWrap = new ParamWrapper();
         paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);
         paramWrap.inProgressTrackingRecordIds = inProgressTrackingRecordIds;
@@ -503,23 +488,6 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         
         if(!pfrList.isEmpty()){
             for(PartnerFundRequest pfr: pfrList){
-            
-	            // Gayathri-Filter based on outcome-based flag
-	            if(isOutcomeBased != null && isOutcomeBased) {
-	                // Only process outcome-based activities
-	                if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM || 
-	                   pfr.Core_MDF_Is_Outcome_Based_Ind__c != true) {
-	                    continue;
-	                }
-	            } else if(isOutcomeBased != null && !isOutcomeBased) {
-	                // Only process non-outcome-based activities
-	                if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && 
-	                   pfr.Core_MDF_Is_Outcome_Based_Ind__c == true) {
-	                    continue;
-	                }
-	            }
-	            // If isOutcomeBased is null, process all activities (backward compatibility)
-            
                 string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;
                 string budgetType = string.isNotBlank(pfr.Core_MDF_Budget_Type_nm__c) ? pfr.Core_MDF_Budget_Type_nm__c.replaceAll('\\s+', '') : '';
                 string progId = progToIdMap.get(pfr.Core_MDF_Program__c);
@@ -624,14 +592,8 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         }else{
             return null; 
         }
-	}
-
-	// Gayathri-OVERLOADED METHOD: For backward compatibility
-	Public static ApprovalWrapper getPFRApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){
-	    return getPFRApprovers(programNameSet, approvalStageSet, objName, null);
-	}
-
-
+        
+    }
     
     /*****************************************************************************************************
 Method Name :   getCampaignApprovers
@@ -905,7 +867,7 @@ Added By    :   Akash
                 string approvalStage = string.isNotBlank(obj.Core_MDF_Approval_Stage_nm__c) ? obj.Core_MDF_Approval_Stage_nm__c.replaceAll('\\s+', '') : '';
                 
                 if((obj.Core_MDF_Program__c == IPA_PROG) || (obj.Core_MDF_Program__c == Co_GTM_PROG)){
-                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO' : '');
+                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO;INDIA' : '');
                     if(string.isNotBlank(region)){
                         allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
                     }
@@ -1021,12 +983,6 @@ Added By    :   Saikat Manna
         RecordsToApprove recordWrap = new RecordsToApprove();
         recordWrap.id = obj.Id;
         recordWrap.piwiId = recordIdToPiwiIdMap.containsKey(obj.Id) ? recordIdToPiwiIdMap.get(obj.Id) : null;
-		 // Check if the record is IPA program and Outcome based
-        if (objName == 'PartnerFundRequest') {
-             recordWrap.isIPAOutcomeBased =
-               (String) obj.get('Core_MDF_Program__c') == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM &&
-               (Boolean) obj.get('Core_MDF_Is_Outcome_Based_Ind__c');
-         }// indu defect fix
         
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         
@@ -1759,17 +1715,9 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                 if(objectToApprovalStageMap.containsKey('PartnerFundRequest') && !objectToApprovalStageMap.get('PartnerFundRequest').isEmpty()){
                     set<string> approvalStage = new set<string>();
                     approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundRequest');
-                    
-                    // Get regular PFR approvers for home page (excluding outcome-based)
-                    ApprovalWrapper appWrapObj = getPFRApproversForHomePage(programNameSet,approvalStage,'PartnerFundRequest', false);
+                    ApprovalWrapper appWrapObj = getPFRApproversForHomePage(programNameSet,approvalStage,'PartnerFundRequest');
                     if(appWrapObj != null){
                         approvalWrapList.add(appWrapObj);
-                    }
-                    
-                    // Gayathri-Get outcome-based PFR approvers for home page separately
-                    ApprovalWrapper outcomeBasedWrapObj = getPFRApproversForHomePage(programNameSet,approvalStage,'PartnerFundRequest', true);
-                    if(outcomeBasedWrapObj != null){
-                        approvalWrapList.add(outcomeBasedWrapObj);
                     }
                 }
                 if(objectToApprovalStageMap.containsKey('Campaign') && !objectToApprovalStageMap.get('Campaign').isEmpty()){
@@ -1832,21 +1780,16 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
     Method Name :   getPFRApproversForHomePage
     Description :   Method to get count of records on Co-marketing Home Page 
     ******************************************************************************************************/
-    //Gayathri-Handle both normal and outcome-based PFR approvers for home page
-     Public static ApprovalWrapper getPFRApproversForHomePage(set<string> programNameSet, set<string> approvalStageSet, string objName, Boolean isOutcomeBased){
+    
+    Public static ApprovalWrapper getPFRApproversForHomePage(set<string> programNameSet, set<string> approvalStageSet, string objName){
+        
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrToApproveList = new List<PartnerFundRequest>();
         List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);
-    
-        // Gayathri-Set object name based on whether it's outcome-based or not
-        if(isOutcomeBased != null && isOutcomeBased) {
-            approvalWrap.objectName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OutcomeBased_Campaign');
-        } else {
-            approvalWrap.objectName = String.valueOf(mdtValues.Core_MDF_Field_9_txt__c);
-        }
+        approvalWrap.objectName = String.valueOf(mdtValues.Core_MDF_Field_9_txt__c);
         
         ParamWrapper paramWrap = new ParamWrapper();
         paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);
@@ -1857,23 +1800,6 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
        
         if(!pfrList.isEmpty()){
             for(PartnerFundRequest pfr: pfrList){
-            
-            // Gayathri-Filter based on outcome-based flag
-            if(isOutcomeBased != null && isOutcomeBased) {
-                // Only process outcome-based activities
-                if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM || 
-                   pfr.Core_MDF_Is_Outcome_Based_Ind__c != true) {
-                    continue;
-                }
-            } else if(isOutcomeBased != null && !isOutcomeBased) {
-                // Only process non-outcome-based activities
-                if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && 
-                   pfr.Core_MDF_Is_Outcome_Based_Ind__c == true) {
-                    continue;
-                }
-            }
-            // If isOutcomeBased is null, process all activities (backward compatibility)
-            
                 string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;
                 string budgetType = string.isNotBlank(pfr.Core_MDF_Budget_Type_nm__c) ? pfr.Core_MDF_Budget_Type_nm__c.replaceAll('\\s+', '') : '';
                 string progId = progToIdMap.get(pfr.Core_MDF_Program__c);
@@ -1963,11 +1889,7 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
         if(!pfrToApproveList.isEmpty() && objNameToSObjectMap.containsKey(objName)){return approvalWrap; }else{
             return null;
         }
-    }
-
-// Gayathri-OVERLOADED METHOD: For backward compatibility
-    Public static ApprovalWrapper getPFRApproversForHomePage(set<string> programNameSet, set<string> approvalStageSet, string objName){
-        return getPFRApproversForHomePage(programNameSet, approvalStageSet, objName, null);
+         
     }
     
         /*****************************************************************************************************
@@ -2197,7 +2119,7 @@ Description :   to get the claim records for approvals
       
       if(!claimObjRecordList.isEmpty()){
           for(PartnerFundClaim obj: claimObjRecordList){ string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;string WW_allAccAllBTSetKey, WW_allAccSpecificBTSetKey, WW_singleAccAllBTSetKey, WW_singleAccSpecificBTSetKey; string progId = progToIdMap.get(obj.Core_MDF_Program__c);string budgetType = string.isNotBlank(obj.Core_MDF_Budget_Type_Options_Nm__c) ? obj.Core_MDF_Budget_Type_Options_Nm__c.replaceAll('\\s+', '') : ''; String ultimateAccount = (String)obj.Core_MDF_Ultimate_Account_ID__c;Id ultAccount= ultimateAccount; string approvalStage = string.isNotBlank(obj.Core_MDF_Approval_Stage_nm__c) ? obj.Core_MDF_Approval_Stage_nm__c.replaceAll('\\s+', '') : '';if((obj.Core_MDF_Program__c == IPA_PROG) || (obj.Core_MDF_Program__c == Co_GTM_PROG)){
-                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO' : ''); if(string.isNotBlank(region)){ allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
+                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO;INDIA' : ''); if(string.isNotBlank(region)){ allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
                   }
                   
                   if(string.isNotBlank(allAccAllBTSetKey)){ allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
@@ -2367,7 +2289,6 @@ Added By    :   Aswin Selvaraj / Accenture / 30/Oct/2024
         public List<FieldsWrapper> compactDetails;
         public List<FieldsWrapper> tableViewDetails;
         public List<FieldsWrapper> recordDetails;
-		public Boolean isIPAOutcomeBased = false; //indu
     }
     
     Public class FieldsWrapper {

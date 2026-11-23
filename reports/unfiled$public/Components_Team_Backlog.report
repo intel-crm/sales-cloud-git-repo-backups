@@ -826,6 +826,12 @@
         <field>Contact.Core_Job_Function_Code__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__Languages__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__Level__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Do_Not_Contact__c</field>
     </columns>
     <columns>
@@ -838,6 +844,9 @@
         <field>Contact.Core_IPS_NDA_Acceptance_Date__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__No_longer_at_Company__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Primary_Contact__c</field>
     </columns>
     <columns>
@@ -848,6 +857,9 @@
     </columns>
     <columns>
         <field>Contact.Core_Do_Not_Contact_Dtm__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__Session_Id__c</field>
     </columns>
     <columns>
         <field>Contact.Core_IPS_Sub_Region__c</field>

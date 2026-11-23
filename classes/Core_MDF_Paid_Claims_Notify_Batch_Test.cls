@@ -68,7 +68,7 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
             insert execution1;   
         }
         List<ChannelProgram> cpList = new List<ChannelProgram> ();
-        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
+        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
         ChannelProgram rmfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);
         cpList.add(ccfCp);
         cpList.add(rmfCp);
@@ -201,12 +201,12 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         
         //IUPGM creation
         Core_MDF_Int_Users_Partner_Geo_Mapping__c ccfIupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-        //ccfIupgm.Core_MDF_Account_id__c = ccpIntelAccount.Id;//14285 Suma
+        ccfIupgm.Core_MDF_Account_id__c = ccpIntelAccount.Id;
         ccfIupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
         ccfIupgm.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
         ccfIupgm.Core_MDF_User_id__c =testUser.Id;
         ccfIupgm.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr';
-        //ccfIupgm.Core_MDF_All_Accounts_cd__c = 'No';//14285 Suma
+        ccfIupgm.Core_MDF_All_Accounts_cd__c = 'No';
         System.runAs(testUser){
             insert ccfIupgm;
         }
@@ -262,7 +262,6 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         rmfPfr.Core_MDF_Product_Category_txt__c ='Notebook/Mobile';
         rmfPfr.AllocationId = retailAlloc.Id;
         rmfPfr.Core_MDF_TargetAudience__c = 'Small and Medium Business';
-        rmfpfr.Core_MDF_Activity_Types__c='';//14285 Suma
         pfrList.add(rmfPfr);
         PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(ccfNode.id),null,null,'INDIA','Small Business','Desktop',
@@ -285,8 +284,6 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         MDFpfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         MDFpfr.Core_MDF_MDFReimbursement_Amt__c = 1000;
         MDFpfr.RequestedAmount = 1000;
-        MDFpfr.Core_MDF_Activity_Types__c='';//14285 Suma
-        MDFpfr.Core_MDF_ActivityCategory__c='';//14285 Suma
         pfrList.add(MDFpfr);
         System.runAs(testUser){
             insert pfrList;
@@ -393,7 +390,7 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         @isTest
         public static void testMethod1(){
         User usr = [select id,lastname from User where lastname='Admin_user' limit 1 ];
-
+        List <PartnerFundClaim> claim = [select id,Amount,Core_MDF_Status__c,Core_MDF_Payment_Made_Dt__c,Core_MDF_Last_Recovery_Dt__c,Core_MDF_Program__c from PartnerFundClaim];
         System.runAs(usr){
             Core_MDF_Paid_Claims_Notify_Batch picBatch = new Core_MDF_Paid_Claims_Notify_Batch();
             id batchid = Database.executeBatch(picBatch);

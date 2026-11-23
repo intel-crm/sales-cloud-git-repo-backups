@@ -1,0 +1,163 @@
+<!-- **********************************************************************************************
+* LWC Name - psg_quoteLineDetail
+* Created By - Avani
+* Description - Quote Line section on the Disty Quote Request and View Form for Community Portal
+************************************************************************************************ -->
+<template>
+    <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+        </template>
+    </div>
+<!--    <div class="slds-scrollable"> -->
+    <template if:true={lockRecord}>
+        <template if:false={inProgressQuote}> 
+
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options = {showNewSearchOptions} 
+            onsavequote= {savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId} 
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {tempfalse} 
+            is-draft = {isDraft} 
+            is-cp-quote={isCpQuote}
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            pendingvisblity= {pendingvisblity}
+            is-new-status= {isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            closedparequest= {handleCloseDpaRequest}
+
+            >
+            </c-psg_quoteline-lightning-datatable>    
+
+        </template>
+
+        <template if:true={inProgressQuote}>
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options ={showNewSearchOptions} 
+            onsavequote={savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId} 
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {temptrue} 
+            is-draft = {isDraft}
+            is-cp-quote={isCpQuote} 
+            pendingvisblity= {pendingvisblity}
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            is-new-status={isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            closedparequest= {handleCloseDpaRequest}
+            >
+            </c-psg_quoteline-lightning-datatable>                                               
+        </template>  
+    </template>  
+<!--    </div> -->
+    <!-- *******************Editable Quote Line List****************************** -->
+    <template if:false={lockRecord}>
+    <!--    <div class="slds-scrollable">
+            <table class="slds-table slds-table_col-bordered slds-table_bordered" style="min-width: 100px; width:auto;">                        
+                <thead>
+                    <tr>
+                        <template for:each={qlColumns} for:item="colItem" for:index="index">
+                            <th key={colItem.fname} style="min-width:8rem;max-width:8rem;background-color:rgb(211, 209, 209);" scope="col" class="slds-cell-wrap">
+                                <template if:true={colItem.required}>
+                                    <label class="slds-form-element__label slds-no-flex">
+                                    <abbr class="slds-required" title="required">*</abbr>{colItem.label}
+                                    </label>
+                                </template>
+                                <template if:false={colItem.required}>
+                                    <label class="slds-form-element__label slds-no-flex">{colItem.label}</label>
+                                </template>
+                            </th>
+                        </template>
+                    </tr>   
+                </thead>
+            </table>
+
+            <template for:each={qlEditList} for:item="item" for:index="index">
+                <lightning-record-edit-form key={item.Id} object-api-name="SBQQ__QuoteLine__c" record-id={item.Id} density="auto">
+                    <lightning-messages> </lightning-messages>
+                        <table class="slds-table_col-bordered" style="min-width: 100px; width:auto;">
+                            <tbody>
+                                <tr>
+                                    <template for:each={qlColumns} for:item="colItem" for:index="index">
+                                        <td key={colItem.fname} style="min-width:8rem;max-width:8rem;padding:0.4rem;" scope="col">
+                                            <template if:true={colItem.required}>
+                                                <lightning-input-field class={item.Name} field-name={colItem.fname} variant="label-hidden" required></lightning-input-field>
+                                            </template>
+                                            <template if:false={colItem.required}>
+                                                <lightning-input-field class={item.Name} field-name={colItem.fname} variant="label-hidden"></lightning-input-field>
+                                            </template>
+                                        </td>
+                                    </template>
+                                
+                                    <td key={item.id} style="padding:0.4rem;">                                   
+                                        <lightning-icon icon-name="utility:delete" access-key={item.Id} id={index} class="customActions"
+                                                alternative-text="Delete Row" size="small" title="Delete Row" onclick={deleteRow}>
+                                        </lightning-icon>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </lightning-record-edit-form>
+            </template>  -->
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options ={showNewSearchOptions} 
+            onsavequote={savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId}
+            is-cp-quote={isCpQuote} 
+            pendingvisblity= {pendingvisblity}
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {tempfalse} 
+            is-draft = {isDraft} 
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            is-new-status={isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            >
+            </c-psg_quoteline-lightning-datatable>  
+            <!-- ****************** Add New Rows ******************* -->
+            <!--
+            <template for:each={itemList} for:item="item" for:index="index">
+                <lightning-record-edit-form key={item.id} object-api-name="SBQQ__QuoteLine__c" density="auto">
+                    <lightning-messages> </lightning-messages>
+                        <table class="slds-table_col-bordered" style="min-width:100px; width:auto;">                        
+                            <tbody>
+                                <tr>
+                                    <template for:each={qlColumns} for:item="colItem" for:index="index">
+                                        <td key={colItem.fname} style="min-width:8rem;max-width:8rem;padding:0.4rem;" scope="col">
+                                            <template if:true={colItem.required}>
+                                                <lightning-input-field class={item.class} field-name={colItem.fname} variant="label-hidden" value={colItem.value} required></lightning-input-field>
+                                            </template>
+                                            <template if:false={colItem.required}>
+                                                <lightning-input-field class={item.class} field-name={colItem.fname} variant="label-hidden"></lightning-input-field>
+                                            </template>
+                                        </td>
+                                    </template>
+                                    <td key={item.id} style="min-width:4rem;max-width:4rem;padding: 0.4rem;">
+                                        <lightning-icon icon-name="utility:new" access-key={item.id} id={index} class="customActions"
+                                            alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}>
+                                        </lightning-icon>
+                                        <lightning-icon icon-name="utility:delete" access-key={item.id} id={index} class="customActions"
+                                            alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow}>
+                                        </lightning-icon>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </lightning-record-edit-form>
+            </template>
+            
+        </div>-->
+    </template>
+</template>

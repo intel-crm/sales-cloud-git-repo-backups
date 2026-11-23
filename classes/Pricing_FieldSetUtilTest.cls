@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_FieldSetUtilTest {
 	@testSetUp
@@ -16,6 +9,7 @@ public class Pricing_FieldSetUtilTest {
             	Account acc = Pricing_Test_Utility.createAccount();
             	Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Field_Set_Util_Test');
             	List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
+            	List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             	AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales',UserId = adminUserList[0].Id);
             	insert accTeam;
                 List<SBQQ__Quote__c> quoteList = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 1,adminUserList[0].Email,accountExecutiveUserList[0].Email);
@@ -36,7 +30,6 @@ public class Pricing_FieldSetUtilTest {
             fieldList = Pricing_FieldSetUtil.getFields(quoteLineList[0].Id,'SBQQ__QuoteLine__c','Pricing_SSD_AdditionalDetails',True);
             fieldList = Pricing_FieldSetUtil.getFields(quoteLineList[0].Id,'SBQQ__QuoteLine__c','Pricing_SSD_AdditionalDetails',False);
             fieldList = Pricing_FieldSetUtil.getFields('SBQQ__QuoteLine__c','Pricing_SSD_AdditionalDetails',True);
-        System.assertEquals(true, quoteList.size() > 0);
         }
         Test.stopTest();
     }

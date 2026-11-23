@@ -15,8 +15,3 @@
 /* [interop-accordionSection_accordionSection-host]{
     display:inline;
 } */
-
- .selectorText::selection {
-      color: red;
-      background-color: yellow;
-    }

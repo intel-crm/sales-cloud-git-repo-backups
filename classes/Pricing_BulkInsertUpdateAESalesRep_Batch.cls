@@ -2,8 +2,8 @@
 * @description       : 
 * @author            : Accenture
 * @group             : 
-* @last modified on  : 04-26-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 06-16-2025
+* @last modified by  : Bharath Chandrashekar
 **/
 public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements Database.Batchable<sObject>,Database.Stateful{
     public String newAEEmail;
@@ -494,8 +494,6 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
             String status = '';
             String logMsg;
             String errorMsg =!String.isEmpty(aeAction) ? Label.Pricing_AE_Bulk_Insert_Error_Msg : Label.Pricing_SDM_Bulk_Insert_Error_Msg;
-            List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
-            Id orgWideEmailAddId = orgWideEmailAdd[0].id;
             //old AND new fse Names
             if(!String.isEmpty(fseAction) && (fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action || fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action_For_Inactive_Users || fseAction == 'Sales Rep Replace')) {
                 oldAndNewFSEEmailList.add(oldFSEEmail);
@@ -613,7 +611,6 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
             mail.setToAddresses(toAddresses);
             mail.setccAddresses(ccAddresses);
             mail.setbccAddresses(bccAddresses);
-            mail.setOrgWideEmailAddressId(orgWideEmailAddId);
             mail.setSubject(Label.Pricing_bulk_AE_SDM_Email_Subject);
             mail.setHtmlBody(body);
             mail.setSaveAsActivity(false);

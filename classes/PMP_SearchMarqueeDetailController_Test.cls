@@ -95,13 +95,13 @@ public class PMP_SearchMarqueeDetailController_Test extends PMP_SearchWrapperSto
         Id accId = [SELECT id from Account WHERE Name = 'TestAccount1'].id;
         //PMP_Company__c testPartner =  PMP_TestDataUtility.createCompanyInformation('testPartner',accId , false);
         
-        PMP_Company__c partner_wc = new PMP_Company__c(Name='testPartner', 
+        PMP_Company__c partner_wc = new PMP_Company__c(Name='workingPartner', 
                                                        PMP_Is_Working_Copy_Ind__c = true,
                                                        PMP_Is_Enabled_Lead_Gen_Nm__c = 'true',
                                                        PMP_Is_Lead_Gen_Limited_Nm__c = 'true',
                                                        PMP_Company_Lead_Gen_Language_Nm__c = 'English',
                                                        PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile,
-                                                       PMP_Company_Lifecycle_Status_Nm__c = 'Draft',PMP_Account_Program_Membership__c ='isa - general');
+                                                       PMP_Company_Lifecycle_Status_Nm__c = 'Draft');
         insert partner_wc;
         
         PMP_Company__c testPartner=new PMP_Company__c();
@@ -113,12 +113,10 @@ public class PMP_SearchMarqueeDetailController_Test extends PMP_SearchWrapperSto
         testPartner.PMP_Is_Published_Ind__c=true;
         testPartner.PMP_Working_Copy_Id__c = partner_wc.Id;
         //testPartner.PMP_Partner_Program_nm__c = 'ODM-LOEM';
-        testPartner.PMP_Partner_Program_nm__c = 'ISA';
         testPartner.PMP_Partner_Program_nm__c = 'Manufacturer';
-        //testPartner.PMP_Account_Program_Membership__c = 'Manufacturer - Gold;Distributor - Intel Approved Component Supplier (IACS);Distributor - Intel Authorized Distributor (IAD)';
+        testPartner.PMP_Account_Program_Membership__c = 'Manufacturer - Gold;Distributor - Intel Approved Component Supplier (IACS);Distributor - Intel Authorized Distributor (IAD)';
         //testPartner.PMP_Account_Program_Membership__c = 'Intel® Internet of Things Solution Alliance General';
-        testPartner.PMP_Account_Program_Membership__c ='Additional Partners';
-            testPartner.PMP_Account_Program_Membership__c ='isa - general';
+        //testPartner.PMP_Account_Program_Membership__c ='ODM-LOEM';
         //testPartner.PMP_Account_Specialty__c='LOEM-ODM Partner Program';
         //testPartner.PMP_Is_Working_Copy_Ind__c=true;
         
@@ -169,7 +167,6 @@ public class PMP_SearchMarqueeDetailController_Test extends PMP_SearchWrapperSto
         partnerWrapper.attributes = partnerAttributes;
         partnerWrapper.categories = types;
         PMP_SearchMarqueeDetailController.getPartnerData(partner_wc.id, 'en_US');
-        PMP_SearchMarqueeDetailController.getPartnerData(partner.id, 'en_US');
         System.assertEquals(partnerWrapper.name, PMP_SearchMarqueeDetailController.getPartnerData(partner.id, 'en_US').name,'Failed');
         ContentVersion contentVersion1 = new ContentVersion(
             Title = 'Test',
@@ -222,7 +219,7 @@ public class PMP_SearchMarqueeDetailController_Test extends PMP_SearchWrapperSto
         System.assertEquals(null, PMP_SearchMarqueeDetailController.getPartnerData(null, 'en_US').name,'Failed');
         //System.assertEquals(partnerWrapper.imageUrl, PMP_SearchMarqueeDetailController.getPartnerData(partner.id).imageUrl);
         //System.assertEquals(partnerWrapper.categories.size(), PMP_SearchMarqueeDetailController.getPartnerData(partner.id).categories.size());
-        //System.assert(PMP_SearchMarqueeDetailController.getPartnerData(partner.id, 'en_US').categories.size() > 0,'Failed');
+        System.assert(PMP_SearchMarqueeDetailController.getPartnerData(partner.id, 'en_US').categories.size() > 0,'Failed');
         Test.StopTest();
         
     }

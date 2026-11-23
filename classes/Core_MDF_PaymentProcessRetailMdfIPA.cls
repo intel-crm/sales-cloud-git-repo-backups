@@ -46,30 +46,14 @@
             Map<String, Core_MDF_Product_Category__mdt> productCategoryMap = new Map<String, Core_MDF_Product_Category__mdt>();
             //Map of List to store the eligible Budget Types as key and List of the valid records of those budget types
             Map<String, List<Core_MDF_BudgetType_ProdCategory_Split__mdt>> budgetTypeProdCategorySplitMap = new Map<String, List<Core_MDF_BudgetType_ProdCategory_Split__mdt>>(); //budgetTypeProdCategorySplitMap
-            // Map to store product type and the corresponding Business Unit field to refer in campaign-Swati
-            Map<String, String> buProdTypeMap = new Map<String, String>();
-            for(Core_MDF_CCP_Custom_Metadata_Utility__c buSplits : [Select Core_MDF_Field_3_txt__c,Core_MDF_Field_5_txt__c, Core_MDF_Field_6_txt__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c =: pRun.Core_MDF_Program_Id__r.Name AND Core_MDF_Category__c = 'BU Splits']){
+
+            for(Core_MDF_CCP_Custom_Metadata_Utility__c buSplits : [Select Core_MDF_Field_5_txt__c, Core_MDF_Field_6_txt__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c =: pRun.Core_MDF_Program_Id__r.Name AND Core_MDF_Category__c = 'BU Splits']){
                 if(!buActivityFieldsMapping.containsKey(buSplits.Core_MDF_Field_5_txt__c)){ 
                     //Core_MDF_Field_5_txt__c = Core_MDF_BU_Name__c, Core_MDF_Field_6_txt__c = Core_MDF_Field_Name__c
-                    buActivityFieldsMapping.put(buSplits.Core_MDF_Field_5_txt__c, buSplits.Core_MDF_Field_6_txt__c); 
-                }
-                // Swati: Build Campaign productType -> BU mapping independent of claim; claim-specific checks occur later
-                if (String.isNotBlank(buSplits.Core_MDF_Field_3_txt__c) && String.isNotBlank(buSplits.Core_MDF_Field_5_txt__c)) {
-                    if (!buProdTypeMap.containsKey(buSplits.Core_MDF_Field_3_txt__c)) {
-                        buProdTypeMap.put(buSplits.Core_MDF_Field_3_txt__c, buSplits.Core_MDF_Field_5_txt__c);
-                    }
-                }
+                    buActivityFieldsMapping.put(buSplits.Core_MDF_Field_5_txt__c, buSplits.Core_MDF_Field_6_txt__c);                    
+                }            
             }
-            Map<String, Integer> buPriorityRankingMap = new Map<String, Integer>();
-            if(pRun != null && pRun.Core_MDF_Program_Id__r != null && pRun.Core_MDF_Program_Id__r.Name == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM)
-            {
-                for (Core_MDF_BUPriorityRanking__c pr : [SELECT Core_MDF_Label__c, Core_MDF_Ranking_nbr__c FROM Core_MDF_BUPriorityRanking__c WHERE Core_MDF_Label__c IN :buActivityFieldsMapping.keySet() AND Core_MDF_Program_Name__c = :Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM])
-                {
-                    if (pr.Core_MDF_Label__c != null) {
-                        buPriorityRankingMap.put( pr.Core_MDF_Label__c,(Integer)pr.Core_MDF_Ranking_nbr__c);
-                    }
-                }
-            }
+            
             for(Core_MDF_Product_Category__mdt buproductcategory : [Select MasterLabel,DeveloperName, Core_MDF_Budget_Type_Txt__c,Core_MDF_Profit_Center_Txt__c,Core_MDF_Material_Code_Txt__c,Core_MDF_Product_Category_Txt__c FROM Core_MDF_Product_Category__mdt WHERE Core_MDF_Program_Txt__c =: pRun.Core_MDF_Program_Id__r.Name]){
                 profitCenterMMIdMapping.put(buproductcategory.MasterLabel, buproductcategory);               
                 productCategoryMap.put(buproductcategory.DeveloperName,buproductcategory);
@@ -100,7 +84,6 @@
                 List<String> claimsBuList = new List<String>();
                 Core_MDF_Comarketing_CMF_Map__c cmfRec = new Core_MDF_Comarketing_CMF_Map__c();
                 Boolean hasCMFRecords = false;
-                //Credit Process 
                 if(claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCreditMemo || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerPassThrough || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerCreditMemo)
                 {
                   if(cmfMap.containsKey(claim.ChannelPartnerId) && cmfMap.get(claim.ChannelPartnerId) !=null){
@@ -194,16 +177,12 @@
                 // For program where BUs is not applicable or no BUs are found on activity 
                 else{
                     // Get the Business unit/product category metadata record for the activity's product category                
-                    //Core_MDF_Product_Category__mdt productCategory = profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
-	            String BuUnit = (claim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? deriveBUForClaim(claim,buPriorityRankingMap,buProdTypeMap) : null;
-                    Core_MDF_Product_Category__mdt productCategory = (BuUnit != null) ?  profitCenterMMIdMapping.get(BuUnit) : profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
-                    fileWrapperKey =  createFileWrapperKey(claim, BuUnit, NULL, costCenter, glAccount);
-                   if(claim.Core_MDF_Program__c == CoGTMProgram)
-                    { 
-                        Integer buSplitPercent = (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? Core_MDF_PaymentUtility.CoGTMBU_SplitPercent : null; 
-                        createPaymentFileWrapper(claim, fileWrapperKey, BuUnit, buSplitPercent, productCategory, NULL, cmfRec, costCenter, glAccount);
-                    } 
-                    else{
+                    Core_MDF_Product_Category__mdt productCategory = profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);                  
+                    fileWrapperKey = createFileWrapperKey(claim, NULL, NULL, costCenter, glAccount) ;
+                    // Creating Payment Line Items and putting in a map - Business unit related params are null
+                    if(claim.Core_MDF_Program__c == CoGTMProgram){
+                        createPaymentFileWrapper(claim, fileWrapperKey, NULL, NULL, productCategory, NULL, cmfRec, costCenter, glAccount);
+                    } else{
                         createPaymentFileWrapper(claim, fileWrapperKey, NULL, NULL, productCategory, NULL, NULL, NULL, glAccount);
                     }
                 }
@@ -485,9 +464,9 @@
             if((claim.Core_MDF_Program__c == IPAProgram || claim.Core_MDF_Program__c == CoGTMProgram) && glAccount != null) {
                 fileWrapperKey = fileWrapperKey + '_' + glAccount;
             }
-           /* if(claim.Core_MDF_Program__c == CoGTMProgram && !claim.Core_MDF_VAT_Eligibility_Ind__c && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer && claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null) {
-                fileWrapperKey = fileWrapperKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;//we can remove this and pass using business unit
-            }*/
+            if(claim.Core_MDF_Program__c == CoGTMProgram && !claim.Core_MDF_VAT_Eligibility_Ind__c && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer && claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null) {
+                fileWrapperKey = fileWrapperKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;
+            }
             
 
                if (claim.Core_MDF_Program__c == CoGTMProgram && !claim.Core_MDF_VAT_Eligibility_Ind__c && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer && claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c != null) {
@@ -532,14 +511,14 @@
             else if(claim.Core_MDF_Program__c == CoGTMProgram && !claim.Core_MDF_VAT_Eligibility_Ind__c && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer)
             {
                 paymentUniqueKey= claim.Core_MDF_VAT_Eligibility_Ind__c ? String.valueOf(claim.Id)+'_'+claim.Core_MDF_C_Type_Ind__c:
-                claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c + '_'+claim.Core_MDF_Bank__c +  '_' + claim.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + '_' + claim.Core_MDF_Quarter_Year_txt__c+'_'+claim.Core_MDF_C_Type_Ind__c+'_'+claim.Core_MDF_Budget_Type_Options_Nm__c+ '_' + businessUnit;
+                claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c + '_'+claim.Core_MDF_Bank__c +  '_' + claim.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + '_' + claim.Core_MDF_Quarter_Year_txt__c+'_'+claim.Core_MDF_C_Type_Ind__c+'_'+claim.Core_MDF_Budget_Type_Options_Nm__c;
                 if (glAccount != null) {
                     paymentUniqueKey += '_' + glAccount;
                 }
-                /*if(claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null)
+                if(claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null)
                 {
                     paymentUniqueKey = paymentUniqueKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;
-                }*/
+                }
                 if(claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c != null)
                  {
                     paymentUniqueKey = paymentUniqueKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c;
@@ -689,24 +668,14 @@
             fileWrapperObject.isVatEligible = claim.Core_MDF_VAT_Eligibility_Ind__c ? true :false;
             fileWrapperObject.isCtypeInd = claim.Core_MDF_C_Type_Ind__c ? true : false;
             
-            
-            // 1) For CoGTM program: profit center from productCategoryMdt if available; material from Campaign MMID; else fallbacks
-            // 2) For non-CoGTM: use productCategoryMdt if available; else fall back to Campaign fields
-            //Swati
-            if (claim.Core_MDF_Program__c == CoGTMProgram) {
-                if (productCategoryMdt != null) {
-                    fileWrapperObject.profitcenter = productCategoryMdt.Core_MDF_Profit_Center_Txt__c;
-                } /*else {
-                    fileWrapperObject.profitcenter = claim.Core_MDF_Campaign_Id__r != null && claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null
-                        ? claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c : '';
-                }*/
-                fileWrapperObject.materialCode = (claim.Core_MDF_Campaign_Id__r != null && claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c != null)
-                    ? claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c : '';
-            } else {
-                if (productCategoryMdt != null) {
-                    fileWrapperObject.profitcenter = productCategoryMdt.Core_MDF_Profit_Center_Txt__c;
-                    fileWrapperObject.materialCode = productCategoryMdt.Core_MDF_Material_Code_Txt__c;
-                }
+            // Store the profit center and material code coming from productcategory metadata
+            if(claim.Core_MDF_Program__c != CoGTMProgram && productCategoryMdt != NULL){
+                fileWrapperObject.profitcenter = productCategoryMdt.Core_MDF_Profit_Center_Txt__c; 
+                fileWrapperObject.materialCode = productCategoryMdt.Core_MDF_Material_Code_Txt__c;
+            }
+            if(claim.Core_MDF_Program__c == CoGTMProgram){
+                fileWrapperObject.profitcenter = claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null ? claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c : '';
+                fileWrapperObject.materialCode = claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c != null ? claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c : '';
             }
             if(cmfRec !=null){
                 fileWrapperObject.shipToNumber = cmfRec.Core_MDF_Ship_To_Number_Id__c;
@@ -756,43 +725,4 @@
             // Add the instance in the list
             claimsBUSplitList.add(claimBuSplit);
         }*/
-
-        /****************************************************************************************************** 
-    Method Name:        deriveBUForClaim
-    @return  :          Business Unit for claim
-    @parameters:        Claims,Bu Priority Ranking,Product type and BU mapping
-    Description:        This method is used to process derivedProdTypes for a claim (extracts and runs the original loop) and return lower rank BU
-    Added By:           Accenture - SP - 13/04/2026
-    Modified By:        Date:       Changes: 
-    *******************************************************************************************************/  
-                
-        // Helper: process derivedProdTypes for a claim (extracts and runs the original loop)
-        public static String deriveBUForClaim(PartnerFundClaim claim, Map<String, Integer> buPriorityRankingMap, Map<String, String> buProdTypeMap) {
-            if (claim == null) return null;
-            // Build ranking map for the provided derivedProdTypes using the class-level buPriorityRankingMap if available
-            Map<Integer, List<String>> rankToBUs = new Map<Integer, List<String>>();
-
-            // Derive campaign BU(s) from Campaign Product Type multiselect on the related Campaign
-            //Swati
-            String productTypes = claim?.Core_MDF_Campaign_Id__r?.Core_MDF_Product_Type__c;
-            List<String> derivedProdTypes = String.isNotBlank(productTypes) ? productTypes.split(';') : new List<String>();     
-
-            for (String prodType : derivedProdTypes) {
-                String bu = buProdTypeMap != null ? buProdTypeMap.get(prodType)  : null;
-                if (bu == null) continue;
-                Integer rank = buPriorityRankingMap != null ? buPriorityRankingMap.get(bu) : null;
-                if (rank == null) continue; 
-
-                if (!rankToBUs.containsKey(rank)) {
-                    rankToBUs.put(rank, new List<String>());
-                }
-                rankToBUs.get(rank).add(bu);
-            }
-
-            List<Integer> ranks = new List<Integer>(rankToBUs.keySet());
-            ranks.sort();
-           
-            String businessUnit = !ranks.isEmpty() ? rankToBUs.get(ranks[0])[0] : null;
-            return businessUnit;
-        }
     }

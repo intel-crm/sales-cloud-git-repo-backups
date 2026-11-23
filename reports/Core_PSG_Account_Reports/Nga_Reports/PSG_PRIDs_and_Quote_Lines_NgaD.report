@@ -20,6 +20,14 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$price_suggested_resale_amt__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_cb__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_pricing_cb__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$core_cpq_end_customer_disty_view_nm__c</field>
     </columns>
     <description>Provides end-user with PRIDs associated with a Quote.</description>
@@ -44,6 +52,20 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Budgetary,Design Win,Tools,Transfer Pricing,Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>P</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Distributor__c.Core_Geo__c</column>
@@ -83,6 +105,11 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>PSG - PRIDs and Quote Lines_NgaD</name>
     <params>
         <name>co</name>

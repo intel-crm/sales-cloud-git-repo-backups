@@ -124,10 +124,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Document_Submission_Link__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Tactics_nm__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

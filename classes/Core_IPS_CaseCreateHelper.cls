@@ -7,7 +7,7 @@
 * Prasad                                                                           Created
 ****************************************************************************************************/
 
-public without sharing class Core_IPS_CaseCreateHelper { // 'without sharing' added by Tushar as part of ATHR critical
+public  class Core_IPS_CaseCreateHelper {
     
     public boolean getAgent(){
         return Core_IPS_Helper_Utility.isIPSCustomerUser();
@@ -227,7 +227,7 @@ Modification Log :
         List<List <sObject>> searchList;
         List<String> queryString =  new List<String>();
         Id accId;
-        String profileId = System.Label.Core_IPS_Agent_Partner_Profile_id;
+        String profile_Id = System.Label.Core_IPS_Agent_Partner_Profile_id;
         //set of all users assigned to  IPS FAE Partner Permission set                  
         Set<Id> userIds = new Set<Id>();
         for(PermissionSetAssignment uId: [SELECT AssigneeId FROM PermissionSetAssignment WHERE PermissionSetId = :System.Label.Core_IPS_Partner_DFAE_Permission_Set AND Assignee.ProfileId = :System.Label.Core_IPS_Partner_Profile_Id]){
@@ -237,8 +237,8 @@ Modification Log :
         
         //Senario 1: Project Based Cases: The Partner Support Owner field should be a lookup that displays users with the Partner FAE/IPS Agent-Partner profile who are part of the project on the case.
         if(projId != '' && projId != null){
-            queryString.add ( ' ALL FIELDS RETURNING USER(id, Name, FirstName, LastName, Email, Contact.Account.Name where Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :projId and Core_Status__c = \'Active\') AND (ProfileID =:profileId  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300)'); 
-            queryString.add ( ' select count() from USER where Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :projId and Core_Status__c = \'Active\') AND (ProfileID =:profileId  OR Id IN :userIds) )');               
+            queryString.add ( ' ALL FIELDS RETURNING USER(id, Name, FirstName, LastName, Email, Contact.Account.Name where Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :projId and Core_Status__c = \'Active\') AND (ProfileID =:profile_Id  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300)'); 
+            queryString.add ( ' select count() from USER where Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :projId and Core_Status__c = \'Active\') AND (ProfileID =:profile_Id  OR Id IN :userIds) )');               
         }
         //Senario 2: Non Project Based Cases:The Partner Support Owner field should be a lookup that displays users with the Partner FAE/IPS Agent-Partner profile who are members of the account on the case.
         else if(contId != '' && contId != null){
@@ -248,8 +248,8 @@ Modification Log :
                     accId = c.AccountId;
                 }
             }
-            queryString.add ( ' IN ALL FIELDS RETURNING USER(id, Name, FirstName, LastName, Email, Contact.Account.Name where Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profileId  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300)');               
-            queryString.add ( 'select count() from USER where Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profileId  OR Id IN :userIds) )');               
+            queryString.add ( ' IN ALL FIELDS RETURNING USER(id, Name, FirstName, LastName, Email, Contact.Account.Name where Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profile_Id  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300)');               
+            queryString.add ( 'select count() from USER where Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profile_Id  OR Id IN :userIds) )');               
             
         }
         
@@ -841,7 +841,7 @@ Modification Log :
     
     
     public boolean checkcloseCaseEditPermission(){
-        User u = [Select profile.Name from user where id=:userinfo.getUserId()];
+        User U = [Select profile.Name from user where id=:userinfo.getUserId()];
         boolean  checkflag = false;
         for(string str : Core_IPS_Labels__c.getValues('CloseCaseEditPermission').value__c.trim().split(','))
         {
@@ -1184,37 +1184,30 @@ Modification Log :
         
     }
     // Added  by Ganapati for LEX: copy case functionality
-    public static void copyInterestedParties(String parentCaseId, String caseId) { // Changed by tushar for security venuabilty
-        
+    public static void copyInterestedParties(String parentCaseId, String caseId) {
         List<Core_IPS_Case_Interested_Party__c> newPartyList = new List<Core_IPS_Case_Interested_Party__c>();
-        //if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.isAccessible()) {
+        if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.isAccessible()) {
             for(Core_IPS_Case_Interested_Party__c party : [SELECT User__c,Active__c,Contact__c,Type__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c=:parentCaseId]){
                 Core_IPS_Case_Interested_Party__c newParty =  new Core_IPS_Case_Interested_Party__c();
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Case__c.isCreateable()){
+               // if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Case__c.isCreateable()){
                     newParty.Case__c = caseId;
-                }
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.User__c.isCreateable()){ //Tushar--vulnerability fix
-                    newParty.User__c = party.User__c;
-                }
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable()){
+                //}
+                newParty.User__c = party.User__c;
+                //if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable()){
                     newParty.Active__c = party.Active__c;
-                }
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Contact__c.isCreateable()){
+                //}
+               // if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Contact__c.isCreateable()){
                     newParty.Contact__c = party.Contact__c;
-                }
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Type__c.isCreateable()){
+               // }
+               // if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Type__c.isCreateable()){
                     newParty.Type__c = party.Type__c;
-                }
+               // }
                 newPartyList.add(newParty);
             }
-        //}
-        if(newPartyList.size()>0){
-	    //Tushar--vulnerability fix
-            if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.isCreateable()){
-                Core_IPS_AdminUtility.insertInterestedParties(newPartyList);
-            }
         }
-        
+        if(newPartyList.size()>0){
+            Core_IPS_AdminUtility.insertInterestedParties(newPartyList);
+        }            
     }
     
     public static String getErrorMessage(string errorCode){
@@ -1236,26 +1229,22 @@ Modification Log :
     }
     
     public static List<String> getProjectListFromAsset(String prodId) {
+        Boolean isAsset = String.valueOf(prodId).substring(0,3) == '02i' ? true:false;
+        List<Asset> astList = new List<Asset>();
+        if(isAsset){
+            if (Schema.sObjectType.Asset.isAccessible()){
+                astList = [select Id,Core_IPS_Project__c,Core_Supported_Product__r.Core_IPS_Public_Product__c from Asset where Id =:prodId and Core_Supported_Product__r.Core_IPS_Public_Product__c = false LIMIT 1];
+            }
+        }
+        else{ 
+            if (Schema.sObjectType.Asset.isAccessible()){
+                astList = [select Id,Core_IPS_Project__c,Core_Supported_Product__r.Core_IPS_Public_Product__c from Asset where Core_Supported_Product__c =:prodId and Core_Supported_Product__r.Core_IPS_Public_Product__c = false  LIMIT 100];  
+            }
+        }
         List<Id> prjIdList = new List<Id>();
-        /// Mohan code fix for null getting in prodId Line no 1240 - 1260
-        if(prodId != '' && prodId != null){
-            Boolean isAsset = String.valueOf(prodId).substring(0,3) == '02i' ? true:false;
-            List<Asset> astList = new List<Asset>(); 
-            if(isAsset){
-                if (Schema.sObjectType.Asset.isAccessible()){
-                    astList = [select Id,Core_IPS_Project__c,Core_Supported_Product__r.Core_IPS_Public_Product__c from Asset where Id =:prodId and Core_Supported_Product__r.Core_IPS_Public_Product__c = false LIMIT 1];
-                }
-            }
-            else{
-                if (Schema.sObjectType.Asset.isAccessible()){
-                    astList = [select Id,Core_IPS_Project__c,Core_Supported_Product__r.Core_IPS_Public_Product__c from Asset where Core_Supported_Product__c =:prodId and Core_Supported_Product__r.Core_IPS_Public_Product__c = false  LIMIT 100];                
-                }
-            }
-            
-            for(Asset astObj:astList){
-                if(astObj.Core_IPS_Project__c <> null) {
-                    prjIdList.add(astObj.Core_IPS_Project__c);
-                }
+        for(Asset astObj:astList){
+            if(astObj.Core_IPS_Project__c <> null) {
+                prjIdList.add(astObj.Core_IPS_Project__c);
             }
         }
         return prjIdList;
@@ -1419,7 +1408,7 @@ Modification Log :
     
     public List<CustomSelectOptions> getPSAOptions(String selectedcontId,String selectedprojId,String selectedPSOId){ 
         
-        List<CustomSelectOptions> pSAOptions = new List<CustomSelectOptions>();
+        List<CustomSelectOptions> PSAOptions = new List<CustomSelectOptions>();
         Set<Id> userIds = new Set<Id>();
         for(PermissionSetAssignment uId: [SELECT AssigneeId FROM PermissionSetAssignment WHERE PermissionSetId = :System.Label.Core_IPS_Partner_DFAE_Permission_Set AND Assignee.ProfileId = :System.Label.Core_IPS_Partner_Profile_Id]){
             userIds.add(uId.AssigneeId);
@@ -1439,7 +1428,7 @@ Modification Log :
                     }
             
             if(projMem != null && !projMem.isEmpty()){
-                pSAOptions.add(new CustomSelectOptions('--None--','--None--'));
+                PSAOptions.add(new CustomSelectOptions('--None--','--None--'));
                 List<Account> lstAcc=new List<Account>();
                 if (Schema.sObjectType.account.isAccessible()){ 
                     lstAcc = [SELECT id,Name FROM account
@@ -1448,26 +1437,26 @@ Modification Log :
                                            Core_Status__c = 'Active')];
                 }
                 for(Account acc : lstAcc){
-                    pSAOptions.add(new CustomSelectOptions(acc.Name,acc.id));
+                    PSAOptions.add(new CustomSelectOptions(acc.Name,acc.id));
                 }  
             }
         }
         //Senario 2: When editing the Partner Supported Account field, the picklist should display all Accounts associated with all projects in which the PSO is a member.
         else if(selectedcontId != '' && selectedcontId != null){
             
-            Id acctId;
+            Id AcctId;
             for(Contact c: [SELECT AccountId FROM Contact WHERE Id =: selectedcontId and Core_IPS_Active__c = True]){
-                acctId = c.AccountId;
+                AcctId = c.AccountId;
             }
             
-            if(acctId != null){
+            if(AcctId != null){
                 List<User> lstAcctUser= [SELECT id FROM User WHERE isActive=True AND 
                                          (Id IN :userIds OR ProfileId = :system.Label.Core_IPS_Agent_Partner_Profile_id) AND 
-                                         Contact.AccountId =: acctId];
+                                         Contact.AccountId =: AcctId];
                  
                 
                 if(lstAcctUser != null && !lstAcctUser.isEmpty()){
-                    pSAOptions.add(new CustomSelectOptions('--None--','--None--'));
+                    PSAOptions.add(new CustomSelectOptions('--None--','--None--'));
                     if(selectedPSOId != null && selectedPSOId != ''){ 
                         
                         set<Id> allProjIds = new set<Id>();  
@@ -1484,12 +1473,12 @@ Modification Log :
                         }
                         
                         for(Account acc : lstAcc){
-                            pSAOptions.add(new CustomSelectOptions(acc.Name,acc.id));
+                            PSAOptions.add(new CustomSelectOptions(acc.Name,acc.id));
                         }
                     }                  
                 }
             }
         }
-        return pSAOptions;
+        return PSAOptions;
     }
 }

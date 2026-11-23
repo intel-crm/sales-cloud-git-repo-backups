@@ -26,7 +26,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Case_Escalation_AP_v13</stringValue>
+                <stringValue>Core_MDF_Case_Escalation_AP_v12</stringValue>
             </value>
         </inputParameters>
         <nameSegment>submit</nameSegment>
@@ -59,7 +59,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Budget_Type_Escalation_AP_v4</stringValue>
+                <stringValue>Core_MDF_Budget_Type_Escalation_AP_v3</stringValue>
             </value>
         </inputParameters>
         <nameSegment>submit</nameSegment>
@@ -92,7 +92,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Claim_Escalation_AP_v14</stringValue>
+                <stringValue>Core_MDF_Claim_Escalation_AP_v13</stringValue>
             </value>
         </inputParameters>
         <nameSegment>submit</nameSegment>
@@ -1151,38 +1151,6 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Core_MDF_Activity_is_Outcome_Based_or_not</name>
-        <label>Check whether Activity is Outcome-Based or not</label>
-        <locationX>951</locationX>
-        <locationY>688</locationY>
-        <defaultConnector>
-            <targetReference>Get_Activity_Records</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Non-Outcome Based Activity</defaultConnectorLabel>
-        <rules>
-            <name>Outcome_Based_Campaign</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Is_Outcome_Based_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Super Activity</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Check_if_Owner_and_Escalation_submitter_are_same_user_0_0</targetReference>
-            </connector>
-            <label>Outcome-Based Campaign</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Core_MDF_Check_Approval_Flag_to_Update_Approver_Name_and_Comments</name>
         <label>Check Approval Flag to Update Approver Name and Comments</label>
         <locationX>1951</locationX>
@@ -1580,7 +1548,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Retail_Program</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -1671,7 +1639,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>IPA_Program</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -1680,7 +1648,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Core_MDF_Activity_is_Outcome_Based_or_not</targetReference>
+                <targetReference>Get_Activity_Records</targetReference>
             </connector>
             <label>IPA Program</label>
         </rules>

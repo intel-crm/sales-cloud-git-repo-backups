@@ -41,13 +41,7 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
     */
     public static List<OpportunityLineItem> getOppProductList(String oppId){
         List<OpportunityLineItem> oppProductList = new List<OpportunityLineItem>();
-        try{
-            oppProductList = [select Id, Core_IsPCCOpportunity_cb__c, Core_Financial_Incentive_Eligible_cb__c , Product2.Name,Core_Status__c, Core_BU_Short_Name__c, Core_At_Risk__c, Core_Risk_Reason1__c, Core_Risk_Reason2__c, Core_Risk_Priority__c, Core_Risk_Category__c, Core_At_Risk_Status__c, Core_Product_Risk_Owner__c, Core_Risk_Create_Date__c, Core_Risk_End_Date__c, Core_Risk_Detail__c from OpportunityLineItem where OpportunityId =: oppId AND Core_Status__c NOT IN('Production Win Approved', 'Production Win')  WITH SECURITY_ENFORCED order by Product2.Name asc];//
-        }
-        catch(Exception e){
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.Core_OppProductsAtRisk_Ctrl.getOppProductList',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OppProductsAtRisk_Ctrl', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Unicorn');
-                    Database.insert(logEntry, false);
-        }
+        oppProductList = [select Id, Core_IsPCCOpportunity_cb__c, Core_Financial_Incentive_Eligible_cb__c , Product2.Name,Core_Status__c, Core_BU_Short_Name__c, Core_At_Risk__c, Core_Risk_Reason1__c, Core_Risk_Reason2__c, Core_Risk_Priority__c, Core_Risk_Category__c, Core_At_Risk_Status__c, Core_Product_Risk_Owner__c, Core_Risk_Create_Date__c, Core_Risk_End_Date__c, Core_Risk_Detail__c from OpportunityLineItem where OpportunityId =: oppId AND Core_Status__c NOT IN('Production Win Approved', 'Production Win')  WITH SECURITY_ENFORCED order by Product2.Name asc];//TWC3123-5299 added WITH SECURITY_ENFORCED
         return oppProductList;
     }
     
@@ -136,57 +130,49 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
         boolean flag;
         for(OppProductWrapper oppProdWrap : oppProductList){
             flag = false;
-            OpportunityLineItem dbOppProd = productMap.get(oppProdWrap.oppLineItemId);
-            
-            if(dbOppProd != null) {
-                if(oppProdWrap.atRisk != dbOppProd.Core_At_Risk__c){
-                    flag = true;
-                }else if(oppProdWrap.riskReason1 != dbOppProd.Core_Risk_Reason1__c){
-                    flag = true;
-                }else if(oppProdWrap.riskPriority != dbOppProd.Core_Risk_Priority__c){
-                    flag = true;
-                }else if(oppProdWrap.riskStatus != dbOppProd.Core_At_Risk_Status__c){
-                    flag = true;
-                }else if(oppProdWrap.prodRiskOwner != dbOppProd.Core_Product_Risk_Owner__c){
-                    flag = true;
-                }else if(oppProdWrap.riskCreateDate != dbOppProd.Core_Risk_Create_Date__c){
-                    flag = true;
-                }else if(oppProdWrap.riskEndDate != dbOppProd.Core_Risk_End_Date__c){
-                    flag = true;
-                }else if(oppProdWrap.riskDetail != dbOppProd.Core_Risk_Detail__c){
-                    flag = true;
-                }            
-                
-                String prdstatus = dbOppProd.Core_Status__c;
-            
-                if(flag && prdstatus != System.Label.Core_LineItem_Status){
-                    oppLineItem = new OpportunityLineItem();
-                    oppLineItem.Id = oppProdWrap.oppLineItemId;
-                    oppLineItem.Core_At_Risk__c = oppProdWrap.atRisk;
-                    if(oppProdWrap.riskReason1 == noValue){
-                        oppLineItem.Core_Risk_Reason1__c = '';
-                    }else{
-                        oppLineItem.Core_Risk_Reason1__c = oppProdWrap.riskReason1;
-                    }
-                    if(oppProdWrap.riskPriority == noValue){
-                        oppLineItem.Core_Risk_Priority__c = '';
-                    }else{
-                        oppLineItem.Core_Risk_Priority__c = oppProdWrap.riskPriority;
-                    }
-                    if(oppProdWrap.riskStatus == noValue){
-                        oppLineItem.Core_At_Risk_Status__c = '';
-                    }else{
-                        oppLineItem.Core_At_Risk_Status__c = oppProdWrap.riskStatus;
-                    }
-                    oppLineItem.Core_Product_Risk_Owner__c = oppProdWrap.prodRiskOwner;
-                    oppLineItem.Core_Risk_Create_Date__c = oppProdWrap.riskCreateDate;
-                    oppLineItem.Core_Risk_End_Date__c = oppProdWrap.riskEndDate;
-                    oppLineItem.Core_Risk_Detail__c = oppProdWrap.riskDetail;
-                    finalProdList.add(oppLineItem);
+            if(oppProdWrap.atRisk <> productMap.get(oppProdWrap.oppLineItemId).Core_At_Risk__c){
+                flag = true;
+            }else if(oppProdWrap.riskReason1 <> productMap.get(oppProdWrap.oppLineItemId).Core_Risk_Reason1__c){
+                flag = true;
+            }else if(oppProdWrap.riskPriority <> productMap.get(oppProdWrap.oppLineItemId).Core_Risk_Priority__c){
+                flag = true;
+            }else if(oppProdWrap.riskStatus <> productMap.get(oppProdWrap.oppLineItemId).Core_At_Risk_Status__c){
+                flag = true;
+            }else if(oppProdWrap.prodRiskOwner <> productMap.get(oppProdWrap.oppLineItemId).Core_Product_Risk_Owner__c){
+                flag = true;
+            }else if(oppProdWrap.riskCreateDate <> productMap.get(oppProdWrap.oppLineItemId).Core_Risk_Create_Date__c){
+                flag = true;
+            }else if(oppProdWrap.riskEndDate <> productMap.get(oppProdWrap.oppLineItemId).Core_Risk_End_Date__c){
+                flag = true;
+            }else if(oppProdWrap.riskDetail <> productMap.get(oppProdWrap.oppLineItemId).Core_Risk_Detail__c){
+                flag = true;
+            }            
+            String prdstatus = productMap.get(oppProdWrap.oppLineItemId).Core_Status__c;
+           
+            if(flag && prdstatus != System.Label.Core_LineItem_Status){
+                oppLineItem = new OpportunityLineItem();
+                oppLineItem.Id = oppProdWrap.oppLineItemId;
+                oppLineItem.Core_At_Risk__c = oppProdWrap.atRisk;
+                if(oppProdWrap.riskReason1 == noValue){
+                    oppLineItem.Core_Risk_Reason1__c = '';
+                }else{
+                    oppLineItem.Core_Risk_Reason1__c = oppProdWrap.riskReason1;
                 }
-            } else {
-                Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.Core_OppProductsAtRisk_Ctrl.save',Core_Details__c = 'Trying to access the Opportunitylineitem record which is not present in database.', Core_Origin__c='Core_OppProductsAtRisk_Ctrl', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Unicorn');
-                    Database.insert(logEntry, false);
+                if(oppProdWrap.riskPriority == noValue){
+                    oppLineItem.Core_Risk_Priority__c = '';
+                }else{
+                    oppLineItem.Core_Risk_Priority__c = oppProdWrap.riskPriority;
+                }
+                if(oppProdWrap.riskStatus == noValue){
+                    oppLineItem.Core_At_Risk_Status__c = '';
+                }else{
+                    oppLineItem.Core_At_Risk_Status__c = oppProdWrap.riskStatus;
+                }
+                oppLineItem.Core_Product_Risk_Owner__c = oppProdWrap.prodRiskOwner;
+                oppLineItem.Core_Risk_Create_Date__c = oppProdWrap.riskCreateDate;
+                oppLineItem.Core_Risk_End_Date__c = oppProdWrap.riskEndDate;
+                oppLineItem.Core_Risk_Detail__c = oppProdWrap.riskDetail;
+                finalProdList.add(oppLineItem);
             }
         }
         
@@ -260,9 +246,9 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
             }else if(opp.Core_Opportunity_Owner_Geo__c== Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: Sample - PRC').Core_Opportunity_Region__c){
                 prodRiskOwner= Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: Sample - PRC').Core_Product_Risk_Owner_Email__c;
             }
-            /*else if(opp.Core_Opportunity_Owner_Geo__c.equalsIgnoreCase(Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: Sample - INDIA').Core_Opportunity_Region__c)){
+            else if(opp.Core_Opportunity_Owner_Geo__c== Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: Sample - INDIA').Core_Opportunity_Region__c){
                 prodRiskOwner= Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: Sample - INDIA').Core_Product_Risk_Owner_Email__c;
-            }*/
+            }
         }else if(RiskReason =='Risk - Supply: System Build'){
             prodRiskOwner= Core_Product_Risk_Owner_values__c.getValues('Risk - Supply: System Build').Core_Product_Risk_Owner_Email__c;
         }
@@ -326,7 +312,7 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
             
             String hexString = EncodingUtil.convertToHex(EncodingUtil.base64Decode(info.validFor)).toUpperCase();
             
-            
+            System.debug('DependentField: Label:' + currDependentValue.getLabel() + ' ValidForInHex:' + hexString + ' JsonString:' + jsonString);
             
             Integer baseCount = 0;
             
@@ -345,22 +331,22 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
                 
                 if((val & 8) == 8)
                 {
-                    
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 0].getLabel());
                     controllingInfo.get(controllingValues[baseCount + 0].getLabel()).add(currDependentValue.getLabel());
                 }
                 if((val & 4) == 4)
                 {
-
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 1].getLabel());
                     controllingInfo.get(controllingValues[baseCount + 1].getLabel()).add(currDependentValue.getLabel());                    
                 }
                 if((val & 2) == 2)
                 {
-
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 2].getLabel());
                     controllingInfo.get(controllingValues[baseCount + 2].getLabel()).add(currDependentValue.getLabel());                    
                 }
                 if((val & 1) == 1)
                 {
-          
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 3].getLabel());
                     controllingInfo.get(controllingValues[baseCount + 3].getLabel()).add(currDependentValue.getLabel());                    
                 }
                 
@@ -368,7 +354,7 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
             }            
         } 
         
-        
+        System.debug('ControllingInfo: ' + controllingInfo);
         
         return controllingInfo;
     }*/

@@ -294,10 +294,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         } else if (event.target.dataset.id === 'endcustomer') {
             this.endcustomer = value;
         }
-
-        //'this.caseType!= undefined && this.caseType!= null' added by Kamala on 30-04-2026 - TWC745-9174 as part of Lightening Component exception 
-        
-        if ( this.caseType!= undefined && this.caseType!= null && this.caseType.length > 0) {
+        if(this.caseType.length > 0){
             this.isCasetypeEmpty = false;
         }
         if(this.caseType == 'Question'){
@@ -408,8 +405,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         }
         if (this.partnerSupportAccount == null || this.partnerSupportAccount == undefined || this.partnerSupportAccount == ''){
             console.log('boolean',this.booleanRequired);
-            //if(this.booleanRequired == false && this.agentCheck == true){ // Niyaz removed this.booleanRequired == false && because the combination was not correct
-            if(this.booleanRequired == true && this.agentCheck == true){
+            if(this.booleanRequired == false && this.agentCheck == true){
             createValid = false;
             this.template.querySelector('.PSArequired')?.classList.add('showRequired');
             this.template.querySelector('.PSArequired')?.scrollIntoView();
@@ -1169,14 +1165,12 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     getUserProfile() {
         getcurrentuserprofile({})
             .then(data => {
-                console.log('data ==1==== ',data);
                 if (data === 'PartnerAgent' || data === 'PartnerFAE') {
                     this.agentCheck = true;
                     this.getPartnerSupportOwnerApex(this.casedatainfo.project);
                     this.getPartnerSupportedAccountApex(this.casedatainfo.project, this.userId);
                 } else {
                     this.agentCheck = false;
-                    
                 }
             })
             .catch(error => {})
@@ -1226,13 +1220,10 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     getUserProfileData(event) {
         getcurrentuserprofile({})
             .then(data => {
-                console.log('data ====== ',data);
                 if (data === 'PartnerAgent') {
                     this.agentCheck = true;
-                    
                 } else {
                     this.agentCheck = false;
-                    
                 }
                 
             })

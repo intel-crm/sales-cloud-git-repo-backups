@@ -78,13 +78,6 @@
             <operator>notContain</operator>
             <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,Test_company,北京苏尔泰科技有限公司-CST_CCPTest</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Campaign</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

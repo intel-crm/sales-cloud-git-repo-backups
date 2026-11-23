@@ -21,10 +21,9 @@
             <div class="slds-modal__container">
                 <!-- Heading (Header of the Modal) -->
                 <div class="slds-modal__header">
-                    <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModal }"  alternativeText="Close" />
-                    <!--<button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModal}">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
                         X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
-                    </button>-->
+                    </button>
                 </div>
                 <div class="slds-modal__content slds-p-around--medium">
                 <!--<aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">-->

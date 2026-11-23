@@ -28,8 +28,8 @@ public with sharing class Core_MDF_KPIDetailPage {
         Map<String,String> apiValueMap = new Map<String,String>();
         Map<String,String> apiHelpTextMap = new Map<String,String>();
         Map<string, String> fldLabelToAPINameMap = new Map<String, String>();           
-	
-        // try-catch intentionally removed to allow exceptions to propagate to LWC for client-side handling and logging 
+        
+        try {  
             if(String.isBlank(recordId) || String.isBlank(objectApiName) || !(recordId instanceOf Id) || Schema.getGlobalDescribe().get(objectApiName) == null) { 
                 
                 return new KPIWrapper();
@@ -62,6 +62,8 @@ public with sharing class Core_MDF_KPIDetailPage {
                     }                                                              
                 }                                                                                                      
             }                       
+        }
+        catch(Exception ex) { Core_MDF_CCP_UtilityClass.logError(ex); }
         
         KPIWrapper obj = new KPIWrapper();
         obj.datamap = apiValueMap;
@@ -100,34 +102,26 @@ public with sharing class Core_MDF_KPIDetailPage {
         
         if(String.isNotBlank(strCat)) {            
             strQuery = 'SELECT Id, Core_MDF_Proposal_Based_Ind__c,' + strProgram + ',' + strCat + ',' + strtype + ','+ strSubtype + ' FROM ' + sanitizedObjname + ' WHERE Id=:sanitizeRecdId';
-            List<SObject> results = Database.query(strQuery);
-            // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
-            If(!results.isEmpty()){
-                SObject pfObj = results[0];
-                strActCatVal    = String.valueOf(pfObj.get(strCat));
-                strActTypeVal   = String.valueOf(pfObj.get(strtype));
-                strProgramName  = String.valueOf(pfObj.get(strProgram));
+            SObject pfObj = Database.query(strQuery) ;
+            
+            if(pfObj!=null) {
+                strActCatVal = String.valueOf(pfObj.get(strCat)) ;
+                strActTypeVal = String.valueOf(pfObj.get(strtype)) ;  
+                strProgramName = String.valueOf(pfObj.get(strProgram));
                 strPropBasedInd = String.valueOf(pfObj.get('Core_MDF_Proposal_Based_Ind__c'));
-
-                String subTypeVal = String.valueOf(pfObj.get(strSubtype));
-
-                Boolean hasProgramAndSubtype = String.isNotBlank(strProgramName) && String.isNotBlank(subTypeVal);
-                Boolean isIPAProgram         = strProgramName == System.Label.Core_MDF_PFR_IPA;
-
-                if (hasProgramAndSubtype) {
-                    strActSubTypeVal = subTypeVal;
-                }
-
-                if (hasProgramAndSubtype && isIPAProgram) {
-                    actSubTypeList = strActSubTypeVal.split(';');
-                }
-
-                if (hasProgramAndSubtype && isIPAProgram && actSubTypeList != null && !actSubTypeList.isEmpty()) {
-                    subtypeListStr = '(\'' + String.join(actSubTypeList, '\', \'') + '\')';
-                    multiSubType = String.escapeSingleQuotes(subtypeListStr).replaceAll('\\\\','');
-                }
+                if(String.isNotBlank(strProgramName) && String.isNotBlank(String.valueOf(pfObj.get(strSubtype)))) { //changes for IPA KPI Metrics
+                    strActSubTypeVal = String.valueOf(pfObj.get(strSubtype));
+                   
+                    if(strProgramName == System.Label.Core_MDF_PFR_IPA){ //changes for IPA KPI Metrics
+                        actSubTypeList = strActSubTypeVal.split(';');
+                       
+                        if(actSubTypeList != null && !actSubTypeList.isEmpty()){
+                            subtypeListStr ='(\'' + String.join(actSubTypeList, '\', \'') + '\')';
+                            multiSubType = String.escapeSingleQuotes(subtypeListStr).replaceAll('\\\\','');
+                        }
+                    }
+                }                
             }
-            // US - TWC702-14285: Flatten nested IFs (no logic change) - End
         }
     }
     
@@ -275,21 +269,7 @@ public with sharing class Core_MDF_KPIDetailPage {
         }
         return strLabel;
     }
-    /****************************************************************************************************************************************
-    Method Name:        logErrorImperative
-    Description:        Logs client-side errors via an imperative call. Introduced to handle logging outside 
-                        getKPIvalues(), as it is cacheable and does not allow DML operations.
-                        Unhandeled exception fix.
-
-    Created By:        Shravani
-    Created Date:      19/03/2026
-    ****************************************************************************************************************************************/
-    @AuraEnabled
-    public static void logErrorImperative(String errorMessage, String objectApiName) {
-        if(String.isBlank(errorMessage)) return;
-        Core_MDF_CCP_UtilityClass.logErrorAsNormal(errorMessage,objectApiName);
-    }
- 
+    
     public class KPIWrapper {
         @AuraEnabled public Map<String,String> datamap = new Map<String,String>();
         @AuraEnabled public String displabel = '';

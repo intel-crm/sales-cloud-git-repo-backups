@@ -55,8 +55,8 @@ Accenture – VD       01-06-2020               Created.
         contList.add(con2);
         
         Database.insert(contList);
-        // Highlight: Unused Local Variable 
-      //  List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
+        
+        List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
         
         Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
         
@@ -164,8 +164,7 @@ Accenture – VD              01-06-2020         Created.
     @isTest static void creatingPnumTest(){
         
         User usr=[SELECT Id FROM User WHERE Email='systemadm@example.com' LIMIT 1];
-        // Highlight: Unused Local Variable
-       // Account intAcc = [Select Id from Account where Name = 'Test Intel Account' LIMIT 1];
+        Account intAcc = [Select Id from Account where Name = 'Test Intel Account' LIMIT 1];
         Contact cont = [select id from Contact where email='cont1@example.com' LIMIT 1 ];        
         Contact cont2 = [select id from Contact where email='cont2@example.com' LIMIT 1 ];
         

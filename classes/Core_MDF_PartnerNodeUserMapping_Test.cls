@@ -10,26 +10,15 @@
 *****************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_MDF_PartnerNodeUserMapping_Test {
-  /*   @isTest 
+     /*@isTest 
     static void getCodeCoverageForMainClass(){
          Test.startTest();
          Core_MDF_PNUMappingServiceHandler.getCodeCoverage();
          Test.stopTest();
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assert(true, 'Code coverage method should execute without throwing exceptions');
     }*/
     //Test method for data setup
     @TestSetup static void setUpData(){
         
-        UserRole usRole = new UserRole(Name = 'Admin');
-        insert usRole;
-        UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name like '%Partner User%' LIMIT 1];//US - TWC702-14285: Worked on this test class (no logic/structure change)
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.Email = 'sysadmin@example.com';
-        usr.UserRoleId = usRole.Id;
-        database.insert(usr);
-
-   System.runAs(usr){        
         //Creating Program with utility class 
         List<ChannelProgram> cpList = new List<ChannelProgram>();
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
@@ -38,7 +27,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         cpList.add(retailCp);
         Database.insert(cpList);
         List<Account> accList = new List<Account>();
-
+        List<Account> updateAccList = new List<Account>();
         
         //Creating Intel Account with utility class
         Account accountRecord1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account ', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -72,7 +61,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         
         //Creating Contact for Partner User
         List<Contact> contactList = new List<Contact>();
-
+        List<Contact> contactUpdateList = new List<Contact>();
         Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(accountRecord1.Id,false);
         Contact conRecord2 = Core_MDF_CCP_TestDataUtility.createContact(accountRecord1.Id,false);
         contactList.add(conRecord1);
@@ -129,25 +118,16 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         contactEntitlementList.add(contactEntitlementRMF_CS_C2);
         Database.insert(contactEntitlementList);
         Test.startTest();
-         
-         List<User> accountOwnerList = [SELECT Id, UserRoleId FROM User WHERE Id = :intelRetail.OwnerId];
-          
-           if (!accountOwnerList.isEmpty()) {
-               User accountOwner = accountOwnerList[0];
-               if (accountOwner.UserRoleId == null) {
-                   accountOwner.UserRoleId = usRole.Id;
-                   update accountOwner;
-               }
-           } else {
-               // Set the account owner to a user that exists and has a role
-               intelRetail.OwnerId = usr.Id;
-               update intelRetail;
-           }
         
-            List<User> userList = new List<User>();
+        //This user is created with system admin permission in Utility Class 
+        List<User> userList = new List<User>();
+        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+        usr.Email = 'sysadmin@example.com';
+        database.insert(usr);
+        
+        System.runAs(usr){
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
             usr1.Email='test1@example.com';
-            //Usr1.UserRoleId=usRole1.id;//US - TWC702-14285: Worked on this test class (no logic/structure change)
             usr1.ContactId = conRecord1.Id;
             usr1.ProfileId = profileId;
             usr1.isActive = true;
@@ -155,7 +135,6 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             
             User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
             usr2.Email='test2@example.com';
-            //Usr2.UserRoleId=usRole1.id;//US - TWC702-14285: Worked on this test class (no logic/structure change)
             usr2.ContactId = conRecord2.Id;
             usr2.ProfileId = profileId;
             usr2.isActive = true;
@@ -163,7 +142,6 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             
             User extUser = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUser.LastName = 'Claim Submitter';
-            //extUser.UserRoleId=usRole1.id;//US - TWC702-14285: Worked on this test class (no logic/structure change)
             extUser.ProfileId = profileId;
             extUser.email = 'xyz@mail.com';
             extUser.ContactId = externalUser.Id;
@@ -172,7 +150,6 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             
             User extUser1 = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUser1.LastName = 'Test Claim Submitter 1';
-            //extUser1.UserRoleId=usRole1.id;//US - TWC702-14285: Worked on this test class (no logic/structure change)
             extUser1.ProfileId = profileId;
             extUser1.email = 'xyzabc@mail.com';
             extUser1.ContactId = externalUser1.Id;
@@ -296,8 +273,6 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             pfr1.Amount = 0;
             pfr1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             pfr1.Core_MDF_Reimbursement_Rate_txt__c='100%';
-            pfr1.Core_MDF_ActivityCategory__c='';//US - TWC702-14285: Worked on this test class (no logic/structure change)
-            pfr1.Core_MDF_Activity_Types__c='';//US - TWC702-14285: Worked on this test class (no logic/structure change)
             Database.insert(pfr1);
             
            //Create Exchange rates records
@@ -349,7 +324,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         User partnerUserRec2 = [SELECT Id,Email from User where Email='test2@example.com' limit 1];
         Account accRec1 = [SELECT Id from Account where Name='Test Account 1' limit 1];
         Account accRec2 = [SELECT Id from Account where Name='Test Account 2' limit 1];
-
+        ChannelProgram cp = [Select id from ChannelProgram where Name =: Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
         
         PartnerFundRequest pfr1 = [Select id from PartnerFundRequest where title = 'Test Activity1'];
         //Creating Bank Record
@@ -364,7 +339,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         }
         //Core_MDF_Bank__c testbank1 = [Select id from Core_MDF_Bank__c];
          //Creating Claim Record
-
+        PartnerFundClaim pfc1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr1.Id, System.today()-1, System.today()-1, 50.00, System.today()-1,testbank1.Id, true);
         
         //Creating Payment Record
         //Core_MDF_Payment__c dummyPaymentRecord = new Core_MDF_Payment__c();
@@ -380,7 +355,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         payRunRecord.Core_MDF_Program_Id__c  = cp.Id;
         Database.insert(payRunRecord); */
         
-
+        Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_Account__r.name,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c LIMIT 1];
         System.runAs(systemAdminRecord){
             
             //Creating Adjustment Request Record
@@ -418,10 +393,10 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         User systemAdminRecord = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User partnerUserRec1 = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         Account accountRecord1 = [SELECT Id from Account where Name= 'Test Account' limit 1];
-
+        User partnerUserRec2 = [SELECT Id,Email from User where Email='test2@example.com' limit 1];
         Account accRec1 = [SELECT Id from Account where Name='Test Account 1' limit 1];
         Account accRec2 = [SELECT Id from Account where Name='Test Account 2' limit 1];
-
+        ChannelProgram cp = [Select id from ChannelProgram where Name =: Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
         
         PartnerFundRequest pfr1 = [Select id from PartnerFundRequest where title = 'Test Activity1'];
         //Creating Bank Record
@@ -435,7 +410,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         //Core_MDF_Bank__c testbank1 = [Select id from Core_MDF_Bank__c];
          //Creating Claim Record
          Test.startTest();
-
+        PartnerFundClaim pfc1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr1.Id, System.today()-1, System.today()-1, 50.00, System.today()-1,testbank1.Id, true);
 
         
         Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_Account__r.name,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c LIMIT 1];
@@ -464,6 +439,8 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     //Test method for Delete Account User scenario
     @isTest static void testDeleteShareRecords(){
         
+        User partnerUserRecord = [SELECT Id,Email from User where Email='test2@example.com' limit 1];
+        Account accountRecord1 = [SELECT Id from Account where Name='Test Account 1' limit 1];
         /*PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_External_Claim_Submitter'];
         PermissionSetAssignment psaRecord = new PermissionSetAssignment();
         psaRecord.AssigneeId = partnerUserRecord.Id;
@@ -502,13 +479,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         }catch(Exception e){
             
         }    
-    // US - TWC702-14285: Unit Test Method should include System.Assert    
-    System.assertNotEquals(null, pnumRecord, 'PNUM record should exist');
-    System.assertNotEquals(null, pnumRecord.Core_MDF_Account__c, 'PNUM record should have an associated account');
-    System.assertNotEquals(null, accIdList, 'Account ID list should not be null');
-    System.assert(accIdset.size() >= 0, 'Account ID set should be initialized');
-        
-    Test.stopTest();     
+        Test.stopTest();
     }
     
     //Test method for exception scenario where user is empty
@@ -593,8 +564,6 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             retailPfr.Core_MDF_Reimbursement_Rate_txt__c='25%';
             //retailPfr.Core_MDF_Campaign_Amount__c = 200;
             retailPfr.AllocationId=pfa.Id;
-            retailPfr.Core_MDF_ActivityCategory__c='';//US - TWC702-14285: Worked on this test class (no logic/structure change)
-            retailPfr.Core_MDF_Activity_Types__c='';//US - TWC702-14285: Worked on this test class (no logic/structure change)
             database.insert(retailPfr);
             
             Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
@@ -694,9 +663,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(retailVirtualAccount.Id,claimSubmitter.Id,true);
             Core_MDF_Partner_Node_User_Mapping__c pnum1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(retailVirtualAccount.Id,claimSubmitter1.Id,true);          
             Core_MDF_Partner_Node_User_Mapping__c pnum2 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(retailAPJAccount.Id,claimSubmitter1.Id,true);
-            Core_MDF_Partner_Node_User_Mapping__c testPartnerNodeUserMapping = new Core_MDF_Partner_Node_User_Mapping__c(Core_MDF_Account__c = retailVirtualAccount.Id,Core_MDF_User__c=claimSubmitter.Id, Core_MDF_Active_Ind__c= true,Core_MDF_Error_Details_txt__c = 'Group Member insert failed');       
-            insert testPartnerNodeUserMapping;
-            Database.executeBatch(new Core_MDF_Batch_PNUMRefresh());
+            
             List<CampaignShare> cmpShareList = [SELECT Id, CampaignId, UserOrGroupId
                                                              FROM CampaignShare 
                                                              WHERE CampaignId =: camp.Id AND
@@ -712,7 +679,8 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             //Core_MDF_PNUMappingServiceHandler.prepareCommonMapData(pnumList);
             //Core_MDF_PNUMappingServiceHandler.validateAccountUserMapping(pnumList);
             System.assert(cmpShareList != NULL);
-                       
+            
+            
             //database.delete(pnum);
             test.stopTest();
         }
@@ -720,8 +688,11 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     
     //Test method for Delete Account User scenario
     @isTest static void testmfetchPartnerNodeUserMappingException(){
-            
+        
+        User partnerUserRecord = [SELECT Id,Email from User where Email='test2@example.com' limit 1];
+        Account accountRecord1 = [SELECT Id from Account where Name='Test Account 1' limit 1];        
         Test.startTest();
+        User systemAdminRecord = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Map<Id, Core_MDF_Partner_Node_User_Mapping__c> newPNUMappingMap = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>();
         Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c limit 1];                                             
         List<Core_MDF_Partner_Node_User_Mapping__c> deleteRecordList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
@@ -734,7 +705,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             accIdset.add(accRecord.Id); 
         }
         try{        
-      
+        List<Id> accIdList = new List<Id>();        
         //Core_MDF_PNUMappingServiceHandler.mfetchPartnerNodeUserMapping(accIdList);
         //Core_MDF_PNUMappingServiceHandler.deleteObjectShareRecords(deleteRecordList,newPNUMappingMap,true);
         //Core_MDF_PNUMappingServiceHandler.isApexJobLimitAvailable(deleteRecordList);
@@ -746,7 +717,13 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             
             System.assertNotEquals(NULL,e);
         }    
-        Test.stopTest();         
+        Test.stopTest();       
+        
+        
     }
+    
+    
+
+    
     
 }

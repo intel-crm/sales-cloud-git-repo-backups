@@ -160,7 +160,7 @@ public class Core_Revive_Button_Controller_Test {
          leadUser[0].ProfileId = p1.Id;
          Insert leadUser;
          
-         String leadRecordType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
+         String leadRecordType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByName().get('Lead').getRecordTypeId();
          List<Lead> leadRec = new List<Lead>();
          //leadRec = Core_Test_Utility.createLead(2);
          	 Lead objLead = new Lead(); 
@@ -209,7 +209,7 @@ public class Core_Revive_Button_Controller_Test {
          leadUser[0].ProfileId = p1.Id;
          Insert leadUser;
          
-         String leadRecordType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
+         String leadRecordType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByName().get('Lead').getRecordTypeId();
          List<Lead> leadRec = new List<Lead>();
          //leadRec = Core_Test_Utility.createLead(2);
          	 Lead objLead1 = new Lead(); 

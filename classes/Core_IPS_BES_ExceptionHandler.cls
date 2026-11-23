@@ -33,12 +33,14 @@ global with sharing class Core_IPS_BES_ExceptionHandler {
                          	insert errorLog;   
                         }
                         /*US1038991 - 07/09/2021 - Vishal - FLS Check for security vulnerability --*/
-                        //Added by tushar because of vulnerability changes 
-                        if (Schema.sObjectType.Core_IPS_BES_Outbound_Message__c.fields.Status__c.isUpdateable()) {
+                       // if (Schema.sObjectType.Core_IPS_BES_Outbound_Message__c.fields.Status__c.isUpdateable()) {
                             ouboundMsg[0].Status__c = 'IPass Failed';
-                        }
+                        //}
                         update ouboundMsg; 
                     }
+                    //Chandra - to keep track of the error details.
+                   // System.debug('error response '+response);
+                  //  Core_Log_Entry.logEntryWithDetails('SFDC','IPS',null,'info','Erro Details Json',response,null,'Core_IPS_BES_Error_Log__c',null);
                 }
             }
              //Creating custom exception to cover catch block

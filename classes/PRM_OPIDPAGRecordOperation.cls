@@ -287,7 +287,7 @@ public without sharing class PRM_OPIDPAGRecordOperation {
     **/
     public Map<String, Set<PRM_IPA_Affiliation__c>> getIPAAffiliation (Set<Id> childAccIds,Set<Id> opidAccountId){
         Map<String, Set<PRM_IPA_Affiliation__c>> mapOfAccAff = new Map<String, Set<PRM_IPA_Affiliation__c>>();
-        for(PRM_IPA_Affiliation__c aia : [select id,PRM_Builder_Strategy__c, PRM_Account__c, PRM_Active__c,PRM_Notes__c from PRM_IPA_Affiliation__c where PRM_Account__c in :childAccIds or  PRM_Account__c in :opidAccountId WITH SECURITY_ENFORCED]){
+        for(PRM_IPA_Affiliation__c aia : [select id,PRM_Builder_Strategy__c, PRM_Account__c, PRM_Active__c from PRM_IPA_Affiliation__c where PRM_Account__c in :childAccIds or  PRM_Account__c in :opidAccountId WITH SECURITY_ENFORCED]){
             if(mapOfAccAff.containsKey(aia.PRM_Account__c)){
                 mapOfAccAff.get(aia.PRM_Account__c).add(aia);
             }else{
@@ -1732,98 +1732,5 @@ inboundMessage.Error_Description__c = abaMapError.get(intelAccId);
         }
     }   
     
-
-    //method take account ids and checks if it has approved acm and no cags and creates parameter for createinboundrecord method
-    public static void accountEligibleForOPID(Map<Id,Account> accForInbound,Boolean fromDQBatch,Map <Id,PRM_AccountChannelMembership__c> acmFromDQbatch){
-        //IPA change to accomodate late Global BPid stamping
-        List<String> accountIds = new List<String>();
-        Map<Id,PRM_AccountChannelMembership__c> AcmWithOPIDCheckMap = new Map<Id,PRM_AccountChannelMembership__c>();
-        Map<String,account> ucdNonGlblAccMap = new Map<String,account>();
-        Map<Id,Id> accCagMap = new Map<Id,Id>();
-        List<Core_OnePartner_Inbound_Message__c> listOfInboundOnePartner = new List<Core_OnePartner_Inbound_message__c>();
-        Set<String> parentUcdSet= new Set<String>();
-        Map<String,Core_Account_Group_Member__c> parentCagRec = new Map<String,Core_Account_Group_Member__c>();
-        //query approved acm for the list of account ids
-        if(accForInbound!=null && !accForInbound.isEmpty()){
-            for(Account acc: accForInbound.values()){
-                parentUcdSet.add(acc.Core_Parent_Business_Party_Id__c);
-            }
-            if(!fromDQBatch){
-                List<PRM_AccountChannelMembership__c> acmList = [Select id,PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c in: accForInbound.keySet() and PRM_Status_Nm__c='Approved'];
-                for(PRM_AccountChannelMembership__c acm:acmList){
-                    AcmWithOPIDCheckMap.put(acm.PRM_Account_Id__c,acm);
-                }
-            }else if(acmFromDQbatch!=null && !acmFromDQbatch.isEmpty()){
-                AcmWithOPIDCheckMap.putAll(acmFromDQbatch);
-            }
-        }
-        if(AcmWithOPIDCheckMap!=null && !AcmWithOPIDCheckMap.isEmpty()){
-            //query active cags for the account ids
-            List<Core_Account_Group_Member__c> cagList =[select id,Core_Intel_Account_Id__c,Core_Business_Party_Id__c ,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Partner_Account_Id__r.Name from Core_Account_Group_Member__c where 
-                                                        (Core_Intel_Account_Id__c in:AcmWithOPIDCheckMap.keyset() OR Core_Intel_account_Id__c in: parentUcdSet)
-                                                        and Core_Intel_Account_Id__r.Core_Business_Party_Id__c != null  
-                                                        and Core_Intel_Account_Id__r.Core_IPA_One_Partner_Id__c = null 
-                                                        and Core_Intel_Account_Id__r.RecordType.name ='Intel Account' ];
-            for(Core_Account_Group_Member__c cag: cagList){
-                if(parentUcdSet.contains(cag.Core_Business_Party_Id__c)){
-                    parentCagRec.put(cag.Core_Business_Party_Id__c,cag);
-                }else{
-                    accCagMap.put(cag.Core_Intel_Account_Id__c,cag.id);
-                }
-            }
-        }
-        //if active cag is not there then add to ucdNonGlblAccMap
-        if(accCagMap!=null && !accCagMap.isEmpty()){
-            for(String acc: accCagMap.keySet()){
-                if(!accCagMap.containsKey(acc) && accForInbound.containsKey(acc) ){
-                    ucdNonGlblAccMap.put(accForInbound.get(acc).Core_Business_Party_Id__c,accForInbound.get(acc));
-                }
-            }
-        }
-        if(ucdNonGlblAccMap!=null && !ucdNonGlblAccMap.isEmpty()){
-            PRM_ACMTriggerHandlerNew.CreateInboundRecord(parentCagRec,ucdNonGlblAccMap,listOfInboundOnePartner,AcmWithOPIDCheckMap,null); // TWC729-6744 .- UCD                
-        }  
-    }
     
-    //inbound creation if unified id stamped after acm
-     @InvocableMethod(label='Create Inbound For OPID')
-    public static void createInboundBasedUnifiedId(list<account> salesAcc){
-	 Map<String,Core_Account_Group_Member__c> parentCagRec=new Map<String,Core_Account_Group_Member__c>();
-	 Map<String,account> ucdNonGlblAccMap=new Map<String,account>();
-	 Map<Id,PRM_AccountChannelMembership__c> AcmWithOPIDCheckMap=new  Map<Id,PRM_AccountChannelMembership__c>();
-     list<Core_OnePartner_Inbound_Message__c> listOfInboundOnePartner =  new list<Core_OnePartner_Inbound_Message__c>();   
-	 set<string> parentUcdSet=new set<string>();
-     set<id> salesAccIds=new set<id>(); 
-     Map<String,account> mapOfAccIdWithAcc=new Map<String,account>();
-     for (account acc: salesAcc){
-			salesAccIds.add(acc.id);
-            parentUcdSet.add(acc.Core_Parent_Business_Party_Id__c);
-            ucdNonGlblAccMap.put(acc.Core_Business_Party_Id__c,acc);
-	}
-     list<Core_Account_Group_Member__c> lstPagRecords =[SELECT Id,
-                                                      Name,
-                                                      Core_Partner_Account_Id__c, 
-                                                      Core_Intel_Account_Id__c,
-                                                      Core_Business_Party_Id__c,                        // TWC729-6744 UCD Change
-                                                      Core_Partner_Account_Id__r.Core_OnePartnerID__c,  // TWC729-6744 UCD Change
-                                                      Core_Partner_Account_Id__r.Name,                  // TWC729-6744 UCD Change
-                                                      Core_Inactive_Ind__c 
-                                                      FROM Core_Account_Group_Member__c 
-                                               		  WHERE (Core_Intel_Account_Id__c in : salesAccIds 
-                                                      or  Core_Business_Party_Id__c in: parentUcdSet) 
-                                                      and Core_Inactive_Ind__c=false];
-        
-    for (Core_Account_Group_Member__c agm: lstPagRecords){
-         if(parentUcdSet.contains(agm.Core_Business_Party_Id__c))  
-            parentCagRec.put(agm.Core_Business_Party_Id__c,agm);
-	 
-    }
-	for(PRM_AccountChannelMembership__c acm: [select PRM_Status_Nm__c, PRM_Account_Id__c from 
-                                              PRM_AccountChannelMembership__c where PRM_Account_Id__c 
-                                              in: salesAccIds and PRM_Status_Nm__c='Approved']){
-		AcmWithOPIDCheckMap.put(acm.PRM_Account_Id__c,acm);
-	}
-	if(AcmWithOPIDCheckMap!=null && ucdNonGlblAccMap!=null)
-	PRM_ACMTriggerHandlerNew.CreateInboundRecord(parentCagRec,ucdNonGlblAccMap,listOfInboundOnePartner,AcmWithOPIDCheckMap,null);
-}
 }

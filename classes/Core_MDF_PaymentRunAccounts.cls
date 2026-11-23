@@ -97,8 +97,8 @@ Modified By:        Date:       Changes:
         Core_MDF_Payment_Run__c pRun = [select Id,Core_MDF_Payment_run_for_Accounts__c from Core_MDF_Payment_Run__c where Id =:paymentRunId];
          List<String> AccIdList = new  List<String>();
         List<Account> accList;
-        if(pRun != null && String.isNotBlank(pRun.Core_MDF_Payment_run_for_Accounts__c)){
-            AccIdList = pRun.Core_MDF_Payment_run_for_Accounts__c.split('[,;]');
+        if(pRun != null){
+            AccIdList = pRun.Core_MDF_Payment_run_for_Accounts__c.split(',');
         }
         if(!AccIdList.isEmpty()){
             accList = [select Id,Name from Account where Id in : AccIdList];

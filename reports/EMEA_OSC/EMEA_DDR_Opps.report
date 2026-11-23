@@ -111,6 +111,9 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__TrackingNumber__c</field>
+    </columns>
+    <columns>
         <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</field>
     </columns>
     <columns>

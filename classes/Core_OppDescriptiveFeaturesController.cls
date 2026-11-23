@@ -125,7 +125,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         lstPlatformSelectListWrapper = new List < SelectListWrapper > ();
         lstPlatformBUSelectListWrapper = new List < SelectListWrapper > ();    
         Core_Opportunity_Features__c OppFeature ;
-        //Core_Opportunity_Features__c OppFeatureOnOpp ;
+        Core_Opportunity_Features__c OppFeatureOnOpp ;
         List<Core_Opportunity_Features__c> Oppfeaturelst= new List<Core_Opportunity_Features__c>();
         List<Opportunity> Opplst= new List<Opportunity>();
         showPage = !isBuExeOrProdMgr();//6183 
@@ -158,6 +158,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             	mapfeatureBULabelValue.put(ple.getLabel(), ple.getValue());
                 mapfeatureBUValueLabel.put(ple.getValue(),ple.getLabel());
             } 
+            System.debug('mapfeatureBUValueLabel::'+mapfeatureBUValueLabel);
             //Set the BU value  default to Opportunity feature record while edited.
             if(this.sObjOppFeature.Id != null){
             
@@ -166,7 +167,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     selectedPlatformBULabel = OppFeature.Core_Platform_BU__c;
                     //Added for Consumer Sales System
                     //this.cSale =  [Select id,Core_Platform_BU__c, Core_Consumer_Sales_system__c from Core_Opportunity_Features__c where id=:this.sObjOppFeature.Id AND Core_Platform_BU__c =:selectedPlatformBU];
-                    
+                    //System.debug('CS Querry::'+this.cSale);
                     //consumerSales = this.cSale.Core_Consumer_Sales_system__c;
             }
             
@@ -174,7 +175,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
              if(sOppId !=null){
                 /*
                  Oppfeaturelst = [SELECT Id,Core_Platform_BU__c,Core_Consumer_Sales_system__c,Core_Feature_Name__c,Core_Feature_Type__c FROM Core_Opportunity_Features__c where Core_Opportunity__c =: sOppId AND Core_Feature_Type__c='Consumer Sales system' order by createddate desc limit 1];
-                  
+                  system.debug('123####'+Oppfeaturelst[0].Core_Feature_Name__c);
                  if(Oppfeaturelst.size() >0){ 
                      this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                  }*/
@@ -193,7 +194,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                  }
                  }
               if(this.sObjOppFeature.Id != null){
-                  //Id descid=this.sObjOppFeature.Id;
+                  Id descid=this.sObjOppFeature.Id;
                    Id OpptyId=this.sObjOppFeature.Core_Opportunity__c;
                      
                  Opplst=[Select id,Core_Consumer_Sales_System__c from Opportunity Where Id =: OpptyId];
@@ -256,7 +257,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         mapStringToLstOption = new map < string, List < SelectOption >> {};
         mapSelectStringToLstOption = new map < string, List < SelectOption >> {};
         lstSelectListWrapper = new List < SelectListWrapper > ();
-        //List < Id > lstCoreOppoFeatureSet = new List < Id > {};
+        List < Id > lstCoreOppoFeatureSet = new List < Id > {};
         mapSelectedValueToFeatureType = new Map < String, String > {};
         mapSelectedNameToFeatureType = new Map < String, String > {};
         mapStringToBool = new Map < String, Boolean > {};
@@ -295,7 +296,10 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 for (Core_Opportunity_Features__c sobjOppFeature: sObjOpp.Opportunity_Features__r) {
                  //START - US103701, BU filter added 
                   if (mapFeatureSetValue.Keyset().contains(sobjOppFeature.Core_Feature_Name__c + sobjOppFeature.Core_Feature_Type__c)){
+                      System.debug('inside first if');
+                       System.debug('selectedPlatformBULabel::'+selectedPlatformBULabel);
                     if (sobjOppFeature.Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c != true && sobjOppFeature.Core_Platform_BU__c == selectedPlatformBULabel) {
+                        System.debug('inside second if');
                         mapSelectedValueToFeatureType.put(sobjOppFeature.Core_Feature_Type__c, sobjOppFeature.Core_Feature_Name__c);
                         mapSelectedNameToFeatureType.put(sobjOppFeature.Core_Feature_Name__c + sobjOppFeature.Core_Feature_Type__c, 
                             sobjOppFeature.Core_Feature_Type__c);
@@ -480,7 +484,6 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         if (!mapPlatformBUString.containsKey(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c))) {
                             if(sobjFutSet.Core_Feature_BU__c != null){                                                        
                                 mapPlatformBUString.put(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c), sobjFutSet.Core_Feature_BU__c);
-                                System.debug('mapPlatformBUString487'+mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c));
                             }                               
                         }                 
                 }
@@ -492,6 +495,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                  }
                //After the sort add the sorted values to the list used to diplay the header  
                 platformBULst.add(new SelectOption(System.label.Core_None_Value, System.label.Core_None_Value));
+
                 for (String sobjString: mapPlatformBUString.keyset()){
                         platformBULst.add(new SelectOption(mapPlatformBUString.get(sobjString),sobjString));
                     }
@@ -512,14 +516,14 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     public pagereference saveUpdatedRecord() {
         //Declare the variables
         List < Core_Opportunity_Features__c > lstOppFeature = new List < Core_Opportunity_Features__c > {};
-        //List < Core_Opportunity_Features__c > lstUpdateOppFeature = new List < Core_Opportunity_Features__c > {};
+        List < Core_Opportunity_Features__c > lstUpdateOppFeature = new List < Core_Opportunity_Features__c > {};
         Map < String, Core_Opportunity_Features__c > mapCheckIfRecordIsPresent = new Map < String, Core_Opportunity_Features__c > {};
         Map < String, Core_Opportunity_Features__c > mapMultiSelectTofeature = new Map < String, Core_Opportunity_Features__c > {};
         Map < String, String > mapSTringTofeatureId = new Map < String, String > {};
         Set < String > setAttributeValue = new Set < String > {};
         Set < String > setDelAttributeValue = new Set < String > {};
         Set < String > setMultiDelAttributeValue = new Set < String > {};
-        //Set < String > setDupliIds = new Set < String > {};
+        Set < String > setDupliIds = new Set < String > {};
         Set < String > setAttributeTypeValue = new Set < String > {};
         List < Core_Opportunity_Features__c > lstDeleteOppFeature = new List < Core_Opportunity_Features__c > {};
         
@@ -553,7 +557,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         }
        
         try {
-            
+            System.debug('consumer sales new-'+ consumerSales1);
             // Set up the values from the already present Opp features for the opportunity
             for (Core_Opportunity_Features__c sobjOpportFeature: [select Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c, 
                     Core_Feature_Name__c, Core_Feature_Type__c, Core_Feature_Set__r.Core_Feature__r.Core_Feature_Value__c, Core_Consumer_Sales_system__c,

@@ -93,10 +93,6 @@
             <translation><!-- Incentive - # of Deals Registered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>인센티브 - 설계 승리 수</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation><!-- Incentive - # of Units Sold --></translation>
         </picklistValues>
@@ -149,24 +145,8 @@
             <translation><!-- Legacy Media Percentage Spend --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>소매 제품 활성화 - # 인원일수</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>기술 활성화 - 거래 승리 수</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>기술 활성화 - 배포 번호</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>기술 활성화 - 설계 승리 수</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -231,10 +211,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation><!-- Legacy Media --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>리테일 활성화</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

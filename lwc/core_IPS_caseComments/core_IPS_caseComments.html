@@ -44,8 +44,8 @@
                         
                         <lightning-accordion-section class="blueColor" name={comm.Id} label={comm.CaseAuthorizeName}
                             key={comm}>
-                            <div style="padding:10px;font-size: 13px;" class = "selectorText">
-                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}>{comm.Comment}</lightning-formatted-rich-text>
+                            <div style="padding:10px;font-size: 13px;">
+                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}></lightning-formatted-rich-text>
                             </div>
                         </lightning-accordion-section>
                     </template>

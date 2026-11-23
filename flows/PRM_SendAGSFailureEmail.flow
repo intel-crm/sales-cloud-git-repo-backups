@@ -4,7 +4,7 @@
         <name>PRM_AGSIdentityFailureAlert</name>
         <label>PRM_AGSIdentityFailureAlert</label>
         <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <actionName>PRM_Account_Contact_Relationship__c.PRM_AGSIdentityFailureAlert2</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -21,7 +21,7 @@
         <name>PRM_AGSIdentityFailureAlert_EPUM</name>
         <label>PRM_AGSIdentityFailureAlert_EPUM</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <actionName>PRM_Account_Contact_Relationship__c.PRM_AGSIdentityFailureAlert1</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -36,11 +36,96 @@
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>increment_counter</name>
+        <label>increment counter</label>
+        <locationX>1282</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>acrCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_acr_to_get_all_inactive_records</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_ACR_is_inactive</name>
+        <label>Check if ACR is inactive</label>
+        <locationX>1392</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>if not</defaultConnectorLabel>
+        <rules>
+            <name>If_inactive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_InActive_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_all_ACRs_of_account_for_which_ACR_is_inactivated</targetReference>
+            </connector>
+            <label>If inactive</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_if_records_are_not_inactive</name>
+        <label>check if records are not inactive</label>
+        <locationX>1414</locationX>
+        <locationY>600</locationY>
+        <defaultConnector>
+            <targetReference>Loop_acr_to_get_all_inactive_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>ifnot</defaultConnectorLabel>
+        <rules>
+            <name>if_not_inacctive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_acr_to_get_all_inactive_records.PRM_InActive_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>increment_counter</targetReference>
+            </connector>
+            <label>if not inacctive</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_inactive_acrLst_size_0_or_0</name>
+        <label>If inactive acrLst size=0 or &gt;0</label>
+        <locationX>1194</locationX>
+        <locationY>984</locationY>
+        <defaultConnectorLabel>if &gt;0</defaultConnectorLabel>
+        <rules>
+            <name>if_equals_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>acrCount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Inactive_account_attributes</targetReference>
+            </connector>
+            <label>if equals 0</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>SourceAgent</name>
         <label>SourceAgent?</label>
         <locationX>314</locationX>
-        <locationY>323</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>EPUM</name>
@@ -123,6 +208,20 @@
     </formulas>
     <interviewLabel>PRM_SendAGSFailureEmail {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_SendAGSFailureEmail</label>
+    <loops>
+        <name>Loop_acr_to_get_all_inactive_records</name>
+        <label>Loop acr to get all inactive records</label>
+        <locationX>1194</locationX>
+        <locationY>492</locationY>
+        <collectionReference>get_all_ACRs_of_account_for_which_ACR_is_inactivated</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>check_if_records_are_not_inactive</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>If_inactive_acrLst_size_0_or_0</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -142,17 +241,77 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_all_ACRs_of_account_for_which_ACR_is_inactivated</name>
+        <label>get all ACRs of account for which ACR is inactivated</label>
+        <locationX>1194</locationX>
+        <locationY>384</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_acr_to_get_all_inactive_records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Account_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Account_Id__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_InActive_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PRM_Account_Contact_Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>188</locationX>
+        <locationX>727</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>SourceAgent</targetReference>
         </connector>
         <object>PRM_Account_Contact_Relationship__c</object>
         <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Schedule_to_update_ipa_attributes</name>
+            <connector>
+                <targetReference>Check_if_ACR_is_inactive</targetReference>
+            </connector>
+            <label>Schedule to update ipa attributes</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>LastModifiedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>Inactive_account_attributes</name>
+        <label>Inactive account attributes</label>
+        <locationX>1062</locationX>
+        <locationY>1092</locationY>
+        <flowName>PRM_flowForDeactivationWithWithoutUnified</flowName>
+        <inputAssignments>
+            <name>accid</name>
+            <value>
+                <elementReference>$Record.PRM_Account_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
     <variables>
         <name>acrCount</name>
         <dataType>Number</dataType>

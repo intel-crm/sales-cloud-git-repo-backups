@@ -1,6 +1,6 @@
-<aura:component extends="c:MarketplaceBaseComponent" 
+<aura:component extends="c:MarketplaceBaseComponent" controller="MarketplaceCreateProductController"
     implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
-<!--controller="MarketplaceCreateProductController"-->
+
     <!-- <aura:attribute name="data" type="Object" />
     <aura:attribute name="offeringId" type="Id" />
     <aura:attribute name="loggedInAdmin" type="String" />

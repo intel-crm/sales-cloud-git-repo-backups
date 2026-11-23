@@ -79,10 +79,6 @@
         <name>Core_MDF_AccountCompany__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_nm__c</name>
-    </fields>
-    <fields>
         <help>A categoria para está atividade de marketing conjunto</help>
         <label>Categoria de atividade</label>
         <name>Core_MDF_Activity_Category__c</name>
@@ -128,10 +124,6 @@
         <help>Data de início da execução</help>
         <label>Data de início da execução</label>
         <name>Core_MDF_Ad_Run_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Amount Percentage --></label>
-        <name>Core_MDF_Amount_Percentage__c</name>
     </fields>
     <fields>
         <help>Percentagem aplicável do IVA</help>
@@ -317,11 +309,6 @@
         <name>Core_MDF_Claim_Hold_Type_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Super Claim --></label>
-        <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Claim Previous Status --></label>
         <name>Core_MDF_Claim_Previous_Status__c</name>
         <picklistValues>
@@ -369,10 +356,6 @@
             <translation><!-- Paid and Resubmission Required --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation><!-- Payment Clearance Processing --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation><!-- Payment Due --></translation>
         </picklistValues>
@@ -399,10 +382,6 @@
         <picklistValues>
             <masterLabel>Pending Review</masterLabel>
             <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Resubmission Required</masterLabel>
@@ -573,10 +552,6 @@
     <fields>
         <label>Frequência</label>
         <name>Core_MDF_Frequency_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Has Sub Claims --></label>
-        <name>Core_MDF_Has_Sub_Claims_Ind__c</name>
     </fields>
     <fields>
         <label>Quantas telas</label>
@@ -1245,10 +1220,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
             <translation>Paga e reenvio necessário</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation>Processamento da liberação de pagamentos</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation>Pagamento devido</translation>
         </picklistValues>
@@ -1277,10 +1248,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
             <translation>Revisão pendente</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Resubmission Required</masterLabel>
             <translation>Reenvio Necessário</translation>
         </picklistValues>
@@ -1305,10 +1272,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
     <fields>
         <label><!-- Approval Alert --></label>
         <name>Core_MDF_Submit_For_Approval_Alert_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim Status --></label>
-        <name>Core_MDF_Super_Claim_Status_nm__c</name>
     </fields>
     <fields>
         <label><!-- SurePay Processed Ind --></label>
@@ -1355,11 +1318,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
     <fields>
         <label><!-- Total Review Duration(Minutes) --></label>
         <name>Core_MDF_Total_Review_Duration_Mins_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
-        <label><!-- Total Offset Amount (USD) --></label>
-        <name>Core_MDF_Total_SubClaim_Offset_Amt__c</name>
     </fields>
     <fields>
         <label>Tipo de solicitação</label>
@@ -1491,8 +1449,18 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
     <gender>Feminine</gender>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>Canal MDF baseado em conta</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>Canal MDF baseado em proposta</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1548,10 +1516,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_Amount_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- An application error occurred. Please try again. If error still persists, please contact Support Services. --></errorMessage>
-        <name>Core_MDF_BlockPendingReviewToDraft</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>A data de início e término de uma solicitação pode cobrir apenas um período de 3 meses.</errorMessage>
         <name>Core_MDF_ClaimEndDateBetween3Months</name>
     </validationRules>
@@ -1580,15 +1544,7 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Insira uma data de término de execução que esteja no intervalo de datas estimado da campanha baseada em resultados.</errorMessage>
-        <name>Core_MDF_EndDateValidation_OutcomeBased</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Você não pode usar esta Campanha baseada em resultados, pois a conta sobre a campanha baseada em resultados é inativa</errorMessage>
-        <name>Core_MDF_InactiveAccountValidation_Outco</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You cannot use this Activity as the account over the Activity is inactive --></errorMessage>
+        <errorMessage><!-- You cannot use this activity as the account over the activity is inactive --></errorMessage>
         <name>Core_MDF_Inactive_Account_Validation</name>
     </validationRules>
     <validationRules>
@@ -1616,10 +1572,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Não é possível ser criada uma solicitação em uma campanha baseada em resultados com status fechado/cancelado.</errorMessage>
-        <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Uma reivindicação já foi criada com esta escalada. Se forem enviadas reivindicações adicionais, aumente uma nova escalada.</errorMessage>
         <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
     </validationRules>
@@ -1632,16 +1584,8 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>A criação de solicitações está bloqueada devido à campanha baseada em resultados &quot;Em andamento&quot; que precisa de aprovação.</errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Não é possível ser criada uma solicitação em uma atividade com status fechado/cancelado.</errorMessage>
         <name>Core_MDF_Restrict_ClaimforClosedActivity</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Super Claims having sub claims can be set to only Draft, Submitted or Rejected status. --></errorMessage>
-        <name>Core_MDF_Restrict_Status_For_Super_Claim</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim Status cannot be updated in its current status --></errorMessage>
@@ -1662,10 +1606,6 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
     <validationRules>
         <errorMessage>Insira uma data de início de execução que esteja no intervalo de datas estimado.</errorMessage>
         <name>Core_MDF_StartDateValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Insira uma data de início de execução que esteja no intervalo de datas estimado da campanha baseada em resultados.</errorMessage>
-        <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>
         <errorMessage>A data de início da execução não pode ser posterior à data de término da execução</errorMessage>

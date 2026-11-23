@@ -67,10 +67,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Product_Density_Value__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Deactivation_Date__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

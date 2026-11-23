@@ -22,8 +22,6 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         Core_MDF_RecoveryClaimReportViewCtrl.claimsEligibleForRecoveryHeaders.put('Comments','comments');
         Core_MDF_RecoveryClaimReportViewCtrl.claimsEligibleForRecoveryHeaders.put('Recovery Budget Amount','recoveryBudAmt');
         Core_MDF_RecoveryClaimReportViewCtrl.claimsEligibleForRecoveryHeaders.put('Recovery Hold','recoveryHold');
-        Core_MDF_RecoveryClaimReportViewCtrl.claimsEligibleForRecoveryHeaders.put('Processing Preference','processingPref');
-        Core_MDF_RecoveryClaimReportViewCtrl.claimsEligibleForRecoveryHeaders.put('Settle, then get paid recovery amount','surePayRecAmt');
     }
     
     @AuraEnabled(cacheable=true)
@@ -51,38 +49,38 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             else if (Integer.valueOf(q.split(' ')[1]) == yr){
                 
                 if(quarterToMonthMap.get(q.split(' ')[0]).contains(String.valueOf(month))){
-                    quarter.add(q);
+                quarter.add(q);
                 }
                 if(q.split(' ')[0] == 'Q1' && (Integer.valueOf(quarterToMonthMap.get('Q1')[0]) < month || 
                                                Integer.valueOf(quarterToMonthMap.get('Q1')[1]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q1')[2]) < month)){
-                                                   quarter.add(q);    
-                                               }
+                quarter.add(q);    
+                }
                 if(q.split(' ')[0] == 'Q2' && (Integer.valueOf(quarterToMonthMap.get('Q2')[0]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q2')[1]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q2')[2]) < month
                                               )){
-                                                  quarter.add(q);    
-                                              }
+                quarter.add(q);    
+                }
                 
                 if(q.split(' ')[0] == 'Q3' && (Integer.valueOf(quarterToMonthMap.get('Q3')[0]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q3')[1]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q3')[2]) < month)){
-                                                   quarter.add(q);    
-                                               }
+                quarter.add(q);    
+                }
                 
                 if(q.split(' ')[0] == 'Q4' && (Integer.valueOf(quarterToMonthMap.get('Q4')[0]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q4')[1]) < month ||
                                                Integer.valueOf(quarterToMonthMap.get('Q4')[2]) < month)){
-                                                   quarter.add(q);    
-                                               }
+                quarter.add(q);    
+                }
             }
         }
         finalQuarter.addAll(quarter);
-        
+
         return finalQuarter;
     }
-    
+
     @AuraEnabled(cacheable=true)
     public static List<String> getQuarterOptionsWithoutCurrentQuarter(){
         List<String> finalQuarterList = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
@@ -92,13 +90,13 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         //this method call gets up the current quarter based on today's date
         String currentQuarter = Core_MDF_ReverseAuditDecision.determineQuartYear(System.today());
         finalQuarterSet.remove(currentQuarter);
-        
+
         return new List<String>(finalQuarterSet);
     }
     
     @AuraEnabled
-    public static List<LeftReportRows> getFilteredDataForClaimsToBeRecovered(String program,Id account,String quarter) {        
-        QuarterSurePayInfo info = getQuarterInfoAndSurePayAmount(program, account);        
+    public static List<LeftReportRows> getFilteredDataForClaimsToBeRecovered(String program,Id account,String quarter) {
+        
         Map<String,List<Core_MDF_Partnership_Score_Detail__c>> budgetTypeWisePGD = new Map<String,List<Core_MDF_Partnership_Score_Detail__c>>();
         Map<String, Decimal> readyToRecoverSavedAmtMap = new Map<String, Decimal>();
         String query = 'SELECT Id,Core_MDF_Balance_Amount_Amt__c, Core_MDF_Program_Nm__c, Core_MDF_Recovered_Amt__c, Core_MDF_Recovery_Offset_Amt__c, Core_MDF_Recovery_Offset_Comments_txt__c, Core_MDF_Offset_Comment_Details_txt__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Partnership_Score_Id__c, Core_MDF_Region_Cd__c, Core_MDF_Node_Account_Id__c FROM Core_MDF_Partnership_Score_Detail__c WHERE Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c =: program AND Core_MDF_Partnership_Score_Id__r.Core_MDF_Quarter_Year_Nm__c =: quarter AND Core_MDF_Region_Cd__c != null';
@@ -107,22 +105,22 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         }else{
             query += ' AND Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c =: account';
         }
-        
+
         query += ' ORDER BY Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ASC';
-        
-        List<Core_MDF_Recovery_Request__c> recoveryReqRecords = [SELECT Core_MDF_Recovered_Budget_Nm__c FROM Core_MDF_Recovery_Request__c WHERE Core_MDF_Program_Nm__c = :program AND Core_MDF_Account_Id__c = :account AND Core_MDF_Quarter_Year_Nm__c = :quarter AND Core_MDF_Ready_to_Recover_Ind__c = true AND Core_MDF_Active_Ind__c = true];
+              
+       List<Core_MDF_Recovery_Request__c> recoveryReqRecords = [SELECT Core_MDF_Recovered_Budget_Nm__c FROM Core_MDF_Recovery_Request__c WHERE Core_MDF_Program_Nm__c = :program AND Core_MDF_Account_Id__c = :account AND Core_MDF_Quarter_Year_Nm__c = :quarter AND Core_MDF_Ready_to_Recover_Ind__c = true AND Core_MDF_Active_Ind__c = true];
         
         for (Core_MDF_Recovery_Request__c rec : recoveryReqRecords) {
             String recBud = rec.Core_MDF_Recovered_Budget_Nm__c;
             if (String.isBlank(recBud)) continue;
-            
+
             for (String entry : recBud.split(',')) { // 1) split entries
                 entry = entry.trim();
                 if (entry == '') continue;
-                
+
                 Integer p = entry.lastIndexOf('='); // 2) split key vs amount
                 if (p <= 0) continue;
-                
+
                 String key = entry.substring(0, p).trim(); // "BudgetType;Region"
                 key = key.replace(';', '-'); 
                 Decimal amt;
@@ -171,24 +169,24 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                 decimal total = Decimal.valueof(lrGeo.totalRecoveryAmt == ''||lrGeo.totalRecoveryAmt==null?'0':lrGeo.totalRecoveryAmt);
                 budgetTypeGeoToAmountMap.put(budgetType+';'+ geoRec.Core_MDF_Region_Cd__c,total);
                 if(hasAccessToOffset(quarter) && offSetEligiblePgmsForAllBT.contains(geoRec.Core_MDF_Program_Nm__c)
-                   && geoRec.Core_MDF_Recovered_Amt__c <=0 && (geoRec.Core_MDF_Balance_Amount_Amt__c > 0 || geoRec.Core_MDF_Recovery_Offset_Amt__c > 0)
-                   && ((FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager') || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer'))
-                       ||(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_RMF_Payment_Admin') && FeatureManagement.checkPermission('Core_MDF_CCP_Internal_PRC_User')
-                          && (geoRec.Core_MDF_Budget_Type_Nm__c == 'RSA MD' && geoRec.Core_MDF_Region_Cd__c == 'PRC')))){
-                              OffsetDetails offset = new OffsetDetails();
-                              String key = geoRec.Core_MDF_Budget_Type_Nm__c + '-' + geoRec.Core_MDF_Region_Cd__c;
-                              offset.showOffsetButton = true;
-                              offset.disableOffsetButton = false;
-                              offset.recordId = geoRec.Id;
-                              offset.recoveryOffsetAmount = geoRec.Core_MDF_Recovery_Offset_Amt__c != null ? geoRec.Core_MDF_Recovery_Offset_Amt__c : 0.0;
-                              offset.readyToRecoverSavedAmount = readyToRecoverSavedAmtMap.containsKey(key) ? readyToRecoverSavedAmtMap.get(key) : 0.00;
-                              offset.maxOffsetAmount = (geoRec.Core_MDF_Balance_Amount_Amt__c != null ? geoRec.Core_MDF_Balance_Amount_Amt__c : 0.0) + (geoRec.Core_MDF_Recovery_Offset_Amt__c != null ? geoRec.Core_MDF_Recovery_Offset_Amt__c : 0.0);
-                              offset.offsetComments = String.isNotBlank(geoRec.Core_MDF_Recovery_Offset_Comments_txt__c) ? geoRec.Core_MDF_Recovery_Offset_Comments_txt__c : '';
-                              offset.offsetCommentDetails = String.isNotBlank(geoRec.Core_MDF_Offset_Comment_Details_txt__c) ? geoRec.Core_MDF_Offset_Comment_Details_txt__c : '';
-                              offset.budgetType = geoRec.Core_MDF_Budget_Type_Nm__c;
-                              offset.region = geoRec.Core_MDF_Region_Cd__c;
-                              offsetDetailsList.add(offset);
-                          }
+                && geoRec.Core_MDF_Recovered_Amt__c <=0 && (geoRec.Core_MDF_Balance_Amount_Amt__c > 0 || geoRec.Core_MDF_Recovery_Offset_Amt__c > 0)
+                && ((FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager') || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer'))
+                ||(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_RMF_Payment_Admin') && FeatureManagement.checkPermission('Core_MDF_CCP_Internal_PRC_User')
+                && (geoRec.Core_MDF_Budget_Type_Nm__c == 'RSA MD' && geoRec.Core_MDF_Region_Cd__c == 'PRC')))){
+                    OffsetDetails offset = new OffsetDetails();
+                    String key = geoRec.Core_MDF_Budget_Type_Nm__c + '-' + geoRec.Core_MDF_Region_Cd__c;
+                    offset.showOffsetButton = true;
+                    offset.disableOffsetButton = false;
+                    offset.recordId = geoRec.Id;
+                    offset.recoveryOffsetAmount = geoRec.Core_MDF_Recovery_Offset_Amt__c != null ? geoRec.Core_MDF_Recovery_Offset_Amt__c : 0.0;
+                    offset.readyToRecoverSavedAmount = readyToRecoverSavedAmtMap.containsKey(key) ? readyToRecoverSavedAmtMap.get(key) : 0.00;
+                    offset.maxOffsetAmount = (geoRec.Core_MDF_Balance_Amount_Amt__c != null ? geoRec.Core_MDF_Balance_Amount_Amt__c : 0.0) + (geoRec.Core_MDF_Recovery_Offset_Amt__c != null ? geoRec.Core_MDF_Recovery_Offset_Amt__c : 0.0);
+                    offset.offsetComments = String.isNotBlank(geoRec.Core_MDF_Recovery_Offset_Comments_txt__c) ? geoRec.Core_MDF_Recovery_Offset_Comments_txt__c : '';
+                    offset.offsetCommentDetails = String.isNotBlank(geoRec.Core_MDF_Offset_Comment_Details_txt__c) ? geoRec.Core_MDF_Offset_Comment_Details_txt__c : '';
+                    offset.budgetType = geoRec.Core_MDF_Budget_Type_Nm__c;
+                    offset.region = geoRec.Core_MDF_Region_Cd__c;
+                    offsetDetailsList.add(offset);
+                }
             }
             
             
@@ -208,22 +206,13 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         
         lrgrandtotal.cssProperty = 'total';
         lrList.add(lrgrandtotal);
-        
+
         //RSA MD PRC Offset process
         LeftReportRows lrrOffsetDetatil = new LeftReportRows();
         lrrOffsetDetatil.groupName = 'Offset';
         lrrOffsetDetatil.offsetDetailsList = offsetDetailsList;
         lrList.add(lrrOffsetDetatil);
-        
-        //Quarter info
-        LeftReportRows quarterRow = new LeftReportRows();
-        quarterRow.groupName = 'QuarterInfo';
-        quarterRow.currentQuarterYear = info.currentQuarter;
-        quarterRow.previousQuarterYear = info.previousQuarter;
-        quarterRow.surePayRecoveryAmount = '$' + info.surePayAmount;
-        quarterRow.clmIdToRecAmtMap = info.clmIdToRecAmtMap;
-        lrList.add(quarterRow);
-        
+
         return lrList;
         
     }
@@ -270,7 +259,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             Profile iTAdminProfile = [SELECT Id FROM Profile WHERE Name = 'IT Admin' LIMIT 1];
             isL3UserWithItAdminProfile = UserInfo.getProfileId() == iTAdminProfile.Id ? true : false;
         }
-        
+
         if(UserInfo.getUserType() == 'PowerPartner'){
             if(FeatureManagement.checkPermission('Core_MDF_CCF_Recovery_Administrator') || FeatureManagement.checkPermission('Core_MDF_DCF_Recovery_Administrator') || FeatureManagement.checkPermission('Core_MDF_RMF_Recovery_Administrator') || FeatureManagement.checkPermission('Core_MDF_IPA_Recovery_Administrator')){
                 mode = 'edit';
@@ -283,7 +272,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         }
         
         Boolean isbatchScheduled = isRecoveryBatchScheduled(program);
-        
+
         if(isbatchScheduled){
             mode = 'read';
         }else if(isL3UserWithItAdminProfile){
@@ -302,30 +291,29 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}  
         return result; 
     }
-    
+
     public static Boolean isRecoveryBatchScheduled(String program){
         Boolean isbatchScheduled = false;
         Datetime currDateTime = System.now();
         Datetime futureDateTime = isL3UserWithItAdminProfile ? currDateTime.addHours(12) : currDateTime + 1; // enable recovery for l3 user till 12 hours before recovery. Allow L3 User to select claims for recovery in Claim Recovery UI till 5PM IST, GMT 16:30
         List<String> validStatuses = new List<String>{'Pending','Scheduled'};
-            for(Core_MDF_Batch_Scheduler__c bs : [SELECT Id, Core_MDF_Batch_Class_Name_Txt__c, Core_MDF_Scheduler_Status_Txt__c, Scheduled_Time_Dt__c, Core_MDF_Object_JSON_Txt__c FROM Core_MDF_Batch_Scheduler__c WHERE Core_MDF_Batch_Class_Name_Txt__c =: 'Core_MDF_Recovery_Batch' AND Core_MDF_Scheduler_Status_Txt__c IN: validStatuses ORDER BY Scheduled_Time_Dt__c ASC]){
-                if(String.isNotBlank(bs.Core_MDF_Object_JSON_Txt__c)){
-                    bs.Scheduled_Time_Dt__c = isL3UserWithItAdminProfile ? bs.Scheduled_Time_Dt__c : bs.Scheduled_Time_Dt__c.addHours(1);
-                    Core_MDF_Recovery_Batch.recoveryDataWrapper wrapResult = (Core_MDF_Recovery_Batch.recoveryDataWrapper) JSON.deserialize(bs.Core_MDF_Object_JSON_Txt__c, Core_MDF_Recovery_Batch.recoveryDataWrapper.class);
-                    if(String.isNotBlank(wrapResult.program) && String.isNotBlank(program) && program.replace('-', '').toLowerCase() == wrapResult.program.replace('-', '').toLowerCase()
-                       && bs.Scheduled_Time_Dt__c >= currDateTime && bs.Scheduled_Time_Dt__c <= futureDateTime){
-                           isbatchScheduled = true;
-                           break;
-                       }
+        for(Core_MDF_Batch_Scheduler__c bs : [SELECT Id, Core_MDF_Batch_Class_Name_Txt__c, Core_MDF_Scheduler_Status_Txt__c, Scheduled_Time_Dt__c, Core_MDF_Object_JSON_Txt__c FROM Core_MDF_Batch_Scheduler__c WHERE Core_MDF_Batch_Class_Name_Txt__c =: 'Core_MDF_Recovery_Batch' AND Core_MDF_Scheduler_Status_Txt__c IN: validStatuses ORDER BY Scheduled_Time_Dt__c ASC]){
+            if(String.isNotBlank(bs.Core_MDF_Object_JSON_Txt__c)){
+                bs.Scheduled_Time_Dt__c = isL3UserWithItAdminProfile ? bs.Scheduled_Time_Dt__c : bs.Scheduled_Time_Dt__c.addHours(1);
+                Core_MDF_Recovery_Batch.recoveryDataWrapper wrapResult = (Core_MDF_Recovery_Batch.recoveryDataWrapper) JSON.deserialize(bs.Core_MDF_Object_JSON_Txt__c, Core_MDF_Recovery_Batch.recoveryDataWrapper.class);
+                if(String.isNotBlank(wrapResult.program) && String.isNotBlank(program) && program.replace('-', '').toLowerCase() == wrapResult.program.replace('-', '').toLowerCase()
+                    && bs.Scheduled_Time_Dt__c >= currDateTime && bs.Scheduled_Time_Dt__c <= futureDateTime){
+                    isbatchScheduled = true;
+                    break;
                 }
             }
-        
+        }
+
         return isbatchScheduled;
     }
     
     //Logic to organize the Claims to show up in the UI
-    public static FinalRightRows getOrganizedDataForClaimsToBeRecovered( set<PartnerFundClaim> data, Map<id,decimal> eligibleClaims, Map<Id,Core_MDF_Recovery_Helper.RecoveryRequestDetail> infoFromBE, boolean isRR, List<string> budgetTypeList, Map<id,Map<string,decimal>> clmToBtRecoveryAmt, Map<string,set<string>> crossBTorProgToBTMap, Map<Id,Decimal>clmIdToRecAmtMap) {
-        List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows> surePayClaims = new List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows>();
+    public static FinalRightRows getOrganizedDataForClaimsToBeRecovered( set<PartnerFundClaim> data, Map<id,decimal> eligibleClaims, Map<Id,Core_MDF_Recovery_Helper.RecoveryRequestDetail> infoFromBE, boolean isRR, List<string> budgetTypeList, Map<id,Map<string,decimal>> clmToBtRecoveryAmt, Map<string,set<string>> crossBTorProgToBTMap) {
         List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows> recommendedClaims = new List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows>();
         List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows> nonRecommendedClaims = new List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows>();
         List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows> recommendedRTRClaims = new List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows>();
@@ -333,7 +321,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         List<RightReportRows> rrList = new List<RightReportRows>();
         Set<Id> selectedClaimIdSet = new Set<Id>(); 
         Integer rowSize=0;
-        
+
         for(PartnerFundClaim sc : data){
             RightReportRows rr = new RightReportRows();
             rowSize++;
@@ -375,15 +363,8 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                 if(claimsEligibleForRecoveryHeaders.get(header)=='recoveryHold'){
                     rr.recoveryHold = sc.Core_MDF_Recovery_Hold_Ind__c;
                 }
-                if(claimsEligibleForRecoveryHeaders.get(header)=='processingPref'){
-                    rr.processingPref = sc.Core_MDF_Processing_Preference_nm__c == 'Settle, then get paid' ? 'S, GP' : 'GP, S';
-                }
-                // Checking if budgetTypeList is not null                
-                //if(budgetTypeList != NULL && budgetTypeList.size()>0){
-                if (budgetTypeList == null || budgetTypeList.isEmpty()) {//ATHR Fix WW19
-                    continue; 
-                }
-                                                
+		        // Checking if budgetTypeList is not null                
+                if(budgetTypeList != NULL && budgetTypeList.size()>0){                                                
                     // sorting the values
                     budgetTypeList.sort();
                     // Map to store BudgetType Geo to Amount
@@ -430,32 +411,20 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                     if(btGeoRecAmtMap != NULL){
                         rr.recoveryBudAmtMap = btGeoRecAmtMap;
                     }                        				
-                //}
+                }
                 
                 rr.selected = false;
                 rr.righttoRecover = false;
-                if(clmIdToRecAmtMap != NULL && clmIdToRecAmtMap.size()>0 && clmIdToRecAmtMap.containsKey(sc.id) && clmIdToRecAmtMap.get(sc.id) >0 && claimsEligibleForRecoveryHeaders.get(header)=='surePayRecAmt'){
-                    rr.surePayRecAmt = String.valueof(clmIdToRecAmtMap.get(sc.id));
-                    Boolean isZeroScore = Core_MDF_Recovery_Helper.isZeroScorecardClaim(sc);
-                    rr.disableRow = isZeroScore;
-                    Boolean isPartialScore = Core_MDF_Recovery_Helper.isPartialScorecardClaim(sc);
-                    rr.disableSelected = isPartialScore;
-                    rr.selected = (isZeroScore || isPartialScore) ? true : false;                    
-                }                
-                //if(eligibleClaims != null && eligibleClaims.size() > 0 && eligibleClaims.containsKey(sc.id)){
-                if (eligibleClaims == null || eligibleClaims.isEmpty() || !eligibleClaims.containsKey(sc.Id)) { //ATHR Fix WW19
-                    continue;
-                }
 
-                    
+                if(eligibleClaims.containsKey(sc.id)){
+
                     rr.selected = true;
                     
                     if(claimsEligibleForRecoveryHeaders.get(header)=='recoveryAmount'){
                         rr.recoveryAmount = String.valueOf(eligibleClaims.get(sc.id));
                     }
                     if(claimsEligibleForRecoveryHeaders.get(header)=='balanceAmt'){
-                        decimal balClmAmtAfterManualRec = (clmIdToRecAmtMap.containsKey(sc.Id) && clmIdToRecAmtMap.get(sc.Id) > 0) ? (sc.Amount - clmIdToRecAmtMap.get(sc.Id)) : sc.Amount;
-                        decimal balance = balClmAmtAfterManualRec - eligibleClaims.get(sc.id);
+                        decimal balance = sc.Amount - eligibleClaims.get(sc.id);
                         rr.balanceAmt = String.valueof(balance);
                         
                     }
@@ -481,7 +450,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                         rr.comments = String.isNotBlank(rrd.comments) ? rrd.comments : '';
                         rr.budgetGeoConsumed = rrd.budgetGeo;
                         rr.righttoRecover = rrd.readyToRecoverInd;
-                        
+
                         // checking if rr.budgetGeoConsumed not null
                         if(rr.budgetGeoConsumed != NULL){
                             // splitting rr.budgetGeoConsumed with ,
@@ -505,28 +474,23 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                         rr.budgetGeoConsumed = infoFromBE.get(sc.id).consumedBudget;
                     }
                     selectedClaimIdSet.add(sc.Id);
-                //}             
+                }             
             }
-            
+
             //Only for RSA MD budget type
             String budgetGeo = '';
             if(String.isNotBlank(sc.Core_MDF_Budget_Type_Options_Nm__c) && String.isNotBlank(sc.Core_MDF_Region_Cd__c)) {
                 budgetGeo = sc.Core_MDF_Budget_Type_Options_Nm__c + ';' + sc.Core_MDF_Region_Cd__c;
             }
-            
-            if(clmIdToRecAmtMap.containsKey(sc.Id) && clmIdToRecAmtMap.get(sc.Id) > 0){
-                surePayClaims.add(rr);
-            }else if(eligibleClaims != null && eligibleClaims.size() > 0 && eligibleClaims.containsKey(sc.id) && rr.righttoRecover){
+
+            if(eligibleClaims.containsKey(sc.id) && rr.righttoRecover){
                 recommendedRTRClaims.add(rr);
-            }else if(eligibleClaims != null && eligibleClaims.size() > 0 && eligibleClaims.containsKey(sc.id)){
+            }else if(eligibleClaims.containsKey(sc.id)){
                 recommendedClaims.add(rr);
             }else if(sc.Core_MDF_Budget_Type_Options_Nm__c != 'RSA MD' || (sc.Core_MDF_Budget_Type_Options_Nm__c == 'RSA MD' && String.isNotBlank(budgetGeo) && rr.recoveryBudAmtMap.keySet().contains(budgetGeo))){
                 nonRecommendedClaims.add(rr);
             }
-        }
-		if(surePayClaims != NULL && surePayClaims.size() > 0){
-            rrList.addAll(surePayClaims);
-        }        
+        } 
         if(recommendedRTRClaims != NULL && recommendedRTRClaims.size() > 0){
             rrList.addAll(recommendedRTRClaims);
         }
@@ -567,8 +531,8 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             }
             
         }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex); 
-                             throw new AuraHandledException(ex.getMessage());
-                            }
+            throw new AuraHandledException(ex.getMessage());
+        }
         return status;
         
     }
@@ -586,15 +550,15 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                                                               Core_MDF_Account__r.Core_MDF_Active_Ind__c = true and Core_MDF_User__c=: u.Id and Core_MDF_Active_Ind__c=true order by Core_MDF_Account__r.Name]) {
                                                                   Core_MDF_RecoveryFilters.AccountOptions accOptions = new Core_MDF_RecoveryFilters.AccountOptions();
                                                                   accOptions.accountName = pnum.Core_MDF_Account__r.Name;
-                                                                  accOptions.accountId = pnum.Core_MDF_Account__c;
-                                                                  accOptions.isExternal = true;
-                                                                  accOpt.add(accOptions);
+                                                                   accOptions.accountId = pnum.Core_MDF_Account__c;
+                                                                   accOptions.isExternal = true;
+                                                                   accOpt.add(accOptions);
                                                               }
-        }
-        else{
-            
-            accOpt = Core_MDF_RecoveryDashboardFilters.getAccountIdToNameMapForExternal(program);
-            
+          }
+          else{
+                
+                accOpt = Core_MDF_RecoveryDashboardFilters.getAccountIdToNameMapForExternal(program);
+                
         }
         
         
@@ -621,7 +585,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             if (String.isBlank(psdrec.Core_MDF_Budget_Type_Nm__c))
             {bdsumm.budgetType = 'N/A';}
             else{bdsumm.budgetType = psdrec.Core_MDF_Budget_Type_Nm__c;
-                }
+            }
             bdsumm.region = psdrec.Core_MDF_Region_Cd__c;
             if(psdrec.Core_MDF_Total_Recovery_Amt__c !=null)
             {
@@ -652,9 +616,9 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         List<string> noBudgetTypePrograms = Label.Core_MDF_No_Budget_Types.split(';');
         try{            
             for(Core_MDF_Recovery_Request__c rr : [SELECT Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c FROM Core_MDF_Recovery_Request__c
-                                                   WHERE Core_MDF_Program_Nm__c =: Program AND Core_MDF_Account_Id__c =: account AND
-                                                   Core_MDF_Quarter_Year_Nm__c =: quarter AND Core_MDF_Active_RO_Ind__c = TRUE AND Core_MDF_Ready_to_Recover_RO_Ind__c = TRUE
-                                                   ORDER BY Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c])
+                                                    WHERE Core_MDF_Program_Nm__c =: Program AND Core_MDF_Account_Id__c =: account AND
+                                                    Core_MDF_Quarter_Year_Nm__c =: quarter AND Core_MDF_Active_RO_Ind__c = TRUE AND Core_MDF_Ready_to_Recover_RO_Ind__c = TRUE
+                                                    ORDER BY Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c])
             {
                 if(noBudgetTypePrograms.contains(program) && rr.Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c == NULL){
                     budgetTypeSet.add(program);
@@ -682,8 +646,8 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         if((FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager') 
             || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer') || (FeatureManagement.checkPermission('Core_MDF_CCP_Internal_RMF_Payment_Admin') && FeatureManagement.checkPermission('Core_MDF_CCP_Internal_PRC_User')) 
             || FeatureManagement.checkPermission('CCP_L3_Maintenance')) && !result.hideClaimInfo){
-                showOffsetButton = true;
-            }
+            showOffsetButton = true;
+        }
         return showOffsetButton;
     }
 
@@ -707,72 +671,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             }
         }catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     }
-    
-    public static QuarterSurePayInfo getQuarterInfoAndSurePayAmount(String program, Id accountId) {
-        QuarterSurePayInfo info = new QuarterSurePayInfo();
-        Set<String> BTSet = new Set<String>();
-        Date currDate = System.today();
-        Integer currYear = currDate.year();
-        Integer quarterNum = (currDate.month() - 1)/3;
-        String currQuarter = quarterNum == 0 ? 'Q1' : quarterNum == 1 ? 'Q2' : quarterNum == 2 ? 'Q3' : quarterNum == 3 ? 'Q4' : '' ;
-        String previousQuarterAndYear;
-        if(quarterNum == 0){
-            previousQuarterAndYear = 'Q4 ' +  (currYear - 1);
-        }else{
-            previousQuarterAndYear = 'Q' + quarterNum + ' ' + currYear;
-        }        
-        String currQuarterAndYear = currQuarter + ' ' + currYear;
-        info.currentQuarter = currQuarterAndYear;
-        info.previousQuarter = previousQuarterAndYear;
-        Map<Id, Decimal> claimToSurePay = new Map<Id, Decimal>();
-        String query = 'SELECT Core_MDF_Score_Nbr__c, Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__c, Core_MDF_Claim_Amt__c, Core_MDF_Manual_Recovery_Amount_USD_Amt__c, Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c ' +
-            'FROM Core_MDF_Scorecard__c WHERE Core_MDF_Quarter__c = :currQuarterAndYear AND Core_MDF_Case_Id__r.Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :program ' +
-            'AND Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Processing_Preference_nm__c = \'Settle, then get paid\' AND (Core_MDF_Score_Nbr__c = 0 OR (Core_MDF_Score_Nbr__c > 0 AND Core_MDF_Manual_Recovery_Amount_USD_Amt__c > 0)) ' +
-            'AND Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Status__c in (\'Payment Due\',\'Pending Available Fund\')';
-        if (Programs_For_Node_Account.contains(program)) {
-            query += ' AND Core_MDF_Case_Id__r.AccountId = :accountId';
-        } else {
-            query += ' AND Core_MDF_Case_Id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c = :accountId';
-        }        
-        Decimal amt = 0;        
-        for (Core_MDF_Scorecard__c sc : Database.query(query)) {            
-            if (sc.Core_MDF_Score_Nbr__c == 0) {
-                amt = sc.Core_MDF_Claim_Amt__c == null ? 0 : sc.Core_MDF_Claim_Amt__c;
-            }else if (sc.Core_MDF_Score_Nbr__c > 0 && sc.Core_MDF_Manual_Recovery_Amount_USD_Amt__c != null && sc.Core_MDF_Manual_Recovery_Amount_USD_Amt__c > 0){                         
-                amt = sc.Core_MDF_Manual_Recovery_Amount_USD_Amt__c;
-            }
-            claimToSurePay.put(sc.Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__c, amt);
-            BTSet.add(sc.Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c);
-        }
-        
-        String recQuery = 'SELECT Core_MDF_Amount_Amt__c,Core_MDF_Claim_Id__c FROM Core_MDF_Recovery__c WHERE Core_MDF_Claim_Id__r.Core_MDF_Processing_Preference_nm__c = \'Settle, then get paid\' AND Core_MDF_Sure_Pay_Ind__c = true ' +
-			'AND Core_MDF_Claim_Id__r.Core_MDF_Claim_Review_Case__r.ClosedDate = THIS_QUARTER AND Core_MDF_Claim_Id__r.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :program ';
-        if (Programs_For_Node_Account.contains(program)) {
-            recQuery += ' AND Core_MDF_Claim_Id__r.ChannelPartnerId = :accountId';
-        } else {
-            recQuery += ' AND Core_MDF_Claim_Id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c = :accountId';
-        }
-        List<Core_MDF_Recovery__c> recoveries = Database.query(recQuery);            
-        
-        for (Core_MDF_Recovery__c rec : recoveries) {
-            Id claimId = rec.Core_MDF_Claim_Id__c;
-            if (claimToSurePay.containsKey(claimId)) {
-                Decimal current = claimToSurePay.get(claimId);
-                Decimal recAmt = rec.Core_MDF_Amount_Amt__c == null ? 0 : rec.Core_MDF_Amount_Amt__c;                
-                Decimal updated = current - recAmt;
-                claimToSurePay.put(claimId, updated < 0 ? 0 : updated);
-            }
-        }
-        Decimal total = 0;
-        for (Decimal val : claimToSurePay.values()) {
-            total += val;
-        }        
-        info.surePayAmount = String.valueOf(total.setScale(2));
-        info.surePayBTSet = BTSet;
-        info.clmIdToRecAmtMap = claimToSurePay;
-        return info;
-    }
-    
+
     public class OffsetDetails {
         @AuraEnabled public Boolean showOffsetButton { get; set; }
         @AuraEnabled public Boolean disableOffsetButton { get; set; }
@@ -786,7 +685,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         @AuraEnabled public String region { get; set; }
     }
   
-    public class BreakdownSummary {
+     public class BreakdownSummary {
         @AuraEnabled public String budgetType { get; set; }
         @AuraEnabled public String region { get; set; }
         @AuraEnabled public String totalAmt { get; set; }
@@ -833,10 +732,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         @AuraEnabled public Boolean righttoRecover { get; set; }
         @AuraEnabled public string onSelect { get; set; }
         @AuraEnabled public Boolean recoveryHold { get; set; }
-        @AuraEnabled public Boolean disableRow { get; set; }
-        @AuraEnabled public Boolean disableSelected { get; set; }
-        @AuraEnabled public String surePayRecAmt { get; set; }
-        @AuraEnabled public string processingPref { get; set; }
+        
     }
     
     public class FinalRightRows{
@@ -854,18 +750,5 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         @AuraEnabled public String totalRecoveryAmt { get; set; }
         @AuraEnabled public String cssProperty{ get; set; }
         @AuraEnabled public List<Core_MDF_RecoveryClaimReportViewCtrl.OffsetDetails> offsetDetailsList{ get; set; } //Only for Offset process
-        @AuraEnabled public String currentQuarterYear { get; set; }
-        @AuraEnabled public String previousQuarterYear { get; set; }
-        @AuraEnabled public String surePayRecoveryAmount { get; set; }
-        @AuraEnabled public Set<String> surePayBTSet { get; set; }
-        @AuraEnabled public Map<Id,Decimal> clmIdToRecAmtMap { get; set; }
-    }
-    
-    public class QuarterSurePayInfo {
-        public String currentQuarter;
-        public String previousQuarter;
-        public String surePayAmount;
-        public Set<String> surePayBTSet = new Set<String>();
-        public Map<Id,Decimal> clmIdToRecAmtMap = new Map<Id,Decimal>();
     }
 }

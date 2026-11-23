@@ -80,10 +80,13 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Age__c</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Unique</aggregateTypes>
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
@@ -99,15 +102,11 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>CDF1</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Days_in_Current_Stage__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>PROBABILITY</field>
     </columns>
     <columns>
@@ -115,9 +114,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Concatenated_Application_workload__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
     </columns>
     <columns>
         <field>URL</field>
@@ -137,28 +133,6 @@
     <columns>
         <field>Opportunity.Technical_Need__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Address_Details__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Business_Party_Id__c</field>
-    </columns>
-    <customDetailFormulas>
-        <calculatedFormula>
-IF(
-    TEXT(STAGE_NAME) = &quot;Production Win&quot;,
-    Opportunity.Core_First_Customer_Ship_Date__c - DATEVALUE(CREATED_DATE),
-    TODAY() - DATEVALUE(CREATED_DATE)
-)</calculatedFormula>
-        <dataType>Double</dataType>
-        <developerName>CDF1</developerName>
-        <label>AGE</label>
-        <scale>0</scale>
-    </customDetailFormulas>
     <filter>
         <booleanFilter>2 AND 3 AND 4 AND ((5 AND 6) OR 1)</booleanFilter>
         <criteriaItems>
@@ -221,7 +195,7 @@ IF(
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026_AI Opp Pipeline by Stage</name>
+    <name>Opp Pipeline by Stage</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -243,8 +217,6 @@ IF(
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>CDF1</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

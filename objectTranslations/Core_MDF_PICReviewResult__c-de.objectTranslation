@@ -41,57 +41,8 @@
         <value><!-- PIC Review Detail --></value>
     </caseValues>
     <fields>
-        <label><!-- AI Confidence Score --></label>
-        <name>Core_MDF_AI_Confidence_Score_Nm__c</name>
-        <picklistValues>
-            <masterLabel>High</masterLabel>
-            <translation><!-- High --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Low</masterLabel>
-            <translation><!-- Low --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Medium</masterLabel>
-            <translation><!-- Medium --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- AI PIC Review Detail Id --></label>
-        <name>Core_MDF_AI_PIC_Review_Detail_Id__c</name>
-        <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Agree with AI Response ? --></label>
-        <name>Core_MDF_AI_Response_Agreement_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Agree</masterLabel>
-            <translation><!-- Agree --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Disagree</masterLabel>
-            <translation><!-- Disagree --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NA</masterLabel>
-            <translation><!-- NA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partially Agree</masterLabel>
-            <translation><!-- Partially Agree --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label>Anmerkungen</label>
         <name>Core_MDF_Comment_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- External Id --></label>
-        <name>Core_MDF_External_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Feedback to AI/Agent --></label>
-        <name>Core_MDF_Feedback_To_AI_Agent_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Files Affected --></label>
@@ -146,10 +97,6 @@
         <name>Core_MDF_Issue_TraditionalChinese_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Is Manual Response Equal AI Response? --></label>
-        <name>Core_MDF_ManualResp_Equal_AIResp_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- PIC Review --></label>
         <name>Core_MDF_PIC_Review_id__c</name>
         <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
@@ -168,8 +115,8 @@
         <name>Core_MDF_Response_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Tactics --></label>
-        <name>Core_MDF_Tactics_nm__c</name>
+        <label><!-- Tactic --></label>
+        <name>Core_MDF_Tactic_txt__c</name>
     </fields>
     
     <nameFieldLabel><!-- PIC Review Detail Name --></nameFieldLabel>

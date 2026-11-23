@@ -91,21 +91,6 @@
                     <default>false</default>
                     <label>PLANNED METRICS</label>
                 </value>
-                <value>
-                    <fullName>Payment Details</fullName>
-                    <default>false</default>
-                    <label>Payment Details</label>
-                </value>
-                <value>
-                    <fullName>Payment Breakdown</fullName>
-                    <default>false</default>
-                    <label>Payment Breakdown</label>
-                </value>
-                <value>
-                    <fullName>Disbursement Status</fullName>
-                    <default>false</default>
-                    <label>Disbursement Status</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

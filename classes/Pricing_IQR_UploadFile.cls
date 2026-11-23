@@ -1,10 +1,10 @@
 /**
- * @description       : Controller class is created for Bulk Change Request UI
- * @author            : Rahul Maindalkar
- * @group             :
- * @last modified on  : 04-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
+* @description       : Controller class is created for Bulk Change Request UI
+* @author            : Rahul Maindalkar
+* @group             : 
+* @last modified on  : 06-12-2025
+* @last modified by  : Bharath Chandrashekar
+**/
 public without sharing class Pricing_IQR_UploadFile {
     
     
@@ -25,7 +25,7 @@ public without sharing class Pricing_IQR_UploadFile {
     @AuraEnabled(cacheable=true)
     public static List<IQRBulkUploadDescriptionCS__c> getBulkUploadDescriptions(){
         try {
-            return [select id,Name,LabelDescription__c from IQRBulkUploadDescriptionCS__c limit 50];
+            return [select id,Name,LabelDescription__c from IQRBulkUploadDescriptionCS__c];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage()); 
         }
@@ -150,6 +150,7 @@ public without sharing class Pricing_IQR_UploadFile {
         Map<string, string> applicationValues = getApplicationValues();
         List<String> compProductPriceNamesList = new List<String>();
         List<String> compProdsList = new List<String>();
+        Map<Id, String> compProdPriceIdToProdName = new Map<Id, String>();
         List<Pricing_Competitor_Product_Price_Staging__c> compProductPricetoInsert = new List<Pricing_Competitor_Product_Price_Staging__c>();
         Map<String, String> compProductPriceSuccessErrorMap = new Map<String, String>();
         Set<Id> insertedCompProdIds = new Set<Id>();

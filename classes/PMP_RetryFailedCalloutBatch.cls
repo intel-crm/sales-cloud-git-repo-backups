@@ -59,10 +59,7 @@ global with sharing class PMP_RetryFailedCalloutBatch implements Database.Batcha
             }
             //Update log entry records review status to fixed 
             if(!processedCoreLogFailedCalloutEntryRecords.isEmpty()){
-                //update processedCoreLogFailedCalloutEntryRecords;
-                Database.SaveResult[] pcRecords = Database.update(processedCoreLogFailedCalloutEntryRecords, false);
-				PMP_Utility.logDmlErrors((Object[]) pcRecords, 'PMP_RetryFailedCalloutBatch-execute');
-
+                update processedCoreLogFailedCalloutEntryRecords;
             }
         }  
         catch(Exception e) {

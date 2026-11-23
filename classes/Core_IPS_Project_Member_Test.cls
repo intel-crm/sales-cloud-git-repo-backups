@@ -441,7 +441,7 @@ Modification Log :
             contactRec.MailingCountry ='India';
         }
         
-       System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
         }
         System.assert(ListOfContacts[0].Id != null, 'Record not created');
@@ -490,14 +490,15 @@ Modification Log :
         
             
          
-       System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             insert IPSLabels;
             insert ListOfIpsProjects;
+           system.debug('ListOfIpsProjects1'+ListOfIpsProjects);
             insert ListOfTriggerExecutions; 
            
 //added by Aayushi US90060
-			
+
         }
         
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
@@ -511,8 +512,8 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsAccounts;
         }
-                System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
-      
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
+        
         
         // Create Project Member
         List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(5);
@@ -529,7 +530,7 @@ Modification Log :
             // start added by Aayushi US90060
             try{
                 update ListOfIpsProjects.get(0);
-               Core_IPS_Project_Member_Handler.PreventDelete(ListOfProjectMembers);
+            Core_IPS_Project_Member_Handler.PreventDelete(ListOfProjectMembers);
             delete ListOfProjectMembers;
                 
             }
@@ -1011,7 +1012,7 @@ Modification Log :
                 //Added by Sowmya - Start - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
        			 CaseRec.Core_IPS_Customer_Visible__c = true;
                //Sowmya - end - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-           }
+            }
             insert ListOfCases;
         }
         

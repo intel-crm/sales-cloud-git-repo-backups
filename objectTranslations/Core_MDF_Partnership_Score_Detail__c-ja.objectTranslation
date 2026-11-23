@@ -9,10 +9,6 @@
         <name>Core_MDF_Account_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Balance Amount --></label>
         <name>Core_MDF_Balance_Amount_Amt__c</name>
     </fields>
@@ -68,10 +64,6 @@
         <name>Core_MDF_Recovered_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- Recovery Account Name --></label>
-        <name>Core_MDF_Recovery_Account_nm__c</name>
-    </fields>
-    <fields>
         <help><!-- Payment Admin can set Recovery Offset for PRC RSA MD Recoveries only --></help>
         <label><!-- Recovery Offset Amount (USD) --></label>
         <name>Core_MDF_Recovery_Offset_Amt__c</name>
@@ -94,6 +86,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>

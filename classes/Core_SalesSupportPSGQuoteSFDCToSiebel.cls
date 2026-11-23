@@ -69,7 +69,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
     *               Before Quote creation.
     ***********************************/
 
-     /*public static Boolean validateOpportuntyBeforeQuoteCreation() {
+     public static Boolean validateOpportuntyBeforeQuoteCreation() {
         
         // Get the Opportunity Id
         String soppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
@@ -123,10 +123,10 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
 
         // No validation errors
         return true;
-     }*/
+     }
 
     //Shivini
-    /*@AuraEnabled
+    @AuraEnabled
     public static Map<String, Object> validateOpportunityBeforeQuoteCreationNew(Id opportunityId) {
         Map<String, Object> result = new Map<String, Object>();
         List<String> errorMessages = new List<String>();
@@ -205,7 +205,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
         result.put('errorMessages', errorMessages);
     
         return result;
-    }*/
+    }
     
     
     /**********************************

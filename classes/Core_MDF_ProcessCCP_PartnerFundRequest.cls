@@ -669,10 +669,7 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
         Set<Id> activityIdSet = new Set<Id>();
         
         for(PartnerFundRequest pfr: activityMap.values()){
-            //Akash changes
-            if(pfr.Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
-                pfrIdList.add(pfr.Id);
-            }
+            pfrIdList.add(pfr.Id);
             
         }
         
@@ -1338,19 +1335,7 @@ Method Name   :        shareActivityWithAccNodeGroupMethod
 Description   :        Share the activity with Acc node groups
 Added By      :        Accenture - Sai - 22/02/2022
 ******************************************************************************************************/
-public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest> newActivityMap, Map<Id,PartnerFundRequest> oldActivityMap){
-        //Akash changes
-        // Check if any of the activities are sub-activities and remove them from processing
-        Map<Id,PartnerFundRequest> activitiesToProcess = new Map<Id,PartnerFundRequest>();
-        
-        for(Id pfrId : newActivityMap.keySet()) {
-            PartnerFundRequest pfr = newActivityMap.get(pfrId);
-            
-            // Skip sub-activities from sharing
-            if(pfr.Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
-                activitiesToProcess.put(pfrId, pfr);
-            }
-        }
+    public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest> newActivityMap, Map<Id,PartnerFundRequest> oldActivityMap){
         Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
         Set<Id> pfrShareToBeDeleted = new Set<Id>();
         List<PartnerFundRequestShare> pfrShareList = new List<PartnerFundRequestShare>();
@@ -1361,7 +1346,7 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
         Map<Id, Account> accountMap = new Map<Id, Account>();
         //Boolean isExternalShareAllowed = false;
         
-        for(PartnerFundRequest pfr : activitiesToProcess.values()){
+        for(PartnerFundRequest pfr : newActivityMap.values()){
             PartnerFundRequest oldrPfr = oldActivityMap != null ? oldActivityMap.get(pfr.Id) : new PartnerFundRequest();
             //Ayush - added if condition to check for NRE only share activity to external user if Core_MDF_Is_Activity_Shared_EXT_Ind__c = true.
             //Akash - Latest commented because we want to share records to external user in draft status.
@@ -1416,7 +1401,7 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
                 delete pfrShareList;
             }
         }
-            for(PartnerFundRequest pfr : activitiesToProcess.values())
+        for(PartnerFundRequest pfr : newActivityMap.values())
         {   
             List<Id> groupIds = new List<Id>();
             //If operation is insert OR is update and account/owner change occured in PFR record

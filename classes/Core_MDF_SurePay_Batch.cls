@@ -36,18 +36,13 @@ public without sharing class Core_MDF_SurePay_Batch implements Database.Batchabl
         set<string> clmStatusSet = new set<string>{'Payment Due', 'Pending Available Fund'};
         string caseStatus = 'Review Completed';
         string surePayVal = 'Settle, then get paid';
-        //Swati - exclude RSA MD         
-        String RSA_MDbudget = Core_MDF_CCP_ConstantClass.RMF_RSA_MD_BUDGET_TYPE;
-        Date excludeDate = Date.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Exclude_RSA_MD'));
-        
         String query = 'SELECT Id,Core_MDF_Claim_Ref_Number__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Budget_Type_Options_Nm__c,AllocationId,Allocation.Amount,Allocation.TotalApprovedFcs,Core_MDF_Activity_Category__c,Core_MDF_Activity_Types__c, ChannelPartnerId,ChannelPartner.Core_MDF_Enabled_Auto_Transfer__c,Core_MDF_VAT_Opt_In_txt__c, Core_MDF_Program__c, Core_MDF_Region_Cd__c, Amount, Core_MDF_Status__c,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_SurePay_Processed_Ind__c,Core_MDF_Excess_Requested_Amount__c,Core_MDF_Requested_Reimbursement_Amt__c,  '+
                        'Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c,Core_MDF_Country_Location_nm__c, Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c,Core_MDF_Claim_Review_Case__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Number_Of_Recoveries_Nbr__c '+
                        'FROM PartnerFundClaim '+
                        'WHERE Core_MDF_Status__c IN :clmStatusSet '+
                        'AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c = :caseStatus '+ 
                        'AND (Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c =0 OR Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c > 0) and Core_MDF_Processing_Preference_nm__c = :surePayVal '+
-                        'AND Core_MDF_Program__c = :program AND Core_MDF_SurePay_Processed_Ind__c = false '+
-                        'AND ( Core_MDF_Claim_Review_Case__r.Core_MDF_Budget_Type_nm__c != :RSA_MDbudget OR ( Core_MDF_Claim_Review_Case__r.Core_MDF_Budget_Type_nm__c = :RSA_MDbudget AND DAY_ONLY(Core_MDF_Claim_Review_Case__r.ClosedDate) <= :excludeDate ))';
+                        'AND Core_MDF_Program__c = :program AND Core_MDF_SurePay_Processed_Ind__c = false ' ;
                         if(Core_MDF_Utility.byPassFeature('bypass_VATClaimsForRecovery')){
                                 
                             query += ' AND Core_MDF_VAT_Opt_In_txt__c != :vatValue ';
@@ -118,17 +113,14 @@ public without sharing class Core_MDF_SurePay_Batch implements Database.Batchabl
                         }
                         if(newClaimInstance.Core_MDF_Status__c =='Pending Available Fund'){
                             
-                            //if(mapOfNodeAccToPAFClaimIdsLst!=null){
-                                if(mapOfNodeAccToPAFClaimIdsLst == null){//ATHR Fix WW19
-                                    continue;
-                                }
+                            if(mapOfNodeAccToPAFClaimIdsLst!=null){
                                 if(mapOfNodeAccToPAFClaimIdsLst.containsKey(clm.ChannelPartnerId )){
                                 	mapOfNodeAccToPAFClaimIdsLst.get(clm.ChannelPartnerId).add(clm.id);
                                 }
                                 else{
                                     mapOfNodeAccToPAFClaimIdsLst.put(clm.ChannelPartnerId ,new list<id>{clm.id});
                                 }
-                            //}
+                            }
                             
                         }
 
@@ -152,16 +144,13 @@ public without sharing class Core_MDF_SurePay_Batch implements Database.Batchabl
                 if (sr.isSuccess()) {
                     Core_MDF_Recovery_Request__c rr = createRecoveryReqIns(claimDetails.claimIdToClaimMap.get(currentRec.Core_MDF_Claim_Id__c),claimDetails,currentRec);
                     recoveryReqListTobeInserted.add(rr);
-                    //if(claimDetails.claimIdToNewClaimInstance.size() > 0){
-                        if(claimDetails.claimIdToNewClaimInstance.size() == 0){ //ATHR Fix WW19
-                            continue;
-                        }
+                    if(claimDetails.claimIdToNewClaimInstance.size() > 0){
                     	PartnerFundClaim newClaimInstance = claimDetails.claimIdToNewClaimInstance.get(currentRec.Core_MDF_Claim_Id__c);
                         if(newClaimInstance != null){
                             newClaimInstance.Core_MDF_SurePay_Processed_Ind__c = true;
                             claimsToBeUpdated.add(newClaimInstance);
                         }
-                    //}
+                    }
                 }
             }
 

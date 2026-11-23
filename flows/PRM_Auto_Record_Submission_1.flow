@@ -20,8 +20,8 @@
     <actionCalls>
         <name>Manual_Approval_Process_Flow</name>
         <label>Manual Approval Process</label>
-        <locationX>387</locationX>
-        <locationY>265</locationY>
+        <locationX>517</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -78,55 +78,11 @@
         </value>
     </constants>
     <decisions>
-        <name>Is_Not_Blocked_contact_or_account</name>
-        <label>Is Not Blocked contact or account</label>
-        <locationX>157</locationX>
-        <locationY>671</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>True</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>get_IPA_Admin_Config</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>get_IPA_Admin_Config</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Set_Status_to_Approved</targetReference>
-            </connector>
-            <label>True</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Manual_Approval_Process</name>
         <label>Manual Approval Process</label>
         <locationX>659</locationX>
         <locationY>448</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Is_Returning_User</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PRM_Is_Returning_User__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>get_IPA_Admin_Config</targetReference>
-            </connector>
-            <label>Is Returning User</label>
-        </rules>
         <rules>
             <name>Approval_Process</name>
             <conditionLogic>1 AND 2 AND 3 AND (4 OR 5 OR 6)</conditionLogic>
@@ -251,64 +207,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>get_IPA_Admin_Config</name>
-        <label>get IPA Admin Config</label>
-        <locationX>132</locationX>
-        <locationY>466</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Is_Not_Blocked_contact_or_account</targetReference>
-        </connector>
-        <filterLogic>(1 AND 2) OR (2 AND 3)</filterLogic>
-        <filters>
-            <field>Contact_Email__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.PRM_Email_ID__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.PRM_Salesforce_ID__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Contact__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>PRM_SBC_Account_Search_Configuration__c</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>Set_Status_to_Approved</name>
-        <label>Set Status to Approved</label>
-        <locationX>362</locationX>
-        <locationY>759</locationY>
-        <connector>
-            <targetReference>Call_Apex_class</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>PRM_Review_Note_txt__c</field>
-            <value>
-                <stringValue>UIOLI Reactivation</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PRM_Status__c</field>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
     <start>
         <locationX>543</locationX>
         <locationY>48</locationY>

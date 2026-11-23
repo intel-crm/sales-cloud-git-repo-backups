@@ -2,7 +2,7 @@
  * @description       : Class used to perform auto approval action from Flow
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-05-2026
+ * @last modified on  : 09-24-2025
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLine_AutoApprovalController extends TriggerHandler{
@@ -211,7 +211,6 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
                             }
                             
                             qli.Pricing_Manager__c = rpmEmailToUserId.size() > 0 && rpmEmailToUserId.containsKey(ruleIdToRPMEmail.get(qlIdToRuleIdMap.get(qli.Id))) ? rpmEmailToUserId.get(ruleIdToRPMEmail.get(qlIdToRuleIdMap.get(qli.Id))) : null ;//rpmUserId;
-                            qli.Pricing_Approval_Price_Rule_Name__c = qlIdToRuleIdRuleNameMap.get(qli.Id);
                             qli.Pricing_Price_Rule_Error_Message__c = null;
 
                             if(qli.Pricing_Manager__c != null){
@@ -448,5 +447,5 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
 
         }
     }
-   
+
 }

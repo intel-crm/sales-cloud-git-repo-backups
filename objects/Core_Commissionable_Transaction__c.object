@@ -333,7 +333,7 @@
     <fields>
         <fullName>Core_Last_Approved_Date__c</fullName>
         <label>Last Approved Date</label>
-        <required>false</required>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>

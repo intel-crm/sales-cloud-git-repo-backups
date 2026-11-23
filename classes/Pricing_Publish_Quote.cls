@@ -587,7 +587,6 @@ public without sharing class Pricing_Publish_Quote {
                 if(isApproveWithoutApprovalRec){
                     List<SBQQ__QuoteLine__C> qlList = new List<SBQQ__QuoteLine__C>([select Id,Pricing_Status_Nm__c from SBQQ__QuoteLine__C where Id  In: sObjectIds]);
                     for(SBQQ__QuoteLine__c ql : qlList){
-                        //status check should we add and only qtm user check
                         ql.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;       
                     }
                     SBQQ.TriggerControl.disable();
@@ -702,7 +701,7 @@ public without sharing class Pricing_Publish_Quote {
             }
             
             if(allFSEIdSet.size() > 0){
-                for(PermissionSetAssignment psa :  [SELECT AssigneeId
+                for(PermissionSetAssignment psa :  [SELECT Assignee.Email,PermissionSet.Name,AssigneeId
                                                     FROM PermissionSetAssignment 
                                                     WHERE AssigneeId IN :allFSEIdSet AND Assignee.IsActive = true
                                                     AND PermissionSet.Name =: Label.Pricing_Tender_PermissionSets_TenderUser]){
@@ -712,7 +711,7 @@ public without sharing class Pricing_Publish_Quote {
             }
             
             if(AccIdSet.size() > 0 && fseWithPSSet.size() > 0) {
-                for(AccountTeamMember accTeam : [SELECT Id,UserId,AccountId FROM AccountTeamMember WHERE AccountId IN:AccIdSet]) {
+                for(AccountTeamMember accTeam : [SELECT Id,User.Email,UserId,AccountId FROM AccountTeamMember WHERE AccountId IN:AccIdSet]) {
                     if(accIdFseUserIdMap.containsKey(accTeam.AccountId)){
                         accIdFseUserIdMap.get(accTeam.AccountId).add(accTeam.UserId);
                     }

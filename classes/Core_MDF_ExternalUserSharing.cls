@@ -338,7 +338,6 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
             email.setPlainTextBody(body);
             email.setFileAttachments(new Messaging.EmailFileAttachment [] {
                                      efa});
-            email.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
 
             // Sends the email
             Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage [] {
@@ -384,7 +383,6 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
             email.setPlainTextBody(body);
             email.setFileAttachments(new Messaging.EmailFileAttachment [] {
                                      efa});
-            email.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
 
             // Sends the email
             Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage [] {

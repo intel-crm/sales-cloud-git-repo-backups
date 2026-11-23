@@ -153,11 +153,6 @@
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
-        <fullName>QuantityUnitOfMeasureId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>SBQQ__Activated__c</fullName>
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>

@@ -126,12 +126,6 @@
             <field>ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Activity Type</displayNameOverride>
-            <field>Core_MDF_Activity_Types__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
         <masterLabel>Partner Fund Requests</masterLabel>
     </sections>
     <sections>
@@ -167,13 +161,5 @@
             <table>PartnerFundRequest</table>
         </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <masterLabel>Co-Marketing Activties</masterLabel>
     </sections>
 </ReportType>

@@ -207,9 +207,8 @@ export default class Core_IPS_BugAssist_form1_LWC extends LightningElement {
 
     @api bugAssistAttachmentData(bugAssistAttachmentData){
         this.bugAssistRecordData = bugAssistAttachmentData;
-        //changed as part of vulnerability
-        this.isFileNameExists = this.bugAssistRecordData.fileName !== null ? true : false;
-        this.uploadedFileName = this.bugAssistRecordData.fileName;
+        this.isFileNameExists = this.bugAssistRecordData.Core_File_Name__c !== null ? true : false;
+        this.uploadedFileName = this.bugAssistRecordData.Core_File_Name__c;
         this.senddatatoparent();
     }
     handleIframeURL(){

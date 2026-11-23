@@ -26,19 +26,13 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
             }
         }
         boolean insertFlag = isActive('Core_MDF_budgetCapProcessOnBeforeInsert');
-        //ATHR - Deeply Nested if 16209
-        if(!insertFlag){
-            return;
-        }
+        if(insertFlag){
             /*********** CCP Budget Caps Method *************/
             if(ccpBudgetCapOnBeforeInsert != NULL && ccpBudgetCapOnBeforeInsert.size()>0){
               Core_MDF_ProcessCCP_BudgetCap.getSumOfClaimedAmount(ccpBudgetCapOnBeforeInsert, (Map<Id,Core_MDF_Budget_Cap__c>) Trigger.oldMap, Trigger.isInsert,Trigger.isUpdate);   
             }
             /*********** Budget Type Caps Method *************/
-            //ATHR - Deeply Nested if 16209
-            if(budgetTypeCapOnBeforeInsert == null || budgetTypeCapOnBeforeInsert.isEmpty()){
-                return;
-            }
+            if(budgetTypeCapOnBeforeInsert != NULL && budgetTypeCapOnBeforeInsert.size()>0){
                 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassBudgCapIUPGMValidation')){
                     // Throw Error on the Budget Caps if the running user is not having required access
@@ -52,6 +46,8 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                 if(isActive('Core_MDF_IPA_BudgetCapProcessingonInsert')){
                     // Calculate Claimed cap Amount for Budget caps By summing up required campaigns
                     Core_MDF_BudgetTypeCap_Utility.getClaimedAmtOfBudgetCapsOnInsert(budgetTypeCapOnBeforeInsert);
+                }
+            }
         }
     }
     public override void beforeUpdate() {
@@ -68,21 +64,13 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
             }
         }
         boolean updateFlag = isActive('Core_MDF_budgetCapProcessOnBeforeUpdate');
-        //ATHR - Deeply Nested if 16209
-        if(!updateFlag){
-            return;
-        }
-        //if(updateFlag){            
+        if(updateFlag){            
             /*********** CCP Budget Caps Method *************/
             if(ccpBudgetCapOnBeforeUpdate != NULL && ccpBudgetCapOnBeforeUpdate.size()>0){
               Core_MDF_ProcessCCP_BudgetCap.getSumOfClaimedAmount(ccpBudgetCapOnBeforeUpdate, (Map<Id,Core_MDF_Budget_Cap__c>) Trigger.oldMap, Trigger.isInsert,Trigger.isUpdate);
             }
             /***********Budget Type Caps Method *************/
-            //ATHR - Deeply Nested if 16209
-            if(budgetTypeCapOnBeforeUpdate == NULL || budgetTypeCapOnBeforeUpdate.isEmpty()){
-                return;
-            }
-            //if(budgetTypeCapOnBeforeUpdate != NULL && budgetTypeCapOnBeforeUpdate.size()>0){
+            if(budgetTypeCapOnBeforeUpdate != NULL && budgetTypeCapOnBeforeUpdate.size()>0){
                 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassBudgCapIUPGMValidation')){
                     // Throw Error on the Budget Caps if the running user is not having required access
@@ -104,8 +92,8 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                     Core_MDF_BudgetTypeCap_Utility.getClaimedCapAmtOfBudgetCapsOnUpdate();
                     
                 }
-            //}
-        //}        
+            }
+        }        
     }
     
     /***************************************************************************************************** 
@@ -129,10 +117,7 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
             }
         }
         boolean afterUpdateFlag = isActive('Core_MDF_budgetCapProcessOnAfterUpdate');
-        //ATHR - Deeply Nested if 16209
-        if(!afterUpdateFlag){
-            return;
-        }
+        if(afterUpdateFlag){
             /*********** CCP Budget Caps Method *************/
             if(ccpBudgetCapOnAfterUpdate != NULL && ccpBudgetCapOnAfterUpdate.size()>0){
                 Core_MDF_ProcessCCP_BudgetCap.shareWithFinMgr(ccpBudgetCapOnAfterUpdate, 
@@ -141,10 +126,7 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                                                               Trigger.isUpdate);
             }
             /*********** Budget Type Caps Method *************/
-            //ATHR - Deeply Nested if 16209
-            if(budgetTypeCapOnAfterUpdate == NULL || budgetTypeCapOnAfterUpdate.isEmpty()){
-                return;
-            }
+            if(budgetTypeCapOnAfterUpdate != NULL && budgetTypeCapOnAfterUpdate.size()>0){
                 if(isActive('Core_MDF_IPA_BudgetCapProcessingonUpdate')){
                     // linking Logic for Campaigns with Budget caps which are either newly Activated or theirs dates are changed
                     
@@ -154,6 +136,8 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                     if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassSharingOwner_GeoUpdate')){
                         //To share record after Owner/Geo Update
                       Core_MDF_BudgetTypeCap_Utility.reshareBudgetCapRecords(budgetTypeCapOnAfterUpdate,(Map<Id,Core_MDF_Budget_Cap__c>) Trigger.oldMap);
+                    }
+                }
             }
         }
     }
@@ -179,10 +163,7 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
             }
         }
         boolean afterInsertFlag = isActive('Core_MDF_budgetCapProcessOnAfterInsert');
-        //ATHR - Deeply Nested if 16209
-        if(!afterInsertFlag){
-            return;
-        }
+        if(afterInsertFlag){
             /*********** CCP Budget Caps Method *************/
             if(ccpBudgetCapOnAfterInsert != NULL && ccpBudgetCapOnAfterInsert.size()>0){
                 Core_MDF_ProcessCCP_BudgetCap.shareWithFinMgr(ccpBudgetCapOnAfterInsert, 
@@ -191,10 +172,7 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                                                               Trigger.isUpdate);
             }
             /*********** Budget Type Caps Method *************/
-            //ATHR - Deeply Nested if 16209
-            if(budgetTypeCapOnAfterInsert == null || budgetTypeCapOnAfterInsert.isEmpty()){
-                return;
-            }
+            if(budgetTypeCapOnAfterInsert != NULL && budgetTypeCapOnAfterInsert.size()>0){
                 if(isActive('Core_MDF_IPA_BudgetCapProcessingonInsert')){
                     // linking Logic for Campaigns with Budget caps which are which are newly created
                     
@@ -206,4 +184,6 @@ public class Core_MDF_BudgetCapTriggerHandler extends TriggerHandler {
                     }
                 }
             }
-        }
+        }        
+    }
+}

@@ -1,0 +1,33 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable"
+                controller="PSG_Utility" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="userName" type="String" />
+    <aura:attribute name="accountName" type="String" />
+    <aura:attribute name="userEmail" type="String" />
+    <aura:attribute name="accountGeo" type="String" />
+    
+    	<div class="slds-float_left slds-p-left_small">
+        	<ul class="slds-list_horizontal slds-p-top_small ">
+                <aura:if isTrue="{!v.userName!=null}">
+                   
+                </aura:if>
+            </ul>
+    	</div>
+  		<div class="slds-float_right slds-p-right_small">
+        	<ul class="slds-list_horizontal slds-p-top_small ">
+                <aura:if isTrue="{!v.userName!=null}">
+                <lightning:icon iconName='standard:user' size="x-small" title="User" />&nbsp;
+               <li class="slds-item ">{!v.userName}&nbsp;&nbsp;</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <aura:if isTrue="{!v.accountName!=null}">
+                     <lightning:icon iconName="standard:account"  size="x-small"  title="Company" /> &nbsp;
+                     <li class="slds-item ">{!v.accountName}&nbsp;&nbsp;{!v.accountGeo}</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 </aura:if>
+                <lightning:icon iconName="custom:custom105"  size="x-small"  title="Email" /> &nbsp;
+                <li class="slds-item ">{!v.userEmail}</li>
+                 </aura:if>
+            </ul>
+       </div>
+        
+    
+       
+</aura:component>

@@ -409,10 +409,6 @@
         <name>Core_Stylus__c</name>
     </fields>
     <fields>
-        <label><!-- Sustainability Compliance --></label>
-        <name>Core_Sustainability_Compliance__c</name>
-    </fields>
-    <fields>
         <label><!-- System Integrator --></label>
         <name>Core_System_Integrator__c</name>
     </fields>

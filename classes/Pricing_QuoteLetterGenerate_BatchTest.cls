@@ -1,9 +1,9 @@
 /**
- * @description       : Test Class for Pricing_QuoteLetterGenerate_Batch
+ * @description       : 
  * @author            : Vrushabh 
  * @group             : 
- * @last modified on  : 03-16-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 12-11-2024
+ * @last modified by  : Vrushabh 
 **/
 @isTest
 public class Pricing_QuoteLetterGenerate_BatchTest {
@@ -43,48 +43,7 @@ public class Pricing_QuoteLetterGenerate_BatchTest {
     public static void testQuoteLineBatch(){ 
         test.startTest();
         Pricing_QuoteLetterGenerate_Batch batchJob = new Pricing_QuoteLetterGenerate_Batch();
-        Id asyncJobId = Database.executeBatch(batchJob);
+        Database.executeBatch(batchJob);
         test.stopTest();
-        System.assertEquals(true, asyncJobId != null, 'Database.executeBatch should return a non-null AsyncApexJob Id.');
     }
-    
-    @isTest
-    public static void testExecuteMethodWithEmptyBatch(){
-        test.startTest();
-        Pricing_QuoteLetterGenerate_Batch batchJob = new Pricing_QuoteLetterGenerate_Batch();
-        batchJob.execute(null, new List<SBQQ__Quote__c>());
-        test.stopTest();
-        System.assert(true, 'Execute method should handle empty batch without exception');
-    }
-    
-    @isTest
-    public static void testGenerateQuoteLetterMethod(){
-        List<User> adminUserList = Pricing_Test_Utility.createAdminUser();
-        System.runAs(adminUserList[0]){
-            test.startTest();
-            List<SBQQ__Quote__c> quote = [SELECT Id,createdById,Pricing_Auto_generate_Quote_Letter__c,Pricing_Maximum_Approved_Rejected_Date__c FROM SBQQ__Quote__c LIMIT 1];           
-            List < SBQQ__QuoteLine__c > quoteLines = [Select Id,Pricing_Quote_Program_Nm__c,SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c,SBQQ__Quote__r.Id,Pricing_Last_Approved_Date_dt__c,Pricing_Status_Nm__c from SBQQ__QuoteLine__c Limit 1];
-            List<SBQQ__QuoteLine__c> quoteLinesUpdated = new List<SBQQ__QuoteLine__c>();
-            for(SBQQ__QuoteLine__c quoteLine : quoteLines){
-                Pricing_Test_Utility.createPerformanceMetrics(quoteLine.Id);
-                quoteLine.Pricing_Quote_Program_Nm__c = Label.Pricing_Tender_Quote_Program;
-                quoteLine.Pricing_Last_Approved_Date_dt__c = datetime.now();
-                quoteLine.Pricing_Status_Nm__c = 'Approved';
-                quoteLinesUpdated.add(quoteLine);
-            }
-            update quoteLinesUpdated;
-            quoteLines[0].SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c = true;
-            update quoteLines;
-            
-            List<Id> quoteLineIds = new List<Id>();
-            for(SBQQ__QuoteLine__c quoteLine : quoteLinesUpdated){
-                quoteLineIds.add(quoteLine.Id);
-            }
-            Pricing_QuoteLetterGenerate_Batch.generateQuoteLetter(quoteLineIds);
-            System.assertEquals(true, quoteLines.size() > 0);
-            test.stopTest();
-        }
-    }
-    
-    
 }

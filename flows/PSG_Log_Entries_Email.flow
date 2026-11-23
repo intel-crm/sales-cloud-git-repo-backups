@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Log_Details</name>
+        <label>Send Log Details</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>core_cpq_psg_log_entry__c.PSG_Log_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>core_cpq_psg_log_entry__c.PSG_Log_Alert</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Send Email alert when there is PSG log created.</description>
+    <environments>Default</environments>
+    <interviewLabel>PSG Flow Entries Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PSG Log Entries Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Log_Details</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>core_cpq_details__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>&quot;success&quot; : false</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>core_cpq_type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Inbound Message</stringValue>
+            </value>
+        </filters>
+        <object>core_cpq_psg_log_entry__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

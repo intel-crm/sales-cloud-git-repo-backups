@@ -22,6 +22,7 @@ public with sharing class Core_MDF_KPI_FieldsController {
         KPIAttributes kpiAttrs = new KPIAttributes();
 
         if (inputValues != null){
+            try {
                 Map<String, Object> queryVariabels = (Map<String, Object>) JSON.deserializeUntyped(inputValues);
                 string program = (string)queryVariabels.get('program');
                 string category = (string)queryVariabels.get('activityCategory');
@@ -49,8 +50,12 @@ public with sharing class Core_MDF_KPI_FieldsController {
                 Boolean isProposal = false;
                 String propStr = '';
                 if(program == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM){
-                    isProposal = queryVariabels.get('isProposalBased') != null ? (Boolean)queryVariabels.get('isProposalBased') : false; //Ayush - added null check as 'isProposalBased' was returning null if campaign is removed from Activity while cloning.
-                    propStr = isProposal ? 'Core_MDF_Checkbox_Field_2_Ind__c = true' : 'Core_MDF_Checkbox_Field_5_Ind__c = true';
+                    isProposal = queryVariabels.get('isProposalBased') != null ? (boolean)queryVariabels.get('isProposalBased') : false; //Ayush - added null check as 'isProposalBased' was returning null if campaign is removed from Activity while cloning.
+                    if(isProposal){
+                        propStr = 'Core_MDF_Checkbox_Field_2_Ind__c = ' +true;
+                    } else {
+                        propStr = 'Core_MDF_Checkbox_Field_5_Ind__c = ' +true;
+                    }
                 }
                 Id recordId = (Id)queryVariabels.get('recordId');
                 Id activityId = (Id)queryVariabels.get('activityId');//Added by VB - KPI Metrics Changes
@@ -74,14 +79,14 @@ public with sharing class Core_MDF_KPI_FieldsController {
                      else {
                         whereClause += 'AND Core_MDF_Field_4_txt__c != NULL ' + 'AND Core_MDF_Sub_Category__c = \'' + objectName + '\' ';
                     }
-                    //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (objectName == 'PartnerFundClaim') {
-                        String baseStart = ' AND Core_MDF_Checkbox_Field_4_Ind__c = false';
-                        String baseEnd = ' AND Core_MDF_Is_Active_Ind__c = True Order by Core_MDF_Sort_Order_Nbr__c';
-                        String propCondition = String.isNotBlank(propStr) ? ' AND ' + propStr : '';
-                        whereClause = whereClause + baseStart + propCondition + baseEnd;
-                    }
-                    else if(objectName == 'PartnerFundRequest') {
+                    if(objectName == 'PartnerFundClaim') {
+                        if(propStr != '') {
+                            whereClause = whereClause + ' AND Core_MDF_Checkbox_Field_4_Ind__c = false AND '+propStr+ ' AND Core_MDF_Is_Active_Ind__c = True Order by Core_MDF_Sort_Order_Nbr__c';
+                        } else {
+                            whereClause = whereClause + ' AND Core_MDF_Checkbox_Field_4_Ind__c = false AND Core_MDF_Is_Active_Ind__c = True Order by Core_MDF_Sort_Order_Nbr__c';
+                        }
+
+                    } else if(objectName == 'PartnerFundRequest') {
                         if(propStr != '') {
                             //changes for IPA KPI Metrics
                             if(Label.Core_MDF_IPA_Program_Name.equalsIgnoreCase(program)){
@@ -105,7 +110,7 @@ public with sharing class Core_MDF_KPI_FieldsController {
                         kpiAttrs = getKPIWrapper(recordId,objectName,metaDataValues, activityId, sectionTitle);
                     }
                 }
-                // try-catch intentionally removed to allow exceptions to propagate to LWC for client-side handling and logging 
+            } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
         }
 
         return kpiAttrs;

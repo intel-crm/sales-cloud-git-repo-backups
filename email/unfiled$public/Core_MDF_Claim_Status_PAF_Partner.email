@@ -16,7 +16,7 @@
                                                 <apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
                                                 {!$Label.Core_MDF_EmailTemp_Claim_Body3} <br/>
                                                 <ul>
-                                                   <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ' :',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}&nbsp;{!RelatedTo.Request.Title}<br/></li>
+                                                   <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name}&nbsp;{!RelatedTo.Request.Title}<br/></li>
                                                    <apex:outputPanel rendered="{!IF(relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name, true, false)}">
                                                        <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} &nbsp;{!RelatedTo.Core_MDF_Country_Location_nm__c}   <br/> </li>
                                                    </apex:outputPanel>
@@ -28,7 +28,7 @@
                                   </p> 
                                   
                                    <p> 
-                                                {!$Label.Core_MDF_EmailTemp_Claim_Body4}<b> {!$Label.Core_MDF_EmailTemp_Claim_Body8}</b>&nbsp;{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_EmailTemp_Claim_Body20,$Label.Core_MDF_EmailTemp_Claim_Body9)}<br/><br/> 
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body4}<b> {!$Label.Core_MDF_EmailTemp_Claim_Body8}</b>&nbsp;{!$Label.Core_MDF_EmailTemp_Claim_Body9}<br/><br/> 
                                                  {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}  <br/><br/>
    
                                                 {!$Label.Core_MDF_Email_Signature} <br/>

@@ -9,13 +9,11 @@
         //component.set("v.newPFR.Core_MDF_Proposal_Based_Ind__c", false);
         
         // Set mode based on recordId
-        // Added Skip PCT Approval for clone scenario
         if(helper.isNotBlank(component.get("v.recordId")) || helper.isNotBlank(component.get("v.checkCloneRecordId"))) {
             if(component.get("v.checkCloneAttribute")) {
                 component.set("v.mode", "clone");
                 component.set("v.checkStatusAttribute", false);
                 component.set("v.recordId", component.get("v.checkCloneRecordId"));
-                component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
             }else {
                 component.set("v.mode", "edit");
                 //helper.onRegionChange(component, event, helper)
@@ -27,670 +25,17 @@
             }
            
         } else {
-            component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
             component.set("v.checkStatusAttribute", false);
            
         }
 
          helper.loadInitialData(component);
-         helper.checkUserEmailForAIAccess(component);
+        //helper.SetAccMgrDisabledState(component);
+
         
     } catch(error) {
         component.set("v.showSpinner", false);
         helper.displaySuccessErrorMsg('Error initializing component: ' + error.message, 'Error', 'error','dismissible');
-    }
-},
-handleDescriptionChange: function(component, event, helper) {
-    var newValue = event.getParam("value");
-    component.set("v.newPFR.Core_MDF_Activity_Description__c", newValue);
-    
-    // Check conditions for auto-populating focus area
-    var showAISuggestions = component.get("v.showAISuggestions");
-    var mode = component.get("v.mode");
-    
-    if (showAISuggestions && mode === '') {
-        // Check current focus area and its source
-        var currentFocusArea = component.get("v.selectedFocusArea");
-        var detectionSource = component.get("v.focusAreaDetectionSource");
-        
-        // Only auto-populate if:
-        // 1. No focus area is set, OR
-        // 2. Current focus area is default "Client Computing" and wasn't manually set, OR
-        // 3. Focus area was previously set by description (allow description updates)
-        var shouldUpdate = !currentFocusArea || 
-                          currentFocusArea === '' || 
-                          (currentFocusArea === 'Client Computing' && detectionSource !== 'manual' && detectionSource !== 'file') ||
-                          detectionSource === 'description';
-        
-        if (shouldUpdate) {
-            // Determine focus area from description
-            var detectedFocusArea = helper.determineFocusAreaFromDescription(newValue);
-            
-            // Validate against available options
-            var validatedFocusArea = helper.validateFocusAreaOption(component, detectedFocusArea);
-            
-            if (validatedFocusArea) {
-                // Set the focus area
-                component.set("v.selectedFocusArea", validatedFocusArea);
-                component.set("v.newPFR.Core_MDF_Focus_Area_nm__c", validatedFocusArea);
-                
-                // Mark source as description
-                component.set("v.focusAreaDetectionSource", "description");
-                
-                // Trigger focus area change to load dependent fields
-                if (!component.get("v.initialFocusAreaLoaded")) {
-                    helper.clearDependentFieldSelections(component);
-                } else {
-                    component.set("v.initialFocusAreaLoaded", false);
-                }
-                
-                helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"));
-                component.set("v.showDependentFields", true);
-                
-                console.log('Auto-populated Focus Area from description: ' + validatedFocusArea);
-            }
-        } else {
-            console.log('Focus Area already set from ' + detectionSource + ': ' + currentFocusArea + ', not overriding with description analysis');
-        }
-    }
-},
-
-handleApplySuggestions: function(component, event, helper) {
-    try { 
-        var eventParams = event.getParams();
-        
-        var suggestions, rawData, originalSuggestions, selectedFields, userInputs, analysisType, filesAnalyzed;
-        var aiRequestGroupId = 'AIReq_' + new Date().getTime() + '_' + Math.random().toString(36).substr(2, 9);
-        
-        // When LWC fires custom event, the data is in detail property
-        if (eventParams) {
-            // The event.detail contains the fired event's detail
-            suggestions = eventParams.detail ? eventParams.detail.suggestions : eventParams.suggestions;
-            rawData = eventParams.detail ? eventParams.detail.rawData : eventParams.rawData;
-            originalSuggestions = eventParams.detail ? eventParams.detail.originalSuggestions : eventParams.originalSuggestions;
-            selectedFields = eventParams.detail ? eventParams.detail.selectedFields : eventParams.selectedFields;
-            userInputs = eventParams.detail ? eventParams.detail.userInputs : eventParams.userInputs;
-            analysisType = eventParams.detail ? eventParams.detail.analysisType : eventParams.analysisType;
-            filesAnalyzed = eventParams.detail ? eventParams.detail.filesAnalyzed : eventParams.filesAnalyzed;
-        }
-        
-        // Define clearAiAccountSelection FIRST so it can be used in other functions
-        var clearAiAccountSelection = function() {
-            component.set('v.selectedAccount', null);
-            component.set('v.newPFR.ChannelPartnerId', null);
-            component.set('v.isAccountSelected', false);
-            component.set('v.showAccountSuggestion', false);
-            component.set('v.aiAccountSuggestion', '');
-        };
-
-        var applyResolvedAccount = function(accountRecord) {
-            if (!accountRecord || !accountRecord.Id) {
-                return false;
-            }
-            // Clear old budget types before stamping new account
-            component.set('v.budgetTypeVal', []);
-            component.set('v.selBudgetType', '');
-            component.set('v.selectedAccount', {
-                sobjectType: 'Account',
-                Id: accountRecord.Id,
-                Name: accountRecord.Name,
-                Core_MDF_CoMarketing_Ultimate_Account__c: accountRecord.Core_MDF_CoMarketing_Ultimate_Account__c
-            });
-            component.set('v.newPFR.ChannelPartnerId', accountRecord.Id);
-            component.set('v.isAccountSelected', true);
-            component.set('v.showAccountSuggestion', false);
-            component.set('v.extractedAccountName', accountRecord.Name || '');
-            component.set('v.aiAccountSuggestion', '');
-            component.set("v.partnerContactDomainsLoaded", false);
-            helper.loadPartnerContactDomains(component, function() {
-                helper.validatePartnerContactEmails(component);
-            });
-            return true;
-        };
-
-        var normalizeToken = function(value) {
-            return value ? String(value).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-        };
-
-        var stripRegionSuffix = function(value) {
-            if (!value) return value;
-            var str = String(value).toLowerCase();
-            // Remove common region suffixes: " region", " regions", " area", " areas"
-            return str.replace(/\s+(region|regions|area|areas)\s*$/i, '').trim();
-        };
-
-        var normalizeBudgetKey = function(value) {
-            return value ? String(value).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-        };
-
-        var applyOutcomeValuesWithRetry = function(payload, retriesLeft) {
-            var lwcOutcomeActivityComp = component.find('activityOutcomeCmp');
-            var outcomeChildComp = lwcOutcomeActivityComp;
-
-            if (helper.isNotBlank(lwcOutcomeActivityComp) && lwcOutcomeActivityComp.length > 0) {
-                outcomeChildComp = lwcOutcomeActivityComp[0];
-            }
-
-            if (outcomeChildComp && outcomeChildComp.applyAISuggestions) {
-                try {
-                    outcomeChildComp.applyAISuggestions({ outcomeActivityValues: payload });
-                    return;
-                } catch (outcomeApplyError) {
-                    console.warn('Unable to push AI outcome activity values to child component:', outcomeApplyError);
-                }
-            }
-
-            if (retriesLeft > 0) {
-                window.setTimeout($A.getCallback(function() {
-                    applyOutcomeValuesWithRetry(payload, retriesLeft - 1);
-                }), 250);
-            }
-        };
-
-
-
-        var validateAndApplyAiAccount = function(accountName, suggestionsPayload) {
-            if (!accountName || !String(accountName).trim()) {
-                console.warn('[AI ACCOUNT] Account name is empty - clearing selection');
-                clearAiAccountSelection();
-                helper.displaySuccessErrorMsg('AI suggested account is empty. Account was not applied.', 'Warning', 'warning', 'dismissible');
-                return;
-            }
-
-            var resolveAction = component.get('c.resolveAccountByAIName');
-            resolveAction.setParams({
-                accountName: String(accountName).trim(),
-                recordTypeDeveloperName: component.get('v.recordtypeDeveloperName')
-            });
-
-            resolveAction.setCallback(this, function(resolveResp) {
-                var resolveState = resolveResp.getState();
-                if (resolveState !== 'SUCCESS') {
-                    console.error('[AI ACCOUNT] Apex call failed with state: ' + resolveState);
-                    clearAiAccountSelection();
-                    helper.displaySuccessErrorMsg('Suggested account could not be validated. Account was not applied.', 'Warning', 'warning', 'dismissible');
-                    return;
-                }
-
-                var matchedAccount = resolveResp.getReturnValue();
-                if (!matchedAccount || !matchedAccount.Id) {
-                    console.warn('[AI ACCOUNT] Account not found or invalid');
-                    clearAiAccountSelection();
-                    helper.displaySuccessErrorMsg('Suggested account could not be found. Account was not applied.', 'Warning', 'warning', 'dismissible');
-                    return;
-                }
-
-                // Account is valid and IPA eligible - stamp it immediately (no budget validation gate)
-                if (!applyResolvedAccount(matchedAccount)) {
-                    console.error('[AI ACCOUNT] Failed to apply resolved account');
-                    clearAiAccountSelection();
-                    helper.displaySuccessErrorMsg('Suggested account could not be applied.', 'Warning', 'warning', 'dismissible');
-                    return;
-                }
-
-                // Optionally populate budget fields (graceful - no error if empty)
-                helper.fetchBudgetTypesBasedOnBenefits(component);
-                helper.fetchBudgetInfo(component);
-            });
-
-            $A.enqueueAction(resolveAction);
-        };
-        component.set('v.aiRequestGroupId', aiRequestGroupId);
-        if (suggestions) {
-            // Use originalSuggestions if available, otherwise use suggestions for tracking
-            var suggestionsForTracking = originalSuggestions || suggestions;
-            helper.initializeAiTracking(component, suggestionsForTracking, selectedFields, userInputs, analysisType, filesAnalyzed, aiRequestGroupId);
-        }
-    
-    if (suggestions) {
-        // Apply Basic Fields
-        if (suggestions.campaignName) {
-            component.set("v.newPFR.Title", suggestions.campaignName);
-        }
-        if (suggestions.campaignDescription) {
-            component.set("v.newPFR.Core_MDF_Activity_Description__c", suggestions.campaignDescription);
-        }
-        if (suggestions.startDate) {
-            component.set("v.newPFR.Core_MDF_Start_Date__c", suggestions.startDate);
-        }
-        
-        if (suggestions.endDate) {
-            component.set("v.newPFR.Core_MDF_End_Date__c", suggestions.endDate);
-        }
-
-        if (suggestions.startDate || suggestions.endDate) {
-            var aiDateAccount = component.get("v.selectedAccount");
-            if (aiDateAccount && aiDateAccount.Id) {
-                if (component.get("v.mode") == "" || component.get("v.mode") == 'clone' || component.get("v.mode") == 'edit') {
-                    if (component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")) {
-                        helper.checkAvailAllocationAmt(component);
-                        helper.fetchBudgetInfo(component);
-                    }
-                }
-            }
-        }
-        
-        if (suggestions.totalInvestment) {
-            component.set("v.BudgetLocal", suggestions.totalInvestment);
-            component.set("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c", suggestions.totalInvestment);
-        }
-        
-        if (suggestions.maxIntelInvestment) {
-            component.set("v.maxIntelInvestment", suggestions.maxIntelInvestment);
-            component.set("v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c", suggestions.maxIntelInvestment);
-        }
-
-        var normalizeNumericValue = function(value) {
-            if (value === undefined || value === null || value === '') {
-                return null;
-            }
-            if (typeof value === 'number') {
-                return value;
-            }
-            var cleaned = String(value).replace(/[^0-9.-]/g, '');
-            var parsed = parseFloat(cleaned);
-            return isNaN(parsed) ? null : parsed;
-        };
-
-        var normalizeToArray = function(value) {
-            if (Array.isArray(value)) {
-                return value.filter(function(item) {
-                    return item !== null && item !== undefined && String(item).trim() !== '';
-                });
-            }
-            if (typeof value === 'string') {
-                return value.split(';').map(function(item) {
-                    return item.trim();
-                }).filter(function(item) {
-                    return item !== '';
-                });
-            }
-            return [];
-        };
-
-        // ✅ NO GATE - Apply spending amount ONLY if explicitly provided by AI
-        if (suggestions.spendingAmount !== undefined && suggestions.spendingAmount !== null && suggestions.spendingAmount !== '') {
-            var aiSpendingAmount = normalizeNumericValue(suggestions.spendingAmount);
-            if (aiSpendingAmount !== null) {
-                component.set("v.BudgetLocal", aiSpendingAmount);
-                component.set("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c", aiSpendingAmount);
-            }
-        }
-
-        // ✅ NO GATE - Apply spending percentage ONLY if explicitly provided by AI
-        if (suggestions.spendingPercentage !== undefined && suggestions.spendingPercentage !== null && suggestions.spendingPercentage !== '') {
-            var aiSpendingPercentage = normalizeNumericValue(suggestions.spendingPercentage);
-            if (aiSpendingPercentage !== null) {
-                component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", aiSpendingPercentage);
-                component.set("v.SelReimbursementRate", aiSpendingPercentage + '%');
-            }
-        }
-
-        // Apply account suggestion when account exists and is IPA eligible.
-        if (suggestions.account) {
-            var accountValue = suggestions.account;
-            if (typeof accountValue === 'object' && accountValue !== null) {
-                var accountName = accountValue.name || accountValue.Name;
-
-                if (accountName) {
-                    validateAndApplyAiAccount(accountName, suggestions);
-                } else {
-                    clearAiAccountSelection();
-                    helper.displaySuccessErrorMsg('AI suggested account is invalid. Account was not applied.', 'Warning', 'warning', 'dismissible');
-                }
-            } else if (typeof accountValue === 'string' && accountValue.trim() !== '') {
-                validateAndApplyAiAccount(accountValue, suggestions);
-            } else {
-                clearAiAccountSelection();
-                helper.displaySuccessErrorMsg('AI suggested account is invalid. Account was not applied.', 'Warning', 'warning', 'dismissible');
-            }
-        }
-        
-        // Apply Focus Area
-        if (suggestions.focusArea) {
-            component.set("v.selectedFocusArea", suggestions.focusArea);
-            component.set("v.newPFR.Core_MDF_Focus_Area_nm__c", suggestions.focusArea);
-            // Trigger focus area change to load dependent fields
-            helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"));
-            component.set("v.showDependentFields", true);
-        }
-        
-        // Apply Priority - with resolution to available options
-        if (suggestions.priority) {
-            var priorityOptions = component.get('v.priorityValues') || [];
-            var resolvedPriority = suggestions.priority;
-            
-            if (Array.isArray(priorityOptions) && priorityOptions.length > 0) {
-                var normalizedInput = normalizeToken(suggestions.priority);
-                var priorityMatch = priorityOptions.find(function(option) {
-                    return normalizeToken(option.value) === normalizedInput || normalizeToken(option.label) === normalizedInput;
-                });
-                
-                // If no exact match, try fuzzy matching (like tactics do)
-                if (!priorityMatch) {
-                    priorityMatch = priorityOptions.find(function(option) {
-                        var optionValueNorm = normalizeToken(option.value);
-                        var optionLabelNorm = normalizeToken(option.label);
-                        return (optionValueNorm && normalizedInput.indexOf(optionValueNorm) >= 0) ||
-                            (optionLabelNorm && normalizedInput.indexOf(optionLabelNorm) >= 0) ||
-                            (optionValueNorm && optionValueNorm.indexOf(normalizedInput) >= 0) ||
-                            (optionLabelNorm && optionLabelNorm.indexOf(normalizedInput) >= 0);
-                    });
-                }
-                
-                resolvedPriority = priorityMatch ? priorityMatch.value : suggestions.priority;
-            }
-            
-            component.set("v.SelPriority", resolvedPriority);
-            component.set("v.newPFR.Core_MDF_Priority_nm__c", resolvedPriority);
-        }
-        
-        // Apply Region first (controlling field for Country)
-        var regionApplied = false;
-        if (suggestions.region) {
-            var regionOptions = component.get('v.regionvalues') || [];
-            var resolvedRegion = suggestions.region;
-            
-            if (Array.isArray(regionOptions) && regionOptions.length > 0) {
-                // Strip common suffixes like "region", "regions", "area", "areas" before normalization
-                var cleanedInput = stripRegionSuffix(suggestions.region);
-                var normalizedInput = normalizeToken(cleanedInput);
-                var regionMatch = regionOptions.find(function(option) {
-                    return normalizeToken(option.value) === normalizedInput || normalizeToken(option.label) === normalizedInput;
-                });
-                
-                // If no exact match, try fuzzy matching
-                if (!regionMatch) {
-                    regionMatch = regionOptions.find(function(option) {
-                        var optionValueNorm = normalizeToken(option.value);
-                        var optionLabelNorm = normalizeToken(option.label);
-                        return (optionValueNorm && normalizedInput.indexOf(optionValueNorm) >= 0) ||
-                            (optionLabelNorm && normalizedInput.indexOf(optionLabelNorm) >= 0) ||
-                            (optionValueNorm && optionValueNorm.indexOf(normalizedInput) >= 0) ||
-                            (optionLabelNorm && optionLabelNorm.indexOf(normalizedInput) >= 0);
-                    });
-                }
-                
-                resolvedRegion = regionMatch ? regionMatch.value : cleanedInput;
-            }
-            
-            component.set("v.SelRegion", resolvedRegion);
-            component.set("v.newPFR.Core_MDF_Outcome_Region_nm__c", resolvedRegion);
-            regionApplied = true;
-        }
-        
-        // Apply multi-value fields
-        var multiValueMappings = [
-            { suggestion: 'country', component: 'selectedCountryOptions', pfr: 'Core_MDF_Country_nm__c', optionsAttr: 'AllCountryOptions' },
-            { suggestion: 'targetAudience', component: 'selectedTargetAudienceOptions', pfr: 'Core_MDF_TargetAudience_nm__c', optionsAttr: 'AllTargetAudienceOptions' },
-            { suggestion: 'brands', component: 'selectedBrandOptions', pfr: 'Core_MDF_Brand_nm__c', optionsAttr: 'AllBrandOptions' },
-            { suggestion: 'technologies', component: 'selectedTechnologyOptions', pfr: 'Core_MDF_Technology_txt__c', optionsAttr: 'AllTechnologyOptions' },
-            { suggestion: 'initiatives', component: 'selectedInitiativeOptions', pfr: 'Core_MDF_Initiative_nm__c', optionsAttr: 'AllInitiativeOptions' },
-            { suggestion: 'ecosystemPartners', component: 'selectedEcosystemPartnerOptions', pfr: 'Core_MDF_EcosystemPartner_nm__c', optionsAttr: 'AllEcosystemPartner' },
-            { suggestion: 'productTypes', component: 'selectedProductTypeOptions', pfr: 'Core_MDF_ProductType__c', optionsAttr: 'ProductTypeValues' },
-            { suggestion: 'tactics', component: 'selectedTacticsOptions', pfr: 'Core_MDF_Tactics_nm__c', optionsAttr: 'activityTacticsOptions' },
-            { suggestion: 'outcomeMetrics', component: 'selectedOutcomeMetricOptions', pfr: 'Core_MDF_Outcomes_nm__c', optionsAttr: 'outcomesDependants' }
-        ];
-
-        var resolveToAvailableOptionValues = function(mapping, values) {
-            if (!mapping.optionsAttr || !Array.isArray(values) || values.length === 0) {
-                return values;
-            }
-
-            var options = component.get('v.' + mapping.optionsAttr) || [];
-            if (!Array.isArray(options) || options.length === 0) {
-                return values;
-            }
-
-            return values.map(function(value) {
-                var normalizedInput = normalizeToken(value);
-                var match = options.find(function(option) {
-                    return normalizeToken(option.value) === normalizedInput || normalizeToken(option.label) === normalizedInput;
-                });
-
-                if (!match && mapping.suggestion === 'tactics') {
-                    match = options.find(function(option) {
-                        var optionValueNorm = normalizeToken(option.value);
-                        var optionLabelNorm = normalizeToken(option.label);
-                        return (optionValueNorm && normalizedInput.indexOf(optionValueNorm) >= 0) ||
-                            (optionLabelNorm && normalizedInput.indexOf(optionLabelNorm) >= 0) ||
-                            (optionValueNorm && optionValueNorm.indexOf(normalizedInput) >= 0) ||
-                            (optionLabelNorm && optionLabelNorm.indexOf(normalizedInput) >= 0);
-                    });
-                }
-
-                return match ? match.value : value;
-            });
-        };
-        
-        // If region was applied and country is also suggested, defer country application to let filtering complete
-        var countryDeferred = regionApplied && suggestions.country && normalizeToArray(suggestions.country).length > 0;
-        
-        multiValueMappings.forEach(function(mapping) {
-            // Skip country if it's deferred (will be applied after region filtering completes)
-            if (countryDeferred && mapping.suggestion === 'country') {
-                return;
-            }
-            
-            var normalizedValues = normalizeToArray(suggestions[mapping.suggestion]);
-            if (normalizedValues.length > 0) {
-                normalizedValues = resolveToAvailableOptionValues(mapping, normalizedValues);
-                if (mapping.suggestion === 'outcomeMetrics') {
-                    // Outcome Metric allows only one selected value in this form.
-                    normalizedValues = [normalizedValues[0]];
-                    component.set("v.prevSelectedOutcomes", normalizedValues);
-                    component.set("v.selectedOutcomes", normalizedValues);
-                    component.set("v.isOutcomeSelectionInvalid", false);
-                    component.set("v.showActivityPurpose", true);
-                }
-                component.set("v." + mapping.component, normalizedValues);
-                component.set("v.newPFR." + mapping.pfr, normalizedValues.join(';'));
-            }
-        });
-
-        // Apply deferred country after region filtering completes (if region was applied)
-        if (countryDeferred) {
-            var countryMapping = { suggestion: 'country', component: 'selectedCountryOptions', pfr: 'Core_MDF_Country_nm__c', optionsAttr: 'AllCountryOptions' };
-            var countryValues = normalizeToArray(suggestions.country);
-            var selectedRegion = component.get("v.SelRegion");
-            
-            // Call helper to filter countries by region and apply when complete
-            helper.fetchCountriesByRegionWithCallback(component, selectedRegion, countryValues, countryMapping, resolveToAvailableOptionValues, normalizeToken);
-        }
-
-        // Apply tactic metric suggestions (Goal Values / Spending Amount / Spending Percentage)
-        // through the existing tactic metrics payload channel used at save time.
-        var tacticMetricPayload = null;
-        var selectedTactics = normalizeToArray(suggestions.tactics);
-        var tacticCount = selectedTactics.length;
-        
-        if ((suggestions.tacticMetrics && typeof suggestions.tacticMetrics === 'object') ||
-            suggestions.goalValues !== undefined ||
-            (suggestions.spendingAmount !== undefined || suggestions.spendingPercentage !== undefined)) {
-            
-            // ✅ NO DEFAULTS, NO MATH, NO AUTO-DISTRIBUTION
-            // Only use what AI explicitly provided
-            tacticMetricPayload = {};
-
-            if (suggestions.tacticMetrics && typeof suggestions.tacticMetrics === 'object') {
-                tacticMetricPayload = JSON.parse(JSON.stringify(suggestions.tacticMetrics));
-            }
-
-            if (suggestions.goalValues !== undefined) {
-                tacticMetricPayload.goalValues = suggestions.goalValues;
-            }
-
-            // Handle spending amount - ONLY if explicitly provided, NO calculation or distribution
-            if (suggestions.spendingAmount !== undefined && suggestions.spendingAmount !== null && suggestions.spendingAmount !== '') {
-                var payloadSpendingAmount = normalizeNumericValue(suggestions.spendingAmount);
-                if (payloadSpendingAmount !== null) {
-                    component.set("v.BudgetLocal", payloadSpendingAmount);
-                    component.set("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c", payloadSpendingAmount);
-                }
-            }
-
-            // Handle spending percentage - ONLY if explicitly provided, NO calculation
-            if (suggestions.spendingPercentage !== undefined && suggestions.spendingPercentage !== null && suggestions.spendingPercentage !== '') {
-                var payloadSpendingPercentage = normalizeNumericValue(suggestions.spendingPercentage);
-                if (payloadSpendingPercentage !== null) {
-                    tacticMetricPayload.spendingPercentage = payloadSpendingPercentage;
-                    component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", payloadSpendingPercentage);
-                    component.set("v.SelReimbursementRate", payloadSpendingPercentage + '%');
-                }
-            }
-            
-            // Validate total spending doesn't exceed maxIntelInvestment
-            if (suggestions.maxIntelInvestment) {
-                var maxIntel = normalizeNumericValue(suggestions.maxIntelInvestment);
-                if (maxIntel !== null && suggestions.spendingAmount) {
-                    var totalSpending = normalizeNumericValue(suggestions.spendingAmount);
-                    if (totalSpending > maxIntel) {
-                        console.warn('[TACTIC METRICS] Info: Total spending ($' + totalSpending + ') is greater than max Intel investment ($' + maxIntel + '); tactic rows use Intel contribution allocation.');
-                    }
-                }
-            }
-
-            tacticMetricPayload.hasSuggestedTactics = true;
-
-            if (Object.keys(tacticMetricPayload).length === 0) {
-                tacticMetricPayload = null;
-            }
-        }
-        
-        if (tacticMetricPayload) {
-            component.set("v.tacticMetricsValues", tacticMetricPayload);
-            var lwcTacticMetricsComp = component.find("tacticMetrics");
-            if (lwcTacticMetricsComp != null) {
-                try {
-                    // Ensure tactic metric rows exist before applying payload values.
-                    // selectedTactics already populated above - reuse it
-
-                    // If tactics are not explicitly selected but AI provided tactic metric keys,
-                    // derive tactics from payload so goal values can map to rows.
-                    if (selectedTactics.length === 0 && tacticMetricPayload && typeof tacticMetricPayload === 'object') {
-                        var reservedTacticKeys = {
-                            spendingAmount: true,
-                            spendingPercentage: true,
-                            goalValues: true,
-                            tacticMetrics: true,
-                            goalValue: true,
-                            firstKpiValue: true,
-                            hasSuggestedTactics: true
-                        };
-
-                        Object.keys(tacticMetricPayload).forEach(function(key) {
-                            if (!reservedTacticKeys[key]) {
-                                selectedTactics.push(key);
-                            }
-                        });
-
-                        if (selectedTactics.length === 0 && tacticMetricPayload.goalValues && typeof tacticMetricPayload.goalValues === 'object') {
-                            Object.keys(tacticMetricPayload.goalValues).forEach(function(key) {
-                                if (key !== 'goalValue') {
-                                    selectedTactics.push(key);
-                                }
-                            });
-                        }
-                    }
-
-                    selectedTactics = selectedTactics.filter(function(value, index, self) {
-                        return value && self.indexOf(value) === index;
-                    });
-
-                    tacticMetricPayload.hasSuggestedTactics = selectedTactics.length > 0;
-
-                    if (selectedTactics.length === 0) {
-                        return;
-                    }
-
-                    if (selectedTactics.length > 0) {
-                        component.set("v.selectedTacticsOptions", selectedTactics);
-                        component.set("v.newPFR.Core_MDF_Tactics_nm__c", selectedTactics.join(';'));
-                    }
-
-                    var childComp = lwcTacticMetricsComp;
-                    if (helper.isNotBlank(lwcTacticMetricsComp[0])) {
-                        childComp = lwcTacticMetricsComp[0];
-                    }
-
-                    if (childComp.handleTacticChange && selectedTactics.length > 0) {
-                        childComp.handleTacticChange({ selectedTactics: selectedTactics });
-                    }
-
-                    window.setTimeout($A.getCallback(function() {
-                        try {
-                            if (childComp.applyAISuggestions) {
-                                childComp.applyAISuggestions({ tacticMetrics: tacticMetricPayload });
-                            } else if (childComp.applyAiSuggestions) {
-                                childComp.applyAiSuggestions({ tacticMetrics: tacticMetricPayload });
-                            } else if (childComp.setTacticMetricsValues) {
-                                childComp.setTacticMetricsValues(tacticMetricPayload);
-                            }
-                        } catch (deferredApplyError) {
-                            console.warn('Deferred AI tactic metrics apply failed:', deferredApplyError);
-                        }
-                    }), 0);
-                } catch (tacticMetricsError) {
-                    console.warn('Unable to push AI tactic metrics to child component:', tacticMetricsError);
-                }
-            }
-        }
-
-        // Ensure outcome section is available before stamping outcome values.
-        var outcomePayload = null;
-        if (suggestions.outcomeActivityValues && typeof suggestions.outcomeActivityValues === 'object') {
-            outcomePayload = JSON.parse(JSON.stringify(suggestions.outcomeActivityValues));
-        } else if (suggestions.outcomeMetrics) {
-            var metricCandidates = normalizeToArray(suggestions.outcomeMetrics);
-            if (metricCandidates.length > 0) {
-                outcomePayload = {
-                    outcomeMetric: metricCandidates[0]
-                };
-            }
-        }
-
-        if (outcomePayload && typeof outcomePayload === 'object') {
-            component.set('v.showActivityPurpose', true);
-            if (!outcomePayload.outcomeMetric && suggestions.outcomeMetrics) {
-                var fallbackMetrics = normalizeToArray(suggestions.outcomeMetrics);
-                if (fallbackMetrics.length > 0) {
-                    outcomePayload.outcomeMetric = fallbackMetrics[0];
-                }
-            }
-
-            var outcomeMetricFromValues = outcomePayload.outcomeMetric;
-            if (outcomeMetricFromValues) {
-                var resolvedOutcomeMetric = resolveToAvailableOptionValues({ optionsAttr: 'outcomesDependants' }, [outcomeMetricFromValues]);
-                if (resolvedOutcomeMetric && resolvedOutcomeMetric.length > 0) {
-                    component.set('v.prevSelectedOutcomes', resolvedOutcomeMetric);
-                    component.set('v.selectedOutcomes', resolvedOutcomeMetric);
-                    component.set('v.selectedOutcomeMetricOptions', resolvedOutcomeMetric);
-                    component.set('v.newPFR.Core_MDF_Outcomes_nm__c', resolvedOutcomeMetric.join(';'));
-                    component.set('v.isOutcomeSelectionInvalid', false);
-                    component.set('v.showActivityPurpose', true);
-                } else {
-                    // Keep single-metric flow alive even when dependent options are still loading.
-                    component.set('v.prevSelectedOutcomes', [outcomeMetricFromValues]);
-                    component.set('v.selectedOutcomes', [outcomeMetricFromValues]);
-                    component.set('v.selectedOutcomeMetricOptions', [outcomeMetricFromValues]);
-                    component.set('v.newPFR.Core_MDF_Outcomes_nm__c', outcomeMetricFromValues);
-                    component.set('v.isOutcomeSelectionInvalid', false);
-                    component.set('v.showActivityPurpose', true);
-                }
-            }
-
-            applyOutcomeValuesWithRetry(outcomePayload, 20);
-            window.setTimeout($A.getCallback(function() {
-                applyOutcomeValuesWithRetry(outcomePayload, 8);
-            }), 900);
-        }
-
-       if (rawData) {
-           component.set("v.newPFR.Core_MDF_AI_File_Data__c", rawData);
-       }
-    }
-    } catch (applyError) {
-       console.error('Error while applying AI suggestions:', applyError);
     }
 },
 
@@ -822,45 +167,15 @@ calculateMaxIntelInvestment: function(component, event, helper) {
         }
     },
 
-uploadfile: function(component, event, helper) {
-    // Existing logic
-    component.set("v.ContentDocumentIds", event.getParam("uploadFilesIds"));
-    component.set("v.Uploadfinished", event.getParam("fileUploaded"));
-    if (event.getParam("fileUploaded")) {
-        component.set("v.message", "");
-        component.set("v.messageType", "");
-        component.set("v.ChgndAttach", true);  
-        
-        // NEW: Focus area detection logic
-        var showAISuggestions = component.get("v.showAISuggestions");
-        var mode = component.get("v.mode");
-        
-        if (showAISuggestions && mode === '') {
-            var uploadedFiles = event.getParam("uploadFilesIds");
-            if (uploadedFiles && uploadedFiles.length > 0) {
-                helper.detectFocusAreaFromUploadedFile(component, uploadedFiles);
-            }
-        }
-    }
-},
-getSmartAISuggestions: function(component, event, helper) {
-    var description = component.get("v.newPFR.Core_MDF_Activity_Description__c");
-    var uploadedIds = component.get("v.ContentDocumentIds");
-    var recordTypeDeveloperName = 'Core_MDF_Intel_Partner_Alliance_Account_Based';
-    
-    // Determine what to analyze
-    var hasDescription = description && description.trim() !== '';
-    var hasFiles = uploadedIds && uploadedIds.length > 0;
-    
-    if (!hasDescription && !hasFiles) {
-        helper.displaySuccessErrorMsg('Please enter a description or upload files before getting AI suggestions', 'Warning', 'warning', 'dismissible');
-        return;
-    }
-    component.set("v.isLoadingAI", true);
-    
-    // Call the smart analysis helper method
-    helper.performSmartAIAnalysis(component, description, uploadedIds, recordTypeDeveloperName);
-},
+    uploadfile: function(component, event){
+        component.set("v.ContentDocumentIds", event.getParam("uploadFilesIds"));
+        component.set("v.Uploadfinished", event.getParam("fileUploaded"));
+        if (event.getParam("fileUploaded")){
+            component.set("v.message", "");
+            component.set("v.messageType", "");
+            component.set("v.ChgndAttach", true);
+        }    
+    },
 
     closeModalClosedActivtiy: function (component, event, helper) {
         if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")){
@@ -929,19 +244,6 @@ getSmartAISuggestions: function(component, event, helper) {
         if(!$A.util.isEmpty(selectedTacticsOptions) && selectedTacticsOptions != undefined){
            
             component.set("v.newPFR.Core_MDF_Tactics_nm__c", selectedTacticsOptions);
-            
-            // Skip PCT Approval-Check if "Incentive" is selected in tactics to show PCT Approval checkbox
-            var showPCTCheckbox = selectedTacticsOptions.includes('Incentive');
-            component.set("v.showPCTApprovalCheckbox", showPCTCheckbox);
-            //Reset the checkbox value when Incentive is not selected and Ensure boolean value, not undefined/null
-            if (!showPCTCheckbox) {
-                    component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
-            }
-            else if (component.get("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c") === undefined || 
-                     component.get("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c") === null) {
-                component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
-            }
-            
             var marketingTactics = $A.get("$Label.c.Core_MDF_Marketing_Act_Tactis").split(',');
             for(var index=0;index<marketingTactics.length;index++){
                 if(selectedTacticsOptions.includes(marketingTactics[index])){
@@ -952,11 +254,6 @@ getSmartAISuggestions: function(component, event, helper) {
                 }
             
             }
-        } 
-       // Skip PCT Approval-Hide checkbox when no tactics selected
-       else {
-            component.set("v.showPCTApprovalCheckbox", false);
-                component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
         } 
         helper.checkSPIFActSecVisible(component);
 
@@ -973,56 +270,8 @@ getSmartAISuggestions: function(component, event, helper) {
             }
             
         }
-   },
-    // Anjali changes - Handler for Measurement Approach multi-select changes - converts to semicolon-separated string and manages conditional field visibility
-    onMeasurementApproachChange: function(component, event, helper) {
-        var selectedMeasurementApproach = event.getParam('value');
-        var selectedMeasurementApproachOptions = "";
-        if(!$A.util.isEmpty(selectedMeasurementApproach) && selectedMeasurementApproach != undefined){
-                for(var i=0; i<selectedMeasurementApproach.length; i++ ){
-                    if(i!=selectedMeasurementApproach.length-1)
-                        selectedMeasurementApproachOptions+=selectedMeasurementApproach[i]+";";
-                    else 
-                    selectedMeasurementApproachOptions+=selectedMeasurementApproach[i];            
-                }
-        }
-        if(!$A.util.isEmpty(selectedMeasurementApproachOptions) && selectedMeasurementApproachOptions != undefined){
-            component.set("v.newPFR.Core_MDF_Measurement_Approach_nm__c", selectedMeasurementApproachOptions);
-            
-            // Anjali changes - Check if "Other (Specify)" is selected to show/hide the Other Measurement Approach text field
-            var showOtherField = selectedMeasurementApproachOptions.includes('Other (Specify)');
-            component.set("v.showOtherMeasurementApproachField", showOtherField);
-            
-            // Anjali changes - Clear the Other Measurement Approach field if "Other (Specify)" is not selected
-            if (!showOtherField) {
-                component.set("v.newPFR.Core_MDF_Other_Measurement_Approach_txt__c", "");
-            }
-        } else {
-            component.set("v.showOtherMeasurementApproachField", false);
-            component.set("v.newPFR.Core_MDF_Other_Measurement_Approach_txt__c", "");
-        }
-    },
-    // Anjali changes - Handler for Focus Area change - re-fetches all dependent picklists (Brand, Audience, Initiative, Product Type, Technology, Measurement Approach)
-    handleFocusAreaChange: function(component, event, helper) {
-        // Re-fetch all dependent picklists when Focus Area changes
-        if(component.get("v.measurementApproachPicklistValues")) {
-            helper.fetchMultiMeasurementApproach(component);
-        }
-        if(component.get("v.MultiBrandTypes")) {
-            helper.fetchMultiBrandType(component);
-        }
-        if(component.get("v.audiencePicklistValues")) {
-            helper.fetchMultiTargetAudience(component);
-        }
-        if(component.get("v.initiativePicklistValues")) {
-            helper.fetchMultiInitiative(component);
-        }
-        if(component.get("v.ProductTypes")) {
-            helper.fetchProdType(component);
-        }
-        if(component.get("v.technologies")) {
-            helper.fetchTechnologies(component);
-        }
+
+       //helper.resetHelper(component);
        if( !$A.util.isEmpty(component.get("v.selectedTacticsOptions"))){
            if(helper.checkEventTactics(component)==false){
                 component.set("v.renderPrintQuestion", false);
@@ -1031,42 +280,6 @@ getSmartAISuggestions: function(component, event, helper) {
             }
          }
         
-    },
-    
-    // Skip PCT Approval-NEW METHOD - Handle PCT Approval checkbox changes
-    handlePCTApprovalChange: function(component, event, helper) {
-        var isChecked = event.getSource().get("v.checked");
-        // Ensure it's a proper boolean value
-        component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", Boolean(isChecked));
-    },
-
-    handleEmailValidation: function(component, event, helper) {
-        if (!component.get("v.partnerContactDomainsLoaded")) {
-            helper.loadPartnerContactDomains(component, function() {
-                helper.validatePartnerContactEmails(component);
-            });
-            return;
-        }
-
-        helper.validatePartnerContactEmails(component);
-    },
-
-    handleEmailKeyup: function(component, event, helper) {
-        var partnerContactValue = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
-
-        if (!partnerContactValue || !String(partnerContactValue).trim()) {
-            helper.resetPartnerContactValidation(component);
-            return;
-        }
-
-        if (!component.get("v.partnerContactDomainsLoaded")) {
-            helper.loadPartnerContactDomains(component, function() {
-                helper.validatePartnerContactEmails(component);
-            });
-            return;
-        }
-
-        helper.validatePartnerContactEmails(component);
     },
 	
    //Function called on change of Start Date
@@ -1151,9 +364,6 @@ getSmartAISuggestions: function(component, event, helper) {
             inputCmp.showHelpMessageIfInvalid();
             return validSoFar && inputCmp.get('v.validity').valid;
         }, true);
-        if(!helper.validatePriorityFieldsImmediate(component)){
-            validData = false; 
-        }
         var localmsg = "";
 		var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
         /*if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")
@@ -1174,9 +384,6 @@ getSmartAISuggestions: function(component, event, helper) {
         var intelContri = component.get("v.maxIntelInvestment");
         var selectedCountry = component.get("v.selectedCountryOptions");
         var actStatus = component.get("v.CurrentStatus");
-		var partnerContactValueForValidation = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
-		var selectedPartnerContactAccount = component.get("v.selectedAccount");
-		var partnerContactAccountId = selectedPartnerContactAccount && selectedPartnerContactAccount.Id ? selectedPartnerContactAccount.Id : component.get("v.newPFR.ChannelPartnerId");
 		
 		if(component.get("v.showErrorMsgForMaxIntelInvest")){
             validData = false; 
@@ -1284,7 +491,7 @@ getSmartAISuggestions: function(component, event, helper) {
         }
 
         //Throw error when Product Type field is empty 
-        if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && $A.util.isEmpty(component.get("v.selectedProductTypeOptions")) ){
+        if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && $A.util.isEmpty(component.get("v.SelProductType")) ){
             validData = false;
             localmsg = localmsg + $A.get("$Label.c.Core_MDF_ProductTypeError_OutcomeBased") + '\n';
         }
@@ -1299,36 +506,6 @@ getSmartAISuggestions: function(component, event, helper) {
         if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && $A.util.isEmpty(component.get("v.selectedTacticsOptions")) ){
             validData = false;
             localmsg = localmsg + $A.get("$Label.c.Core_MDF_Activity_Tactics_Error_OutcomeBased") + '\n';
-        }
-
-        // Anjali changes - Throw error when Measurement Approach field is empty 
-        if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && $A.util.isEmpty(component.get("v.selectedMeasurementApproachOptions")) ){
-            validData = false;
-			localmsg = localmsg + $A.get("$Label.c.Core_MDF_Measurement_Approach_error") + '\n';
-        }
-
-        // Anjali changes - Throw error when "Other (Specify)" is selected but Other Measurement Approach field is empty
-        var measurementApproachValue = component.get("v.newPFR.Core_MDF_Measurement_Approach_nm__c");
-        var otherMeasurementApproachValue = component.get("v.newPFR.Core_MDF_Other_Measurement_Approach_txt__c");
-        
-        if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && 
-           !$A.util.isEmpty(measurementApproachValue) && 
-           measurementApproachValue.includes('Other (Specify)') && 
-           $A.util.isEmpty(otherMeasurementApproachValue)) {
-            validData = false;
-            localmsg = localmsg + $A.get("$Label.c.Core_MDF_Empty_Field_Error") + '\n';
-        }
-
-        if (partnerContactValueForValidation && String(partnerContactValueForValidation).trim() && partnerContactAccountId && !component.get("v.partnerContactDomainsLoaded")) {
-            helper.loadPartnerContactDomains(component, function() {
-                helper.validatePartnerContactEmails(component);
-            });
-            return;
-        }
-
-        if(!helper.validatePartnerContactEmails(component)){
-            validData = false;
-            localmsg = localmsg + component.get("v.partnerContactErrorMsg") + '\n';
         }
 
         
@@ -1522,42 +699,6 @@ getSmartAISuggestions: function(component, event, helper) {
         else{
             component.set("v.tacticMetricsValues", null);
         }
-        //Akash, IPA outcome
-        if(!$A.util.isEmpty(component.get("v.selectedAccount")) && helper.isNotBlank(component.get("v.selectedAccount"))){
-        var lwcAccActivityComp = component.find("activityAccNode");
-        var outcomeActivityAccNodeValues;
-        var isAccountAllocationModified;
-        
-        const isValid = lwcAccActivityComp.validate();
-        if (!isValid) {
-            var alertMsg = $A.get("$Label.c.Core_MDF_Empty_Field_Error");
-            helper.displaySuccessErrorMsg(alertMsg, "Error!", "error","dismissible");
-            validData = false;
-            return;
-        }
-        
-        try {
-            outcomeActivityAccNodeValues = lwcAccActivityComp.getAllAccountAllocationDetails();
-            isAccountAllocationModified = lwcAccActivityComp.isAccountAllocationModified();
-        } catch (error) {
-            console.error('Error in getAllActivityOutcomesDetails:', error);
-        }
-        
-        if (outcomeActivityAccNodeValues && outcomeActivityAccNodeValues.length > 0) {
-            var outcActivityVal = JSON.parse(JSON.stringify(outcomeActivityAccNodeValues));
-            component.set("v.ActivityNodeAccValues", outcActivityVal);
-            
-            if(isAccountAllocationModified && component.get("v.mode") == 'edit'){ 
-                component.set("v.newPFR.Core_MDF_Node_Acc_Map_Modified_ind__c", true);
-            }
-            
-            if(component.get("v.checkCloneAttribute")){
-                component.set("v.ActivityNodeAccValues", outcActivityVal);
-            }
-        }
-    } else {
-        component.set("v.ActivityNodeAccValues", null);
-    }
         if ( !$A.util.isEmpty(component.get("v.selectedOutcomeMetricOptions")) && helper.isNotBlank(component.get("v.selectedOutcomeMetricOptions"))) {
             var lwcOutcomeActivityComp = component.find("activityOutcomeCmp");
             var outcomeActivityValues;
@@ -1600,14 +741,6 @@ getSmartAISuggestions: function(component, event, helper) {
             }		
             
             //helper.calculateReimbursementRate(component, budgetAmount, maxIntelInvestment);
-             // Skip PCT Approval-ENSURE BOOLEAN FIELDS ARE PROPERLY SET BEFORE SAVE
-            var pctApproval = component.get("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c");
-            if (pctApproval === null || pctApproval === undefined || pctApproval === "") {
-                component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
-            } else {
-                // Ensure it's a proper boolean
-                component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", Boolean(pctApproval));
-            }
             
 			component.set("v.newPFR.Core_MDF_Focus_Area_nm__c",component.get("v.selectedFocusArea"));
 			component.set("v.newPFR.Core_MDF_Activity_Classification_nm__c",component.get("v.selActivityClassification"));
@@ -1617,10 +750,9 @@ getSmartAISuggestions: function(component, event, helper) {
             component.set("v.newPFR.Core_MDF_Activity_Types__c",$A.get("$Label.c.Core_MDF_Outcome_Based_CatType"));
 			component.set("v.newPFR.Core_MDF_Proposal_Based_Ind__c",false);
             component.set("v.newPFR.Core_MDF_Is_Outcome_Based_Ind__c",true);
-            //component.set("v.newPFR.Core_MDF_ProductType__c",component.get("v.SelProductType"));
+            component.set("v.newPFR.Core_MDF_ProductType__c",component.get("v.SelProductType"));
             component.set("v.newPFR.Core_MDF_Priority_nm__c",component.get("v.SelPriority"));
 			component.set("v.newPFR.Core_MDF_Priority_2_nm__c",component.get("v.SelPriority2"));
-            component.set("v.newPFR.Core_MDF_Activity_Level_nm__c","Super Activity");
             //component.set("v.newPFR.Core_MDF_EcosystemPartner_nm__c",component.get("v.selectedEcosystemPartnerOptions"));
             //component.set("v.newPFR.Core_MDF_Technology_txt__c",component.get("v.selectedTechnologyOptions"));
             component.set("v.newPFR.RecordTypeId",component.get("v.recordtype"));
@@ -1633,7 +765,7 @@ getSmartAISuggestions: function(component, event, helper) {
 			//component.set("v.newPFR.Core_MDF_Budget_Type_nm__c", component.get("v.selBudgetType"));		
             //component.set("v.newPFR.Core_MDF_Outcomes_nm__c", component.get("v.selectedOutcomeMetricOptions"));	
             //component.set("v.newPFR.Core_MDF_Initiative_nm__c", component.get("v.selectedInitiativeOptions"));
-            component.set("v.newPFR.RequestedAmount", component.get("v.BudgetLocal"));
+            component.set("v.newPFR.RequestedAmount", component.get("v.maxIntelInvestment"));
             component.set("v.newPFR.Core_MDF_Outcome_Region_nm__c", component.get("v.SelRegion"));
             component.set("v.newPFR.Core_MDF_Country_nm__c", component.get("v.selectedCountryOptions"));
             component.set("v.newPFR.Core_MDF_Exchange_Rate_ptc__c", 1);
@@ -1663,7 +795,7 @@ getSmartAISuggestions: function(component, event, helper) {
             }  
             
         if(((recordTypeDeveloperName == 'Core_MDF_Intel_Partner_Alliance')
-                   && component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false) && component.get("v.recordId") == null && component.get("v.ipaAcctMgr")){
+                   && component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false) && component.get("v.ipaAcctMgr")){
               
             component.set("v.newPFR.Core_MDF_Approval_Step_Completed__c",1);                                     
             component.set("v.newPFR.Core_MDF_Approval_Stage__c",'L1 Approval');
@@ -1875,26 +1007,7 @@ onTechnologyChange: function (component, event, helper) {
     if(!$A.util.isEmpty(selectedTechnologyOptions) && selectedTechnologyOptions != undefined){              
         component.set("v.newPFR.Core_MDF_Technology_txt__c", selectedTechnologyOptions);
         //var techie = component.get("v.selectedTechnologyOptions");
-    }
-}, 
-
-onProductTypeOptionsChange: function (component, event, helper) {//made changes Alekhya
-    var selectedProductType = event.getParam('value');
-    var selectedProductTypeOptions = "";
-    
-    if(!$A.util.isEmpty(selectedProductType) && selectedProductType != undefined){
-        for(var productType=0; productType<selectedProductType.length; productType++ ){
-            if(productType!=selectedProductType.length-1)
-                selectedProductTypeOptions+=selectedProductType[productType]+";";
-            else
-                selectedProductTypeOptions+=selectedProductType[productType]; 
-        }
-    }
-    console.log(selectedProductTypeOptions);
-    if(!$A.util.isEmpty(selectedProductTypeOptions) && selectedProductTypeOptions != undefined){              
-        component.set("v.newPFR.Core_MDF_ProductType__c", selectedProductTypeOptions);
-        //var techie = component.get("v.selectedProductTypeOptions");
-        console.log(selectedProductTypeOptions);
+        
     }
 },     
 
@@ -1953,13 +1066,9 @@ handlePriority2Change: function(component, event, helper) {
 resetAccountattributes : function(component, event, helper){
     if(component.get("v.selectedAccount") == null || component.get("v.selectedAccount").Id == null){
         component.set("v.newPFR.ChannelPartnerId",null);
-        //Akash, IPA outcome
-        component.set("v.isAccountSelected",false);
     } 
     else{
         component.set("v.newPFR.ChannelPartnerId",component.get("v.selectedAccount").Id );
-        //Akash, IPA outcome
-        component.set("v.isAccountSelected",true);
     }
     
     // Only fetch budget if account is also selected
@@ -1976,9 +1085,6 @@ resetAccountattributes : function(component, event, helper){
     //Populate BudgetType field based on ABA
     if(selectedAccount && selectedAccount.Id){
         helper.fetchBudgetTypesBasedOnBenefits(component);
-        helper.loadPartnerContactDomains(component, function() {
-            helper.validatePartnerContactEmails(component);
-        });
     }else{//Reset BudgetType if the account is Removed
         var budgetTypeOptionList = [];
         budgetTypeOptionList.push({label: "---None---", value: "" });
@@ -1986,9 +1092,6 @@ resetAccountattributes : function(component, event, helper){
         component.set("v.newPFR.Core_MDF_Budget_Type_nm__c", '');
         component.set("v.selBudgetType", '');
         component.set("v.showBudgetTypeError", false);
-        component.set("v.allowedPartnerContactDomains", []);
-        component.set("v.partnerContactDomainsLoaded", false);
-        helper.resetPartnerContactValidation(component);
     }
     
     },
@@ -2033,10 +1136,7 @@ resetAccountattributes : function(component, event, helper){
         //var selectedBudgetType = event.getSource().get("v.value");
         if(selectedBudgetType == '' ||selectedBudgetType == 'Account Plan'){
             component.set("v.newPFR.Core_MDF_Budget_Type_nm__c", selectedBudgetType);
-        }
-    },
-        /*Commented this error as part of showing only Account Plan as Budget Type
-        else{
+        }else{
             component.set("v.selBudgetType", "");
              helper.displaySuccessErrorMsg(
                 $A.get("$Label.c.Core_MDF_Activity_Outcome_ProposalBT_Selection_Error"),
@@ -2044,24 +1144,7 @@ resetAccountattributes : function(component, event, helper){
                 "error",
                 "sticky"
             );
-        }*/
-        handleCancel : function(component, event, helper) {
-        var mode = component.get("v.mode");
-        var communityUrl = component.get("v.externalper");
-        var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
-        var recordId= component.get("v.recordId");
-        if(mode == 'edit' || mode == 'clone'){
-            var url = communityUrl
-            ? communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId
-            : '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
-            window.location.href = url;
-        }else if(mode == ''){
-            var url = communityUrl
-            ? communityBaseUrl + 's/Core_MDF_Outcome_Based_Campaigns'
-            : '/lightning/n/Core_MDF_Outcome_Based_Campaigns';
-            window.location.href = url;
         }
     }
-
 
 })

@@ -10,5 +10,10 @@
         <sharedTo>10660615@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
+    <folderShares>
+        <accessLevel>EditAllContents</accessLevel>
+        <sharedTo>10695453@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
     <name>EMEA RSG Public</name>
 </DashboardFolder>

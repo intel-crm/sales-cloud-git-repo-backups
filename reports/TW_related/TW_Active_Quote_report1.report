@@ -68,6 +68,9 @@
         <field>SBQQ__Quote__c$core_cpq_active_cb__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$core_cpq_opportunity_disty_view_nm__c</field>
     </columns>
     <columns>

@@ -129,10 +129,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Lead_Source_Pkt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Description</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

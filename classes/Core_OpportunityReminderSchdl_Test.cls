@@ -124,7 +124,7 @@ public class Core_OpportunityReminderSchdl_Test {
     static testMethod void validateReminderSchdl(){
         try{
             Date twelveDaysAgo = System.today().addDays(-12);
-            //Date fifteenDaysAgo = System.today().addDays(-15);   
+            Date fifteenDaysAgo = System.today().addDays(-15);   
             Opportunity opp = [select id,StageName,CoE_Status__c,RecordTypeId,RecordType.DeveloperName,Core_Primary_Customer_Contact__c,Core_Date_Submitted_for_Approval__c  
                                from opportunity where name LIKE '%Test%' limit 1];
             
@@ -163,7 +163,7 @@ public class Core_OpportunityReminderSchdl_Test {
     
     static testMethod void validateReminderSchdl2(){
         try{
-            //Date twelveDaysAgo = System.today().addDays(-12);
+            Date twelveDaysAgo = System.today().addDays(-12);
             Date eighteenDaysAgo = System.today().addDays(-18);   
             Opportunity opp = [select id,StageName,CoE_Status__c,RecordTypeId,RecordType.DeveloperName,Core_Primary_Customer_Contact__c,Core_Date_Submitted_for_Approval__c  
                                from opportunity where name LIKE '%Test%' limit 1];

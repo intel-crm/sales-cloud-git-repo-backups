@@ -61,10 +61,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_Is_Sanctioned__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Qty__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Status__c</column>
@@ -116,7 +112,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2026-08-01</endDate>
+        <endDate>2025-05-06</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

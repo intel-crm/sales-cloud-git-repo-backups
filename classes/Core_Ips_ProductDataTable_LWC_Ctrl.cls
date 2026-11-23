@@ -39,7 +39,7 @@ public with sharing class Core_Ips_ProductDataTable_LWC_Ctrl {
         User loggedInUser = [Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id =: UserInfo.getUserId()];
         String loggedInUserAcctId = loggedInUser.Contact.AccountId;
         if(productListView=='AllProducts'){
-            List<Asset> productList = [SELECT Id, Name, core_Product_Application__c, Core_IPS_Support_License__c, Core_IPS_Project_Id__c, Core_IPS_Project__c, Core_IPS_Project__r.Name,Core_IPS_Project__r.Core_Status__c,Core_IPS_Project_Status__c,Core_IPS_Project_Name__c, Account.Name,Account.Id, status FROM Asset ORDER BY Name Limit 49999]; //Limit Added by Tushar
+            List<Asset> productList = [SELECT Id, Name, core_Product_Application__c, Core_IPS_Support_License__c, Core_IPS_Project_Id__c, Core_IPS_Project__c, Core_IPS_Project__r.Name,Core_IPS_Project__r.Core_Status__c,Core_IPS_Project_Status__c,Core_IPS_Project_Name__c, Account.Name,Account.Id, status FROM Asset ORDER BY Name];
             for( Asset prod:productList ){
                 prodDataTableData.add(prod);
             }

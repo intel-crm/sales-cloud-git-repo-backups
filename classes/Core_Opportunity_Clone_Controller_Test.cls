@@ -410,7 +410,7 @@ public class Core_Opportunity_Clone_Controller_Test {
     static testMethod void opportunity_Clone6(){
         setupTestData();
         Test.startTest(); 
-        //recordType  oppRecordType = [select id,RecordType.Name from recordType where sObjectType='Opportunity' and  (Recordtype.DeveloperName='Core_New_Opportunity' OR Recordtype.Name = 'Solution Group') limit 1];
+        recordType  oppRecordType = [select id,RecordType.Name from recordType where sObjectType='Opportunity' and  (Recordtype.DeveloperName='Core_New_Opportunity' OR Recordtype.Name = 'Solution Group') limit 1];
         
         Account accountInstance = new Account();
         accountInstance.name = 'TestAccount';

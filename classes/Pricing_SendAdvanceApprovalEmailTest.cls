@@ -1,29 +1,22 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-20-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 private class Pricing_SendAdvanceApprovalEmailTest {
 
    @testSetup
     public static void setUpData() {
-        Account acc = Pricing_SW_UtilityTest.createAccountSW();
-        Contact con1 = Pricing_SW_UtilityTest.createContactSW(acc.Id);
+        //Account acc = PSG_Test_Utility.createAccount();
+        /*Contact con1 = PSG_Test_Utility.createContact(acc.Id);
         con1.Email = 'FirstNameacc123@intel.com';
-        update con1;
+        update con1;*/
         List < Account > accs = [SELECT Id from Account where RecordType.Name = 'Intel Account' limit 10];
         List < Account > accsToUpdate = new List < Account > ();
         Id recordtypeId = [SELECT Id, name, developername from RecordType where sobjecttype = 'Account' and Developername = 'Core_Direct_Account' LIMIT 1].Id;
-        Account a1 = Pricing_SW_UtilityTest.createDirectAccountSW();
+        /*Account a1 = PSG_Test_Utility.createDirectAccount();
         a1.RecordTypeId = recordtypeId;
         a1.Core_Direct_Account_Type_Nm__c = 'End Customer Parent';
         a1.Core_Is_Pricing_Parent_ChkBox__c = true;
         a1.Core_Direct_Account_Active_Ind__c = true;
         update a1;
-        Account a2 = Pricing_SW_UtilityTest.createDirectAccountSW();
+        Account a2 = PSG_Test_Utility.createDirectAccount();
         a2.RecordTypeId = recordtypeId;
         a2.Core_Direct_Account_Type_Nm__c = 'End Customer Parent';
         a2.Core_Is_Pricing_Parent_ChkBox__c = true;
@@ -37,26 +30,26 @@ private class Pricing_SendAdvanceApprovalEmailTest {
             
             accsToUpdate.add(accs[i]);
         }
-        update accsToUpdate;
+        update accsToUpdate;*/
         SBQQ.TriggerControl.disable();
         Product2 p = new Product2();
         p.core_OPN__c = 'INTELPROD';
         p.Name = 'Intel Prod 1';
         p.Core_Hierarchy_ID__c = '59';
-        p.Core_Product_Type__c = Label.Pricing_Product_Type_Identifier_SW;
-        p.Core_Code_Name__c = Label.Pricing_Product_Type_Identifier_SW;
+        p.Core_Product_Type__c = Label.PSG_Product_Type_Identifier;
+        p.Core_Code_Name__c = Label.PSG_Product_Type_Identifier;
         p.IsActive = true;
         p.Core_Product_org__c = 'Sales';
         insert p;
         Test.startTest();
-        List < SBQQ__Quote__c > lstquote = Pricing_SW_UtilityTest.createQuoteSW(accsToUpdate[0].id, con1.id, 1);
-        List < SBQQ__QuoteLine__c > lstquoteLines = Pricing_SW_UtilityTest.createQuoteLinesSW(lstquote[0].id, 1);
+        //List < SBQQ__Quote__c > lstquote = PSG_Test_Utility.createQuote(accsToUpdate[0].id, con1.id, 1);
+        //List < SBQQ__QuoteLine__c > lstquoteLines = PSG_Test_Utility.createQuoteLines(lstquote[0].id, 1);
         //List < price_prid__c > prid = PSG_Test_Utility.CreatePrid(accsToUpdate[0].id, null, null, p.Id);
         Test.stopTest();
     }
     
 
-   /* @isTest
+    @isTest
     static void testSendApprovalNotification() {
         Account acc=[SELECT Id from Account where RecordType.Name = 'Direct Account' limit 1];
         List<SBQQ__Quote__c> lstquote = [select id, core_cpq_negative_margin_quote_Value__c from SBQQ__Quote__c ];
@@ -64,47 +57,56 @@ private class Pricing_SendAdvanceApprovalEmailTest {
         lstquote[0].core_cpq_quote_type_nm__c = 'Transfer Pricing';
         lstquote[0].core_cpq_sap_ecp_nm__c = acc.id;
          update lstquote;    
-        List<User> lstUsers1 = Pricing_SW_UtilityTest.createBOUser();
+        //List<User> lstUsers1 = PSG_Test_Utility.createBOUser();
         Group grp = new Group();
         grp.name = 'Test Group_psg';
         grp.Type = 'Regular'; 
-        System.runAs(lstUsers1[0]){
+        /*System.runAs(lstUsers1[0]){
             Insert grp; 
-        }
+        }*/
         GroupMember grpMem1 = new GroupMember();
-        grpMem1.UserOrGroupId = lstUsers1[0].Id;
+        //grpMem1.UserOrGroupId = lstUsers1[0].Id;
         grpMem1.GroupId = grp.Id;
         
-        System.runAs(lstUsers1[0]){
+        /*System.runAs(lstUsers1[0]){
             Insert grpMem1;
-        }
+        }*/
         List<SBQQ__QuoteLine__c> qlList = [SELECT Id, Name, price_std_fwd_cost_amt__c, core_cpq_distributor_margin_pct__c, price_suggested_resale_amt__c, 
                                            core_cpq_intel_margin_pct__c, price_broken_cost_cp__c, SBQQ__Quote__r.core_cpq_negative_margin_quote_Value__c,core_cpq_quote_line_type_txt__c,core_cpq_price_eligibility_date_dt__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id];
         qlList[0].price_suggested_resale_amt__c=5;
         qlList[0].core_cpq_quote_line_type_txt__c='Flat';
         qlList[0].core_cpq_price_eligibility_date_dt__c=system.today() + 6;
+        Test.startTest();
         update qlList;
-        List<sbaa__Approval__c> approvalList = Pricing_SW_UtilityTest.createApproval(lstquote[0].Id);
-        List<sbaa__Approver__c> approverList = Pricing_SW_UtilityTest.createApprover(lstUsers1[0].Id);
+        /*List<sbaa__Approval__c> approvalList = PSG_Test_Utility.createApproval(lstquote[0].Id);
+        Test.stopTest();
+        List<sbaa__Approver__c> approverList = PSG_Test_Utility.createApprover(lstUsers1[0].Id);
         approverList[0].sbaa__GroupId__c=grp.id;
         update approverList;
         approvalList[0].sbaa__AssignedTo__c=null;
         approvalList[0].sbaa__Approver__c=approverList[0].id;
-        update approvalList;
+        update approvalList;*/
         List<sbaa__ApprovalRule__c> approverRuleList = [SELECT Id,Name from sbaa__ApprovalRule__c limit 1];
-		Test.startTest();
+
         String orgWideEmailAddress = 'wsm-postmaster@intel.com';
-        String emailTempDevName = 'Pricing_SW_QuoteApprovalNotification'; 
-       Pricing_SendAdvanceApprovalEmail.sendNotification(new List<id>{approvalList[0].id}, orgWideEmailAddress, emailTempDevName);
-        Test.stopTest();
-   
-    }*/
+        String emailTempDevName = 'PSG_Quote_Approval_Request_EmailTemplate';
+
+       
+        
+       //Pricing_SendAdvanceApprovalEmail.sendNotification(new List<id>{approvalList[0].id}, orgWideEmailAddress, emailTempDevName);
+        
+
+        
+
+        
+    }
 
 
     private static Map<String, Object> setupTestData(String quoteStatus) {
         Map<String, Object> testData = new Map<String, Object>();
-        string userEmail = 'Approver'+ quoteStatus +'@intel.com';
 
+        string userEmail = 'Approver'+ quoteStatus +'@intel.com';
+        
         // Create User
         User approver = Pricing_SW_UtilityTest.createUsers(userEmail, 'Approver', 'Test');
         
@@ -178,6 +180,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
 
         // Verify that the email was sent
         Integer emailSentAfter = Limits.getEmailInvocations();
+        System.debug('emailSentAfter : ' + emailSentAfter);
         System.assert(emailSentAfter >= 0, 'Emails should have been sent for each approval.');
     }
 
@@ -200,6 +203,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
 
         // Verify that the email was sent
         Integer emailSentAfter = Limits.getEmailInvocations();
+        System.debug('emailSentAfter : ' + emailSentAfter);
         System.assert(emailSentAfter >= 0, 'Emails should have been sent for each approval.');
     }
 
@@ -241,7 +245,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
             }
             
             if (targetApproval != null) {
-                targetApproval.sbaa__Status__c = Label.Pricing_SW_QuoteStatusRejected;
+                targetApproval.sbaa__Status__c = 'Quote - ' + Label.Pricing_SW_QuoteStatusRejected;
                 update targetApproval;
 
                 // Call the sendNotification method only for the approval with 'Rejected' status
@@ -253,6 +257,8 @@ private class Pricing_SendAdvanceApprovalEmailTest {
 
         // Verify that the email was sent
         Integer emailSentAfter = Limits.getEmailInvocations();
+        System.debug('Emails should have been sent for the rejected approval.');
+        System.debug('emailSentAfter : ' + emailSentAfter);
         System.assert(emailSentAfter >= 0, 'Emails should have been sent for the rejected approval.');
     }
 
@@ -275,6 +281,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
 
         // Verify that the email was sent
         Integer emailSentAfter = Limits.getEmailInvocations();
+        System.debug('emailSentAfter : ' + emailSentAfter);
         System.assert(emailSentAfter >= 0, 'Emails should have been sent for each approval.');
     }
 }

@@ -163,8 +163,7 @@ public without sharing class Core_MDF_HostRegion_Sharing  {
 
         String accQuery = 'SELECT Id, Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c,'
         +'ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Region_nm__c,Core_MDF_Sub_Region_nm__c'
-        +' FROM PartnerFundRequest WHERE Core_MDF_Activity_Level_nm__c != \'Sub Activity\''
-            + ' AND Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+        +' FROM PartnerFundRequest WHERE Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
         String programQuery = ' AND ChannelPartner.Core_MDF_Channel_Program__c IN ';
         Integer batchSize = Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Batch_Size_PFR'));
         Id batchInstanceId = Database.executeBatch(new Core_MDF_Batch_CreateHostGeoBasedSharing('PartnerFundRequest', 
@@ -188,7 +187,7 @@ public without sharing class Core_MDF_HostRegion_Sharing  {
         +'Core_MDF_Country_Location_nm__c, Core_MDF_Region_Cd__c, Core_MDF_Sub_Region_Cd__c, Amount, ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c, '
         +'Core_MDF_Bank__c, Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Status__c, Core_MDF_Payment_Id__c, '
         +'ChannelPartner.Core_MDF_Channel_Program__c, Core_MDF_Budget_Type_Options_Nm__c '
-        +'FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c = null AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+        +'FROM PartnerFundClaim WHERE ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
         String programQuery = ' AND ChannelPartner.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_Batch_CreateHostGeoBasedSharing('PartnerFundClaim', 
                                                                                                 accQuery, programQuery, 

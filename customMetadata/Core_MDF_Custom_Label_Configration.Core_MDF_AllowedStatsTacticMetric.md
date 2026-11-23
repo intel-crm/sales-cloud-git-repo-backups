@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Draft,Pending Clarification,Resubmission Required,Pending Account Manager Clarification,PIC Pending,Payment Clearance Processing</value>
+        <value xsi:type="xsd:string">Draft,Pending Clarification,Resubmission Required,Pending Account Manager Clarification,PIC Pending</value>
     </values>
 </CustomMetadata>

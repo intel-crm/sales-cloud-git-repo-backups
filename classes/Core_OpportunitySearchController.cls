@@ -346,7 +346,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         }
 
         // We don't want the UI to add these so they are being added outside of the fieldset.        
-        query += 'Core_Opportunity_Geo_ASMO__c, Core_Opportunity_Geo_EMEA__c, Core_Opportunity_Geo_APJ__c,Core_Opportunity_Geo_PRC__c, '; 
+        query += 'Core_Opportunity_Geo_ASMO__c, Core_Opportunity_Geo_EMEA__c, Core_Opportunity_Geo_APJ__c, CRM_Opportunity_Geo_INDIA__c,Core_Opportunity_Geo_PRC__c, '; 
         query += 'Owner.Name, Name, Account.Name, toLabel(Account.BillingCountryCode) ';
         query += ' FROM OPPORTUNITY ';        
         
@@ -466,7 +466,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_ASMO__c, fieldPrefix + 'Core_Opportunity_Geo_ASMO__c', geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_EMEA__c, fieldPrefix + 'Core_Opportunity_Geo_EMEA__c', geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_PRC__c,  fieldPrefix + 'Core_Opportunity_Geo_PRC__c',  geoCriteria);                   
-        //geoCriteria = checkGEOField(inputOpp.CRM_Opportunity_Geo_INDIA__c, fieldPrefix + 'CRM_Opportunity_Geo_INDIA__c',geoCriteria);
+        geoCriteria = checkGEOField(inputOpp.CRM_Opportunity_Geo_INDIA__c, fieldPrefix + 'CRM_Opportunity_Geo_INDIA__c',geoCriteria);
                       
          
                                       
@@ -612,6 +612,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                               'Core_Opportunity__r.Core_Opportunity_Geo_ASMO__c, ' + 
                               'Core_Opportunity__r.Core_Opportunity_Geo_EMEA__c, ' + 
                               'Core_Opportunity__r.Core_Opportunity_Geo_APJ__c, ' + 
+            		      'Core_Opportunity__r.CRM_Opportunity_Geo_INDIA__c,' +
                               'Core_Opportunity__r.Core_Opportunity_Geo_PRC__c, ' + 
                               'Core_Partner__r.Name, ' +
                               'toLabel(Core_Partner__r.BillingCountryCode), ' + 
@@ -1116,8 +1117,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
     
             if (opp.Core_Opportunity_Geo_PRC__c)
                 result += 'PRC, ';
-            /*if(opp.CRM_Opportunity_Geo_INDIA__c)
-                result += 'INDIA, ';*/
+            if(opp.CRM_Opportunity_Geo_INDIA__c)
+                result += 'INDIA, ';
                                                 
             result = result.removeEnd(' ');
             result = result.removeEnd(',');

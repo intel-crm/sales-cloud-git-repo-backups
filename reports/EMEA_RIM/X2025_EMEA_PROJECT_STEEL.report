@@ -43,9 +43,6 @@
     <columns>
         <field>CAMPAIGN_ID</field>
     </columns>
-    <columns>
-        <field>CAMPAIGN_STATUS</field>
-    </columns>
     <description>Displays all EMEA campaigns Post L2 Approval</description>
     <filter>
         <criteriaItems>
@@ -67,14 +64,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>CAMPAIGN_STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Campaign Accepted,Completed,Draft,In Progress,Planned,Proposal Accepted,Revision Required,Submitted</value>
+            <value>Campaign Accepted,Completed,Draft,In Progress,Pending Approval,Pending Review,Planned,Proposal Accepted,Revision Required,Submitted</value>
         </criteriaItems>
         <criteriaItems>
             <column>Campaign.Core_MDF_Budget_Type_txt__c</column>
@@ -88,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>[#PRG-5AZ01#],[#PRG-5IR01#],[#PRG-5DW04#]</value>
+            <value>[#PRG-5AZ01#],[#PRG-5IR01#]</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,10 +97,15 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>CAMPAIGN_STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>Campaign.Core_MDF_Approval_Stage_nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>26 EMEA P. STEEL&amp; MSFT SFC ( Non Disti )</name>
+    <name>2025 EMEA PROJECT STEEL ( Non Disti )</name>
     <params>
         <name>scopeid</name>
         <value></value>

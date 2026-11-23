@@ -41,14 +41,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Manual_Benefits__c</fullName>
-        <description>This field contains manual benefits of IPA</description>
-        <label>PRM_Manual_Benefits</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>PRM_NoOfBatchEntRecords__c</fullName>
         <externalId>false</externalId>
         <label>NoOfBatchEntRecords</label>
@@ -96,17 +88,6 @@
         <fullName>PRM_SchedulingHour__c</fullName>
         <externalId>false</externalId>
         <label>PRM_SchedulingHour</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Total_sales_value__c</fullName>
-        <externalId>false</externalId>
-        <label>PRM_Total_sales_value</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>

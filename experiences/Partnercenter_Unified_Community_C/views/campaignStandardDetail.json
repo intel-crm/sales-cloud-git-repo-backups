@@ -79,12 +79,10 @@
             "restrictFieldVisiblityCriteriaFieldAPIName" : "Core_MDF_CampOutcomeOpt_In_Ind__c = true",
             "restrictFieldVisiblityFieldAPIName" : "Core_MDF_Initial_Baseline_Quantity_nbr__c",
             "sharingFlag" : "true",
-            "strFields" : "Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c",
-            "strLabels" : "",
-            "tableHeader" : ""
+            "strFields" : "Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c"
           },
-          "componentName" : "c:core_MDF_Custom_Related_List",
-          "id" : "b7ccdad7-6d0e-4f93-97b7-b9b76b07ce59",
+          "componentName" : "c:core_MDF_Campaign_Related_List",
+          "id" : "f50aed12-619c-42a2-b1ff-4d22503d9b12",
           "renditionMap" : { },
           "type" : "component"
         }, {
@@ -118,12 +116,10 @@
         "recordId" : "{!recordId}",
         "relatedobjectApiName" : "Core_MDF_Camp_to_ActPartner__c",
         "sharingFlag" : "true",
-        "strFields" : "Core_MDF_Activating_Partner_Account_id__c",
-        "strLabels" : "",
-        "tableHeader" : ""
+        "strFields" : "Core_MDF_Activating_Partner_Account_id__c"
       },
-      "componentName" : "c:core_MDF_Custom_Related_List",
-      "id" : "72d36154-5f44-432d-9da9-0e2bc9a7f9cd",
+      "componentName" : "c:core_MDF_Campaign_Related_List",
+      "id" : "4feccc25-3952-4f48-a6a1-05674629f85c",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

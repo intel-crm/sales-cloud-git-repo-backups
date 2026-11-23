@@ -115,6 +115,9 @@
         <field>SBQQ__Quote__c.core_cpq_disty_margin_exception__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_cm_name_disty_nm__c</field>
     </columns>
     <description>Draft of a quote history view

@@ -847,7 +847,7 @@ public class PRM_CreateAccRelatedRecords_Test{
        // insert acr;
         
         Test.startTest();
-       /* List<PRM_Registration_Request__c> listToInsert2 = new List<PRM_Registration_Request__c>();
+        List<PRM_Registration_Request__c> listToInsert2 = new List<PRM_Registration_Request__c>();
         PRM_Registration_Request__c regRequest4 = PRM_TestUtility.getPRMRegistrationRequest();
         regRequest4.PRM_First_Name__c = 'Casie';
         regRequest4.PRM_Last_Name__c = 'Mccall';
@@ -870,7 +870,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         insert regRequest4;
         //System.debug('regRequest4'+regRequest4);
         listToInsert2.add(regRequest4);
-        PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(listToInsert2);*/
+        PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(listToInsert2);
         
         
         List<PRM_Registration_Request__c> listToInsert3 = new List<PRM_Registration_Request__c>();

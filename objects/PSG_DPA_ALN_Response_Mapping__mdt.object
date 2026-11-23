@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>psg_change_flag__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Change Flag</label>
+        <length>3</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>psg_dpa_aln_status__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>DPA/ALN Status</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>psg_isactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>psg_sap_status__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SAP Status</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PSG DPA ALN Response Mapping</label>
+    <listViews>
+        <fullName>All_DPA_ALN_Response_Mapping</fullName>
+        <columns>MasterLabel</columns>
+        <columns>psg_change_flag__c</columns>
+        <columns>psg_sap_status__c</columns>
+        <columns>psg_dpa_aln_status__c</columns>
+        <columns>psg_isactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All DPA/ALN Response Mapping</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PSG DPA ALN Response Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -99,6 +99,9 @@
     <columns>
         <field>Opportunity.Core_Vertical_Sector__c</field>
     </columns>
+    <columns>
+        <field>Opportunity.LID__MainCompetitors__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Product2.Core_Code_Name__c</column>

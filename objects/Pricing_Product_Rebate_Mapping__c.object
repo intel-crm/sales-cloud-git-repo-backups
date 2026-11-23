@@ -287,6 +287,6 @@
     </nameField>
     <pluralLabel>Product Rebate Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

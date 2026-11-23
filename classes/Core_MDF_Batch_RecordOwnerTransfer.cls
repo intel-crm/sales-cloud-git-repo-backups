@@ -5,7 +5,7 @@
 * Modification Log :
 * Developer                     Date                        Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
-* JB - Accenture        03/24/2023                    Batch is used to update the Record owner as System user
+* JB - Accenture    		03/24/2023                    Batch is used to update the Record owner as System user
 * *****************************************************************************************************************************************/
 global class Core_MDF_Batch_RecordOwnerTransfer implements Database.batchable<SObject>, Database.stateful{
 
@@ -23,7 +23,7 @@ global class Core_MDF_Batch_RecordOwnerTransfer implements Database.batchable<SO
 
             //To get the create access object list of Partner community objects for all programs.
             Map<String, Set<String>> programToExtObjMap = new Map<String, Set<String>>();
-            for(String programExtObjString : Core_MDF_CustomLabelConfig.getBulkTextValues(new List<String>{'Core_MDF_Ext_Obj_create_Perm_CCF', 'Core_MDF_Ext_Obj_create_Perm_DCF','Core_MDF_Ext_Obj_create_Perm_CCF_Boost', 'Core_MDF_Ext_Obj_create_Perm_SPCF', 'Core_MDF_Ext_Obj_create_Perm_IPA', 'Core_MDF_Ext_Obj_create_Perm_RMF'}).values()){
+            for(String programExtObjString : Core_MDF_CustomLabelConfig.getBulkTextValues(new List<String>{'Core_MDF_Ext_Obj_create_Perm_CCF', 'Core_MDF_Ext_Obj_create_Perm_DCF','Core_MDF_Ext_Obj_create_Perm_CCF_Boost', 'Core_MDF_Ext_Obj_create_Perm_SPCF', 'Core_MDF_Ext_Obj_create_Perm_IPA', 'Core_MDF_Ext_Obj_create_Perm_RMF', 'Core_MDF_Ext_Obj_create_Perm_CMDF'}).values()){
                 List<String> programAndObjectsList = programExtObjString.split(':');
                 if(programAndObjectsList.size() == 2 && String.isNotBlank(programAndObjectsList[1]) && programNameToIdMap.containsKey(programAndObjectsList[0]) &&
                     String.isNotBlank(programNameToIdMap.get(programAndObjectsList[0]))){
@@ -77,7 +77,7 @@ global class Core_MDF_Batch_RecordOwnerTransfer implements Database.batchable<SO
             if(Test.isRunningTest()){
                 objectSet.addAll(new Set<String>{'Campaign','PartnerFundRequest','PartnerFundClaim', 'Core_MDF_Audit_Document__c', 'Core_MDF_Claim_Batch__c','Core_MDF_Account_Bank_Mapping__c',  'Account', 'Contact'});
             }
-      
+			
             List<SObject> sobjToUpdate = new List<SObject>();
             if(objectSet.contains('Campaign')){
 
@@ -120,7 +120,7 @@ global class Core_MDF_Batch_RecordOwnerTransfer implements Database.batchable<SO
                             }
                         }
                     }
-                if(objectSet.contains('Core_MDF_Claim_Batch__c')){
+            		if(objectSet.contains('Core_MDF_Claim_Batch__c')){
 
                         for(Core_MDF_Claim_Batch__c claimBatch : [SELECT Id, OwnerId, Core_MDF_Program_Id__c,Core_MDF_Account__c, Core_MDF_Account__r.Name FROM Core_MDF_Claim_Batch__c WHERE OwnerId IN: userIds AND OwnerId !=: ownerId AND Core_MDF_Program_Id__c IN: programIdToUserIdsMap.keySet()]){
                             if(programIdToUserIdsMap.containsKey(claimBatch.Core_MDF_Program_Id__c) && programIdToUserIdsMap.get(claimBatch.Core_MDF_Program_Id__c).contains(claimBatch.OwnerId)){

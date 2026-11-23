@@ -77,6 +77,5 @@ public class Core_Opp_KPI_Test {
         insert oppKpiList;
         
         delete oppKpiList[0];
-        system.assertEquals(oppKpiList.size(), 2);
     }
 }

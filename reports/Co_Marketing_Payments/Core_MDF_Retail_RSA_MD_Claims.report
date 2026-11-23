@@ -82,7 +82,7 @@ Budget Type-RSA MD</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,EMEA,PRC,APJ,ASMO,INDIA</value>
+            <value>,APJ,ASMO,EMEA,PRC,INDIA</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Sub_Region_Cd__c</column>

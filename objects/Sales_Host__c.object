@@ -426,6 +426,51 @@
     </fields>
     <label>Host Information</label>
     <listViews>
+        <fullName>Active_Computers</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_isActiveHost__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Computers</label>
+        <sharedTo>
+            <group>AGS_PSG_External_License_Users</group>
+            <group>AGS_PSG_Internal_LicenseAdmin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Active_Computers_INTERNAL</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Contact__c</columns>
+        <columns>Sales_Primary_Admin_Name__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Active Computers (INTERNAL)</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>All</fullName>
         <columns>Sales_Computer_Name_Txt__c</columns>
         <columns>NAME</columns>
@@ -447,6 +492,27 @@
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Computers_Int</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Contact__c</columns>
+        <columns>Sales_Primary_Admin_Name__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Computers (INTERNAL)</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>ags_internal_users</group>
         </sharedTo>
     </listViews>
     <nameField>

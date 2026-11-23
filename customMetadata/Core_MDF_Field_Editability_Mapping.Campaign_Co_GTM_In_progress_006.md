@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Name,StartDate,EndDate,Core_MDF_Intel_Owner_id__c,Core_MDF_Member_Acceptor_id__c,Core_MDF_Intel_Verifier_id__c,Core_MDF_Priority__c,Core_MDF_Market_Segment_nm__c,Core_MDF_MyDeals_txt__c,Core_MDF_Customer_Product_Codename_txt__c,Core_MDF_Brand__c,Core_MDF_Technology__c,Core_MDF_Product_Type__c,Core_MDF_Reason_for_Back_Dating_Nm__c,Core_MDF_Other_Reason_Name_txt__c,Core_MDF_Contact_Name_And_Email_txt__c,Core_MDF_Volume_txt__c,Core_MDF_PCT_Notes_txt__c,Core_MDF_OEM_Platform_Start_Date_Dt__c,Core_MDF_OEM_Platform_End_Date_Dt__c,Core_MDF_MMID__c,Core_MDF_Profit_Center__c,Core_MDF_IPA_Co_Engineering_Campaign_ind__c</value>
+        <value xsi:type="xsd:string">Name,StartDate,EndDate,Core_MDF_Intel_Owner_id__c,Core_MDF_Member_Acceptor_id__c,Core_MDF_Intel_Verifier_id__c,Core_MDF_Priority__c,Core_MDF_Market_Segment_nm__c,Core_MDF_MyDeals_txt__c,Core_MDF_Customer_Product_Codename_txt__c,Core_MDF_Brand__c,Core_MDF_Technology__c,Core_MDF_Product_Type__c,Core_MDF_Reason_for_Back_Dating_Nm__c,Core_MDF_Other_Reason_Name_txt__c,Core_MDF_Contact_Name_And_Email_txt__c,Core_MDF_Volume_txt__c,Core_MDF_PCT_Notes_txt__c,Core_MDF_OEM_Platform_Start_Date_Dt__c,Core_MDF_OEM_Platform_End_Date_Dt__c,,Core_MDF_MMID__c,Core_MDF_Profit_Center__c</value>
     </values>
     <values>
         <field>Core_MDF_Field_ReadOnly_API_Name__c</field>
@@ -40,6 +40,6 @@
     </values>
     <values>
         <field>Core_MDF_Status__c</field>
-        <value xsi:type="xsd:string">In Progress</value>
+        <value xsi:type="xsd:string">In progress</value>
     </values>
 </CustomMetadata>

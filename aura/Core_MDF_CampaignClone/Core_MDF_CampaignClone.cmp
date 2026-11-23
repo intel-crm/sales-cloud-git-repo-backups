@@ -94,9 +94,8 @@
                         <lightning:buttonIcon iconName="utility:close"
                                               onclick="{! c.closeModel }"
                                               alternativeText="close"
-                                              variant="bare"
-                                              size="small"
-                                              class="slds-button slds-button_icon slds-modal__close"/>
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
                     </header>
                     <aura:if isTrue="{!v.showPFRModal}">
@@ -123,9 +122,8 @@
             <div class="slds-modal__container">
                 <!-- Heading (Header of the Modal) -->
                 <div class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.closeModalFormCampaign}">
-                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModalFormCampaign}">
+                        X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                     </button>
                 </div>
                   <div class="slds-modal__content slds-p-around--medium">
@@ -171,9 +169,8 @@
                       <lightning:buttonIcon iconName="utility:close"
                                               onclick="{! c.closeModel }"
                                               alternativeText="close"
-                                              variant="bare"
-                                              size="small"
-                                              class="slds-button slds-button_icon slds-modal__close"/>
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
                     </header>
                     <aura:if isTrue="{!v.showPFRModal}">

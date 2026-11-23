@@ -426,26 +426,4 @@
         });
         $A.enqueueAction(action);
     },
-    getRecommendedPrice: function (component, event, helper, quoteLineId) {//check on future methods
-        let quotelinedata = component.get("v.quoteLines");
-        let quoteLinNbr = quotelinedata.filter(element => element.Id == quoteLineId)[0].Pricing_Quote_Line_Number__c;
-        var action = component.get("c.getRecommendedPrice");
-        action.setParams({
-            quoteLineId : quoteLineId
-        });
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                const isError = response.getReturnValue();
-                if(isError) {
-                    helper.showToastMessage(component, event, helper, "error", "Error Occured", "Error", "sticky");
-                } else {
-                    helper.showToastMessage(component, event, helper, "success", "Agentic Callout is initiated to get the Price. Please Refresh after some time",quoteLinNbr,"dismissable");
-                }
-            } else {
-                helper.showToastMessage(component, event, helper, "error", ("" + state), "Error", "sticky");
-            }
-        });
-        $A.enqueueAction(action);
-    }
 });

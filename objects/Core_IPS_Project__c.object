@@ -521,6 +521,11 @@
                     <default>false</default>
                     <label>PRC</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -620,6 +625,11 @@
                     <default>false</default>
                     <label>WEUR</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
@@ -689,6 +699,10 @@
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>PRC</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>INDIA</controllingFieldValue>
+                <valueName>INDIA</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <label>Premier Support Project</label>
@@ -746,6 +760,7 @@
             <value>Active</value>
         </filters>
         <label>All Projects</label>
+        <language>en_US</language>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
             <group>Core_PG_IPS_External_Customer</group>
@@ -832,6 +847,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -852,6 +871,10 @@
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1010,19 +1033,6 @@ ISPICKVAL(Core_Status__c, &quot;Draft&quot;)
         <description>This is to Restrict Changing the Private Checkbox When the Project is not in Draft Status</description>
         <errorConditionFormula>ISCHANGED( Core_IPS_Private__c ) &amp;&amp; NOT(  ISPICKVAL(Core_Status__c , &apos;DRAFT&apos;)) &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name</errorConditionFormula>
         <errorMessage>Premier Support Projects must be in the Draft state when being set to Private</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>SubRegionNotNullIfRegionExistedOnNewProj</fullName>
-        <active>true</active>
-        <description>Sub-Region is required when creating / Updating the Project with a specified Region</description>
-        <errorConditionFormula>AND(
-NOT(ISBLANK(TEXT(Region__c))),
-ISBLANK(TEXT(Sub_Region__c)),
-NOT(ISCHANGED(Core_Number_of_Products__c)),
-NOT(ISCHANGED(Core_Number_of_Users__c))
-)</errorConditionFormula>
-        <errorDisplayField>Sub_Region__c</errorDisplayField>
-        <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

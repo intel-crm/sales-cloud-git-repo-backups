@@ -19,18 +19,15 @@
                       var status = response.getState();
                       if (status === "SUCCESS") {
                           var returnValue = response.getReturnValue();
-                          console.log('returnValue ',returnValue);
+                          console.log('returnValue: ',returnValue);
                           component.set('v.leadSettings', returnValue.leadSettings);
                           
                           component.set('v.mdaId', returnValue.mdaId);
                           setTimeout($A.getCallback(function(){
                               component.set('v.partner', returnValue);
+                              
                           }),2000);
-                          component.set('v.dataObj', returnValue.partnerDetails); 
-                            if(component.get('v.dataObj')!=null || component.get('v.dataObj')!=undefined){ 
-                            component.set('v.partnerDetailsHasValue',true); 
-                               //  component.set('v.companyInformation',returnValue.partnerDetails); 	                            
-                          }
+                          component.set('v.dataObj', returnValue.partnerDetails);                
                           component.set('v.languageLabel', returnValue.leadLangPreference);              
                           component.set('v.hasLeadGenAccess', returnValue.hasLeadGenAccess);                
                           component.set('v.isSamePartnerUser', returnValue.isSamePartnerUser);
@@ -39,8 +36,11 @@
                           component.set('v.isMarkettingSpecialist', returnValue.isMarkettingSpecialist);
                           component.set('v.isPartnerAdmin', returnValue.isPartnerAdmin);
                           component.set('v.showEnhancedPopup', returnValue.showEnhancedPopup);
-                          component.set('v.isOfferingEditor', returnValue.isOfferingEditor);                
-                          component.set('v.isEnhancedUser', (returnValue.isPartnerAdmin || returnValue.isMarkettingSpecialist || returnValue.isOfferingEditor));
+                        //   IPA2.0 + US TWC4497-1631
+                        //   component.set('v.isOfferingEditor', returnValue.isOfferingEditor);                
+                        //   component.set('v.isEnhancedUser', (returnValue.isPartnerAdmin || returnValue.isMarkettingSpecialist || returnValue.isOfferingEditor));
+                        component.set('v.isEnhancedUser', (returnValue.isPartnerAdmin || returnValue.isMarkettingSpecialist));
+
                           component.set('v.isLdrOeEmployee',returnValue.isLdrOeEmployee);
                           //Description Inconsistent Issue - Added as part of US954461 
                           helper.truncate(component,helper,returnValue.partnerShortDescription); 
@@ -50,47 +50,27 @@
                           
                           component.set('v.showContactPartner', returnValue.isContactPartnerVisible);
                           component.set('v.mobileListing', returnValue.mobileList);                
-                          component.set('v.hasAccess', returnValue.hasAccess);  
-//                         component.set('v.hasAccess',false);             
+                          component.set('v.hasAccess', returnValue.hasAccess);                
                           component.set('v.isGuest', returnValue.isGuest);
                           component.set('v.isIntelAdmin', returnValue.isIntelAdmin);
                           component.set('v.tagline', returnValue.tagline);                
                           component.set('v.showEditPencil',component.get('v.hasAccess') && !component.get('v.isGuest') );
                           component.set('v.currentStatus',returnValue.currentStatus);
                           component.set('v.publishedStatus',returnValue.publishedStatus);
-                          // Show banner for scrapedValue
-                          try {
-                              console.log('try showScrapeBanner--',returnValue.scrapingValue);
-                              component.set('v.showScrapeBanner', returnValue.scrapingValue);
-                          } catch (e) {
-                              console.log('catch showScrapeBanner--');
-                              component.set('v.showScrapeBanner', false);
-                          }
+                          
                           component.set('v.statusUpdateDate',returnValue.statusUpdateDate);
                           component.set('v.initialUpdateDate',returnValue.initialUpdateDate);
                           component.set('v.publishedDate',returnValue.publishedDate);
                           
-                          
-                          
                           component.set('v.isUpdateRequired',returnValue.isUpdateRequired);
-                          
-                          component.set('v.showManageOffering', returnValue.manageOfferingAccess);  
+                        //   IPA2.0 + US TWC4497-1631
+                        //   component.set('v.showManageOffering', returnValue.manageOfferingAccess);  
                           
                           setTimeout($A.getCallback(function() {
                               component.set('v.loading', false);
                           }), 2000);
                           //For Event Banner
                           component.set('v.showEventBanner', returnValue.isEventRelated); 
-                          if(returnValue!=null || returnValue!=undefined){
-                            component.set('v.isPartnerHasValue',true);
-							                            
-                          }
-                          if(returnValue.companyResources && returnValue.companyResources.length > 0){
-                            component.set('v.companyResourceHasValue',true); 
-                                 component.set('v.companyResources',returnValue.companyResources); 
-							                            
-                          }
-                         
                           
                           //For Benefit
                           component.set("v.showCompanyResourceAndArticle",returnValue.showCompanyResourceAndArticle);
@@ -113,7 +93,6 @@
                   
               } else {
                   window.location.href = $A.get("$Label.c.PMP_Error_Page_URL");
-                  
               }
           }
       });
@@ -197,16 +176,17 @@
           action.setCallback(this, function(response) {
               var state = response.getState();
               if (state === "SUCCESS") {
-                  let navLink = cmp.find("navLink");
-                  let pageRef = { 
-                      type: 'standard__objectPage', 
-                      attributes: {
-                          objectApiName: 'PMP_Partner_Offering__c',
-                          actionName: 'home'
-                      },
-                      state: { filterName: 'Default' }
-                  }
-                  navLink.navigate(pageRef, true);
+                // IPA2.0 + US TWC4497-1631
+                //   let navLink = cmp.find("navLink");
+                //   let pageRef = { 
+                //       type: 'standard__objectPage', 
+                //       attributes: {
+                //           objectApiName: 'PMP_Partner_Offering__c',
+                //           actionName: 'home'
+                //       },
+                //       state: { filterName: 'Default' }
+                //   }
+                //   navLink.navigate(pageRef, true);
               }
               else if (state === "ERROR") {
                   var errors = response.getError();

@@ -314,13 +314,10 @@ export default class Core_IPS_CustomLookup extends LightningElement {
         this.searchKey = event.detail.value;
         console.log('querystring--'+this.queryString+'\n'+this.selectedProject);
         if(this.isProd) { 
-            
-            //'this.searchKey !== undefined' added by Kamala on 28-04-2026 - TWC745-9174 as part of Lightening Component exception 
-            if(this.searchKey !== undefined && this.searchKey.length>0 && this.isProd){
+            if(this.searchKey.length>0 && this.isProd){
                 this.minKeyLenMsg = false;
             }
-            //'this.searchKey !== undefined' added by Kamala on 28-04-2026 - TWC745-9174 as part of Lightening Component exception 
-            else if(this.searchKey !== undefined && this.searchKey.length<=0 && this.isProd && (this.selectedProject==null || this.selectedProject==undefined || this.selectedProject=='')){
+            else if(this.searchKey.length<=0 && this.isProd && (this.selectedProject==null || this.selectedProject==undefined || this.selectedProject=='')){
                 this.minKeyLenMsg = true;
             }
         }
@@ -329,6 +326,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 let queryOrderByClauseStr = ' ORDER BY Name ASC';
                 
                 let queryWhereClauseStr = ' AND ( Name LIKE \'%' + this.searchKey + '%\'' + ' OR Core_IPS_Project_ID__c LIKE \'%' + this.searchKey + '%\')';
+            
                 if(this.searchKey.length>0 )
                     this.queryString = this.tempQueryString + queryWhereClauseStr + queryOrderByClauseStr ;
                 else

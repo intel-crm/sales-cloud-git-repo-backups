@@ -49,7 +49,7 @@ public Without Sharing class Core_MDF_Custom_Metadata_Utility {
 *****************************************************************************************************************************************/    
     public static List<sObject> getCustomObjectRecordsUsingDynamicQuery(String query){
         Core_MDF_CCP_Custom_Metadata_Utility__c[] queryResults;
-
+        String strLabel = '';
         try{
             String sanitizedQuery = String.escapeSingleQuotes(query).replaceAll('\\\\','');
             if(sanitizedQuery != Null){

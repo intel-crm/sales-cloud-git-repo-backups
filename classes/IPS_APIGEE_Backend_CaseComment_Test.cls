@@ -66,7 +66,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/intel-customers/v1/profiles';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Integration_Class_Name__c = 'IPS_APIGEE_Backend_CaseComment_Test';
-        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
+        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
         insert customSetting;
         List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         

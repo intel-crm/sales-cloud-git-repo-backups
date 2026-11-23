@@ -2,8 +2,7 @@
 public class Core_MDF_AccountProductMap_Batch_Test {
     @isTest
     private static void createUpdateAccountAndProductMappingRecordsTest() {
-       // Highlight: Unused Local Variable
-       // ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
+        ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
         
         Account retailIntelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Retail Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         retailIntelAcc.Core_Geo__c = 'APJ';
@@ -24,7 +23,7 @@ public class Core_MDF_AccountProductMap_Batch_Test {
         prod1.Core_Product_Type__c = 'Graphics';
         prod1.Core_Product_Family__c = 'Compute Accelerators';
         prodIdList1.add(prod1.Id);
-        prodIdList1.add(prod.Id); 
+        prodIdList1.add(prod.Id);
         prodList.add(prod1);
         
         Database.insert(prodList);

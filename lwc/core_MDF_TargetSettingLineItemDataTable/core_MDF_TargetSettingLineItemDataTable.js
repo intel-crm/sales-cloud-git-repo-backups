@@ -171,7 +171,7 @@ export default class Core_MDF_TargetSettingLineItemDataTable extends NavigationM
                         console.error('Error fetching :', error);
                     });
             }
-            fetchRecordTypeNames({ objectApiName: 'Core_MDF_ObjRecType_Budget_FieldSetMap__mdt', whereClause: `Core_MDF_Channel_Program_txt__c = '${this.RecordType}'` })
+            fetchRecordTypeNames({ objectApiName: 'Core_MDF_ClaimActAllocRecTypeMapping__mdt', whereClause: `Core_MDF_Channel_Program_txt__c = '${this.RecordType}'` })
                 .then(result => {
                     this.cmpRecordTypeDeveloperName = result[0].Core_MDF_Activity_RecordType_txt__c;
                     this.cmpChannelProgram = result[0].Core_MDF_Channel_Program_Name_txt__c;

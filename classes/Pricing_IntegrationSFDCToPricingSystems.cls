@@ -244,6 +244,7 @@ public without sharing class Pricing_IntegrationSFDCToPricingSystems {
                     }
                     //Database.SaveResult[] srList;
                     List<SBQQ__QuoteLine__c> quoteLineToUpdate = new List<SBQQ__QuoteLine__c>();
+                    Boolean IOMInserted = true;
                     if(!IOMList.isEmpty()){
                         try {   
                             for(Pricing_Integration_Staging__c IOM : IOMList){
@@ -650,6 +651,7 @@ public without sharing class Pricing_IntegrationSFDCToPricingSystems {
             
             for(Id inboundMsgId : jsonParserResultMap.keySet()){
                 if(!inboundMsgIdToErrorMsg.containsKey(inboundMsgId)){
+                    String inboundMsgName = inboundMsgIdToNameMap.get(inboundMsgId);
                     Pricing_JSONString jsonParsedOutput = jsonParserResultMap.get(inboundMsgId);
                     Pricing_JSONString.RecordDetails recDetails = new Pricing_JSONString.RecordDetails();
                     Pricing_JSONString.Quote quoteDetail = new Pricing_JSONString.Quote();
@@ -881,9 +883,6 @@ public without sharing class Pricing_IntegrationSFDCToPricingSystems {
         Boolean onHoldQuote = false;
         writeMessage = '';
         writeMessage = (action == Label.Pricing_Tender_Integration_Header_Action_Delete) ?appendErrorMsg(writeMessage,'Delete Request Recieved') : appendErrorMsg(writeMessage,'UpdateStatus Request Recieved');
-        Id rpmCommentsRecTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c', Label.Pricing_Tender_Comment_RecordType_PricingManagerComment);
-        Pricing_Comments__c comment = new Pricing_Comments__c();
-        List<Pricing_Comments__c> commentsToBeInserted = new List<Pricing_Comments__c>();
         
         for(Pricing_JSONString.QuoteLine quoteLine: quoteDetail.QuoteLine){
             if(String.isNotBlank(quoteLine.Id)){
@@ -989,17 +988,7 @@ public without sharing class Pricing_IntegrationSFDCToPricingSystems {
                         quoteLine.Pricing_Deal_RFQ_Dup_Id__c = '';
                         quoteLine.Pricing_Deal_RFQ_Status_Nm__c = ''; 
                     }
-                     if( jsonQuoteLine.RevisionReasonComment != null && jsonQuoteLine.RevisionReasonComment != ''){
-                       
-                       
-                         if(quoteLineIdToQLMap.containsKey(jsonQuoteLine.Id) && !commentsToBeInserted.contains(comment)){
-                             
-                             comment.Pricing_Quote__c = quoteLineIdToQLMap.get(jsonQuoteLine.Id).SBQQ__Quote__c;
-                                comment.RecordTypeId = rpmCommentsRecTypeId;
-                                comment.Pricing_Answer__c = quoteLineIdToQLMap.get(jsonQuoteLine.Id).Pricing_Quote_Line_Number__c + ' : ' + quoteLineIdToQLMap.get(quoteLine.Id).Pricing_Status_Nm__c + '\n'+ jsonQuoteLine.RevisionReasonComment;//citrus modified quoteline number extraction
-      							commentsToBeInserted.add(comment);
-                         }
-                    }
+
                     quoteLine.Pricing_Integration_Status_Nm__c = (String.isBlank(jsonQuoteLine.Id) || (qlIdToErrorMsgMap.containsKey(jsonQuoteLine.id) && err.trim() != Label.Pricing_Deal_Editing_Restriction_Error)) ?Label.Pricing_Tender_MyDeal_Integration_Status_Error : Label.Pricing_Tender_MyDeal_Integration_Status_Complete;
                     quoteLine.Pricing_Integration_Time_Stamp__c = inboundMsgIdToCreatedTimeMap.get(inboundMsgId);
                     quoteLine.Pricing_Previous_MyDeal_Action_Nm__c = action;
@@ -1010,9 +999,6 @@ public without sharing class Pricing_IntegrationSFDCToPricingSystems {
                     appendSuccessMsgToMap(quoteLineIdToQLMap.get(jsonQuoteLine.Id).Pricing_Quote_Line_Number__c,writeMessage);
                 }
             }
-        }
-        if(!commentsToBeInserted.isEmpty()){
-            insert commentsToBeInserted;
         }
     }
     

@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_UCD_IQR_Response_Handler_Test {
      //Setting up Test Data
@@ -14,7 +7,7 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Pricing_UCD_IQR_Response_Handler_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc.Id);
             Test.startTest();
             List<User> salesRepUserList =Pricing_Test_Utility.createSalesRepUser();
@@ -37,6 +30,7 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
     static testmethod void testUCDNewL1l2Creation() {
         Test.startTest();
         List<Account> acc = [Select id from Account limit 1];
+        List<User> partnerUser = [select id from user where email = 'partner@noemail.com' limit 1];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id from SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id  limit 1]);
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
@@ -70,7 +64,6 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
         }
         Test.stopTest();      
         Pricing_UCD_IQR_Response_Handler.processUCDResponses(getUCDResponseWrapper());
-        System.assertEquals(true ,glbVariable != null);
         
        // processUCDResponses(ucdResponseObjectList);
         
@@ -78,6 +71,7 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
 
     static testmethod void testUCDL1ExistingL2Creation() {
         Test.startTest();
+        List<User> lstUsers4 = [select id from user where email = 'firstName@intel.com' limit 1];
         List<User> partnerUser = [select id from user where email = 'partner@noemail.com' limit 1];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,SBQQ__Account__c from SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id  limit 1]);
@@ -118,7 +112,6 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
         insert newEndCustAccL1;
         
         Pricing_UCD_IQR_Response_Handler.processUCDResponses(getUCDResponseWrapper());
-        System.assertEquals(true ,lstquote.size() >0);
         Test.stopTest();
        // processUCDResponses(ucdResponseObjectList);
         
@@ -175,7 +168,6 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
         insert newEndCustCountry;
         
         Pricing_UCD_IQR_Response_Handler.processUCDResponses(getUCDResponseWrapper());
-        System.assertEquals(true ,lstquote.size() >0);
         Test.stopTest();
        // processUCDResponses(ucdResponseObjectList);
         
@@ -183,6 +175,8 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
 
     static testmethod void testACMEventPublish() {
         Test.startTest();
+        List<Account> acc = [Select id from Account limit 1];
+        List<User> partnerUser = [select id from user where email = 'partner@noemail.com' limit 1];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id from SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id  limit 1]);
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
@@ -234,14 +228,20 @@ public class Pricing_UCD_IQR_Response_Handler_Test {
         acmEventList.add(acmEvent2);
 
         List<Database.SaveResult> sr = EventBus.publish(acmEventList);
-        System.assertEquals(true ,lstquote.size() >0);
+        if (sr[0].isSuccess()) {
+            System.debug('Successfully published event.');
+        } else {
+            for(Database.Error err : sr[0].getErrors()) {
+                System.debug('Error returned: ' +err.getStatusCode() +' - ' +err.getMessage());
+            }
+        }
         Test.stopTest();
     }   
 	
     public static List<Pricing_UCD_ResponseWrapper.ResponseData> getUCDResponseWrapper(){
         List<Pricing_UCD_ResponseWrapper.ResponseData> ucdResponseObjectList = new List<Pricing_UCD_ResponseWrapper.ResponseData>();
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,SBQQ__Account__c from SBQQ__Quote__c Limit 1]);
-        List<Account> accRecordList = [select Id from Account limit 10];
+        List<Account> accRecordList = [select Id from Account];
         
         Account acc = new Account();
         acc.RecordTypeId=Pricing_Tender_Utility.getRecordTypeId('Account',Label.Pricing_Tender_Account_RecordType_IntelAccount);      

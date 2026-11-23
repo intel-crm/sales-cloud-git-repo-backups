@@ -94,9 +94,7 @@ else invoke the future method.*/
         
       
         if(!attrMapToDelete.isEmpty()){
-            Database.DeleteResult[] results = Database.delete(attrMapToDelete, false);
-            PMP_Utility.logDmlErrors((Object[]) results, 'PMP_Company_Info_TriggerHelper-updateCompanyAttributeMappingRecordsSynchronously');
-            //Database.delete(attrMapToDelete);
+            Database.delete(attrMapToDelete);
         }
         // Below query returns the list of the companies got changed.
         
@@ -112,84 +110,16 @@ else invoke the future method.*/
     
     public static void updateIntelAdmin(List<PMP_Company__c> partners, map<Id,PMP_Company__c> oldMap){
         
-        if(!partners.isEmpty()){    
-            Id currentUserId = UserInfo.getUserId();
+        if(!partners.isEmpty()){
+            
             for(PMP_Company__c Company : partners){
-                if(Company.PMP_Intel_Admin_Id__c != currentUserId){
+                if(Company.PMP_Intel_Admin_Id__c != UserInfo.getUserId()){
                 if(Company.PMP_Company_Lifecycle_Status_Nm__c=='Update Required' && oldMap.get(Company.Id).PMP_Company_Lifecycle_Status_Nm__c!='Update Required'){
-                    Company.PMP_Intel_Admin_Id__c = currentUserId;
-                }
+              			Company.PMP_Intel_Admin_Id__c = Company.LastModifiedById;
+          			}
                 }
             }           
-        }       
-    }
-    
-    public static void createStagingFromCompany(List<PMP_Company__c> newCompanies) {
-        if (newCompanies == null || newCompanies.isEmpty()) return;
-    
-        Set<Id> accountIds = new Set<Id>();
-        Map<Id, PMP_Company__c> companyByAccId = new Map<Id, PMP_Company__c>();
-    
-        // Step 1: Filter valid companies + collect account Ids
-        for (PMP_Company__c c : newCompanies) {
-    
-            if (c.PMP_Company_Lifecycle_Status_Nm__c != 'Draft' ||
-                !c.PMP_Is_Working_Copy_Ind__c ||
-                String.isBlank(c.PMP_Opid_Sfid_Txt__c)) {
-                continue;
-            }
-    
-            // Safe Id conversion
-            try {
-                Id accId = (Id)c.PMP_Opid_Sfid_Txt__c;
-                accountIds.add(accId);
-                companyByAccId.put(accId, c);
-            } catch (Exception e) {
-                // Optionally log invalid Id
-            }
         }
-    
-        if (accountIds.isEmpty()) return;
-    
-        // Step 2: Query Accounts
-        Map<Id, String> accToWebsite = new Map<Id, String>();
-    
-        for (Account acc : [
-            SELECT Id, UCD_Primary_Account__r.Core_User_Defined_Website__c
-            FROM Account
-            WHERE Id IN :accountIds
-        ]) {
-            String website = acc.UCD_Primary_Account__r?.Core_User_Defined_Website__c;
-    
-            if (!String.isBlank(website)) {
-                accToWebsite.put(acc.Id, website);
-            }
-        }
-    
-        if (accToWebsite.isEmpty()) return;
-    
-        // Step 3: Create staging records
-        List<PMP_CompanyAutoFill__c> toInsert = new List<PMP_CompanyAutoFill__c>();
-    
-        for (Id accId : accToWebsite.keySet()) {
-    
-            PMP_Company__c c = companyByAccId.get(accId);
-            if (c == null) continue;
-    
-            toInsert.add(new PMP_CompanyAutoFill__c(
-                PMP_Partner_Id__c     = c.Id,
-                PMP_Website__c        = accToWebsite.get(accId),
-                PMP_Autofill_Status__c = 'Staged'
-            ));
-        }
-    
-        // Step 4: Insert
-        if (!toInsert.isEmpty()) {
-            Database.SaveResult[] sr = Database.insert(toInsert, false);
-            PMP_Utility.logDmlErrors(
-                (Object[]) sr,
-                'PMP_Company_Info_TriggerHelper-createStagingFromCompany'
-            );
-        }
+        
     }
 }

@@ -1,9 +1,7 @@
 @istest
 Public class PRM_LoginHistoryCheckBatchTest{
     public static testMethod void testschedule() {
-	 Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(); 
      Account acc = PRM_TestUtility.getAccount();
-		acc.RecordTypeId = recordTypeIdAccount;
         acc.Core_IPA_Partner_Role__c = 'Service Provider';
         acc.Core_Account_Type__c ='Distributor';
         acc.Industry ='';
@@ -26,7 +24,7 @@ Public class PRM_LoginHistoryCheckBatchTest{
         con.Core_IPA_PartnerRole__c = 'Service Provider';
         con.MailingCountryCode = 'USA';
         con.Core_Login_Id__c='abc';
-        //insert con;
+        insert con;
         
         ChannelProgram cp = PRM_TestUtility.getChannelPrograms();
         insert cp;
@@ -44,7 +42,7 @@ Public class PRM_LoginHistoryCheckBatchTest{
         newRequest1.PRM_Legal_Agreements__c = 'IPA_TANDC';
         newRequest1.PRM_Partner_Relationship__c = '';
         newRequest1.PRM_Preferred_Language__c = '';
-        //newRequest1.PRM_Matching_Contact__c = con.Id;
+        newRequest1.PRM_Matching_Contact__c = con.Id;
         newRequest1.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
         newRequest1.PRM_Salesforce_ID__c = acc.Id;
         newRequest1.PRM_ProcessInstanceWorkItem_Id__c = '';

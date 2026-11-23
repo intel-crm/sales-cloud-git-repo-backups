@@ -88,16 +88,12 @@
             <translation>Скопировать заявку на возмещение</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Close</masterLabel>
-            <translation>Закрыть</translation>
+            <masterLabel>Close Activity</masterLabel>
+            <translation>Закрыть действие</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
             <translation><!-- Complete PIC Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Complete Payment Clearance Processing</masterLabel>
-            <translation><!-- Complete Payment Clearance Processing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Create Activity</masterLabel>
@@ -120,10 +116,6 @@
             <translation><!-- Manual Audit --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
         </picklistValues>
@@ -143,10 +135,6 @@
             <masterLabel>Submit For PIC</masterLabel>
             <translation>Отправить для проверки детализации</translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Submit for Payment Clearance</masterLabel>
-            <translation>Отправить для проверки платежа</translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Button Type --></label>
@@ -159,10 +147,6 @@
             <masterLabel>Update a Record</masterLabel>
             <translation><!-- Update a Record --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Filter Criteria Field --></label>
-        <name>Core_MDF_Filter_Criteria_Field__c</name>
     </fields>
     <fields>
         <label><!-- Object API Name --></label>
@@ -194,10 +178,6 @@
         <picklistValues>
             <masterLabel>Co-Marketing Activity</masterLabel>
             <translation>Совместные маркетинговые действия</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Outcome-Based Campaign</masterLabel>
-            <translation>Кампания на основе результатов</translation>
         </picklistValues>
     </fields>
     

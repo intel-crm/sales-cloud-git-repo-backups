@@ -64,7 +64,7 @@ public class Core_Opportunity_RenewalController_Test {
             prod.IsActive = true;
         }
         insert lstProducts;
-        
+        System.debug('#11 lstProducts: ' + lstProducts);
 
 
         // P R I C E B O O K     
@@ -118,7 +118,7 @@ public class Core_Opportunity_RenewalController_Test {
         listOppty[1].AccountId = accountForClone.Id;
         listOppty[1].Core_Channel_Opportunity_Ind__c=true;
         insert listOppty;
-        
+        System.debug('#### Oppty testing - '+listOppty);
         
         //partner Opportunity to clone
         partnerOppToClone = Core_Test_Utility.createOpportunity(1)[0];
@@ -148,7 +148,7 @@ public class Core_Opportunity_RenewalController_Test {
         Note n = new note(parentid=partnerOppToClone.id,title='test note',body='test note contents');
         insert n;
         
-        
+        System.debug('#### Oppty testing - '+listOppty);
 
         
         // O P P O R T U N I T Y   L I N E   I T E M
@@ -187,7 +187,7 @@ public class Core_Opportunity_RenewalController_Test {
         lstOppTeamMember = [SELECT Id, Name, TeamMemberRole, Core_Team_Member_Geo__c, OpportunityAccessLevel
                             FROM OpportunityTeamMember
                             WHERE OpportunityId = :opportunityToClone.Id];
-        
+        system.debug('AACLONE '+lstOppTeamMember);
         // O P P O R T U N I T Y   F E A T U R E S
         createOpportunityFeatures(opportunityToClone);        
     }
@@ -201,7 +201,7 @@ public class Core_Opportunity_RenewalController_Test {
         // Insert the intialized Feature
         List<Database.SaveResult> lstFeatureResults = Database.insert(lstFeature, false);
         
-       
+        System.debug('--------'+lstFeature[0]+lstFeature[1]);
         
         // Construct the Feature Header instances
         List<Core_Feature_Header__c > lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);
@@ -209,7 +209,7 @@ public class Core_Opportunity_RenewalController_Test {
         // Insert the intialized Feature Header 
         List<Database.SaveResult> lstFeatureHeaderResults = Database.insert(lstFeatureHeader, false);
                         
-        
+        System.debug('--------'+lstFeatureHeader[0]+lstFeatureHeader[1]);
         
         // Construct the Feature Set instances
         List<Core_Feature_Set__c > lstFeatureSet = Core_Test_Utility.CreateFeatureSet(70);
@@ -226,7 +226,7 @@ public class Core_Opportunity_RenewalController_Test {
         // Insert the intialized Feature Set
         List<Database.SaveResult> lstFeatureSetResults = Database.insert(lstFeatureSet, false);        
                         
-        
+        System.debug('--------'+lstFeatureSet[0]+lstFeatureSet[1]);
         
         // Construct the Feature Set instances
         lstOpportunityFeature = Core_Test_Utility.CreateOpportunityFeature(60);
@@ -242,7 +242,7 @@ public class Core_Opportunity_RenewalController_Test {
         // Insert the intialized Feature Set
         List<Database.SaveResult> lstOppFeatureResults = Database.insert(lstOpportunityFeature, false);
         
-        
+        System.debug('--------' + lstOpportunityFeature[0] + lstOpportunityFeature[1]);
     }
 
 

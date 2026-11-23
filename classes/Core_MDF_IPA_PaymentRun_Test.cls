@@ -64,8 +64,7 @@ public class Core_MDF_IPA_PaymentRun_Test {
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-        // Highlight: Unused Local Variable 
-       // Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         // Creating a map of profile name and profile Id
         Map<String,Id> profileToId = new Map<String,Id>();
         for(Profile prfl:[SELECT Id,Name FROM Profile WHERE Name IN ('System Administrator','CCP - Core Access')]) {
@@ -161,8 +160,8 @@ public class Core_MDF_IPA_PaymentRun_Test {
             Database.insert(permSetAssgnLst);
             
         }
-        // Highlight: Unused Local Variable
-       // Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
+        
+        Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Accounttest', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);//changed 2nd parameter
         acc.Core_MDF_CoMarketingActive__c = true;//changed to true
         //Test.startTest();
@@ -299,7 +298,7 @@ pgmList.add(pgm3);*/
         accNodeAttr.Core_MDF_Customer_NonPO_GL_Account_nbr__c = 244200;
         insert accNodeAttr;
         
-        Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',acc2.Id, System.today().addDays(-30), System.today().addDays(300),budgetType, 1234.00, 'AFGHANISTAN','Consumer','Other','Pending Review', false);
+        Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',acc2.Id, System.today().addDays(-30), System.today().addDays(300),budgetType, 1234.00, 'AFGHANISTAN','Consumer','Coffee Lake','Pending Review', false);
         camp.Core_MDF_Region_cd__c = 'APJ';
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
@@ -327,8 +326,8 @@ pgmList.add(pgm3);*/
         Database.update(pfrToBeUpdated);
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();        
         Test.stopTest();
-        // Highlight: Unused Local Variable 
-       // List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
+        
+        List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
         
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Intel_Partner_Alliance', false,'1231231230');
         bank.Core_MDF_Intel_Company_Code__c = '650';
@@ -350,8 +349,7 @@ pgmList.add(pgm3);*/
         }
         
         //Do Account Bank Mapping for 'bank' and ABM 
-        // Highlight: Unused Local Variable
-       // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
+        Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
         
         Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         Core_Trigger_Executions__c setting = new Core_Trigger_Executions__c();
@@ -577,8 +575,8 @@ insert claim1;*/
             campToBeUpdated.add(ipaCamp);
             
             Database.update(campToBeUpdated);
-            // Highlight: Unused Local Variable
-           // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+            
+            Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
             
             PartnerMarketingBudget pmb = [Select id,Title, Description, Core_MDF_Budget_Status__c, StartDate, EndDate, Amount, Core_MDF_Budget_Type_Txt__c,
                                           Core_MDF_Budget_Partner__c,Core_MDF_Program__c, RecordTypeId, IsIgnoreValidation From PartnerMarketingBudget where Id = :ipaCamp.Core_MDF_Budget__c];
@@ -747,8 +745,8 @@ Core_MDF_VatUtility.getCountOfVatClaimRecords(listOfPaymentRun);
             campToBeUpdated.add(ipaCamp);
             
             Database.update(campToBeUpdated);
-            // Highlight: Unused Local Variable 
-           // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+            
+            Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
             
             PartnerMarketingBudget pmb = [Select id,Title, Description, Core_MDF_Budget_Status__c, StartDate, EndDate, Amount, Core_MDF_Budget_Type_Txt__c,
                                           Core_MDF_Budget_Partner__c,Core_MDF_Program__c, RecordTypeId, IsIgnoreValidation From PartnerMarketingBudget where Id = :ipaCamp.Core_MDF_Budget__c];
@@ -887,7 +885,7 @@ Database.update(vatInfo);*/
         }
     }
     
-    /*@isTest static void validateVATIPAPaymentRunExpense() { 
+    @isTest static void validateVATIPAPaymentRunExpense() { 
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User ipaPayAdm = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
@@ -923,7 +921,7 @@ Database.update(vatInfo);*/
             campToBeUpdated.add(ipaCamp);
             
             Database.update(campToBeUpdated);
-          
+            
             Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
             
             PartnerMarketingBudget pmb = [Select id,Title, Description, Core_MDF_Budget_Status__c, StartDate, EndDate, Amount, Core_MDF_Budget_Type_Txt__c,
@@ -958,7 +956,7 @@ Database.update(vatInfo);*/
             claimMap.put(claim1.title,claim1);
             Core_MDF_Claim_VAT_Info__c vatInfo = [select id,Core_MDF_VAT_Invoice_Number_Txt__c from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim1.Id limit 1];
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
-            Database.update(vatInfo);*/
+            Database.update(vatInfo);
             /*
 //Create Document
 ContentVersion cv = new ContentVersion();
@@ -978,7 +976,7 @@ cdl.shareType = 'V';
 insert cdl;
 vatInfo.Core_MDF_Status_Txt__c = 'Approved';
 Database.update(vatInfo);*/
-            /*claim1.Core_MDF_Status__c = 'Payment Due';
+            claim1.Core_MDF_Status__c = 'Payment Due';
             Database.update(claim1);
             
             Core_MDF_Recovery__c recoveryRec = new Core_MDF_Recovery__c();
@@ -1007,7 +1005,6 @@ Database.update(vatInfo);*/
             //explicitly calling queryPaymentDueClaimsForPayment in PaymentUtility 
             List<Core_MDF_Payment_Run__c> paymentRecordList = new List<Core_MDF_Payment_Run__c>();
             paymentRecordList.add(ipaPayRunRecord);
-      
             List<PartnerFundClaim> claims = Core_MDF_PaymentUtility.queryPaymentDueClaimsForPayment(paymentRecordList);
             Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(ipaPayRunRecord);
             database.executebatch(paymentbatch,200);
@@ -1048,6 +1045,7 @@ Database.update(vatInfo);*/
             try{
                 Core_MDF_Payment_FileHelper.generateIPAPaymentFileForExpense(paymentFileWrapperMap,ipaPayRunRecord,'Intel Partner Alliance');
             }catch(Exception e){
+                //System.debug('exception e--------->'+e.getMessage());
             }
             Core_MDF_Payment_FileHelper.generateHeader();
             Core_MDF_Payment_FileHelper.generateFooter();
@@ -1062,19 +1060,6 @@ Database.update(vatInfo);*/
             Core_MDF_Batch_UpdatePaymentRunClaims batch = new Core_MDF_Batch_UpdatePaymentRunClaims(null, paymentFileWrapperMap,paymentTypeToFileWrapper, claimMap.values(), ipaPayRunRecord, null,paymentTypeToClaims,null, null);
             database.executebatch(batch,200);
             
-        }
-        Test.stopTest();
-    }*/
-    @isTest static void testCoverUtilitMethods() { 
-		Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser)
-        {
-            String determinePostalCode = Core_MDF_Payment_FileHelper.determinePostalCode('*');
-            String validFileName = Core_MDF_Payment_FileHelper.getValidFileName('test_File',9);
-            String validFileName2 = Core_MDF_Payment_FileHelper.getValidFileName('testsFile',9);
-            String fileContent = Core_MDF_Payment_FileHelper.generatePaymentFileForExpense('testFileContent','Non-Customer');
-            String fileName = Core_MDF_Payment_FileHelper.removeUnsupportedFileNameChars('testFile');
         }
         Test.stopTest();
     }

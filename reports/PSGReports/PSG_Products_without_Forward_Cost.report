@@ -9,6 +9,12 @@
     <columns>
         <field>Product2$Core_Product_Family__c</field>
     </columns>
+    <crossFilters>
+        <operation>without</operation>
+        <primaryTableColumn>Product2$Id</primaryTableColumn>
+        <relatedTable>price_forward_cost__c</relatedTable>
+        <relatedTableJoinColumn>core_cpq_product_nm__c</relatedTableJoinColumn>
+    </crossFilters>
     <filter>
         <booleanFilter>(2 OR 3 OR 4 OR 5 OR 6 OR 7) AND (1 AND 8)</booleanFilter>
         <criteriaItems>

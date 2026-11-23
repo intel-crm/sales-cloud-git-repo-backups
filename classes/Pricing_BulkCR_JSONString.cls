@@ -2,7 +2,7 @@
 * @description       : Created wrapper class to generate MyDeal Payload
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 03-05-2026
+* @last modified on  : 04-14-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 //** when ever an attribute is added in this class we have to make sure to add in Pricing_JSONString class as well */
@@ -101,7 +101,6 @@ public class Pricing_BulkCR_JSONString {
         public String EndCustomerRegion;
         public String Region;
         public String DealDescription;
-        public String RevisionReasonComment;
         public String CustomerDivision;
         public String ConsumptionCustomerPlatform;
         public String ConsumptionReportedSalesGeo;

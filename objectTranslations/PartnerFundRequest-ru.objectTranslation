@@ -307,10 +307,6 @@
         <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Activity Level --></label>
-        <name>Core_MDF_Activity_Level_nm__c</name>
-    </fields>
-    <fields>
         <label>Маркетинговое действие №</label>
         <name>Core_MDF_Activity_Number__c</name>
     </fields>
@@ -678,10 +674,6 @@
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Ecosystem Modified --></label>
-        <name>Core_MDF_Ecosystem_Modified_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Effective Date/Time --></label>
         <name>Core_MDF_EffectiveDateTime__c</name>
     </fields>
@@ -866,7 +858,7 @@
         <name>Core_MDF_Is_Field_Modified__c</name>
     </fields>
     <fields>
-        <label>Основано на результатах?</label>
+        <label><!-- Is Outcome-Based? --></label>
         <name>Core_MDF_Is_Outcome_Based_Ind__c</name>
     </fields>
     <fields>
@@ -921,10 +913,6 @@
         <help>Максимальная сумма, которую Intel заплатит за это выполнение.</help>
         <label>Максимальные инвестиции в Intel</label>
         <name>Core_MDF_Maximum_Intel_Investment_amt__c</name>
-    </fields>
-    <fields>
-        <label>Подход к измерению</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>Акцептор участника</label>
@@ -1098,10 +1086,6 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Outcome Node Acc Mapping Modified --></label>
-        <name>Core_MDF_Node_Acc_Map_Modified_ind__c</name>
-    </fields>
-    <fields>
         <label>Количество победителей</label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
@@ -1176,10 +1160,6 @@
     <fields>
         <label>Другое название мероприятия</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label>Другие методы измерения</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
         <label>Другое количество</label>
@@ -1258,15 +1238,6 @@
     <fields>
         <label>Требования к POP</label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Activity --></label>
-        <name>Core_MDF_Parent_Activity_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activties --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>Контакт с партнёром</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <label>Размещение</label>
@@ -1437,11 +1408,6 @@
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
     </fields>
     <fields>
-        <help>Поощрение в полном размере на основе конкурса; количество победителей ограничено 33% от числа участников</help>
-        <label>Полноценное поощрение на основе конкурса</label>
-        <name>Core_MDF_Skip_PCT_Approval_ind__c</name>
-    </fields>
-    <fields>
         <label>Кол-во лайков/шеров в соц. Сетях</label>
         <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
     </fields>
@@ -1607,7 +1573,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>Фонд совместного маркетинга для клиентов</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1622,7 +1588,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>Фонд совместного маркетинга для центров обработки данных</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-26-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_PriceComparisionController_Test {
     @testSetup
@@ -15,7 +8,7 @@ public class Pricing_PriceComparisionController_Test {
             Test.startTest();
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Price_Comparison_Controller_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
@@ -37,6 +30,7 @@ public class Pricing_PriceComparisionController_Test {
     }
     
     static testMethod void testgetQuoteLineDataforComparision(){
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         String searchText;
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Quote_Line_Number__c,Pricing_Product_Nm__r.Name,Pricing_Status_Nm__c,Pricing_Product_Nm__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Program_Type_Nm__c,
                                                    Pricing_Quote_Program_Nm__c from SBQQ__QuoteLine__c LIMIT 2];

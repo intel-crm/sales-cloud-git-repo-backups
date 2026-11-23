@@ -48,6 +48,7 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             update Project;
             
             
+            system.debug('Project record'+Project);
             
             PermissionSet ps = [SELECT Id,Name FROM PermissionSet WHERE Name = 'Core_IPS_Permission_Set'];
             
@@ -55,10 +56,12 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             psa.AssigneeId = userRecord.Id;
             psa.PermissionSetId = ps.Id;
             insert psa;           
+            System.debug('Project'+Project.Id);
           /*  PageReference pageRef = Page.Core_IPS_Project_Detail_Page;
             Test.setCurrentPage(pageRef); */
             ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Project);
             Id strProId = ApexPages.currentPage().getParameters().put('id',Project.Id);  
+            System.debug('strProId'+strProId);
             List<Core_IPS_Project_Member__c> coreIpsProjList = new List<Core_IPS_Project_Member__c>();
             
             Core_IPS_Project_Member__c coreIpsProj = new Core_IPS_Project_Member__c();
@@ -123,11 +126,13 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             Project.Name = 'Test';
             Project.Core_Status__c = 'Draft';
             insert Project;
+            system.debug('Project record'+Project);
             
         /*    PageReference pageRef = Page.Core_IPS_Project_Detail_Page;
             Test.setCurrentPage(pageRef); */
             ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Project);
             Id strProId = ApexPages.currentPage().getParameters().put('id',Project.Id);  
+            System.debug('strProId'+strProId);
             List<Core_IPS_Project_Member__c> coreIpsProjList = new List<Core_IPS_Project_Member__c>();  
             Core_IPS_Project_Member__c coreIpsProj = new Core_IPS_Project_Member__c();
             coreIpsProj.Core_User__c = u.Id;

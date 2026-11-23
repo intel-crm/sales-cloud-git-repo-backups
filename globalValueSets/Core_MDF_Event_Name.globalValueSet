@@ -76,14 +76,14 @@
         <label>Embedded World</label>
     </customValue>
     <customValue>
-        <fullName>Gartner IT/XPO Symposium</fullName>
-        <default>false</default>
-        <label>Gartner IT/XPO Symposium</label>
-    </customValue>
-    <customValue>
         <fullName>Gartner IT Infrastructure, Operations &amp; Cloud Strategies Conference</fullName>
         <default>false</default>
         <label>Gartner IT Infrastructure, Operations &amp; Cloud Strategies Conference</label>
+    </customValue>
+    <customValue>
+        <fullName>Gartner IT/XPO Symposium</fullName>
+        <default>false</default>
+        <label>Gartner IT/XPO Symposium</label>
     </customValue>
     <customValue>
         <fullName>Google Next</fullName>
@@ -101,14 +101,14 @@
         <label>Hannover Messe</label>
     </customValue>
     <customValue>
-        <fullName>Healthcare+ Expo Taiwan</fullName>
-        <default>false</default>
-        <label>Healthcare+ Expo Taiwan</label>
-    </customValue>
-    <customValue>
         <fullName>Healthcare Information Management Systems Society (HIMSS)</fullName>
         <default>false</default>
         <label>Healthcare Information Management Systems Society (HIMSS)</label>
+    </customValue>
+    <customValue>
+        <fullName>Healthcare+ Expo Taiwan</fullName>
+        <default>false</default>
+        <label>Healthcare+ Expo Taiwan</label>
     </customValue>
     <customValue>
         <fullName>Hewlett Packard Enterprise(HPE) Discover</fullName>
@@ -119,11 +119,6 @@
         <fullName>Hot Chips</fullName>
         <default>false</default>
         <label>Hot Chips</label>
-    </customValue>
-    <customValue>
-        <fullName>HPI Amplify Conference</fullName>
-        <default>false</default>
-        <label>HPI Amplify Conference</label>
     </customValue>
     <customValue>
         <fullName>HPI Amplify Ellevate Roadshow (30 countries)</fullName>
@@ -206,24 +201,14 @@
         <label>ITS World Congress</label>
     </customValue>
     <customValue>
-        <fullName>KubeCon + CloudNativeCon Europe</fullName>
-        <default>false</default>
-        <label>KubeCon + CloudNativeCon Europe</label>
-    </customValue>
-    <customValue>
         <fullName>KubeCon + CloudNativeCon North America</fullName>
         <default>false</default>
         <label>KubeCon + CloudNativeCon North America</label>
     </customValue>
     <customValue>
-        <fullName>Lenovo TechWorld</fullName>
+        <fullName>KubeCon + CloudNativeCon Europe</fullName>
         <default>false</default>
-        <label>Lenovo TechWorld</label>
-    </customValue>
-    <customValue>
-        <fullName>LOEM Summit</fullName>
-        <default>false</default>
-        <label>LOEM Summit</label>
+        <label>KubeCon + CloudNativeCon Europe</label>
     </customValue>
     <customValue>
         <fullName>Microsoft Build</fullName>
@@ -231,14 +216,14 @@
         <label>Microsoft Build</label>
     </customValue>
     <customValue>
-        <fullName>Microsoft Ignite</fullName>
-        <default>false</default>
-        <label>Microsoft Ignite</label>
-    </customValue>
-    <customValue>
         <fullName>Microsoft Inspire</fullName>
         <default>false</default>
         <label>Microsoft Inspire</label>
+    </customValue>
+    <customValue>
+        <fullName>Microsoft Ignite</fullName>
+        <default>false</default>
+        <label>Microsoft Ignite</label>
     </customValue>
     <customValue>
         <fullName>Mobile World Congress (MWC) Barcelona</fullName>
@@ -274,11 +259,6 @@
         <fullName>Open Source Summit North America</fullName>
         <default>false</default>
         <label>Open Source Summit North America</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
     </customValue>
     <customValue>
         <fullName>Penny Arcade eXpo (PAX) East</fullName>
@@ -326,14 +306,14 @@
         <label>Supercomputing (SC)</label>
     </customValue>
     <customValue>
-        <fullName>VMware Explore EU</fullName>
-        <default>false</default>
-        <label>VMware Explore EU</label>
-    </customValue>
-    <customValue>
         <fullName>VMware Explore US</fullName>
         <default>false</default>
         <label>VMware Explore US</label>
+    </customValue>
+    <customValue>
+        <fullName>VMware Explore EU</fullName>
+        <default>false</default>
+        <label>VMware Explore EU</label>
     </customValue>
     <customValue>
         <fullName>Web Summit</fullName>
@@ -346,419 +326,30 @@
         <label>World Economic Forum (WEF)</label>
     </customValue>
     <customValue>
-        <fullName>Events</fullName>
+        <fullName>LOEM Summit</fullName>
         <default>false</default>
-        <label>Events</label>
+        <label>LOEM Summit</label>
     </customValue>
     <customValue>
-        <fullName>Adobe Max</fullName>
+        <fullName>Other</fullName>
         <default>false</default>
-        <label>Adobe Max</label>
+        <label>Other</label>
     </customValue>
     <customValue>
-        <fullName>AFCEA</fullName>
+        <fullName>Lenovo TechWorld</fullName>
         <default>false</default>
-        <label>AFCEA</label>
+        <label>Lenovo TechWorld</label>
     </customValue>
     <customValue>
-        <fullName>AI DevCon</fullName>
+        <fullName>HPI Amplify Conference</fullName>
         <default>false</default>
-        <label>AI DevCon</label>
+        <label>HPI Amplify Conference</label>
     </customValue>
     <customValue>
-        <fullName>AI DevSummit</fullName>
+        <fullName>Intel Partner Alliance (IPA)</fullName>
         <default>false</default>
-        <label>AI DevSummit</label>
-    </customValue>
-    <customValue>
-        <fullName>AI Infra Summit</fullName>
-        <default>false</default>
-        <label>AI Infra Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>The AI Summit</fullName>
-        <default>false</default>
-        <label>The AI Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>AmCham</fullName>
-        <default>false</default>
-        <label>AmCham</label>
-    </customValue>
-    <customValue>
-        <fullName>Autodesk U</fullName>
-        <default>false</default>
-        <label>Autodesk U</label>
-    </customValue>
-    <customValue>
-        <fullName>Automate</fullName>
-        <default>false</default>
-        <label>Automate</label>
-    </customValue>
-    <customValue>
-        <fullName>AWS Summit</fullName>
-        <default>false</default>
-        <label>AWS Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>BETT (British Education Training &amp; Technology)</fullName>
-        <default>false</default>
-        <label>BETT (British Education Training &amp; Technology)</label>
-    </customValue>
-    <customValue>
-        <fullName>ByteDance</fullName>
-        <default>false</default>
-        <label>ByteDance</label>
-    </customValue>
-    <customValue>
-        <fullName>CES (Consumer Electronics Show)</fullName>
-        <default>false</default>
-        <label>CES (Consumer Electronics Show)</label>
-    </customValue>
-    <customValue>
-        <fullName>Cisco Connect</fullName>
-        <default>false</default>
-        <label>Cisco Connect</label>
-    </customValue>
-    <customValue>
-        <fullName>Cisco Impact</fullName>
-        <default>false</default>
-        <label>Cisco Impact</label>
-    </customValue>
-    <customValue>
-        <fullName>CITE (California IT in Education)</fullName>
-        <default>false</default>
-        <label>CITE (California IT in Education)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Cloud BOA (Board of Advisors)</fullName>
-        <default>false</default>
-        <label>Intel Cloud BOA (Board of Advisors)</label>
-    </customValue>
-    <customValue>
-        <fullName>CrowdStrike Fal.con</fullName>
-        <default>false</default>
-        <label>CrowdStrike Fal.con</label>
-    </customValue>
-    <customValue>
-        <fullName>CVPR (Computer Vision and Pattern Recognition Conf)</fullName>
-        <default>false</default>
-        <label>CVPR (Computer Vision and Pattern Recognition Conf)</label>
-    </customValue>
-    <customValue>
-        <fullName>Databricks Data &amp; AI Summit</fullName>
-        <default>false</default>
-        <label>Databricks Data &amp; AI Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>DCDC (Data Center Design Conference)</fullName>
-        <default>false</default>
-        <label>DCDC (Data Center Design Conference)</label>
-    </customValue>
-    <customValue>
-        <fullName>Dell Tech Forum</fullName>
-        <default>false</default>
-        <label>Dell Tech Forum</label>
-    </customValue>
-    <customValue>
-        <fullName>Dell Tech World</fullName>
-        <default>false</default>
-        <label>Dell Tech World</label>
-    </customValue>
-    <customValue>
-        <fullName>Dreamhack</fullName>
-        <default>false</default>
-        <label>Dreamhack</label>
-    </customValue>
-    <customValue>
-        <fullName>Educause</fullName>
-        <default>false</default>
-        <label>Educause</label>
-    </customValue>
-    <customValue>
-        <fullName>Gamescom</fullName>
-        <default>false</default>
-        <label>Gamescom</label>
-    </customValue>
-    <customValue>
-        <fullName>GITEX Global (Gulf Information Technology Exhibition)</fullName>
-        <default>false</default>
-        <label>GITEX Global (Gulf Information Technology Exhibition)</label>
-    </customValue>
-    <customValue>
-        <fullName>GOMACTech (Government Microcircuit Applications &amp; Critical Technology)</fullName>
-        <default>false</default>
-        <label>GOMACTech (Government Microcircuit Applications &amp; Critical Technology)</label>
-    </customValue>
-    <customValue>
-        <fullName>Google Cloud Next</fullName>
-        <default>false</default>
-        <label>Google Cloud Next</label>
-    </customValue>
-    <customValue>
-        <fullName>GSA (Global Semiconductor Alliance)</fullName>
-        <default>false</default>
-        <label>GSA (Global Semiconductor Alliance)</label>
-    </customValue>
-    <customValue>
-        <fullName>HIMSS (Healthcare Information Mgmt Systems Society)</fullName>
-        <default>false</default>
-        <label>HIMSS (Healthcare Information Mgmt Systems Society)</label>
-    </customValue>
-    <customValue>
-        <fullName>HMI (Hannover Messe)</fullName>
-        <default>false</default>
-        <label>HMI (Hannover Messe)</label>
-    </customValue>
-    <customValue>
-        <fullName>HP Amplify</fullName>
-        <default>false</default>
-        <label>HP Amplify</label>
-    </customValue>
-    <customValue>
-        <fullName>HPC Developer Conference</fullName>
-        <default>false</default>
-        <label>HPC Developer Conference</label>
-    </customValue>
-    <customValue>
-        <fullName>HPE Discover (Hewlett Packard Enterprise)</fullName>
-        <default>false</default>
-        <label>HPE Discover (Hewlett Packard Enterprise)</label>
-    </customValue>
-    <customValue>
-        <fullName>HPE Tech Jam (Hewlett Packard Enterprise)</fullName>
-        <default>false</default>
-        <label>HPE Tech Jam (Hewlett Packard Enterprise)</label>
-    </customValue>
-    <customValue>
-        <fullName>IBM Think</fullName>
-        <default>false</default>
-        <label>IBM Think</label>
-    </customValue>
-    <customValue>
-        <fullName>IDC (Intelligent Distributed Computing)</fullName>
-        <default>false</default>
-        <label>IDC (Intelligent Distributed Computing)</label>
-    </customValue>
-    <customValue>
-        <fullName>IEEE PES (IEEE Power &amp; Energy Society) TD Conference</fullName>
-        <default>false</default>
-        <label>IEEE PES (IEEE Power &amp; Energy Society) T&amp;D Conference</label>
-    </customValue>
-    <customValue>
-        <fullName>IEM (Intel Extreme Masters)</fullName>
-        <default>false</default>
-        <label>IEM (Intel Extreme Masters)</label>
-    </customValue>
-    <customValue>
-        <fullName>IFA (Innovation for All)</fullName>
-        <default>false</default>
-        <label>IFA (Innovation for All)</label>
-    </customValue>
-    <customValue>
-        <fullName>IFTD (Intel FPGA Technology Day)</fullName>
-        <default>false</default>
-        <label>IFTD (Intel FPGA Technology Day)</label>
-    </customValue>
-    <customValue>
-        <fullName>iMAPS (International Symposium on Microelectronics)</fullName>
-        <default>false</default>
-        <label>iMAPS (International Symposium on Microelectronics)</label>
-    </customValue>
-    <customValue>
-        <fullName>IMC (India Mobile Congress)</fullName>
-        <default>false</default>
-        <label>IMC (India Mobile Congress)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Federal Summit</fullName>
-        <default>false</default>
-        <label>Intel Federal Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel ON Connection</fullName>
-        <default>false</default>
-        <label>Intel ON Connection</label>
-    </customValue>
-    <customValue>
-        <fullName>ISB (Industry Solution Builders)</fullName>
-        <default>false</default>
-        <label>ISB (Industry Solution Builders)</label>
-    </customValue>
-    <customValue>
-        <fullName>ISC (International Supercomputing)</fullName>
-        <default>false</default>
-        <label>ISC (International Supercomputing)</label>
-    </customValue>
-    <customValue>
-        <fullName>ISC West (International Security Conference)</fullName>
-        <default>false</default>
-        <label>ISC West (International Security Conference)</label>
-    </customValue>
-    <customValue>
-        <fullName>ISE (Integrated Systems Europe)</fullName>
-        <default>false</default>
-        <label>ISE (Integrated Systems Europe)</label>
-    </customValue>
-    <customValue>
-        <fullName>ISET (Innovations in Special Education Technology)</fullName>
-        <default>false</default>
-        <label>ISET (Innovations in Special Education Technology)</label>
-    </customValue>
-    <customValue>
-        <fullName>ISTE (International Society for Technology Education)</fullName>
-        <default>false</default>
-        <label>ISTE (International Society for Technology Education)</label>
-    </customValue>
-    <customValue>
-        <fullName>ITS (Intelligent Transportation Systems)</fullName>
-        <default>false</default>
-        <label>ITS (Intelligent Transportation Systems)</label>
-    </customValue>
-    <customValue>
-        <fullName>KubeCon AMR</fullName>
-        <default>false</default>
-        <label>KubeCon AMR</label>
-    </customValue>
-    <customValue>
-        <fullName>KubeCon EMEA</fullName>
-        <default>false</default>
-        <label>KubeCon EMEA</label>
-    </customValue>
-    <customValue>
-        <fullName>LEAP Dubai</fullName>
-        <default>false</default>
-        <label>LEAP Dubai</label>
-    </customValue>
-    <customValue>
-        <fullName>Microsoft (MSFT) Build</fullName>
-        <default>false</default>
-        <label>Microsoft (MSFT) Build</label>
-    </customValue>
-    <customValue>
-        <fullName>MWC (Mobile World Congress) Americas</fullName>
-        <default>false</default>
-        <label>MWC (Mobile World Congress) Americas</label>
-    </customValue>
-    <customValue>
-        <fullName>MWC (Mobile World Congress) Barcelona</fullName>
-        <default>false</default>
-        <label>MWC (Mobile World Congress) Barcelona</label>
-    </customValue>
-    <customValue>
-        <fullName>NeurIPS</fullName>
-        <default>false</default>
-        <label>NeurIPS</label>
-    </customValue>
-    <customValue>
-        <fullName>NRF (National Retail Federation)</fullName>
-        <default>false</default>
-        <label>NRF (National Retail Federation)</label>
-    </customValue>
-    <customValue>
-        <fullName>Nutanix.next</fullName>
-        <default>false</default>
-        <label>Nutanix.next</label>
-    </customValue>
-    <customValue>
-        <fullName>NVIDIA GTC (GPU Tech Conference)</fullName>
-        <default>false</default>
-        <label>NVIDIA GTC (GPU Tech Conference)</label>
-    </customValue>
-    <customValue>
-        <fullName>OCP (Open Compute Project) Global Summit</fullName>
-        <default>false</default>
-        <label>OCP (Open Compute Project) Global Summit</label>
-    </customValue>
-    <customValue>
-        <fullName>OFC (Optical Fiber Conference)</fullName>
-        <default>false</default>
-        <label>OFC (Optical Fiber Conference)</label>
-    </customValue>
-    <customValue>
-        <fullName>Oracle AI World</fullName>
-        <default>false</default>
-        <label>Oracle AI World</label>
-    </customValue>
-    <customValue>
-        <fullName>OSS (Open Source Summit)</fullName>
-        <default>false</default>
-        <label>OSS (Open Source Summit)</label>
-    </customValue>
-    <customValue>
-        <fullName>PyTorch</fullName>
-        <default>false</default>
-        <label>PyTorch</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel REC (Retail Executive Conference)</fullName>
-        <default>false</default>
-        <label>Intel REC (Retail Executive Conference)</label>
-    </customValue>
-    <customValue>
-        <fullName>SAS Innovate</fullName>
-        <default>false</default>
-        <label>SAS Innovate</label>
-    </customValue>
-    <customValue>
-        <fullName>SC (Supercomputing)</fullName>
-        <default>false</default>
-        <label>SC (Supercomputing)</label>
-    </customValue>
-    <customValue>
-        <fullName>SCTE (Society of Cable Telecommunications Engineers)</fullName>
-        <default>false</default>
-        <label>SCTE (Society of Cable Telecommunications Engineers)</label>
-    </customValue>
-    <customValue>
-        <fullName>SIGGRAPH (Special Interest Group on Computer Graphics and Interactive Techniques)</fullName>
-        <default>false</default>
-        <label>SIGGRAPH (Special Interest Group on Computer Graphics and Interactive Techniques)</label>
-    </customValue>
-    <customValue>
-        <fullName>Smart City</fullName>
-        <default>false</default>
-        <label>Smart City</label>
-    </customValue>
-    <customValue>
-        <fullName>Teratec</fullName>
-        <default>false</default>
-        <label>Teratec</label>
-    </customValue>
-    <customValue>
-        <fullName>VivaTech Europe</fullName>
-        <default>false</default>
-        <label>VivaTech Europe</label>
-    </customValue>
-    <customValue>
-        <fullName>VMUG (VMware Users Group)</fullName>
-        <default>false</default>
-        <label>VMUG (VMware Users Group)</label>
-    </customValue>
-    <customValue>
-        <fullName>VMware Explore</fullName>
-        <default>false</default>
-        <label>VMware Explore</label>
-    </customValue>
-    <customValue>
-        <fullName>Zoomtopia</fullName>
-        <default>false</default>
-        <label>Zoomtopia</label>
-    </customValue>
-    <customValue>
-        <fullName>Cisco Live</fullName>
-        <default>false</default>
-        <label>Cisco Live</label>
-    </customValue>
-    <customValue>
-        <fullName>NAB (National Association of Broadcasters)</fullName>
-        <default>false</default>
-        <label>NAB (National Association of Broadcasters)</label>
-    </customValue>
-    <customValue>
-        <fullName>Lenovo Tech World</fullName>
-        <default>false</default>
-        <label>Lenovo Tech World</label>
+        <isActive>false</isActive>
+        <label>Intel Partner Alliance (IPA)</label>
     </customValue>
     <customValue>
         <fullName>Intel ON: Innovation</fullName>
@@ -773,10 +364,10 @@
         <label>Intel FPGA Technology Day (IFTD)</label>
     </customValue>
     <customValue>
-        <fullName>Intel Tech Connect</fullName>
+        <fullName>Intel 360 (i360)</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel Tech Connect</label>
+        <label>Intel 360 (i360)</label>
     </customValue>
     <customValue>
         <fullName>Intel Cloud Board of Advisors (Cloud BOA)</fullName>
@@ -785,10 +376,10 @@
         <label>Intel Cloud Board of Advisors (Cloud BOA)</label>
     </customValue>
     <customValue>
-        <fullName>Intel 360 (i360)</fullName>
+        <fullName>Intel Tech Connect</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel 360 (i360)</label>
+        <label>Intel Tech Connect</label>
     </customValue>
     <customValue>
         <fullName>Intel Retail Executive Conference (REC) North America</fullName>
@@ -813,12 +404,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel ON: Vision</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Partner Alliance (IPA)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel Partner Alliance (IPA)</label>
     </customValue>
     <description>Stores Event Name</description>
     <masterLabel>Event Name</masterLabel>

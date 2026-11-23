@@ -92,46 +92,27 @@ public without sharing class Core_MDF_PIC_Utility {
         }
     }
     
-	//Roshan - Super Claim PIC 
     public static boolean isHoldApplicable(PartnerFundClaim newclaim)
     {
         boolean isHold = false;
-
-        if (newclaim.Core_MDF_Has_Sub_Claims_Ind__c == TRUE) {  //Super Claim
-            if (newclaim.Core_MDF_Intel_Manual_Hold_Ind__c || newclaim.Core_MDF_Member_Manual_Hold_Ind__c) { 
-                isHold = true;
-            }
-        } else if (newclaim.Core_MDF_Claim_Id__c != NULL) {  //Sub Claim
-            if (newclaim.Core_MDF_Payment_Hold_ind__c || newclaim.Core_MDF_ESD_Hold__c) { 
-                isHold = true;
-            }
-            if (newclaim.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c) { 
-                newclaim.Core_MDF_Bank_Doc_Hold_Ind__c = true; 
-                isHold = true;
-            }
-            if (newclaim.Core_MDF_VAT_Eligibility_Ind__c) { 
-                vatClaims.add(newclaim);
-            }
-        } 
-        //Normal Claim
-        else {
-            if(newclaim.Core_MDF_ESD_Hold__c || newclaim.Core_MDF_Payment_Hold_ind__c || newclaim.Core_MDF_Criteria_Hold_Ind__c || newClaim.Core_MDF_Member_Manual_Hold_Ind__c || newClaim.Core_MDF_Intel_Manual_Hold_Ind__c)
-            {
-                isHold = true;
-            }
-            if(newclaim.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){
-                newClaim.Core_MDF_Bank_Doc_Hold_Ind__c = true;
-                isHold = true;   
-            }
-            if(newclaim.Core_MDF_VAT_Eligibility_Ind__c){
-                //adding eligible claims to this list which will be used to call Core_MDF_Claim_VAT_Process.updateclaimVATInfo
-                //where Core_MDF_VAT_Hold_Ind__c = true and status will be updated to hold based on the amount checks
-                vatClaims.add(newclaim);   
-            }
+		if(newclaim.Core_MDF_ESD_Hold__c || newclaim.Core_MDF_Payment_Hold_ind__c || newclaim.Core_MDF_Criteria_Hold_Ind__c || newClaim.Core_MDF_Member_Manual_Hold_Ind__c || newClaim.Core_MDF_Intel_Manual_Hold_Ind__c)
+        {
+            isHold = true;
         }
+        if(newclaim.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){
+            newClaim.Core_MDF_Bank_Doc_Hold_Ind__c = true;
+            isHold = true;   
+        }
+        if(newclaim.Core_MDF_VAT_Eligibility_Ind__c){
+            //adding eligible claims to this list which will be used to call Core_MDF_Claim_VAT_Process.updateclaimVATInfo
+            //where Core_MDF_VAT_Hold_Ind__c = true and status will be updated to hold based on the amount checks
+            vatClaims.add(newclaim);   
+        }
+       
         return isHold;
     }
-      
+    
+    
     public static boolean isLegacy(PartnerFundClaim claim)
     {
         if(((claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name') || claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name'))

@@ -54,6 +54,9 @@
         <field>SBQQ__QuoteLine__c.core_cpq_opn_active_cb__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_quote_approved_date_dt__c</field>
     </columns>
     <columns>

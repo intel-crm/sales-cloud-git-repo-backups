@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <available>true</available>
+    <description>Send notification for delegation end date</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Notify SOS for delegated user</name>
+    <packageVersions>
+        <majorNumber>232</majorNumber>
+        <minorNumber>2</minorNumber>
+        <namespace>sbaa</namespace>
+    </packageVersions>
+    <style>none</style>
+    <subject>AVP PRID #  due for renewal</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -17,10 +17,6 @@
         <name>Groove_New_Opportunity</name>
     </fieldSets>
     <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </fieldSets>
-    <fieldSets>
         <label><!-- Opportunity VBS Field Set --></label>
         <name>OPTY_VBS_FieldSet</name>
     </fieldSets>
@@ -1063,18 +1059,6 @@
         <name>Core_Design_Start_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Design Type --></label>
-        <name>Core_Design_Type__c</name>
-        <picklistValues>
-            <masterLabel>Board-based</masterLabel>
-            <translation><!-- Board-based --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chip-down</masterLabel>
-            <translation><!-- Chip-down --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Direct Support Req? --></label>
         <name>Core_Direct_Support_Req__c</name>
     </fields>
@@ -1500,16 +1484,8 @@
             <translation><!-- COOPER LAKE SP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CRESCENT ISLAND</masterLabel>
-            <translation><!-- CRESCENT ISLAND --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CYCLONE</masterLabel>
             <translation><!-- CYCLONE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DUNLOW</masterLabel>
-            <translation><!-- DUNLOW --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>EAGLE STREAM</masterLabel>
@@ -1598,10 +1574,6 @@
         <picklistValues>
             <masterLabel>MALIBOU LAKE</masterLabel>
             <translation><!-- MALIBOU LAKE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MAPLE STREAM</masterLabel>
-            <translation><!-- MAPLE STREAM --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>MAX</masterLabel>
@@ -1728,10 +1700,6 @@
             <translation><!-- WILDCAT LAKE M --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>WILDCAT LAKE REFRESH</masterLabel>
-            <translation><!-- WILDCAT LAKE REFRESH --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>WIZARD LAKE</masterLabel>
             <translation><!-- WIZARD LAKE --></translation>
         </picklistValues>
@@ -1824,10 +1792,6 @@
     <fields>
         <label><!-- Last KPI Update --></label>
         <name>Core_Last_KPI_Update__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Opportunity Progressed Date --></label>
-        <name>Core_Last_Opportunity_Progressed_Date__c</name>
     </fields>
     <fields>
         <label><!-- Lead Conversion Flag --></label>
@@ -1948,6 +1912,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -3256,10 +3224,6 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Opportunity_Lost__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity Not Progressed --></label>
-        <name>Core_Opportunity_Not_Progressed__c</name>
-    </fields>
-    <fields>
         <label><!-- Opportunity Region --></label>
         <name>Core_Opportunity_Owner_Geo__c</name>
     </fields>
@@ -3549,6 +3513,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <translation><!-- ADAS L1-L3 and Mainstream Safety --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>AI Software</masterLabel>
+            <translation><!-- AI Software --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>ASIC Prototyping/Emulation</masterLabel>
             <translation><!-- ASIC Prototyping/Emulation --></translation>
         </picklistValues>
@@ -3681,12 +3649,20 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <translation><!-- Network Virtual Appliances --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PLC &amp; PAC</masterLabel>
             <translation><!-- PLC &amp; PAC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>POS / ATM</masterLabel>
             <translation><!-- POS / ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance</masterLabel>
+            <translation><!-- Performance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Public Sector - Ruggedized PCs</masterLabel>
@@ -3737,6 +3713,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <translation><!-- Server - Public Cloud --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Service</masterLabel>
+            <translation><!-- Service --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Storage</masterLabel>
             <translation><!-- Storage --></translation>
         </picklistValues>
@@ -3747,6 +3727,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <picklistValues>
             <masterLabel>Thin Client, Cloud Client</masterLabel>
             <translation><!-- Thin Client, Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trust</masterLabel>
+            <translation><!-- Trust --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</masterLabel>
@@ -3885,6 +3869,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <picklistValues>
             <masterLabel>Embedded / IOT</masterLabel>
             <translation><!-- Embedded / IOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software &amp; Services</masterLabel>
+            <translation><!-- Software &amp; Services --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -10225,10 +10213,6 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Support_Requested__c</name>
     </fields>
     <fields>
-        <label><!-- Sustainability Compliance --></label>
-        <name>Core_Sustainability_Compliance__c</name>
-    </fields>
-    <fields>
         <label><!-- System First Approved Sales Group --></label>
         <name>Core_System_First_Approved_Sales_Group__c</name>
     </fields>
@@ -10483,46 +10467,52 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>FAD_Start_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
+        <label><!-- Current Generator(s) --></label>
+        <name>LID__CurrentGenerators__c</name>
     </fields>
     <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
-    </fields>
-    <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Opportunity Acceptance --></label>
-        <name>ImpartnerPRM__PartnerOpportunityAcceptance__c</name>
+        <label><!-- Delivery/Installation Status --></label>
+        <name>LID__DeliveryInstallationStatus__c</name>
         <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
+            <masterLabel>In progress</masterLabel>
+            <translation><!-- In progress --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
+            <masterLabel>Yet to begin</masterLabel>
+            <translation><!-- Yet to begin --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is_Influenced --></label>
+        <name>LID__Is_Influenced__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Main Competitor(s) --></label>
+        <name>LID__MainCompetitors__c</name>
+    </fields>
+    <fields>
+        <label><!-- My DateTime --></label>
+        <name>LID__My_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- My Geolocation --></label>
+        <name>LID__My_Geolocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>LID__OrderNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tracking Number --></label>
+        <name>LID__TrackingNumber__c</name>
     </fields>
     <fields>
         <help><!-- • Core: Ecosystem-led Transactional selling motions (e.g. Ecosystem-led end-customer engagement, Run-rate or Repeat silicon and accelerator business)
@@ -10648,30 +10638,6 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- Customer’s current and missing capabilities to execute aspirational Desired End State. (e.g. Who is customer already working with today, what decisions have been made, what has been deployed?) --></help>
         <label><!-- Technology and Readiness Gaps --></label>
         <name>Technology_and_Readiness_Gaps__c</name>
-    </fields>
-    <fields>
-        <label><!-- Current Sales Campaign --></label>
-        <name>mkto_si__Current_Sales_Campaign__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Activity by Sales --></label>
-        <name>mkto_si__Last_Activity_By_Sales__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Sales Engagement --></label>
-        <name>mkto_si__Last_Sales_Engagement__c</name>
-    </fields>
-    <fields>
-        <label><!-- Marketo Opportunity Analysis --></label>
-        <name>mkto_si__MarketoAnalyzer__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Insight --></label>
-        <name>mkto_si__Sales_Insight__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Last Replied --></label>
-        <name>mkto_si__Sales_Last_Replied__c</name>
     </fields>
     <fields>
         <help>Statut d&apos;approbation global de cette opportunité</help>
@@ -10950,10 +10916,6 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Opp_Reason_if_Lost</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Loss/Cancel Reason is required if Stage is set to Lost or Cancelled --></errorMessage>
-        <name>Core_Opp_Reason_if_Lost_non_PCC</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- First Customer Ship Date is required on Design opportunities. --></errorMessage>
         <name>Core_Opp_Req_First_Cust_Ship_Date</name>
     </validationRules>
@@ -11098,6 +11060,14 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_restrict_to_update_submitted_oppty</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Reversal is only possible from Reverse Button. --></errorMessage>
         <name>Low_Touch_Admin_Check_on_Recall</name>
     </validationRules>
@@ -11109,6 +11079,10 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <errorMessage><!-- Opportunity has been pushed, please update the push reason and push reason details. --></errorMessage>
         <name>core_decisionDate_move</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Core_Create_PSG_Quote --></label>
+        <name>Core_Create_PSG_Quote</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_Deal_Support --></label>
         <name>Core_Deal_Support</name>
@@ -11136,10 +11110,6 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <webLinks>
         <label><!-- Core_Sales_Support --></label>
         <name>Core_Sales_Support</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
     </webLinks>
     <webLinks>
         <label><!-- Amend_Assets --></label>

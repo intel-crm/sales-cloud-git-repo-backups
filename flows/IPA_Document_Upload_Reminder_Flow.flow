@@ -9,12 +9,6 @@
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
-            <name>isRemainderEmail</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>regRequestList</name>
             <value>
                 <elementReference>RegRequestList</elementReference>
@@ -55,7 +49,7 @@
                 <leftValueReference>$Record.PRM_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>PendingwithPartner</stringValue>
+                    <stringValue>Pending with Partner</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -77,7 +71,7 @@
                 <leftValueReference>$Record.PRM_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>PendingwithPartner</stringValue>
+                    <stringValue>Pending with Partner</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -136,7 +130,7 @@
             <field>PRM_Status__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>PendingwithPartner</stringValue>
+                <stringValue>Pending with Partner</stringValue>
             </value>
         </filters>
         <filters>
@@ -161,8 +155,8 @@
                 <targetReference>Is_Status_Pending_with_Partner</targetReference>
             </connector>
             <label>Send Reminder Email to Partner for Document Upload after 3 days</label>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>15</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <scheduledPaths>
@@ -171,13 +165,13 @@
                 <targetReference>Is_Registration_still_Pending_with_Partner</targetReference>
             </connector>
             <label>Reject registration Request after 7 days</label>
-            <offsetNumber>7</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>30</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>RegRequestList</name>
         <dataType>SObject</dataType>

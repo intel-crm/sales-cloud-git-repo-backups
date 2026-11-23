@@ -71,10 +71,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_CampOutcomeOpt_In_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_MDF_Outcomes_nm__c</field>
             </layoutItems>
         </layoutColumns>
@@ -86,9 +82,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Contract_ID_txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

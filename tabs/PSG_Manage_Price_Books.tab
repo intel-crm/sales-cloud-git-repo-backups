@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This tab is used to manage price book entries based on price book selected by EU.</description>
+    <label>Manage Price Books</label>
+    <lwcComponent>psg_ManagePriceBooks</lwcComponent>
+    <motif>Custom17: Sack</motif>
+</CustomTab>

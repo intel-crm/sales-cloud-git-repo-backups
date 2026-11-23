@@ -50,13 +50,11 @@ public class TestUtilities{
     
     public static User getCustomerUser(){
         Set<String> customerUserTypes = new Set<String> {'CSPLiteUser', 'PowerPartner', 'PowerCustomerSuccess',   'CustomerSuccess'};
-            
         Account acc = new Account (
             Name = 'newAcc1',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
-            BillingStreet = 'Creek Side Dr',
-            recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+            BillingStreet = 'Creek Side Dr'
         );  
         insert acc;
         Contact con = new Contact (
@@ -107,8 +105,7 @@ public class TestUtilities{
             Core_CIM_ID__c = '11429344',
             Core_B2B_Entitlement__c = true,
             Core_Account_Legal_Name__c = 'TestLegalName',
-        	Ownerid =thisUser.id,
-            recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+        	Ownerid =thisUser.id
         );  
         insert acc;
         Contact con = new Contact (
@@ -127,7 +124,7 @@ public class TestUtilities{
         newUser = new User(
         //UserRoleId = ur.Id,
         profileId = p.id,
-        username = 'newUser233@yahoo.com',
+        username = 'newUser@yahoo.com',
         email = 'pb@ff.com',
         emailencodingkey = 'UTF-8',
         localesidkey = 'en_US',
@@ -1539,26 +1536,5 @@ public class TestUtilities{
             lstIST.add(objIST);
         }
         return lstIST;
-    }
-    //Nuthana as part of bug fix
-    public static User getAccountOwner(){
-        UserRole portalRole = [Select Id From UserRole Where Name = 'Admin' Limit 1];
-         Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
-          User AccountOwner = new User(
-            ProfileId = profile1.Id,
-            LastName = 'last',
-            Email = 'puser00012@example.com',
-            Username = 'puser00012@example.com' + System.currentTimeMillis(),
-            CompanyName = 'TEST',
-            Title = 'title',
-            Alias = 'alias',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            UserRoleId=portalRole.Id
-            );
-        insert AccountOwner;
-        return AccountOwner;
     }
 }

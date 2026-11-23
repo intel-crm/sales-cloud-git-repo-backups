@@ -20,8 +20,7 @@ global class Core_MDF_Outcome_Claim_Rejection_Batch implements Database.Batchabl
                         + 'FROM PartnerFundClaim '
                         + 'WHERE Core_MDF_Program__c = \'' + programName + '\' ' 
                         + 'AND Core_MDF_Status__c = \'' + status + '\' ' 
-                        + 'AND Core_MDF_Latest_Review_Cycle_Number_nbr__c >= ' + latestReviewCycleNo + ' '
-                        + 'AND Core_MDF_OutcomeBased_Ind__c = TRUE';
+                        + 'AND Core_MDF_Latest_Review_Cycle_Number_nbr__c >= ' + latestReviewCycleNo; 
         
         return Database.getQueryLocator(query);
     }

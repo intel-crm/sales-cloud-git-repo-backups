@@ -43,7 +43,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>EMEA Sales Group,Americas Partner Led,APJ Partner Led,EMEA Partner Led,India Partner Led,PRC Partner Led</value>
+            <value>Americas Partner Led,APJ Partner Led,EMEA Partner Led,India Partner Led,PRC Partner Led</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Geo__c</column>

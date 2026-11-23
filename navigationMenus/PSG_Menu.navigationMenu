@@ -11,37 +11,44 @@
         <type>SalesforceObject</type>
     </navigationMenuItem>
     <navigationMenuItem>
+        <label>DPAs &amp; ALNs</label>
+        <position>2</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>core_cpq_dpa_aln__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
         <defaultListViewId>AllReports</defaultListViewId>
         <label>Reports</label>
-        <position>2</position>
+        <position>3</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>Report</target>
         <type>SalesforceObject</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Download Center</label>
-        <position>3</position>
+        <position>4</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>https://www.intel.com/content/www/us/en/programmable/sep/pricing/price-lists.html</target>
         <type>ExternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Get Help</label>
-        <position>4</position>
+        <position>5</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>/psg-get-help</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Training</label>
-        <position>5</position>
+        <position>6</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>https://www.intel.com/content/www/us/en/design/support/quote-request/training/welcome.html</target>
         <type>ExternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>User Preferences</label>
-        <position>6</position>
+        <position>7</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>/user-preferences</target>
         <type>InternalLink</type>

@@ -86,22 +86,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -169,21 +163,6 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_MDF_Account_Node_nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    Core_MDF_Sub_Claim_Id__r.Core_MDF_Account_Name_nm__c,
-    Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Account_Name_nm__c
-)</formula>
-        <label>Account Node</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <fields>
         <fullName>Core_MDF_Adjustment_Claim_Nbr__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -365,29 +344,16 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Reference_Claim_Nbr__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>Source Claim from where the Adjustment originated</description>
         <inlineHelpText>Source Claim from where the Adjustment originated</inlineHelpText>
         <label>Reference Claim Name</label>
         <referenceTo>PartnerFundClaim</referenceTo>
         <relationshipLabel>Claim Adjustment Requests</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests</relationshipName>
-        <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Sub_Claim_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Sub Claim</label>
-        <referenceTo>PartnerFundClaim</referenceTo>
-        <relationshipLabel>Claim Adjustment Requests (Sub Claim)</relationshipLabel>
-        <relationshipName>Claim_Adjustment_Requests2</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -459,14 +425,13 @@ NOT(
 OR(
 ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Payment Due&quot;),
 ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Pending Available Fund&quot;),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Hold&quot;),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Queued for Payment&quot;)
+ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Hold&quot;)
 )
 ),
 ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_VAT_Opt_In__c, &quot;Service Invoice to Intel (VAT may apply)&quot;)
 )
 )</errorConditionFormula>
-        <errorMessage>Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold/Queued for Payment status.</errorMessage>
+        <errorMessage>Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold status.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Block_On_Cancelled_Status</fullName>

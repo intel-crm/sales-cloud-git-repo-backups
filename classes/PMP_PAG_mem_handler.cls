@@ -121,10 +121,7 @@ public class PMP_PAG_mem_handler {
             }        
         } 
         if (newcompanies.size() > 0){
-            //insert(newcompanies);
-            Database.SaveResult[] ncList = Database.insert(newcompanies, false);
-			PMP_Utility.logDmlErrors((Object[]) ncList, 'PMP_PAG_mem_handler-onGroupMemAfterInsert');
-
+            insert(newcompanies);
             // system.debug('newcompanies => '+newcompanies);
       System.enqueueJob(new PMP_SearchCreatePartnerWorkCopy(newcompanies));              
         }                 
@@ -247,11 +244,7 @@ public class PMP_PAG_mem_handler {
         }
          //as a part of US622434[FOR SONAR CUBE]     
         if (newcompanies.size() > 0){
-            //upsert(newcompanies);
-            Database.UpsertResult[] ncList1 = Database.upsert(newcompanies, false);
-			PMP_Utility.logDmlErrors((Object[]) ncList1, 'PMP_PAG_mem_handler-onGroupMemAfterUpdate');
-
-
+            upsert(newcompanies);
             // System.debug('comapany info'+ newcompanies);
             System.enqueueJob(new PMP_SearchCreatePartnerWorkCopy(newcompanies));              
         }

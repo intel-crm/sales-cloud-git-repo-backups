@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Marketing_Profile_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Marketing_Profile_Information_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -521,7 +521,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>
@@ -917,7 +916,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>
@@ -959,42 +957,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Autofill_Txt__c</fullName>
-        <description>Status field indicating if the storefront was auto filled</description>
-        <label>Autofill Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Scraped</fullName>
-                    <default>false</default>
-                    <label>Scraped</label>
-                </value>
-                <value>
-                    <fullName>Mixed</fullName>
-                    <default>false</default>
-                    <label>Mixed</label>
-                </value>
-                <value>
-                    <fullName>LLM_Knowledge</fullName>
-                    <default>false</default>
-                    <label>LLM_Knowledge</label>
-                </value>
-                <value>
-                    <fullName>Not Processed</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Not Processed</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>PMP_Badge_Tier_Sequence_Nbr__c</fullName>
@@ -1866,16 +1828,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PMP_ScrapStatusComment_Txt__c</fullName>
-        <description>Field which mentions any feedback or comments from Autofill batch</description>
-        <label>Scrap Status Comment</label>
-        <length>1000</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
         <fullName>PMP_Storefront_EditAccess_Ind__c</fullName>
         <formula>OR((CONTAINS($User.ProfileId,  $Label.PMP_Partner_Profile_Id )
 					&amp;&amp;  NOT(ISBLANK($User.Core_IPA_One_Partner_Id__c))  &amp;&amp;CONTAINS(PMP_Opid_Sfid_Ref_Txt__c,$User.Core_IPA_One_Partner_Id__c)),$Permission.PMP_Manage_Partners )</formula>
@@ -1883,22 +1835,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Storefront_SiteUrl__c</fullName>
-        <description>This field has link to Experience site Storefront Record</description>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(
-$Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
-&quot;Edit/Approve Storefront&quot;
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Storefront SiteUrl</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PMP_Suppress_Email_Ind__c</fullName>
@@ -2125,11 +2061,6 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
             <operation>equals</operation>
             <value>Admin Review</value>
         </filters>
-        <filters>
-            <field>PMP_Benefit_Update_Ind__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
         <label>Admin Review Queue</label>
         <sharedTo>
             <group>PMP_All_Intel_Admin_Users</group>
@@ -2147,6 +2078,7 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
         <columns>PMP_Company_Information_Language_Nm__c</columns>
         <columns>PMP_Account_Address_Txt__c</columns>
         <columns>PMP_View_Partners_Txt__c</columns>
+        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
         <columns>PMP_Company_Status_Published_Date_Dt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -2154,41 +2086,7 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <filters>
-            <field>PMP_Benefit_Update_Ind__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
         <label>All Partners</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Storefront_Admin_Review_Queue</fullName>
-        <columns>NAME</columns>
-        <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Intel_Admin_Nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>PMP_Storefront_SiteUrl__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Is_Working_Copy_Ind__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Admin Review</value>
-        </filters>
-        <filters>
-            <field>PMP_Benefit_Update_Ind__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <label>Storefront Admin Review Queue</label>
         <sharedTo>
             <group>PMP_All_Intel_Admin_Users</group>
         </sharedTo>

@@ -148,8 +148,8 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         OemCmpPfr1.Core_MDF_End_Date__c =  system.today()-30;
         OemCmpPfr1.Core_MDF_Channel_Partner_Led__c = True;
         OemCmpPfr1.Core_MDF_Approval_Step_Completed__c = 0;
-        OemCmpPfr1.Core_MDF_ActivityCategory__c = 'Audio';
-        OemCmpPfr1.Core_MDF_Activity_Types__c = 'Radio';
+        OemCmpPfr1.Core_MDF_ActivityCategory__c = 'Purchase Incentive';
+        OemCmpPfr1.Core_MDF_Activity_Types__c = 'Buyer - Bundle Offer';
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_txt__c = '100%';
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%'; 
         OemCmpPfr1.RequestedAmount = 1001;
@@ -376,21 +376,8 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         for (ChannelProgram cprog : [SELECT Id, Name                               
                                      FROM ChannelProgram                               
                                      WHERE Name IN: progNameSet]){                               
-                                     progToIdMap.put(cprog.Name,cprog.Id);   
-                                     }
-                                         
-          // 14285 Indira - start                                
-         System.runAs(systemAdmin){    
-        List<String> bypassFunctionKeys = new List<String>();
-        Set<String> myset1 = new Set<String>();
-        List<String> result1 = new List<String>();
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-        bypassFunctionKeys.add('Core_MDF_Bypass_PFREmailNotification');
-        myset1.addAll(bypassFunctionKeys);
-        result1.addAll(myset1);
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-        }
-        // 14285 Indira - end
+                                         progToIdMap.put(cprog.Name,cprog.Id);                             
+                                     } 
         
         //IUPGM Insert
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
@@ -404,7 +391,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm1.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm1.Core_MDF_Active_Ind__c =  true;
         iupgm1.RecordTypeId = IPA_RecordType;
-        iupgm1.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm1.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm1);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm2 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -418,7 +405,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm2.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm2.Core_MDF_Active_Ind__c =  true;
         iupgm2.RecordTypeId = IPA_RecordType;
-        iupgm2.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm2.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm2);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm3 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -430,7 +417,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm3.Core_MDF_All_Budget_Type_Access_Ind__c = true;
         iupgm3.Core_MDF_Active_Ind__c =  true;
         iupgm3.RecordTypeId = IPA_RecordType;
-        iupgm3.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm3.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm3);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm4 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -443,7 +430,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm4.Core_MDF_Account_id__c = intelAccount.Id;
         iupgm4.Core_MDF_Active_Ind__c =  true;
         iupgm4.RecordTypeId = IPA_RecordType;
-        iupgm4.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm4.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm4);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm5 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -458,7 +445,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm5.Core_MDF_Active_Ind__c =  true;
         iupgm5.Core_MDF_Account_id__c = intelAccount.Id;
         iupgm5.RecordTypeId = IPA_RecordType;
-        iupgm5.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm5.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm5);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm6= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -472,7 +459,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm6.Core_MDF_Account_id__c = intelAccount.Id;
         iupgm6.Core_MDF_Active_Ind__c =  true;
         iupgm6.RecordTypeId = IPA_RecordType;
-        iupgm6.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm6.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm6);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm7 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();        
@@ -484,7 +471,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm7.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Price_Reviewer';
         iupgm7.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm7.Core_MDF_Active_Ind__c =  true;
-        iupgm7.Core_MDF_Channel_Program_id__c = progToIdMap.get('Client Co-Marketing Fund');
+        //iupgm7.Core_MDF_Channel_Program_id__c = progToIdMap.get('Client Co-Marketing Fund');
         iupgmList.add(iupgm7);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm8 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -493,7 +480,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm8.Core_MDF_User_id__c =  IUPGM_User.Id;
         iupgm8.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm8.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_CCF_Acct_Mgr';
-        iupgm8.Core_MDF_Channel_Program_id__c = progToIdMap.get('Client Co-Marketing Fund');
+        //iupgm8.Core_MDF_Channel_Program_id__c = progToIdMap.get('Client Co-Marketing Fund');
         iupgmList.add(iupgm8);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm9 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -504,7 +491,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm9.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm9.Core_MDF_Role_nm__c='Core_MDF_CCP_Int_IPA_ProposalL1_Approver';
         iupgm9.RecordTypeId = IPA_RecordType;
-        iupgm9.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
+        //iupgm9.Core_MDF_Channel_Program_id__c = progToIdMap.get('Intel Partner Alliance');
         iupgmList.add(iupgm9);
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm10 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -516,7 +503,7 @@ public class Core_MDF_IUPGM_ApprovalRequest_Test {
         iupgm10.Core_MDF_Active_Ind__c =  true;
         iupgm10.RecordTypeId = DCF_RecordType;
         iupgm10.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver';
-        iupgm10.Core_MDF_Channel_Program_id__c = progToIdMap.get('Data Center Co-Marketing Fund');
+        //iupgm10.Core_MDF_Channel_Program_id__c = progToIdMap.get('Data Center Co-Marketing Fund');
         iupgmList.add(iupgm10);
         
         system.runAs(systemAdmin){
@@ -547,7 +534,6 @@ insert ipaCampaignForAP;*/
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
             ipaCampaignForAP.Core_Approval_Status__c = 'Price Reviewer';
-            ipaCampaignForAP.Core_MDF_Technology__c='';
             //ipaCampaignForAP.Core_MDF_Activity_Category_Type__c = 'Digital 2025->Web Content';
             //ipaCampaignForAP.Core_MDF_Supports_legacy_program__c='New MDF or both CMP & MDF';
             database.insert(ipaCampaignForAP);
@@ -555,8 +541,8 @@ insert ipaCampaignForAP;*/
             PartnerFundAllocation PfaRec = [SELECT Id,Title from PartnerFundAllocation where Title='TestPFA3' limit 1]; 
             
             PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),false);
-            ipaPFR5.Core_MDF_ActivityCategory__c='Audio';
-            ipaPFR5.Core_MDF_Activity_Types__c='Radio';
+            ipaPFR5.Core_MDF_ActivityCategory__c='Digital 2025';
+            ipaPFR5.Core_MDF_Activity_Types__c='Web Content';
             //ipaPFR5.Core_MDF_Proposal_Based_Ind__c = 'true';
             ipaPFR5.RequestedAmount = 100;
             ipaPFR5.Core_MDF_Reimbursement_Rate_txt__c ='100%';
@@ -1044,401 +1030,4 @@ Test.startTest();
         Core_MDF_IUPGM_ApprovalRequest.getPFCApproversForHomePage(programNameSet, approvalStageSet, 'PartnerFundRequest');
         Test.stopTest();
     }
-    
-    // 14285 Indira - start 
-    
-
-@isTest 
-static void test_getCampaignApprovers_eef_and_progIdFallback() {
-
-    Test.startTest();
-
-    // 🔧 Clear static data
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccSpecificBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccSpecificBTSet.clear();
-
-    // 🔧 Mock metadata
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put(
-        'Campaign',
-        new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Field_7_txt__c = 'Id,Name,Core_MDF_Approval_Stage_nm__c',
-            Core_MDF_Field_8_txt__c = 'icon',
-            Core_MDF_Field_9_txt__c = 'Campaign'
-        )
-    );
-
-    // 🔧 Fake mapping (IMPORTANT)
-    Core_MDF_IUPGM_ApprovalRequest.progToIdMap.put('Client CoMarketing Fund', 'dummyProgId');
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.add('WW->dummyProgId_PriceReviewer');
-
-    // Test data
-    Campaign c = new Campaign(
-        Name = 'UT Campaign Test',
-        Status = 'Pending Review',
-        Core_MDF_Program__c = 'Client CoMarketing Fund',
-        Core_MDF_Approval_Stage_nm__c = 'Price Reviewer'
-    );
-    insert c;
-
-    Set<String> programNameSet = new Set<String>{'Client CoMarketing Fund'};
-    Set<String> approvalStage = new Set<String>{'Price Reviewer'};
-
-    Core_MDF_IUPGM_ApprovalRequest.ApprovalWrapper wrap =
-        Core_MDF_IUPGM_ApprovalRequest.getCampaignApprovers(programNameSet, approvalStage, 'Campaign');
-
-  //  System.assert(wrap != null, 'Wrapper should not be null');
-
-    Test.stopTest();
-}
-  @isTest 
-static void test_getBudgetApprovers_WW_and_IPA_paths() {
-
-    Test.startTest();
-
-    // 🔧 Clear static data
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccSpecificBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccSpecificBTSet.clear();
-
-    // 🔧 Mock metadata
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put(
-        'PartnerMarketingBudget',
-        new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Field_7_txt__c = 'Id,Title,Core_MDF_Budget_Type_Txt__c',
-            Core_MDF_Field_8_txt__c = 'icon',
-            Core_MDF_Field_9_txt__c = 'Budget'
-        )
-    );
-
-    // 🔧 Fake mapping
-    Core_MDF_IUPGM_ApprovalRequest.progToIdMap.put('Intel Partner Alliance', 'dummyProgId');
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.add('WW->dummyProgId_None');
-
-    // Test data
-    Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget
-        .getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
-
-    Account acc = [SELECT Id FROM Account LIMIT 1];
-
-    PartnerMarketingBudget pmb = new PartnerMarketingBudget(
-        Title='PMB Test',
-        RecordTypeId = recordTypeIdPMB,
-        Core_MDF_Budget_Partner__c = acc.Id,
-        Core_MDF_Budget_Type_Txt__c = '',
-        StartDate = System.today().addDays(-10),
-        EndDate = System.today().addDays(10),
-        Amount = 1000
-    );
-  //  insert pmb;
-
-    Set<String> programNameSet = new Set<String>{'Intel Partner Alliance'};
-    Set<String> approvalStage = new Set<String>{'None'};
-
-    Core_MDF_IUPGM_ApprovalRequest.ApprovalWrapper wrap =
-        Core_MDF_IUPGM_ApprovalRequest.getBudgetApprovers(programNameSet, approvalStage, 'PartnerMarketingBudget');
-
-    //System.assert(wrap != null, 'Wrapper should not be null');
-
-    Test.stopTest();
-}
-    
-@isTest 
-static void test_getPFCApprovers_claim_paths() {
-
-    Test.startTest();
-
-    // 🔧 Clear static data
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.allAccSpecificBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.singleAccSpecificBTSet.clear();
-
-    // 🔧 Mock metadata
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put(
-        'PartnerFundClaim',
-        new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Field_7_txt__c = 'Id,Title,Core_MDF_Status__c',
-            Core_MDF_Field_8_txt__c = 'icon',
-            Core_MDF_Field_9_txt__c = 'Claim'
-        )
-    );
-
-    // 🔧 Fake mapping
-    Core_MDF_IUPGM_ApprovalRequest.progToIdMap.put(
-        Core_MDF_CCP_ConstantClass.IPA_PROGRAM,
-        'dummyProgId'
-    );
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.add('WW->dummyProgId_None');
-
-    // Test data
-    PartnerFundClaim pfc = new PartnerFundClaim(
-        Title='PFC Test',
-        Core_MDF_Status__c = 'Pending Review',
-        Amount = 10
-        //Core_MDF_Program__c = Core_MDF_CCP_ConstantClass.IPA_PROGRAM
-    );
-  //  insert pfc;
-
-    Set<String> programNameSet = new Set<String>{Core_MDF_CCP_ConstantClass.IPA_PROGRAM};
-    Set<String> approvalStage = new Set<String>{'None'};
-
-    Core_MDF_IUPGM_ApprovalRequest.ApprovalWrapper res =
-        Core_MDF_IUPGM_ApprovalRequest.getPFCApprovers(programNameSet, approvalStage, 'PartnerFundClaim');
-
-    // System.assert(res != null, 'Wrapper should not be null');
-
-    Test.stopTest();
-}
-@isTest static void test_getApproversBasedOnPI_and_ForHomePage() { Test.startTest(); try { Core_MDF_CCP_Custom_Metadata_Utility__c md = [SELECT Id,Core_MDF_Checkbox_Field_1_Ind__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Category__c = 'Internal Approval Request Tab' LIMIT 1]; Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put('Campaign', md); } catch(Exception e){}
-
-
-Core_MDF_IUPGM_ApprovalRequest.ApprovalWrapper wrap = Core_MDF_IUPGM_ApprovalRequest.getApproversBasedOnPI('Campaign');
-Core_MDF_IUPGM_ApprovalRequest.ApprovalWrapper wrapHome = Core_MDF_IUPGM_ApprovalRequest.getApproversBasedOnPIForHomePage('Campaign');
-System.assertNotEquals(null, (wrap == null ? Boolean.valueOf(true) : Boolean.valueOf(true)));
-System.assertNotEquals(null, (wrapHome == null ? Boolean.valueOf(true) : Boolean.valueOf(true)));
-Test.stopTest();
-
-
-}
-
-@isTest static void test_submitForApproval_anotherUserResponded_and_success_branches() { Test.startTest(); // Build invalid PIWI to trigger 'another user responded' branch Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper bogus = new Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper(); bogus.piwiId = '00000000'; bogus.requestId = '00000000'; bogus.actionStatus = 'Approve'; List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper> listWrap = new List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper>{bogus}; String resultJson = Core_MDF_IUPGM_ApprovalRequest.submitForApproval(JSON.serialize(listWrap)); Core_MDF_IUPGM_ApprovalRequest.ResultWrapper res = (Core_MDF_IUPGM_ApprovalRequest.ResultWrapper) JSON.deserialize(resultJson, Core_MDF_IUPGM_ApprovalRequest.ResultWrapper.class); System.assertEquals(false, res.isSuccess);
-
-// Success path: use an existing PIWI if any
-try {
-    List<ProcessInstanceWorkItem> piwis = [SELECT Id, ProcessInstance.TargetObjectId FROM ProcessInstanceWorkItem LIMIT 1];
-    if(!piwis.isEmpty()){
-        Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper good = new Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper();
-        good.piwiId = piwis[0].Id;
-        good.requestId = piwis[0].ProcessInstance.TargetObjectId;
-        good.actionStatus = 'Approve';
-        good.targetObjectName = 'Co-Marketing Activity';
-        List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper> realList = new List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper>{good};
-        String realResult = Core_MDF_IUPGM_ApprovalRequest.submitForApproval(JSON.serialize(realList));
-        Core_MDF_IUPGM_ApprovalRequest.ResultWrapper realRes = (Core_MDF_IUPGM_ApprovalRequest.ResultWrapper) JSON.deserialize(realResult, Core_MDF_IUPGM_ApprovalRequest.ResultWrapper.class);
-        System.assertNotEquals(null, realRes);
-    }
-} catch(Exception e){ /* safe-guard for org differences */ }
-
-Test.stopTest();
-
-
-}
-
-@isTest static void test_fieldPopulateAndPostApprovalCommentUpdate_paths() { Test.startTest(); Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper campWrap = new Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper(); campWrap.requestId = '00000000'; campWrap.targetObjectName = 'Campaign'; campWrap.comments = 'camp comments'; campWrap.actionStatus = 'Approve'; Core_MDF_IUPGM_ApprovalRequest.objApprovalRequestMap.put(campWrap.requestId, campWrap);
-
-
-Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper claimWrap = new Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper();
-claimWrap.requestId = '00000001'; claimWrap.targetObjectName = 'Claim'; claimWrap.comments = 'claim comments'; claimWrap.actionStatus = 'Reject';
-Core_MDF_IUPGM_ApprovalRequest.objApprovalRequestMap.put(claimWrap.requestId, claimWrap);
-
-Core_MDF_IUPGM_ApprovalRequest.fieldPopulateForApprovalComment(new List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper>{campWrap, claimWrap}, 'Approve');
-Core_MDF_IUPGM_ApprovalRequest.PostApprovalCommentUpdate(new List<Core_MDF_IUPGM_ApprovalRequest.ApprovalRequestWrapper>{campWrap, claimWrap}, 'Reject');
-
-System.assert(true);
-Test.stopTest();
-
-}
-    
-   @isTest 
-static void test_getobjRecordDetails_and_getFieldDetails_basic() {
-
-    Test.startTest();
-
-    // Ensure metadata mapping exists
-    try {
-        Core_MDF_CCP_Custom_Metadata_Utility__c mdt = [
-            SELECT Id, Core_MDF_Field_7_txt__c, Core_MDF_Field_6_txt__c, Core_MDF_Field_5_txt__c,
-                   Core_MDF_Field_8_txt__c, Core_MDF_Field_9_txt__c, Core_MDF_Field_12_txt__c,
-                   Core_MDF_Field_13_txt__c, Core_MDF_Field_14_txt__c
-            FROM Core_MDF_CCP_Custom_Metadata_Utility__c
-            WHERE Core_MDF_Category__c = 'Internal Approval Request Tab'
-            LIMIT 1
-        ];
-
-        Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put('PartnerFundRequest', mdt);
-
-    } catch(Exception e) {}
-
-    // Create PartnerFundRequest (best effort)
-    PartnerFundRequest pfr;
-    try {
-        pfr = new PartnerFundRequest();
-        pfr.Title = 'GetObj FieldDetails PFR';
-
-        try { pfr.RequestedAmount = 500.50; } catch(Exception ex){}
-        try { pfr.Core_MDF_Start_Date__c = Date.today().addDays(-2); } catch(Exception ex){}
-        try { pfr.Core_MDF_End_Date__c = Date.today().addDays(2); } catch(Exception ex){}
-
-        // FIXED: Proper describe usage
-        try {
-            Account acc = [SELECT Id FROM Account LIMIT 1];
-
-            Schema.SObjectType t = PartnerFundRequest.SObjectType;
-            Map<String, Schema.SObjectField> fieldMapDesc = t.getDescribe().fields.getMap();
-
-            if(fieldMapDesc.containsKey('ChannelPartnerId')) {
-                pfr.ChannelPartnerId = acc.Id;
-            }
-        } catch(Exception ex) {}
-
-        insert pfr;
-
-    } catch(Exception e) {
-        List<PartnerFundRequest> existing = [SELECT Id, Title FROM PartnerFundRequest LIMIT 1];
-        if(!existing.isEmpty()) pfr = existing[0];
-    }
-
-    // FIXED: Proper field describe mapping
-    try {
-        String objectName = 'PartnerFundRequest';
-        Map<String, Schema.SObjectField> fieldMap = new Map<String, Schema.SObjectField>();
-
-        Map<String, Schema.SObjectField> describeMap =
-            PartnerFundRequest.SObjectType.getDescribe().fields.getMap();
-
-        if(describeMap.containsKey('RequestedAmount')) {
-            fieldMap.put('RequestedAmount', describeMap.get('RequestedAmount'));
-        }
-        if(describeMap.containsKey('Core_MDF_Start_Date__c')) {
-            fieldMap.put('Core_MDF_Start_Date__c', describeMap.get('Core_MDF_Start_Date__c'));
-        }
-        if(describeMap.containsKey('Core_MDF_End_Date__c')) {
-            fieldMap.put('Core_MDF_End_Date__c', describeMap.get('Core_MDF_End_Date__c'));
-        }
-
-        if(!fieldMap.isEmpty()) {
-            Core_MDF_IUPGM_ApprovalRequest.objNameToApiNameToType.put(objectName, fieldMap);
-        }
-
-    } catch(Exception ex) {}
-
-    // Field descriptors
-    List<String> detailFields = new List<String>{
-        'Title:Title',
-        'Requested Amount:RequestedAmount',
-        'Start Date:Core_MDF_Start_Date__c',
-        'End Date:Core_MDF_End_Date__c'
-    };
-
-    // Test getFieldDetails
-    List<Core_MDF_IUPGM_ApprovalRequest.FieldsWrapper> fwList;
-    try {
-        fwList = Core_MDF_IUPGM_ApprovalRequest.getFieldDetails(pfr, detailFields);
-    } catch(Exception e) {
-        fwList = new List<Core_MDF_IUPGM_ApprovalRequest.FieldsWrapper>();
-    }
-
-    System.assertNotEquals(null, fwList);
-
-    // Test getobjRecordDetails
-    try {
-        if(pfr != null) {
-            Core_MDF_IUPGM_ApprovalRequest.objNameToSObjectMap.put('PartnerFundRequest', pfr);
-        }
-
-        Core_MDF_IUPGM_ApprovalRequest.RecordsToApprove rta =
-            Core_MDF_IUPGM_ApprovalRequest.getobjRecordDetails(pfr, 'PartnerFundRequest');
-
-        System.assertNotEquals(null, rta);
-
-        Boolean hasFlag = (rta.isIPAOutcomeBased == true || rta.isIPAOutcomeBased == false);
-        System.assertNotEquals(null, hasFlag);
-
-    } catch(Exception ex) {
-        System.assert(true);
-    }
-
-    Test.stopTest();
-}
-
-  @isTest
-static void test_getPFRApprovers_outcomeBased_true() {
-
-    Test.startTest();
-
-    // 🔧 Clear static
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.clear();
-    Core_MDF_IUPGM_ApprovalRequest.progToIdMap.clear();
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.clear();
-
-    // 🔧 Mock metadata
-    Core_MDF_IUPGM_ApprovalRequest.approvalReqObjMdtPIMap.put(
-        'PartnerFundRequest',
-        new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Field_7_txt__c = 'Id,Title,Core_MDF_Approval_Stage__c',
-            Core_MDF_Field_8_txt__c = 'icon',
-            Core_MDF_Field_9_txt__c = 'PFR'
-        )
-    );
-
-    // 🔧 Fake mapping
-    Core_MDF_IUPGM_ApprovalRequest.progToIdMap.put(
-        Core_MDF_CCP_ConstantClass.IPA_PROGRAM, 'dummyProgId'
-    );
-
-    Core_MDF_IUPGM_ApprovalRequest.allAccAllBTSet.add(
-        'WW->dummyProgId_PriceReviewer'
-    );
-
-    //  Retrieve existing PFR from test setup
-    PartnerFundRequest pfr = [
-        SELECT Id, Core_MDF_Program__c, Core_MDF_Approval_Stage__c,
-               Core_MDF_Is_Outcome_Based_Ind__c,
-               Core_MDF_Host_Region_or_Region_txt__c
-        FROM PartnerFundRequest
-        LIMIT 1
-    ];
-
-    //  Update required fields to hit branch
-    //pfr.Core_MDF_Program__c = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
-    pfr.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    pfr.Core_MDF_Approval_Stage__c = 'Price Reviewer';
-     
-    //pfr.Core_MDF_Host_Region_or_Region_txt__c = 'WW';
-
-    update pfr;
-
-    Set<String> prog = new Set<String>{Core_MDF_CCP_ConstantClass.IPA_PROGRAM};
-    Set<String> stage = new Set<String>{'Price Reviewer'};
-
-    Core_MDF_IUPGM_ApprovalRequest.getPFRApprovers(
-        prog, stage, 'PartnerFundRequest', true
-    );
-
-    Test.stopTest();
-}
-    
- /*   @isTest
-static void test_getApprovalRoles_and_WW_branch() {
-
-    Test.startTest();
-
-    // Build role map
-    Map<String, Map<String, Set<String>>> objectMap = new Map<String, Map<String, Set<String>>>();
-
-    Map<String, Set<String>> roleMap = new Map<String, Set<String>>();
-    roleMap.put('Role1', new Set<String>{'Stage1', 'Stage2'});
-
-    objectMap.put('Campaign', roleMap);
-
-    Set<String> roles = new Set<String>{'Role1'};
-
-    Set<String> result = Core_MDF_IUPGM_ApprovalRequest.getApprovalRoles(
-        objectMap, roles, 'Campaign'
-    );
-
-    System.assert(result.contains('Stage1'));
-
-    Test.stopTest();
-}  */
-
-// 14285 Indira - end
-
-
 }

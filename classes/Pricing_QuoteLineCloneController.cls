@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-08-2026
+* @last modified on  : 07-29-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLineCloneController {   
@@ -167,7 +167,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Deal_RFQ_Status_Nm__c = null;
         parent.Pricing_Error_Messages__c = null;
         parent.Pricing_Price_Rule_Error_Message__c = null;
-        parent.Pricing_Approval_Price_Rule_Name__c = null;
         //walk story updates US544539
         
         
@@ -199,9 +198,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Rejection_Reason__c = null;
         parent.Pricing_Save_After_Calculation_cb__c = false;
         parent.Pricing_Lost_Reason_Nm__c = null;
-        parent.Pricing_Application_Agent_Status__c = null;//citrus changes
-        parent.Pricing_Rationale_for_Pricing__c = null;//citrus changes
-        parent.Pricing_HPC_Eligible_Pricing_Envelope__c = null;//PAA V2
         return parent;
     }
     
@@ -240,7 +236,7 @@ public without sharing class Pricing_QuoteLineCloneController {
                                         Pricing_Reference_Quote_Line_Nbr__r.Pricing_ECAP_Price_Amt__c, SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Deal_RFQ_Id__c,Pricing_Consumption_Segment__c,
                                         Pricing_Reference_Quote_Line_Nbr__r.Pricing_Revised_Pricing_Start_Date_dt__c, Pricing_Reference_Quote_Line_Nbr__r.Pricing_Status_Nm__c,Pricing_Consumption_Region__c,
                                         Pricing_End_Date_dt__c,Pricing_Deal_Description__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,Pricing_Program_Type_Nm__c,Pricing_Consumption_Platform__c,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,
-                                        Pricing_Product_Nm__c,Pricing_SIPP_Cb__c,Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Additional_RPM_Notify_Recipients__c From SBQQ__QuoteLine__c WHERE Id= :quoteLineId];
+                                        Pricing_Product_Nm__c,Pricing_SIPP_Cb__c,Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c From SBQQ__QuoteLine__c WHERE Id= :quoteLineId];
         return quoteLine;
     }
 
@@ -340,7 +336,7 @@ public without sharing class Pricing_QuoteLineCloneController {
     } 
 
     public static void rpmCRAutoPopulation(SBQQ__QuoteLine__c parentQL ,SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c quoteLine){
-         parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,false);
+        
         if((parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == quoteLine.Pricing_Product_Nm__c) || parent.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
             parent.Pricing_Change_Request_cb__c = false;
             parent.Pricing_Last_Approved_Date_dt__c = DateTime.now();
@@ -385,7 +381,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Billing_Start_Date_Dt__c = quoteLine.Pricing_Billing_Start_Date_Dt__c;
         parent.Pricing_ECAP_Price_Amt__c = quoteLine.Pricing_ECAP_Price_Amt__c;
         parent.Pricing_Additional_Comments_Txt__c = quoteLine.Pricing_Additional_Comments_Txt__c;
-        parent.Pricing_Additional_RPM_Notify_Recipients__c = quoteLine.Pricing_Additional_RPM_Notify_Recipients__c;
         parent.Pricing_Additional_T_C_s_Txt__c = quoteLine.Pricing_Additional_T_C_s_Txt__c;
         parent.Pricing_Backdate_Reason_Txt__c = quoteLine.Pricing_Backdate_Reason_Txt__c;
         parent.Pricing_Deal_Description__c = quoteLine.Pricing_Deal_Description__c;
@@ -406,7 +401,6 @@ public without sharing class Pricing_QuoteLineCloneController {
 
     @TestVisible
     private static void oEMCRAutoPopulation(SBQQ__QuoteLine__c parent , SBQQ__QuoteLine__c quoteLine){
-        parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,true);
         parent.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview;
         parent.RecordTypeId =quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ?  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Submitted) : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Submitted);
         // Values entered by Change Request
@@ -464,9 +458,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_End_Date_dt__c = parent.Pricing_End_Date_dt__c > date.today() ? parent.Pricing_End_Date_dt__c : dateFormat();
         parent.Pricing_FSE_Recommended_Price_Nm__c = null;
         parent.Pricing_Change_Request_cb__c = false;
-        
-        parent.Pricing_Change_Request_Type__c = null;
-        
         parent.Pricing_New_Quantity_qty__c = null;
         parent.Pricing_Request_Discount_Unit_Price_qty__c = null;
         parent.Pricing_Original_Submitted_By_Id__c = null;
@@ -474,7 +465,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Last_Submitted_By_Id__c = null;
         parent.Pricing_Last_Submitted_Date_dt__c = null;
         parent.Pricing_Start_Date_dt__c = null;
-       
         
         parent.Pricing_RegionQL_Nm__c = Label.Pricing_Tender_Default_Region_Worldwide;
         parent.Pricing_Deal_RFQ_Id__c = null;
@@ -587,114 +577,5 @@ public without sharing class Pricing_QuoteLineCloneController {
     @InvocableMethod(label = 'getLoggedinUserPermissionSetBusinessAdmin' description = 'return true if user is having Tender Business User Admin Permission Set')
     public static List<String> getLoggedinUserPermissionSetBusinessAdmin(){
         return QuoteLineBusinessLogic.checkCurrentUserPs(Label.Pricing_Tender_PermissionSets_TenderBusinessUserAdmin) ? new List<String>{'True'} : new List<String>{'False'};
-            }
-    /***********************************************************************************************************
-Method Name:       populateChangeRequestField
-Description:       Method to track the field values changed during change request in a picklist field
-Added By:          Rishabh - 14-April-2026
-Modified By:        Date:       Changes:
-**********************************************************************************************************/
-    public static String populateChangeRequestType(SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c quoteLine, Boolean oemCR) {
-        
-        Set<String> changeRequestTypes = new Set<String>();
-        if(!oemCR){
-            // Date Change
-            if (
-                (parent.Pricing_Approved_Start_Date_Dt__c != null &&
-                 quoteLine.Pricing_Approved_Start_Date_Dt__c != null &&
-                 parent.Pricing_Approved_Start_Date_Dt__c != quoteLine.Pricing_Approved_Start_Date_Dt__c)
-                
-                ||
-                
-                (parent.Pricing_Approved_End_Date_Dt__c != null &&
-                 quoteLine.Pricing_Approved_End_Date_Dt__c != null &&
-                 parent.Pricing_Approved_End_Date_Dt__c != quoteLine.Pricing_Approved_End_Date_Dt__c)
-                
-                ||
-                
-                (parent.Pricing_Billing_Start_Date_Dt__c != null &&
-                 quoteLine.Pricing_Billing_Start_Date_Dt__c != null &&
-                 parent.Pricing_Billing_Start_Date_Dt__c != quoteLine.Pricing_Billing_Start_Date_Dt__c)
-                
-                ||
-                
-                (parent.Pricing_Billing_End_Date_Dt__c != null &&
-                 quoteLine.Pricing_Billing_End_Date_Dt__c != null &&
-                 parent.Pricing_Billing_End_Date_Dt__c != quoteLine.Pricing_Billing_End_Date_Dt__c)
-            ) {
-                changeRequestTypes.add('Date Change');
-            }
-            
-            // Price Change
-            if (parent.Pricing_ECAP_Price_Amt__c != null &&
-                quoteLine.Pricing_ECAP_Price_Amt__c != null &&
-                parent.Pricing_ECAP_Price_Amt__c != quoteLine.Pricing_ECAP_Price_Amt__c) {
-                    changeRequestTypes.add('Price Change');
-                }
-            
-            // Volume Change
-            if (parent.Pricing_Approved_Unit_Qty__c != null &&
-                quoteLine.Pricing_Approved_Unit_Qty__c != null &&
-                parent.Pricing_Approved_Unit_Qty__c != quoteLine.Pricing_Approved_Unit_Qty__c) {
-                    changeRequestTypes.add('Volume Change');
-                }
-            
-            // Payable Quantity Change
-            if (parent.Pricing_Payable_Quantity__c != null &&
-                quoteLine.Pricing_Payable_Quantity__c != null &&
-                parent.Pricing_Payable_Quantity__c != quoteLine.Pricing_Payable_Quantity__c) {
-                    changeRequestTypes.add('Payable Quantity Change');
-                }
-        }else{
-            // Date Change
-            if (
-                (parent.Pricing_Approved_Start_Date_Dt__c != null &&
-                 quoteLine.Pricing_Start_Date_dt__c != null &&
-                 parent.Pricing_Approved_Start_Date_Dt__c != quoteLine.Pricing_Start_Date_dt__c)
-                
-                ||
-                
-                (parent.Pricing_Approved_End_Date_Dt__c != null &&
-                 quoteLine.Pricing_End_Date_dt__c != null &&
-                 parent.Pricing_Approved_End_Date_Dt__c != quoteLine.Pricing_End_Date_dt__c)
-            ) {
-                changeRequestTypes.add('Date Change');
-            }
-            
-            // Quantity
-            if (parent.Pricing_Approved_Unit_Qty__c != null && quoteLine.Pricing_New_Quantity_qty__c != null &&
-                parent.Pricing_Approved_Unit_Qty__c != quoteLine.Pricing_New_Quantity_qty__c) {
-                    changeRequestTypes.add('Volume Change');
-                }
-            
-            // Price
-            if (parent.Pricing_ECAP_Price_Amt__c != null && quoteLine.Pricing_Request_Discount_Unit_Price_qty__c != null &&
-                parent.Pricing_ECAP_Price_Amt__c != quoteLine.Pricing_Request_Discount_Unit_Price_qty__c) {
-                    changeRequestTypes.add('Price Change');
-                }
-        }
-        
-        if (hasConsumptionFieldChanged(parent.Pricing_Consumption_Platform__c, quoteLine.Pricing_Consumption_Platform__c) || hasConsumptionFieldChanged(parent.Pricing_Consumption_Region__c, quoteLine.Pricing_Consumption_Region__c) ||
-            hasConsumptionFieldChanged(parent.Pricing_Consumption_Country__c, quoteLine.Pricing_Consumption_Country__c) || hasConsumptionFieldChanged(parent.Pricing_Consumption_Sale_Geo__c, quoteLine.Pricing_Consumption_Sale_Geo__c) ||
-            hasConsumptionFieldChanged(parent.Pricing_Consumption_Segment__c, quoteLine.Pricing_Consumption_Segment__c)) {
-                changeRequestTypes.add('Consumption Reason Change');
-            }
-        
-        return String.join(new List<String>(changeRequestTypes), ';');
     }
-   
-    private static Boolean hasConsumptionFieldChanged(String a, String b) {
-        
-        String valA = String.isBlank(a) ? '' : a.trim();
-        String valB = String.isBlank(b) ? '' : b.trim();
-        
-        if (!String.isBlank(b)) {
-            return valA != valB;
-        }
-        
-        return false;
-        
-    }
-    
-    
 }

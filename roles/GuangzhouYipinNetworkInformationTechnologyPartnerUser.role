@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>广州壹品网络信息科技有限公司 Partner User</description>
+    <description>Guangzhou Yipin Network Information Technology Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>广州壹品网络信息科技有限公司 Partner User</name>
+    <name>Guangzhou Yipin Network Information Technology Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11380905_Yong_Zhou_Chen</parentRole>
+    <parentRole>Admin</parentRole>
 </Role>

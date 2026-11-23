@@ -26,13 +26,11 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
     
     public static Map<String, List<Object>> getPartnerAttributes(String ptnrId, String langCode) {
         String userLang = langCode;
-         //TranslationEOL
-        //if(langCode == 'en-US'){
+        if(langCode == 'en-US'){
             userLang = 'en_US';
-         //TranslationEOL
-        //}else if(langCode == 'zh-Hans-CN' || langCode == 'zh-CN'){
-           // userLang = 'zh_CN';
-        //}
+        }else if(langCode == 'zh-Hans-CN' || langCode == 'zh-CN'){
+            userLang = 'zh_CN';
+        }
 
         Boolean testIsDisti = false; 
         Boolean testIsNotDisti = false;        
@@ -81,8 +79,7 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
                               FROM PMP_Partner_Category__c WHERE PMP_Partner_Id__c =:ptnrId AND PMP_Category_Id__r.PMP_Active_Ind__c=true 
                               ORDER BY PMP_Category_Id__r.PMP_Category_Display_Sequence_Nbr__c NULLS LAST];
         }
-         //TranslationEOL
-      /*  Map<String,PMP_Company_Translation__c> ptnrDescMap = new Map<String,PMP_Company_Translation__c>(); 
+        Map<String,PMP_Company_Translation__c> ptnrDescMap = new Map<String,PMP_Company_Translation__c>(); 
         List<PMP_Company_Translation__c> ptnrTransList = new List<PMP_Company_Translation__c>();
         if(Schema.sObjectType.PMP_Company_Translation__c.isAccessible()){ //ApexCRUDViolation Fix
             ptnrTransList = [SELECT PMP_Field_Nm__c, PMP_Company_Information_Id__c, PMP_English_Txt__c, PMP_Chinese_Txt__c, PMP_Japanese_Txt__c FROM PMP_Company_Translation__c 
@@ -123,14 +120,14 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
             
         }
         //String longDesc = PMP_SearchUtilityController.getLocalisedName(ptnrDescMap.get(ptnrId), '', langCode);
-        String longDescription = descrip != NULL ? descrip.unescapeHtml4().stripHtmlTags() : descrip;*/
-        String longDescription ='';
+        String longDescription = descrip != NULL ? descrip.unescapeHtml4().stripHtmlTags() : descrip;
+        
         Map<String, List<Specialty>> partnerSpecialties = PMP_SearchPartnerController.getpartnerSpecialtyforCards(new String[]{ptnrId}, langCode);
         
         
         
         //Modified as part of OPID Restructure : Removing PMP_Account_Id__r.Core_IPA_Partner_Role__c from query
-        for(PMP_Company__c comp : [SELECT Id,Name,PMP_Biz_Org_Type_Txt__c, PMP_Is_Distributor_Ind__c,PMP_Disti_Country_Coverage_Txt__c,toLabel(PMP_Disti_Sys_Solutions_Nm__c),toLabel(PMP_Disti_Components_Nm__c),PMP_Account_Specialty__c,PMP_Account_Dsc__c,
+        for(PMP_Company__c comp : [SELECT Id,Name,PMP_Biz_Org_Type_Txt__c, PMP_Is_Distributor_Ind__c,PMP_Disti_Country_Coverage_Txt__c,toLabel(PMP_Disti_Sys_Solutions_Nm__c),toLabel(PMP_Disti_Components_Nm__c),PMP_Account_Specialty__c,
                                    (SELECT PMP_Category_Id__c, PMP_Partner_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,
                                     PMP_Category_Id__r.Name,PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c FROM Partner_Industry_Applications__r WHERE PMP_Category_Id__r.PMP_Active_Ind__c =true 
                                     ORDER BY PMP_Category_Id__r.PMP_Category_Display_Sequence_Nbr__c NULLS LAST),
@@ -139,10 +136,7 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
                                     PMP_Specification_Id__r.PMP_Parent_Specification_Id__c,PMP_Specification_Value__c,PMP_Specification_Value__r.Name,PMP_Specification_Value__r.PMP_Specification_Value_Japanese_Cd__c,PMP_Specification_Value__r.PMP_Specification_Value_Chinese_Cd__c  FROM Company_Regions__r WHERE PMP_Specification_Id__r.PMP_Active_Ind__c = true OR PMP_Specification_Value__r.PMP_Active_Ind__c = true ORDER BY PMP_Specification_Id__r.Name, PMP_Specification_Value__r.name)
                                    FROM PMP_Company__c WHERE Id =:ptnrId]
            ){
-       			partnerCatMap.put(comp.Id, new List<Attribute>());
-               //TranslationEOL
-                   String longDesc=comp.PMP_Account_Dsc__c;
-                   longDescription = longDesc!=NULL ? longDesc.unescapeHtml4().stripHtmlTags():longDesc ;
+        partnerCatMap.put(comp.Id, new List<Attribute>());
         
         /*Display Disti Attributes (Components, solutions, country coverage)in Disti card*/
         /*New Change --> Iterating the values and storing in list Types- to display show more/less link - As part of US961625 */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch ID --></label>
+        <name>PSG_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Count --></label>
+        <name>PSG_Failure_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Success Count --></label>
+        <name>PSG_Success_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Rows --></label>
+        <name>PSG_Total_Rows_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

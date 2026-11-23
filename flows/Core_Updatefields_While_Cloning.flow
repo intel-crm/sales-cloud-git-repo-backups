@@ -30,7 +30,7 @@
         <name>Get_Sales_Lead_Record_Type_Id</name>
         <label>Get Sales Lead Record Type Id</label>
         <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>FieldUpdatesCore_Updatefields_While_Cloning</targetReference>
@@ -63,7 +63,7 @@
         <name>FieldUpdatesCore_Updatefields_While_Cloning</name>
         <label>FieldUpdatesCore_Updatefields_While_Cloning</label>
         <locationX>176</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <inputAssignments>
             <field>Core_Lead_Priority__c</field>
             <value>
@@ -99,7 +99,7 @@
         <filterFormula>OR( AND( ISCLONE(), NOT(CONTAINS(LOWER({!$User.Username}), &quot;marketo&quot;)) , {!$Profile.Name} &lt;&gt; &quot;Integration&quot; ,{!$Profile.Name} &lt;&gt; &quot;Core Integration&quot;, {!$Profile.Name} &lt;&gt; &quot;Core_Integration_Minimal&quot;), AND( OR(ISNEW(),ISCLONE()), {!$Record.RecordType.Name} = &quot;Sales Lead&quot; ) )</filterFormula>
         <object>Lead</object>
         <recordTriggerType>Create</recordTriggerType>
-        <triggerType>RecordAfterSave</triggerType>
+        <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
     <variables>

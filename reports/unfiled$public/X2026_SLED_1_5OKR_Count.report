@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumnGrouped</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>ASSIGNED</groupingColumn>
-        <legendPosition>Right</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>DUE_DATE</secondaryGroupingColumn>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>ACCOWNER</field>
     </columns>
@@ -50,9 +24,12 @@
     <columns>
         <field>STATUS</field>
     </columns>
+    <columns>
+        <field>TASK</field>
+    </columns>
     <description>The #1.5OKR = 1.5X Acceleration Partners OKR shows the activities that we have with executives of customers and partners and market influence.</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
@@ -61,11 +38,11 @@
             <value>#1.5OKR</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ASSIGNED</column>
+            <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Alastair Duncan,Alan Rose,David Minnaar,Hugues Morin,Michael OBrien,Rick Lisa,Burnie Legette,David Richard,Darren Pulsipher,John Haag,Ricardo Dutton Jr.,Jason Dunn-Potter,Christina Daubeneck</value>
+            <value>#1.5OKR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -80,7 +57,7 @@
         <field>DUE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026 SLED #1.5OKR</name>
+    <name>2026 SLED #1.5OKR Count</name>
     <params>
         <name>closed</name>
         <value>all</value>
@@ -100,8 +77,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-12-01</startDate>
     </timeFrameFilter>
+    <userFilter>10650282@intel.com.crm</userFilter>
 </Report>

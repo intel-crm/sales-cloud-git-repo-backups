@@ -256,11 +256,11 @@
     The if is executed when no documents are uploaded for a doc submission mandatory claim - claim create/clone
     The else if is executed when the mandatory document types are not uploaded for a doc submission mandatory claim - create/clone/edit of claim
     The else is executed when the above two conditions are not met */
-
-    saveClaim: function (component, event, helper, actionType) {
+    
+    saveClaim: function (component, event, helper) {
         component.set("v.spinner", true);
         component.set("v.isDocumentTypeNotSelected", false);
-        component.set("v.actionType", actionType);
+
         //console.log("manageAuditComponent.get('v.isSubmitEnabled')", manageAuditComponent.get('v.isSubmitEnabled'));
         //console.log("user access from manual audit comp", manageAuditComponent.get('v.sObjectDocumentWrapper.enableComponentOnDetail'));
         //console.log('is3rdPartyPOP1::',component.get("v.is3rdPartyPOP1"));
@@ -396,24 +396,7 @@
         if(component.get("v.isClaimEdit") == false){
             component.set("v.simpleNewClaim.Core_MDF_StartTime_dtm__c", component.get("v.claimCreationStartTime"));
         }
-        /**TWC3117-18501**/
-        if (component.get("v.actionType") == "saveAsDraftClaim") {
-            component.set("v.simpleNewClaim.Core_MDF_Status__c", "Draft");
-        } else /**TWC3117-18501**/ if(component.get("v.actionType") == 'submitFinalOutcomeBasedClaim' && (component.get("v.isCoGtm") || component.get("v.simpleNewClaim.Core_MDF_Status__c") == undefined || component.get("v.simpleNewClaim.Core_MDF_Status__c") == '' || component.get("v.simpleNewClaim.Core_MDF_Status__c") == 'Draft')){ //TWC3117-18501 added isCoGtm check
-            component.set("v.simpleNewClaim.Core_MDF_Status__c", "Pending Review");
-            //TWC3117-18501
-	    //component.set("v.simpleNewClaim.Core_MDF_Approval_Stage_nm__c", "Account Manager");
-            var approvalStage = component.get("v.isCoGtm") 
-                ? "Technical Approver"
-                : "Account Manager";
-
-            component.set("v.simpleNewClaim.Core_MDF_Approval_Stage_nm__c", approvalStage);
-	    //TWC3117-18501
-        }
-        
-
         var action = component.get("c.saveClaim");
-        var isClone =component.get("v.isCloneClaim");
         action.setParams({
             "claim": component.get("v.simpleNewClaim"),
             "auditDocList": component.get("v.auditDocument"),
@@ -422,8 +405,6 @@
             "isOutcomeBased": component.get('v.isOutcomeBased'),
             "claimAttributeList": component.get('v.claimAttributeList'),
             "hasAnyChangeOnClaim": hasAnyChangeOnClaim,
-            "subClaimList": component.get("v.subClaimList"),
-            "isClone": component.get("v.isCloneClaim"),
         });
         action.setCallback(this, function (saveResult) {
             if (saveResult.getReturnValue() != null && saveResult.getReturnValue().claimDetail != null && !saveResult.getReturnValue().errorDetail.startsWith('Exception')) {
@@ -624,7 +605,6 @@
                         this.autoPopulateActivity(component);
                         this.fetchBankRecords(component);
                         component.set('v.isOutcomeBased', false);
-                        component.set('v.isOutcomeBasedActivity', a.getReturnValue().isOutcomeBasedActivity);
                         this.getTacticInformation(component, event, helper);
                         let activitydetails = a.getReturnValue().activityDetails;
                         if (activitydetails.Core_MDF_Program__c != 'Co-GTM') {
@@ -740,8 +720,6 @@
         else {
             component.set("v.isCurrDisabled", false);
         }
-		  component.set("v.isSuperClaim", partnerFundRequest.Core_MDF_Activity_Level_nm__c === 'Super Activity');
-		//component.set("v.hideBank", partnerFundRequest.Core_MDF_Activity_Level_nm__c === 'Super Activity');
         this.checkPopDocRequired(component);
         if (this.isOEMRecordType(component)) {
             this.isBankHidden(component);
@@ -757,11 +735,6 @@
             }
         }
     
-        if(partnerFundRequest.Core_MDF_Program__c == $A.get("$Label.c.Core_MDF_IPA_Program_Name") && partnerFundRequest.Core_MDF_Is_Outcome_Based_Ind__c && !partnerFundRequest.Core_MDF_Proposal_Based_Ind__c){
-            component.set("v.isOutcomeBasedAccountBasedAct", true);//Tavishi
-            component.set("v.outcomeDesc", partnerFundRequest.Core_MDF_Activity_Description__c);
-            component.set("v.hideBank", partnerFundRequest.Core_MDF_Activity_Level_nm__c === 'Super Activity');
-        }
     },
 
     //IPABankHide and CoGTM BankHide
@@ -1022,7 +995,6 @@
     //This helper function called to redirect to passed object
     closeModel: function (component, docIds) {  // Added docIds for POP
         var homeEvent = $A.get("e.force:navigateToSObject");
-	var urlEvent = $A.get("e.force:navigateToURL"); //Added by AJ 
         var isPfr = component.get("v.isPfrUrl");
         var isCampaignUrl = component.get("v.isCampaignUrl");
         var objName;
@@ -1031,13 +1003,6 @@
                 "recordId": component.get("v.recordId")
             });
             homeEvent.fire();
-        } else if (Boolean(component.get("v.isOutcomeBasedIntUrl"))) { //Added by AJ - Start
-            window.location.href= $A.get("$Label.c.Core_MDF_Outcome_Internal_Link") + component.get("v.recordId");
-        } else if (Boolean(component.get("v.isOutcomeBasedExtUrl"))) {
-            urlEvent.setParams({
-                "url": $A.get("$Label.c.Core_MDF_Outcome_Community_Link") + component.get("v.recordId")
-            });
-            urlEvent.fire();    //Added by AJ - End
         } else if (Boolean(isCampaignUrl)) {
             homeEvent.setParams({
                 "recordId": component.get("v.simpleNewClaim.Core_MDF_Campaign_Id__c")
@@ -1056,9 +1021,7 @@
                 });
                 homeEvent.fire();
             } else {
-                
-                // Roshan - Hide close button conditionally
-                if (!component.get("v.isClaimEdit") && !component.get("v.isCloneClaim")) {
+                if (!component.get("v.isClaimEdit")) {
                     objName = $A.get("$Label.c.Core_MDF_PFCText");
                     var homeEvents = $A.get("e.force:navigateToObjectHome");
                     homeEvents.setParams({
@@ -1066,12 +1029,8 @@
                     });
                     homeEvents.fire();
                 } else {
-                    var targetRecordId = component.get("v.simpleNewClaim.Id");
-                    if ($A.util.isUndefinedOrNull(targetRecordId) || targetRecordId === '') {
-                        targetRecordId = component.get("v.clonedClaimId");
-                    }
                     homeEvent.setParams({
-                        "recordId": targetRecordId
+                        "recordId": component.get("v.simpleNewClaim.Id")
                     });
                     homeEvent.fire();
                 }
@@ -1087,16 +1046,6 @@
         var urlToLowerCase = sPageURL.toLowerCase();
         var pfrText = $A.get("$Label.c.Core_MDF_PFRText");
         var campaignText = $A.get("$Label.c.Core_MDF_CampaignText");
-	//Added by AJ - Start
-        var outcomeBasedIntUrl = $A.get("$Label.c.Core_MDF_Outcome_Internal_Link");
-        var outcomeBasedExtUrl = $A.get("$Label.c.Core_MDF_Outcome_Community_Link");
-        if (urlToLowerCase.includes(outcomeBasedIntUrl.toLowerCase())) {
-            component.set("v.isOutcomeBasedIntUrl", true);
-        }
-        if (urlToLowerCase.includes(outcomeBasedExtUrl.toLowerCase())) {
-            component.set("v.isOutcomeBasedExtUrl", true);
-        }
-        //Added by AJ - End
         if (urlToLowerCase.includes(pfrText.toLowerCase())) {
             component.set("v.isPfrUrl", true);
         }
@@ -1176,7 +1125,6 @@
         if (component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Number__c") != ''
             && component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Number__c") != undefined) {
             component.set("v.activitySearchString", component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Number__c"));
-            component.set("v.isOutcomeBasedActivity",component.get("v.simpleNewClaim.Request.Core_MDF_Is_Outcome_Based_Ind__c")); 
             this.autoPopulateActivity(component);
             component.set("v.bankAccountId", component.get("v.simpleNewClaim.ChannelPartner.Id"));
             this.fetchBankRecords(component);
@@ -1227,16 +1175,6 @@
             component.set("v.simpleNewClaim.Core_MDF_Ultimate_Account_ID__c", component.get("v.simpleNewClaim.Core_MDF_Ultimate_Account_ID__c"));  // Areefa for 3rd party POP
             //Marketing Key Performance and Next Ind
             component.set("v.isProposalbasedInd", component.get("v.simpleNewClaim.Core_MDF_Proposal_Based_Ind__c"));
-            component.set("v.isOutcomeBased", component.get("v.simpleNewClaim.Request.Core_MDF_Is_Outcome_Based_Ind__c"));
-            if(component.get('v.recordtypeDeveloperName') == 'Core_MDF_IPA_Account_Based' && component.get("v.isOutcomeBased")){
-            	component.set("v.isOutcomeBasedAccountBasedAct", true);
-                component.set("v.outcomeDesc",component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Description__c"));
-                component.set("v.hideBank", component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Level_nm__c") === 'Super Activity');
-        	}
-                component.set("v.isSuperClaim", component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Level_nm__c") === 'Super Activity');
-		        //component.set("v.hideBank", component.get("v.simpleNewClaim.Request.Core_MDF_Activity_Level_nm__c") === 'Super Activity');//15393
-            var isSubClaimCheck = (!$A.util.isUndefinedOrNull(component.get("v.simpleNewClaim.Core_MDF_Claim_Id__c")) && component.get("v.simpleNewClaim.Core_MDF_Claim_Id__c") != '');
-            component.set("v.isSubClaim", isSubClaimCheck);
             //This function used to manageClaimFields and hide fields          
             this.manageClaimFields(component);
             //IPA            
@@ -1362,10 +1300,7 @@
         var flaggedForDocHold = component.get("v.simpleNewClaim.Core_MDF_Document_Hold_Eligibility_Ind__c");
         var docHoldFlag = component.get("v.simpleNewClaim.Core_MDF_Document_Hold_Ind__c");
         var bankDocHoldFlag = component.get("v.simpleNewClaim.Core_MDF_Bank_Doc_Hold_Ind__c");
-        if(component.get("v.isSubClaim")){
-            component.set("v.isClaimEditable", false);
-        }
-        else if (($A.get("$Label.c.Core_MDF_Claim_Adjustment_Type")) == (component.get("v.simpleNewClaim.Core_MDF_Type_Txt__c"))) {
+        if (($A.get("$Label.c.Core_MDF_Claim_Adjustment_Type")) == (component.get("v.simpleNewClaim.Core_MDF_Type_Txt__c"))) {
             component.set("v.isClaimNegativeType", true);
             component.set("v.isClaimEditable", false);
         }
@@ -1406,10 +1341,6 @@
                         if (this.IsUserEligibleToEditClaimOnMembHold(component)) {
                             component.set("v.isClaimEditable", false);
                         }
-                        if (component.get("v.simpleNewClaim.Core_MDF_Status__c") == $A.get("$Label.c.Core_MDF_Claim_Status_Queued_for_Payment")) {
-                            component.set("v.isClaimEditable", true);
-                            component.set("v.isEditDisabled", true);
-                        }
                     } else {
                         component.set("v.isClaimEditable", false);
                     }
@@ -1441,7 +1372,6 @@
                     if ((component.get('v.activityStatusList').includes(result.activityObj.Core_MDF_Fund_Request_Status__c)) &&
                         result.checkCreate == true && (!component.get('v.activityClosureTypeList').includes(result.activityObj.Core_MDF_Activity_Closure_Type__c))) {
                         component.set("v.isValidActivityToCreateClaim", true);
-                        component.set("v.isOutcomeBasedActivity", result.activityObj.isOutcomeBasedActivity); 
                         component.set("v.simpleNewClaim.RequestId", result.activityObj.Id);
                         component.set("v.activityRecordTypeDevName", result.activityObj.RecordType.DeveloperName);
                         component.set("v.sObjectId", result.activityObj.Id);
@@ -1462,10 +1392,8 @@
                             //Ramapriya's Changes related to Error on click of Create claim button in In-progress Approval statuses
                             var activityInprogressApprovalStatuses = ($A.get("$Label.c.Core_MDF_PFR_Status_Restrict_CreateClaim")).split(";");
                             component.set('v.activityInProgressApprovalStatusList', activityInprogressApprovalStatuses);
-                            //Roshan - added as part of Super claim validations
-                            var isFinalOutcomeBased = result.activityObj.Core_MDF_Is_Outcome_Based_Ind__c;
-                            if (component.get('v.activityInProgressApprovalStatusList').includes(result.activityObj.Core_MDF_Fund_Request_Status__c)) {
-                                component.set("v.claimFromActivityErrorMsg", isFinalOutcomeBased ? $A.get("$Label.c.Core_MDF_Validate_CreateClaim_InProgress_FinalOutcomeBased") : $A.get("$Label.c.Core_MDF_Validate_CreateClaim_InProgress_Error"));
+                            if (component.get('v.activityInProgressApprovalStatusList').includes(result.activityObj.Core_MDF_Fund_Request_Status__c)){
+                                component.set("v.claimFromActivityErrorMsg", $A.get("$Label.c.Core_MDF_Validate_CreateClaim_InProgress_Error"));
                             }
                             else{
                             // show error for invalid activity status
@@ -1917,7 +1845,7 @@
     },
 
 
-    calculateAmountFields: function (component,callback) {
+    calculateAmountFields: function (component) {
         var amountFields = {
             totalAmountLocal: component.get("v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c"),
             costNotReimbursable: component.get("v.simpleNewClaim.Core_MDF_OtherCostsnotReimbursable_Local__c"),
@@ -1937,9 +1865,6 @@
                 if(result.Core_MDF_Reimbursable_Transaction_Amount__c){
                     //Core_MDF_Reimbursable_Transaction_Amount__c
                     component.set('v.reimbursableAmountUsd', result.Core_MDF_Reimbursable_Transaction_Amount__c);
-                }                
-                if(callback){
-                    callback(); //indu defect fix
                 }                
             } else {
                 let errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
@@ -2067,17 +1992,10 @@
         component.set("v.vatOptInPicklistVisible", false);
         component.set("v.simpleNewClaim.Core_MDF_VAT_Opt_In__c", "");
         component.set("v.simpleNewClaim.Core_MDF_Applicable_VAT_Percentage_nm__c", "");
-        component.set("v.isOutcomeBasedAccountBasedAct", false);
-        component.set("v.outcomeDesc", "");
     },
     // This helper function sets the RequestId and escalationId on change of Activity LookUp
     updateLookupField: function (component, event) {
         var recordId = event.getParam("sObjectId");
-        
-        let recordTypeName = component.get('v.recordtypeDeveloperName');
-        let labelValue = $A.get("$Label.c.Core_MDF_Program_RecordTypes");
-        let recordTypeList = labelValue.split(',').map(item => item.trim());
-        
         //Escalation check
         if ((event.getParam("instanceId")) == 'escalationId') {
             component.set("v.escObjectId", recordId);
@@ -2094,7 +2012,7 @@
             component.set("v.sObjectId", recordId);
             // component.set("v.simpleNewClaim.RequestId",'');//Added to chek prod issue
             component.set("v.simpleNewClaim.RequestId", recordId);
-            if (recordTypeList.includes(recordTypeName)) {//made Rishabh
+            if(component.get('v.recordtypeDeveloperName') == 'Core_MDF_Intel_Partner_Alliance' || component.get('v.recordtypeDeveloperName') == 'Core_MDF_IPA_Account_Based'||component.get('v.recordtypeDeveloperName') == 'Core_MDF_Datacenter' ||component.get('v.recordtypeDeveloperName') == 'Core_MDF_Client'){//made changes
                 this.getTacticInformation(component, event, helper);
             }
             if (component.get('v.isUserClaimCaseReviewerOrManager')) {
@@ -2247,75 +2165,6 @@
     
     //This helper function is used to navigate on tab click
     navigationOverTab: function (component, event, helper) {
-        const runValidation = () => {
-            //Validate tactic metrics // indu defect fix 
-                        //const campaignPurposeResult = this.validateCampaignPurpose(component, event, helper);
-                        const result = component.get("v.isCampaignPurposeVisible") === true ? this.validateCampaignPurpose(component, event, helper) : this.validateActivityPurpose(component, event, helper);//TWC3117-14942                        
-                        const tacticMetricResult = this.validateTacticMetric(component, event, helper);
-                        const tacticSpendingResult = this.validateTacticSpending(component, event, helper);
-						//console.log('@@result567==>',result);
-                        let finalClaimAttributeList = [];
-                        //Incase of No Errors
-                        //Need to add Edit Condition
-                        if (result && tacticMetricResult.valid && tacticSpendingResult.valid ) {
-                            if (tacticSpendingResult.claimAttributes.length > 0) {
-                                finalClaimAttributeList = finalClaimAttributeList.concat(tacticSpendingResult.claimAttributes);
-                            }
-                            if (tacticMetricResult.claimAttributesObj.length > 0) {     // IPA-Rishabh
-                                finalClaimAttributeList = finalClaimAttributeList.concat(tacticMetricResult.claimAttributesObj);
-                            }
-
-                            if (finalClaimAttributeList.length > 0) {
-                                component.set('v.claimAttributeList', finalClaimAttributeList);
-                            }
-
-                            component.set("v.currentStep", "3");
-                        } else {
-                            component.set("v.moveToThirdPage", false);
-                            //component.set("v.currentStep", "3");
-                            finalClaimAttributeList = [];
-                            component.set('v.claimAttributeList', finalClaimAttributeList);
-                        }
-        };
-        const executeClaimFlow = () => {
-            if (component.get("v.currentStep") == "1") {
-                if(component.get("v.isSuperClaim")){
-            		const subClaimresult = this.validateSubClaimItems(component, event, helper);
-            	
-            	if (!subClaimresult) {return;}
-                }
-                if (this.validateClaimForm(component)) {
-                    //calling of validateClaimSubmitterLookup method done by vaishali 
-                    //to validate claim submitter value is not blank before moving to next button
-                    if (!this.validateClaimSubmitterLookup(component) && !this.validateVatOptIn(component) && !(this.validateClaimDates(component, "claimActStartDate") || this.validateClaimDates(component, "claimActEndDate")) && !this.handleAmountValidation(component)) {
-                        this.showVATWarningForNonEMEACountries(component);
-                        if (component.get("v.showVATWarning")) {
-                            component.set("v.showVATWarningModal", true);
-                        }
-                        else {
-                            this.getDuplicateRecords(component);
-                        }
-
-                    }
-
-
-
-                    //IPA-Jegan
-                    if (component.get('v.isOutcomeBased')) {
-                        //Call Apex method to calculate amount fields
-                        this.calculateAmountFields(component);
-                    }
-
-
-                }
-                else {
-                    //if valid claim form fails
-                    component.set("v.currentStep", "1");
-                }
-            }
-
-        };
-        
         //focused tab value
         var stepValue = event.getSource().get("v.value");
         if (stepValue == "1") {
@@ -2338,23 +2187,40 @@
                     if(component.get('v.isKpiSectionVisible') && stepValue != "3"){//IPA-Jegan
                         //click on KPI page next button
                         this.validateKPIFields(component, event, helper);
-                    } else if (component.get('v.isOutcomeBased')) {
-                        this.calculateAmountFields(component, () => {
-                            runValidation();
-                            executeClaimFlow();
-                        });
-                        return;
+                    }else if(component.get('v.isOutcomeBased')){
+                        //Validate tactic metrics
+                        //const campaignPurposeResult = this.validateCampaignPurpose(component, event, helper);
+                        const result = component.get("v.isCampaignPurposeVisible") === true ? this.validateCampaignPurpose(component, event, helper) : this.validateActivityPurpose(component, event, helper);                     
+                        const tacticMetricResult = this.validateTacticMetric(component, event, helper);
+                        const tacticSpendingResult = this.validateTacticSpending(component, event, helper);
+                        
+                        let finalClaimAttributeList = [];
+                        //Incase of No Errors
+                        //Need to add Edit Condition
+                        if (result && tacticMetricResult.valid && tacticSpendingResult.valid ) {
+                            if(tacticSpendingResult.claimAttributes.length > 0){
+                                finalClaimAttributeList = finalClaimAttributeList.concat(tacticSpendingResult.claimAttributes);
+                            }
+                            if(tacticMetricResult.claimAttributesObj.length > 0){     // IPA-Rishabh
+                                finalClaimAttributeList = finalClaimAttributeList.concat(tacticMetricResult.claimAttributesObj);
+                            }
 
+                            if(finalClaimAttributeList.length > 0){
+                                component.set('v.claimAttributeList', finalClaimAttributeList);
+                            }
+
+                            component.set("v.currentStep", "3");
+                        }else{
+                            component.set("v.moveToThirdPage", false);
+                            finalClaimAttributeList = [];
+                            component.set('v.claimAttributeList', finalClaimAttributeList);
+                        }
                     }
                 }
             }
     
             //If opened tab is claim form and we clicked on KPI/POP tab
             if (component.get("v.currentStep") == "1") {
-                if(component.get("v.isSuperClaim")){
-            		  const subClaimresult = this.validateSubClaimItems(component, event, helper);
-                  if (!subClaimresult) {return;}
-                }
                 if (this.validateClaimForm(component)) {
                     //calling of validateClaimSubmitterLookup method done by vaishali 
                     //to validate claim submitter value is not blank before moving to next button
@@ -2390,10 +2256,6 @@
         //current step        
         var getCurrentStep = component.get("v.currentStep");
         if (getCurrentStep == "1") {
-            if(component.get("v.isSuperClaim")){
-            	const subClaimresult = this.validateSubClaimItems(component, event, helper);
-              if (!subClaimresult) {return;}
-            }
             //Navigate to KPI/POP page on click of claim form next button
             this.navigationOnNextButton(component);
         } else {
@@ -2730,12 +2592,11 @@
     
     //This method is to update the claim Status
     updateClaimStatusToPICPending: function (component, event, helper) {
-        const isOutcomeBased = component.get("v.isOutcomeBasedAccountBasedAct");
         //update the status to PIC Pending(for claim status - resubmission required, pending documents)
         if (component.get("v.simpleNewClaim.Core_MDF_Status__c") === $A.get("$Label.c.Core_MDF_Claim_Status_Resubmission_Required")) {//only for resubmission required
             component.set("v.simpleNewClaim.Core_MDF_Legacy_Reminder_txt__c", '');
         }
-        component.set("v.simpleNewClaim.Core_MDF_Status__c", isOutcomeBased ? $A.get("$Label.c.Core_MDF_Claim_Status_Payment_Clearance_Processing"): $A.get("$Label.c.Core_MDF_Claim_Status_PIC_Pending"));
+        component.set("v.simpleNewClaim.Core_MDF_Status__c", $A.get("$Label.c.Core_MDF_Claim_Status_PIC_Pending"));
         component.set("v.simpleNewClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c", null);
         this.saveClaimMethods(component, event, helper);
     },
@@ -2873,10 +2734,9 @@
                     if (!changedFieldsFromUI.includes('Core_MDF_Total_Invoice_Amount_Local__c')) {
                         component.set("v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c", response.getReturnValue().proposedClaimData.Core_MDF_Total_Invoice_Amount_Local__c);
                     }
-                    // Roshan - Commented as part of TWC3117-15435
-                    // if (!changedFieldsFromUI.includes('Core_MDF_Taxes_Local__c')) {
-                    //     component.set("v.simpleNewClaim.Core_MDF_Taxes_Local__c", response.getReturnValue().proposedClaimData.Core_MDF_Taxes_Local__c);
-                    // }
+                    if (!changedFieldsFromUI.includes('Core_MDF_Taxes_Local__c')) {
+                        component.set("v.simpleNewClaim.Core_MDF_Taxes_Local__c", response.getReturnValue().proposedClaimData.Core_MDF_Taxes_Local__c);
+                    }
                     if (!changedFieldsFromUI.includes('Core_MDF_Currency__c')) {
                         component.set("v.simpleNewClaim.Core_MDF_Currency__c", response.getReturnValue().proposedClaimData.Core_MDF_Currency__c);
                     }
@@ -2995,10 +2855,9 @@
         if (!changedFieldsFromUI.includes('Core_MDF_Total_Invoice_Amount_Local__c')) {
             component.set("v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c", '');
         }
-        // Roshan - Commented as part of TWC3117-15435
-        // if (!changedFieldsFromUI.includes('Core_MDF_Taxes_Local__c')) {
-        //     component.set("v.simpleNewClaim.Core_MDF_Taxes_Local__c", '');
-        // }
+        if (!changedFieldsFromUI.includes('Core_MDF_Taxes_Local__c')) {
+            component.set("v.simpleNewClaim.Core_MDF_Taxes_Local__c", '');
+        }
         if (!changedFieldsFromUI.includes('Core_MDF_Currency__c')) {
             component.set("v.simpleNewClaim.Core_MDF_Currency__c",'' );
         }
@@ -3089,12 +2948,9 @@
     },
     
     setPayTypeDefaultValuePicklist: function(component) {
-		const isFinalOutcomeBased = component.get("v.isOutcomeBasedAccountBasedAct");
         // Stamping value from current claim for edit scenario
         if (component.get("v.isClaimEdit")) {
-            const processingPreference = !isFinalOutcomeBased ? component.get("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c") : $A.get("$Label.c.Core_MDF_nonTranslate_Fast_Pay");
-            component.set("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c",processingPreference);
-            //component.set("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c", component.get("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c"));
+            component.set("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c", component.get("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c"));
         } else {
             var action = component.get("c.getDefaultPayTypePicklist");
             var formattedDate = new Date();
@@ -3112,8 +2968,7 @@
                 if (state === "SUCCESS" && response.getReturnValue() != null) {
                     var payType = response.getReturnValue();  
                     var selectedValue = payType.surePay ? $A.get("$Label.c.Core_MDF_nonTranslate_Sure_Pay") : $A.get("$Label.c.Core_MDF_nonTranslate_Fast_Pay");
-                    const processingPreference = !isFinalOutcomeBased ? selectedValue : $A.get("$Label.c.Core_MDF_nonTranslate_Fast_Pay");
-                    component.set("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c",processingPreference);
+                    component.set("v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c", selectedValue);
                 } else {
                     var toastEvent = $A.get("e.force:showToast");
                     toastEvent.setParams({
@@ -3139,7 +2994,6 @@
         const claimEndDate = component.find("claimActEndDate").get("v.value");
         const activityStart = component.get("v.simpleNewClaim.Core_MDF_Activity_Start_Date__c");
         const activityEnd = component.get("v.simpleNewClaim.Core_MDF_Activity_End_Date__c");
-        const isFinalOutcomeBased = component.get("v.isOutcomeBasedAccountBasedAct");
 
         let errorMessage = "";
         let isDateInvalid = false;
@@ -3151,7 +3005,7 @@
             if (currentValue > userToday) {
                 errorMessage = isStart ? $A.get("$Label.c.Core_MDF_StartDateFutureValidation") : $A.get("$Label.c.Core_MDF_EndDateFutureValidation");
             } else if (currentValue < activityStart || currentValue > activityEnd) {
-                errorMessage = isFinalOutcomeBased ? (isStart ? $A.get("$Label.c.Core_MDF_StartDateValidation_OutcomeBased") : $A.get("$Label.c.Core_MDF_EndDateValidation_OutcomeBased")) : (isStart ? $A.get("$Label.c.Core_MDF_StartDateValidation") : $A.get("$Label.c.Core_MDF_EndDateValidation"));
+                errorMessage = isStart ? $A.get("$Label.c.Core_MDF_StartDateValidation") : $A.get("$Label.c.Core_MDF_EndDateValidation");
             } else if (claimStartDate && claimEndDate && claimStartDate > claimEndDate) {
                 errorMessage = isStart ? $A.get("$Label.c.Core_MDF_StartDate_EndDate_Validation") : $A.get("$Label.c.Core_MDF_EndDate_StartDate_Validation");
             }
@@ -3245,21 +3099,5 @@
         } else {
             return false;
         }
-    },
-	validateSubClaimItems: function (component, event, helper){
-        const subclaimItemCmp = component.find("subClaimLwc");
-        const result = subclaimItemCmp.validate();
-		return result;
-    },
-    formatToTwoDecimals: function (inputCmp) {
-        if (!inputCmp) return;
-        var value = inputCmp.get("v.value");
-        if (value === null || value === '') {
-            return;
-        }
-        var num = Number(value);
-        if (!isNaN(num)) {
-            inputCmp.set("v.value", num.toFixed(2));
-        }
-    },
+    }
 })

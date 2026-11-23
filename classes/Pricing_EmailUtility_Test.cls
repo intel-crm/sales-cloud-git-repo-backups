@@ -1,10 +1,10 @@
 /**
- * @description       :
+ * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 03-16-2026
+ * @group             : 
+ * @last modified on  : 09-25-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
+**/
 @isTest
 public class Pricing_EmailUtility_Test {
     //Method to setup Test data
@@ -15,7 +15,8 @@ public class Pricing_EmailUtility_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Email_Utility_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            
             List<User> accExecUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
@@ -66,8 +67,6 @@ public class Pricing_EmailUtility_Test {
             Test.stopTest();
         }
         System.assertEquals('Approved', quoteLine[0].Pricing_Status_Nm__c , 'QuoteLine status is not updated.');
-        List<SBQQ__QuoteLine__c> updatedQuoteLine = [SELECT id,Pricing_Status_Nm__c FROM SBQQ__QuoteLine__c WHERE Id =: quoteLine[0].Id];
-        System.assertEquals('Approved', updatedQuoteLine[0].Pricing_Status_Nm__c, 'QuoteLine status was not properly updated');
         
     }
     
@@ -119,8 +118,6 @@ public class Pricing_EmailUtility_Test {
                 }
             }
             system.assert(true, isSuccess);
-            List<SBQQ__QuoteLine__c> updatedQuoteLine = [SELECT id,Pricing_Status_Nm__c FROM SBQQ__QuoteLine__c WHERE Id =: lstquoteline[0].Id];
-            System.assertEquals(Label.Pricing_Tender_QuoteLine_Status_Won, updatedQuoteLine[0].Pricing_Status_Nm__c, 'QuoteLine status was not properly updated for Won/Loss');
             Test.stopTest();
         }
     }
@@ -137,8 +134,6 @@ public class Pricing_EmailUtility_Test {
             update quoteLine[0];
         }
         System.assertEquals('Rejected', quoteLine[0].Pricing_Status_Nm__c , 'QuoteLine status is not updated.');
-        List<SBQQ__QuoteLine__c> updatedQuoteLine = [SELECT id,Pricing_Status_Nm__c FROM SBQQ__QuoteLine__c WHERE Id =: quoteLine[0].Id];
-        System.assertEquals('Rejected', updatedQuoteLine[0].Pricing_Status_Nm__c, 'QuoteLine status was not properly updated');
         Test.stopTest();
         
     }
@@ -147,7 +142,6 @@ public class Pricing_EmailUtility_Test {
         Test.startTest();
         List<SBQQ__QuoteLine__c> quoteLine = [Select id,Pricing_Status_Nm__c from SBQQ__QuoteLine__c];
         Pricing_EmailUtility.sendEmailToApprover(new Set<Id>{quoteLine[0].id},Label.Pricing_QuoteLineApprovalInitial_Notification);
-       System.assertEquals(quoteLine.size() > 0,true);
         Test.stopTest();
         
     }

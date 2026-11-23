@@ -29,9 +29,8 @@ private class Core_MDF_Bulk_Transaction_Test {
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
-            ChannelProgram retailCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
-           // Highlight: Unused Local Variable 
-           // ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+            ChannelProgram retailCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
+            ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             
             
             Account intelAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('Flipkart', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -66,13 +65,12 @@ private class Core_MDF_Bulk_Transaction_Test {
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
             
             //Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('CCF User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,'Client Co-Marketing Fund (CCF)',true);
-            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Support','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
-            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Support','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Intel® Partner Investment Center','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
             
             //Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementCCF.Id ,true,'Complete', true);
-            // Highlight: Unused Local Variable 
-           // Core_Contact_Entitlement__c contactEntitlementRMF_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF.Id ,true,'Complete', true);
-           // Core_Contact_Entitlement__c contactEntitlementRMF_CS_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF_CS.Id ,true,'Complete', true);
+            Core_Contact_Entitlement__c contactEntitlementRMF_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF.Id ,true,'Complete', true);
+            Core_Contact_Entitlement__c contactEntitlementRMF_CS_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF_CS.Id ,true,'Complete', true);
             
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
             usr1.LastName = 'User Test1';
@@ -103,10 +101,10 @@ private class Core_MDF_Bulk_Transaction_Test {
             pgm.Core_MDF_Channel_Program__c = retailCp.Id;
             pgm.Core_MDF_Region_cd__c='WW';
             pgm.Core_MDF_Source_Txt__c = 'test';
-            pgm.Core_MDF_AccountIdGroupName__c = intelAccount.Id+'PGM_TEST_Group2';
+            pgm.Core_MDF_AccountIdGroupName__c = intelAccount.Id+'PGM_TEST';
             database.insert(pgm);
-            // Highlight: Unused Local Variable
-           // Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRetail.Id,usr1.Id,true);
+            
+            Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRetail.Id,usr1.Id,true);
             
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createRetailBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Retail_Record_Type,
                                                                                    intelRetail.Id,retailCp.Id,500000000,System.today().addDays(-97),
@@ -161,7 +159,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                          string.valueof(intelRetail.id),pfa,NULL,
                                                                                                          'AFGHANISTAN','Business','Workstation',
-                                                                                                         'EVO','Broadcast (Pre-2025)',
+                                                                                                         'EVO','Broadcast',
                                                                                                          'Podcast','Draft',false);
             
             currentQuarterPfr.Title ='RSA MD Activity';
@@ -183,7 +181,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast (Pre-2025)',
+                                                                                                      'EVO','Broadcast',
                                                                                                       'Podcast','Draft',false);
             
             lastQuarterPfr.Title ='RSA MD Activity';
@@ -206,7 +204,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast (Pre-2025)',
+                                                                                                      'EVO','Broadcast',
                                                                                                       'Podcast','Draft',false);
             
             escPfr.Title ='RSA MD Activity';
@@ -339,8 +337,8 @@ private class Core_MDF_Bulk_Transaction_Test {
     
     @isTest
     private static void upsertRecordsTest() {
-           // Highlight: Unused Local Variable
-          //  User usr = [SELECT Id,UserPermissionsMarketingUser FROM User WHERE LastName = 'User Test' LIMIT 1];
+        
+            User usr = [SELECT Id,UserPermissionsMarketingUser FROM User WHERE LastName = 'User Test' LIMIT 1];
             List<Core_MDF_Bulk_Transaction__e> updateRecordList = new List<Core_MDF_Bulk_Transaction__e>();
         Test.startTest();
             

@@ -3,7 +3,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
     @TestSetup
     public static void createData(){
         
-
+        Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
@@ -115,7 +115,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             camp4.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
             camp4.Core_MDF_Reimbursement_Amt__c = 200.0;
             camp4.Core_MDF_Opal_Budget_Type_Txt__c = 'Proposal I MDF';
-            camp4.Core_MDF_Technology__c = '';  // 14285 Indira
+            camp4.Core_MDF_Technology__c = 'Advanced 360 Library';
             camp4.Core_MDF_Market__c = 'AFGHANISTAN';
             
             Database.insert(camp4);
@@ -131,8 +131,6 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             IPApfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             IPApfr.Core_MDF_Budget_Type_nm__c = 'Proposal I MDF';
             IPApfr.Core_MDF_TargetAudience__c = '';
-            IPApfr.Core_MDF_ActivityCategory__c=''; //14285-Indira
-            IPApfr.Core_MDF_Activity_Types__c=''; //14285-Indira
             Database.insert(IPApfr);
         }
         
@@ -144,7 +142,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
         Campaign camp1=[select id,Name FROM Campaign where Name= 'Test Campaign 1' LIMIT 1];
         Integer res=0;
         System.runAs(usr){
-            res=(Core_MDF_CustomLayoutConfig_Controller.getObjectFields(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout','')).size(); // 14285 Indira
+            res=(Core_MDF_CustomLayoutConfig_Controller.getObjectFields(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout')).size();
         }
        Assert.areEqual(true,res!=null);
        Test.stopTest();
@@ -156,7 +154,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
         Integer res=0;
         System.runAs(usr){
             try{
-               res= (Core_MDF_CustomLayoutConfig_Controller.getObjectFields('', 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout','')).size(); // 14285 Indira
+               res= (Core_MDF_CustomLayoutConfig_Controller.getObjectFields('', 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout')).size();
             }catch(Exception ex){
                 
             }
@@ -173,7 +171,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
         String msg='';
         System.runAs(usr){
             Campaign camp1=[select id,Name FROM Campaign where Name= 'Test Campaign 1' LIMIT 1];
-            res=(Core_MDF_CustomLayoutConfig_Controller.getObjActions(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Compact Layout','')).size(); // 14285 Indira
+            res=(Core_MDF_CustomLayoutConfig_Controller.getObjActions(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Compact Layout')).size();
             msg=Core_MDF_CustomLayoutConfig_Controller.updateCampRecord(String.valueOf(camp1.id), 'Cancelled');
         }
         Test.stopTest();
@@ -188,7 +186,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
         System.runAs(usr){
             Campaign camp1=[select id,Name FROM Campaign where Name= 'Test Campaign 2' LIMIT 1];
             Integer size1;
-            size1=(Core_MDF_CustomLayoutConfig_Controller.getObjActions(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Compact Layout','')).size(); // 14285 Indira
+            size1=(Core_MDF_CustomLayoutConfig_Controller.getObjActions(String.valueOf(camp1.id), 'Campaign', 'Core_MDF_Proposal_Based_Ind__c', 'Compact Layout')).size();
           Assert.areNotEqual(0, size1);
         }
         Test.stopTest();
@@ -201,7 +199,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
         Test.startTest();
         System.runAs(usr){
             PartnerFundRequest IPApfr=[select id,Title from PartnerFundRequest where Title= 'Test IPA Activity' LIMIT 1];
-            size=(Core_MDF_CustomLayoutConfig_Controller.getObjectFields(String.valueOf(IPApfr.id), 'PartnerFundRequest', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout','')).size(); // 14285 Indira
+            size=(Core_MDF_CustomLayoutConfig_Controller.getObjectFields(String.valueOf(IPApfr.id), 'PartnerFundRequest', 'Core_MDF_Proposal_Based_Ind__c', 'Detail Layout')).size();
         }
         Test.stopTest();
         Assert.areNotEqual(0, size);

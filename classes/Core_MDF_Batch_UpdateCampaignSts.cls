@@ -67,15 +67,14 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
                                
                                 //Added check for Enddate
                                 if(completeCampaign.status != 'Draft'){
-                                    /*if(completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt)
+                                    if(completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt)
                                     {
                                         completeCampaign.Status = changeToInProgressStatus;
                                     }
                                 else
                                     {
                                         completeCampaign.Status = changeToCompletedStatus;
-                                    }*/   
-                                    completeCampaign.Status = (completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt) ? changeToInProgressStatus : changeToCompletedStatus; //ATHR - Deeply Nested if 16209
+                                    }   
                                 }
                                 else if(completeCampaign.status == 'Draft' && completeCampaign.endDate < todaydt){
                                     completeCampaign.Status = changeToCancelledStatus;
@@ -142,7 +141,6 @@ global void finish (Database.BatchableContext batchableContext)
                 Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
                 String[] toAddresses = new String[] {sendEmailAddress};
                 mail.setToAddresses(toAddresses);
-                mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
                 mail.setSubject(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SFDC_Environment') + ': Salesforce BatchUpdateCampaignField ' + a.Status);
                 String messageBody = '';
                 if(!campaignsUpdated.isEmpty() || Test.isRunningTest()){

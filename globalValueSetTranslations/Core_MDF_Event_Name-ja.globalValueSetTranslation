@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>AFCEA</masterLabel>
-        <translation><!-- AFCEA --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI DevCon</masterLabel>
-        <translation><!-- AI DevCon --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI DevSummit</masterLabel>
-        <translation><!-- AI DevSummit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI Infra Summit</masterLabel>
-        <translation><!-- AI Infra Summit --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>ARC Industry Forum Europe</masterLabel>
         <translation><!-- ARC Industry Forum Europe --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AWS Summit</masterLabel>
-        <translation><!-- AWS Summit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AWS re:Invent</masterLabel>
@@ -33,32 +13,12 @@
         <translation><!-- Adobe MAX Creativity Conference --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Adobe Max</masterLabel>
-        <translation><!-- Adobe Max --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AmCham</masterLabel>
-        <translation><!-- AmCham --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Anime Expo</masterLabel>
         <translation><!-- Anime Expo --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Autodesk U</masterLabel>
-        <translation><!-- Autodesk U --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Autodesk University</masterLabel>
         <translation><!-- Autodesk University --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Automate</masterLabel>
-        <translation><!-- Automate --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>BETT (British Education Training &amp; Technology)</masterLabel>
-        <translation><!-- BETT (British Education Training &amp; Technology) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Black Hat</masterLabel>
@@ -69,36 +29,8 @@
         <translation><!-- British Education Training &amp; Technology (BETT) UK --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>ByteDance</masterLabel>
-        <translation><!-- ByteDance --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>CES (Consumer Electronics Show)</masterLabel>
-        <translation><!-- CES (Consumer Electronics Show) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>CITE (California IT in Education)</masterLabel>
-        <translation><!-- CITE (California IT in Education) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>CVPR (Computer Vision and Pattern Recognition Conf)</masterLabel>
-        <translation><!-- CVPR (Computer Vision and Pattern Recognition Conf) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>California IT in Education (CITE)</masterLabel>
         <translation><!-- California IT in Education (CITE) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Cisco Connect</masterLabel>
-        <translation><!-- Cisco Connect --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Cisco Impact</masterLabel>
-        <translation><!-- Cisco Impact --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Cisco Live</masterLabel>
-        <translation><!-- Cisco Live --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cisco Live!</masterLabel>
@@ -113,26 +45,6 @@
         <translation><!-- Consumer Electronics Show (CES) --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>CrowdStrike Fal.con</masterLabel>
-        <translation><!-- CrowdStrike Fal.con --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>DCDC (Data Center Design Conference)</masterLabel>
-        <translation><!-- DCDC (Data Center Design Conference) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Databricks Data &amp; AI Summit</masterLabel>
-        <translation><!-- Databricks Data &amp; AI Summit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Dell Tech Forum</masterLabel>
-        <translation><!-- Dell Tech Forum --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Dell Tech World</masterLabel>
-        <translation><!-- Dell Tech World --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Dell Technologies Tours</masterLabel>
         <translation><!-- Dell Technologies Tours --></translation>
     </valueTranslation>
@@ -141,40 +53,12 @@
         <translation><!-- Dell Technologies World --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Dreamhack</masterLabel>
-        <translation><!-- Dreamhack --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>EDUCAUSE Annual Conference</masterLabel>
         <translation><!-- EDUCAUSE Annual Conference --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Educause</masterLabel>
-        <translation><!-- Educause --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Embedded World</masterLabel>
         <translation><!-- Embedded World --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Events</masterLabel>
-        <translation><!-- Events --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>GITEX Global (Gulf Information Technology Exhibition)</masterLabel>
-        <translation><!-- GITEX Global (Gulf Information Technology Exhibition) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>GOMACTech (Government Microcircuit Applications &amp; Critical Technology)</masterLabel>
-        <translation><!-- GOMACTech (Government Microcircuit Applications &amp; Critical Technology) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>GSA (Global Semiconductor Alliance)</masterLabel>
-        <translation><!-- GSA (Global Semiconductor Alliance) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamescom</masterLabel>
-        <translation><!-- Gamescom --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gartner IT Infrastructure, Operations &amp; Cloud Strategies Conference</masterLabel>
@@ -185,40 +69,12 @@
         <translation><!-- Gartner IT/XPO Symposium --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Google Cloud Next</masterLabel>
-        <translation><!-- Google Cloud Next --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Google Next</masterLabel>
         <translation><!-- Google Next --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Google OEM Partner Summits</masterLabel>
         <translation><!-- Google OEM Partner Summits --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HIMSS (Healthcare Information Mgmt Systems Society)</masterLabel>
-        <translation><!-- HIMSS (Healthcare Information Mgmt Systems Society) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HMI (Hannover Messe)</masterLabel>
-        <translation><!-- HMI (Hannover Messe) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HP Amplify</masterLabel>
-        <translation><!-- HP Amplify --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC Developer Conference</masterLabel>
-        <translation><!-- HPC Developer Conference --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPE Discover (Hewlett Packard Enterprise)</masterLabel>
-        <translation><!-- HPE Discover (Hewlett Packard Enterprise) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPE Tech Jam (Hewlett Packard Enterprise)</masterLabel>
-        <translation><!-- HPE Tech Jam (Hewlett Packard Enterprise) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>HPI Amplify Conference</masterLabel>
@@ -249,84 +105,12 @@
         <translation><!-- Hot Chips --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>IBM Think</masterLabel>
-        <translation><!-- IBM Think --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IDC (Intelligent Distributed Computing)</masterLabel>
-        <translation><!-- IDC (Intelligent Distributed Computing) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IEEE PES (IEEE Power &amp; Energy Society) T&amp;D Conference</masterLabel>
-        <translation><!-- IEEE PES (IEEE Power &amp; Energy Society) T&amp;D Conference --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IEM (Intel Extreme Masters)</masterLabel>
-        <translation><!-- IEM (Intel Extreme Masters) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IFA (Innovation for All)</masterLabel>
-        <translation><!-- IFA (Innovation for All) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IFTD (Intel FPGA Technology Day)</masterLabel>
-        <translation><!-- IFTD (Intel FPGA Technology Day) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IMC (India Mobile Congress)</masterLabel>
-        <translation><!-- IMC (India Mobile Congress) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISB (Industry Solution Builders)</masterLabel>
-        <translation><!-- ISB (Industry Solution Builders) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISC (International Supercomputing)</masterLabel>
-        <translation><!-- ISC (International Supercomputing) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISC West (International Security Conference)</masterLabel>
-        <translation><!-- ISC West (International Security Conference) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISE (Integrated Systems Europe)</masterLabel>
-        <translation><!-- ISE (Integrated Systems Europe) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISET (Innovations in Special Education Technology)</masterLabel>
-        <translation><!-- ISET (Innovations in Special Education Technology) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ISTE (International Society for Technology Education)</masterLabel>
-        <translation><!-- ISTE (International Society for Technology Education) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>ITS (Intelligent Transportation Systems)</masterLabel>
-        <translation><!-- ITS (Intelligent Transportation Systems) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>ITS World Congress</masterLabel>
         <translation><!-- ITS World Congress --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>InfoComm</masterLabel>
         <translation><!-- InfoComm --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Cloud BOA (Board of Advisors)</masterLabel>
-        <translation><!-- Intel Cloud BOA (Board of Advisors) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Federal Summit</masterLabel>
-        <translation><!-- Intel Federal Summit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel ON Connection</masterLabel>
-        <translation><!-- Intel ON Connection --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel REC (Retail Executive Conference)</masterLabel>
-        <translation><!-- Intel REC (Retail Executive Conference) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® 360 (i360)</masterLabel>
@@ -389,40 +173,12 @@
         <translation><!-- KubeCon + CloudNativeCon North America --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>KubeCon AMR</masterLabel>
-        <translation><!-- KubeCon AMR --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>KubeCon EMEA</masterLabel>
-        <translation><!-- KubeCon EMEA --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>LEAP Dubai</masterLabel>
-        <translation><!-- LEAP Dubai --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>LOEM Summit</masterLabel>
         <translation><!-- LOEM Summit --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Lenovo Tech World</masterLabel>
-        <translation><!-- Lenovo Tech World --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Lenovo TechWorld</masterLabel>
         <translation><!-- Lenovo TechWorld --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>MWC (Mobile World Congress) Americas</masterLabel>
-        <translation><!-- MWC (Mobile World Congress) Americas --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>MWC (Mobile World Congress) Barcelona</masterLabel>
-        <translation><!-- MWC (Mobile World Congress) Barcelona --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Microsoft (MSFT) Build</masterLabel>
-        <translation><!-- Microsoft (MSFT) Build --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Microsoft Build</masterLabel>
@@ -445,18 +201,6 @@
         <translation><!-- Mobile World Congress (MWC) Las Vegas --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>NAB (National Association of Broadcasters)</masterLabel>
-        <translation><!-- NAB (National Association of Broadcasters) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>NRF (National Retail Federation)</masterLabel>
-        <translation><!-- NRF (National Retail Federation) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>NVIDIA GTC (GPU Tech Conference)</masterLabel>
-        <translation><!-- NVIDIA GTC (GPU Tech Conference) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>National Association of Broadcasters (NAB)</masterLabel>
         <translation><!-- National Association of Broadcasters (NAB) --></translation>
     </valueTranslation>
@@ -469,36 +213,12 @@
         <translation><!-- Neur IPS and oneAPI Dev Summit --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>NeurIPS</masterLabel>
-        <translation><!-- NeurIPS --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Nutanix.next</masterLabel>
-        <translation><!-- Nutanix.next --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OCP (Open Compute Project) Global Summit</masterLabel>
-        <translation><!-- OCP (Open Compute Project) Global Summit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OFC (Optical Fiber Conference)</masterLabel>
-        <translation><!-- OFC (Optical Fiber Conference) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OSS (Open Source Summit)</masterLabel>
-        <translation><!-- OSS (Open Source Summit) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Open Compute Global Summit (OCP Global Summit)</masterLabel>
         <translation><!-- Open Compute Global Summit (OCP Global Summit) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Open Source Summit North America</masterLabel>
         <translation><!-- Open Source Summit North America --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Oracle AI World</masterLabel>
-        <translation><!-- Oracle AI World --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
@@ -513,10 +233,6 @@
         <translation><!-- Penny Arcade eXpo (PAX) West --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>PyTorch</masterLabel>
-        <translation><!-- PyTorch --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>RSA Conference</masterLabel>
         <translation><!-- RSA Conference --></translation>
     </valueTranslation>
@@ -527,22 +243,6 @@
     <valueTranslation>
         <masterLabel>SAP Sapphire</masterLabel>
         <translation><!-- SAP Sapphire --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>SAS Innovate</masterLabel>
-        <translation><!-- SAS Innovate --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>SC (Supercomputing)</masterLabel>
-        <translation><!-- SC (Supercomputing) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>SCTE (Society of Cable Telecommunications Engineers)</masterLabel>
-        <translation><!-- SCTE (Society of Cable Telecommunications Engineers) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>SIGGRAPH (Special Interest Group on Computer Graphics and Interactive Techniques)</masterLabel>
-        <translation><!-- SIGGRAPH (Special Interest Group on Computer Graphics and Interactive Techniques) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Semicon West</masterLabel>
@@ -557,28 +257,8 @@
         <translation><!-- Siggraph --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Smart City</masterLabel>
-        <translation><!-- Smart City --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Supercomputing (SC)</masterLabel>
         <translation><!-- Supercomputing (SC) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Teratec</masterLabel>
-        <translation><!-- Teratec --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>The AI Summit</masterLabel>
-        <translation><!-- The AI Summit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>VMUG (VMware Users Group)</masterLabel>
-        <translation><!-- VMUG (VMware Users Group) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>VMware Explore</masterLabel>
-        <translation><!-- VMware Explore --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>VMware Explore EU</masterLabel>
@@ -589,23 +269,11 @@
         <translation><!-- VMware Explore US --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>VivaTech Europe</masterLabel>
-        <translation><!-- VivaTech Europe --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Web Summit</masterLabel>
         <translation><!-- Web Summit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>World Economic Forum (WEF)</masterLabel>
         <translation><!-- World Economic Forum (WEF) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Zoomtopia</masterLabel>
-        <translation><!-- Zoomtopia --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>iMAPS (International Symposium on Microelectronics)</masterLabel>
-        <translation><!-- iMAPS (International Symposium on Microelectronics) --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

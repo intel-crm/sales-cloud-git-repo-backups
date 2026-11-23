@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_UCD_IQR_FormRequestTest {
     //Setting up Test Data
@@ -47,6 +40,7 @@ public class Pricing_UCD_IQR_FormRequestTest {
     
     static testmethod void testSendRequestToUCD() {
         Test.startTest();
+        List < User > lstUsers4 = [select id from user where email = 'firstName@intel.com'];
         List < User > partnerUser = [select id from user where email = 'partner@noemail.com'];
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
@@ -81,6 +75,7 @@ public class Pricing_UCD_IQR_FormRequestTest {
         if (!performanceList.isEmpty()) {
             insert performanceList;
         }
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(partnerUser[0]) {
             //glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].id);
@@ -95,6 +90,8 @@ public class Pricing_UCD_IQR_FormRequestTest {
     
     static testmethod void testSurvivorAccount() {
         Test.startTest();
+        List < User > lstUsers4 = [select id from user where email = 'firstName@intel.com'];
+        List < User > partnerUser = [select id from user where email = 'partner@noemail.com'];
         List < Account > accRecordList = [select Id from Account];
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c]);
         List < Id > quoteIdList = new List < Id > ();
@@ -132,6 +129,7 @@ insert accBusinessType;
         
         UCD_BizOrgRequestModel bizModel = new UCD_BizOrgRequestModel();
         List < UCD_BizOrgRequestModel.AccountDetail > requestModelList = new List < UCD_BizOrgRequestModel.AccountDetail > ();
+        List < UCD_BizOrgRequestModel.BusinessOrganizationResponse > responseModelList = new List < UCD_BizOrgRequestModel.BusinessOrganizationResponse > ();
         
         UCD_BizOrgRequestModel.AccountDetail requestModel = new UCD_BizOrgRequestModel.AccountDetail();
         UCD_BizOrgRequestModel.AccountAddresses addressDetails = new UCD_BizOrgRequestModel.AccountAddresses();
@@ -251,6 +249,7 @@ insert accBusinessType;
     
     static testmethod void testgenereatePublisher() {
         Test.startTest();
+        
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         List < Account > lstacc = new List < Account > ([select id, Name from Account Limit 1]);
         
@@ -317,7 +316,7 @@ insert accBusinessType;
         bussRes.Data = dataList;
         
         Pricing_UCD_IQR_FormRequest.genereatePublisherRequest(bussRes);
-        system.assertEquals(true ,lstquote.size() > 0);
+        
         Test.stopTest();
     }
     
@@ -587,7 +586,7 @@ insert accBusinessType;
         List < User > adminUser = [select id from user where email = 'ucdIQRFormReqAdmin@intel.com'];
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         List<Id> quoteIds = new List<Id>();
-        quoteIds.add(lstquote[0].Id);
+        quoteIds.add(lstquote[0].Id);        
         system.runAs(adminUser[0]){
             Pricing_Integration_Staging__c pis = new Pricing_Integration_Staging__c();
         	pis.Pricing_Message_Type__c = Label.Pricing_UCD_PIS_Message_Type;

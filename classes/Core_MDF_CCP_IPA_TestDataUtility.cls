@@ -49,9 +49,9 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
 
     public static PartnerFundRequest createIPAPartnerFundRequest(String campaignId,String channelPartnerId,Date startDate,Date endDate,Boolean isInsert){
         PartnerFundRequest testPartnerFundRequest = NULL;
-        testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,ChannelPartnerId = channelPartnerId,Core_MDF_ActivityCategory__c='Broadcast (Pre-2025)',
+        testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,ChannelPartnerId = channelPartnerId,Core_MDF_ActivityCategory__c='Broadcast',
                                                                            Core_MDF_Activity_Types__c='Podcast',RequestedAmount=1234,Core_MDF_Start_Date__c=startDate,Core_MDF_End_Date__c =endDate,Title ='Test IPA',
-                                                                           Core_MDF_Activity_Description__c ='Test IPA Description', Core_MDF_Activity_Classification_nm__c = 'Marketing');
+                                                                           Core_MDF_Activity_Description__c ='Test IPA Description');
         
         if(isInsert){
             insert testPartnerFundRequest;
@@ -77,11 +77,11 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         
         Core_Account_Group_Member__c agm = new Core_Account_Group_Member__c(Core_Partner_Account_Id__c=pagAcc.Id,Core_Intel_Account_Id__c=intelAcc.Id);
         insert agm;
-        // Highlight: Unused Local Variable 
-       // Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
         
-        // Highlight: Unused Local Variable 
-       // ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
+        Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
+        
+        
+        ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
        
         PRM_BatchCustomSetting__c bcss = new PRM_BatchCustomSetting__c();
         bcss.name= 'BatchFieldValues';
@@ -110,14 +110,10 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         asa.PRM_Account_Id__c =intelAcc.id;
         insert asa;
                 
-        /*Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = [select Core_MDF_Budget_Type__c from 
-                                                           Core_MDF_BudgetType_Benefit_Mappings__c 
-                                                          where Core_MDF_Partner_Benefit__c='Business Client Acceleration - MDF' Limit 1];*/
-       Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = new Core_MDF_BudgetType_Benefit_Mappings__c();
-       mdtRec.Name = 'Test';
-       mdtRec.Core_MDF_Budget_Type__c = 'Business Client Acceleration - MDF';
-       insert mdtRec;
-       
+        Core_MDF_BudgetType_Benefit_Mapping__mdt mdtRec = [select Core_MDF_Budget_Type__c from 
+                                                           Core_MDF_BudgetType_Benefit_Mapping__mdt 
+                                                          where Core_MDF_Partner_Benefit__c='Business Client Acceleration - MDF' Limit 1];
+        
         return mdtRec.Core_MDF_Budget_Type__c;
     }
     
@@ -136,14 +132,14 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         
         Core_Account_Group_Member__c agm = new Core_Account_Group_Member__c(Core_Partner_Account_Id__c=pagAcc.Id,Core_Intel_Account_Id__c=intelAcc.Id);
         insert agm;
-        // Highlight: Unused Local Variable 
-       // Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
         
-        // Highlight: Unused Local Variable
-       // ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
+        Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
+        
+        
+        ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
        
-        // Highlight: Unused Local Variable 
-       // List<PRM_PartnerBenefit__c> pbList = new List<PRM_PartnerBenefit__c>();
+        
+        List<PRM_PartnerBenefit__c> pbList = new List<PRM_PartnerBenefit__c>();
         
         PRM_BatchCustomSetting__c bcss = new PRM_BatchCustomSetting__c();
         bcss.name= 'BatchFieldValues';
@@ -172,8 +168,8 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         asa.PRM_Account_Id__c =pagAcc.id;
         insert asa;
                 
-        Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = [select Core_MDF_Budget_Type__c from 
-                                                           Core_MDF_BudgetType_Benefit_Mappings__c 
+        Core_MDF_BudgetType_Benefit_Mapping__mdt mdtRec = [select Core_MDF_Budget_Type__c from 
+                                                           Core_MDF_BudgetType_Benefit_Mapping__mdt 
                                                           where Core_MDF_Partner_Benefit__c='Scale Acceleration - MDF' Limit 1];
         
         return mdtRec.Core_MDF_Budget_Type__c;

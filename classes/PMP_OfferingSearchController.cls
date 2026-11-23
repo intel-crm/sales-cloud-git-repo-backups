@@ -23,11 +23,7 @@ public with sharing class PMP_OfferingSearchController {
     // }
 
     if (objectName == 'PMP_Company__c') {
-        searchResults =  [FIND :keyword IN ALL FIELDS RETURNING PMP_Company__c 
-                          (Id,Name,PMP_Company_Lifecycle_Status_Nm__c,PMP_Account_Id__c,PMP_Intel_Admin_Id__c,
-                           PMP_Intel_Admin_Id__r.Name,CreatedDate,PMP_Account_Program_Membership__c,PMP_Partner_Program_nm__c,
-                           PMP_Company_Information_Language_Nm__c,toLabel(PMP_Translation_Lifecycle_Status_nm__c),LastModifiedDate 
-                           WHERE (PMP_Benefit_Update_Ind__c=false and PMP_Is_Working_Copy_Ind__c = true))];
+        searchResults =  [FIND :keyword IN ALL FIELDS RETURNING PMP_Company__c (Id,Name,PMP_Company_Lifecycle_Status_Nm__c,PMP_Account_Id__c,PMP_Intel_Admin_Id__c,PMP_Intel_Admin_Id__r.Name,CreatedDate,PMP_Account_Program_Membership__c,PMP_Partner_Program_nm__c,PMP_Company_Information_Language_Nm__c,toLabel(PMP_Translation_Lifecycle_Status_nm__c),LastModifiedDate WHERE PMP_Company_Lifecycle_Status_Nm__c = 'Approved' AND PMP_Is_Working_Copy_Ind__c = true)];
     //return (PMP_Company__c[])searchResults[0];
         for (List<SObject> searchResult : searchResults) {
             recordsOffering.addAll(searchResult);

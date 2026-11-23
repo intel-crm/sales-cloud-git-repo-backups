@@ -400,6 +400,12 @@
         <field>Lead.Core_Lead_Time_Unqualified_to_SAL__c</field>
     </columns>
     <columns>
+        <field>Lead.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
+        <field>Lead.LID__LinkedIn_Member_Token__c</field>
+    </columns>
+    <columns>
         <field>Lead.Core_LS_Best_Profile_Fit__c</field>
     </columns>
     <columns>
@@ -910,6 +916,9 @@
         <field>Opportunity.Core_IoT__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__Is_Influenced__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_IsBlank_Competitive_Arch__c</field>
     </columns>
     <columns>
@@ -962,6 +971,9 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Lead_to_Opportunity_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_LOEM__c</field>

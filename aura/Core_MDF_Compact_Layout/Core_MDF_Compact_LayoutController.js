@@ -11,7 +11,6 @@
             recordId: component.get("v.recordId"),
             objAPIName: component.get("v.objAPIName"),
             fieldAPIName: component.get("v.fieldAPIName"),
-            fieldAPIoperator: component.get("v.fieldAPIoperator"),
             fieldView: ViewType
         }).then(function (result) {
             if (result != null) {
@@ -35,12 +34,7 @@
                         let type;
                         if (result[key][i].fieldValue != '' && result[key][i].fieldValue != null && !result[key][i].isHiddenFromUI) {
                             if (result[key][i].fieldType == 'REFERENCE') {
-                                var hasCustomUrl = !!result[key][i].lookupCustomUrlInd;
-                                if (key == 'Internal User') {                                    
-                                    record.url = hasCustomUrl ? `/lightning/n/${result[key][i].lookupCustomUrlValue}?c__recordId=${result[key][i].fieldValue}` : `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view`;
-                                } else {                                    
-                                    record.url = hasCustomUrl ? portalBaseURL +'s/'+ result[key][i].lookupCustomUrlValue + '?recordId=' + result[key][i].fieldValue : portalBaseURL + communityURLSection + result[key][i].fieldValue;
-                                }
+                                record.url = key == 'Internal User' ? `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view` : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 record.urlName = result[key][i].fieldValueName;
                                 record.parentObjectId = result[key][i].fieldValue;
                                 record.parentObjectName = result[key][i].parentObjectName;
@@ -108,8 +102,7 @@
             recordId: component.get("v.recordId"),
             objAPIName: component.get("v.objAPIName"),
             fieldAPIName: component.get("v.fieldAPIName"),
-            fieldView: ViewType,
-            fieldAPIoperator: component.get("v.fieldAPIoperator")
+            fieldView: ViewType
         }).then(function (result) {
             if (result != null) {
                 var quickActionsButtons = [];
@@ -184,7 +177,6 @@
         component.set("v.openModalForUpdateButton", false);
         component.set("v.openModalForLtCmp", false);
         component.set("v.isNotifyOwner", false);
-        component.set("v.isDefaultQuickAction", false);
         component.set("v.errorMessage", '');
     },
 

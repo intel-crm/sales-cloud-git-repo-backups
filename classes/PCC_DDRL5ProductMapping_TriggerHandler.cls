@@ -243,7 +243,8 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
         'APJ' => 'Core_DDR_Access_APJ',
         'EMEA' => 'Core_DDR_Access_EMEA',
         'PRC' => 'Core_DDR_Access_PRC',
-        'ASMO' =>'Core_DDR_Access_ASMO'
+        'ASMO' =>'Core_DDR_Access_ASMO',
+        'INDIA'=>'Core_DDR_Access_APJ'
     };
         
         

@@ -1,0 +1,17 @@
+.customActions{
+     padding-top:7px;
+}
+
+.slds-col{
+    padding-right:0px;
+    padding-left: 0px;
+}
+
+.slds-form-element__icon{
+    display: none;
+}
+
+.slds-table td{
+    padding: 0.4rem;
+    width: 0rem;
+}

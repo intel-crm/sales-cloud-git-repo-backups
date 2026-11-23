@@ -3,5 +3,5 @@
     <description>Account Pulse Endpoint</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://prod-web-platform.ai4pulse.infra-host.com</url>
+    <url>https://dev-web-platform.ai4pulse.infra-host.com</url>
 </RemoteSiteSetting>

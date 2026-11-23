@@ -95,6 +95,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_txt__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Name</field>
             <table>Campaign</table>
         </columns>
@@ -131,16 +136,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Status</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_CampOutcomeOpt_In_Ind__c</field>
             <table>Campaign</table>
         </columns>
         <masterLabel>Campaign</masterLabel>

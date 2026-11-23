@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Vrushabh 
  * @group             : 
- * @last modified on  : 05-05-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 01-28-2025
+ * @last modified by  : Vrushabh Uprikar
 **/
 
 public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHandler implements Database.Batchable<sObject>,Database.Stateful {
@@ -16,10 +16,11 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
     **/
     public Set<Id> finalQuoteIds = new Set<Id>();
     public Database.QueryLocator start(Database.BatchableContext bc){
-        return Database.getQueryLocator([SELECT Id,Pricing_Quote_Program_Nm__c,Pricing_Maximum_Approved_Rejected_Date__c 
-        FROM SBQQ__Quote__c WHERE Pricing_Quote_Program_Nm__c =:Label.Pricing_Tender_Quote_Program AND 
-                            Pricing_Maximum_Approved_Rejected_Date__c = TODAY  AND SBQQ__Status__c !='Rejected' AND
-                            Pricing_Auto_generate_Quote_Letter__c = true ]);
+        return Database.getQueryLocator([SELECT Id,Pricing_Quote_Program_Nm__c , Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c, Pricing_Product_Nm__r.Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, Pricing_Last_Approved_Date_dt__c, LastModifiedDate 
+        FROM SBQQ__QuoteLine__c WHERE Pricing_Last_Approved_Date_dt__c = TODAY  AND SBQQ__Quote__r.SBQQ__Status__c !='Rejected' 
+        AND Pricing_Status_Nm__c IN('Approved','Won','Rejected') AND SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c = true
+        AND ((Pricing_Quote_Program_Nm__c =:Label.Pricing_Tender_Quote_Program AND ((Pricing_Deal_RFQ_Id__c != null AND Pricing_Product_Nm__r.Name =:Label.Pricing_Tender_Write_In_Product) OR (Pricing_Product_Nm__r.Name != :Label.Pricing_Tender_Write_In_Product))))
+        ORDER BY Pricing_Last_Approved_Date_dt__c DESC]);
     }
 
     /**
@@ -28,66 +29,29 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
     * @param bc 
     * @param quoteLinesBatch 
     **/
-    public void execute(Database.BatchableContext bc, List<SBQQ__Quote__c> quoteBatch){
+    public void execute(Database.BatchableContext bc, List<SBQQ__QuoteLine__c> quoteLinesBatch){
         try
         {
             List<SBQQ__QuoteLine__c> quoteLines = new List<SBQQ__QuoteLine__c>();
             List<Id> quoteIds = new List<Id> ();
-            for(SBQQ__Quote__c quote : quoteBatch) {
-                quoteIds.add(quote.Id);
+            for(SBQQ__QuoteLine__c qls : quoteLinesBatch) {
+                quoteIds.add(qls.SBQQ__Quote__r.Id);
             }
             
-            Map<Id,List<SBQQ__QuoteDocument__c>> quoteIdToDocList = new Map<Id,List<SBQQ__QuoteDocument__c>>();
-            for(SBQQ__QuoteDocument__c quoteDocumnetList : [SELECT Id, Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, SBQQ__Version__c, CreatedDate, CreatedBy.Name 
-                                        FROM SBQQ__QuoteDocument__c WHERE  SBQQ__Quote__c IN: quoteIds
-                                        AND SBQQ__Quote__r.Pricing_Quote_Program_Nm__c =:Label.Pricing_Tender_Quote_Program 
-                                        ORDER BY SBQQ__Version__c DESC]){
-                                            if(quoteIdToDocList.containsKey(quoteDocumnetList.SBQQ__Quote__c)){
-                                                quoteIdToDocList.get(quoteDocumnetList.SBQQ__Quote__c).add(quoteDocumnetList);
-                                            }else{
-                                                quoteIdToDocList.put(quoteDocumnetList.SBQQ__Quote__c, new List<SBQQ__QuoteDocument__c> {quoteDocumnetList});
-                                            }
-                                        }
-            
-            Set<Id> quoteIdWithQuoteDocIds = new Set<Id>();
-            Set<Id> quoteIdWithDocIdsGen = new Set<Id>();
-            for(SBQQ__Quote__c quote : quoteBatch){
-                if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_Quote_Program){
-                    DateTime quotelineLastApprovedDate = quote.Pricing_Maximum_Approved_Rejected_Date__c;
-                    if(!quoteIdToDocList.containsKey(quote.Id)){
-                        quoteIdWithQuoteDocIds.add(quote.Id);
-                    }
-                    else{
-                        for(SBQQ__QuoteDocument__c  docs : quoteIdToDocList.get(quote.Id)){
-                            DateTime docCreateDate = docs.CreatedDate;
-                            //forming quote ids list where quotedocument is not created
-                            if(quote.Id == docs.SBQQ__Quote__c  && docCreateDate <= quotelineLastApprovedDate){
-                                quoteIdWithQuoteDocIds.add(quote.Id);
-                            }
-                            if(quote.Id == docs.SBQQ__Quote__c  && docCreateDate >= quotelineLastApprovedDate){
-                                quoteIdWithDocIdsGen.add(quote.Id);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if(quoteIdWithQuoteDocIds.size() > 0){
-                quoteIdWithQuoteDocIds.removeAll(quoteIdWithDocIdsGen);
-            }
             //getting all Quotelines from quoteIds.
-            if(quoteIdWithQuoteDocIds.size() > 0){
-                quoteLines = [SELECT Id, Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c, SBQQ__Quote__r.Pricing_Maximum_Approved_Rejected_Date__c,Pricing_Product_Nm__r.Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, Pricing_Last_Approved_Date_dt__c, LastModifiedDate , Pricing_Deal_RFQ_Id__c, Pricing_Quote_Program_Nm__c
-                FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN :quoteIdWithQuoteDocIds and ((Pricing_Deal_RFQ_Id__c != null AND Pricing_Product_Nm__r.Name =:Label.Pricing_Tender_Write_In_Product) OR (Pricing_Product_Nm__r.Name != :Label.Pricing_Tender_Write_In_Product))];
+            if(quoteIds.size() > 0){
+                quoteLines = [SELECT Id, Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c, Pricing_Product_Nm__r.Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, Pricing_Last_Approved_Date_dt__c, LastModifiedDate , Pricing_Deal_RFQ_Id__c, Pricing_Quote_Program_Nm__c
+                FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN :quoteIds AND SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c = true 
+                AND Pricing_Quote_Program_Nm__c =:Label.Pricing_Tender_Quote_Program];
             }
 
             List<Id> quoteIdByStatus = new List<Id>();
             Map<Id,List<String>> quoteIdToQLStatusMap = new Map<Id,List<String>>();
-            for(SBQQ__QuoteLine__c ql : quoteLines){      
+            Map<Id,SBQQ__QuoteLine__c> quotelineIdMap = new Map<Id,SBQQ__QuoteLine__c>();
+            for(SBQQ__QuoteLine__c ql : quoteLines){
                 Boolean isWriteInProduct = (ql.Pricing_Product_Nm__r.Name == Label.Pricing_Tender_Write_In_Product);
                 Boolean isRFQIdNull = (ql.Pricing_Deal_RFQ_Id__c == null);
                 Boolean isPendingReview = ql.Pricing_Status_Nm__c == 'Pending Intel Field Review' || ql.Pricing_Status_Nm__c == 'Pending Further Intel Review';
-                //if not WIN and Deal Id not null and not pending review quotelines  and if not WIN and no deal id then don't consider ql's
                 if(!(isWriteInProduct && isRFQIdNull && isPendingReview)){
                     if(quoteIdToQLStatusMap.containsKey(ql.SBQQ__Quote__c)){
                         quoteIdToQLStatusMap.get(ql.SBQQ__Quote__c).add(ql.Pricing_Status_Nm__c);
@@ -96,10 +60,11 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     }
                 }
             }
-
-            // if not WIP or WIN with Deal id ql having PFIR or PIFR qls then removing those quotes
+           
+            // if WIP and Deal id = null then include Pending 
             for(Id quoteId : quoteIdToQLStatusMap.keyset()){
-                if( !quoteIdToQLStatusMap.get(quoteId).contains('Pending Intel Field Review')
+
+                if( !quoteIdToQLStatusMap.get(quoteId).contains('Pending Intel Field Review') 
                     && !quoteIdToQLStatusMap.get(quoteId).contains('Pending Further Intel Review') 
                     && (quoteIdToQLStatusMap.get(quoteId).contains('Approved') || quoteIdToQLStatusMap.get(quoteId).contains('Won'))){
                     quoteIdByStatus.add(quoteId);
@@ -114,11 +79,16 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                 }
             }
             
+            List<SBQQ__QuoteDocument__c> quoteDocumnetList = [SELECT Id, Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, SBQQ__Version__c, CreatedDate, CreatedBy.Name 
+                                        FROM SBQQ__QuoteDocument__c WHERE  SBQQ__Quote__c IN: quoteIdByStatus
+                                        AND SBQQ__Quote__r.Pricing_Quote_Program_Nm__c =:Label.Pricing_Tender_Quote_Program 
+                                        ORDER BY SBQQ__Version__c DESC];
+            
             List<Id> quoteLineIdWithQuoteDoc = new List<Id>();
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){
-                if(quoteIdToDocList.containskey(ql.SBQQ__Quote__c)){
+                if(ql.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_Quote_Program){
                     DateTime quotelineLastApprovedDate = ql.Pricing_Last_Approved_Date_dt__c;
-                    for(SBQQ__QuoteDocument__c  docs : quoteIdToDocList.get(ql.SBQQ__Quote__c)){
+                    for(SBQQ__QuoteDocument__c  docs : quoteDocumnetList){
                         DateTime docCreateDate = docs.CreatedDate;
                         //forming ql id list where quotedocument is created
                         if(ql.SBQQ__Quote__c == docs.SBQQ__Quote__c  && docCreateDate >= quotelineLastApprovedDate){
@@ -127,6 +97,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     }
                 }
             }
+            
             List<Id> finalQuoteLineId = new List<Id>();
             //Excluding quoteLines where quoted document is created from eligible quote Lines.
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){

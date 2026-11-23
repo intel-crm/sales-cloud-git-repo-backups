@@ -76,10 +76,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_CR_OEM_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_Target_V2__c</field>
     </columns>
     <columns>
@@ -116,24 +112,8 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Objective3__c</field>
     </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name1__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name2__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name3__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>CPT_Quota_Setup__c.CPT_Sales_Org__c</column>
             <columnToColumn>false</columnToColumn>
@@ -142,41 +122,15 @@
             <value>EMEA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Sales_Group__c</column>
+            <column>CPT_Quota_Setup__c.CPT_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>EMEA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Sales_Team__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>EMEA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Employee_WWID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>10004445,10101915,10101938,10516230,10524497,10564243,10571372,10597092,10606687,10609405,10624078,10635972,10638031,10673126,10684679,10686610,10688649,10707101,10716782,11023689,11132192,11150146,11222796,11340265,11378184,11408738,11412507,11413894,11423481,11446376,11450811,11451162,11525892,11573669,11578159,11580278,11585930,11629677,11634640,11635937,11644375,11645512,11646547,11647213,11719701,11724458,11907141,11950306,11951750,11967019,11979059,11988637,12024064,12071517,12104424,12248631,12331746,12335525</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Employee_WWID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>11222796,11451162,11719701,11724458,11913536,12331746,12335525,11951537,11965778,11989821,12026862,12255039,12255038,12025305,11636848,10669798,10634544,10100308</value>
+            <value>Matt Penny,Franco Lombardi,Jas Bhogal,Dermot Hargaden</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>CPT_Quota_Setup__c.CPT_Effective_Month__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Quota Setup and Territory Assign - EMEA</name>
     <params>
         <name>co</name>

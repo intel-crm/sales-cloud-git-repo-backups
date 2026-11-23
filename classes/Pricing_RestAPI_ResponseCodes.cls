@@ -120,5 +120,4 @@ public class Pricing_RestAPI_ResponseCodes {
     public Static Decimal VALID_ERROR_CODE_1099 = 1099;
     public Static Decimal VALID_ERROR_CODE_1101 = 1101;
     public Static Decimal VALID_ERROR_CODE_1102 = 1102;
-    public Static Decimal VALID_ERROR_CODE_1103 = 1103;  
     }

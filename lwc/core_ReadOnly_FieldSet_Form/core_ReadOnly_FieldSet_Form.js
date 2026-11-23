@@ -23,7 +23,6 @@ import getRecords from '@salesforce/apex/core_updateOpptyLineItemLWC.getRecords'
 import customCSS from '@salesforce/resourceUrl/toastCSS';
 import { loadStyle } from 'lightning/platformResourceLoader';
 import plpcWarningMessage from '@salesforce/label/c.CRM_WarningMessage_WA_to_PLPC'; //TWC3123-6413
-import qtyStaticText from '@salesforce/label/c.CRM_OLI_Qty_Static_Text';//TWC4767-5062
 
 const productionLostCancelledStatus = ['Production Lost','Production Cancelled']; //TWC3123-6413
 
@@ -45,11 +44,6 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
     errorMessageToDisplay = '';
     @track userChangedNull=false;
     @track userChangedNullPW=false;
-
-    
-    qtyStaticTextBody = qtyStaticText.split(" ; ")[0];
-    qtyStaticTextHyperLinkText = qtyStaticText.split(" ; ")[1];
-    qtyStaticTextHyperLink = qtyStaticText.split(" ; ")[2];
     
 
     activeSections =  [];
@@ -320,10 +314,11 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
  
     handleSave() 
     {
-            if(this.show6QPSWarning)
-                {
-                    this.showQPSToast(this.warningMsg6QPS);
-                }
+        
+        if(this.show6QPSWarning)
+        {
+            this.showQPSToast(this.warningMsg6QPS);
+        }
         this.isLoading = true;
         updateLineItem({
                 recordId: this.recordId,

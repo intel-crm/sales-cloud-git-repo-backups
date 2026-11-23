@@ -33,8 +33,8 @@ public without sharing class Core_MDF_Email_NotificationLoggingBatch implements 
                 if(templateName != Null && objName != Null && objName == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObject_Case') && templateName == Core_MDF_CCP_ConstantClass.ClaimScore_Notification){
                     notificationType =Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Weekly_Claim_Score'); 
                 }
-                else if(templateName != Null && objName != Null && objName == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObjectClaim') && (templateName == Core_MDF_CCP_ConstantClass.PIC_Completed_Notification || templateName == Core_MDF_CCP_ConstantClass.PIC_Completed_IPA_OutcomeBased_Notification)){
-                    notificationType =Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Weekly_PIC_Completion_Notify'); //  indu 
+                else if(templateName != Null && objName != Null && objName == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObjectClaim') && templateName == Core_MDF_CCP_ConstantClass.PIC_Completed_Notification){
+                    notificationType =Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Weekly_PIC_Completion_Notify');
                 }
                 else if(templateName != Null && objName != Null && objName == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObjectClaim') && templateName == Core_MDF_CCP_ConstantClass.Paid_Claims_Notification){
                     notificationType =Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Weekly_Paid_Claims_Notifiy');

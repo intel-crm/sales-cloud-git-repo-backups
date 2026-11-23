@@ -26,7 +26,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Team Member (100%),Team member (100% commitment over the lifetime of the opportunity),Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity),Contributor (50%),Viewer (0%),Customer Access and Entitlement</value>
+            <value>Technical Owner (100%),Contributor (50%),Viewer (0%),Customer Access and Entitlement</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

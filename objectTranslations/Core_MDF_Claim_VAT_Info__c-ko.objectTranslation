@@ -5,10 +5,6 @@
         <value>지급 문서</value>
     </caseValues>
     <fields>
-        <label>계좌 이름</label>
-        <name>Core_MDF_Account_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved File Id --></label>
         <name>Core_MDF_Approved_File_Id__c</name>
     </fields>
@@ -89,11 +85,6 @@
             <masterLabel>Under Review</masterLabel>
             <translation>검토 중</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>세금 금액</help>

@@ -42,6 +42,7 @@ public with sharing class Core_IPS_Case_Clone_Controller_LEX{
         User u = [select Id, username, userType, ContactId, AccountId, profileid
                   from User
                   where Id = :UserInfo.getUserId()];
+        system.debug('u'+u);
         if (Contact.SObjectType.getDescribe().isAccessible()){
              //FLS Read fix applied - Gangadhar 18/10/2022
             contactInContext = [Select id, Name, Core_MINDS__c, Core_Country_Region__c
@@ -49,6 +50,7 @@ public with sharing class Core_IPS_Case_Clone_Controller_LEX{
                                 where id = :u.Contactid
                                 limit 1];
         }
+        system.debug('contactInContext'+contactInContext);
         if (contactInContext != null && !contactInContext.isEmpty()){
             if (isMindsFlag != NULL){
                 isMindsFlag = contactInContext[0].Core_MINDS__c;

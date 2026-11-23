@@ -351,40 +351,6 @@ objectsToDelete.clear();
         }
       
     }
-    /*rohitx.podder@intel.com - START
-	MM Attributes Update Logic: 
-	Old value has more entries than new value & all new values exist in old value → No update performed. 
-	New value contains entries not present in old value → Concatenate missing new values to old value.*/
-    public static void productMMAttributeValiation(List<Product2> listNewProduct, Map<Id,Product2> mapOldproduct) {
-        try{
-        for(Product2 newproduct : listNewProduct) {
-            newProduct.Core_Division_Code__c = String.isBlank(newProduct.Core_Division_Code__c) ? mapOldproduct.get(newproduct.Id).Core_Division_Code__c : MMFieldsContainsOldValueCheck(newProduct.Core_Division_Code__c.trim(), mapOldproduct.get(newproduct.Id).Core_Division_Code__c?.trim());
-            newProduct.Core_Division_Code_Short_Name__c = String.isBlank(newProduct.Core_Division_Code_Short_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Division_Code_Short_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Division_Code_Short_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Division_Code_Short_Name__c?.trim());
-            newProduct.Core_Code_Name__c = String.isBlank(newProduct.Core_Code_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Code_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Code_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Code_Name__c?.trim());
-            newProduct.Core_Product_Status__c = String.isBlank(newProduct.Core_Product_Status__c) ? mapOldproduct.get(newproduct.Id).Core_Product_Status__c : MMFieldsContainsOldValueCheck(newProduct.Core_Product_Status__c.trim(), mapOldproduct.get(newproduct.Id).Core_Product_Status__c?.trim());
-            newProduct.Core_BU_Operation_Code__c = String.isBlank(newProduct.Core_BU_Operation_Code__c) ? mapOldproduct.get(newproduct.Id).Core_BU_Operation_Code__c : MMFieldsContainsOldValueCheck(newProduct.Core_BU_Operation_Code__c.trim(), mapOldproduct.get(newproduct.Id).Core_BU_Operation_Code__c?.trim());
-            newProduct.Core_Group_Code_Short_Name__c = String.isBlank(newProduct.Core_Group_Code_Short_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Group_Code_Short_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Group_Code_Short_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Group_Code_Short_Name__c?.trim());
-            newProduct.Core_Group_Code__c = String.isBlank(newProduct.Core_Group_Code__c) ? mapOldproduct.get(newproduct.Id).Core_Group_Code__c : MMFieldsContainsOldValueCheck(newProduct.Core_Group_Code__c.trim(), mapOldproduct.get(newproduct.Id).Core_Group_Code__c?.trim());           
-        }
-        }Catch(Exception e){
-            UCD_ACM_Logger.error('Core_ProductHandler','productMMAttributeValiation',e.getMessage()+' '+e.getStackTraceString() , null);
-			UCD_ACM_Logger.setLogDetails();
-        }
-    }
-    
-    public static String MMFieldsContainsOldValueCheck(String newValue, String oldValue){
-        if (String.isBlank(oldValue)) {
-            return newValue;
-        }
-        List<String> listAllNewValues = newValue.split(';');
-        for (String newFieldValue : listAllNewValues) {
-            if (!oldValue.contains(newFieldValue)) {
-                oldValue += ';'+newFieldValue;
-            }
-        }
-        return oldValue;
-    }
-    //END
    
 
 }

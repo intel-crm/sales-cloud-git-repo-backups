@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- License Order Product --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Legacy License Id --></label>
+        <name>Sales_Legacy_License_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Order Id --></label>
+        <name>Sales_Legacy_Order_Id__c</name>
+    </fields>
+    <fields>
+        <label>合同</label>
+        <name>Sales_License_ContractId__c</name>
+        <relationshipLabel><!-- License Order Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>许可失效日期</label>
+        <name>Sales_License_Expiration_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label>维护失效日期</label>
+        <name>Sales_License_Order_Prod_Maint_Exp_Dt__c</name>
+    </fields>
+    <fields>
+        <label>许可</label>
+        <name>Sales_License__c</name>
+        <relationshipLabel><!-- License Order Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>订购产品</label>
+        <name>Sales_Order_Product__c</name>
+        <relationshipLabel><!-- License Order Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>数量</label>
+        <name>Sales_Quantity__c</name>
+    </fields>
+    <fields>
+        <label>销售可续订许可</label>
+        <name>Sales_Renewable_license__c</name>
+        <relationshipLabel><!-- License Order Products (Sales Renewable license) --></relationshipLabel>
+    </fields>
+    <nameFieldLabel><!-- License Order Product Name --></nameFieldLabel>
+</CustomObjectTranslation>

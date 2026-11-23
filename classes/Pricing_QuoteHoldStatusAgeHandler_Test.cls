@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-09-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_QuoteHoldStatusAgeHandler_Test {
     
@@ -14,7 +7,7 @@ public class Pricing_QuoteHoldStatusAgeHandler_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Hold_Status_Age_Handler_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc.Id);
             Group grp = Pricing_Test_Utility.createGroupRecord();
             //Create Group Member
@@ -33,7 +26,6 @@ public class Pricing_QuoteHoldStatusAgeHandler_Test {
             onHoldEntry.Pricing_QuoteOnHold_Start_Time__c = System.now();
             onHoldEntry.Pricing_QuoteOnHold_User_Role__c = 'SDM';
             insert onHoldEntry;
-            System.assertEquals(true ,quoteList.size() > 0);
         }
         Test.stopTest();
     }

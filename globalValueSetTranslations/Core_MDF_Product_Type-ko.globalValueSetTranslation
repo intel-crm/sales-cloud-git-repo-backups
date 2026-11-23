@@ -37,10 +37,6 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>클라이언트</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>클라우드</translation>
     </valueTranslation>
@@ -57,20 +53,12 @@
         <translation>구성 요소</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>데스크탑</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation>에지 게이트웨이</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>에지/IOT</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Programmable Solution</masterLabel>
@@ -177,10 +165,6 @@
         <translation>네트워킹 및 통신</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>네트워킹/이더넷</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
         <translation>노트북</translation>
     </valueTranslation>
@@ -237,10 +221,6 @@
         <translation>스토리지</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>통신사</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
         <translation>얇고 가벼움</translation>
     </valueTranslation>
@@ -267,9 +247,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>워크스테이션 - 모바일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation>제온</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

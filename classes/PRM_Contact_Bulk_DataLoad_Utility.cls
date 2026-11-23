@@ -365,7 +365,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
         acr.PRM_isActive__c = true;
         acr.PRM_Status_Nm__c = bulkrec.PRM_Upload_Type__c == 'Bulk Invite' ? 'Pending Action' : 'Complete';
         acr.PRM_Start_Date_Dt__c = Date.today();
-        acr.PRM_Status_Reason_Txt__c =String.isNotBlank(bulkrec.PRM_Status_Reason__c) ? bulkrec.PRM_Status_Reason__c : 'bulk invite by partner admin from manage personnel';
+        acr.PRM_Status_Reason_Txt__c =bulkrec.PRM_Comments__c;
         acr.PRM_Suppress_Email__c=bulkrec.PRM_Suppress_Email__c;
         acr.PRM_Source_Agent__c = bulkrec.PRM_Upload_Type__c;
         acr.PRM_CampaignId__c =   bulkrec.PRM_CampaignId__c;
@@ -435,9 +435,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
                                 acrRecord.PRM_InActive_Ind__c=false;
                                 acrRecord.PRM_Status_Nm__c = status;
                                 acrRecord.PRM_End_Date_Dt__c = null;
-                                PRM_Bulk_Data_Upload__c bulkUploadRecord = mapIdToBulkUploadObject.get(contId);
-                                acrRecord.PRM_Status_Reason_Txt__c = String.isNotBlank(bulkUploadRecord.PRM_Status_Reason__c) ? bulkUploadRecord.PRM_Status_Reason__c : 'bulk invite by partner admin from manage personnel';
-                                //acrRecord.PRM_Status_Reason_Txt__c = mapIdToBulkUploadObject.get(contId).PRM_Status_Reason__c;
+                                acrRecord.PRM_Status_Reason_Txt__c = mapIdToBulkUploadObject.get(contId).PRM_Comments__c;
                                 acrRecord.PRM_Source_Agent__c = mapIdToBulkUploadObject.get(contId).PRM_Upload_Type__c;
                                 acrRecord.PRM_Initiated_By__c = mapIdToBulkUploadObject.get(contId).CreatedById;
                                 acrRecord.PRM_CampaignId__c = mapIdToBulkUploadObject.get(contId).PRM_CampaignId__c;

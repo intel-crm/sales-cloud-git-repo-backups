@@ -92,12 +92,6 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
-    </columns>
-    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
@@ -193,7 +187,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Design: Software-enable</value>
+            <value>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

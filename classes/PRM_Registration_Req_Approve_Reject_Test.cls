@@ -60,24 +60,6 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         channelPrg.PRM_inactind__c=true;
         insert channelPrg;  
         
-         Core_CustomMetadata_Object__c headerRec = new Core_CustomMetadata_Object__c();
-        headerRec.Program__c = 'IPA';
-        headerRec.DeveloperName__c = 'DeveloperName';
-        headerRec.Field_1_Text_Area_Long__c ='Domains__c';
-        headerRec.Field_1__c = 'Country_Code__c';
-        headerRec.MasterLabel__c = 'MasterLabel';
-        headerRec.Metadata_Name__c = 'Country_Level_Domain_Bypass';
-        insert headerRec;
-        Core_CustomMetadata_Object__c indRec = new Core_CustomMetadata_Object__c();
-        indRec.Program__c = 'IPA';
-        indRec.DeveloperName__c = 'India';
-        indRec.Field_1_Text_Area_Long__c ='gmail.com;hotmail.com';
-        indRec.Field_1__c = 'IND';
-        indRec.MasterLabel__c = 'India';
-        indRec.Metadata_Name__c = 'Country_Level_Domain_Bypass';
-        indRec.Header_row__c = headerRec.id;
-        insert indRec;
-
     }
 
    /* @isTest
@@ -104,7 +86,7 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         insert prmRegRequest;
         PRM_Registration_Req_Approve_Reject.approvalWrapper apWrp = new PRM_Registration_Req_Approve_Reject.approvalWrapper();
         apWrp = PRM_Registration_Req_Approve_Reject.fetchApprovalRecord(prmRegRequest.id);
-    String approvalId  = apWrp.workItemId;
+		String approvalId  = apWrp.workItemId;
         try{
             PRM_Registration_Req_Approve_Reject.fetchApprovalRecord(null);
         }catch(exception ex){
@@ -139,7 +121,7 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         insert prmRegRequest1;
         PRM_Registration_Req_Approve_Reject.approvalWrapper apWrp = new PRM_Registration_Req_Approve_Reject.approvalWrapper();
         apWrp = PRM_Registration_Req_Approve_Reject.fetchApprovalRecord(prmRegRequest1.id);
-    String approvalId  = apWrp.workItemId;
+		String approvalId  = apWrp.workItemId;
         try{
         PRM_Registration_Req_Approve_Reject.regreqApproveRejectNew(prmRegRequest1.id,approvalId, 'Rejected', 'Duplicate');
         }catch(Exception e){
@@ -177,7 +159,7 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         
         PRM_Registration_Req_Approve_Reject.approvalWrapper apWrp = new PRM_Registration_Req_Approve_Reject.approvalWrapper();
         apWrp = PRM_Registration_Req_Approve_Reject.fetchApprovalRecord(prmRegRequest.id);
-    String approvalId  = apWrp.workItemId;
+		String approvalId  = apWrp.workItemId;
         
         account.Core_Deactivated__c = true;
         account.Core_Deactivation_Reason__c = 'Account created in error';
@@ -214,7 +196,7 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         
         PRM_Registration_Req_Approve_Reject.approvalWrapper apWrp = new PRM_Registration_Req_Approve_Reject.approvalWrapper();
         apWrp = PRM_Registration_Req_Approve_Reject.fetchApprovalRecord(prmRegRequest.id);
-    String approvalId  = apWrp.workItemId;
+		String approvalId  = apWrp.workItemId;
         try{
             PRM_Registration_Req_Approve_Reject.regreqApproveRejectNew(prmRegRequest.id,approvalId,'Approved', 'Approved');
         }catch(exception ex){

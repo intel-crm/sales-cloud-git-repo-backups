@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <div>
+            <template if:true={spinnerOn}>
+                <lightning-spinner variant="brand"></lightning-spinner>
+            </template>
+            <lightning-record-edit-form record-id={recordId} object-api-name="core_cpq_dpa_aln__c"
+                        onsubmit={handleSubmit} onsuccess={handleSuccess}
+                        onerror={handleError} onload={handleLoad}>
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"><b>Extend/Expire {type}</b></h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class='slds-p-around_small'>
+                            <h4><i><b>Instructions</b></i></h4>
+                            <p><i><b>Extend {type} :</b> {type} may be extended by setting the Ship End Date greater than the current Ship End Date.</i></p>
+                            <p><i><b>Expire {type} :</b> {type} may be retired by setting the Ship End Date to the current date.</i></p>
+                        </div>
+                        <lightning-input-field required="true" field-name="core_cpq_ship_end_date_dt__c"></lightning-input-field><br/>
+                        <lightning-input-field required="true" field-name="core_cpq_duration_nbr__c"></lightning-input-field>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button class="slds-m-top_small" onclick={closeQuickAction} name="Cancel" label="Cancel"> </lightning-button>&nbsp;&nbsp;
+                        <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save"> </lightning-button>
+                    </footer>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

@@ -87,16 +87,11 @@ public without sharing class Core_MDF_PFR_Grid {
     public static Boolean getCampaignDetails(String campaignId){
         Boolean allowToCreate = false;
         try {
-            // US - TWC702-14285: Flatten nested IFs (no logic change)
-            if(String.isBlank(campaignId)){
-                return allowToCreate;
-            }
+            if(String.isNotBlank(campaignId)){
                 String sanitizedCampaignId = String.escapeSingleQuotes(campaignId);
                 List<String> allowedStatusList = Core_MDF_CCP_ConstantClass.NRE_ALLOWED_STATUSES_TO_CREATE_ACTIVITY;
                 List<Campaign> campList = [SELECT Id, Status, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c FROM Campaign WHERE Id =: sanitizedCampaignId];
-                if(campList.isEmpty() || !allowedStatusList.contains(campList[0].Status)){
-                    return allowToCreate;
-                }
+                if(!campList.isEmpty() && allowedStatusList.contains(campList[0].Status)){
                     Id currentUserId = UserInfo.getUserId();
                     List<String> accMgrRolesList = new List<String>{Label.Core_MDF_CCP_NRE_Account_Manager};
                     
@@ -105,7 +100,9 @@ public without sharing class Core_MDF_PFR_Grid {
                                                                                     WHERE Core_MDF_Active_Ind__c = TRUE and Core_MDF_User_id__c =: currentUserId AND 
                                                                                     Core_MDF_Account_id__c =: campList[0].Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c AND 
                                                                                     Core_MDF_Program_nm__c ='CoGTM' AND Core_MDF_Role_nm__c IN: accMgrRolesList];
-                        allowToCreate = !iupgmList.isEmpty();
+                        if(!iupgmList.isEmpty()){
+                            allowToCreate = true;
+                        }
                     }
                     //Akash - Added else if condition.
                     else if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')){
@@ -114,8 +111,12 @@ public without sharing class Core_MDF_PFR_Grid {
                                                                             WHERE Core_MDF_Account__c =: campList[0].Core_MDF_Account__c AND
                                                                             Core_MDF_Active_Ind__c = TRUE AND Core_MDF_User__c =: currentUserId
                                                                             and Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = 'CoGTM'];
-                        allowToCreate = !pnum.isEmpty();
+                        if(!pnum.isEmpty()){
+                            allowToCreate = true;
+                        }
                     }
+                }
+            }
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -134,13 +135,15 @@ public without sharing class Core_MDF_PFR_Grid {
                 if(String.isNotBlank(campaignId)){
                     ActivityDetailsWrapper activityDetials = new ActivityDetailsWrapper();
                     String sanitizedCampaignId = String.escapeSingleQuotes(campaignId);
-                    List<Sobject> activityList = [SELECT Id, Campaign.StartDate, Campaign.EndDate, Campaign.Core_MDF_Account__c,Campaign.Core_MDF_Activity_Category__c, Title, Core_MDF_Activity_Number__c,Core_MDF_Activity_Classification_nm__c, Core_MDF_Activity_Engineering_Nm__c, Core_MDF_Other_Engineering_Activity_txt__c,Core_MDF_End_Date__c, BudgetId, Amount, Core_MDF_Budget_Amount_Local_amt__c, Core_MDF_POP_Requirement_nm__c, Core_MDF_Fund_Request_Status__c , Core_MDF_Program__c 
-                    FROM PartnerFundRequest WHERE CampaignId =: sanitizedCampaignId AND Core_MDF_Fund_Request_Status__c !=: Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS];//made change-Anjali
+                    List<Sobject> activityList = [SELECT Id, Campaign.StartDate, Campaign.EndDate, Campaign.Core_MDF_Account__c, Title, Core_MDF_Activity_Number__c, 
+                    Core_MDF_Activity_Classification_nm__c, Core_MDF_Activity_Engineering_Nm__c, Core_MDF_Other_Engineering_Activity_txt__c, 
+                    Core_MDF_End_Date__c, BudgetId, Amount, Core_MDF_Budget_Amount_Local_amt__c, Core_MDF_POP_Requirement_nm__c, Core_MDF_Fund_Request_Status__c , Core_MDF_Program__c 
+                    FROM PartnerFundRequest WHERE CampaignId =: sanitizedCampaignId AND Core_MDF_Fund_Request_Status__c !=: Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS];
         
                     if(!activityList.isEmpty()){
                         activityDetials.activityOrCampaignList = activityList;
                     }else {
-                        List<Campaign> campaignList = [SELECT Id, Status, Name, StartDate, EndDate, Core_MDF_Account__c, Core_MDF_Activity_Category__c,Core_MDF_Channel_Program__r.Name FROM Campaign WHERE Id =: sanitizedCampaignId];//made change-Anjali
+                        List<Campaign> campaignList = [SELECT Id, Status, Name, StartDate, EndDate, Core_MDF_Account__c, Core_MDF_Channel_Program__r.Name FROM Campaign WHERE Id =: sanitizedCampaignId];
                         activityDetials.activityOrCampaignList = campaignList;
                     }
     

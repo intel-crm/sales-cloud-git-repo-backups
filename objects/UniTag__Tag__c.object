@@ -154,43 +154,6 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_Business_Owner__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Business Owner</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Tags</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Business_Purpose__c</fullName>
-        <label>Business Purpose</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Deprecation_Date__c</fullName>
-        <label>Deprecation Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_Tag_Definition__c</fullName>
-        <label>Tag Definition</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>4</visibleLines>
-    </fields>
     <label>Tag</label>
     <listViews>
         <fullName>UniTag__All</fullName>
@@ -217,19 +180,8 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
-        <fullName>CRM_Tag_Unique_Name</fullName>
-        <active>true</active>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c = TRUE,FALSE,
-AND(
-VLOOKUP($ObjectType.UniTag__Tag__c.Fields.Name, $ObjectType.UniTag__Tag__c.Fields.Name, Name) &lt;&gt; null,
-OR(ISCHANGED( Name ),ISNEW())
-)
-)</errorConditionFormula>
-        <errorMessage>The Tag Name must be unique.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>UniTag__Check_Unique_Name</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>VLOOKUP($ObjectType.UniTag__Tag__c.Fields.Name, $ObjectType.UniTag__Tag__c.Fields.Name, Name) &lt;&gt; null</errorConditionFormula>
         <errorMessage>The Tag Name must be unique.</errorMessage>
     </validationRules>

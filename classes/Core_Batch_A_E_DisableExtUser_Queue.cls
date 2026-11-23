@@ -21,7 +21,6 @@ public class Core_Batch_A_E_DisableExtUser_Queue implements Queueable {
     
     //Method is used to update user's field values.    
     public void execute(QueueableContext context) {
-        try{
         List<User> lstToUpdateUser = new List<User>();
         for(User usr : lstOfUser) {
             usr.Partner_License_Reclaimed__c = false;
@@ -43,11 +42,7 @@ public class Core_Batch_A_E_DisableExtUser_Queue implements Queueable {
         } 
         createLogEntry(count,dtWhen);
     }
-    catch(exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'updateUser', Core_Project__c = 'Core_Batch_A_E_DisableExtUser_Queue' , Core_Details__c = 'In Core Batch A E DisableExtUser Queue', Core_Severity__c = 'info', Core_When__c = System.Now());     
-            insert excepLog;
-        }
-    }
+    
     @future
     public static void createLogEntry(Integer count,DateTime dtWhen) {
         
@@ -64,11 +59,7 @@ public class Core_Batch_A_E_DisableExtUser_Queue implements Queueable {
         assignCLE.Core_When__c = dtWhen;        
         assignCLE.Core_Details__c = 'Duration : ' + duration + ' seconds\r\n '+ 'Records Processed : ' + count;
         
-        try {
-            insert assignCLE;
-        } catch (Exception e) {
-            System.debug('Error inserting log entry: ' + e.getMessage());
-        }
+        insert assignCLE;       
         
     }
 }

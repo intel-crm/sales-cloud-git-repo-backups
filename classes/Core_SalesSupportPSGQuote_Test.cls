@@ -313,7 +313,7 @@ public class Core_SalesSupportPSGQuote_Test {
         Test.setCurrentPage(tpageRef);
         
         ApexPages.currentPage().getParameters().put('Id', null);
-        //System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
+        System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
         
     }
     
@@ -338,8 +338,8 @@ public class Core_SalesSupportPSGQuote_Test {
         insert oppList;
         String  opId=ApexPages.currentPage().getParameters().put('OppId', oppList[0].Id);        
         ApexPages.currentPage().getParameters().put('OppId', oppList[0].Id);
-        //System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
-        //Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
+        System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
+        Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
         String err=Core_SalesSupportPSGQuoteSFDCToSiebel.errorMessage='Valid';
         Core_SalesSupportPSGQuoteSFDCToSiebel.errorMessages(err);
         
@@ -366,8 +366,8 @@ public class Core_SalesSupportPSGQuote_Test {
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
         insert oppList;
         ApexPages.currentPage().getParameters().put('OppId', oppList[0].Id);
-        //System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
-        //Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
+        System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
+        Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
         
         
     }
@@ -394,9 +394,9 @@ public class Core_SalesSupportPSGQuote_Test {
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
         insert oppList;
         ApexPages.currentPage().getParameters().put('OppId', oppList[0].Id);
-        //System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
+        System.AssertEquals(false,Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation());
         
-        //Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
+        Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(oppList[0].Id);
         //Core_SalesSupportHomeController.createPSGQuoteonSiebelNew(oppList[0].Id);     
         
         
@@ -435,10 +435,10 @@ public class Core_SalesSupportPSGQuote_Test {
         List<OpportunityLineItem> oppLineItemList = createOpportunityProduct(1,oppList[0],true);
         insert oppLineItemList;
         
-        /*if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
+        if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
             List<Core_Integration_Inbound_Message__c>  inboundMessageList = insertIntegrationInboundMessage(1,oppList[0]);
             insert inboundMessageList;
-        }*/
+                    }
         List<Core_PSG_Quote_Generation_History__c> quoteGenarationList = [SELECT Id, Name, Core_Opportunity__c, Core_RFQ_ID__c FROM Core_PSG_Quote_Generation_History__c];
         Core_PSG_Quote_Generation_History__c psg=new Core_PSG_Quote_Generation_History__c();
         psg.Core_Error_Code__c='test';
@@ -504,7 +504,7 @@ public class Core_SalesSupportPSGQuote_Test {
         insert oppPartnerList;
         
         List<Core_Integration_Outbound_Message__c> outBoundmessageList;
-        /*if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
+        if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             objHomeController.createPSGQuoteonSiebel();
             Core_Integration_Outbound_Message__c  OutMsg=new Core_Integration_Outbound_Message__c(Core_MessageType__c ='PSG_Quote',Core_Payload__c='<![CDATA[<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cus="http://siebel.com/CustomUI" xmlns:eai="http://www.siebel.com/xml/EAI%20Opty%20IO%20SFDC%20Altera"><soapenv:Header><UsernameToken');
@@ -512,7 +512,7 @@ public class Core_SalesSupportPSGQuote_Test {
             outBoundmessageList = [select id, name from Core_Integration_Outbound_Message__c where id=:OutMsg.Id];
             objHomeController.createPSGQuoteonSiebel();
             
-        }*/
+        }
         
         // System.AssertEquals(1,outBoundmessageList.size()); 
         
@@ -556,11 +556,11 @@ public class Core_SalesSupportPSGQuote_Test {
         insert oppPartnerList;
         
         List<Core_Integration_Outbound_Message__c> outBoundmessageList;
-        /*if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
+        if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             objHomeController.createPSGQuoteonSiebel();
             objHomeController.createPSGQuoteonSiebel(); 
-        }*/
+        }
         outBoundmessageList = [select id, name from Core_Integration_Outbound_Message__c where Core_MessageType__c ='PSG_Quote'];
         System.AssertEquals(0,outBoundmessageList.size()); 
     }
@@ -608,13 +608,13 @@ public class Core_SalesSupportPSGQuote_Test {
         insert oppPartnerList;
         
         List<Core_Integration_Outbound_Message__c> outBoundmessageList = new List<Core_Integration_Outbound_Message__c>();
-        /*if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
+        if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             objHomeController.createPSGQuoteonSiebel();
             outBoundmessageList = [select id, name from Core_Integration_Outbound_Message__c where Core_MessageType__c ='PSG_Quote'];
             objHomeController.createPSGQuoteonSiebel();
             
-        }*/
+        }
         System.AssertEquals(0,outBoundmessageList.size()); 
         
     }
@@ -702,10 +702,10 @@ public class Core_SalesSupportPSGQuote_Test {
         insert opptyLineItemList;
         
         ApexPages.currentPage().getParameters().put('OppId', testOpptyList[0].Id);
-        //Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation();
+        Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation();
         
         Core_SalesSupportPSGQuoteSFDCToSiebel.createPayloadForOpportuntiyQuote();
-        //Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(testOpptyList[0].Id);
+        Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(testOpptyList[0].Id);
         Test.stopTest();
     }
 }

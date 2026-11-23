@@ -37,10 +37,6 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>客户端</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>云</translation>
     </valueTranslation>
@@ -57,20 +53,12 @@
         <translation>组件</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>台式机</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation>边缘网关</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>边缘/物联网</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Programmable Solution</masterLabel>
@@ -177,10 +165,6 @@
         <translation>网络与电信</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>网络/以太网</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
         <translation>笔记本电脑</translation>
     </valueTranslation>
@@ -237,10 +221,6 @@
         <translation>存储</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>电信</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
         <translation>轻薄</translation>
     </valueTranslation>
@@ -267,9 +247,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>工作站——移动式</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation>至强</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

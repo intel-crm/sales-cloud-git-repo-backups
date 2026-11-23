@@ -17,3 +17,8 @@
     max-height: 75% !important;
     
   }
+
+  .noRecords {
+    text-align: center;
+    color: #555;
+}

@@ -6,7 +6,3 @@
 .total-row {
     font-weight: bold;
 }
-.currency-link-wrapper {
-    margin-top: -20px;     /* move link slightly upwards or downwards */
-    margin-left: 650px;    /* shift link to the right */
-}

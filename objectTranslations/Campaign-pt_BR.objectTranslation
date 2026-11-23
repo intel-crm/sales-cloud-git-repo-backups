@@ -5,6 +5,10 @@
         <name>Core_MDF_CCF_Campaign_Fieldset</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Core_MDF_Channel_MDF_Campaign_Fieldset --></label>
+        <name>Core_MDF_Channel_MDF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- CoGTM Campaign Fields To Be Synced --></label>
         <name>Core_MDF_CoGTM_CampaignFieldsToBeSynced</name>
     </fieldSets>
@@ -233,11 +237,6 @@
         <label>Conta</label>
         <name>Core_MDF_Account__c</name>
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
-        <label><!-- Activity Approval Required --></label>
-        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Activity Budget Amount --></label>
@@ -568,11 +567,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
-        <label><!-- IPA Co-Engineering Campaign? --></label>
-        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Program Office Check --></label>
         <name>Core_MDF_IPA_NonSPIF_Apprval_Ind__c</name>
     </fields>
@@ -670,10 +664,6 @@
     <fields>
         <label>Objetivo/estratégia de marketing</label>
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
-    </fields>
-    <fields>
-        <label>Abordagem de Medição</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>Membro aceitante</label>
@@ -782,14 +772,6 @@
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
     <fields>
-        <label>Outras abordagens de medição</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
-    </fields>
-    <fields>
-        <label>Outros critérios de resultado</label>
-        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
-    </fields>
-    <fields>
         <help>Se a métrica de sucesso principal/KPI para esta campanha não for encontrada na lista, você pode inserir uma métrica personalizada aqui. Escolha algo que possa ser contado, como impressões, cliques, interações, downloads etc.</help>
         <label>Outra métrica de resultado</label>
         <name>Core_MDF_Other_Outcome_txt__c</name>
@@ -822,10 +804,6 @@
     <fields>
         <label><!-- Parent_Account_Id --></label>
         <name>Core_MDF_Parent_Account_Id__c</name>
-    </fields>
-    <fields>
-        <label>Contacto com Parceiros</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <help>Ativando parceiros que apoiam esta campanha.</help>
@@ -897,12 +875,12 @@
         <name>Core_MDF_ReimbursementRate_pct__c</name>
     </fields>
     <fields>
-        <help>Investimento Total (Intel + Parceiro) x Taxa de Reembolso = Investimento Máximo em Intel.</help>
-        <label>Investimento Máximo em Intel</label>
+        <help>Custo total da campanha x Taxa de reembolso = Valor do reembolso.</help>
+        <label>Valor do reembolso</label>
         <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
     </fields>
     <fields>
-        <label>Investimento Máximo em Intel</label>
+        <label>Valor do reembolso</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
@@ -1046,7 +1024,7 @@
         <name>Core_MDF_Terminal_Rejection_Ind__c</name>
     </fields>
     <fields>
-        <label>Investimento Total (Intel + Parceiro)</label>
+        <label>Custo total da campanha</label>
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
     </fields>
     <fields>
@@ -1227,6 +1205,11 @@
         <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
     </fields>
     <recordTypes>
+        <description><!-- This record type is for Channel MDF Program --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Record type for CCP Client Program --></description>
         <label>Fundo de Marketing Conjunto do Cliente</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
@@ -1287,10 +1270,6 @@
     <validationRules>
         <errorMessage>As campanhas de vendas devem ser aprovadas antes de serem definidas como &quot;em andamento&quot;.</errorMessage>
         <name>Core_Campaign_Only_Approved_In_Progress</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>É necessária uma conta para criar uma campanha. Por favor, selecione uma conta e tente novamente.</errorMessage>
-        <name>Core_MDF_CampaignAccountValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage>A proposta não pode ser cancelada quando estiver com status de revisão pendente ou aprovação pendente.</errorMessage>

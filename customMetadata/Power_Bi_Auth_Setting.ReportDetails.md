@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">Znf8Q~adNIwQ9FoeSeELqYuFJLWsgPVoA7y9NcBj</value>
+        <value xsi:type="xsd:string">4FC8Q~z_vwJuZmuV6eu4HSTNEd8F2u~CqMtapcv5</value>
     </values>
     <values>
         <field>Column_Name__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>ReportId__c</field>
-        <value xsi:type="xsd:string">d20c78b2-3071-4cf3-8fb1-731f4a7f9a66</value>
+        <value xsi:type="xsd:string">92e13a92-c765-4bb0-9f03-09a4438d330b</value>
     </values>
     <values>
         <field>Table_Name__c</field>
@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>WorkspaceId__c</field>
-        <value xsi:type="xsd:string">ee76de2f-fcf2-4d13-93e6-0976ffbdb7d7</value>
+        <value xsi:type="xsd:string">315beb4c-20ff-4c26-9d07-a5b97b42f6ed</value>
     </values>
 </CustomMetadata>

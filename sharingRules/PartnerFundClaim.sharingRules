@@ -21,20 +21,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_MDF_Claim_Support_L1</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Claim Support L1 Read</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_SUPPORT_L1_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Title</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Partner_Fund_Claim_CCP_Claim_Case_Reviewer_Internal</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Partner Fund Claim - CCP Claim Case Reviewer Internal</description>
@@ -66,34 +52,6 @@
             <field>Core_MDF_Status__c</field>
             <operation>equals</operation>
             <value>PIC Pending</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Share_IPA_Claims_with_Payment_Adm_Mgr</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Share IPA Claims with Payment Adm Mgr</label>
-        <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Share_IPA_Claims_with_Payment_Admins</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Share IPA Claims with Payment Admins</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_IPA_Payment_Admin</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

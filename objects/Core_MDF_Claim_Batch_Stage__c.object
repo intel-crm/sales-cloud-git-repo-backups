@@ -883,10 +883,6 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_ActivityCategory__c</picklist>
             <values>
-                <fullName>Audio</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Audio 2025</fullName>
                 <default>false</default>
             </values>
@@ -895,19 +891,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Broadcast %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Buyer Incentive 2025</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -919,15 +903,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -943,19 +919,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lead Management %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Online Ad</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Out of Home</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -967,10 +935,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Out of Home Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
@@ -979,15 +943,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Paid Social Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Print</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -999,14 +955,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Print Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Production</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Production 2025</fullName>
                 <default>false</default>
             </values>
@@ -1015,23 +963,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purchase Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Sales Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Readiness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1043,15 +979,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Search Engine Marketing %28SEM%29 %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Search Performance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1063,23 +991,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tech Exploration %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Technical Sales 2025</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3446,10 +3362,6 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_ActivityCategory__c</picklist>
             <values>
-                <fullName>Audio</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Audio 2025</fullName>
                 <default>false</default>
             </values>
@@ -3458,19 +3370,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Broadcast %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Buyer Incentive 2025</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3482,15 +3382,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3506,19 +3398,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lead Management %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Online Ad</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Out of Home</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3530,27 +3414,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Out of Home Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Paid Social Media</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Paid Social Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Print</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3562,14 +3430,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Print Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Production</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Production 2025</fullName>
                 <default>false</default>
             </values>
@@ -3578,23 +3438,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purchase Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Sales Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Readiness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3606,15 +3454,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Search Engine Marketing %28SEM%29 %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Search Performance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3626,23 +3466,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tech Exploration %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Technical Sales 2025</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4192,10 +4020,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Personnel</fullName>
                 <default>false</default>
             </values>
@@ -4588,10 +4412,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Out-of-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -360,16 +360,8 @@
             <translation><!-- COOPER LAKE SP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CRESCENT ISLAND</masterLabel>
-            <translation><!-- CRESCENT ISLAND --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CYCLONE</masterLabel>
             <translation><!-- CYCLONE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DUNLOW</masterLabel>
-            <translation><!-- DUNLOW --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>EAGLE STREAM</masterLabel>
@@ -458,10 +450,6 @@
         <picklistValues>
             <masterLabel>MALIBOU LAKE</masterLabel>
             <translation><!-- MALIBOU LAKE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MAPLE STREAM</masterLabel>
-            <translation><!-- MAPLE STREAM --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>MAX</masterLabel>
@@ -588,10 +576,6 @@
             <translation><!-- WILDCAT LAKE M --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>WILDCAT LAKE REFRESH</masterLabel>
-            <translation><!-- WILDCAT LAKE REFRESH --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>WIZARD LAKE</masterLabel>
             <translation><!-- WIZARD LAKE --></translation>
         </picklistValues>
@@ -667,6 +651,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -1288,19 +1276,6 @@
     <fields>
         <label><!-- Deal re-try count --></label>
         <name>PCC_Deal_re_try_count__c</name>
-    </fields>
-    <fields>
-        <help><!-- Select &quot;Chip-down&quot; if CPU-only. Select &quot;Board-based&quot; for ODM-based solutions. --></help>
-        <label><!-- Design Type --></label>
-        <name>PCC_Design_Type__c</name>
-        <picklistValues>
-            <masterLabel>Board-based</masterLabel>
-            <translation><!-- Board-based --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chip-down</masterLabel>
-            <translation><!-- Chip-down --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- The end customer&apos;s digital identifier (URL or WeChat address) --></help>
@@ -3605,301 +3580,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
-        <label><!-- ODM/Board Partner Account --></label>
-        <name>PCC_ODM_Board_Partner_Account__c</name>
-        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board Partner Account) --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
-        <label><!-- ODM/Board partner --></label>
-        <name>PCC_ODM_Board_partner__c</name>
-        <picklistValues>
-            <masterLabel>ADLINK</masterLabel>
-            <translation><!-- ADLINK --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Aaeon</masterLabel>
-            <translation><!-- Aaeon --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Accton</masterLabel>
-            <translation><!-- Accton --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Advantech</masterLabel>
-            <translation><!-- Advantech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Aewin</masterLabel>
-            <translation><!-- Aewin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asrock</masterLabel>
-            <translation><!-- Asrock --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asus</masterLabel>
-            <translation><!-- Asus --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Avalue</masterLabel>
-            <translation><!-- Avalue --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Axiomtek</masterLabel>
-            <translation><!-- Axiomtek --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bits &amp; Bytes</masterLabel>
-            <translation><!-- Bits &amp; Bytes --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CHINA HP CO., LTD.</masterLabel>
-            <translation><!-- CHINA HP CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Caswell</masterLabel>
-            <translation><!-- Caswell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Celestica</masterLabel>
-            <translation><!-- Celestica --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cincoze</masterLabel>
-            <translation><!-- Cincoze --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Congatec</masterLabel>
-            <translation><!-- Congatec --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DELL CHINA INC</masterLabel>
-            <translation><!-- DELL CHINA INC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DFI</masterLabel>
-            <translation><!-- DFI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>E-blue tech .Co, limited</masterLabel>
-            <translation><!-- E-blue tech .Co, limited --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ECS</masterLabel>
-            <translation><!-- ECS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- EVOC INTELLIGENT TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ennoconn</masterLabel>
-            <translation><!-- Ennoconn --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Firich Enterprises</masterLabel>
-            <translation><!-- Firich Enterprises --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Flytech</masterLabel>
-            <translation><!-- Flytech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Getac</masterLabel>
-            <translation><!-- Getac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gifa</masterLabel>
-            <translation><!-- Gifa --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gigabyte</masterLabel>
-            <translation><!-- Gigabyte --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guangzhou Special Control Electronic Industrial Co;Ltd.</masterLabel>
-            <translation><!-- Guangzhou Special Control Electronic Industrial Co;Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBASE</masterLabel>
-            <translation><!-- IBASE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IEI</masterLabel>
-            <translation><!-- IEI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>J&amp;WIPC Technology Development Ltd</masterLabel>
-            <translation><!-- J&amp;WIPC Technology Development Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>JETWAY</masterLabel>
-            <translation><!-- JETWAY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kontron</masterLabel>
-            <translation><!-- Kontron --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lanner</masterLabel>
-            <translation><!-- Lanner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo (Beijing) Limited</masterLabel>
-            <translation><!-- Lenovo (Beijing) Limited --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MSI</masterLabel>
-            <translation><!-- MSI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mele Technologies (shenzhen)Co.,Ltd</masterLabel>
-            <translation><!-- Mele Technologies (shenzhen)Co.,Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mitac</masterLabel>
-            <translation><!-- Mitac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Neousys</masterLabel>
-            <translation><!-- Neousys --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Nexcom</masterLabel>
-            <translation><!-- Nexcom --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Others</masterLabel>
-            <translation><!-- Others --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Tech</masterLabel>
-            <translation><!-- Partner Tech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Portwell</masterLabel>
-            <translation><!-- Portwell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Posiflex</masterLabel>
-            <translation><!-- Posiflex --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Protech</masterLabel>
-            <translation><!-- Protech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ricoh PFU Computing</masterLabel>
-            <translation><!-- Ricoh PFU Computing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</masterLabel>
-            <translation><!-- SHENZHEN ASL INTELLIGENT SYSTEMS LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</masterLabel>
-            <translation><!-- SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COMSTAR TECHNOLOGY COMPANY</masterLabel>
-            <translation><!-- SHENZHEN COMSTAR TECHNOLOGY COMPANY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</masterLabel>
-            <translation><!-- SHENZHEN ELSKY TECHNOLOGY CO.,LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</masterLabel>
-            <translation><!-- SHENZHEN HANZSUNG TECHNOLOGY CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN SEAVO TECHNOLOGY CO;LTD</masterLabel>
-            <translation><!-- SHENZHEN SEAVO TECHNOLOGY CO;LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN WEITEMAI TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</masterLabel>
-            <translation><!-- SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN ZEROONE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SNS Network</masterLabel>
-            <translation><!-- SNS Network --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SUPER MICRO COMPUTER, INC.</masterLabel>
-            <translation><!-- SUPER MICRO COMPUTER, INC. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seco</masterLabel>
-            <translation><!-- Seco --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Senao Networks</masterLabel>
-            <translation><!-- Senao Networks --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ShenZhen Topstar Technology co., Ltd</masterLabel>
-            <translation><!-- ShenZhen Topstar Technology co., Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Datang Computer Co., Ltd.</masterLabel>
-            <translation><!-- Shenzhen Datang Computer Co., Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Minwin Technology CO.,LTd</masterLabel>
-            <translation><!-- Shenzhen Minwin Technology CO.,LTd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Toshiba</masterLabel>
-            <translation><!-- Toshiba --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tria</masterLabel>
-            <translation><!-- Tria --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>V-Series</masterLabel>
-            <translation><!-- V-Series --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vecow</masterLabel>
-            <translation><!-- Vecow --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WEIBU - PRC</masterLabel>
-            <translation><!-- WEIBU - PRC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Wistron</masterLabel>
-            <translation><!-- Wistron --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>suzhou nodka Automation technology Co., LTD.</masterLabel>
-            <translation><!-- suzhou nodka Automation technology Co., LTD. --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Opportunity/Quote creation failed? --></label>
         <name>PCC_Opportunity_Quote_creation_failed__c</name>
     </fields>
@@ -4572,10 +4252,6 @@
         <name>PCC_Atleast_2_Char_Validation_Rule</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Design Registration Name should not contain the &quot;|&quot; character --></errorMessage>
-        <name>PCC_DDR_Block_Spl_Chars_DRName</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- You cannot edit the field in the given status. --></errorMessage>
         <name>PCC_EditInactivePicklist</name>
     </validationRules>
@@ -4594,10 +4270,6 @@
     <validationRules>
         <errorMessage><!-- Internal Comments cannot be updated without End Customer --></errorMessage>
         <name>PCC_Internal_Comments_Updation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- ODM/Board Partner is required when Design Type is Board-based. --></errorMessage>
-        <name>PCC_ODM_Partner_Required_For_Board_Based</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Product Segment selected on Design Details page is not considered for Embedded Designs. Please go back to the Details page to update Product segment to be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>

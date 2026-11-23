@@ -36,10 +36,6 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <label><!-- Field View --></label>
         <name>Core_MDF_Field_View_nm__c</name>
         <picklistValues>
-            <masterLabel>API Create</masterLabel>
-            <translation><!-- API Create --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Compact Layout</masterLabel>
             <translation><!-- Compact Layout --></translation>
         </picklistValues>

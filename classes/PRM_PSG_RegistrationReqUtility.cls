@@ -9,15 +9,15 @@ Modification Log :
 * ----------------------------------------------------------------------------------------------------------------------------------------------
 * Mansi Mundhra/Gopikrishna Vankadari                   08/07/2021         Utility class containing business logic for PSG Registration Requests
 ************************************************************************************************************************************************/
-@isTest
+
 public class PRM_PSG_RegistrationReqUtility {
+    
     /**
 * @description      : It checks If EV is completed and Contact exists in SF
 * @name             : checkEVAndContactExistance
 * @param            : List<PRM_Registration_Request__c>, Map<Id,PRM_Registration_Request__c>
 * @throws exception : NONE
-**/  
-/*
+**/     
     public static void checkEVAndContactExistance(List<PRM_Registration_Request__c> regReqList, Map<Id,PRM_Registration_Request__c> oldRegReqMap){        
         Id accountCreateRequestRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
         Set<String> emailIdSet= new Set<String>(); 
@@ -95,7 +95,7 @@ public class PRM_PSG_RegistrationReqUtility {
                     if(errMsg.containsIgnoreCase('UNABLE_TO_LOCK_ROW') && i<3){
                         i++;
                     }else{
-                        PSG_Utility.createCoreLogEntry('PRM_PSG_RegistrationReqUtility', 'createContactforPSG', 'Error while creating SSLC contact','Error Msg : '+errMsg+' Contact Details : '+ ct, 'Contact', 'High', null);
+                        //PSG_Utility.createCoreLogEntry('PRM_PSG_RegistrationReqUtility', 'createContactforPSG', 'Error while creating SSLC contact','Error Msg : '+errMsg+' Contact Details : '+ ct, 'Contact', 'High', null);
                         throw e;
                     }
                 }
@@ -146,7 +146,7 @@ public class PRM_PSG_RegistrationReqUtility {
         
         if(!failedList.isEmpty()){
             
-            PSG_Utility.createCoreLogEntry('PRM_PSG_RegistrationReqUtility', 'assignPSGEntitlements', 'Error while Assignment','Failed Records '+failedList, 'Core_Contact_Entitlement__c', 'High', null);
+            //PSG_Utility.createCoreLogEntry('PRM_PSG_RegistrationReqUtility', 'assignPSGEntitlements', 'Error while Assignment','Failed Records '+failedList, 'Core_Contact_Entitlement__c', 'High', null);
         }
     } 
 
@@ -235,13 +235,13 @@ public class PRM_PSG_RegistrationReqUtility {
                     for(Contact cont : contacts){
                         PRM_EmailUtility.EmailNotification objEmailNotif = new PRM_EmailUtility.EmailNotification();  
                         objEmailNotif.ChannelProgram=System.Label.PSG_Licensing;        
-                        objEmailNotif.EmailID= cont.Email ;*/
+                        objEmailNotif.EmailID= cont.Email ;
                         /*if(cont.Core_Preferred_Language__c!=Null){
                             objEmailNotif.Language = cont.Core_Preferred_Language__c;
                         }else{
                             objEmailNotif.Language = 'ENG';
                         }*/ //Athr fixes
-                        /*objEmailNotif.Language=cont.Core_Preferred_Language__c!=null?cont.Core_Preferred_Language__c:'ENG';
+                        objEmailNotif.Language=cont.Core_Preferred_Language__c!=null?cont.Core_Preferred_Language__c:'ENG';
 
                         Map<String,String> paramMap = new Map<String,String>();
                         paramMap.put('EV_Contact_ID',cont.Id);
@@ -268,5 +268,4 @@ public class PRM_PSG_RegistrationReqUtility {
             System.debug('Exception'+exp.getMessage());
         }        
     }
-*/    //TWC729-8986 - PSG removal from PRM classes
 }

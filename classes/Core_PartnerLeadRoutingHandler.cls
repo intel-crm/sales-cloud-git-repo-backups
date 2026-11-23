@@ -41,7 +41,7 @@ public without sharing class Core_PartnerLeadRoutingHandler {
     public static void reprocessLeadRoutingOnUpdate(List<Core_Partner_Queue_Mapping__c> newList,Map<Id, Core_Partner_Queue_Mapping__c> oldMapOPIDList){
         
         Set<String> mpIdSet = new Set<String>();
-       // Set<String> opIdSet = new Set<String>();
+        Set<String> opIdSet = new Set<String>();
         String partnerRecTypeId = Schema.SObjectType.Core_Partner_Queue_Mapping__c.getRecordTypeInfosByName().get(Label.Core_Partner_Queue_Mapping_RecordTypeId).getRecordTypeId();
         
         for(Core_Partner_Queue_Mapping__c opmp: newList){

@@ -31,9 +31,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Product_Nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Processor_Number_Nm__c</field>
     </columns>
     <columns>
@@ -165,18 +162,11 @@
             <value>Hewlett</value>
         </criteriaItems>
         <criteriaItems>
-            <column>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</column>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Product_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Greenlake,VME,Hybrid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$Pricing_Region_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>EMEA</value>
+            <value>6756E,6780E,6710E</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -195,7 +185,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

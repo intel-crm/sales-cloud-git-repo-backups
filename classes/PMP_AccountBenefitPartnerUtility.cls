@@ -4,7 +4,7 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
     public static void insertUtility(List<PRM_AccountBenefitAssociation__c > newList){
         
         //System.debug('Benefit inser utility'+newList);
-        //Set<Id> basicAccessAccountIds = new Set<Id>();// MP OPTIMIZATION
+        Set<Id> basicAccessAccountIds = new Set<Id>();
         Set<Id> profileAccountIds = new Set<Id>();
         //Set<Id> enhancedAccountIds = new Set<Id>();
         // Supress Email Functionality
@@ -12,11 +12,12 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
         //Map<Id,boolean> enhancedAccountMap = new Map<Id,boolean>();
 
         // Added as part of OPID Restructure - to throw the error if enhanced benefit is inserted - as part of OPID Restructure - Sathish
-        /*Map<Id,PRM_AccountBenefitAssociation__c> newMapBenefitList = new Map<Id,PRM_AccountBenefitAssociation__c>();// not being used
+        Map<Id,PRM_AccountBenefitAssociation__c> newMapBenefitList = new Map<Id,PRM_AccountBenefitAssociation__c>();
         for(PRM_AccountBenefitAssociation__c accBen : newList){
             newMapBenefitList.put(accBen.Id,accBen);
-        }*/ //MP OPTIMIZATION
-		for(PRM_AccountBenefitAssociation__c accBen : newList){ //iterating on the BenefitList
+        }
+
+        for(PRM_AccountBenefitAssociation__c accBen : newList){ //iterating on the BenefitList
             
             //System.debug('Benefit insert utility in for'+newList);
         
@@ -78,10 +79,7 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
                                // System.debug('Parent Records Locked while inserting junction Objects:'+e.getMessage());
                             }
                         }
-                        
-                    //insert listOpidMpiJunctionRecords;
-                    Database.SaveResult[] JRlist = Database.insert(listOpidMpiJunctionRecords,false);
-                    PMP_Utility.logDmlErrors((Object[]) JRlist ,'PMP_AccountBenefitPartnerUtility-insertOpidMpiJunctionRecords');
+                    insert listOpidMpiJunctionRecords;
                 }
 
     }
@@ -96,97 +94,78 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
     * created by  : Onyx Team, Sathish , on 10/27/2021, for OPID Restructure Design & Implementation.
     * Description :This method is to prevent OPID from linking to multiple MPI's - Part of OPID restructure
     ********/
-    public static void validateMultipleOPIDRelations(List<PMP_OPID_MPI_Rel__c> listNew,map<id,PMP_OPID_MPI_Rel__c> oldMap){
-
-    Set<Id> listActiveAccountIds = new Set<Id>();
-    Set<Id> listActiveMpiIds = new Set<Id>();
-
-    // Optimized duplicate check (no contains)
-    for(PMP_OPID_MPI_Rel__c relation: listNew){
-        if(relation.Is_Active__c == true){
-            if(!listActiveAccountIds.add(relation.PMP_One_Partner_ID__c)){
-                relation.addError(System.Label.PMP_MultipleAccountMPI_Error);
+    public static void validateMultipleOPIDRelations(List<PMP_OPID_MPI_Rel__c> listNew){
+        Set<Id> listActiveAccountIds = new Set<Id>();
+        Set<Id> listActiveMpiIds =new Set<Id>();
+        for(PMP_OPID_MPI_Rel__c relation: listNew){
+            if(relation.Is_Active__c == true){
+                if(listActiveAccountIds.contains(relation.PMP_One_Partner_ID__c)){
+                    relation.addError(System.Label.PMP_MultipleAccountMPI_Error);
+                }
+                listActiveAccountIds.add(relation.PMP_One_Partner_ID__c);
+                listActiveMpiIds.add(relation.PMP_Marketing_Profile_Id__c);
             }
-            listActiveMpiIds.add(relation.PMP_Marketing_Profile_Id__c);
-        }
-            if(oldMap != null && oldMap.containsKey(relation.Id) &&
-              oldMap.get(relation.Id).Is_Active__c == true && relation.Is_Active__c == false){
-    			relation.PMP_RelLastDeactivated__c = System.now();
-              }
         }
 
-    if(listActiveAccountIds.isEmpty()){
-        return;
-    }
-
-    // Fetch existing relations
-    
-    List<PMP_OPID_MPI_Rel__c> juncRecRelatedToAccounts =PMP_Utility.getJunctionAccountToMpiByAccountId(listActiveAccountIds);
-
-    // FIX: Remove nested loop → use Set
-    Set<Id> existingAccountIds = new Set<Id>();
-    for(PMP_OPID_MPI_Rel__c relation : juncRecRelatedToAccounts){
-        existingAccountIds.add(relation.PMP_One_Partner_ID__c);
-    }
-
-    for(PMP_OPID_MPI_Rel__c junction : listNew){
-        if(existingAccountIds.contains(junction.PMP_One_Partner_ID__c)){
-            junction.addError(System.Label.PMP_MultipleAccountMPI_Error);
+        if(listActiveAccountIds.isEmpty()){
+            return;
         }
-    }
 
-    Map<Id,String> mapAccountToRecordType = new Map<Id,String>();
-    List<Account> listAccounts = [SELECT Id, Core_Account_Record_Type__c FROM Account WHERE Id IN :listActiveAccountIds];
+        List<PMP_OPID_MPI_Rel__c> juncRecRelatedToAccounts = PMP_Utility.getJunctionAccountToMpiByAccountId(listActiveAccountIds);
+        for(PMP_OPID_MPI_Rel__c relation : juncRecRelatedToAccounts){
+            for(PMP_OPID_MPI_Rel__c junction:listNew)
+            if(junction.PMP_One_Partner_ID__c == relation.PMP_One_Partner_ID__c){
+                //system.debug('here new at partnerutility:'+junction.PMP_One_Partner_ID__c+'-'+junction.PMP_Marketing_Profile_Id__c);
+                //system.debug('here exising at partnerutility:'+relation.PMP_One_Partner_ID__c+'-'+relation.PMP_Marketing_Profile_Id__c);
+                junction.addError(System.Label.PMP_MultipleAccountMPI_Error);
+                
+            }
+        }
+        
+        Map<Id,String> mapAccountToRecordType = new Map<Id,String>();
+        List<Account> listAccounts = [Select Id,Core_Account_Record_Type__c from Account where Id in:listActiveAccountIds];
 
-    for(Account acc: listAccounts){
-        mapAccountToRecordType.put(acc.Id, acc.Core_Account_Record_Type__c);
-    }
-
-    
-
-    List<PMP_Company__c> companies = [SELECT Id, PMP_Is_Working_Copy_Ind__c, PMP_Partner_Benefit_Type__c FROM PMP_Company__c WHERE Id IN :listActiveMpiIds];
-    Set<Id> basicAccessCompanyIds = new Set<Id>();
-    Set<Id> basicProfileOrEnhancedCompanyIds = new Set<Id>();
-    Set<Id> workingCopyIds = new Set<Id>();
-
-    for(PMP_Company__c company : companies){
+        for(Account acc: listAccounts){
+            mapAccountToRecordType.put(acc.Id,acc.Core_Account_Record_Type__c);
+        }
+       
 
         
-	
-	
-	if(company.PMP_Partner_Benefit_Type__c ==PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile){
-            basicProfileOrEnhancedCompanyIds.add(company.Id);
+
+        List<PMP_Company__c> companies = [select Id,PMP_Is_Working_Copy_Ind__c,PMP_Partner_Benefit_Type__c from PMP_Company__c where id in:listActiveMpiIds];
+        set<Id> basicAccessCompanyIds = new Set<Id>();
+        set<Id> basicProfileOrEnhancedCompanyIds = new Set<Id>();
+        set<Id> workingCopyIds = new Set<Id>();
+        for(PMP_Company__c company :companies){
+            /* if(company.PMP_Partner_Benefit_Type__c ==PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access){
+                basicAccessCompanyIds.add(company.Id);
+             }else */ if(company.PMP_Partner_Benefit_Type__c ==PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile){
+                basicProfileOrEnhancedCompanyIds.add(company.Id);
+            }/*else if(company.PMP_Partner_Benefit_Type__c ==PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced){
+                basicProfileOrEnhancedCompanyIds.add(company.Id);
+            }*/
+            if(company.PMP_Is_Working_Copy_Ind__c == true){
+                workingCopyIds.add(company.Id);
+            }
         }
 
-        if(company.PMP_Is_Working_Copy_Ind__c == true){
-            workingCopyIds.add(company.Id);
+        for(Id workingCopyId:workingCopyIds){
+            for(PMP_OPID_MPI_Rel__c junction:listNew){
+                if(junction.PMP_Marketing_Profile_Id__c== workingCopyId){
+                        junction.addError(System.Label.PMP_WorkingCopyLink_Error);
+                }
+            }
         }
+
+        for(PMP_OPID_MPI_Rel__c junction : listNew){
+            if(basicAccessCompanyIds.contains(junction.PMP_Marketing_Profile_Id__c)&&mapAccountToRecordType!=null && mapAccountToRecordType.containsKey(junction.PMP_One_Partner_ID__c) && mapAccountToRecordType.get(junction.PMP_One_Partner_ID__c)!='Intel Account'){
+                junction.addError(System.Label.PMP_PartnerAccMPILink_Error);
+            }else if(basicProfileOrEnhancedCompanyIds.contains(junction.PMP_Marketing_Profile_Id__c)&&mapAccountToRecordType!=null && mapAccountToRecordType.containsKey(junction.PMP_One_Partner_ID__c) && mapAccountToRecordType.get(junction.PMP_One_Partner_ID__c)!='Partner Account Group'){
+                junction.addError(System.Label.PMP_IntelAccMPILink_Error);
+            }
+        }
+
     }
-
-    // FIX: Remove nested loop
-    for(PMP_OPID_MPI_Rel__c junction : listNew){
-        if(workingCopyIds.contains(junction.PMP_Marketing_Profile_Id__c)){
-            junction.addError(System.Label.PMP_WorkingCopyLink_Error);
-        }
-    }
-
-    // Minor optimization: remove redundant null checks
-    for(PMP_OPID_MPI_Rel__c junction : listNew){
-
-        String recordType = mapAccountToRecordType.get(junction.PMP_One_Partner_ID__c);
-
-        if(recordType == null){
-            continue;
-        }
-
-        
-	if(basicAccessCompanyIds.contains(junction.PMP_Marketing_Profile_Id__c)&& recordType != 'Intel Account'){
-            junction.addError(System.Label.PMP_PartnerAccMPILink_Error);
-	    } else if(basicProfileOrEnhancedCompanyIds.contains(junction.PMP_Marketing_Profile_Id__c)&& recordType != 'Partner Account Group'){
-            junction.addError(System.Label.PMP_IntelAccMPILink_Error);
-        }
-    }
-}
     ////IPA 2.0: TWC729-7822
    /* public static void createBasicAccessPartner(Set<Id> accountIds){
         String partner_program = '';
@@ -410,9 +389,7 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
             
             if(!mapAccountIdMpiCreation.isEmpty()){
             
-                //insert mapAccountIdMpiCreation.values() ;
-                Database.SaveResult[] idMpi = Database.insert(mapAccountIdMpiCreation.values(),false);
-                PMP_Utility.logDmlErrors((Object[]) idMpi ,'PMP_AccountBenefitPartnerUtility-createBasicProfilePartner');
+                insert mapAccountIdMpiCreation.values() ;
                 
                 //System.enqueueJob(new PMP_SearchCreatePartnerWorkCopy(partnerList));//Create Working Copy
                 createPartnerWorkingCopyRecord(mapAccountIdMpiCreation.values());
@@ -464,14 +441,14 @@ public static void updateUtility(List<PRM_AccountBenefitAssociation__c> updatedL
         //Map<String,String> benIdToCodeMap = getBenefitCode(benefitIds);
         Set<Id> inactivateAccountMpiRelation = new Set<Id>();
         Set<Id> inactivatedAccountIds = new Set<Id>();
-  //IPA 2.0 simplification TWC729-8060  
+	//IPA 2.0 simplification TWC729-8060  
         set<Id> activAccIds=new set<Id>();
         list<PMP_OPID_MPI_Rel__c> lstOfactiveMPIsToUpdate=new  list<PMP_OPID_MPI_Rel__c>();
       
         for(PRM_AccountBenefitAssociation__c accBen : updatedList){
             
             if(accBen.PRM_Status_Nm__c == 'Inactive' && oldMap.get(accBen.Id).PRM_Status_Nm__c != 'Inactive'){
-      //IPA 2.0 simplification TWC729-8060  
+	    //IPA 2.0 simplification TWC729-8060  
                 if(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c ==PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE){
                     inactivatedAccountIds.add(accBen.PRM_Account_Id__c);
                     mapAccountToAcmList.put(accBen.PRM_Account_Id__c,new List<PRM_AccountChannelMembership__c>());
@@ -480,51 +457,27 @@ public static void updateUtility(List<PRM_AccountBenefitAssociation__c> updatedL
                     inactivateAccountMpiRelation.add(accBen.PRM_Account_Id__c);
                 }
             }
-      //IPA 2.0 simplification TWC729-8060  
+	    //IPA 2.0 simplification TWC729-8060  
              if(accBen.PRM_Status_Nm__c == 'Active' && oldMap.get(accBen.Id).PRM_Status_Nm__c != 'Active'){
                     activAccIds.add(accBen.PRM_Account_Id__c);
               //  getAllAccountRelatedToMPINotActive
              }
         }
         //IPA 2.0 simplification TWC729-8060
-        /*if(!activAccIds.isEmpty()) {
-	 for(PMP_OPID_MPI_Rel__c opidmpi:[select Id,PMP_One_Partner_ID__c, PMP_Marketing_Profile_Id__c,
+        if(!activAccIds.isEmpty()) {
+        for(PMP_OPID_MPI_Rel__c opidmpi:[select Id,PMP_One_Partner_ID__c, PMP_Marketing_Profile_Id__c,
                                         PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c
                                         from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c in :activAccIds 
                                         and Is_Active__c = false]){
             opidmpi.Is_Active__c=true;
             lstOfactiveMPIsToUpdate.add(opidmpi);
-         }*/
-              
-    if(!activAccIds.isEmpty()){
-    Map<Id,PMP_OPID_MPI_Rel__c> latestRelPerOpid = new Map<Id,PMP_OPID_MPI_Rel__c>();
-
-    for(PMP_OPID_MPI_Rel__c rel:[SELECT Id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c,PMP_RelLastDeactivated__c,CreatedDate FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN :activAccIds AND Is_Active__c=false]){
-
-        PMP_OPID_MPI_Rel__c existing = latestRelPerOpid.get(rel.PMP_One_Partner_ID__c);
-
-        if(existing == null){
-            latestRelPerOpid.put(rel.PMP_One_Partner_ID__c, rel);
-        }else if(existing.PMP_RelLastDeactivated__c == null && rel.PMP_RelLastDeactivated__c != null){
-            latestRelPerOpid.put(rel.PMP_One_Partner_ID__c, rel);
-        }else if(existing.PMP_RelLastDeactivated__c != null && rel.PMP_RelLastDeactivated__c != null && rel.PMP_RelLastDeactivated__c > existing.PMP_RelLastDeactivated__c){
-            latestRelPerOpid.put(rel.PMP_One_Partner_ID__c, rel);
-        }else if(existing.PMP_RelLastDeactivated__c == null && rel.PMP_RelLastDeactivated__c == null && rel.CreatedDate > existing.CreatedDate){
-            latestRelPerOpid.put(rel.PMP_One_Partner_ID__c, rel);
-        }
+         }
     }
-            for (PMP_OPID_MPI_Rel__c rel : latestRelPerOpid.values()) {
-                rel.Is_Active__c = true;
-                lstOfactiveMPIsToUpdate.add(rel);
-            }
-        }
     if(!lstOfactiveMPIsToUpdate.isEmpty()) {
          Map<String, String> exceptionMap = new Map<String, String>();
-        //List<Database.SaveResult> saveResults =  Database.update(lstOfactiveMPIsToUpdate, false);
-        Database.SaveResult[] saveResults = Database.update(lstOfactiveMPIsToUpdate, false);
-        PMP_Utility.logDmlErrors((Object[]) saveResults, 'PMP_AccountBenefitPartnerUtility-updateUtility');
+        List<Database.SaveResult> saveResults =  Database.update(lstOfactiveMPIsToUpdate, false);
          //   List<Core_Log_Entry__c> logErrors = new List<Core_Log_Entry__c>();                        
-            /*for(Database.SaveResult sr : saveResults){
+            for(Database.SaveResult sr : saveResults){
                 If ( !sr.isSuccess()) {                 
                     for(Database.Error err : sr.getErrors()) { 
                         
@@ -537,7 +490,7 @@ public static void updateUtility(List<PRM_AccountBenefitAssociation__c> updatedL
                         PMP_Utility.createLogEntry(exceptionMap);                           
                     }                            
                 }
-            }*/
+            }
     }   //IPA 2.0 simplification TWC729-8060    
         
     if(inactivatedAccountIds.isEmpty()){
@@ -589,60 +542,43 @@ public static void updateUtility(List<PRM_AccountBenefitAssociation__c> updatedL
 
     }*/
 
-public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
+    public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
+        Set<Id> remainingAccountIds = new Set<Id>();
+        Set<Id> existingAccountIds = new Set<Id>();
+        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
+        Map<Id,Set<Id>> mapMpiToAccountListActive;
+        if(Schema.sObjectType.PMP_Company__c.isAccessible()){
+            // Modified as part of OPID Restructure
+            List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByAccountId(accountIds);
+            Set<Id> existingPartnerIds = PMP_Utility.getAllMpiIds(junctionObjects);
+            mapMpiToAccountListActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);
 
-    Set<Id> remainingAccountIds = new Set<Id>();
-    Set<Id> existingAccountIds = new Set<Id>();
-    List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
+            partnerList = [SELECT id,PMP_Benefit_Update_Ind__c,PMP_Is_Working_Copy_Ind__c,PMP_Published_Copy_Id__c,toLabel(PMP_Account_Id__r.Core_IPA_Partner_Segment__c) from PMP_Company__c
+                           where Id IN: existingPartnerIds
+                           AND ((PMP_Is_Published_Ind__c = true and PMP_Benefit_Update_Ind__c = true) or (PMP_Is_Working_Copy_Ind__c=true))];
+            }
 
-    // Initialize to avoid null issues
-    Map<Id,Set<Id>> mapMpiToAccountListActive = new Map<Id,Set<Id>>();
 
-    if(accountIds == null || accountIds.isEmpty()){
-        return remainingAccountIds;
-    }
-
-    if(Schema.sObjectType.PMP_Company__c.isAccessible()){
-
-        
-	List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByAccountId(accountIds);
-
-        
-	Set<Id> existingPartnerIds = PMP_Utility.getAllMpiIds(junctionObjects);
-
-        
-	mapMpiToAccountListActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);
-
-        //  Avoid unnecessary query
-        if(!existingPartnerIds.isEmpty()){
-            partnerList = [SELECT Id,PMP_Benefit_Update_Ind__c,PMP_Is_Working_Copy_Ind__c,PMP_Published_Copy_Id__c,toLabel(PMP_Account_Id__r.Core_IPA_Partner_Segment__c)FROM PMP_Company__c
-                WHERE Id IN :existingPartnerIds
-                
-		AND ((PMP_Is_Published_Ind__c = true AND PMP_Benefit_Update_Ind__c = true)OR (PMP_Is_Working_Copy_Ind__c = true))];
-		}
-    }
-
-    for(PMP_Company__c partner : partnerList){
-
-        //  Null safety check
-        Set<Id> relatedAccounts = mapMpiToAccountListActive.get(partner.Id);
-
-        if(relatedAccounts != null){
-            for(Id accountId : relatedAccounts){
+        for(PMP_Company__c partner : partnerList){
+           
+            // add all the accounts which are related to MPI and have a MPI which is related         
+            for(Id accountId : mapMpiToAccountListActive.get(partner.id)){
                 existingAccountIds.add(accountId);
             }
         }
-    }
-
-    //  Correct type (Id instead of String)
-    for(Id accId : accountIds){
-        if(!existingAccountIds.contains(accId)){
-            remainingAccountIds.add(accId);
+        
+        for(String accId : accountIds){
+            if(!existingAccountIds.contains(accId)){
+                remainingAccountIds.add(accId);
+            }
         }
-    }
 
-    return remainingAccountIds;
-}
+        // return Accounts which have no MPI to create basic profile
+        
+        return remainingAccountIds;
+        
+    }
+    
 
     /*******
     * Method Name : markRelationshipInactive
@@ -652,10 +588,6 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
     ********/
 
     public static void markRelationshipInactive(set<Id> accountIds){
-    	//  Early exit
-    	if(accountIds == null || accountIds.isEmpty()){
-            return;
-    	}
         List<PMP_OPID_MPI_Rel__c> updatedJunctionRecords = new List<PMP_OPID_MPI_Rel__c>();
         List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByAccountId(accountIds);
         for(PMP_OPID_MPI_Rel__c relationRecord:junctionObjects){
@@ -665,25 +597,22 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
             }
         }
         if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isUpdateable()){      
-        //update updatedJunctionRecords;
-        Database.SaveResult[] junctionRecList = Database.update(updatedJunctionRecords, false);
-        PMP_Utility.logDmlErrors((Object[]) junctionRecList, 'PMP_AccountBenefitPartnerUtility-markRelationshipInactive');
+        update updatedJunctionRecords;
         }
     }
 
     public static void markPartnerAsDeleted(Set<Id> accountIds){
         List<PMP_Company__c> partnerList=new List<PMP_Company__c>();
-	// null + empty check
-	if(accountIds == null || accountIds.isEmpty()){
-	   return;
-	}
+        
+        if(!accountIds.isEmpty())  //Checking the size
+        {
             
 
             // Modified as part of OPID Restructure - to Inactivate the MPI - Sathish
             List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByAccountId(accountIds);
             Set<Id> existingPartnerIds = PMP_Utility.getAllMpiIds(junctionObjects);
             Map<Id,Set<Id>> mapMpiToAccountListActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);
-            if(Schema.sObjectType.PMP_Company__c.isAccessible() && !existingPartnerIds.isEmpty()){                
+            if(Schema.sObjectType.PMP_Company__c.isAccessible()){                
                 partnerList =   [select id, PMP_Benefit_Update_Ind__c,
                                             PMP_Partner_Benefit_Type__c 
                                 from PMP_Company__c 
@@ -695,9 +624,8 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
                 for(PMP_Company__c company:partnerList)
                 {
                     // Inactivate the MPI - If only Active relationship is deactivated
-                     Set<Id> relatedAccounts = mapMpiToAccountListActive.get(company.Id);
-		     if(relatedAccounts != null && relatedAccounts.size() == 0){company.PMP_Benefit_Update_Ind__c = true;   
-		     }
+                    if(!mapMpiToAccountListActive.isEmpty()&&mapMpiToAccountListActive.containsKey(company.Id) && mapMpiToAccountListActive.get(company.Id).size()==0){company.PMP_Benefit_Update_Ind__c=True;//Updating field
+                    }    
                     //company.PMP_Partner_Benefit_Type__c='';
                 }
                 if(Schema.sObjectType.PMP_Company__c.isUpdateable()){
@@ -708,22 +636,15 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
                         PMP_StaticConstants_Partner.isCompanyAfterUpdateTriggerActive = False;
                     }
 
-                    //update partnerList;
-                    Database.SaveResult[] prList = Database.update(partnerList, false);
-        			PMP_Utility.logDmlErrors((Object[]) prList, 'PMP_AccountBenefitPartnerUtility-markPartnerAsDeleted');
-                    
+                    update partnerList;
                 } 
                 
                 
             }
         }
-    
+    }
     
     public static void deleteUtility(List<PRM_AccountBenefitAssociation__c > listToBeDeleted){
-    	//  null + empty check
-    	if(listToBeDeleted == null || listToBeDeleted.isEmpty()){
-           return;
-        }
         
         Set<Id> accountIds = new Set<Id>();       
         for(PRM_AccountBenefitAssociation__c accBen : [ select Id,Name,PRM_Partner_Benefit_Id__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Account_Id__c,PRM_Status_Nm__c from PRM_AccountBenefitAssociation__c where Id IN : listToBeDeleted ]){
@@ -735,22 +656,11 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
     }
     
     public static Map<String,String> getBenefitCode(List<String> benefitIds){
-       Map<String,String> returnMap = new Map<String,String>();
-
-    	//  null/empty guard
-    	if(benefitIds == null || benefitIds.isEmpty()){
-        	return returnMap;
-    	}
-
-	//  convert to Set for better performance
-    	Set<Id> benIdSet = new Set<Id>();
-    	for(String benId : benefitIds){
-        	benIdSet.add(benId);
-    	}
         List<PRM_PartnerBenefit__c> benefits = new List<PRM_PartnerBenefit__c>();
         if(Schema.sObjectType.PRM_PartnerBenefit__c.isAccessible()){
-            benefits = [SELECT Id, PRM_Benefit_Cd__c FROM PRM_PartnerBenefit__c WHERE Id IN :benIdSet];
+            benefits = [SELECT id, PRM_Benefit_Cd__c from PRM_PartnerBenefit__c where Id IN :benefitIds];
         }
+        Map<String,String> returnMap = new Map<String,String>();
         
         for(PRM_PartnerBenefit__c ben : benefits){
             returnMap.put(ben.Id,ben.PRM_Benefit_Cd__c);
@@ -766,20 +676,11 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
     * Description :This method is to get the Map of Benefit code's and respective benefit Id's for given benefit codes - Part of OPID restructure
     ********/
     public static Map<String,String> getMapBenefitCodesToId(List<String> benefitCodes){
-    Map<String,String> returnMap = new Map<String,String>();
-
-    	//  null/empty guard
-       if(benefitCodes == null || benefitCodes.isEmpty()){
-          return returnMap;
-       }
-
-    	//  convert to Set for performance
-    	Set<String> benefitCodeSet = new Set<String>(benefitCodes);
         List<PRM_PartnerBenefit__c> benefits = new List<PRM_PartnerBenefit__c>();
         if(Schema.sObjectType.PRM_PartnerBenefit__c.isAccessible()){
-             benefits = [SELECT Id, PRM_Benefit_Cd__c FROM PRM_PartnerBenefit__c WHERE PRM_Benefit_Cd__c IN :benefitCodeSet];
+            benefits = [SELECT id, PRM_Benefit_Cd__c from PRM_PartnerBenefit__c where  PRM_Benefit_Cd__c IN :benefitCodes];
         }
-        
+        Map<String,String> returnMap = new Map<String,String>();
         
         for(PRM_PartnerBenefit__c ben : benefits){
             returnMap.put(ben.PRM_Benefit_Cd__c,ben.Id);
@@ -790,23 +691,14 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
   // Modified as part of OPID Restructure to get the tier Info from all the related Accounts - Sathish
   // for updating the MP info record when new tier is created/Updated in account
   public Static  void updatePartnerWhenTierIsUpdated(List<PRM_AccountChannelMembership__c> accIdList){
-    //  null/empty guard
-    if(accIdList == null || accIdList.isEmpty()){
-        return;
-    }
     Set<Id> accountIds = new Set<Id>();
 
     for(PRM_AccountChannelMembership__c acm :accIdList){
-        //  null check
-        if(acm.PRM_Account_Id__c != null){
-           accountIds.add(acm.PRM_Account_Id__c);
-	}          
+        accountIds.add(acm.PRM_Account_Id__c);          
     }  
 
-    //  avoid unnecessary call
-    if(!accountIds.isEmpty()){
-        updateTierOnMPI(accountIds);
-    }
+  
+    updateTierOnMPI(accountIds);
 }
 
 
@@ -817,25 +709,14 @@ public static Set<Id> checkIfExistingPartner(Set<Id> accountIds){
 * Description :This method is to update tier info for the MPI's related to the Account Id's - Part of OPID restructure
 ********/
 public static void updateTierOnMPI(set<Id> accountIds){
-      // null/empty guard
-      if(accountIds == null || accountIds.isEmpty()){
-         return;
-      }
-
-	// avoid modifying input parameter
-        accountIds = new Set<Id>(accountIds);
     
     //system.debug('AccountIds in ACM Trigger ==>'+accountIds);
     //Start: OPID to MPI tier defect fix added by Krishna Ch : OPID to MPI tier defect fix DE109646 : QA/PROD: MPI record is not getting updated when updated ACM tier/ Benefit/ New partner
     if( Schema.sObjectType.Core_Account_Group_Member__c.isAccessible() && (accountIds!=null && !accountIds.IsEmpty())){ // Fetching parent account id.
       
         for(Core_Account_Group_Member__c agm :[Select Id,Name,Core_Partner_Account_Id__c, Core_Intel_Account_Id__c,Core_Inactive_Ind__c From Core_Account_Group_Member__c Where (Core_Intel_Account_Id__c IN :accountIds OR Core_Partner_Account_Id__c IN :accountIds)AND Core_Inactive_Ind__c = false]){ 
-                if(agm.Core_Partner_Account_Id__c != null){
-                    accountIds.add(agm.Core_Partner_Account_Id__c);
-                }
-		if(agm.Core_Intel_Account_Id__c != null){
-                    accountIds.add(agm.Core_Intel_Account_Id__c);
-		}
+                accountIds.add(agm.Core_Partner_Account_Id__c);
+                accountIds.add(agm.Core_Intel_Account_Id__c);
                 //System.debug('the IntelOpidAccIds==>'+accountIds);
             } 
         
@@ -862,16 +743,9 @@ public static void updateTierOnMPI(set<Id> accountIds){
       if(Schema.sObjectType.PMP_Company__c.isAccessible()){
           partners=[SELECT id,Name,PMP_Published_Copy_Id__r.PMP_Account_Program_Membership__c,PMP_IPA_Badge_Tier_Txt__c, PMP_Account_Program_Membership__c,PMP_Partner_Program_nm__c,PMP_Account_Website__c from PMP_Company__c where Id IN :mapMpiToListAccountActive.keyset()];
       }
-       //  null safety
-    	if(partners == null || partners.isEmpty()){
-            return;
-         }
-
 
     for(Id mpi : mapMpiToListAccountActive.keySet()){
-        if(mapMpiToListAccountActive.get(mpi) != null && mapMpiToListAccountActive.containsKey(mpi)){//contains key check 
-            accountIds.addAll(mapMpiToListAccountActive.get(mpi));
-	}
+        accountIds.addAll(mapMpiToListAccountActive.get(mpi));
     }
 
     
@@ -989,9 +863,7 @@ public static void updateTierOnMPI(set<Id> accountIds){
                PMP_StaticConstants_Partner.isCompanyAfterUpdateTriggerActive = False;
            }
         
-        //update partners;
-        Database.SaveResult[] partnerRes = Database.update(partners, false);
-        PMP_Utility.logDmlErrors((Object[]) partnerRes, 'PMP_AccountBenefitPartnerUtility-updateTierOnMPI');
+        update partners;
                    
     }
     
@@ -1004,17 +876,10 @@ public static void updateTierOnMPI(set<Id> accountIds){
 * Description :This method is to roll the Multi-Picklist values from related Accounts and respective partner details - Part of OPID restructure
 ********/
 public static String rollUpMultiPicklist(Set<Id> activeAccounts,Map<Id,String> mapAccountToPartnerDetails,Set<String> allowedValues){
-    //  null/empty guard
-    if(activeAccounts == null || activeAccounts.isEmpty()){
-        return '';
-    }
     List<String> rolledUpPicklistValues = new List<String>();
     for(Id accountId : activeAccounts){
-        String partnerDetails = mapAccountToPartnerDetails.get(accountId); // ✅ single lookup
-
-        if(partnerDetails != null){
-
-            List<String> picklistValues = partnerDetails.split(';');
+        if(mapAccountToPartnerDetails.get(accountId)!=null){
+                List<String> picklistValues = mapAccountToPartnerDetails.get(accountId).split(';');
                 for(String value : picklistValues){
                     if(allowedValues.contains(value)&&!rolledUpPicklistValues.contains(value)){
                         rolledUpPicklistValues.add(value);
@@ -1033,19 +898,15 @@ public static String rollUpMultiPicklist(Set<Id> activeAccounts,Map<Id,String> m
 * Description :This method is to roll the Multi-Picklist values - Part of OPID restructure
 ********/
 public static String formatAndPopulateMultiPicklist(String mainString,String addedValue){
-      // null check first
-    if(addedValue == null){
-            return mainString;
+    if(addedValue=='Service Provider'){
+           addedValue='Cloud & Comms Service Provider';
+        }
+    if(addedValue==null){
+        return mainString;
     }
-    if(addedValue == 'Service Provider'){
-           addedValue = 'Cloud & Comms Service Provider';
+    if(mainString == ''){
+        return mainString+addedValue;
     }
-
-    // handle null/empty mainString
-    if(String.isBlank(mainString)){
-        return addedValue;
-    }
-
     List<String> stringValues = mainString.split(';');
     if(!stringValues.contains(addedValue)) { 
         stringValues.add(addedValue);                
@@ -1063,17 +924,12 @@ public static String formatAndPopulateMultiPicklist(String mainString,String add
 * Description :This method is to roll the Multi-Picklist values for ProgramMembership - Part of OPID restructure
 ********/
 public static String formatAndPopulateMultiPicklistForProgramMembership(String mainProgramMembership,String addedProgram){
-    //  null checks
-    if(String.isBlank(addedProgram)){
-        return mainProgramMembership;
-    }
     Map<String,Integer> tierAndRankMap = new Map<String,Integer>{'Member' => 1, 'Gold' => 2, 'Titanium' => 3,'Partner' => 4, 'Prestige' => 5};
     if(!addedProgram.contains('-')){
         return mainProgramMembership;
     }
-    //  handle null/blank main string
-    if(String.isBlank(mainProgramMembership)){
-        return addedProgram;
+    if(mainProgramMembership == ''){
+        return mainProgramMembership+addedProgram;
     }
     
     if(!mainProgramMembership.contains(addedProgram)) { 
@@ -1155,10 +1011,6 @@ public static String getProgramMembership(PRM_AccountChannelMembership__c eng){
 ********/
 
 public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> newMap,Map<Id,PMP_OPID_MPI_Rel__c> oldMap,Boolean handleBenefits){
-     //  guard condition
-    if(newMap == null || newMap.isEmpty()){
-        return;
-    }
     List<PMP_OPID_MPI_Rel__c> listActiveRecords = new List<PMP_OPID_MPI_Rel__c>();
     List<PMP_OPID_MPI_Rel__c> listInactiveRecords = new List<PMP_OPID_MPI_Rel__c>();
     Set<Id> tierUpdateMpiIds = new Set<Id>();
@@ -1173,9 +1025,7 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
                 }else{
                     listInactiveRecords.add(relationRecord);
                 }
-		if(relationRecord.PMP_Marketing_Profile_Id__c != null){
-                     tierUpdateMpiIds.add(relationRecord.PMP_Marketing_Profile_Id__c);
-		}
+                tierUpdateMpiIds.add(relationRecord.PMP_Marketing_Profile_Id__c);
             }
     }
     
@@ -1212,9 +1062,7 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
     Set<Id> accountIds = new Set<Id>();
     //Set<Id> autoBenefitAccountIds = new Set<Id>();
     for(PMP_OPID_MPI_Rel__c record:newMap.values()){
-        if(record.PMP_One_Partner_ID__c != null){
-            accountIds.add(record.PMP_One_Partner_ID__c);
-	}
+        accountIds.add(record.PMP_One_Partner_ID__c);
     }
 //IPA 2.0 simplification TWC729-8060  
     List<String> listBenefitCodes =new List<string>{PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE};
@@ -1308,9 +1156,7 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
 
     PRM_accBenefitAssociationUtility.skipvalidationforMPBenefits = true;
     if(Schema.sObjectType.PRM_AccountBenefitAssociation__c.isUpdateable() && !listInactivateBenefits.isEmpty()&&handleBenefits){
-        //update listInactivateBenefits;
-        Database.SaveResult[] inactiveBenList = Database.update(listInactivateBenefits, false);
-        PMP_Utility.logDmlErrors((Object[]) inactiveBenList, 'PMP_AccountBenefitPartnerUtility-onAccountMpiRelationStatusChange');
+        update listInactivateBenefits;
     }
     PRM_accBenefitAssociationUtility.skipvalidationforMPBenefits = false;    
     if(Schema.sObjectType.PMP_Company__c.isUpdateable() && !mapMpi.values().isempty()){
@@ -1322,16 +1168,12 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
                PMP_StaticConstants_Partner.isCompanyAfterUpdateTriggerActive = False;
            }
 
-        //update mapMpi.values();
-        Database.SaveResult[] mapMpiList = Database.update(mapMpi.values(), false);
-        PMP_Utility.logDmlErrors((Object[]) mapMpiList, 'PMP_AccountBenefitPartnerUtility-onAccountMpiRelationStatusChange');
+        update mapMpi.values();
         
     }
 
     for(Id mpiId: mapMpiToAccountListActive.keySet()){
-    	if(mapMpiToAccountListActive.get(mpiId) != null){
-            tierAccountIds.addAll(mapMpiToAccountListActive.get(mpiId));
-	}
+        tierAccountIds.addAll(mapMpiToAccountListActive.get(mpiId));
     }
     
     updateTierOnMPI(tierAccountIds);
@@ -1339,10 +1181,6 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
 }
 
     public static String filterDistiBizOrgs(String accountBizType){
-    	// null/blank check
-    	if(String.isBlank(accountBizType)){
-            return '';
-    	}
         String bizorgtype = '';
         for(String biz : accountBizType.split('\\;')){
             if(PMP_StaticConstants_Partner.bizOrgTypes.contains(biz)){
@@ -1356,10 +1194,6 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
     }
     
     public static void InsertCompanyAttributeMappingRecords(List<PMP_Company__c> newPartners){
-    	 //  null/empty guard
-    	if(newPartners == null || newPartners.isEmpty()){
-            return;
-        }
 
         List<PMP_Partner_Specialty__c> specList = [select id, Name from PMP_Partner_Specialty__c where PMP_Is_Active_Ind__c = true];
         List<PMP_Partner_Segment__c> segList = [select id, Name from PMP_Partner_Segment__c where PMP_Is_Active_Ind__c = true];
@@ -1417,11 +1251,7 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
         }
         
         if(mappingsToInsert.size() > 0){
-            //insert mappingsToInsert; 
-             Database.SaveResult[] mapInsert = Database.insert(mappingsToInsert,false);
-             PMP_Utility.logDmlErrors((Object[]) mapInsert ,'PMP_AccountBenefitPartnerUtility-InsertCompanyAttributeMappingRecords');
-
-            
+            insert mappingsToInsert; 
         }
     }
 
@@ -1439,13 +1269,9 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
     }
     
     public static String calculateIpaBadgeTier(List<PRM_AccountChannelMembership__c> acmList){
-    	if(acmList == null || acmList.isEmpty()){
-            return null;
-    	}
-
         //Map<String,Integer> tierAndRankMap = new Map<String,Integer>{'Member' => 1, 'Gold' => 2, 'Titanium' => 3};
         //Map<Integer,String> rankAndTierMap = new Map<Integer,String>{1 => 'Member', 2 => 'Gold', 3 => 'Titanium'}; 
-    Map<String,Integer> tierAndRankMap = new Map<String,Integer>{'Member' => 1, 'Gold' => 2, 'Titanium' => 3, 'Partner' => 4, 'Prestige' => 5};
+		Map<String,Integer> tierAndRankMap = new Map<String,Integer>{'Member' => 1, 'Gold' => 2, 'Titanium' => 3, 'Partner' => 4, 'Prestige' => 5};
             Map<Integer,String> rankAndTierMap = new Map<Integer,String>{1 => 'Member', 2 => 'Gold', 3 => 'Titanium', 4 => 'Partner', 5 => 'Prestige'};       
                 
                 Integer highestTierRank = 0;
@@ -1461,17 +1287,10 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
     
     //Create Partner working copy-to remove the async exception as old method to create working copy was a queuable method
     public static void createPartnerWorkingCopyRecord(List<PMP_Company__c> newcompanies){
-    	 // null/empty guard
-    	if(newcompanies == null || newcompanies.isEmpty()){
-            return;
-        }
         
         List<PMP_Company__c> createworkcopies = new List<PMP_Company__c>();
         List<PMP_Company__c> updatepublished = new List<PMP_Company__c>();   
         for(PMP_Company__c partner : newcompanies){
-	     if(partner == null){
-            	continue;
-             }
             PMP_Company__c partner_wc                           = new PMP_Company__c();
             partner_wc.Name                                     = partner.Name;
            // partner_wc.PMP_Account_Id__c                          = partner.PMP_Account_Id__c;
@@ -1483,10 +1302,7 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
             partner_wc.PMP_Is_Published_Ind__c                  = false;                        
             partner_wc.PMP_Is_Working_Copy_Ind__c               = true;            
             partner_wc.PMP_Company_Status_Update_Dt__c          = Date.today();
-	    // safe assignment
-            if(partner.Id != null){
             partner_wc.PMP_Published_Copy_Id__c                 = partner.Id;
-	    }
             partner_wc.PMP_Opid_Sfid_Txt__c                         = partner.PMP_Opid_Sfid_Txt__c;
           //  partner_wc.PMP_One_Partner_ID__c                  = partner.PMP_One_Partner_ID__c;
             partner_wc.PMP_Partner_Benefit_Type__c              = partner.PMP_Partner_Benefit_Type__c;
@@ -1497,27 +1313,21 @@ public static void onAccountMpiRelationStatusChange(Map<Id,PMP_OPID_MPI_Rel__c> 
         }
 
         if(!createworkcopies.isEmpty()){
-           // Insert(createworkcopies);
-           Database.SaveResult[] results = Database.insert(createworkcopies, false);
-           PMP_Utility.logDmlErrors((Object[]) results, 'PMP_AccountBenefitPartnerUtility-createPartnerWorkingCopyRecord');
+            Insert(createworkcopies);
             
             //Set<Id> partnerIdsCreated = new Set<Id>();
             for(PMP_Company__c wc : createworkcopies) {
-	        if(wc.Id != null && wc.PMP_Published_Copy_Id__c != null){
-                    PMP_Company__c pc = new PMP_Company__c();
-                    pc.Id = wc.PMP_Published_Copy_Id__c;
-                    pc.PMP_Working_Copy_Id__c = wc.Id;
-                    updatepublished.add(pc);
-		}
+                PMP_Company__c pc = new PMP_Company__c();
+                pc.Id = wc.PMP_Published_Copy_Id__c;
+                pc.PMP_Working_Copy_Id__c = wc.Id;
+                updatepublished.add(pc);
             }
             if(!updatepublished.isEmpty()){
-                //update(updatepublished);
-                 Database.SaveResult[] results1 = Database.update(updatepublished, false);
-                 PMP_Utility.logDmlErrors((Object[]) results1, 'PMP_AccountBenefitPartnerUtility-createPartnerWorkingCopyRecord');
+                update(updatepublished);
             }                    
         }
     }
-  //IPA: Benefit chnages
+	//IPA: Benefit chnages
     //Added by Krishna Ch DE111313 : to check the existing basic access partner is available or not, if available need to update existing partner.
     /*public static Set<Id> checkIfExistingBasicAccessPartner(Set<Id> accountIds){
         Set<Id> accountIdsWithNoMPI = new Set<Id>();
@@ -1789,10 +1599,10 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
                     }else{
                         benefit =  mapAccountToUpdatedBenefitType.get(accountId);
                     }*/
-          if(mapAccountToUpdatedBenefitType.get(accountId) == PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile){
+					if(mapAccountToUpdatedBenefitType.get(accountId) == PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile){
                         benefit = mapAccountToUpdatedBenefitType.get(accountId);
                     }
-          
+					
                     if(accBen.PRM_Partner_Benefit_Id__r.Name == benefit){
                         doesAlreadyBenefitExists = true;
                         // Check if the assigned benefit is Inactive, If So activate the benefit
@@ -1801,7 +1611,7 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
                                 accBen.PRM_Status_Reason_Txt__c = System.Label.PMP_AssignBenefit_StatusReason;
                                 mapActivateAlreadyExistingAccBen.put(accountId,accBen);
                                 // Logic if enhanced benefit exists but basic profile does not exists/ we need to insert
-        //IPA 2.0 simplification TWC729-8060  
+				//IPA 2.0 simplification TWC729-8060  
                                // if(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c == PMP_StaticConstants_Partner.BENEFIT_ENHANCED_CODE){
                                     boolean basicProfileExists = false;
                                     for(PRM_AccountBenefitAssociation__c accBenBasicProfile: mapAccountToBenefitObjects.get(accountId)){
@@ -1839,14 +1649,14 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
                         // check if Account Benefit type is Solution Marketplace Basic Access
                         String benefitType =  mapAccountToUpdatedBenefitType.get(accountId);
                         switch on (benefitType){
-      //IPA 2.0 simplification TWC729-8060  
+			//IPA 2.0 simplification TWC729-8060  
                             // when 'Solution Marketplace Basic Access'{ partnerBenefitId = mapBenefitCodeToBenefitId.get(PMP_StaticConstants_Partner.BENEFIT_BASIC_ACCESS_CODE);
                                                                     
                             //                                         }
                             when 'Solutions Marketplace Basic Profile'{ partnerBenefitId = mapBenefitCodeToBenefitId.get(PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE);
                                                                         
                                                                     }
-      //IPA 2.0 simplification TWC729-8060                
+			//IPA 2.0 simplification TWC729-8060  					    
                             // when 'Solutions Marketplace Enhanced'{ partnerBenefitId = mapBenefitCodeToBenefitId.get(PMP_StaticConstants_Partner.BENEFIT_ENHANCED_CODE);
                             //                                         // If Enhanced Benefit then check if basic profile exists else need to insert basic profile with Inactive status
                             //                                             if(!mapAccountToBenefitObjects.containsKey(accountId)){
@@ -1880,27 +1690,20 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
     if(!mapInsertNonExistingBasicProflieBenefitInEnhancedBenefitScenario.isEmpty()&&!Test.isRunningTest()){
         PRM_aba_TriggerHandler.mpFirstInsertRun = true; //mp logic after insert
         PRM_accBenefitAssociationUtility.firstRunBeforeInsert = true; // valdiation before insert;
-        //insert mapInsertNonExistingBasicProflieBenefitInEnhancedBenefitScenario.values();
-         Database.SaveResult[] BenefitRes = Database.insert( mapInsertNonExistingBasicProflieBenefitInEnhancedBenefitScenario.values(), false);
-         PMP_Utility.logDmlErrors((Object[]) BenefitRes, 'PMP_AccountBenefitPartnerUtility-assignAutoBenefits');
-        
+        insert mapInsertNonExistingBasicProflieBenefitInEnhancedBenefitScenario.values();
     }
     
     // Insert Basic profile benefit with Inactive status if No Benefits exists on OPID
     if(!mapInsertNonExistingAccBenNoBenefitsScenario.isEmpty()&&!Test.isRunningTest()){
         PRM_aba_TriggerHandler.mpFirstInsertRun = true; // For Validations to work
         PRM_accBenefitAssociationUtility.firstRunBeforeInsert = true; // valdiation before insert;
-        //insert mapInsertNonExistingAccBenNoBenefitsScenario.values();
-        Database.SaveResult[] NoBenefitRes = Database.insert(mapInsertNonExistingAccBenNoBenefitsScenario.values(), false);
-        PMP_Utility.logDmlErrors((Object[]) NoBenefitRes, 'PMP_AccountBenefitPartnerUtility-assignAutoBenefits');
+        insert mapInsertNonExistingAccBenNoBenefitsScenario.values();
     }
      if(!mapDeactivateAlreadyExistingAccBen.isEmpty()&&!Test.isRunningTest()){
         PRM_aba_TriggerHandler.mpFirstUpdateRun = true; // after operations marketplace logic
         PRM_accBenefitAssociationUtility.firstRun = true; // after operation of benefit insert
         PRM_accBenefitAssociationUtility.firstRunBeforeUpdate = true;// For Validations to work
-         //update mapDeactivateAlreadyExistingAccBen.values();
-        Database.SaveResult[] AccBenList = Database.update(mapDeactivateAlreadyExistingAccBen.values(), false);
-        PMP_Utility.logDmlErrors((Object[]) AccBenList, 'PMP_AccountBenefitPartnerUtility-assignAutoBenefits');
+         update mapDeactivateAlreadyExistingAccBen.values();
      }
 
      // Next Activate the already Existing benefits if Inactive
@@ -1908,18 +1711,14 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
         PRM_aba_TriggerHandler.mpFirstUpdateRun = true;// For Validations to work
         PRM_accBenefitAssociationUtility.firstRunBeforeUpdate = true;// For Validations to work
         PRM_accBenefitAssociationUtility.firstRun = true; // after operation of benefit insert
-         //update mapActivateAlreadyExistingAccBen.values();
-        Database.SaveResult[] activateExBenList = Database.update(mapActivateAlreadyExistingAccBen.values(), false);
-        PMP_Utility.logDmlErrors((Object[]) activateExBenList, 'PMP_AccountBenefitPartnerUtility-assignAutoBenefits');
+         update mapActivateAlreadyExistingAccBen.values();
      }
 
      // Insert If No such benefit exists on the OPID
      if(!mapInsertNonExistingAccBen.isEmpty()&&!Test.isRunningTest()){
         PRM_aba_TriggerHandler.mpFirstInsertRun = true; // For marketplace logic to work
         PRM_accBenefitAssociationUtility.firstRunBeforeInsert = true; // valdiation before insert;
-        //insert mapInsertNonExistingAccBen.values();
-        Database.SaveResult[] NonExBen = Database.insert(mapInsertNonExistingAccBen.values(), false);
-        PMP_Utility.logDmlErrors((Object[]) NonExBen, 'PMP_AccountBenefitPartnerUtility-assignAutoBenefits');
+        insert mapInsertNonExistingAccBen.values();
      } 
      PRM_accBenefitAssociationUtility.skipvalidationforMPBenefits = false;  
     }catch(DmlException e){
@@ -1944,7 +1743,7 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
 ********/
     public static Map<Id,List<PRM_AccountBenefitAssociation__c>> getMapAccountToBenefitObjects(Set<Id> accountIds){
        //IPA 2.0 simplification TWC729-8060  
-   List<String> listBenefitCodes =new List<string>{PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE};
+	 List<String> listBenefitCodes =new List<string>{PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE};
         Map<Id,List<PRM_AccountBenefitAssociation__c>> mapAccountToBenefitObjects = new Map<Id,List<PRM_AccountBenefitAssociation__c>>();
         for(PRM_AccountBenefitAssociation__c accBen :           [select id,
                                                                     PRM_Account_Id__c,

@@ -95,20 +95,10 @@ public class Core_MDF_FormRecognizerIntegration {
             }
         } catch (exception ex){    Core_MDF_CCP_UtilityClass.logError(ex);
         }
-        //ATHR - Deeply Nested if 16209
-        if(subsequentResponse.getBody() == null) {
-            Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body is blank', 'Core_MDF_AI_Tracking__c');
-            return content;
-        }
-        //if(subsequentResponse.getBody() != null){
+        if(subsequentResponse.getBody() != null){
             jsonResponse = (Map<String, Object>) JSON.deserializeUntyped(subsequentResponse.getBody());
             // Extract the "content" value from "analyzeResult"
-            //ATHR - Deeply Nested if 16209
-            if(jsonResponse.get('analyzeResult') == null || !jsonResponse.containsKey('analyzeResult')) {
-                Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body not having proper attributes', 'Core_MDF_AI_Tracking__c');
-                return content;
-            }
-            //if(jsonResponse.containsKey('analyzeResult')){
+            if(jsonResponse.containsKey('analyzeResult')){
                 Map<String, Object> analyzeResult = (Map<String, Object>) jsonResponse.get('analyzeResult');
                 if (analyzeResult.containsKey('content')) {
                     content = (String) analyzeResult.get('content');
@@ -116,12 +106,12 @@ public class Core_MDF_FormRecognizerIntegration {
                 }else{
                     Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body not having proper attributes', 'Core_MDF_AI_Tracking__c');
                 }
-            /*}else{
+            }else{
                 Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body not having proper attributes', 'Core_MDF_AI_Tracking__c');
             }
         }else{
             Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body is blank', 'Core_MDF_AI_Tracking__c');
-        }*/
+        }
         return content;
     }
 }

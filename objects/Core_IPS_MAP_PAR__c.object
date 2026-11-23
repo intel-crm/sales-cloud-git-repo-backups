@@ -562,15 +562,6 @@ This object will have related Line Items that capture the unique Account/Support
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <nameField>
         <displayFormat>IAR-{0000000000}</displayFormat>
         <label>Access Record</label>

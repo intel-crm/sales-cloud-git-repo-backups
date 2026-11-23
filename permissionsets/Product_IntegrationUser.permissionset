@@ -106,6 +106,10 @@
     </classAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_PSG_Product_Status_Code_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Product_fields_mapping__mdt</name>
     </customMetadataTypeAccesses>
     <fieldPermissions>
@@ -1155,16 +1159,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Product_Inbound_Staging__c.Core_IsActive__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.Core_Unique_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Product_Inbound_Staging__c.Is_MMID_Blank__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1390,16 +1384,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Line_Of_Business_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Line_of_Business__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Product_Inbound_Staging__c.L5_MarketCodeName_WOR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1501,11 +1485,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Product_Inbound_Staging__c.L5_ProfitCenter__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Profit_Center_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

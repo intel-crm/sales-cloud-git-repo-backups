@@ -149,10 +149,6 @@
             <translation><!-- Incentive - # of Deals Registered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>Стимул — количество выигранных дизайнов</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation><!-- Incentive - # of Units Sold --></translation>
         </picklistValues>
@@ -205,24 +201,8 @@
             <translation><!-- Legacy Media Percentage Spend --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>Активация розницы — кол-во чел-дн</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>Тех. активация — число выигранных сделок</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>Техническая активация - № развертываний</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>Тех. активация — # выигр. Дизайнов</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -287,10 +267,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation><!-- Legacy Media --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>Активация розничной торговли</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

@@ -171,12 +171,6 @@
             <field>Core_MDF_Approver_3_Name_Id__c</field>
             <table>Core_MDF_Escalation__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Is Outcome-Based?</displayNameOverride>
-            <field>Core_MDF_Co_Marketing_Activity_id__c.Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
         <masterLabel>Escalations</masterLabel>
     </sections>
 </ReportType>

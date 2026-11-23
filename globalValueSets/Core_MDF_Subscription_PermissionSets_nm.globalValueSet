@@ -26,11 +26,6 @@
         <label>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
-        <default>false</default>
-        <label>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
         <default>false</default>
         <label>Core_MDF_CCP_Internal_IPA_Acct_Mgr</label>

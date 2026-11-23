@@ -183,28 +183,6 @@
         <label>PRM Kanban View</label>
     </fieldSets>
     <fields>
-        <fullName>ACM_SDP_Product_Code__c</fullName>
-        <externalId>false</externalId>
-        <label>SDP Product Code</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ACM_SDP_System_Serial_Number__c</fullName>
-        <externalId>false</externalId>
-        <label>SDP System Serial Number</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>AE_ApprovedRejectedTimeStamp__c</fullName>
         <description>If AE changes current status to Approved or Rejected this filed get updated - stabilization request</description>
         <label>AE_ApprovedRejectedTimeStamp</label>
@@ -1976,6 +1954,11 @@ IF( AND(ISPICKVAL(PRM_Email_Verification_Criteria__c , &quot;PENDING&quot;),(NOW
                     <default>false</default>
                     <label>EMEA</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -3116,14 +3099,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Is_Returning_User__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Is Returning User</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_Job_Function__c</fullName>
         <label>Contact Job Function</label>
         <required>false</required>
@@ -4041,11 +4016,6 @@ The field allows only English letters, digits (0-9), and the following special c
                     <label>Intel Authorized Distributor (IAD)</label>
                 </value>
                 <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
                     <fullName>CSP</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -4116,6 +4086,12 @@ The field allows only English letters, digits (0-9), and the following special c
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>OEM/LOEM</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other</label>
                 </value>
                 <value>
                     <fullName>Reseller</fullName>
@@ -4282,7 +4258,7 @@ The field allows only English letters, digits (0-9), and the following special c
         <fullName>PRM_Profession__c</fullName>
         <label>Profession</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -4335,14 +4311,14 @@ The field allows only English letters, digits (0-9), and the following special c
                     <label>Facilities/Audio Video</label>
                 </value>
                 <value>
+                    <fullName>FINANCE</fullName>
+                    <default>false</default>
+                    <label>Finance/Procurement</label>
+                </value>
+                <value>
                     <fullName>FPGAENGG</fullName>
                     <default>false</default>
                     <label>FPGA Engineering</label>
-                </value>
-                <value>
-                    <fullName>GOVT</fullName>
-                    <default>false</default>
-                    <label>Government</label>
                 </value>
                 <value>
                     <fullName>HDE</fullName>
@@ -4435,19 +4411,9 @@ The field allows only English letters, digits (0-9), and the following special c
                     <label>Software/Application Development/Engineering</label>
                 </value>
                 <value>
-                    <fullName>SFTOP</fullName>
-                    <default>false</default>
-                    <label>Software Operations</label>
-                </value>
-                <value>
                     <fullName>SSA</fullName>
                     <default>false</default>
                     <label>Solution/System Architecture</label>
-                </value>
-                <value>
-                    <fullName>FINANCE</fullName>
-                    <default>false</default>
-                    <label>Finance/Procurement</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -4460,18 +4426,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PRM_Record_Link__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/&quot; &amp; Id, &apos;Record Link&apos;, &quot;_self&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Record Link</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Record_Status__c</fullName>
@@ -5062,7 +5016,7 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <label>Pending</label>
                 </value>
                 <value>
-                    <fullName>PendingwithPartner</fullName>
+                    <fullName>Pending with Partner</fullName>
                     <default>false</default>
                     <label>Pending with Partner</label>
                 </value>
@@ -5101,12 +5055,6 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>In Process</label>
-                </value>
-                <value>
-                    <fullName>Pending with Partner</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Pending with Partner Old</label>
                 </value>
                 <value>
                     <fullName>Processed</fullName>
@@ -5157,6 +5105,21 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <label>Intel® Cloud Insider Webinars</label>
                 </value>
                 <value>
+                    <fullName>FPGAPart_SUB01</fullName>
+                    <default>false</default>
+                    <label>FPGA Partner Program Newsletter</label>
+                </value>
+                <value>
+                    <fullName>FPGAPart_SUB03</fullName>
+                    <default>false</default>
+                    <label>Inside Edge Newsletter</label>
+                </value>
+                <value>
+                    <fullName>PSG_NEWSLETTER</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic Newsletters</label>
+                </value>
+                <value>
                     <fullName>PRDSOLCOM</fullName>
                     <default>false</default>
                     <label>Product and Solution Communications</label>
@@ -5185,6 +5148,26 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <fullName>MEMBCOM</fullName>
                     <default>false</default>
                     <label>Membership Communications</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub1</fullName>
+                    <default>false</default>
+                    <label>Developer Zone Newsletter</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub6</fullName>
+                    <default>false</default>
+                    <label>Software Developer Product Insights</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub11</fullName>
+                    <default>false</default>
+                    <label>Edge Software Hub Product Communication</label>
+                </value>
+                <value>
+                    <fullName>PSG_PRODUCT</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic Product Announcements</label>
                 </value>
                 <value>
                     <fullName>NEWSLETTER</fullName>
@@ -5231,53 +5214,6 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <default>false</default>
                     <label>Webinars</label>
                 </value>
-                <value>
-                    <fullName>OpenVINO_SUB01</fullName>
-                    <default>false</default>
-                    <label>OpenVINO &amp; AI Inference Newsletter</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Newsletter</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub11</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Edge Software Hub Product Communication</label>
-                </value>
-                <value>
-                    <fullName>FPGAPart_SUB01</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>FPGA Partner Program Newsletter</label>
-                </value>
-                <value>
-                    <fullName>FPGAPart_SUB03</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Inside Edge Newsletter</label>
-                </value>
-                <value>
-                    <fullName>PSG_NEWSLETTER</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Programmable Logic Newsletters</label>
-                </value>
-                <value>
-                    <fullName>PSG_PRODUCT</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Programmable Logic Product Announcements</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub6</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Software Developer Product Insights</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>5</visibleLines>
@@ -5299,18 +5235,6 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
         <externalId>false</externalId>
         <label>Tax ID/Registration #</label>
         <length>30</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Tax_Number__c</fullName>
-        <description>Field to store the GST number of Indian companies</description>
-        <externalId>false</externalId>
-        <label>GST Number (India Only)</label>
-        <length>100</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5511,26 +5435,10 @@ ROUND(MOD(((5 * ( FLOOR( ( Approved_Timestamp__c - DATETIMEVALUE( &quot;1900-01-
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>Status_Approved_Time__c</fullName>
-        <label>Status Approved Time</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Status_Pending_Time__c</fullName>
-        <label>Status Pending Time</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>Sync_Profile_Response__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Sync Profile Response</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -5640,13 +5548,16 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Email_ID__c</columns>
+        <columns>PRM_Last_Name__c</columns>
         <columns>Entitlement_Details__c</columns>
-        <columns>Current_Status__c</columns>
         <columns>PRM_Enterprise_ID__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Email_Verification_Status__c</columns>
+        <columns>PRM_Legal_Agreement_Criteria__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
         <columns>CREATED_DATE</columns>
         <columns>PRM_CIM_ID__c</columns>
-        <columns>ActualApprover__c</columns>
-        <columns>PRM_Status__c</columns>
+        <columns>Geo_Code__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -5664,21 +5575,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Approved</value>
-        </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>equals</operation>
-            <value>IPA Registration Integration User</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>PRM_Registration_Request__c.Account_Create_Request</value>
         </filters>
         <label>Approved Requests</label>
     </listViews>
@@ -5698,44 +5594,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <value>1</value>
         </filters>
         <label>Auto Approved Requests</label>
-    </listViews>
-    <listViews>
-        <fullName>Copy_of_DZP_Open_Registrations_PRC</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>Entitlement_Details__c</columns>
-        <columns>PRM_Email_ID__c</columns>
-        <columns>Assigned_To__c</columns>
-        <columns>PRM_Country__c</columns>
-        <columns>Geo_Code__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PRM_Review_Note_txt__c</columns>
-        <columns>PRM_Partner_Type__c</columns>
-        <columns>Current_Status__c</columns>
-        <columns>PRM_Salesforce_ID__c</columns>
-        <columns>PRM_Contact_Salesforce_Id__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>PRM_Registration_Request__c.Account_Create_Request,PRM_Registration_Request__c.Add_Contact_Request,PRM_Registration_Request__c.Add_Membership_Request,PRM_Registration_Request__c.Admin_Registration,PRM_Registration_Request__c.PRM_Email_Verification_Request</value>
-        </filters>
-        <filters>
-            <field>Entitlement_Details__c</field>
-            <operation>equals</operation>
-            <value>Resource &amp; Design Center for Secure Content</value>
-        </filters>
-        <filters>
-            <field>Geo_Code__c</field>
-            <operation>equals</operation>
-            <value>APJ,INDIA</value>
-        </filters>
-        <filters>
-            <field>Current_Status__c</field>
-            <operation>equals</operation>
-            <value>Open,A&amp;E Pending</value>
-        </filters>
-        <label>DZP Open Registrations-APJ</label>
     </listViews>
     <listViews>
         <fullName>Core_PRM_Manual_Approval_Members_Core_PRM_Registration_Request</fullName>
@@ -5765,6 +5623,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <field>PRM_Country__c</field>
             <operation>notEqual</operation>
             <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS,CN,HK,MO,CHN</value>
+        </filters>
+        <filters>
+            <field>PRM_Partner_Role__c</field>
+            <operation>notEqual</operation>
+            <value>Service Provider,Guest</value>
         </filters>
         <filters>
             <field>RECORDTYPE</field>
@@ -5876,15 +5739,17 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
     </listViews>
     <listViews>
         <fullName>DZP_Open_Registrations_PRC</fullName>
-        <columns>Geo_Code__c</columns>
-        <columns>PRM_Country__c</columns>
-        <columns>Current_Status__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>NAME</columns>
         <columns>PRM_Account_Name__c</columns>
         <columns>Entitlement_Details__c</columns>
         <columns>PRM_Email_ID__c</columns>
         <columns>Assigned_To__c</columns>
+        <columns>PRM_Country__c</columns>
+        <columns>Geo_Code__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PRM_Review_Note_txt__c</columns>
+        <columns>PRM_Partner_Type__c</columns>
+        <columns>Current_Status__c</columns>
         <columns>PRM_Salesforce_ID__c</columns>
         <columns>PRM_Contact_Salesforce_Id__c</columns>
         <filterScope>Everything</filterScope>
@@ -5962,6 +5827,10 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <columns>PRM_Salesforce_ID__c</columns>
         <columns>PRM_Contact_Salesforce_Id__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Entitlement_Details__c</field>
+            <operation>notEqual</operation>
+        </filters>
         <label>Entitlement Based Registrations</label>
     </listViews>
     <listViews>
@@ -6003,7 +5872,7 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <filters>
             <field>PRM_Status__c</field>
             <operation>equals</operation>
-            <value>Pending with Partner</value>
+            <value>Pending</value>
         </filters>
         <label>IPA - Pending</label>
     </listViews>
@@ -6059,43 +5928,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Internal_IPA_Registrations_Rejected</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Partner_Role__c</columns>
-        <columns>PRM_Email_ID__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PRM_Dup_Status__c</columns>
-        <columns>PRM_Legal_Agreement_Criteria__c</columns>
-        <columns>PRM_Approve_Reject_Link__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>PRM_Submitted_Date__c</columns>
-        <columns>PRM_Partner_Type__c</columns>
-        <columns>PRM_Contact_Country__c</columns>
-        <filterScope>Queue</filterScope>
-        <filters>
-            <field>PRM_Status__c</field>
-            <operation>equals</operation>
-            <value>Rejected</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </filters>
-        <filters>
-            <field>PRM_Country__c</field>
-            <operation>notEqual</operation>
-            <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS,CN,HK,MO,CHN</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>notEqual</operation>
-            <value>PRM_Registration_Request__c.PRM_Email_Verification_Request</value>
-        </filters>
-        <label>Internal-IPA Registrations Rejected</label>
-        <queue>PRM_Manual_Approval_Members</queue>
     </listViews>
     <listViews>
         <fullName>New_Requests</fullName>
@@ -6173,23 +6005,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <columns>PRM_Country__c</columns>
         <columns>PRM_Contact_Salesforce_Id__c</columns>
         <columns>PRM_Salesforce_ID__c</columns>
-        <columns>Assigned_To__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Pending</value>
-        </filters>
-        <filters>
-            <field>PRM_Country__c</field>
-            <operation>equals</operation>
-            <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,ID,IN,IO,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
         </filters>
         <label>Pending Requests</label>
     </listViews>
@@ -6225,6 +6045,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Rejected</value>
+        </filters>
+        <filters>
+            <field>PRM_Account_Name__c</field>
+            <operation>equals</operation>
+            <value>allion</value>
         </filters>
         <label>Rejected Requests</label>
     </listViews>
@@ -8322,10 +8147,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -8399,10 +8220,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8681,7 +8498,7 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
-                <fullName>PendingwithPartner</fullName>
+                <fullName>Pending with Partner</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8720,6 +8537,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -8733,10 +8570,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>OFFRSPRMTN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8757,6 +8590,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10597,11 +10438,119 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <picklistValues>
             <picklist>PRM_Profession__c</picklist>
             <values>
-                <fullName>GOVT</fullName>
+                <fullName>CIO</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
+                <fullName>CISO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONSULTANT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DSC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FAV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FINANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAENGG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOBBYIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITIS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITUD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MARKETING</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OPERENGG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRESANA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROFESSOR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SADE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SALES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCIENTIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10688,10 +10637,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>CSPx2_Sub4</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -12520,11 +12465,119 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <picklistValues>
             <picklist>PRM_Profession__c</picklist>
             <values>
-                <fullName>GOVT</fullName>
+                <fullName>CIO</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
+                <fullName>CISO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONSULTANT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DSC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FAV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FINANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAENGG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOBBYIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITIS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITUD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MARKETING</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OPERENGG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRESANA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROFESSOR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SADE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SALES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCIENTIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12611,10 +12664,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>CSPx2_Sub4</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14667,10 +14716,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -14744,10 +14789,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14881,6 +14922,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -14894,10 +14955,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>OFFRSPRMTN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14918,6 +14975,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -16953,10 +17018,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -17030,10 +17091,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17151,6 +17208,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -17164,10 +17241,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>OFFRSPRMTN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17191,2530 +17264,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
-                <fullName>SURVEYS</fullName>
+                <fullName>PSG_NEWSLETTER</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>TRAWEBCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEBINAR</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_manualRecordCheck__c</picklist>
-            <values>
-                <fullName>FALSE</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>TRUE</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Registration_Request_Page</fullName>
-        <active>true</active>
-        <description>Approve/Reject button will not be there</description>
-        <label>Registration Request Page</label>
-        <picklistValues>
-            <picklist>Countries__c</picklist>
-            <values>
-                <fullName>Afghanistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aland Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Albania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Algeria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>American Samoa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Andorra</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Angola</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Anguilla</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Antarctica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Antigua%2FBarbuda</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Argentina</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Armenia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aruba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Australia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Austria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Azerbaijan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bahamas</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bahrain</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bangladesh</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Barbados</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Belarus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Belgium</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Belize</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Benin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bermuda</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bhutan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bolivia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bonaire</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bosnia-Herz%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Botswana</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bouvet Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Brazil</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Brit%2EInd%2EOc%2ETer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Brit%2EVirgin Is%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Brunei</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bulgaria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Burkina Faso</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Burundi</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>C Africa Rpblic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cambodia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cameroon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Canada</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cape Verde</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cayman Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chile</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>China</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Christmas Islnd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cocos Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Colombia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Comoros</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cooks Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Costa Rica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cote d%27Ivoire</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Croatia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cuba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Curacao</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dem%2E Rep%2E Congo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denmark</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Djibouti</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dominica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dominican Rep%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ecuador</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Egypt</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>El Salvador</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Equatorial Guin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Eritrea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Estonia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ethiopia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Falkland Islnds</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Faroe Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Fiji</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Finland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>France</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>French Guiana</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>French Poly%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>French S%2E Terr%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gabon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gambia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Georgia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Germany</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ghana</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gibraltar</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Greece</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Greenland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Grenada</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guadeloupe</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guam</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guatemala</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guernsey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guinea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guinea-Bissau</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guyana</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Haiti</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Heard%2FMcDon%2EIsl</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Honduras</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hong Kong</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hungary</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Iceland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>India</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Indonesia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Iran</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Iraq</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ireland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Isle of Man</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Israel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Italy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jamaica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Japan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jersey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jordan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kazakhstan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kenya</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kiribati</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kuwait</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kyrgyzstan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Laos</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Latvia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lebanon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lesotho</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Liberia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Libya</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Liechtenstein</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lithuania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Luxembourg</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Macao SAR China</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Macedonia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Madagascar</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Malawi</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Malaysia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Maldives</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mali</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Malta</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Marshall Islnds</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Martinique</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mauritania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mauritius</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mayotte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mexico</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Micronesia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Minor Outl%2EIsl%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Moldova</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Monaco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mongolia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Montenegro</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Montserrat</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Morocco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mozambique</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Myanmar</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N%2EMariana Islnd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Namibia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nauru</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nepal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Netherlands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Netherlands Antilles</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New Caledonia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New Zealand</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nicaragua</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Niger</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nigeria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Niue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Norfolk Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>North Korea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Norway</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Oman</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pakistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Palau</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Palestine%2CState</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Panama</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pap%2E New Guinea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Paraguay</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Peru</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Philippines</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pitcairn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Poland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portugal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Puerto Rico</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Qatar</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Reunion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Romania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Russian Fed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rwanda</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>S%2E Sandwich Ins</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>S%2ETome%2CPrincipe</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Saint Lucia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Saint Martin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Saint Pierre</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Samoa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>San Marino</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Saudi Arabia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senegal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Serbia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Serbia and Montenegr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seychelles</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sierra Leone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Singapore</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sint Maarten</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Slovakia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Slovenia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solomon Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Somalia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>South Africa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>South Korea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>South Sudan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Spain</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sri Lanka</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>St Kitts%26Nevis</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>St%2E Barthelemy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>St%2E Helena</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>St%2E Vincent</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sudan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Suriname</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Svalbard %26 JM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Swaziland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sweden</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Switzerland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Syria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Taiwan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tajikistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tanzania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thailand</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Timor-Leste</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Togo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tokelau</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tonga</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Trinidad%2CTobago</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tunisia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Turkiye</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Turkmenistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Turksh Caicosin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tuvalu</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Uganda</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ukraine</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United Kingdom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United States</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Uruguay</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Utd%2EArab Emir%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Uzbekistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vanuatu</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vatican City</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Venezuela</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vietnam</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Virgin Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wallis %26 Futuna</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Western Sahara</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yemen</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Zambia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Zimbabwe</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Current_Status__c</picklist>
-            <values>
-                <fullName>A%26E Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>A%26E Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>A%26E Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto-Approval Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto-Approval Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Closed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA Admin Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA Admin Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA Admin Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Insides Sales Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Insides Sales Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Insides Sales Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Open</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>RPM Admin Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Admin Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPM Admin Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Geo_Code__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PROC</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Account_Partner_Type__c</picklist>
-            <values>
-                <fullName>Academia %26 research institutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Service Provider %28CSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Comm Service Provider %28CoSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Contract Manufacturer %28CM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Services %28Social Media%2C Streaming%2C eWallet%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Electronic Manufacturing Services %28EMS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Embedded Board Manufacturer %28EBM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Enterprise Influencer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGA Design Services</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Global System Integrator %28GSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hardware System Integrator %28HSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Design House</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor %28ISV%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Approved Component Supplier %28IACS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Approved Device Supplier %28IADS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Authorized Distributor %28IAD%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Solution Aggregator</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Local Original Equipment Manufacturer %28LOEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Managed Service Provider %28MSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>National Solution Integrator %28NSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>National Solution Provider %28NSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Operational Technology System Integrator %28OTSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Design Manufacturer %28ODM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retailer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Telcom Equipment Manufacturer %28TEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Value Added Reseller %28VAR%29</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Alt_CompanyNameLang__c</picklist>
-            <values>
-                <fullName>ARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DEU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ELL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ENG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FRA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HEB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KOR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>POL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>POR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SIN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SPA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SWE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VIE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZHO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZHT</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Company_Size__c</picklist>
-            <values>
-                <fullName>1-9</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>10-24</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>100-249</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>1000-4999</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>10000%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>25-49</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>250-499</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>50-99</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>500-999</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>5000-9999</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_DeDup_Criteria__c</picklist>
-            <values>
-                <fullName>FAIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PENDING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUCCESS</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Dup_Status__c</picklist>
-            <values>
-                <fullName>DUP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ERROR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FULLDUP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NODUP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NOT PROC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PARTDUP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Email_Domain_Check__c</picklist>
-            <values>
-                <fullName>FAIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PENDING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUCCESS</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Email_Verification_Criteria__c</picklist>
-            <values>
-                <fullName>FAIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PENDING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUCCESS</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Job_Function__c</picklist>
-            <values>
-                <fullName>ADMIN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BR-MGR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BUSDEV</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CONSLT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CSTMR-SVC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DBA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EB-MGR-DVL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ED-TRAIN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ENGG-COMM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ENGG-SUPP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FA-MGR-MNT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FIN-ACCT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HARD-ENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HLTH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUMAN-RES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IM-PROF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IT-MGR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IT-NETWORK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LGL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LOGISTICS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MEDI-PRES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MEDIA-DSGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKT-EXEC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKT-MGR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MNF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OPER</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OT-ENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OT-IT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OT-SLS-MKT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OWNER</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRJ-MGMT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PURCHASING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RTL-SLS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SALES-MKT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SECURE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SL-IT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SL-OWNR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SL-TCH-MGR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SLS-ENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SLS-EXEC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SLS-MGR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOFT-ENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOL-ARCH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TECHINT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEB-DVL</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Legal_Agreement_Criteria__c</picklist>
-            <values>
-                <fullName>FAIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PENDING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUCCESS</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Legal_Agreements__c</picklist>
-            <values>
-                <fullName>DZP_TANDC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZP_TANDC_CH_TW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZP_TANDC_CH_ZHO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZP_TANDC_JPN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZP_TANDC_KOR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EDC_BASIC_TNC_ALL_ENG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GNRL_REG_TNC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INTEL_TERMS_OF_USE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA_TANDC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IQR_TANDC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PSG_TANDC</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_PC_Approve_Reject_Flag__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Partner_Relationship__c</picklist>
-            <values>
-                <fullName>Employee</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Admin</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Points Benefit Manager</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Primary Contact</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Trainee</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Warranty and Support Contact</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Works for</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Partner_Role__c</picklist>
-            <values>
-                <fullName>Builder</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solution Integrator</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Partner_Segment__c</picklist>
-            <values>
-                <fullName>Artificial Intelligence</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>High Performance Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Segment Software</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Virtual Reality</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Partner_Type__c</picklist>
-            <values>
-                <fullName>Academia %26 research institutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Service Provider %28CSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Comm Service Provider %28CoSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Contract Manufacturer %28CM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Services %28Social Media%2C Streaming%2C eWallet%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Electronic Manufacturing Services %28EMS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Embedded Board Manufacturer %28EBM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Enterprise Influencer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGA Design Services</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Global System Integrator %28GSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hardware System Integrator %28HSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Design House</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor %28ISV%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Approved Component Supplier %28IACS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Approved Device Supplier %28IADS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Authorized Distributor %28IAD%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Solution Aggregator</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Local Original Equipment Manufacturer %28LOEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Managed Service Provider %28MSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>National Solution Integrator %28NSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>National Solution Provider %28NSP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Operational Technology System Integrator %28OTSI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Design Manufacturer %28ODM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retailer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Telcom Equipment Manufacturer %28TEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Value Added Reseller %28VAR%29</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Preferred_Language__c</picklist>
-            <values>
-                <fullName>ARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DEU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ELL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ENG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FRA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HEB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KOR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>POL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>POR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SIN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SPA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SWE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VIE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZHO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZHT</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Profession__c</picklist>
-            <values>
-                <fullName>CIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CISO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CONSULTANT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>COO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CTO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DSC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FAV</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FINANCE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGAENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HDE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HOBBYIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IDA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITIS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ITUD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MARKETING</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OPERENGG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OTHER</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRESANA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PROFESSOR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PSM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SADE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SALES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SSA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>STUDENT</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Reject_Reason__c</picklist>
-            <values>
-                <fullName>Company information cannot be verified %28ex%2E Address%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Does not meet Intel%C2%AE Partner Alliance membership qualifications</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Duplicate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Group email addresses are not supported %E2%80%93 must be an Individual email address</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Invalid domain %28website%2C email%2C etc%2E%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Legal%2FCompliance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Non- functional website</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Rejected_By__c</picklist>
-            <values>
-                <fullName>Data Ops</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDM</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Source__c</picklist>
-            <values>
-                <fullName>DZP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dev_Cloud_Ent</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EPS_Verified_C</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ESR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IIPAM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA - Portal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IQR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ISvC_Auth_Cntct</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OnDemand_Rev</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PFT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PSG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PSG_SEP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>QDMS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPS_Agency</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RPS_Retailer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Siaas_Service</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tend_Mgmt</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WebQuote</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Status_Reason__c</picklist>
-            <values>
-                <fullName>Access granted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Access granted to Existing User</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Account%2Fcontact not in English format</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Approved for Targeted Doc Only</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bad %2F junk %2F test data</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Below Threshold</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CNDA Initiated</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Contact is already Associated to an existing Intel Account</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Contacted Intel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Contacted applicant</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Does not meet criteria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Duplicate Request</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Education</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IPA Invite in-process</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Incorrect route - not partner-led%2Fend customer scenario</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Inquiry assigned to LDR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Inquiry assigned to account owner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New Account%2FContact Creation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New Contact Creation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No project details provided</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No response to CNDA request</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>No valid Intel opportunity indicated</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Not IPA-eligible</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Passed to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Personal email</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Product no longer available for new designs</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Request approved with CNDA pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Unable to contact</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Status__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PendingwithPartner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Subscriptions__c</picklist>
-            <values>
-                <fullName>CSP_Sub</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CSPx2_Sub2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CSPx2_Sub3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CSPx2_Sub4</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EDCTNTRNGS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVENTCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVNTTRDSHW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INDSTRYSOL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MEMBCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NEWSLETTER</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OFFRSPRMTN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OpenVINO_SUB01</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PARRESCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>POINTCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRDCTUPDTS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRDSOLCOM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRESSRELES</fullName>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19762,14 +17316,6 @@ ISPICKVAL (PRM_Status_Reason__c , &quot;Others&quot;), ISBLANK(PRM_Review_Note_t
 )</errorConditionFormula>
         <errorDisplayField>PRM_Review_Note_txt__c</errorDisplayField>
         <errorMessage>Please provide rejection reason.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>GstNumberValidation</fullName>
-        <active>true</active>
-        <description>GST number should not have any special characters</description>
-        <errorConditionFormula>NOT(REGEX( PRM_Tax_Number__c , &quot;^[a-zA-Z0-9 ]*$&quot;))</errorConditionFormula>
-        <errorDisplayField>PRM_Tax_Number__c</errorDisplayField>
-        <errorMessage>GST Number should not have special characters</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_AccountChangeOnRegistration</fullName>

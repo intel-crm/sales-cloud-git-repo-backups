@@ -33,7 +33,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vince Currella,Asma,cormack glass,christopher haynes,tim wood,ken constantino,todd phillips</value>
+            <value>cormack glass,christopher haynes,tim wood,ken constantino,todd phillips</value>
         </criteriaItems>
         <criteriaItems>
             <column>Activity.Core_Subtype_of_Activity__c</column>
@@ -80,7 +80,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

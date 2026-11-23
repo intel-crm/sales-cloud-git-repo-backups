@@ -73,7 +73,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Recovery Quarter</displayNameOverride>
             <field>Core_MDF_Quarter_Year_Nm__c</field>
             <table>Core_MDF_Partnership_Score_Detail__c</table>
         </columns>
@@ -84,7 +83,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Geo/Region</displayNameOverride>
             <field>Core_MDF_Region_Cd__c</field>
             <table>Core_MDF_Partnership_Score_Detail__c</table>
         </columns>
@@ -100,19 +98,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Quarter&apos;s Recovery Balance Amount</displayNameOverride>
             <field>Core_MDF_Total_Recovery_Amt__c</field>
             <table>Core_MDF_Partnership_Score_Detail__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Balance to be Recovered</displayNameOverride>
             <field>Core_MDF_Balance_Amount_Amt__c</field>
-            <table>Core_MDF_Partnership_Score_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Recovery_Account_nm__c</field>
             <table>Core_MDF_Partnership_Score_Detail__c</table>
         </columns>
         <masterLabel>Partnership Score Details</masterLabel>

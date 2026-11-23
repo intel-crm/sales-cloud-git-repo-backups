@@ -38,7 +38,7 @@
         <filterApplied>false</filterApplied>
         <isSourceFormula>true</isSourceFormula>
         <sourceField xsi:nil="true"/>
-        <sourceFormula>formulaField[&apos;UsageReportingOrgId__c&apos;]</sourceFormula>
+        <sourceFormula>formulaField[&apos;InternalOrganization&apos;]</sourceFormula>
         <targetField>TenantBillingUsageEvent__dll.InternalOrganization__c</targetField>
     </fieldSourceTargetMaps>
     <fieldSourceTargetMaps>
@@ -160,14 +160,6 @@
         <sourceField>TenantBillingUsageEvent.RootResourceIdOrApiName__c</sourceField>
         <sourceFormula>RootResourceIdOrApiName</sourceFormula>
         <targetField>TenantBillingUsageEvent__dll.RootResourceIdOrApiName__c</targetField>
-    </fieldSourceTargetMaps>
-    <fieldSourceTargetMaps>
-        <creationType>Custom</creationType>
-        <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
-        <sourceField>TenantBillingUsageEvent.UserId__c</sourceField>
-        <sourceFormula>UserId</sourceFormula>
-        <targetField>TenantBillingUsageEvent__dll.UserId__c</targetField>
     </fieldSourceTargetMaps>
     <masterLabel>TenantBillingUsageEvent_map_TenantBillingUsageEvent_1717825437118</masterLabel>
     <sourceObjectName>TenantBillingUsageEvent</sourceObjectName>

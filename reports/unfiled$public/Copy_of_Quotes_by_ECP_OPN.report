@@ -33,6 +33,9 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$price_suggested_resale_amt__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
     <description>to find the Parent quote or CP</description>
     <filter>
         <criteriaItems>

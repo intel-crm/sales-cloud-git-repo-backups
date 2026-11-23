@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_MDF_Bank_Program_Value__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Ecosystem_Extension_Fund</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_BudgetTypeBasedSharing_Ind__c</field>

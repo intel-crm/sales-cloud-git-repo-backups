@@ -18,53 +18,7 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         keyword = PMP_SearchUtilityController.escapeSosl(keyword);
         
         Set<Id> partnersIdsFound = New Set<Id>(); 
-        //TranslationEOL
-        /* if (String.isNotEmpty(keyword)) {   
-        try{
-            // Direct search on the main company object instead of translations
-            List<List<SObject>> searchResults = [
-                FIND :keyword IN ALL FIELDS 
-                RETURNING PMP_Company__c(
-                    Id WHERE Id IN :partners 
-                    AND PMP_Company_Lifecycle_Status_Nm__c = :PMP_StaticConstants_Partner.Published
-                    AND PMP_Benefit_Update_Ind__c = false
-                )
-];}}catch(Exception e){}
-            
-            for (List<SObject> listObj : searchResults) {
-                for(SObject obj : listObj) {
-                    partnersIdsFound.add(obj.Id);
-                }
-            }*/
         List<id> partnerIds=new List<id>();
-        if (String.isNotEmpty(keyword))
-{   
-    List<List<SObject>> pubCompanyList = new List<List<SObject>>(); 
-    try{
-        // SOSL to find partner companies directly in all fields which are published.
-        pubCompanyList = [FIND :keyword IN ALL FIELDS RETURNING PMP_Company__c(Id WHERE Id IN :partners 
-                                                                                          AND PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published
-                                                                                          AND PMP_Benefit_Update_Ind__c=False)];
-    
-    }catch(Exception e){
-        //System.debug('Error occured while searching the keyword in company object :'+ e);
-        //throw e;//error handling
-        
-    }
-    for (List<SObject> listObj : pubCompanyList)
-    {
-        for(SObject obj : listObj)
-        {
-            if(obj.getSObjectType() == PMP_Company__c.sObjectType)
-            {
-                PMP_Company__c company = (PMP_Company__c) obj; 
-                partnersIdsFound.add(company.Id);
-                
-            }
-        }
-    }
-}
-      /*  
         
         String userLangCode = '';
         
@@ -100,7 +54,7 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                     }
                 }
             }
-        }*/
+        }
         else{
             List<PMP_Company__c> pubCompList = new List<PMP_Company__c>();
             try{
@@ -137,26 +91,23 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         
         Set<Id> partnersIdsFound = New Set<Id>(); 
         List<id> partnerIds=new List<id>();
-        //Commented for TranslationEOL 
-       /* String userLangCode = '';
+        
+        String userLangCode = '';
         
         
         if(UserInfo.getLanguage() != null){
             userLangCode = UserInfo.getLanguage();
-        }*/
+        }
         
-          if (String.isNotEmpty(keyword))
+        if (String.isNotEmpty(keyword))
         {   
             List<List<SObject>> pubTransList= new List<List<SObject>>(); 
             try{
-                //Commented for TranslationEOL
-                // String streamIdName = PMP_Utility.getValue('PMP_Uberflip_Stream_Id_Name');
-                // pubTransList = [FIND :keyword IN NAME FIELDS RETURNING PMP_Company_Translation__c(PMP_Company_Information_Id__c
-                //                                                                                   WHERE PMP_Company_Information_Id__r.PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published AND PMP_Company_Information_Id__r.PMP_Benefit_Update_Ind__c=False
-                //                                                                                   AND PMP_Field_Nm__c != :streamIdName)];
-                pubTransList = [FIND :keyword IN NAME FIELDS RETURNING PMP_Company__c(Id
-                                                                                      WHERE PMP_Company_Lifecycle_Status_Nm__c = :PMP_StaticConstants_Partner.Published
-                                                                                      AND PMP_Benefit_Update_Ind__c = false)];
+                String streamIdName = PMP_Utility.getValue('PMP_Uberflip_Stream_Id_Name');
+                //SOSL to find partner in name field which are published.
+                pubTransList = [FIND :keyword IN NAME FIELDS RETURNING PMP_Company_Translation__c(PMP_Company_Information_Id__c
+                                                                                                  WHERE PMP_Company_Information_Id__r.PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published AND PMP_Company_Information_Id__r.PMP_Benefit_Update_Ind__c=False
+                                                                                                  AND PMP_Field_Nm__c != :streamIdName)];
             
             
             }catch(Exception e){
@@ -167,19 +118,17 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             {
                 for(SObject obj : listObj)
                 {
-                    //Commented for TranslationEOL
-                    // if(obj.getSObjectType() == PMP_Company_Translation__c.sObjectType)
-                    // {
-                    //     PMP_Company_Translation__c trans = (PMP_Company_Translation__c) obj; 
-                    //     partnersIdsFound.add(trans.PMP_Company_Information_Id__c);
-                    // }
-                    if (obj.getSObjectType() == PMP_Company__c.sObjectType) {
-                        PMP_Company__c comp = (PMP_Company__c)obj;
-                        partnersIdsFound.add(comp.Id);
+                    if(obj.getSObjectType() == PMP_Company_Translation__c.sObjectType)
+                    {
+                        PMP_Company_Translation__c trans = (PMP_Company_Translation__c) obj; 
+                        partnersIdsFound.add(trans.PMP_Company_Information_Id__c);
+                        
                     }
                 }
             }
         }
+       
+        
         partnerIds.addAll(partnersIdsFound);
         // System.debug('partnerIds'+partnerIds);
         return partnerIds;
@@ -447,7 +396,7 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         //Pagination fix: below ptnrList variable is modified
 		//Modified as a part of OPID restructure : Removing PMP_Account_Id__c, PMP_Account_Id__r.Core_IPA_Badge_Tier__c from query																														  
         //String ptnrList = 'select Id,Name,PMP_Is_Distributor_Ind__c,PMP_Account_Id__c,PMP_Badge_Tier_Sequence_Nbr__c,PMP_Account_Id__r.Core_IPA_Badge_Tier__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c,PMP_Account_Industry__c,PMP_Account_Application__c,PMP_Account_Specialty__c,PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c,toLabel(PMP_Company_Lead_Gen_Language_Nm__c),PMP_IPA_Badge_Tier_Txt__c,PMP_Company_Status_Update_Dt__c,PMP_Account_Dsc__c,PMP_Account_Website__c,PMP_Disti_Sys_Solutions_Nm__c,PMP_Disti_Components_Nm__c,PMP_Disti_Country_Coverage_Txt__c,PMP_Account_Id__r.Core_Account_Type__c,PMP_Partner_Benefit_Type__c,PMP_Biz_Org_Type_Txt__c from PMP_Company__c ';
-		String ptnrList = 'select Id,Name,PMP_Is_Distributor_Ind__c,PMP_Badge_Tier_Sequence_Nbr__c,PMP_Account_Id__r.Core_IPA_Badge_Tier__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c,PMP_Account_Industry__c,PMP_Account_Application__c,PMP_Account_Specialty__c,PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c,toLabel(PMP_Company_Lead_Gen_Language_Nm__c),PMP_IPA_Badge_Tier_Txt__c,PMP_Company_Status_Update_Dt__c,PMP_Account_Dsc__c,PMP_Account_Tag_Line__c,PMP_Account_Website__c,PMP_Disti_Sys_Solutions_Nm__c,PMP_Disti_Components_Nm__c,PMP_Disti_Country_Coverage_Txt__c,PMP_Account_Id__r.Core_Account_Type__c,PMP_Partner_Benefit_Type__c,PMP_Biz_Org_Type_Txt__c from PMP_Company__c ';
+		String ptnrList = 'select Id,Name,PMP_Is_Distributor_Ind__c,PMP_Badge_Tier_Sequence_Nbr__c,PMP_Account_Id__r.Core_IPA_Badge_Tier__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c,PMP_Account_Industry__c,PMP_Account_Application__c,PMP_Account_Specialty__c,PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c,toLabel(PMP_Company_Lead_Gen_Language_Nm__c),PMP_IPA_Badge_Tier_Txt__c,PMP_Company_Status_Update_Dt__c,PMP_Account_Dsc__c,PMP_Account_Website__c,PMP_Disti_Sys_Solutions_Nm__c,PMP_Disti_Components_Nm__c,PMP_Disti_Country_Coverage_Txt__c,PMP_Account_Id__r.Core_Account_Type__c,PMP_Partner_Benefit_Type__c,PMP_Biz_Org_Type_Txt__c from PMP_Company__c ';																																																																																																																																																													   
        
         //String finalPartnerList= ptnrList+sortBy; //pagination fix: commented by priyanka
         String finalPartnerList= ptnrList;// pagination fix: modified by priyanka from 'ptnrList+ sortBy' to 'ptnrList'
@@ -514,9 +463,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         }
         List<PMP_Company__c> partnerPaginatedList = new List<PMP_Company__c>();
         List<Id> paginatedIds = new List<Id>();
-	//TranslationEOL option 2 - use existing SOQL
-        // Populate from existing queried rows to reuse later and avoid extra SOQL
-        Map<Id, PMP_Company__c> companyById = new Map<Id, PMP_Company__c>();
 		//Commenting as a part of OPID restructure										  
         //Set<Id> accIds = new Set<Id>();
        // System.debug('..partnerList inside the getPartners()...'+partnerList);
@@ -525,8 +471,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         {
             partnerPaginatedList.add(comp);
             paginatedIds.add(comp.Id);
-	    // TranslationEOL option 2 - use existing SOQL
-            companyById.put(comp.Id, comp); 
             //accIds.add(comp.PMP_Account_Id__c); //Commenting as a part of OPID restructure
         }
         Map<Id, Boolean> companyIdAndMemberFlag = formMemberFlagMap(new Set<Id>(paginatedIds));
@@ -594,9 +538,9 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
        //Partner Card Attributes - Program Membership,Industry,Application
        Map<String, Boolean> contactVisMap = new Map<String,Boolean>();
        contactVisMap = PMP_SearchUtilityController.isContactPartnerVisible(partnerPaginatedList);
-        //Commented for TranslationEOL
+        
        //Logic to get Partner Description from translation
-      /* Map<String,PMP_Company_Translation__c> ptnrDescMap = new Map<String,PMP_Company_Translation__c>(); 
+       Map<String,PMP_Company_Translation__c> ptnrDescMap = new Map<String,PMP_Company_Translation__c>(); 
         List<PMP_Company_Translation__c> ptnrTransList = new List<PMP_Company_Translation__c>();
         if(Schema.sObjectType.PMP_Company_Translation__c.isAccessible()){
             ptnrTransList = [SELECT PMP_Field_Nm__c, PMP_Company_Information_Id__c, PMP_English_Txt__c, PMP_Chinese_Txt__c, PMP_Japanese_Txt__c FROM PMP_Company_Translation__c 
@@ -605,16 +549,8 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         }
         for(PMP_Company_Translation__c trans: ptnrTransList){
             ptnrDescMap.put(trans.PMP_Company_Information_Id__c,trans);
-        }*/
+        }
         //Changes End
-	// TranslationEOL option 1 - added extra SOQL
-        //Map<Id, PMP_Company__c> companyById = new Map<Id, PMP_Company__c>();
-       /* if (!paginatedIds.isEmpty() && Schema.sObjectType.PMP_Company__c.isAccessible()) {
-            for (PMP_Company__c c : [SELECT Id, PMP_Account_Dsc__c, PMP_Account_Tag_Line__c FROM PMP_Company__c WHERE Id IN :paginatedIds]) {
-                companyById.put(c.Id, c);
-            }
-        }*/
-
         Map<String,Id> valueIdMap = new Map<String,Id>();
         List<PMP_Partner_Specialty__c> specialtyList = new List<PMP_Partner_Specialty__c>();
         if(Schema.sObjectType.PMP_Partner_Specialty__c.isAccessible()){
@@ -678,8 +614,8 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             }
             
             partnerWrapper.isGuest = PMP_SearchUtilityController.isGuest();
-       //Commented for TranslationEOL
-          /*  if(ptnrDescMap.containsKey(ptnr.Id)){
+       
+            if(ptnrDescMap.containsKey(ptnr.Id)){
                 
                  String temp = '';
                 String description = '';
@@ -707,13 +643,7 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                 partnerWrapper.longDescription = description != NULL ? description.unescapeHtml4().stripHtmlTags() : description;
                 partnerWrapper.description = description != NULL ? description.unescapeHtml4().stripHtmlTags() : description;
                 
-            }*/
-            if (companyById.containsKey(ptnr.Id)) {
-                String description = companyById.get(ptnr.Id).PMP_Account_Dsc__c;
-                // Tagline : String tagline = companyById.get(ptnr.Id).PMP_Account_Tag_Line__c;
-                partnerWrapper.longDescription = description != NULL ? description.unescapeHtml4().stripHtmlTags() : description;
-                partnerWrapper.description = partnerWrapper.longDescription;
-            } 
+            }
             partnerWrapper.name = ptnr.Name;
             partnerWrapper.contactByEmail = false;
             partnerWrapper.contactByForm = true;

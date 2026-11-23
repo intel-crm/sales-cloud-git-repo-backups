@@ -8,7 +8,7 @@ Modification Log    :
 * Developer                         Date                           Description
 * ------------------------------------------------------------------------------------------------------------------------------------
 * Dinesh                        7-Sept-2020                   This handler class will be called from trigger whenever a record is created/updated/deleted.   
-* Srishty            15-Sept-2020                  Updated afterUpdate method to invoke trigger only if specific field is updated.
+* Srishty						15-Sept-2020                  Updated afterUpdate method to invoke trigger only if specific field is updated.
 * Ruchi                         18 July 2025                 Removed reference for Partner role(PRM_Partner_Role_Nm__c) on VX Data Table(PRM_Value_Exchange_Data__c). Added comment "IPA Refresh 2.0 - Removed partner role as part of TWC729-8087"
 **************************************************************************************************************************************/
 public Without Sharing class PRM_VXData_Report_TriggerHandler extends TriggerHandler{
@@ -27,7 +27,6 @@ public Without Sharing class PRM_VXData_Report_TriggerHandler extends TriggerHan
     public override void afterInsert(){
         if(isActive('PRM_VXData_Trigger_Switch')){
             PRM_VXData_Report_Utility.trainingRecordsUpdate(Trigger.new);
-            PRM_VXData_Report_Utility.shareRecordWithPublicGroup(Trigger.new);
         }
     }
     //This method will call utility method when record is updated for specific field .
@@ -72,7 +71,7 @@ public Without Sharing class PRM_VXData_Report_TriggerHandler extends TriggerHan
     public override void afterDelete(){
         if(isActive('PRM_VXData_Trigger_Switch')){
             PRM_VXData_Report_Utility.trainingRecordsUpdate(Trigger.old);
-      }
+	    }
     }
     
     

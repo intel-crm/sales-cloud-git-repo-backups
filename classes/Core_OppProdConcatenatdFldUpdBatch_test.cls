@@ -111,7 +111,7 @@ public class Core_OppProdConcatenatdFldUpdBatch_test {
             update prodList;             
             //Call the schedular batch class which calls Core_OppProductConcatenatedFieldUpdBatch in turn
           //  Core_OppProdConcatenationt_Schedule sh1 = new Core_OppProdConcatenationt_Schedule();
-            //String sch = '0 0 23 * * ?';
+            String sch = '0 0 23 * * ?';
         Core_OppProductConcatenatedFieldUpdBatch batchSched = new Core_OppProductConcatenatedFieldUpdBatch();
         Database.executeBatch(batchSched);
           //  system.schedule('Test Prod Name concatenation', sch, sh1); 

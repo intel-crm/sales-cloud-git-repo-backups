@@ -64,7 +64,7 @@
     </columns>
     <description>Report that lists account balance for each account node for a given budget year .</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -77,7 +77,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ,ASMO,EMEA,PRC</value>
+            <value>APJ,ASMO,EMEA,PRC,INDIA</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Type_Txt__c</column>
@@ -99,13 +99,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

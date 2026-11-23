@@ -25,7 +25,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         List<initialInputs> externalUserList = new List<initialInputs>();
         List<initialInputs> additionalUserList = new List<initialInputs>(); 
         List<initialInputs> externalUserwithGroupIdList = new List<initialInputs>();
-        Map<String, List<initialInputs>> categoryToInputs = new Map<String, List<initialInputs>>();
+        Map<String, List<initialInputs>> categoryToInputs = new Map<String, List<initialInputs>>();  //Roshan
 	
         try{
             for(initialInputs inputs : processInput){
@@ -35,6 +35,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     } else {
                         //internalIUPGMUserList.add(inputs);
 
+                        // Roshan
                         String category = String.isBlank(inputs.category) ? null : inputs.category;
                         if (!categoryToInputs.containsKey(category)) {
                             categoryToInputs.put(category, new List<initialInputs>());
@@ -54,9 +55,11 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                 
             }
             
+            // Roshan
             if (!categoryToInputs.isEmpty()) {
                 internalIUPGMUserList.addAll(categoryToInputs.values()[0]);
             }
+
             if(internalUserList != NULL && internalUserList.Size() > 0){
                 toGroupIdUsers(internalUserList);
             }
@@ -92,7 +95,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         List<String> accntList = new List<String>();
         List<String> programList = new List<String>();
         List<String> approvalStageList = new List<String>();
-        String category = '';
+        String category = '';  //Roshan
         
         try{
             for(initialInputs inputs : internalUserList){
@@ -104,12 +107,14 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     programList.add(inputs.programName);
                     geoList.add(inputs.region);
                 }
+
+                //Roshan
                 if(inputs.category != NULL){
                     category = inputs.category;
                 }
             }
 
-            resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(accntList, programList, geoList, permissionSetNameList, category);
+            resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(accntList, programList, geoList, permissionSetNameList, category);  //Roshan
             //resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(accntList, programList, geoList, permissionSetNameList);
             for(initialInputs input : internalUserList){
 
@@ -120,11 +125,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
 
                 Map<string, List<Id>> resultsubMap;
                 List<Id> userIds;
-                //ATHR - Deeply Nested if 16209
-                if(resultMap == null || resultMap.isEmpty()) {
-                    continue;
-                }
-                //if(resultMap != null){
+                if(resultMap != null){
                     String allAccountNOKey = input.programName + input.region + role + input.ultimateAccountId;
                     String allAccountNOKeyWW = input.programName + 'WW' + role + input.ultimateAccountId;
                     String allAccountYesKey = input.programName + input.region + role + 'null';
@@ -140,7 +141,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                                }
                         }
                     } 
-                //}
+                }
                 if(userIds != NULL && !userIds.isEmpty()){
 
                     if (input.programName == 'CoGTM' && input.userIdList != null && !input.userIdList.isEmpty()) {
@@ -159,11 +160,6 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     params.templateName = input.templateName;
                     params.userIdList = userIds;
                     params.sendDiff = input.sendDiff;
-
-                    //Roshan - Notfiy CoGTM Business Approvers
-                    params.objectName = input.objectName;
-                    params.notificationName = input.notificationName;
-
                     settingMailParameters.add(params);
                 }
             }
@@ -208,33 +204,27 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                 }
             }
             
-            //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
+            //Roshan - Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
             if(groupIdSet != NULL){
                 for(GroupMember gm : [SELECT Id, GroupId, UserOrGroupId 
                                       FROM GroupMember
                                       WHERE GroupId IN: groupIdSet AND (UserOrGroup.isActive = true OR UserOrGroup.Partner_License_Reclaimed__c = true)]){
-                    //ATHR - Deeply Nested if 16209
-                    if (gm.UserOrGroupId == null || !String.valueOf(gm.UserOrGroupId).startsWith('005')) continue;
-                    //if(string.valueof(gm.UserOrGroupId).startsWith('005')){
+                    if(string.valueof(gm.UserOrGroupId).startsWith('005')){
                         for(Id recordId : recordIdGroupIdSetMap.keySet()){
-                            //ATHR - Deeply Nested if 16209
-                            if(recordIdGroupIdSetMap.get(recordId) == null || gm.GroupId == null || !recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
-                                continue;
-                            }
-                            //if(recordIdGroupIdSetMap.get(recordId) != NULL && recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
+                            if(recordIdGroupIdSetMap.get(recordId) != NULL && recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
                                 userIdSet.add(gm.UserOrGroupId);
                                 if(recordIdUserIdListMap.containsKey(recordId)){
                                     recordIdUserIdListMap.get(recordId).add(gm.UserOrGroupId);
                                 }else{
                                     recordIdUserIdListMap.put(recordId,new List<Id>{gm.UserOrGroupId});
                                 }
-                            //}
+                            }
                         }
-                    //}
+                    }
                 }
             }
         
-            //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
+            //Roshan - Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
             if(permissionSetNameList != NULL && permissionSetNameList.Size() > 0){ 
                 for(PermissionSetAssignment psa : [SELECT Id, PermissionSet.Name,AssigneeId
                                                    FROM PermissionSetAssignment
@@ -248,11 +238,8 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
             
             for(initialInputs input : internalUserList){
                 Core_MDF_GenericClassToSendMail.MailParams params = new Core_MDF_GenericClassToSendMail.MailParams();
-                //ATHR - Deeply Nested if 16209
-                if(input.recordId == null || recordIdUserIdListMap.get(input.recordId) == NULL || !recordIdUserIdListMap.containsKey(input.recordId)){
-                    continue;
-                }
-                //if(recordIdUserIdListMap.containsKey(input.recordId) && recordIdUserIdListMap.get(input.recordId) != NULL){
+                
+                if(recordIdUserIdListMap.containsKey(input.recordId) && recordIdUserIdListMap.get(input.recordId) != NULL){
                     if(input.permissionSetName != NULL){
                         for(Id userId : recordIdUserIdListMap.get(input.recordId)){
                             if(userWithRequiredPermissionSet.contains(userId)){
@@ -265,7 +252,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     params.recordId = input.recordId;
                     params.sendDiff = input.sendDiff;
                     params.templateName = input.templateName;
-                //}                
+                }                
                 if(params.userIdList != NULL && params.userIdList.Size() > 0){
                     settingMailParameters.add(params);
                 }
@@ -335,11 +322,8 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
             
             for(initialInputs input : externalUserList){
                 Core_MDF_GenericClassToSendMail.MailParams params = new Core_MDF_GenericClassToSendMail.MailParams();
-                //ATHR - Deeply Nested if 16209
-                if(input.accountId == null || accIdUserIdSetMap.get(input.accountId) == NULL || !accIdUserIdSetMap.containsKey(input.accountId)){
-                    continue;
-                }
-                //if(accIdUserIdSetMap.containsKey(input.accountId) && accIdUserIdSetMap.get(input.accountId) != NULL){
+                
+                if(accIdUserIdSetMap.containsKey(input.accountId) && accIdUserIdSetMap.get(input.accountId) != NULL){
                     if(input.permissionSetName != NULL){
                         for(Id userId : accIdUserIdSetMap.get(input.accountId)){
                             if(userWithRequiredPermissionSet.contains(userId)){
@@ -353,7 +337,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     params.recordId = input.recordId;
                     params.sendDiff = input.sendDiff;
                     params.templateName = input.templateName;
-                //}
+                }
                    
                 if(params.userIdList != NULL && params.userIdList.Size() > 0){
                     settingMailParameters.add(params);
@@ -412,14 +396,8 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         @InvocableVariable(label = 'Region')
         public string region;
 
+        //Roshan
         @InvocableVariable(label = 'Category')
         public String category;
-
-        //Roshan - Notfiy CoGTM Business Approvers
-        @InvocableVariable(label = 'objectName')
-        public String objectName;
-
-        @InvocableVariable(label = 'notificationName')
-        public String notificationName;
     }
 }

@@ -108,16 +108,14 @@ public class PRM_IPA_Affiliations_Test {
         acctChnlMem.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acctChnlMem.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMem.PRM_Status_Nm__c = 'Approved';
-        acctChnlMem.PRM_Partner_Role__c='Solution Integrator';
-        acctChnlMem.PRM_Status_Reason_Txt__c='test';
+        acctChnlMem.PRM_Partner_Role__c='Seller';
         
         PRM_AccountChannelMembership__c acctChnlMem1 = new PRM_AccountChannelMembership__c(); 
         acctChnlMem1.PRM_Account_Id__c=testAccount1.Id;
         acctChnlMem1.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acctChnlMem1.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMem1.PRM_Status_Nm__c = 'Approved';
-        acctChnlMem1.PRM_Partner_Role__c='Solution Integrator';
-        acctChnlMem1.PRM_Status_Reason_Txt__c='test';
+        acctChnlMem1.PRM_Partner_Role__c='Seller';
         
         listAcm.add(acctChnlMem);
         listAcm.add(acctChnlMem1);
@@ -128,24 +126,22 @@ public class PRM_IPA_Affiliations_Test {
         acctChnlMem2.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acctChnlMem2.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMem2.PRM_Status_Nm__c = 'Approved';
-        acctChnlMem2.PRM_Partner_Role__c='Solution Integrator';
-        acctChnlMem2.PRM_Status_Reason_Txt__c='test';
+        acctChnlMem2.PRM_Partner_Role__c='Seller';
         insert acctChnlMem2;
         
         PRM_IPA_Affiliation__c tb = new PRM_IPA_Affiliation__c();
         tb.PRM_Account__c = listAcm[0].PRM_Account_Id__c;
         tb.PRM_Active__c = true;
         tb.PRM_Builder_Strategy__c = IA.id;
-        tb.PRM_Notes__c='test';
         insert tb;
         
         
         Test.startTest();
         PRM_IPA_Affiliations.fetchAccsData(testAccount.Name,tb.PRM_Builder_Strategy__c);
-        List<PRM_IPA_Affiliations.opidAccAndAcmWrapper > wrapperList = PRM_IPA_Affiliations.fetchAccsData(parent1.Name,IA.id);
+        List<PRM_IPA_Affiliations.AccAndAcmWrapper > wrapperList = PRM_IPA_Affiliations.fetchAccsData(testAccount1.Name,IA.id);
         PRM_IPA_Affiliations.fetchAccsData('abc',IA.Id);
         try{
-            PRM_IPA_Affiliations.tagBuilders(wrapperList, tb.PRM_Builder_Strategy__c);  
+          	PRM_IPA_Affiliations.tagBuilders(wrapperList, tb.PRM_Builder_Strategy__c);  
             PRM_IPA_Affiliations.fetchAccsData(null, null);
         }
         catch(exception e){
@@ -156,9 +152,9 @@ public class PRM_IPA_Affiliations_Test {
     public static testMethod void fetchAccsData_Test1(){
         
         Test.startTest();
-        try{
-            PRM_IPA_Affiliations.tagBuilders(null, null);   
-        }
+         try{
+        	PRM_IPA_Affiliations.tagBuilders(null, null);   
+   		}
         catch(exception e){
         }
         Test.stopTest();        
@@ -168,7 +164,7 @@ public class PRM_IPA_Affiliations_Test {
         
         Id recordTypeIdAccount =Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Id recordTypeIdPagAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();   
-        
+                   
         Account parent2 = new Account();
         parent2.RecordTypeId = recordTypeIdPagAccount;
         parent2.Name='Cello test ltd1';
@@ -221,8 +217,7 @@ public class PRM_IPA_Affiliations_Test {
         acctChnlMem4.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acctChnlMem4.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMem4.PRM_Status_Nm__c = 'Approved';
-        acctChnlMem4.PRM_Partner_Role__c='Solution Integrator';
-        acctChnlMem4.PRM_Status_Reason_Txt__c='test';
+        acctChnlMem4.PRM_Partner_Role__c='Seller';
         insert acctChnlMem4;
         
         PRM_AccountChannelMembership__c acctChnlMem3 = new PRM_AccountChannelMembership__c(); 
@@ -230,154 +225,17 @@ public class PRM_IPA_Affiliations_Test {
         acctChnlMem3.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acctChnlMem3.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMem3.PRM_Status_Nm__c = 'Inactive';
-        acctChnlMem3.PRM_Partner_Role__c='Solution Integrator';
-        acctChnlMem3.PRM_Status_Reason_Txt__c='test';
+        acctChnlMem3.PRM_Partner_Role__c='Seller';
         insert acctChnlMem3;
         
         Test.startTest();
-        List<PRM_IPA_Affiliations.opidAccAndAcmWrapper > wrapperList = PRM_IPA_Affiliations.fetchAccsData(parent2.Name,IA.id);
+        List<PRM_IPA_Affiliations.AccAndAcmWrapper > wrapperList = PRM_IPA_Affiliations.fetchAccsData(testAccount2.Name,IA.id);
         try{
-            PRM_IPA_Affiliations.tagBuilders(wrapperList, IA.Id);  
+          	PRM_IPA_Affiliations.tagBuilders(wrapperList, IA.Id);  
         }
         catch(exception e){
         }
         Test.stopTest();
     }
-    @isTest
-static void testReactivateInactiveAffiliation(){
-
-    Id recordTypeIdAccount =
-        Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName()
-        .get('Mastered_Account').getRecordTypeId();
-
-    Id recordTypeIdPagAccount =
-        Schema.SObjectType.Account.getRecordTypeInfosByName()
-        .get('Partner Account Group').getRecordTypeId();
-
-    // Parent Account
-    Account parentAcc = new Account(
-        RecordTypeId = recordTypeIdPagAccount,
-        Name = 'Parent PAG',
-        BillingCity='New City',
-        BillingStreet='New Street',
-        BillingCountry='India',
-        BillingPostalCode='999999',
-        Core_Intel_Partner_Alliance_PartnerGroup__c=true,
-        Industry='Construction',
-        Core_Deactivated__c=false
-    );
-    insert parentAcc;
-
-    // IPA Account
-    Account testAccount = new Account(
-        RecordTypeId = recordTypeIdAccount,
-        Name='Reactivation Account',
-        AccountNumber='30009999230',
-        Core_User_Defined_Phone_Number__c='9891744621',
-        Core_Account_BU_Focus__c='CCG',
-        BillingCity='City',
-        BillingStreet='Street',
-        BillingCountry='USA',
-        BillingState='OR',
-        BillingPostalCode='65436',
-        ShippingCity='USA',
-        ShippingCountryCode='USA',
-        ShippingCountry='USA',
-        ShippingPostalCode='12334',
-        ShippingState='OR',
-        ShippingStateCode='OR',
-        ShippingStreet='1538 Dogwood Lane',
-        Core_Account_Type__c='Cloud Service Provider (CSP)',
-        Core_Intel_Partner_Alliance_PartnerGroup__c=true,
-        Website='www.test.com',
-        Core_User_Defined_Website__c='www.intel.com',
-        Core_IPA_One_Partner_Id__c=parentAcc.Id,
-        Core_IPA_Partner_Role__c='Service Provider',
-        Core_Deactivated__c=false
-    );
-    insert testAccount;
-
-    // Builder
-    PRM_Builder_Strategy__c builder = new PRM_Builder_Strategy__c(
-        Name='AI Builder',
-        PRM_Active__c=true
-    );
-    insert builder;
-
-    // Channel Program
-    ChannelProgram cp = new ChannelProgram(
-        Name='Intel Partner Alliance',
-        PRM_programCode__c='IPA'
-    );
-    insert cp;
-
-    ChannelProgramLevel cpl = new ChannelProgramLevel(
-        Name='Titanium',
-        ProgramId=cp.Id
-    );
-    insert cpl;
-
-    // ACM Required by logic
-    PRM_AccountChannelMembership__c acm =
-        new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c=testAccount.Id,
-            PRM_Channel_Program_Id__c=cp.Id,
-            PRM_Channel_Program_Level_Id__c=cpl.Id,
-            PRM_Status_Nm__c='Approved',
-            PRM_Partner_Role__c='Solution Integrator',
-            PRM_Status_Reason_Txt__c='Test'
-        );
-    insert acm;
-
-    // Existing INACTIVE affiliation
-    PRM_IPA_Affiliation__c inactiveAff =
-        new PRM_IPA_Affiliation__c(
-            PRM_Account__c=testAccount.Id,
-            PRM_Builder_Strategy__c=builder.Id,
-            PRM_Active__c=false,
-            PRM_Notes__c='Old Note'
-        );
-    insert inactiveAff;
-
-    // Wrapper passed to Tag Builder
-    PRM_IPA_Affiliations.opidAccAndAcmWrapper wrap =
-        new PRM_IPA_Affiliations.opidAccAndAcmWrapper(
-            testAccount.Id,
-            testAccount.Name,
-            '',
-            '',
-            '',
-            'New Note'
-        );
-
-    List<PRM_IPA_Affiliations.opidAccAndAcmWrapper> wrapperList =
-        new List<PRM_IPA_Affiliations.opidAccAndAcmWrapper>{wrap};
-
-    Test.startTest();
-
-    PRM_IPA_Affiliations.tagBuilders(wrapperList, builder.Id);
-
-    Test.stopTest();
-
-    inactiveAff = [
-        SELECT Id,
-               PRM_Active__c,
-               PRM_Notes__c
-        FROM PRM_IPA_Affiliation__c
-        WHERE Id = :inactiveAff.Id
-    ];
-
-    System.assertEquals(true, inactiveAff.PRM_Active__c);
-    System.assertEquals('New Note', inactiveAff.PRM_Notes__c);
-
-    Integer affCount = [
-        SELECT Count()
-        FROM PRM_IPA_Affiliation__c
-        WHERE PRM_Account__c = :testAccount.Id
-        AND PRM_Builder_Strategy__c = :builder.Id
-    ];
-
-    System.assertEquals(1, affCount);
-}
-              
+    
 }

@@ -758,7 +758,7 @@ export default class core_IPS_CreateCase extends NavigationMixin(LightningElemen
                 this.caseSeverity = this.caseEditData.cs.Core_Severity__c;
                 this.caseCategory = this.caseEditData.cs.Core_Case_Issue_Category__c;
                 this.caseSubCategory = this.caseEditData.cs.Core_Case_Issue_Sub_Category__c;
-                if(this.caseEditData.cs.asset != null && this.caseEditData.cs.asset != undefined){   // changed by tushar---- vanuability        
+                if(this.caseEditData.asset != null && this.caseEditData.asset != undefined){           
                     this.passSupportedProductID = this.caseEditData.cs.Asset.Core_Supported_Product__c;
                 }
                 else{

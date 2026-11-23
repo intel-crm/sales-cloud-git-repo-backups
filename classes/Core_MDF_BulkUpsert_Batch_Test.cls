@@ -45,8 +45,7 @@ public class Core_MDF_BulkUpsert_Batch_Test {
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         
         system.runAs(systemAdmin){
-            // Highlight: Unused Local Variable 
-           // set<Id> pfrIds= new set<Id>();
+            set<Id> pfrIds= new set<Id>();
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             
             PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest limit 1];

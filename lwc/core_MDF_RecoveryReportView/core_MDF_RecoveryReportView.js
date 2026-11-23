@@ -7,6 +7,7 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import Id from '@salesforce/user/Id';
 import { getRecord } from 'lightning/uiRecordApi';
 import userNameFIELD from '@salesforce/schema/User.Username';
+import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 import rowLabel from '@salesforce/label/c.Core_MDF_RowLabel';
 import recoveryAmount from '@salesforce/label/c.Core_MDF_RecoveryAmount';
 import selectedQuarterClaim from '@salesforce/label/c.Core_MDF_SelectedQuarterClaim';
@@ -40,7 +41,7 @@ import commentsLinkText from '@salesforce/label/c.Core_MDF_Offset_Comments_Link'
 import commentsPopUpHeaderText from '@salesforce/label/c.Core_MDF_Offset_Comments_Popup_Header';
 import readyToRecoverError from '@salesforce/label/c.Core_MDF_Recovery_Offset_ReadyToRecover_Error';
 import savedRecoveryOffsetAmountLabel from '@salesforce/label/c.Core_MDF_SavedRecoveryOffsetAmountLabel';
-import surePayRecForCurrQuarter from '@salesforce/label/c.Core_MDF_SurePayRecoveryForCurrQuarter';
+
 
     const columnsTest = [
         { label: rowLabel, fieldName: 'groupName' ,cellAttributes: {
@@ -83,7 +84,6 @@ export default class Core_MDF_RecoveryReportView extends LightningElement {
     commentsPopUpHeaderText = commentsPopUpHeaderText;
     readyToRecoverError = readyToRecoverError;
     savedRecoveryOffsetAmountLabel = savedRecoveryOffsetAmountLabel;
-    surePayRecForCurrQuarter = surePayRecForCurrQuarter;
 
     //Custom Label--end
     @api mode;
@@ -132,18 +132,13 @@ export default class Core_MDF_RecoveryReportView extends LightningElement {
         .then((data) => {
             if (data) {
                 this.hideSummBreakdown = false;
-                const quarterMeta = data.find(r => r.groupName === 'QuarterInfo');
-                if (quarterMeta) {
-                    this.currentQuarterYear = quarterMeta.currentQuarterYear;
-                    this.previousQuarterYear = quarterMeta.previousQuarterYear;
-                    this.surePayRecoveryAmount = quarterMeta.surePayRecoveryAmount;
-                }
+
                 // Process record data
                 this.data = data.filter((record) => {
                     if(record.groupName === 'Offset'){
                         this.offsetDetailsList = record.offsetDetailsList;
                     }
-                    return record.groupName != 'Offset' && record.groupName != 'QuarterInfo';
+                    return record.groupName != 'Offset';
                 }).map((record) => {
                     let groupCss ;
                     let recoveryAmtCss;
@@ -206,10 +201,6 @@ export default class Core_MDF_RecoveryReportView extends LightningElement {
 
     connectedCallback() {
         this.columns = columnsTest;
-    }
-
-    get showRecoveryMessage() {
-        return (this.quarterVal && this.previousQuarterYear && this.quarterVal === this.previousQuarterYear);
     }
 
     setOffDetailsMap() {
@@ -275,7 +266,7 @@ export default class Core_MDF_RecoveryReportView extends LightningElement {
     
     updateOffsetAmounts() {
         const updatedRecords = [];
-	
+    
         for (const key in this.recoveryOffsetDataMap) {
             const row = this.recoveryOffsetDataMap[key];
 

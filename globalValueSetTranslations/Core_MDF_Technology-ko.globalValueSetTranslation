@@ -57,10 +57,6 @@
         <translation><!-- Apollo Lake --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Arrow Lake (ARL) - HX/S Refresh Core Ultra Series 2</masterLabel>
-        <translation>Arrow Lake(ARL) - HX/S Refresh - 인텔 코어 Ultra 시리즈 2</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Arrow Lake (ARL) Intel Core Ultra (Series 2)</masterLabel>
         <translation>Arrow Lake(ARL) 인텔 Core Ultra(시리즈 2)</translation>
     </valueTranslation>
@@ -229,14 +225,6 @@
         <translation><!-- Gemini Lake --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Geti™ Software</masterLabel>
-        <translation>Geti™ 소프트웨어</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Granite Rapids</masterLabel>
-        <translation><!-- Granite Rapids --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Granite Rapids-AP</masterLabel>
         <translation><!-- Granite Rapids-AP --></translation>
     </valueTranslation>
@@ -253,16 +241,8 @@
         <translation><!-- HDDL --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>HX/S Refresh Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
-        <translation><!-- HX/S Refresh Core™ Ultra Series 2 (Arrow Lake) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Habana Gaudi</masterLabel>
         <translation><!-- Habana Gaudi --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Habana® Gaudi®</masterLabel>
-        <translation><!-- Habana® Gaudi® --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IPU (Ingregrated Processor Unit)</masterLabel>
@@ -285,14 +265,6 @@
         <translation>인텔 Geti</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel Geti™</masterLabel>
-        <translation><!-- Intel Geti™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Libraries / Tools</masterLabel>
-        <translation>인텔 라이브러리/도구</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel Power Management</masterLabel>
         <translation>인텔 전원 관리</translation>
     </valueTranslation>
@@ -313,36 +285,8 @@
         <translation>인텔(R) 그래픽</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® 4th Generation Xeon® Scalable Processors</masterLabel>
-        <translation><!-- Intel® 4th Generation Xeon® Scalable Processors --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® AMX (Advanced Matrix Extensions)®</masterLabel>
-        <translation>인텔® AVX(Advanced Vector Extensions)®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® AVX (Advanced Vector Extensions)®</masterLabel>
-        <translation>인텔® AVX(Advanced Vector Extensions)®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™)</masterLabel>
-        <translation><!-- Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® Agilex™</masterLabel>
         <translation>인텔® Agilex™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Arc™ A-series Graphics</masterLabel>
-        <translation>인텔® Arc™ A-시리즈 그래픽</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Arc™ Pro B50 graphics</masterLabel>
-        <translation>인텔® Arc™ Pro B50 그래픽</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Arc™ Pro B60 Graphics</masterLabel>
-        <translation>인텔® Arc™ Pro B60 그래픽</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ graphics</masterLabel>
@@ -361,66 +305,6 @@
         <translation><!-- Intel® Atom Processor --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Atom® x7000 Series processors</masterLabel>
-        <translation>인텔® 아톰® x7000 시리즈 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Series 1</masterLabel>
-        <translation><!-- Intel® Core™ Series 1 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Series 3 (Wildcat Lake)</masterLabel>
-        <translation>인텔® 코어™ 시리즈 3 (와일드캣 레이크)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Series 3 processors</masterLabel>
-        <translation>인텔® 코어™ 시리즈 3 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra 200S series processors</masterLabel>
-        <translation>인텔® 코어™ Ultra 200S 시리즈 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra 200V Series processor</masterLabel>
-        <translation><!-- Intel® Core™ Ultra 200V Series processor --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra Series 1</masterLabel>
-        <translation><!-- Intel® Core™ Ultra Series 1 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra Series 1 (Meteor Lake)</masterLabel>
-        <translation>인텔® 코어™ Ultra 시리즈 1(Meteor Lake)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
-        <translation><!-- Intel® Core™ Ultra Series 2 (Arrow Lake) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra Series 2 (Lunar Lake)</masterLabel>
-        <translation><!-- Intel® Core™ Ultra Series 2 (Lunar Lake) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ Ultra Series 3 (Panther Lake)</masterLabel>
-        <translation><!-- Intel® Core™ Ultra Series 3 (Panther Lake) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i3‑N300 processor</masterLabel>
-        <translation><!-- Intel® Core™ i3‑N300 processor --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ processors (13th Gen)</masterLabel>
-        <translation><!-- Intel® Core™ processors (13th Gen) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ processors (14th Gen)</masterLabel>
-        <translation><!-- Intel® Core™ processors (14th Gen) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ processors (Series 2)</masterLabel>
-        <translation>인텔® 코어™ 프로세서(시리즈 2)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® Cyclone®</masterLabel>
         <translation>인텔® Cyclone®</translation>
     </valueTranslation>
@@ -429,16 +313,8 @@
         <translation><!-- Intel® Data Center GPU Flex --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Dynamic Device Personalization (DDP)</masterLabel>
-        <translation><!-- Intel® Dynamic Device Personalization (DDP) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® Ethernet Network Adapters</masterLabel>
         <translation><!-- Intel® Ethernet Network Adapters --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Ethernet Solutions®</masterLabel>
-        <translation>인텔® Ethernet Solutions®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® MAX®</masterLabel>
@@ -485,28 +361,12 @@
         <translation><!-- Intel® Optane™ Memory w SSD --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Pentium® P6000 processor</masterLabel>
-        <translation>인텔® 펜티엄® P6000 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Processor N Series processors</masterLabel>
-        <translation>인텔® 프로세서 N 시리즈 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® QuickAssist Technology (Intel® QAT)</masterLabel>
-        <translation><!-- Intel® QuickAssist Technology (Intel® QAT) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® RealSense™</masterLabel>
         <translation>인텔® RealSense™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Silicon Photonics</masterLabel>
-        <translation>Intel® Silicon Photonics</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Software Guard Extensions (Intel® SGX™)</masterLabel>
-        <translation><!-- Intel® Software Guard Extensions (Intel® SGX™) --></translation>
+        <translation>인텔® Silicon Photonics</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Stratix® 10 FPGAs</masterLabel>
@@ -517,84 +377,8 @@
         <translation>인텔® Xe</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Intel® Xeon®  600 Processors</masterLabel>
-        <translation>인텔® 제온® 600 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 4th Generation</masterLabel>
-        <translation><!-- Intel® Xeon® 4th Generation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 5th Generation (Emerald Rapids)</masterLabel>
-        <translation><!-- Intel® Xeon® 5th Generation (Emerald Rapids) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids)</masterLabel>
-        <translation><!-- Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 (E‑core) Processors (Granite Rapids)</masterLabel>
-        <translation>인텔® 제온® 6(E‑core) 프로세서(Granite Rapids)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 (P‑core) Processors (Granite Rapids)</masterLabel>
-        <translation><!-- Intel® Xeon® 6 (P‑core) Processors (Granite Rapids) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids E-Core)</masterLabel>
-        <translation>인텔® 제온® 6 프로세서(Granite Rapids Efficient-core)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</masterLabel>
-        <translation>인텔® 제온® 6 프로세서(Granite Rapids Performance-core)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 SoC (Granite Rapids-D)</masterLabel>
-        <translation>인텔® 제온® 6 SoC (그라나이트 래피즈-D)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6 W Processors</masterLabel>
-        <translation>인텔® 제온® 6W 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6300 Processors</masterLabel>
-        <translation>인텔® 제온® 6300 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6500P Processors</masterLabel>
-        <translation>인텔® 제온® 6500P 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6500P-B Processors</masterLabel>
-        <translation>인텔® 제온® 6500P-B 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6700P processors</masterLabel>
-        <translation>인텔® 제온® 6700P 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6700P-B Processors</masterLabel>
-        <translation>인텔® 제온® 6700P-B 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® 6900P Processors</masterLabel>
-        <translation>인텔® 제온® 6900P 프로세서</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon® Max Series</masterLabel>
-        <translation><!-- Intel® Xeon® Max Series --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Intel® vPro™</masterLabel>
         <translation>인텔® vPro™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® vRAN AI Development Kit™</masterLabel>
-        <translation>인텔® vRAN AI Development Kit™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® vRAN Boost</masterLabel>
-        <translation><!-- Intel® vRAN Boost --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Iris Graphics</masterLabel>
@@ -627,10 +411,6 @@
     <valueTranslation>
         <masterLabel>Modern Devices</masterLabel>
         <translation><!-- Modern Devices --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Moon Lake</masterLabel>
-        <translation><!-- Moon Lake --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Movidius VPU</masterLabel>
@@ -709,14 +489,6 @@
         <translation><!-- Panther Lake --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Panther Lake (PTL) Intel Core Ultra Series 2</masterLabel>
-        <translation>Panther Lake(PTL) - 인텔 코어 Ultra 시리즈 2</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Panther Lake (PTL) Intel Core Ultra Series 3</masterLabel>
-        <translation>Panther Lake(PTL) - 인텔 코어 Ultra 시리즈 3</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Parker Ridge - Atom C5xxx</masterLabel>
         <translation><!-- Parker Ridge - Atom C5xxx --></translation>
     </valueTranslation>
@@ -769,10 +541,6 @@
         <translation>Raptor Lake – U(RPL)  </translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Razor Lake</masterLabel>
-        <translation><!-- Razor Lake --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Rendering Toolkit &amp; Deep Neural Network Library </masterLabel>
         <translation>렌더링 툴킷 및 심층 신경망 라이브러리 </translation>
     </valueTranslation>
@@ -795,10 +563,6 @@
     <valueTranslation>
         <masterLabel>SGX</masterLabel>
         <translation><!-- SGX --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>SGX™</masterLabel>
-        <translation><!-- SGX™ --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sapphire Rapids</masterLabel>
@@ -897,18 +661,6 @@
         <translation><!-- Wildcat Lake --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Wildcat Lake (WCL) Intel Core Series 3</masterLabel>
-        <translation>Wildcat Lake(WCL) 인텔 코어 시리즈 3</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Wildcat Lake (WCL) Intel Core Ultra Series 3</masterLabel>
-        <translation>Wildcat Lake(WCL) - 인텔 코어 Ultra 시리즈 3</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Wildcat Lake Refresh</masterLabel>
-        <translation><!-- Wildcat Lake Refresh --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>X Series</masterLabel>
         <translation><!-- X Series --></translation>
     </valueTranslation>
@@ -933,20 +685,12 @@
         <translation><!-- oneAPI --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>oneAPI™</masterLabel>
-        <translation><!-- oneAPI™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>vPro</masterLabel>
         <translation><!-- vPro --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>vPro Essentials</masterLabel>
         <translation><!-- vPro Essentials --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>vPro Fleet Services</masterLabel>
-        <translation>vPro 플릿 서비스</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>vRAN Boost</masterLabel>

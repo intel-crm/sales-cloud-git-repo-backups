@@ -4,7 +4,7 @@
     <label>PSS IOTG Data Migration</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6mbSBV25yU64jZ.XHpWFRQ.yGbgaU3J0sZpswe7FHxxqC1q0f5w8cWzx8A27</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKjLZIYFG6_HMekXO4JX6h1asjqvKwM4gRbwrH3C1YXSBS72bOKjF9E68DNs3</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

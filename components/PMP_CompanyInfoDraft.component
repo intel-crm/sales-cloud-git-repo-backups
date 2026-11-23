@@ -81,33 +81,22 @@
                        <!-- CTA -->
                 <tr>
                     <td style="padding-left:50px;">
-                        Please use the link and follow the instructions below to complete and submit your {!partnerType} for Intel review and to get it published.<br/><br/>
-                        <b>INSTRUCTIONS</b><br/>
-                        <ol>
-                         <li>Go to the Showcase&nbsp;<apex:outputLink value="https://www.intel.com/content/www/us/en/partner/showcase/overview.html" styleClass="intelBlue">Home Page</apex:outputLink>.</li>
-                         <li>Click on the User Icon to login.</li>
-                         <li>Enter email and complete MFA to successfully login.</li>
-                         <li>Click on Manage Storefront button.</li>
-                         <li>Click the pencil icon.</li>
-                         <li>Fill all the required information and check all boxes that apply to your storefront.</li>
-                         <li>Click Next at the bottom right of each dialog box to proceed to the next tab.</li>
-                         <li>Submit your storefront to Intel for review.</li>
-                        </ol>
-                        Thanks for your prompt attention,<br/><br/>
-                        The Intel® Partner Showcase Team <br/> <br/>
+                        Please use the link below to complete and submit your {!partnerType} for Intel review and to get it published.<br/>
+                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.Id}" styleClass="intelBlue">Complete your {!partnerType}</apex:outputLink></p>
+                        
                     </td>
                 </tr>
                 <!-- CTA --> 
-                   <!-- <tr>
+                    <tr>
                     <td style="padding-left:50px;">    
                        
                         Thanks for your prompt attention,<br/><br/>
                         The Intel® Partner Showcase Team <br/><br/>
-                       <!-- <b>{!partnerType} Name: {!partnerData.Name}</b><br/> 
+                       <!-- <b>{!partnerType} Name: {!partnerData.Name}</b><br/>  -->
                         
                         
                     </td>
-                </tr>-->
+                </tr>
                 <!-- Email Body -->
                 
                 <!-- Progress Indication 

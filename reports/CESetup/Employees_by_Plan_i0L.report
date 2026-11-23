@@ -16,9 +16,6 @@
         <field>CPT_Quota_Setup__c.CPT_Manager__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Manager_WWID__c</field>
-    </columns>
-    <columns>
         <field>CPT_Quota_Setup__c.CPT_Plan_Name__c</field>
     </columns>
     <columns>
@@ -37,16 +34,6 @@
         <field>CPT_Quota_Setup__c.CPT_Inaccurate_Data_Comments__c</field>
     </columns>
     <description>Returns all commissioned employees with a given plan Desc</description>
-    <filter>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Employee_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>11341546</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Employees by Plan</name>
     <params>

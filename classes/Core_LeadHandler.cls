@@ -41,7 +41,7 @@ public without sharing class Core_LeadHandler{
     * Parameter    : List Trigger.new, MAP Trigger.newmap,MAP Trigger.oldmap
     */
     
-    public static void leadObjectSalesGroup(List<Lead> listNewLead)
+    public static void leadObjectSalesGroup(List<Lead> listNewLead,Map<Id,Lead> mapNewsObject,Map<Id,Lead> mapOldsObject)
     {   
         if(isSalesGroupMapped())
         {
@@ -111,6 +111,7 @@ public without sharing class Core_LeadHandler{
     public static boolean isLeadConverted() {
         // Set the bolean to TRUE once the trigger is RUN
         if (bLeadConverted) {
+            
             return true;
         } else {
             return bLeadConverted;
@@ -150,11 +151,17 @@ public without sharing class Core_LeadHandler{
         Map<String, Id> mapPartnerNameQueueId = new Map<String, Id>();
         
         // Get all the Active records from Partner to Queue Mapping Object
-        List<Core_Partner_Queue_Mapping__c> lstParterQueue = [SELECT Core_Partner_Name__c, Core_Queue_Name__c, Core_Active__c FROM Core_Partner_Queue_Mapping__c WHERE Core_Active__c = true];
+        List<Core_Partner_Queue_Mapping__c> lstParterQueue = new List<Core_Partner_Queue_Mapping__c>();
+        lstParterQueue = [SELECT Core_Partner_Name__c, Core_Queue_Name__c, Core_Active__c FROM Core_Partner_Queue_Mapping__c WHERE Core_Active__c = true];
         
         // Store the mappings between Partner Name and Queue Name
         for (Core_Partner_Queue_Mapping__c record :lstParterQueue) {
             mapPartnerNameQueueName.put(record.Core_Partner_Name__c.touppercase(), record.Core_Queue_Name__c);
+        }
+        
+        // Log the list of Partner Names and their corresponding Queue Names
+        for (String sPartnerName :mapPartnerNameQueueName.keySet()) {
+            
         }
         
         // Get and store the Queue Ids using the Queue Names
@@ -163,16 +170,19 @@ public without sharing class Core_LeadHandler{
             mapQueueNameQueueId.put(queue.Queue.DeveloperName, queue.QueueId);
         }
         
+        // Log the list of Queue names and their corresponding Queue Ids
         // Create the mapping between Partner Name and Queue Id
         for (String sPartnerName :mapPartnerNameQueueName.keySet()) {
             if (sPartnerName != null) {
                 String sQueueName = mapPartnerNameQueueName.get(sPartnerName);
                 Id idQueue = mapQueueNameQueueId.get(sQueueName);
-                if (sQueueName != null && idQueue != null) {
+                if (sQueueName != null && idQueue != null)
                     mapPartnerNameQueueId.put(sPartnerName, idQueue);
-                }
             }
         }
+        
+        // Log the list of Partner Names and their corresponding Queue Ids
+        // // Removal of for Loop
         
         return mapPartnerNameQueueId;
     }
@@ -184,15 +194,15 @@ public without sharing class Core_LeadHandler{
     Set<Id> partnerLeadIds = getPartnerLeadIds(newLeads);
     if (partnerLeadIds.isEmpty()) return;
 
-        Map<String, Id> partnerNameToQueueId = LoadPartnerToQueueIdMapping();
-        List<Lead> partnerLeads = getPartnerLeadsByIds(partnerLeadIds);
+    Map<String, Id> partnerNameToQueueId = LoadPartnerToQueueIdMapping();
+    List<Lead> partnerLeads = getPartnerLeadsByIds(partnerLeadIds);
 
-        assignOwnersToPartnerLeads(partnerLeads, partnerNameToQueueId);
+    assignOwnersToPartnerLeads(partnerLeads, partnerNameToQueueId);
 
-        if (!partnerLeads.isEmpty()) {
-            update partnerLeads;
-        }
+    if (!partnerLeads.isEmpty()) {
+        update partnerLeads;
     }
+}
 
     private static Boolean arePartnerQueueLabelsSet() {
         return System.Label.Core_Partner_Global_Queue_Id != null &&
@@ -232,7 +242,7 @@ public without sharing class Core_LeadHandler{
         if (!isLeadConverted()) return;
     
         // Step 1: Gather converted leads and build key maps
-        SWS_LeadWrappers.ConversionContext ctx = buildConversionContext(mapNewIdLeads, mapOldIdLeads);
+        ConversionContext ctx = buildConversionContext(mapNewIdLeads, mapOldIdLeads);
         if (ctx.lstConvertedLeads.isEmpty()) return;
         bLeadConverted = false;
     
@@ -260,10 +270,34 @@ public without sharing class Core_LeadHandler{
     
     // --- Helper Classes and Methods ---
     
-    private static SWS_LeadWrappers.ConversionContext buildConversionContext(Map<Id, Lead> mapNewIdLeads, Map<Id, Lead> mapOldIdLeads) {
-        SWS_LeadWrappers.ConversionContext ctx = new SWS_LeadWrappers.ConversionContext();
-        // populate writable fields in this class (not in wrappers container)
-        ctx.lstWriteableFields = getContactWriteableFields();
+    private class ConversionContext {
+        public Map<Id, Id> mapLeadIdAccountId = new Map<Id, Id>();
+        public Map<Id, Id> mapLeadIdContactId = new Map<Id, Id>();
+        public Map<Id, Id> mapContactIdLeadId = new Map<Id, Id>();
+        public Map<Id, Id> mapAccountIdLeadId = new Map<Id, Id>();
+        public List<Lead> lstConvertedLeads = new List<Lead>();
+        public List<String> lstWriteableFields = getContactWriteableFields();
+        public List<Account> lstAccounts = new List<Account>();
+        public List<Contact> lstContacts = new List<Contact>();
+        public Set<String> setAddressDetails = new Set<String>();
+        public Map<String, List<Account>> mapEmailAccounts = new Map<String, List<Account>>();
+        public Map<Id, Account> mapAccountIdAccount = new Map<Id, Account>();
+        public Map<Id, Contact> mapContactIdContact = new Map<Id, Contact>();
+        public Set<String> setEmailIds = new Set<String>();
+        public Map<String, Contact> mapEmailContactslist = new Map<String, Contact>();
+        public List<Contact> lstUpdateContacts = new List<Contact>();
+        public List<Id> lstDeleteRecords = new List<Id>();
+        public List<Id> lstUpdateAccounts = new List<Id>();
+        public List<AccountContactRole> lstAccountContactRole = new List<AccountContactRole>();
+        public List<OpportunityContactRole> lstOpportunityContactRole = new List<OpportunityContactRole>();
+        public Map<Id, Id> mapConvertedOpportunityIdAccountId = new Map<Id, Id>();
+        public Map<Id, Id> mapExistingAccountIdConvertedAccountId = new Map<Id, Id>();
+        public Map<Id, Id> mapExistingContactIdConvertedContactId = new Map<Id, Id>();
+        public List<Id> lstContactUpdateIds = new List<Id>();
+    }
+    
+    private static ConversionContext buildConversionContext(Map<Id, Lead> mapNewIdLeads, Map<Id, Lead> mapOldIdLeads) {
+        ConversionContext ctx = new ConversionContext();
         for (Lead leadInstance : mapNewIdLeads.values()) {
             if (leadInstance.IsConverted && !mapOldIdLeads.get(leadInstance.id).IsConverted) {
                 if (leadInstance.ConvertedAccountId != null) {
@@ -286,7 +320,7 @@ public without sharing class Core_LeadHandler{
     }
     
     private static List<Contact> getContacts(Map<Id, Id> mapLeadIdContactId, List<String> lstWriteableFields) {
-        if (mapLeadIdContactId.isEmpty() || lstWriteableFields.isEmpty()) return new List<Contact>();
+        if (mapLeadIdContactId.isEmpty()) return new List<Contact>();
         String sQueryContacts = Core_Utility.buildQuery('Contact', lstWriteableFields);
         sQueryContacts += ' WHERE Id IN (';
         for (String sContactId : mapLeadIdContactId.values()) {
@@ -337,7 +371,7 @@ public without sharing class Core_LeadHandler{
     
     private static Map<String, Contact> getDuplicateContacts(Set<String> setEmailIds, Map<Id, Id> mapLeadIdContactId, List<String> lstWriteableFields) {
         Map<String, Contact> mapEmailContactslist = new Map<String, Contact>();
-        if (setEmailIds.isEmpty() || lstWriteableFields.isEmpty()) return mapEmailContactslist;
+        if (setEmailIds.isEmpty()) return mapEmailContactslist;
         String sQueryDuplicates = Core_Utility.buildQuery('Contact', lstWriteableFields);
         sQueryDuplicates += ' WHERE Email IN :setEmailIds';
         if (!mapLeadIdContactId.isEmpty()) {
@@ -354,33 +388,25 @@ public without sharing class Core_LeadHandler{
         return mapEmailContactslist;
     }
     
-    private static void processLeadDeduplication(SWS_LeadWrappers.ConversionContext ctx, Map<Id, Lead> mapNewIdLeads) {
+    private static void processLeadDeduplication(ConversionContext ctx, Map<Id, Lead> mapNewIdLeads) {
         for (Lead leadInstance : ctx.lstConvertedLeads) {
             if (!ctx.mapAccountIdAccount.containsKey(leadInstance.ConvertedAccountId)) continue;
             Account accountInstance = ctx.mapAccountIdAccount.get(leadInstance.ConvertedAccountId);
-            
-            // Using fluent interface pattern for inner classes
-            SWS_LeadWrappers.AccountDedupParams params = new SWS_LeadWrappers.AccountDedupParams()
-                .setContext(ctx)
-                .setLead(leadInstance)
-                .setAccount(accountInstance)
-                .setLeadMap(mapNewIdLeads);
-                
             if (accountInstance.CreatedDate > System.Now().addMinutes(-1)) {
-                processNewAccountDedup(params);
+                processNewAccountDedup(ctx, leadInstance, accountInstance, mapNewIdLeads);
             } else {
-                processExistingAccountDedup(params);
+                processExistingAccountDedup(ctx, leadInstance, accountInstance, mapNewIdLeads);
             }
         }
         ctx.lstContactUpdateIds = getContactUpdateIds(ctx.lstConvertedLeads, ctx.lstDeleteRecords, ctx.lstUpdateContacts);
     }
     
-    private static void processNewAccountDedup(SWS_LeadWrappers.AccountDedupParams params) {
+    private static void processNewAccountDedup(ConversionContext ctx, Lead leadInstance, Account accountInstance, Map<Id, Lead> mapNewIdLeads) {
         Boolean bDuplicateAccount = false;
         Account existingAccount;
-        if (params.ctx.mapEmailAccounts.containsKey(params.accountInstance.Core_Address_Details__c)) {
-            for (Account dupAccountInstance : params.ctx.mapEmailAccounts.get(params.accountInstance.Core_Address_Details__c)) {
-                if (dupAccountInstance.Name.equalsIgnoreCase(params.leadInstance.Company)) {
+        if (ctx.mapEmailAccounts.containsKey(accountInstance.Core_Address_Details__c)) {
+            for (Account dupAccountInstance : ctx.mapEmailAccounts.get(accountInstance.Core_Address_Details__c)) {
+                if (dupAccountInstance.Name.equalsIgnoreCase(leadInstance.Company)) {
                     bDuplicateAccount = true;
                     existingAccount = dupAccountInstance;
                     break;
@@ -388,60 +414,51 @@ public without sharing class Core_LeadHandler{
             }
         }
         if (bDuplicateAccount) {
-            // Using fluent interface for new parameters
-            SWS_LeadWrappers.AccountDedupParams duplicateParams = new SWS_LeadWrappers.AccountDedupParams()
-                .setContext(params.ctx)
-                .setLead(params.leadInstance)
-                .setAccount(existingAccount)
-                .setLeadMap(params.mapNewIdLeads);
-            handleDuplicateAccount(duplicateParams);
+            handleDuplicateAccount(ctx, leadInstance, existingAccount, mapNewIdLeads);
         } else {
-            handleNewAccount(params);
+            handleNewAccount(ctx, leadInstance, accountInstance, mapNewIdLeads);
         }
     }
     
-    private static void processExistingAccountDedup(SWS_LeadWrappers.AccountDedupParams params) {
-        params.ctx.lstUpdateAccounts.add(params.leadInstance.ConvertedAccountId);
-        params.ctx.mapExistingAccountIdConvertedAccountId.put(params.leadInstance.ConvertedAccountId, params.leadInstance.ConvertedAccountId);
-        handleContactDedup(params);
+    private static void processExistingAccountDedup(ConversionContext ctx, Lead leadInstance, Account accountInstance, Map<Id, Lead> mapNewIdLeads) {
+        ctx.lstUpdateAccounts.add(leadInstance.ConvertedAccountId);
+        ctx.mapExistingAccountIdConvertedAccountId.put(leadInstance.ConvertedAccountId, leadInstance.ConvertedAccountId);
+        handleContactDedup(ctx, leadInstance, accountInstance, mapNewIdLeads);
     }
     
-    private static void handleDuplicateAccount(SWS_LeadWrappers.AccountDedupParams params) {
-        params.ctx.lstDeleteRecords.add(params.leadInstance.ConvertedAccountId);
-        if (params.leadInstance.ConvertedOpportunityId != null) {
-            params.ctx.mapConvertedOpportunityIdAccountId.put(params.leadInstance.ConvertedOpportunityId, params.accountInstance.Id);
-        }
-        params.ctx.mapExistingAccountIdConvertedAccountId.put(params.accountInstance.Id, params.leadInstance.ConvertedAccountId);
-        handleContactDedup(params);
+    private static void handleDuplicateAccount(ConversionContext ctx, Lead leadInstance, Account existingAccount, Map<Id, Lead> mapNewIdLeads) {
+        ctx.lstDeleteRecords.add(leadInstance.ConvertedAccountId);
+        if (leadInstance.ConvertedOpportunityId != null)
+            ctx.mapConvertedOpportunityIdAccountId.put(leadInstance.ConvertedOpportunityId, existingAccount.Id);
+        ctx.mapExistingAccountIdConvertedAccountId.put(existingAccount.Id, leadInstance.ConvertedAccountId);
+        handleContactDedup(ctx, leadInstance, existingAccount, mapNewIdLeads);
     }
     
-    private static void handleNewAccount(SWS_LeadWrappers.AccountDedupParams params) {
-        params.ctx.lstUpdateAccounts.add(params.leadInstance.ConvertedAccountId);
-        params.ctx.mapExistingAccountIdConvertedAccountId.put(params.leadInstance.ConvertedAccountId, params.leadInstance.ConvertedAccountId);
-        handleContactDedup(params);
+    private static void handleNewAccount(ConversionContext ctx, Lead leadInstance, Account accountInstance, Map<Id, Lead> mapNewIdLeads) {
+        ctx.lstUpdateAccounts.add(leadInstance.ConvertedAccountId);
+        ctx.mapExistingAccountIdConvertedAccountId.put(leadInstance.ConvertedAccountId, leadInstance.ConvertedAccountId);
+        handleContactDedup(ctx, leadInstance, accountInstance, mapNewIdLeads);
     }
     
-    private static void handleContactDedup(SWS_LeadWrappers.AccountDedupParams params) {
-        Contact newContact = params.ctx.mapContactIdContact.get(params.leadInstance.ConvertedContactId);
-        if (newContact == null) {
-            return;
-        }
-        Contact oldContact = params.ctx.mapEmailContactslist.get(newContact.Email);
-        if (oldContact != null && oldContact.AccountId == params.accountInstance.Id) {
-            params.ctx.mapExistingContactIdConvertedContactId.put(oldContact.Id, newContact.Id);
-            mergeContactFields(oldContact, newContact, params.ctx.lstWriteableFields);
-            params.ctx.lstUpdateContacts.add(oldContact);
-            params.ctx.lstDeleteRecords.add(params.leadInstance.ConvertedContactId);
+    private static void handleContactDedup(ConversionContext ctx, Lead leadInstance, Account accountInstance, Map<Id, Lead> mapNewIdLeads) {
+        Contact newContact = ctx.mapContactIdContact.get(leadInstance.ConvertedContactId);
+        if (newContact == null) return;
+        Contact oldContact = ctx.mapEmailContactslist.get(newContact.Email);
+        if (oldContact != null && oldContact.AccountId == accountInstance.Id) {
+            ctx.mapExistingContactIdConvertedContactId.put(oldContact.Id, newContact.Id);
+            mergeContactFields(oldContact, newContact, ctx.lstWriteableFields);
+            ctx.lstUpdateContacts.add(oldContact);
+            ctx.lstDeleteRecords.add(leadInstance.ConvertedContactId);
         } else if (oldContact != null) {
             AccountContactRole acr = new AccountContactRole();
-            acr.AccountId = params.accountInstance.Id;
+            acr.AccountId = accountInstance.Id;
             acr.ContactId = oldContact.Id;
             acr.Role = System.Label.Core_Account_Role;
-            params.ctx.lstAccountContactRole.add(acr);
-            params.ctx.lstDeleteRecords.add(params.leadInstance.ConvertedContactId);
+            ctx.lstAccountContactRole.add(acr);
+            ctx.lstDeleteRecords.add(leadInstance.ConvertedContactId);
         } else {
-            params.ctx.lstUpdateContacts.add(new Contact(Id = params.leadInstance.ConvertedContactId, AccountId = params.accountInstance.Id));
-            params.ctx.mapExistingContactIdConvertedContactId.put(params.leadInstance.ConvertedContactId, params.leadInstance.ConvertedContactId);
+            ctx.lstUpdateContacts.add(new Contact(Id = leadInstance.ConvertedContactId, AccountId = accountInstance.Id));
+            ctx.mapExistingContactIdConvertedContactId.put(leadInstance.ConvertedContactId, leadInstance.ConvertedContactId);
         }
     }
     
@@ -467,105 +484,64 @@ public without sharing class Core_LeadHandler{
         return new List<Id>(contactFlagCheckOff);
     }
     
-    private static void performDedupDml(SWS_LeadWrappers.ConversionContext ctx, Map<Id, Lead> mapNewIdLeads) {
-        SWS_LeadWrappers.DmlContext dmlCtx = new SWS_LeadWrappers.DmlContext(ctx, mapNewIdLeads);
-        
-        updateContacts(dmlCtx);
-        insertAccountContactRoles(dmlCtx);
-        insertOpportunityContactRoles(dmlCtx);
-        updateOpportunities(dmlCtx);
+    private static void performDedupDml(ConversionContext ctx, Map<Id, Lead> mapNewIdLeads) {
+        updateContacts(ctx.lstUpdateContacts, ctx.mapExistingContactIdConvertedContactId, ctx.mapContactIdLeadId, mapNewIdLeads);
+        insertAccountContactRoles(ctx.lstAccountContactRole, ctx.mapExistingAccountIdConvertedAccountId, ctx.mapAccountIdLeadId, mapNewIdLeads);
+        insertOpportunityContactRoles(ctx.lstOpportunityContactRole, ctx.mapExistingContactIdConvertedContactId, ctx.mapContactIdLeadId, mapNewIdLeads);
+        updateOpportunities(ctx.mapConvertedOpportunityIdAccountId, ctx.mapExistingAccountIdConvertedAccountId, ctx.mapAccountIdLeadId, mapNewIdLeads);
     }
     
-    private static void updateContacts(SWS_LeadWrappers.DmlContext dmlCtx) {
-        if (dmlCtx.lstUpdateContacts.isEmpty()) {
-            return;
-        }
-        for (Contact contactInstance : dmlCtx.lstUpdateContacts) {
+    private static void updateContacts(List<Contact> lstUpdateContacts, Map<Id, Id> mapExistingContactIdConvertedContactId, Map<Id, Id> mapContactIdLeadId, Map<Id, Lead> mapNewIdLeads) {
+        if (lstUpdateContacts.isEmpty()) return;
+        for (Contact contactInstance : lstUpdateContacts) {
             contactInstance.Core_Lead_Conversion_Flag__c = true;
         }
-        Database.SaveResult[] srList = Database.update(dmlCtx.lstUpdateContacts, false);
-        
-        // Using fluent interface pattern for inner classes
-        SWS_LeadWrappers.ErrorContext errorCtx = new SWS_LeadWrappers.ErrorContext()
-            .setSaveResults(srList)
-            .setRecords(dmlCtx.lstUpdateContacts)
-            .setIdMapping(dmlCtx.mapExistingContactIdConvertedContactId)
-            .setLeadMapping(dmlCtx.mapContactIdLeadId)
-            .setLeadMap(dmlCtx.mapNewIdLeads);
-        handleDmlErrors(errorCtx);
+        Database.SaveResult[] srList = Database.update(lstUpdateContacts, false);
+        handleDmlErrors(srList, lstUpdateContacts, mapExistingContactIdConvertedContactId, mapContactIdLeadId, mapNewIdLeads);
     }
     
-    private static void insertAccountContactRoles(SWS_LeadWrappers.DmlContext dmlCtx) {
-        if (dmlCtx.lstAccountContactRole.isEmpty()) return;
-        List<AccountContactRole> lstExistingAccountContactRole = [SELECT AccountId, ContactId FROM AccountContactRole WHERE AccountId IN :dmlCtx.mapExistingAccountIdConvertedAccountId.keySet()];
+    private static void insertAccountContactRoles(List<AccountContactRole> lstAccountContactRole, Map<Id, Id> mapExistingAccountIdConvertedAccountId, Map<Id, Id> mapAccountIdLeadId, Map<Id, Lead> mapNewIdLeads) {
+        if (lstAccountContactRole.isEmpty()) return;
+        List<AccountContactRole> lstExistingAccountContactRole = [SELECT AccountId, ContactId FROM AccountContactRole WHERE AccountId IN :mapExistingAccountIdConvertedAccountId.keySet()];
         Set<String> setAccountContact = new Set<String>();
         for (AccountContactRole acr : lstExistingAccountContactRole) {
             setAccountContact.add(acr.AccountId + '#' + acr.ContactId);
         }
         List<AccountContactRole> lstToInsert = new List<AccountContactRole>();
-        for (AccountContactRole acr : dmlCtx.lstAccountContactRole) {
+        for (AccountContactRole acr : lstAccountContactRole) {
             String key = acr.AccountId + '#' + acr.ContactId;
             if (!setAccountContact.contains(key)) lstToInsert.add(acr);
         }
         Database.SaveResult[] srList = Database.insert(lstToInsert, false);
-        
-        // Using fluent interface pattern for inner classes
-        SWS_LeadWrappers.ErrorContext errorCtx = new SWS_LeadWrappers.ErrorContext()
-            .setSaveResults(srList)
-            .setRecords(dmlCtx.lstAccountContactRole)
-            .setIdMapping(dmlCtx.mapExistingAccountIdConvertedAccountId)
-            .setLeadMapping(dmlCtx.mapAccountIdLeadId)
-            .setLeadMap(dmlCtx.mapNewIdLeads);
-        handleDmlErrors(errorCtx);
+        handleDmlErrors(srList, lstAccountContactRole, mapExistingAccountIdConvertedAccountId, mapAccountIdLeadId, mapNewIdLeads);
     }
     
-    private static void insertOpportunityContactRoles(SWS_LeadWrappers.DmlContext dmlCtx) {
-        if (dmlCtx.lstOpportunityContactRole.isEmpty()) {
-            return;
-        }
-        Database.SaveResult[] srList = Database.insert(dmlCtx.lstOpportunityContactRole, false);
-        
-        // Using fluent interface pattern for inner classes
-        SWS_LeadWrappers.ErrorContext errorCtx = new SWS_LeadWrappers.ErrorContext()
-            .setSaveResults(srList)
-            .setRecords(dmlCtx.lstOpportunityContactRole)
-            .setIdMapping(dmlCtx.mapExistingContactIdConvertedContactId)
-            .setLeadMapping(dmlCtx.mapContactIdLeadId)
-            .setLeadMap(dmlCtx.mapNewIdLeads);
-        handleDmlErrors(errorCtx);
+    private static void insertOpportunityContactRoles(List<OpportunityContactRole> lstOpportunityContactRole, Map<Id, Id> mapExistingContactIdConvertedContactId, Map<Id, Id> mapContactIdLeadId, Map<Id, Lead> mapNewIdLeads) {
+        if (lstOpportunityContactRole.isEmpty()) return;
+        Database.SaveResult[] srList = Database.insert(lstOpportunityContactRole, false);
+        handleDmlErrors(srList, lstOpportunityContactRole, mapExistingContactIdConvertedContactId, mapContactIdLeadId, mapNewIdLeads);
     }
     
-    private static void updateOpportunities(SWS_LeadWrappers.DmlContext dmlCtx) {
-        if (dmlCtx.mapConvertedOpportunityIdAccountId.isEmpty()) return;
-	
+    private static void updateOpportunities(Map<Id, Id> mapConvertedOpportunityIdAccountId, Map<Id, Id> mapExistingAccountIdConvertedAccountId, Map<Id, Id> mapAccountIdLeadId, Map<Id, Lead> mapNewIdLeads) {
+        if (mapConvertedOpportunityIdAccountId.isEmpty()) return;
         List<Opportunity> lstOpportunityUpdate = new List<Opportunity>();
-        for (Id OpportunityId : dmlCtx.mapConvertedOpportunityIdAccountId.keySet()) {
-            Id accountId = dmlCtx.mapConvertedOpportunityIdAccountId.get(OpportunityId);
+        for (Id OpportunityId : mapConvertedOpportunityIdAccountId.keySet()) {
+            Id accountId = mapConvertedOpportunityIdAccountId.get(OpportunityId);
             lstOpportunityUpdate.add(new Opportunity(Id = OpportunityId, AccountId = accountId, Core_Lead_Conversion_Flag__c = true));
         }
         Database.SaveResult[] srList = Database.update(lstOpportunityUpdate, false);
-        
-        // Using fluent interface pattern for inner classes
-        SWS_LeadWrappers.ErrorContext errorCtx = new SWS_LeadWrappers.ErrorContext()
-            .setSaveResults(srList)
-            .setRecords(lstOpportunityUpdate)
-            .setIdMapping(dmlCtx.mapExistingAccountIdConvertedAccountId)
-            .setLeadMapping(dmlCtx.mapAccountIdLeadId)
-            .setLeadMap(dmlCtx.mapNewIdLeads);
-        handleDmlErrors(errorCtx);
+        handleDmlErrors(srList, lstOpportunityUpdate, mapExistingAccountIdConvertedAccountId, mapAccountIdLeadId, mapNewIdLeads);
     }
     
-    private static void handleDmlErrors(SWS_LeadWrappers.ErrorContext errorCtx) {
+    private static void handleDmlErrors(Database.SaveResult[] srList, List<SObject> records, Map<Id, Id> mapId1Id2, Map<Id, Id> mapId2LeadId, Map<Id, Lead> mapNewIdLeads) {
         Integer idx = 0;
-        for (Database.SaveResult sr : errorCtx.srList) {
+        for (Database.SaveResult sr : srList) {
             if (!sr.isSuccess()) {
                 for (Database.Error err : sr.getErrors()) {
-                    Id id1 = errorCtx.mapId1Id2.get(errorCtx.records[idx].Id);
-                    Id leadId = errorCtx.mapId2LeadId.get(id1);
-                    Lead errorLead = errorCtx.mapNewIdLeads.get(leadId);
-                    if (errorLead != null) {
-                        errorLead.addError(err.getMessage());
-                    }
+                    Id id1 = mapId1Id2.get(records[idx].Id);
+                    Id leadId = mapId2LeadId.get(id1);
+                    Lead errorLead = mapNewIdLeads.get(leadId);
+                    if (errorLead != null) errorLead.addError(err.getMessage());
                 }
             }
             idx++;
@@ -585,40 +561,46 @@ public without sharing class Core_LeadHandler{
         }
         return lstWriteableFields;
     }
-    
     @InvocableMethod(label='Auto Convert Lead' description='Converts a lead into an existing contact without creating opportunity or account')
-    public static void convertLead(List<SWS_LeadWrappers.LeadConvertRequest> requests) {
-        List<Database.LeadConvert> conversions = new List<Database.LeadConvert>();
-        
-        for (SWS_LeadWrappers.LeadConvertRequest req : requests) {
-            Database.LeadConvert lc = new Database.LeadConvert();
-            lc.setLeadId(req.leadId);
-            lc.setContactId(req.contactId);           
-            lc.setDoNotCreateOpportunity(true);      // No Opportunity
-          //lc.setOverwriteLeadSource(false);        
-            lc.setConvertedStatus('Sales Qualified Lead');      
+        public static void convertLead(List<LeadConvertRequest> requests) {
+            List<Database.LeadConvert> conversions = new List<Database.LeadConvert>();
             
-            // Use existing Contact's Account if it exists
-            Contact c = [SELECT Id, AccountId FROM Contact WHERE Id = :req.contactId LIMIT 1];
-            if (c.AccountId != null) {
-                lc.setAccountId(c.AccountId);
-            } else {
-               system.debug('Account ID is empty');
+            for (LeadConvertRequest req : requests) {
+                Database.LeadConvert lc = new Database.LeadConvert();
+                lc.setLeadId(req.leadId);
+                lc.setContactId(req.contactId);           
+                lc.setDoNotCreateOpportunity(true);      // No Opportunity
+              //lc.setOverwriteLeadSource(false);        
+                lc.setConvertedStatus('Sales Qualified Lead');      
+                
+                // Use existing Contact's Account if it exists
+                Contact c = [SELECT Id, AccountId FROM Contact WHERE Id = :req.contactId LIMIT 1];
+                if (c.AccountId != null) {
+                    lc.setAccountId(c.AccountId);
+                } else {
+                   system.debug('Account ID is empty');
+                }
+                
+                conversions.add(lc);
             }
+    
+            List<Database.LeadConvertResult> results = Database.convertLead(conversions, false);
             
-            conversions.add(lc);
-        }
-
-        List<Database.LeadConvertResult> results = Database.convertLead(conversions, false);
-        
-        for (Database.LeadConvertResult res : results) {
-            if (!res.isSuccess()) {
-                for (Database.Error err : res.getErrors()) {
-                    System.debug('Lead conversion failed: ' + err.getMessage());
+            for (Database.LeadConvertResult res : results) {
+                if (!res.isSuccess()) {
+                    for (Database.Error err : res.getErrors()) {
+                        System.debug('Lead conversion failed: ' + err.getMessage());
+                    }
                 }
             }
         }
-    }
-
+    
+        public class LeadConvertRequest {
+            @InvocableVariable(required=true)
+            public Id leadId;
+    
+            @InvocableVariable(required=true)
+            public Id contactId;
+        }
         
 }

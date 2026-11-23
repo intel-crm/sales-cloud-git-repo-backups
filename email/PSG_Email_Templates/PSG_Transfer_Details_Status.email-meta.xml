@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Email Description to inform that transfer is done.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG Transfer Details Status</name>
+    <style>none</style>
+    <subject>Transfer Record Status</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

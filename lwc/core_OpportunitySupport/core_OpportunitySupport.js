@@ -784,62 +784,62 @@ requestSample(){
 /*
 //Create PSG Quote
 async createPSGQuote(){
-await this.setQuoteProgramNamesFlags();
+    // ORIGINAL IMPLEMENTATION COMMENTED OUT PER REQUEST
+    await this.setQuoteProgramNamesFlags();
 
-if(this.flgisSWQuotePresent){
+    if(this.flgisSWQuotePresent){
         this.showErrorMessage(CRM_SW_SWQuote_Exists_HardStopErrorMsg); //Only Software & Services Quote can be created for Software Opportunities.
     }else if (this.flgshowPricingAndQuoting){
-    this.psgSpinner=true;
-    createPSGQuoteonSiebel({soppId : this.recordId})
-    .then(result => {
-    if(result.status==='Success'){
-        this.psgSpinner=false;
-        const event = new ShowToastEvent({
-            title : 'Success',
-            message : 'Quote Created Successfully - {0}',
-             variant : 'success',
-            messageData: [
-                    {
-                        url: '/'+result.quoteRecId,
-                        label: result.quoteID,
-                    },
-                ],
-            mode: 'dismissable',
+        this.psgSpinner=true;
+        createPSGQuoteonSiebel({soppId : this.recordId})
+        .then(result => {
+            if(result.status==='Success'){
+                this.psgSpinner=false;
+                const event = new ShowToastEvent({
+                    title : 'Success',
+                    message : 'Quote Created Successfully - {0}',
+                    variant : 'success',
+                    messageData: [
+                        {
+                            url: '/'+result.quoteRecId,
+                            label: result.quoteID,
+                        },
+                    ],
+                    mode: 'dismissable',
+                });
+                this.dispatchEvent(event);
+                this.showMainComponent = false;
+                this.closeAction();
+            }
+            else{
+                this.psgSpinner=false;
+                const event = new ShowToastEvent({
+                    title : 'Fail',
+                    message : result.errorMsg,
+                    variant : 'error'
+                });
+                this.dispatchEvent(event);
+                this.closeAction();
+                this.showMainComponent = false;
+            }
+        })
+        .catch(error => {
+            this.psgSpinner=false;
+            const event = new ShowToastEvent({
+                title : 'Something went wrong',
+                message : error.body.message,
+                variant : 'error'
             });
-        this.dispatchEvent(event);
-        this.showMainComponent = false;
-        this.closeAction();
-    }
-    else{
-        this.psgSpinner=false;
-        const event = new ShowToastEvent({
-            title : 'Fail',
-            message : result.errorMsg,
-            variant : 'error'
-            });
-        this.dispatchEvent(event);
-        this.closeAction();
-        this.showMainComponent = false;
-        }
-    })
-    .catch(error => {
-        this.psgSpinner=false;
-        const event = new ShowToastEvent({
-        title : 'Something went wrong',
-        message : error.body.message,
-        variant : 'error'
+            this.dispatchEvent(event);
+            this.showMainComponent = false;
+            this.closeAction();
         });
-        this.dispatchEvent(event);
-        this.showMainComponent = false;
-        this.closeAction();
-    });
 
-}
-else
-{
-	 console.log('Deal reg so no action required');  
-}
-
+    }
+    else
+    {
+        console.log('Deal reg so no action required');  
+    }
 }
 */
 

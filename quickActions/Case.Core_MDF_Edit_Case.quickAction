@@ -13,12 +13,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Core_MDF_AddClaimReviewClosure_Note_txt__c</field>
+                <field>Core_MDF_Claim_Review_Closure_Note__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Core_MDF_AddInternalCaseClosureNotes_txt__c</field>
+                <field>Core_MDF_Internal_Case_Closure_Notes__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -39,6 +39,11 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Core_MDF_Adjustment_Amount_Local__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Core_MDF_Adjustment_Amount_USD_Amt__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

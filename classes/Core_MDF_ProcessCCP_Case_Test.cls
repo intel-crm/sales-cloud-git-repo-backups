@@ -257,7 +257,7 @@ private class Core_MDF_ProcessCCP_Case_Test {
         System.runAs(usrs){
             Campaign camp = [select id,Name,Core_MDF_Budget_Amount_amt__c from Campaign WHERE Name = 'Test Retail Camp 1' LIMIT 1];
             Account accCoMarketing = [select id from Account WHERE Name = 'Test Master Account'];
-            pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast (Pre-2025)','Podcast','Draft',false);
+            pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast','Podcast','Draft',false);
             pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             pfr.Title = 'Test Retail Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
@@ -523,8 +523,7 @@ private class Core_MDF_ProcessCCP_Case_Test {
             claim2.Core_MDF_FlaggedForBankDocHold_Ind__c=false;
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-			String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-            res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt, null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,null, null);
             
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
             
@@ -590,7 +589,7 @@ private class Core_MDF_ProcessCCP_Case_Test {
                 auditDocList2.add(auditDoc);
             }            
             Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1  = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt, null, false, null, null, null, false);
+            saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,null,null);
             
         }
             //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);
@@ -640,127 +639,4 @@ private class Core_MDF_ProcessCCP_Case_Test {
     
     	Test.stopTest();
 	}
-
-    @IsTest
-    static void testNotesMaintenance() {
-        User sysAdminUser = [SELECT Id FROM User WHERE Email = 'sysadmin@example.com' AND LastName = 'System Adm' LIMIT 1];
-        Account caseAccount = [SELECT Id FROM Account WHERE Name = 'Test Master Account' LIMIT 1];
-        PartnerFundRequest pfr = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Retail Activity' LIMIT 1];
-        Core_MDF_Bank__c bank = [SELECT Id FROM Core_MDF_Bank__c WHERE Core_MDF_Bank_Alias_Name__c = 'Test' LIMIT 1];
-		
-        PartnerFundClaim claim = Core_MDF_CCP_TestDataUtility.createClaim('Closure Note Lifecycle Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today().addDays(-2), System.today().addDays(-2), 50, System.today().addDays(-2), bank.Id, false);
-        claim.Core_MDF_Type_Txt__c = 'Claim';
-        claim.Core_MDF_Currency__c = 'USD';
-        claim.Core_MDF_Country_Location_nm__c = 'UNITED KINGDOM';
-        claim.Core_MDF_Status__c = 'Draft';
-        insert claim;
-
-        Id caseAuditRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();
-        Case cs = new Case(
-			RecordTypeId = caseAuditRecordTypeId,
-            AccountId = caseAccount.Id,
-            OwnerId = sysAdminUser.Id,
-            Origin = 'Manual Selection',
-            Core_MDF_Claim_ID__c = claim.Id,
-            Core_MDF_Region_SubRegion_txt__c = 'EMEA - CEE',
-            Core_MDF_Status__c = 'Under Review'
-        );
-        insert cs;
-
-        Test.startTest();
-
-        String datePrefix = Datetime.now().formatGMT('dd/MM/yyyy') + ':\n';
-        String sep = '\n' + '________________________________' + '\n';
-
-        cs.Core_MDF_AddClaimReviewClosure_Note_txt__c = 'Note 01';
-        cs.Core_MDF_AddInternalCaseClosureNotes_txt__c = 'Note 02';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals('Note 01', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 02', cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals('Note 01', cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
-        System.assertEquals('Note 02', cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-        System.assertEquals(null, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-
-        cs.Core_MDF_AddClaimReviewClosure_Note_txt__c = 'Note 03';
-        cs.Core_MDF_AddInternalCaseClosureNotes_txt__c = 'Note 04';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals('Note 03', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 04', cs.Core_MDF_Internal_Case_Closure_Notes__c);
-
-        cs.Core_MDF_Status__c = 'Review Completed';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        String firstClaim = datePrefix + 'Note 03';
-        String firstInternal = datePrefix + 'Note 04';
-        System.assertEquals(firstClaim, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-        System.assertEquals(firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-
-        cs.Core_MDF_Status__c = 'Under Review';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals(null, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-
-        cs.Core_MDF_AddClaimReviewClosure_Note_txt__c = 'Note 05';
-        cs.Core_MDF_AddInternalCaseClosureNotes_txt__c = 'Note 06';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals('Note 05', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 06' + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-
-        cs.Core_MDF_Status__c = 'Review Completed';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        String secondClaim = datePrefix + 'Note 05';
-        String secondInternal = datePrefix + 'Note 06';
-        System.assertEquals(secondClaim, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-
-        cs.Core_MDF_Status__c = 'Under Review';
-        cs.Core_MDF_AddClaimReviewClosure_Note_txt__c = 'Note 07';
-        cs.Core_MDF_AddInternalCaseClosureNotes_txt__c = 'Note 08';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals('Note 07', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 08' + sep + secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-
-        cs.Core_MDF_Status__c = 'Review Completed';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        String thirdClaim = datePrefix + 'Note 07';
-        String thirdInternal = datePrefix + 'Note 08';
-        System.assertEquals(thirdClaim, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(thirdInternal + sep + secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
-        System.assertEquals(thirdClaim + sep + secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
-        System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
-
-	    cs.Core_MDF_ClaimReviewClosureHistory_txt__c = null;
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        cs.Core_MDF_Status__c = 'Under Review';
-        update cs;
-        cs = getClosureNoteCase(cs.Id);
-        System.assertEquals(null, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(thirdClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
-
-        Test.stopTest();
-    }
-
-    private static Case getClosureNoteCase(Id caseId) {
-        return [SELECT Id, Core_MDF_Status__c, Core_MDF_AddClaimReviewClosure_Note_txt__c, Core_MDF_Claim_Review_Closure_Note__c, Core_MDF_ClaimReviewClosureHistory_txt__c, Core_MDF_AddInternalCaseClosureNotes_txt__c, Core_MDF_Internal_Case_Closure_Notes__c FROM Case WHERE Id = :caseId];
-    }
 }

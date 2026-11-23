@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Get_Associated_Account_JSON</name>
         <label>Get Associated Account JSON</label>
-        <locationX>1106</locationX>
-        <locationY>3254</locationY>
+        <locationX>842</locationX>
+        <locationY>2822</locationY>
         <actionName>PRM_ConvertToJSON</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -28,8 +28,8 @@
     <actionCalls>
         <name>Get_Duplicate_Accounts_and_Contacts</name>
         <label>Get Duplicate Accounts and Contacts</label>
-        <locationX>1766</locationX>
-        <locationY>1190</locationY>
+        <locationX>1502</locationX>
+        <locationY>758</locationY>
         <actionName>PRM_AdminRegistrationFlowCntrl</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -160,8 +160,8 @@
     <actionCalls>
         <name>Get_Duplicate_Contact_JSON</name>
         <label>Get Duplicate Contact JSON</label>
-        <locationX>1106</locationX>
-        <locationY>3362</locationY>
+        <locationX>842</locationX>
+        <locationY>2930</locationY>
         <actionName>PRM_ConvertToJSON</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -185,8 +185,8 @@
     <actionCalls>
         <name>Get_Selected_Account_JSON</name>
         <label>Get Selected Account JSON</label>
-        <locationX>1106</locationX>
-        <locationY>3146</locationY>
+        <locationX>842</locationX>
+        <locationY>2714</locationY>
         <actionName>PRM_ConvertToJSON</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -210,8 +210,8 @@
     <actionCalls>
         <name>NavigateToRecord</name>
         <label>NavigateToRecord</label>
-        <locationX>1898</locationX>
-        <locationY>2786</locationY>
+        <locationX>1634</locationX>
+        <locationY>2354</locationY>
         <actionName>c:prm_navigateToRecord</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -228,8 +228,8 @@
     <actionCalls>
         <name>Submit_Registration_Request</name>
         <label>Submit Registration Request</label>
-        <locationX>1106</locationX>
-        <locationY>3470</locationY>
+        <locationX>842</locationX>
+        <locationY>3038</locationY>
         <actionName>PRM_SubmitAdminRegistration</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -254,8 +254,8 @@
     <assignments>
         <name>Account_and_Contact_Assignment</name>
         <label>Account and Contact Assignment</label>
-        <locationX>842</locationX>
-        <locationY>2030</locationY>
+        <locationX>578</locationX>
+        <locationY>1598</locationY>
         <assignmentItems>
             <assignToReference>ConfirmedAccounts</assignToReference>
             <operator>Add</operator>
@@ -277,8 +277,8 @@
     <assignments>
         <name>Account_Request_Queue_Initialization</name>
         <label>Account Request Queue Initialization</label>
-        <locationX>2162</locationX>
-        <locationY>2138</locationY>
+        <locationX>1898</locationX>
+        <locationY>1706</locationY>
         <assignmentItems>
             <assignToReference>AccountRequestQueue.Core_Alternate_Name_Language__c</assignToReference>
             <operator>Assign</operator>
@@ -398,8 +398,8 @@
     <assignments>
         <name>ActInputDetails</name>
         <label>ActInputDetails</label>
-        <locationX>1766</locationX>
-        <locationY>1298</locationY>
+        <locationX>1502</locationX>
+        <locationY>866</locationY>
         <assignmentItems>
             <assignToReference>ProvidedAccountDetails.Name</assignToReference>
             <operator>Assign</operator>
@@ -463,8 +463,8 @@
     <assignments>
         <name>Add_Accounts_to_a_List</name>
         <label>Add Accounts to a List</label>
-        <locationX>1854</locationX>
-        <locationY>1514</locationY>
+        <locationX>1590</locationX>
+        <locationY>1082</locationY>
         <assignmentItems>
             <assignToReference>AccountRecordAssigned.Name</assignToReference>
             <operator>Assign</operator>
@@ -567,8 +567,8 @@
     <assignments>
         <name>Assign_AccountId_For_JSON</name>
         <label>Assign AccountId For JSON</label>
-        <locationX>1106</locationX>
-        <locationY>3038</locationY>
+        <locationX>842</locationX>
+        <locationY>2606</locationY>
         <assignmentItems>
             <assignToReference>Account_Id</assignToReference>
             <operator>Assign</operator>
@@ -583,7 +583,7 @@
     <assignments>
         <name>assign_user_entered_value</name>
         <label>assign user entered value</label>
-        <locationX>528</locationX>
+        <locationX>611</locationX>
         <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>PartnerRoleFinal</assignToReference>
@@ -599,7 +599,7 @@
     <assignments>
         <name>assign_value_from_account</name>
         <label>assign value from account</label>
-        <locationX>264</locationX>
+        <locationX>347</locationX>
         <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>PartnerRoleFinal</assignToReference>
@@ -615,8 +615,8 @@
     <assignments>
         <name>Contact_Creation</name>
         <label>Contact Creation</label>
-        <locationX>1106</locationX>
-        <locationY>2030</locationY>
+        <locationX>842</locationX>
+        <locationY>1598</locationY>
         <assignmentItems>
             <assignToReference>InputContact.Name</assignToReference>
             <operator>Assign</operator>
@@ -659,8 +659,8 @@
     <assignments>
         <name>Existing_Account_and_New_Contact_Assignment</name>
         <label>Existing Account and New Contact Assignment</label>
-        <locationX>1106</locationX>
-        <locationY>2138</locationY>
+        <locationX>842</locationX>
+        <locationY>1706</locationY>
         <assignmentItems>
             <assignToReference>ConfirmedAccounts</assignToReference>
             <operator>Add</operator>
@@ -682,8 +682,8 @@
     <assignments>
         <name>Fault_Message</name>
         <label>Fault Message</label>
-        <locationX>2162</locationX>
-        <locationY>2894</locationY>
+        <locationX>1898</locationX>
+        <locationY>2462</locationY>
         <assignmentItems>
             <assignToReference>FlowFaultMessage</assignToReference>
             <operator>Assign</operator>
@@ -705,8 +705,8 @@
     <assignments>
         <name>Final_AQR_Instantiation</name>
         <label>Final AQR Instantiation</label>
-        <locationX>2162</locationX>
-        <locationY>2354</locationY>
+        <locationX>1898</locationX>
+        <locationY>1922</locationY>
         <assignmentItems>
             <assignToReference>AQR</assignToReference>
             <operator>Assign</operator>
@@ -819,8 +819,8 @@
     <assignments>
         <name>FinalSelectedActs</name>
         <label>FinalSelectedActs</label>
-        <locationX>1194</locationX>
-        <locationY>2846</locationY>
+        <locationX>930</locationX>
+        <locationY>2414</locationY>
         <assignmentItems>
             <assignToReference>FinalSelectedAccount</assignToReference>
             <operator>Assign</operator>
@@ -835,8 +835,8 @@
     <assignments>
         <name>FinalSelectedContacts</name>
         <label>FinalSelectedContacts</label>
-        <locationX>1194</locationX>
-        <locationY>2546</locationY>
+        <locationX>930</locationX>
+        <locationY>2114</locationY>
         <assignmentItems>
             <assignToReference>FinalSelectedContact</assignToReference>
             <operator>Assign</operator>
@@ -881,8 +881,8 @@
     <decisions>
         <name>Account_and_Contact_Check</name>
         <label>Account and Contact Check</label>
-        <locationX>1766</locationX>
-        <locationY>1814</locationY>
+        <locationX>1502</locationX>
+        <locationY>1382</locationY>
         <defaultConnector>
             <targetReference>Confirm_Screen</targetReference>
         </defaultConnector>
@@ -927,8 +927,8 @@
     <decisions>
         <name>Check_Account_Details</name>
         <label>Check Account Details?</label>
-        <locationX>1172</locationX>
-        <locationY>1082</locationY>
+        <locationX>908</locationX>
+        <locationY>650</locationY>
         <defaultConnector>
             <targetReference>Get_Duplicate_Accounts_and_Contacts</targetReference>
         </defaultConnector>
@@ -967,10 +967,10 @@
         <description>Check Blocked Email Domain?</description>
         <name>Check_Blocked_Email_Domain</name>
         <label>Check Blocked Email Domain?</label>
-        <locationX>396</locationX>
+        <locationX>479</locationX>
         <locationY>542</locationY>
         <defaultConnector>
-            <targetReference>Get_Intel_Contact</targetReference>
+            <targetReference>Check_Account_Details</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -999,8 +999,8 @@
     <decisions>
         <name>Confirmed</name>
         <label>Confirmed?</label>
-        <locationX>2426</locationX>
-        <locationY>2030</locationY>
+        <locationX>2162</locationX>
+        <locationY>1598</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes1</name>
@@ -1021,8 +1021,8 @@
     <decisions>
         <name>Contact_and_Account_Exists</name>
         <label>Contact and Account Exists?</label>
-        <locationX>1106</locationX>
-        <locationY>1922</locationY>
+        <locationX>842</locationX>
+        <locationY>1490</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Confirm_Screen</targetReference>
@@ -1083,7 +1083,7 @@
     <decisions>
         <name>does_Account_already_have_Partner_Role</name>
         <label>does Account already have Partner Role</label>
-        <locationX>396</locationX>
+        <locationX>479</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>assign_user_entered_value</targetReference>
@@ -1113,36 +1113,10 @@
         </rules>
     </decisions>
     <decisions>
-        <description>If active ACR with same email exists?</description>
-        <name>Existing_Active_ACR_present</name>
-        <label>Existing Active ACR present</label>
-        <locationX>743</locationX>
-        <locationY>974</locationY>
-        <defaultConnector>
-            <targetReference>Check_Account_Details</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Active_ACR_present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Check_existing_ACR</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Active_ACR_present_Error</targetReference>
-            </connector>
-            <label>Active ACR present</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Existing_Record_Present</name>
         <label>Existing Record Present?</label>
-        <locationX>2162</locationX>
-        <locationY>2570</locationY>
+        <locationX>1898</locationX>
+        <locationY>2138</locationY>
         <defaultConnector>
             <targetReference>AQR_Pending_Screen</targetReference>
         </defaultConnector>
@@ -1193,24 +1167,6 @@
         <object xsi:nil="true"/>
         <picklistField>Core_Account_Primary_Coverage__c</picklistField>
         <picklistObject>Account_Create_Request__c</picklistObject>
-    </dynamicChoiceSets>
-    <dynamicChoiceSets>
-        <name>Active_ACR</name>
-        <dataType>String</dataType>
-        <displayField>Id</displayField>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_InActive_Ind__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <limit>1</limit>
-        <object>PRM_Account_Contact_Relationship__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <valueField>Id</valueField>
     </dynamicChoiceSets>
     <dynamicChoiceSets>
         <name>AlternateCompanyNameLanguage</name>
@@ -1366,13 +1322,13 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
         <expression>IF(
     NOT(CONTAINS({!Region_PRC_NonPRC}, &quot;PRC&quot;)),
     IF(
-        CONTAINS(&quot;;&quot; &amp; {!$Label.Blocked_Domains_Non_Prc1} &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value})) &amp; &quot;;&quot;),
+        CONTAINS({!$Label.Blocked_Domains_Non_Prc1}, RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value}))),
         TRUE,
         IF(
-            CONTAINS(&quot;;&quot; &amp; {!$Label.Blocked_Domains_Non_Prc2} &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value})) &amp; &quot;;&quot;),
+            CONTAINS({!$Label.Blocked_Domains_Non_Prc2}, RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value}))),
             TRUE,
             IF(
-                CONTAINS(&quot;;&quot; &amp; {!$Label.Blocked_Domains_Non_Prc3} &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value})) &amp; &quot;;&quot;),
+                CONTAINS({!$Label.Blocked_Domains_Non_Prc3}, RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value}))),
                 TRUE,
                 FALSE
             )
@@ -1398,10 +1354,10 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
         <expression>IF(
     CONTAINS({!Region_PRC_NonPRC}, &quot;PRC&quot;),
     IF(
-        CONTAINS(&quot;;&quot; &amp; {!$Label.Blocked_Domains_Prc1} &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value})) &amp; &quot;;&quot;),
+        CONTAINS({!$Label.Blocked_Domains_Prc1}, RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value}))),
         TRUE,
         IF(
-            CONTAINS(&quot;;&quot; &amp; {!$Label.Blocked_Domains_Prc2} &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value})) &amp; &quot;;&quot;),
+            CONTAINS({!$Label.Blocked_Domains_Prc2}, RIGHT({!Email.value}, LEN({!Email.value}) - FIND(&quot;@&quot;, {!Email.value}))),
             TRUE,
             FALSE
         )
@@ -1514,8 +1470,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <loops>
         <name>Create_Account_JSON</name>
         <label>Create Account JSON</label>
-        <locationX>1106</locationX>
-        <locationY>2738</locationY>
+        <locationX>842</locationX>
+        <locationY>2306</locationY>
         <collectionReference>ConfirmedAccounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -1528,8 +1484,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <loops>
         <name>Create_Contact_JSON</name>
         <label>Create Contact JSON</label>
-        <locationX>1106</locationX>
-        <locationY>2438</locationY>
+        <locationX>842</locationX>
+        <locationY>2006</locationY>
         <collectionReference>ConfirmedContacts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -1542,8 +1498,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <loops>
         <name>Iterate_Over_Duplicate_Accounts</name>
         <label>Iterate Over Duplicate Accounts</label>
-        <locationX>1766</locationX>
-        <locationY>1406</locationY>
+        <locationX>1502</locationX>
+        <locationY>974</locationY>
         <collectionReference>MatchingAccounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -1575,8 +1531,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <recordCreates>
         <name>Create_Account_Request_Queue</name>
         <label>Create Account Request Queue</label>
-        <locationX>1898</locationX>
-        <locationY>2678</locationY>
+        <locationX>1634</locationX>
+        <locationY>2246</locationY>
         <connector>
             <targetReference>NavigateToRecord</targetReference>
         </connector>
@@ -1588,8 +1544,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <recordCreates>
         <name>Create_Log</name>
         <label>Create Log</label>
-        <locationX>1634</locationX>
-        <locationY>3578</locationY>
+        <locationX>1370</locationX>
+        <locationY>3146</locationY>
         <connector>
             <targetReference>FinalSubmissionError</targetReference>
         </connector>
@@ -1629,8 +1585,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <recordCreates>
         <name>Log_Error</name>
         <label>Log Error</label>
-        <locationX>2162</locationX>
-        <locationY>2786</locationY>
+        <locationX>1898</locationX>
+        <locationY>2354</locationY>
         <connector>
             <targetReference>Fault_Message</targetReference>
         </connector>
@@ -1668,48 +1624,10 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
-        <description>Get if any existing ACR</description>
-        <name>Check_existing_ACR</name>
-        <label>Check existing ACR</label>
-        <locationX>743</locationX>
-        <locationY>866</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Existing_Active_ACR_present</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_InActive_Ind__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Contact_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Check_existing_Contact.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Status_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Pending Action</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>PRM_Account_Contact_Relationship__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Check_Existing_AQR</name>
         <label>Check Existing AQR</label>
-        <locationX>2162</locationX>
-        <locationY>2462</locationY>
+        <locationX>1898</locationX>
+        <locationY>2030</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Existing_Record_Present</targetReference>
@@ -1761,86 +1679,10 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
         <object>Account_Create_Request__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordLookups>
-        <name>Check_existing_Contact</name>
-        <label>Check existing Contact</label>
-        <locationX>743</locationX>
-        <locationY>758</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_existing_ACR</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Email</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Email.value</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>RecordTypeId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Intel_Contact.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Contact</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <description>Get intel contact recordtype id</description>
-        <name>Get_Intel_Contact</name>
-        <label>Get Intel Contact</label>
-        <locationX>743</locationX>
-        <locationY>650</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_existing_Contact</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Label.PSG_Intel_Contact</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <screens>
-        <name>Active_ACR_present_Error</name>
-        <label>Active ACR present</label>
-        <locationX>314</locationX>
-        <locationY>1082</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>Existing_Active_ACR_Error</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(244, 5, 5); background-color: rgb(255, 255, 255);&quot;&gt;An Invite already exists in the system with same Email ID. &lt;/strong&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
     <screens>
         <name>Admin_Registration</name>
         <label>Admin Registration</label>
-        <locationX>396</locationX>
+        <locationX>479</locationX>
         <locationY>134</locationY>
         <actions>
             <name>Gettheaccountdetails</name>
@@ -2434,8 +2276,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>AQR_Creation</name>
         <label>AQR Creation</label>
-        <locationX>2162</locationX>
-        <locationY>2246</locationY>
+        <locationX>1898</locationX>
+        <locationY>1814</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -2965,8 +2807,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>AQR_Pending_Screen</name>
         <label>AQR Pending Screen</label>
-        <locationX>2426</locationX>
-        <locationY>2678</locationY>
+        <locationX>2162</locationX>
+        <locationY>2246</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -2993,8 +2835,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Blocked_Account_Contact</name>
         <label>Blocked Account/Contact</label>
-        <locationX>578</locationX>
-        <locationY>1190</locationY>
+        <locationX>314</locationX>
+        <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3061,8 +2903,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Confirm_Screen</name>
         <label>Confirm Screen</label>
-        <locationX>2426</locationX>
-        <locationY>1922</locationY>
+        <locationX>2162</locationX>
+        <locationY>1490</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3217,8 +3059,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Confirmation</name>
         <label>Confirmation</label>
-        <locationX>1106</locationX>
-        <locationY>2330</locationY>
+        <locationX>842</locationX>
+        <locationY>1898</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3408,8 +3250,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Duplicate_Information_screen</name>
         <label>Duplicate Information</label>
-        <locationX>1766</locationX>
-        <locationY>1706</locationY>
+        <locationX>1502</locationX>
+        <locationY>1274</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3636,8 +3478,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>2162</locationX>
-        <locationY>3002</locationY>
+        <locationX>1898</locationX>
+        <locationY>2570</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3661,8 +3503,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>Final_Submission</name>
         <label>Final Submission</label>
-        <locationX>1106</locationX>
-        <locationY>3578</locationY>
+        <locationX>842</locationX>
+        <locationY>3146</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3689,8 +3531,8 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
     <screens>
         <name>FinalSubmissionError</name>
         <label>FinalSubmissionError</label>
-        <locationX>1634</locationX>
-        <locationY>3686</locationY>
+        <locationX>1370</locationX>
+        <locationY>3254</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -3765,7 +3607,7 @@ LEN(&quot;EXCEPTION: &apos;&quot;)
         <stageOrder>3</stageOrder>
     </stages>
     <start>
-        <locationX>270</locationX>
+        <locationX>353</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Admin_Registration</targetReference>

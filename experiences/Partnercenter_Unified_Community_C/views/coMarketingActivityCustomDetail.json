@@ -16,7 +16,7 @@
       "type" : "component"
     }, {
       "componentAttributes" : {
-        "fieldAPIName" : "Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c",
+        "fieldAPIName" : "Core_MDF_Proposal_Based_Ind__c",
         "isCompactLayout" : "Yes",
         "objAPIName" : "PartnerFundRequest"
       },
@@ -120,15 +120,6 @@
           },
           "componentName" : "c:core_MDF_POP_Details",
           "id" : "36b250ed-5d5d-4553-89a0-ab4608a42d71",
-          "renditionMap" : { },
-          "type" : "component"
-        }, {
-          "componentAttributes" : {
-            "isReadOnly" : true,
-            "recordId" : "{!recordId}"
-          },
-          "componentName" : "c:core_MDF_ecosystemPartnerAllocation",
-          "id" : "7ef06bf6-f492-4296-8e47-b453f05a8b75",
           "renditionMap" : { },
           "type" : "component"
         }, {

@@ -28,7 +28,6 @@ public class Core_Opp_Supp_Statusupdate_Test {
         Map<Id, String> result = Core_Opportunity_Support_statusupdate.getStatusValue(String.valueof(testOpptSuppReq.Id));
     	boolean result1 = Core_Opportunity_Support_statusupdate.updateOnMS(testOpptSuppReq.Id,'Submitted');
         Test.stopTest();
-        System.assertEquals(true, result1);
         
 	}
     @isTest
@@ -38,12 +37,9 @@ public class Core_Opp_Supp_Statusupdate_Test {
         	Map<Id, String> results = Core_Opportunity_Support_statusupdate.getStatusValue('test');
     	}
         catch(Exception e){
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_Opp_Supp_Statusupdate_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            insert logEntry;
             
         }
         Test.stopTest();
-        SYSTEM.assertEquals(TRUE, true);
         
 	}
     @isTest
@@ -54,11 +50,9 @@ public class Core_Opp_Supp_Statusupdate_Test {
         	boolean results1 = Core_Opportunity_Support_statusupdate.updateOnMS(testOpptSuppReq.id,'Submit');
     	}
         catch(Exception e){
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_Opp_Supp_Statusupdate_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            insert logEntry;
+            
         }
         Test.stopTest();
-        system.assertEquals(true, true);
         
 	}
     

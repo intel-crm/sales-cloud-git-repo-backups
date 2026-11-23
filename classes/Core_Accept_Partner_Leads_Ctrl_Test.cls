@@ -1,6 +1,6 @@
 @isTest
 private class Core_Accept_Partner_Leads_Ctrl_Test {    
-  /*static testmethod void PartnerUserLead(){
+  static testmethod void PartnerUserLead(){
       List<Lead> lstLeads = new List<Lead>();
        user profileuser;
        System.runAs(Core_Test_Utility.systemAdminUser){ 
@@ -117,5 +117,5 @@ Database.insert(profileuser);
      
       }
   
-*/
+
 }

@@ -47,10 +47,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_RichText_Ind__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>API_Visibility__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -108,14 +104,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Record_Name_nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Lookup_Custom_URL_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Lookup_Custom_URL_Link_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

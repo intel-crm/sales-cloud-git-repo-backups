@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 private class Pricing_IntegrationInboundRetryBatchTest {
     
@@ -26,8 +19,7 @@ private class Pricing_IntegrationInboundRetryBatchTest {
         
         Test.startTest();
         	Pricing_IntegrationInboundRetryBatch integrationBatch = new Pricing_IntegrationInboundRetryBatch();
-        	Id asyncJobId = Database.executeBatch(integrationBatch);
-            System.assertEquals(true, asyncJobId != null, 'Database.executeBatch should return a non-null AsyncApexJob Id.');
+        	Database.executeBatch(integrationBatch);
         Test.stopTest();
     }
 

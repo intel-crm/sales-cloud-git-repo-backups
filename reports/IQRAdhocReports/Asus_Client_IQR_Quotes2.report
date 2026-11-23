@@ -311,7 +311,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2027-12-31</endDate>
+        <endDate>2027-04-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2023-07-30</startDate>
     </timeFrameFilter>

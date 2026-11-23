@@ -116,10 +116,10 @@ global class Core_IPS_MyIntel_3_0_Test {
         customSetting.Name = 'Core_IPS_MyIntel_Integration';
         customSetting.MyIntel_Client_Id__c = '07e04e4c-dd0b-4b24-9c46-6056a822530833';
         customSetting.MyIntel_Client_Secret__c = 'XnK1KXtLthP4.778QgL-2fTS~OahSiL_qc';
-        customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/intel-customers/v1/profiles';
+        customSetting.MyIntel_Endpoint_URL__c = 'https://apis-stage.intel.com/m2r/intel-customers/v1/profiles';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Integration_Class_Name__c = 'Core_IPS_MyIntel_3';
-        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
+        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-stage.intel.com/v1/auth/token';
         insert customSetting;
         system.assert(customSetting.Id != null,true);
         
@@ -164,8 +164,8 @@ global class Core_IPS_MyIntel_3_0_Test {
     @isTest static void testCRUDNegativeScenario(){
         String Message = 'Remove';
         Core_IPS_APIGEE_Custom_Settings__c integrationSetting = Core_IPS_APIGEE_Custom_Settings__c.getValues('Core_IPS_MyIntel_Integration');
-        integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/authenticate/token';
-        integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customer/v1/profiles';
+        integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-stage.intel.com/v1/authenticate/token';
+        integrationSetting.MyIntel_Endpoint_URL__c ='https://apis-stage.intel.com/m2r/intel-customer/v1/profiles';
       //integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customers/v1/profile';
         update integrationSetting;
         List<Id> caseIds = new List<Id>();
@@ -187,21 +187,19 @@ global class Core_IPS_MyIntel_3_0_Test {
         
         
        // Core_IPS_APIGEE_Custom_Settings__c integrationSetting = Core_IPS_APIGEE_Custom_Settings__c.getValues('Core_IPS_MyIntel_Integration');
-       // integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
-       // integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customers/v1/profile';
+       // integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-stage.intel.com/v1/auth/token';
+       // integrationSetting.MyIntel_Endpoint_URL__c ='https://apis-stage.intel.com/m2r/intel-customers/v1/profile';
        // update integrationSetting;
         List<Id> caseIds = new List<Id>();
-        List<Case> caseupdate = new List<Case>(); //ATHR Blocker fix
         List<Core_IPS_Project_Member__c> memberList;
         for(Case cs: [SELECT Id FROM Case]){
             //Added by Sowmya to execute negative scenario - Start - 27/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
 	     cs.Subject = 'error404';
-             caseupdate.add(cs); //update cs;  //ATHR Blocker fix  
+             update cs;  
             //Sowmya - End - 19/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
      	    caseIds.add(cs.Id);
      
         }
-        update caseupdate; //ATHR Blocker fix
         System.AssertEquals(caseIds[0]!= null, true);
    
         Test.setMock(HttpCalloutMock.class, new Core_IPS_myIntelHttpCalloutMock());
@@ -250,7 +248,7 @@ global class Core_IPS_MyIntel_3_0_Test {
         c.LastName = 'Contact 001';
         c.Email = 'testemail001@email.com';
         c.Core_Enterprise_Id__c = '111199';
-        //c.Core_IPS_Active__c = true;
+        c.Core_IPS_Active__c = true;
         c.AccountId = acc.Id;
         c.MailingCountry = 'India';
         insert c;		

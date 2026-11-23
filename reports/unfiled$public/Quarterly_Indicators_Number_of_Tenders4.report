@@ -75,8 +75,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Original_Submitted_Date_dt__c</dateColumn>
-        <endDate>2025-12-27</endDate>
+        <endDate>2025-09-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-09-28</startDate>
+        <startDate>2025-06-29</startDate>
     </timeFrameFilter>
 </Report>

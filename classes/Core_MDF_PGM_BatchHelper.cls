@@ -1,6 +1,6 @@
 /****************************************************************************************************************************************
 * Class Name        : Core_MDF_PGM_BatchHelper
-* Test Class    : Core_MDF_PGM_BatchHelper_Test
+* Test Class		: Core_MDF_PGM_BatchHelper_Test
 * Created Date      : 11/24/2019
 * Modification Log
 * Developer            Date               Description
@@ -11,42 +11,42 @@ public without sharing class Core_MDF_PGM_BatchHelper {
     
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     
-  /***************************************************************************************************** 
+	/***************************************************************************************************** 
     Method Name   :        createObjectShareRecords
     @return       :        void
     @parameters   :        List<Core_MDF_Partner_Group_Mapping__c>
     Description   :        method to check the type of PGM
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/  
-  public static void createObjectShareRecords(List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
+	public static void createObjectShareRecords(List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
 
-    Set<Id> accIdSet = new Set<Id>();
-          Set<Id> primaryAccIds = new Set<Id>();
-          Set<Id> activatingAccIds = new Set<Id>();
-          Set<Id> EEFAccountIds = new Set<Id>();
-    Set<Id> programIdSet = new Set<Id>();
-          Set<Id> EEFprogramIdSet = new Set<Id>();
-    Set<String> uniqueKeySet = new Set<String>();
+		Set<Id> accIdSet = new Set<Id>();
+	        Set<Id> primaryAccIds = new Set<Id>();
+	        Set<Id> activatingAccIds = new Set<Id>();
+	        Set<Id> EEFAccountIds = new Set<Id>();
+		Set<Id> programIdSet = new Set<Id>();
+        	Set<Id> EEFprogramIdSet = new Set<Id>();
+		Set<String> uniqueKeySet = new Set<String>();
         List<Core_MDF_Partner_Group_Mapping__c> EEFpgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
         Map<ID,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap = new Map<ID,List<Core_MDF_Partner_Mapping__c>>();
-    try{
-      if(newPGMList.size() > 0) {
-        for(Core_MDF_Partner_Group_Mapping__c pgm : newPGMList) {
-          if(pgm.Core_MDF_Type_of_Access__c == 'Internal'){
+		try{
+			if(newPGMList.size() > 0) {
+				for(Core_MDF_Partner_Group_Mapping__c pgm : newPGMList) {
+					if(pgm.Core_MDF_Type_of_Access__c == 'Internal'){
                         if(pgm.Core_MDF_Channel_Program_Name_Txt__c  != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')) {
-            accIdSet.add(pgm.Core_MDF_Account__c);
-            programIdSet.add(pgm.Core_MDF_Channel_Program__c);
-            String accIdProgramId = (String)pgm.Core_MDF_Account__c + pgm.Core_MDF_Channel_Program__c;
-            uniqueKeySet.add(accIdProgramId);
-          }
+						accIdSet.add(pgm.Core_MDF_Account__c);
+						programIdSet.add(pgm.Core_MDF_Channel_Program__c);
+						String accIdProgramId = (String)pgm.Core_MDF_Account__c + pgm.Core_MDF_Channel_Program__c;
+						uniqueKeySet.add(accIdProgramId);
+					}
                         else {
                             EEFAccountIds.add(pgm.Core_MDF_Account__c);
                             EEFprogramIdSet.add(pgm.Core_MDF_Channel_Program__c);
                             EEFpgmList.add(pgm);
                             String accIdProgramId = (String)pgm.Core_MDF_Account__c + pgm.Core_MDF_Channel_Program__c;
                             uniqueKeySet.add(accIdProgramId);
-                        }            
+                        }						
                     }
                 }
             }
@@ -87,14 +87,14 @@ public without sharing class Core_MDF_PGM_BatchHelper {
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Account Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
     public static void createAccountShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet, Map<ID,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap) {
         
         String accQuery = 'Select Id, Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Channel_Program__c,Core_Geo__c,Core_Sub_Geo__c,Core_MDF_Partner_Type_nm__c,'
-              +'Core_MDF_Channel_Program__r.Name'
-              +' From Account WHERE Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Core_MDF_Channel_Program__c IN ';
+						  +'Core_MDF_Channel_Program__r.Name'
+						  +' From Account WHERE Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Account', accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
                                                                                                 uniqueKeySet,primaryIntelAccIdToPartnerMap), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Account));
@@ -106,14 +106,14 @@ public without sharing class Core_MDF_PGM_BatchHelper {
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for createPartnerShipScoreShareRecords Share
     Added By      :        Accenture
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createPartnerShipScoreShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createPartnerShipScoreShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
         
-    String accQuery = 'Select Id, Core_MDF_Account_Id__c,Core_MDF_Channel_Program_Id__c,Core_MDF_Account_Id__r.Core_Geo__c,Core_MDF_Account_Id__r.Core_Sub_Geo__c,'
-              +'Core_MDF_Channel_Program_Id__r.Name'
+		String accQuery = 'Select Id, Core_MDF_Account_Id__c,Core_MDF_Channel_Program_Id__c,Core_MDF_Account_Id__r.Core_Geo__c,Core_MDF_Account_Id__r.Core_Sub_Geo__c,'
+						  +'Core_MDF_Channel_Program_Id__r.Name'
             +' From Core_MDF_Partnership_Score__c WHERE Core_MDF_IsRecordShared_ind__c = TRUE AND Core_MDF_Account_Id__c IN ';
-    String programQuery = ' AND Core_MDF_Channel_Program_Id__c IN ';
+		String programQuery = ' AND Core_MDF_Channel_Program_Id__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Partnership_Score__c', accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
                                                                                                 uniqueKeySet,null), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Account));
@@ -125,15 +125,15 @@ public without sharing class Core_MDF_PGM_BatchHelper {
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Budget Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createBudgetShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet){
+	public static void createBudgetShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet){
         
-    String accQuery = 'Select Id,Core_MDF_Budget_Partner__c, '
-                 +'Core_MDF_Program__c,Core_MDF_Budget_Partner__r.Core_Geo__c, Core_MDF_Budget_Status__c, Core_MDF_Budget_Type_Txt__c,'
-                +'Core_MDF_Budget_Partner__r.Core_Sub_Geo__c, Core_MDF_Program__r.Name, Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c '
-               +'From PartnerMarketingBudget WHERE Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Core_MDF_Program__c IN ';
+		String accQuery = 'Select Id,Core_MDF_Budget_Partner__c, '
+					   	  +'Core_MDF_Program__c,Core_MDF_Budget_Partner__r.Core_Geo__c, Core_MDF_Budget_Status__c, Core_MDF_Budget_Type_Txt__c,'
+		  				  +'Core_MDF_Budget_Partner__r.Core_Sub_Geo__c, Core_MDF_Program__r.Name, Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c '
+					 	  +'From PartnerMarketingBudget WHERE Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Core_MDF_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('PartnerMarketingBudget', accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
                                                                                                 uniqueKeySet,null), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Budget));
@@ -145,15 +145,15 @@ public without sharing class Core_MDF_PGM_BatchHelper {
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Budget Cap Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createBudgetCapShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet){
+	public static void createBudgetCapShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet){
         
-    String accQuery = 'Select Id,Core_MDF_Budget_Name_id__c, Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c,'
-                    +'Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_Geo__c, Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_Sub_Geo__c,'
-              +' Core_MDF_Budget_Name_id__r.Core_MDF_Program__c, Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Name, Core_MDF_Budget_Status_txt__c '
-              +' From Core_MDF_Budget_Cap__c WHERE Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Core_MDF_Budget_Name_id__r.Core_MDF_Program__c IN ';
+		String accQuery = 'Select Id,Core_MDF_Budget_Name_id__c, Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c,'
+            			  +'Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_Geo__c, Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_Sub_Geo__c,'
+						  +' Core_MDF_Budget_Name_id__r.Core_MDF_Program__c, Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Name, Core_MDF_Budget_Status_txt__c '
+						  +' From Core_MDF_Budget_Cap__c WHERE Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Core_MDF_Budget_Name_id__r.Core_MDF_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Budget_Cap__c', accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
                                                                                                 uniqueKeySet,null),Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Budget_Cap));
@@ -203,7 +203,7 @@ Method Name   :        createAllocationShareRecords
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        method to call batch for Allocation Share
 Added By      :        Accenture - JV - 11/24/2019
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/ 
     public static void createAllocationShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
         
@@ -224,26 +224,26 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Account User Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createAccountUserShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet, List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
+	public static void createAccountUserShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet, List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
         String accQuery = 'SELECT Id, Core_MDF_Active_Ind__c,Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, '
-                    +'Core_MDF_Account__r.Core_MDF_Channel_Program__c '
-                 +'FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Active_Ind__c = TRUE AND Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+            			  +'Core_MDF_Account__r.Core_MDF_Channel_Program__c '
+			   			  +'FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Active_Ind__c = TRUE AND Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
         String programQuery = ' AND Core_MDF_Account__r.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_Batch_PNUMShareRecordInsert('Core_MDF_Partner_Node_User_Mapping__c', 
                                                                                                 accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
                                                                                                 uniqueKeySet,newPGMList), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_PNUM));
-  }
-  
+	}
+	
     /***************************************************************************************************** 
     Method Name   :        createAccountTransferLogShareRecords
     @return       :        void
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Account Transfer Log Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
     public static void createAccountTransferLogShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet, Boolean isEEFProg) {
         String accQuery = 'SELECT Id, Core_MDF_Source_Account__c,Core_MDF_Partner_Marketing_Budget__c,Core_MDF_Target_Account__c, Core_MDF_Source_Account__r.Core_MDF_Channel_Program__c, '
@@ -269,14 +269,13 @@ Method Name   :        createPFRShareRecords
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        method to call batch for PFR Share
 Added By      :        Accenture - VK - 11/24/2019
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/ 
     public static void createPFRShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
         
         String accQuery = 'SELECT Id, Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c,'
             +'ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Region_nm__c,Core_MDF_Sub_Region_nm__c'
-            +' FROM PartnerFundRequest WHERE Core_MDF_Activity_Level_nm__c != \'Sub Activity\''
-            + ' AND channelPartner.Core_MDF_CoMarketing_Ultimate_Account__c  IN ';
+            +' FROM PartnerFundRequest WHERE channelPartner.Core_MDF_CoMarketing_Ultimate_Account__c  IN ';
         String programQuery = ' AND ChannelPartner.Core_MDF_Channel_Program__c IN ';
         Integer batchSize = Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Batch_Size_PFR'));
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('PartnerFundRequest', 
@@ -292,17 +291,17 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for PFC & Payment Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createClaimAndPaymentShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createClaimAndPaymentShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
-    String accQuery = 'SELECT Id,Core_MDF_Type_Txt__c, Core_MDF_AccountCompany__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Program__c, '
-    +'ChannelPartner.Core_MDF_Channel_Program__r.Name,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,RequestId,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, '
+		String accQuery = 'SELECT Id,Core_MDF_Type_Txt__c, Core_MDF_AccountCompany__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Program__c, '
+		+'ChannelPartner.Core_MDF_Channel_Program__r.Name,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,RequestId,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, '
         +'Core_MDF_Country_Location_nm__c, Core_MDF_Region_Cd__c, Core_MDF_Sub_Region_Cd__c, Amount, ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c, '
         +'Core_MDF_Bank__c, Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Status__c, Core_MDF_Payment_Id__c, '
         +'ChannelPartner.Core_MDF_Channel_Program__c, Core_MDF_Budget_Type_Options_Nm__c '
-		+'FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c = null AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND ChannelPartner.Core_MDF_Channel_Program__c IN ';
+		+'FROM PartnerFundClaim WHERE ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND ChannelPartner.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('PartnerFundClaim', 
                                                                                                 accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
@@ -351,14 +350,14 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Adjustment Share
     Added By      :        Accenture - JV - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createAdjustmentRequestShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createAdjustmentRequestShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
-    String accQuery = 'SELECT Id, Core_MDF_Adjustment_Claim_Nbr__c,Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_Channel_Program__c, '
-    +'Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c'
-    +' FROM Core_MDF_Adjustment_Request__c WHERE Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_Channel_Program__c IN ';
+		String accQuery = 'SELECT Id, Core_MDF_Adjustment_Claim_Nbr__c,Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_Channel_Program__c, '
+		+'Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c'
+		+' FROM Core_MDF_Adjustment_Request__c WHERE Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartner.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Adjustment_Request__c', 
                                                                                                 accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
@@ -373,15 +372,15 @@ Modified By   :        Date:           Changes:
     Added By      :        Accenture - VK - 11/24/2019
     Modified By   :        Date:18/10/2022     Changes: Added Core_MDF_Budget_Type_nm__c to SOQL Query
     ******************************************************************************************************/ 
-  public static void createCaseShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createCaseShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
-    String accQuery = 'SELECT Id, AccountId, Core_Account_Geo__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c, '
-    +'Account.Core_MDF_Channel_Program__c,Core_IPS_Account_Sub_Geo__c,Core_MDF_Channel_Program_txt__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Budget_Type_Txt__c'
-    +' FROM Case WHERE Account.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Account.Core_MDF_Channel_Program__c IN ';
+		String accQuery = 'SELECT Id, AccountId, Core_Account_Geo__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c, '
+		+'Account.Core_MDF_Channel_Program__c,Core_IPS_Account_Sub_Geo__c,Core_MDF_Channel_Program_txt__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Budget_Type_Txt__c'
+		+' FROM Case WHERE Account.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Account.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Case', accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
-                                                                                                uniqueKeySet,null), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Case));    
+                                                                                                uniqueKeySet,null), Integer.valueOf(Label.Core_MDF_PGM_Batch_Size_For_Case));		
     }
     
     /***************************************************************************************************** 
@@ -390,12 +389,12 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Bank Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createBankShareRecords(Set<Id> intelAccIdSet, Set<String>  uniqueKeySet) {
+	public static void createBankShareRecords(Set<Id> intelAccIdSet, Set<String>  uniqueKeySet) {
 
-    String query = 'SELECT Id, Core_MDF_Account__c, Core_MDF_Program__c,Core_MDF_ESD_Update__c FROM Core_MDF_Bank__c '
-    +'WHERE Core_MDF_ESD_Update__c = TRUE AND Core_MDF_Account__c IN ';
+		String query = 'SELECT Id, Core_MDF_Account__c, Core_MDF_Program__c,Core_MDF_ESD_Update__c FROM Core_MDF_Bank__c '
+		+'WHERE Core_MDF_ESD_Update__c = TRUE AND Core_MDF_Account__c IN ';
 
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Bank__c', 
                                                                                                 query, null, 
@@ -409,13 +408,13 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for ABM Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createAccBankMappingShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createAccBankMappingShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
-    String accQuery = 'SELECT Id, Core_MDF_Account__r.Core_MDF_Channel_Program__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c '
-    +'FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
-    String programQuery = ' AND Core_MDF_Account__r.Core_MDF_Channel_Program__c IN ';
+		String accQuery = 'SELECT Id, Core_MDF_Account__r.Core_MDF_Channel_Program__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c '
+		+'FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN ';
+		String programQuery = ' AND Core_MDF_Account__r.Core_MDF_Channel_Program__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Account_Bank_Mapping__c', 
                                                                                                 accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
@@ -428,9 +427,9 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Exception Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  /*public static void createExceptionShareRecords(Set<Id> intelAccIdSet,Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	/*public static void createExceptionShareRecords(Set<Id> intelAccIdSet,Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
         String query = 'SELECT Id,OwnerId,Core_MDF_HostRegion_txt__c,Core_MDF_Approver_1_Comments_Txt__c,Core_MDF_Activity_Cate_and_Type_nm__c,Core_MDF_Account_id__c, Core_MDF_Select_All_Accounts_ind__c, Core_MDF_Program_nm__c,Core_MDF_Country_Region_nm__c,Core_MDF_Region_txt__c,'
         +'Core_MDF_Budget_Type_nm__c,Core_MDF_Select_All_Country_ind__c FROM Core_MDF_Exception__c WHERE Core_MDF_Account_id__c IN ';
@@ -448,9 +447,9 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Exception Account Mapping Share which will create share records for both Exception and Exception Account Mapping
     Added By      :        Accenture - Mohit 11/05/2025(DD/MM/YYYY)
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createExceptionAccMapShareRecords(Set<Id> intelAccIdSet,Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createExceptionAccMapShareRecords(Set<Id> intelAccIdSet,Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
         String query = 'SELECT Id,Core_MDF_Country_Region_txt__c,Core_MDF_Account_id__c,Core_MDF_Program_nm__c,Core_MDF_Select_All_Accounts_ind__c,Core_MDF_Program_txt__c,Core_MDF_HostRegion_txt__c,Core_MDF_Budget_Type_txt__c,'
         +'Core_MDF_Exception_id__c,Core_MDF_Select_All_Country_ind__c FROM Core_MDF_Exception_Account_Mapping__c WHERE Core_MDF_Account_id__c IN ';
@@ -467,19 +466,19 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Escalation Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************/ 
-  public static void createEscalationShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
+	public static void createEscalationShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet) {
 
-    String accQuery = 'SELECT Id, recordTypeId, Core_MDF_Budget_ID_Number_id__c, Core_MDF_Case_ID_Number_id__c, Core_MDF_Co_Marketing_Activity_id__c, '
-    +'Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c, '
-    +'Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program_id__c, '
-    +'Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c '
-    +'FROM Core_MDF_Escalation__c WHERE '
-    +'(Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet OR '
-    +'Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet OR '
-    +'Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet';
-    String programQuery =  ') AND (Core_MDF_Channel_Program_id__c IN ';
+		String accQuery = 'SELECT Id, recordTypeId, Core_MDF_Budget_ID_Number_id__c, Core_MDF_Case_ID_Number_id__c, Core_MDF_Co_Marketing_Activity_id__c, '
+		+'Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c, '
+		+'Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program_id__c, '
+		+'Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c '
+		+'FROM Core_MDF_Escalation__c WHERE '
+		+'(Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet OR '
+		+'Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet OR '
+		+'Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN toAddIntelAccSet';
+		String programQuery =  ') AND (Core_MDF_Channel_Program_id__c IN ';
         Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecordsInternal('Core_MDF_Escalation__c', 
                                                                                                 accQuery, programQuery, 
                                                                                                 intelAccIdSet, channelProgramIdSet, 
@@ -494,7 +493,7 @@ Modified By   :        Date:           Changes:
     @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
     Description   :        method to call batch for Exception Case Mapping Share
     Added By      :        Accenture - VK - 11/24/2019
-    Modified By   :        Date:           Changes: 
+    Modified By   :        Date:       		Changes: 
     ******************************************************************************************************
     public static void createECMShareRecords(Set<Id> intelAccIdSet, Set<Id> channelProgramIdSet, Set<String>  uniqueKeySet){
         
@@ -514,7 +513,7 @@ Method Name   :        pgmSharingForEEFObjects
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        
 Added By      :        Accenture - 
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/
     public static void pgmSharingForEEFObjects(set<Id> EEFAccountIds, set<Id> EEFprogramIdSet, set<Id> primaryAccIds, set<Id> activatingAccIds, set<String> uniqueKeySet,  Map<Id,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap , List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
         
@@ -536,12 +535,12 @@ Method Name   :        shareAccountBasedObjects
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        
 Added By      :        Accenture - 
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/
     public static void shareAccountBasedObjects(set<Id> EEFAccountIds, set<Id> EEFprogramIdSet, set<Id> primaryAccIds, set<Id> activatingAccIds, set<String> uniqueKeySet, Map<Id,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap, List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
         if(EEFAccountIds.size() >0 && EEFprogramIdSet.size() > 0) {
             Set<Id> accIds = new Set<Id>();
-      accIds.addAll(primaryAccIds);
+	    accIds.addAll(primaryAccIds);
             accIds.addAll(activatingAccIds);
             
             if(mapFunctionalityNameTriggerExecution.containsKey('CreateAccountShareRecordsEEF') &&
@@ -559,7 +558,7 @@ Modified By   :        Date:           Changes:
                    createAccountUserShareRecords(EEFAccountIds, EEFprogramIdSet, uniqueKeySet,newPGMList);
                }
             
-            //Merge primary and activating account Id sets and call batch class for Allocation and Transfer Log Objects  
+            //Merge primary and activating account Id sets and call batch class for Allocation and Transfer Log Objects	
             if(mapFunctionalityNameTriggerExecution.containsKey('createAllocationShareRecordsEEF') &&
                mapFunctionalityNameTriggerExecution.get('createAllocationShareRecordsEEF').Core_Active__c){
                    createAllocationShareRecords(accIds, EEFprogramIdSet, uniqueKeySet);
@@ -578,7 +577,7 @@ Method Name   :        sharePrimaryPartnerObjects
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        
 Added By      :        Accenture - 
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/
     public static void sharePrimaryPartnerObjects(set<Id> EEFAccountIds, set<Id> EEFprogramIdSet, set<Id> primaryAccIds, set<Id> activatingAccIds, set<String> uniqueKeySet, Map<Id,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap, List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
         if(primaryAccIds.size() > 0 && EEFprogramIdSet.size() > 0) {
@@ -607,7 +606,7 @@ Method Name   :        shareActivatingPartnerObjects
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        
 Added By      :        Accenture - 
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/
     public static void shareActivatingPartnerObjects(set<Id> EEFAccountIds, set<Id> EEFprogramIdSet, set<Id> primaryAccIds, set<Id> activatingAccIds, set<String> uniqueKeySet, Map<Id,List<Core_MDF_Partner_Mapping__c>> primaryIntelAccIdToPartnerMap, List<Core_MDF_Partner_Group_Mapping__c> newPGMList)
     {
@@ -619,7 +618,7 @@ Modified By   :        Date:           Changes:
             if(mapFunctionalityNameTriggerExecution.containsKey('createPFRShareRecordsEEF') &&
                mapFunctionalityNameTriggerExecution.get('createPFRShareRecordsEEF').Core_Active__c){
                    createPFRShareRecords(activatingAccIds, EEFprogramIdSet, uniqueKeySet);
-               }  
+               }	
             //Below method will be used post WW42.
             if(mapFunctionalityNameTriggerExecution.containsKey('createClaimAndPaymentShareRecords') &&
                mapFunctionalityNameTriggerExecution.get('createClaimAndPaymentShareRecords').Core_Active__c){
@@ -669,7 +668,7 @@ Method Name   :        shareObjectswithPGMGroups
 @parameters   :        Set of AccountId, Set of ProgramId and Set of AccId+ProgramId
 Description   :        Call all object sharing methods
 Added By      :        Accenture - 
-Modified By   :        Date:           Changes: 
+Modified By   :        Date:       		Changes: 
 ******************************************************************************************************/
     public static void shareObjectswithPGMGroups(set<Id> accIdSet, set<Id> programIdSet, set<String> uniqueKeySet, List<Core_MDF_Partner_Group_Mapping__c> newPGMList) {
         

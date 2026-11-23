@@ -7,9 +7,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Dup_Id__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
     </columns>
     <columns>
@@ -226,6 +223,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Dup_Id__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Market_Segment_Nm__c</field>

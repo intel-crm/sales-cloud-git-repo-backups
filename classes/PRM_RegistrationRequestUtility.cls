@@ -45,7 +45,6 @@ public without sharing class PRM_RegistrationRequestUtility {
     public static final String PRM_DupCheckFailure = 'Duplicate Check Failed';
     public static final String PRM_PartnerRoleNA = 'Partner Role NA for Auto Approval';
     public static final String PRM_EmailMismatch = 'Email Domain Mismatch';
-    public static final String PRM_EmailCountryBypass = 'Email Domain Bypassed based on Country';
     public static final String PRM_DiffAccount = 'User Associated with a Different Account';
     public static final String PRM_DupCheck = 'Duplicate Check Pending';
     
@@ -57,7 +56,6 @@ public without sharing class PRM_RegistrationRequestUtility {
     public static final String PSG_Licensing = 'PSG';
     public static final String IPA_Registration_Request_Rejection_Email = 'IPA_Registration_Request_Rejection_Email';    
     //public static final boolean ipaRefresh = Boolean.valueOf(Label.PRM_IPARefresh);
-    public static Set<String> countryBasedBypass = new Set<String>();
     
     public static final Id AccountCreateRequest_RecordTypeId = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName()
         .get('Account_Create_Request')
@@ -273,13 +271,13 @@ public without sharing class PRM_RegistrationRequestUtility {
                     objEmailNotif.BusinessEvent = Pricing_Registration_request_for_new_User_EV;
                     objEmailNotif.Language = 'ENG';
                 }
-                /*if (req.PRM_Channel_Program_Level_txt__c == 'PSG') {
+                if (req.PRM_Channel_Program_Level_txt__c == 'PSG') {
                     String loginId;
                     objEmailNotif.BusinessEvent = PRM_Registration_request_for_new_User_EV_PSG;
                     objEmailNotif.Language = req.PRM_Preferred_Language__c;
                     loginId = '';
                     PRM_EmailUtility.customPlaceholdersMap = new Map<String, String>{'{{USERNAME}}' => loginId };
-                        }*/ //TWC729-8986 - PSG removal from PRM classes
+                        }
                 objEmailNotifList.add(objEmailNotif);
                 
             }
@@ -367,6 +365,7 @@ public without sharing class PRM_RegistrationRequestUtility {
             if (allPASet.size() == 0) {
                 
                 newRequest.PRM_Legal_Agreement_Criteria__c = PRM_Fail;
+                system.debug('Inside log 1--');
             } else if (
                 newRequest.recordTypeID != PRM_IPA_Constants.EV_RECORD_TYPE_ID
             ) {
@@ -378,6 +377,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                     newRequest.PRM_Legal_Agreement_Criteria__c ==
                     Label.PRM_Pending
                 ) {
+                    system.debug('Inside log 2--');
                     for (
                         String laName : newRequest.PRM_Legal_Agreements__c.split(
                             ';'
@@ -398,6 +398,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                         }
                     }
                     newRequest.PRM_Legal_Agreement_Criteria__c = status ? PRM_Success : PRM_Fail;
+                    system.debug('value is--'+newRequest.PRM_Legal_Agreement_Criteria__c);
                 }
             }
         }
@@ -709,27 +710,15 @@ public without sharing class PRM_RegistrationRequestUtility {
                     }
                     
                     if (verifyResponse) {
-                        if (hasBlockedAccountOrContact(reg_Request)) {
-                            reg_Request.PRM_Review_Note_txt__c = System.Label.PRM_BlockedContactAdmins;
-                        }else{
-                            reg_Request.PRM_Status__c = Label.PRM_Status;
-                            reg_Request.PRM_Review_Note_txt__c = 'Auto-approved for secondary contact admin registration.';
-                        }
+                        reg_Request.PRM_Status__c = Label.PRM_Status;
                     }
                 } else {
                     //primary contact admin auto approval
                     
                     if (flag) {
-                        String currentStatus = reg_Request.PRM_Status__c;
                         reg_Request.PRM_Status__c = ( acctMap.get(reg_Request.PRM_Salesforce_ID__c).Channel_Memberships1__r.size() > 0 && acctMap.get(reg_Request.PRM_Salesforce_ID__c).Channel_Memberships1__r[0].PRM_Channel_Program_Id__c == reg_Request.PRM_Channel_Program__c)
                             ? Label.PRM_Status
                             : PRM_Status_Rejected;
-                        if (reg_Request.PRM_Status__c == PRM_Status_Approved && hasBlockedAccountOrContact(reg_Request)) {
-                            reg_Request.PRM_Status__c =currentStatus;
-                            reg_Request.PRM_Review_Note_txt__c = System.Label.PRM_BlockedContactAdmins;
-                        } else if (reg_Request.PRM_Status__c == PRM_Status_Approved) {
-                            reg_Request.PRM_Review_Note_txt__c = 'Auto-approved for primary contact admin registration.';
-                        }
                     }
                 }
             }
@@ -1008,7 +997,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                 Map<String, String> paramMap = new Map<String, String>();
                 paramMap.put('Registration_Request_ID', regRequest.id);
                 if(regRequest.PRM_Matching_Contact__c != null){
-                  paramMap.put('Contact_ID', regRequest.PRM_Matching_Contact__c);    
+                	paramMap.put('Contact_ID', regRequest.PRM_Matching_Contact__c);    
                 } 
                 if (langCulEmail != null) {
                     paramMap.put('LanguageCulture_MDT', langCulEmail.Id);
@@ -1085,7 +1074,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                                }
     }
 
-    /*public static void updateSubmittedDate(List<PRM_Registration_Request__c> regReqList){
+    public static void updateSubmittedDate(List<PRM_Registration_Request__c> regReqList){
      
       if(!regReqList.isEmpty()){
             for(PRM_Registration_Request__c reg_Req : regReqList){
@@ -1095,27 +1084,6 @@ public without sharing class PRM_RegistrationRequestUtility {
                 }
             }
         }
-    }*/ // TWC729-8986 - PSG removal from PRM classes
-    private static Boolean adminDomainAutoApprovalEnabled = null;
-    
-    private static Boolean isAdminDomainAutoApprovalEnabled() {
-        if (adminDomainAutoApprovalEnabled == null) {
-            try {
-                Core_CustomMetadataObjectController controller = new Core_CustomMetadataObjectController('PRM_Auto_Approval_Switch__mdt');
-                Map<String, Object> flagConfig = controller.getInstance('Admin Domain Auto Approval');
-                
-                if (flagConfig != null && flagConfig.containsKey('PRM_isActive__c')) {
-                    String activeValue = String.valueOf(flagConfig.get('PRM_isActive__c'));
-                    adminDomainAutoApprovalEnabled = Boolean.valueOf(activeValue);
-                } else {
-                    adminDomainAutoApprovalEnabled = false; // Default to false
-                }
-            } catch (Exception e) {
-                System.debug('Error loading admin domain feature flag: ' + e.getMessage());
-                adminDomainAutoApprovalEnabled = false; // Default to false on error
-            }
-        }
-        return adminDomainAutoApprovalEnabled;
     }
     
     // Bulkified Code
@@ -1144,7 +1112,7 @@ public without sharing class PRM_RegistrationRequestUtility {
         Map<Id, Set<String>> regSubcriptionMap = new Map<Id, Set<String>>();
         Map<String, Boolean> partRoleMetaDataMap = new Map<String, Boolean>();
         Map<String,Boolean> emailDomainMatch = new Map<string,Boolean>();
-        Map<Id,Id> contactAccountMap = new Map<Id,Id>();
+        Map<Id,Id> contactAccountMap = new  Map<Id,Id>();
         //List<PRM_Registration_Request__c> registrationList = new List<PRM_Registration_Request__c>();
         //set<Id> registrationId = new Set<Id>();
         
@@ -1227,7 +1195,6 @@ public without sharing class PRM_RegistrationRequestUtility {
         }
         
         if (salesforceIdList.size() > 0) {
-            System.debug('acmlist: ' + acmList);
             for (PRM_AccountChannelMembership__c acm : acmList) { //Utkarsh - TWC727-600 - Made changes in the if condition as part of defect fix.
                 if(acm.PRM_Status_Nm__c == 'Approved'){
                     if (salesforceIdList.contains(acm.PRM_Account_Id__c) && !acm.PRM_Account_Id__r.Core_Deactivated__c){
@@ -1241,7 +1208,6 @@ public without sharing class PRM_RegistrationRequestUtility {
                     }
                 }
             }
-            System.debug('acmacmAcctIdPartRoleMap: ' + acmAcctIdPartRoleMap);
         }
         
         List<String> metadataSubscriptionList =  LabelConfiguration__mdt.getInstance('PRM_Subscription_Mapping').Value__c.split(',');
@@ -1267,18 +1233,12 @@ public without sharing class PRM_RegistrationRequestUtility {
                 whitelist.put(awd.Name, awd);
             }
         }
-        //Map<Id, Set<String>> accountAdminEmailDomains = new Map<Id, Set<String>>();//varun
-        Boolean needsAdminDomainCheck = false;
-        List<PRM_Registration_Request__c> eligibleForAdminCheck = new List<PRM_Registration_Request__c>();
-    
         
         for (PRM_Registration_Request__c reg_Request : validRegRequestList) {
             verifyResponse = false;
             //Boolean conditionSet = false;
             String emailDomain = '';
             String emailId = '';
-            Boolean domainMatchFound = false;
-           
             if (
                 metadataSubscriptionSet.equals(regSubcriptionMap.get(reg_Request.id)) && acmAcctIdPartRoleMap.containsKey(reg_Request.PRM_Salesforce_ID__c) 
                 && acctContSize.get(reg_Request.PRM_Salesforce_ID__c) > 0 && acctIdIPAMap.get(reg_Request.PRM_Salesforce_ID__c) == true
@@ -1287,7 +1247,6 @@ public without sharing class PRM_RegistrationRequestUtility {
                 isAccIPA = true;
                 emailId = reg_Request.PRM_Email_ID__c.trim();
                 emailDomain = emailId.substringAfter('@');
-                
             } //else 
                 /*if ( !ipaRefresh && acctIdIPAMap.get(reg_Request.PRM_Salesforce_ID__c) == false && (reg_Request.PRM_Dup_Status__c == PRM_Nodup || reg_Request.PRM_Dup_Status__c == null || reg_Request.PRM_Dup_Status__c == '' )
             ) {
@@ -1301,31 +1260,15 @@ public without sharing class PRM_RegistrationRequestUtility {
             if (verifyResponse == true) {
                 for (String str : whitelist.keyset()) {
                     //boolean contains = false;
-                    if (str.equals(emailDomain) && reg_Request.PRM_Salesforce_ID__c != null && !hasBlockedAccountOrContact(reg_Request)) {  // Utkarsh - TWC727-530 - Added salesforce id not equal to null condition if request is going for auto approval because all new account creation request shouldn't approve manually.
+                    if (str.equals(emailDomain) && reg_Request.PRM_Salesforce_ID__c != null) {  // Utkarsh - TWC727-530 - Added salesforce id not equal to null condition if request is going for auto approval because all new account creation request shouldn't approve manually.
                         reg_Request.PRM_Status__c = Label.PRM_Status;
                         reg_Request.PRM_Auto_Approve__c = true;
                         reg_Request.PRM_isSubmitted__c = true;
-                        if(reg_Request.PRM_Is_Returning_User__c){
-                            reg_Request.PRM_Review_Note_txt__c = Label.UIOLI_Return_Reason;
-                        } else {
-                            reg_Request.PRM_Review_Note_txt__c = 'Auto-approved by whitelisted account email domain match.';
-                        }
                         emailDomainMatch.put(reg_Request.PRM_Email_ID__c,true);
-                        domainMatchFound =true;
-                        break;
                     }
                 }
-                if (!domainMatchFound) {
-                    eligibleForAdminCheck.add(reg_Request);
-                needsAdminDomainCheck = true;
-            }
             }
         }
-
-        if (needsAdminDomainCheck && !eligibleForAdminCheck.isEmpty() && isAdminDomainAutoApprovalEnabled()) {
-        checkPartnerAdminDomains(eligibleForAdminCheck, salesforceIdList, emailDomainMatch);
-    }
-
         for (PRM_Registration_Request__c reg_Request : regReqList) {
             if(reg_Request.RecordTypeId == PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT ){
                 if(reg_Request.PRM_Salesforce_ID__c != null && reg_Request.PRM_Matching_Contact__c!=null && contactAccountMap.get(reg_Request.PRM_Matching_Contact__c) != reg_Request.PRM_Salesforce_ID__c){
@@ -1343,9 +1286,6 @@ public without sharing class PRM_RegistrationRequestUtility {
                 else if(partRoleMetaDataMap.containsKey(reg_Request.PRM_Partner_Type__c) && partRoleMetaDataMap.get(reg_Request.PRM_Partner_Type__c) == true && !isAccIPA){
                     reg_Request.PRM_Pending_Auto_Approval_Criteria__c = PRM_PartnerRoleNA;
                 }
-                else if(countryBasedBypass.contains(reg_Request.PRM_Email_ID__c)){
-                    reg_Request.PRM_Pending_Auto_Approval_Criteria__c = PRM_EmailCountryBypass;
-                }
                 else if(isAccIPA && emailDomainMatch.get(reg_Request.PRM_Email_ID__c)!=null && !(emailDomainMatch.get(reg_Request.PRM_Email_ID__c))){
                     reg_Request.PRM_Pending_Auto_Approval_Criteria__c = PRM_EmailMismatch;
                 }    
@@ -1353,104 +1293,6 @@ public without sharing class PRM_RegistrationRequestUtility {
             }
         }
     }
-    /**
-* @description      : It processes the reg requests which do not satisfy the whitelist domain check and auto approves the reg request if email domain of secondary contact matches with PA/PAD
-* @name             : checkPartnerAdminDomains
-* @param            : List<PRM_Registration_Request__c> eligibleRegRequestList,List<Id> salesforceIdList,Map<String, Boolean> emailDomainMatch
-**/
-
-   private static void checkPartnerAdminDomains(List<PRM_Registration_Request__c> eligibleRegRequestList,List<Id> salesforceIdList,Map<String, Boolean> emailDomainMatch) 
-   {
-    // Get Partner Admin/Delegate email domains
-    Map<Id, Set<String>> accountAdminEmailDomains = new Map<Id, Set<String>>();
-    
-    // Retrieve country-level domain bypass configuration from Custom Metadata
-    Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
-    Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
-    
-    if (salesforceIdList != null && !salesforceIdList.isEmpty()) {
-        for (PRM_Account_Contact_Relationship__c acr : [
-            SELECT 
-                PRM_Account_Id__c,
-                PRM_Contact_Id__r.Email
-            FROM PRM_Account_Contact_Relationship__c
-            WHERE 
-                PRM_Account_Id__c IN :salesforceIdList
-                AND PRM_Status_Nm__c = 'Complete'
-                AND PRM_InActive_Ind__c = false
-                AND PRM_Relationship_Id__r.Name IN ('Partner Admin', 'Partner Admin Delegate')
-                AND PRM_Contact_Id__r.Email != null
-        ]) {
-            String adminEmail = acr.PRM_Contact_Id__r.Email.trim();
-            String adminEmailDomain = adminEmail.substringAfter('@');
-            
-            if (!accountAdminEmailDomains.containsKey(acr.PRM_Account_Id__c)) {
-                accountAdminEmailDomains.put(acr.PRM_Account_Id__c, new Set<String>());
-            }
-            accountAdminEmailDomains.get(acr.PRM_Account_Id__c).add(adminEmailDomain);
-        }
-    }
-    
-    // Check admin domains for unmatched requests
-    for (PRM_Registration_Request__c reg_Request : eligibleRegRequestList) {
-        // Only check if not already matched and has account
-        if (emailDomainMatch.get(reg_Request.PRM_Email_ID__c) == false && 
-            reg_Request.PRM_Salesforce_ID__c != null && 
-            accountAdminEmailDomains.containsKey(reg_Request.PRM_Salesforce_ID__c)) {
-            
-            String emailId = reg_Request.PRM_Email_ID__c.trim();
-            String emailDomain = emailId.substringAfter('@');
-            Set<String> adminDomains = accountAdminEmailDomains.get(reg_Request.PRM_Salesforce_ID__c);
-            
-            // Check if this domain should bypass the blocked domain validation for the registration country
-            Boolean shouldBypass = shouldBypassBlockedDomainCheck(reg_Request.PRM_Country__c, emailDomain,bypassRecords);
-            
-            if (shouldBypass){
-                countryBasedBypass.add(reg_Request.PRM_Email_ID__c);
-            }
-            else if(adminDomains.contains(emailDomain) && !hasBlockedAccountOrContact(reg_Request)) {
-                reg_Request.PRM_Status__c = Label.PRM_Status;
-                reg_Request.PRM_Auto_Approve__c = true;
-                reg_Request.PRM_isSubmitted__c = true;
-                if(reg_Request.PRM_Is_Returning_User__c){
-                    reg_Request.PRM_Review_Note_txt__c = Label.UIOLI_Return_Reason;
-                } else {
-                    reg_Request.PRM_Review_Note_txt__c = 'Auto-approved by Partner Admin/Delegate email domain match.';
-                }
-                emailDomainMatch.put(reg_Request.PRM_Email_ID__c, true);
-                System.debug('Auto-approved based on Partner Admin/Delegate email domain match: ' + emailDomain);
-            }
-        }
-    }
-}
-
-
- /**
-*  @description      : Check if a domain should bypass blocked domain validation for a specific country
-*  @name             : shouldBypassBlockedDomainCheck
-*  @param            : String countryCode - Registration country code
-*  @param            : String emailDomain - Email domain to check
-*  @param            : Map<String, Set<String>> bypassMap - Country-to-domains bypass configuration
-*  @return           : Boolean - true if domain should bypass validation, false otherwise
-*  @throws exception : NONE
-**/
-    public static Boolean shouldBypassBlockedDomainCheck(String countryCode, String emailDomain,Map<String, Map<String, Object>> bypassMap) {        
-        if(bypassMap!=null && !bypassMap.isEmpty() && countryCode!=null && emailDomain!=null){
-            for(String bypassRecord: bypassMap.keySet()){
-                Map<String,Object> record = bypassMap.get(bypassRecord);
-                List<String> cntryCdList = String.valueOf(record.get('Country_Code__c')).split(';');
-                if(cntryCdList.contains(countryCode)){
-                    List<String> bypassList = String.valueOf(record.get('Domains__c')).split(';');
-                    if(bypassList.contains(emailDomain)){
-                        return true;
-                    }
-                }
-            }
-        }
-        // No bypass configuration found for this country
-        return false;
-    }
-
     /**
 * @description      : It sends email if the registrationRequest is rejected
 * @name             : sendRejectionEmail
@@ -1473,7 +1315,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                 Map<String, String> paramMap = new Map<String, String>();
                 paramMap.put('Registration_Request_ID', regRequest.id);
                 if(regRequest.PRM_Matching_Contact__c != null){
-                  paramMap.put('Contact_ID', regRequest.PRM_Matching_Contact__c);    
+                	paramMap.put('Contact_ID', regRequest.PRM_Matching_Contact__c);    
                 }                
                 if (langCulEmail != null) {
                     paramMap.put('LanguageCulture_MDT', langCulEmail.Id);
@@ -1508,75 +1350,10 @@ public without sharing class PRM_RegistrationRequestUtility {
         }
         return langCultureForEmail;
     }
-
-    public static Map<Id, Boolean> getBlockedAccountContactRegRequestMap(List<PRM_Registration_Request__c> regRequestList) {
-        Map<Id, Boolean> blockedRegRequestMap = new Map<Id, Boolean>();
-        Set<Id> accountIds = new Set<Id>();
-        Set<String> emailIds = new Set<String>();
-
-        if (regRequestList == null || regRequestList.isEmpty()) {
-            return blockedRegRequestMap;
-        }
-
-        for (PRM_Registration_Request__c regRequest : regRequestList) {
-            blockedRegRequestMap.put(regRequest.Id, false);
-            if (regRequest.PRM_Salesforce_ID__c != null) {
-                accountIds.add(regRequest.PRM_Salesforce_ID__c);
-            }
-            if (String.isNotBlank(regRequest.PRM_Email_ID__c)) {
-                emailIds.add(regRequest.PRM_Email_ID__c);
-            }
-        }
-
-        if (accountIds.isEmpty() && emailIds.isEmpty()) {
-            return blockedRegRequestMap;
-        }
-
-        Id blockedAccContRT = Schema.getGlobalDescribe().get('PRM_SBC_Account_Search_Configuration__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_BlockedAccountContacts').getRecordTypeId();
-        Set<Id> blockedAccountIds = new Set<Id>();
-        Set<String> blockedContactEmails = new Set<String>();
-
-        for (PRM_SBC_Account_Search_Configuration__c ipaAdminConfig : [
-            SELECT Account__c, PRM_Contact__r.Email, PRM_Type__c
-            FROM PRM_SBC_Account_Search_Configuration__c
-            WHERE RecordTypeId = :blockedAccContRT
-            AND PRM_isActive__c = true
-            AND (
-                (PRM_Type__c = 'Account_Blocked' AND Account__c IN :accountIds)
-                OR (PRM_Type__c = 'Contact_Blocked' AND PRM_Contact__r.Email IN :emailIds)
-            )
-        ]) {
-            if (ipaAdminConfig.PRM_Type__c == 'Account_Blocked' && ipaAdminConfig.Account__c != null) {
-                blockedAccountIds.add(ipaAdminConfig.Account__c);
-            } else if (ipaAdminConfig.PRM_Type__c == 'Contact_Blocked' && String.isNotBlank(ipaAdminConfig.PRM_Contact__r.Email)) {
-                blockedContactEmails.add(ipaAdminConfig.PRM_Contact__r.Email);
-            }
-        }
-
-        for (PRM_Registration_Request__c regRequest : regRequestList) {
-            blockedRegRequestMap.put(
-                regRequest.Id,
-                blockedAccountIds.contains(regRequest.PRM_Salesforce_ID__c) || blockedContactEmails.contains(regRequest.PRM_Email_ID__c)
-            );
-        }
-
-        return blockedRegRequestMap;
-    }
-     public static Boolean hasBlockedAccountOrContact(PRM_Registration_Request__c regRequest) {
-        if (regRequest == null) {
-            return false;
-        }
-        Map<Id, Boolean> blockedRegRequestMap = getBlockedAccountContactRegRequestMap(new List<PRM_Registration_Request__c>{ regRequest });
-        return blockedRegRequestMap.containsKey(regRequest.Id) && blockedRegRequestMap.get(regRequest.Id);
-    }
+    
     public static void validateStatusChange(List<PRM_Registration_Request__c> regRequestList,Map<id, PRM_Registration_Request__c> oldregRequestMap){
         if(regRequestList != null && oldregRequestMap != null){
-            Map<Id, Boolean> blockedRegRequestMap = getBlockedAccountContactRegRequestMap(regRequestList);
             for(PRM_Registration_Request__c newReq: regRequestList){
-                if(oldregRequestMap.containsKey(newReq.id) && newReq.PRM_Status__c == PRM_Status_Approved && oldregRequestMap.get(newReq.id).PRM_Status__c == 'New' && blockedRegRequestMap.containsKey(newReq.Id) && blockedRegRequestMap.get(newReq.Id)){
-                    newReq.PRM_Status__c = oldregRequestMap.get(newReq.id).PRM_Status__c;
-                    newReq.PRM_Review_Note_txt__c = System.Label.PRM_BlockedContactAdmins;
-                }
                 if(oldregRequestMap.containsKey(newReq.id) && newReq.PRM_Status__c != 'New' && oldregRequestMap.get(newReq.id).PRM_Status__c == 'New' && !PRM_Registration_Req_Approve_Reject.isApprovedUsingButton && !PRM_SendDocumentUploadEmail.bypassStatusChangeValidation && newReq.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance' && newReq.RecordTypeId == PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT){
                     newReq.addError('This action is not allowed. Status cannot be modified');
                 }

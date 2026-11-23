@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_PMP_Locale__c</fullName>
         <description>Helps segregate the Categories and display based on user locale</description>
@@ -524,6 +524,6 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
     </nameField>
     <pluralLabel>Categories</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

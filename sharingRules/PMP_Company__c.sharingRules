@@ -44,6 +44,26 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>PMP_External_Anonymous_Users_Company_Information</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published and Active Marketing Profile Information (aka Company Information) records to all Anonymous Users</description>
+        <label>PMP External - Anonymous Users - Company Information</label>
+        <sharedTo>
+            <group>PMP_All_Anonymous_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Inactive_Ind__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PMP_External_Coveo_User_Company_Information</fullName>
         <accessLevel>Read</accessLevel>
         <description>Share all Published Marketing Profile Information (aka Company Information) records to Coveo Integration User.</description>
@@ -138,4 +158,24 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>PMP_External_Guest_User_Company_Information</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published and Active Marketing Profile Information (aka Company Information) records to Guest User</description>
+        <label>PMP External - Guest User - Company Information</label>
+        <sharedTo>
+            <guestUser>Intel_Solutions_Marketplace</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Inactive_Ind__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
 </SharingRules>

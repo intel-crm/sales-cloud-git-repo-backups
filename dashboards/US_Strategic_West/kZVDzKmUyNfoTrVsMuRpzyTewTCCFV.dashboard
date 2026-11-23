@@ -63,10 +63,6 @@
             <operator>equals</operator>
             <values>Telco</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>notContain</operator>
-            <values>Canada</values>
-        </dashboardFilterOptions>
         <name>Region</name>
     </dashboardFilters>
     <dashboardFilters>
@@ -96,81 +92,6 @@
         </dashboardFilterOptions>
         <name>Account Level</name>
     </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Accommodation and Food Services,Health and Life Sciences</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Agriculture</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Arts, Entertainment and Recreation&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Automotive (Non Manufacturing)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Construction</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Consulting</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Defense and Space</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Energy and Utilities</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Finance and Insurance</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Gaming</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Health and Life Sciences</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Manufacturing</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Media</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Professional and Business Services</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Real Estate, Rental and Leasing&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Retail</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Telecommunications</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Transportation, Travel and Warehousing&quot;</values>
-        </dashboardFilterOptions>
-        <name>Industry</name>
-    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>1</colSpan>
@@ -190,9 +111,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -209,13 +127,13 @@
             <rowSpan>5</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>7</colSpan>
+            <colSpan>4</colSpan>
             <columnIndex>1</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;insert\&amp;quot;:\&amp;quot;Last Activity in CRM\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;insert\&amp;quot;:\&amp;quot;Activity\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -240,19 +158,16 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>None</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <header>This Week</header>
+                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>1.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/No_Activity</report>
+                <report>USES_Strategic_West/Accounts_by_Region_This_Week</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>1</rowIndex>
@@ -276,19 +191,16 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>Last Year</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <header>This Month</header>
+                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>1.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_LAST_YEAR</report>
+                <report>USES_Strategic_West/Accounts_by_Region_This_Month</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>1</rowIndex>
@@ -312,19 +224,16 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>This Year</header>
+                <header>This Qtr</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_This_YEAR</report>
+                <report>USES_Strategic_West/Accounts_by_Region_This_QTR</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>1</rowIndex>
@@ -348,134 +257,23 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>Last QTR</header>
+                <header>This Year</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_Last_QTR</report>
+                <report>USES_Strategic_West/Accounts_by_Region_This_YEAR</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>1</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>5</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CDF1</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>This Qtr</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_This_QTR</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>1</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CDF1</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>This Month</header>
-                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>1.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_This_Month</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>1</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>7</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CDF1</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>This Week</header>
-                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>1.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/Accounts_by_Region_This_Week</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>1</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>8</colSpan>
+            <colSpan>9</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -488,9 +286,6 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -530,18 +325,6 @@
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Account.Core_Account_Level__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>INDUSTRY</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
                     <flexTableSortInfo>
                         <sortColumn>DUE_DATE</sortColumn>
                         <sortOrder>1</sortOrder>
@@ -554,7 +337,7 @@
                 <report>USES_Strategic_West/Accounts_by_Region</report>
             </dashboardComponent>
             <rowIndex>5</rowIndex>
-            <rowSpan>11</rowSpan>
+            <rowSpan>17</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>36</rowHeight>

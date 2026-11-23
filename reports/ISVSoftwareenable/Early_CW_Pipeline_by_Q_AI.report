@@ -124,13 +124,6 @@ IF(TODAY()-ACCOUNT_LAST_ACTIVITY&gt;= 120,&quot;x_120+&quot;, &quot;y_Never&quot
             <operator>equals</operator>
             <value>Malhar Thakkar,Tonya DeGance</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Austin Skinner</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

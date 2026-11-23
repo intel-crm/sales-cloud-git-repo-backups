@@ -53,6 +53,10 @@
         <name>Core_MDF_Camp_BusinessClientAcceleration</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- CCG Market Accelerate --></label>
+        <name>Core_MDF_Camp_CCG_Market_Accelerate</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Client Market Accelerate --></label>
         <name>Core_MDF_Camp_Client_Market_Accelerate</name>
     </fieldSets>
@@ -75,6 +79,10 @@
     <fieldSets>
         <label><!-- Intel Rise Technology Initiative --></label>
         <name>Core_MDF_Camp_IRTI</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Intel MDF Account Based2 --></label>
+        <name>Core_MDF_Camp_Intel_MDF_Account_Based2</name>
     </fieldSets>
     <fieldSets>
         <label><!-- Iot Premier - MDF Campaign --></label>
@@ -217,11 +225,6 @@
     <fields>
         <label><!-- Activity Category --></label>
         <name>Core_MDF_ActivityCategory__c</name>
-    </fields>
-    <fields>
-        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
-        <label><!-- Activity Approval Required --></label>
-        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Activity Category -&gt;Type --></label>
@@ -529,11 +532,6 @@
         <name>Core_MDF_Hero_Product__c</name>
     </fields>
     <fields>
-        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
-        <label><!-- IPA Co-Engineering Campaign? --></label>
-        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
-    </fields>
-    <fields>
         <help>Die wichtigste Priorität, die vermarktet wird</help>
         <label>Priorität</label>
         <name>Core_MDF_IPA_Priority_nm__c</name>
@@ -612,10 +610,6 @@
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
     </fields>
     <fields>
-        <label>Messansatz</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
-    </fields>
-    <fields>
         <label>Programmteilnehmer – Empfänger</label>
         <name>Core_MDF_Member_Acceptor_id__c</name>
         <relationshipLabel><!-- Custom Picklists (Member Acceptor) --></relationshipLabel>
@@ -649,14 +643,6 @@
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
     <fields>
-        <label>Anderer Messansatz</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
-    </fields>
-    <fields>
-        <label>Weitere Ergebniskriterien</label>
-        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
-    </fields>
-    <fields>
         <help>Wenn das primäre Bewertungskriterium/KPI für diese Werbekampagne nicht in der Liste gefunden wird, können Sie hier ein benutzerdefiniertes Bewertungskriterium eingeben. Wählen Sie etwas, das gezählt werden kann, wie Impressionen, Klicks, Interaktionen, Downloads usw.</help>
         <label>Andere Ergebnismetrik</label>
         <name>Core_MDF_Other_Outcome_txt__c</name>
@@ -681,10 +667,6 @@
     <fields>
         <label>PCT-Anmerkungen</label>
         <name>Core_MDF_PCT_Notes_txt__c</name>
-    </fields>
-    <fields>
-        <label>Partnerkontakt</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <help><!-- Activating Partners supporting this campaign. --></help>
@@ -768,8 +750,8 @@
         <name>Core_MDF_ReimbursementRate_pct__c</name>
     </fields>
     <fields>
-        <help>Gesamtinvestition (Intel + Partner) x Erstattungssatz = Maximale Intel-Investition.</help>
-        <label>Maximale Intel-Investition</label>
+        <help>Kampagnengesamtkosten x Kostenerstattungsrate = Kostenerstattungsbetrag.</help>
+        <label>Kostenerstattungsbetrag</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
@@ -951,7 +933,7 @@
         <name>Core_MDF_Technology__c</name>
     </fields>
     <fields>
-        <label>Gesamtinvestition (Intel + Partner)</label>
+        <label>Gesamtkosten der Kampagne</label>
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
     </fields>
     <fields>
@@ -992,6 +974,10 @@
     <recordTypes>
         <label><!-- Channel MDF - Account Based --></label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Channel MDF - Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Client --></label>

@@ -9,9 +9,9 @@
 *****************************************************************************************************************************************/
 public with sharing class  Core_RestAPI_CaseV1_Handler {
     
-   private String invalidQueryPrams9010 = '9010';
-    private String errorCode500 = '500';
-    private String successCode200 = '200';
+   private String INVALID_QUERY_PRAMS_9010 = '9010';
+    private String ERROR_CODE_500 = '500';
+    private String SUCCESS_CODE_200 = '200';
     private DateTime entryTime = null;
     private String apiName; 
 
@@ -29,9 +29,9 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
         return condition;
     }
 
-    // Niyaz -- 12/06/2025 --- added as part of vulnerability fix, Removed the CreatedBy.Core_Login_Id__c from the below query (field is queried but never set in CaseWrapper, creating unnecessary PII risk)
+    
     private static final String GET_CASES_SOQL =  ' SELECT id,CaseNumber, Status,Core_Sub_Status__c, Core_Severity__c, Core_IPS_Project_Case__r.Name, Core_IPS_Product__c, '+
-        ' Subject, Contact.Name, Contact.Account.Name, CreatedDate,Core_Customer_Reference_ID__c, ClosedDate, LastModifiedDate, Core_Issue_Description__c,  '+
+        ' Subject, Contact.Name, Contact.Account.Name, CreatedDate,Core_Customer_Reference_ID__c, ClosedDate, LastModifiedDate, Core_Issue_Description__c,CreatedBy.Core_Login_Id__c,  '+
         ' Core_IPS_Project_Case__r.Core_IPS_Project_ID__c, Core_IPS_Product_name__c '+
         ' FROM case WHERE Core_IPS_Customer_Visible__c = true'+ getCondition() + ORDER_BY + 'LIMIT '+Label.Core_RestAPI_CasesV1_Records_Limit; 
     
@@ -55,11 +55,11 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
                 processRequest();
             
         }catch(Exception e){
-            Core_RestAPI_Util.processException( e, errorCode500, response, apiName, entryTime);
+            Core_RestAPI_Util.processException( e, ERROR_CODE_500, response, apiName, entryTime);
             response.successContent = null;
         }finally{
             if(String.isBlank(response.code))
-                response.code = successCode200 ;
+                response.code = SUCCESS_CODE_200 ;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
             
         }        
@@ -71,7 +71,7 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
         Boolean isRequestValid = true;
         if(Core_RestAPI_Util.isRequestParamValid(allowedRequestURIParams) == false){
             isRequestValid = false;
-            Core_RestAPI_Util.processException( null, invalidQueryPrams9010, response, apiName, entryTime);
+            Core_RestAPI_Util.processException( null, INVALID_QUERY_PRAMS_9010, response, apiName, entryTime);
         }
         return isRequestValid;
     }
@@ -106,10 +106,9 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
            newCasesCountList = [SELECT count(id) TotalCount, status FROM case WHERE Core_IPSPortal_Check__c = true AND Status = 'New' group by status];
            openCaseCountList  = [SELECT count(id) TotalCount, status FROM case WHERE Core_IPSPortal_Check__c = true AND Status = 'Open' group by status];
        }else{
-           /*START Niyaz -- 12/06/2025 --- added as part of vulnerability fix Core_IPS_Customer_Visible__c = true */
-           newCasesCountList = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'New' AND Core_IPS_Customer_Visible__c = true group by status ];  
-           openCaseCountList  = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'Open' AND Core_IPS_Customer_Visible__c = true group by status ];
-           /*END Niyaz -- 12/06/2025 */
+           newCasesCountList = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'New' group by status];
+           openCaseCountList  = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'Open' group by status];
+           
        }
         if(newCasesCountList != null && !newCasesCountList.isEmpty())
             response.newCases = Integer.valueOf(newCasesCountList[0].get('TotalCount'));

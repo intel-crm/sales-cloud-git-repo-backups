@@ -1,11 +1,11 @@
 <aura:component controller="Core_MDF_Escalation_ServiceHandler" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
     
-    <!--<aura:html tag="style">
-        To hide standard quick action pop up
+    <aura:html tag="style">
+        <!--To hide standard quick action pop up-->
         .slds-button.slds-button_icon.slds-modal__close.closeIcon.slds-button_icon-bare.slds-button_icon-inverse{
         visibility: hidden;
-        }        
-    </aura:html> -->
+        }
+    </aura:html>  
     
     <aura:attribute name = "chkbox" type = "Boolean" default=""/>
     <aura:attribute name = "showErr" type = "Boolean" default=""/>    

@@ -100,7 +100,7 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         } 
         system.assert(oppPar.Id!=null,'Opportunity PAR is not created');
         Test.startTest();
-        List<user> user = [SELECT Id from User where IsActive = true and Profile.Name = 'System administrator' Limit 1]; //ATHR fix Gangadhar
+        List<user> user = [SELECT Id from User Limit 1];
         
         Approval.ProcessSubmitRequest req1 = new Approval.ProcessSubmitRequest();
         req1.setObjectId(oppPar.Id);

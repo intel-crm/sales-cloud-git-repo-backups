@@ -166,14 +166,14 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
                 }
                 
                 //needs to be uncommented
-                if(oldRRValue!=null && oldAmtValue!=null && mapOfExchangeRate != null && mapOfExchangeRate.get(pfrId)!= null){
+                if(oldRRValue!=null && oldAmtValue!=null){
                     //intelContributionOld = ((decimal.valueOf(oldAmtValue) * decimal.valueOf(oldRRValue.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP) ;
                 	intelContributionOld = ((Decimal.valueOf(oldAmtValue) * Decimal.valueOf(oldRRValue.removeEnd('%')) / 100) * mapOfExchangeRate.get(pfrId)).setScale(2, RoundingMode.HALF_UP);
                 }else{
                     intelContributionOld = 0;
                 }
                
-                if(mapOfNewAmt.get(pfrId)!=null && mapOfNewRR.get(pfrId)!=null && mapOfExchangeRate != null && mapOfExchangeRate.get(pfrId)!= null){
+                if(mapOfNewAmt.get(pfrId)!=null && mapOfNewRR.get(pfrId)!=null){
                     //intelContributionNew = ((mapOfNewAmt.get(pfrId) * decimal.valueOf(mapOfNewRR.get(pfrId).removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
                     intelContributionNew = ((mapOfNewAmt.get(pfrId) * decimal.valueOf(mapOfNewRR.get(pfrId).removeEnd('%'))/100) * mapOfExchangeRate.get(pfrId)).setScale(2,RoundingMode.HALF_UP); 
                 } else{
@@ -185,7 +185,7 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
                     intelContributionDifference = mapOfMDFReimbursement.get(pfrId);
                 } else {
     				// For other budget types, calculate the difference using intelContributionOld
-                    intelContributionDifference = intelContributionNew - (mapOfICValue.get(pfrId) != null ? mapOfICValue.get(pfrId) : 0); // Added null check to avoid NullPointerException
+    				intelContributionDifference = intelContributionNew - mapOfICValue.get(pfrId);
                 } 
                 
                reportWrap = new Core_MDF_ATFReportWrapper(
@@ -218,7 +218,6 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
             }
             csvDataList.addAll(generateCSV(reportWrapList));
         }catch(Exception ex){
-            Core_MDF_CCP_UtilityClass.logError(ex);
         }
     }
     
@@ -226,7 +225,6 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
     // This method is called after all batches are processed.
     global void finish(Database.BatchableContext bcontext) {
         // Perform any final operations after all batches are processed.
-        try{
         
         if(recordTrackingId == null){
             Core_MDF_Record_Tracking__c rt = new Core_MDF_Record_Tracking__c();
@@ -281,9 +279,6 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
             }
         }
         
-        }catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
     }
     
     public ContentVersion createContentVersion(List<String> csvDataList){
@@ -330,10 +325,8 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
                     csvList.add(csvContent);
                 }
             }catch(Exception ex){
-                Core_MDF_CCP_UtilityClass.logError(ex);
             }
         
         return csvList;
     }
-    
 }

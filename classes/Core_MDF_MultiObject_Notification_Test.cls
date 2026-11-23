@@ -52,8 +52,6 @@ private class Core_MDF_MultiObject_Notification_Test {
                     'Bypass_geoLeadApprovalProcess',
                     'Bypass_MDF_Budget_Access_Validation',
                     'Bypass_MDF_Budget_Status_Validation'
-                    
-                    
                     };
                         
                         // de-duplicate and prepare list for utility
@@ -576,7 +574,7 @@ insert accNodeAttr;*/
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             //string PartnerFund_RecordType_IPA=Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Account_Based').getRecordTypeId();
             string partnerFund_RecordType_IPA = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-            PartnerFundRequest pfra = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(IPAcamp.Id),partnerFund_RecordType_IPA,string.valueof(accCoMarketing.id),pfa,budgetipa,'ALBANIA','Developer','Desktop','Intel® Corporate Logo','Event','','Draft',false);
+            PartnerFundRequest pfra = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(IPAcamp.Id),partnerFund_RecordType_IPA,string.valueof(accCoMarketing.id),pfa,budgetipa,'ALBANIA','Developer','Desktop','Intel® Corporate Logo','Event','Channel Partner Owned Event','Draft',false);
             pfra.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             pfra.Title = 'Test Activity pfra';
             pfra.Core_MDF_Approval_Stage__c= 'L1 Approval';
@@ -586,7 +584,6 @@ insert accNodeAttr;*/
             pfra.Core_MDF_Budget_Currency_cd__c='USD';
             pfra.Core_MDF_Start_Date__c = System.today();
             pfra.Core_MDF_End_Date__c = System.today()+1;
-            pfra.Core_MDF_Activity_Types__c= null;
             //insert pfra;
             pfrList.add(pfra);
             
@@ -597,8 +594,6 @@ insert accNodeAttr;*/
             IPApfr.ChannelPartnerId = acc2.id;
             IPApfr.Core_MDF_Budget_Type_nm__c='Account Plan';
             IPApfr.Core_MDF_Approval_Stage__c= 'L1 Approval';
-            IPApfr.Core_MDF_Activity_Types__c= null;
-            
             pfrList.add(IPApfr);
             
             PartnerFundRequest IPApfr1 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(string.valueof(IPAcamp.Id),string.valueof(acc2.id),System.today().addDays(1),System.today().addDays(2),false);
@@ -608,7 +603,6 @@ insert accNodeAttr;*/
             IPApfr1.ChannelPartnerId = acc2.id;
             IPApfr1.Core_MDF_Budget_Type_nm__c='Account Plan';
             IPApfr1.Core_MDF_Approval_Stage__c= 'Price Reviewer';
-            IPApfr1.Core_MDF_Activity_Types__c= null;
             pfrList.add(IPApfr1);
             
             PartnerFundRequest IPApfr3 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(string.valueof(IPAcamp.Id),string.valueof(acc2.id),System.today().addDays(1),System.today().addDays(2),false);
@@ -618,8 +612,8 @@ insert accNodeAttr;*/
             IPApfr3.ChannelPartnerId = acc2.id;
             IPApfr3.Core_MDF_Budget_Type_nm__c='Account Plan';
             IPApfr3.Core_MDF_Approval_Stage__c= 'Customer Acceptance';
-            IPApfr3.Core_MDF_Activity_Types__c= null;
             pfrList.add(IPApfr3);
+            
            
             insert pfrList;
             
@@ -629,9 +623,9 @@ insert accNodeAttr;*/
                 ChannelPartnerId = dellRMFVirtualCorp.Id,
                 Core_MDF_Country_nm__c = 'ARGENTINA',
                 Core_MDF_Brand_nm__c = 'Intel® 11ᵗʰ Gen',
-                //Core_MDF_ProductType__c = 'Traditional Notebook',
+                Core_MDF_ProductType__c = 'Traditional Notebook',
                 Core_MDF_ActivityCategory__c = 'Sales Readiness',
-               // Core_MDF_Activity_Types__c = 'In-Store Promotion',
+                Core_MDF_Activity_Types__c = 'In-Store Promotion',
                 RequestedAmount = 12345,
                 Core_MDF_TargetAudience__c = 'Enthusiast Gaming',
                 Core_MDF_Start_Date__c = System.today().addDays(-10),
@@ -662,8 +656,8 @@ insert accNodeAttr;*/
             iupgm1.Core_MDF_User_id__c = testUser.Id;
             iupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver';
-            //iupgm1.Core_MDF_All_Accounts_cd__c = 'No';
-           // iupgm1.Core_MDF_Account_id__c = acc1.Id;
+            iupgm1.Core_MDF_All_Accounts_cd__c = 'No';
+            iupgm1.Core_MDF_Account_id__c = acc1.Id;
             iupgm1.Core_MDF_Active_Ind__c = true;
             iupgm1.RecordTypeId = IUPGM_recordtype_IPA;
             iupgmList.add(iupgm1);
@@ -675,8 +669,8 @@ insert accNodeAttr;*/
             iupgm2.Core_MDF_User_id__c = testUser.Id;
             iupgm2.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgm2.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_IPA_Budget_Approver';
-           // iupgm2.Core_MDF_All_Accounts_cd__c = 'No';
-           // iupgm2.Core_MDF_Account_id__c = acc1.Id;
+            iupgm2.Core_MDF_All_Accounts_cd__c = 'No';
+            iupgm2.Core_MDF_Account_id__c = acc1.Id;
             iupgm2.Core_MDF_Active_Ind__c = true;
             iupgm2.RecordTypeId = IUPGM_recordtype_IPA;
             iupgmList.add(iupgm2);
@@ -689,8 +683,8 @@ insert accNodeAttr;*/
             iupgm3.Core_MDF_User_id__c = testUser.Id;
             iupgm3.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgm3.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_IPA_Acct_Mgr';
-            //iupgm3.Core_MDF_All_Accounts_cd__c = 'No';
-            //iupgm3.Core_MDF_Account_id__c = acc1.Id;
+            iupgm3.Core_MDF_All_Accounts_cd__c = 'No';
+            iupgm3.Core_MDF_Account_id__c = acc1.Id;
             iupgm3.Core_MDF_Active_Ind__c = true;
             iupgm3.RecordTypeId = IUPGM_recordtype_IPA;
             iupgmList.add(iupgm3);

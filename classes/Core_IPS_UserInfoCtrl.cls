@@ -36,7 +36,7 @@ public with sharing class Core_IPS_UserInfoCtrl {
     public static List<Core_Ips_BannerMessage__c> fetchCustomSetting(){
         List<Core_Ips_BannerMessage__c> casedef=new List<Core_Ips_BannerMessage__c>();
         if (Schema.sObjectType.Core_Ips_BannerMessage__c.isAccessible()){ 
-            casedef = [SELECT Id, Name, Core_Ips_BannerMessage_Text_LWC__c,Core_Ips_BannerMessage_Checkbox_LWC__c FROM Core_Ips_BannerMessage__c Limit 49999]; //Limit Added by Tushar
+            casedef = [SELECT Id, Name, Core_Ips_BannerMessage_Text_LWC__c,Core_Ips_BannerMessage_Checkbox_LWC__c FROM Core_Ips_BannerMessage__c];
         }
         List<Core_Ips_BannerMessage__c> caseList=new List<Core_Ips_BannerMessage__c>();
         for(Core_Ips_BannerMessage__c bannermsg:casedef){

@@ -82,13 +82,6 @@
             <operator>notContain</operator>
             <value>test</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FIRST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

@@ -150,7 +150,7 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -499,24 +499,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Line_Of_Business_Description__c</fullName>
-        <label>Line Of Business Description</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Line_of_Business__c</fullName>
-        <externalId>false</externalId>
-        <label>Line of Business</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Max_TDP__c</fullName>
         <externalId>false</externalId>
         <label>Max TDP</label>
@@ -760,14 +742,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Profit_Center_Description__c</fullName>
-        <label>Profit Center Description</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_Profit_Center__c</fullName>
         <description>Represents Profit center</description>
         <externalId>false</externalId>
@@ -811,13 +785,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Deactivation_Date__c</fullName>
-        <label>Deactivation Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
     </fields>
     <fields>
         <fullName>Description__c</fullName>

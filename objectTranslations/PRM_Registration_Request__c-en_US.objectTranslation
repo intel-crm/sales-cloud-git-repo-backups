@@ -13,14 +13,6 @@
         <name>PRM_Kanban_View</name>
     </fieldSets>
     <fields>
-        <label><!-- SDP Product Code --></label>
-        <name>ACM_SDP_Product_Code__c</name>
-    </fields>
-    <fields>
-        <label><!-- SDP System Serial Number --></label>
-        <name>ACM_SDP_System_Serial_Number__c</name>
-    </fields>
-    <fields>
         <label><!-- AE_ApprovedRejectedTimeStamp --></label>
         <name>AE_ApprovedRejectedTimeStamp__c</name>
     </fields>
@@ -1207,6 +1199,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -1623,10 +1619,6 @@ The field allows only English letters, digits (0-9), and the following special c
     <fields>
         <label><!-- Contact First Name --></label>
         <name>PRM_First_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Returning User --></label>
-        <name>PRM_Is_Returning_User__c</name>
     </fields>
     <fields>
         <label><!-- Contact Job Function --></label>
@@ -2119,10 +2111,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Retailer</masterLabel>
             <translation><!-- Retailer --></translation>
         </picklistValues>
@@ -2219,10 +2207,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
             <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
@@ -2291,10 +2275,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Scientist/Researcher --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
             <translation><!-- Software/Application Development/Engineering --></translation>
         </picklistValues>
@@ -2310,10 +2290,6 @@ The field allows only English letters, digits (0-9), and the following special c
     <fields>
         <label><!-- Profile Responses --></label>
         <name>PRM_Profile_Response__c</name>
-    </fields>
-    <fields>
-        <label><!-- Record Link --></label>
-        <name>PRM_Record_Link__c</name>
     </fields>
     <fields>
         <label><!-- Record Status --></label>
@@ -2629,6 +2605,14 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Subscriptions --></label>
         <name>PRM_Subscriptions__c</name>
         <picklistValues>
+            <masterLabel>Developer Zone Newsletter</masterLabel>
+            <translation><!-- Developer Zone Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Software Hub Product Communication</masterLabel>
+            <translation><!-- Edge Software Hub Product Communication --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Education and Training</masterLabel>
             <translation><!-- Education and Training --></translation>
         </picklistValues>
@@ -2637,8 +2621,16 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Events and Tradeshows --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Partner Program Newsletter</masterLabel>
+            <translation><!-- FPGA Partner Program Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Industry Solutions</masterLabel>
             <translation><!-- Industry Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Edge Newsletter</masterLabel>
+            <translation><!-- Inside Edge Newsletter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Cloud Insider Events and Tradeshows</masterLabel>
@@ -2669,10 +2661,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Offers and Promotions --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>OpenVINO &amp; AI Inference Newsletter</masterLabel>
-            <translation><!-- OpenVINO &amp; AI Inference Newsletter --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner Research Communications</masterLabel>
             <translation><!-- Partner Research Communications --></translation>
         </picklistValues>
@@ -2697,6 +2685,18 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Product and Solution Communications --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Programmable Logic Newsletters</masterLabel>
+            <translation><!-- Programmable Logic Newsletters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic Product Announcements</masterLabel>
+            <translation><!-- Programmable Logic Product Announcements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Developer Product Insights</masterLabel>
+            <translation><!-- Software Developer Product Insights --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Surveys</masterLabel>
             <translation><!-- Surveys --></translation>
         </picklistValues>
@@ -2716,10 +2716,6 @@ The field allows only English letters, digits (0-9), and the following special c
     <fields>
         <label><!-- Tax ID/Registration # --></label>
         <name>PRM_Tax_ID_Registration__c</name>
-    </fields>
-    <fields>
-        <label><!-- GST Number (India Only) --></label>
-        <name>PRM_Tax_Number__c</name>
     </fields>
     <fields>
         <label><!-- TriggerProcess --></label>
@@ -2794,14 +2790,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>Sales_PendingTimeStamp__c</name>
     </fields>
     <fields>
-        <label><!-- Status Approved Time --></label>
-        <name>Status_Approved_Time__c</name>
-    </fields>
-    <fields>
-        <label><!-- Status Pending Time --></label>
-        <name>Status_Pending_Time__c</name>
-    </fields>
-    <fields>
         <label><!-- Sync Profile Response --></label>
         <name>Sync_Profile_Response__c</name>
     </fields>
@@ -2853,11 +2841,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Email Verification Request --></label>
         <name>PRM_Email_Verification_Request</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Approve/Reject button will not be there --></description>
-        <label><!-- Registration Request Page --></label>
-        <name>Registration_Request_Page</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- The field allows only English letters, digits (0-9), and the following special characters: &apos;-&apos;, &apos;(&apos;, &apos;)&apos;, &apos;/&apos;, &apos;&apos;, &apos;@&apos;, &apos;&amp;&apos;, &apos;*&apos;, &apos;,&apos;, &apos;#&apos;, &apos;.&apos;, &apos;_&apos;, and space --></errorMessage>
@@ -2866,10 +2849,6 @@ The field allows only English letters, digits (0-9), and the following special c
     <validationRules>
         <errorMessage><!-- Please provide rejection reason. --></errorMessage>
         <name>DZP_Registration_Status_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- GST Number should not have special characters --></errorMessage>
-        <name>GstNumberValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please select the account which is associated with contact --></errorMessage>

@@ -36,22 +36,18 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
     public void execute(Database.BatchableContext bc,List<Account> accountsList)
     {
         try{
-            //ATHR - Deeply Nested if 16209
-            if(accountsList == NULL || accountsList.isEmpty()) {
-                return;
-            }
+            if(accountsList != NULL && !accountsList.isEmpty())
+            {
                 // Iterating over the accounts from the query
                 for(Account acc : accountsList)
                 {
-                    //ATHR - Deeply Nested if 16209
-                    if(acc.Core_MDF_Parent_Fund_Account__r == NULL || acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c == NULL || acc.Core_MDF_Channel_Program__c == NULL) {
-                        continue;
-                    }
                     // Set of ultimate Account Id
                     ultimateAccountIdsSet.add(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c);
                     // Set of Program Ids of the account
                     programIdsSet.add(acc.Core_MDF_Channel_Program__c);
                     // Check if account's ultimate account and program is not null 
+                    if(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c != NULL && acc.Core_MDF_Channel_Program__c != NULL)
+                    {
                         // Making Key for the Map as String - Account's ultimate Accounts Id and Channel Program Id
                         String intelAcctIdProgId = String.valueOf(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c) + String.valueOf(acc.Core_MDF_Channel_Program__c);
                         // Creating Map of ultimate Account + channel Program as key and list of Group Ids
@@ -64,12 +60,14 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
                             ultimateAcctIdProgramIdToGroupIdsListMap.get(intelAcctIdProgId).add(acc.Core_MDF_Group_Id__c);
                         }
                     }
+                }
                
                 
                 // Calling createBudgetShareRecords me to share budgets with new Account's Groups
                 createBudgetShareRecords();
                 // Calling createEscalationShareRecords me to share Escalations with new Account's Groups
                 createEscalationShareRecords();
+            }
         }
         catch(Exception e){         
             Core_MDF_CCP_UtilityClass.logError(e);

@@ -113,7 +113,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
         
         Test.startTest();
         
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
+        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
         testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
         testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
         testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today()-2;
@@ -247,7 +247,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
         System.runAs(sysAdminUser){
             PartnerFundClaim claimUpdated2 = [Select Id,Core_MDF_Status__c,Core_MDF_Audit_Type__c, Core_MDF_FlaggedForAudit__c, Core_MDF_Audit_Hold__c from PartnerFundClaim where Title = 'Test Claim' limit 1];
             claimUpdated2.Status = Label.Core_MDF_Status_Approved;
-            claimUpdated2.Core_MDF_Status__c = 'Hold';
+            claimUpdated2.Core_MDF_Status__c = 'Paid';
             update claimUpdated2;
         }
         
@@ -256,7 +256,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
             Core_MDF_PFC_ManualAudit.ManualAuditWrapper wpr = Core_MDF_PFC_ManualAudit.isClaimEligibleForManualAudit(claimUpdated3.Id);
             //System.assertEquals(Label.Core_MDF_ClaimIsAlreadyOnManualHoldMsg, wpr.message); //Label.Core_MDF_Claim_Reviewed_Previously
 
-            claimUpdated3.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
+            //claimUpdated3.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
             claimUpdated3.Core_MDF_PIC_Review_Completed__c = true;
             update claimUpdated3;
 
@@ -514,7 +514,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
                 auditDocList.add(auditDoc1);
             }
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res = Core_MDF_PartnerFundClaim.saveClaim(claimtoupdate, auditDocList,null,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claimtoupdate, auditDocList,null,null);
             claimtoupdate.Core_MDF_Status__c = 'Paid and PIC Pending';
             update claimtoupdate;
 
@@ -592,7 +592,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
                 auditDocList.add(auditDoc1);
             }
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res = Core_MDF_PartnerFundClaim.saveClaim(claim, auditDocList,null,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim, auditDocList,null,null);
         }
         
         System.runAs(intUser){            
@@ -626,26 +626,12 @@ public class Core_MDF_PFC_ManualAudit_Test {
         claim1.Status = Label.Core_MDF_Status_Approved;
         claim1.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
         pfcList.add(claim1);
-        Id ccfRecordTypeId = Schema.SObjectType.Core_MDF_Payment__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_Co_Marketing_Fund').getRecordTypeId();
-        Core_MDF_Payment_Run__c payRunRecord = new Core_MDF_Payment_Run__c();
-            payRunRecord.Core_MDF_ScheduleRun_Dtm__c= DateTime.Now().addMinutes(1);
-            payRunRecord.Core_MDF_Geo_Txt__c = 'APJ';
-            payRunRecord.Core_MDF_Program_Txt__c  ='Client CoMarketing Fund';
-            payRunRecord.Core_MDF_Budget_Type_nm__c  ='CCF 1.0';
-            payRunRecord.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Client_Co_Marketing_Fund_CMP').getRecordTypeId();
-            Database.insert(payRunRecord);
         
         Database.insert(pfcList);
-		Core_MDF_Payment__c newPayment = new Core_MDF_Payment__c();
-        newPayment.Core_MDF_Payment_Status_Txt__c = 'Pending Payment';
-        newPayment.Core_MDF_Payment_Run_Id__c = payRunRecord.Id;
-        newPayment.RecordTypeId = ccfRecordTypeId;
-        insert newPayment;
 
         List<PartnerFundClaim> pfcListToUpdate = new List<PartnerFundClaim>();
         claim1.Core_MDF_Status__c = 'Pending Payment';
-        //claim1.Core_MDF_Payment_Id__c= 'a4JD30000006LSUMA2';
-        claim1.Core_MDF_Payment_Id__c= newPayment.Id;
+        claim1.Core_MDF_Payment_Id__c= 'a4JD30000006LSUMA2';
         pfcListToUpdate.add(claim1);
 
        // Database.update(pfcListToUpdate);
@@ -685,7 +671,7 @@ public class Core_MDF_PFC_ManualAudit_Test {
                 auditDocList.add(auditDoc1);
             }
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res = Core_MDF_PartnerFundClaim.saveClaim(claim, auditDocList,null,null, false, null, null, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim, auditDocList,null,null);
         }
         
         System.runAs(intUser){            

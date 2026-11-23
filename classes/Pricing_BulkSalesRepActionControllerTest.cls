@@ -17,14 +17,14 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
             accTeamList.add(new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales', UserId = adminUserList[0].Id));
             insert accTeamList;       
             List < SBQQ__Quote__c > lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2, salesRepUserList[0].Email, accountExecutiveUserList[0].Email);
-            List < SBQQ__QuoteLine__c > lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].Id, 2);                  
+            List < SBQQ__QuoteLine__c > lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].Id, 2);               
         Test.stopTest();
         }    
     }
-   
+    
     static testmethod void recordApprovalTest() {
         
-        List < User > lstFSEUsers3 = [Select Id, Email from User Where Email = 'firstNameSalesRep@intel.com' Limit 1 ];
+        List < User > lstFSEUsers3 = [Select Id, Email from User Where Email = 'firstNameSalesRep@intel.com' Limit 1 ];        
         List < SBQQ__Quote__c > lstQuote = [Select Id, SBQQ__SalesRep__r.Id from SBQQ__Quote__c Where SBQQ__SalesRep__r.Id =: lstFSEUsers3[0].Id limit 1];
         List < SBQQ__QuoteLine__c > quoteLines = [Select Id, Pricing_Status_Nm__c,Pricing_Sales_Rep__c from SBQQ__QuoteLine__c Limit 2];
         for (SBQQ__QuoteLine__c ql: quoteLines) {            
@@ -50,6 +50,7 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
     
     static testmethod void testCustomerRevision(){
         List < User > lstFSEUsers3 = [Select Id, Email from User Where Email = 'firstNameSalesRep@intel.com' Limit 1 ];
+        List < SBQQ__Quote__c > lstQuote = [Select Id, SBQQ__SalesRep__r.Id from SBQQ__Quote__c Where SBQQ__SalesRep__r.Id =: lstFSEUsers3[0].Id limit 1];
         List < SBQQ__QuoteLine__c > quoteLines = [Select Id,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,SBQQ__Quote__r.Id, Pricing_Status_Nm__c,Pricing_Ready_for_Review_cb__c,Pricing_Last_Submitted_By_Id__c,Customer_Revision_Count_Cnt__c,SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_SDM_Fast_Track__c from SBQQ__QuoteLine__c Limit 1];
 
         quoteLines[0].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview;
@@ -103,6 +104,7 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
         List < User > accountExecutiveUserList = [Select Id, Email from User Where Email = 'firstNameAE@intel.com' Limit 1 ];
         List<Contact> contactList = [Select Id, AccountId FROM Contact Where email = 'primarycontact@noemail.com' Limit 1]; 
         Opportunity oppList = Pricing_Test_Utility.createOpportunity();
+        List<OpportunityLineItem> oppItemList = Pricing_Test_Utility.createOpportunityProduct(oppList.Id, 2);
         
         List<SBQQ__Quote__c> quoteListFI = Pricing_Test_Utility.createFIQuoteWithParam(contactList[0].AccountId, contactList[0].Id, 1,adminUserList[0].Email,accountExecutiveUserList[0].Email);  
         List<SBQQ__QuoteLine__c> lstquoteLinesFI = Pricing_Test_Utility.createFIQuoteLines(quoteListFI[0].Id, 1);
@@ -114,7 +116,7 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
             Test.stopTest();
         } 
     }
-    
+
     static testmethod void getQuoteLineToRejectByRPMTest() {        
         List < User > adminUserList = [Select Id, Email from User Where Email = 'firstName@intel.com' Limit 1 ];
         SBQQ__Quote__c quote = [SELECT Id FROM SBQQ__Quote__c LIMIT 1];

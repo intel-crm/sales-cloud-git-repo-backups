@@ -23,7 +23,6 @@ public without sharing class Core_MDF_Recovery_Helper {
     public static Set<id> pfcIdToSkip = new Set<Id>();
     public static Set<String> claimGeoSet = new Set<String>();
     public static Map<string,List<PartnerFundClaim>> accToClaimsMap = new Map<string,List<PartnerFundClaim>>();
-	public static Map<Id,Decimal> clmIdToRecAmtMap = new Map<Id,Decimal>();    
     public static List<Integer> thirdMonthsList = Core_MDF_CustomLabelConfig.getIntegerList('Core_MDF_RecoveryRunMonthsCCF_DCF');
     public static String month_data = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Current_Month');
     public class ClaimAmtCompare implements Comparator<PartnerFundClaim> {
@@ -88,8 +87,12 @@ public without sharing class Core_MDF_Recovery_Helper {
             //Run eligibility for program included in the label (RMF)
             
 
-            //ATHR Fix- Deeply nested if
-            if(wrapperForRecvryData.source == 'Payment Run' && wrapperForRecvryData.isPreSelClaim_RecvryDone == false && (wrapperForRecvryData.isRecReq_RecvryDone==true) && ((recoveryRequestRecords.size() == 0 && programs_For_Node_Account.contains(programFromWraper)) || ((thirdMonthsList.contains(currMonth)) && core_MDF_Program_Recovery_Preselection.contains(programFromWraper)))){        
+                
+            if(wrapperForRecvryData.source == 'Payment Run' && wrapperForRecvryData.isPreSelClaim_RecvryDone == false){
+                
+                
+                if((wrapperForRecvryData.isRecReq_RecvryDone==true)&&((recoveryRequestRecords.size() == 0 && programs_For_Node_Account.contains(programFromWraper)) 
+			        /**OR CCF/DCF Logic here */|| ((thirdMonthsList.contains(currMonth)) && core_MDF_Program_Recovery_Preselection.contains(programFromWraper)))){
                     wrapperForRecvryData.isPreSelClaim_RecvryDone = true;
                     
                     //if(programsForEligibilityRun.contains(keySplit[0])){
@@ -118,13 +121,13 @@ public without sharing class Core_MDF_Recovery_Helper {
                         if(accountToBTGeoToAmountMap.size()> 0){
                             //Call method to get All Claims
                             allClaimsList = queryClaims(programBudgetTypeQuarter, accountsFiltered, true);
-                            //ATHR Fix- Deeply nested if
-                            //if(allClaimsList.size()>0){
+                            if(allClaimsList.size()>0){
                                 //Call method to get Recommended Claims
-                                recommendedClaims = allClaimsList.size()>0 ? processClaimsBasedOnBTGeo(accountToBTGeoToAmountMap,allClaimsList) : new Map<string,Map<id,decimal>>(); 
-                            //}  
+                                recommendedClaims = processClaimsBasedOnBTGeo(accountToBTGeoToAmountMap,allClaimsList); 
+                            }  
                         }
                     
+                }
             }
             
             
@@ -152,20 +155,16 @@ public without sharing class Core_MDF_Recovery_Helper {
         string budgetTypeList = '';
         // Holds list of budgetType geo
         List<String> budgetGeoList = new List<String>();
-        try{            
+        try{
+            
             //Hide Claim section if the quarter is not Current or Previous Quarter
             Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows rrResult = checkQuarterAndYear(quarter);
+
             if(rrResult.hideClaimInfo){
                 return rrResult;
-            }            
+            }
+            
             accountIdL.add(account);
-            
-            //S&GP
-            Core_MDF_RecoveryClaimReportViewCtrl.QuarterSurePayInfo info = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterInfoAndSurePayAmount(program,account);
-            Decimal surePayRecAmount = Decimal.valueOf(info.surePayAmount);
-            Set<String> surePayBTSet = info.surePayBTSet;
-            clmIdToRecAmtMap = info.clmIdToRecAmtMap;
-            
             Core_MDF_Recovery_Batch.recoveryDataWrapper wrapperForRcvrData = new Core_MDF_Recovery_Batch.recoveryDataWrapper();
                 wrapperForRcvrData.accntListId = accountIdL;
             string programBudgetTypeQuarter= program + ';;'+ quarter;
@@ -173,25 +172,14 @@ public without sharing class Core_MDF_Recovery_Helper {
             accountToBTGeoToAmountMap = calculateRecoveryAmount(programBudgetTypeQuarter,wrapperForRcvrData,false);
                         
             //If Partnership score detail exists:
-            if(accountToBTGeoToAmountMap.size()>0 || surePayRecAmount >0){
-                Set<String> combinedBTSet = new Set<String>();
-                if(accountToBTGeoToAmountMap.size()>0){
-                    //Create a list of all the Budget Types
-                    Map<string,decimal> bTGeoMap = accountToBTGeoToAmountMap.get(account);
-                    for(string bTGeo: bTGeoMap.keyset()){
-                        List<string> bTGeoSplit = bTGeo.split(';');
-                        if(!bTGeoSplit.isEmpty()){
-                            combinedBTSet.add(bTGeoSplit[0]); // Budget Type
-                        }
-                        // Adding budgetType Geo (bTGeo) to the list
-                        budgetGeoList.add(bTGeo);
-                    }
-                }
-                if(surePayRecAmount >0 && surePayBTSet != null && !surePayBTSet.isEmpty()){
-                    combinedBTSet.addAll(surePayBTSet);
-                }
-				if(!combinedBTSet.isEmpty()){
-                    budgetTypeList = String.join(new List<String>(combinedBTSet), ',');
+            if(accountToBTGeoToAmountMap.size()>0){
+                //Create a list of all the Budget Types
+                Map<string,decimal> bTGeoMap = accountToBTGeoToAmountMap.get(account);
+                for(string bTGeo: bTGeoMap.keyset()){
+                    List<string> bTGeoSplit = bTGeo.split(';');
+                    budgetTypeList = budgetTypeList == ''?bTGeoSplit[0] : budgetTypeList+ ',' + bTGeoSplit[0];
+                    // Adding budgetType Geo (bTGeo) to the list
+                    budgetGeoList.add(bTGeo);
                 }
                 programBudgetTypeQuarter = program + ';'+ budgetTypeList+ ';' + quarter;
                 
@@ -209,13 +197,10 @@ public without sharing class Core_MDF_Recovery_Helper {
             }
             //Show Recovery Requests if they exist or Eligible Claims if Recovery Requests don't exist
             if(recommendedRecoveries.size() > 0){
-                rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,recommendedRecoveries.get(account),claimIdToRequestDetail,true,budgetGeoList,clmToBtRecoveryAmt,crossBTorProgToBTMap,clmIdToRecAmtMap);   
+                rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,recommendedRecoveries.get(account),claimIdToRequestDetail,true,budgetGeoList,clmToBtRecoveryAmt,crossBTorProgToBTMap);   
             }
             else if(recommendedClaims.size() > 0){
-                rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,recommendedClaims.get(account),accountEligibileClaimsBTGeo.get(account),false,budgetGeoList,clmToBtRecoveryAmt,crossBTorProgToBTMap,clmIdToRecAmtMap);   
-            }
-            else if(surePayRecAmount >0 && recommendedRecoveries.size()==0 && recommendedClaims.size() == 0){
-                rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,null,null,false,null,null,crossBTorProgToBTMap,clmIdToRecAmtMap);   
+                rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,recommendedClaims.get(account),accountEligibileClaimsBTGeo.get(account),false,budgetGeoList,clmToBtRecoveryAmt,crossBTorProgToBTMap);   
             }
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}  
@@ -355,22 +340,18 @@ public without sharing class Core_MDF_Recovery_Helper {
                         if(crossProgAllowed && crossProgram != null){
                             strQuery += '(Core_MDF_Program_Nm__c =:program or ';
                             strQuery += '(Core_MDF_Program_Nm__c =:crossProgram  ';
-                            //ATHR Fix- Deeply nested if
-                            /*if(budgetTypeList != null && budgetTypeList.size() >0){
+                            if(budgetTypeList != null && budgetTypeList.size() >0){
                                 strQuery += 'and Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c in:budgetTypeList))) ';
                             }else{
                                 strQuery += ' )))';
-                            }*/
-                            strQuery += (budgetTypeList != null && !budgetTypeList.isEmpty()) ? 'and Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c in:budgetTypeList))) ' : ' )))';
+                            }
                         }else{
                             strQuery += '(Core_MDF_Program_Nm__c =:program  ';
-                            //ATHR Fix- Deeply nested if
-                            /*if(budgetTypeList != null && budgetTypeList.size() >0){
+                            if(budgetTypeList != null && budgetTypeList.size() >0){
                                 strQuery += 'and Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c in:budgetTypeList)) ';
                             }else{
                                 strQuery += ' ))';
-                            }*/
-                            strQuery += (budgetTypeList != null && budgetTypeList.size() >0) ? 'and Core_MDF_Claim_Id__r.Core_MDF_Budget_Type_Options_Nm__c in:budgetTypeList)) ' : ' ))';
+                            }
                         }
             }else{
                 strQuery += 'Core_MDF_Program_Nm__c =:program ';
@@ -405,11 +386,7 @@ public without sharing class Core_MDF_Recovery_Helper {
             }
             
             rrList = Database.query(strQuery);
-            //ATHR Fix- Deeply nested if
-            if(rrList.isEmpty()){
-                return accountToRecoveryRequests;
-            }
-            //if(rrList.size()>0){
+            if(rrList.size()>0){
                 for(Core_MDF_Recovery_Request__c rr: rrList){
                     if(rr.Core_MDF_Program_Nm__c != program){
                         pfcIdToSkip.add(rr.Core_MDF_Claim_Id__c);
@@ -462,7 +439,7 @@ public without sharing class Core_MDF_Recovery_Helper {
                         }
                     }
                 } 
-            //}
+            }
              
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}  
@@ -578,8 +555,8 @@ public without sharing class Core_MDF_Recovery_Helper {
             
             String strQuery = '';
             String vatValue = Label.Core_MDF_Service_Invoice_to_Intel;
-            strQuery = 'select id,Core_MDF_Claim_Ref_Number__c,Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Status__c,Core_MDF_Activity_Category__c,Core_MDF_VAT_Opt_In_txt__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c,';
-            strQuery += 'Core_MDF_Activity_Types__c, Amount, Core_MDF_Program__c, ChannelPartnerId, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Country_Location_nm__c,Core_MDF_Recovery_Hold_Ind__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c ';
+            strQuery = 'select id,Core_MDF_Claim_Ref_Number__c,Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Status__c,Core_MDF_Activity_Category__c,Core_MDF_VAT_Opt_In_txt__c,';
+            strQuery += 'Core_MDF_Activity_Types__c, Amount, Core_MDF_Program__c, ChannelPartnerId, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Country_Location_nm__c,Core_MDF_Recovery_Hold_Ind__c ';
             strQuery += 'from PartnerFundClaim ';
             strQuery += 'where Core_MDF_Status__c in (\'Payment Due\',\'Pending Available Fund\') and Amount>0 and ';            
             if(programs_For_Node_Account.contains(program)){
@@ -588,14 +565,11 @@ public without sharing class Core_MDF_Recovery_Helper {
             else{
             	strQuery += 'ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c in:account and ';
             }
-            //strQuery += '(Core_MDF_Processing_Preference_nm__c != \'Settle, then get paid\' OR (Core_MDF_Processing_Preference_nm__c = \'Settle, then get paid\' AND (Core_MDF_Claim_Review_Case__c = null OR (Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c = \'Review Completed\' AND (Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c > 0 and Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c = 0))))) and ';
-            strQuery += '(Core_MDF_Processing_Preference_nm__c != \'Settle, then get paid\' OR (Core_MDF_Processing_Preference_nm__c = \'Settle, then get paid\' AND (Core_MDF_Claim_Review_Case__c = null OR (Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c = \'Review Completed\' AND Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c >= 0)))) AND ';
+	    strQuery += '(Core_MDF_Processing_Preference_nm__c != \'Settle, then get paid\' OR (Core_MDF_Processing_Preference_nm__c = \'Settle, then get paid\' AND (Core_MDF_Claim_Review_Case__c = null OR (Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c = \'Review Completed\' AND Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c > 0 AND (Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c = null OR Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c = 0))))) AND ';
             if(Core_MDF_Utility.byPassFeature('bypass_VATClaimsForRecovery')){
                 strQuery += 'Core_MDF_VAT_Opt_In_txt__c != :vatValue and ';
             }
             strQuery += 'Core_MDF_Type_Txt__c = \'Claim\' and ';
-            // Exclude Super Claims (having sub claims only) and its Sub Claims for all program
-            strQuery += 'Core_MDF_Claim_Id__c = null and Core_MDF_Has_Sub_Claims_Ind__c = false and ';
             if(crossProgAllowed && crossProgram != null && budgetTypeList!= null && budgetTypeList.size()>0){
                 strQuery += '(ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =:program or ';
             	strQuery += '(ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =:crossProgram and Core_MDF_Budget_Type_Options_Nm__c in:budgetTypeList))';
@@ -607,9 +581,8 @@ public without sharing class Core_MDF_Recovery_Helper {
             }
             strQuery += 'order by Core_MDF_Recovery_Hold_Ind__c desc, Core_MDF_Status__c, Amount desc'; 
             claimList = Database.query(strQuery);
-            //ATHR Fix - Deeply nested if
-            //if(claimList.size()>0){
-                for(PartnerFundClaim claim:((claimList != null && claimList.size() > 0) ? claimList : new List<PartnerFundClaim>())){
+            if(claimList.size()>0){
+                for(PartnerFundClaim claim:claimList){
                     if(pfcIdToSkip != NULL && pfcIdToSkip.size() >0 && pfcIdToSkip.contains(claim.Id)){
                         continue;
                     }
@@ -655,7 +628,7 @@ public without sharing class Core_MDF_Recovery_Helper {
                     claimIdToClaimBudgetTypeMap.put(claim.Id, claim.Core_MDF_Budget_Type_Options_Nm__c);
                 }
                 
-            //}
+            }
             
         }
         
@@ -732,9 +705,8 @@ public without sharing class Core_MDF_Recovery_Helper {
                     List<PartnerFundClaim> toBeProcessedCrossRec = new List<PartnerFundClaim>();
                     Set<String> geoSet = new Set<String>();
                     //If there is dollar value still to be recovered for the Account/Program/Quarter
-                    //ATHR Fix- Deeply nested if
-                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0 && allClaimsList.containsKey(programAccountQ)){
-                        //if(allClaimsList.containsKey(programAccountQ)){
+                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0){
+                        if(allClaimsList.containsKey(programAccountQ)){
                             Map<string,List<PartnerFundClaim>> claimList = allClaimsList.get(programAccountQ);
                             string key = 'Budget+Geo'+':'+budgetGeo;
                             string key2 = 'Geo' + ':' + budgetGeo; 
@@ -743,11 +715,10 @@ public without sharing class Core_MDF_Recovery_Helper {
                                 //Get all claims that are of same Budget Type of the recovery record
                                 for(string bTGeo: claimList.keyset()){                                
                                     List<String> btGeoSplit = bTGeo.split(';');
-                                    //ATHR Fix- Deeply nested if
-                                    if(budgetGeoList[0] == btGeoSplit[0] && claimList.containsKey(bTGeo) && claimList.get(bTGeo) != NULL){
-                                        //if(claimList != null && claimList.containsKey(bTGeo) && claimList.get(bTGeo) != NULL){
+                                    if(budgetGeoList[0] == btGeoSplit[0]){
+                                        if(claimList != null && claimList.containsKey(bTGeo) && claimList.get(bTGeo) != NULL){
                                             toBeProcessed1.addAll(claimList.get(bTGeo));                                    
-                                        //}
+                                        }
                                     }
                                 }
                                 
@@ -800,7 +771,7 @@ public without sharing class Core_MDF_Recovery_Helper {
                                     }
                                 }
                             }
-                        //}
+                        }
                     }
                 }
 
@@ -817,16 +788,11 @@ public without sharing class Core_MDF_Recovery_Helper {
                     List<PartnerFundClaim> toBeProcessedCrossRec1 = new List<PartnerFundClaim>();
                     Set<String> geoSet = new Set<String>();
                     //If there is dollar value still to be recovered for the Account/Program/Quarter
-                    //ATHR Fix- Deeply nested if
-                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0 && allClaimsList.containsKey(programAccountQ)){
-                        //if(allClaimsList.containsKey(programAccountQ)){
+                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0){
+                        if(allClaimsList.containsKey(programAccountQ)){
                             Map<string,List<PartnerFundClaim>> claimList = allClaimsList.get(programAccountQ);
                             string key2 = 'Geo' + ':' + budgetGeo; 
-                            //ATHR Fix- Deeply nested if
-                            if(claimList == null){
-                                continue;
-                            }
-                            //if(claimList != null){ 
+                            if(claimList != null){ 
                                 // splitting budgetGeo with ;
                                 list<string> splitBudgetGeo = budgetGeo.split(';');
                                 // checking if budget type is available in crossBTorProgToBTMap
@@ -853,8 +819,8 @@ public without sharing class Core_MDF_Recovery_Helper {
                                         crossRecGeoMap.put(key2,toBeProcessedCrossRec1);
                                     }
                                 }
-                            //}
-                        //}
+                            }
+                        }
                     }
                 }   
 
@@ -865,16 +831,11 @@ public without sharing class Core_MDF_Recovery_Helper {
                     List<PartnerFundClaim> toBeProcessedCrossRec1 = new List<PartnerFundClaim>();
                     Set<String> geoSet = new Set<String>();
                     //If there is dollar value still to be recovered for the Account/Program/Quarter
-                    //ATHR Fix- Deeply nested if
-                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0 && allClaimsList.containsKey(programAccountQ)){
-                        //if(allClaimsList.containsKey(programAccountQ)){
+                    if(budgetTypeGeoToAmountMap.get(budgetGeo)!=0){
+                        if(allClaimsList.containsKey(programAccountQ)){
                             Map<string,List<PartnerFundClaim>> claimList = allClaimsList.get(programAccountQ);
                             string key2 = 'Geo' + ':' + budgetGeo; 
-                            //ATHR Fix- Deeply nested if
-                            if(claimList == null){
-                                continue;
-                            }
-                            //if(claimList != null){ 
+                            if(claimList != null){ 
                                 // splitting budgetGeo with ;
                                 list<string> splitBudgetGeo = budgetGeo.split(';');
                                 // checking if budget type is available in crossBTorProgToBTMap
@@ -901,8 +862,8 @@ public without sharing class Core_MDF_Recovery_Helper {
                                         crossRecGeoMap.put(key2,toBeProcessedCrossRec1);
                                     }
                                 }
-                            //}
-                        //}
+                            }
+                        }
                     }
                 }
 
@@ -941,14 +902,12 @@ public without sharing class Core_MDF_Recovery_Helper {
                 if(context == 'sameBudgetType'){
                     //Iterate in the ClaimsMap
                     for(PartnerFundClaim claim: claimsMap){
-                        //ATHR Fix- Deeply nested if
-                        /*if(programs_For_Node_Account.contains(claim.Core_MDF_Program__c)){
+                        if(programs_For_Node_Account.contains(claim.Core_MDF_Program__c)){
                             account= claim.ChannelPartnerId;
                         }
                         else{
                             account= claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;
-                        }*/
-                        account = programs_For_Node_Account.contains(claim.Core_MDF_Program__c)? claim.ChannelPartnerId : claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;
+                        }
                         string bTorPgm = claim.Core_MDF_Budget_Type_Options_Nm__c == null ? claim.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c : claim.Core_MDF_Budget_Type_Options_Nm__c;
                         // preparing a string of Budget Type or Program to Geo // If incoming program is SPCF/CCFB, but claims Program is not SPCF/CCFB, then prepare a key as SPCF/CCFB;Claim's geo else Claim's Budget Type;claim's geo
                         //String claimKeyBtGeo = keySplit[1].split(';')[0] == 'Service Provider CoMarketing Fund' && bTorPgm != 'Service Provider CoMarketing Fund' ? 'Service Provider CoMarketing Fund' +';'+ claim.Core_MDF_Region_Cd__c : bTorPgm +';'+ claim.Core_MDF_Region_Cd__c;
@@ -958,46 +917,45 @@ public without sharing class Core_MDF_Recovery_Helper {
                         String claimKeyBt = noBudgetTypePrograms.contains(keySplit[1].split(';')[0]) && !noBudgetTypePrograms.contains(bTorPgm) ? keySplit[1].split(';')[0] : bTorPgm;
                         
                         //If claims need to be checked against same Budget Type + Geo, then call eligibilityLogicCheck
-                        //ATHR Fix- Deeply nested if
-                        //if(keySplit[0] == 'Budget+Geo'){
-                            eligibleClaims = (keySplit[0] == 'Budget+Geo') ? eligibilityLogicCheck(account, key, claimKeyBtGeo, claim) : eligibleClaims;
-                        //}
+                        if(keySplit[0] == 'Budget+Geo'){
+                            eligibleClaims = eligibilityLogicCheck(account, key, claimKeyBtGeo, claim);
+                        }
                         //If claims need to be checked against same Budget Type and cross Geo, then call eligibilityLogicCheck
-                        //if(keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)){
-                            eligibleClaims = (keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)) ? eligibilityLogicCheck(account, key, claimKeyBt, claim) : eligibleClaims;  
-                        //}
+                        if(keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)){
+                            eligibleClaims = eligibilityLogicCheck(account, key, claimKeyBt, claim);  
+                        }
                     }
                 }
                 // check if btToCrossBtMap is not null
-                //ATHR Fix- Deeply nested if
-                if(context != 'crossBudgetType' || btToCrossBtMap == NULL || btToCrossBtMap.isEmpty()){
-                    return eligibleClaims; 
-                }
-                //if(context == 'crossBudgetType' && btToCrossBtMap != NULL && btToCrossBtMap.size()>0){ 
+                if(context == 'crossBudgetType' && btToCrossBtMap != NULL && btToCrossBtMap.size()>0){ 
                     // Looping over keyset of btToCrossBtMap
                     for(String bt : btToCrossBtMap.keySet()){
                         for(PartnerFundClaim claim: claimsMap){
-                                account = programs_For_Node_Account.contains(claim.Core_MDF_Program__c)? claim.ChannelPartnerId : claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;//ATHR Fix                            
+                            if(programs_For_Node_Account.contains(claim.Core_MDF_Program__c)){
+                            account= claim.ChannelPartnerId;
+                            }
+                            else{
+                                account= claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;
+                            }
                             string bTorPgm = claim.Core_MDF_Budget_Type_Options_Nm__c == null ? claim.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c : claim.Core_MDF_Budget_Type_Options_Nm__c;
                             // checking if btToCrossBtMap contains bt and get is not null and value contains claims budget type
-                                if(btToCrossBtMap.containsKey(bt) && btToCrossBtMap.get(bt)!= NULL && (btToCrossBtMap.get(bt)).contains(bTorPgm)){
+                            if(btToCrossBtMap.containskey(bt) && btToCrossBtMap.get(bt)!= NULL && (btToCrossBtMap.get(bt)).contains(bTorPgm)){
                                 // preparing a string of Budget Type;geo
                                 String claimKeyBtGeo = bt +';'+ claim.Core_MDF_Region_Cd__c;
                                 // preparing a string of Budget Type
                                 String claimKeyBt = bt;
                                 //If claims need to be checked against same Budget Type + Geo, then call eligibilityLogicCheck
-                                //ATHR Fix- Deeply nested if
-                                //if(keySplit[0] == 'Budget+Geo'){ 
-                                    eligibleClaims = (keySplit[0] == 'Budget+Geo') ? eligibilityLogicCheck(account, key, claimKeyBtGeo, claim) : eligibleClaims;                                                                       
-                                //}
+                                if(keySplit[0] == 'Budget+Geo'){ 
+                                    eligibleClaims = eligibilityLogicCheck(account, key, claimKeyBtGeo, claim);                                                                       
+                                }
                                 //If claims need to be checked against same Budget Type and cross Geo, then call eligibilityLogicCheck
-                                //if(keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)){
-                                    eligibleClaims = (keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)) ? eligibilityLogicCheck(account, key, claimKeyBt, claim) : eligibleClaims;                                    
-                                //}
+                                if(keySplit[0] == 'Geo' && !sameGeoRecoveryBudgetTypeList.contains(claim.Core_MDF_Budget_Type_Options_Nm__c)){
+                                    eligibleClaims = eligibilityLogicCheck(account, key, claimKeyBt, claim);                                    
+                                }
                             }
                         }
                     }
-                //}
+                }
             }    
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
@@ -1022,7 +980,6 @@ public without sharing class Core_MDF_Recovery_Helper {
             // setting claimRecovery to zero
             decimal claimRecovery = 0; 
             string consumedBudget;
-            decimal balClmAmtAfterManualRec = (clmIdToRecAmtMap.containsKey(claim.Id) && clmIdToRecAmtMap.get(claim.Id) > 0) ? (claim.Amount - clmIdToRecAmtMap.get(claim.Id)) : claim.Amount;            
             // checking if accountToEligibleClaims contains account, then add the value to eligibleClaims
             if(accountToEligibleClaims.containsKey(account)){
                 eligibleClaims = accountToEligibleClaims.get(account);
@@ -1032,21 +989,17 @@ public without sharing class Core_MDF_Recovery_Helper {
                 eligibileClaimsBTGeo = accountEligibileClaimsBTGeo.get(account);
             }
             // checking if claimBtOrGeoKey matches with btGeoOrbt and recoveryAmount and claim amount greater than zero
-            //ATHR Fix- Deeply nested if
-            if(claimBtOrGeoKey != btGeoOrbt || recoveryAmount <= 0 || balClmAmtAfterManualRec <= 0){
-                return eligibleClaims;
-            }
-            //if(claimBtOrGeoKey == btGeoOrbt && recoveryAmount >0 && balClmAmtAfterManualRec > 0){
+            if(claimBtOrGeoKey == btGeoOrbt && recoveryAmount >0 && claim.Amount > 0){
                 // checking if eligibleClaims not null and contains claim id
                 if(eligibleClaims!=null && eligibleClaims.containsKey(claim.id)){
                     // add the get value to alreadyRecovered
                     decimal alreadyRecovered = eligibleClaims.get(claim.id);
                     // calculate remaining amount by substracting alreadyRecovered from claim's amount
-                    decimal remaining = balClmAmtAfterManualRec - alreadyRecovered;
+                    decimal remaining = claim.Amount - alreadyRecovered;
                     // if remaining amount is greater than zero
                     if(remaining>0){
                         // check if remaining amount is greater than recovery amount then add alreadyRecovered+recoveryAmount else add claim amount
-                        claimRecovery = remaining > recoveryAmount ? alreadyRecovered + recoveryAmount : balClmAmtAfterManualRec;
+                        claimRecovery = remaining > recoveryAmount ? alreadyRecovered + recoveryAmount : claim.Amount;
                         // check if remaining amount is greater than recovery amount then set budgetBalance as recoveryAmount else remaining amt
                         decimal budgetBalance = remaining > recoveryAmount ? recoveryAmount : remaining;
                         // set consumedBudget as get of eligibileClaimsBTGeo , Bt;Geo = balance amount
@@ -1058,21 +1011,25 @@ public without sharing class Core_MDF_Recovery_Helper {
                         // check if remaining amount is greater than recovery amount then add recovery amount else claim's amount 
                         decimal tempvar = remaining > recoveryAmount ? recoveryAmount : remaining;                            
                         // check if clmToBtRecoveryAmt containsKey claim id
-                        //ATHR Fix- Deeply nested if
-                        //if(clmToBtRecoveryAmt.containsKey(claim.id)){
+                        if(clmToBtRecoveryAmt.containsKey(claim.id)){
                             // set keyToRecoveryAmt as get value of clmToBtRecoveryAmt
-                            keyToRecoveryAmt = (clmToBtRecoveryAmt.containsKey(claim.id)) ? clmToBtRecoveryAmt.get(claim.id) : keyToRecoveryAmt;                            
-                        //}
-                        // set keyToRecoveryAmt with key as bt;geo and value as tempvar
-                        keyToRecoveryAmt.put(keySplit[1],tempvar.setScale(2));
-                        // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
-                        clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);                                                                               
+                            keyToRecoveryAmt = clmToBtRecoveryAmt.get(claim.id);
+                            // set keyToRecoveryAmt with key as bt;geo and value as tempvar
+                            keyToRecoveryAmt.put(keySplit[1],tempvar.setScale(2));
+                            // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
+                            clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);
+                        }else{
+                            // set keyToRecoveryAmt with key as bt;geo and value as tempvar
+                            keyToRecoveryAmt.put(keySplit[1],tempvar.setScale(2));
+                            // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
+                            clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);
+                        }                                                        
                     }
                 }
                 // if eligibleClaims does not contains claim id
                 else{
                     // check if claim amount is greater than or equal to recoveryAmount then add recoveryAmount to claimRecovery else add claim amount
-                    claimRecovery = balClmAmtAfterManualRec >= recoveryAmount ? recoveryAmount : balClmAmtAfterManualRec;
+                    claimRecovery = claim.Amount >= recoveryAmount ? recoveryAmount : claim.Amount;
                     // set consumedBudget as Bt;Geo = claimRecovery
                     consumedBudget = keySplit[1] + '=' + claimRecovery;
                     // set recoveryMade to true
@@ -1080,16 +1037,19 @@ public without sharing class Core_MDF_Recovery_Helper {
                     // set budgetTypeGeoToAmountMap with key as bt;geo and value as recoveryAmount-claimRecovery
                     budgetTypeGeoToAmountMap.put(keySplit[1],recoveryAmount - claimRecovery);
                     // check if clmToBtRecoveryAmt containsKey claim id
-                    //ATHR Fix- Deeply nested if
-                    //if(clmToBtRecoveryAmt.containsKey(claim.id)){
+                    if(clmToBtRecoveryAmt.containsKey(claim.id)){
                         // set keyToRecoveryAmt as get value of clmToBtRecoveryAmt
-                        keyToRecoveryAmt = (clmToBtRecoveryAmt.containsKey(claim.id)) ? clmToBtRecoveryAmt.get(claim.id) : keyToRecoveryAmt;                        
-                    //}
-                    // set keyToRecoveryAmt with key as bt;geo and value as claimRecovery
-                    keyToRecoveryAmt.put(keySplit[1],claimRecovery.setScale(2));
-                    // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
-                    clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);
-                                            
+                        keyToRecoveryAmt = clmToBtRecoveryAmt.get(claim.id);
+                        // set keyToRecoveryAmt with key as bt;geo and value as claimRecovery
+                        keyToRecoveryAmt.put(keySplit[1],claimRecovery.setScale(2));
+                        // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
+                        clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);
+                    }else{
+                        // set keyToRecoveryAmt with key as bt;geo and value as claimRecovery
+                        keyToRecoveryAmt.put(keySplit[1],claimRecovery.setScale(2));
+                        // set clmToBtRecoveryAmt with key as claim id and value as keyToRecoveryAmt
+                        clmToBtRecoveryAmt.put(claim.id,keyToRecoveryAmt);
+                    }                         
                 }
                 // check if recoveryMade is true
                 if(recoveryMade){
@@ -1105,7 +1065,7 @@ public without sharing class Core_MDF_Recovery_Helper {
                     // set key as account and value as eligibileClaimsBTGeo
                     accountEligibileClaimsBTGeo.put(account,eligibileClaimsBTGeo);                         
                 }                            
-            //}  
+            }  
         }         
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
         return eligibleClaims;
@@ -1147,30 +1107,28 @@ public without sharing class Core_MDF_Recovery_Helper {
                                                         }
             
             for(Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows record:rrr){
-                if(String.isNotBlank(record.recoveryAmount)){
-                    Core_MDF_Recovery_Request__c rr;
-                    if(existingRR.containsKey(record.id)){
-                        rr = new Core_MDF_Recovery_Request__c(id=existingRR.get(record.id).id);
-                    }
-                    else{
-                        rr = new Core_MDF_Recovery_Request__c();
-                        rr.Core_MDF_Recovered_Budget_Nm__c =record.budgetGeoConsumed;
-                    }
-                    String claimExternalId = record.budgetType != null ? record.quarter+'='+record.budgetType+'='+record.geo+'='+record.Id :  record.quarter+'='+record.geo+'='+record.Id;//quarterYear+budgetType+geo+claimId
-                    rr.Core_MDF_Claim_Id__c = record.id;
-                    rr.Core_MDF_Account_Id__c = record.accountId;
-                    rr.Core_MDF_Recovery_Amount_Amt__c = decimal.valueof(record.recoveryAmount);
-                    rr.Core_MDF_Program_Nm__c = record.program;
-                    rr.Core_MDF_Quarter_Year_Nm__c = record.quarter;
-                    rr.Core_MDF_Active_Ind__c = true;
-                    rr.Core_MDF_Claim_External_ID__c = claimExternalId;
-                    rr.Core_MDF_Comment_Txt__c = record.comments;
-                    rr.Core_MDF_Ready_to_Recover_Ind__c = record.righttoRecover;
-                    
-                    existingRR.put(record.id,rr); 
-                    // Adding recoveryBudAmt to list
-                    recoveryBudAmtList.add(record.recoveryBudAmt);
+                Core_MDF_Recovery_Request__c rr;
+                if(existingRR.containsKey(record.id)){
+                    rr = new Core_MDF_Recovery_Request__c(id=existingRR.get(record.id).id);
                 }
+                else{
+                    rr = new Core_MDF_Recovery_Request__c();
+                    rr.Core_MDF_Recovered_Budget_Nm__c =record.budgetGeoConsumed;
+                }
+                String claimExternalId = record.budgetType != null ? record.quarter+'='+record.budgetType+'='+record.geo+'='+record.Id :  record.quarter+'='+record.geo+'='+record.Id;//quarterYear+budgetType+geo+claimId
+                rr.Core_MDF_Claim_Id__c = record.id;
+                rr.Core_MDF_Account_Id__c = record.accountId;
+                rr.Core_MDF_Recovery_Amount_Amt__c = decimal.valueof(record.recoveryAmount);
+                rr.Core_MDF_Program_Nm__c = record.program;
+                rr.Core_MDF_Quarter_Year_Nm__c = record.quarter;
+                rr.Core_MDF_Active_Ind__c = true;
+                rr.Core_MDF_Claim_External_ID__c = claimExternalId;
+                rr.Core_MDF_Comment_Txt__c = record.comments;
+                rr.Core_MDF_Ready_to_Recover_Ind__c = record.righttoRecover;
+                
+                existingRR.put(record.id,rr); 
+                // Adding recoveryBudAmt to list
+                recoveryBudAmtList.add(record.recoveryBudAmt);
             }
             
             //Check if the recovered claims are within the recovery limit of the Account, Program, Quarter
@@ -1256,13 +1214,6 @@ public without sharing class Core_MDF_Recovery_Helper {
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}  
         return result;
-    }
-    
-    public static Boolean isZeroScorecardClaim(PartnerFundClaim claim) {
-        return claim.Core_MDF_Processing_Preference_nm__c == 'Settle, then get paid' && claim.Core_MDF_Claim_Review_Case__r != null && claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c == 'Review Completed' && (claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c == 0 || (claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c > 0 && claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c > 0 && claim.Amount == claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c));
-    }
-    public static Boolean isPartialScorecardClaim(PartnerFundClaim claim) {
-        return claim.Core_MDF_Processing_Preference_nm__c == 'Settle, then get paid' && claim.Core_MDF_Claim_Review_Case__r != null && claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c == 'Review Completed' && claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c > 0 && claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c > 0 && claim.Amount != claim.Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c;
     }
     
     //Wrapper Classes for sending output to Recovery Batch

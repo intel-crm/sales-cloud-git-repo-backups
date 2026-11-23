@@ -93,10 +93,6 @@
             <translation>인센티브 - 등록된 거래 수</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>인센티브 - 설계 승리 수</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation>인센티브 - 판매된 단위 수</translation>
         </picklistValues>
@@ -149,24 +145,8 @@
             <translation>레거시 미디어 비율 지출</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation>소매 제품 활성화 - # 인원일수</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>기술 활성화 - 거래 승리 수</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation>기술 활성화 - 배포 번호</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>기술 활성화 - 설계 승리 수</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -206,10 +186,6 @@
         <name>Core_MDF_Is_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Amount --></label>
-        <name>Core_MDF_Spending_Amount_amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
         <picklistValues>
@@ -235,10 +211,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation>레거시 미디어</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation>리테일 활성화</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

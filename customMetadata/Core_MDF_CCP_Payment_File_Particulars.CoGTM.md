@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>Core_MDF_Program_ID__c</field>
-        <value xsi:type="xsd:string">80138</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Program__c</field>

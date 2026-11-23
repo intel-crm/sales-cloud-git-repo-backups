@@ -233,7 +233,8 @@
 &quot;CCG ECG&quot;, &quot;CCG ECG&quot;,
 &quot;DCG&quot;, &quot;DCAI&quot;,
 &quot;PSG&quot;, &quot;PSG&quot;,
-&quot;NTG&quot;, &quot;NTG&quot;,&quot;&quot;
+&quot;NTG&quot;, &quot;NTG&quot;,
+&quot;CCG AMS&quot;,&quot;CCG AMS&quot;,&quot;&quot;
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Platform BU</label>

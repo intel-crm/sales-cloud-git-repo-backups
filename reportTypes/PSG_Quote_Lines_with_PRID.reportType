@@ -48,6 +48,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_ccf_flag_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_comments_for_customer_txt__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -413,6 +418,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_prid_active_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_prid_alert__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -614,6 +629,36 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__Quote__c.core_cpq_navigate_to_iqr__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.Id</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.price_amt__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.Name</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_prid_reviewer__c.Name</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_cps_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_type__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>

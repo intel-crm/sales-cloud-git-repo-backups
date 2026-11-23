@@ -161,7 +161,7 @@ Added By:           Accenture - AD - 7/7/2020
 Modified By:        Date:       Changes: 
 
 *******************************************************************************************************/
-/*    public static void isAccountEligibleForMDF(List<Account> newAccountList){
+    public static void isAccountEligibleForMDF(List<Account> newAccountList){
         //List of account onboard wrapper
         List<Core_MDF_CCPAccountOnboardWrapper> listOfAccountOnboardWrapper =  new List<Core_MDF_CCPAccountOnboardWrapper>();
         //set of account which has MDF benefit
@@ -193,7 +193,7 @@ Modified By:        Date:       Changes:
                 }
             }
         }
-    }*/
+    }
     
     /****************************************************************************************************** 
 Method Name:        isOpiAccount
@@ -321,7 +321,7 @@ Modified By:        Date:       Changes:
 
 *******************************************************************************************************/
     
-  /*  public static Set<Account> hasMDFBenefit(Set<Account> newAccountSet)
+    public static Set<Account> hasMDFBenefit(Set<Account> newAccountSet)
     {
         //to hold benefit name string for search 
         //'%MDF%'
@@ -378,5 +378,5 @@ Modified By:        Date:       Changes:
         for(Account failedAcc : listOfFailedAccounts){failedAcc.addError(Label.Core_MDF_AccHasNoMDFBenefitError);
         }
         return accountsToBeProcessed;
-    }*/
+    }
 }

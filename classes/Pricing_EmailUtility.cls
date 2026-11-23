@@ -1,10 +1,10 @@
 /**
- * @description       :
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 07-29-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
+* @description       : 
+* @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+* @group             : 
+* @last modified on  : 04-28-2025
+* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Pricing_EmailUtility extends TriggerHandler{
     
     Public static Map<Id,Id> QuoteIdToquotelineIdMap = new Map<Id,Id>();
@@ -84,14 +84,6 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
     //This method is to send Email notifications to Quote Team members on addition
     @Future
     public static void sendEmail(Set<Id> recIds, String emailTemplate, Boolean isQuoteTeamEmail){
-       sendEmailInAsyncContext(recIds, emailTemplate, isQuoteTeamEmail); 
-    }
-    
-    /**
-     * Executes the email logic directly when already running in
-     * a Batch/Future context to avoid Future-to-Future exceptions. 
-     */
-    public static void sendEmailInAsyncContext(Set<Id> recIds, String emailTemplate, Boolean isQuoteTeamEmail){
         String sObjectId;
         try{
             templateConfig = [SELECT id,Permission_Set_Name__c FROM Pricing_EmailNotificationTemplate__mdt 
@@ -539,7 +531,7 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
                         emails.add(message);                        
                     }
                     if(emails.size() > 0){
-                        Messaging.sendEmail(emails);
+                        Messaging.SendEmailResult[] results = Messaging.sendEmail(emails);
                     }
                 }
             }            
@@ -559,6 +551,8 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
                     List<SBQQ__Quote__c> quotes = [SELECT id,SBQQ__Account__c,Pricing_Region_Nm__c FROM SBQQ__Quote__c WHERE id IN :quoteUserIdMap.keySet()];
                     Set<Id> accountIds = new Set<Id>();
                     Set<String> regions = new Set<String>();
+                    Set<Id> optedInAccountIds = new Set<Id>();
+                    Set<Id> optedInUserIds = new Set<Id>();
                     Set<Id> allUserIds = new Set<Id>();
                     Map<id, User> allActiveUsersMap = new Map<id,User>();
                     Map<Id,boolean> userPrefMap = new Map<id,boolean>();
@@ -622,7 +616,7 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
                     }
                     corelogcreation(emailTemplateName,objIdtoUserMap);                   
                     if(emails.size() > 0){
-                        Messaging.sendEmail(emails);
+                        Messaging.SendEmailResult[] results = Messaging.sendEmail(emails);
                     }
                 }            
             }
@@ -646,6 +640,8 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
                                                    FROM SBQQ__Quote__c WHERE id IN :quoteUserIdMap.keySet()];
                     Set<Id> accountIds = new Set<Id>();
                     Set<String> regions = new Set<String>();
+                    Set<Id> optedInAccountIds = new Set<Id>();
+                    Set<Id> optedInUserIds = new Set<Id>();
                     Set<Id> allUserIds = new Set<Id>();
                     Map<id, User> allActiveUsersMap = new Map<id,User>();
                     Map<Id,boolean> userPrefMap = new Map<id,boolean>();
@@ -655,6 +651,7 @@ public without sharing class Pricing_EmailUtility extends TriggerHandler{
                     Map<Id,String> objIdtoUserMap = new Map<Id,String>();
                     Map<String,User> userIdMap = new Map<String,User>();
                     Map<String,String> idAddressMap = new Map<String,String>();
+                    Map<String,User> contactIdUserMap = new Map<String,User>();
                     List<PRM_EmailLog__c> prmEmailLogList = new List<PRM_EmailLog__c>();
                     
                     Map<Id,ContentVersion> quoteDocVersionMap = new Map<Id,ContentVersion>();

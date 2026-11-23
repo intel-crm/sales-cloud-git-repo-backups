@@ -6,7 +6,7 @@ public class Core_MDF_ReportBatchTest {
     @testSetup
     static void setupTestData() {
         // Create test users
-        Profile p = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access' LIMIT 1];
+        Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
         String uniqueSuffix = String.valueOf(DateTime.now().getTime());
         
         List<User> users = new List<User>{
@@ -88,42 +88,25 @@ public class Core_MDF_ReportBatchTest {
         // Create mapping records
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> mappings = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>{
             new Core_MDF_Int_Users_Partner_Geo_Mapping__c(
-               // Core_MDF_Account_id__c = dellCorpAccount_VC.Id,
+                Core_MDF_Account_id__c = dellCorpAccount_VC.Id,
                 Core_MDF_Program_nm__c = 'Client CoMarketing Fund',
                 Core_MDF_User_id__c = u1.Id,
                 Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Report_Viewer',
-               // Core_MDF_All_Accounts_cd__c = 'No',
+                Core_MDF_All_Accounts_cd__c = 'No',
                 Core_MDF_Region_Sub_Region_nm__c = 'WW',
                 Core_MDF_Active_Ind__c = true
             ),
             new Core_MDF_Int_Users_Partner_Geo_Mapping__c(
-               // Core_MDF_Account_id__c = dellCorpAccount_VC.Id,
+                Core_MDF_Account_id__c = dellCorpAccount_VC.Id,
                 Core_MDF_Program_nm__c = 'Client CoMarketing Fund',
                 Core_MDF_User_id__c = u2.Id,
                 Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr',
-               // Core_MDF_All_Accounts_cd__c = 'No',
+                Core_MDF_All_Accounts_cd__c = 'No',
                 Core_MDF_Region_Sub_Region_nm__c = 'WW',
                 Core_MDF_Active_Ind__c = true
             )
         };
         insert mappings;
-            List<Core_MDF_Record_Tracking__c> recTrackingList = new List<Core_MDF_Record_Tracking__c>();
-            Core_MDF_Record_Tracking__c recTracking = new Core_MDF_Record_Tracking__c();
-            recTracking.Core_MDF_Object_Name_nm__c = 'Approval.ProcessWorkitemRequest';
-            recTracking.Core_MDF_Scope_nm__c = 'Bulk Approval Batch';
-            recTracking.Core_MDF_Target_Record_Id__c = mappings[0].Id;
-            recTracking.Core_MDF_Execution_InProgress_Ind__c = true;
-            recTrackingList.add(recTracking);
-            insert recTrackingList;
-            List<ContentVersion> conVersionLst = new List<ContentVersion>();
-            ContentVersion conVersion = new ContentVersion();
-            conVersion.ContentLocation = 'S';
-            conVersion.Title = 'Test';
-            conVersion.PathOnClient='Test';
-            conVersion.ReasonForChange = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ContentVersion_ReasonForChange');
-            conVersion.VersionData = Blob.valueOf('content');
-            conVersionLst.add(conVersion);
-            Database.insert(conVersionLst);
 
         Test.stopTest();
     }

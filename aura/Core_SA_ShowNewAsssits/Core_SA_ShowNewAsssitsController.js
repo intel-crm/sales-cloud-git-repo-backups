@@ -3,11 +3,7 @@
   	doInit: function(component, event, helper) {
     	//Make an Apex call in SAServiceWrapper.getUserSession
     	//this helper method gathers all the required information and formulates the URL parameters
-    	let saToggleSwitch = component.get("v.saSwitchToggle");
-        if(saToggleSwitch !== 'true'){
-            return;
-        }
-        helper.getNewAssists(component, event, helper);
+    	helper.getNewAssists(component, event, helper);
     },
  
     //this function is called from the componet when user clicks on the Title of Number of Unread assists

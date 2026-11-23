@@ -13,6 +13,7 @@ public with sharing class UCD_ACM_AccountDeactivationService {
     private static final String HTTP_PATCH = 'PATCH';
     //table variables to be passed to buildRequestModel() 
     private static final String OBJ_ACCT = 'Account';
+    private static final String OBJ_CWL = 'Core_Account_Compliance_Watch_List__c';
     private static final String OBJ_CPE = 'Account_Business_Types__c';
     
     public UCD_ACM_AccountDeactivationService.ResponseModelForDeactivation removeAcctXwalk(String bpid, String accId,String action) {
@@ -23,10 +24,24 @@ public with sharing class UCD_ACM_AccountDeactivationService {
         }
         UCD_ACM_AccountDeactivationService.RequestModelForDeactivation requestModel = buildRequestModel(accId,action,OBJ_ACCT);
         finalResponseJson = callAPI(Json.serialize(requestModel), bpid);
+
         if(String.isNotBlank(finalResponseJson)){
             responseFromReltio  = (UCD_ACM_AccountDeactivationService.ResponseModelForDeactivation) System.JSON.deserialize(finalResponseJson, UCD_ACM_AccountDeactivationService.ResponseModelForDeactivation.class);   
         }
         return responseFromReltio;
+    }
+    /**
+     * This method is used to set CWL x-walk delete date in Reltio
+     * Author: Chethan Kunder 
+     * Date: 17/10/2024
+     */
+    public void removeCWLXwalk(String bpid, String action, Set<Id> cwlIds) {
+        if(String.isNotBlank(bpid)) {
+            for (Id cwlId : cwlIds) {
+                UCD_ACM_AccountDeactivationService.RequestModelForDeactivation requestModelCWL = buildRequestModel(cwlId,action,OBJ_CWL);
+                callAPI(Json.serialize(requestModelCWL), bpid);
+            }
+        }
     }
 
     public void removeCPEXwalk(String bpid, String action, Set<Id> cpeIds) {
@@ -45,6 +60,12 @@ public with sharing class UCD_ACM_AccountDeactivationService {
         restClient.invokeAPI();
         return restClient.getHttpResponseBody();
     }
+
+    public static void setCWLDeleteDate(String cwlId,String bpId){
+        UCD_ACM_AccountDeactivationService.RequestModelForDeactivation requestModelCWL = buildRequestModel(cwlId,'Deactivate',OBJ_CWL);
+        callAPI(Json.serialize(requestModelCWL), bpId);
+    }
+
 
     private static UCD_ACM_AccountDeactivationService.RequestModelForDeactivation buildRequestModel(String objId,String action,String table) {
         UCD_ACM_AccountDeactivationService.RequestModelForDeactivation requestModel = new UCD_ACM_AccountDeactivationService.RequestModelForDeactivation();

@@ -31,9 +31,9 @@ public class PRM_RetriggerEV_Token_API_Test {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator()); 
         test.startTest();
         PRM_Registration_Request__c newRegreq = [SELECT PRM_Email_ID__c, PRM_Contact_Login_ID__c, PRM_EV_Token__c, PRM_Person_Phone_Number__c,PRM_Partner_Type__c FROM PRM_Registration_Request__c LIMIT 1];
-
+        //System.debug('newRegreq : '+newRegreq);
         PRM_RetriggerEV_Token_API.reTriggerEV(newRegreq.PRM_Contact_Login_ID__c);
-
+        //System.debug('newRegreq : '+newRegreq);
         system.assertEquals('testrequest@mailinator.com', newRegreq.PRM_Contact_Login_ID__c);
         test.stopTest();
         
@@ -43,9 +43,9 @@ public class PRM_RetriggerEV_Token_API_Test {
         Test.setMock(HttpCalloutMock.class, new MockHttpFailedResponseGenerator()); 
         test.startTest();
         PRM_Registration_Request__c newRegreq = [SELECT PRM_Email_ID__c, PRM_Contact_Login_ID__c, PRM_EV_Token__c, PRM_Person_Phone_Number__c,PRM_Partner_Type__c FROM PRM_Registration_Request__c LIMIT 1];
-
+        //System.debug('newRegreq : '+newRegreq);
         PRM_RetriggerEV_Token_API.reTriggerEV(newRegreq.PRM_Contact_Login_ID__c);
-
+        //System.debug('newRegreq : '+newRegreq);
         system.assertEquals('testrequest@mailinator.com', newRegreq.PRM_Contact_Login_ID__c);
         test.stopTest();
         
@@ -55,8 +55,9 @@ public class PRM_RetriggerEV_Token_API_Test {
         Test.setMock(HttpCalloutMock.class, new MockHttpFailedResponseGenerator()); 
         test.startTest();
         PRM_Registration_Request__c newRegreq = [SELECT PRM_Email_ID__c, PRM_EV_Token__c, PRM_Person_Phone_Number__c,PRM_Partner_Type__c FROM PRM_Registration_Request__c LIMIT 1];
-
+        //System.debug('newRegreq : '+newRegreq);
         PRM_RetriggerEV_Token_API.reTriggerEV('');
+        //System.debug('newRegreq : '+newRegreq);
         system.assertEquals('444444', newRegreq.PRM_Person_Phone_Number__c);
         test.stopTest();
         

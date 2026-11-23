@@ -4,7 +4,7 @@
     background-color: #653171;
     padding: 4px 12px;
     height: 40px;
-    /* width: 105px; */
+  
     margin-left: 12px;
 }
 
@@ -498,6 +498,8 @@ hr {
     font-size: 14px;
     margin-left: 10px;
 }
+
+
 
 .showRequired .slds-form-element__control{
   border:2px solid #cc0000;

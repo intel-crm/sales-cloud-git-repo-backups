@@ -118,9 +118,7 @@ public without sharing class Pricing_RestAPI_Util {
         try{
             String uri = RestContext.request.requestURI;
             List<String> params = uri.split('/');
-            if(params != null && params.size() > requestURIIndex){
-                input = params[requestURIIndex];  
-            } 
+            input = params[requestURIIndex];    
         }catch(Exception e){
             Pricing_Tender_Utility.logError(e);
         }

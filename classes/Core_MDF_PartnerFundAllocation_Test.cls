@@ -12,7 +12,7 @@ public class Core_MDF_PartnerFundAllocation_Test {
     @TestSetUp static void createTestData() {
         
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-
+        List<User> userList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
         usr.UserRoleId = usRole.Id;
@@ -124,14 +124,13 @@ public class Core_MDF_PartnerFundAllocation_Test {
         pmbRecord.Core_MDF_Budget_Type_Txt__c='CCF 1.0';
         insert pmbRecord;
         
-        //Test.stopTest();
+        Test.stopTest();
         // Create PFA records for the above accounts :
         PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA',pmbRecord, acc, 1234,true);
         pfaRecord.Amount = 1235;
         database.update(pfaRecord);
         
             Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc.Id,usr1.Id,true);
-        Test.stopTest();
         }
             
     }

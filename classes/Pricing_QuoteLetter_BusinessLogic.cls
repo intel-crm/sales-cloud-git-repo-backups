@@ -1,10 +1,10 @@
 /**
- * @description       :
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 04-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
+* @description       : 
+* @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+* @group             : 
+* @last modified on  : 12-24-2024
+* @last modified by  : Vrushabh 
+**/
 public without sharing class Pricing_QuoteLetter_BusinessLogic {
     public static Map<Id,Account> accountIdtoRecordMap = new Map<Id, Account>();
     
@@ -133,8 +133,8 @@ public without sharing class Pricing_QuoteLetter_BusinessLogic {
             name +='-v'+(quoteIdToVerisonMap.get(quoteId)!=null ? (quoteIdToVerisonMap.get(quoteId) +1):1);
             model.name = name;
             if(!test.isRunningTest()){
-                saveQuoteDocument(model);
-            }
+                String jobId = saveQuoteDocument(model);
+            }            
         }
     }
     

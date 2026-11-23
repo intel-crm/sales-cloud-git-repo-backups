@@ -22,16 +22,20 @@ const columns = [
         fieldName: 'accountName',
         type: 'text'
     }, {
-        label: "UCD Primary Account",
-        fieldName: 'ucdPrimary',
+        label: AccountNo,
+        fieldName: 'accountNum',
         type: 'text'
     }, {
-        label: "Grouping Method",
-        fieldName: 'groupingMethod',
+        label: PartnerRole,
+        fieldName: 'acmpartnerRole',
         type: 'text'
     }, {
-        label: "Badge Tier",
-        fieldName: 'badgeTier',
+        label: Country,
+        fieldName: 'accCountry',
+        type: 'text'
+    }, {
+        label: PhoneColumn,
+        fieldName: 'accountPhoneNo',
         type: 'text'
     }, {
         label: 'Notes',
@@ -56,10 +60,6 @@ export default class PRM_tagBuilders extends LightningElement {
     @api isLoaded = false;
     @track errorMsg = '';
     @track isSearchData = false;
-    isSelectedData = false;
-    consolidatedData=[];
-    uniqueConsolidatedData=[];
-    finalselectedrows =[];
     @track error;
     @track rowData = [];
     @track isData = true;
@@ -116,51 +116,44 @@ export default class PRM_tagBuilders extends LightningElement {
         // // alert('---finalSelAccounts '+ JSON.stringify(selectedr));
         
         var el = this.template.querySelector('lightning-datatable');
-        console.log('el--->' + el);
         var selectedr = el.getSelectedRows();
         console.log('selectedr--->' + JSON.stringify(selectedr));
-        if(selectedr.length == 0 || selectedr == undefined){
-            this.displayShowToastMessage('Please select account/s', 'Error', 'error');
-        }else{
-                const updatedFields = this.template.querySelector('lightning-datatable').draftValues;;
-            console.log('updatedFields---' + JSON.stringify(updatedFields));
 
-                updatedFields.forEach(element => {
-                    selectedr.forEach(dr => {
-                        if (element.id == dr.accountId) {
-                            dr.accNotes = element.notes;
-                        }
-                    });
-                });
+        const updatedFields = this.template.querySelector('lightning-datatable').draftValues;;
+        console.log('updatedFields---' + JSON.stringify(updatedFields));
 
-                this.finalSelAccounts = JSON.parse(JSON.stringify(selectedr));
+        updatedFields.forEach(element => {
+            selectedr.forEach(dr => {
+                if (element.id == dr.accountId) {
+                    dr.accNotes = element.notes;
+                }
+            });
+        });
 
-                console.log('this.finalSelAccounts---->' + JSON.stringify(this.finalSelAccounts));
+        this.finalSelAccounts = JSON.parse(JSON.stringify(selectedr));
 
-                await inserttagbuilder({ AccountIds: this.finalSelAccounts, currentbuilderId: this.recordId })
-                    .then(result => {
+        console.log('this.finalSelAccounts---->' + JSON.stringify(this.finalSelAccounts));
 
-                        console.log(JSON.stringify('Apex update result: ' + result));
-                        console.log(JSON.stringify('Apex update result:111 ' + result.message));
-                        if(result.message != 'Success'){
-                            this.displayShowToastMessage(result.message, 'Error', 'error');
-                        }else{
-                            this.displayShowToastMessage('Tagged Partner Successfully', 'Successful', 'success');
-                        }
+        await inserttagbuilder({ AccountIds: this.finalSelAccounts, currentbuilderId: this.recordId })
+            .then(result => {
 
-                        this.searchData = [];
-                        this.isSearchData = false;
-                        this.isLoaded = false;
-                        this.isNoRecordsReturned = false;
-                    }).catch(error => {
-                        this.displayShowToastMessage(JSON.stringify(error.body.message), 'Error', 'error');
-                        console.log('Error is ' + JSON.stringify(error));
+                console.log(JSON.stringify('Apex update result: ' + result));
+                console.log(JSON.stringify('Apex update result:111 ' + result.message));
+                if(result.message != 'Success'){
+                    this.displayShowToastMessage(result.message, 'Error', 'error');
+                }else{
+                    this.displayShowToastMessage('Tagged Partner Successfully', 'Successful', 'success');
+                }
 
-                    });
-                    this.consolidatedData=[];
-                    this.uniqueConsolidatedData=[];
-                this.isSelectedData=false;
-        }
+                this.searchData = [];
+                this.isSearchData = false;
+                this.isLoaded = false;
+                this.isNoRecordsReturned = false;
+            }).catch(error => {
+                this.displayShowToastMessage(JSON.stringify(error.body.message), 'Error', 'error');
+                console.log('Error is ' + JSON.stringify(error));
+
+            });
     }
 
     // check for account
@@ -247,42 +240,6 @@ export default class PRM_tagBuilders extends LightningElement {
                 this.searchData = [];
                 this.isSearchData = false;
             });
-    }
-
-    handleRowSelection(event) {
-        this.selectedRows = event.detail.selectedRows;
-        if(this.selectedRows && this.selectedRows.length>0)
-            this.consolidateSelectedRows();
-    }
-
-    consolidateSelectedRows() {
-        try{
-            if (this.selectedRows && this.selectedRows.length > 0) {
-                this.isSelectedData=true;
-                console.log('selectedRows'+JSON.stringify(this.selectedRows));
-                // Example consolidation: Joining all 'Name' fields with a comma
-                if(this.consolidatedData.length!=0){
-                    console.log('if');
-                    this.consolidatedData=[...this.consolidatedData,...this.selectedRows];
-                }else{
-                    console.log('else');
-                    this.consolidatedData=this.selectedRows;
-                }
-                // Example consolidation: Counting selected rows
-                const rowCount = this.selectedRows.length;
-                
-            } else {
-                this.consolidatedData = null;
-            }
-            this.uniqueConsolidatedData = this.consolidatedData.filter((value, index, self) => {
-                return self.indexOf(value) === index;
-            });
-            console.log('uniqueConsolidatedData'+JSON.stringify(this.uniqueConsolidatedData));
-        }catch(error){
-            console.log('Error'+JSON.stringify(error));
-
-        }
-
     }
 
 

@@ -1,0 +1,26 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+ <aura:html tag="style">
+       .slds-modal__container {
+        top: -10%;
+        margin: 0 auto;
+        width: 50%;
+        max-width: 40rem;
+        min-width: 20rem;
+         
+         }
+       .slds-modal__close {
+        visibility:hidden;
+        }
+     
+       .slds-modal__content{
+        overflow-y:hidden !important;
+        height:unset !important;
+        max-height:unset !important;
+        }
+
+
+    </aura:html>
+    
+    <c:sales_renewalQuoteCreation recordId="{!v.recordId}" onclose="{!c.closeModal}" />  
+    
+</aura:component>

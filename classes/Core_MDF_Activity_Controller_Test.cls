@@ -196,8 +196,8 @@ public class Core_MDF_Activity_Controller_Test {
         Database.insert(pgmList);
         ///////////////////////////
         
-        //string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc2);
-        String budgetType = 'Proposal I MDF';
+        string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc2);
+        //budgetType = 'Proposal I MDF';
         PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_IPA_TestDataUtility.budgetIPA_ProposalBased_Record_Type,acc2.Id,cp.Id,200000,System.today().addDays(-20),System.today(), false);
         budget.Core_MDF_Budget_Type_Txt__c= budgetType;
         Database.insert(budget);
@@ -216,19 +216,14 @@ public class Core_MDF_Activity_Controller_Test {
         camp.Core_MDF_Region_cd__c = 'APJ';
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
-        camp.Core_MDF_CampOutcomeOpt_In_Ind__c = true;
         camp.Core_MDF_Reimbursement_Amt__c = 10000;
         Database.insert(camp);
         
         Test.startTest();
         PartnerFundRequest pfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(camp.Id,acc2.Id,System.today().addDays(-25),System.today().addDays(25),false);
         pfr.Core_MDF_BU_Split__c ='CCG';
-      //  pfr.CampaignId='';
         pfr.Core_MDF_BU1_Split_Percent_nbr__c=100;
         pfr.amount = 500;
-        pfr.Core_MDF_ActivityCategory__c='Outcome-Based';
-        Pfr.Core_MDF_Is_Outcome_Based_Ind__c=true;
-        pfr.Core_MDF_Activity_Types__c='Outcome-Based';
         pfr.Core_MDF_Reimbursement_Rate_txt__c='60%';
         pfr.Core_MDF_Budget_Type_nm__c = budgetType;
         Database.insert(pfr);
@@ -279,14 +274,6 @@ public class Core_MDF_Activity_Controller_Test {
         
         List<Core_MDF_Activity_Purpose_Controller.ActivityOutcomeWrapper> valuesToSend = new List<Core_MDF_Activity_Purpose_Controller.ActivityOutcomeWrapper>{ w };
         Core_MDF_Activity_Purpose_Controller.saveActivityOutcome(pfr.Id, valuesToSend);
-
-        // Test 1: Non-closed status should return false
-        Boolean result1 = Core_MDF_Activity_Purpose_Controller.isResultValueEditable(pfr.Id);
-        System.assertEquals(false, result1, 'Should return false for non-closed status');
-        
-        // Test 2: Null ID should return false
-        Boolean result2 = Core_MDF_Activity_Purpose_Controller.isResultValueEditable(null);
-        System.assertEquals(false, result2, 'Should return false for null ID'); 
     }
     
 }

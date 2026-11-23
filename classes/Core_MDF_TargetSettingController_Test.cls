@@ -146,7 +146,10 @@ public class Core_MDF_TargetSettingController_Test {
             
             insert newTargetSettingList;
             
-
+            Core_MDF_Spending_Targets_Version__c version = [SELECT Id, Core_MDF_Is_Active_Ind__c, Core_MDF_Version_nbr__c
+                                                            FROM Core_MDF_Spending_Targets_Version__c
+                                                            WHERE Core_MDF_Spending_Targets__c =: targetSetting.Id  
+                                                            AND Core_MDF_Is_Active_Ind__c = TRUE];
             
         }
         
@@ -158,13 +161,13 @@ public class Core_MDF_TargetSettingController_Test {
         
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-        //iupgm.Core_MDF_Account_id__c = acc.Id;
+        iupgm.Core_MDF_Account_id__c = acc.Id;
         iupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
         iupgm.RecordTypeId = CCF_RecordType ;
         iupgm.Core_MDF_Region_Sub_Region_nm__c = 'APJ';
         iupgm.Core_MDF_User_id__c = usr1.Id;
         iupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr';
-        //iupgm.Core_MDF_All_Accounts_cd__c = 'No';
+        iupgm.Core_MDF_All_Accounts_cd__c = 'No';
         iupgmList.add(iupgm);
         insert iupgmList;
         
@@ -173,14 +176,14 @@ public class Core_MDF_TargetSettingController_Test {
             Core_MDF_Target_Setting_Line_Item__c lineItemRecord1 = new Core_MDF_Target_Setting_Line_Item__c();
             lineItemRecord1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             lineItemRecord1.Core_MDF_Region_nm__c = 'APJ';
-            lineItemRecord1.Core_MDF_Region_Name_nm__c = 'APJ'; // Added by Sumalatha
             lineItemRecord1.Core_MDF_Amount__c = 0;
             lineItemRecord1.Core_MDF_Spending_Targets_Version__c = version1.Id;
             lineItemRecord1.RecordTypeId = lineItem_RecordType_CCF;
             lineItemRecord1.Core_MDF_Account__c= VCacc.id;
             lineItemRecord1.Core_MDF_Campaign_Name__c = 'Test Campaign 1';
             lineItemRecord1.Core_MDF_Country_nm__c = 'INDIA';
-
+            lineItemRecord1.Core_MDF_Country_Name_nm__c = 'INDIA';
+            lineItemRecord1.Core_MDF_Region_Name_nm__c='APJ';
             lineItemRecord1.Core_MDF_Priority_nm__c = 'AI Consumer';
             
            // insert lineItemRecord1;

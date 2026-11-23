@@ -10,8 +10,3 @@
     font-size: 16px;
     line-height: 1.25rem;
 }
-
-.feedback-radio-buttons .slds-form-element__control .slds-radio {
-    display: inline-block !important;
-    margin-right:0px !important;
-}

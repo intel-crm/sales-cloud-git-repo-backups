@@ -362,13 +362,6 @@ public without sharing class Core_AccountTriggerHandlerController {
                 }
             }
         }
-        /*Utkarsh Changes start - TWC729-9520 - Calling IPA Partner Deal class when account become uncovered.*/
-        if (!accountsChangedToUncovered.isEmpty()) {
-        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
-        
-        lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountsChangedToUncovered  Order By CreatedDate ];
-        PRM_PartnerDealOpportunitySharingService.removeShares(lstAccountTeamMember);}
-        /*Utkarsh Changes END*/
         if(accountsChangedToUncovered != null && !accountsChangedToUncovered.isEmpty()) {
             List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();
             currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId
@@ -452,7 +445,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                 for(Account acctObj : accountsChangedToUncovered){
                     List<Opportunity> OppList = new List<Opportunity>();
                     OppList = AccntOppMap.get(acctObj.id);
-                    if(Opplist!= NULL && OppList.size()>0){
+                    if(OppList.size()>0){
                         for(Opportunity opp : OppList){
                             if(opp.Core_Open_Oppty__c  == 1 || opp.Core_Pending_Product_Count__c > 0 || opp.Core_No_of_On_Hold_Opportunity_Products__c > 0){
                                 acctObj.addError(Label.Core_PreventUncoveredonUpdate);
@@ -783,7 +776,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     Date: 29/7/2020                  
     Manikanta                                                  
     ******************************************************************************************************/
-    /*public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
+    public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
 
         if(newAccList!=null){
         Set<Id> accIds = new Set<Id>();
@@ -822,7 +815,7 @@ public without sharing class Core_AccountTriggerHandlerController {
         }
         }
         
-    }*/
+    }
 
 /***************************************************************************************************** 
 Method Name:asyncAccountUpdate      
@@ -1017,19 +1010,19 @@ public static void asyncAccountUpdate(String accObj){
     * return : NA
      author and date:dnyanadax.argulwar@intel.com ,23Nov    
      */
-    // Public static void sendAccountDetailsToPsgMethods(List<Account> newAccounts, Map<Id, Account> oldAccounts){
-    //     List<Account> AcountList=new List<Account>();
-    //     if(newAccounts!=null){
-    //         for(Account acc: newAccounts){
-    //             if(oldAccounts.get(acc.Id).name!=acc.name && acc.Core_Account_Record_Type__c=='Intel Account'){
-    //               AcountList.add(acc);
-    //             }
-    //         }
-    //         if(AcountList.size()>0){
-    //             Sales_UpdateAccountDetails.updateAccountDetails_License(AcountList); 
-    //         }
-    //     }
-    // }
+    Public static void sendAccountDetailsToPsgMethods(List<Account> newAccounts, Map<Id, Account> oldAccounts){
+        List<Account> AcountList=new List<Account>();
+        if(newAccounts!=null){
+            for(Account acc: newAccounts){
+                if(oldAccounts.get(acc.Id).name!=acc.name && acc.Core_Account_Record_Type__c=='Intel Account'){
+                  AcountList.add(acc);
+                }
+            }
+            if(AcountList.size()>0){
+                //Sales_UpdateAccountDetails.updateAccountDetails_License(AcountList); 
+            }
+        }
+    }
 
     /***************************************************************************************************** 
     Method name  : processCCPTriggerUpdates

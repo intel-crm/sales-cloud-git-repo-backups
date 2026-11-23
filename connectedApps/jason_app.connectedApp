@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.salesforce.com</callbackUrl>
         <certificate>MIIDETCCAfmgAwIBAgIUeZeFUE8X6WUmAHOoXJdqpT+odSswDQYJKoZIhvcNAQELBQAwGDEWMBQGA1UEAwwNSldUIEF1dGggQ2VydDAeFw0yNTEyMTUxNTExMzNaFw0yNjExMzAxNTExMzNaMBgxFjAUBgNVBAMMDUpXVCBBdXRoIENlcnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8SuJePVJtp64cw5+UzhjAziYifRuSRhyAM63SkVfoDYvqGB0Rw2GNqLCFJjypbFqm0NzbvFI+6xeT7NT/idAcQ8rFf41xMdlBc46Bz7ysr7YDjp+3AathLoNCzNhnp+7uRjpYGEj6VAfmsAhCOICGfRkC8RU/Zpm5zjNNjxUigudnoGBcvbIR2M6ZmP0NJqOE1G92MFLnENYneE7j0hcxr7zhaz7/it2qJxpKvQnU1b5Fa1eX234++iux42nXAtdH0zvGUL01aDUarR5umHAYE8/JgRgLdLKZ87obpsHmi/FO5DmhSqmi1goZeipbj+r6KTBtBkoyLBoMWEfVRd4jAgMBAAGjUzBRMB0GA1UdDgQWBBQ/GVd2ylRJUk5fUdO5em5xIu5HCjAfBgNVHSMEGDAWgBQ/GVd2ylRJUk5fUdO5em5xIu5HCjAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCFvdwuZ9unHUwc+fnO/x9TaJS5OFc66ApQTKTavPfMd8aN/0TSbI8b/nTjW+EfrzrQkGF1D3qf4oLmWs2grpfhJ+ZiaqLXvek0cMaMdHEK1PKt+5yTXfLbOwUfdOQCdDta5dJPvzRT2Gybvo0NXmXnH3xGOv6SqN0lqdhDnDD+Kv6h81ZvknmIsn6Cu0M6Zv22z1jZgK9wamcygi+X+N/s6JfzJMuw+4eMzxGyUcfuXBZ1TRyv/9GBW1wpHevnL2Cc2AePXgm8SJypqKzLkHQbRyUEkWOzsTDjchOIQBZ4az4p+Vqj4u+NjYX5XQESnDOVwiqyytCYyAZlbCAqJBor</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tLUi38Bq9swHb_xWAZbTrZeavRLl_SuU0js8XPCbamXFPP8cEmlT6HTYRTI</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKixLfd5zAhYfOnTbp3YvZtZ5.kmHCsWRieNNz7ZhNFeB72zT6oimsJTBHD4e</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -16,11 +16,11 @@
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isIpBindingEnabled>false</isIpBindingEnabled>
-        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
-        <isPkceRequired>true</isPkceRequired>
+        <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

@@ -18,7 +18,7 @@ public without sharing class Core_AcceptReject_Lead_LexController {
         Lead leadUpdate = [select Id, OwnerId, RecordTypeId, Core_Lead_State__c, Core_Rejection_Comments__c, Core_Rejection__c,
                            Core_Partner_Lead_Owner__c from Lead where Id =: leadId];
         
-        String recTypeName = [select Id, Name, DeveloperName from RecordType where Id =: leadUpdate.RecordTypeId].DeveloperName;
+        String recTypeName = [select Id, Name from RecordType where Id =: leadUpdate.RecordTypeId].Name;
         
         if(recTypeName.equalsIgnoreCase('Lead')){
             if(leadUpdate.OwnerId <> UserInfo.getUserId()){
@@ -36,7 +36,7 @@ public without sharing class Core_AcceptReject_Lead_LexController {
             leadUpdate.Core_Rejection_Comments__c = null; 
             leadUpdate.Core_Rejection__c = null;
             update leadUpdate;
-        }/*else if(recTypeName.equalsIgnoreCase('Prospect')){
+        }else if(recTypeName.equalsIgnoreCase('Prospect')){
             if(leadUpdate.OwnerId <> UserInfo.getUserId()){
                 alertMsg = 'Please take the ownership of the Prospect before Accepting.';
             }else{
@@ -45,7 +45,7 @@ public without sharing class Core_AcceptReject_Lead_LexController {
                 leadUpdate.Core_Rejection__c = null;
                 update leadUpdate;
             }
-        }*/
+        }
         return alertMsg;
     }
     
@@ -83,7 +83,7 @@ public without sharing class Core_AcceptReject_Lead_LexController {
         }else if(recTypeName.equalsIgnoreCase('Partner_Lead')){
             picklistWrap.pickListValueList = fetchPicklistValuesByRecType(objectType, fieldName, leadUpdate.RecordTypeId);
             picklistWrap.message = 'success';
-        }/*else if(recTypeName.equalsIgnoreCase('Prospect')){
+        }else if(recTypeName.equalsIgnoreCase('Prospect')){
             if(leadUpdate.OwnerId == UserInfo.getUserId()){
                 picklistWrap.pickListValueList = fetchPicklistValuesByRecType(objectType, fieldName, leadUpdate.RecordTypeId);
                 picklistWrap.message = 'success';
@@ -91,7 +91,7 @@ public without sharing class Core_AcceptReject_Lead_LexController {
                 picklistWrap.pickListValueList = null;
                 picklistWrap.message = 'Please take the ownership of the Prospect before Rejecting.';
             }
-        }*/
+        }
         picklistWrap.leadObj = leadUpdate;
         return picklistWrap;
     }

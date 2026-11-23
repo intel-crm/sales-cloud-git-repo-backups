@@ -46,22 +46,22 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$8e54c3b4-9d29-453b-aaf9-146545f1b7e7</groupName>
+            <groupName>7c70a4fa-1952-40e3-97cd-80ea6d489785$#$a2c37c3d-8c44-4f61-a05e-59ad0523586a</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Campaign_Custom_Detail_core_MDF_Custom_Related_List_Component</targetValue>
+            <targetValue>CoMarketing_Activity_Custom_Detail_core_MDF_Tactics_Form_Component</targetValue>
+        </target>
+        <target>
+            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$0ab4db22-2e59-4a88-8ba6-6f93acb03d7e</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Custom_Detail_core_MDF_Campaign_Related_List_1_Component</targetValue>
         </target>
         <target>
             <groupName>e7358f37-eb7a-4354-9fd6-5f12415cd445$#$b63cf26f-2572-4636-b3b3-d15648d2d1ca</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Bran_Your_Products_HTML_Editor_3_Component</targetValue>
-        </target>
-        <target>
-            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$e39d6198-d5f1-4b09-8c72-9a7164623b24</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Campaign_Custom_Detail_core_MDF_Custom_Related_List_1_Component</targetValue>
         </target>
         <target>
             <groupName>9c79fbf8-f999-4f12-96ba-72f6920eb245$#$7b50f61d-8db4-4e72-becb-04e9e77a4cd9</groupName>

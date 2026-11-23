@@ -12,11 +12,6 @@
         <label>Attended</label>
     </standardValue>
     <standardValue>
-        <fullName>Attended On Demand</fullName>
-        <default>false</default>
-        <label>Attended On Demand</label>
-    </standardValue>
-    <standardValue>
         <fullName>checkedin</fullName>
         <default>false</default>
         <label>checkedin</label>
@@ -40,11 +35,6 @@
         <fullName>Demo Attended</fullName>
         <default>false</default>
         <label>Demo Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Demo Requested</fullName>
-        <default>false</default>
-        <label>Demo Requested</label>
     </standardValue>
     <standardValue>
         <fullName>Downloaded Content</fullName>
@@ -92,24 +82,9 @@
         <label>Gesendet</label>
     </standardValue>
     <standardValue>
-        <fullName>Invited</fullName>
-        <default>false</default>
-        <label>Invited</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Meeting Booked</fullName>
-        <default>false</default>
-        <label>Meeting Booked</label>
-    </standardValue>
-    <standardValue>
         <fullName>Member</fullName>
         <default>false</default>
         <label>Member</label>
-    </standardValue>
-    <standardValue>
-        <fullName>No Show</fullName>
-        <default>false</default>
-        <label>No Show</label>
     </standardValue>
     <standardValue>
         <fullName>Page Viewed</fullName>
@@ -120,11 +95,6 @@
         <fullName>Pending</fullName>
         <default>false</default>
         <label>Pending</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Registered</fullName>
-        <default>false</default>
-        <label>Registered</label>
     </standardValue>
     <standardValue>
         <fullName>Répondu</fullName>
@@ -172,39 +142,9 @@
         <label>Webinar Registered</label>
     </standardValue>
     <standardValue>
-        <fullName>WeChat Chat Menu</fullName>
-        <default>false</default>
-        <label>WeChat Chat Menu</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Forward</fullName>
-        <default>false</default>
-        <label>WeChat Forward</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Link Clicked</fullName>
-        <default>false</default>
-        <label>WeChat Link Clicked</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Page Viewed</fullName>
-        <default>false</default>
-        <label>WeChat Page Viewed</label>
-    </standardValue>
-    <standardValue>
         <fullName>WeChat Scan Code</fullName>
         <default>false</default>
         <label>WeChat Scan Code</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Отправлено</fullName>
-        <default>false</default>
-        <label>Отправлено</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Получен ответ</fullName>
-        <default>false</default>
-        <label>Получен ответ</label>
     </standardValue>
     <standardValue>
         <fullName>レスポンスあり</fullName>

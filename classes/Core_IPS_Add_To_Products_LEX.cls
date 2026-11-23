@@ -33,19 +33,19 @@ public with sharing class Core_IPS_Add_To_Products_LEX {
     public static List<ProductsSel> getSupportedProducts(String recordId, Integer limitSize, Integer offset ){
       String query;
       List<Core_IPS_Supported_Product__c> supportedproductObj;
-      List<Core_IPS_Question__c> envVariableRecordList = new List<Core_IPS_Question__c>(); // US-0049380 UnhandledExp_EDQs
+      List<Core_IPS_Question__c> EnvVariableRecordList = new List<Core_IPS_Question__c>(); // US-0049380 UnhandledExp_EDQs
       if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-      envVariableRecordList = [SELECT Id, Name, Core_IPS_Question__c, Core_IPS_Status__c, Core_IPS_Product_Organization__c, Core_IPS_Product_Organization__r.ownerId, 
+      EnvVariableRecordList = [SELECT Id, Name, Core_IPS_Question__c, Core_IPS_Status__c, Core_IPS_Product_Organization__c, Core_IPS_Product_Organization__r.ownerId, 
                              (SELECT Id,Core_Supported_Product__c, Core_supported_product__r.name, Core_Required__c, Core_Agent_Only__c, Core_Status__c 
                                 FROM Environment_Details_Operational__r WHERE Core_IPS_Question__c =: recordId AND Core_Supported_Product__c != NULL) 
                                   FROM Core_IPS_Question__c 
                                       WHERE Id =: recordId];
       }
-      if(envVariableRecordList != null && envVariableRecordList.size()>0){ // US-0049380 UnhandledExp_EDQs
-          EnvVariableRecord = envVariableRecordList[0];          
+      if(EnvVariableRecordList != null && EnvVariableRecordList.size()>0){ // US-0049380 UnhandledExp_EDQs
+          EnvVariableRecord = EnvVariableRecordList[0];          
       Set<Id> existingIds = new Set<Id>(); 
         
-      for(Core_IPS_Assigned_Environment_Variables__c envT: envVariableRecord.Environment_Details_Operational__r){
+      for(Core_IPS_Assigned_Environment_Variables__c envT: EnvVariableRecord.Environment_Details_Operational__r){
             existingIds.add(envT.Core_Supported_Product__c);
         }
         
@@ -53,7 +53,7 @@ public with sharing class Core_IPS_Add_To_Products_LEX {
        if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
        		supportedproductObj  = [ SELECT Id,Name,Core_Supported_Product_Name__c 
                                                                        FROM Core_IPS_Supported_Product__c
-                                                                         WHERE Core_Product_Organization__c =: envVariableRecord.Core_IPS_Product_Organization__c 
+                                                                         WHERE Core_Product_Organization__c =: EnvVariableRecord.Core_IPS_Product_Organization__c 
                                                                            AND Id NOT in: existingIds AND Core_EOIS__c = FALSE 
                                                                              ORDER BY Core_Supported_Product_Name__c
                                                                                LIMIT :limitSize OFFSET :offset ];

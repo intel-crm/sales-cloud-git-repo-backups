@@ -1,8 +1,8 @@
-public with sharing class  CommunityCaseClosureController{ // Changed by tushar for security venuability 
+public class  CommunityCaseClosureController{
 
     public static final String CUSTOMER_REQUESTING_CLOSE = 'Customer Requesting Close';
 
-    public String closureComments{get;set;}    
+    public String ClosureComments{get;set;}    
     public Case newCase{get;set;}
     public Boolean isEditable{get;set;}
     public Boolean showError{get;set;}
@@ -37,7 +37,7 @@ public with sharing class  CommunityCaseClosureController{ // Changed by tushar 
     }
     
 
-    public PageReference requestCaseClosure(){
+    public PageReference RequestCaseClosure(){
                        
         //FLS Check Added - Nishitha
         if (Schema.sObjectType.Case.fields.Status.isUpdateable()) {            
@@ -59,19 +59,13 @@ public with sharing class  CommunityCaseClosureController{ // Changed by tushar 
         // Added for case comments
         newComment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c; 
         newComment.Core_IPS_Comment_Author_Type__c=Core_IPS_AddCommentController.getAuthr(String.valueOf((userinfo.getProfileId()).substring(0,15)),userinfo.getUserid());
-        //insert newComment; // Changed by tushar for security venuability 
-        if (Schema.sObjectType.Core_IPS_Case_Comments__c.isCreateable() &&
-            Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case__c.isCreateable() &&
-            Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isCreateable() &&
-            Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable()) {
-                insert newComment;
-            }
+        insert newComment;
 
         return new PageReference('/' + newCase.id);
     }
 
 
-    public PageReference cancelOperation(){
+    public PageReference CancelOperation(){
         return new PageReference('/' + newCase.id);
     }
 }

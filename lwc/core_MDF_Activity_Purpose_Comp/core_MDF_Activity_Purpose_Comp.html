@@ -5,7 +5,7 @@
             <lightning-layout class="slds-page-header slds-page-header--object-home">
                 <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
                     <div class="page-section page-header">
-                        <h1 class="header-title">
+                        <h1>
                             {CampaignPurposeHeader}
                         </h1>
                     </div>
@@ -56,18 +56,18 @@
                                     <p>{outcomeLabel}</p>
                                 </td>
                                 <td>
-                                    <lightning-input type="number" step="1" min="0" value={selectedBaselineValue}
-                                        onchange={handleInputChangeBaselineValue} data-id="baselineValue"
+                                    <lightning-input class="responsive-input" type="number" step="1" min="0"
+                                        value={selectedBaselineValue} onchange={handleInputChangeBaselineValue}
+                                        data-id="baselineValue" disabled={editable} variant="label-hidden" required>
+                                    </lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input class="responsive-input" type="number" step="1" min="0"
+                                        value={selectedGoalValue} onchange={handleInputChangeGoalValue}
                                         disabled={editable} variant="label-hidden" required>
                                     </lightning-input>
                                 </td>
                                 <td>
-                                    <lightning-input type="number" step="1" min="0" value={selectedGoalValue}
-                                        onchange={handleInputChangeGoalValue} disabled={editable} variant="label-hidden"
-                                        required>
-                                    </lightning-input>
-                                </td>
-                                <td style="width: 100px;">
                                     <div class="combobox-fix">
                                         <lightning-combobox class="responsive-input" name="baseline"
                                             data-id="baselineInputBox" value={selectedBaseline} variant="label-hidden"
@@ -77,7 +77,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <lightning-input class="small-input" type="number" step="1" min="0"
+                                    <lightning-input class="responsive-input" type="number" step="1" min="0"
                                         value={selectedResult} data-id="optionalValue" data-ignore="true"
                                         onchange={handleResultChanged} disabled={isDisabled} variant="label-hidden"
                                         required>
@@ -112,8 +112,8 @@
             <!-- Summary Section -->
             <template if:true={isAllFieldsPopulated}>
                 <div class="slds-p-top_small slds-p-left_medium">
-                    {prepareIncreaseDecreaseLabel}{From} {selectedBaselineValue} {To} {selectedGoalValue}{ClosedBracket}
-                    {selectedBaselineLabel} {For} {selectedBrandLabels} {And} {selectedTechnologyLabels}
+                    {prepareIncreaseDecreaseLabel} ({From} {selectedBaselineValue} {To} {selectedGoalValue})
+                    {selectedBaseline} {For} {selectedBrandOptions} {And} {selectedTechnologyOptions}
                 </div>
             </template>
 

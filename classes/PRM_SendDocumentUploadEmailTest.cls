@@ -7,13 +7,6 @@ public class PRM_SendDocumentUploadEmailTest {
     private static final String TEST_TEMPLATE_SUBJECT = 'Document Upload Required';
     private static final String TEST_TEMPLATE_BODY = '<html><body>Please upload your documents</body></html>';
     
-    private static PRM_SendDocumentUploadEmail.InitialInputs makeInputs(List<PRM_Registration_Request__c> reqs, Boolean isReminder) {
-        PRM_SendDocumentUploadEmail.InitialInputs inp = new PRM_SendDocumentUploadEmail.InitialInputs();
-        inp.isRemainderEmail = isReminder;
-        inp.regRequestList = reqs;
-        return inp;
-    }
-    
     @TestSetup
     static void setupTestData() {
         ChannelProgram ipaProgram = new ChannelProgram();
@@ -104,19 +97,15 @@ public class PRM_SendDocumentUploadEmailTest {
             WHERE PRM_Preferred_Language__c = 'ENG'
         ];
         
-        //List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{regRequests};
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequests, false)
-        };
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{regRequests};
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Assertions
         System.assertEquals(1, results.size(), 'Should return one result');
-        //System.assertEquals(true, results[0], 'Email sending should be successful');
+        System.assertEquals(true, results[0], 'Email sending should be successful');
         
         // Verify Registration Request status was updated
         List<PRM_Registration_Request__c> updatedRequests = [
@@ -136,7 +125,7 @@ public class PRM_SendDocumentUploadEmailTest {
             WHERE PRM_IPA_Registration_Request__c IN :regRequests
         ];
         
-        //System.assertEquals(regRequests.size(), emailLogs.size(), 'Email log should be created for each request');
+        System.assertEquals(regRequests.size(), emailLogs.size(), 'Email log should be created for each request');
         
         for (PRM_EmailLog__c log : emailLogs) {
             System.assertEquals('IPA', log.PRM_Type__c, 'Email log type should be IPA');
@@ -152,19 +141,15 @@ public class PRM_SendDocumentUploadEmailTest {
             FROM PRM_Registration_Request__c
         ];
         
-        //List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{regRequests};
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequests, false)
-        };
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{regRequests};
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Assertions
         System.assertEquals(1, results.size(), 'Should return one result');
-        //System.assertEquals(true, results[0], 'Email sending should be successful');
+        System.assertEquals(true, results[0], 'Email sending should be successful');
         
         // Verify all requests were processed
         List<PRM_EmailLog__c> emailLogs = [
@@ -173,7 +158,7 @@ public class PRM_SendDocumentUploadEmailTest {
             WHERE PRM_IPA_Registration_Request__c IN :regRequests
         ];
         
-        //System.assertEquals(regRequests.size(), emailLogs.size(), 'Email log should be created for each request');
+        System.assertEquals(regRequests.size(), emailLogs.size(), 'Email log should be created for each request');
     }
     
     @isTest
@@ -190,14 +175,12 @@ public class PRM_SendDocumentUploadEmailTest {
         );
         insert regRequest;
         
-        List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{regRequest};
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequestList, false)
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{
+            new List<PRM_Registration_Request__c>{regRequest}
         };
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Should fallback to English template and still succeed
@@ -213,14 +196,10 @@ public class PRM_SendDocumentUploadEmailTest {
     
     @isTest
     static void testSendDocumentUploadEmailToPartner_EmptyList() {
-        List<PRM_Registration_Request__c> emptyList = new List<PRM_Registration_Request__c>();
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(emptyList, false)
-        };
+        List<List<PRM_Registration_Request__c>> emptyList = new List<List<PRM_Registration_Request__c>>();
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(emptyList);
         Test.stopTest();
         
         // Should handle empty list gracefully
@@ -245,15 +224,12 @@ public class PRM_SendDocumentUploadEmailTest {
         PRM_Registration_Request__c regRequest = [Select Id, Name, PRM_Email_ID__c, PRM_Status__c, PRM_Channel_Program__c, PRM_Preferred_Language__c from PRM_Registration_Request__c limit 1];
         regRequest.PRM_Email_ID__c = 'invalid-email'; // Invalid email format
                     
-        List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{regRequest};
-        
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequestList, false)
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{
+            new List<PRM_Registration_Request__c>{regRequest}
         };
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Note: In test context, Messaging.sendEmail() is mocked and typically succeeds
@@ -395,15 +371,10 @@ public class PRM_SendDocumentUploadEmailTest {
         }
         insert bulkRequests;
         
-        List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{bulkRequests};
-        
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequestList, false)
-        };
-        
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{bulkRequests};
         
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Assertions
@@ -438,15 +409,12 @@ public class PRM_SendDocumentUploadEmailTest {
         );
         insert regRequest;
         
-        List<PRM_Registration_Request__c> regRequestList = new List<PRM_Registration_Request__c>{regRequest};
+        List<List<PRM_Registration_Request__c>> regRequestList = new List<List<PRM_Registration_Request__c>>{
             new List<PRM_Registration_Request__c>{regRequest}
         };
         
-        List<PRM_SendDocumentUploadEmail.InitialInputs> payload = new List<PRM_SendDocumentUploadEmail.InitialInputs>{
-            makeInputs(regRequestList, false)
-        };
         Test.startTest();
-        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(payload);
+        List<Boolean> results = PRM_SendDocumentUploadEmail.sendDocumentUploadEmailToPartner(regRequestList);
         Test.stopTest();
         
         // Should handle exceptions gracefully

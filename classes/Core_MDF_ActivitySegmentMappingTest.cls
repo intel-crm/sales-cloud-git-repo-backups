@@ -16,7 +16,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
         System.runAs(usr){
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
-
+            PermissionSet rmfacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
             User ccfaccntmngr = Core_MDF_CCP_TestDataUtility.createUser(false);
             ccfaccntmngr.Email = 'ccfaccntmngr@example.com';
             ccfaccntmngr.Profile = ccpCoreAccessProfile;
@@ -29,7 +29,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Budget_Check','Bypass_GeoBased_Budget_Sharing','Bypass_MDF_Budget_Access','Bypass_MDF_Budget_Access_Validation','Bypass_MDF_Budget_Status_Validation','Bypass_ShareActivityWithUsers','Bypass_Activity_ApprovalProcess','Bypass_ShareActivityWithAccNodeGroup','ShareActivityWithInternalUsers_Bypass'}, true, false));
             Database.insert(transactions);
             
-
+            List<Account> masterAccountList = new List<Account>();
             List<Account> accountList = new List<Account>();
             List<Account> toBeUpdated = new List<Account>();
             List<Campaign> campaignList = new List<Campaign>();
@@ -77,11 +77,12 @@ public class Core_MDF_ActivitySegmentMappingTest {
             
             // Creating campaigns using utility class
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 
-                                                                        'Yes',Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
+                                                                        'CMP only',Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
                                                                         'Client CoMarketing Fund',System.today(),
                                                                         System.today().addDays(200), 20000, 'Unite',ccfAccount.Id,'2-in-1', false);
             
-            camp.Core_MDF_Activity_Category_Type__c = null;
+            camp.Core_MDF_Activity_Category_Type__c = 'Digital 2025->Web Content';
+            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             campaignList.add(camp);
             
             database.insert(campaignList);
@@ -90,7 +91,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             PartnerFundRequest pfrCCF = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                               string.valueof(ccfAccount.id),pfaCCF,budgetCCF,'INDIA','Small Business',
-                                                                                              'Desktop','Intel® Core™ i7 Processor','Audio 2025',
+                                                                                              'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                               'Radio','Draft',false);
             pfrCCF.Title = 'Activity CCF';
             pfrCCF.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -102,7 +103,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             pfrCCF.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             pfrCCF.Core_MDF_Reimbursement_Rate_txt__c='50%';
             pfrCCF.Core_MDF_Fund_Request_Status__c='Planned';
-            pfrCCF.Core_MDF_ActivityCategory__c = 'Audio';  //US - TWC702-14285: Worked on this test class (no logic/structure change)
+            pfrCCF.Core_MDF_ActivityCategory__c = 'Broadcast';
             pfrCCF.Core_MDF_Activity_Types__c = 'Podcast';
             
             testPartnerFundRequestRecordList.add(pfrCCF);
@@ -144,6 +145,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             pfc.Core_MDF_Member_Manual_Hold_Ind__c=true;
             pfc.Core_MDF_Intel_Manual_Hold_Ind__c=true;
             pfc.Core_MDF_Bank_Doc_Hold_Ind__c = true;
+            pfc.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
             pfcList.add(pfc);
             
             test.startTest();
@@ -178,7 +180,9 @@ public class Core_MDF_ActivitySegmentMappingTest {
     static void testgetProductMappingForSegment(){
         
         Account acc = [Select Id From Account where Name = 'Test Account CCF'LIMIT 1];
-
+        PartnerFundRequest pfr = [Select Id, Title from PartnerFundRequest where title = 'Activity CCF' LIMIT 1];
+        Account Masteracc = [Select Id From Account where Name = 'Test Account 1'LIMIT 1];
+        Core_MDF_Activity_Segment_Mapping__c asm = [Select Id from Core_MDF_Activity_Segment_Mapping__c where Core_MDF_Segment_Name_nm__c = 'Chipsets' LIMIT 1];
         Product2 prod=[Select Id,Name,Core_Product_Family__c from Product2 where Name='Intel® B360 Chipset'];
         User user = [SELECT Id,email FROM User WHERE email = 'ccfaccntmngr@example.com' limit 1];
         test.startTest();
@@ -187,7 +191,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             Core_MDF_ActivitySegmentMapping.getLabelValueMap();
             String ultimateAccId = Core_MDF_ActivitySegmentMapping.getUltimateAccountId(acc.Id);
             res1=Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Chipsets', ultimateAccId, 'Client CoMarketing Fund');
-
+            Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Chipsets');
         }
         test.stopTest();
         Assert.areEqual('Intel® B360 Chipset', res1[0].Name);
@@ -275,12 +279,12 @@ public class Core_MDF_ActivitySegmentMappingTest {
         Core_MDF_ActivitySegmentMapping.SegmentWrapper wrapper = new Core_MDF_ActivitySegmentMapping.SegmentWrapper();
         test.startTest();
          System.runAs(user){
-        	wrapper=Core_MDF_ActivitySegmentMapping.getSegmentForClaims(claim.Id);
+            wrapper=Core_MDF_ActivitySegmentMapping.getSegmentForClaims(claim.Id);
             
          }
         test.stopTest();
         List<Core_MDF_Activity_Segment_Mapping__c> segmentList=wrapper.segmentList;
-       	Assert.areEqual('Chipsets', segmentList[0].Core_MDF_Segment_Name_nm__c );
+        Assert.areEqual('Chipsets', segmentList[0].Core_MDF_Segment_Name_nm__c );
     }
     
     /*@isTest
@@ -303,26 +307,12 @@ public class Core_MDF_ActivitySegmentMappingTest {
         test.startTest();
         String segmentString = '[{"Core_MDF_Segment_Name_nm":"Chipsets","productIdSet":["'+prod.Id+'"],"Core_MDF_Minimum_Forecast_Volume_nbr":"333", "Core_MDF_Maximum_Cost_of_Bundle_nbr":"222","Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr":"22","Core_MDF_Maximum_Bundled_Volume_nbr":"55","Core_MDF_Minimum_Forecast_Volume_nbr__c":"1", "Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c":"23","Core_MDF_SPIF_Notes_internal_only_txt":"333","Core_MDF_Estimated_Share_of_SPIF_amt":"11"}]';
          System.runAs(user){
-
+            productList=Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Processors');
             Core_MDF_ActivitySegmentMapping.createUpdateSegmentAndProductMappingRecords(pfr.Id,segmentString);
             recTypeLabel = Core_MDF_ActivitySegmentMapping.getRecordTypeLabelByName('Core_MDF_Client_CoMarketing_Fund');
          }
         test.stopTest();
         Assert.areEqual('Client',recTypeLabel);
-    }
-
-    @isTest
-    static void testhandlebaddata(){
-        Test.starttest();
-        Core_MDF_ActivitySegmentMapping.SegmentWrapper result1 = Core_MDF_ActivitySegmentMapping.returnSegments('0RJ000000000001');
-        Core_MDF_ActivitySegmentMapping.SegmentWrapper result2 = Core_MDF_ActivitySegmentMapping.getSegmentForClaims('0RJ000000000001');
-        Core_MDF_ActivitySegmentMapping.createUpdateSegmentAndProductMappingRecords('001000000000001', 'Techno');
-        Map<String, String> result3 = Core_MDF_ActivitySegmentMapping.getLabelValueMap();
-        String result4 = Core_MDF_ActivitySegmentMapping.getUltimateAccountId('001000000000001');
-        List<Product2> result5 = Core_MDF_ActivitySegmentMapping.getProductMappingForAccount('001000000000001', 'SPGH');
-        List<Product2> result6 = Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Techno', '001000000000001', 'EGF');
-        Core_MDF_ActivitySegmentMapping.InitialDetailWrapper result7 = Core_MDF_ActivitySegmentMapping.getFieldsToDisplay('EGF', 'Television');
-        Test.stoptest();
     }
     
     

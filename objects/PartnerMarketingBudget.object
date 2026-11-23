@@ -823,17 +823,6 @@ Core_MDF_Program_Nm__c= $Label.Core_MDF_SPCF_Program_Name
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Maximum_Approved_Budget_Amt__c</fullName>
-        <inlineHelpText>Full budget, visible to Intel only</inlineHelpText>
-        <label>Maximum Approved Budget</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Owner_Nm__c</fullName>
         <description>Shows the name for external user if Owner is external otherwise Intel System User</description>
         <externalId>false</externalId>
@@ -1837,12 +1826,6 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <active>true</active>
         <errorConditionFormula>(Core_MDF_Decrease_Budget_Amount_Amt__c &lt; 0)</errorConditionFormula>
         <errorMessage>Budget reduction amount must be greater or equal to zero</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Negative_Max_Approved_Amount</fullName>
-        <active>true</active>
-        <errorConditionFormula>(Core_MDF_Maximum_Approved_Budget_Amt__c &lt; 0)</errorConditionFormula>
-        <errorMessage>Maximum Approved Budget cannot be negative.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PartnerNonEditable</fullName>

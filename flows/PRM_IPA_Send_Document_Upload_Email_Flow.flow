@@ -9,12 +9,6 @@
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
-            <name>isRemainderEmail</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>regRequestList</name>
             <value>
                 <elementReference>RegRequestList</elementReference>
@@ -171,7 +165,6 @@
         <queriedFields>Id</queriedFields>
         <queriedFields>PRM_Email_ID__c</queriedFields>
         <queriedFields>PRM_Preferred_Language__c</queriedFields>
-        <queriedFields>PRM_Country__c</queriedFields>
     </recordLookups>
     <start>
         <locationX>0</locationX>

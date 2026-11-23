@@ -868,11 +868,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Core_Design_Registration__c.PCC_Design_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -884,16 +879,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Design_Registration__c.PCC_Intel_Technical_Owner_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_Design_Registration__c.PCC_ODM_Board_Partner_Account__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_Design_Registration__c.PCC_ODM_Board_partner__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -29,27 +29,6 @@ public class Core_ContactHandler_Test {
             
             // Put an entry in Core_Trigger_Executions__c so the Contact trigger gets exectued
             List<Core_Trigger_Executions__c> executeTriggers = new List<Core_Trigger_Executions__c>();
-            
-             //Ganesh Changes
-            Core_Trigger_Executions__c executeTrigger8 = new Core_Trigger_Executions__c();
-            executeTrigger8.Name = 'ErpmApiCallProcess';
-            executeTrigger8.Core_Object__c = 'Contact';
-            executeTrigger8.Core_Active__c = true;
-            executeTrigger8.Core_Trigger_Events__c = 'After Insert, After Update';
-            executeTrigger8.Core_Description__c = 'ERPM API Call Process';
-            executeTrigger8.Core_Class_Name__c = 'Core_ContactHandler';
-            executeTriggers.add(executeTrigger8);
-            
-            Core_Trigger_Executions__c executeTrigger9 = new Core_Trigger_Executions__c();
-            executeTrigger9.Name = 'AgsApiCallProcess';
-            executeTrigger9.Core_Object__c = 'Contact';
-            executeTrigger9.Core_Active__c = true;
-            executeTrigger9.Core_Trigger_Events__c = 'After Insert, After Update';
-            executeTrigger9.Core_Description__c = 'AGS API Call Process';
-            executeTrigger9.Core_Class_Name__c = 'Core_ContactHandler';
-            executeTriggers.add(executeTrigger9);
-            //Ganesh Changes End
-            
             Core_Trigger_Executions__c executeTrigger = new Core_Trigger_Executions__c();
             executeTrigger.Name = 'contactJobFunction';
             executeTrigger.Core_Object__c = 'Contact';
@@ -605,8 +584,9 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
     public static List<User> contactUserList = new List<User>();
     
     public static testmethod void InactivateProjectMembers(){
-        Test.startTest();
+        Test.starttest();
         getRecords();
+        //Test.starttest();
         List<Contact> updatecontactList =  new List<Contact>();
         System.runAs(SystUserRunAs){
             Profile prof = [select id from profile where name = 'IPS External Customer' limit 1];
@@ -618,7 +598,6 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
             System.assertNotEquals(null, contactUserList[0].contactid);
             Id testUserId = contactUserList[0].id;
             projectList = TestUtilities.getListOfIpsProjects(2);
-            insert projectList;
             // Create Project Member
             projMembersList = TestUtilities.getListOfProjectMembers(2);
             for(Core_IPS_Project_Member__c ProjMem : projMembersList){
@@ -627,29 +606,27 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
                 ProjMem.Core_Status__c = 'Active';
                 ProjMem.Core_User__c = testUserId;            
             }
-            // Ensure project members use same helper pattern before insert
-           /* for(Core_IPS_Project_Member__c pm : projMembersList){
-                pm.Name = 'ProjMember-' + Math.random();
-            }*/
-            insert projMembersList;
             for(Contact contactRecord: contactListOptIn){
                 contactRecord.Core_IPS_Active__c  = false;
                 contactRecord.Core_ERPM_Integration_Message__c='Timestamp: 2019-06-03 03:47:45 GMT Inbound Message ID: a004F000003V5HCQA0 Error Code: 1031, Error Text: Failure in fetching the SOFT contact details by using Email Id, Error Details: Sequence contains more than one element';
                 updatecontactList.add(contactRecord);
             }
+            
             update updatecontactList;
         }
-        Test.stopTest();
+        //Test.stoptest();
     }
     
     
     public static void getRecords(){
+        //Test.startTest();
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];    
         userList = TestUtilities.getListOfUser(1);
         userList[0].profileId=prof.id;
-        insert userList;
+        insert userlist;
+        SystUserRunAs = new User();
         SystUserRunAs = userList[0];
-        System.runAs(SystUserRunAs){
+        System.runAs(systUserRunAs){
             Core_Trigger_Executions__c executeTrigger = new Core_Trigger_Executions__c();
             executeTrigger.Name = 'test';
             executeTrigger.Core_Object__c = 'Contact';
@@ -659,28 +636,25 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
             executeTrigger.Core_Class_Name__c = 'Contact_Handler';
             insert executeTrigger;
             
+            
+            
             accountList = TestUtilities.getListOfAccounts(2);
-            // Ensure accounts follow helper pattern before insert
-            for(Account a : accountList){
-                if(String.isBlank(a.Name)) a.Name = 'AutoAcct-' + Math.random();
-            }
-            insert accountList;
+            insert AccountList;
             
             contactListOptIn = TestUtilities.getListOfContact(2);
             contactListOptOut = TestUtilities.getListOfContact(2);
             Integer i = 0;
             for(Contact contactRecord: contactListOptIn){
-                contactRecord.AccountId = accountList.get(0).Id;
+                contactRecord.accountid = AccountList.get(0).id;
                 contactRecord.Core_IPS_Email_Opt_Out__c = false;
                 contactRecord.Core_ERPM_Integration_Message__c='Timestamp: 2019-06-03 03:47:45 GMT Inbound Message ID: a004F000003V5HCQA0 Error Code: 1031, Error Text: Failure in fetching the SOFT contact details by using Email Id, Error Details: Sequence contains more than one element';
                 contactRecord.MailingCountry = 'IND';
-                contactRecord.Email = 'autooptin' + i + '@test.com';
                 i++;
             }
             insert contactListOptIn;
             
             for(Contact contactRecord: contactListOptOut){
-                contactRecord.AccountId = accountList.get(1).Id;
+                contactRecord.accountid = AccountList.get(1).id;
                 contactRecord.Core_IPS_Email_Opt_Out__c = true;
                 contactRecord.Email = 'Contact'+i+'Dell@yahoo.com';
                 contactRecord.Core_ERPM_Integration_Message__c= 'Error Code';
@@ -692,26 +666,30 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
             caseList = TestUtilities.getListOfCases(2);
             integer  counter = 0 ;
             for(Case CaseRec : caseList){
-                CaseRec.ContactId = contactListOptIn.get(counter).Id;
-                CaseRec.AccountId = accountList.get(counter).Id;
+                CaseRec.ContactId = contactListOptIn.get(counter).id;
+                CaseRec.accountId = AccountList.get(counter).Id;
                 counter++;
             }
             insert caseList;
             
+            
             interestedPartyListoptIn = TestUtilities.getInternalInterestedParties(2);
             interestedPartyListoptOut = TestUtilities.getInternalInterestedParties(2);
             for(Core_IPS_Case_Interested_Party__c ip: interestedPartyListoptIn){
-                ip.Case__c = caseList[0].Id;
-                ip.Contact__c = contactListOptIn.get(0).Id;
+                ip.Case__c = caseList[0].id;
+                ip.Contact__c = contactListOptIn.get(0).id;
+                i++;
             }
             insert interestedPartyListoptIn;
             
             for(Core_IPS_Case_Interested_Party__c ip: interestedPartyListoptOut){
-                ip.Case__c = caseList[0].Id;
-                ip.Contact__c = contactListOptOut.get(0).Id;
+                ip.Case__c = caseList[0].id;
+                ip.Contact__c = contactListOptOut.get(0).id;
+                i++;
             }
             insert interestedPartyListoptOut;
         }
+       // Test.stopTest();
     }
     
     /*
@@ -1481,7 +1459,6 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         acm.PRM_Status_Reason_Txt__c='Test';
         insert acm;
         
-        List<PRM_Account_Contact_Relationship__c> acrList = new list<PRM_Account_Contact_Relationship__c>();
         PRM_Account_Contact_Relationship__c acr=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr.PRM_InActive_Ind__c= false;
         acr.PRM_Account_Id__c=newAccount.Id;
@@ -1490,8 +1467,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         acr.PRM_execute_trigger__c=true;
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
         acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1;  
-        acr.PRM_Status_Reason_Txt__c = 'test';
-        acrList.add(acr);
+        insert acr;
         System.debug('acr--1>'+acr); 
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
@@ -1500,11 +1476,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         acr1.PRM_Relationship_Id__c = crList[1].Id;
         acr1.PRM_Contact_Id__c=cont.Id;
         acr1.PRM_execute_trigger__c=true;
-        acr1.PRM_Status_Reason_Txt__c = 'test';
-        acrList.add(acr1);
-        Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
-        insert acrList;
-        Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+        insert acr1;
         
         try{    
             cont.Core_Login_Status__c = '' ;
@@ -1603,7 +1575,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         newCon.put(cont.id,cont);
         
         PRM_SalesCloudContactIntStatus_Handler.setContactIPAIntegrationStatusToPendingOnUpdate(con, oldCons);
-        //Core_ContactHandler.UpdateMembershipFlag(oldCons,newCon);
+        Core_ContactHandler.UpdateMembershipFlag(oldCons,newCon);
         Test.stopTest();
     }
     
@@ -1613,7 +1585,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         
         Id accountRecordTypeIntel = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         Id contactRecordType = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
-
+        
         Map<Id,Contact> oldCons = new Map<Id, Contact>();
         Account newAccount = new Account();//Account
         newAccount.RecordTypeId = accountRecordTypeIntel;
@@ -1655,7 +1627,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         cont.AccountId=newAccount.Id;
         cont.lastName='Grill';
         cont.FirstName='Adam';
-        cont.email='AdamGrill11@spamOk.com';
+        cont.email='AdamGrill11@rediffg.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
@@ -1667,18 +1639,10 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         cont.Core_Account_Changeable__c = true;
         cont.MailingCountry = 'IND';
         insert cont;
-        
-        Contact insertedContact = [ SELECT Id, RecordType.Name FROM Contact WHERE Id = :cont.Id];
-		
-        System.debug('RecordTypeId=' + insertedContact.RecordTypeId);
-		System.debug('RecordType.Name=' + insertedContact.RecordType.Name);
-        
         ChannelProgram cpIpa = new ChannelProgram();
         cpIpa.Name=Label.PRM_Intel_Partner_Alliance;
         cpIpa.PRM_programCode__c='IPA';
         insert cpIpa;
-         System.debug('Contact Record type name: '+cont.RecordType.Name);
-        System.debug('Account Geo: '+newAccount.Core_Geo__c);
         PRM_ContactRelationships__c emp= new PRM_ContactRelationships__c();
             emp.Name ='Employee';
             emp.PRM_Channel_Program_Id__c =cpipa.id;
@@ -1696,11 +1660,8 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
             pcr.PRM_Account_Id__c = cont.AccountId;
             pcr.PRM_Status_Nm__c='Complete';
             pcr.PRM_Relationship_Id__c = emp.id;
-        	System.debug('PRM_InActive_Ind__c: '+pcr.PRM_InActive_Ind__c);
             insert pcr;
             
-       
-        
         System.assertNotEquals(null, cont.Id);
         oldCons.put(cont.Id, cont);
         con.add(cont);
@@ -1965,7 +1926,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         //******************  TWC729-2258 - Agate - End ************************************************************
         map<id,contact> contmap=new map<id,contact>();
         contmap.put(contactsInsert[0].id,contactsInsert[0]);
-        //Core_ContactHandler.assignPartnerCommunityContactEntitlements(contmap,contactsInsert);
+        Core_ContactHandler.assignPartnerCommunityContactEntitlements(contmap,contactsInsert);
         Core_ContactHandler.createEnrollmentRequest(contactsInsert[0].id,'str','New');
         
         Test.stopTest();
@@ -2221,7 +2182,7 @@ System.assertEquals('Test Job Function 2', contact.Core_Job_Function__c);*/
         //******************  TWC729-2258 - Agate - End ************************************************************
         map<id,contact> contmap=new map<id,contact>();
         contmap.put(contactsInsert[0].id,contactsInsert[0]);
-        //Core_ContactHandler.assignPartnerCommunityContactEntitlements(contmap,contactsInsert);
+        Core_ContactHandler.assignPartnerCommunityContactEntitlements(contmap,contactsInsert);
         Core_ContactHandler.createEnrollmentRequest(contactsInsert[0].id,'str','New');
         
         Test.stopTest();
@@ -3309,1104 +3270,4 @@ if(updateContactsList.size()>0){
         Core_ContactHandler.checkForDuplicateContact(listOfContact);
         Test.stopTest();
     }
-    
-    @isTest
-static void test_erpmProcessFlow_Live_usingCommunityPattern() {
-
-    /* ---------- STEP 1: Community data (exactly like you asked) ---------- */
-    List<String> communities =
-        System.Label.PRM_Available_Communities.split(';');
-    System.assert(communities.size() > 0);
-
-    String oldCommunity = communities[0];
-    String newCommunity =
-        (communities.size() > 1) ? communities[1] : communities[0];
-
-    /* ---------- STEP 2: Account ---------- */
-    Account acc = PRM_TestUtility.getAccount();
-    acc.RecordTypeId =
-        Schema.SObjectType.Account
-            .getRecordTypeInfosByName()
-            .get('Intel Account')
-            .getRecordTypeId();
-    acc.BillingCity = 'Bengaluru';
-    acc.BillingCountry = 'IND';
-    acc.BillingStreet = 'ITPL';
-    acc.BillingPostalCode = '560037';
-    insert acc;
-
-    /* ---------- STEP 3: Contact ---------- */
-    Id intelConRT =
-        Schema.SObjectType.Contact
-            .getRecordTypeInfosByName()
-            .get('Intel Contact')
-            .getRecordTypeId();
-
-    Contact con = PRM_TestUtility.getContact();
-    con.RecordTypeId = intelConRT;
-    con.AccountId = acc.Id;
-    con.Core_Login_Status__c = 'Active';
-    con.Core_IPA_Partner_Community__c = oldCommunity;
-
-    // 🔑 ERPM-required fields
-    con.Core_Erpm_Integration_Status__c = 'Pending';
-    con.Core_ERPM_Integration_Queue_txt__c = 'Empty';
-    //con.Core_IPS_Employee_Customer__c = false;
-
-    insert con;
-
-    /* ---------- STEP 4: Old Contact Map ---------- */
-    Contact oldCon = new Contact(
-        Id = con.Id,
-        Core_Erpm_Integration_Status__c = 'Error',
-        Core_IPA_Partner_Community__c = oldCommunity
-    );
-
-    Map<Id, Contact> oldMap =
-        new Map<Id, Contact>{ con.Id => oldCon };
-
-    List<Contact> newContacts =
-        new List<Contact>{ con };
-
-    /* ---------- STEP 5: Execute ERPM Flow ---------- */
-    Test.startTest();
-        Core_ContactHandler.erpmProcessFlow(
-            newContacts,
-            oldMap
-        );
-    Test.stopTest();
-
-    System.assert(true, 'ERPM Live flow executed successfully');
-}  
-  //Ganesh Changes
-@isTest
-static void testErpmProcessFlow() {
-    // Create test account
-    Account testAccount = new Account(
-        Name = 'Test ERPM Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    // Create eligible contacts for processing
-    List<Contact> eligibleContacts = new List<Contact>();
-    for(Integer i = 0; i < 3; i++) {
-        Contact con = new Contact(
-            FirstName = 'Eligible' + i,
-            LastName = 'Contact' + i,
-            Email = 'eligible' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Pending'
-            // Core_ERPM_Integration_Queue_txt__c will default to null (not 'Full')
-            // Core_IPS_Employee_Customer__c will default to false
-        );
-        eligibleContacts.add(con);
-    }
-    
-    // Create ineligible contacts
-    Contact ineligibleStatus = new Contact(
-        FirstName = 'Ineligible',
-        LastName = 'Status',
-        Email = 'ineligible.status@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Completed'
-    );
-    
-    Contact ineligibleQueue = new Contact(
-        FirstName = 'Ineligible',
-        LastName = 'Queue',
-        Email = 'ineligible.queue@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Pending',
-        Core_ERPM_Integration_Queue_txt__c = 'Full'
-    );
-    
-    List<Contact> allContacts = new List<Contact>();
-    allContacts.addAll(eligibleContacts);
-    allContacts.add(ineligibleStatus);
-    allContacts.add(ineligibleQueue);
-    
-    insert allContacts;
-    
-    // Create old contact map
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    for(Contact con : allContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'New';
-        oldContactMap.put(con.Id, oldContact);
-    }
-    
-    Test.startTest();
-    
-    // Test 1: Empty contact list
-    Core_ContactHandler.erpmProcessFlow(new List<Contact>(), new Map<Id, Contact>());
-    
-    // Test 2: Mixed eligible and ineligible contacts
-    Core_ContactHandler.erpmProcessFlow(allContacts, oldContactMap);
-    
-    // Test 3: Only eligible contacts (should trigger live or bulk flow based on Contact_Process_Limit)
-    Core_ContactHandler.erpmProcessFlow(eligibleContacts, oldContactMap);
-    
-    // Test 4: Create more contacts to test bulk flow (assuming Contact_Process_Limit is less than 10)
-    List<Contact> bulkContacts = new List<Contact>();
-    for(Integer i = 0; i < 10; i++) {
-        Contact con = new Contact(
-            FirstName = 'Bulk' + i,
-            LastName = 'Contact' + i,
-            Email = 'bulk' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Pending'
-        );
-        bulkContacts.add(con);
-    }
-    insert bulkContacts;
-    
-    Map<Id, Contact> bulkOldMap = new Map<Id, Contact>();
-    for(Contact con : bulkContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'New';
-        bulkOldMap.put(con.Id, oldContact);
-    }
-    
-    Core_ContactHandler.erpmProcessFlow(bulkContacts, bulkOldMap);
-    
-    Test.stopTest();
-    
-    // Assertions - verify method executed without exceptions
-    System.assert(true, 'ERPM process flow completed successfully');
-}
-    //Ganesh Changes End
-    //Ganesh Changes
-@isTest
-static void testAgsProcessFlow() {
-    // Create test account
-    Account testAccount = new Account(
-        Name = 'Test AGS Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    // Create eligible contacts for AGS processing
-    List<Contact> eligibleContacts = new List<Contact>();
-    for(Integer i = 0; i < 3; i++) {
-        Contact con = new Contact(
-            FirstName = 'AGSEligible' + i,
-            LastName = 'Contact' + i,
-            Email = 'agseligible' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Successful',
-            Core_AGS_Integration_Status__c = 'Pending'
-        );
-        eligibleContacts.add(con);
-    }
-    
-    // Create ineligible contacts (different scenarios)
-    Contact ineligibleErpmStatus = new Contact(
-        FirstName = 'IneligibleERPM',
-        LastName = 'Status',
-        Email = 'ineligible.erpm@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Failed',
-        Core_AGS_Integration_Status__c = 'Pending'
-    );
-    
-    Contact ineligibleAgsStatus = new Contact(
-        FirstName = 'IneligibleAGS',
-        LastName = 'Status',
-        Email = 'ineligible.ags@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Successful',
-        Core_AGS_Integration_Status__c = 'Completed'
-    );
-    
-    Contact noStatusChange = new Contact(
-        FirstName = 'NoChange',
-        LastName = 'Status',
-        Email = 'nochange@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Successful',
-        Core_AGS_Integration_Status__c = 'Pending'
-    );
-    
-    List<Contact> allContacts = new List<Contact>();
-    allContacts.addAll(eligibleContacts);
-    allContacts.add(ineligibleErpmStatus);
-    allContacts.add(ineligibleAgsStatus);
-    allContacts.add(noStatusChange);
-    
-    insert allContacts;
-    
-    // Create old contact map with different statuses to simulate changes
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    
-    // For eligible contacts - simulate status changes that make them eligible
-    for(Contact con : eligibleContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'Pending'; // Changed from Pending to Successful
-        oldContact.Core_AGS_Integration_Status__c = 'New'; // Changed from New to Pending
-        oldContactMap.put(con.Id, oldContact);
-    }
-    
-    // For ineligible contacts
-    Contact oldIneligibleErpm = ineligibleErpmStatus.clone(true);
-    oldIneligibleErpm.Core_Erpm_Integration_Status__c = 'Pending';
-    oldIneligibleErpm.Core_AGS_Integration_Status__c = 'New';
-    oldContactMap.put(ineligibleErpmStatus.Id, oldIneligibleErpm);
-    
-    Contact oldIneligibleAgs = ineligibleAgsStatus.clone(true);
-    oldIneligibleAgs.Core_Erpm_Integration_Status__c = 'Pending';
-    oldIneligibleAgs.Core_AGS_Integration_Status__c = 'New';
-    oldContactMap.put(ineligibleAgsStatus.Id, oldIneligibleAgs);
-    
-    // For no status change contact - simulate no change (should be ineligible)
-    Contact oldNoChange = noStatusChange.clone(true);
-    oldNoChange.Core_Erpm_Integration_Status__c = 'Successful'; // No change
-    oldNoChange.Core_AGS_Integration_Status__c = 'Pending'; // No change
-    oldContactMap.put(noStatusChange.Id, oldNoChange);
-    
-    Test.startTest();
-    
-    // Test 1: Empty contact list
-    //Core_ContactHandler.agsProcessFlow(new List<Contact>(), new Map<Id, Contact>());
-    
-    // Test 2: Mixed eligible and ineligible contacts
-    //Core_ContactHandler.agsProcessFlow(allContacts, oldContactMap);
-    
-    // Test 3: Only eligible contacts (should trigger live or bulk flow based on AGS_Contact_Process_Limit)
-   // Core_ContactHandler.agsProcessFlow(eligibleContacts, oldContactMap);
-    
-    // Test 4: Create more contacts to test bulk flow (assuming AGS_Contact_Process_Limit is less than 10)
-    List<Contact> bulkContacts = new List<Contact>();
-    Map<Id, Contact> bulkOldMap = new Map<Id, Contact>();
-    
-    for(Integer i = 0; i < 10; i++) {
-        Contact con = new Contact(
-            FirstName = 'AGSBulk' + i,
-            LastName = 'Contact' + i,
-            Email = 'agsbulk' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Successful',
-            Core_AGS_Integration_Status__c = 'Pending'
-        );
-        bulkContacts.add(con);
-    }
-    insert bulkContacts;
-    
-    for(Contact con : bulkContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'Pending'; // Changed to Successful
-        oldContact.Core_AGS_Integration_Status__c = 'New'; // Changed to Pending
-        bulkOldMap.put(con.Id, oldContact);
-    }
-    
-    //Core_ContactHandler.agsProcessFlow(bulkContacts, bulkOldMap);
-    
-    Test.stopTest();
-    
-    // Assertions - verify method executed without exceptions
-    System.assert(true, 'AGS process flow completed successfully');
-}
-//Ganesh Changes End 
-//Ganesh Changes
-@isTest
-static void testProcessAgsLiveFlow_CatchBlock() {
-    // Create test account
-    Account testAccount = new Account(
-        Name = 'Test AGS Live Flow Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    // Create test contacts
-    List<Contact> testContacts = new List<Contact>();
-    for(Integer i = 0; i < 2; i++) {
-        Contact con = new Contact(
-            FirstName = 'TestAGS' + i,
-            LastName = 'LiveFlow' + i,
-            Email = 'testags' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Successful',
-            Core_AGS_Integration_Status__c = 'Pending'
-        );
-        testContacts.add(con);
-    }
-    insert testContacts;
-    
-    // Create old contact map
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    for(Contact con : testContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'Pending';
-        oldContact.Core_AGS_Integration_Status__c = 'New';
-        oldContactMap.put(con.Id, oldContact);
-    }
-    
-    Test.startTest();
-    
-    // Force an exception by passing invalid data that will cause Core_IntegrationQueueService.createQueueRecords to fail
-    // Option 1: Pass null contacts list (if the service doesn't handle null properly)
-    try {
-       // Core_ContactHandler.processAgsLiveFlow(null, oldContactMap);
-    } catch(Exception e) {
-        // Expected exception - this will trigger the catch block
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    // Option 2: Pass contacts with null IDs (if that causes issues in the service)
-    List<Contact> invalidContacts = new List<Contact>();
-    Contact invalidContact = new Contact(
-        FirstName = 'Invalid',
-        LastName = 'Contact',
-        Email = 'invalid@test.com',
-        MailingCountry = 'IND'
-        // No AccountId or other required fields that might cause issues
-    );
-    invalidContacts.add(invalidContact);
-    
-    try {
-       // Core_ContactHandler.processAgsLiveFlow(invalidContacts, new Map<Id, Contact>());
-    } catch(Exception e) {
-        // Expected exception - this will trigger the catch block
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    // Option 3: Pass malformed oldContactMap
-    Map<Id, Contact> invalidOldMap = new Map<Id, Contact>();
-    // Add entry with null contact
-    if(!testContacts.isEmpty()) {
-        invalidOldMap.put(testContacts[0].Id, null);
-    }
-    
-    try {
-     //   Core_ContactHandler.processAgsLiveFlow(testContacts, invalidOldMap);
-    } catch(Exception e) {
-        // Expected exception - this will trigger the catch block
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    Test.stopTest();
-    
-    // Verify that the method handles exceptions gracefully
-    // The catch block should log the error using UCD_ACM_Logger.error
-    // and the finally block should call UCD_ACM_Logger.setLogDetails()
-    System.assert(true, 'Exception handling test completed - catch and finally blocks executed');
-}
-
-@isTest
-static void testProcessAgsLiveFlow_DatabaseException() {
-    // Create test data
-    Account testAccount = new Account(
-        Name = 'Test Database Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'DatabaseTest',
-        LastName = 'Contact',
-        Email = 'dbtest@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    oldContactMap.put(con.Id, con.clone(true));
-    
-    Test.startTest();
-    
-    // Simulate a scenario that might cause Database.executeBatch to fail
-    // This could happen if there are governor limit issues or batch class issues
-    
-    // Create a large number of contacts to potentially cause issues
-    List<Contact> largeContactList = new List<Contact>();
-    for(Integer i = 0; i < 200; i++) {
-        Contact largeCon = new Contact(
-            FirstName = 'Large' + i,
-            LastName = 'Dataset' + i,
-            Email = 'large' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND'
-        );
-        largeContactList.add(largeCon);
-    }
-    
-    Map<Id, Contact> largeOldMap = new Map<Id, Contact>();
-    for(Contact largeCon : largeContactList) {
-        largeOldMap.put(largeCon.Id, largeCon.clone(true));
-    }
-    
-    // This might trigger an exception in the batch execution or queue record creation
-  //  Core_ContactHandler.processAgsLiveFlow(largeContactList, largeOldMap);
-    
-    Test.stopTest();
-    
-    // Verify exception handling
-    System.assert(true, 'Database exception handling test completed');
-}
-//Ganesh Changes End
-//Ganesh Changes
-@isTest
-static void testProcessLiveFlow_CatchBlock() {
-    // Create test account
-    Account testAccount = new Account(
-        Name = 'Test Live Flow Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    // Create test contacts
-    List<Contact> testContacts = new List<Contact>();
-    for(Integer i = 0; i < 2; i++) {
-        Contact con = new Contact(
-            FirstName = 'TestERPM' + i,
-            LastName = 'LiveFlow' + i,
-            Email = 'testerpm' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND',
-            Core_Erpm_Integration_Status__c = 'Pending'
-        );
-        testContacts.add(con);
-    }
-    insert testContacts;
-    
-    // Create old contact map
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    for(Contact con : testContacts) {
-        Contact oldContact = con.clone(true);
-        oldContact.Core_Erpm_Integration_Status__c = 'New';
-        oldContactMap.put(con.Id, oldContact);
-    }
-    
-    Test.startTest();
-    
-    // Test 1: Force exception by passing null contacts list
-    try {
-        Core_ContactHandler.processLiveFlow(null, oldContactMap);
-    } catch(Exception e) {
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    // Test 2: Force exception by passing contacts with invalid data
-    List<Contact> invalidContacts = new List<Contact>();
-    Contact invalidContact = new Contact(
-        FirstName = 'Invalid',
-        LastName = 'Contact',
-        Email = 'invalid@test.com'
-        // Missing required fields that might cause Core_IntegrationQueueService to fail
-    );
-    invalidContacts.add(invalidContact);
-    
-    try {
-        Core_ContactHandler.processLiveFlow(invalidContacts, new Map<Id, Contact>());
-    } catch(Exception e) {
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    // Test 3: Force exception with malformed oldContactMap
-    Map<Id, Contact> invalidOldMap = new Map<Id, Contact>();
-    if(!testContacts.isEmpty()) {
-        invalidOldMap.put(testContacts[0].Id, null); // Null contact in map
-    }
-    
-    try {
-        Core_ContactHandler.processLiveFlow(testContacts, invalidOldMap);
-    } catch(Exception e) {
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    // Test 4: Force exception by creating contacts without proper AccountId
-    List<Contact> contactsWithoutAccount = new List<Contact>();
-    Contact conWithoutAccount = new Contact(
-        FirstName = 'NoAccount',
-        LastName = 'Contact',
-        Email = 'noaccount@test.com',
-        MailingCountry = 'IND'
-        // No AccountId - this might cause issues in Core_IntegrationQueueService
-    );
-    contactsWithoutAccount.add(conWithoutAccount);
-    
-    Map<Id, Contact> oldMapWithoutAccount = new Map<Id, Contact>();
-    
-    try {
-        Core_ContactHandler.processLiveFlow(contactsWithoutAccount, oldMapWithoutAccount);
-    } catch(Exception e) {
-        System.debug('Expected exception caught: ' + e.getMessage());
-    }
-    
-    Test.stopTest();
-    
-    // Verify that the method handles exceptions gracefully
-    // The catch block should log the error using UCD_ACM_Logger.error
-    // and the finally block should call UCD_ACM_Logger.setLogDetails()
-    System.assert(true, 'Exception handling test completed - catch and finally blocks executed');
-}
-
-@isTest
-static void testProcessLiveFlow_BatchExecutionException() {
-    // Create test data that might cause batch execution to fail
-    Account testAccount = new Account(
-        Name = 'Test Batch Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'BatchTest',
-        LastName = 'Contact',
-        Email = 'batchtest@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND',
-        Core_Erpm_Integration_Status__c = 'Pending'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>();
-    oldContactMap.put(con.Id, con.clone(true));
-    
-    Test.startTest();
-    
-    // Create a scenario that might cause the batch processor to fail
-    // This could be due to governor limits, invalid batch class, etc.
-    
-    // Attempt to create multiple batch jobs rapidly which might cause issues
-    for(Integer i = 0; i < 5; i++) {
-        try {
-            Core_ContactHandler.processLiveFlow(testContacts, oldContactMap);
-        } catch(Exception e) {
-            System.debug('Batch execution exception caught: ' + e.getMessage());
-        }
-    }
-    
-    Test.stopTest();
-    
-    // Verify exception handling for batch execution scenarios
-    System.assert(true, 'Batch execution exception handling test completed');
-}
-
-@isTest
-static void testProcessLiveFlow_NullPointerException() {
-    Test.startTest();
-    
-    // Test with completely null parameters to force NullPointerException
-    try {
-        Core_ContactHandler.processLiveFlow(null, null);
-    } catch(Exception e) {
-        System.debug('NullPointerException caught: ' + e.getMessage());
-    }
-    
-    // Test with empty list but null oldContactMap
-    List<Contact> emptyContacts = new List<Contact>();
-    try {
-        Core_ContactHandler.processLiveFlow(emptyContacts, null);
-    } catch(Exception e) {
-        System.debug('Exception with null oldContactMap caught: ' + e.getMessage());
-    }
-    
-    Test.stopTest();
-    
-    // Verify null pointer exception handling
-    System.assert(true, 'Null pointer exception handling test completed');
-}
-//Ganesh CHanges end
-//Ganesh Changes
-@isTest
-static void testProcessBulkFlow_CatchBlock() {
-    Test.startTest();
-    
-    // Test 1: Force NullPointerException by passing null newContacts list
-    try {
-        Core_ContactHandler.processBulkFlow(null, new Map<Id, Contact>());
-    } catch(Exception e) {
-        // This might be caught by the method's catch block or thrown up
-        System.debug('Null contacts exception: ' + e.getMessage());
-    }
-    
-    // Test 2: Force exception with null oldContactMap during JSON serialization
-    Account testAccount = new Account(
-        Name = 'Test Catch Block Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'CatchTest',
-        LastName = 'Contact',
-        Email = 'catchtest@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    // This should trigger catch block during JSON.serialize(null)
-    Core_ContactHandler.processBulkFlow(testContacts, null);
-    
-    // Test 3: Create contacts with problematic data for JSON serialization
-    List<Contact> problematicContacts = new List<Contact>();
-    Contact problematicCon = new Contact(
-        FirstName = 'Problematic',
-        LastName = 'Contact',
-        Email = 'problematic@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    problematicContacts.add(problematicCon);
-    insert problematicContacts;
-    
-    // Create a map with circular references or invalid data that might cause JSON serialization to fail
-    Map<Id, Contact> problematicMap = new Map<Id, Contact>();
-    Contact circularContact = problematicContacts[0].clone(true);
-    problematicMap.put(problematicContacts[0].Id, circularContact);
-    
-    Core_ContactHandler.processBulkFlow(problematicContacts, problematicMap);
-    
-    // Test 4: Test with contacts that have null IDs (not inserted)
-    List<Contact> contactsWithNullIds = new List<Contact>();
-    Contact nullIdContact = new Contact(
-        FirstName = 'NullId',
-        LastName = 'Contact',
-        Email = 'nullid@test.com',
-        MailingCountry = 'IND'
-        // Not inserted, so Id is null
-    );
-    contactsWithNullIds.add(nullIdContact);
-    
-    // This might cause issues when trying to serialize null IDs
-    Core_ContactHandler.processBulkFlow(contactsWithNullIds, new Map<Id, Contact>());
-    
-    // Test 5: Test with extremely large data that might cause heap size issues
-    List<Contact> largeContactList = new List<Contact>();
-    Map<Id, Contact> largeOldMap = new Map<Id, Contact>();
-    
-    // Create contacts with very long field values
-    for(Integer i = 0; i < 50; i++) {
-        Contact largeCon = new Contact(
-            FirstName = 'VeryLongFirstName'.repeat(20) + i,
-            LastName = 'VeryLongLastName'.repeat(20) + i,
-            Email = 'verylongemail' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND'
-        );
-        largeContactList.add(largeCon);
-    }
-    
-    try {
-        insert largeContactList;
-        
-        for(Contact largeCon : largeContactList) {
-            Contact oldLargeCon = largeCon.clone(true);
-            // Add more data to make it even larger
-            oldLargeCon.Description = 'Very long description'.repeat(100);
-            largeOldMap.put(largeCon.Id, oldLargeCon);
-        }
-        
-        // This might cause memory issues during JSON serialization
-        Core_ContactHandler.processBulkFlow(largeContactList, largeOldMap);
-    } catch(Exception e) {
-        System.debug('Large data exception: ' + e.getMessage());
-    }
-    
-    // Test 6: Force exception by creating invalid platform event data
-    List<Contact> validContacts = new List<Contact>{testContacts[0]};
-    Map<Id, Contact> validOldMap = new Map<Id, Contact>();
-    validOldMap.put(testContacts[0].Id, testContacts[0].clone(true));
-    
-    // Try to create platform event with data that exceeds field limits
-    String veryLongString = 'x'.repeat(10000); // Very long string
-    Contact contactWithLongData = testContacts[0].clone(true);
-    contactWithLongData.Description = veryLongString;
-    
-    Map<Id, Contact> longDataMap = new Map<Id, Contact>();
-    longDataMap.put(testContacts[0].Id, contactWithLongData);
-    
-    // This might cause platform event field length limits to be exceeded
-    Core_ContactHandler.processBulkFlow(validContacts, longDataMap);
-    
-    Test.stopTest();
-    
-    // Verify that catch block handling completed
-    System.assert(true, 'Catch block exception handling test completed');
-}
-
-@isTest
-static void testProcessBulkFlow_JSONSerializationException() {
-    Test.startTest();
-    
-    // Create test data
-    Account testAccount = new Account(
-        Name = 'JSON Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'JSON',
-        LastName = 'Exception',
-        Email = 'jsonexception@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    // Test with null oldContactMap to force JSON serialization exception
-    Core_ContactHandler.processBulkFlow(testContacts, null);
-    
-    // Test with both null parameters
-    Core_ContactHandler.processBulkFlow(null, null);
-    
-    // Test with empty contacts but null oldContactMap
-    Core_ContactHandler.processBulkFlow(new List<Contact>(), null);
-    
-    Test.stopTest();
-    
-    System.assert(true, 'JSON serialization exception test completed');
-}
-
-@isTest
-static void testProcessBulkFlow_PlatformEventException() {
-    Test.startTest();
-    
-    // Create minimal test data
-    Account testAccount = new Account(
-        Name = 'Platform Event Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    Contact con = new Contact(
-        FirstName = 'Platform',
-        LastName = 'Event',
-        Email = 'platformevent@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    insert con;
-    
-    List<Contact> testContacts = new List<Contact>{con};
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>{con.Id => con.clone(true)};
-    
-    // This should execute normally but we're testing the catch block coverage
-    Core_ContactHandler.processBulkFlow(testContacts, oldContactMap);
-    
-    // Force exception by trying to publish multiple events rapidly
-    for(Integer i = 0; i < 10; i++) {
-        try {
-            Core_ContactHandler.processBulkFlow(testContacts, oldContactMap);
-        } catch(Exception e) {
-            System.debug('Platform event exception: ' + e.getMessage());
-        }
-    }
-    
-    Test.stopTest();
-    
-    System.assert(true, 'Platform event exception test completed');
-}
-//Ganesh Changes End
-//Ganesh Changes
-@isTest
-static void testProcessAgsBulkFlow_CatchBlock() {
-    Test.startTest();
-    
-    // Test 1: Force NullPointerException by passing null newContacts list
-    try {
-       // Core_ContactHandler.processAgsBulkFlow(null, new Map<Id, Contact>());
-    } catch(Exception e) {
-        System.debug('Null contacts exception: ' + e.getMessage());
-    }
-    
-    // Test 2: Force exception with null oldContactMap during JSON serialization
-    Account testAccount = new Account(
-        Name = 'Test AGS Catch Block Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'AGSCatchTest',
-        LastName = 'Contact',
-        Email = 'agscatchtest@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    // This should trigger catch block during JSON.serialize(null)
-  //  Core_ContactHandler.processAgsBulkFlow(testContacts, null);
-    
-    // Test 3: Create contacts with problematic data for JSON serialization
-    List<Contact> problematicContacts = new List<Contact>();
-    Contact problematicCon = new Contact(
-        FirstName = 'AGSProblematic',
-        LastName = 'Contact',
-        Email = 'agsproblematic@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    problematicContacts.add(problematicCon);
-    insert problematicContacts;
-    
-    // Create a map with data that might cause JSON serialization to fail
-    Map<Id, Contact> problematicMap = new Map<Id, Contact>();
-    Contact circularContact = problematicContacts[0].clone(true);
-    problematicMap.put(problematicContacts[0].Id, circularContact);
-    
-   // Core_ContactHandler.processAgsBulkFlow(problematicContacts, problematicMap);
-    
-    // Test 4: Test with contacts that have null IDs (not inserted)
-    List<Contact> contactsWithNullIds = new List<Contact>();
-    Contact nullIdContact = new Contact(
-        FirstName = 'AGSNullId',
-        LastName = 'Contact',
-        Email = 'agsnullid@test.com',
-        MailingCountry = 'IND'
-        // Not inserted, so Id is null
-    );
-    contactsWithNullIds.add(nullIdContact);
-    
-    // This might cause issues when trying to serialize null IDs
-  //  Core_ContactHandler.processAgsBulkFlow(contactsWithNullIds, new Map<Id, Contact>());
-    
-    // Test 5: Test with extremely large data that might cause heap size issues
-    List<Contact> largeContactList = new List<Contact>();
-    Map<Id, Contact> largeOldMap = new Map<Id, Contact>();
-    
-    // Create contacts with very long field values
-    for(Integer i = 0; i < 50; i++) {
-        Contact largeCon = new Contact(
-            FirstName = 'AGSVeryLongFirstName'.repeat(20) + i,
-            LastName = 'AGSVeryLongLastName'.repeat(20) + i,
-            Email = 'agsverylongemail' + i + '@test.com',
-            AccountId = testAccount.Id,
-            MailingCountry = 'IND'
-        );
-        largeContactList.add(largeCon);
-    }
-    
-    try {
-        insert largeContactList;
-        
-        for(Contact largeCon : largeContactList) {
-            Contact oldLargeCon = largeCon.clone(true);
-            // Add more data to make it even larger
-            oldLargeCon.Description = 'AGS Very long description'.repeat(100);
-            largeOldMap.put(largeCon.Id, oldLargeCon);
-        }
-        
-        // This might cause memory issues during JSON serialization
-      //  Core_ContactHandler.processAgsBulkFlow(largeContactList, largeOldMap);
-    } catch(Exception e) {
-        System.debug('AGS Large data exception: ' + e.getMessage());
-    }
-    
-    // Test 6: Force exception by creating invalid platform event data
-    List<Contact> validContacts = new List<Contact>{testContacts[0]};
-    Map<Id, Contact> validOldMap = new Map<Id, Contact>();
-    validOldMap.put(testContacts[0].Id, testContacts[0].clone(true));
-    
-    // Try to create platform event with data that exceeds field limits
-    String veryLongString = 'x'.repeat(10000); // Very long string
-    Contact contactWithLongData = testContacts[0].clone(true);
-    contactWithLongData.Description = veryLongString;
-    
-    Map<Id, Contact> longDataMap = new Map<Id, Contact>();
-    longDataMap.put(testContacts[0].Id, contactWithLongData);
-    
-    // This might cause platform event field length limits to be exceeded
-   // Core_ContactHandler.processAgsBulkFlow(validContacts, longDataMap);
-    
-    Test.stopTest();
-    
-    // Verify that catch block handling completed
-    System.assert(true, 'AGS Bulk Flow catch block exception handling test completed');
-}
-
-@isTest
-static void testProcessAgsBulkFlow_JSONSerializationException() {
-    Test.startTest();
-    
-    // Create test data
-    Account testAccount = new Account(
-        Name = 'AGS JSON Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    List<Contact> testContacts = new List<Contact>();
-    Contact con = new Contact(
-        FirstName = 'AGSJSON',
-        LastName = 'Exception',
-        Email = 'agsjsonexception@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    testContacts.add(con);
-    insert testContacts;
-    
-    // Test with null oldContactMap to force JSON serialization exception
-   // Core_ContactHandler.processAgsBulkFlow(testContacts, null);
-    
-    // Test with both null parameters
-   // Core_ContactHandler.processAgsBulkFlow(null, null);
-    
-    // Test with empty contacts but null oldContactMap
-   // Core_ContactHandler.processAgsBulkFlow(new List<Contact>(), null);
-    
-    Test.stopTest();
-    
-    System.assert(true, 'AGS JSON serialization exception test completed');
-}
-
-@isTest
-static void testProcessAgsBulkFlow_PlatformEventException() {
-    Test.startTest();
-    
-    // Create minimal test data
-    Account testAccount = new Account(
-        Name = 'AGS Platform Event Exception Account',
-        RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(),
-        BillingCity = 'Test City',
-        BillingStreet = 'Test Street',
-        BillingCountry = 'India',
-        BillingPostalCode = '12345',
-        Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-    );
-    insert testAccount;
-    
-    Contact con = new Contact(
-        FirstName = 'AGSPlatform',
-        LastName = 'Event',
-        Email = 'agsplatformevent@test.com',
-        AccountId = testAccount.Id,
-        MailingCountry = 'IND'
-    );
-    insert con;
-    
-    List<Contact> testContacts = new List<Contact>{con};
-    Map<Id, Contact> oldContactMap = new Map<Id, Contact>{con.Id => con.clone(true)};
-    
-    // This should execute normally but we're testing the catch block coverage
-   // Core_ContactHandler.processAgsBulkFlow(testContacts, oldContactMap);
-    
-    // Force exception by trying to publish multiple events rapidly
-    for(Integer i = 0; i < 10; i++) {
-        try {
-       //     Core_ContactHandler.processAgsBulkFlow(testContacts, oldContactMap);
-        } catch(Exception e) {
-            System.debug('AGS Platform event exception: ' + e.getMessage());
-        }
-    }
-    
-    Test.stopTest();
-    
-    System.assert(true, 'AGS Platform event exception test completed');
-}
-
-@isTest
-static void testProcessAgsBulkFlow_NullPointerException() {
-    Test.startTest();
-    
-    // Test with completely null parameters to force NullPointerException
-    try {
-      //  Core_ContactHandler.processAgsBulkFlow(null, null);
-    } catch(Exception e) {
-        System.debug('AGS NullPointerException caught: ' + e.getMessage());
-    }
-    
-    // Test with empty list but null oldContactMap
-    List<Contact> emptyContacts = new List<Contact>();
-    try {
-      //  Core_ContactHandler.processAgsBulkFlow(emptyContacts, null);
-    } catch(Exception e) {
-        System.debug('AGS Exception with null oldContactMap caught: ' + e.getMessage());
-    }
-    
-    // Test with null contacts list but valid oldContactMap
-    Map<Id, Contact> validOldMap = new Map<Id, Contact>();
-    try {
-      //  Core_ContactHandler.processAgsBulkFlow(null, validOldMap);
-    } catch(Exception e) {
-        System.debug('AGS Exception with null contacts caught: ' + e.getMessage());
-    }
-    
-    Test.stopTest();
-    
-    // Verify null pointer exception handling
-    System.assert(true, 'AGS Null pointer exception handling test completed');
-}
-//Ganesh Changes End
 }

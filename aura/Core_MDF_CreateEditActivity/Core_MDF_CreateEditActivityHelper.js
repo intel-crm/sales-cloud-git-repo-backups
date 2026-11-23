@@ -4,8 +4,7 @@
     
     saveHelperMethod: function (component, newPFR) {
         
-        var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
-        this.applyIPAProposalCurrency(component, newPFR);  // Indu IPA Proposal 
+        var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");  
         
         //[IPA - Budget CAP]  - [OOC - P8] - Internal Account Manager/External - Validation Reimbursement Amount against Budget CAP
         //Throw a soft pop-up error if Budget Cap Amount Exceeded && component.get("v.isBudgetCapExceeded")
@@ -365,7 +364,7 @@
         
     },
     // Helper Method called from the custom save function in order to display the popups
-    activityPicker: function (component, recordType, skipProductTypeRefresh ) {
+    activityPicker: function (component, recordType) {
         //if the record type is IPA, we have Activity Category, Type and SubType in the picklist fields
         ////making call to server side to invoke UI API
         
@@ -391,9 +390,8 @@
             //Parse response and initalize attributes            
             var state = response.getState();
             if(state === "SUCCESS"){
-            for (var i = 0; i < pickListFields.length; i++) {   
-                
-                if(skipProductTypeRefresh === true && pickListFields[i].trim() == "Core_MDF_ProductType__c"){continue;}           
+            for (var i = 0; i < pickListFields.length; i++) {              
+                //Gets value from parent picklist field
                 var sControllingFieldValues = result.picklistFieldValues[pickListFields[i]].controllerValues;
                 //Gets value from dependent picklist field 
                 var sFieldValues = result.picklistFieldValues[pickListFields[i]].values;
@@ -429,16 +427,7 @@
                 }
                 else{
                     component.set("v.isPropBasedCampaign",false);
-                                    }
-                 this.applyIPAProposalCurrency(component); 
-				  if (
-    result === "Proposal Based" &&
-    this.isNotBlank(
-        component.get("v.newPFR.RequestedAmount")
-    )
-) {
-    this.getActivityAmount(component);
-}// Indu IPA Proposal
+                }
             }else{
                var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
                 this.displaySuccessErrorMsg(errorMessage, "Error", "error");
@@ -711,27 +700,12 @@
         var CampCost = component.get("v.selectedLookUpRecord").Core_MDF_Reimbursement_Amount_Amt__c;
         
         //Edit Sceanrio
-                if(component.get("v.recordId") != null){
-            var oldCalculatedInvestment =
-                (parseInt(reimbrsmtRate,10) *
-                    parseInt(component.get("v.oldPFR.RequestedAmount"))) /
-                100;
-            CampCost = CampCost - this.getEffectiveIPAIntelInvestment(
-                component,
-                oldCalculatedInvestment,
-                component.get("v.oldPFR")
-            );
+        if(component.get("v.recordId") != null){           
+            CampCost = CampCost - ((parseInt(reimbrsmtRate,10)*parseInt(component.get("v.oldPFR.RequestedAmount")))/100);  
         }
-
-        var newCalculatedInvestment =
-            (parseInt(reimbrsmtRate,10) *
-                parseInt(component.get("v.newPFR.RequestedAmount"))) /
-            100;
-        totalCampAmt = CampCost + this.getEffectiveIPAIntelInvestment(
-            component,
-            newCalculatedInvestment,
-            component.get("v.newPFR")
-        );// Indu IPA Proposal
+        
+        totalCampAmt=(CampCost + ((parseInt(reimbrsmtRate,10)*parseInt(component.get("v.newPFR.RequestedAmount")))/100));
+ 
       
         if(((component.get("v.selectedLookUpRecord").Core_MDF_Available_BudgetCap_amt__c-totalCampAmt) < 0 
             || $A.util.isEmpty(component.get("v.selectedLookUpRecord").Core_MDF_Budget_Cap__c)) 
@@ -1289,14 +1263,7 @@
                 var flexRR =  component.get("v.SelReimbursementRate");
                 flexRR = (flexRR>100)?100:flexRR;
                 var rrPickValues = [];
-                var pickValues = [];
-                //Akash-RR%
-                if (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && ((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get('v.outcomeBasedOptInInd')))) {
-                    pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions100").split(';');
-                }
-                else{
-                    pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions").split(';');
-                }
+                var pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions").split(';');
                 rrPickValues.push({
                     class: "optionClass",
                     label: flexRR,
@@ -1325,69 +1292,29 @@
             }
         	else {
 				if(this.isNotBlank(component.get("v.ActReimbursementRt"))){
-                    //Akash-RR%
-                    if (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && component.get("v.SelReimbursementRate") != $A.get("$Label.c.Core_MDF_BudgetType_RRate100") && ((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get("v.outcomeBasedOptInInd")))) {
-                        component.set("v.disableRRPercent",false);
-                    }
-                    else{
-                        component.set("v.disableRRPercent",true);
-                    }
+					 component.set("v.disableRRPercent",true);
 				}
                 else{
-                    //Akash-RR%
-                    if (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && ((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get('v.outcomeBasedOptInInd')))) {
-                        component.set("v.disableRRPercent",true);
-                    }
-                    else{
-                        component.set("v.disableRRPercent",false);
-                    }
+					component.set("v.disableRRPercent",false);
 				}
 			
 			}
         //removed code "!this.isNotBlank(component.get("v.SelReimbursementRate"))" from external user check and added only for create scenario
-        if(!this.isIPAProposalBased(component) &&
-   (component.get("v.ActReimbursementRt") == "" ||
-    (this.isNotBlank(component.get("v.ActReimbursementRt")) &&
-     component.get("v.mode") == 'clone' &&
-     component.get("v.externalper")))){
+        if(component.get("v.ActReimbursementRt") == "" || (this.isNotBlank(component.get("v.ActReimbursementRt")) && component.get("v.mode") == 'clone' && component.get("v.externalper"))){
             if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType") 
                && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == true 
                && (component.get("v.mode") == '' && !this.isNotBlank(component.get("v.SelReimbursementRate"))) || (component.get("v.mode") == 'clone' && component.get("v.externalper")))/* && !this.isNotBlank(component.get("v.SelReimbursementRate"))*/{ //commented as for external user clone RR was not defaulting to 50 or 25 
                 var reimburesmentRate;
                 if( this.isNotBlank(component.get("v.newPFR.Core_MDF_Budget_Type_nm__c"))){
-                    //Akash-RR%
-                    if((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get('v.outcomeBasedOptInInd'))){
-                        var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
-                        component.set("v.SelReimbursementRate", reimburesmentRate);
-                        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
-                    }
-                    else{
-                        //Akash - TWC702-14284
-                        reimburesmentRate = component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';
-                    }
+                    reimburesmentRate = component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == 'Proposal I MDF' ? '50%' : component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == 'Proposal II MDF' ? '25%' : '';
                 }
                 else if(this.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c"))){
-                    if((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get('v.outcomeBasedOptInInd'))){
-                        var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
-                        component.set("v.SelReimbursementRate", reimburesmentRate);
-                        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
-                    }
-                    else{
-                        //Akash - TWC702-14284
-                        reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';
-                    }
+                    reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == 'Proposal I MDF' ? '50%' : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == 'Proposal II MDF' ? '25%' : '';
                 }
                 component.set("v.SelReimbursementRate", reimburesmentRate);
                 component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
             }
         }
-        this.applyIPAProposalReimbursementRate(
-    component,
-    this.isNotBlank(component.get("v.ActReimbursementRt"))
-        ? component.get("v.ActReimbursementRt")
-        : component.get("v.SelReimbursementRate"),
-    false
-);
     },
     
     //Function to localize all the country values
@@ -1776,13 +1703,6 @@ fetchMultiInitiative: function (component) {
         //getting the dependent brand picklist values by passing the controlling Product Type value   	  
         var childValuesReturn = this.setChildPicklistValues(component, component.get("v.selBudgetType"), component.get("v.RRPercent"));
         component.set("v.ReimbursementRateVal", childValuesReturn);
-        this.applyIPAProposalReimbursementRate(
-    component,
-    this.isNotBlank(component.get("v.ActReimbursementRt"))
-        ? component.get("v.ActReimbursementRt")
-        : component.get("v.SelReimbursementRate"),
-    false
-); // Indu IPA Proposal
     },
     
    fetchPriority: function (component) {
@@ -2044,32 +1964,14 @@ fetchMultiInitiative: function (component) {
         var availableBudget = [];
         var action = component.get("c.fetchBudgetInfo");
         var ultimateAccId = component.get("v.selectedLookUpRecord.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c");
-        var mode = component.get("v.mode"); 
-        var currentBudgetIdVal = null;
-
-        if(mode && mode.toLowerCase() === 'edit'){
-            var oldPfrRef = component.get("v.oldPFR");
-            var newPfrRef = component.get("v.newPFR");
-
-            if (oldPfrRef && oldPfrRef.BudgetId ) {
-                currentBudgetIdVal = oldPfrRef.BudgetId ;
-            } 
-            else if (newPfrRef && newPfrRef.BudgetId ) {
-                currentBudgetIdVal = newPfrRef.BudgetId ;
-            } 
-            else if (component.get("v.selAvailableBudget")) {
-                currentBudgetIdVal = component.get("v.selAvailableBudget");
-            }
-        }
-            action.setParams({
-                accountId: ultimateAccId,
-                startDate: component.get("v.newPFR.Core_MDF_Start_Date__c"),
-                endDate: component.get("v.newPFR.Core_MDF_End_Date__c"),
-                budgetType: component.get("v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c"),
-                isIPAAccBased: true,
-                currentBudgetId: currentBudgetIdVal
-            });
-        
+        action.setParams({
+            accountId: ultimateAccId,
+            startDate: component.get("v.newPFR.Core_MDF_Start_Date__c"),
+            endDate: component.get("v.newPFR.Core_MDF_End_Date__c"),
+            budgetType: component.get("v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c"),
+            isIPAAccBased: true
+        });
+    
             action.setCallback(this, function (response) {
                 component.set("v.showSpinner",false);
                 var result = response.getReturnValue();
@@ -2157,15 +2059,7 @@ fetchMultiInitiative: function (component) {
         component.set("v.BudgetLocal",'');
          component.set("v.ActReimbursementRt",'');
         component.set("v.IPAIntelContri",'');
-       if(recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType") &&
-   (component.get("v.isPropBasedCampaign") === true ||
-    component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") === true ||
-    component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") === true)){
-    component.set("v.maximumIntelInvestment",'');
-    component.set("v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c",null);
-    component.set("v.showErrorMsgForMaxIntelInvest",false);
-    component.set("v.ErrorMsgForMaxIntelInvest","");
-} //Indu IPA Proposal
+       
   
         
     }
@@ -3551,7 +3445,6 @@ fetchMultiInitiative: function (component) {
         Core_MDF_Focus_Area_nm__c: true,
         Core_MDF_Campaign_Reimbursement_Rate_txt__c: true,
         Core_MDF_Activity_Reimbursement_Amt_nbr__c: true,
-        Core_MDF_Maximum_Intel_Investment_amt__c: true,
         Core_MDF_Campaign_Reimbursement_Amt__c: true,
         Core_MDF_Reimbursement_Rate_txt__c: true,
         Core_MDF_Budget_Currency_cd__c: true,
@@ -3997,169 +3890,6 @@ fetchMultiInitiative: function (component) {
     checkRecordTypeSelected : function(component , recordTypeDeveloperLabel){
         return(recordTypeDeveloperLabel.includes(component.get("v.recordtypeDeveloperName")));
     },
-        isIPAProposalBased: function(component) {
-    var newPFR = component.get("v.newPFR") || {};
-    var campaign =
-        component.get("v.selectedLookUpRecord") || {};
-
-    return (
-        component.get("v.recordtypeDeveloperName") ===
-            $A.get("$Label.c.Core_MDF_IPA_RecordType") &&
-        (
-            newPFR.Core_MDF_Proposal_Based_Ind__c === true ||
-            campaign.Core_MDF_Proposal_Based_Ind__c === true ||
-            component.get("v.isPropBasedCampaign") === true
-        )
-    );
-},
-
-    getEffectiveIPAIntelInvestment: function(component, originalAmount, pfr) {
-        var sourcePFR = pfr || component.get("v.newPFR") || {};
-        var maximumIntelInvestment =
-            parseFloat(sourcePFR.Core_MDF_Maximum_Intel_Investment_amt__c);
-
-        return this.isIPAProposalBased(component) &&
-    !isNaN(maximumIntelInvestment) &&
-    maximumIntelInvestment > 0
-        ? maximumIntelInvestment
-        : originalAmount;
-    },
-    applyIPAProposalCurrency: function(component, pfr) {
-        var targetPFR = pfr || component.get("v.newPFR");
-        var isNewActivity = component.get("v.mode") !== "edit" ||
-            component.get("v.checkCloneAttribute") === true ||
-            component.get("v.pfrCloneCheck") === true;
-        var lockCurrency = this.isIPAProposalBased(component) && isNewActivity;
-
-        component.set("v.lockIPAProposalCurrency", lockCurrency);
-        if (lockCurrency && targetPFR) {
-            component.set("v.budgetCurrency", "USD");
-            targetPFR.Core_MDF_Budget_Currency_cd__c = "USD";
-        }
-    },
-
-    checkIPAProposalEditWarning: function(component) {
-        if (component.get("v.mode") !== "edit" ||
-    $A.util.isEmpty(component.get("v.recordId")) ||
-    component.get("v.pfrCloneCheck")) {
-            component.set("v.showIPAProposalEditWarning", false);
-            return;
-        }
-
-        var action = component.get("c.shouldShowIPAProposalEditWarning");
-        action.setParams({
-            recordId: component.get("v.recordId")
-        });
-        action.setCallback(this, function(response) {
-            component.set(
-                "v.showIPAProposalEditWarning",
-                response.getState() === "SUCCESS" &&
-                    response.getReturnValue() === true
-            );
-        });
-        $A.enqueueAction(action);
-    },
-    applyIPAProposalReimbursementRate: function(
-    component,
-    selectedRate,
-    persistRate
-) {
-    if (!this.isIPAProposalBased(component)) {
-        return false;
-    }
-
-    var normalizeRate = function(rate) {
-        if ($A.util.isEmpty(rate)) {
-            return "";
-        }
-
-        var normalizedRate = String(rate).trim();
-
-        return normalizedRate.endsWith("%")
-            ? normalizedRate
-            : normalizedRate + "%";
-    };
-
-    var newPFR = component.get("v.newPFR") || {};
-    var oldPFR = component.get("v.oldPFR") || {};
-    var mode = component.get("v.mode");
-
-    var isClone =
-        mode === "clone" ||
-        component.get("v.checkCloneAttribute") === true ||
-        component.get("v.pfrCloneCheck") === true;
-
-    var isExistingActivity =
-        mode === "edit" && !isClone;
-
-    var rate100 = normalizeRate(
-        $A.get("$Label.c.Core_MDF_BudgetType_RRate100")
-    );
-
-    /*
-     * Core_MDF_Reimbursement_Rate__c is only read here
-     * as the effective existing value. It is never assigned.
-     */
-    var existingRate = normalizeRate(
-        oldPFR.Core_MDF_Reimbursement_Rate__c ||
-        oldPFR.Core_MDF_Reimbursement_Rate_txt__c ||
-        newPFR.Core_MDF_Reimbursement_Rate__c ||
-        newPFR.Core_MDF_Reimbursement_Rate_txt__c ||
-        component.get("v.ActReimbursementRt") ||
-        component.get("v.SelReimbursementRate")
-    );
-
-    var requestedRate = normalizeRate(selectedRate);
-
-    var allowedRate =
-        isExistingActivity && requestedRate !== rate100
-            ? existingRate
-            : rate100;
-
-    if ($A.util.isEmpty(allowedRate)) {
-        allowedRate = rate100;
-    }
-
-    var rateOptions = [];
-
-    if (isExistingActivity &&
-        this.isNotBlank(existingRate) &&
-        existingRate !== rate100) {
-
-        rateOptions.push({
-            class: "optionClass",
-            label: existingRate,
-            value: existingRate
-        });
-    }
-
-    rateOptions.push({
-        class: "optionClass",
-        label: rate100,
-        value: rate100
-    });
-
-    component.set("v.ReimbursementRateVal", rateOptions);
-    component.set(
-        "v.reimbursementRatePickValues",
-        rateOptions
-    );
-
-    /*
-     * These are existing UI attributes, not database fields.
-     */
-    component.set("v.ActReimbursementRt", allowedRate);
-    component.set("v.SelReimbursementRate", allowedRate);
-
-    if (!isExistingActivity || persistRate === true) {
-        component.set(
-            "v.newPFR.Core_MDF_Reimbursement_Rate_txt__c",
-            allowedRate
-        );
-    }
-
-    return true;
-}, // Indu IPA Proposal
     isIPAActivitywithApplicableFieldModified: function (component) {
         var editedFieldRequiresApproval = $A.get("$Label.c.Core_MDF_Field_Editable_IPA");
         var IPAAccEditedFieldRequiresApproval = $A.get("$Label.c.Core_MDF_Field_Editable_IPA_AccountBased");
@@ -4171,15 +3901,6 @@ fetchMultiInitiative: function (component) {
         var spifModified = component.get("v.newPFR.Core_MDF_SPIF_Modified_ind__c") ;
         var todaysDate = this.getTodayDateLocalTime();
         var isModified = false;
-                var oldMaximumIntelInvestment = parseFloat(
-            component.get("v.oldPFR.Core_MDF_Maximum_Intel_Investment_amt__c")
-        ) || 0;
-        var newMaximumIntelInvestment = parseFloat(
-            component.get("v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c")
-        ) || 0;
-        var maximumIntelInvestmentChanged =
-            this.isIPAProposalBased(component) &&
-            oldMaximumIntelInvestment !== newMaximumIntelInvestment;
                               
         if(this.isPlannedOrRevisionRequiredActivity(component)&&
            (component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType") 
@@ -4189,8 +3910,8 @@ fetchMultiInitiative: function (component) {
                 }
             }
         var metricsModified = component.get("v.newPFR.Core_MDF_Metrics_Modified_ind__c");
-        if (((this.checkRecordTypeSelected(component, $A.get("$Label.c.Core_MDF_IPA_RecordType"))&&(component.get("v.isPropBasedCampaign") == true)))             &&(this.fieldEligibleForApprovalModified(component, editedFieldRequiresApproval.split(",")) || component.get("v.isSPIFSecModified") || maximumIntelInvestmentChanged)) 
-
+        if (((this.checkRecordTypeSelected(component, $A.get("$Label.c.Core_MDF_IPA_RecordType"))&&(component.get("v.isPropBasedCampaign") == true))) 
+            &&(this.fieldEligibleForApprovalModified(component, editedFieldRequiresApproval.split(",")) || component.get("v.isSPIFSecModified"))) 
         {
             isModified = true;
             
@@ -4564,11 +4285,7 @@ fetchMultiInitiative: function (component) {
              if(( recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType")) &&this.isNotBlank(component.get("v.newPFR.RequestedAmount"))&& this.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_ReimbursementRate_pct__c")) && $A.util.isEmpty(component.get("v.ActReimbursementRt"))){
                     var Contri ;           
                     var campReimbRt = component.get("v.selectedLookUpRecord.Core_MDF_ReimbursementRate_pct__c");
-                   var Contri = this.getEffectiveIPAIntelInvestment(
-                       component,
-                       budgetAmount1 * (parseFloat(campReimbRt) / 100),
-                       component.get("v.newPFR")
-                   ); // Indu IPA Proposal
+                   var Contri = budgetAmount1* (parseFloat(campReimbRt)/100); 
 				component.set("v.IPAIntelContri", Contri);
                 } 
              else if (( recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType")) && this.isNotBlank(component.get("v.ActReimbursementRt")) && this.isNotBlank(component.get("v.newPFR.RequestedAmount")) ){
@@ -5168,15 +4885,8 @@ fetchMultiInitiative: function (component) {
     updateRRPickValues: function(component,defaultRRValue){
        
         var rrPickValues = [];
-        var pickValues = [];
-        //Akash-RR%
-        if (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && ((component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.mode") != 'clone') || (component.get("v.mode") == 'clone' && component.get('v.outcomeBasedOptInInd')))) {
-            pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions100").split(';');
-        }
-        else{
-            pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions").split(';');
-        }
-                                                          
+        var pickValues = $A.get("$Label.c.Core_MDF_BudgetType_RRateOptions").split(';');
+        
         for(var i = 0; i < pickValues.length; i++){
             var optionValue = pickValues[i]+"%";
             rrPickValues.push({
@@ -5198,61 +4908,10 @@ fetchMultiInitiative: function (component) {
         }
         rrPickValues.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
         if((component.get("v.mode") != 'clone' || (component.get("v.mode") == 'clone' && this.isNotBlank(component.get("v.mode") == 'ActReimbursementRt' ))) && !component.get("v.externalper")){
-            //Akash-RR%
-            if (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && ((component.get("v.mode") != 'clone' && component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")) || (component.get("v.mode") == 'clone' && component.get("v.outcomeBasedOptInInd")))) {
-               /* var rRPercentageVal = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
-                component.set("v.SelReimbursementRate", rRPercentageVal);
-                component.set("v.ActReimbursementRt", rRPercentageVal);
-                component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c",rRPercentageVal);
-                component.set("v.isPropBasedOutcomeCampaign",true);*/
-                if (this.isIPAProposalBased(component) &&
-    component.get("v.mode") === "edit") {
-
-    /*
-     * Existing activity must retain its saved/effective RR.
-     */
-    component.set(
-        "v.SelReimbursementRate",
-        defaultRRValue
-    );
-    component.set(
-        "v.isPropBasedOutcomeCampaign",
-        true
-    );
-}
-else {
-    var rRPercentageVal =
-        $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
-
-    component.set(
-        "v.SelReimbursementRate",
-        rRPercentageVal
-    );
-    component.set(
-        "v.ActReimbursementRt",
-        rRPercentageVal
-    );
-    component.set(
-        "v.newPFR.Core_MDF_Reimbursement_Rate_txt__c",
-        rRPercentageVal
-    );
-    component.set(
-        "v.isPropBasedOutcomeCampaign",
-        true
-    );
-} // Indu IPA Proposal
-            }
-            else{
-                component.set("v.SelReimbursementRate", defaultRRValue);
-            }
+        component.set("v.SelReimbursementRate", defaultRRValue);
         }
         component.set("v.ReimbursementRateVal", rrPickValues);
         component.set("v.reimbursementRatePickValues",rrPickValues); 
-        this.applyIPAProposalReimbursementRate(
-    component,
-    defaultRRValue,
-    false
-); // Indu IPA Proposal
     },
     getDefaultReimbursementRate: function(component){
         var selectedBudget = component.get("v.selBudgetType");    
@@ -5845,37 +5504,25 @@ else {
         //Iterating the  over localized values
             if (!$A.util.isEmpty(productTypeValues) && productTypeValues.length > 0 && productTypeValues != undefined) {
                 productTypeValues.sort(this.case_insensitive_sort);
-                if (!component.get("v.newPFR.Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c")
-                    && !component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")
-                    && !component.get("v.clonedCampaignRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")
-                   && !component.get("v.updatedCampaignObj.Core_MDF_CampOutcomeOpt_In_Ind__c")) {
+                if(productTypeValues.length >1){
                     productTypeValuesMap.push({
                         label: "--None--",
                         value: ""
                     });
                 }
                 for (var index = 0; index < productTypeValues.length; index++) {
-                   // for (var key in productTypeValueslocalizedMap) {
-                    var key = productTypeValues[index];
-                         if (component.get("v.isMultiPicklist") && (!key || key === "" || key === null || key === undefined)) {
-                            continue;
-                        }
-                    if (!component.get("v.isMultiPicklist") && (!key || key === "")) {
-                        continue;
-                    }
-                        if (productTypeValueslocalizedMap.hasOwnProperty(key)) {
+                    for (var key in productTypeValueslocalizedMap) {
+                        if (key == productTypeValues[index]) {
                             productTypeValuesMap.push({
-                                label: productTypeValueslocalizedMap[key],
-                                value: key
+                                "label": productTypeValueslocalizedMap[key],
+                                "value": key
                             });
                             productTypeValuesMapCampaign = key;
                         }
-                    //}
+                    }
                 }
             }
         }
-
-
             if(productTypeValuesMap.length > 0){
                 //Storing PFR piclist selected values 
                 if(this.isNotBlank(component.get("v.newPFR.Core_MDF_ProductType__c"))){
@@ -5900,12 +5547,10 @@ else {
                     if(component.get("v.newPFR.Core_MDF_Focus_Area_nm__c") != component.get("v.selectedFocusArea") && component.get("v.selectedFocusArea") != ''){
                         //iterating the inherited product type value over user selected values
                         for(var index in productTypeValuesMap){
-                            for(var selectedValue in productSelected){
-                                //if any common selected values for more than one focus area is present storing in array to set the selected attribute of the field
-                                if(productTypeValuesMap[index].value == selectedValue.value)
-                                {
-                                    productSelectedOptions = productSelected;
-                                }
+                            //if any common selected values for more than one focus area is present storing in array to set the selected attribute of the field
+                            if(productTypeValuesMap[index].value == productSelected)
+                            {
+                                productSelectedOptions = productSelected;
                             }
                         }  
                         if(productSelectedOptions != null && productSelectedOptions != ""){
@@ -7298,7 +6943,6 @@ else {
             budgetAmount[0].setCustomValidity($A.get("$Label.c.Core_MDF_Budget_Amount_Error"));
             budgetAmount[0].reportValidity();
         }else{
-			component.set("v.showErrorMsgForSpendingLimit", false);
             budgetAmount.setCustomValidity($A.get("$Label.c.Core_MDF_Budget_Amount_Error"));
             budgetAmount.reportValidity();
         }               
@@ -7340,11 +6984,7 @@ else {
             rRate = component.get("v.SelReimbursementRate");
         }
         var slicedValue = (rRate == null || $A.util.isEmpty(rRate) || rRate == undefined)?0:rRate.slice(0,-1);
-        var actReimbursementAmount = this.getEffectiveIPAIntelInvestment(
-            component,
-            (activityBudgetAmount * slicedValue) / 100,
-            component.get("v.newPFR")
-        );// Indu IPA Proposal
+        var actReimbursementAmount = (activityBudgetAmount*slicedValue)/100;
         calculatedValue = parseFloat(actReimbursementAmount.toFixed(2));
         component.set("v.activityAmount",calculatedValue);
         if( this.isNotBlank(component.get("v.activityAmount"))){
@@ -7642,11 +7282,7 @@ calcIntelContribution: function (component, budgetAmount, ActReimbRt) {
 
 if(ActReimbRt != undefined && ActReimbRt != null && ActReimbRt != ''&& budgetAmount != undefined && budgetAmount != null && budgetAmount != ''){
  var intelContri;
- intelContri = this.getEffectiveIPAIntelInvestment(
-     component,
-     budgetAmount * (parseFloat(ActReimbRt) / 100),
-     component.get("v.newPFR")
- );// Indu IPA Proposal
+ intelContri= budgetAmount*(parseFloat( ActReimbRt)/100);
  component.set("v.IPAIntelContri", intelContri);
    this.getActivityAmount(component);  
 }
@@ -7977,27 +7613,7 @@ if(ActReimbRt != undefined && ActReimbRt != null && ActReimbRt != ''&& budgetAmo
             
             return false;
         },
-        //Akash Changes
-        validateStartDate: function(component, startDate) {
-        var accountBased_StartDate = $A.get("$Label.c.Core_MDF_IPA_AccountBased_StartDate");
-        var budgetType = component.get("v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c");  
         
-        if (startDate && budgetType == "Account Plan") {
-            var cutoffDate = new Date(accountBased_StartDate);
-            var selectedDate = new Date(startDate);
-            
-            if (selectedDate >= cutoffDate) {
-                    // Show error message
-                component.set("v.showStartDateError", true);
-            } else {
-                    // Hide error message if date is valid
-                component.set("v.showStartDateError", false);
-            }
-            } else {
-                component.set("v.showStartDateError", false);
-            }
-        },
-
         //Ayush - Changes for new Category/Type
         filterNewCategoryValues : function(component,childPickListField, selectedControllingFieldValue){
             var latestCategoryValues = [];

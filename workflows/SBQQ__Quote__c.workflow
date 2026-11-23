@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>PSG_CP_Quote_Expiry_Email_Template</fullName>
+        <description>PSG CP Quote Expiry Email Template</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_CP_Quote_Expiry</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_CP_Quote_Retire</fullName>
+        <description>Email to be sent when CP quote is retired.</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_CP_Quote_Retire</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_activation_inactivation_of_quote</fullName>
+        <description>PSG activation/inactivation of quote</description>
+        <protected>false</protected>
+        <recipients>
+            <field>core_cpq_quote_owner_name__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>core_cpq_requestor_nm__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_Quote_active_notify</template>
+    </alerts>
+    <alerts>
         <fullName>Pricing_SW_14DaysRemainder</fullName>
         <description>Pricing_SW_14DaysRemainder</description>
         <protected>false</protected>
@@ -8,7 +46,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn14days</template>
     </alerts>
@@ -20,7 +58,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn3days</template>
     </alerts>
@@ -32,7 +70,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn7days</template>
     </alerts>
@@ -44,9 +82,20 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_QuoteExpiredNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_email_to_SOS</fullName>
+        <description>Send email to SOS</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_DistyQuoteRequestEmailTemplate</template>
     </alerts>
     <rules>
         <fullName>Notify CP Quote Owner prior to expiry date</fullName>
@@ -69,11 +118,19 @@
         <description>Send email to quote owner whenever contract pricing quote is nearing to expiry date</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
+            <actions>
+                <name>PSG_CP_Quote_Expiry_Email_Template</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>SBQQ__Quote__c.core_cpq_pricing_end_date_dt__c</offsetFromField>
             <timeLength>-10</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
         <workflowTimeTriggers>
+            <actions>
+                <name>PSG_CP_Quote_Expiry_Email_Template</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>SBQQ__Quote__c.core_cpq_pricing_end_date_dt__c</offsetFromField>
             <timeLength>-40</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
@@ -81,6 +138,10 @@
     </rules>
     <rules>
         <fullName>Send email to sos when quote is created by disty</fullName>
+        <actions>
+            <name>Send_email_to_SOS</name>
+            <type>Alert</type>
+        </actions>
         <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Status__c</field>

@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Access_Token_URL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>Auth_URL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/authorize</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/v1/auth/authorize</value>
     </values>
     <values>
         <field>Callback_URL__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Consumer_Secret__c</field>
-        <value xsi:type="xsd:string">vwA8Q~Vy55.jZfRVtTb0RQ0-espzGhlA6J75Lap-</value>
+        <value xsi:type="xsd:string">rNN8Q~QMMPpvU3eNxzlwJ2ErkkQopqJxhjG4Fae0</value>
     </values>
     <values>
         <field>Redirect_Url_Suffix__c</field>

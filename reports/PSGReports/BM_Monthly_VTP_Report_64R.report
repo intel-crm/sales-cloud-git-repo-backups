@@ -36,6 +36,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_prid_pos__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$price_suggested_resale_amt__c</field>
     </columns>
     <columns>
@@ -76,10 +80,16 @@
         <field>SBQQ__Quote__c$core_cpq_next_approver_nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_reviewer__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_review_date_dt__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_prid_review_date_dt__c</field>
     </columns>
     <description>It gives an overview of the Quotes with VTP Quote Lines of this month&apos;s review date for the BMs</description>
     <filter>

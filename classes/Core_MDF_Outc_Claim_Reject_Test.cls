@@ -3,56 +3,6 @@ public class Core_MDF_Outc_Claim_Reject_Test {
     
     // test method for data setup
     @TestSetup static void setUpData(){
-    
-              List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
-            bypassFunctionKeys.add('Core_MDF_validateAccountUserAccess');
-            
-     		bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-            bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
-            bypassFunctionKeys.add('Bypass_Allocation_Reservation');
-            bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
-            bypassFunctionKeys.add('Bypass_Duplicate_Bank_Check');
-            bypassFunctionKeys.add('Bypass_Bank_Internal_Sharing');
-            bypassFunctionKeys.add('Bypass_Bank_External_Sharing');
-            bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_NodeGroup_Sharing');        
-            bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
-            bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
-            bypassFunctionKeys.add('Bypass_PaymentRun_Duplicate_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Duplicate_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_Internal_Users');
-            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Budget_Amt_Check');        
-            bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_Partner_Users');
-            bypassFunctionKeys.add('Bypass_Payment_Doc_InvFileVAT_Validate');
-            bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Camp_Amt_Check');
-            bypassFunctionKeys.add('Bypass_Claim_OwnerLang_EmailTemp');
-            bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_On_Owner_Change');
-            bypassFunctionKeys.add('Bypass_UpdateActivityFields');
-            bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-            bypassFunctionKeys.add('Core_MDF_XMLToXLSGenerationFlag');
-            bypassFunctionKeys.add('Core_MDF_StringToXLSGenerationFlag');
-            bypassFunctionKeys.add('Bypass_ShareActivityWithUsers');
-            bypassFunctionKeys.add('Bypass_ShareActivityWithAccNodeGroup');
-            bypassFunctionKeys.add('Bypass_geoLeadApprovalProcess');
-            
-            // ADD THE NEW BYPASS FEATURE HERE
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-	    
         List<Account> acctList = new List<Account>();
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
         Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
@@ -80,6 +30,7 @@ public class Core_MDF_Outc_Claim_Reject_Test {
             
             PermissionSet ipaPaymentAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_IPA_Program_Adm');
             PermissionSet viewAllDataPS = nameToPerSet.get('View_All_Data');
+            
             
             User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false); 
             usr2.Email='testPayment@example.com';
@@ -178,9 +129,7 @@ public class Core_MDF_Outc_Claim_Reject_Test {
         
         pfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         pfr.Status = 'Approved';
-		pfr.Amount = 500;
         pfr.AllocationId = pfa.Id;
-        pfr.Core_MDF_Is_Outcome_Based_Ind__c = True;
         pfrToBeUpdated.add(pfr);
         
         Database.insert(pfrToBeUpdated);
@@ -250,9 +199,9 @@ public class Core_MDF_Outc_Claim_Reject_Test {
         System.runAs(testUser){          
             
             // Get IPA Claim
-            PartnerFundClaim ipaClaim  = [SELECT Id, Core_MDF_Status__c, Core_MDF_Ultimate_Account_ID__c, Core_MDF_Program__c, Core_MDF_Latest_Review_Cycle_Number_nbr__c,Core_MDF_OutcomeBased_Ind__c
+            PartnerFundClaim ipaClaim  = [SELECT Id, Core_MDF_Status__c, Core_MDF_Ultimate_Account_ID__c, Core_MDF_Program__c, Core_MDF_Latest_Review_Cycle_Number_nbr__c
                                  FROM PartnerFundClaim
-								Where Core_MDF_Program__c = 'Intel Partner Alliance' AND Core_MDF_Status__c = 'Pending Account Manager Clarification' AND Core_MDF_Latest_Review_Cycle_Number_nbr__c >=2 AND Core_MDF_OutcomeBased_Ind__c = TRUE
+								Where Core_MDF_Program__c = 'Intel Partner Alliance' AND Core_MDF_Status__c = 'Pending Account Manager Clarification' AND Core_MDF_Latest_Review_Cycle_Number_nbr__c >=2
                                  LIMIT 1];
                         
             list<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgm = [SELECT id,Core_MDF_User_id__c,Core_MDF_Program_nm__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c,Core_MDF_is_User_Active_ind__c,

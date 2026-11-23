@@ -10,7 +10,7 @@ Modification Log :
 * Shruti Hasilkar              25/04/2022               Created
 * Vishal Suryavanshi       15/04/2022         Updated  
 ****************************************************************************************************/
-public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Added with sharing for vanuability changes*/
+public without sharing class Core_IPS_Portal_ProjectUtility_LWC {
     /** Author: Shruti Hasilkar
 * Date: 19/4/2022
 * Description: Add or Remove the Product from the Dual box.
@@ -20,7 +20,6 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     @AuraEnabled
     public static string addOrRemoveProducts(List<ID> initialIds, List<ID> selectedIds, String projID){
         String message;
-       
         try{
             List<Id> addIdList = new List<Id>();
             List<Id> removeIdList = new List<Id>();
@@ -31,10 +30,8 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                     }
                 }
             }
-           
             if(addIdList.size()>0){
                 List<Core_IPS_Product__c> addIPSProdList = upsertIPSProducts(addIdList,projID);
-                
                 if(addIPSProdList.size()>0){
                     message = 'Success';
                 }
@@ -54,7 +51,6 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             }
         }catch(Exception e){
             message = e.getMessage();
-            throw new AuraHandledException(e.getMessage());
         }   
         
         return message;
@@ -72,35 +68,25 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         /*FLS Read fix  13/05/2022 */
         List<Asset> asstList=new List<Asset>();
         if (Schema.sObjectType.Asset.isAccessible()){
-            // asstList = [SELECT ID, Name , Core_Supported_Product__c FROM Asset WHERE ID IN:selectedIdsInThirdPage];
-            //added by sabira 21-07-2026 (77-78)
-            String assetQuery = 'SELECT ID, Name, Core_Supported_Product__c FROM Asset WHERE ID IN :selectedIdsInThirdPage';
-            asstList = (List<Asset>) Core_IPS_QueryService.queryRecords(assetQuery, new Map<String, Object>{ 'selectedIdsInThirdPage' => selectedIdsInThirdPage });
-            
-        } 
-        
-        Map<Id,Asset> mapofIdAsset = new Map<Id,Asset>();
+            asstList = [SELECT ID, Name , Core_Supported_Product__c FROM Asset WHERE ID IN:selectedIdsInThirdPage];
+        }
+        Map<Id,Asset> MapofIdAsset = new Map<Id,Asset>();
         Map<Id,Id> mapOfAstSupProd = new Map<Id,Id>();
         for(Asset ast: asstList){
             supProdIDSet.add(ast.Core_Supported_Product__c);
-            mapofIdAsset.put(ast.ID, ast);
+            MapofIdAsset.put(ast.ID, ast);
             mapOfAstSupProd.put(ast.ID, ast.Core_Supported_Product__c);
             
         }
-        
         /*FLS Read fix  13/05/2022 */
-        List<Core_IPS_Product__c> iPSProdList=new List<Core_IPS_Product__c>();
+        List<Core_IPS_Product__c> IPSProdList=new List<Core_IPS_Product__c>();
         if (Schema.sObjectType.Core_IPS_Product__c.isAccessible()){
-            //added as part of vulnerability niyaz-21-08-2026
-            String ipsProdQueryStr = 'SELECT Id, Name, Core_Supported_Product__c FROM Core_IPS_Product__c WHERE Core_Supported_Product__c IN :supProdIDSet AND Core_IPS_Project__c = :ipsProject';
-            iPSProdList = (List<Core_IPS_Product__c>) Core_IPS_QueryService.queryRecords(ipsProdQueryStr, new Map<String, Object>{ 'supProdIDSet' => supProdIDSet, 'ipsProject' => ipsProject });
+            IPSProdList = [SELECT Id, name, Core_Supported_Product__c FROM Core_IPS_Product__c WHERE Core_Supported_Product__c IN :supProdIDSet and Core_IPS_Project__c = :ipsProject];
         }
-       
-        
         /* removal of the exisitng asset from that map.*/
         List<ID> asstIDs = new List<ID>();
         for(ID idKeys: mapOfAstSupProd.keySet()){
-            for(Core_IPS_Product__c coreIPS: iPSProdList){
+            for(Core_IPS_Product__c coreIPS: IPSProdList){
                 if(coreIPS.Core_Supported_Product__c == mapOfAstSupProd.get(idKeys)){
                     asstIDs.add(idKeys); 
                 }
@@ -115,20 +101,18 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 }
             }
         }
-       
         /*id-- FLS Read fix FP 13/05/2022 */
-        //added as part of vulnerability niyaz-21-08-2026
-        Id iPSProductBasicRecordType = (Id) Core_IPS_QueryService.queryRecords('SELECT Id FROM RecordType WHERE SobjectType = \'Core_IPS_Product__c\' AND DeveloperName = \'Core_IPS_Project_Product\'')[0].get('Id');
+        Id IPSProductBasicRecordType = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'].Id;
         
         if(ipsProdTocreateList.size()>0){
-            for(Id assetid : ipsProdTocreateList){
+            for(Id Assetid : ipsProdTocreateList){
                 Core_IPS_Product__c prod = new Core_IPS_Product__c();
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Project__c.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Project__c.isupdateable()){
                     prod.Core_IPS_Project__c = ipsProject;
                 }
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isupdateable())
                 {
-                    prod.Core_Supported_Product__c = mapofIdAsset.get(assetid).Core_Supported_Product__c;
+                    prod.Core_Supported_Product__c = MapofIdAsset.get(Assetid).Core_Supported_Product__c;
                 }
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isupdateable())
                 {
@@ -144,7 +128,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 }
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_Intel_Product__c.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.Core_Intel_Product__c.isupdateable())
                 {
-                    prod.Core_Intel_Product__c  = assetid;
+                    prod.Core_Intel_Product__c  = Assetid;
                 }
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IsSubmitted_Header__c.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.Core_IsSubmitted_Header__c.isupdateable())
                 {
@@ -153,71 +137,62 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 //Fix done--Suresh--15/07/2022
                 if (Schema.sObjectType.Core_IPS_Product__c.fields.RecordTypeId.isCreateable()||Schema.sObjectType.Core_IPS_Product__c.fields.RecordTypeId.isupdateable())
                 {
-                    prod.RecordTypeId  = iPSProductBasicRecordType;
+                    prod.RecordTypeId  = IPSProductBasicRecordType;
                 }
                 lIPSProducts.add(prod);
             }
         }
-        if(iPSProdList.size()>0){
-            for(Core_IPS_Product__c cp: iPSProdList){
-                Core_IPS_Product__c iPSProd = new Core_IPS_Product__c();
-                iPSProd.ID = cp.ID;
+        if(IPSProdList.size()>0){
+            for(Core_IPS_Product__c cp: IPSProdList){
+                Core_IPS_Product__c IPSProd = new Core_IPS_Product__c();
+                IPSProd.ID = cp.ID;
                 if(Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isupdateable()){
-                    iPSProd.Core_IPS_Product_Status__c ='Active';
+                    IPSProd.Core_IPS_Product_Status__c ='Active';
                 }
-                lIPSProducts.add(iPSProd);
+                lIPSProducts.add(IPSProd);
             }
         }
-       
+        
         if(lIPSProducts != null && lIPSProducts.size()>0){
-            // upsert lIPSProducts;
-            Core_IPS_QueryService.upsertRecords(lIPSProducts);//added by sabira 21-07-26 
+            upsert lIPSProducts;
         }
-      
-        // if(lIPSProducts.size()!=null){
-        if(lIPSProducts.size()>0){ //added by sabira 10-08 as part of vulnerability 
+        if(lIPSProducts.size()!=null){
             updateAssertsStatus(lIPSProducts,ipsProject);
         }    
         return lIPSProducts;
     }
 	public static  void updateAssertsStatus(List<Core_IPS_Product__c> lIPSProducts, string ipsProject){
-      //  Map<Id, Core_IPS_Product__c> ipsProdMap;
-        Map<Id, Core_IPS_Product__c> ipsProdMap = new Map<Id, Core_IPS_Product__c>(); //added by sabira 10-08 as part of vulnerability
-       //added as part of vulnerability niyaz-21-08-2026
-        Map<Id, Asset> assetsToActivateMap = new Map<Id, Asset>(); // deduplicate by Asset Id to prevent upsert error
+        Map<Id, Core_IPS_Product__c> ipsProdMap;
+        List <Asset> lAssetsToActivate = new List<Asset>();  
         Set<Id> ipsSupProdIdSet = new Set<Id>();
         if(lIPSProducts!=null) {
             Map<Id,Core_IPS_Product__c> ipsProdMapNew =  new Map<Id,Core_IPS_Product__c>();
             ipsProdMapNew.putAll(lIPSProducts); 
            if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
-               //added as part of vulnerability niyaz-21-08-2026
-            String ipsProdMapQuery = 'SELECT Name,Id,Core_Supported_Product__R.Id,Core_Intel_Product__C FROM Core_IPS_Product__c WHERE Id IN :idSet';
-            ipsProdMap = new Map<Id, Core_IPS_Product__c>((List<Core_IPS_Product__c>) Core_IPS_QueryService.queryRecords(ipsProdMapQuery, new Map<String, Object>{ 'idSet' => ipsProdMapNew.keySet() }));
+            ipsProdMap = new Map<Id, Core_IPS_Product__c>([SELECT Name,Id,Core_Supported_Product__R.Id,Core_Intel_Product__C FROM Core_IPS_Product__c WHERE Id IN :ipsProdMapNew.keySet()]);
             }
             for(Id ipsProdId : ipsProdMap.keySet()) {
                 ipsSupProdIdSet.add(ipsProdMap.get(ipsProdId).Core_Supported_Product__R.Id);
             }
-            String assetQueryStr = 'SELECT Id, Status, UsageEndDate, Core_Supported_Product__R.Id FROM Asset WHERE Core_Supported_Product__R.Id IN :ipsSupProdIdSet AND Core_IPS_Project__R.Id = :ipsProject';
-            Map<Id, Asset> assetMap = new Map<Id, Asset>((List<Asset>) Core_IPS_QueryService.queryRecords(assetQueryStr, new Map<String, Object>{ 'ipsSupProdIdSet' => ipsSupProdIdSet, 'ipsProject' => ipsProject }));
+            Map<Id, Asset> assetMap = new Map<Id, Asset>([SELECT Id, Status, UsageEndDate, Core_Supported_Product__R.Id FROM Asset WHERE Core_Supported_Product__R.Id IN:ipsSupProdIdSet AND Core_IPS_Project__R.Id =:ipsProject]);
             Map<Id, Asset> supProdAssetMap = new Map<Id, Asset>();
             for(Id assetId : assetMap.keySet()) {
                 supProdAssetMap.put(assetMap.get(assetId).Core_Supported_Product__R.Id, assetMap.get(assetId) );
             }
+            
             for(Id ipsProdId : ipsProdMap.keySet()) {
                 Asset assetActivate = supProdAssetMap.get(ipsProdMap.get(ipsProdId).Core_Supported_Product__R.Id);
-                      if (assetActivate != null) { //added by sabira 10-08 as part of vulnerability
-                if (Schema.sObjectType.Asset.fields.Status.isCreateable()|| Schema.sObjectType.Asset.fields.Status.isUpdateable()) { //FLS Create/Update added -Gangadhar 29/09/2023
+                if (Schema.sObjectType.Asset.fields.Status.isCreateable() || Schema.sObjectType.Asset.fields.Status.isUpdateable()) { //FLS Create/Update added -Gangadhar 29/09/2023
                 	assetActivate.Status = 'Active';
                 }
-                 //added as part of vulnerability niyaz-21-08-2026
-                assetsToActivateMap.put(assetActivate.Id, assetActivate);
-                      }
+                lAssetsToActivate.add(assetActivate);
             }
+            
         }
-        if(!assetsToActivateMap.isEmpty()){ //added as part of vulnerability niyaz-21-08-2026
-            // Venrublity Fix - Refering query to service class
-            Core_IPS_QueryService.upsertRecords(assetsToActivateMap.values());
+        if(lAssetsToActivate != null && !lAssetsToActivate.isEmpty()){
+            upsert lAssetsToActivate;
         }
+       
     }
     
     /** Author: Shruti Hasilkar
@@ -232,37 +207,33 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         List<Asset> asstList=new List<Asset>();
         if (Schema.sObjectType.Asset.isAccessible())
         {
-            //added - vulnerability fix: use QueryService to run in SYSTEM_MODE
-            String assetQuery = 'SELECT ID, Name, Core_Supported_Product__c FROM Asset WHERE ID IN :selectedIdsInThirdPage';
-            asstList = (List<Asset>) Core_IPS_QueryService.queryRecords(assetQuery, new Map<String, Object>{ 'selectedIdsInThirdPage' => selectedIdsInThirdPage });
+            asstList = [SELECT ID, Name , Core_Supported_Product__c FROM Asset WHERE ID IN:selectedIdsInThirdPage];
         }
         
         for(Asset ast: asstList){
             supProdIDSet.add(ast.Core_Supported_Product__c);
         }
         /*FLS Read fix  13/05/2022 */
-        List<Core_IPS_Product__c> iPSProdList=new List<Core_IPS_Product__c>();
+        List<Core_IPS_Product__c> IPSProdList=new List<Core_IPS_Product__c>();
         if (Schema.sObjectType.Core_IPS_Product__c.isAccessible())
         {
-            //added - vulnerability fix: use QueryService with bind map to run in SYSTEM_MODE
-            String prodQuery = 'SELECT Id, Name FROM Core_IPS_Product__c WHERE Core_Supported_Product__c IN :supProdIDSet AND Core_IPS_Project__c = :ipsProject';
-            iPSProdList = (List<Core_IPS_Product__c>) Core_IPS_QueryService.queryRecords(prodQuery, new Map<String, Object>{ 'supProdIDSet' => supProdIDSet, 'ipsProject' => ipsProject });
+            IPSProdList = [SELECT Id,name FROM Core_IPS_Product__c WHERE Core_Supported_Product__c IN :supProdIDSet and Core_IPS_Project__c = :ipsProject];
         }
         
-        for(Core_IPS_Product__c cp: iPSProdList){
-            Core_IPS_Product__c iPSProd = new Core_IPS_Product__c();
-            iPSProd.ID = cp.ID;
+        for(Core_IPS_Product__c cp: IPSProdList){
+            Core_IPS_Product__c IPSProd = new Core_IPS_Product__c();
+            IPSProd.ID = cp.ID;
             if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isUpdateable()) {
-                iPSProd.Core_IPS_Product_Status__c ='InActive';
+                IPSProd.Core_IPS_Product_Status__c ='InActive';
             }
             
-            lIPSProducts.add(iPSProd);
+            lIPSProducts.add(IPSProd);
         }
+        
         if(lIPSProducts != null){
-            // Venrublity Fix - Refering query to service class
-          //  update lIPSProducts;
-           Core_IPS_QueryService.updateRecords(lIPSProducts);
+            update lIPSProducts;
         }
+        
         return lIPSProducts;
     }
     
@@ -383,9 +354,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         }
         
         if(lProjMembers != null){
-            // Venrublity Fix - Refering query to service class
-            // upsert lProjMembers;
-            Core_IPS_QueryService.upsertRecords(lProjMembers);
+            upsert lProjMembers;
         }
         return lProjMembers;
     }
@@ -407,9 +376,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 
             }
             
-            // Venrublity Fix - Refering query to service class
-            // update projMemList;
-            Core_IPS_QueryService.updateRecords(projMemList);
+            update projMemList;
         }
         return projMemList;
     }
@@ -419,17 +386,9 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         User us;
         /*FLS Read fix  13/05/2022 */
         Core_IPS_Project__c ipsProj=new Core_IPS_Project__c();
-        // Venrublity Fix - Refering query to service class
-        ipsProj = (Core_IPS_Project__c)Core_IPS_QueryService.queryRecords(
-            'SELECT Owner.ID FROM Core_IPS_Project__c WHERE id = :projId',
-            new Map<String, Object>{ 'projId' => projId }
-        )[0];
+        ipsProj = [SELECT Owner.ID FROM Core_IPS_Project__c WHERE id = :projId];
         if(ipsProj.Owner.ID != null || ipsProj.Owner.ID != ''){
-          // Venrublity Fix - Refering query to service class
-            us = (User)Core_IPS_QueryService.queryRecords(
-                'SELECT ContactID FROM User WHERE ID = :ownerId',
-                new Map<String, Object>{ 'ownerId' => ipsProj.Owner.ID }
-            )[0];
+            us = [SELECT ContactID FROM User WHERE ID = :ipsProj.Owner.ID];
         }
         if(us != null){
             return us.ContactID;
@@ -442,11 +401,8 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     //This method get called while Editing Project
     @AuraEnabled(cacheable=true)
     public static  List<Core_IPS_Product__c> existingIPSProducts(String projIdfromJS){
-      
-        List<Core_IPS_Product__c> sobjListEprdos = new List<Core_IPS_Product__c>();
-        if(projIdfromJS != null && projIdfromJS != '')
-        {
         String prodId = String.escapeSingleQuotes(projIdfromJS);
+        List<Core_IPS_Product__c> sobjListEprdos;
         try {
             User loggedInUser=new User();
             loggedInUser = [Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id =: UserInfo.getUserId()];
@@ -458,13 +414,11 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
 
             query = 'Select Name, Core_Supported_Product_Name__c,Core_IPS_Product_Status__c, Core_Intel_Product__c,Product_Application__c, Core_Supported_Product__c  '+
                 'FROM Core_IPS_Product__c where Core_IPS_Product_Status__c = :status AND  Core_IPS_Project__c = :productId';
-           
             
             sobjListEprdos = Database.queryWithBinds(query,bindMap,AccessLevel.USER_MODE);
             // SOQL Injection Fix - End -  Shipra 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
-        }
         }
         return sobjListEprdos;
     }
@@ -473,11 +427,8 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     //This method get called while Editing Project
     @AuraEnabled
     public static List<Core_IPS_Project_Member__c> existingProjectMembers(String projIdfromJS){
-        
-        List<Core_IPS_Project_Member__c> sobjListPM = new List<Core_IPS_Project_Member__c>();
-        if(projIdfromJS != null && projIdfromJS != '')
-        {
         String prodId = String.escapeSingleQuotes(projIdfromJS);
+        List<Core_IPS_Project_Member__c> sobjListPM;
         try {
             Core_IPS_Project__c  ipsProject = new Core_IPS_Project__c();
             User loggedInUser=new User();
@@ -487,7 +438,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             String query = null;
              // SOQL Injection Fix - Start -  Shipra
              Map<String, Object> bindMap = new Map<String, Object>{'status' => 'ACTIVE','productId' => (prodId == null ? '' :prodId), 'loggedInUserAcctId'=>loggedInUserAcctId  };
-
+            
             query = 'Select Id,Core_IPS_Contact__c,Core_Status__c,Core_IPS_Contact__r.FirstName,Core_IPS_Contact_Account__c, Core_IPS_Contact__r.LastName, Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Account.Name '+
                 ' FROM Core_IPS_Project_Member__c WHERE  Core_Status__c = :status AND  Core_IPS_Contact__r.AccountId  = :loggedInUserAcctId  AND Core_IPS_Project__c = :productId';
             
@@ -496,7 +447,6 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
-        }
         }
         return sobjListPM;
     }
@@ -535,9 +485,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             projObj.Core_IPS_EnableMemberasInterestedParties__c =  projectData.Core_IPS_EnableMemberasInterestedParties__c; 
         }
         
-        // Venrublity Fix - Refering query to service class
-        // update projObj;
-        projObj = (Core_IPS_Project__c)Core_IPS_QueryService.updateRecords(new List<SObject>{ projObj })[0];
+        update projObj; 
         return projObj;
     }
     @AuraEnabled
@@ -599,9 +547,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         // End by Pavani
         
         if(lProjMembers != null){
-            // Venrublity Fix - Refering query to service class
-            // upsert lProjMembers;
-            Core_IPS_QueryService.upsertRecords(lProjMembers);
+            upsert lProjMembers;
         }
         return lProjMembers;
     }

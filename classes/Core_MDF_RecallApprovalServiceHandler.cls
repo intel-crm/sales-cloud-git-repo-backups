@@ -116,7 +116,7 @@ public without sharing class Core_MDF_RecallApprovalServiceHandler {
                 }
                 
                 if(appRequests != NULL && appRequests.size()> 0){
-                   Approval.process(appRequests); 
+                    Approval.ProcessResult[] result = Approval.process(appRequests); 
                 }
     }
     /******************************************************************

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DPA &amp; ALN Line</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DPA &amp; ALN Lines</value>
+    </caseValues>
+    <fields>
+        <label><!-- Config Disty Margin% --></label>
+        <name>core_cpq_Config_Disty_Margin__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM End Date --></label>
+        <name>core_cpq_DM_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM Validity Check --></label>
+        <name>core_cpq_DM_Validity_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last DM% Refresh Date --></label>
+        <name>core_cpq_Last_DM_Refresh_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- AVP Review Date --></label>
+        <name>core_cpq_Review_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Margin % --></label>
+        <name>core_cpq_altera_margin_pct__c</name>
+    </fields>
+    <fields>
+        <help><!-- Qty approved by BO against Req Qty. --></help>
+        <label><!-- Approved Qty --></label>
+        <name>core_cpq_approved_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCF --></label>
+        <name>core_cpq_ccf__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIS # --></label>
+        <name>core_cpq_cis_no_nbr__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claimed Qty Consumed --></label>
+        <name>core_cpq_claimed_qty_consumed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Qty shipped by Disty to EC. --></help>
+        <label><!-- Claimed Qty --></label>
+        <name>core_cpq_claimed_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>core_cpq_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPS End Date --></label>
+        <name>core_cpq_cps_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP# --></label>
+        <name>core_cpq_ddr__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDR# --></label>
+        <name>core_cpq_ddr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Device --></label>
+        <name>core_cpq_device__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines (Device) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>core_cpq_device_nm__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Distributor Margin # --></label>
+        <name>core_cpq_distributor_margin__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Distributor Margin Type --></label>
+        <name>core_cpq_distributor_margin_type__c</name>
+        <picklistValues>
+            <masterLabel>Farmer</masterLabel>
+            <translation><!-- Farmer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hunter</masterLabel>
+            <translation><!-- Hunter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disty Margin % --></label>
+        <name>core_cpq_disty_margin_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- $ Change flag --></label>
+        <name>core_cpq_dollar_change_flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- $ Change flag to be deleted --></label>
+        <name>core_cpq_dollar_change_flag_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration --></label>
+        <name>core_cpq_duration_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extended DPA Total --></label>
+        <name>core_cpq_extended_dpa_total_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- isModified --></label>
+        <name>core_cpq_isModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line No --></label>
+        <name>core_cpq_line_no_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line Number --></label>
+        <name>core_cpq_line_no_to_sap__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower Bound Qty --></label>
+        <name>core_cpq_lower_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Margin Exception --></label>
+        <name>core_cpq_margin_exception_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Margin Program --></label>
+        <name>core_cpq_margin_program__c</name>
+        <picklistValues>
+            <masterLabel>DSN</masterLabel>
+            <translation><!-- DSN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MISC Exception</masterLabel>
+            <translation><!-- MISC Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle</masterLabel>
+            <translation><!-- Middle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Protected</masterLabel>
+            <translation><!-- Protected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shared Registration</masterLabel>
+            <translation><!-- Shared Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Master DDR# --></label>
+        <name>core_cpq_master_ddr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Auth --></label>
+        <name>core_cpq_price_auth_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID --></label>
+        <name>core_cpq_prid__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>core_cpq_product_disty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Disty Margin % --></label>
+        <name>core_cpq_ql_disty_margin_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line # --></label>
+        <name>core_cpq_quote_item_line_no__c</name>
+        <relationshipLabel><!-- DPA &amp; ALN Lines (Quote Line #) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Line # --></label>
+        <name>core_cpq_quote_line_disty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Prod St Date --></label>
+        <name>core_cpq_quote_prod_st_date_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Qty as per approved Quote. --></help>
+        <label><!-- Quoted Qty --></label>
+        <name>core_cpq_quoted_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Type --></label>
+        <name>core_cpq_quoteline_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Identifier --></label>
+        <name>core_cpq_record_type_identifier__c</name>
+        <picklistValues>
+            <masterLabel>ALN</masterLabel>
+            <translation><!-- ALN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPA</masterLabel>
+            <translation><!-- DPA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Registration Status --></label>
+        <name>core_cpq_registration_status_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Qty for which DPA/ALN requested. --></help>
+        <label><!-- Requested Qty --></label>
+        <name>core_cpq_requested_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suggested Resale --></label>
+        <name>core_cpq_resale_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resale --></label>
+        <name>core_cpq_resale_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Exp Date --></label>
+        <name>core_cpq_ship_exp_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Start Date --></label>
+        <name>core_cpq_ship_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper Bound Qty --></label>
+        <name>core_cpq_upper_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- VTP end date --></label>
+        <name>core_cpq_vtp_end_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- List Unit Price --></label>
+        <name>core_list_unit_price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost --></label>
+        <name>price_broken_cost_disty_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Cost --></label>
+        <name>price_disty_cost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Value Added --></label>
+        <name>price_disty_value_added_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Id --></label>
+        <name>src_sys_id__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- PSG ALN Lines --></description>
+        <label><!-- PSG ALN Lines --></label>
+        <name>PSG_ALN_Lines</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- PSG DPA Lines --></description>
+        <label><!-- PSG DPA Lines --></label>
+        <name>PSG_DPA_Lines</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Broken Cost $ should not be more than Disty Cost $ --></errorMessage>
+        <name>PSG_Broken_Cost_Disty_Cost_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pricing and Qty attributes cannot have negative values --></errorMessage>
+        <name>PSG_Negative_Value_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DPA &amp; ALN Line Record cannot be created or edited during Freeze Period! --></errorMessage>
+        <name>PSG_Restrict_DPA_ALN_Line_Edit</name>
+    </validationRules>
+</CustomObjectTranslation>

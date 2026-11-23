@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitor Info</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitor Info</value>
+    </caseValues>
+    <fields>
+        <label><!-- Competitor Name --></label>
+        <name>competitor_name_pl__c</name>
+        <picklistValues>
+            <masterLabel>AGM</masterLabel>
+            <translation><!-- AGM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC</masterLabel>
+            <translation><!-- ASIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Achronix</masterLabel>
+            <translation><!-- Achronix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analog Devices</masterLabel>
+            <translation><!-- Analog Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anlogic</masterLabel>
+            <translation><!-- Anlogic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aspeed</masterLabel>
+            <translation><!-- Aspeed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcom</masterLabel>
+            <translation><!-- Broadcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CYPRESS SEMICONDUCTOR</masterLabel>
+            <translation><!-- CYPRESS SEMICONDUCTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EFINIX</masterLabel>
+            <translation><!-- EFINIX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Elitestek</masterLabel>
+            <translation><!-- Elitestek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FREESCALE</masterLabel>
+            <translation><!-- FREESCALE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fudan Microelectronics</masterLabel>
+            <translation><!-- Fudan Microelectronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GOWIN</masterLabel>
+            <translation><!-- GOWIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intersil / Renesas</masterLabel>
+            <translation><!-- Intersil / Renesas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lattice</masterLabel>
+            <translation><!-- Lattice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Linear Technology / Linear Tech / LTC / LT / ADI / Analog Devices</masterLabel>
+            <translation><!-- Linear Technology / Linear Tech / LTC / LT / ADI / Analog Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macom</masterLabel>
+            <translation><!-- Macom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Micrel</masterLabel>
+            <translation><!-- Micrel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microchip</masterLabel>
+            <translation><!-- Microchip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monolithic Power / MPS</masterLabel>
+            <translation><!-- Monolithic Power / MPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NXP</masterLabel>
+            <translation><!-- NXP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia</masterLabel>
+            <translation><!-- Nvidia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ONSEMICONDUCTOR</masterLabel>
+            <translation><!-- ONSEMICONDUCTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onsemi</masterLabel>
+            <translation><!-- Onsemi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pangomicro</masterLabel>
+            <translation><!-- Pangomicro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Texas Instruments / TI</masterLabel>
+            <translation><!-- Texas Instruments / TI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xilinx</masterLabel>
+            <translation><!-- Xilinx --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competitor Family --></label>
+        <name>competitor_part_pl__c</name>
+        <picklistValues>
+            <masterLabel>AL3</masterLabel>
+            <translation><!-- AL3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analog Module</masterLabel>
+            <translation><!-- Analog Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arora-V</masterLabel>
+            <translation><!-- Arora-V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artix 7</masterLabel>
+            <translation><!-- Artix 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artix Ultrascale Plus</masterLabel>
+            <translation><!-- Artix Ultrascale Plus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avant E</masterLabel>
+            <translation><!-- Avant E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avant G</masterLabel>
+            <translation><!-- Avant G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avant X</masterLabel>
+            <translation><!-- Avant X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certus-NX</masterLabel>
+            <translation><!-- Certus-NX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CertusPro-NX</masterLabel>
+            <translation><!-- CertusPro-NX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compa</masterLabel>
+            <translation><!-- Compa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CrossLink</masterLabel>
+            <translation><!-- CrossLink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CrossLink NX</masterLabel>
+            <translation><!-- CrossLink NX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Module</masterLabel>
+            <translation><!-- Digital Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECP3</masterLabel>
+            <translation><!-- ECP3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECP5</masterLabel>
+            <translation><!-- ECP5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECP5-5G</masterLabel>
+            <translation><!-- ECP5-5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EF2</masterLabel>
+            <translation><!-- EF2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EF3</masterLabel>
+            <translation><!-- EF3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EFINIX</masterLabel>
+            <translation><!-- EFINIX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eagle</masterLabel>
+            <translation><!-- Eagle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1N</masterLabel>
+            <translation><!-- GW1N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1N-A</masterLabel>
+            <translation><!-- GW1N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1NR</masterLabel>
+            <translation><!-- GW1NR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1NSR </masterLabel>
+            <translation><!-- GW1NSR  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1NS </masterLabel>
+            <translation><!-- GW1NS  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW1NZ </masterLabel>
+            <translation><!-- GW1NZ  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW2A</masterLabel>
+            <translation><!-- GW2A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW2A-A</masterLabel>
+            <translation><!-- GW2A-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW2AN</masterLabel>
+            <translation><!-- GW2AN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW2ANR</masterLabel>
+            <translation><!-- GW2ANR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW2AR</masterLabel>
+            <translation><!-- GW2AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IGLOO2 </masterLabel>
+            <translation><!-- IGLOO2  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kintex 7</masterLabel>
+            <translation><!-- Kintex 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kintex UltraSCALE</masterLabel>
+            <translation><!-- Kintex UltraSCALE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kintex Ultrascale+</masterLabel>
+            <translation><!-- Kintex Ultrascale+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOGOS-2</masterLabel>
+            <translation><!-- LOGOS-2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LP Series (Low Power)</masterLabel>
+            <translation><!-- LP Series (Low Power) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logos</masterLabel>
+            <translation><!-- Logos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIcroModule</masterLabel>
+            <translation><!-- MIcroModule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MachXO</masterLabel>
+            <translation><!-- MachXO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MachXO2</masterLabel>
+            <translation><!-- MachXO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MachXO3</masterLabel>
+            <translation><!-- MachXO3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MachXO5</masterLabel>
+            <translation><!-- MachXO5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MicroSIP Module</masterLabel>
+            <translation><!-- MicroSIP Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PolarFire</masterLabel>
+            <translation><!-- PolarFire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polarfire SoC</masterLabel>
+            <translation><!-- Polarfire SoC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simple Switcher Nano Module</masterLabel>
+            <translation><!-- Simple Switcher Nano Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spartan 6</masterLabel>
+            <translation><!-- Spartan 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spartan 7</masterLabel>
+            <translation><!-- Spartan 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spartan III</masterLabel>
+            <translation><!-- Spartan III --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spartan UltraScale+</masterLabel>
+            <translation><!-- Spartan UltraScale+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Speedster7t</masterLabel>
+            <translation><!-- Speedster7t --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titan</masterLabel>
+            <translation><!-- Titan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titanium </masterLabel>
+            <translation><!-- Titanium  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trion</masterLabel>
+            <translation><!-- Trion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Versal AI Core</masterLabel>
+            <translation><!-- Versal AI Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Versal HBM</masterLabel>
+            <translation><!-- Versal HBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Versal Premium Series</masterLabel>
+            <translation><!-- Versal Premium Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Versal Prime</masterLabel>
+            <translation><!-- Versal Prime --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex UltraScale</masterLabel>
+            <translation><!-- Virtex UltraScale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex Ultrascale+</masterLabel>
+            <translation><!-- Virtex Ultrascale+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex Ultrascale+ 58G PAM4</masterLabel>
+            <translation><!-- Virtex Ultrascale+ 58G PAM4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex Ultrascale+ HBM (16GB)</masterLabel>
+            <translation><!-- Virtex Ultrascale+ HBM (16GB) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex Ultrascale+ HBM (4GB)</masterLabel>
+            <translation><!-- Virtex Ultrascale+ HBM (4GB) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex Ultrascale+ HBM (8GB)</masterLabel>
+            <translation><!-- Virtex Ultrascale+ HBM (8GB) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtex-7</masterLabel>
+            <translation><!-- Virtex-7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XP2</masterLabel>
+            <translation><!-- XP2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zync UltraScale+ MPSoC CG</masterLabel>
+            <translation><!-- Zync UltraScale+ MPSoC CG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zync UltraScale+ MPSoC EG</masterLabel>
+            <translation><!-- Zync UltraScale+ MPSoC EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zync UltraScale+ MPSoC EV</masterLabel>
+            <translation><!-- Zync UltraScale+ MPSoC EV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zynq</masterLabel>
+            <translation><!-- Zynq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zynq (Single CPU)</masterLabel>
+            <translation><!-- Zynq (Single CPU) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zynq UltraScale+ RFSoC Gen 1</masterLabel>
+            <translation><!-- Zynq UltraScale+ RFSoC Gen 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zynq UltraScale+ RFSoC Gen 2</masterLabel>
+            <translation><!-- Zynq UltraScale+ RFSoC Gen 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zynq UltraScale+ RFSoC Gen 3</masterLabel>
+            <translation><!-- Zynq UltraScale+ RFSoC Gen 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iCE40 Ultra</masterLabel>
+            <translation><!-- iCE40 Ultra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iCE40 UltraLite</masterLabel>
+            <translation><!-- iCE40 UltraLite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iCE40 UltraPLus</masterLabel>
+            <translation><!-- iCE40 UltraPLus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ispMACH 4000</masterLabel>
+            <translation><!-- ispMACH 4000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>μModule Regulator</masterLabel>
+            <translation><!-- μModule Regulator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competitor Name --></label>
+        <name>core_cpq_competitor_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Part --></label>
+        <name>core_cpq_competitor_part__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>core_cpq_price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quote__c</name>
+        <relationshipLabel><!-- Competitor Info --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- core_cpq_src_sys_id__c --></label>
+        <name>core_cpq_src_sys_id_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>cpq_core_quantity__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

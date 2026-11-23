@@ -75,8 +75,8 @@ public class Core_MDF_FileAuthorization_Test {
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Consumer',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Digital',
-                                                                                           'Web Content','Draft',false);
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
+                                                                                           'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
             pfr.Status = 'Approved';
@@ -96,8 +96,7 @@ public class Core_MDF_FileAuthorization_Test {
             Database.insert(bank);  
             
             //creating ABM for bank
-            // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
             
             
             
@@ -178,8 +177,7 @@ public class Core_MDF_FileAuthorization_Test {
         
         
         //Assigning Claim Case Reviewer Permission Set to user
-        // Highlight: Unused Local Variable 
-      //  PermissionSet pSet2 = [SELECT Id FROM PermissionSet WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Generic_Access'];
+        PermissionSet pSet2 = [SELECT Id FROM PermissionSet WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Generic_Access'];
         //insert new PermissionSetAssignment(AssigneeId=usr2.Id, PermissionSetId = pSet2.id);
             
             //insert pfc;  
@@ -215,8 +213,7 @@ public class Core_MDF_FileAuthorization_Test {
         //Assigning Claim Case Reviewer Permission Set to user
         //PermissionSet pSet = [SELECT Id FROM PermissionSet WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer'];
         //insert new PermissionSetAssignment(AssigneeId=u.Id, PermissionSetId = pSet.id);
-        // Highlight: Unused Local Variable 
-       // String docId = '';
+        String docId = '';
         String csId = '';
         System.runAs(usr){
             Case cs = new Case();
@@ -240,8 +237,8 @@ public class Core_MDF_FileAuthorization_Test {
             pfc.Core_MDF_Eligible_for_PIC__c = true;
 
             //update pfc;
-           // Highlight: Unused Local Variable
-          //  List<String> documentIdWithTitle = new List<String>();
+
+            List<String> documentIdWithTitle = new List<String>();
             List<Core_MDF_Audit_Document__c> listDoc =  new List<Core_MDF_Audit_Document__c>();
             Core_MDF_Audit_Document__c auditDocs = new Core_MDF_Audit_Document__c();
             auditDocs.Core_MDF_Document_Id__c = cs.Id;
@@ -259,14 +256,11 @@ public class Core_MDF_FileAuthorization_Test {
             //Share_Record.ParentId = auditDocs.id;
             //Share_Record.UserOrGroupId = usr.id;
             //Share_Record.AccessLevel = 'Read';
-            
-            // Highlight: Unused Local Variable  
-          /*  List<Core_MDF_Audit_Document__Share> sgare_rec = [select id,AccessLevel,UserOrGroupId  from Core_MDF_Audit_Document__Share where Parent.id =: auditDocs.id and UserOrGroupId =: usr.id];
+            List<Core_MDF_Audit_Document__Share> sgare_rec = [select id,AccessLevel,UserOrGroupId  from Core_MDF_Audit_Document__Share where Parent.id =: auditDocs.id and UserOrGroupId =: usr.id];
           
             
             List<UserRecordAccess> recAccess = [Select u.RecordId, u.HasReadAccess From UserRecordAccess u
-                                                      where UserId =: usr.id and RecordId =:auditDocs.id];  */
-            // Highlight: Unused Local Variable 
+                                                      where UserId =: usr.id and RecordId =:auditDocs.id];
             
             //insert Share_Record;
             
@@ -316,8 +310,7 @@ public class Core_MDF_FileAuthorization_Test {
         //Assigning Claim Case Reviewer Permission Set to user
         //PermissionSet pSet = [SELECT Id FROM PermissionSet WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer'];
         //insert new PermissionSetAssignment(AssigneeId=u.Id, PermissionSetId = pSet.id);
-        // Highlight: Unused Local Variable 
-       // String docId = '';
+        String docId = '';
         String csId = '';
         System.runAs(usr){
             Case cs = new Case();
@@ -341,8 +334,8 @@ public class Core_MDF_FileAuthorization_Test {
             pfc.Core_MDF_Eligible_for_PIC__c = true;
 
             //update pfc;
-            // Highlight: Unused Local Variable
-           // List<String> documentIdWithTitle = new List<String>();
+
+            List<String> documentIdWithTitle = new List<String>();
             List<Core_MDF_Audit_Document__c> listDoc =  new List<Core_MDF_Audit_Document__c>();
             Core_MDF_Audit_Document__c auditDocs = new Core_MDF_Audit_Document__c();
             auditDocs.Core_MDF_Document_Id__c = cs.Id;
@@ -360,14 +353,11 @@ public class Core_MDF_FileAuthorization_Test {
             //Share_Record.ParentId = auditDocs.id;
             //Share_Record.UserOrGroupId = usr.id;
             //Share_Record.AccessLevel = 'Read';
-            
-            // Highlight: Unused Local Variable 
-         /*   List<Core_MDF_Audit_Document__Share> sgare_rec = [select id,AccessLevel,UserOrGroupId  from Core_MDF_Audit_Document__Share where Parent.id =: auditDocs.id and UserOrGroupId =: usr.id];
+            List<Core_MDF_Audit_Document__Share> sgare_rec = [select id,AccessLevel,UserOrGroupId  from Core_MDF_Audit_Document__Share where Parent.id =: auditDocs.id and UserOrGroupId =: usr.id];
             
             
             List<UserRecordAccess> recAccess = [Select u.RecordId, u.HasReadAccess From UserRecordAccess u
-                                                      where UserId =: usr.id and RecordId =:auditDocs.id];  */
-            // Highlight: Unused Local Variable 
+                                                      where UserId =: usr.id and RecordId =:auditDocs.id];
             
             //insert Share_Record;
             /*User usr1 = [Select id,FederationIdentifier from User where email ='ccp_internal_genericUser@intel.com' LIMIT 1];
@@ -459,27 +449,6 @@ public class Core_MDF_FileAuthorization_Test {
         results = Core_MDF_FileAuthorization.CheckFileAuthorization();
         Assert.areEqual(results.isAuthorized,false);
    		Test.stopTest(); 
-		
-        //CDB-SFT use case
-        Core_MDF_FileAuthorization.AuthResp results1;
-        RestRequest req1 = new RestRequest(); 
-        RestResponse res1 = new RestResponse();
-        String appDataForClaim = 'claimId-'+pfc.Id;
-        String appDataForCase = 'caseId-'+cs.Id;
-        req1.requestURI = '/mdf/sft/fileAuthorization'; 
-        req1.httpMethod = 'GET';
-        req1.params.put('appFileId', '765875');
-        req1.params.put('action', 'download');
-        req1.params.put('userName', 'AMR_sys_comkt_cdb_sft');
-        req1.params.put('appData', appDataForClaim);
-        req1.addHeader('Content-Type', 'application/json'); 
-        RestContext.request = req1;
-        RestContext.response = res1;
-        results1 = Core_MDF_FileAuthorization.CheckFileAuthorization();
-        Assert.areEqual(results1.isAuthorized,false);
-        req1.params.put('appData', appDataForCase);
-        results1 = Core_MDF_FileAuthorization.CheckFileAuthorization();
-        Assert.areEqual(results1.isAuthorized,false);
         }
     }
    

@@ -13,30 +13,9 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <help>基線期間描述了本活動前的一個時間點，當時基線值被捕捉或估算。舉例：如果這個活動會在八月結束，而基準值是在前一個八月被捕捉的，請選擇第一個選項。如果基準值為零，則選擇第一個選項。</help>
-        <label>基準期</label>
-        <name>Core_MDF_Baseline_Period_nm__c</name>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one half before</masterLabel>
-            <translation>與這次戰役同期，僅比此晚一半</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
-            <translation>與這次競選同期，前四分之一</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one year before</masterLabel>
-            <translation>與這次運動同一時期，就在一年前</translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Campaign Purpose Description --></label>
-        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
     </fields>
     <fields>
         <help>我們定義為成功的成果指標的企劃案后價值。在執行前輸入。</help>

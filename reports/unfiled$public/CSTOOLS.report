@@ -33,33 +33,6 @@
     <columns>
         <field>CLOSED</field>
     </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>Case.Core_ConEmail__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Closure__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
-    </columns>
-    <columns>
-        <field>CLOSED_DATEONLY</field>
-    </columns>
-    <columns>
-        <field>CONTACT.ACCOUNT</field>
-    </columns>
-    <columns>
-        <field>CONTACT.ACCOUNT_ID</field>
-    </columns>
-    <columns>
-        <field>PRIORITY</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Country_Region__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
@@ -72,8 +45,8 @@
             <column>Case.Core_Sub_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>,2nd Level Support Investigating,Deferred,Design Team Investigating,Duplicate Issue,Escalated to Engineering,Fixed,Investigating,Reopened - Customer Request,Reproduced,Waiting for Customer Clarification*,Waiting for Customer Verification*,Waiting for Ingredient*,GEC Hold,Closed,Close-Pending,Invalid</value>
+            <operator>notEqual</operator>
+            <value>Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -92,12 +65,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
+    <sortColumn>OWNER</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2026-08-01</endDate>
+        <endDate>2025-08-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2000-01-01</startDate>
+        <startDate>2022-01-01</startDate>
     </timeFrameFilter>
 </Report>

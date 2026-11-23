@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Aviso final: reclamo n.º</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Evento&quot;,&quot;Lead Cultivation&quot;:&quot;Cultivo de clientes potenciales&quot;,&quot;Technical Activation&quot;:&quot;Activación técnica&quot;,&quot;Incentive&quot;:&quot;Incentivo&quot;,&quot;Training&quot;:&quot;Entrenamiento&quot;,&quot;Digital Media&quot;:&quot;Medios digitales&quot;,&quot;Legacy Media&quot;:&quot;Medios tradicionales&quot;,&quot;Funded Headcount&quot;:&quot;Financiación para personal contratado.&quot;,&quot;Brand Awareness&quot;:&quot;Reconocimiento de marca&quot;,&quot;Consideration&quot;:&quot;Consideración&quot;,&quot;Purchase Intent&quot;:&quot;Intención de compra&quot;,&quot;Preference&quot;:&quot;Preferencia&quot;,&quot;Share of Voice&quot;:&quot;Cuota de voz&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Muchas gracias,</value>
     </values>

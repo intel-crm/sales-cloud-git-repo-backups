@@ -245,10 +245,6 @@
         <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Activity Level --></label>
-        <name>Core_MDF_Activity_Level_nm__c</name>
-    </fields>
-    <fields>
         <label>활동 번호</label>
         <name>Core_MDF_Activity_Number__c</name>
     </fields>
@@ -616,10 +612,6 @@
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Ecosystem Modified --></label>
-        <name>Core_MDF_Ecosystem_Modified_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Effective Date/Time --></label>
         <name>Core_MDF_EffectiveDateTime__c</name>
     </fields>
@@ -804,7 +796,7 @@
         <name>Core_MDF_Is_Field_Modified__c</name>
     </fields>
     <fields>
-        <label>결과 기반입니까?</label>
+        <label><!-- Is Outcome-Based? --></label>
         <name>Core_MDF_Is_Outcome_Based_Ind__c</name>
     </fields>
     <fields>
@@ -859,10 +851,6 @@
         <help>이 실행에 대해 인텔이 지불할 최대 금액입니다.</help>
         <label>인텔 최대 투자액</label>
         <name>Core_MDF_Maximum_Intel_Investment_amt__c</name>
-    </fields>
-    <fields>
-        <label>측정 접근법</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
         <label>회원 승인자</label>
@@ -1036,10 +1024,6 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Outcome Node Acc Mapping Modified --></label>
-        <name>Core_MDF_Node_Acc_Map_Modified_ind__c</name>
-    </fields>
-    <fields>
         <label>수상자 수</label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
@@ -1114,10 +1098,6 @@
     <fields>
         <label>기타 이벤트 이름</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label>기타 측정 방법</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
         <label>기타 수량</label>
@@ -1196,15 +1176,6 @@
     <fields>
         <label>POP 요구 사항</label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Activity --></label>
-        <name>Core_MDF_Parent_Activity_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activties --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>파트너 연락처</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <label>배치</label>
@@ -1375,11 +1346,6 @@
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
     </fields>
     <fields>
-        <help>100% 콘테스트 기반 인센티브, 수상자는 참가자의 33% 이내로 제한</help>
-        <label>100% 콘테스트 기반 인센티브</label>
-        <name>Core_MDF_Skip_PCT_Approval_ind__c</name>
-    </fields>
-    <fields>
         <label>소셜 미디어 좋아요/공유 수</label>
         <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
     </fields>
@@ -1544,7 +1510,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>고객 공동 마케팅 기금</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1559,7 +1525,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>데이터 센터 공동 마케팅 기금(DCF)</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

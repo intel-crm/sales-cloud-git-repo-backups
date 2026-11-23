@@ -24,7 +24,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value></value>
+            <value>Channel MDF</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -66,12 +66,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Datacenter,Co-GTM,Ecosystem Extension Fund,Client</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Activity_Level_nm__c</field>
-            <operation>notEqual</operation>
-            <value>Sub Activity</value>
+            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Datacenter,Co-GTM,Channel MDF,Ecosystem Extension Fund,Client</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -86,46 +81,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Datacenter,Co-GTM,Ecosystem Extension Fund,Client</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Activity_Level_nm__c</field>
-            <operation>notEqual</operation>
-            <value>Sub Activity</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Activities_CCP_IPA_Payment_Admin</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Activities - CCP IPA Payment Admins for Sub Activities</description>
-        <label>Activities - CCP  IPA Payment Admin</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_IPA_Payment_Admin</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Activity_Level_nm__c</field>
-            <operation>equals</operation>
-            <value>Sub Activity</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Co_marketing_Support_L1_Read</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Co-marketing Support L1 Read</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_SUPPORT_L1_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Activity_Level_nm__c</field>
-            <operation>notEqual</operation>
-            <value>Sub Activity</value>
+            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Datacenter,Co-GTM,Channel MDF,Ecosystem Extension Fund,Client</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

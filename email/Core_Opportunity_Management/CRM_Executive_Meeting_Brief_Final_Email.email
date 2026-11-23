@@ -16,16 +16,13 @@
  </table>
 <p>Hello,</p>
 
-<p>The executive brief required for {!relatedTo.Core_Executive_Meeting_Brief_Name__c} on&nbsp;
-<apex:outputField value="{!relatedTo.CRM_Start_Date__c}" />&nbsp;
-<apex:outputField value="{!relatedTo.CRM_Start_Time__c}" />&nbsp;
-{!relatedTo.CRM_Time_Zone__c} for {!relatedTo.Account__r.Name} has been completed. </p><br/>
+<p>The executive brief required for {!relatedTo.Core_Executive_Meeting_Brief_Name__c} on {!relatedTo.CRM_Scheduled_Start_Time_txt__c} for {!relatedTo.Account__r.Name} has been completed. </p><br/>
 
        <p>The finalized PDF document is attached to this email. You may also access it directly in Salesforce via the following link:<br/>
         {!relatedTo.CRM_PDF_URL__c}
 
       <br /><br /></p>
 
-<p>SMG Sales Excellence</p>
+<p>SMG Sales Execellence</p>
      </messaging:htmlEmailBody>
 </messaging:emailTemplate>

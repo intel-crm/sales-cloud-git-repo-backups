@@ -169,7 +169,6 @@ global class Core_IPS_MoveContactWithBatch implements
                      }
                  }
                 mail.setHtmlBody(htmlBody );
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 mails.add(mail);
                 Messaging.sendEmail(mails);
             }

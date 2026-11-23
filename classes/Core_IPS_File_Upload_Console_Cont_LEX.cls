@@ -99,13 +99,7 @@ public with sharing class Core_IPS_File_Upload_Console_Cont_LEX {
             		iPDFAssLst.add(fps);
                 
         	}
-            try{
-                insert iPDFAssLst;
-            }
-            catch(Exception ex){
-                throw new AuraHandledException(ex.getMessage());
-            }
-        	
+        	insert iPDFAssLst;
         }
          return 'true';
     }

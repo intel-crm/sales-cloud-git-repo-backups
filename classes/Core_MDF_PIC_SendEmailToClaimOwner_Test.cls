@@ -74,7 +74,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         entitlementList.add(entitlementCCFClaimSub);
         
         Database.insert(entitlementList); 
-        /*
+        
         List<Core_Contact_Entitlement__c> contEntList = new List<Core_Contact_Entitlement__c>();
         
         Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCF.Id ,true,'Complete', false);
@@ -83,7 +83,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         Core_Contact_Entitlement__c contactEntitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCFClaimSub.Id ,true,'Complete', false);
         contEntList.add(contactEntitlementCCFClaimSub);
         
-        Database.insert(contEntList);   */    
+        Database.insert(contEntList);       
         
         List<User> listUser = new List<User>();
         
@@ -272,7 +272,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
                                                                                                               'Consumer',
                                                                                                               'Desktop',
                                                                                                               'Intel® Core™ i5 Processor',
-                                                                                                              'Broadcast (Pre-2025)',
+                                                                                                              'Broadcast',
                                                                                                               'Podcast',
                                                                                                               'Draft',
                                                                                                               false);
@@ -308,7 +308,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         System.runAs(sysAdminUser){
             Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
             User Usr1 =[Select id from user where email = 'test1@example.com'];
-           // Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
+            Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1241241240' limit 1];
             PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'test'];
             
@@ -501,159 +501,6 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
             test.stopTest();
         }
     }
-    
-    @isTest
-    static void testComprehensiveEmailContentGeneration() {
-        Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser){
-            
-            // Setup comprehensive test data
-            Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
-            User usr1 = [Select id from user where email = 'test1@example.com'];
-            Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1241241240' limit 1];
-            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'test'];
-            
-            // Create Partner Node User Mapping for RMF scenario
-            //Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, usr1.Id, true);
-            
-            // Update user language only (UserType is read-only)
-            usr1.LanguageLocaleKey = 'de'; // German to test language translation
-            update usr1;
-            
-            // Create multiple claims with different scenarios
-            List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-            
-            // 1. Regular claim with files affected
-            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Comprehensive Claim 1', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
-            claim1.OwnerId = usr1.Id;
-            // Remove legacy claim assignment if it's read-only
-            claim1.Core_MDF_Legacy_Reminder_txt__c = Label.Core_MDF_Legacy_Reminder_2; // First reminder
-            claim1.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = System.now().addDays(5);
-            claimList.add(claim1);
-            
-            // 2. Paid and resubmission required claim
-            PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Paid Resubmission Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 75.00, System.today(), bank1.Id, false);
-            claim2.OwnerId = usr1.Id;
-            claim2.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = System.now().addDays(3);
-            claimList.add(claim2);
-            
-            // 3. Claim without files affected (to test N/A scenario)
-            PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('No Files Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 25.00, System.today(), bank1.Id, false);
-            claim3.OwnerId = usr1.Id;
-            claimList.add(claim3);
-            
-            insert claimList;
-            
-            // Create questions with parent-child relationship
-            List<core_MDF_PICReviewQuestion__c> questionList = new List<core_MDF_PICReviewQuestion__c>();
-            
-            // Main question
-            core_MDF_PICReviewQuestion__c mainQuestion = createPICReviewQuestion(1, 'Main Question Internal', 'Main Question External', false);
-            questionList.add(mainQuestion);
-            
-            // Regular question without sub-questions
-            core_MDF_PICReviewQuestion__c regularQuestion = createPICReviewQuestion(2, 'Regular Question Internal', 'Regular Question External', false);
-            questionList.add(regularQuestion);
-            
-            insert questionList;
-            
-            // Create sub-questions for main question (remove Sub_Question_Ind__c assignment)
-            core_MDF_PICReviewQuestion__c subQuestion1 = new core_MDF_PICReviewQuestion__c(
-                Core_MDF_Sort_Order__c = 3,
-                Core_MDF_Question_English_txt__c = 'Sub Question 1 Internal',
-                Core_MDF_Question_English_External_txt__c = 'Sub Question 1 External',
-                Core_MDF_Is_Active_ind__c = true,
-                Core_MDF_EffectiveDate_dt__c = System.today(),
-                Core_MDF_IneffectiveDate_dt__c = System.today() + 10,
-                Core_MDF_All_Budget_Types_Ind__c = true,
-                Core_MDF_All_Programs_Ind__c = true,
-                Core_MDF_Parent_Question__c = mainQuestion.Id
-            );
-            
-            core_MDF_PICReviewQuestion__c subQuestion2 = new core_MDF_PICReviewQuestion__c(
-                Core_MDF_Sort_Order__c = 4,
-                Core_MDF_Question_English_txt__c = 'Sub Question 2 Internal\nWith line break',
-                Core_MDF_Question_English_External_txt__c = 'Sub Question 2 External\nWith line break',
-                Core_MDF_Is_Active_ind__c = true,
-                Core_MDF_EffectiveDate_dt__c = System.today(),
-                Core_MDF_IneffectiveDate_dt__c = System.today() + 10,
-                Core_MDF_All_Budget_Types_Ind__c = true,
-                Core_MDF_All_Programs_Ind__c = true,
-                Core_MDF_Parent_Question__c = mainQuestion.Id
-            );
-            
-            insert new List<core_MDF_PICReviewQuestion__c>{subQuestion1, subQuestion2};
-                
-                // Create PIC Reviews with multiple cycles
-                List<Core_MDF_PIC_Review__c> reviewList = new List<Core_MDF_PIC_Review__c>();
-            
-            // Multiple cycles for claim1 (highest cycle should be used)
-            Core_MDF_PIC_Review__c review1_cycle1 = createPICReviewResult(claim1.Id, 1, 'Failed', false);
-            Core_MDF_PIC_Review__c review1_cycle2 = createPICReviewResult(claim1.Id, 2, 'Failed', false);
-            Core_MDF_PIC_Review__c review1_cycle3 = createPICReviewResult(claim1.Id, 3, 'Failed', false); // This should be used
-            reviewList.addAll(new List<Core_MDF_PIC_Review__c>{review1_cycle1, review1_cycle2, review1_cycle3});
-            
-            // Single cycle for claim2
-            Core_MDF_PIC_Review__c review2 = createPICReviewResult(claim2.Id, 1, 'Failed', false);
-            reviewList.add(review2);
-            
-            // Single cycle for claim3
-            Core_MDF_PIC_Review__c review3 = createPICReviewResult(claim3.Id, 1, 'Failed', false);
-            reviewList.add(review3);
-            
-            insert reviewList;
-            
-            // Create PIC Review Results with various scenarios
-            List<core_MDF_PICReviewResult__c> resultList = new List<core_MDF_PICReviewResult__c>();
-            
-            // Results for claim1 (cycle 3 - highest cycle)
-            // Main question result
-            core_MDF_PICReviewResult__c mainResult1 = createPICReviewResult(review1_cycle3.Id, mainQuestion.Id, 'main_document.pdf;secondary_doc.xlsx', 'No', false);
-            resultList.add(mainResult1);
-            
-            // Sub question results
-            core_MDF_PICReviewResult__c subResult1_1 = createPICReviewResult(review1_cycle3.Id, subQuestion1.Id, 'sub1_evidence.pdf', 'Fail', false);
-            core_MDF_PICReviewResult__c subResult1_2 = createPICReviewResult(review1_cycle3.Id, subQuestion2.Id, '', 'No', false); // No files
-            resultList.addAll(new List<core_MDF_PICReviewResult__c>{subResult1_1, subResult1_2});
-            
-            // Results for claim2 (Paid and resubmission)
-            core_MDF_PICReviewResult__c regularResult2 = createPICReviewResult(review2.Id, regularQuestion.Id, 'invoice.pdf', 'No', false);
-            resultList.add(regularResult2);
-            
-            // Results for claim3 (No files scenario)
-            core_MDF_PICReviewResult__c regularResult3 = createPICReviewResult(review3.Id, regularQuestion.Id, '', 'Fail', false);
-            resultList.add(regularResult3);
-            
-            insert resultList;
-            
-            // Update claims to trigger email scenarios
-            claim1.Core_MDF_Status__c = 'Resubmission Required';
-            claim2.Core_MDF_Status__c = 'Resubmission Required'; // Use standard status if custom label not available
-            claim3.Core_MDF_Status__c = 'Resubmission Required';
-            
-            update claimList;
-            
-            // Test multiple notification scenarios
-            List<Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper> wrapperList = new List<Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper>();
-            
-            // Test claim owner notification
-            for(PartnerFundClaim claim : claimList) {
-                Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper wrapper1 = new Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper();
-                wrapper1.claimIds = claim.Id;
-                wrapper1.notifyPartnerUser = true; // Test partner user notification
-                wrapper1.addReminderInSubject = (claim.Id == claim1.Id); // Test reminder subject for first claim
-                wrapperList.add(wrapper1);
-            }
-            
-            // Execute the method
-            Core_MDF_PIC_SendEmailToClaimOwner.sendEmailtoClaimOwnerOnResubReqd(wrapperList);
-            
-            // Verify that claims were processed
-            System.assertEquals(3, [SELECT COUNT() FROM PartnerFundClaim WHERE Core_MDF_Status__c = 'Resubmission Required']);
-        }
-        Test.stopTest();
-}
     
     
     

@@ -16,51 +16,51 @@ public without sharing class Core_IPS_Case_Interested_Party_Handler{
     
     /*Creating a CTM on IP Insertion*/
     public static void insertIPToCaseTeam(List<Core_IPS_Case_Interested_Party__c> newList){
-        List<CaseTeamMember> cTMList = new List<CaseTeamMember>();
-        List<Core_IPS_Case_Interested_Party__c> iPList = new List<Core_IPS_Case_Interested_Party__c>();
-        CaseTeamRole cTRExt;
-        CaseTeamRole cTRInt;
-        CaseTeamRole cTRIntRead;
+        List<CaseTeamMember> CTMList = new List<CaseTeamMember>();
+        List<Core_IPS_Case_Interested_Party__c> IPList = new List<Core_IPS_Case_Interested_Party__c>();
+        CaseTeamRole CTRExt;
+        CaseTeamRole CTRInt;
+        CaseTeamRole CTRIntRead;
         try{
             //FLS checks added for below 3-Venugopal
             if(CaseTeamRole.SObjectType.getDescribe().isAccessible()){
-            cTRExt = [select id from CaseTeamRole where name = 'IPS External Interested Party']; // HARDCODED values NEEDs to move to Labels 
+            CTRExt = [select id from CaseTeamRole where name = 'IPS External Interested Party']; // HARDCODED values NEEDs to move to Labels 
             }
             if(CaseTeamRole.SObjectType.getDescribe().isAccessible()){
-            cTRInt = [select id from CaseTeamRole where name = 'IPS Internal Interested Party']; // HARDCODED values NEEDs to move to Labels 
+            CTRInt = [select id from CaseTeamRole where name = 'IPS Internal Interested Party']; // HARDCODED values NEEDs to move to Labels 
             }
             if(CaseTeamRole.SObjectType.getDescribe().isAccessible()){
-            cTRIntRead = [select id from CaseTeamRole where Name =: Label.Core_IPS_ReadOnly_CaseTeam_Role];//Added Readonly CaseTeamRole  -- 4/18/2017 Manoj Kumar
+            CTRIntRead = [select id from CaseTeamRole where Name =: Label.Core_IPS_ReadOnly_CaseTeam_Role];//Added Readonly CaseTeamRole  -- 4/18/2017 Manoj Kumar
             }
-            MAP<ID,ID> mapofContactANDUser = new MAP<ID,ID>();
+            MAP<ID,ID> MapofContactANDUser = new MAP<ID,ID>();
             
             //Added Account,CaseTeamRole,FAEs variables  -- 4/18/2017 Manoj Kumar
-            Set<ID> accountID = new Set<ID>();
+            Set<ID> AccountID = new Set<ID>();
             Map<Id,Set<Id>> faesByAccount = new Map<Id,Set<Id>>();
-            Set<String> salesRepProfIds = new Set<String>();
-            Set<String> iPAgentProfileIds = new Set<String>();
-            String cTRIntId = '';
+            Set<String> SalesRepProfIds = new Set<String>();
+            Set<String> IPAgentProfileIds = new Set<String>();
+            String CTRIntId = '';
             // End Manoj Kumar
             
-            Set<ID> contactID = new Set<ID>();
-            Set<ID> userID = new Set<ID>();
+            Set<ID> ContactID = new Set<ID>();
+            Set<ID> UserID = new Set<ID>();
             List<User> UsrLst = new List<User>();
-            List<User> conLst = new List<User>();
-            MAP<Id,ID> useridRecMap =  new MAP<Id,ID>();
-            List<String> caseIds = new List<String>();      
+            List<User> ConLst = new List<User>();
+            MAP<Id,ID> UseridRecMap =  new MAP<Id,ID>();
+            List<String> CaseIds = new List<String>();      
             List<String> MemberIds = new List<String>(); 
 			List<Core_IPS_Project_Member__c> projectMemberList = new List<Core_IPS_Project_Member__c>();
 
             List<CaseTeamMember> CaseTeamLst = new List<CaseTeamMember>();
             for (Core_IPS_Case_Interested_Party__c IP: newList) {
                 if(IP.Contact__c != null){
-                    contactID.add(IP.Contact__c);
+                    ContactID.add(IP.Contact__c);
                 }
                 if(IP.User__c != null){
-                    userID.add(IP.User__c);
+                    UserID.add(IP.User__c);
                 }
                 if(IP.Case__c != null)
-                caseIds.add(IP.Case__c);
+                CaseIds.add(IP.Case__c);
                 
             }
             
@@ -72,108 +72,105 @@ public without sharing class Core_IPS_Case_Interested_Party_Handler{
                 if(newList!=null && newList.size()>0){
                    newListMap = new Map<Id, Core_IPS_Case_Interested_Party__c>(newList);
                  }
-            // iPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: newList];
-	       iPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: newListMap.keyset()];
+            // IPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: newList];
+	       IPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: newListMap.keyset()];
             }
             
-            iPAgentProfileIds.addall(Label.Interested_Parties_Internal_Agent_ProfileIds.split(','));
-            salesRepProfIds.addall(label.Core_IPS_Sales_Rep_ProfileIds.split(','));
+            IPAgentProfileIds.addall(Label.Interested_Parties_Internal_Agent_ProfileIds.split(','));
+            SalesRepProfIds.addall(label.Core_IPS_Sales_Rep_ProfileIds.split(','));
             
-            for(Core_IPS_Case_Interested_Party__c iPRec: iPList) {
-                //Adding IP's Case Accounts to accountId to fetch FAEs under that Account  -- 4/18/2017  Manoj Kumar
-                if(iPRec.Case__r.AccountId != null)
-                accountID.add(iPRec.Case__r.AccountId);
+            for(Core_IPS_Case_Interested_Party__c IPRec: IPList) {
+                //Adding IP's Case Accounts to AccountId to fetch FAEs under that Account  -- 4/18/2017  Manoj Kumar
+                if(IPRec.Case__r.AccountId != null)
+                AccountID.add(IPRec.Case__r.AccountId);
             } // END -- Manoj Kumar
             //FLS check added-Venugopal
             if(CaseTeamMember.SObjectType.getDescribe().isAccessible()){
-            cTMList = [Select id,ParentId, MemberId,TeamRoleId from CaseTeamMember where ParentId IN:caseIds];
+            CTMList = [Select id,ParentId, MemberId,TeamRoleId from CaseTeamMember where ParentId IN:CaseIds];
             }
-            for(CaseTeamMember cTMRec: cTMList){
-                MemberIds.add(cTMRec.MemberId);
+            for(CaseTeamMember CTMRec: CTMList){
+                MemberIds.add(CTMRec.MemberId);
             }
             
-            if(contactID.size() > 0){
-                conLst = [Select ID, ContactId from User where ContactId IN : contactID and (NOT(Id IN: MemberIds))];
+            if(ContactID.size() > 0){
+                ConLst = [Select ID, ContactID from User where contactId IN : ContactID and (NOT(Id IN: MemberIds))];
             }
       
-            if(conLst.size() > 0){
-                for(User usr : conLst){
+            if(ConLst.size() > 0){
+                for(User usr : ConLst){
                     if(usr.ContactID != null)
-                        mapofContactANDUser.put(usr.ContactID,usr.ID);
+                        MapofContactANDUser.put(usr.ContactID,usr.ID);
                 }
             }
             
-            if(userID.size() > 0){
-                usrLst = [Select ID, ContactID from User where id IN : userID and (NOT(Id IN: MemberIds))];
+            if(UserID.size() > 0){
+                UsrLst = [Select ID, ContactID from User where id IN : UserID and (NOT(Id IN: MemberIds))];
             }
             
-            if(usrLst.size() > 0){
-                for(User usr : usrLst){
+            if(UsrLst.size() > 0){
+                for(User usr : UsrLst){
                     if(usr.ContactID == null)
-                        useridRecMap.put(usr.id,usr.id);
+                        UseridRecMap.put(usr.id,usr.id);
                 }
             }
             
             //Check for IP's Case accounts and fetch FAEs under that Account    -- 4/18/2017    Manoj Kumar
-            if(accountID.size() > 0){
-                faesByAccount = Core_IPS_Helper_Utility.getFAEsByAccount(accountID);
+            if(AccountID.size() > 0){
+                faesByAccount = Core_IPS_Helper_Utility.getFAEsByAccount(AccountID);
             } //END --  Manoj Kumar
-            for (Core_IPS_Case_Interested_Party__c iP: iPList ) {
+            for (Core_IPS_Case_Interested_Party__c IP: IPList ) {
                 
-                if(iP.Contact__c != null){
-                    iP.User__c = mapofContactANDUser.get(iP.Contact__c);
+                if(IP.Contact__c != null){
+                    IP.User__c = MapofContactANDUser.get(IP.Contact__c);
                 }
                 else{
-                    iP.User__c = useridRecMap.get(iP.User__c);
-                    // Check if iP's User is part of iP's Case Account Team and provide respective Case access      -- 4/18/2017    Manoj Kumar 
+                    IP.User__c = UseridRecMap.get(IP.User__c);
+                    // Check if IP's User is part of IP's Case Account Team and provide respective Case access      -- 4/18/2017    Manoj Kumar 
                     if(faesByAccount!=null && faesByAccount.size()>0){
-                        for(Set<id> setID : faesByAccount.values()){
-                            if(((setID.contains(iP.User__c) && salesRepProfIds.contains(iP.User__r.ProfileId)) || iPAgentProfileIds.contains(IP.User__r.ProfileId))&& cTRInt.Id != Null){
-                                cTRIntId = cTRInt.Id;
+                        for(Set<id> SetID : faesByAccount.values()){
+                            if(((SetID.contains(IP.User__c) && SalesRepProfIds.contains(IP.User__r.ProfileId)) || IPAgentProfileIds.contains(IP.User__r.ProfileId))&& CTRInt.Id != Null){
+                                CTRIntId = CTRInt.Id;
                             }
                             else{
-                                if(cTRIntRead.Id != Null)
-                                cTRIntId = cTRIntRead.Id;
+                                if(CTRIntRead.Id != Null)
+                                CTRIntId = CTRIntRead.Id;
                             }
                         }//END  --  Manoj Kumar
                     }
                     else {
-                        if(iP.Case__r.AccountId == null && cTRInt.Id != Null){
-                            cTRIntId = cTRInt.Id;
+                        if(IP.Case__r.AccountId == null && CTRInt.Id != Null){
+                            CTRIntId = CTRInt.Id;
                         }
                     }
                 }
-                CaseTeamMember caseTeam = new CaseTeamMember();
-                caseTeam.parentId = iP.Case__c;
-                caseTeam.MemberId = iP.User__c;
+                CaseTeamMember CaseTeam = new CaseTeamMember();
+                CaseTeam.parentId = IP.Case__c;
+                CaseTeam.MemberId = IP.User__c;
 
-                if (iP.contact__c != null && cTRExt.Id != null) {
-                    caseTeam.TeamRoleId = cTRExt.Id;
+                if (IP.contact__c != null && CTRExt.Id != null) {
+                    CaseTeam.TeamRoleId = CTRExt.Id;
                 }
-                //Modified condition to check caseTeamRoleId based on iP's Case Account Team        -- 4/18/2017    Manoj Kumar     
-                else if (iP.User__c != null && iP.contact__c == null && !String.isBlank(cTRIntId)) {
-                    caseTeam.TeamRoleId = cTRIntId;
+                //Modified condition to check CaseTeamRoleId based on IP's Case Account Team        -- 4/18/2017    Manoj Kumar     
+                else if (IP.User__c != null && IP.contact__c == null && !String.isBlank(CTRIntId)) {
+                    CaseTeam.TeamRoleId = CTRIntId;
                 }//END  --  Manoj Kumar
 
-                if(caseTeam <> null && caseTeam.TeamRoleId <> null && caseTeam.MemberId <> null && caseTeam.parentId <> null)
-                    CaseTeamLst.add(caseTeam);
+                if(CaseTeam <> null && CaseTeam.TeamRoleId <> null && CaseTeam.MemberId <> null && CaseTeam.parentId <> null)
+                    CaseTeamLst.add(CaseTeam);
                 
             }
             
             
-            // Niyaz -- 12/06/2025 --- added as part of vulnerability fix,
-            if(Schema.sObjectType.CaseTeamMember.isCreateable() && CaseTeamLst.size()>0){ 
+            if(CaseTeamLst.size()>0) 
             Database.Insert(CaseTeamLst); 
-            } 
-        
             // start---- US1038333  ----25-06-2021----Farooq---- Interested party changes my Intel--
-            if(!Test.isRunningTest() && iPList.size()>0)
+            if(!Test.isRunningTest() && IPList.size()>0)
             { 
                 if(Core_Trigger_Executions__c.getValues('myIntelIntrestrestedPartiesHandler') != null){
                     if(Core_Trigger_Executions__c.getValues('myIntelIntrestrestedPartiesHandler').Core_Active__c){
                         projectMemberList = [select Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Core_Enterprise_Id__c, Core_IPS_Project__c from Core_IPS_Project_Member__c 
-                                             where Core_IPS_Project__c IN (select Core_IPS_Project_Case__c from Case where ID IN: caseIds) and Core_IPS_Contact_IPS_Active__c = true];
-                        System.enqueueJob(new Core_IPS_MyIntel_3_0(caseIds, 'Add', projectMemberList, iPList)); 
+                                             where Core_IPS_Project__c IN (select Core_IPS_Project_Case__c from Case where ID IN: CaseIds) and Core_IPS_Contact_IPS_Active__c = true];
+                        System.enqueueJob(new Core_IPS_MyIntel_3_0(CaseIds, 'Add', projectMemberList, IPList)); 
                     }
                 }
             }
@@ -188,95 +185,91 @@ public without sharing class Core_IPS_Case_Interested_Party_Handler{
     /*Deleting a CTM on IP Deletion*/
     public static void deleteIPFromCaseTeam(List<Core_IPS_Case_Interested_Party__c> oldList){
         try{
-            Set<String> concatCaseANDUser = new Set<String>();
-            List<CaseTeamMember> caseTeamList = new List<CaseTeamMember>();
-            Set<ID> caseIdSet = new Set<ID>();
-            Set<ID> userIdSet = new Set<ID>();
-            Set<ID> contactIdSet = new Set<ID>();
+            Set<String> ConcatCaseANDUser = new Set<String>();
+            List<CaseTeamMember> CaseTeamList = new List<CaseTeamMember>();
+            Set<ID> CaseIdSet = new Set<ID>();
+            Set<ID> UserIdSet = new Set<ID>();
+            Set<ID> ContactIdSet = new Set<ID>();
             
-            List<CaseTeamMember> cTMToBeDeletedLst = new List<CaseTeamMember>();
-            //Set<CaseTeamMember> cTMToBeDeletedSet = new Set<CaseTeamMember>();
+            List<CaseTeamMember> CTMToBeDeletedLst = new List<CaseTeamMember>();
+            //Set<CaseTeamMember> CTMToBeDeletedSet = new Set<CaseTeamMember>();
             
-            for(Core_IPS_Case_Interested_Party__c iP: oldList){
-                concatCaseANDUser.add(String.ValueOf(iP.Case__c) + String.ValueOf(iP.User__c));
-                caseIdSet.add(iP.Case__c);
-                userIdSet.add(iP.User__c);
-                contactIdSet.add(iP.Contact__c);
+            for(Core_IPS_Case_Interested_Party__c IP: oldList){
+                ConcatCaseANDUser.add(String.ValueOf(IP.Case__c) + String.ValueOf(IP.User__c));
+                CaseIdSet.add(IP.Case__c);
+                UserIdSet.add(IP.User__c);
+                ContactIdSet.add(IP.Contact__c);
             }
             
-            if(caseIdSet.size() > 0 && (userIdSet.size() > 0 || contactIdSet.size()>0)){
+            if(CaseIdSet.size() > 0 && (UserIdSet.size() > 0 || ContactIdSet.size()>0)){
                 //FLS check added-Venugopal
                 if(CaseTeamMember.SObjectType.getDescribe().isAccessible()){
-                caseTeamList = [Select ID, ParentId, MemberId from CaseTeamMember where ParentId IN:caseIdSet AND MemberId IN:userIdSet];
+                CaseTeamList = [Select ID, ParentId, MemberId from CaseTeamMember where ParentId IN:CaseIdSet AND MemberId IN:UserIdSet];
                 }
                 }
             
-            for(CaseTeamMember cTM: caseTeamList){
-                String parentIDStr = String.ValueOf(cTM.ParentId);
-                String memberIdStr = String.ValueOf(cTM.MemberId);
-                if(concatCaseANDUser.contains(parentIDStr+memberIdStr))
+            for(CaseTeamMember CTM: CaseTeamList){
+                String ParentIDStr = String.ValueOf(CTM.ParentId);
+                String MemberIdStr = String.ValueOf(CTM.MemberId);
+                if(ConcatCaseANDUser.contains(ParentIDStr+MemberIdStr))
                 {
-                    cTMToBeDeletedLst.add(cTM);
+                    CTMToBeDeletedLst.add(CTM);
                 }
             }
-            // Niyaz -- 12/06/2025 --- added as part of vulnerability fix,
-            if (Schema.sObjectType.CaseTeamMember.isDeletable() && cTMToBeDeletedLst.size() > 0) {
-            		delete cTMToBeDeletedLst;
-       	    }
-    		// Niyaz delete cTMToBeDeletedLst; 
-	} 
+            delete CTMToBeDeletedLst; 
+	    } 
 	    catch (Exception ex){ 
-	}
+	    }
     }
     
     /*Deleting a CTM on IP Inactivation*/
     public static void deleteIPFromCaseTeamonInactivation(List<Core_IPS_Case_Interested_Party__c> newList){
         try{
-            Set<String> concatCaseANDUser = new Set<String>();
-            List<CaseTeamMember> caseTeamList = new List<CaseTeamMember>();
-            Set<ID> caseIdSet = new Set<ID>();
-            Set<ID> userIdSet = new Set<ID>();
+            Set<String> ConcatCaseANDUser = new Set<String>();
+            List<CaseTeamMember> CaseTeamList = new List<CaseTeamMember>();
+            Set<ID> CaseIdSet = new Set<ID>();
+            Set<ID> UserIdSet = new Set<ID>();
             
-            List<CaseTeamMember> cTMToBeDeletedLst = new List<CaseTeamMember>();
-            //Set<CaseTeamMember> cTMToBeDeletedSet = new Set<CaseTeamMember>();
-            List<Core_IPS_Case_Interested_Party__c> createCTMfromIPlistonUpdate = new List<Core_IPS_Case_Interested_Party__c>();
-            for(Core_IPS_Case_Interested_Party__c iP: newList){
-                concatCaseANDUser.add(String.ValueOf(iP.Case__c) + String.ValueOf(iP.User__c));
-                caseIdSet.add(iP.Case__c);
-                if(iP.Active__c == false){
-                    userIdSet.add(iP.User__c);
+            List<CaseTeamMember> CTMToBeDeletedLst = new List<CaseTeamMember>();
+            //Set<CaseTeamMember> CTMToBeDeletedSet = new Set<CaseTeamMember>();
+            List<Core_IPS_Case_Interested_Party__c> CreateCTMfromIPlistonUpdate = new List<Core_IPS_Case_Interested_Party__c>();
+            for(Core_IPS_Case_Interested_Party__c IP: newList){
+                ConcatCaseANDUser.add(String.ValueOf(IP.Case__c) + String.ValueOf(IP.User__c));
+                CaseIdSet.add(IP.Case__c);
+                if(IP.Active__c == false){
+                    UserIdSet.add(IP.User__c);
                 }
                 else{
-                    createCTMfromIPlistonUpdate.add(iP);
+                    CreateCTMfromIPlistonUpdate.add(IP);
                 }
             }
             
-            if(caseIdSet.size() > 0 && userIdSet.size() > 0){
+            if(CaseIdSet.size() > 0 && UserIdSet.size() > 0){
                 //FLS check added-Venugopal
                 if(CaseTeamMember.SObjectType.getDescribe().isAccessible()){
-                caseTeamList = [Select ID, ParentId, MemberId from CaseTeamMember where ParentId IN:caseIdSet AND MemberId IN:userIdSet];
+                CaseTeamList = [Select ID, ParentId, MemberId from CaseTeamMember where ParentId IN:CaseIdSet AND MemberId IN:UserIdSet];
                 }
                 }
             
             //Creating a CTM on IP Re-Activation
-            if(createCTMfromIPlistonUpdate.size()>0){
+            if(CreateCTMfromIPlistonUpdate.size()>0){
                 Core_IPS_Case_IP_Dispatcher.DeleteCTM = true;
-                Core_IPS_Case_Interested_Party_Handler.insertIPToCaseTeam(createCTMfromIPlistonUpdate); 
+                Core_IPS_Case_Interested_Party_Handler.insertIPToCaseTeam(CreateCTMfromIPlistonUpdate); 
             }
             
             if(!Core_IPS_Case_IP_Dispatcher.DeleteCTM){
-                for(CaseTeamMember CTM: caseTeamList){
-                    String parentIDStr = String.ValueOf(CTM.ParentId);
-                    String memberIdStr = String.ValueOf(CTM.MemberId);
-                    if(concatCaseANDUser.contains(parentIDStr+memberIdStr))
+                for(CaseTeamMember CTM: CaseTeamList){
+                    String ParentIDStr = String.ValueOf(CTM.ParentId);
+                    String MemberIdStr = String.ValueOf(CTM.MemberId);
+                    if(ConcatCaseANDUser.contains(ParentIDStr+MemberIdStr))
                     {
-                        cTMToBeDeletedLst.add(CTM);
+                        CTMToBeDeletedLst.add(CTM);
                     }
                 }
             }
             
-            if(cTMToBeDeletedLst.size()>0)
-            delete cTMToBeDeletedLst; 
+            if(CTMToBeDeletedLst.size()>0)
+            delete CTMToBeDeletedLst; 
 	    } 
 	    catch (Exception ex){ 
 	    }
@@ -291,7 +284,7 @@ public without sharing class Core_IPS_Case_Interested_Party_Handler{
     *   
     ************************************************/
    /* public static void sendIntrestedParties(List<Core_IPS_Case_Interested_Party__c> oldList){
-        List<Core_IPS_Case_Interested_Party__c> iPList = new List<Core_IPS_Case_Interested_Party__c>();
+        List<Core_IPS_Case_Interested_Party__c> IPList = new List<Core_IPS_Case_Interested_Party__c>();
         if(Core_Trigger_Executions__c.getValues('myIntelIntrestrestedPartiesHandler') != null){
             if(Core_Trigger_Executions__c.getValues('myIntelIntrestrestedPartiesHandler').Core_Active__c){
                 try{
@@ -300,18 +293,18 @@ public without sharing class Core_IPS_Case_Interested_Party_Handler{
                     List<Core_IPS_Project_Member__c> projectMemberList = new List<Core_IPS_Project_Member__c>();
                     //FLS check added-Venugopal
                     if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-                    iPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: oldList];
+                    IPList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from Core_IPS_Case_Interested_Party__c where id IN: oldList];
                     }
-                    for(Core_IPS_Case_Interested_Party__c iP: oldList){
+                    for(Core_IPS_Case_Interested_Party__c IP: oldList){
                         
-                        CaseIdList.add(iP.Case__c);
+                        CaseIdList.add(IP.Case__c);
                     }
                     // start----   ----25-06-2021----Farooq---- Interested party changes my Intel-- 
-                    if(!Test.isRunningTest() && iPList.size()>0)
+                    if(!Test.isRunningTest() && IPList.size()>0)
                     { 
                         projectMemberList = [select Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Core_Enterprise_Id__c, Core_IPS_Project__c from Core_IPS_Project_Member__c 
                                              where Core_IPS_Project__c IN (select Core_IPS_Project_Case__c from Case where ID IN: CaseIdList) and Core_IPS_Contact_IPS_Active__c = true];
-                        System.enqueueJob(new Core_IPS_MyIntel_3_0(new List<Id>(CaseIdList), 'Remove', projectMemberList, iPList));
+                        System.enqueueJob(new Core_IPS_MyIntel_3_0(new List<Id>(CaseIdList), 'Remove', projectMemberList, IPList));
                     }
                     
                 }catch(Exception e){

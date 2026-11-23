@@ -62,8 +62,7 @@
                 <field>Core_MDF_Integrated_Campaign_Details__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Activity_Approval_Required_Ind__c</field>
+                <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

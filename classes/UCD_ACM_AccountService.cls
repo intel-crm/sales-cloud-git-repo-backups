@@ -130,15 +130,22 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                     if(Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_API_Name__c == 'Account'){
                         acctAttrs = String.isNotBlank(acctAttrs) ? (acctAttrs + ',' + Meta.Field_API_Name__c) : Meta.Field_API_Name__c;
                     }
+                    else if (Label.PerformScreeningFromCWLObject == 'true' && Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_API_Name__c == System.Label.Object_API_Name_CWL ){
+                        cwlAttrs = String.isNotBlank(cwlAttrs) ? (cwlAttrs + ',' + Meta.Field_API_Name__c) : Meta.Field_API_Name__c;
+                        }
                     else if (Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_API_Name__c == System.Label.Object_API_Name_CPE ){
                         cpeAttrs = String.isNotBlank(cpeAttrs) ? (cpeAttrs + ',' + Meta.Field_API_Name__c) : Meta.Field_API_Name__c;   
                         }
                     }
             }
             Map<Id,Account> AccountMap = new Map<Id,Account>();
+            Map<Id,List<Core_Account_Compliance_Watch_List__c>> ComplianceMap  = new Map<Id,List<Core_Account_Compliance_Watch_List__c>>();
             Map<Id,List<Business_Types__c>> EngagementMap  = new Map<Id,List<Business_Types__c>>();
             if(String.isNotBlank(acctAttrs)){
                 AccountMap= accountQuerySelectorInstance.getAccountsByIds(AccountId,acctAttrs);
+            }
+            if(String.isNotBlank(cwlAttrs)){
+                ComplianceMap = accountQuerySelectorInstance.getComplianceWatchListByAccountId(AccountId,cwlAttrs);
             }
             if(String.isNotBlank(cpeAttrs)){
                 EngagementMap = accountQuerySelectorInstance.getBusinessTypesByAccountId(AccountId,cpeAttrs);
@@ -151,6 +158,11 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                     List<UCD_ACM_BusinessOrganizationModel.cusProcEng> cusProcEngInfo= new  List<UCD_ACM_BusinessOrganizationModel.cusProcEng>();                     
                     if(AccountMap != null){
                     Account accInfo = AccountMap.get(requestModel.BusinessOrganization.AccountId[i]);
+                    
+                    List<Core_Account_Compliance_Watch_List__c> complist = new List<Core_Account_Compliance_Watch_List__c>();
+                    if(ComplianceMap != null && ComplianceMap.get(requestModel.BusinessOrganization.AccountId[i]) != null){
+                        complist = ComplianceMap.get(requestModel.BusinessOrganization.AccountId[i]);
+                    }
                     
                     List<Business_Types__c> Engagelist = new List<Business_Types__c>();
                     if(EngagementMap != null && EngagementMap.get(requestModel.BusinessOrganization.AccountId[i]) != null){
@@ -207,16 +219,29 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                             }
 
                             if(attribute.AttributeName == 'AccountComplianceDetails'){
-                                if(accInfo.Core_Compliance_Watch_List_Type__c!=null){
-                                    List<String> complianceWatchListValues=accInfo.Core_Compliance_Watch_List_Type__c.split(';');
-                                    for(String cwlValue : complianceWatchListValues){
-                                        UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails accountComplianceInfo = new UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails();
-                                        accountComplianceInfo.Name=UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue);
-                                        accountComplianceInfo.Code = cwlValue;
-                                        accountCompliancesInfo.add(accountComplianceInfo); 
+                                if(Label.PerformScreeningFromCWLObject == 'true'){
+                                    if(complist.size()>0){
+                                        for(Core_Account_Compliance_Watch_List__c comp:compList){
+                                            UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails accountComplianceInfo = new UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails();
+                                            accountComplianceInfo.Name = UCD_ACM_Utils.getPicklistLabel('Core_Account_Compliance_Watch_List__c','Core_Type__c',comp.Core_Type__c);
+                                            accountComplianceInfo.Code = comp.Core_Type__c;
+                                            accountCompliancesInfo.add(accountComplianceInfo); 
+                                        }
+                                        responseData.AccountComplianceDetails = accountCompliancesInfo;
                                     }
                                 }
-                                responseData.AccountComplianceDetails = accountCompliancesInfo;
+                                else{
+                                    if(accInfo.Core_Compliance_Watch_List_Type__c!=null){
+                                        List<String> complianceWatchListValues=accInfo.Core_Compliance_Watch_List_Type__c.split(';');
+                                        for(String cwlValue : complianceWatchListValues){
+                                            UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails accountComplianceInfo = new UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails();
+                                            accountComplianceInfo.Name=UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue);
+                                            accountComplianceInfo.Code = cwlValue;
+                                            accountCompliancesInfo.add(accountComplianceInfo); 
+                                        }
+                                    }
+                                    responseData.AccountComplianceDetails = accountCompliancesInfo;
+                                }
                             }
                             if(attribute.AttributeName == 'AccountAddressInformation'){
                                 accountAddressesInfo.add(getAccountAddressInfo(accInfo,'Billing'));
@@ -289,11 +314,12 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
             try {
                 Map<Id, Account> parentAccountById = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent());
                 Map<Id,List<Business_Types__c>> businessTypesByAccountId = accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
+                Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId = Label.PerformScreeningFromCWLObject == 'true' ? accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds, model.getComplianceWatchListQueryForEvent()) : null;
                 // Publish event 
                 For(Account account: accounts) {
 
                     UCD_ACM_Models.PE_HeaderResponse mappedHeaderResponse = new UCD_ACM_Models.PE_HeaderResponse();
-                    UCD_ACM_Models.AccountResponseModel mappedResponse = UCD_ACM_AccountDomain.mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId);
+                    UCD_ACM_Models.AccountResponseModel mappedResponse = UCD_ACM_AccountDomain.mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId,complianceWatchListByAccountId);
                     mappedHeaderResponse = businessTypesByAccountId != null && businessTypesByAccountId.containsKey(account.Id) && businessTypesByAccountId.get(account.Id).size() > 0?headerModel.mapAccountsToHeaders(account,businessTypesByAccountId.get(account.Id)):headerModel.mapAccountsToHeaders(account,null);
                     ACM_Account_Change_Event__e accountChangeEvent=new ACM_Account_Change_Event__e(Message__c = JSON.serialize(mappedResponse,true),Headers__c = JSON.serialize(mappedHeaderResponse,true));
                     accountChangeEvents.add(accountChangeEvent);
@@ -374,6 +400,37 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
         UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
         return accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
     }
+    
+    public Map<Id,String> getComplianceWatchListByAccountId(Set<Id> accountIds){
+        List<Schema.PicklistEntry> watchlistTypes = Core_Account_Compliance_Watch_List__c.Core_Type__c.getDescribe().getPicklistValues();
+        Map<String,String> complianceWatchListLabelByType = new Map<String,String>();
+        For(Schema.PicklistEntry watchlistType : watchlistTypes){
+            complianceWatchListLabelByType.put(watchlistType.getValue(), watchlistType.getLabel());
+        }
+        String query ='Id,Core_Account_Id__c,Core_Type__c,Core_Effective_End_Date__c';
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> mapOfCompliancesByAccountId = accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds,query);
+        Map<Id,String> complianceWatchListByAccountId = new Map<Id,String>();
+        For(Id accountId : accountIds){
+            if(mapOfCompliancesByAccountId != null && mapOfCompliancesByAccountId.containsKey(accountId)){
+                for(Core_Account_Compliance_Watch_List__c complianceWatchList : mapOfCompliancesByAccountId.get(accountId)){
+                    if(complianceWatchListByAccountId.containsKey(accountId)){
+                        String watchListType = complianceWatchListByAccountId.get(accountId);
+                        watchListType = watchListType+', '+complianceWatchListLabelByType.get(complianceWatchList.Core_Type__c);
+                        complianceWatchListByAccountId.put(accountId,watchListType);
+                    }else{
+                        complianceWatchListByAccountId.put(accountId,complianceWatchListLabelByType.get(complianceWatchList.Core_Type__c));
+                    }
+                }
+            }
+        }
+        if(complianceWatchListByAccountId != null && complianceWatchListByAccountId.size() > 0){
+            return complianceWatchListByAccountId;
+        }
+        return null;
+    }
+
+
+
 
     /*
     * description : Publish Platform Events for Account Request Queue.
@@ -391,6 +448,8 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
         Map<Id, Account> AccountsById = new Map<Id, Account>();
         Map<Id, Account> parentAccountById = new  Map<Id, Account>();
         Map<Id,List<Business_Types__c>> businessTypesByAccountId = new Map<Id,List<Business_Types__c>>();
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId = new Map<Id,List<Core_Account_Compliance_Watch_List__c>>();
+
         //Create Instance for AccountSelector and initialize models and platform event class
         UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
         UCD_ACM_Models.PE_HeaderResponse headerModel = new UCD_ACM_Models.PE_HeaderResponse();
@@ -419,6 +478,7 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                 }
 
                 businessTypesByAccountId = accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
+                complianceWatchListByAccountId = Label.PerformScreeningFromCWLObject == 'true' ? accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds, model.getComplianceWatchListQueryForEvent()) : null;
             }
 
             // Publish event
@@ -429,7 +489,7 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                     
                     Account account = AccountsById != null && accountRequest.Requested_Account__c != null && AccountsById.get(accountRequest.Requested_Account__c ) != null ? AccountsById.get(accountRequest.Requested_Account__c ) : null;
 
-                    mappedResponse =  UCD_ACM_AccountDomain.mapAccountRequestQueueResponseModel(accountRequest, account, parentAccountById, businessTypesByAccountId);
+                    mappedResponse =  UCD_ACM_AccountDomain.mapAccountRequestQueueResponseModel(accountRequest, account, parentAccountById, businessTypesByAccountId, complianceWatchListByAccountId);
                     mappedHeaderResponse = accountRequest.Requested_Account__c != null ? businessTypesByAccountId != null && businessTypesByAccountId.containsKey(accountRequest.Requested_Account__c) && businessTypesByAccountId.get(accountRequest.Requested_Account__c).size() > 0  ? headerModel.mapAccountsToHeaders(account,businessTypesByAccountId.get(accountRequest.Requested_Account__c)): headerModel.mapAccountsToHeaders(account,null) : null;
 
                     ACM_Account_Request_Event__e accountChangeEvent = new ACM_Account_Request_Event__e(Message__c = JSON.serialize(mappedResponse,true),Headers__c = JSON.serialize(mappedHeaderResponse,true));

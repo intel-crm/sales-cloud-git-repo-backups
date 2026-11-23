@@ -17,11 +17,7 @@ Start Method updated with logic to check if older batch is still processing then
 global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject>, Database.stateful {
     public static Set<Id> processedIds = new Set<Id>();
     global set<string> regIds = new Set<String>();
-	public static final String LOG_ENTRY_ORIGIN  = 'PRM_RegistrationApprovalEmail';
-	public static final String LOG_ENTRY_PROJECT = 'IPA';
-	public static final String LOG_ENTRY_SCOPE   = 'SendWelcomeEmail';
-	public static final String LOG_ENTRY_SEVERITY = 'Medium';
-
+    global string logentries;
     
     // US821810-Start method will return null query if existing batch is in processing status.
     global Database.QueryLocator start(Database.BatchableContext bc) {
@@ -48,18 +44,13 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
     }
     
     global void execute(Database.BatchableContext bc, List<PRM_EmailQueue__c> emailQueueList) {
-	    String errorMsg = '\n[Execute START] Records: ' + emailQueueList.size();
         for (PRM_EmailQueue__c eq : emailQueueList) {
             regIds.add(eq.PRM_Registration_Request__c);
         }
         try {
             sendWelcomeEmail(emailQueueList);
-
         } catch (Exception e) {
-			errorMsg += '\nException: ' + e.getMessage();
-			errorMsg += '\nStackTrace: ' + e.getStackTraceString();
-			createLogEntry(errorMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-
+            logentries = PRM_ErrorUtilityClass.logError(e);
         }
     }
     
@@ -72,7 +63,8 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
         Map<String, PRM_EmailLog__c> mapOfEmailLog = new Map<String, PRM_EmailLog__c>();
         Set<String> regIdSet = new Set<String>(); // TWC729-4865 : to store Registration Request Id
         //boolean ipaRefresh = Boolean.valueOf(label.PRM_IPARefresh); // :RUBY - IPA 2.0 ADDED BY DINESH
-        String errorMsg = '\n[sendWelcomeEmail START]';
+        String errorMsg='';
+        errorMsg = '***sendWelcomeEmail***';
         try {
             List<PRM_EmailConfiguration__mdt> emailConfigList = [
                 SELECT Id, PRM_BusinessEvent__c, PRM_PartnerRole__c, PRM_Entitlement_List__c, PRM_Priority__c, PRM_Tier__c
@@ -94,7 +86,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     mapEmailConfiguration.put((emailCon.PRM_BusinessEvent__c + emailCon.PRM_PartnerRole__c).toLowercase(), emailCon);
                  }
             }
-            errorMsg+= '\nmapEmailConfiguration : '+mapEmailConfiguration.keySet();
+            errorMsg = '***mapEmailConfiguration : '+mapEmailConfiguration+'***';
             Map<id, Contact> mapContact = new Map<id, Contact>();
             List<Id> conIds = new List<Id>();
             for (PRM_EmailQueue__c eq : emailQueueList) {
@@ -135,7 +127,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                 for(AggregateResult result : aggrResult){
                     accountIdToBnftMap.put((Id)result.get('PRM_Account_Id__c'), (integer)result.get('benefitsCount'));
                 }
-			errorMsg += '\naccountIdToBnftMap : ' + accountIdToBnftMap;
+                errorMsg = '***accountIdToBnftMap : '+accountIdToBnftMap+'***';
             }
             
             Map<String, String> mapOfContactEntitlement = new Map<String, String>();
@@ -155,7 +147,6 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     mapOfContactandBusinessEvent.put(ec.PRM_Contact__c, ec.PRM_Business_Event__c);
                 }
             }
-	        errorMsg += '\npartnerRoleEmailQueueMap : ' + partnerRoleEmailQueueMap.keySet();
             
             Map<String, Set<String>> mapOfQueueContactEntitlement = new Map<String, Set<String>>();
             for (String contactId : mapOfContactEntitlement.keySet()) {
@@ -190,7 +181,6 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                 finalCoreContactEntitlement.add(ce.Core_Entitlement_Id__r.Name);
                 mapfinalCoreContactEntitlement.put(ce.Core_Contact_Id__c, finalCoreContactEntitlement);
             }
-	        errorMsg += '\nmapfinalCoreContactEntitlement : ' + mapfinalCoreContactEntitlement;
 
             Set<String> contactIdsToProcess = new Set<String>();
             for (String finalContactId : mapOfQueueContactEntitlement.keySet()) {
@@ -206,7 +196,6 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     }
                 }
             }
-	        errorMsg += '\ncontactIdsToProcess: ' + contactIdsToProcess;
             
             Map<String, PRM_Language_Culture_Mapping__mdt> mapLangAndCountryToCulture = new Map<String, PRM_Language_Culture_Mapping__mdt>();
             for (PRM_Language_Culture_Mapping__mdt lngCultureMdt : [
@@ -228,7 +217,6 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     WHERE PRM_Contact_Id__c IN :contactIdsToProcess
                     ORDER BY CreatedDate
                 ];
-				
                 List<PRM_EmailUtility.EmailNotification> notiflist = new List<PRM_EmailUtility.EmailNotification>();
                 for (Contact con : [
                     SELECT Id,email, MailingCountryCode, Core_Preferred_Language__c
@@ -249,7 +237,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     }
                     
                     if (/*(partnerRoleEmailQueueMap.keySet().contains(con.Id) && !ipaRefresh) ||*/ (/*ipaRefresh &&*/ partnerRoleEmailQueueMap.keySet().contains(con.Id) && contactWrapperMap.get(con.Id).onePartnerId!=null && accountIdToBnftMap.containsKey(contactWrapperMap.get(con.Id).onePartnerId) && accountIdToBnftMap.get(contactWrapperMap.get(con.Id).onePartnerId) > 0)) {
-                        errorMsg += '\n***next is email utility creation***';
+                        errorMsg = '***next is email utility creation***';
                         PRM_EmailUtility.EmailNotification objEmailNotif = new PRM_EmailUtility.EmailNotification();
                         map<String, String> inputParameters = new Map<String, String>();
                         objEmailNotif.InputParameters = inputParameters;
@@ -286,14 +274,16 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                         }
                     }
                 }
-		        errorMsg += '\nmapOfContactEmailtoId: ' + mapOfContactEmailtoId;
                 if (!notiflist.isEmpty()) {
-					errorMsg += '\nSending emails count: ' + notiflist.size();
-					
+                    errorMsg = '***notiflist : '+notiflist+'***';
+                    Core_Log_Entry__c logEntry = new Core_Log_Entry__c(); 
+                    logEntry.Core_Details__c = errorMsg;
+                    logEntry.Core_Origin__c = 'Entitlement Trigger Handler';
+                    logEntry.Core_Severity__c = 'Low';
+                    logEntry.Core_When__c = system.now();
+                    logEntry.Core_Project__c = 'IPA';
+                    insert logEntry;
                     regIdSet = PRM_EmailUtility.sendEmail(notiflist);
-					errorMsg += '\nEmails sent. RegId count: ' + regIdSet.size();
-					
-		      
                 }
                 
                 if (!regIdSet.IsEmpty() && Trigger.isExecuting) {
@@ -371,14 +361,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     }
                 }
             }
-			errorMsg += '\n[sendWelcomeEmail END]';
-			createLogEntry(errorMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-			
         } catch (Exception e) {
-			errorMsg += '\nERROR in sendWelcomeEmail: ' + e.getMessage();
-			errorMsg += '\nStackTrace: ' + e.getStackTraceString();
-			createLogEntry(errorMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-
             List<PRM_EmailQueue__c> emailQueueListUpdated = mapOfProcessContactId.values();
             if (emailQueueListUpdated.isEmpty()) {
                 emailQueueListUpdated = new List<PRM_EmailQueue__c>();
@@ -390,7 +373,6 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                 }
             }
             Database.update(emailQueueListUpdated, false);
-	    
         }
     }
     
@@ -407,18 +389,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
             WHERE Id = :bc.getJobId()
         ];
         if (regIds.size() > 0 && System.Label.PRM_Tracker_Enabled == 'true') {
-            System.enqueueJob(new PRM_RegistrationTrackerUtility.UpdateTrackerSteps(regIds, null, null, 'PRM_RegistrationApprovalEmail', null));
+            System.enqueueJob(new PRM_RegistrationTrackerUtility.UpdateTrackerSteps(regIds, null, logentries, 'PRM_RegistrationApprovalEmail', null));
         }
     }
-	public static void createLogEntry(String message,String origin,String project,String scope,String severity) {
-    String jobTime = System.now().format('MM/dd/yyyy HH:mm:ss', 'PST');
-    if (String.isNotBlank(message)) {
-        PRM_ProcessInboundOPIDLogEntriesUtility logEntryUtility = new PRM_ProcessInboundOPIDLogEntriesUtility();
-        Integer fieldLength = Schema.SObjectType.Core_Log_Entry__c.fields.Core_Details__c.getLength();
-        logEntryUtility.addLogEntry(message, fieldLength);
-        for (Integer i = 0; i < logEntryUtility.logEntryList.size(); i++) {
-            Core_Log_Entry.logEntryWithDetails(origin,project,scope,severity,'Batch log at: ' + jobTime,logEntryUtility.logEntryList[i],'','','');
-        }
-    }
-}
 }

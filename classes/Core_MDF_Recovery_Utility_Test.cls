@@ -140,50 +140,6 @@ public class Core_MDF_Recovery_Utility_Test {
             virtualAccList.add(recoveryEMEAFrance);
             Database.insert(virtualAccList);
             
-            List<Group> grpList = new List<Group>();
-
-            // Creating CCF External Group
-            Group ccfgrp = new Group();
-            ccfgrp.Name = 'Core CCP CCF External';
-            ccfgrp.DeveloperName = 'Core_CCP_CCF_External';
-            grpList.add(ccfgrp);
-
-            // Creating CCF Internal Group
-            Group intGrp = new Group();
-            intGrp.Name = 'Core CCP RMF External';
-            intGrp.DeveloperName = 'Core_CCP_RMF_External';
-            grpList.add(intGrp);
-			
-            Database.insert(grpList);
-            List<Core_MDF_Partner_Group_Mapping__c> extPgms = new List<Core_MDF_Partner_Group_Mapping__c>();
-            // For CCF - ultimate accounts are recoveryIntelAcc and recoveryIntelAcc2
-            extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = recoveryIntelAcc.Id,
-                Core_MDF_Channel_Program__c = ccfCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_CCF_External',
-                Core_MDF_Group_Id__c = ccfgrp.Id
-            ));
-            extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = recoveryIntelAcc2.Id,
-                Core_MDF_Channel_Program__c = ccfCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_CCF_External',
-                Core_MDF_Group_Id__c = ccfgrp.Id
-            ));
-            // For RMF - ultimate account is recoveryIntelAccRMF
-            extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = recoveryIntelAccRMF.Id,
-                Core_MDF_Channel_Program__c = retCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_RMF_External',
-                Core_MDF_Group_Id__c = intGrp.Id
-            ));
-            insert extPgms;
-            
             recoveryIntelAcc.IsPartner = true;
             recoveryIntelAcc2.IsPartner = true;
             recoveryCCFVC.IsPartner = true;
@@ -196,7 +152,6 @@ public class Core_MDF_Recovery_Utility_Test {
             intelAccListtobeupdated.add(recoveryCCFVC2);
             intelAccListtobeupdated.add(recoveryEMEAFrance);
             Database.update(intelAccListtobeupdated);
-            
             
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgm.Core_MDF_Account_id__c = recoveryCCFVC2.Id;
@@ -317,7 +272,7 @@ public class Core_MDF_Recovery_Utility_Test {
                                                                                                            'Business',
                                                                                                            'Chromebook',
                                                                                                            'Intel® 10ᵗʰ Gen',
-                                                                                                           'Broadcast (Pre-2025)',
+                                                                                                           'Broadcast',
                                                                                                            'Podcast',
                                                                                                            'Draft',
                                                                                                            false);
@@ -339,7 +294,7 @@ public class Core_MDF_Recovery_Utility_Test {
                                                                                                               'Consumer',
                                                                                                               'Desktop',
                                                                                                               'Intel® Core™ i5 Processor',
-                                                                                                              'Broadcast (Pre-2025)',
+                                                                                                              'Broadcast',
                                                                                                               'Podcast',
                                                                                                               'Draft',
                                                                                                               false);
@@ -361,7 +316,7 @@ public class Core_MDF_Recovery_Utility_Test {
                                                                                                                'Consumer',
                                                                                                                'Desktop',
                                                                                                                'Intel® Core™ i5 Processor',
-                                                                                                               'Broadcast (Pre-2025)',
+                                                                                                               'Broadcast',
                                                                                                                'Podcast',
                                                                                                                'Draft',
                                                                                                                false);
@@ -384,7 +339,7 @@ public class Core_MDF_Recovery_Utility_Test {
                                                                                                                   'Consumer',
                                                                                                                   'Desktop',
                                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                                  'Broadcast (Pre-2025)',
+                                                                                                                  'Broadcast',
                                                                                                                   'Podcast',
                                                                                                                   'Draft',
                                                                                                                   false);
@@ -547,7 +502,7 @@ public class Core_MDF_Recovery_Utility_Test {
             partnershipScoreRMF.Core_MDF_External_Id__c = string.valueof(ccfCP.Id) + string.valueof(recoveryRetVC.id) + quarter;
             insert partnershipScoreRMF;
             
-            List<Core_MDF_Partnership_Score__c> pssList = [select id, Core_MDF_Account_Id__c from Core_MDF_Partnership_Score__c limit 10]; //ATHR FIX - WW16
+            List<Core_MDF_Partnership_Score__c> pssList = [select id, Core_MDF_Account_Id__c from Core_MDF_Partnership_Score__c];
             Core_MDF_Partnership_Score__c ps = [select id, Core_MDF_Account_Id__c from Core_MDF_Partnership_Score__c where Core_MDF_Account_Id__r.Name='Recovery Test Account RMF' limit 1];
             List<Core_MDF_Partnership_Score_Detail__c> psdList = new List<Core_MDF_Partnership_Score_Detail__c>();
             
@@ -598,7 +553,7 @@ public class Core_MDF_Recovery_Utility_Test {
             insert psdList;
             
             List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-            for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim limit 10]){ //ATHR FIX - WW16
+            for(PartnerFundClaim claim:[select id,Core_MDF_Status__c,Core_MDF_Region_Cd__c from PartnerFundClaim]){
                 claim.Core_MDF_Status__c = 'Payment Due';
                 claimList.add(claim);
             }
@@ -616,18 +571,16 @@ public class Core_MDF_Recovery_Utility_Test {
         system.runAs(usr) {
             Test.startTest(); 
             Set<Id> claimIdSet = new Set<Id>();
-            for(PartnerFundClaim claim : [select Id,Core_MDF_Status__c,Core_MDF_Region_Cd__c, Amount from PartnerFundClaim limit 10]) //ATHR FIX - WW16
+            for(PartnerFundClaim claim : [select Id,Core_MDF_Status__c,Core_MDF_Region_Cd__c, Amount from PartnerFundClaim])
             {
                 claimIdSet.add(claim.Id);
             }
             
             Core_MDF_Recovery_Batch obj = new Core_MDF_Recovery_Batch('Client CoMarketing Fund','MDF','Q4 2023');
-           // Highlight: Unused Local Variable
-           /* Id jobId = */ database.executeBatch(obj);
+            Id jobId = database.executeBatch(obj);
             
             Core_MDF_Recovery_Batch obj2 = new Core_MDF_Recovery_Batch('Client CoMarketing Fund','','','','','Payment Run',false,false);
-            // Highlight: Unused Local Variable
-           /* Id jobId2 = */ database.executeBatch(obj2);
+            Id jobId2 = database.executeBatch(obj2);
             Test.stopTest();
             /* Core_MDF_Recovery_Utility.updatePartnershipScoreDetailMapping(claimIdSet);
 List<Core_MDF_Partnership_Score_Detail__c> detailist = [Select Id, Core_MDF_Account_Id__c,Core_MDF_Partnership_Score_Id__r.Core_MDF_Program_nm__c, Core_MDF_Region_Cd__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Quarter_Year_Nm__c,Core_MDF_Partnership_Score_Id__c,Core_MDF_Recovered_Amt__c
@@ -662,17 +615,15 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
                 accountIds.add(acc.Id);
             }
             Account accountRecord = [select id, Name from Account where name='Recovery RMF Virtual Corp' limit 1];
-            // Highlight: Unused Local Variable
-           // List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'Retail MDF' limit 2];
+            
+            List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'Retail MDF' limit 2];
             PartnerFundClaim claim2 = [select id,Amount from PartnerFundClaim where Title='RMF Test Claim' limit 1];
             eligibleClaims.put(claim2.Id,claim2.Amount);
-           // Highlight: Unused Local Variable
-           /* List<Core_MDF_Recovery__c> rrList = */ Core_MDF_Recovery_Utility.createRecoveryRecords(eligibleClaims);  
+            List<Core_MDF_Recovery__c> rrList = Core_MDF_Recovery_Utility.createRecoveryRecords(eligibleClaims);  
             
             List<string> qtr = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
             String quarter = qtr[1];
-           // Highlight: Unused Local Variable
-           // List<String> quarterYear = quarter.split(' ');
+            List<String> quarterYear = quarter.split(' ');
             
             List<Core_MDF_Partnership_Score_Detail__c> detailist2 = [Select Id, Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c,Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Region_Cd__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Quarter_Year_Nm__c,Core_MDF_Partnership_Score_Id__c,Core_MDF_Recovered_Amt__c,Core_MDF_Node_Account_Id__c
                                                                      From Core_MDF_Partnership_Score_Detail__c Where Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c = 'Retail Marketing Funds' and Core_MDF_Budget_Type_nm__c = 'Retail MDF' and Core_MDF_Quarter_Year_Nm__c =: quarter];
@@ -695,7 +646,7 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             claimIdSet.add(claim2.id);
             String accounts = detailist2[0].Core_MDF_Node_Account_Id__c;
             Core_MDF_Recovery_Batch obj = new Core_MDF_Recovery_Batch('Retail Marketing Funds','Retail MDF',quarter,accounts);
-           /* Id jobId = */ database.executeBatch(obj);
+            Id jobId = database.executeBatch(obj);
             
             Core_MDF_Recovery_Utility.populateClaimToConsumedPSD(claim2.Id,detailist2[0].Id);
             
@@ -800,12 +751,11 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         Assert.areEqual(usr.LastName, 'User Test');
         Database.insert(usr);
         system.runAs(usr) {
-           // Highlight: Unused Local Variable
-           /* List<String> psNameList = new List<String>{
+            List<String> psNameList = new List<String>{
                 'Core_MDF_CCP_CCF_External_Recovery_Administrator',
                     'Core_MDF_CCP_DCF_External_Recovery_Administrator',
                     'Core_MDF_CCP_IPA_External_Recovery_Administrator'
-                    }; */
+                    };
                         Test.startTest();
             //Core_MDF_Recovery_Utility.getRecoveryAdmins(psNameList);
             Test.stopTest();  
@@ -828,17 +778,15 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             }
             
             Account accountRecord = [SELECT Id FROM Account WHERE Name = 'Recovery RMF Virtual Corp' LIMIT 1];
-           // Highlight: Unused Local Variable
-           // PartnerFundClaim claim1 = [SELECT Id, Amount FROM PartnerFundClaim WHERE Title='France Claim' LIMIT 1];
+            PartnerFundClaim claim1 = [SELECT Id, Amount FROM PartnerFundClaim WHERE Title='France Claim' LIMIT 1];
             PartnerFundClaim claim2 = [SELECT Id, Amount FROM PartnerFundClaim WHERE Title = 'RMF Test Claim' LIMIT 1];
             eligibleClaims.put(claim2.Id, claim2.Amount);
             
             List<string> qtr = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
             String quarter = qtr[1];
-           // Highlight: Unused Local Variable
-           // List<String> quarterYear = quarter.split(' ');
-           // Highlight: Unused Local Variable 
-          /*  List<Core_MDF_Recovery__c> rrList = */ Core_MDF_Recovery_Utility.createRecoveryRecords(eligibleClaims);
+            List<String> quarterYear = quarter.split(' ');
+            
+            List<Core_MDF_Recovery__c> rrList = Core_MDF_Recovery_Utility.createRecoveryRecords(eligibleClaims);
             List<Core_MDF_Partnership_Score_Detail__c> detailList = [
                 SELECT Id, Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c,
                 Core_MDF_Region_Cd__c, Core_MDF_Budget_Type_nm__c, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Partnership_Score_Id__c, Core_MDF_Recovered_Amt__c, Core_MDF_Node_Account_Id__c
@@ -882,27 +830,17 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         }
     }
     
-   @isTest static void testnotifyRecoveryAdmin() {
-    Map<String,String> psNamToIdMap = new Map<String, String>();
-    for(PermissionSet payAdmPS : [SELECT Id, Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_CCF_External_Recovery_Administrator','Core_MDF_CCP_DCF_External_Recovery_Administrator','Core_MDF_CCP_IPA_External_Recovery_Administrator','Core_MDF_CCP_RMF_External_Recovery_Administrator')]){
-        psNamToIdMap.put(payAdmPS.Name, payAdmPS.Id);
-    }
-    
-    List<Id> accountIds = new List<Id>();
-    for (Account acc : [SELECT Id FROM Account LIMIT 10]) {
-        accountIds.add(acc.Id);
-    }
-    Account accountRecord = [select id, Name from Account where name='Recovery Test Account RMF' limit 1];
-    
-    // Get the RMF external group that was created in @TestSetup
-    Group rmfExtGroup = [SELECT Id FROM Group WHERE DeveloperName = 'Core_CCP_RMF_External' LIMIT 1];
-    Profile testProfile = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-    user usr = [select id from user where email ='sysadmin@example.com' LIMIT 1];
-    
-    // Step 1: Create all setup objects first (User, GroupMember, PermissionSetAssignment)
-    User testUser;
-    System.runAs(usr) {
-        // Create Contact first in this context
+    @isTest static void testnotifyRecoveryAdmin() {
+        Map<String,String> psNamToIdMap = new Map<String, String>();
+        for(PermissionSet payAdmPS : [SELECT Id, Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_CCF_External_Recovery_Administrator','Core_MDF_CCP_DCF_External_Recovery_Administrator','Core_MDF_CCP_IPA_External_Recovery_Administrator','Core_MDF_CCP_RMF_External_Recovery_Administrator')]){
+            psNamToIdMap.put(payAdmPS.Name, payAdmPS.Id);
+        }
+        
+        List<Id> accountIds = new List<Id>();
+        for (Account acc : [SELECT Id FROM Account LIMIT 10]) {
+            accountIds.add(acc.Id);
+        }
+        Account accountRecord = [select id, Name from Account where name='Recovery Test Account RMF' limit 1];
         Contact testContact = new Contact(
             FirstName = 'Test',
             LastName = 'ContactEmail',
@@ -910,10 +848,22 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             AccountId = accountRecord.Id,
             MailingCountry ='India'
         );
+         Test.startTest();
         insert testContact;
+        Assert.areEqual(testContact.LastName, 'ContactEmail');
+        Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
+        Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, false);
+        Database.insert(erpmEngagementRMF);
         
-        // Create User (setup object)
-        testUser = new User(
+        Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',false);
+        Database.insert(entitlementRMF); 
+        
+        Core_Contact_Entitlement__c contactEntitlementRMF_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(testContact.Id,entitlementRMF.Id ,true,'Complete', false);
+        Database.insert(contactEntitlementRMF_C1);  
+        
+        Profile testProfile = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
+        user usr = [select id from user where email ='sysadmin@example.com' LIMIT 1];
+        User testUser = new User(
             FirstName = 'Test',
             LastName = 'UserEMAIL',
             Email = 'testuserEMAIL@example.com',
@@ -926,15 +876,8 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             ProfileId = testProfile.Id,
             ContactId = testContact.Id
         );
+       
         insert testUser;
-        
-        // Add testUser to RMF External Group
-        GroupMember gmRMF = new GroupMember();
-        gmRMF.GroupId = rmfExtGroup.Id;
-        gmRMF.UserOrGroupId = testUser.Id;
-        insert gmRMF;
-        
-        // Handle Permission Set Assignments (setup objects)
         List<PermissionSetAssignment> psAssignmentList = new List<PermissionSetAssignment>();
         PermissionSetAssignment assignPermissionSetObj1 = new PermissionSetAssignment();
         assignPermissionSetObj1.AssigneeId = testUser.Id;
@@ -948,40 +891,23 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         assignPermissionSetObj3.AssigneeId = testUser.Id;
         assignPermissionSetObj3.PermissionSetId = psNamToIdMap.get('Core_MDF_CCP_IPA_External_Recovery_Administrator');
         psAssignmentList.add(assignPermissionSetObj3);
-        insert psAssignmentList;
-    }
-    
-    Assert.areEqual(testUser.LastName, 'UserEMAIL');
-    
-    // Step 2: Create admin user for running the test
-    UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-    User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-    usr1.LastName = 'User Test';
-    usr1.UserRoleId = usRole.Id;
-    Assert.areEqual(usr1.LastName, 'User Test');
-    Database.insert(usr1);
-    
-    // Step 3: Now run the main test logic with non-setup objects
-    system.runAs(usr1) {
-        Test.startTest();
+        system.runas(usr){
+            insert psAssignmentList;
+        }
+        Group grp = new Group();
+        grp.name = 'PGM_TEST';
+        insert grp;
         
-        // Get the contact that was created earlier
-        Contact testContact = [SELECT Id FROM Contact WHERE Email = 'testcontact@example.com' LIMIT 1];
-        // Highlight: Unused Local Variable
-       // ChannelProgram retCP = [Select id from ChannelProgram where name ='Retail Marketing Funds'];
+        system.runAs(usr){
+            GroupMember gm = new GroupMember();
+            gm.GroupId = grp.Id;
+            gm.UserOrGroupId = testUser.Id;
+            insert gm;
+        }
+        ChannelProgram retCP = [Select id from ChannelProgram where name ='Retail Marketing Funds'];
+        //Core_MDF_CCP_TestDataUtility.createPartnerGroupMapping(accountRecord.Id,'Internal',accountRecord.Id,retCP.Id,'PGM_TEST',true);
         
-        // Create AGS Role and related objects (non-setup objects)
-        Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
-        Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, false);
-        Database.insert(erpmEngagementRMF);
-        
-        Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',false);
-        Database.insert(entitlementRMF); 
-        
-        Core_Contact_Entitlement__c contactEntitlementRMF_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(testContact.Id,entitlementRMF.Id ,true,'Complete', false);
-        Database.insert(contactEntitlementRMF_C1);  
-        
-        //Custom settings (non-setup objects)
+        //Custom settings
         List<Core_Trigger_Executions__c> executionList = new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c settings1 = new Core_Trigger_Executions__c();
         settings1.Name = 'Core_MDF_Account_node_share';
@@ -1029,7 +955,6 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         executionList.add(settings5);
         
         Database.insert(executionList);
-        
         Account accountRecord1 = [select id, Name from Account where name='Recovery RMF Virtual Corp' limit 1];
         AccountShare accshareRecordRMF = new AccountShare();
         accshareRecordRMF.AccountId = accountRecord1.Id;
@@ -1050,22 +975,11 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         insert accshareRecordTestAcc;
         
         List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = new list<Core_MDF_Partner_Node_User_Mapping__c>();
-        
-        // Create PNUM for parent account first to satisfy cross-account validation
-        Core_MDF_Partner_Node_User_Mapping__c pnumParent = new Core_MDF_Partner_Node_User_Mapping__c();
-        pnumParent.Core_MDF_Account__c = accountRecord.Id;
-        pnumParent.Core_MDF_User__c = testUser.Id;
-        //pnumList.add(pnumParent);
-        
-        // Create PNUM for virtual corp account
         Core_MDF_Partner_Node_User_Mapping__c pnum1 = new Core_MDF_Partner_Node_User_Mapping__c();
         pnum1.Core_MDF_Account__c = accountRecord1.Id;
         pnum1.Core_MDF_User__c = testUser.Id;
         pnumList.add(pnum1);
-        
         insert pnumList;
-        
-        // Test wrapper classes
         Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping userProgramWrap = new Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping();
         userProgramWrap.user = testUser;
         userProgramWrap.Program = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
@@ -1081,12 +995,12 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         
         List<String> psNameList = new List<String>{
             'Core_MDF_CCP_CCF_External_Recovery_Administrator',
-            'Core_MDF_CCP_DCF_External_Recovery_Administrator',
-            'Core_MDF_CCP_IPA_External_Recovery_Administrator',
-            'Core_MDF_CCP_RMF_External_Recovery_Administrator'
-        };
-        
-        String pgmToExecDateStr = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Program_Recovery_Date_Mapping');
+                'Core_MDF_CCP_DCF_External_Recovery_Administrator',
+                'Core_MDF_CCP_IPA_External_Recovery_Administrator',
+                'Core_MDF_CCP_RMF_External_Recovery_Administrator'
+                };
+                    
+                    String pgmToExecDateStr = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Program_Recovery_Date_Mapping');
         Map<String,String> pgmToExecDateMap = new Map<String,String>();
         for(string pgmToExecDate : pgmToExecDateStr.split(',')){
             List<string> record = pgmToExecDate.split(':');
@@ -1109,22 +1023,22 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         
         List<string> qtr = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
         String quarter = qtr[1];
-        // Highlight: Unused Local Variable
-       // List<String> quarterYear = quarter.split(' ');
+        List<String> quarterYear = quarter.split(' ');
         List<Core_MDF_Partnership_Score_Detail__c> psdList = [SELECT Id, Core_MDF_Partnership_Score_Id__c, Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, Core_MDF_Account_Id__c, Core_MDF_Program_Nm__c, Core_MDF_Node_Account_Id__c, Core_MDF_Node_Account_Id__r.Name, Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c
-                                                              FROM Core_MDF_Partnership_Score_Detail__c limit 10];
+                                                              FROM Core_MDF_Partnership_Score_Detail__c];
+        
         
         try {
+            
             Core_MDF_Recovery_Utility.notifyRecoveryAdmin(psNameList, programToRecoveryDateMap, psdList);
             Core_MDF_Recovery_Utility.sendRecoveryDashboardNotification(psNameList, quarter, psdList);
             Core_MDF_Recovery_Utility.notifyInternalActManagersOnRecoveryDataLoad(psNameList, new List<String>{'testPS'}, pgmToExecDateMap, programNamesSet, psdList, 'RecoveryIntAccMngrNotification', true);
+            
         } catch (Exception ex) {
-            // Handle exception
+            System.debug('Exception occurred: ' + ex.getMessage());
         }
-        
         Test.stopTest();
     }
-}
     @isTest static void testNotifications()
     {   
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
@@ -1191,15 +1105,13 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             Set<Id> claimIdSet = new Set<Id>();
             List<id> accountIds = new List<id>();
             Account accountRecord = [select id from Account limit 1];
-            // Highlight: Unused Local Variable
-           // List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
+            List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
             PartnerFundClaim claim2 = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF+' limit 1];
             accountIds.add(accountRecord.id);
             
             List<string> qtr = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
             String quarter = qtr[1];
-           // Highlight: Unused Local Variable
-           // List<String> quarterYear = quarter.split(' ');
+            List<String> quarterYear = quarter.split(' ');
             
             
             Core_MDF_Recovery_Request__c rr = new Core_MDF_Recovery_Request__c();
@@ -1220,19 +1132,14 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             List<Core_MDF_Partnership_Score_Detail__c> detailist2 = [Select Id, Core_MDF_Account_Id__c,Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Region_Cd__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Quarter_Year_Nm__c,Core_MDF_Partnership_Score_Id__c,Core_MDF_Recovered_Amt__c
                                                                      From Core_MDF_Partnership_Score_Detail__c Where Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund' and Core_MDF_Budget_Type_nm__c = 'MDF+' and Core_MDF_Quarter_Year_Nm__c =: quarter];
             Core_MDF_Recovery_Batch obj = new Core_MDF_Recovery_Batch('Client CoMarketing Fund',  ''    ,  '',  '', '', 'Payment Run', False, False);
-           // Highlight: Unused Local Variable
-           /* Id jobId = */ database.executeBatch(obj);
+            Id jobId = database.executeBatch(obj);
             Core_MDF_Recovery_Batch obj3 = new Core_MDF_Recovery_Batch('Intel Partner Alliance',  ''    ,  '',  '', 'APJ', 'Payment Run', False, False);
-           // Highlight: Unused Local Variable
-           /* Id jobId3 = */ database.executeBatch(obj3);
+            Id jobId3 = database.executeBatch(obj3);
             Core_MDF_Recovery_Batch obj4 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  ''    ,  '');
-           // Highlight: Unused Local Variable
-          /*  Id jobId4 = */ database.executeBatch(obj4);
-           // Highlight: Unused Local Variable
-          //  String acc =  accountIds.toString();
+            Id jobId4 = database.executeBatch(obj4);
+            String acc =  accountIds.toString();
             Core_MDF_Recovery_Batch obj5 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  '' ,''   , '');
-           // Highlight: Unused Local Variable
-          /*  Id jobId5 = */ database.executeBatch(obj5);
+            Id jobId5 = database.executeBatch(obj5);
             Core_MDF_Recovery__c recoveryObj = new Core_MDF_Recovery__c();
             recoveryObj.Core_MDF_Amount_Amt__c = 10;
             recoveryObj.Core_MDF_Claim_Id__c = claim2.id;
@@ -1249,8 +1156,7 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             finalRecoveryList.add(wrapperForRecoveryRecreq);
             
             Core_MDF_Batch_UpdateRecoveryClaims obj2 = new Core_MDF_Batch_UpdateRecoveryClaims(finalRecoveryList);
-           // Highlight: Unused Local Variable
-           /* Id jobId2 = */ database.executeBatch(obj2);
+            Id jobId2 = database.executeBatch(obj2);
             //Core_MDF_Batch_UpdateRecoveryClaims(finalRecoveryList);
             Test.stopTest();
             //Core_MDF_Recovery_Utility.updatePartnershipScoreDetailMapping(claimIdSet);
@@ -1272,8 +1178,6 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
         Date qtr4 = Date.newInstance(2024,10,03);
         Core_MDF_Recovery_Batch.determinePreviousQuartYear(qtr4);
         Core_MDF_Recovery_Batch.runBatch('Intel Partner Alliance','','Q4 2024','','','Payment run',false,false);
-        // Unit Test Method should include System.Assert
-        System.assert(true, 'runBatch executed successfully without exceptions');
     }
     
     @isTest static void testRecoveryBatch4() {

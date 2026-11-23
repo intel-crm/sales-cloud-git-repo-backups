@@ -786,6 +786,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MAG_Value__c</field>
             <table>Account</table>
         </columns>
@@ -1815,6 +1820,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_LinkedIN__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
             <table>Account.Contacts</table>
         </columns>
         <columns>

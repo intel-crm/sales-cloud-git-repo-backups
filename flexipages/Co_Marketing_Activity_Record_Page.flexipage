@@ -4,8 +4,33 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>collapsed</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>force:highlightsPanel</componentName>
+                <identifier>force_highlightsPanel</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>fieldAPIName</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c</value>
+                    <value>Core_MDF_Proposal_Based_Ind__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>isCompactLayout</name>
@@ -173,7 +198,7 @@
                 <componentName>core_MDF_Tactics_Form</componentName>
                 <identifier>c_core_MDF_Tactics_Form</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 OR 3 OR 4 OR 5) AND 2)</booleanFilter>
+                    <booleanFilter>((1 OR 3 OR 4) AND 2)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -193,11 +218,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Datacenter</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -237,29 +257,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Intel_Partner_Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>isReadOnly</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_ecosystemPartnerAllocation</componentName>
-                <identifier>c_core_MDF_ecosystemPartnerAllocation</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Datacenter</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -401,7 +398,7 @@
                 <componentName>core_MDF_ApprovalHistoryRelatedList</componentName>
                 <identifier>core_MDF_ApprovalHistoryRelatedList</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -411,26 +408,6 @@
                         <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Datacenter</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

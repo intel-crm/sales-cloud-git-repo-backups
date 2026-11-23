@@ -53,8 +53,7 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
         bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
         bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-
+        
         
         Set<String> myset1 = new Set<String>();
         List<String> result1 = new List<String>();
@@ -231,7 +230,6 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         rmfPfr.Core_MDF_Product_Category_txt__c ='Notebook/Mobile';
         rmfPfr.AllocationId = retailAlloc.Id;
         rmfPfr.Core_MDF_TargetAudience__c = 'Small and Medium Business';
-        rmfPfr.Core_MDF_Activity_Types__c = '';
         pfrList.add(rmfPfr);
         PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),null,null,'INDIA','Small Business','Desktop',
@@ -254,9 +252,6 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         MDFpfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         MDFpfr.Core_MDF_MDFReimbursement_Amt__c = 1000;
         MDFpfr.RequestedAmount = 1000;
-        MDFpfr.Core_MDF_ActivityCategory__c = '';
-        MDFpfr.Core_MDF_Activity_Types__c = '';
-
         pfrList.add(MDFpfr);
         System.runAs(testUser){
             insert pfrList;

@@ -104,9 +104,6 @@
     <columns>
         <field>ACCOUNT_ID</field>
     </columns>
-    <columns>
-        <field>ORDER_CONTRACT_NUMBER</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ORDER_OWNER</column>

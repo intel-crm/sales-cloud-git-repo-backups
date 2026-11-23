@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales License Group Switch config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales_License_Group_Switch_configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Legacy License Group Switch Id --></label>
+        <name>Sales_Legacy_License_Group_Switch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Sales_License_Description_dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales License Generator Switch --></label>
+        <name>Sales_License_Generator_Switch__c</name>
+        <relationshipLabel><!-- Sales_License_Group_Switch_configs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales License Group --></label>
+        <name>Sales_License_Group__c</name>
+        <relationshipLabel><!-- Sales_License_Group_Switch_configs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sequence --></label>
+        <name>Sales_License_Sequence_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Sales_License_Value_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

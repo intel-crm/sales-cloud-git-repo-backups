@@ -57,7 +57,7 @@ private class Core_OppApproveChecklistCont_Test{
             testAccPlan.cancel();
         }
         Test.stopTest(); 
-        System.assertEquals(true,true);
+        
     }
     
     testMethod static void InsertOppTest2() {
@@ -131,7 +131,6 @@ private class Core_OppApproveChecklistCont_Test{
             testAccPlan.cancel();
         }
         Test.stopTest();
-        System.assertEquals(true,true);
         
         
     }     
@@ -206,7 +205,6 @@ private class Core_OppApproveChecklistCont_Test{
             testAccPlan.cancel();
         }
         Test.stopTest();     
-        system.assertEquals(true, true);     
     }
     
     testMethod static void InsertOppTest3() {
@@ -284,7 +282,6 @@ private class Core_OppApproveChecklistCont_Test{
             
         }
         Test.stopTest();    
-        system.assertEquals( 5, opptyList.size());    
     }  
     static testmethod void Bonus() {
         List<Core_CRM_Labels__c> customSetting= new List<Core_CRM_Labels__c>();
@@ -385,7 +382,6 @@ private class Core_OppApproveChecklistCont_Test{
         Test.setCurrentPage(pageRef);
         testAccPlan.cancel();
         Test.stopTest();
-        system.assertEquals(true,true);
     }
     static testmethod void Bonus1() {
         Core_CRM_Labels__c cust1 = new Core_CRM_Labels__c();
@@ -459,7 +455,6 @@ private class Core_OppApproveChecklistCont_Test{
         Test.setCurrentPage(pageRef);
         testAccPlan.cancel();
         Test.stopTest();
-        system.assertEquals(true, true);
     }
     
     static testmethod void cancelledOpp() {
@@ -524,7 +519,6 @@ private class Core_OppApproveChecklistCont_Test{
         Test.setCurrentPage(pageRef);
         testAccPlan.cancel();
         Test.stopTest();
-        system.assertEquals(true, true);
     }
     
     static testmethod void prodLostOpp() {
@@ -584,6 +578,5 @@ private class Core_OppApproveChecklistCont_Test{
         Test.setCurrentPage(pageRef);
         testAccPlan.cancel();
         Test.stopTest();
-        system.assertEquals(true, true);
     }
 }

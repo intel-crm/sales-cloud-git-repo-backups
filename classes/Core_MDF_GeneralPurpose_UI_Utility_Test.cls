@@ -23,7 +23,6 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
             bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
             bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); // 14285 Indira
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
@@ -116,7 +115,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             Database.insert(userList);
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);   
-
+            UserRole ur = [Select Id, Name From UserRole where PortalType ='Partner' limit 1];
              usr1.Email='test1@example.com';
             usr1.ContactId = conRecord1.Id;
             usr1.ProfileId = partnerProfile.id;
@@ -130,7 +129,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             grpMember.UserOrGroupId = usr1.Id;
             grpMember.GroupId = grp1.Id;
             insert grpMember;
-
+            Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc6.Id,usr1.Id,true);
             List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
             
            
@@ -151,7 +150,6 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = false;
             ipaCampaignForAP.Core_MDF_Budget_Type_txt__c = 'Account Plan';
             ipaCampaignForAP.Core_MDF_Approval_Stage_nm__c='L2 Regional Marketing';
-            ipaCampaignForAP.Core_MDF_Technology__c='';  // 14285 Indira
             cmpList.add(ipaCampaignForAP) ;   
             
             Campaign ipaCampaignForAPsales = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP1',acc6.id, System.today(), System.today().adddays(30),null, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
@@ -160,7 +158,6 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             ipaCampaignForAPsales.Core_MDF_Proposal_Based_Ind__c = false;
             ipaCampaignForAPsales.Core_MDF_Budget_Type_txt__c = 'Account Plan';
             ipaCampaignForAPsales.Core_MDF_Approval_Stage_nm__c='L2 Regional Sales';
-            ipaCampaignForAPsales.Core_MDF_Technology__c=''; // 14285 Indira
             cmpList.add(ipaCampaignForAPsales) ;
             
              Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP2',acc6.id, System.today(), System.today().adddays(30),null, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
@@ -168,7 +165,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             ipaCampaignForAP1.Core_MDF_Opal_Budget_Type_Txt__c ='Account Plan';
             ipaCampaignForAP1.Core_MDF_Proposal_Based_Ind__c = false;
             ipaCampaignForAP1.Core_MDF_Budget_Type_txt__c = 'Account Plan';
-            ipaCampaignForAP1.Core_MDF_Technology__c='';  // 14285 Indira
+            
             cmpList.add(ipaCampaignForAP1) ;
              Database.insert(cmpList);
             
@@ -177,22 +174,16 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             ipaPFR5.Title='Test Activity1';
             ipaPFR5.Core_MDF_Approval_Stage__c = 'Price Reviewer';
             ipaPFR5.Core_MDF_Region_nm__c='APJ';
-            ipaPFR5.Core_MDF_Activity_Types__c=''; // 14285 Indira
-            ipaPFR5.Core_MDF_ActivityCategory__c=''; // 14285 Indira
             pfrList.add(ipaPFR5);
             
             PartnerFundRequest ipaPFR6 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,acc6.id,System.today().addDays(1),System.today().addDays(10),false);
             ipaPFR6.Title='Test Activity2';
-            ipaPFR6.Core_MDF_Activity_Types__c='';  // 14285 Indira
-            ipaPFR6.Core_MDF_ActivityCategory__c='';  // 14285 Indira
             ipaPFR6.Core_MDF_Approval_Stage__c = 'L2 Regional Sales';
             ipaPFR6.Core_MDF_Region_nm__c='APJ';
             pfrList.add(ipaPFR6);
             
             PartnerFundRequest ipaPFR7 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,acc6.id,System.today().addDays(1),System.today().addDays(10),false);
             ipaPFR7.Title='Test Activity3';
-            ipaPFR7.Core_MDF_Activity_Types__c='';  // 14285 Indira
-            ipaPFR7.Core_MDF_ActivityCategory__c=''; // 14285 Indira
             ipaPFR7.Core_MDF_Approval_Stage__c = 'L2 Regional Marketing';
             ipaPFR7.recordtypeid=Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA;
             ipaPFR7.Core_MDF_Region_nm__c='APJ';
@@ -303,7 +294,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         User testusr = [SELECT Id,Name FROM User where lastname = 'Admin_user' LIMIT 1];
         System.runAs(testusr){
             Test.startTest(); 
-
+            Account ccpIntelAccount = [SELECT Id FROM Account WHERE Name = 'CCP Test Intel Account'];
             Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
             Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
             User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
@@ -327,9 +318,9 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         System.runAs(testusr){
             Test.startTest(); 
             Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
-
+            Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
             User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
-
+            User ccfAccountManager =[select Id from User where LastName = 'CCF Acc Manager'];
             List<string> countryList=new List<string>();      
             countryList.add('AFGHANISTAN');
             Core_MDF_GeneralPurpose_UI_Utility.isRecordApproverWithBudgetType(ccfCoMarketingAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', countryList, 'Price Reviewer', String.valueOf(dcfAccManager.Id),'OEM CMP');
@@ -379,9 +370,12 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         System.runAs(testusr){
             Test.startTest();      
             Account ccpIntelAccount = [SELECT Id FROM Account WHERE Name = 'CCP Test Intel Account'];
-
+            Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
+            Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
+            User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
+            User ccfAccountManager =[select Id from User where LastName = 'CCF Acc Manager']; 
             User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
-
+            List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             List<string> geoList =new List<string>();      
             geoList.add('APJ');
             geoList.add('EMEA');
@@ -390,7 +384,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             List<string> programList=new List<string>();      
             programList.add(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
             programList.add('Intel Partner Alliance');
-           
+            String approvalStage = 'Price Reviewer';
             List<String> approvalStageList=new List<String>();
             approvalStageList.add('Price Reviewer');
             approvalStageList.add('L2 Regional Sales');
@@ -423,7 +417,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         User testusr = [SELECT Id,Name FROM User where lastname = 'Admin_user' LIMIT 1];
         System.runAs(testusr){
             Test.startTest();
-
+            Account acc=[select id,name from Account where name='Test Account 3' limit 1];
             User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
             List<Campaign> campList=[select id,Core_MDF_Sub_Region_cd__c,recordType.DeveloperName,Core_MDF_Program__c,Core_MDF_Ultimate_Account_txt__c,Core_MDF_Host_Region_cd__c,Core_MDF_Region_cd__c,Core_MDF_Opal_Budget_Type_Txt__c,name,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Budget_Type_txt__c,
                                         Core_MDF_Approval_Stage_nm__c from Campaign where name like '%Test Campaign - AP%'];

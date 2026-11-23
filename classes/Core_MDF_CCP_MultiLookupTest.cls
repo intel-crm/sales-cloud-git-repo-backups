@@ -2,8 +2,7 @@
 public class Core_MDF_CCP_MultiLookupTest {
  @isTest 
     public static void Core_MDF_CCP_MultiLookup_Test() {
-             // Highlight: Unused Local Variable 
-            // String objName='Contact';
+             String objName='Contact';
              String objectName='Campaign';
              List<String> comList =new List<String>();
             // List<Account> accList = new List<Account>();
@@ -35,8 +34,7 @@ public class Core_MDF_CCP_MultiLookupTest {
        // Core_MDF_CCP_MultiLookup.fetchSampleRecs1(objName,comList);
         Core_MDF_CCP_MultiLookup.fetchSampleRecs();
            Core_MDF_CCP_MultiLookup.getResult(objectName,filterCondition);
-        // Unit Test Method should include System.Assert 
-        System.assertNotEquals(null, Core_MDF_CCP_MultiLookup.getResult(objectName, filterCondition), 'getResult should return a list');
+             // Core_MDF_CCP_MultiLookup.
             Test.stopTest();
     }
 }

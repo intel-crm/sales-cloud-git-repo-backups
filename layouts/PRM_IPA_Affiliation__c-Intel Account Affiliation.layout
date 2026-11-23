@@ -16,7 +16,7 @@
                 <field>PRM_Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Active__c</field>
             </layoutItems>
             <layoutItems>

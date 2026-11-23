@@ -73,6 +73,9 @@
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
+    <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
     <description>RT: Tasks and Events.</description>
     <filter>
         <criteriaItems>

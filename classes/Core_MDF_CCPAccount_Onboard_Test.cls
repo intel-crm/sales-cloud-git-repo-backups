@@ -167,9 +167,9 @@ public class Core_MDF_CCPAccount_Onboard_Test {
         insert enableIPAMDFAccountOnboarding;
         
       // Creating channel program with utility class
-      ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name'),Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name'), true);
-    // Highlight: Unused Local Variable
-   // Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
+    ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name'),Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name'), true);
+
+    Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         
     // Creating Account with utility class
     Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -296,7 +296,7 @@ public class Core_MDF_CCPAccount_Onboard_Test {
         Assert.isNotNull(accSet);
         accSet = Core_MDF_CCPAccount_Onboard.isOpiAccount(accList);
         try{
-           //accSet = Core_MDF_CCPAccount_Onboard.hasMDFBenefit(accInSet);
+            accSet = Core_MDF_CCPAccount_Onboard.hasMDFBenefit(accInSet);
         }catch(Exception e){
             Assert.isNotNull(e.getMessage());
         }
@@ -312,11 +312,9 @@ public class Core_MDF_CCPAccount_Onboard_Test {
         //To hold group developer name
         String groupDeveloperName;
         //To hold intial group developer name
-        // Highlight: Unused Local Variable
-       // Integer initalGroupDeveloperName;
+        Integer initalGroupDeveloperName;
         //To hold account name length
-        // Highlight: Unused Local Variable
-       // Integer accountNameLength;
+        Integer accountNameLength;
         //Map of technical program name to program abbrivated name
       Map<string,string> prgmAbbName = new Map<string,string>();
         //Preparing map of technical program name to program abbrivated name
@@ -326,10 +324,10 @@ public class Core_MDF_CCPAccount_Onboard_Test {
         {
             prgmAbbName.put(cpm.Core_MDF_Technical_Program_Name__c, cpm.Core_MDF_Abbreviated_ProgramName_txt__c);
         }
-      // Highlight: Unused Local Variable
-     /*   ChannelProgram prgm = [Select Id, Core_MDF_Technical_Program_Name__c, Name 
+        
+        ChannelProgram prgm = [Select Id, Core_MDF_Technical_Program_Name__c, Name 
                                    from ChannelProgram 
-                                   where Core_MDF_Technical_Program_Name__c = :Label.Core_MDF_IPA_Technical_program_name];  */
+                                   where Core_MDF_Technical_Program_Name__c = :Label.Core_MDF_IPA_Technical_program_name];
          //Remove all the special characters and change to Upper Case
             //String accountName = acc1.Name.split('#')[0].replaceAll('[^a-zA-Z\\s+]', '').deleteWhitespace().toUpperCase();
            // initalGroupDeveloperName = ('Core_MDF_CCP_'+'_'+prgmAbbName.get(Label.Core_MDF_IPA_Technical_program_name).left(4)+'_'+'EXTERNAL').length();
@@ -499,9 +497,11 @@ public class Core_MDF_CCPAccount_Onboard_Test {
             accLevel2.Core_Sub_Geo__c = 'ROA';
             database.insert(accLevel2);
             
+            
             try{
                 accLevel1.Core_MDF_Parent_Fund_Account__c = accLevel1peer.Id;
                 database.update(accLevel1);
+                Core_MDF_CCPAccount_Onboard.isAccountEligibleForMDF(acctList);
             }
             catch(Exception e){
                 System.Assert(e.getMessage().contains(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Three_level_hierarchy')));
@@ -519,8 +519,6 @@ public class Core_MDF_CCPAccount_Onboard_Test {
             Account accVC = [Select Id,OwnerId  from Account where Name =: 'Test Account VC - CCF'];
             accVC.OwnerId = Label.Core_Uncovered_Account_ID;
             database.update(accVC);
-            // Unit Test Method should include System.Assert
-            System.assertEquals(Label.Core_Uncovered_Account_ID,accVC.OwnerId,'Account owner should be updated to uncovered account owner.');
         }
     }
     

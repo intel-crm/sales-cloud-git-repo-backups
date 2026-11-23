@@ -18,22 +18,28 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
+            <groupName>9472fbf9-d01d-41e0-aaad-24ee4313bf0f$#$8c0ae6eb-9748-4180-9cda-161085d78797</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Partner_Fund_Claim_Detail_core_MDF_CustomLayoutConfig_Component</targetValue>
+        </target>
+        <target>
             <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$9d86eb9f-7f70-426e-99b1-f84a5eedb0b0</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Campaign_Custom_Detail_core_MDF_CampaignBudgets_Component</targetValue>
         </target>
         <target>
+            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$1b0534d0-fefc-44ca-a665-f953e1456442</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Custom_Detail_core_MDF_Campaign_Related_List_Component</targetValue>
+        </target>
+        <target>
             <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$2cfb5c92-dd4c-4b60-9ca1-976d9b486fff</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Campaign_Custom_Detail_core_MDF_PFR_Grid_Component</targetValue>
-        </target>
-        <target>
-            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$33e4e3d7-77f5-4f64-976f-d6352f86c9a7</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Campaign_Custom_Detail_core_MDF_Custom_Related_List_2_Component</targetValue>
         </target>
     </targets>
 </Audience>

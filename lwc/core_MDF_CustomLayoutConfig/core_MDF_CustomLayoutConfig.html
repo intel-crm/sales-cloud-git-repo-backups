@@ -2,7 +2,7 @@
     <template if:true={isShow}>
         <!-- <lightning-card title="" class="my-card "> -->
             <lightning-record-view-form object-api-name={objAPIName}>
-                 <lightning-layout multiple-rows="true" class={campaignCSS}>
+                <lightning-layout multiple-rows="true" class={campaignCSS}>
                     <lightning-accordion class="customAccordion" allow-multiple-sections-open active-section-name={activeSections}>
                         <template for:each={objectFields} for:item="fld">
                             <div class="x-accordion-heading" key={fld.key}>

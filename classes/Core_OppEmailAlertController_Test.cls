@@ -24,7 +24,7 @@ public class Core_OppEmailAlertController_Test {
         lstAcc[1].recordtypeID = accountRecordTypeIntel;
         insert LstAcc;
         
-        //List<Opportunity> listOpportunity = Core_Test_Utility.createOpportunity(1);
+        List<Opportunity> listOpportunity = Core_Test_Utility.createOpportunity(1);
         Id oppDealID = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
         Opportunity opp = new Opportunity(Name = 'PCCEmailNotification', RecordTypeId = oppDealID,
                                            AccountId = LstAcc[0].Id, OwnerId= UserInfo.getUserId(),
@@ -57,10 +57,10 @@ public class Core_OppEmailAlertController_Test {
         Core_OppEmailAlertController p1 = new Core_OppEmailAlertController();
         p1.oppId = lstOpp[0].Id;
         P1.headerURL = 'test';
-        //String domain = p1.getDomainName();
+        String domain = p1.getDomainName();
         String headerURL = p1.getHeaderURL();  
-        //String dealRegURL = p1.getDealRegExternalDomainName();
-        //Opportunity opp = p1.getOppData();  
+        String dealRegURL = p1.getDealRegExternalDomainName();
+        Opportunity opp = p1.getOppData();  
         List<OpportunityLineItem> lstOppProddt = p1.getOppProdData();
         //System.assertEquals(lstOpp[0],opp);
         System.assertEquals(lstOppProd,lstOppProddt);

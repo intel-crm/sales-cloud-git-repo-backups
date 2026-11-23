@@ -1411,13 +1411,13 @@ insert ce4;*/
         Account acc1 = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts',
                                    Core_Account_Type__c='Other', Industry='Others',RecordTypeId=intelAccRecTypeId,
                                    BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
-                                   BillingCountry='USA', BillingPostalCode='12345', Core_IsODM__c = true, Core_IPA_Partner_Role__c='Service Provider');
+                                   BillingCountry='USA', BillingPostalCode='12345', Core_IsODM__c = true/*, Core_IPA_Partner_Role__c='Service Provider'*/);
         Database.insert(acc1,true);
         
         Contact contact = new Contact(FirstName='testFirstName123', LastName='愛', Email='test1234@testing.com.test',MailingCountry='India',
                                       AccountId=acc1.id,Core_Set_ERPM_Status_Bypass__c=true,Core_Personal_Email_Indicator__c = true,
-                                      Core_Audience_List__c ='CCF User Administrator;CCF User',Core_IPA_Partner_Role__c='Service Provider'
-                                      /*Core_IPA_PartnerRole__c='Service Provider'*/);
+                                      Core_Audience_List__c ='CCF User Administrator;CCF User'/*,Core_IPA_Partner_Role__c='Service Provider',
+                                      Core_IPA_PartnerRole__c='Service Provider'*/);
         
         Database.insert(contact,true); 
         
@@ -1430,9 +1430,6 @@ insert ce4;*/
         Core_Entitlement__c newCE1 = new Core_Entitlement__c(Name ='Client User',Core_Display_Name__c='Client User',Core_ERPM_Engagement_Id__c = newERPM.id, Core_IsActive__c = true);
         insert newCE1;
         
-        Core_Entitlement__c newCE3 = new Core_Entitlement__c(Name ='Partner Admin',Core_Display_Name__c='Partner Admin',Core_ERPM_Engagement_Id__c = newERPM.id, Core_IsActive__c = true);
-        insert newCE3;
-        
         List<Core_Contact_Entitlement__c> ceList = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c ce3 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact.Id,Core_Selected__c = true,
                                                                           Core_Entitlement_Id__c=newCE.id, Core_Status__c ='Complete'
@@ -1440,19 +1437,11 @@ insert ce4;*/
         Core_Contact_Entitlement__c ce4 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact.Id,Core_Selected__c = true,
                                                                           Core_Entitlement_Id__c=newCE1.id, Core_Status__c ='Pending'
                                                                          );
-        Core_Contact_Entitlement__c ce5 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact.Id,Core_Selected__c = true,
-                                                                          Core_Entitlement_Id__c=newCE3.id, Core_Status__c ='Pending'
-                                                                         );
-        
         ceList.add(ce3);
         ceList.add(ce4);
         insert ce3;
         insert ce4;
-       insert ce5;
-        ce4.core_status__c='Complete';
-        update ce4;
-        ce5.core_status__c='Complete';
-        update ce5;
+        
         User user1 = new User(Alias = 'admUse2r', Email='forumuser@test.com', 
                               EmailEncodingKey='UTF-8', LastName='Admin', LanguageLocaleKey='en_US', 
                               LocaleSidKey='en_US', ProfileId = profile1.Id, contactid=contact.Id,isActive =true,

@@ -222,48 +222,6 @@
         <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</nameSegment>
     </actionCalls>
     <actionCalls>
-        <name>Resubmitted_Email_for_MP_Admin_Group</name>
-        <label>Resubmitted Email for MP Admin Group</label>
-        <locationX>314</locationX>
-        <locationY>4164</locationY>
-        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
-        <actionType>emailAlert</actionType>
-        <connector>
-            <targetReference>Resubmit_Notification_To_Submitter</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
-        <name>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</name>
-        <label>Resubmitted Email for MP Admin Group non english flow</label>
-        <locationX>314</locationX>
-        <locationY>4872</locationY>
-        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
-        <actionType>emailAlert</actionType>
-        <connector>
-            <targetReference>Non_English_Resubmit_Notification_To_Submitter</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <description>Send Email to Intel admin if the Intel admin is changed for the partner</description>
         <name>Send_Email_If_Intel_Admin_is_changed</name>
         <label>Send Email If Intel Admin is changed</label>
@@ -616,56 +574,6 @@
                 <targetReference>Update_Last_Status_Update_Date</targetReference>
             </connector>
             <label>Send Admin Review Email to Intel Admin</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_if_the_IntelMarketplaceadmin_user_is_active</name>
-        <label>Verify if the IntelMarketplaceadmin user is active</label>
-        <locationX>182</locationX>
-        <locationY>4056</locationY>
-        <defaultConnector>
-            <targetReference>Resubmitted_Email_for_MP_Admin_Group</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
-        <rules>
-            <name>If_IntelMarketplaceadmin_is_active</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Resubmitted_Email_for_Admin</targetReference>
-            </connector>
-            <label>If IntelMarketplaceadmin is active</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</name>
-        <label>Verify if the IntelMarketplaceadmin user is activenon english</label>
-        <locationX>182</locationX>
-        <locationY>4764</locationY>
-        <defaultConnector>
-            <targetReference>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
-        <rules>
-            <name>If_IntelMarketplaceadmin_is_active_nonenglish</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Resubmitted_Email_for_Admin_0</targetReference>
-            </connector>
-            <label>If IntelMarketplaceadmin is active nonenglish</label>
         </rules>
     </decisions>
     <decisions>
@@ -1359,7 +1267,7 @@
         <locationX>50</locationX>
         <locationY>4392</locationY>
         <connector>
-            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_active</targetReference>
+            <targetReference>Resubmitted_Email_for_Admin</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1384,7 +1292,7 @@
         <locationX>50</locationX>
         <locationY>4968</locationY>
         <connector>
-            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</targetReference>
+            <targetReference>Resubmitted_Email_for_Admin_0</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>

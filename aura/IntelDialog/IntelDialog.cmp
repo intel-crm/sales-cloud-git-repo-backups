@@ -19,6 +19,7 @@
                             <lightning:buttonIcon iconName="utility:close"
                                                   onclick="{! c.closeModal }"
                                                   alternativeText="close"
+                                                  variant="bare-inverse"
                                                   class="slds-modal__close"/>
                             <h4 id="modal-heading-01" class="heading-24">
                               {!v.modalHeader}

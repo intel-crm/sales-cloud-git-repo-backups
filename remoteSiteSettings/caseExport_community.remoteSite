@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>same data this org doesnot contain sso
-	https://intel--c.vf.force.com</description>
+	https://intel--crmqa8.sandbox.my.site.com</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://intel--c.vf.force.com</url>
+    <url>https://intel--devpsg2.sandbox.my.site.com</url>
 </RemoteSiteSetting>

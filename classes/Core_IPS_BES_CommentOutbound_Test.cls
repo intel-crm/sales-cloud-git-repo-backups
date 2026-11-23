@@ -153,6 +153,7 @@ public class Core_IPS_BES_CommentOutbound_Test {
         objCmt.Core_IPS_Case_Comment_Source__c = 'Internal Portal';
         insert objCmt;
 
+        System.debug('cs: ' + cs.Id);
         cs.Core_IPS_New_Backend_System__c = null;
         cs.Core_IPS_BackendID__c = '';
         update cs;

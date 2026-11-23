@@ -186,13 +186,12 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         
      //    system.debug('Logged in user is'+loggedUserEmail);
          Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+        
          mail.setToAddresses(new String[] {loggedUserEmail});
          mail.setReplyTo('wsm-postmaster@intel.com');
-         //mail.setSenderDisplayName('Intel Corporation-NoReply');
+         mail.setSenderDisplayName('Intel Corporation-NoReply');
          mail.setSubject('CST CRM Update');
          mail.setHtmlBody(mailBody);
-         mail.setOrgWideEmailAddressId(fromEmailAddress);
             
          Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         

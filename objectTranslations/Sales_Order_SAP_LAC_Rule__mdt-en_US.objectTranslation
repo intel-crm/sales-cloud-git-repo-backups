@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Order SAP LAC Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Order SAP LAC Rules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Order Reason Type --></label>
+        <name>Sales_Order_Reason_Type__c</name>
+        <picklistValues>
+            <masterLabel>Non Stocking Order</masterLabel>
+            <translation><!-- Non Stocking Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stocking Order</masterLabel>
+            <translation><!-- Stocking Order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SAP LAC Rule Value --></label>
+        <name>Sales_SAP_LAC_Rule_Value__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M</masterLabel>
+            <translation><!-- M --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tool License Type --></label>
+        <name>Sales_Tool_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUTRAL</masterLabel>
+            <translation><!-- NEUTRAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>Sales_Tool_Type__c</name>
+        <picklistValues>
+            <masterLabel>BUNDLE</masterLabel>
+            <translation><!-- BUNDLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RENEWAL</masterLabel>
+            <translation><!-- RENEWAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC</masterLabel>
+            <translation><!-- SOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

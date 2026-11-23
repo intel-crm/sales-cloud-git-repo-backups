@@ -24,34 +24,10 @@
                         <br></br>
                         
                         <apex:outputPanel rendered="{!if(OR(RelatedTo.Core_MDF_Fund_Request_Status__c = 'Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed'),true,false)}">
-                            The status for {!RelatedTo.RecordType.Name} program {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign #', 'Activity #')}{!RelatedTo.Core_MDF_Activity_Number__c} has been updated {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_PriorValueOfStatus__c)),"from "+RelatedTo.Core_MDF_PriorValueOfStatus__c+" ","")}to {!RelatedTo.Core_MDF_Fund_Request_Status__c}. Click 
-                            
-                            <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                           value="{!$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.Id}">
-                                here
-                            </apex:outputLink>
-                            <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                           value="{!$Label.Core_MDF_PFRDetailLink + RelatedTo.Id}">
-                                here
-                            </apex:outputLink>
-                            
-                            to view the status details.
+                            The status for {!RelatedTo.RecordType.Name} program {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign #', 'Activity #')}{!RelatedTo.Core_MDF_Activity_Number__c} has been updated {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_PriorValueOfStatus__c)),"from "+RelatedTo.Core_MDF_PriorValueOfStatus__c+" ","")}to {!RelatedTo.Core_MDF_Fund_Request_Status__c}. Click <a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}"> here</a> to view the status details.
                         </apex:outputPanel>
-                        
                         <apex:outputPanel rendered="{!if(NOT(OR(RelatedTo.Core_MDF_Fund_Request_Status__c = 'Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed')),true,false)}">
-                            The status for {!RelatedTo.RecordType.Name} program {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign #', 'Activity #')}{!RelatedTo.Core_MDF_Activity_Number__c} has been updated {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_PriorValueOfStatus__c)),"from "+RelatedTo.Core_MDF_PriorValueOfStatus__c+" ","")}to {!RelatedTo.Core_MDF_Fund_Request_Status__c}. Click 
-                            
-                            <!-- Updated conditional link logic -->
-                            <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                           value="{!$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.Id}">
-                                here
-                            </apex:outputLink>
-                            <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                           value="{!$Label.Core_MDF_PFRDetailLink + RelatedTo.Id}">
-                                here
-                            </apex:outputLink>
-                            
-                            to view the status details.
+                            The status for {!RelatedTo.RecordType.Name} program {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign #', 'Activity #')}{!RelatedTo.Core_MDF_Activity_Number__c} has been updated {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_PriorValueOfStatus__c)),"from "+RelatedTo.Core_MDF_PriorValueOfStatus__c+" ","")}to {!RelatedTo.Core_MDF_Fund_Request_Status__c}. Click <a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}"> here</a> to view the status details.
                         </apex:outputPanel>
                  
                 

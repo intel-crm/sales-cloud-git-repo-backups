@@ -89,24 +89,14 @@
                 <identifier>RecordCore_MDF_Score_Score_cField1</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Core_MDF_Right_to_Recover_Amt__c</fieldItem>
-                <identifier>RecordCore_MDF_Right_to_Recover_Amt_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-2d2d023d-2e82-4590-bcf8-b1e91bc45285</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Audit_Summary_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Audit_Summary_Txt_cField</identifier>
+                <fieldItem>Record.Core_MDF_Right_to_Recover_Amt__c</fieldItem>
+                <identifier>RecordCore_MDF_Right_to_Recover_Amt_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-9658e846-1b5f-477d-ad51-8cbb1923daac</name>
@@ -153,6 +143,10 @@
                 <identifier>RecordCore_MDF_Attribution_Comments_Txt_cField1</identifier>
             </fieldInstance>
         </itemInstances>
+        <name>Facet-18158952-d2ff-42e9-a4ff-2d66c672494c</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -168,30 +162,6 @@
                         <rightValue>1</rightValue>
                     </criteria>
                 </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-18158952-d2ff-42e9-a4ff-2d66c672494c</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Attribution_Score_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Attribution_Score__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Attribution_Comments_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Attribution_Comments_Txt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-75b7e898-34ef-4d5b-84a9-de7a03550457</name>
@@ -250,6 +220,10 @@
                 <identifier>RecordCore_MDF_POP_Comments_Txt_cField1</identifier>
             </fieldInstance>
         </itemInstances>
+        <name>Facet-627ed240-002e-41e1-b231-a67a64364e12</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -267,26 +241,8 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-627ed240-002e-41e1-b231-a67a64364e12</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_POP_Score_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_POP_Score__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_3rd_Party_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_3rd_Party_Ind_cField1</identifier>
             </fieldInstance>
@@ -295,16 +251,6 @@
             <fieldInstance>
                 <fieldItem>Record.Core_MDF_Redaction_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Redaction_Ind_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_POP_Comments_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_POP_Comments_Txt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ee5c397c-cde1-4198-9d59-b82beda721c2</name>
@@ -349,16 +295,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_POC_Strength_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_POC_Strength_Nm_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-7xf0ikn0tvm</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -403,6 +339,10 @@
                 <identifier>RecordCore_MDF_Engagement_Comments_Txt_cField1</identifier>
             </fieldInstance>
         </itemInstances>
+        <name>Facet-1a435198-522d-4b6e-9255-6045913853eb</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -418,30 +358,6 @@
                         <rightValue>1</rightValue>
                     </criteria>
                 </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-1a435198-522d-4b6e-9255-6045913853eb</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Engagement_Score_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Engagement_Score__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Engagement_Comments_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Engagement_Comments_Txt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ac58db42-98fb-4659-b06c-6c47bbf74383</name>
@@ -498,16 +414,6 @@
             <fieldInstance>
                 <fieldItem>Record.Core_MDF_Recommended_investigation_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Recommended_investigation_Ind_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_Recommend_Investigation_Ind__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_Recommend_Investigation_Ind_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-7d12a03b-b1d3-4b63-9e80-911fc83e68c8</name>
@@ -568,12 +474,6 @@
                 <identifier>RecordCore_MDF_PII_Present_Ind_cField1</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Core_MDF_Process_Feedback_Comments_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Process_Feedback_Comments_Txt_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-13fcff8f-63cb-46c4-8d1d-13c8175eddeb</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -600,12 +500,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_AI_PII_Present_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_AI_PII_Present_Nm_cField</identifier>
+                <fieldItem>Record.Core_MDF_Process_Feedback_Comments_Txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Process_Feedback_Comments_Txt_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-2faa7a2d-faf6-4e10-8fee-9d80711c7e99</name>
@@ -643,10 +539,6 @@
                     <value>Facet-873af323-1834-4fcd-be39-6124049d1656</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>label</name>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
@@ -658,10 +550,6 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-c11606ca-7773-43bb-852b-3883bee595b0</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -678,10 +566,6 @@
                     <value>Facet-2dcd629f-c8f4-4821-a64f-3a8a87893439</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>label</name>
                     <value>Attribution</value>
                 </componentInstanceProperties>
@@ -694,10 +578,6 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-93565266-2fb1-4361-aafd-e0a9c3a60f40</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -714,10 +594,6 @@
                     <value>Facet-427df23c-1b58-496d-950d-088a7cfa63a9</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>label</name>
                     <value>POC Strength</value>
                 </componentInstanceProperties>
@@ -730,10 +606,6 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-e0db9636-50fe-4d71-889b-541dc3b80d33</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -750,10 +622,6 @@
                     <value>Facet-42b367e5-cc30-44d3-ae3f-b7a336c4769e</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>label</name>
                     <value>Other Information</value>
                 </componentInstanceProperties>
@@ -766,10 +634,6 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-fafb7a3e-123c-4159-9e42-306523d07fad</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -803,10 +667,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-c3167749-0f7a-40e6-91e0-c085d5977517</value>

@@ -2,8 +2,8 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 11-17-2026
-  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  @last modified on  : 01-24-2025
+  @last modified by  : Vrushabh Uprikar
 -->
 <aura:component controller="Pricing_QuoteLineController"
     implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable"
@@ -116,12 +116,12 @@
                         alternativeText="Please wait..." style="min-height: 20vh; background-color: transparent;" />
                     <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close" class="slds-modal__close" />
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
                     </header>
                     <!-- Modal/Popup Box Header Starts here-->
                     <header class="slds-modal__header">
                         <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel }"
-                            alternativeText="close" class="slds-modal__close" />
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
                         <h2 id="approval-action-modal-heading" class="slds-text-heading_medium slds-hyphenate">
                             {! v.approvalAction}
                         </h2>
@@ -378,13 +378,11 @@
                                 label="{!line.SBQQ__ProductName__c == null ? (line.Pricing_Quote_Line_Number__c +' : '+line.Pricing_Other_Product_Nm__c) : line.SBQQ__ProductName__c == $Label.c.Pricing_Write_In_Product ? (line.Pricing_Quote_Line_Number__c +' : '+line.SBQQ__ProductName__c+' ('+line.Pricing_Other_Product_Nm__c+')') : (line.Pricing_Quote_Line_Number__c +' : '+line.SBQQ__ProductName__c)}">
                                 <aura:set attribute="actions">
                                     <div class="slds-var-p-right_xxx-small slds-grid ">
-                                       <aura:if isTrue="{!or(line.Pricing_Integration_Status_Nm__c != '', line.Pricing_Application_Agent_Status__c != '')}">
-                                           <c:Pricing_Acronym_Supplier inputText="{!line.Pricing_Status_Nm__c}"
+                                        <aura:if isTrue="{!line.Pricing_Integration_Status_Nm__c != ''}">
+                                            <c:Pricing_Acronym_Supplier inputText="{!line.Pricing_Status_Nm__c}"
                                                 integrationStatus="{!line.Pricing_Integration_Status_Nm__c}"
                                                 errorMessage="{!line.Pricing_Error_Messages__c}"
-                                                programType="{!line.Pricing_Quote_Program_Nm__c}"
-                                                aiIntegrationStatus="{!line.Pricing_Application_Agent_Status__c}" 
-                                                quoteLine="{!line}"/>
+                                                programType="{!line.Pricing_Quote_Program_Nm__c}" />
                                         </aura:if>
 
                                         <div class="slds-box slds-box_xx-small" title="{!line.Pricing_Status_Nm__c}"
@@ -441,7 +439,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
                         <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel}" alternativeText="close"
-                             class="slds-modal__close" />
+                            variant="bare-inverse" class="slds-modal__close" />
                     </header>
                     <!-- <header class="slds-modal__header">         </header>  -->
 
@@ -464,7 +462,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header class="slds-modal__header slds-var-p-around_medium">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close"  class="slds-modal__close" />
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote Line Edit</h2>
                     </header>
                     <div class="slds-modal__content" id="ql-record-edit-modal-content">
@@ -484,7 +482,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header class="slds-modal__header slds-var-p-around_medium">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close"  class="slds-modal__close" />
+                            alternativeText="close" variant="bare" class="slds-modal__close" />
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.productName}</h2>
                     </header>
                     <div class="slds-modal__content" id="rpm-form-modal-content">
@@ -505,7 +503,7 @@
                 <div class="slds-modal__container" style="width: 53%; height:auto">
                     <header class="slds-modal__header slds-var-p-around_medium">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close" class="slds-modal__close" />
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Consumption Parameters
                             Edit</h2>
                     </header>

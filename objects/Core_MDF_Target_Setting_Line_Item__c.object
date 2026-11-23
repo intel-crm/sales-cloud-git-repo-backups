@@ -398,11 +398,6 @@
                     <label>KOREA</label>
                 </value>
                 <value>
-                    <fullName>MACAU</fullName>
-                    <default>false</default>
-                    <label>MACAU</label>
-                </value>
-                <value>
                     <fullName>MEXICO</fullName>
                     <default>false</default>
                     <label>MEXICO</label>
@@ -523,11 +518,6 @@
                     <fullName>KOREA</fullName>
                     <default>false</default>
                     <label>KOREA</label>
-                </value>
-                <value>
-                    <fullName>MACAU</fullName>
-                    <default>false</default>
-                    <label>MACAU</label>
                 </value>
                 <value>
                     <fullName>MEXICO</fullName>
@@ -994,10 +984,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1081,10 +1067,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1113,14 +1095,6 @@
             </values>
             <values>
                 <fullName>Data Center</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Edge</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Networking %26 Telco</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1154,6 +1128,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1170,6 +1148,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1274,10 +1256,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1361,10 +1339,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1395,14 +1369,6 @@
                 <fullName>Data Center</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Edge</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Networking %26 Telco</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Priority_nm__c</picklist>
@@ -1430,6 +1396,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1446,6 +1416,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1638,10 +1612,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1725,10 +1695,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>MACAU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1757,14 +1723,6 @@
             </values>
             <values>
                 <fullName>Data Center</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Edge</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Networking %26 Telco</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1827,6 +1785,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Workstation</fullName>
                 <default>false</default>
             </values>
@@ -1846,6 +1808,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1862,6 +1828,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>

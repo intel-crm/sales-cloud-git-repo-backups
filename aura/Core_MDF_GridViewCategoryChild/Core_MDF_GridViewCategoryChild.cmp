@@ -13,13 +13,7 @@
             <span class="slds-grid slds-grid_align-spread">
                 <!-- show input and output section based on boolean flag --> 
                 <aura:if isTrue="{!v.FYEditMode == false}">
-                    <!-- Aditya -->
-                    <span class="slds-truncate" title="FYBudget">
-                        <lightning:formattedNumber 
-                            value="{!v.CategorywiseInstance.Core_MDF_First_Year_Budget__c}"
-                            style="currency"
-                            currencyCode="USD"/>
-                    </span>
+                    <span class="slds-truncate" title="FYBudget">{!v.CategorywiseInstance.Core_MDF_First_Year_Budget__c}</span>
                     <aura:if isTrue="{!v.categoryEditable == true}">
                         <button onclick="{!c.inlineEditFYBudget}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit FYBudget">
                             <lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
@@ -51,13 +45,7 @@
                 <span class="slds-grid slds-grid_align-spread">
                     <!-- show input and output section based on boolean flag --> 
                     <aura:if isTrue="{!v.SYEditMode == false}">
-                    <!-- Aditya -->    
-                        <span class="slds-truncate" title="SYBudget">
-                            <lightning:formattedNumber 
-                                value="{!v.CategorywiseInstance.Core_MDF_Second_Year_Budget__c}"
-                                style="currency"
-                                currencyCode="USD"/>
-                        </span>
+                        <span class="slds-truncate" title="SYBudget">{!v.CategorywiseInstance.Core_MDF_Second_Year_Budget__c}</span>
                         <aura:if isTrue="{!v.categoryEditable == true}">
                             <button onclick="{!c.inlineEditSYBudget}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit SYBudget">
                                 <lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>

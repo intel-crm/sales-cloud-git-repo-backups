@@ -96,6 +96,7 @@ global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
         List<SBQQ__QuoteLine__c> parentSObjectsRecord;
         List<SBQQ__QuoteLine__c> qliCRLst = new List<SBQQ__QuoteLine__c>();
         String query;
+        Map<Id,Set<Id>> quoteIdQTMMemberIdMap = new Map<Id,Set<Id>>();
         try {
             // Quote query
             query = String.format(
@@ -193,6 +194,7 @@ global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
                 //Pricing_RestAPI_Util.processException(error, Pricing_RestAPI_ResponseCodes.ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);
             }
             else{
+                String retMsg = null;
                 Pricing_Tender_Utility.logError(error);
             }
             

@@ -326,8 +326,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
 
     //@api
     handleAdd(event) { 
-        this.spinner= true;
-        this.isMemberTypeAll = false;      //As part of Vulnerability Fix       
+        this.spinner= true;      
         var param = event.currentTarget.dataset.key;
         if(this.recsToInsert.length == 0){
             this.dispatchEvent(new ShowToastEvent({
@@ -379,7 +378,6 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         variant: 'error',
                     })); 
                     this.spinner = false;
-                    this.resetSelection();//As part of Vulnerability Fix
                 }
                 if(data === 3){
                     this.dispatchEvent(new ShowToastEvent({
@@ -387,7 +385,6 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         variant: 'error',
                     })); 
                     this.spinner = false;
-                    this.resetSelection();//As part of Vulnerability Fix
                 }
                 if(data === 4){
                     this.dispatchEvent(new ShowToastEvent({
@@ -395,13 +392,10 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         variant: 'error',
                     })); 
                     this.spinner = false;
-                    this.resetSelection();//As part of Vulnerability Fix
                 }
             })
             .catch(error=>{
-                console.log('error occured: '+JSON.stringify(error)); 
-                this.spinner = false;
-                this.resetSelection(); //As part of Vulnerability Fix               
+                console.log('error occured: '+JSON.stringify(error));               
             })
         }
     }
@@ -427,13 +421,6 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
         this.customsortDirection = event.detail.sortDirection;
         this.accountRecords = this.accountsData;
         this.sortData(this.sortedBy,this.customsortDirection,this.accountRecords,'accountsData');       
-    }
-     //Added this method as once the mpnda error is shown, the recsToInsert is not resetting and its showing the error message again - Nuthana(As part of Vulnerability Fix - deffered issue)
-    resetSelection() {
-    this.recsToInsert = [];
-    this.recsToInsertId = [];
-    this.clonedSelectedIds = [];
-    this.evaluateSelected();
     }
     sortData(fieldname, direction,inputData,type) {       
         let parseData = JSON.parse(JSON.stringify(inputData));  

@@ -69,30 +69,9 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <help>Базовый период описывает момент времени до начала этой кампании, когда базовое значение было зафиксировано или оценено. Пример: если эта кампания закончится в августе, а базовое значение было зафиксировано в августе предыдущего года, выберите первый вариант. Если базовое значение равно нулю, выберите первый вариант.</help>
-        <label>Базовый период</label>
-        <name>Core_MDF_Baseline_Period_nm__c</name>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one half before</masterLabel>
-            <translation>Тот же период, что и эта кампания, на половину до этого</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
-            <translation>Тот же период, что и эта кампания, за четверть до этого</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Same period as this campaign, one year before</masterLabel>
-            <translation>Получение данных. Подождите несколько секунд и попробуйте снова вырезать или скопировать.</translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Campaign Purpose Description --></label>
-        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
     </fields>
     <fields>
         <help>Значение метрики результатов после кампании мы определяем как успех. Введено до выполнения.</help>

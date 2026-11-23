@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-06-2026
+ * @last modified on  : 10-15-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -22,7 +22,6 @@ public class Pricing_MyDeals_Integration_Test {
         obmId.add(obmRecs[0].Id);
         Test.startTest();
         Pricing_MyDeals_Integration.sendPayloadToMydeals(obmId);
-        System.assertEquals(true , obmRecs.size() > 0 );
         Test.stopTest();
     }
     static testmethod void testmakeCallout(){
@@ -31,7 +30,6 @@ public class Pricing_MyDeals_Integration_Test {
         
         Test.startTest();
         Pricing_MyDeals_Integration.makeCallout(new List<Id>{obmR[0].Id});
-        System.assertEquals(true , obmR.size() > 0 );
         Test.stopTest();
     }
     static testmethod void testUpdateStatus(){

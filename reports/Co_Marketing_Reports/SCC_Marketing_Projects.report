@@ -140,7 +140,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PartnerFundRequest$Core_MDF_Start_Date__c</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2024-01-01</startDate>
     </timeFrameFilter>

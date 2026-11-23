@@ -14,7 +14,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
 {
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll(); 
     public static String userid = UserInfo.getUserId();
-    boolean triggerFlag,platformEventFlag,atfUpdateCheck;
+    boolean triggerFlag,approvalFlag,platformEventFlag,atfUpdateCheck;
  //Commented by Sushma as there was no implmentation of this method call
     // Enabled by Sridhar as need to call the close activity close date update	
  public override void beforeInsert()
@@ -45,11 +45,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 //Akash - Validate budget type of campaign and activity
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_ValidateBudType')){
                     Core_MDF_Process_PartnerFundRequest.validateBudgetType((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap);
-                }
-            //Rishabh - Only one Activity can be created for an Outcome-Based Proposal Campaign. 
-                if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPass_OneActivityperCampaign')){
-                    Core_MDF_Process_PartnerFundRequest.oneActivityperCampaign((List<PartnerFundRequest>) Trigger.new);
-                }  
+                }                
             	
     	}
                    
@@ -108,6 +104,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
     public override void afterInsert()
     {
         triggerFlag = isActive('Core_MDF_PFR_Insert');
+        approvalFlag = isActive('Core_MDF_PFR_Approval');
         //Akash - Calling publishActivityPlatformEvent from After Insert
         platformEventFlag = isActive('Core_MDF_Activity_Platform_Event');
         
@@ -146,6 +143,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
     public override void afterUpdate()
     {      
         triggerFlag = isActive('Core_MDF_PFR_Update');
+        approvalFlag = isActive('Core_MDF_PFR_Approval');
         boolean recallFlag = isActive('Core_MDF_Activity_Recall');
         platformEventFlag = isActive('Core_MDF_Activity_Platform_Event');
        
@@ -155,8 +153,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
         if(triggerFlag && !(System.isBatch() && atfUpdateCheck) && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_ATFBatchUpdate'))
         {
                 Core_MDF_ProcessCCP_PartnerFundRequest.updateTotalCampaignCostIpa((Map<Id,PartnerFundRequest>) Trigger.oldMap,(List<PartnerFundRequest>) Trigger.new, true);    
-                //Akash
-                Core_MDF_Outcome_Acc_Based_Activity.handleParentActivityUpdates((Map<Id, PartnerFundRequest>)Trigger.newMap,(Map<Id, PartnerFundRequest>)Trigger.oldMap);
+
                     //Evaluate the rule engine for approval
 				Core_MDF_Process_PartnerFundRequest.callRuleEngine((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap,Trigger.isInsert,Trigger.isBefore);                
                 //Auto Budget Transfer for EEF Program

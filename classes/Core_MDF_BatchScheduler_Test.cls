@@ -7,15 +7,15 @@
 *****************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_MDF_BatchScheduler_Test {
-        
+    
     
     @TestSetup static void setUpData(){ 
-               
+        
         Test.startTest();      
         List<ChannelProgram> cpList = new List<ChannelProgram>();           
         ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
         cpList.add(ccfCp);
-                
+        
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
         PermissionSet paymentAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Payment_Adm' LIMIT 1];
         PermissionSet paymentScheduleAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Payment_Schedule_Admin' LIMIT 1];
@@ -46,7 +46,7 @@ private class Core_MDF_BatchScheduler_Test {
         }
         
         system.runAs(usr1){
-         
+            
             List<Core_MDF_Payment_Run__c> PayRun = new List<Core_MDF_Payment_Run__c>();
             
             Core_MDF_Payment_Run__c paymentRun1 = new Core_MDF_Payment_Run__c();
@@ -67,7 +67,7 @@ private class Core_MDF_BatchScheduler_Test {
             //insert paymentRun2;   
             PayRun.add(paymentRun2); 
             Database.insert(PayRun);
-                    
+            
             List<Core_MDF_Batch_Scheduler__c> BatchSch = new List<Core_MDF_Batch_Scheduler__c>();
             
             Core_MDF_Batch_PaymentFileGenerator batchClassInstance1 = new Core_MDF_Batch_PaymentFileGenerator(paymentRun1);
@@ -116,7 +116,7 @@ private class Core_MDF_BatchScheduler_Test {
             customSch3.Core_MDF_Priority__c = 'High';
             customSch3.Core_MDF_Program_Txt__c = 'CCP';
             customSch3.Core_MDF_GMT_Time__c = dt.time();
-            BatchSch.add(customSch3);
+            BatchSch.add(customSch3);//Core_MDF_Enable_Email_Notification__c
             
             
             Core_MDF_Batch_Scheduler__c customSch4 = new Core_MDF_Batch_Scheduler__c();
@@ -132,8 +132,6 @@ private class Core_MDF_BatchScheduler_Test {
             customSch4.Core_MDF_Program_Txt__c = 'CCP';
             customSch4.Core_MDF_GMT_Time__c = dt.time();
             customSch4.Core_MDF_Every_X_Hour_Nbr__c = '2';
-            customSch4.Core_MDF_Enable_Email_Notification__c = true;
-            customSch4.Core_MDF_Include_All_Notifications__c = true;
             BatchSch.add(customSch4);
             
             
@@ -165,8 +163,24 @@ private class Core_MDF_BatchScheduler_Test {
             customSch6.Core_MDF_Program_Txt__c = 'CCP';
             customSch6.Core_MDF_GMT_Time__c = dt.time();
             BatchSch.add(customSch6);
-
-
+            
+            Core_MDF_Batch_Scheduler__c customSch7 = new Core_MDF_Batch_Scheduler__c();
+            customSch7.Core_MDF_Object_JSON_Txt__c = serializedInstance1;
+            customSch7.Core_MDF_Batch_Size_Nbr__c = 200;
+            customSch7.Core_MDF_Effective_Start_Time_Dt__c = DateTime.Now()+1;
+            customSch7.Scheduled_Time_Dt__c = DateTime.Now().addMinutes(100);
+            customSch7.Core_MDF_Effective_End_Time_Dt__c = DateTime.Now()+5;
+            customSch7.Core_MDF_Batch_Class_Name_Txt__c = String.valueOf(batchClassInstance1).split(':')[0];
+            //customSch3.Core_MDF_Status_Txt__c = 'Scheduled';
+            customSch7.Core_MDF_Job_Frequency__c = 'Daily';
+            customSch7.Core_MDF_Priority__c = 'High';
+            customSch7.Core_MDF_Program_Txt__c = 'CCP';
+            customSch7.Core_MDF_GMT_Time__c = dt.time();
+            customSch7.Core_MDF_Enable_Email_Notification__c = true;
+            customSch7.Core_MDF_Include_All_Notifications__c = true;
+            BatchSch.add(customSch7);//
+            
+            
             Database.insert(BatchSch);
             List<Core_MDF_Batch_Scheduler_Line_Item__c> schLineList = new List<Core_MDF_Batch_Scheduler_Line_Item__c>();
             Core_MDF_Batch_Scheduler_Line_Item__c lineItem1 = new Core_MDF_Batch_Scheduler_Line_Item__c();
@@ -180,9 +194,9 @@ private class Core_MDF_BatchScheduler_Test {
             lineItem2.Core_MDF_Status_Txt__c = 'Scheduled'; 
             schLineList.add(lineItem2);
             Core_MDF_Batch_Scheduler_Line_Item__c lineItem3 = new Core_MDF_Batch_Scheduler_Line_Item__c();
-            lineItem3.Core_MDF_Batch_Scheduler__c = customSch4.Id;
-            lineItem3.Core_MDF_Scheduled_Time_Dt__c =customSch4.Scheduled_Time_Dt__c; 
-            lineItem3.Core_MDF_Status_Txt__c = 'Pending'; 
+            lineItem3.Core_MDF_Batch_Scheduler__c = customSch7.Id;
+            lineItem3.Core_MDF_Scheduled_Time_Dt__c =customSch7.Scheduled_Time_Dt__c; 
+            lineItem3.Core_MDF_Status_Txt__c = 'Completed'; 
             schLineList.add(lineItem3);
             Database.insert(schLineList);
             
@@ -213,15 +227,33 @@ private class Core_MDF_BatchScheduler_Test {
             configList.add(config5);
             Database.insert(configList);
             
+            string templateText = '<messaging:emailTemplate subject="{!relatedTo.Name}" recipientType="User" relatedToType="Core_MDF_Batch_Scheduler_Line_Item__c"><messaging:htmlEmailBody ><ul><li>test content</li></ul></messaging:htmlEmailBody></messaging:emailTemplate>';
+            EmailTemplate template = new EmailTemplate(DeveloperName = 'TestEmailVFTemplate', TemplateType= 'Visualforce', FolderId = UserInfo.getUserId(),
+            Name = 'TestEmailVFTemplate',
+            IsActive = true);
+
+            template.Markup=templateText;
+
+            insert template;
+
+
+
+            
+            Batch_Scheduler_Email_Templates__c BatchEmailTest = new Batch_Scheduler_Email_Templates__c(
+                Name = 'CCP',
+                Template_Name__c = template.Name
+            );
+            insert BatchEmailTest;
+            
         }
         
         
         
-       
+        
         
         //PaymentRun_ServiceHandler
         
-                                          
+        
         Test.stopTest();
         
     }
@@ -232,32 +264,30 @@ private class Core_MDF_BatchScheduler_Test {
         
         //Core_MDF_BatchSchedulerUtility.startBatchJob('CCP');                      				                     
         Core_MDF_Custom_BatchJobSch s=new Core_MDF_Custom_BatchJobSch('CCP');
-		s.execute(null);
+        s.execute(null);
         
         //List<Core_MDF_Batch_Scheduler_Line_Item__c> lst = [select id,Core_MDF_Status_Txt__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Status_Txt__c = 'Pending'];
-      	//System.assert(lst.size()>0, 'List has rows');
-      	
+        //System.assert(lst.size()>0, 'List has rows');
+        
         Test.stopTest();
-        // Highlight: Unused Local Variable 
-       /* List<Core_MDF_Batch_Scheduler_Line_Item__c> lst2 = */ Core_MDF_BatchSchedulerUtility.updateStatusForCompletedOrFailedJob('CCP');
+        
+        List<Core_MDF_Batch_Scheduler_Line_Item__c> lst2 = Core_MDF_BatchSchedulerUtility.updateStatusForCompletedOrFailedJob('CCP');
         try{
             Core_MDF_Custom_BatchJobSch obj =new Core_MDF_Custom_BatchJobSch('');
             
-			obj.execute(null);
+            obj.execute(null);
         }catch (Exception e) {
-         // Highlight: Unused Local Variable    
-        //	String message = e.getMessage();
+            String message = e.getMessage();
             System.assert(e.getMessage().contains('Program cannot be empty'), 'message=' + e.getMessage());
         }        
     }
     @isTest static void restartBatchJob(){
-		Test.startTest();
+        Test.startTest();
         try{
-        	Core_MDF_BatchJobRestart obj = new Core_MDF_BatchJobRestart('CCP');
-			obj.execute(null);
+            Core_MDF_BatchJobRestart obj = new Core_MDF_BatchJobRestart('CCP');
+            obj.execute(null);
         }catch(Exception e){
-           // Highlight: Unused Local Variable
-          //  String message = e.getMessage();
+            String message = e.getMessage();
             System.assert(e.getMessage().contains('Attempt to de-reference a null object'),'message=' + e.getMessage());
             //System.assert(e.getMessage().contains('This is not a valid job to restart.Please check the input parameter'), 'message=' + e.getMessage());
         }
@@ -265,27 +295,25 @@ private class Core_MDF_BatchScheduler_Test {
     }
     @isTest static void updateTest(){
         try{
-        Core_MDF_Batch_Scheduler_Line_Item__c schline1 = [select Id,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__c from Core_MDF_Batch_Scheduler_Line_Item__c Limit 1 ];
-        schline1.Core_MDF_Status_Txt__c = 'Pending';
-        update schline1;
-        Core_MDF_Batch_Scheduler__c sch1 = [select id from Core_MDF_Batch_Scheduler__c where Core_MDF_Job_Frequency__c = 'Once' limit 1];
-        sch1.Core_MDF_Inactive__c = True;
-        update sch1;
+            Core_MDF_Batch_Scheduler_Line_Item__c schline1 = [select Id,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__c from Core_MDF_Batch_Scheduler_Line_Item__c Limit 1 ];
+            schline1.Core_MDF_Status_Txt__c = 'Pending';
+            update schline1;
+            Core_MDF_Batch_Scheduler__c sch1 = [select id from Core_MDF_Batch_Scheduler__c where Core_MDF_Job_Frequency__c = 'Once' limit 1];
+            sch1.Core_MDF_Inactive__c = True;
+            update sch1;
         }catch(exception e){
-           // Highlight: Unused Local Variable
-          //  String message = e.getMessage();
+            String message = e.getMessage();
             System.assert(e.getMessage().contains(' Batch Schedule cannot be cancelled in current status'), 'message=' + e.getMessage());
         }
         
         
         Core_MDF_Batch_Scheduler__c sch2 = [select id,Core_MDF_Scheduler_Status_Txt__c from Core_MDF_Batch_Scheduler__c where Core_MDF_Job_Frequency__c = 'Daily' limit 1];
-        // Highlight: Unused Local Variable
-       // Core_MDF_Batch_Scheduler_Line_Item__c schline2 = [select Id,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c=:sch2.Id  Limit 1 ];
+        Core_MDF_Batch_Scheduler_Line_Item__c schline2 = [select Id,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c=:sch2.Id  Limit 1 ];
         sch2.Core_MDF_Inactive__c = True;
         update sch2;
     }
-   @isTest Public static void batchNameTest() {
-       try{ Core_MDF_Batch_Scheduler__c customSch6 = new Core_MDF_Batch_Scheduler__c();
+    @isTest Public static void batchNameTest() {
+        try{ Core_MDF_Batch_Scheduler__c customSch6 = new Core_MDF_Batch_Scheduler__c();
             //customSch6.Core_MDF_Object_JSON_Txt__c = serializedInstance1;
             customSch6.Core_MDF_Batch_Size_Nbr__c = 200;
             customSch6.Core_MDF_Effective_Start_Time_Dt__c = DateTime.Now()+1;
@@ -296,14 +324,13 @@ private class Core_MDF_BatchScheduler_Test {
             customSch6.Core_MDF_Job_Frequency__c = 'Every X Minute';
             customSch6.Core_MDF_Priority__c = 'High';
             customSch6.Core_MDF_Program_Txt__c = 'CCP';
-           DateTime dt = DateTime.now();
+            DateTime dt = DateTime.now();
             customSch6.Core_MDF_GMT_Time__c = dt.time();
             customSch6.Core_MDF_Every_X_Minute_Nbr__c = '5';
             insert customSch6;
-       }catch(exception e){
-           // Highlight: Unused Local Variable
-           // String message = e.getMessage();
-            System.assert(e.getMessage().contains('Please provide valid batch class name'), 'message=' + e.getMessage());
-        }
+           }catch(exception e){
+               String message = e.getMessage();
+               System.assert(e.getMessage().contains('Please provide valid batch class name'), 'message=' + e.getMessage());
+           }
     }
 }

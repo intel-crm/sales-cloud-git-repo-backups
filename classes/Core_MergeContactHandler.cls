@@ -14,7 +14,6 @@ public class Core_MergeContactHandler {
     // Added by ankit
     public static Boolean isRecurssive = false;
     public static Set<Id> deletedContactIds = new Set<Id>();
-    public static Set<Id> PRM_deletedContactIds = new Set<Id>();
     public static Boolean mergeContact = false;
     
     public static void validateToUpdDelUniqueEntitlement(){
@@ -38,7 +37,6 @@ public class Core_MergeContactHandler {
             for(Contact contactObj:contactObjList){
                 if(Trigger.isdelete){
                     mergeContact = true;
-                    PRM_deletedContactIds.add(contactObj.Id);
                 } else if(Trigger.isupdate && mergeContact){
                     masterIds.add(contactObj.Id);
                 }

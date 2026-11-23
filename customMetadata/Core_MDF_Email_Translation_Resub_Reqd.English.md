@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Final Notice: Claim #</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Event&quot;,&quot;Lead Cultivation&quot;:&quot;Lead Cultivation&quot;,&quot;Technical Activation&quot;:&quot;Technical Activation&quot;,&quot;Incentive&quot;:&quot;Incentive&quot;,&quot;Training&quot;:&quot;Training&quot;,&quot;Digital Media&quot;:&quot;Digital Media&quot;,&quot;Legacy Media&quot;:&quot;Legacy Media&quot;,&quot;Funded Headcount&quot;:&quot;Funded Headcount&quot;,&quot;Brand Awareness&quot;:&quot;Brand Awareness&quot;,&quot;Consideration&quot;:&quot;Consideration&quot;,&quot;Purchase Intent&quot;:&quot;Purchase Intent&quot;,&quot;Preference&quot;:&quot;Preference&quot;,&quot;Share of Voice&quot;:&quot;Share of Voice&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Thank you,</value>
     </values>

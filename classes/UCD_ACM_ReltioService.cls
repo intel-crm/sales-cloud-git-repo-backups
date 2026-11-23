@@ -15,83 +15,83 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
     private static final String SBR_API = '/ucd/v1/sbr';
     private static final String UPDATE_API = '/ucd/v1/crosswalks/{0}';
     public static final string HTTP_PATCH = 'PATCH';  
-    
+
     //Deafult Constrctor
     public UCD_ACM_ReltioService() {
     }
-    
+
     public static UCD_ACM_ServiceContracts.IMDMService getInstance(){
         if (instance  == null){
             instance  = new UCD_ACM_ReltioService();
         }
         return instance;
     }
-    
+
     /*
-* description : Reltio API Call
-* params : String request
-* return : Core_RestClient
-* author and date : ankit1x.sharma@intel.com, 22 Jun 2022
-* Updated: chethan.s.kunder@intel.com, 22 May 2024
-*/
+    * description : Reltio API Call
+    * params : String request
+    * return : Core_RestClient
+    * author and date : ankit1x.sharma@intel.com, 22 Jun 2022
+    * Updated: chethan.s.kunder@intel.com, 22 May 2024
+    */
     private Core_RestClient callAPI(String request, String endPoint,string HTTP){
         Map<String,String> mapofHader = new Map<String,String> { 'Content-Type' => 'application/json' };
-            List<Object> endPointParams = new List<Object> { endPoint };
-                String apiURI = String.format('callout:SalesCRM_Apigee{0}', endPointParams);
+        List<Object> endPointParams = new List<Object> { endPoint };
+        String apiURI = String.format('callout:SalesCRM_Apigee{0}', endPointParams);
         UCD_ACM_Logger.information('UCD_ACM_ReltioService', 'callAPI', 'Reltio API Payload - '+request, 'SBR');
         Core_RestClient restClient = new Core_RestClient(apiURI, HTTP, mapofHader, request, Integer.valueOf(System.Label.Reltio_Timeout));
         restClient.invokeAPI();
         return restClient;
     }
-    
+
     /*
-* description : Serialize request
-* params : UCD_ACM_Models.SearchRequest RequestModel
-* return : String
-* author and date : ankit1x.sharma@intel.com, 22 Jun 2022
-*/
+     * description : Serialize request
+     * params : UCD_ACM_Models.SearchRequest RequestModel
+     * return : String
+     * author and date : ankit1x.sharma@intel.com, 22 Jun 2022
+     */
     private String parseRequestBody(UCD_ACM_Models.SearchRequest RequestModel){
         String  RequestJson = Json.serialize(RequestModel);
         return RequestJson ;
     }
-    
+
     /*
-* description : Serialize update request
-* params : UCD_ACM_ReltioModels.UpdateRequest requestModel
-* return : String
-*/
+     * description : Serialize update request
+     * params : UCD_ACM_ReltioModels.UpdateRequest requestModel
+     * return : String
+     */
     private String parseRequestBodyForUpdateApi(UCD_ACM_ReltioModels.UpdateRequest updateRequest){
         String requestJson = Json.serialize(updateRequest);
         return requestJson ;
     }
-    
+
     /*
-* description : Search API calling And mapping the response
-* params : UCD_ACM_Models.SearchRequest requestPayload
-* return : String
-* author and date : ankit1x.sharma@intel.com, 22 Jun 2022
-* Updated : chethan.s.kunder@intel.com, 23 May, 2024
-*/
+    * description : Search API calling And mapping the response
+    * params : UCD_ACM_Models.SearchRequest requestPayload
+    * return : String
+    * author and date : ankit1x.sharma@intel.com, 22 Jun 2022
+    * Updated : chethan.s.kunder@intel.com, 23 May, 2024
+    */
     public List<UCD_ACM_Models.ReltioResponse> searchAccountReltio(UCD_ACM_Models.SearchRequest requestPayload){
         List<UCD_ACM_Models.ReltioResponse> finalResponses = new List<UCD_ACM_Models.ReltioResponse>();
         try{
             String finalResponseJson = '';
             UCD_ACM_Models.list_items responseFromReltio;
             Core_RestClient rawResponse = new Core_RestClient();
-            
+
             if(requestPayload != null){
                 rawResponse = callAPI(parseRequestBody(requestPayload), SBR_API, HTTP_POST);
                 finalResponseJson = rawResponse.getHttpResponseBody();
             }
-            
+
             if(checkIfResponseHasError(rawResponse.getHttpResponseStatusCode())) {
                 UCD_GenericAcctSearch_SBR.setErrorMessage('Reltio API Response: '+'Status Code: '+rawResponse.getHttpResponseStatusCode()+' Status message: '+rawResponse.getHttpResponseStatus());
             } else if(String.isNotBlank(finalResponseJson)){
                 responseFromReltio  = (UCD_ACM_Models.list_items) System.JSON.deserialize(finalResponseJson, UCD_ACM_Models.list_items.class);   
             }
             finalResponses = mappingResponse(responseFromReltio);
-            
-        } catch(Exception ex){
+
+         } catch(Exception ex){
             UCD_GenericAcctSearch_SBR.setErrorMessage(String.valueOf(ex.getMessage()));
             UCD_ACM_Logger.error('UCD_ACM_ReltioService','searchAccountReltio','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
         } finally{
@@ -100,14 +100,14 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
         
         return finalResponses;
     }
-    
-    /*
-* description : Mapping the responses into the wrapper. 
-* params : UCD_ACM_Models.list_items responseFromReltio
-* return : List<UCD_ACM_Models.ReltioResponse> 
-* author and date : ankit1x.sharma@intel.com, 22 Jun 2022
-*/
-    
+
+     /*
+     * description : Mapping the responses into the wrapper. 
+     * params : UCD_ACM_Models.list_items responseFromReltio
+     * return : List<UCD_ACM_Models.ReltioResponse> 
+     * author and date : ankit1x.sharma@intel.com, 22 Jun 2022
+     */
+
     private List<UCD_ACM_Models.ReltioResponse> mappingResponse(UCD_ACM_Models.list_items responseFromReltio){
         List<UCD_ACM_Models.ReltioResponse> finalResponses = new List<UCD_ACM_Models.ReltioResponse>();
         if(responseFromReltio != null && responseFromReltio.list_items != null){
@@ -149,13 +149,13 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
         }
         return finalResponses;
     }
-    
+
     /*
-* description : Check if reltio response has Error
-* params : Integer
-* return : Boolean
-* author and date : ajayx.gat@intel.com, 9 Feb 2024
-*/
+     * description : Check if reltio response has Error
+     * params : Integer
+     * return : Boolean
+     * author and date : ajayx.gat@intel.com, 9 Feb 2024
+     */
     private Boolean checkIfResponseHasError(Integer responseCode){
         Map<String, UCD_Reltio_SBR_API_Response__c> ucdResponseSettings = UCD_Reltio_SBR_API_Response__c.getAll();
         if(ucdResponseSettings.containsKey(String.valueOf(responseCode))) {
@@ -163,12 +163,12 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
         }
         return false;
     }
-    
-    
+
+
     /*  Description : Reltio entity update API call and getting response
-*   Params  :  List<UCD_ACM_ReltioModels.UpdateRequest> updateRequests
-*   Returns :  List<UCD_ACM_ReltioModels.UpdateResponseModel>
-*   Author and date : rajveer.ranawat@intel.com, 23 May, 2024  */
+    *   Params  :  List<UCD_ACM_ReltioModels.UpdateRequest> updateRequests
+    *   Returns :  List<UCD_ACM_ReltioModels.UpdateResponseModel>
+    *   Author and date : rajveer.ranawat@intel.com, 23 May, 2024  */
     public List<UCD_ACM_ReltioModels.UpdateResponseModel> updateEntity(Map<String, UCD_ACM_ReltioModels.UpdateRequest> updateRequests) {
         List<UCD_ACM_ReltioModels.UpdateResponseModel> listResponse = new List<UCD_ACM_ReltioModels.UpdateResponseModel>();
         Map<String, Object> accountIdAndResponse = new Map<String, object>();
@@ -177,37 +177,36 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
             Core_RestClient rawResponse = new Core_RestClient();
             for(String key:updateRequests.keySet()) {
                 rawResponse = callAPI(parseRequestBodyForUpdateApi(updateRequests.get(key)), String.format(UPDATE_API, new List<String>{key.split(':')[0]}), HTTP_PATCH);
-                accountIdAndResponse.put(updateRequests.get(key).value, rawResponse);
                 response = rawResponse.getHttpResponseBody();
                 Object deserializedList = (Object) JSON.deserializeUntyped(response);
-                // Map<String, Object> dataMap = (Map<String, Object>)deserializedList;
+               // Map<String, Object> dataMap = (Map<String, Object>)deserializedList;
                 accountIdAndResponse.put(updateRequests.get(key).value, deserializedList);
                 if(rawResponse.getHttpResponseStatusCode() != 200){
-                    UCD_ACM_Logger.error('UCD_ACM_ReltioService','updateEntity','Message: '+(String) ((Map<String, Object>)deserializedList).get('message')+'. statusCode: '+String.valueOf(rawResponse.getHttpResponseStatusCode()),key.split(':')[1]);
+                 UCD_ACM_Logger.error('UCD_ACM_ReltioService','updateEntity','Message: '+(String) ((Map<String, Object>)deserializedList).get('message')+'. statusCode: '+String.valueOf(rawResponse.getHttpResponseStatusCode()),key.split(':')[1]);
                 }
-                
+               
             }
-            
+
             for(String accid:accountIdAndResponse.keyset()){
-                // Map<String, Object> dataMap = (Map<String, Object>)accountIdAndResponse.get(accid);
+               // Map<String, Object> dataMap = (Map<String, Object>)accountIdAndResponse.get(accid);
                 UCD_ACM_ReltioModels.UpdateResponseModel updateResponseModel = new UCD_ACM_ReltioModels.UpdateResponseModel();  
                 if(accountIdAndResponse.get(accid)!=null && (String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('status')== 'modified'){
                     updateResponseModel.accountid = accid;
                     updateResponseModel.status = (String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('status');
                 }
                 else {  
-                    updateResponseModel.accountid = accid;
-                    updateResponseModel.status = (String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('status');
-                    updateResponseModel.errorDescription =(String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('message');   
-                    
-                    
-                }
+                        updateResponseModel.accountid = accid;
+                        updateResponseModel.status = (String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('status');
+                        updateResponseModel.errorDescription =(String) ((Map<String, Object>) accountIdAndResponse.get(accid)).get('message');   
+                       
+                      
+                    }
                 listResponse.add(updateResponseModel);
             } 
         }catch(Exception ex) {
-            String accountIds = String.join(new List<String>(accountIdAndResponse.keySet()), ', ');
-            UCD_ACM_Logger.error('UCD_ACM_ReltioService','updateEntity','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString() +'.Response: '+response , accountIds);
-        } finally {
+             String accountIds = String.join(new List<String>(accountIdAndResponse.keySet()), ', ');
+             UCD_ACM_Logger.error('UCD_ACM_ReltioService','updateEntity','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString() +'.Response: '+response , accountIds);
+           } finally {
             UCD_ACM_Logger.setLogDetails();
         }
         return listResponse;

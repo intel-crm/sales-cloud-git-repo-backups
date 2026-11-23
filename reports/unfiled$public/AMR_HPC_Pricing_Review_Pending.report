@@ -35,10 +35,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ECAP_Price_Amt__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Unit_Qty__c</field>
     </columns>
     <columns>
@@ -124,7 +120,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_EndCustomer_Nm__c</sortColumn>
+    <sortColumn>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_Date_dt__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Approved_Date_dt__c</dateColumn>

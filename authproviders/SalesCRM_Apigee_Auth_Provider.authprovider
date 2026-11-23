@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>API_M_Auth_Provider__mdt.SalesCRM_Apigee_Auth_Provider</customMetadataTypeRecord>
-    <executionUser>11636835@intel.com.crm</executionUser>
+    <executionUser>11636835@intel.com.crm.devpsg2</executionUser>
     <friendlyName>SalesCRM Apigee Auth Provider</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>

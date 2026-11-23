@@ -82,6 +82,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
             Insert grpMem1;
             
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
+            //Pricing_Test_Utility.createAEUser();
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
@@ -310,6 +311,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
     static void testDoPatch_updateQuoteline() {
         SBQQ__Quote__c quote = [select id,(select Id from SBQQ__LineItems__r order by Pricing_Quote_Line_Number__c) from SBQQ__Quote__c Limit 1];
         Pricing_Competitor_Product__c cp = [Select Id from Pricing_Competitor_Product__c where Name = :'Product Z'];
+        Pricing_Competitor_Product__c cpWIP = [Select Id from Pricing_Competitor_Product__c where Name = :'Write In Product'];
         Product2 p = [Select Id from Product2 where Name = :'Write In Product'];
         User usr = [SELECT id, AccountId FROM User WHERE email='Rest_API_Quote_lines_V2_Test@noemail.com'];
         system.runAs(usr){
@@ -336,6 +338,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(usr){
             test.startTest();
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;    
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -355,6 +358,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(usr){
             //test.startTest();
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;    
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -373,6 +377,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(usr){
             test.startTest();
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -391,6 +396,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(usr){
             test.startTest();
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -409,6 +415,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(usr){
             test.startTest();
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -482,6 +489,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         }
         system.runAs(usr){
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=all&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'all');
@@ -555,6 +563,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         }
         system.runAs(usr){
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?type=quoteline&id=';
             req.httpMethod = 'GET';
             req.addParameter('type', 'quoteline');
@@ -596,6 +605,7 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         update qli;
         system.runAs(usr){
             RestRequest req = new RestRequest();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v2.0/quoterequest/quotelines?action=&id=';
             req.httpMethod = 'POST';
             req.addParameter('action', 'recall');

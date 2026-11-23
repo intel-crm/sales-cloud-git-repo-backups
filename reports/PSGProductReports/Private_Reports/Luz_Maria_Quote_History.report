@@ -23,6 +23,9 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>CUST_OWNER_NAME</field>
     </columns>
     <columns>

@@ -10,13 +10,6 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:Core_MDF_BulkClaim",
-      "id" : "b32c4c4e-f184-47ce-8b2a-fa190eae5ec9",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
       "componentAttributes" : {
         "enableInlineEdit" : true,
         "filterName" : "{!filterId}",

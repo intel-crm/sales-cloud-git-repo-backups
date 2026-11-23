@@ -273,7 +273,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             Campaign camp = [select id,Name from Campaign WHERE Name = 'Test Retail Camp 1' LIMIT 1];
             PartnerFundAllocation pfa=[select id from PartnerFundAllocation where Title =: 'Test Allocation New'];
             Account accCoMarketing = [select id from Account WHERE Name = 'Test Master Account'];
-            pfReq = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast (Pre-2025)','Podcast','Draft',false);
+            pfReq = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast','Podcast','Draft',false);
             //pfReq.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             pfReq.Status='Approved';
             pfReq.Title = 'Test Retail Activity';
@@ -328,7 +328,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5, null,false, null, false, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5, null,false, null,false);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);   
       //System.assertNotEquals(null, res, 'saveClaim() returned null');
             //System.assertNotEquals(null, res.claimDetail, 'saveClaim().claimDetail is null');
@@ -340,7 +340,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             Database.update(claimins);
           
             // Read the VAT Invoice record
-            Core_MDF_Claim_VAT_Info__c vatInfo = [select id from Core_MDF_Claim_VAT_Info__c /*where Core_MDF_Claim_Id__c = : res.claimDetail.id*/ limit 1];
+            Core_MDF_Claim_VAT_Info__c vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             vatInfo.Core_MDF_Status_Txt__c ='Pending Documents';
@@ -462,7 +462,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             insert claim1;
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null, null,false, null, false, null, false);
+            res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null, null,false, null,false);
             
             
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList); 
@@ -489,7 +489,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             vatInfo.Core_MDF_ClaimSubRemNotificationSent_Ind__c = true;
             try{
                 Database.update(vatInfo);
-            }catch(Exception e){}               
+            }catch(Exception e){/*System.debug('Exception'+e);*/}               
            //Database.update(vatInfo);  
              system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),3), vatInfo.Core_MDF_ClaimSubmitterReminder_Dtm__c,'Update First Reminder Date');
             system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),5), vatInfo.Core_MDF_RSMReminderDate_Dtm__c,'Update Second Reminder Date');

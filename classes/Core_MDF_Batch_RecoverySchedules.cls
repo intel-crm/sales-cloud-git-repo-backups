@@ -54,6 +54,7 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
             }
             
             Map<String, Core_MDF_Batch_Scheduler__c> uniqueKeyToBatchSchedulerMap = new Map<String, Core_MDF_Batch_Scheduler__c>();
+            Map<Date, Integer> recoveryRunDateToMinutuesToAddMap= new Map<Date, Integer>();
             Integer minutesToAdd = 5;
             for(String program : programToMonthToRecoveryRunDate.keySet()){
                 for(String recoveryMonth : programToMonthToRecoveryRunDate.get(program).keySet()){
@@ -63,11 +64,6 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                     String region = '';
                     Boolean onlyPreselection = false;
                     Boolean notifyReminders = false;
-                    Integer surePayExecutionHour;
-                    Integer surePayExecutionMin;
-                    Integer recoveryExecutionHour;
-                    Integer recoveryExecutionMin;
-
                     if(programToWrapperMap.containsKey(program)){
                         Core_MDF_Recovery_Utility.RecoveryNotificationMapping programToWrapper = programToWrapperMap.get(program);
                         budgetType = String.isNotBlank(programToWrapper.budgettype) ? programToWrapper.budgettype : '';
@@ -75,21 +71,6 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                         List<String> onlyPreselectionMonthList= String.isNotBlank(programToWrapper.onlyReadyToRecoverMonths) ? programToWrapper.onlyReadyToRecoverMonths.split(',') : new List<String>();
                         onlyPreselection = onlyPreselectionMonthList.contains(recoveryMonth) ? true : false;
                         notifyReminders = String.isNotBlank(programToWrapper.reminderDays) ? true : false;
-                        if(String.isNotBlank(programToWrapper.surePayExeTime)){
-                            List<String> surePayTime = programToWrapper.surePayExeTime.split(':');
-                            if(surePayTime.size() == 2){
-                                surePayExecutionHour = Integer.valueOf(surePayTime[0]);
-                                surePayExecutionMin = Integer.valueOf(surePayTime[1]);
-                            }
-                        }
-                        if(String.isNotBlank(programToWrapper.recoveryExeTime)){
-                            List<String> recoveryTime = programToWrapper.recoveryExeTime.split(':');
-                            if(recoveryTime.size() == 2){
-                                recoveryExecutionHour = Integer.valueOf(recoveryTime[0]);
-                                recoveryExecutionMin = Integer.valueOf(recoveryTime[1]);
-                            }
-                        }
-
 
                         //Recovery Reminder notifications Schedule(2, 5 Days)
                         if(!onlyPreselection && notifyReminders && String.isNotBlank(programToWrapper.reminderDays)){
@@ -102,19 +83,19 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                             }
                             minutesToAdd += 5;
                         }
+
                     }
-                    //Surepay and Recovery Run Schedule
+                    
+                    //Recovery Run Schedule
+                    Integer minutesToAddForRecoveryRun = 0;
                     String technicalProgramName = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(program);
-                    String surePayJson = '{"program" : "' + technicalProgramName + '"}';
                     String recoverRunJson = '{"program" : "' + technicalProgramName + '","budgetType" : "'+ budgetType +'","quarterYear" : "","accountIds" : "","regions" : "'+ region +'","source" : "Payment Run","isRecReq_RecvryDone" : ' + onlyPreselection +',"isPreSelClaim_RecvryDone" : ' + onlyPreselection + '}';
-                    
+                    if(recoveryRunDateToMinutuesToAddMap.containsKey(recoveryExecutionDate)){
+                        minutesToAddForRecoveryRun = recoveryRunDateToMinutuesToAddMap.get(recoveryExecutionDate) + 15;
+                    }
 
-                    Datetime surePayExecutionDateAndTime = DateTime.newInstanceGmt(recoveryExecutionDate.year(), recoveryExecutionDate.month(), recoveryExecutionDate.day(), surePayExecutionHour, surePayExecutionMin, 0);
-
-                    Core_MDF_Batch_Scheduler__c surePayBatchSchedule = createBatchSchedulerInstance(surePayJson, 50, surePayExecutionDateAndTime, 'Core_MDF_SurePay_Batch', 'Once', 'High', 'CCP');
-                    uniqueKeyToBatchSchedulerMap.put(surePayJson.replaceAll(' ', '') + recoveryExecutionDate, surePayBatchSchedule);
-                    
-                    Datetime recoveryExecutionDateAndTime = DateTime.newInstanceGmt(recoveryExecutionDate.year(), recoveryExecutionDate.month(), recoveryExecutionDate.day(), recoveryExecutionHour, recoveryExecutionMin, 0);
+                    recoveryRunDateToMinutuesToAddMap.put(recoveryExecutionDate, minutesToAddForRecoveryRun);
+                    Datetime recoveryExecutionDateAndTime = DateTime.newInstanceGmt(recoveryExecutionDate.year(), recoveryExecutionDate.month(), recoveryExecutionDate.day(), 0, minutesToAddForRecoveryRun, 0);
 
                     Core_MDF_Batch_Scheduler__c recoveryRunBatchSchedule =createBatchSchedulerInstance(recoverRunJson, 50, recoveryExecutionDateAndTime, 'Core_MDF_Recovery_Batch', 'Once', 'High', 'CCP');   
                     uniqueKeyToBatchSchedulerMap.put(recoverRunJson.replaceAll(' ', '') + recoveryExecutionDate, recoveryRunBatchSchedule);
@@ -122,13 +103,14 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
             }
 
             //Duplicate Check
-            uniqueKeyToBatchSchedulerMap = duplicateBatchSchedulerCheck(uniqueKeyToBatchSchedulerMap, new List<String>{'Core_MDF_Recovery_Batch' , 'Core_MDF_Batch_RecoveryAdminNotification', 'Core_MDF_SurePay_Batch'});
+            uniqueKeyToBatchSchedulerMap = duplicateBatchSchedulerCheck(uniqueKeyToBatchSchedulerMap, new List<String>{'Core_MDF_Recovery_Batch' , 'Core_MDF_Batch_RecoveryAdminNotification'});
             
             //Insert Batch scheduler records for Reminder notification schedule and Recovery Run
             if(uniqueKeyToBatchSchedulerMap != null && !uniqueKeyToBatchSchedulerMap.isEmpty()){
                 Database.insert(uniqueKeyToBatchSchedulerMap.values(),false);
             }
         }catch(Exception ex){
+            //System.debug('Exception has occurred' + ex.getmessage());
         }
     }
     

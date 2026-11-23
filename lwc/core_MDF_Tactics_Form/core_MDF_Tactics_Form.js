@@ -51,51 +51,8 @@ export default class KpiTable extends LightningElement {
     @track isMetricsVisible = false;
     @track intelContributionValue;
     picklistLabelMap = {};
-    pendingAiPayload = null;
-    staticGoalFallbackValue = 100;
 
-    normalizeToken(value) {
-        return value ? String(value).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-    }
-
-    normalizeNumericValue(value) {
-        if (value === undefined || value === null || value === '') {
-            return null;
-        }
-        if (typeof value === 'number') {
-            return value;
-        }
-        const cleaned = String(value).replace(/[^0-9.-]/g, '');
-        const parsed = parseFloat(cleaned);
-        return Number.isNaN(parsed) ? null : parsed;
-    }
-
-    resolveTacticApi(value) {
-        if (!value) {
-            return value;
-        }
-
-        if (this.allMappings[value]) {
-            return value;
-        }
-
-        const normalizedValue = this.normalizeToken(value);
-        const apiKeys = Object.keys(this.allMappings || {});
-
-        for (let i = 0; i < apiKeys.length; i++) {
-            const apiKey = apiKeys[i];
-            if (this.normalizeToken(apiKey) === normalizedValue) {
-                return apiKey;
-            }
-            const mappedLabel = this.picklistLabelMap[apiKey];
-            if (mappedLabel && this.normalizeToken(mappedLabel) === normalizedValue) {
-                return apiKey;
-            }
-        }
-
-        return value;
-    }
-
+    
     @wire(getPicklistLabels)
 wiredPicklistLabels({ data, error }) {
     if (data) {
@@ -134,13 +91,6 @@ wiredPicklistLabels({ data, error }) {
                 if (this.data.length > 0) {
                     this.isMetricsVisible = true;
                 }
-
-                // If AI payload arrived before mapping/rows were ready, apply it now.
-                if (this.pendingAiPayload && this.data.length > 0) {
-                    const queuedPayload = this.pendingAiPayload;
-                    this.pendingAiPayload = null;
-                    this.applyAISuggestions(queuedPayload);
-                }
             } else if (error) {
                 
             }
@@ -173,7 +123,6 @@ wiredPicklistLabels({ data, error }) {
               this.data = this.data.map(row => {
                 let percentageValue = parseFloat(row.percentageValue);
                 row.intelContri = ((this.intelContributionValue * percentageValue) / 100).toFixed(2);
-                row.maxIntelInvest = this.intelContributionValue;
                 return {...row};});
         }
     
@@ -183,8 +132,6 @@ wiredPicklistLabels({ data, error }) {
     } else {
         this.selectedTactics = JSON.parse(JSON.stringify(this.actTactics));
     }
-
-    this.selectedTactics = (this.selectedTactics || []).map(tactic => this.resolveTacticApi(tactic));
 
     const previousDataMap = new Map(this.data.map(row => [row.tactic.api || row.tactic, row]));
 
@@ -197,24 +144,6 @@ wiredPicklistLabels({ data, error }) {
 
         const previousRow = previousDataMap.get(tacticApi);
 
-        const previousKpiValuesByApi = new Map();
-
-        if (previousRow?.firstKpi?.api) {
-            previousKpiValuesByApi.set(
-                previousRow.firstKpi.api,
-                previousRow.firstKpi.value
-            );
-        }
-
-        (previousRow?.otherKpis || []).forEach(savedKpi => {
-            if (savedKpi?.api) {
-                previousKpiValuesByApi.set(
-                    savedKpi.api,
-                    savedKpi.value
-                );
-            }
-        }); //Indu defect fix 
-
         // Get localized labels dynamically from picklistLabelMap
         const tacticLabel = this.picklistLabelMap[tacticApi] || tacticApi;
         const percentageLabel = this.picklistLabelMap[template.percentageField] || template.percentageField;
@@ -224,22 +153,16 @@ wiredPicklistLabels({ data, error }) {
             tactic: { api: tacticApi, label: tacticLabel },
             percentageField: { api: template.percentageField, label: percentageLabel },
             percentageValue: previousRow?.percentageValue ?? '',
-            intelContri: previousRow?.intelContri ?? '',
-           
-          //  intelContri: previousRow?.percentageValue ? ((this.intelContributionValue * previousRow.percentageValue) / 100).toFixed(2) : 0,
-            maxIntelInvest:this.intelContributionValue,
-
+            intelContri: previousRow?.percentageValue ? ((this.intelContributionValue * previousRow.percentageValue) / 100).toFixed(2) : 0,
             firstKpi: {
                 api: template.firstKpi.label,
                 label: this.picklistLabelMap[template.firstKpi.label] || template.firstKpi.label,
-                //value: previousRow?.firstKpi?.value ?? ''
-                value: previousKpiValuesByApi.get(template.firstKpi.label) ?? ''
+                value: previousRow?.firstKpi?.value ?? ''
             },
             otherKpis: template.otherKpis.map((kpi, i) => ({
                 api: kpi.label,
                 label: this.picklistLabelMap[kpi.label] || kpi.label,
-                //value: previousRow?.otherKpis?.[i]?.value ?? '' 
-                value: previousKpiValuesByApi.get(kpi.label) ?? '' //indu
+                value: previousRow?.otherKpis?.[i]?.value ?? ''
             })),
             rowspan: template.otherKpis.length + 1
         };
@@ -249,12 +172,6 @@ wiredPicklistLabels({ data, error }) {
 
     if (this.data.length > 0) {
         this.isMetricsVisible = true;
-    }
-
-    if (this.pendingAiPayload && this.data.length > 0) {
-        const queuedPayload = this.pendingAiPayload;
-        this.pendingAiPayload = null;
-        this.applyAISuggestions(queuedPayload);
     }
 }
 
@@ -333,341 +250,7 @@ wiredPicklistLabels({ data, error }) {
 
         @api getTacticMetricsValues(){
             const payload = JSON.parse(JSON.stringify(this.data));
-            // Sync live DOM values so callers get the current input value even if
-            // the user hasn't blurred the field yet (onchange not yet fired).
-            try {
-                const firstKpiInputs = this.template.querySelectorAll('lightning-input[data-kpi-index="first"]');
-                firstKpiInputs.forEach(input => {
-                    const rowId = input.dataset.id;
-                    const row = payload.find(r => String(r.id) === String(rowId));
-                    if (row && row.firstKpi !== undefined) {
-                        const val = parseFloat(input.value);
-                        if (!isNaN(val)) {
-                            row.firstKpi.value = val;
-                        }
-                    }
-                });
-            } catch (e) {
-                // DOM query errors should not prevent returning the data-backed payload
-            }
             return payload;
-        }
-
-        @api applyAISuggestions(payloadWrapper) {
-            if (!payloadWrapper || !payloadWrapper.tacticMetrics) {
-                return;
-            }
-            console.log('Applying AI suggestions with payloadWrapper:', JSON.parse(JSON.stringify(payloadWrapper)));
-            if (!this.allMappings || Object.keys(this.allMappings).length === 0 || !Array.isArray(this.data) || this.data.length === 0) {
-                // Defer AI application until tactic rows and mappings are available.
-                this.pendingAiPayload = payloadWrapper;
-                // eslint-disable-next-line no-console
-                console.warn('Queued AI tactic metrics payload until mappings/rows are ready.');
-                return;
-            }
-
-            const payload = payloadWrapper.tacticMetrics;
-            console.log('Applying AI suggestions with payload:', JSON.parse(JSON.stringify(payload)));
-            let hasSuggestedTactics = payload && payload.hasSuggestedTactics === true;
-
-            let payloadArray = [];
-            let globalPayload = {};
-
-            if (Array.isArray(payload)) {
-                payloadArray = payload;
-            } else if (payload && typeof payload === 'object') {
-                const reservedKeys = new Set(['spendingAmount', 'spendingPercentage', 'goalValues', 'tacticMetrics', 'goalValue', 'firstKpiValue', 'hasSuggestedTactics']);
-
-                if (Array.isArray(payload.tacticMetrics)) {
-                    payloadArray = payload.tacticMetrics;
-                } else if (payload.tacticMetrics && typeof payload.tacticMetrics === 'object') {
-                    payloadArray = Object.keys(payload.tacticMetrics).map(key => {
-                        const item = payload.tacticMetrics[key];
-                        return (item && typeof item === 'object') ? { tactic: key, ...item } : { tactic: key, goalValue: item };
-                    });
-                }
-
-                const dynamicTacticEntries = Object.keys(payload)
-                    .filter(key => !reservedKeys.has(key))
-                    .map(key => {
-                        const item = payload[key];
-                        return (item && typeof item === 'object') ? { tactic: key, ...item } : { tactic: key, goalValue: item };
-                    });
-
-                if (dynamicTacticEntries.length > 0) {
-                    payloadArray = payloadArray.concat(dynamicTacticEntries);
-                }
-
-                globalPayload = {
-                    spendingAmount: payload.spendingAmount,
-                    spendingPercentage: payload.spendingPercentage,
-                    goalValues: payload.goalValues,
-                    goalValue: payload.goalValue,
-                    firstKpiValue: payload.firstKpiValue
-                };
-            }
-
-            const hasGoalValuesObject = globalPayload.goalValues && typeof globalPayload.goalValues === 'object' && Object.keys(globalPayload.goalValues).length > 0;
-            if (!hasSuggestedTactics && (payloadArray.length > 0 || hasGoalValuesObject)) {
-                hasSuggestedTactics = true;
-            }
-
-            const warnings = [];
-            const rowTacticNorms = new Set(
-                (this.data || []).map(row => {
-                    const rowApi = row.tactic && row.tactic.api ? row.tactic.api : row.tactic;
-                    const rowLabel = row.tactic && row.tactic.label ? row.tactic.label : '';
-                    return [this.normalizeToken(rowApi), this.normalizeToken(rowLabel)];
-                }).flat().filter(Boolean)
-            );
-
-            const unmappedTactics = payloadArray
-                .map(item => (item && typeof item === 'object') ? (item.tactic || item.tacticName || item.tacticApi) : null)
-                .filter(Boolean)
-                .filter(name => !rowTacticNorms.has(this.normalizeToken(name)));
-
-            if (unmappedTactics.length > 0) {
-                warnings.push(`Some AI tactic metrics could not be mapped: ${unmappedTactics.slice(0, 3).join(', ')}`);
-            }
-
-            const extractGoalFromObject = (goalObject, rowContext) => {
-                if (!goalObject || typeof goalObject !== 'object') {
-                    return null;
-                }
-
-                const rowApi = rowContext.rowTacticApi;
-                const rowLabel = rowContext.rowTacticLabel;
-                const rowApiNorm = rowContext.rowTacticApiNorm;
-                const rowLabelNorm = rowContext.rowTacticLabelNorm;
-                const firstKpiApi = rowContext.firstKpiApi;
-                const firstKpiLabel = rowContext.firstKpiLabel;
-
-                let value = goalObject[firstKpiApi] ?? goalObject[firstKpiLabel] ?? goalObject[rowApi] ?? goalObject[rowLabel] ?? null;
-
-                if (value === undefined || value === null || value === '') {
-                    const keys = Object.keys(goalObject);
-                    const tacticMatchKey = keys.find(key => {
-                        const normKey = this.normalizeToken(key);
-                        return normKey === rowApiNorm || normKey === rowLabelNorm;
-                    });
-                    if (tacticMatchKey) {
-                        value = goalObject[tacticMatchKey];
-                    }
-                }
-
-                if (value && typeof value === 'object') {
-                    value = value.goalValue ?? value.firstKpiValue ?? value[firstKpiApi] ?? value[firstKpiLabel] ?? null;
-                }
-
-                return value;
-            };
-
-            if (payloadArray.length === 0) {
-                payloadArray = [globalPayload];
-            }
-
-            // ✅ NO AUTO-ALLOCATION MATH - Only use what AI explicitly suggests
-            // Removed preparedAllocations calculation that was scaling amounts
-            console.log('[Tactics Form] NO allocation math - using ONLY AI-suggested per-tactic values as-is');
-            const preparedAllocations = null;
-
-            this.data = this.data.map(row => {
-                const rowClone = { ...row };
-                const allowGlobalSpendFallback = this.data.length === 1;
-                const rowTacticApi = rowClone.tactic && rowClone.tactic.api ? rowClone.tactic.api : rowClone.tactic;
-                const rowTacticLabel = rowClone.tactic && rowClone.tactic.label ? rowClone.tactic.label : '';
-                const rowTacticApiNorm = this.normalizeToken(rowTacticApi);
-                const rowTacticLabelNorm = this.normalizeToken(rowTacticLabel);
-
-                const matched = payloadArray.find(item => {
-                    if (!item || typeof item !== 'object') {
-                        return false;
-                    }
-                    const itemTactic = item.tactic || item.tacticName || item.tacticApi;
-                    const itemTacticNorm = this.normalizeToken(itemTactic);
-                    return itemTacticNorm && (itemTacticNorm === rowTacticApiNorm || itemTacticNorm === rowTacticLabelNorm);
-                }) || null;
-
-                if (preparedAllocations && matched) {
-                    const matchedIndex = payloadArray.findIndex(item => item === matched);
-                    if (matchedIndex >= 0 && preparedAllocations[matchedIndex] !== undefined) {
-                        const normalizedAmount = preparedAllocations[matchedIndex];
-                        rowClone.intelContri = normalizedAmount;
-                        rowClone.percentageValue = targetTotal > 0
-                            ? Number(((normalizedAmount / targetTotal) * 100).toFixed(2))
-                            : rowClone.percentageValue;
-                    }
-                }
-
-                const usePreparedAllocation = !!(preparedAllocations && matched);
-
-                const effectivePercentage = !usePreparedAllocation && matched && matched.spendingPercentage !== undefined
-                    ? matched.spendingPercentage
-                    : (allowGlobalSpendFallback ? globalPayload.spendingPercentage : undefined);
-                if (effectivePercentage !== undefined && effectivePercentage !== null && effectivePercentage !== '') {
-                    const pct = this.normalizeNumericValue(effectivePercentage);
-                    if (pct !== null) {
-                        rowClone.percentageValue = pct;
-                        rowClone.intelContri = this.intelContributionValue && !isNaN(this.intelContributionValue)
-                            ? ((pct * this.intelContributionValue) / 100).toFixed(2)
-                            : rowClone.intelContri;
-                    } else {
-                        warnings.push(`Invalid spending percentage for tactic ${rowTacticLabel || rowTacticApi}; value was skipped.`);
-                    }
-                }
-
-                const effectiveAmount = !usePreparedAllocation && matched && matched.spendingAmount !== undefined
-                    ? matched.spendingAmount
-                    : (allowGlobalSpendFallback ? globalPayload.spendingAmount : undefined);
-                if (effectiveAmount !== undefined && effectiveAmount !== null && effectiveAmount !== '') {
-                    const amt = this.normalizeNumericValue(effectiveAmount);
-                    if (amt !== null) {
-                        rowClone.intelContri = amt;
-                        rowClone.percentageValue = this.intelContributionValue && !isNaN(this.intelContributionValue)
-                            ? ((amt / this.intelContributionValue) * 100).toFixed(2)
-                            : rowClone.percentageValue;
-                    } else {
-                        warnings.push(`Invalid spending amount for tactic ${rowTacticLabel || rowTacticApi}; value was skipped.`);
-                    }
-                }
-
-                // Mirror handleKpiChange index logic:
-                // data-kpi-index="first" → firstKpi.value
-                // data-kpi-index={kpiIndex} (0,1,...) → otherKpis[i].value
-                // Match AI metric key by label name to decide which slot to stamp.
-                // metricsHandled = true on ANY match (firstKpi or otherKpis) to block fallback from double-stamping firstKpi.
-                //
-                // KPI labels from picklistLabelMap often include the tactic name as a prefix,
-                // e.g. "Digital Media - # of downloads" for a KPI the AI calls "# of downloads".
-                // So we also accept a suffix/contains match:
-                //   kpiNorm.endsWith(aiKeyNorm)  →  "digitalmediaofdownloads".endsWith("ofdownloads") = true
-                const kpiMatchesAiKey = (kpiNorm, aiKeyNorm) =>
-                    aiKeyNorm.length > 0 && (kpiNorm === aiKeyNorm || kpiNorm.endsWith(aiKeyNorm));
-
-                let metricsHandled = false;
-                if (matched && matched.metrics && typeof matched.metrics === 'object') {
-                    const metricsKeys = Object.keys(matched.metrics);
-                    metricsKeys.forEach(metricKey => {
-                        const metricEntry = matched.metrics[metricKey];
-                        const metricGoal = (metricEntry && typeof metricEntry === 'object')
-                            ? (metricEntry.goalValue ?? metricEntry.firstKpiValue ?? null)
-                            : metricEntry;
-                        if (metricGoal === null || metricGoal === undefined || metricGoal === '') return;
-                        const metricKeyNorm = this.normalizeToken(metricKey);
-                        const parsedGoal = this.normalizeNumericValue(metricGoal);
-                        const stampValue = parsedGoal !== null ? parsedGoal : metricGoal;
-                        // Match against firstKpi label (data-kpi-index="first")
-                        if (rowClone.firstKpi) {
-                            const fApiNorm = this.normalizeToken(rowClone.firstKpi.api);
-                            const fLabelNorm = this.normalizeToken(rowClone.firstKpi.label);
-                            if (kpiMatchesAiKey(fApiNorm, metricKeyNorm) || kpiMatchesAiKey(fLabelNorm, metricKeyNorm)) {
-                                rowClone.firstKpi = { ...rowClone.firstKpi, value: stampValue };
-                                metricsHandled = true;
-                                return;
-                            }
-                        }
-                        // Match against otherKpis[i] label (data-kpi-index={kpiIndex})
-                        if (Array.isArray(rowClone.otherKpis)) {
-                            const kpiIdx = rowClone.otherKpis.findIndex(kpi => {
-                                const kApiNorm = this.normalizeToken(kpi.api);
-                                const kLabelNorm = this.normalizeToken(kpi.label);
-                                return kpiMatchesAiKey(kApiNorm, metricKeyNorm) || kpiMatchesAiKey(kLabelNorm, metricKeyNorm);
-                            });
-                            if (kpiIdx >= 0) {
-                                rowClone.otherKpis = rowClone.otherKpis.map((kpi, i) =>
-                                    i === kpiIdx ? { ...kpi, value: stampValue } : kpi
-                                );
-                                metricsHandled = true;
-                            }
-                        }
-                    });
-                    // No name match — fall back to first metric entry on firstKpi
-                    if (!metricsHandled && metricsKeys.length > 0 && rowClone.firstKpi) {
-                        const firstEntry = matched.metrics[metricsKeys[0]];
-                        const firstGoal = (firstEntry && typeof firstEntry === 'object')
-                            ? (firstEntry.goalValue ?? firstEntry.firstKpiValue ?? null)
-                            : firstEntry;
-                        if (firstGoal !== null && firstGoal !== undefined && firstGoal !== '') {
-                            const parsedFirst = this.normalizeNumericValue(firstGoal);
-                            rowClone.firstKpi = { ...rowClone.firstKpi, value: parsedFirst !== null ? parsedFirst : firstGoal };
-                            metricsHandled = true;
-                        }
-                    }
-                }
-
-                // Fallback chain — only runs when matched.metrics had no usable data
-                let goalValue = !metricsHandled && matched ? (matched.goalValue ?? matched.firstKpiValue) : null;
-                if (!metricsHandled && (goalValue === undefined || goalValue === null || goalValue === '') && matched && matched.goalValues !== undefined) {
-                    if (typeof matched.goalValues === 'object' && matched.goalValues !== null) {
-                        goalValue = extractGoalFromObject(matched.goalValues, {
-                            rowTacticApi: rowTacticApi,
-                            rowTacticLabel: rowTacticLabel,
-                            rowTacticApiNorm: rowTacticApiNorm,
-                            rowTacticLabelNorm: rowTacticLabelNorm,
-                            firstKpiApi: rowClone.firstKpi.api,
-                            firstKpiLabel: rowClone.firstKpi.label
-                        });
-                    } else {
-                        goalValue = matched.goalValues;
-                    }
-                }
-                if (!metricsHandled && (goalValue === undefined || goalValue === null || goalValue === '') && globalPayload.goalValue !== undefined) {
-                    goalValue = globalPayload.goalValue;
-                }
-                if (!metricsHandled && (goalValue === undefined || goalValue === null || goalValue === '') && globalPayload.firstKpiValue !== undefined) {
-                    goalValue = globalPayload.firstKpiValue;
-                }
-                if (!metricsHandled && (goalValue === undefined || goalValue === null || goalValue === '') && globalPayload.goalValues !== undefined) {
-                    if (typeof globalPayload.goalValues === 'object' && globalPayload.goalValues !== null) {
-                        goalValue = extractGoalFromObject(globalPayload.goalValues, {
-                            rowTacticApi: rowTacticApi,
-                            rowTacticLabel: rowTacticLabel,
-                            rowTacticApiNorm: rowTacticApiNorm,
-                            rowTacticLabelNorm: rowTacticLabelNorm,
-                            firstKpiApi: rowClone.firstKpi.api,
-                            firstKpiLabel: rowClone.firstKpi.label
-                        });
-                    } else {
-                        goalValue = globalPayload.goalValues;
-                    }
-                }
-                // Apply fallback only when no extracted/mapped goal value exists.
-                if (!metricsHandled && (goalValue === undefined || goalValue === null || goalValue === '') && hasSuggestedTactics) {
-                    goalValue = this.staticGoalFallbackValue;
-                }
-                if (!metricsHandled && goalValue !== undefined && goalValue !== null && rowClone.firstKpi) {
-                    const parsedGoal = this.normalizeNumericValue(goalValue);
-                    rowClone.firstKpi = {
-                        ...rowClone.firstKpi,
-                        value: parsedGoal === null ? goalValue : parsedGoal
-                    };
-                }
-
-                return rowClone;
-            });
-
-            // ✅ NO RECONCILIATION MATH - Keep amounts exactly as AI suggested them
-            // Removed all rounding/adjustment logic that was modifying tactic values
-            console.log('[Tactics Form] NO reconciliation math - keeping AI-suggested amounts unchanged');
-
-            if (this.intelContributionValue && !isNaN(this.intelContributionValue)) {
-                const totalAllocated = this.data.reduce((sum, row) => {
-                    const amount = this.normalizeNumericValue(row.intelContri);
-                    return sum + (amount !== null ? amount : 0);
-                }, 0);
-
-                if (totalAllocated > Number(this.intelContributionValue) + 0.01) {
-                    warnings.push(`Total tactic allocation (${totalAllocated.toFixed(2)}) exceeds maximum Intel investment (${Number(this.intelContributionValue).toFixed(2)}).`);
-                }
-            }
-
-            this.originalData = JSON.parse(JSON.stringify(this.data));
-
-            if (warnings.length > 0) {
-                const uniqueWarnings = Array.from(new Set(warnings));
-                // eslint-disable-next-line no-console
-                console.warn('[AI Tactic Metrics]', uniqueWarnings);
-            }
         }
 
         @api isTacticMetricsModified() {
@@ -722,13 +305,7 @@ wiredPicklistLabels({ data, error }) {
                     tactic: { api: tactic.tactic, label: tactic.tacticLabel },
                     percentageField: { api: tactic.percentageField, label: tactic.percentageFieldLabel },
                     percentageValue: tactic.percentageValue,
-                    intelContri: (tactic.spendingAmount !== null && tactic.spendingAmount !== undefined && tactic.spendingAmount !== '')
-                    ? tactic.spendingAmount
-                    : (tactic.percentageValue && !isNaN(tactic.percentageValue)
-                    ? ((tactic.percentageValue * this.intelContributionValue) / 100).toFixed(2)
-                    : 0),
-                   // intelContri: tactic.percentageValue != '' && tactic.percentageValue != null && tactic.percentageValue != undefined && !isNaN(tactic.percentageValue) ? ((tactic.percentageValue*this.intelContributionValue) / 100).toFixed(2) : 0,
-                    maxIntelInvest:this.intelContributionValue,
+                    intelContri: tactic.percentageValue != '' && tactic.percentageValue != null && tactic.percentageValue != undefined && !isNaN(tactic.percentageValue) ? ((tactic.percentageValue*this.intelContributionValue) / 100).toFixed(2) : 0,
                     firstKpi: {
                         api: tactic.firstKpi?.api || '',
                         label: tactic.firstKpi?.label || '',

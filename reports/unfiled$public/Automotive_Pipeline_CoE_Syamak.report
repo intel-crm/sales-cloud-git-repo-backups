@@ -119,6 +119,9 @@
         <field>OpportunityLineItem.Core_Competitor__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__MainCompetitors__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Competitor_Product__c</field>
     </columns>
     <description>Automotive Pipeline</description>

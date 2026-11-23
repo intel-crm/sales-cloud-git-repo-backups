@@ -1,8 +1,7 @@
 @isTest public class Core_IPS_JSON_UtilityTest {
     
      static testmethod void caseDescriptionImage() {
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-         Account portalAccount1 = new Account(
+        Account portalAccount1 = new Account(
             Name = 'newAcc2',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
@@ -12,7 +11,6 @@
             Core_CIM_ID__c = '11429344',
             Core_B2B_Entitlement__c = true,
             Core_Account_Legal_Name__c = 'TestLegalName',
-            RecordTypeId = recordTypeIdAccount,
             OwnerId = userinfo.getUserId()
         );       
         Database.insert(portalAccount1);
@@ -21,8 +19,7 @@
             AccountId = portalAccount1.id,
             FirstName = 'portia2',
             LastName  = 'portalTestUser2',
-            Email='babux5x52@intel.com',
-            MailingCountry = 'India'
+            Email='babux5x52@intel.com'      
         );
         Database.insert(contact2);
         

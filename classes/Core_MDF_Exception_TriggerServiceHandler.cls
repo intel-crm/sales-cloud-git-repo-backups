@@ -79,7 +79,7 @@ Accenture SS         19-06-2019          Exception Trigger Service Handler metho
             }
             
             Map<Id,Core_MDF_Exception_Account_Mapping__c> newMapEAM = new Map<Id,Core_MDF_Exception_Account_Mapping__c>(
-                                                                      [SELECT Id,Core_MDF_Country_Region_txt__c,Core_MDF_Account_id__c,Core_MDF_Program_txt__c,Core_MDF_HostRegion_txt__c,Core_MDF_Budget_Type_txt__c,Core_MDF_Exception_id__c,Core_MDF_Exception_Status_txt__c,Core_MDF_Select_All_Accounts_ind__c,Core_MDF_Select_All_Country_ind__c
+                                                                      [SELECT Id,Core_MDF_Country_Region_txt__c,Core_MDF_Account_id__c,Core_MDF_Program_txt__c,Core_MDF_HostRegion_txt__c,Core_MDF_Budget_Type_txt__c,Core_MDF_Exception_id__c,Core_MDF_Select_All_Country_ind__c
                                                                        FROM Core_MDF_Exception_Account_Mapping__c 
                                                                        WHERE Core_MDF_Exception_id__c IN: excpNewMap.keySet()]);
             
@@ -357,14 +357,14 @@ Accenture Akanksha         17/9/2024      Method to prepare Map of Ultimate Exce
         
         String CO_MARKETING_ACCOUNT = Core_MDF_CCP_ConstantClass.CO_MARKETING_ACCOUNT;
         String INTEL_ACCOUNT = Core_MDF_CCP_ConstantClass.INTEL_ACCOUNT;
+        
+        String PRIMARY_PARTNER = Core_MDF_CCP_ConstantClass.PRIMARY_PARTNER;
+        
+        List<Core_MDF_Exception__c> listOfException = new List<Core_MDF_Exception__c>();
+        //Map<Id,List<string>> accIdToPartnerTypeMap = new Map<Id,List<string>>();
         try{
             
-                //US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
-		//Since it is a void method, return simply exits the method and returns control back to the caller.
-                if(!accIdToPartnerTypeMap.isEmpty()){ 
-                    return;
-                }
-                //US - TWC702-14285: Flatten nested IFs (no logic change) - End
+            if(accIdToPartnerTypeMap.isEmpty()){
                 //iterate on the incoming exception list
                 for(Core_MDF_Exception__c itrOnExcep : exceptionList){
                     //compare the program name and check if the exception account is not null
@@ -390,7 +390,7 @@ Accenture Akanksha         17/9/2024      Method to prepare Map of Ultimate Exce
                                            accIdToPartnerTypeMap.put(acc.Core_MDF_CoMarketing_Ultimate_Account__c,partnerTypeList);                            
                                        }
                 }
-          //  }
+            }
         }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);
         } 
     }
@@ -448,21 +448,15 @@ Accenture Akanksha         17/9/2024      Method to call validate accounts on th
 Accenture Mohit         12/20/2024      Method to share exceptions with external user
 *****************************************************************************************************************************************/ 
     public static void shareExceptionRecordsWithExtUsers( Map<Id , Core_MDF_Exception__c> newExceptionMap, Map <Id , Core_MDF_Exception__c> excpOldMap){
-        shareExceptionRecordsWithExtUsers(newExceptionMap, excpOldMap, false);
-    }
-
-    public static void shareExceptionRecordsWithExtUsers(
-        Map<Id, Core_MDF_Exception__c> newExceptionMap,
-        Map<Id, Core_MDF_Exception__c> excpOldMap,
-        Boolean forceRefresh
-    ){
         Map<String, Set<Core_MDF_Exception_Account_Mapping__c>> channelPrgIdAccIdExptSetMap = new Map<String, Set<Core_MDF_Exception_Account_Mapping__c>>();
         Set<Id> rmfAccIdSet = new Set<Id>();
         Map<Id,Id> accIdGrpIdMap = new Map<Id,Id>();
         List<Core_MDF_Exception_Account_Mapping__c> listRmfExpt = new List<Core_MDF_Exception_Account_Mapping__c>();
+        List<Core_MDF_Exception__c> listExptNonRmf = new List<Core_MDF_Exception__c>();
         Set< Core_MDF_Exception__Share > exptShareSet = new Set< Core_MDF_Exception__Share >();
         Set< Core_MDF_Exception_Account_Mapping__Share > exptAccMapShareSet = new Set< Core_MDF_Exception_Account_Mapping__Share >();
         Set<id> exceptionChannelPrgIdsSet = new Set<Id>();
+        Set<Id> intelAccSet = new Set<Id>();
         Set<Id> intelAccountIdSet = new Set<Id>();
         String CO_MARKETING_ACCOUNT = Core_MDF_CCP_ConstantClass.CO_MARKETING_ACCOUNT;
         Map<Id , Core_MDF_Exception_Account_Mapping__c> eefExceptionMap= new Map<Id , Core_MDF_Exception_Account_Mapping__c>();
@@ -483,12 +477,11 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
 		}
 
         Map<Id, Core_MDF_Exception_Account_Mapping__c> EAPMap = new  Map<Id, Core_MDF_Exception_Account_Mapping__c>(
-            [Select id,Core_MDF_Account_id__c,Core_MDF_Exception_id__c,Core_MDF_Program_txt__c,Core_MDF_Exception_Status_txt__c,Core_MDF_Select_All_Accounts_ind__c,Core_MDF_Expose_Externally_ind__c,Core_MDF_OwnerId_txt__c,Core_MDF_Active_ind__c from Core_MDF_Exception_Account_Mapping__c where Core_MDF_Exception_id__c IN : ExcId]);
+            [Select id,Core_MDF_Account_id__c,Core_MDF_Exception_id__c,Core_MDF_Program_txt__c,Core_MDF_Exception_Status_txt__c,Core_MDF_Select_All_Accounts_ind__c,Core_MDF_Expose_Externally_ind__c,Core_MDF_OwnerId_txt__c from Core_MDF_Exception_Account_Mapping__c where Core_MDF_Exception_id__c IN : ExcId]);
 
         //Iterating over exceptions newmap for which we have to delete existing share record and create new based on account select
         for(Core_MDF_Exception_Account_Mapping__c excpOnUpdate : EAPMap.values()){
-                if(forceRefresh
-                   || (excpOnUpdate.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status && 
+                if((excpOnUpdate.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status && 
                     excpOnUpdate.Core_MDF_Account_id__c != NULL)
                    || (excpOnUpdate.Core_MDF_Select_All_Accounts_ind__c != excpOldMap.get(excpOnUpdate.Core_MDF_Exception_id__c).Core_MDF_Select_All_Accounts_ind__c
                        && excpOnUpdate.Core_MDF_Select_All_Accounts_ind__c == true)
@@ -518,16 +511,11 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         if(exceptionAccMapShareList != NULL && !exceptionAccMapShareList.isEmpty()){delete exceptionAccMapShareList;
         }
         //Avoid using Soql / Sosl queries without filters and limits
-       /* for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
+        for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
                                                                    FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt Limit 5000])){
                                                                        channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Name__c , bpem.Core_MDF_Channel_Program__c);
                                                                        System.debug('channelProgramNameMap---1290'+ channelProgramNameMap);
-                                                                   }*/
-        for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c
-                                                                   FROM Core_MDF_ChannelProgram__mdt Limit 1000])){
-                                                                       channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Value__c , bpem.Label);
-         }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
-        
+                                                                   }
          Map<String,String> channelProgramNameIdMap = new Map<String,String>();
         //Map of Program Name to Channel Program ID
          for (ChannelProgram cpList : [SELECT Id, Name
@@ -539,10 +527,7 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         
         //Creating map of eef exception to get activating and primary partner
         for(Core_MDF_Exception_Account_Mapping__c expt: EAPMap.values()){
-            if(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType && expt.Core_MDF_Account_id__c != Null
-               && expt.Core_MDF_Active_ind__c
-               && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status){
-                eefExceptionMap.put(expt.Id, expt);
+            if(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType && expt.Core_MDF_Account_id__c != Null && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status){eefExceptionMap.put(expt.Id, expt);
             }
         }
       
@@ -560,10 +545,7 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
             Set<String> channelPrgIdAccId = new Set<String>();
             
             //Akash - Added check here to show record to external user expose externally, Exception Enhancements- New Flag to control external exposure
-            if(expt.Core_MDF_Program_txt__c != Null && expt.Core_MDF_Account_id__c != NUll
-               && expt.Core_MDF_Active_ind__c
-               && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status
-               && expt.Core_MDF_Expose_Externally_ind__c){
+            if(expt.Core_MDF_Program_txt__c != Null && expt.Core_MDF_Account_id__c != NUll && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status && expt.Core_MDF_Expose_Externally_ind__c){
                 if(expt.Core_MDF_Program_txt__c != Label.Core_MDF_Retail_Program){
                     String progName = channelProgramNameMap!=null && channelProgramNameMap.containskey(expt.Core_MDF_Program_txt__c)?
                         												channelProgramNameMap.get(expt.Core_MDF_Program_txt__c) :'';
@@ -574,27 +556,23 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
                     }
                     
                     Set< Core_MDF_Exception_Account_Mapping__c > exptSet = new Set< Core_MDF_Exception_Account_Mapping__c >{expt};
-                    If(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType){
+                        If(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType){
+                            //preparing the channelprgIdAccIdSet for EEF Activating Account
+                            if(!mapOfExpIdToActAccId.isEmpty() && mapOfExpIdToActAccId.size()>0){
+                                for(Id accId : mapOfExpIdToActAccId.get(expt.Core_MDF_Exception_id__c)){
+                                    channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
+                
+                                }   
+                            }
                             
+                            //preparing the channelprgIdAccIdSet for EEF Priamary Account
+                            if(!mapOfExpIdToPrimaryAccId.isEmpty() && mapOfExpIdToPrimaryAccId.size()>0){
+                                for(Id accId : mapOfExpIdToPrimaryAccId.get(expt.Core_MDF_Exception_id__c)){
+                                    channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
+                                }
+                            }
                             
-                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin new flattened code with duplicate fix
-
-                        // Combine both ID lists into a single Set collection to automatically eliminate duplicate structures/loops
-                        Set<Id> associatedAccountIds = new Set<Id>();
-
-			List<Id> activatingAccs = mapOfExpIdToActAccId.get(expt.Core_MDF_Exception_id__c);
-			if (activatingAccs != null) associatedAccountIds.addAll(activatingAccs);
-
-			List<Id> primaryAccs = mapOfExpIdToPrimaryAccId.get(expt.Core_MDF_Exception_id__c);
-			if (primaryAccs != null) associatedAccountIds.addAll(primaryAccs);
-
-                        // Single, flat loop iterating over unique Account IDs
-			for (Id accId : associatedAccountIds) {
-    				channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
-			}
-
-                        // US - TWC702-14285: Flatten nested IFs (no logic change) - End new flattened code with duplicate fix
-                    }
+                        }
                     channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (string)expt.Core_MDF_Account_id__c);   
                     
                     //string channelPrgIdAccId = (String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_nm__c)) + (string)expt.Core_MDF_Account_id__c;
@@ -633,12 +611,11 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         }
        
         String pgmQueryStr = '';
-        String accessType = 'External';  // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query 
         pgmQueryStr = 'SELECT Id, Core_MDF_Account__c, Core_MDF_Channel_Program__c,Core_MDF_Channel_Program__r.Name,Core_MDF_Group_Id__c,' +
                 'Core_MDF_Group_Name__c, Core_MDF_Type_of_Access__c ' +
                 'FROM Core_MDF_Partner_Group_Mapping__c ' +
                 'WHERE Core_MDF_Channel_Program__c IN :exceptionChannelPrgIdsSet ' +
-                'AND Core_MDF_Type_of_Access__c = :accessType ' +   // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query
+                'AND Core_MDF_Type_of_Access__c = ' + '\'' + 'External' + '\' ' +
                 'AND Core_MDF_Inactive_Ind__c = false ' +
                 'AND Core_MDF_Group_Id__c != NULL '+
                 'AND Core_MDF_Account__c IN :intelAccountIdSet';

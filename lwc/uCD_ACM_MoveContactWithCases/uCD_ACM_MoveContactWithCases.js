@@ -67,7 +67,6 @@ export default class UCD_ACM_MoveContactWithCases extends NavigationMixin(Lightn
     @track casewithoutProjData = [];
     @track caseswithProjData = [];
     @track caseswithoutProdData = [];
-    searchQuery = '';
 
     @track PCRelationshipColumns = [
         {
@@ -372,44 +371,17 @@ export default class UCD_ACM_MoveContactWithCases extends NavigationMixin(Lightn
         } else if (error) {
             console.error('Error fetching wiredIPSProjectRecord Method:', error);
         }
-    } 
+    }
 
-   /* @wire(getAccRelatedContacts, { contactId: '$recordId', accountId: '$contAccId' })
+    @wire(getAccRelatedContacts, { contactId: '$recordId', accountId: '$contAccId' })
     wiredgetAccRelatedContacts({ error, data }) {
         if (data) {
             this.contactsListforCaseMove = data;
         } else if (error) {
             console.error('Error fetching getAccRelatedContacts Method:', error);
         }
-    } */
-
-        //Ganesh Changes
-//handleRelatedContact(event) {
-//    this.selectedContactId = event.detail;
- //   this.fetchRelatedContacts();}
-    
-fetchRelatedContacts() {
-    if (!this.recordId || !this.contAccId) {
-        this.contactsListforCaseMove = [];
-        return;
     }
-    console.log('Ganesh Fetch Account');
 
-    getAccRelatedContacts({
-        contactId: this.recordId,
-        accountId: this.contAccId
-    })
-    .then(result => {
-        console.log('Ganesh Fetch Account result-> ', result);
-        this.contactsListforCaseMove = result || [];
-    })
-    .catch(error => {
-        console.error('Error fetching contacts:', error);
-        this.contactsListforCaseMove = [];
-    });
-}
-
-//Ganesh Changes End
     @wire(getCases, { contactId: '$recordId' })
     wiredCasesRecord({ error, data }) {
         if (data) {
@@ -516,14 +488,6 @@ fetchRelatedContacts() {
     handleCaseContChecked(event) {
         this.isCaseContChecked = event.target.checked;
         this.disableDropdown = !event.target.checked;
-        //Ganesh CHanges
-
-        if(this.isCaseContChecked){
-            console.log('Ganesh this.isCaseContChecked',this.isCaseContChecked);
-        this.fetchRelatedContacts();
-
-        //Ganesh Changes End
-        }
     }
     submitDetailsPopup() {
         this.handleSaveRecord(true);

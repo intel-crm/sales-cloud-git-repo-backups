@@ -1565,14 +1565,6 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_MDF_Ad_Run_Start_Date_dt__c</name>
     </fields>
     <fields>
-        <label><!-- Claim Review Closure Note --></label>
-        <name>Core_MDF_AddClaimReviewClosure_Note_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Internal Case Closure Note --></label>
-        <name>Core_MDF_AddInternalCaseClosureNotes_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Adjustment Amount (Local Currency) --></label>
         <name>Core_MDF_Adjustment_Amount_Local__c</name>
     </fields>
@@ -1846,10 +1838,6 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_MDF_Checklist_Completion__c</name>
     </fields>
     <fields>
-        <label><!-- Claim Review Closure Note History --></label>
-        <name>Core_MDF_ClaimReviewClosureHistory_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Claim Amount (USD) --></label>
         <name>Core_MDF_Claim_Amount_USD__c</name>
     </fields>
@@ -2091,10 +2079,6 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
     <fields>
         <label><!-- Reason For More Documentation Required --></label>
         <name>Core_MDF_ReasonForMoreDocumentation__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reason for Cancellation --></label>
-        <name>Core_MDF_Reason_for_Cancellation_txt__c</name>
     </fields>
     <fields>
         <label><!-- Region-SubRegion --></label>
@@ -2466,24 +2450,6 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
     <fields>
         <label><!-- IPS_Mirror_SubStatus --></label>
         <name>IPS_Mirror_SubStatus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Cases --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Cases --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
     </fields>
     <fields>
         <label><!-- ALG Survey Response Id --></label>

@@ -32,9 +32,9 @@
                         <li>Reimbursement Amount (USD):&nbsp;<apex:outputText value="{0,number,$#,##0.00}"><apex:param value="{!relatedTo.Core_MDF_Requested_Reimbursement_Amt__c}" /></apex:outputText></li>
                         
                         <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c == 'Intel Partner Alliance'}">
-                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign #' & ':','Activity # :')}&nbsp;{!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
-                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign Name' & ':','Activity Name :')} <a href="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,$Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}"> {!RelatedTo.Request.Title}</a></li>                            
-                            <li>Budget Type: {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
+                            <li>Activity #: {!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
+                            <li>Activity Name: <a href="{!$Label.Core_MDF_PFRDetailLink}{!RelatedTo.RequestId}"> {!RelatedTo.Request.Title}</a></li>
+                            <li>Budget Type: {!RelatedTo.Core_MDF_Budget_Type_Nm__c}</li>
                         </apex:outputPanel>
                         
                     </ul>

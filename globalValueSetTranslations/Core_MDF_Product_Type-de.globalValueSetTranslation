@@ -37,10 +37,6 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation><!-- Client --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation><!-- Cloud --></translation>
     </valueTranslation>
@@ -57,20 +53,12 @@
         <translation>Komponente</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>Desktop-Proz.</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation>Edge-Gateway</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation><!-- Edge/IOT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Programmable Solution</masterLabel>
@@ -177,10 +165,6 @@
         <translation>Netzwerk und Telekommunikation</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>Netzwerk/Ethernet</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
         <translation>Notebooks</translation>
     </valueTranslation>
@@ -237,10 +221,6 @@
         <translation><!-- Storage --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>Telekommunikationsunternehmen</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
         <translation>Flach und leicht</translation>
     </valueTranslation>
@@ -267,9 +247,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>Workstation – mobil</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

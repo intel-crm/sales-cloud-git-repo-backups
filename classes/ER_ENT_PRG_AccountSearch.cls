@@ -76,7 +76,7 @@ global without sharing class ER_ENT_PRG_AccountSearch {
             List<Account> accList = new List<Account>();
             if(sbrAccountIds != null && !sbrAccountIds.isEmpty()){
                 accList = [SELECT Id, Name,Core_CIM_ID__c, Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,Core_Business_Party_Id__c,Core_Unified_Intermediate_Customer_Name__c, Core_Address_Details__c, 
-                           Core_Intel_Partner_Alliance_PartnerGroup__c,/* Core_Account_Type__c, // BizOrgType code removal*/ toLabel(Core_IPA_Partner_Role__c), Core_Export_Compliance_Block__c, 
+                           Core_Intel_Partner_Alliance_PartnerGroup__c, Core_Account_Type__c, toLabel(Core_IPA_Partner_Role__c), Core_Export_Compliance_Block__c, 
                            RecordType.name, Owner.name, BillingCity, BillingStateCode, BillingCountryCode, BillingStreet,BillingPostalCode,
                            Core_Unified_Global_Customer_Name__c,Core_CNDA_Number__c,Core_Covered_Account__c,Core_B2B_Entitlement__c,Core_Account_Owner__c
                            FROM Account WHERE Id IN: sbrAccountIds AND Core_Account_Record_Type__c ='Intel Account'];

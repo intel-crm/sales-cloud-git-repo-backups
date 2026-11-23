@@ -67,10 +67,7 @@ public without sharing class PMP_SearchPartnerTriggerHelper {
         //system.debug('exsiting_partners_published => '+exsiting_partners_published);
         if(!exsiting_partners_published.isEmpty()){
             // if(Schema.sObjectType.PMP_Company__c.isUpdateable()){ //ApexCRUDViolation Fix
-            //update exsiting_partners_published;
-            Database.SaveResult[] eppList = Database.update(exsiting_partners_published, false);
-      PMP_Utility.logDmlErrors((Object[]) eppList, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
-
+            update exsiting_partners_published;
             //clearPlatformCache(exsiting_partners_published); 
             // }
             clearPlatformCache(exsiting_partners_published); 
@@ -100,31 +97,22 @@ public without sharing class PMP_SearchPartnerTriggerHelper {
         //system.debug('new_resources_cloned before => '+new_partner_resources_cloned);        
         if(new_partner_resources_cloned!=Null && !new_partner_resources_cloned.isEmpty()){
             //  if(Schema.sObjectType.PMP_Company_Resource__c.isCreateable()){  //ApexCRUDViolation Fix
-            //insert new_partner_resources_cloned;
-            Database.SaveResult[] npList = Database.insert(new_partner_resources_cloned, false);
-			PMP_Utility.logDmlErrors((Object[]) npList, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
-
+            insert new_partner_resources_cloned;
             // }
         }
         if(new_partner_translations_cloned!=Null && !new_partner_translations_cloned.isEmpty()){
             // if(Schema.sObjectType.PMP_Company_Translation__c.isCreateable()){
-            //insert new_partner_translations_cloned;
-            Database.SaveResult[] nptList = Database.insert(new_partner_translations_cloned, false);
-			PMP_Utility.logDmlErrors((Object[]) nptList, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
+            insert new_partner_translations_cloned;
             //}
         }
         if(new_partner_categories_cloned!=Null && !new_partner_categories_cloned.isEmpty()){
             // if(Schema.sObjectType.PMP_Partner_Category__c.isCreateable()){
-            //insert new_partner_categories_cloned;
-            Database.SaveResult[] npcList = Database.insert(new_partner_categories_cloned, false);
-			PMP_Utility.logDmlErrors((Object[]) npcList, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
+            insert new_partner_categories_cloned;
             //}
         }
         if(new_partner_regions_cloned!=Null && !new_partner_regions_cloned.isEmpty()){
             //if(Schema.sObjectType.PMP_Company_Region__c.isCreateable()){
-            //insert new_partner_regions_cloned;
-            Database.SaveResult[] nprList = Database.insert(new_partner_regions_cloned, false);
-			PMP_Utility.logDmlErrors((Object[]) nprList, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');           
+            insert new_partner_regions_cloned;
             //}
         }
         }
@@ -136,31 +124,22 @@ insert new_partner_messages_cloned;
                       
         if(exsiting_partner_resources_todelete!=Null && !exsiting_partner_resources_todelete.isEmpty()){
             //if(Schema.sObjectType.PMP_Company_Resource__c.isDeletable()){ //ApexCRUDViolation Fix
-            //Delete exsiting_partner_resources_todelete;
-            Database.DeleteResult[] eprList1 = Database.delete(exsiting_partner_resources_todelete, false);
-			PMP_Utility.logDmlErrors((Object[]) eprList1, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
+            Delete exsiting_partner_resources_todelete;
             //}
         }
         if(exsiting_partner_translations_todelete!=Null && !exsiting_partner_translations_todelete.isEmpty()){
             // if(Schema.sObjectType.PMP_Company_Translation__c.isDeletable()){
-            //Delete exsiting_partner_translations_todelete;
-            Database.DeleteResult[] eptList1 = Database.delete(exsiting_partner_translations_todelete, false);
-			PMP_Utility.logDmlErrors((Object[]) eptList1, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
-
+            Delete exsiting_partner_translations_todelete;
             //}
         }
         if(exsiting_partner_categories_todelete!=Null && !exsiting_partner_categories_todelete.isEmpty()){
             // if(Schema.sObjectType.PMP_Partner_Category__c.isDeletable()){
-            //Delete exsiting_partner_categories_todelete;
-            Database.DeleteResult[] epcList1 = Database.delete(exsiting_partner_categories_todelete, false);
-			PMP_Utility.logDmlErrors((Object[]) epcList1, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
+            Delete exsiting_partner_categories_todelete;
             //}
         }
         if(exsiting_partner_regions_todelete!=Null && !exsiting_partner_regions_todelete.isEmpty()){
             //if(Schema.sObjectType.PMP_Company_Region__c.isDeletable()){
-            //Delete exsiting_partner_regions_todelete;
-            Database.DeleteResult[] epregList1 = Database.delete(exsiting_partner_regions_todelete, false);
-			PMP_Utility.logDmlErrors((Object[]) epregList1, 'PMP_SearchPartnerTriggerHelper-pushToPublishedCopy');
+            Delete exsiting_partner_regions_todelete;
             //}
         }
         /*
@@ -225,9 +204,7 @@ insert new_version_lst;
 }
 */
         if(wcContentIdAndPubCopyContent.size() > 0) {
-            //insert wcContentIdAndPubCopyContent.values();
-            Database.SaveResult[] wcList = Database.insert(wcContentIdAndPubCopyContent.values(), false);
-			PMP_Utility.logDmlErrors((Object[]) wcList, 'PMP_SearchPartnerTriggerHelper-createResources');
+            insert wcContentIdAndPubCopyContent.values();
         }
          
         Map<Id, Id> workingCopyIdAndPubCopyId = new Map<Id, Id>();
@@ -248,10 +225,7 @@ insert new_version_lst;
             }
             
             if(deleteContDocLinks.size() > 0) {
-                //delete deleteContDocLinks;
-                Database.DeleteResult[] dcdList = Database.delete(deleteContDocLinks, false);
-				PMP_Utility.logDmlErrors((Object[]) dcdList, 'PMP_SearchPartnerTriggerHelper-createResources');
-                
+                delete deleteContDocLinks;
             }  
         }
         if(!wcContentIdAndPubCopyContent.isEmpty()){
@@ -280,9 +254,7 @@ insert new_version_lst;
         }
         
         if(publishedPartnerLinksToSave.size() > 0) {
-            //insert publishedPartnerLinksToSave;
-            Database.SaveResult[] pplList = Database.insert(publishedPartnerLinksToSave, false);
-			PMP_Utility.logDmlErrors((Object[]) pplList, 'PMP_SearchPartnerTriggerHelper-createResources');
+            insert publishedPartnerLinksToSave;
         }
         if(!new_version_set.isEmpty()){
         for(ContentVersion cv : [SELECT Id, ContentDocumentId,VersionData FROM ContentVersion where Id IN: new_version_set AND IsLatest=true]){
@@ -471,31 +443,31 @@ comp.PMP_Company_Lifecycle_Status_Nm__c == PMP_StaticConstants_Partner.Published
         Set<Id> intelAccIds = new Set<Id>(); 
         //List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
         
-    //New code Added by Tilak
-    PMP_Utility utilityHelper = new PMP_Utility();
-    Map<Id,List<Account>> AllAccountRelatedToMPI = utilityHelper.getAllAccountRelatedToMPI(partners);
-    
-    
+		//New code Added by Tilak
+		PMP_Utility utilityHelper = new PMP_Utility();
+		Map<Id,List<Account>> AllAccountRelatedToMPI = utilityHelper.getAllAccountRelatedToMPI(partners);
+		
+		
         for(PMP_Company__c part : partners) 
-    {
-      PMP_Company__c oldPartner = oldMap != null && oldMap.get(part.Id) != null ? oldMap.get(part.Id) : new PMP_Company__c();
+		{
+			PMP_Company__c oldPartner = oldMap != null && oldMap.get(part.Id) != null ? oldMap.get(part.Id) : new PMP_Company__c();
             /*
             if(part.PMP_Is_Published_Ind__c && part.PMP_Company_Lifecycle_Status_Nm__c != oldPartner.PMP_Company_Lifecycle_Status_Nm__c && 
                part.PMP_Company_Lifecycle_Status_Nm__c == PMP_StaticConstants_Partner.Published && part.PMP_Account_Id__c != null) 
-         {
+			   {
                    accIds.add(part.PMP_Account_Id__c);
                }
-         */
-      //New Code Added by Tilak
-      List<Account> partRelatedAccountList = AllAccountRelatedToMPI.get(part.id);
+			   */
+			//New Code Added by Tilak
+			List<Account> partRelatedAccountList = AllAccountRelatedToMPI.get(part.id);
             if(part.PMP_Is_Published_Ind__c && part.PMP_Company_Lifecycle_Status_Nm__c != oldPartner.PMP_Company_Lifecycle_Status_Nm__c && 
                part.PMP_Company_Lifecycle_Status_Nm__c == PMP_StaticConstants_Partner.Published ) 
-      {
-        for(Account singleAccount: partRelatedAccountList)
-        {
-          accIds.add(singleAccount.Id);
-        }
-      }      
+			{
+				for(Account singleAccount: partRelatedAccountList)
+				{
+					accIds.add(singleAccount.Id);
+				}
+			}			
         }
         
         if(accIds.size() > 0 && Schema.sObjectType.Core_Account_Group_Member__c.isAccessible()){ 
@@ -512,9 +484,7 @@ comp.PMP_Company_Lifecycle_Status_Nm__c == PMP_StaticConstants_Partner.Published
                     aba.PRM_Status_Reason_Txt__c= System.label.PRM_Aba_Inactive;
                 }
                 if(abas.size() > 0) {
-                    //update abas;
-                    Database.SaveResult[] abList = Database.update(abas, false);
-					PMP_Utility.logDmlErrors((Object[]) abList, 'PMP_SearchPartnerTriggerHelper-deactivateIntelAccountMP');
+                    update abas;
                 }
             }
         }

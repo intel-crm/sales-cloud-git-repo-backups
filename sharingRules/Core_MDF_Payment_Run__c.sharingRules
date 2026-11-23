@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AGS_CCP_All_Programs</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>AGS_CCP All Programs</label>
-        <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Payment_Run_CCP_CCFB_ALL</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Payment Run CCP CCFB ALL</label>
@@ -332,44 +318,5 @@
             <value>PRC</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Payment_Run_IPA_INDIA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with INDIA region</description>
-        <label>Payment Run IPA INDIA</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_INDIA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>INDIA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Payment_Run_Retail_INDIA</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Payment Run Retail INDIA</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_INDIA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>INDIA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

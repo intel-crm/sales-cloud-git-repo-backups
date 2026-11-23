@@ -2,21 +2,20 @@
 public class PMP_CompanyArticles_Test extends PMP_SearchWrapperStore {
    
     @isTest static void getArticles_Test() {
-       Account testAccount = PMP_SearchTestDataFactory.createIntelAccount('testAccount', PMP_SearchTestDataFactory.intel_Account_Record_Type, true);        
+        Account testAccount = PMP_SearchTestDataFactory.createIntelAccount('testAccount', PMP_SearchTestDataFactory.intel_Account_Record_Type, true);        
 		PMP_Company__c partner = PMP_SearchTestDataFactory.createCompanyInformation('testPartner', testAccount.Id, true);
         partner.PMP_Is_Working_Copy_Ind__c = true;
         update partner;
         String streamIdName = PMP_Utility.getValue('PMP_Uberflip_Stream_Id_Name');
-        //TranslationEOL
-        //PMP_Company_Translation__c translation = new PMP_Company_Translation__c(PMP_English_Txt__c='12345', PMP_Field_Nm__c=streamIdName, PMP_Company_Information_Id__c=partner.Id);
-        //insert translation;
+        PMP_Company_Translation__c translation = new PMP_Company_Translation__c(PMP_English_Txt__c='12345', PMP_Field_Nm__c=streamIdName, PMP_Company_Information_Id__c=partner.Id);
+        insert translation;
         
         Test.setMock(HttpCalloutMock.class, new PMP_CompanyArticlesMock()); 
         Test.startTest();
         PMP_CompanyArticles.getArticles(partner.Id, 'en_US');
         Test.stopTest();
         
-      /*  PMP_CompanyArticles.ResponseBody resBdy = new PMP_CompanyArticles.ResponseBody();
+        PMP_CompanyArticles.ResponseBody resBdy = new PMP_CompanyArticles.ResponseBody();
         resBdy.token_type = '';
         resBdy.expires_in = '';
         PMP_CompanyArticles.ArticleResponseData ard = new PMP_CompanyArticles.ArticleResponseData();
@@ -56,12 +55,12 @@ public class PMP_CompanyArticles_Test extends PMP_SearchWrapperStore {
         dt.author.full_name = '';
         dt.author.username = '';
         dt.author.email = '';
-       dt.author.bio = '';
+        dt.author.bio = '';
         dt.author.twitter_id = '';
-        dt.author.avatar_url = '';*/
+        dt.author.avatar_url = '';
         
         PMP_CompanyArticles.getArticles(partner.Id, 'ja');
-       PMP_CompanyArticles.getArticles(partner.Id, 'zh_CN');
-        system.assertEquals(NULL, NULL);
+        PMP_CompanyArticles.getArticles(partner.Id, 'zh_CN');
+        system.assertNotEquals(NULL, translation, 'no error');
     }
 }

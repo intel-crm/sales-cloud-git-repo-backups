@@ -197,15 +197,9 @@
     <columns>
         <field>PartnerFundRequest$Core_MDF_Industry_Multi_nm__c</field>
     </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Other_Engineering_Activity_txt__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_POP_Requirements_txt__c</field>
-    </columns>
     <description>Co-Marketing Campaign and Activity Report</description>
     <filter>
-        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Status</column>
             <columnToColumn>false</columnToColumn>
@@ -239,21 +233,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
+            <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Ecosystem Extension Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,CoGTM</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client Market Accelerate,Client Specialties MDF,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,DCF 1.0,Co-Engineering</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Campaign</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,Data Center Specialties MDF,Data Centric Acceleration - MDF,DCF 1.0,Global Ericsson Acceleration - MDF,Global IBM Acceleration - MDF,Global Microsoft Acceleration - MDF,Global Nokia Acceleration - MDF,Global Red Hat Acceleration - MDF,Global SAP Acceleration - MDF,Global SAS Acceleration - MDF,Global Suse Acceleration - MDF,Global VMware Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ISV Scale Acceleration - MDF,MDF,MDF+,OEM CMP,Optane Specialties MDF,Red Hat &quot;Amplify&quot; - MDF,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,VMWare Amplify - MDF,Account Plan,Proposal I MDF,Proposal II MDF,Co-Engineering</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

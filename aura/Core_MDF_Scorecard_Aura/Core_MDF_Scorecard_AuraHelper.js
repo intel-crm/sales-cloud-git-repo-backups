@@ -2,7 +2,7 @@
 	onInit : function(component, event, helper) {
         var recId = component.get("v.recordId");
         var caseId =recId;
-        helper.callServer(component, "c.getScoreCardDetailsAndAccess", (response) => {component.set('v.scorecardDetails', response); }, {caseRecord : caseId}); 
+       	helper.callServer(component, "c.getScoreCardDetailsAndAccess", (response) => {component.set('v.resultMap', response); }, {caseRecord : caseId});   
         helper.subscribe(component, event, helper);
     },
     subscribe : function(component, event, helper) {
@@ -45,17 +45,10 @@
             if (state === "SUCCESS") {
                 callback.call(this, response.getReturnValue());
                 var result = response.getReturnValue();
-                if(result && result.scorecardRec) {
-                    component.set("v.scoreCardId", result.scorecardRec.Id);
-                    component.set("v.editFlag", result.editability);
-                    if(result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c =='' || result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c == null || result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c == undefined){
-                        component.set("v.aiStatusMessage", 'AI Validation in progress. Please check back shortly or continue review.');
-                    }
-                    else if(result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c == 'AI Processing Failed'){
-                        component.set("v.aiStatusMessage", 'AI Response not available. Please continue with review.');
-                    }
+                for(var key in result){
+                    component.set("v.scoreCardId", key);
+                    component.set("v.editFlag",result[key]);
                 }
-
                 console.log('flag' + component.get("v.editFlag"));
             } else if (state === "ERROR") {
                 var errors = response.getError();

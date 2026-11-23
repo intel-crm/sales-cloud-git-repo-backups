@@ -63,8 +63,8 @@
                 <field>Pricing_Rejection_Reason__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Pricing_Approval_Price_Rule_Name__c</field>
+                <behavior>Edit</behavior>
+                <field>Pricing_Workload_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -119,10 +119,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Pricing_Won_Lost_Comments_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Workload_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

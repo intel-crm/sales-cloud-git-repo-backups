@@ -1453,6 +1453,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MAG_Value__c</field>
             <table>Account</table>
         </columns>
@@ -2997,6 +3002,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Lead_to_Opportunity_Conversion__c</field>
+            <table>Account.Opportunities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
             <table>Account.Opportunities</table>
         </columns>
         <columns>

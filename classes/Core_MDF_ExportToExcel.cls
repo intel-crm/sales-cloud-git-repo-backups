@@ -25,10 +25,8 @@ public with sharing class Core_MDF_ExportToExcel {
     public String returnURL;
     public static Id strFilterId; //Converted the datatype to Id as part of WW49 ATHR fix
     public String errorMsg;
-    public string testendpointUrl;
-    public string sanitizedEndPointUrl;
     
- public Core_MDF_ExportToExcel() { 
+    public Core_MDF_ExportToExcel() { 
         try{
             //check if the page is opened from salesforce1 mobile app then display info msg else load the page.
             if(UserInfo.getUiTheme() == 'Theme4t'){
@@ -38,9 +36,9 @@ public with sharing class Core_MDF_ExportToExcel {
                 return;
             }
             else{
-            pageUrl=ApexPages.currentPage().getUrl();    
+            pageUrl=ApexPages.currentPage().getUrl();        
             objName =  String.escapeSingleQuotes(ApexPages.currentPage().getUrl().substringAfter('ObjName=').substringBefore('&'));
-           //check if the objname is a valid sobject.
+            //check if the objname is a valid sobject.
             for (Schema.SObjectType sObjectType : Schema.getGlobalDescribe().values() ) {
                  String sobjName = String.valueOf(sObjectType);
                  if (sobjName.contains(objName) ) {
@@ -76,11 +74,9 @@ public with sharing class Core_MDF_ExportToExcel {
             }
             loadFilterFields();
             //US523018: PRB000091900 : Unable to export raw reports (CSV,xlsx) from CLAIM list page            
-            //domainUrl = (String.isNotBlank(domainUrl) && domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : String.valueOf(URL.getSalesforceBaseUrl().toExternalForm()) +'/';            
-            //returnURL = domainUrl+'lightning/o/'+objName+'/list?filterName='+strfilterId;
-            testendpointUrl = Label.Core_MDF_Export_URL + objName + '/list?filterName='+strfilterId;
-            sanitizedEndPointUrl = String.escapeSingleQuotes(testendpointUrl);
-            if(strQuery != null && strQuery != ''){        
+            domainUrl = (String.isNotBlank(domainUrl) && domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : URL.getSalesforceBaseUrl().toExternalForm() +'/';            
+            returnURL = domainUrl+'lightning/o/'+objName+'/list?filterName='+strfilterId;
+            if(strQuery != null && strQuery != ''){
             Integer idx = strQuery.indexOf(' FROM ');
             String strCountQuery = string.escapeSingleQuotes('SELECT Id ') + strQuery.substring(idx);
             //strCountQuery = String.escapeSingleQuotes(strCountQuery);        
@@ -113,8 +109,8 @@ public with sharing class Core_MDF_ExportToExcel {
          ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
      }
     }    
-    public PageReference returnToPage() {   
-        PageReference returnPage = new PageReference(sanitizedEndPointUrl);
+    public PageReference returnToPage() {      
+        PageReference returnPage = new PageReference(returnURL);            
         returnPage.setRedirect(true);
         return returnPage;
     }  
@@ -151,9 +147,9 @@ public with sharing class Core_MDF_ExportToExcel {
         Map<String, Object> mapRow = new Map<String, Object>();        
         sObject sObjParent;                
         List<String> lstFieldName;
-         
-        String strFieldValue; 
-        
+        String strFieldName; 
+        String strFieldValue;    
+        Date   dtDateValue;
         try{
             for (SingleColumn sc : lstSingleColumn) {                            
                 if (sc.fieldNameOrPath.contains('.')) {
@@ -164,7 +160,7 @@ public with sharing class Core_MDF_ExportToExcel {
                         
                         child = lstFieldName[i];
                         sObjParent    = sObjParent.getSOBject(child);
-                    }    
+                    }                                
                     strFieldValue = fieldToString(sObjParent, lstFieldName[lstFieldName.size()-1], sc.isDateType,sc.type);
                 }    
                 else {
@@ -175,11 +171,10 @@ public with sharing class Core_MDF_ExportToExcel {
                         strFieldValue = strFieldValue.subString(0, maxFieldLength) + '...'; 
                     }                       
                     strFieldValue = strFieldValue.escapeCSV();                        
-                    //ATHR - Deeply Nested if 16209
-                    if (strFieldValue.length() > 0 && strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
-                        //if (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
+                    if (strFieldValue.length() > 0) {
+                        if (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
                             strFieldValue = '"' + strFieldValue + '"';                    
-                        //}                               
+                        }                               
                     }                                  
                 }            
                 mapRow.put(sc.fieldNameOrPath, strFieldValue);
@@ -262,34 +257,23 @@ public with sharing class Core_MDF_ExportToExcel {
             //Parsing JSON string to get the column details    
             JSONParser parser = JSON.createParser(res.getBody());
             while (parser.nextToken() != null){ 
-                //ATHR - Deeply Nested if 16209
-                if(parser.getCurrentToken() != JSONToken.START_ARRAY) {
-                    continue;
-                }
-                //if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
+                if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
                     while (parser.nextToken() != null) {
-                        //ATHR - Deeply Nested if 16209
-                        if (parser.getCurrentToken() != JSONToken.START_OBJECT) {
-                            continue;
-                        }
-                        //if (parser.getCurrentToken() == JSONToken.START_OBJECT) {                        
+                        if (parser.getCurrentToken() == JSONToken.START_OBJECT) {                        
                             SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
-                        	if(col == null || col.hidden == null || col.label == null || col.hidden == true || col.fieldNameOrPath == NULL || col.fieldNameOrPath.contains('Clone')) {
-                                continue;
-                            }
-                            //if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {                                        
+                            if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {                                        
                                 col.label = col.label.replace(',', '');                            
                                 lstColumn.add(col);                    
-                            //}    
-                        //}
+                            }    
+                        }
                     }
-                //}
+                }
             }
             }
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
                            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
-        }
+                          }
     }
     
     public PageReference exportToExcel() {        
@@ -338,5 +322,5 @@ public with sharing class Core_MDF_ExportToExcel {
                 return (type != NULL && type.contains('date'));     
             }
         }    
-    }
+    }  
 }

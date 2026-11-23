@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-16-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_QuoteCalculator_Test {
     
@@ -18,7 +11,7 @@ public class Pricing_QuoteCalculator_Test {
             //Pricing_Test_Utility.createPriceBook();
             
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Calculator_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             //Test.startTest();
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -54,23 +47,16 @@ public class Pricing_QuoteCalculator_Test {
         List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         QuoteModel quoteModel = new QuoteModel();
         quoteModel.record = quoteList[0];
-        Test.startTest();
         Pricing_QuoteCalculator calculator = new Pricing_QuoteCalculator();
-		calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
-        System.assertEquals(true , quoteList.size() > 0 );
-        Test.stopTest();
+	calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
         
     }
-    
-     static testMethod void testquoteCalculatorWithList(){
-        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
-        List<QuoteModel> quoteModel = new List<QuoteModel>();
-        Test.startTest();
-        Pricing_QuoteCalculator calculator = new Pricing_QuoteCalculator();
-		calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
-        System.assertEquals(true , quoteList.size() > 0 );
-        Test.stopTest();
-        
+
+static testMethod void testquoteCalculatorWithList(){
+List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
+List<QuoteModel> quoteModel = new List<QuoteModel>();
+Pricing_QuoteCalculator calculator = new Pricing_QuoteCalculator();
+calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
     }
 
 

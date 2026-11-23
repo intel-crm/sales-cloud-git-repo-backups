@@ -18,7 +18,6 @@
     quickActionFunction : function(component, quickAction, type) {
         component.set("v.modalHeader", '');
         component.set("v.isShowHeaderFooter", false);
-        component.set("v.isDefaultQuickAction", false);
 	 var objectDetailsMap = component.get("v.hiddenFieldsMap");
         if(quickAction == 'Sharing'){
             var getId = component.get("v.recordId");
@@ -58,12 +57,8 @@
                 component.set("v.openCmp", 'Complete PIC Review');
             }else if(quickAction == 'Submit For PIC'){  //Roshan - added for Outcome based
                 component.set("v.openCmp", 'Submit For PIC');
-            }else if(quickAction == 'Submit for Payment Clearance'){  
-                component.set("v.openCmp", 'Submit for Payment Clearance');
             }else if(quickAction == 'Manual Audit'){  //Roshan - added for Outcome based
                 component.set("v.openCmp", 'Manual Audit');
-            }else if(quickAction == 'Complete Payment Clearance Processing'){
-                component.set("v.openCmp", 'Complete Payment Clearance Processing');
             }
             if(quickAction != 'Create Claim'){
                 component.set("v.openModalForLtCmp", true);
@@ -89,7 +84,6 @@
                 break;
             default:
                 component.set("v.modalPopConfMessage", 'Not a valid action');
-                component.set("v.isDefaultQuickAction", true);
         }
         }
     },

@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">Znf8Q~adNIwQ9FoeSeELqYuFJLWsgPVoA7y9NcBj</value>
+        <value xsi:type="xsd:string">4FC8Q~z_vwJuZmuV6eu4HSTNEd8F2u~CqMtapcv5</value>
     </values>
     <values>
         <field>Column_Name__c</field>

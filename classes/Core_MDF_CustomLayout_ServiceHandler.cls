@@ -1,11 +1,11 @@
 public without sharing class Core_MDF_CustomLayout_ServiceHandler {
     public static void validRecord(List<Core_MDF_Custom_Layout_Configurations__c> customLayoutNewList, Boolean isInsert, Boolean isUpdate, List<Core_MDF_Custom_Layout_Configurations__c> customLayoutOldList){
-        Map<String, Schema.SObjectType> objMap = Schema.getGlobalDescribe();//ATHR fix
+        //System.debug('isInsert--- '+ isInsert  + ' isUpdate--- ' + isUpdate);
         for(Integer i = 0 ; i < customLayoutNewList.size() ; i++) {
             String errorMsg = 'Please Enter';
             Boolean isError = true;
             If(isInsert || (isUpdate && customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c != customLayoutOldList[i].Core_MDF_Object_API_Name_txt__c)){ 
-                //Map<String, Schema.SObjectType> objMap = Schema.getGlobalDescribe();
+                Map<String, Schema.SObjectType> objMap = Schema.getGlobalDescribe();
                 If(objMap.containsKey(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c)) {
                     If(isInsert || (isUpdate && customLayoutNewList[i].Core_MDF_Record_Type_Name_txt__c != customLayoutOldList[i].Core_MDF_Record_Type_Name_txt__c)){
                         Boolean isValidRecordType = validateRecordTypeName(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c, customLayoutNewList[i].Core_MDF_Record_Type_Name_txt__c);
@@ -42,6 +42,7 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
                             isError = false;
                         }
                     }
+                    //system.debug('>>>>'+isError);
             errorMsg = errorMsg.removeEnd(',');
             If(isError == false){
                 customLayoutNewList[i].Id.addError(errorMsg);

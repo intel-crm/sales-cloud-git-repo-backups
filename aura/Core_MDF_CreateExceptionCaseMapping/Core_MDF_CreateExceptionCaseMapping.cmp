@@ -15,7 +15,7 @@
             <div class="slds-modal__container">
                 <!-- ###### MODAL BOX HEADER Start ######-->
                 <header class="slds-modal__header">
-                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare" class="slds-modal__close"/>
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
                     <h2>{!$Label.c.Core_MDF_Add_Exception}</h2>
                 </header>
                 <!--###### MODAL BOX BODY Part Start######-->

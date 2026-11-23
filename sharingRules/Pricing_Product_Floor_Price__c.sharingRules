@@ -15,20 +15,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>AGS_All_DPM_Group_For_Product_Floor_Price</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>AGS_All DPM Group For Product Floor Price</label>
-        <sharedTo>
-            <group>Pricing_Div_Pricing_Manager_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>AGS_All_Pricing_Manager_Group_For_Product_Floor_Price</fullName>
         <accessLevel>Read</accessLevel>
         <label>AGS_All Pricing Manager Group For Product Floor Price</label>

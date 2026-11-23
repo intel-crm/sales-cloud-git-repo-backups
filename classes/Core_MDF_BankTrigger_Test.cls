@@ -290,7 +290,7 @@ private class Core_MDF_BankTrigger_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast (Pre-2025)',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);
@@ -308,7 +308,7 @@ private class Core_MDF_BankTrigger_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast (Pre-2025)',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);

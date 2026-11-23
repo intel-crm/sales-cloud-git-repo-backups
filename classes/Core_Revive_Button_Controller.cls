@@ -13,9 +13,7 @@ public class Core_Revive_Button_Controller {
     @auraEnabled
     public static String updateLead(String leadId) {
         String loggedInUserId = UserInfo.getUserId();
-        List<Lead> leadList = [SELECT Id, Street, PostalCode, Core_Lead_Status__c, Core_Lead_Revive_Date_Original__c, Core_Lead_Revive_Date_Most_Recent__c, 
-                               Status, RecordType.Name,RecordType.DeveloperName, Core_Existing_Covered_Account__r.RecordType.name FROM Lead WHERE Id = :leadId
-                               AND (RecordType.DeveloperName = 'Lead' OR RecordType.Name = 'Sales Lead')];
+        List<Lead> leadList = [SELECT Id, Street, PostalCode, Core_Lead_Status__c, Core_Lead_Revive_Date_Original__c, Core_Lead_Revive_Date_Most_Recent__c, Status, RecordType.Name, Core_Existing_Covered_Account__r.RecordType.name FROM Lead WHERE Id = :leadId AND (RecordType.Name = 'Lead' OR RecordType.Name = 'Sales Lead')];
         
         if (leadList.isEmpty()) {
             return Label.Core_ReviveButtonFailure;
@@ -90,7 +88,7 @@ public class Core_Revive_Button_Controller {
             PopulateReviveDate(ld);
             newList.add(ld);
          }
-        	else if (ld.RecordType.DeveloperName == 'Lead' && ld.Status == 'Sales Accepted Lead' && ld.Core_Lead_Status__c == 'Disqualified') {
+        	else if (ld.RecordType.Name == 'Lead' && ld.Status == 'Sales Accepted Lead' && ld.Core_Lead_Status__c == 'Disqualified') {
             ld.OwnerId = loggedInUserId;
             ld.Status = 'Marketing Qualified Lead';
             ld.Core_Lead_Status__c = 'Accepted';

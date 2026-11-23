@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">最后通知：申请编号</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;会展/活动&quot;,&quot;Lead Cultivation&quot;:&quot;潜在客户培育&quot;,&quot;Technical Activation&quot;:&quot;技术激活&quot;,&quot;Incentive&quot;:&quot;激励选项&quot;,&quot;Training&quot;:&quot;培训&quot;,&quot;Digital Media&quot;:&quot;数字媒体&quot;,&quot;Legacy Media&quot;:&quot;传统媒体&quot;,&quot;Funded Headcount&quot;:&quot;受资助的人数&quot;,&quot;Brand Awareness&quot;:&quot;品牌知名度&quot;,&quot;Consideration&quot;:&quot;考虑阶段&quot;,&quot;Purchase Intent&quot;:&quot;购买意向&quot;,&quot;Preference&quot;:&quot;偏好&quot;,&quot;Share of Voice&quot;:&quot;声量占比&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">非常感谢,</value>
     </values>

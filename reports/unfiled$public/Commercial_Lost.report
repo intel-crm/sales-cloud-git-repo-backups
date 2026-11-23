@@ -275,6 +275,9 @@
         <field>OpportunityLineItem.Core_OtherCompetitor_Product_Txt__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__MainCompetitors__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <columns>

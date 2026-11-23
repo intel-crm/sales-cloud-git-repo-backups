@@ -3,7 +3,7 @@
 * Version     : 1.0 
 * Created Date:  18-11-2024
 * Modification Log :
-* Developer                  Date               Description
+* Developer            		  Date               Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 Aravind                        18-11-2024         This contains InvocableMethod called from platform event to create design opportunity
                                                   in asyn mode.
@@ -24,8 +24,6 @@ public with sharing class PCC_ProcessDesignOpportunity {
                 Core_Military_Aerospace_Gvrnmt_Use_Ind__c,
                 Core_Product_Segment_Nm__c,
                 Core_Product_Application_Nm__c,
-                PCC_Design_Type__c,
-                PCC_ODM_Board_Partner_Account__c,
                 Core_Vertical_Market_Nm__c,
                 Core_Manufacturing_Region_Cd__c,
                 Core_Production_End_Dt__c,

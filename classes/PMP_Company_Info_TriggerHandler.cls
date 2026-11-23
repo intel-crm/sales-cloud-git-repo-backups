@@ -29,11 +29,6 @@ public class PMP_Company_Info_TriggerHandler extends TriggerHandler {
                }
                
         }
-        
-        //To create Staging Record
-        if(mapFunctionalityNameTriggerExecution.containsKey('Company_Autofill_Handler') && mapFunctionalityNameTriggerExecution.get('Company_Autofill_Handler').Core_Active__c){ 
-            PMP_Company_Info_TriggerHelper.createStagingFromCompany(trigger.new);
-        }
 		/*IPA2.0: US-TWC729-7976*/
         /*if((mapFunctionalityNameTriggerExecution.containsKey('MPI_Mem_Handler') && 
            mapFunctionalityNameTriggerExecution.get('MPI_Mem_Handler').Core_Active__c)&& (!solutionInsertOpidRecursive)){

@@ -50,7 +50,7 @@ public class CRM_GeneratePDF_EMBController {
         Id recordId = ApexPages.currentPage().getParameters().get('id');
         record = [
             
-            SELECT Id, Name, CRM_Start_Date__c,CRM_Start_Time__c,CRM_Agentic_Attendee_Bio__c,CRM_Scheduled_End_Date__c,CRM_Scheduled_End_Time_Only__c,Core_Executive_Meeting_Brief_Name__c,CRM_Intels_Meeting_Objectives__c,CRM_Most_Critical_Messages_to_Get_Across__c,CRM_Other_Partys_Meeting_Objectives__c,Account__c,CRM_PreparedBy__r.Name,CRM_Location__c,CRM_Location__Street__s,CRM_Location__City__s,CRM_Location__PostalCode__s,CRM_Location__StateCode__s,CRM_Location__CountryCode__s,CRM_Dress_Code__c,CRM_Scheduled_End_Time_txt__c,CRM_Scheduled_Start_Time_txt__c,
+            SELECT Id, Name, Core_Executive_Meeting_Brief_Name__c,CRM_Intels_Meeting_Objectives__c,CRM_Most_Critical_Messages_to_Get_Across__c,CRM_Other_Partys_Meeting_Objectives__c,Account__c,CRM_PreparedBy__r.Name,CRM_Location__c,CRM_Location__Street__s,CRM_Location__City__s,CRM_Location__PostalCode__s,CRM_Location__StateCode__s,CRM_Location__CountryCode__s,CRM_Dress_Code__c,CRM_Scheduled_End_Time_txt__c,CRM_Scheduled_Start_Time_txt__c,
             
             Industry_Insights_Political_Climate__c,How_They_Buy_Sell__c,CRM_Investor_Scouting_Report__c,CRM_Additional_Legal_Guidance__c,CRM_Attendee_Bio_s__c,CRM_Brief_Reviewer__r.Name
             
@@ -93,43 +93,11 @@ public class CRM_GeneratePDF_EMBController {
         List<String> PresentersConversationLeadNamesList = new List<String>();
         List<String> Meeting_Agenda_ItemsList = new List<String>();
         
-       List<CRM_Meeting_Brief_Agenda__c> agendaList = [SELECT Id,CRM_Start_Date__c,CRM_Start_Time_Only__c,CRM_End_Date__c,CRM_End_Time_Only__c,CRM_Start_Time_txt__c,CRM_End_Time_txt__c,CRM_Presenters_Conversation_Lead__r.Name,CRM_Meeting_Agenda_Items__c FROM CRM_Meeting_Brief_Agenda__c WHERE CRM_Executive_Meeting_Brief__c=:recordId];
+        List<CRM_Meeting_Brief_Agenda__c> agendaList = [SELECT Id,CRM_Start_Time_txt__c,CRM_End_Time_txt__c,CRM_Presenters_Conversation_Lead__r.Name,CRM_Meeting_Agenda_Items__c FROM CRM_Meeting_Brief_Agenda__c WHERE CRM_Executive_Meeting_Brief__c=:recordId];
         if(agendaList.size()>0){
             for(CRM_Meeting_Brief_Agenda__c agendaRec:agendaList){
-                //StartTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_Start_Time_txt__c));
-                //EndTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_End_Time_txt__c));
-
-                String formattedDate = agendaRec.CRM_Start_Date__c != null ? agendaRec.CRM_Start_Date__c.format() : '';
-
-                // Get the formatted time (e.g., 1:30:00 AM)
-                // Note: Time fields don't have a direct .format(), so we use a dummy DateTime
-                String formattedTime = '';
-                if (agendaRec.CRM_Start_Time_Only__c != null) {
-                    Time t = agendaRec.CRM_Start_Time_Only__c;
-                    // Create a dummy DateTime to use the format method for AM/PM
-                    formattedTime = DateTime.newInstance(Date.today(), t).format('h:mm:ss a');
-                }
-
-                // Add to your list
-                StartTime_DetailFieldList.add(formattedDate + ' ' + formattedTime);
-
-                //StartTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_Start_Date__c)+ ' ' +String.valueOf(agendaRec.CRM_Start_Time_Only__c));
-
-                String formattedEndDate = agendaRec.CRM_End_Date__c != null ? agendaRec.CRM_End_Date__c.format() : '';
-
-                // Get the formatted time (e.g., 1:30:00 AM)
-                // Note: Time fields don't have a direct .format(), so we use a dummy DateTime
-                String formattedEndTime = '';
-                if (agendaRec.CRM_End_Time_Only__c != null) {
-                    Time t = agendaRec.CRM_End_Time_Only__c;
-                    // Create a dummy DateTime to use the format method for AM/PM
-                    formattedEndTime = DateTime.newInstance(Date.today(), t).format('h:mm:ss a');
-                }
-
-                // Add to your list
-                EndTime_DetailFieldList.add(formattedEndDate + ' ' + formattedEndTime);
-
-                //EndTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_End_Date__c)+ ' ' +String.valueOf(agendaRec.CRM_End_Time_Only__c));
+                StartTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_Start_Time_txt__c));
+                EndTime_DetailFieldList.add(String.valueOf(agendaRec.CRM_End_Time_txt__c));
                 PresentersConversationLeadNamesList.add(agendaRec.CRM_Presenters_Conversation_Lead__r.Name);
                 Meeting_Agenda_ItemsList.add(agendaRec.CRM_Meeting_Agenda_Items__c);
             }
@@ -249,7 +217,8 @@ public class CRM_GeneratePDF_EMBController {
     private String formatTime(String timeString) {
     try {
         String dateString = '';
-        if (String.isBlank(timeString)) {return ' ';
+        if (String.isBlank(timeString)) {
+            return ' ';
         }
         
         // Check if it's a datetime format (contains date)
@@ -258,7 +227,8 @@ public class CRM_GeneratePDF_EMBController {
             List<String> dateTimeParts = timeString.split(' ');
             if (dateTimeParts.size() >= 2) {
                 // Get the time part (second element)
-                timeString = dateTimeParts[1];dateString = dateTimeParts[0];
+                timeString = dateTimeParts[1];
+                dateString = dateTimeParts[0];
             }
         }
         
@@ -266,41 +236,39 @@ public class CRM_GeneratePDF_EMBController {
         List<String> timeParts = timeString.split(':');
         
         // Ensure the time format is correct
-        if (timeParts.size() < 2) {return ' ';
+        if (timeParts.size() < 2) {
+            return ' ';
         }
 
         Integer hour = Integer.valueOf(timeParts[0]);
         Integer minute = Integer.valueOf(timeParts[1]);
 
         // Convert to 12-hour format manually
-        String ampm = (hour >= 12) ? 'PM' : 'AM'; Integer hour12 = hour;
+        String ampm = (hour >= 12) ? 'PM' : 'AM';
+        Integer hour12 = hour;
 
-        if (hour12 > 12) {hour12 = hour - 12;
+        if (hour12 > 12) {
+            hour12 = hour - 12;
         }
         if (hour12 == 0) hour12 = 12;  // Handle midnight
 
         // Format the time in "hh:mm AM/PM" format
-        String formattedTime = (hour12 < 10 ? '0' + hour12 : String.valueOf(hour12)) + ':' + (minute < 10 ? '0' + minute : String.valueOf(minute)) + ' ' + ampm;
+        String formattedTime = (hour12 < 10 ? '0' + hour12 : String.valueOf(hour12)) 
+             + ':' + (minute < 10 ? '0' + minute : String.valueOf(minute)) 
+             + ' ' + ampm;
         
         // Return date and time together if date exists
-        if (String.isNotBlank(dateString)) {return dateString + ' ' + formattedTime;
-        } else {return formattedTime;
+        if (String.isNotBlank(dateString)) {
+            return dateString + ' ' + formattedTime;
+        } else {
+            return formattedTime;
         }
         
-    } catch (Exception e) {return ' ';
+    } catch (Exception e) {
+        return ' ';
     }
 }
-    public String getFormattedSchedule() {
 
-        // Combine into a DateTime to use the .format() method
-        DateTime dt = DateTime.newInstance(record.CRM_Start_Date__c, record.CRM_Start_Time__c);
-        String start = dt.format('M/d/yyyy h:mm a');
-
-        // Combine into a DateTime to use the .format() method
-        DateTime dtEnd = DateTime.newInstance(record.CRM_Scheduled_End_Date__c, record.CRM_Scheduled_End_Time_Only__c);
-        String endDt = dtEnd.format('M/d/yyyy h:mm a');
-        return start + ' - ' + endDt;
-    }
     @AuraEnabled
     public static String getPdfBase64(Id recordId) {
         try{
@@ -320,7 +288,8 @@ public class CRM_GeneratePDF_EMBController {
             
         }
         catch(Exception e){
-            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_GeneratePDF_EMBController.getPdfBase64', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM'); throw new AuraHandledException('Failed to generate PDF: ' + e.getMessage());
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_GeneratePDF_EMBController.getPdfBase64', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');          
+            throw new AuraHandledException('Failed to generate PDF: ' + e.getMessage());
         }
         
     }
@@ -328,7 +297,7 @@ public class CRM_GeneratePDF_EMBController {
     @AuraEnabled
     public static void attachFiletoExecutiveMeetingBrief(Id recordId, String base64){
      try{
-      List<ContentDocumentLink> cdlList = [SELECT Id FROM ContentDocumentLink WHERE LinkedEntityId=:recordId AND ContentDocument.Title LIKE 'Briefing for%' AND ContentDocument.FileExtension IN ('pdf')];
+      List<ContentDocumentLink> cdlList = [SELECT Id FROM ContentDocumentLink WHERE LinkedEntityId=:recordId AND ContentDocument.Title LIKE 'Briefing for%'];
         
       if(!cdlList.isEmpty()){
         delete cdlList;
@@ -359,13 +328,16 @@ public class CRM_GeneratePDF_EMBController {
         if(attachmentUrl!=null){
             embRecord.CRM_PDF_URL__c = attachmentUrl; 
         }
-        else{embRecord.CRM_PDF_URL__c ='';
+        else{
+            embRecord.CRM_PDF_URL__c ='';
         }
         
        
             update embRecord;
      }
-     catch(Exception e){Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_GeneratePDF_EMBController.attachFiletoExecutiveMeetingBrief', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');insert logEntry;
+     catch(Exception e){
+         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = e.getMessage(), Core_Origin__c='CRM_GeneratePDF_EMBController.attachFiletoExecutiveMeetingBrief', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');          
+         insert logEntry;
        }
   }
        

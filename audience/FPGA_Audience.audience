@@ -18,6 +18,12 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
+            <groupName>4ddaeb31-6f2e-46bd-9014-1d46baf3962e$#$173df194-fe96-4766-a599-1a0af8e5315c</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>DDR_Rich_Content_Editor_Component</targetValue>
+        </target>
+        <target>
             <groupName>80ccf536-29b0-48ab-b2e4-10a1b2af9503$#$e13510ca-9208-4579-9fc5-5b102c5227e7</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>

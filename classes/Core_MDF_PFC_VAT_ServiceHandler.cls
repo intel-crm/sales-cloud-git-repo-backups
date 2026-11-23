@@ -569,14 +569,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
             if(oldVatMap.get(vatInfo.ID).Core_MDF_Status_Txt__c!=newVatMap.get(vatInfo.ID).Core_MDF_Status_Txt__c 
                && newVatMap.get(vatInfo.ID).Core_MDF_Status_Txt__c.equals(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled')))
             {
-
-                //Roshan - added subclaim check
-                if (vatInfo.Core_MDF_Sub_Claim_Id__c != NULL) {
-                    claimIdsToRelease.add(vatInfo.Core_MDF_Sub_Claim_Id__c);
-                } else {
-                    claimIdsToRelease.add(vatInfo.Core_MDF_Claim_Id__c);
-                }
-                
+                claimIdsToRelease.add(vatInfo.Core_MDF_Claim_Id__c);
             }
         }
         if(claimIdsToRelease!=null && claimIdsToRelease.size()>0)
@@ -584,7 +577,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
             
             List<PartnerFundClaim> claimsToBeReleased = [Select Core_MDF_ESD_Hold__c,Core_MDF_Audit_Hold__c, Core_MDF_Payment_Hold_ind__c, Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,
                                                          Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c, Core_MDF_Status__c, Core_MDF_Claim_Previous_Status__c, Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Document_Hold_Ind__c,
-                                                         Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c
+                                                         Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c
                                                         From PartnerFundClaim 
                                                         Where Id In :claimIdsToRelease and Core_MDF_VAT_Hold_Ind__c = true and Core_MDF_Status__c=:Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')];
             

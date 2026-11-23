@@ -2,8 +2,8 @@
  * @description       : Test Class for Pricing_QuoteLetter_BusinessLogic
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 03-09-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 11-02-2023
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_QuoteLetter_BusinessLogic_Test {
@@ -56,9 +56,7 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
             String cType = myFile.getContentType();
             try{
                 File myFile1 = File.make(new Attachment());
-            }catch(Exception exp){
-                Pricing_Tender_Utility.logError(exp);
-            }
+            }catch(Exception exp){}
         }
         
         SBQQ__QuoteTemplate__c quoteTemplates = new SBQQ__QuoteTemplate__c();

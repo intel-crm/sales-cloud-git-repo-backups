@@ -17,13 +17,114 @@ trigger Core_Lead on Lead(before insert, before update, after insert, after upda
     // Fetching "Custom Setting" containing details to trigger switch on/off
     Map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     
-    // Handle before trigger operations
     if (Trigger.isBefore) {
-        Core_LeadTriggerHandler.handleBeforeTrigger(mapFunctionalityNameTriggerExecution);
-    }
+        if (Trigger.isInsert) {
+            Core_LeadHandlerforSLA.CheckListedOwnerorNot(Trigger.new);
+            SWS_LeadHandler.beforeInsertUpdateOperations(Trigger.new,Trigger.oldmap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('leadObjectBeforeHandler') &&
+                mapFunctionalityNameTriggerExecution.get('leadObjectBeforeHandler').Core_Active__c)
+                Core_LeadHandler.leadObjectBeforeHandler(Trigger.new, Trigger.oldmap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('leadObjectSalesGroup') &&
+                mapFunctionalityNameTriggerExecution.get('leadObjectSalesGroup').Core_Active__c)
+                Core_LeadHandler.leadObjectSalesGroup(Trigger.new, Trigger.newmap, Trigger.oldmap);
+            
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.populateSegmentMpiInPartnerLeads(Trigger.new, true);
+
+            if (mapFunctionalityNameTriggerExecution.containsKey('fetchCountryLabels') && 
+                mapFunctionalityNameTriggerExecution.get('fetchCountryLabels').Core_Active__c){
+                Core_Lead_Inquiry_Handler.updateCountryLabelOnLeadCountryChange(Trigger.New);
+            }
+
+        } else if (Trigger.isUpdate) {
+            
+            Core_LeadHandlerforSLA.CheckListedOwnerorNotOnUpdate(Trigger.new ,Trigger.old);        
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('leadObjectBeforeHandler') &&
+                mapFunctionalityNameTriggerExecution.get('leadObjectBeforeHandler').Core_Active__c)
+                Core_LeadHandler.leadObjectBeforeHandler(Trigger.new, Trigger.oldmap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('leadObjectSalesGroup') &&
+                mapFunctionalityNameTriggerExecution.get('leadObjectSalesGroup').Core_Active__c)
+                Core_LeadHandler.leadObjectSalesGroup(Trigger.new, Trigger.newmap, Trigger.oldmap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('StampFieldOnReject') &&
+                mapFunctionalityNameTriggerExecution.get('StampFieldOnReject').Core_Active__c)
+                Core_PartnerLeadHandler.stampFieldOnRejectLead(Trigger.new, Trigger.oldmap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.reRoutePartnerLead(Trigger.new);
+            
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('fetchCountryLabels') &&
+                mapFunctionalityNameTriggerExecution.get('fetchCountryLabels').Core_Active__c){
+                Core_Lead_Inquiry_Handler.updateCountryLabelOnLeadCountryChange(Trigger.New);
+
+            }
+          
+        } 
+   }
     
-    // Handle after trigger operations
     if (Trigger.isAfter) {
-        Core_LeadTriggerHandler.handleAfterTrigger(mapFunctionalityNameTriggerExecution);
+        if (Trigger.isInsert) {
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.populateGroupsToRoutePartnerLead(Trigger.new);
+            
+            /*if (mapFunctionalityNameTriggerExecution.containsKey('NewPartnerLeadNotification') && 
+                mapFunctionalityNameTriggerExecution.get('NewPartnerLeadNotification').Core_Active__c)
+                Core_PartnerLeadHandler.NewPartnerLeadNotification(Trigger.New);*/
+            
+        } else if (Trigger.isUpdate) {
+            
+            /*if(mapFunctionalityNameTriggerExecution.containsKey('BlockExistingOpponConversionLead') && 
+               mapFunctionalityNameTriggerExecution.get('BlockExistingOpponConversionLead').Core_Active__c){
+                   if(Core_LeadHandlerforSLA.isExistingOpportunity || Test.isRunningTest()){
+                       Core_LeadHandlerforSLA.isExistingOpportunity = false;
+                       Core_LeadHandlerforSLA.BlockOppConvertforExitOpp(Trigger.New);
+                   }
+                   
+               }*/
+            if(mapFunctionalityNameTriggerExecution.containsKey('BlockAccountOnLeadConversion') && 
+               mapFunctionalityNameTriggerExecution.get('BlockAccountOnLeadConversion').Core_Active__c){
+               Core_LeadHandlerforSLA.BlockAccountconvertforRejectedAndRequested(Trigger.New);    
+               }
+            // Calling method to de-duplicate Account & Contact on Lead Conversion
+            if (mapFunctionalityNameTriggerExecution.containsKey('leadConversionDeduplication') &&
+                mapFunctionalityNameTriggerExecution.get('leadConversionDeduplication').Core_Active__c)
+                Core_LeadHandler.leadConversionDeduplication(Trigger.newMap, Trigger.oldMap);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.populateGroupsToRoutePartnerLead(Trigger.new);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.partnerLeadOwnerUpdate(Trigger.new);
+            
+            if (mapFunctionalityNameTriggerExecution.containsKey('AssignLeadsToPartnerQueues') &&
+                mapFunctionalityNameTriggerExecution.get('AssignLeadsToPartnerQueues').Core_Active__c)
+                Core_PartnerLeadHandler.shareLeadRecord(Trigger.New);
+                
+            if (mapFunctionalityNameTriggerExecution.containsKey('OPIDStampingOnOnePartnerId') &&
+                mapFunctionalityNameTriggerExecution.get('OPIDStampingOnOnePartnerId').Core_Active__c)
+                Core_PartnerLeadHandler.StampOPIDsonLead(Trigger.New);
+                
+            /*if (mapFunctionalityNameTriggerExecution.containsKey('updateInquiryAccNameonLeadConversion') &&
+               mapFunctionalityNameTriggerExecution.get('updateInquiryAccNameonLeadConversion').Core_Active__c){
+                Core_Lead_Inquiry_Handler.updateInquiryAccNameonLeadConversion(Trigger.New,Trigger.OldMap);
+                 }
+            if (mapFunctionalityNameTriggerExecution.containsKey('updateInquiryOwnerOnLeadOwnerUpdate') &&
+                mapFunctionalityNameTriggerExecution.get('updateInquiryOwnerOnLeadOwnerUpdate').Core_Active__c){
+                Core_Lead_Inquiry_Handler.updateInquiryOwnerOnLeadOwnerUpdate(Trigger.New,Trigger.oldmap);
+                }
+            */
+        }
     }
 }

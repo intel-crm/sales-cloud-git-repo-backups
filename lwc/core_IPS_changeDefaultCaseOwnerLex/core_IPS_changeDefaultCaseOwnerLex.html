@@ -3,8 +3,9 @@
     <div if:false={spinner}> 
     <div if:true={userAccess}>     
     <div if:true={projAccess}> 
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_large">   
+    <div class="slds-modal__container">
     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-    <div class="slds-text-heading_medium slds-text-align_center slds-m-bottom_medium">Change Default Case Owner</div>
     <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
         <lightning-accordion-section name="Selected" label="Selected Default Case Owner" class="slds-accordion">
             </br>
@@ -92,7 +93,7 @@
                 <lightning-button label="Add" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
             </template>
             <lightning-button label="Cancel" title="Non-primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
-        </div></div>
+        </div></div></div></section>
 </div>
 <div if:false={projAccess}>
     <div align="center" class="error">

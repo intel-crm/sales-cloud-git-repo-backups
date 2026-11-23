@@ -109,6 +109,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -133,6 +137,10 @@
     <recordTypes>
         <label><!-- CCP Budget Cap --></label>
         <name>Core_MDF_CCP_Budget_Cap</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Channel MDF Budget Type Cap --></label>
+        <name>Core_MDF_Channel_MDF_Budget_Type_Cap</name>
     </recordTypes>
     <recordTypes>
         <label><!-- IPA Budget Type Cap --></label>

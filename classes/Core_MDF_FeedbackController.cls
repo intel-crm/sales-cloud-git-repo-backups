@@ -65,31 +65,7 @@ public with sharing class Core_MDF_FeedbackController {
             surveyObj.Core_MDF_Survey_CapturedOn_Page_txt__c = currentPageInfo;
             surveyObj.Core_MDF_Submitted_By_id__c=UserInfo.getUserId();
             surveyObj.Core_MDF_Submitted_On_dtm__c=dtm;
-            
-            //Insufficient access exception fix - begin
-            Id accountToStamp = userAccountId;
-
-            if (ultimateAccountId != null) {
-                if (ultimateAccountId == userAccountId) {
-                    accountToStamp = ultimateAccountId;
-                } else {
-                    // Query to check if the running user has Read access to the Ultimate Account
-                    List<Account> accessibleUltimateAccount = [
-                        SELECT Id 
-                        FROM Account 
-                        WHERE Id = :ultimateAccountId 
-                        LIMIT 1
-                    ];
-                    
-                    if (!accessibleUltimateAccount.isEmpty()) {
-                        accountToStamp = ultimateAccountId;
-                    }
-                }
-            }
-            
-            surveyObj.Core_MDF_User_Account__c = accountToStamp;
-            //Insufficient access exception fix - end
-
+            surveyObj.Core_MDF_User_Account__c = ultimateAccountId != null ? ultimateAccountId : userAccountId; // stamping ultimate account for survey's provided
             surveyObj.Core_MDF_User_Program_nm__c = !programSet.isEmpty() ? String.join(programSet, ';') : ''; //stamping Program Name from PNUM/PGM with semicolan seperated value
             insert surveyObj;
 
@@ -168,28 +144,14 @@ public with sharing class Core_MDF_FeedbackController {
                         ' AND ' + String.escapeSingleQuotes(frequencyString) + currentfrequency + 
                         ' Order by Status ASC';
                     List<LoginHistory> recordsList = Database.query(query);
-                    
-                    // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
-                    /* for (LoginHistory loginRecord : recordsList) {
-if (loginRecord.Status.toLowerCase() != Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()) {
-continue;
-}
-
-successLoginList.add(loginRecord);
-
-if (successLoginList.size() == 2) {
-break;
-}
-}*/
-                    Integer index = 0;
-                    while (index < recordsList.size() && successLoginList.size() < 2) {
-                        LoginHistory loginRecord = recordsList[index];
-                        if (loginRecord.Status.toLowerCase() == Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()) {
-                            successLoginList.add(loginRecord);
+                    for(LoginHistory loginRecord : recordsList){
+                        if(loginRecord.Status.toLowercase() == Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()){ //to get only the Success records from query as Status field cannot be added in where clause
+                            successLoginList.add(loginRecord); 
+                            if(successLoginList.size() == 2){ // list size = 2 then break to avoid extra for loop iterations as we require only size = 1 to check if it the ist login. If size = 2 means its not the 1st login
+                                break;
+                            }
                         }
-                        index++;
                     }
-                    // US - TWC702-14285: Flatten nested IFs (no logic change) -End
                     if(!successLoginList.isEmpty() && successLoginList != null && successLoginList.size() == 1){ // to check if success record's count = 1 this means the user is loging in for the first time in particular month or quarter
                         isPopupEnabled = true;
                     }

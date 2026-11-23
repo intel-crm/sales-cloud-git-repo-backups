@@ -18,19 +18,9 @@ public class Core_IPS_FileUploadConsole_Cont_LEX_test {
     public static Core_IPS_File_Assignment__c fileassign;
     public static List<Core_IPS_File_Assignment__c> fileassignList = new List<Core_IPS_File_Assignment__c>() ;
     public static List<User> ListOfUser = new List<User> ();
-
-    // Runs in its own transaction before every test method so the bypass is committed
-    // and visible to the $Setup merge field the validation rule evaluates against.
-    @testSetup
-    static void setupBypass(){
-        insert new Core_Account_Bypass_Validation_Rule__c(
-            SetupOwnerId = UserInfo.getOrganizationId(),
-            ByPass__c = true
-        );
-    }
-
+    
     public static void setup(){   
-
+        
         //Account 
         Accnt = new Account();
         Accnt.Name = 'Test Account';
@@ -142,7 +132,7 @@ public class Core_IPS_FileUploadConsole_Cont_LEX_test {
         FileUplMaster.Core_File_URL__c = 'Test@salesforce.com';
         insert FileUplMaster;
         
-        // File Assignmnet 
+        // File Assignmnet
         
         fileassign = new Core_IPS_File_Assignment__c();
         fileassign.Core_IPS_File_Upload_Master__c = FileUplMaster.Id;

@@ -18,7 +18,7 @@ public class Core_MDF_ECM_Trigger_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             bypassFunctionKeys.add('Core_MDF_Bypass_PFC_Trigger');
             bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); // 14285 Indira
+            
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -39,7 +39,7 @@ public class Core_MDF_ECM_Trigger_Test {
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             Account accCCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test CCF Account', ccfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
             Account acc2 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 2', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-
+            Account accDCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test DCF Account', dcfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc2.Id, true);
             //Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access'];
             PermissionSet submitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             
@@ -124,12 +124,12 @@ public class Core_MDF_ECM_Trigger_Test {
                 expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
                 expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
                 expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-                expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast'; // 14285 Indira
+                expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
                 expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
                 expt.Core_MDF_Country_Region_nm__c = 'India';
                 expt.Core_MDF_Account_id__c = acc1.Id;
                 expt.Core_MDF_Select_All_Accounts_ind__c = false;
-                expt.Core_MDF_Budget_Type_nm__c = ''; // 14285 Indira
+                //expt.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
                 insert expt;
             }
             //adding bypass feature to bypass access validation
@@ -165,10 +165,10 @@ public class Core_MDF_ECM_Trigger_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i5 Processor',
-                                                                                           'Audio',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
-                                                                                           false);  // 14285 Indira
+                                                                                           false);
             pfr.Core_MDF_Start_Date__c = system.today();
             pfr.Core_MDF_End_Date__c  = system.today() + 5;
             pfr.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
@@ -197,7 +197,7 @@ public class Core_MDF_ECM_Trigger_Test {
             Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();
             cs.Status = 'New';
             cs.recordTypeId = caseAuditRecType;
-            cs.Core_MDF_Activity_Category__c = 'Audio'; // 14285 Indira
+            cs.Core_MDF_Activity_Category__c = 'Broadcast';
             cs.Core_MDF_Activity_Start_Date__c = System.today();
             cs.Core_MDF_Activity_End_Date__c = System.today() + 5;
             cs.Core_MDF_Claim_ID__c = newClaim.Id;
@@ -229,7 +229,7 @@ public class Core_MDF_ECM_Trigger_Test {
         
         Case cs = [SELECT Id, AccountId, Account.Core_MDF_Channel_Program__r.Name
                    FROM Case 
-                   WHERE Core_MDF_Activity_Category__c = 'Audio' LIMIT 1];  // 14285 Indira
+                   WHERE Core_MDF_Activity_Category__c = 'Broadcast' LIMIT 1];
         cs.status = 'Closed';
         update cs;
         

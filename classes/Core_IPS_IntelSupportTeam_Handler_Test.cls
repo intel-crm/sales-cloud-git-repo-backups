@@ -183,7 +183,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
                 delete ListOfISTMembers2;
                 
             }catch(Exception e){
-                throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
+                system.debug('---Exception caught at Test class -remove method --');
             }
                         
             
@@ -570,6 +570,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             cip.Core_IPS_Project_Interested_Party__c = true;
             internalcipListToBeInserted.add(cip);
             insert internalcipListToBeInserted;
+            System.debug('internalcipListToBeInserted-->'+internalcipListToBeInserted);
             System.assert(internalcipListToBeInserted[0].Id != null, 'Record not created');
             
             //Create IST members

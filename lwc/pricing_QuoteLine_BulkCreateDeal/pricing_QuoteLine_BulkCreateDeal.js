@@ -394,7 +394,6 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
         this.isCreateDeal = true;
         this.isSave = false;
         this.isAI = false;
-        this.showSoftWarningApprovedECAP = false;
         this.handleValidation();
     }
 
@@ -458,7 +457,9 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
                                 error += 'My Deals Meet Comp Price \n';
                             }
 
-
+                            /*if (this.data[i].Pricing_Tentative_ECAP_Price_Amt__c === '0' || this.data[i].Pricing_Tentative_ECAP_Price_Amt__c === '' || this.data[i].Pricing_Tentative_ECAP_Price_Amt__c === undefined) {
+                                error += 'Tentative ECAP Price \n';
+                            }*/
                         }
                     }
                     else {

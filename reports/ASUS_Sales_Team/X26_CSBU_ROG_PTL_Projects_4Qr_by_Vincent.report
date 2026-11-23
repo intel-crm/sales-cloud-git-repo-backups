@@ -12,7 +12,7 @@
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
         <groupingColumn>Opportunity.Core_Intel_Platform__c</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -22,7 +22,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>2026-27 Asus ROG Projects</title>
+        <title>PTL ARL-HX R Asus CSBU Projects</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -71,27 +71,27 @@
     </columns>
     <description>Asus decision date in 4 quarters, Technical owner is Vincent Tu</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>3 AND 1 AND 2</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Intel_Platform__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>NOVA LAKE M,Raptor Lake M,Raptor Lake Refresh M</value>
+            <value>ARROW LAKE REFRESH M,PANTHER LAKE M,Raptor Lake M,Raptor Lake Refresh M,WILDCAT LAKE M</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <value>Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CREATED</column>
+            <column>Opportunity.Core_Technical_Owner_Idsid__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>$USER</value>
+            <value>ktu</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -101,7 +101,7 @@
         <field>Opportunity.Core_Intel_Platform__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>&apos;26-&apos;27 CSBU ROG Projects 4Qr</name>
+    <name>26&apos; CSBU ROG PTL Projects 4Qr by Vincent</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -125,7 +125,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2027-12-30</endDate>
+        <endDate>2026-09-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-12-01</startDate>
     </timeFrameFilter>

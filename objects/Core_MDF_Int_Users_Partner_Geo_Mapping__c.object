@@ -171,18 +171,6 @@
         <unique>true</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Account_Name_txt__c</fullName>
-        <description>Displays the Account Name from the Account lookup field.</description>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Account_id__r.Name</formula>
-        <label>Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Account_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Field to store Account to which the User is associated to</description>
@@ -381,7 +369,6 @@
                 <controllingFieldValue>Core_MDF_Internal_Co_GTM_Exception_Reviewer</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
-                <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Payment_Adm</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Technical_Approver</controllingFieldValue>
@@ -436,6 +423,10 @@
             <valueSettings>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <valueName>WW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>INDIA</valueName>
             </valueSettings>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -1284,79 +1275,66 @@
                 <value>
                     <fullName>INDIA-&gt;Account Plan</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Account Plan</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Business Client Acceleration - MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Business Client Acceleration - MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Client Specialties MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Client Specialties MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Cloud</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Cloud</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Co-Engineering</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Co-Engineering</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Data Centric Acceleration - MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Data Centric Acceleration - MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;IoT Premier - MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;IoT Premier - MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;IoT Targeted - MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;IoT Targeted - MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;ODM Growth Plan - Client MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;ODM Growth Plan - Client MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Proposal II MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Proposal II MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;Proposal I MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;Proposal I MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;SOEM Client MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;SOEM Client MDF</label>
                 </value>
                 <value>
                     <fullName>INDIA-&gt;SOEM Data Center MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA-&gt;SOEM Data Center MDF</label>
                 </value>
                 <value>
@@ -2439,6 +2417,366 @@
                 <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Business Client Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Client Specialties MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Data Centric Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;IoT Premier - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;IoT Targeted - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;ODM Growth Plan - Client MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;SOEM Client MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;SOEM Data Center MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_First_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_RMF_Activity_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_RMF_PRC_Claim_Operations</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_SPCF_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCFB_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_SPCF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Retail_Account_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Int_Channel_MDF_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Price_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_L1_Approver</controllingFieldValue>
                 <valueName>PRC-&gt;Business Client Acceleration - MDF</valueName>
             </valueSettings>
             <valueSettings>
@@ -3229,6 +3567,47 @@
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Account Plan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Proposal II MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</controllingFieldValue>
+                <valueName>INDIA-&gt;Proposal I MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_MDF_Budget_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Level_1_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
@@ -3320,6 +3699,18 @@
                 <controllingFieldValue>Core_MDF_Internal_EEF_Escalation_Reviewer</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_EEF_Exception_Reviewer</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
+                <valueName>INDIA-&gt;Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Activity_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Activity_POR_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Int_Read_Only</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Program_Adm</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Escalation_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Internal_EEF_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
                 <valueName>PRC-&gt;Cloud</valueName>
             </valueSettings>
             <valueSettings>
@@ -3333,7 +3724,6 @@
                 <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_L2_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_Co_GTM_Exception_Reviewer</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer</controllingFieldValue>
-                <controllingFieldValue>Core_MDF_CCP_Internal_Co_GTM_Payment_Adm</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_Report_Viewer</controllingFieldValue>
                 <valueName>WW-&gt;Co-Engineering</valueName>
             </valueSettings>
@@ -3381,6 +3771,7 @@
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>APJ</valueName>
             </valueSettings>
@@ -3390,6 +3781,7 @@
                 <controllingFieldValue>Service Provider CoMarketing Fund</controllingFieldValue>
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>ASMO</valueName>
             </valueSettings>
@@ -3400,6 +3792,7 @@
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>EMEA</valueName>
             </valueSettings>
@@ -3410,6 +3803,7 @@
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>PRC</valueName>
             </valueSettings>
@@ -3420,9 +3814,20 @@
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <controllingFieldValue>CoGTM</controllingFieldValue>
                 <valueName>WW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Service Provider CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
+                <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <valueName>INDIA</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
@@ -3475,7 +3880,6 @@
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>
@@ -3529,6 +3933,7 @@
                 <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>Core_MDF_CCP_Internal_Price_Reviewer</valueName>
             </valueSettings>
@@ -3651,6 +4056,30 @@
                 <valueName>Core_MDF_CCP_Int_IPA_ProposalL1_Approver</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_Int_Channel_MDF_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Channel MDF</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <valueName>Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr</valueName>
             </valueSettings>
@@ -3728,10 +4157,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CoGTM</controllingFieldValue>
-                <valueName>Core_MDF_CCP_Internal_Co_GTM_Payment_Adm</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CoGTM</controllingFieldValue>
                 <valueName>Core_MDF_CCP_Internal_Co_GTM_POR_Approver</valueName>
             </valueSettings>
             <valueSettings>
@@ -3801,9 +4226,8 @@
         <columns>Core_MDF_is_User_Active_ind__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_User_id__c</field>
+            <field>Core_MDF_Account_id__c</field>
             <operation>contains</operation>
-            <value>Irene Zhu</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -3824,14 +4248,29 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Account_id__c</field>
+            <field>Core_MDF_Program_nm__c</field>
             <operation>equals</operation>
-            <value>Lenovo (Beijing) Limited</value>
+            <value>Intel Partner Alliance</value>
         </filters>
         <filters>
-            <field>Core_MDF_Role_nm__c</field>
+            <field>Core_MDF_Account_id__c</field>
+            <operation>notEqual</operation>
+            <value>A&amp;E Test Account JJ</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Account_id__c</field>
+            <operation>notEqual</operation>
+            <value>Bristal org_CCPTest</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Active_Ind__c</field>
             <operation>equals</operation>
-            <value>Core_MDF_CCP_Internal_IPA_Acct_Mgr</value>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_User_id__c</field>
+            <operation>contains</operation>
+            <value>Alaina</value>
         </filters>
         <label>IUPGM for IPA program</label>
     </listViews>
@@ -3845,7 +4284,7 @@
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_MDF_Channel_MDF</fullName>
-        <active>false</active>
+        <active>true</active>
         <label>Channel MDF</label>
         <picklistValues>
             <picklist>Core_MDF_Activity_Classification_nm__c</picklist>
@@ -4215,6 +4654,13 @@
             </values>
             <values>
                 <fullName>WW-%3ESOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Program_nm__c</picklist>
+            <values>
+                <fullName>Channel MDF</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4612,6 +5058,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -4968,6 +5418,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -4988,6 +5442,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5205,6 +5663,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -5300,6 +5762,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5533,6 +5999,54 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA-%3EAccount Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EBusiness Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EClient Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ECloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EData Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC-%3EAccount Plan</fullName>
                 <default>false</default>
             </values>
@@ -5659,6 +6173,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -5679,6 +6197,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5896,6 +6418,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -6052,10 +6578,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Core_MDF_CCP_Internal_Co_GTM_Payment_Adm</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Core_MDF_CCP_Internal_Co_GTM_Program_Adm</fullName>
                 <default>false</default>
             </values>
@@ -6096,6 +6618,10 @@
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6194,6 +6720,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6553,6 +7083,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -6573,6 +7107,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6790,6 +7328,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -6888,6 +7430,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -6915,6 +7461,10 @@
             </values>
             <values>
                 <fullName>EMEA-%3ECloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ECloud</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6948,6 +7498,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -6968,6 +7522,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7225,6 +7783,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -7320,6 +7882,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7541,6 +8107,50 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA-%3EAccount Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EBusiness Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EClient Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EData Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC-%3EAccount Plan</fullName>
                 <default>false</default>
             </values>
@@ -7659,6 +8269,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -7679,6 +8293,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7900,6 +8518,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -7995,6 +8617,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8354,6 +8980,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -8374,6 +9004,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8591,6 +9225,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -8686,6 +9324,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8919,6 +9561,54 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA-%3EAccount Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EBusiness Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EClient Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ECloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EData Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EIoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3EProposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA-%3ESOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC-%3EAccount Plan</fullName>
                 <default>false</default>
             </values>
@@ -9045,6 +9735,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -9065,6 +9759,10 @@
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9282,6 +9980,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KOREA</fullName>
                 <default>false</default>
             </values>
@@ -9344,7 +10046,8 @@ OR(
 INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;APJ&apos;),
 OR(INCLUDES(Core_MDF_Approval_Region_nm__c ,&apos;ASMO&apos;),INCLUDES(Core_MDF_Approval_Region_nm__c ,&apos;ASMO-LAR&apos;), INCLUDES(Core_MDF_Approval_Region_nm__c ,&apos;ASMO-NAR&apos;)),
 INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;EMEA&apos;),
-INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;PRC&apos;)
+INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;PRC&apos;),
+INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;INDIA&apos;)
 )
 )</errorConditionFormula>
         <errorMessage>No other geos allowed when WW is selected on Approval Region</errorMessage>
@@ -9512,7 +10215,8 @@ OR(
 INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;APJ&apos;),
 INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;ASMO&apos;),
 INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;EMEA&apos;),
-INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;PRC&apos;)
+INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;PRC&apos;),
+INCLUDES(Core_MDF_Region_Sub_Region_nm__c,&apos;INDIA&apos;)
 )
 ),AND(ISPICKVAL( Core_MDF_Program_nm__c ,&quot;Intel Partner Alliance&quot; ),ISPICKVAL( Core_MDF_Role_nm__c ,&quot;Core_MDF_CCP_Internal_Price_Reviewer&quot; ), NOT(INCLUDES( Core_MDF_Region_Sub_Region_nm__c , &quot;WW&quot;)) ),AND(OR(AND(ISPICKVAL( Core_MDF_Program_nm__c ,&quot;Ecosystem Extension Fund&quot; ),
 OR(ISPICKVAL( Core_MDF_Role_nm__c ,&quot;Core_MDF_Internal_EEF_Budget_Loader&quot;),
@@ -9564,7 +10268,8 @@ OR(
 INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;APJ&apos;),
 OR(INCLUDES(Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO&apos;),INCLUDES(Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO-LAR&apos;), INCLUDES(Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO-NAR&apos;)),
 INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;EMEA&apos;),
-INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;PRC&apos;)
+INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;PRC&apos;),
+INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;INDIA&apos;)
 ),
 TEXT(Core_MDF_Role_nm__c)&lt;&gt; &apos;Core_MDF_CCP_Internal_Retail_Account_Manager&apos;,
 TEXT(Core_MDF_Role_nm__c)&lt;&gt; &apos;Core_MDF_CCP_Internal_RMF_Activity_Approver&apos;,
@@ -9587,6 +10292,7 @@ INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;APJ&apos;),
 OR(INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO&apos;),AND(INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO-LAR&apos;), INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;ASMO-NAR&apos;))),
 INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;EMEA&apos;),
 INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;PRC&apos;),
+INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;INDIA&apos;),
 NOT(INCLUDES( Core_MDF_Region_Sub_Region_nm__c ,&apos;WW&apos;)),
 ISNULL(Core_MDF_GeoSubGeo_Budget_Type_nm__c),
 
@@ -9613,6 +10319,7 @@ INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;APJ&apos;),
 OR(INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;ASMO&apos;),AND(INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;ASMO-LAR&apos;), INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;ASMO-NAR&apos;))),
 INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;EMEA&apos;),
 INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;PRC&apos;),
+INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;INDIA&apos;),
 NOT(INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;WW&apos;))
 )</errorConditionFormula>
         <errorMessage>All geos are selected, just grant WW on Approval Region</errorMessage>

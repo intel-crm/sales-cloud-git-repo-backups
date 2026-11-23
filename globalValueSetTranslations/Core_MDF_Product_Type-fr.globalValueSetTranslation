@@ -37,10 +37,6 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation><!-- Client --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation><!-- Cloud --></translation>
     </valueTranslation>
@@ -57,20 +53,12 @@
         <translation>Catalogue</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>PC de bureau</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation>Passerelle de périphérie</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation><!-- Edge/IOT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Programmable Solution</masterLabel>
@@ -177,10 +165,6 @@
         <translation>Réseautique et Télécommunications</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>Mise en réseau/Ethernet</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
         <translation>Portable</translation>
     </valueTranslation>
@@ -237,10 +221,6 @@
         <translation>Stockage</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>Télécommunications</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
         <translation>PC portables fins et légers</translation>
     </valueTranslation>
@@ -267,9 +247,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>Station de travail - mobile</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

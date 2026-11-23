@@ -506,8 +506,8 @@ public class Core_KPIDeltaLoadHandler_Test {
                 o.core_status__c = 'New';
                 o.Core_Batch_ID__c = '6';
                
-                o.Core_Opportunity_ID_Txt__c = oppo.id;
-                o.core_opp_kpi_product__c = opptyProd.id;
+                o.Core_Opportunity_ID_Txt__c = '01x2X000001xxxx';
+                o.core_opp_kpi_product__c = '01x2X000001xxxx';
                 o.Core_Batch_Time__c = system.now().addHours(-4);
                 o.Core_Is_Delete__c = true;
                 o.Core_Opportunity_Product_Txt__c = opptyProd.id;

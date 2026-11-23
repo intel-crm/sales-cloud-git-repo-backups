@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
         <certificate>MIIDnTCCAoUCFD0mNx/Glm2RSaUh1AVK7gm/GG0dMA0GCSqGSIb3DQEBCwUAMIGKMQswCQYDVQQGEwJUVzEVMBMGA1UECAwMVGFveXVhbiBDaXR5MQ0wCwYDVQQHDARjaXR5MQ8wDQYDVQQKDAZBRExJTksxCzAJBgNVBAsMAklUMQ8wDQYDVQQDDAZHQk0tSVQxJjAkBgkqhkiG9w0BCQEWF3NpbW9uLmx1QGFkbGlua3RlY2guY29tMB4XDTI0MDcyMjA2NTc0NloXDTI1MDcyMjA2NTc0NlowgYoxCzAJBgNVBAYTAlRXMRUwEwYDVQQIDAxUYW95dWFuIENpdHkxDTALBgNVBAcMBGNpdHkxDzANBgNVBAoMBkFETElOSzELMAkGA1UECwwCSVQxDzANBgNVBAMMBkdCTS1JVDEmMCQGCSqGSIb3DQEJARYXc2ltb24ubHVAYWRsaW5rdGVjaC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUYe9gc035eqJbNQuoSOH3lfYkFmCEWCPKLQI9MQinxhQjjlqlMcfXsqBau9/6i55Ftf4SV4FAxsctvLE4rJERuAaGR7BthaJOe+BfCuZ3+X4GXCPaBlqNjrDIJkXyyIgdzTEqnC75wH/YhYB9or/xyMfXvKui/9vqZ0a1OjmlMVZkTqXUROZv0OQMQpGzSe2SQsHPAejjEp7xzq9RklV79MFw6U8hxbG5w17s/R4fhstlAln2mjGb78Pz/HArEFagu6zQeYbKfE8wqewNU8o/Gd7eII3Qsju6NMPLqKuKKsUdufptXxzqDFrajrgGkj2/FkM2IGrpvkaY5ExO9C7dAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAAM1Kh9jhFvnQcsNkNuMFL8Di28wGfKdo89f9mzXrMJMfvKSmutloFI7u+T4OiA0XkLuIcbXi1LsaEzBh7Dnc5UEXbRgdEBrKQfYtlK/Wq2K9lDVqBwIcrfdH0MQiem4EWYVyx6fO3cSTRclJ6mK35c29oajY1IHIlOjtQNKRbqHrDHaFDQ7W04P86vw0CvIA3X8QwiXZZuQ507e2oKe6KaXD92d68td+YBrr0oEpu2odfSiqrV0bB+FD90nwK7jUcxKg6i8XQr+6qy5CDnXY7tCPxGt31gFKeyDMAXuyHWQi8B432gaSazqj9ij1HqCqbeTik3qe949cPEIkz+OvLU=</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lOvppMXu1M5dA6MCxYeqnk.qPehrslpuQgSeK0LfMi9NSQCY.bw6O33Dt5W</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKjLZIYFG6_HMgapUEgoVGOjnlAB.bN7ovFchr66H2EmMb_coH01hlxUmNfi2</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -20,7 +20,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

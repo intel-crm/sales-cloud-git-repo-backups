@@ -98,35 +98,6 @@
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>pricing_rfpsummary</componentName>
-                <identifier>c_pricing_rfpsummary</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Success</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>In Progress</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Failed</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-32d8472f-fbbe-4276-8a9a-5b1837ebb4a3</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -348,22 +319,6 @@
                                     <leftValue>{!$Permission.CustomPermission.Tender_User}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
-                                </criteria>
-                            </visibilityRule>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>SBQQ__Quote__c.Generate_RFP_Scraping</value>
-                            <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.Pricing_Tender_Divisional_Pricing_Manager}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>false</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>

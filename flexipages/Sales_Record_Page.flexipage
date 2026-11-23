@@ -57,6 +57,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>salesWarningOnOrder</componentName>
+                <identifier>salesWarningOnOrder</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
             </componentInstance>

@@ -18,19 +18,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
     public static boolean firstRunBeforeUpdate = true;
     public static boolean firstRunBeforeInsert = true;
     public static String errMsg ='';
-     //HeapSize Fix
-    public static List<String> errMsgs = new List<String>();
-    
-    private static String getLogMessage(){
-        return errMsgs.isEmpty() ? '' : String.join(errMsgs, '\n');
-    }
-    
-    private static void clearLogs(){
-        errMsgs.clear();
-    }
     public static boolean firstRunBeforeDelete = true;
-    public static boolean isDZPRegistration = false;
-    public static  set<id> acrAccIds=new set<id>();
     @TestVisible
     static Boolean executeTrigger = true;
     public static final String PRM_Intel_Partner_Alliance = 'Intel Partner Alliance';
@@ -45,8 +33,6 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
     
     public override void afterInsert(){
         if(executeTrigger){
-            List<GroupMember> finalLstInsertGrpMembers = new List<GroupMember>();
-            Group allPartnerGroup = [SELECT Id FROM Group WHERE Name = 'PMP - All Partner Users' AND Type = 'Regular' LIMIT 1];
             if(triggerExecution.containsKey('AcctCtRel_Insert_ERPM_Integration_Trgr') && triggerExecution.get('AcctCtRel_Insert_ERPM_Integration_Trgr').Active__c/*isActive('AcctCtRel_Insert_ERPM_Integration_Trgr')*/ && firstRun && !(System.isBatch()
                 && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))
             ){
@@ -70,7 +56,6 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                 Set<String> contactIds = new Set<String>();
                 Set<Id> accIds = new Set<Id>();
                 List<Account> accList = new List<Account>();
-                List<User> Users = new List<User>();
                 Set<Id> accountIds = new Set<Id>();
                 List<Contact> contList = new List<Contact>();
                 
@@ -83,12 +68,9 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                             accountIds.add(acr.PRM_Account_Id__c);
                         }
                     }
-                   // errMsg+='Contact ID from ACR is- '+contactIds+'Account ID from ACR is-'+accountIds+'\n';
-                   // heap size error fix
-                   errMsgs.add('Contact ID from ACR is- ' + contactIds + ' Account ID from ACR is-' + accountIds);
+                    errMsg+='Contact ID from ACR is- '+contactIds+'Account ID from ACR is-'+accountIds+'\n';
                     if(accountIds != null && !accountIds.isEmpty()){
-                       // errMsg+='From line 72 \n';
-                       errMsgs.add('From line 72');
+                        errMsg+='From line 72 \n';
                         acmList = [ SELECT Id, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Channel_Program_Id__c, PRM_Partner_Role__c, PRM_Status_Nm__c
                                     FROM PRM_AccountChannelMembership__c
                                     WHERE PRM_Channel_Program_Id__r.Name = :System.Label.PRM_Intel_Partner_Alliance
@@ -178,37 +160,20 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                     }*/ //IPA refresh - switch removal
                     if(contactIds!=null && contactIds.size()>0 && (!System.Isbatch() && (!System.isQueueable() || (System.isQueueable() &&  limits.getQueueableJobs() < 1  ) )) && System.Label.PRM_Tracker_Enabled=='true')
                     {
-                        //errMsg+='From 162-- '+contactIds+'\n';
-                        errMsgs.add('From 162-- ' + contactIds);
+                        errMsg+='From 162-- '+contactIds+'\n';
                         system.enqueueJob(new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable (null,contactIds,false,false));
                         
                     }
-                    /*Users = [select id,name,ContactId from User where ContactId IN :contactIds];
-                    if(allPartnerGroup != null){
-                        GroupMember gm = new GroupMember();
-                        gm.GroupId = allPartnerGroup.Id;
-                        gm.UserOrGroupId = Users[0].Id;
-                        lstInsertGrpMembers.add(gm);
-                    
-                    }
-                    insert lstInsertGrpMembers;*/
-                    //if (!Test.isRunningTest()) {
-                    //addUsertoGroup(contactIds);
-                    //}
-                    
-                    
-                } catch(Exception e){  /*errMsg+='From 166-- '+contactIds+'\n'+e;*/errMsgs.add('From 166-- ' + contactIds);errMsgs.add(String.valueOf(e));
+                } catch(Exception e){  errMsg+='From 166-- '+contactIds+'\n'+e;
                     PRM_ErrorUtilityClass.logError(e);
                 }
             }
         }
-       
     }
     
     //*************************************afterUpdate******************************************** */
     public override void afterUpdate(){
-       // errMsg+='From after Update of PRM_AcctContRel_TriggerHandlerNew -- \n';
-       errMsgs.add('From after Update of PRM_AcctContRel_TriggerHandlerNew --');
+        errMsg+='From after Update of PRM_AcctContRel_TriggerHandlerNew -- \n';
         if( triggerExecution.containsKey('AcctCtRel_Update_ERPM_Integration_Trgr') && triggerExecution.get('AcctCtRel_Update_ERPM_Integration_Trgr').Active__c/*isActive('AcctCtRel_Update_ERPM_Integration_Trgr')*/ && firstRun && !(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))
         ){
             System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_Account_Contact_Relationship__c>) Trigger.new, Trigger.new.getSObjectType()));
@@ -216,8 +181,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
         }
         
         if(triggerExecution.containsKey('ACR_After_Update') && triggerExecution.get('ACR_After_Update').Active__c/*isActive('ACR_After_Update')*/){
-           // errMsg+='Line 183 -- \n';
-           errMsgs.add('Line 183 --');
+            errMsg+='Line 183 -- \n';
             Map<Id, PRM_Account_Contact_Relationship__c> oldMap =(Map<Id, PRM_Account_Contact_Relationship__c>) Trigger.oldMap;
             Map<Id, PRM_Account_Contact_Relationship__c> newMap =(Map<Id, PRM_Account_Contact_Relationship__c>) Trigger.newMap;
             List<PRM_Account_Contact_Relationship__c> acrNewList =(List<PRM_Account_Contact_Relationship__c>) Trigger.new;
@@ -258,43 +222,34 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
             boolean isBlocked=false;
             List<PRM_SendEmailsToPrimaryContacts.emailToContactWrapper> emailToContactWrapperList = new List<PRM_SendEmailsToPrimaryContacts.emailToContactWrapper>();
             if(PRM_AcctContRelUtility.firstRunAfterUpdate){
-                //errMsg+='Line 223 -- \n';
-                errMsgs.add('Line 223 --');               
+                errMsg+='Line 223 -- \n';
                 try {
                     //PRM_AcctContRelUtility.firstRunAfterUpdate = false;
                     if(acrNewList != null && !acrNewList.IsEmpty()){
-                        //errMsg+='Line 227 acrNewList is --'+acrNewList+' \n';
-                        errMsgs.add('Line 227 acrNewList is --' + acrNewList);
+                        errMsg+='Line 227 acrNewList is --'+acrNewList+' \n';
                         for( PRM_Account_Contact_Relationship__c acr : acrNewList
                         ){
                             if(oldMap != null && oldMap.size() > 0){
-                                //errMsg+='Line 231 oldMap is --'+oldMap+' \n';
-                                errMsgs.add('Line 231 oldMap is --' + oldMap);
+                                errMsg+='Line 231 oldMap is --'+oldMap+' \n';
                                 PRM_Account_Contact_Relationship__c oldAcr = oldMap.containsKey( acr.id) ? oldMap.get(acr.id): null;
-                                //errMsg+='Line 233 oldAcr is --'+oldAcr+' \n';
-                                errMsgs.add('Line 233 oldAcr is --' + oldAcr);
+                                errMsg+='Line 233 oldAcr is --'+oldAcr+' \n';
                                 if(oldAcr.PRM_Suppress_Email__c != acr.PRM_Suppress_Email__c && !acr.PRM_Suppress_Email__c){
-                                   // errMsg+='Line 235 \n';
-                                   errMsgs.add('Line 235 ');
+                                    errMsg+='Line 235 \n';
                                     setConIdsForUnCheckSupression.add(acr.PRM_Contact_Id__c);
                                 }
                                 if((oldAcr.PRM_InActive_Ind__c != acr.PRM_InActive_Ind__c && !acr.PRM_InActive_Ind__c) 
-        || (oldAcr.PRM_Status_Nm__c != acr.PRM_Status_Nm__c && acr.PRM_Status_Nm__c == 'Pending Action') 
-        || (oldAcr.PRM_AGS_Response_Status__c != acr.PRM_AGS_Response_Status__c))
-        {
-                                    //errMsg+='Line 239 \n';
-                                    errMsgs.add('Line 239 ');
+				|| (oldAcr.PRM_Status_Nm__c != acr.PRM_Status_Nm__c && acr.PRM_Status_Nm__c == 'Pending Action') 
+				|| (oldAcr.PRM_AGS_Response_Status__c != acr.PRM_AGS_Response_Status__c))
+				{
+				    errMsg+='Line 239 \n';
                                     contids.add(acr.PRM_Contact_Id__c);
                                 }
                                 if(oldAcr.PRM_InActive_Ind__c != acr.PRM_InActive_Ind__c){
-                                   // errMsg+='Line 243 \n';
-                                    errMsgs.add('Line 243 ');
+                                    errMsg+='Line 243 \n';
                                     if(acr.PRM_InActive_Ind__c == true && (acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status || acr.PRM_Status_Nm__c == System.Label.Pending_Action)){  
-                                        //errMsg+='Line 245 \n';
-                                        errMsgs.add('Line 245');
+                                        errMsg+='Line 245 \n';
                                         if(acr.PRM_Soft_Contact__c){
-                                           // errMsg+='Line 247 \n';
-                                           errMsgs.add('Line 247');
+                                            errMsg+='Line 247 \n';
                                             softContactIndicator = true;
                                             softContatid.add(acr.PRM_Contact_Id__c);
                                         }
@@ -302,17 +257,14 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                                         inactiveAcrRelList.add(acr.PRM_Relationship_Id__c);
                                         contactRelatedInactiveACRList.add(acr.PRM_Contact_Id__c);
                                         inactiveUpdateCheck = true;
-                                       // errMsg+='Line 255 inactiveAcrList is --'+inactiveAcrList+'--Line 255 inactiveAcrRelList is --'+inactiveAcrRelList+'--Line 255 contactRelatedInactiveACRList is --'+contactRelatedInactiveACRList+' \n';
-                                       errMsgs.add( 'Line 255 inactiveAcrList is --' + inactiveAcrList + '--Line 255 inactiveAcrRelList is --' + inactiveAcrRelList + '--Line 255 contactRelatedInactiveACRList is --' + contactRelatedInactiveACRList);
+                                        errMsg+='Line 255 inactiveAcrList is --'+inactiveAcrList+'--Line 255 inactiveAcrRelList is --'+inactiveAcrRelList+'--Line 255 contactRelatedInactiveACRList is --'+contactRelatedInactiveACRList+' \n';
                                     }
                                     if(acr.PRM_InActive_Ind__c == false && acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status){
-                                       // errMsg+='Line 258 \n';
-                                       errMsgs.add('Line 258 ');
+                                        errMsg+='Line 258 \n';
                                         if(!mapContIdToSourceAgent.containsKey(acr.PRM_Contact_Id__c) && acr.PRM_Source_Agent__c == 'Bulk Add'
                                             && PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad
                                         ){
-                                           // errMsg+='Line 262 \n';
-                                           errMsgs.add('Line 262 ');
+                                            errMsg+='Line 262 \n';
                                             mapContIdToSourceAgent.put(acr.PRM_Contact_Id__c, acr.PRM_Source_Agent__c);
                                         }
                                         activeAcrRelList.add(acr.PRM_Relationship_Id__c);
@@ -326,25 +278,20 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                             }
                         }
                     }
-                   // errMsg+='Line 276 accIds is --'+accIds+' \n';
-                   errMsgs.add('Line 276 accIds is --' + accIds);
+                    errMsg+='Line 276 accIds is --'+accIds+' \n';
                     if(contids!=null && !contids.isEmpty()){
-                       // errMsg+='Line 278 contids is --'+contids+' \n';
-                       errMsgs.add('Line 278 contids is --' + contids);
+                        errMsg+='Line 278 contids is --'+contids+' \n';
                         mapOfAccWithBlokedStatus=   getBlockedContact(contids);
                     }
-                   // errMsg+='Line 281 mapOfAccWithBlokedStatus is --'+mapOfAccWithBlokedStatus+' \n';
-                   errMsgs.add('Line 281 mapOfAccWithBlokedStatus is --' + mapOfAccWithBlokedStatus);
+                    errMsg+='Line 281 mapOfAccWithBlokedStatus is --'+mapOfAccWithBlokedStatus+' \n';
                     for( PRM_Account_Contact_Relationship__c acr : acrNewList){
                         if(mapOfAccWithBlokedStatus.containsKey(acr.PRM_Contact_Id__c) && mapOfAccWithBlokedStatus.get(acr.PRM_Contact_Id__c)==true) {
-                            //errMsg+='Line 284 error msg \n';
-                            errMsgs.add('Line 284 error msg');
+                            errMsg+='Line 284 error msg \n';
                             acr.addError(System.Label.PRM_BlockedContError_IPA);
                         }
                     }
                     if(accIds != null && !accIds.isEmpty() && acrNewList!=null && !acrNewList.isEmpty()){
-                        //errMsg+='Line 289  \n';
-                        errMsgs.add('Line 289');
+                        errMsg+='Line 289  \n';
                         acmList = [SELECT Id, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Channel_Program_Id__c, PRM_Partner_Role__c, PRM_Status_Nm__c
                                    FROM PRM_AccountChannelMembership__c
                                    WHERE PRM_Channel_Program_Id__r.Name = :System.Label.PRM_Intel_Partner_Alliance
@@ -354,13 +301,11 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                     insertContactEntitlement(acrNewList, oldMap, acmList);
                     
                     if(activeAccIdList != null && !activeAccIdList.IsEmpty()){
-                       // errMsg+='Line 299 \n';
-                       errMsgs.add('Line 299');
+                        errMsg+='Line 299 \n';
                         for(PRM_AccountChannelMembership__c acm : acmList){
                             if(activeAccIdList.contains(acm.PRM_Account_Id__c)
                             ){
-                               // errMsg+='Line 303 \n';
-                               errMsgs.add('Line 303');
+                                errMsg+='Line 303 \n';
                                 List<PRM_AccountChannelMembership__c> acmRecList;
                                 if(acmMap.get(acm.PRM_Account_Id__c) != null && !acmMap.get(acm.PRM_Account_Id__c).isEmpty()){
                                     acmRecList = acmMap.get(acm.PRM_Account_Id__c);
@@ -374,8 +319,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                     }
                     
                     if(inactiveUpdateCheck){
-                       // errMsg+='Line 317 \n';
-                        errMsgs.add('Line 317');
+                        errMsg+='Line 317 \n';
                         for(PRM_Account_Contact_Relationship__c accRel : [SELECT Id, Name, PRM_Relationship_Id__c, PRM_Contact_Id__c, PRM_Relationship_Id__r.Name,
                                                                           PRM_InActive_Ind__c, PRM_Contact_Id__r.Core_Login_Status__c
                                                                           FROM PRM_Account_Contact_Relationship__c
@@ -394,11 +338,9 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                     }
                     
                     if(activeUpdateCheck || test.isRunningTest()){
-                       // errMsg+='Line 236 \n';
-                       errMsgs.add('Line 402');
+                        errMsg+='Line 236 \n';
                         if(activeAccIdList != null && !activeAccIdList.IsEmpty()
-                        ){//errMsg+='Line 338 \n';
-                           errMsgs.add('Line 338');
+                        ){errMsg+='Line 338 \n';
                             for(PRM_AccountBenefitAssociation__c aba : [SELECT Id, PRM_Partner_Benefit_Id__c, PRM_Account_Id__c
                                                                         FROM PRM_AccountBenefitAssociation__c
                                                                         WHERE PRM_Account_Id__c IN :activeAccIdList AND PRM_Status_Nm__c = :System.Label.PRM_Status_Active
@@ -451,7 +393,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                                 
                                 emList.add(em);
                             }
-                            /*errMsg+='Line 391 \n';*/errMsgs.add('Line 391');
+                            errMsg+='Line 391 \n';
                             worksForEntitlement.add(em.PRM_Entitlement_Id__c);
                         }
                          // for IPA Developer Zone Standard Entitlement
@@ -470,6 +412,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                             && (em.PRM_Contact_Relationship_Id__r.name==System.label.PRM_PartnerAdmin_Rel 
                             || em.PRM_Contact_Relationship_Id__r.name==System.label.PRM_Admin_Delegate))
                             { 
+                                system.debug('emlist inside default false'+emList.size());
                                 emList.add(em);
                             }
                         }
@@ -498,15 +441,14 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                                 continue;
                             }
                             if(!entitlmentWithoutBenefits.IsEmpty()){
-                               // errMsg+='Line 439 \n';
-                               errMsgs.add('Line 439');
+                                errMsg+='Line 439 \n';
                                 for(PRM_VXEnttlmntMatrix__c emWithoutBenefits : entitlmentWithoutBenefits
                                 ){
                                     List<PRM_AccountChannelMembership__c> acm = new List<PRM_AccountChannelMembership__c>();
                                     if(acmMap != null && !acmMap.IsEmpty()){
                                         acm = acmMap.get(acr.PRM_Account_Id__c);
                                     }
-                                    /*for(integer i = 0; i < acm.size(); i++){
+                                    for(integer i = 0; i < acm.size(); i++){
                                         if(acr.PRM_Partner_Role__c != null){
                                             errMsg+='Line 448 \n';
                                             if((emWithoutBenefits.PRM_Contact_Relationship_Id__c == acr.PRM_Relationship_Id__c)
@@ -538,97 +480,35 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                                                 entitlementWithoutBEList.addAll(entitlements);
                                             }
                                         }
-                                    }*/
+                                    }
                                 }
                             }
                         }
                     }
                     
                     inactivateContactEntitlement(contactRelatedInactiveACRList, entitlementList, inactiveAcrIdList, allEntId, acrListWorksfor, inactiveUpdateCheck);
-                      //HeapSize Fix
-                    if(contactRelatedInactiveACRList != null){
-                        contactRelatedInactiveACRList.clear();
-                    }
-                    contactRelatedInactiveACRList = null;
-                    
-                    if(entitlementList != null){
-                        entitlementList.clear();
-                    }
-                    entitlementList = null;
-                    
-                    if(inactiveAcrIdList != null){
-                        inactiveAcrIdList.clear();
-                    }
-                    inactiveAcrIdList = null;
-                    
-                    if(allEntId != null){
-                        allEntId.clear();
-                    }
-                    allEntId = null;
-                    
-                    if(acrListWorksfor != null){
-                        acrListWorksfor.clear();
-                    }
-                    acrListWorksfor = null;
                     activateContactEntitlement(contactRelatedActiveACRList, entitlementWithoutBEList, entitlementABList, mapContIdToSourceAgent, activeUpdateCheck);
-                     //HeapSize Fix TWC729-9312
-                    if(contactRelatedActiveACRList != null){
-                        contactRelatedActiveACRList.clear();
-                    }
-                    contactRelatedActiveACRList = null;
                     
-                    if(entitlementWithoutBEList != null){
-                        entitlementWithoutBEList.clear();
-                    }
-                    entitlementWithoutBEList = null;
-                    
-                    if(entitlementABList != null){
-                        entitlementABList.clear();
-                    }
-                    entitlementABList = null;
                     //Email to primary contact when such incative operation of ACR happen
                     if(String.isNotEmpty(profileName) && profileName.toUpperCase() != System.Label.PRM_INTEGRATION_PROFILE.toUpperCase()
                     ){
-                        /*errMsg+='Line 490 \n';*/errMsgs.add('Line 490');
-                        /* Long usedHeap   = Limits.getHeapSize();        
-Long totalHeap  = Limits.getLimitHeapSize();
-Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
-System.debug('Heap Used (%): ' + percent.setScale(2));
-                        errMsgs.add('Heap size usedd--'+percent.setScale(2));*/
-                        
-                        List<PRM_Account_Contact_Relationship__c> acrRelationshipList=[Select id,PRM_InActive_Ind__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.Name from PRM_Account_Contact_Relationship__c where id in:oldMap.keySet()];
-                        Map<Id,sObject>acrRelationMap=new Map<Id,sObject>();
-                        for(PRM_Account_Contact_Relationship__c acr:acrRelationshipList){
-                            acrRelationMap.put(acr.Id,acr);
-                        }
-                        
-                        
-                        //PRM_SendEmailsToPrimaryContacts.emailToContactWrapper wrapperRecForEmail = new PRM_SendEmailsToPrimaryContacts.emailToContactWrapper(oldMap,acrNewList,null,false,true, null);
-                        
-                       PRM_SendEmailsToPrimaryContacts.emailToContactWrapper wrapperRecForEmail = new PRM_SendEmailsToPrimaryContacts.emailToContactWrapper(acrRelationMap,acrNewList,null,false,true, null);    
-                        emailToContactWrapperList.add(wrapperRecForEmail); 
-                        //PRM_EmailToPrimaryContact.sendEmailToAllPrimaryContact(oldMap, newMap, null, false, true);
-                        
-                       // PRM_EmailToPrimaryContact.sendEmailToAllPrimaryContact(acrRelationMap, newMap, null, false, true);
-                        
+                        errMsg+='Line 490 \n';
+                        PRM_SendEmailsToPrimaryContacts.emailToContactWrapper wrapperRecForEmail = new PRM_SendEmailsToPrimaryContacts.emailToContactWrapper(oldMap,acrNewList,null,false,true, null);
+                            emailToContactWrapperList.add(wrapperRecForEmail); 
+                        PRM_EmailToPrimaryContact.sendEmailToAllPrimaryContact(oldMap, newMap, null, false, true);
                         // PRM_SendEmailsToPrimaryContacts.sendEmailToAllPrimaryContact(emailToContactWrapperList);
                     }
-                    if(emailToContactWrapperList!=null && !emailToContactWrapperList.isempty()){
+                    /*if(emailToContactWrapperList!=null && emailToContactWrapperList.isempty()){
                          PRM_SendEmailsToPrimaryContacts.sendEmailToAllPrimaryContact(emailToContactWrapperList);
-                    } 
-                    //heapsize error
-                    Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 494 Invoked at ' + System.now(),getLogMessage(),'','','');
-                   // Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 494  Invoked at' + system.now(),errMsg,'','','');
+                    }*/
+                    
+                    Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 494  Invoked at' + system.now(),errMsg,'','','');
                     if(!System.Isbatch() && System.Label.PRM_Tracker_Enabled == 'true' && contids.size() > 0){
-                       // errMsg+='Line 495 contids is--'+contids+' \n';
-                       errMsgs.add('Line 495 contids is--' + contids);
-                       
+                        errMsg+='Line 495 contids is--'+contids+' \n';
                         Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 497  Invoked at' + system.now(),errMsg,'','','');
-                      //  Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 497  Invoked at' + system.now(),errMsg,'','','');
                         system.enqueueJob( new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable( null, contids, false, false ));
                     }
-                      //HeapSize Fix
-                    errMsgs.clear();
+                    
                     if(!setConIdsForUnCheckSupression.isEmpty()){
                         /*List<PRM_Email_Handler__c> listEmailHandler = [SELECT Id
                                                                       FROM PRM_Email_Handler__c
@@ -660,7 +540,6 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 }
             }
         }
-     
     }
     
     //*************************************beforeInsert******************************************** */
@@ -668,10 +547,6 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
         //code to skip to update ACR status to pending action for some profiles.TWC729-6947
         String profileName = [SELECT Id, Name FROM Profile WHERE Id = :(userinfo.getProfileId())].Name;
         string profilesForCompleteACR=LabelConfiguration__mdt.getInstance('PRM_profilesForCompleteACR').Value__c;
-
-        //TWC729-9166:India Registration
-        blockedDomainValidation(Trigger.new);
-
         if(executeTrigger){
             if(triggerExecution.containsKey('Ags_Outbound_Msg') && triggerExecution.get('Ags_Outbound_Msg').Active__c/*isActive('Ags_Outbound_Msg')*/ && PRM_AcctContRelUtility.firstRunBeforeInsert
             ){
@@ -717,12 +592,8 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                                 acr.addError(System.label.PRM_ACR_SystemAccError);
                             }
                             lstBlockedAcc.add(acr.PRM_Contact_Id__c);
-                            if(acr.PRM_Account_Id__c != null && acr.PRM_Status_Nm__c=='Complete')   
-                                acrAccIds.add(acr.PRM_Account_Id__c);
                         }
-                         if(acrAccIds!=null && !acrAccIds.isEmpty() && !Test.isRunningTest()){
-                        validateACMsOnACRs(acrAccIds,trigger.new,null);
-                        }
+                        
                         map<string,boolean> mapOfAccWithBlokedStatus=new Map<String,Boolean>();
                         mapOfAccWithBlokedStatus=   getBlockedContact(lstBlockedAcc);
                         
@@ -744,20 +615,15 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
             }
             //Update PRM_Account_Contact_Relationship Status Field to Pending Action
             if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger) && Trigger.isInsert)
-            && !(profilesForCompleteACR.split(';').contains(profileName)) && !PRM_AcctContRel_TriggerHandlerNew.isDZPRegistration){
+            && !(profilesForCompleteACR.split(';').contains(profileName))){
                 //Bypass update of Status Field if contact is loaded through Bulk Process
                 PRM_AGS_IdentityCreation.updateAcctContRelation_StatusField(Trigger.new);
             }
         }
-      
     }
     
     //*************************************beforeUpdate******************************************** */
     public override void beforeUpdate(){
-
-        //TWC729-9166:India Registration
-        blockedDomainValidation(Trigger.new);
-
         if(triggerExecution.containsKey('Ags_Outbound_Msg') && triggerExecution.get('Ags_Outbound_Msg').Active__c/*isActive('Ags_Outbound_Msg')*/ && PRM_AcctContRelUtility.firstRunBeforeUpdate
         ){
             //Retrieved FROM Custom labels
@@ -883,21 +749,14 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                             acrRecordActiveRel.addError( System.label.PRM_ACR_Error4);
                         }
                     }
-                      if(acrRecordActiveRel.PRM_Account_Id__c != null && acrRecordActiveRel.PRM_Status_Nm__c=='Complete')   
-                                acrAccIds.add(acrRecordActiveRel.PRM_Account_Id__c);
                 }
                 
-                
-                if(acrAccIds!=null && !acrAccIds.isEmpty() && !Test.isRunningTest()){
-                     //validateACMsOnACRs(acrAccIds,trigger.new,oldMap);
-                }
                 duplicateRecordCheck(acrNewList, oldMap);
                 updateStartandEndDates(acrNewList, oldMap);
                 suppressEmail(acrNewList, oldMap);
             } catch(Exception e){ PRM_ErrorUtilityClass.logError(e);
             }
         }
-        
     }
     
     //*************************************beforeDelete******************************************** */
@@ -948,7 +807,7 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 for(PRM_Account_Contact_Relationship__c acr : accConRelList){
                     if(acrOldMap != null && acrOldMap.size() > 0){
                         acrOld =(PRM_Account_Contact_Relationship__c) acrOldMap.get(acr.id);
-                        if(((acrOld.PRM_Status_Nm__c != acr.PRM_Status_Nm__c && acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status &&
+                        if(acr.PRM_execute_trigger__c && ((acrOld.PRM_Status_Nm__c != acr.PRM_Status_Nm__c && acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status &&
                             acr.PRM_InActive_Ind__c == false) || (acrOld.PRM_InActive_Ind__c != acr.PRM_InActive_Ind__c && !acr.PRM_InActive_Ind__c &&
                             acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status))
                         ){
@@ -957,7 +816,7 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                             accIdList.add(acr.PRM_Account_Id__c);
                         }
                     }else{
-                        if(acr.PRM_InActive_Ind__c == false && acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status
+                        if(acr.PRM_InActive_Ind__c == false && acr.PRM_execute_trigger__c && acr.PRM_Status_Nm__c == System.Label.PRM_ACR_Status
                         ){
                             acrList.add(acr.PRM_Relationship_Id__c);
                             contactRelatedACRList.add(acr.PRM_Contact_Id__c);
@@ -1183,15 +1042,6 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                         finalCEList.add(ce);
                     }
                 }
-                else{
-                        if(ce.Core_Source__c == null && ce.Core_Source__c == ''){
-                            ce.Core_Source__c = updateReasonCSPFlow;
-                        }
-                        if((entAgsMap != null && !entAgsMap.IsEmpty()) && (entAgsMap.get(ce.Core_Entitlement_Id__c) != '' && entAgsMap.get(ce.Core_Entitlement_Id__c) != null)){
-                            ce.Core_Status__c = 'Pending';
-                        }
-                        finalCEList.add(ce);
-                    }
             }
             if((beCon != null && !beCon.IsEmpty()) && (beEnt != null && !beEnt.IsEmpty())
             ){
@@ -1222,18 +1072,6 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 //Database.UpsertResult[] upsertResult =
                 PRM_DMLUtility.doupsert(beListTemp, 'PRM_Batch_Entitlement__c', 'PRM_AccountContactRel_TriggerHandlerNew.insertContactEntitlement');
             }
-            //HeapSize Fix
-            ceList.clear();
-            finalCEList.clear();
-            benefitList.clear();
-            benefitListTemp.clear();
-            beListTemp.clear();
-            
-            ceList = null;
-            finalCEList = null;
-            benefitList = null;
-            benefitListTemp = null;
-            beListTemp = null;
         } catch(Exception e){ PRM_ErrorUtilityClass.logError(e);
         }
     }
@@ -1766,128 +1604,4 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
             }
             return mapOfAccWithBlokedStatus;
         }
-            
- public static void  validateACMsOnACRs(set<Id> acrAccIds, List<PRM_Account_Contact_Relationship__c> acrNewList,Map<Id, PRM_Account_Contact_Relationship__c> oldMap){
-     set<id> activeACMaccids=new set<id>();
-     if(acrAccIds!=null && !acrAccIds.isEmpty()){
-         for(PRM_AccountChannelMembership__c acm:[SELECT PRM_Account_Id__c FROM PRM_AccountChannelMembership__c
-                         where PRM_Status_Nm__c ='Approved' and PRM_Account_Id__c in :acrAccIds])
-                         {
-                            activeACMaccids.add(acm.PRM_Account_Id__c);
-                         }
-            }
-             
-             for(PRM_Account_Contact_Relationship__c acr:acrNewList)   {
-                 if(!activeACMaccids.contains(acr.PRM_Account_Id__c) || (activeACMaccids.isEmpty() || activeACMaccids.size()==0))  {
-                    acr.addError('ACM should present or active to add ACR');
-                 }
-            }
-            
-        }
-        @future
-        public static void addUsertoGroup(set<string> contIds){
-    List<User> Users = new List<User>();
-    List<GroupMember> lstInsertGrpMembers = new List<GroupMember>();
-            Group allPartnerGroup = [SELECT Id FROM Group WHERE Name = 'PMP - All Partner Users' AND Type = 'Regular' LIMIT 1];
-    
-    
-    if(contIds != null ){
-        Users = [SELECT Id, Name, ContactId FROM User WHERE ContactId IN :contIds];
-       
-    }
-    
-    if(Users != null && !Users.isEmpty() && allPartnerGroup != null){
-        GroupMember gm = new GroupMember();
-        gm.GroupId = allPartnerGroup.Id;
-        gm.UserOrGroupId = Users[0].Id;
-        lstInsertGrpMembers.add(gm);
-        
-       
-        
-        try {
-            insert lstInsertGrpMembers;
-          
-        } catch(Exception e) {
-           
-        }
-    }   
-          }
-
-    /************************************************************
-    Method:    blockedDomainValidation
-        Return:    void
-        Purpose:   TWC729-9166 : India Registration - Validates the contact's email
-                   domain against the configured blocked domains. The blocked domain
-                   list is resolved based on the related Account Geo (PRC / Non-PRC).
-                   If the contact email belongs to a blocked domain, an error message
-                   is added to the ACR record so the transaction is stopped.
-     ************************************************************/
-    public static void blockedDomainValidation(List<PRM_Account_Contact_Relationship__c> acrList){
-        try{
-            Set<Id> contactIds = new Set<Id>();
-            for(PRM_Account_Contact_Relationship__c acr : acrList){
-                if(acr.PRM_Contact_Id__c != null && acr.PRM_InActive_Ind__c == false){
-                    contactIds.add(acr.PRM_Contact_Id__c);
-                }
-            }
-            //Map each contact to the ACR record(s) that reference it so the error
-            //can be added back to the correct ACR record(s)
-            Map<Id, List<PRM_Account_Contact_Relationship__c>> contactIdToAcrs = new Map<Id, List<PRM_Account_Contact_Relationship__c>>();
-            for(PRM_Account_Contact_Relationship__c acr : acrList){
-                if(acr.PRM_Contact_Id__c != null){
-                    if(!contactIdToAcrs.containsKey(acr.PRM_Contact_Id__c)){
-                        contactIdToAcrs.put(acr.PRM_Contact_Id__c, new List<PRM_Account_Contact_Relationship__c>());
-                    }
-                    contactIdToAcrs.get(acr.PRM_Contact_Id__c).add(acr);
-                }
-            }
-            //Fetch contact email addresses
-            Map<Id, String> contactIdToEmail = new Map<Id, String>();
-            //Fetch related Account Geo to determine the applicable blocked domain list
-            //and the Account billing country to drive the country-based domain bypass
-            Map<Id, String> conIdToAccGeo = new Map<Id, String>();
-            Map<Id, String> conIdToAccCountry = new Map<Id, String>();
-            for(Contact con : [SELECT Id, Email,AccountId,Account.Core_Geo__c,Account.BillingCountry FROM Contact WHERE Id IN :contactIds AND Email != null]){
-                contactIdToEmail.put(con.Id, con.Email);
-                conIdToAccGeo.put(con.Id, con.Account.Core_Geo__c);
-                conIdToAccCountry.put(con.Id, con.Account.BillingCountry);
-            }
-
-            //TWC729-9166: India Registration
-            // Retrieve country-level domain bypass configuration from Custom Metadata
-            Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
-            Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
-
-            //Build blocked domain sets from custom labels (lower-cased for case-insensitive comparison)
-            Set<String> prcBlockedDomains = new Set<String>();
-            for(String d : System.Label.Blocked_Domains_Prc1.split(';')){ prcBlockedDomains.add(d.trim().toLowerCase()); }
-            for(String d : System.Label.Blocked_Domains_Prc2.split(';')){ prcBlockedDomains.add(d.trim().toLowerCase()); }
-
-            Set<String> nonPrcBlockedDomains = new Set<String>();
-            for(String d : System.Label.Blocked_Domains_Non_Prc1.split(';')){ nonPrcBlockedDomains.add(d.trim().toLowerCase()); }
-            for(String d : System.Label.Blocked_Domains_Non_Prc2.split(';')){ nonPrcBlockedDomains.add(d.trim().toLowerCase()); }
-            for(String d : System.Label.Blocked_Domains_Non_Prc3.split(';')){ nonPrcBlockedDomains.add(d.trim().toLowerCase()); }
-
-            for(id con: contactIdToEmail.keySet()){
-                if(String.isBlank(contactIdToEmail.get(con)) || !contactIdToEmail.get(con).contains('@')){
-                    continue;
-                }
-                String emailDomain = contactIdToEmail.get(con).substringAfter('@').trim().toLowerCase();
-                if(emailDomain != null && emailDomain != ''){
-                    if(PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck(conIdToAccCountry.get(con), emailDomain, bypassRecords)){
-                        continue;
-                    }
-                    Boolean isBlocked = (conIdToAccGeo.get(con) == 'PRC') ? prcBlockedDomains.contains(emailDomain) : nonPrcBlockedDomains.contains(emailDomain);
-                    if(isBlocked && contactIdToAcrs.containsKey(con)){
-                        for(PRM_Account_Contact_Relationship__c acr : contactIdToAcrs.get(con)){
-                            acr.addError(System.Label.PRM_BlockedDomainError);
-                        }
-                    }
-                }
-            }
-        } catch(Exception e){
-            PRM_ErrorUtilityClass.logError(e);
-        }
-    }
-
     }

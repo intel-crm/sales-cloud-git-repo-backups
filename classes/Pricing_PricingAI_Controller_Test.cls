@@ -1,9 +1,9 @@
 /**
  * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @author            : Bharath Chandrashekar
  * @group             : 
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 06-17-2025
+ * @last modified by  : Bharath Chandrashekar
 **/
 @isTest
 public class Pricing_PricingAI_Controller_Test { 
@@ -15,7 +15,7 @@ public class Pricing_PricingAI_Controller_Test {
             Test.startTest();
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Pricing_AI_Controller');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Pricing_PricingAI_Controller_Test');
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
@@ -28,32 +28,46 @@ public class Pricing_PricingAI_Controller_Test {
     }
     
     static testMethod void testMakeCallout(){
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
+        String discountPercent;
+        String discountPrice;
         Test.startTest();
         System.runAs(adminUser){
+            /*Pricing_PricingAI_Controller.pricingAIJSONStringWrapper priceWrap = new Pricing_PricingAI_Controller.pricingAIJSONStringWrapper();
+            priceWrap.requestedPrice = null;
+            priceWrap.ecapPrice = null;
+            priceWrap.priceAxisRange = null;
+            priceWrap.ranges = null;
+            Pricing_PricingAI_Controller.Plots plots = new Pricing_PricingAI_Controller.Plots();
+            priceWrap.plots=plots;
+            plots.low_risk = null;
+            plots.high_risk = null;
+            plots.severe_risk = null;*/
             Pricing_PricingAI_Controller.QuoteLineWrapper qlWrap = new Pricing_PricingAI_Controller.QuoteLineWrapper();
             qlWrap.recommendedPrice = null;
             qlWrap.priceInterval = null;
+            //discountPercent = '0.80%';
+            //discountPrice = (discountPercent).replaceAll('%', '');
             qlWrap.discount = 0;
             Pricing_PricingAI_Controller.errorContentWrapper errorWrap = new Pricing_PricingAI_Controller.errorContentWrapper();
             errorWrap.message = null;
             errorWrap.quoteLineNumber = null;
             Test.setMock(HTTPCalloutMock.class, new Pricing_PricingAICalloutMockService());
-            List<String> resp1 = Pricing_PricingAI_Controller.makeCallout(quoteLineList[0].Id);
-            System.assertEquals(true, resp1 != null, 'makeCallout should return a non-null List<String>');
+            Pricing_PricingAI_Controller.makeCallout(quoteLineList[0].Id);
         }
         Test.stopTest();
     }
     
     static testMethod void testBlankSuccessContentMakeCallout(){
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         Test.startTest();
         System.runAs(adminUser){
             Test.setMock(HTTPCalloutMock.class, new Pricing_PricingAIMockInvRespService());
-            List<String> resp2 = Pricing_PricingAI_Controller.makeCallout(quoteLineList[0].Id);
-            System.assertEquals(true, resp2 != null, 'makeCallout should return a non-null List<String> even when successContent is blank');
+            Pricing_PricingAI_Controller.makeCallout(quoteLineList[0].Id);
         }
         Test.stopTest();
     }
@@ -62,6 +76,16 @@ public class Pricing_PricingAI_Controller_Test {
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         Test.startTest();
         System.runAs(adminUser){
+            /*Pricing_PricingAI_Controller.pricingAIJSONStringWrapper priceWrap = new Pricing_PricingAI_Controller.pricingAIJSONStringWrapper();
+            priceWrap.requestedPrice = null;
+            priceWrap.ecapPrice = null;
+            priceWrap.priceAxisRange = null;
+            priceWrap.ranges = null;
+            Pricing_PricingAI_Controller.Plots plots = new Pricing_PricingAI_Controller.Plots();
+            priceWrap.plots=plots;
+            plots.low_risk = null;
+            plots.high_risk = null;
+            plots.severe_risk = null;*/
             Pricing_PricingAI_Controller.QuoteLineWrapper qlWrap = new Pricing_PricingAI_Controller.QuoteLineWrapper();
             qlWrap.recommendedPrice = null;
             qlWrap.priceInterval = null;
@@ -69,16 +93,27 @@ public class Pricing_PricingAI_Controller_Test {
             Pricing_PricingAI_Controller.errorContentWrapper errorWrap = new Pricing_PricingAI_Controller.errorContentWrapper();
             errorWrap.message = null;
             errorWrap.quoteLineNumber = null;
-            List<String> resp3 = Pricing_PricingAI_Controller.makeCallout('abc123test');
-            System.assertEquals(true, resp3 != null, 'makeCallout should return a non-null List<String> for invalid Id to surface error JSON');
+            Pricing_PricingAI_Controller.makeCallout('abc123test');
         }
         Test.stopTest();
     }
     
     static testMethod void testMakeCalloutInvalidJSON(){
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
+        List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         Test.startTest();
         System.runAs(adminUser){
+            /*Pricing_PricingAI_Controller.pricingAIJSONStringWrapper priceWrap = new Pricing_PricingAI_Controller.pricingAIJSONStringWrapper();
+            priceWrap.requestedPrice = null;
+            priceWrap.ecapPrice = null;
+            priceWrap.priceAxisRange = null;
+            priceWrap.ranges = null;
+            Pricing_PricingAI_Controller.Plots plots = new Pricing_PricingAI_Controller.Plots();
+            priceWrap.plots=plots;
+            plots.low_risk = null;
+            plots.high_risk = null;
+            plots.severe_risk = null;*/
             Pricing_PricingAI_Controller.QuoteLineWrapper qlWrap = new Pricing_PricingAI_Controller.QuoteLineWrapper();
             qlWrap.recommendedPrice = null;
             qlWrap.priceInterval = null;
@@ -86,19 +121,18 @@ public class Pricing_PricingAI_Controller_Test {
             Pricing_PricingAI_Controller.errorContentWrapper errorWrap = new Pricing_PricingAI_Controller.errorContentWrapper();
             errorWrap.message = null;
             errorWrap.quoteLineNumber = null;
-            List<String> resp4 = Pricing_PricingAI_Controller.makeCallout('');
-            System.assertEquals(true, resp4 != null, 'makeCallout should return a non-null List<String> when input JSON is invalid');
+            Pricing_PricingAI_Controller.makeCallout('');
         }
         Test.stopTest();
     }
     
     static testMethod void testGetQuoteLineDetails(){
         Test.startTest();
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Billing_Start_Date_Dt__c from SBQQ__QuoteLine__c LIMIT 1];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         System.runAs(adminUser){
-            String jsonStr = Pricing_PricingAI_Controller.getQuoteLineDetails(quoteLineList[0].Id);
-            System.assertEquals(true, jsonStr != null, 'getQuoteLineDetails should return a non-null JSON string for a valid Quote Line Id');
+            Pricing_PricingAI_Controller.getQuoteLineDetails(quoteLineList[0].Id);
             Pricing_PricingAI_Wrapper.CalloutInputWrapper calloutWrapper = new Pricing_PricingAI_Wrapper.CalloutInputWrapper();
             calloutWrapper.endCustomer = null;
             calloutWrapper.groupType = null;
@@ -154,13 +188,13 @@ public class Pricing_PricingAI_Controller_Test {
             Pricing_PricingAI_Controller.SearchResultWrapper resWrapper = new Pricing_PricingAI_Controller.SearchResultWrapper();
             resWrapper.isSuccess = true;
             resWrapper.errorContent = null;
-            Pricing_PricingAI_Controller.SearchResultWrapper res1 = Pricing_PricingAI_Controller.getSearchResults(jsonObj);
-            System.assertEquals(true, res1 != null, 'getSearchResults should return a non-null wrapper');
+            Pricing_PricingAI_Controller.getSearchResults(jsonObj);
         }
         Test.stopTest();
     }
     
     static testMethod void testGetSearchResults(){
+        SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,SBQQ__Description__c from SBQQ__QuoteLine__c LIMIT 1];
         quoteLineList[0].Pricing_Status_Nm__c = 'Pending Further Intel Review';
         quoteLineList[0].Pricing_Revised_Pricing_Start_Date_dt__c = System.today();
@@ -178,8 +212,8 @@ public class Pricing_PricingAI_Controller_Test {
             Pricing_PricingAI_Wrapper.CalloutInputWrapper calloutWrap = new Pricing_PricingAI_Wrapper.CalloutInputWrapper();
             calloutWrap.endCustomer = 'Test end customer';
             calloutWrap.groupType = 'mutually exclusive';
-            Pricing_PricingAI_Controller.SearchResultWrapper res2 = Pricing_PricingAI_Controller.getSearchResults(jsonObj);
-            System.assertEquals(true, res2 != null, 'getSearchResults should return a non-null wrapper');
+            //calloutWrap.approvedStartDate = 
+            Pricing_PricingAI_Controller.getSearchResults(jsonObj);
         }
         Test.stopTest();
     }

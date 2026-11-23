@@ -492,6 +492,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Languages__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastActivityDate</field>
             <table>Contact</table>
         </columns>
@@ -537,7 +542,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Level__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_LinkedIN__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
             <table>Contact</table>
         </columns>
         <columns>
@@ -643,6 +663,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_NDA_Acceptance_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__No_longer_at_Company__c</field>
             <table>Contact</table>
         </columns>
         <columns>
@@ -803,6 +828,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Salutation</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__Session_Id__c</field>
             <table>Contact</table>
         </columns>
         <columns>

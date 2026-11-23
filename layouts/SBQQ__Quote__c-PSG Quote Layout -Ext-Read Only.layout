@@ -5,6 +5,7 @@
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -268,11 +269,26 @@
         <fields>core_cpq_quote_line_type_txt__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>price_suggested_resale_amt__c</fields>
+        <fields>core_cpq_PRID__c</fields>
         <fields>price_brokencost_amt__c</fields>
         <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>core_cpq_distributor_margin_pct__c</fields>
         <fields>price_msvp_l2_amt__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>price_prid__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_sap_end_customer_nm__c</fields>
+        <fields>core_cpq_cm_name_nm__c</fields>
+        <fields>core_cpq_comments_txt__c</fields>
+        <fields>core_cpq_quote_approved_by__c</fields>
+        <fields>core_cpq_dollar_change_flag_ind__c</fields>
+        <fields>core_cpq_status_txt__c</fields>
+        <relatedList>core_cpq_dpa_aln__c.core_cpq_active_quote__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -289,6 +305,16 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_distributor__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>core_cpq_disty_visibility__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Competitor_Info__c.core_cpq_quote__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -319,7 +345,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000KQOB</masterLabel>
+        <masterLabel>00h3b00000flKKf</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

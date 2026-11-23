@@ -614,7 +614,7 @@
                 <targetReference>Copy_1_of_Check_Error_Description</targetReference>
             </connector>
             <label>Schedule path to invoke API</label>
-            <maxBatchSize>1</maxBatchSize>
+            <maxBatchSize>20</maxBatchSize>
             <offsetNumber>3</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
             <recordField>LastModifiedDate</recordField>

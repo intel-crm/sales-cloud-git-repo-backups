@@ -2,8 +2,8 @@
 * @description       : Batch class to validate and update Primary Contact on Quotes in Bulk
 * @author            : Sandeep Chamate
 * @group             : Accenture
-* @last modified on  : 04-15-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 08-09-2023
+* @last modified by  : Sandeep Chamate
 **/
 public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchable<sObject>,Database.Stateful{
     public User oldPrimaryContactUser;
@@ -235,8 +235,7 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
                     csvRowValues.add(row);
             }
             
-            List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
-            Id orgWideEmailAddId = orgWideEmailAdd[0].id;
+
             csvColumnHeader = 'Success/Error, Quote Number, Status, Account, End Customer, End Customer Country/Region, End Customer Sales Geography, Project Name, Pricing Start Date, Pricing End Date, Intel Response Requested By Date, Proposal Due Date, Reference Request ID \n';
             String csvFile = csvColumnHeader + String.join(csvRowValues,'\n');
             Blob b = Blob.valueOf(csvFile);
@@ -251,8 +250,7 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
             mail.setFileAttachments(new Messaging.EmailFileAttachment[]{attachedFile});
             mail.setToAddresses(toAddresses);
             mail.setbccAddresses(bccAddresses);
-            mail.setOrgWideEmailAddressId(orgWideEmailAddId);
-            mail.setSubject('Bulk Primary Contact Update');
+                        mail.setSubject('Bulk Primary Contact Update');
             mail.setHtmlBody(body);
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         }

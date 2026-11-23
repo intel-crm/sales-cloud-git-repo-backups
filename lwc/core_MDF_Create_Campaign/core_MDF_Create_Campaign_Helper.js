@@ -41,19 +41,14 @@ import coGTMCampaignStartDateValidation from '@salesforce/label/c.Core_MDF_CoGTM
 import campaignOutcomeVisibilityDateCCF_DCF_RMF from '@salesforce/label/c.Core_MDF_CCF_DCF_RMF_CampaignOutcomeVisibilityDate';
 import campaignIPAOutcomeConfigureDate from '@salesforce/label/c.Core_MDF_IPA_Outcome_Configure_Date';
 import Core_MDF_Campaign_OEM_Platform_End_Date_Validation from '@salesforce/label/c.Core_MDF_Campaign_OEM_Platform_End_Date_Validation';
-import blockStartDateChangeForNonOutcome from '@salesforce/label/c.Core_MDF_BlockDateChangeOnOutcomeBsdCmp';
-import campaignOutcomeVisibilityDate_RMF from '@salesforce/label/c.Core_MDF_RMF_CampaignOutcomeVisibilityDate';//16406
-import Core_MDF_Other_Specify from '@salesforce/label/c.Core_MDF_Other_Specify';
 
 const outcomePrefix = 'Core_MDF_Campaign_Outcomes__c.';
-const outcomeList = ["Core_MDF_Initial_Baseline_Quantity_nbr__c", "Core_MDF_Goal_Quantity_nbr__c", "Core_MDF_Quantity_nbr__c", "Core_MDF_Baseline_Period_nm__c", "Core_MDF_Outcome_Criteria_txt__c"];
+const outcomeList = ["Core_MDF_Initial_Baseline_Quantity_nbr__c", "Core_MDF_Goal_Quantity_nbr__c", "Core_MDF_Quantity_nbr__c", "Core_MDF_Outcome_Criteria_txt__c"];
 const validOutcomeMetricRecordTypeWithOutIPA = [
 		Core_MDF_CCF_RecordTypeName,
 		Core_MDF_DCF_RecordTypeName,
 		rmfRecTypeName
 ];
-const dateJune2025 = '2025-06-29';
-const dateOct2025 ='2025-10-01';
 function getRecordTypeDependentFields(recordType) {
 	let pickListFields = [];
 	if (recordType == 'Core_MDF_Intel_Partner_Alliance_Account_Based' || recordType == 'Core_MDF_Intel_Partner_Alliance_Proposal_Based') {
@@ -92,27 +87,18 @@ export default async function fetchPicklist(campRecordTypeName, campaignPicValue
 				pickListFields = getRecordTypeDependentFields(campRecordTypeName);
 			}
 			displayNone = true;
-			//Preserve the original controlling values. On clone+initalLoad, validateControllingFieldValues trims the
-			//shared 'budgettype' (e.g. removes the Budget Type value) for fieldsBasedOnProgram fields. Any field that
-			//does NOT go through that trimming must use the original controlling values, otherwise it can lose its
-			//controlling value (e.g. Measurement Approach, controlled by Budget Type, loses its options on clone load).
-			let originalControllingValues = Array.isArray(budgettype) ? [...budgettype] : budgettype;
 			for (let i = 0; i < pickListFields.length; i++) {
 				let sControllingFieldValues = result.picklistFieldValues[pickListFields[i]].controllerValues;
 				let sFieldValues = result.picklistFieldValues[pickListFields[i]].values;
-				let isControllingValueValidatedField = fieldsBasedOnProgram.includes(pickListFields[i]) && compRef.mode == 'clone' && compRef.initalLoad;
-				if (isControllingValueValidatedField) {
+				if (fieldsBasedOnProgram.includes(pickListFields[i]) && compRef.mode == 'clone' && compRef.initalLoad) {
 					budgettype = validateControllingFieldValues(sControllingFieldValues, sFieldValues, budgettype, pickListFields[i]);
 				}
-
-				if (compRef.bypassBudgetTypeLoad && pickListFields[i] == 'Core_MDF_Opal_Budget_Type_Txt__c' && compRef.mode == 'edit'
-					&& (campRecordTypeName == 'Core_MDF_Intel_Partner_Alliance_Account_Based' || campRecordTypeName == 'Core_MDF_Intel_Partner_Alliance_Proposal_Based')) {
+				if(compRef.bypassBudgetTypeLoad && pickListFields[i] == 'Core_MDF_Opal_Budget_Type_Txt__c' && compRef.mode == 'edit' 
+				&& (campRecordTypeName == 'Core_MDF_Intel_Partner_Alliance_Account_Based' || campRecordTypeName == 'Core_MDF_Intel_Partner_Alliance_Proposal_Based')) {
 					compRef.bypassBudgetTypeLoad = false;
 					continue;
-				}
-				//Fields that went through validateControllingFieldValues use the trimmed 'budgettype'; all other fields use the original (untrimmed) controlling values.
-				let controllingValuesForField = isControllingValueValidatedField ? budgettype : originalControllingValues;
-				fetchPicklistFields(pickListFields[i], sControllingFieldValues, sFieldValues, campaignPicValues, displayNone, controllingValuesForField, picklistApitoLabelReferenceMap, compRef);
+					}
+				fetchPicklistFields(pickListFields[i], sControllingFieldValues, sFieldValues, campaignPicValues, displayNone, budgettype, picklistApitoLabelReferenceMap, compRef);
 			}
 		})////at this place we are loosing the available list values from our picklist
 	let result = {
@@ -216,13 +202,8 @@ function fetchPicklistFields(fldname, scontrolvalues, sfieldcompletevalues, camp
 				}
 			}
 		}
-		if (fldname != 'Core_MDF_Reimbursement_Rate__c' && fldname != 'Core_MDF_Proposal_Score_nbr__c' && fldname != 'Core_MDF_Measurement_Approach_nm__c') {
+		if (fldname != 'Core_MDF_Reimbursement_Rate__c' && fldname != 'Core_MDF_Proposal_Score_nbr__c') {
 			campaignPicValues[fldname].sort((a, b) => a.label.localeCompare(b.label));
-		}
-		//Roshan - defect fix
-		if (fldname === 'Core_MDF_Outcomes_nm__c') {
-			compRef.originalOutcomesOptions = [...campaignPicValues[fldname]];
-			compRef.filterOtherFromOutcomeMetric();
 		}
 		if (fldname == 'Core_MDF_Ecosystem_Partner_Nm__c' && campaignPicValues[fldname] != undefined)
 			campaignPicValues[fldname] = picklistValueAtTop(campaignPicValues[fldname], 'None', picklistApitoLabelReferenceMap, fldname);
@@ -817,7 +798,7 @@ export function getObjectFieldDetails(compRef) {
 			if (fieldAPIName == 'StartDate__c' || fieldAPIName == 'EndDate__c' || fieldAPIName == 'Name__c' || fieldAPIName == 'Description__c') {
 				fieldAPIName = fieldAPIName.replace('__c', '');
 			}
-			if (fieldAPIName != 'Core_MDF_Other_Ecosystem_Partner_txt__c' && fieldAPIName != 'Core_MDF_CampOutcomeOpt_In_Ind__c' && fieldAPIName != 'Core_MDF_Outcomes_nm__c' && fieldAPIName != 'Core_MDF_Other_Outcome_txt__c' && fieldAPIName != 'Core_MDF_Other_Measurement_Approach_txt__c') {
+			if (fieldAPIName != 'Core_MDF_Other_Ecosystem_Partner_txt__c' && fieldAPIName != 'Core_MDF_CampOutcomeOpt_In_Ind__c' && fieldAPIName != 'Core_MDF_Outcomes_nm__c' && fieldAPIName != 'Core_MDF_Other_Outcome_txt__c') {
 				compRef.campaignRequiredFields[fieldAPIName] = compRef.campaignFields[i].isRequired; compRef.campaignFieldVisibility[fieldAPIName] = true; compRef.campaignFieldDisabled[fieldAPIName] = false;
 			}
 			compRef.campaignFieldLabel[fieldAPIName] = compRef.campaignFields[i].fieldLabel; compRef.campaignFieldHelpText[fieldAPIName] = compRef.campaignFields[i].helpText;
@@ -825,14 +806,13 @@ export function getObjectFieldDetails(compRef) {
 			if (compRef.recordId != undefined && compRef.recordId != null && compRef.recordId != '' && (compRef.mode == 'edit' || compRef.mode == 'clone')) {
 				if (compRef.mode == 'edit') {
 					//aditya
-					const editableFields = Array.isArray(compRef.fieldEditibilityList) ? compRef.fieldEditibilityList : [];
-					editableFields.forEach(field => {
+					compRef.fieldEditibilityList.forEach(field => {
 						if (field.startsWith(outcomePrefix)) {
 							const outcomeFieldName = field.split('.')[1];
 							compRef.campaignFieldDisabled[outcomeFieldName] = false;
 						}
 					});
-					if (editableFields.includes(fieldAPIName)) {
+					if (compRef.fieldEditibilityList != null && compRef.fieldEditibilityList.includes(fieldAPIName)) {
 						compRef.campaignFieldDisabled[fieldAPIName] = false;
 					} else { compRef.campaignFieldDisabled[fieldAPIName] = true; }
 				}
@@ -846,9 +826,8 @@ export function getObjectFieldDetails(compRef) {
 				//clone/edit - set empty string for Reimbursement amount's help text - applicable for IPA proposal based
 				if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.campaignFieldValue['Core_MDF_Proposal_Based_Ind__c'] && fieldAPIName == 'Core_MDF_Reimbursement_Amt__c') {
 					compRef.campaignFieldHelpText[fieldAPIName] = '';
-				}							
-				const editableFields = Array.isArray(compRef.fieldEditibilityList) ? compRef.fieldEditibilityList : [];
-				if ((compRef.isL2Approver || (compRef.status == 'Pending Review' && compRef.isL1Approver) || compRef.status != 'Pending Review') && editableFields.includes('Core_MDF_Proposal_Score_nbr__c')) {
+				}
+				if ((compRef.isL2Approver || (compRef.status == 'Pending Review' && compRef.isL1Approver) || compRef.status != 'Pending Review') && (compRef.fieldEditibilityList != null && compRef.fieldEditibilityList.includes('Core_MDF_Proposal_Score_nbr__c'))) {
 					compRef.campaignFieldDisabled["Core_MDF_Proposal_Score_nbr__c"] = false;
 				}
 				else {
@@ -859,7 +838,7 @@ export function getObjectFieldDetails(compRef) {
 						compRef.finalRRrate = compRef.campaignFieldValue[fieldAPIName]; compRef.initialRRValue = compRef.campaignFieldValue["Core_MDF_Reimbursement_Rate__c"];
 					} compRef.initialRRValue = '50%';
 				}
-				if (editableFields.includes('Core_MDF_Campaign_Scoring_txt__c')) {
+				if (compRef.fieldEditibilityList != null && compRef.fieldEditibilityList.includes('Core_MDF_Campaign_Scoring_txt__c')) {
 					compRef.campaignFieldVisibility['Core_MDF_Campaign_Scoring_txt__c'] = true;
 				} else { compRef.campaignFieldVisibility['Core_MDF_Campaign_Scoring_txt__c'] = false; }
 			}
@@ -991,12 +970,6 @@ export function getObjectFieldDetails(compRef) {
 							if (compRef.campaignFieldValue["Core_MDF_Program__c"] == 'Intel Partner Alliance' && fieldAPIName == 'Core_MDF_Ecosystem_Partner_Nm__c') {
 								compRef.othersMandate(fieldAPIName, compRef.campaignFieldValue[fieldAPIName]);
 							}
-							if (fieldAPIName == 'Core_MDF_Measurement_Approach_nm__c') {
-								let measurementApproachVal = compRef.campaignFieldValue[fieldAPIName];
-								let isOtherMeasurementApproach = checkForUndefinedEmptyAndNull(measurementApproachVal) && measurementApproachVal.includes(Core_MDF_Other_Specify);
-								compRef.campaignFieldVisibility["Core_MDF_Other_Measurement_Approach_txt__c"] = isOtherMeasurementApproach;
-								compRef.campaignRequiredFields["Core_MDF_Other_Measurement_Approach_txt__c"] = isOtherMeasurementApproach;
-							}
 						}
 					}
 				}
@@ -1050,11 +1023,6 @@ export function getObjectFieldDetails(compRef) {
 				}
 			}
 			compRef.campaignFieldValue["Core_MDF_Strategic_Marketing_Fund_Ind__c"] = false;
-			if (compRef.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
-				compRef.campaignFieldDisabled["Core_MDF_IPA_Co_Engineering_Campaign_ind__c"] = false;
-			    compRef.campaignRequiredFields["Core_MDF_IPA_Co_Engineering_Campaign_ind__c"] = false;
-				compRef.campaignFieldValue["Core_MDF_IPA_Co_Engineering_Campaign_ind__c"] = false;
-			}
 		}
 		if (compRef.recordId != undefined && compRef.recordId != null && compRef.recordId != '' && (compRef.mode == 'edit' || compRef.mode == 'clone') && compRef.recordTypeDeveloperName != rmfRecTypeName) {
 			compRef.setCCFDCFFields(compRef.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c']);
@@ -1113,12 +1081,7 @@ export function getObjectFieldDetails(compRef) {
 			}
 		}
 		compRef.campaignFieldDisabled["Core_MDF_Program__c"] = true;
-		compRef.showForm = true;
-		
-		// Spinner fix to avoid race condition between fieldEditibilityList and getObjectFieldDetails
-		// compRef.isLoaded = false;
-		if (compRef.mode !== 'edit' || Array.isArray(compRef.fieldEditibilityList)) { compRef.isLoaded = false; }
-		
+		compRef.showForm = true; compRef.isLoaded = false;
 		compRef.btnDisabled["saveBtn"] = false; compRef.campaignPicValues.Core_MDF_Market__c = compRef.countryPicklist;
 		let activityRecordList = compRef.activityListEdit; let valuesReferencedOnActivities = new Set();
 		let pfrFieldAPIName = 'Core_MDF_Priorities__c';
@@ -1337,16 +1300,11 @@ export function handleDateChange(event, compRef) {
 			}
 		}
 		if (compRef.validOutcomeMetricRecordType.includes(compRef.recordTypeDeveloperName)) {
-			if (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && compRef.mode == 'edit' && (compRef.campaignFieldValue["StartDate"] < dateJune2025 || compRef.campaignFieldValue["StartDate"] == null) && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0 && compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
-				const dateObj = new Date(dateJune2025);
-				const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+			if (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && compRef.mode == 'edit' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDate || compRef.campaignFieldValue["StartDate"] == null) && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0 && compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType ) {
+				const dateObj = new Date(campaignOutcomeVisibilityDate);
+				const formattedDate = dateObj.toLocaleDateString('en-US', {year: 'numeric',month: 'long',day: 'numeric'});
 				const errorMessage = `${startDateErrorForOutcome} ${formattedDate}.`;
 				startDateCmp.setCustomValidity(errorMessage);
-				startDateCmp.reportValidity();
-				compRef.datevalid = false;
-				compRef.skipOutcomeFieldUpdate = true;
-			}else if(compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0 && compRef.mode == 'edit' && compRef.campaignFieldValue["StartDate"] >= campaignIPAOutcomeConfigureDate && !compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]){
-				startDateCmp.setCustomValidity(blockStartDateChangeForNonOutcome);
 				startDateCmp.reportValidity();
 				compRef.datevalid = false;
 				compRef.skipOutcomeFieldUpdate = true;
@@ -1468,7 +1426,7 @@ export function handleDateChange(event, compRef) {
 	}*/
 	
 	//CCF-DCF-'Outcome-based campaigns must start on or after January 1, 2026' error to be displayed when outcome based campaign's with activity start date is changed to <1 Jan 2026. 
-	if (compRef.mode == 'edit' && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && event.target.name == 'StartDate' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDateCCF_DCF_RMF || compRef.campaignFieldValue["StartDate"] == null) && (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0)) {
+	if (compRef.mode == 'edit' && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName || compRef.recordTypeDeveloperName == rmfRecTypeName) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && event.target.name == 'StartDate' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDateCCF_DCF_RMF || compRef.campaignFieldValue["StartDate"] == null) && (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0)) {
 		const dateObj = new Date(campaignOutcomeVisibilityDateCCF_DCF_RMF);
 		const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 		const errorMessage = `${startDateErrorForOutcome} ${formattedDate}.`;
@@ -1477,53 +1435,33 @@ export function handleDateChange(event, compRef) {
 		compRef.datevalid = false;
 		compRef.skipOutcomeFieldUpdate = true;
 	}
-	//16406
-	if (compRef.mode == 'edit' && (compRef.recordTypeDeveloperName == rmfRecTypeName) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && event.target.name == 'StartDate' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDate_RMF || compRef.campaignFieldValue["StartDate"] == null) && (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0)) {
-		const dateObj = new Date(campaignOutcomeVisibilityDate_RMF);
-		const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-		const errorMessage = `${startDateErrorForOutcome} ${formattedDate}.`;
-		startDateCmp.setCustomValidity(errorMessage);
-		startDateCmp.reportValidity();
-		compRef.datevalid = false;
-		compRef.skipOutcomeFieldUpdate = true;
-	}
+
 	compRef.validateIPAStartDateError();
-
 }
-
 export function updateOutcomeFieldVisibility(startDate, compRef) {
 	let shouldShowOutcomeFieldValue;
-	if(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp && startDate >= campaignIPAOutcomeConfigureDate){
-		shouldShowOutcomeFieldValue= true;
-	} else if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType) { //Aj End
+	const dateJune2025 = '2025-06-29';
+	const dateDCFCCFRMF ='2025-10-01';
+
+	if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 		shouldShowOutcomeFieldValue= startDate >= dateJune2025; 
 	}else if (validOutcomeMetricRecordTypeWithOutIPA.includes(compRef.recordTypeDeveloperName) && checkForUndefinedEmptyAndNull(startDate)){
-	  	if(compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0){//14753
-			shouldShowOutcomeFieldValue = true;
-		}
-		else{
-			shouldShowOutcomeFieldValue = startDate >= dateOct2025; //2025-10-01 Oct 
-		}
+		if(compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0){//14753
+			  shouldShowOutcomeFieldValue = true;
+		  }
+		  else{
+			  shouldShowOutcomeFieldValue = startDate >= dateDCFCCFRMF; //2025-10-01 Oct 
+		  }
 	}
-	
 	const shouldShowOutcomeField = shouldShowOutcomeFieldValue;
 	if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
-		compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = shouldShowOutcomeField;
-		//AJ start
-		if(startDate >= campaignIPAOutcomeConfigureDate && compRef.proposalBasedIndicatorCamp && (!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0)){
-			compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
-			compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
-			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = true;
-			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = true;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true;
-			compRef.filterOtherFromOutcomeMetric();
-		}else if (startDate >= dateOct2025) { //Aj End
+	compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = shouldShowOutcomeField;
+		if(startDate >= campaignIPAOutcomeConfigureDate ){
 			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = false;
 			compRef.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"] =  null ;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true;
-		} else if (compRef.campaignFieldValue["StartDate"] >= dateJune2025 && compRef.campaignFieldValue["StartDate"] < dateOct2025 && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] == false) {
+		}else if(compRef.campaignFieldValue["StartDate"] >=dateJune2025 && compRef.campaignFieldValue["StartDate"] < campaignIPAOutcomeConfigureDate && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] == false){
 			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = false;
 			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = false;
 			compRef.campaignFieldValue["Core_MDF_Outcomes_nm__c"] = null;
@@ -1531,25 +1469,24 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 			compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"]= true;
 			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = false;
 			compRef.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false;
-			compRef.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null;
 		}
 	} else if (validOutcomeMetricRecordTypeWithOutIPA.includes(compRef.recordTypeDeveloperName)) {
-		if((startDate < campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate < campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){//16406
+		if(/*startDate >= dateDCFCCFRMF &&*/ startDate < campaignOutcomeVisibilityDateCCF_DCF_RMF){
 			if(!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0){
 				compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
-
+				
 				Object.keys(compRef.editedOutcomeData).forEach(key => {
 					compRef.editedOutcomeData[key].baselineQuantity = null;
 				});
 			}
 			compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
-		}else if((startDate >= campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate >= campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){ //16406
+		}else if(startDate >= campaignOutcomeVisibilityDateCCF_DCF_RMF){
 			compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
 		}	
 	}
 	if ((checkForUndefinedEmptyAndNull(shouldShowOutcomeField) && !shouldShowOutcomeField ) || (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== true && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== false)) { 
-		compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;		
+		compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
+		
 		Object.keys(compRef.editedOutcomeData).forEach(key => {
 			compRef.editedOutcomeData[key].baselineQuantity = null;
 		});
@@ -1562,28 +1499,10 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 		compRef.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
 		compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = false;
 		compRef.outcomeBasedError = false;
-		compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false;
-		compRef.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null;
+		
 		//IPA-Jegan
 		const customEvent = new CustomEvent('outcomechange', {
 			detail: { value: false }
-		});
-		compRef.dispatchEvent(customEvent);
-	}
-	if(!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0){
-		if(compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] == false){
-			Object.keys(compRef.editedOutcomeData).forEach(key => {
-				compRef.editedOutcomeData[key].baselineQuantity = null;
-			});
-			compRef.rows = Object.values(compRef.editedOutcomeData);
-		}
-		if(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp && startDate < campaignIPAOutcomeConfigureDate){
-			compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
-		}
-	}
-	if(compRef.mode == 'clone' && compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp){
-		const customEvent = new CustomEvent('outcomechange', {
-			detail: { value: compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] }
 		});
 		compRef.dispatchEvent(customEvent);
 	}

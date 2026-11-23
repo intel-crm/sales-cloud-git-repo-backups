@@ -185,8 +185,7 @@ public With Sharing class PMP_CreateProcessorValueAssoc {
         //system.debug('uploadableSpecValueAssoc123' + uploadableSpecValueAssoc);
         uploadableSpecValuesAssocByExternalkey.clear();
         Schema.SObjectField upsertSpecKey = PMP_Specification_Value_Association__c.Fields.PMP_Category_Spec_Value_External_Key__c;//fetch the cat-spec externalkey
-       	List<Database.UpsertResult> upsertResultData = Database.upsert(uploadableSpecValueAssoc,upsertSpecKey,false);//upsert the records
-        PMP_Utility.logDmlErrors((Object[]) upsertResultData, 'PMP_CreateProcessorValueAssoc-createSpecValueAssociations');
+       	Database.upsert(uploadableSpecValueAssoc,upsertSpecKey,false);//upsert the records
       
     }
 }

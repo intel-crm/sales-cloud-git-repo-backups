@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-26-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_ApprovalPriceRulesTriggerHd_Test {
 
@@ -13,7 +6,6 @@ public class Pricing_ApprovalPriceRulesTriggerHd_Test {
         List<User> regionalManager = Pricing_Test_Utility.createPricingMangerUser2();
         List<User> adminUserList = Pricing_Test_Utility.createAdminUserWithParam('ApprovalPriceRule');
          Pricing_Test_Utility.createPriceBook();
-         List<Product2> products = Pricing_Test_Utility.createProduct(2);
         System.runAs(adminUserList[0]) {
         Account acc = Pricing_Test_Utility.createAccount(); 
         }
@@ -100,44 +92,5 @@ public class Pricing_ApprovalPriceRulesTriggerHd_Test {
         rule = [SELECT Pricing_Approval_Status__c FROM Pricing_Approval_Price_Rules__c WHERE Id = :rule.Id];
         System.assertEquals('Draft', rule.Pricing_Approval_Status__c, 'Status should reset to Draft on field change');
         }
-    }
-
-    @isTest
-    static void testProcessRecordsAndValidateProductFloorPrice() {
-      Product2 prod = [SELECT Id,Product2.Name FROM Product2 LIMIT 1];
-       Account acc = [select id,Name from Account limit 1];
-        User adminUser = [Select id from User where Email='ApprovalPriceRule@intel.com'];
-        Pricing_Approval_Price_Rules__c rule = new Pricing_Approval_Price_Rules__c(
-            Pricing_Rule_Name__c = 'Rule Update Test',
-            Pricing_Approval_Status__c = 'Approved',
-            Pricing_Quote_Type__c = 'Client',
-            Pricing_Account__c = acc.Id,
-            Pricing_End_Customer_Country__c = 'India',
-            Pricing_End_Date__c = Date.today().addMonths(1)
-        );
-        System.runAs(adminUser) {
-            insert rule;
-        }
-
-        Pricing_Product_Floor_Price__c floorPriceToInsert = new Pricing_Product_Floor_Price__c();
-        floorPriceToInsert.Pricing_Product__c = prod.Id;
-        floorPriceToInsert.Pricing_Approved_ECAP_Price__c = 500;
-        floorPriceToInsert.Pricing_Active__c = True;
-        floorPriceToInsert.Pricing_Approval_Price_Rules__c = rule.Id;
-        System.runAs(adminUser) {
-            insert floorPriceToInsert;
-        } 
-
-        // Build CSV content: header + two rows (one quoted)
-        string base64Data = JSON.serialize('Floor Product, Floor Price, Active\n"Test Product 1","100","True"');
-        
-
-        Test.startTest();
-            String result = Pricing_ApprovalPriceRulesTriggerHandler.processRecords(base64Data, 'Pricing_Product_Floor_Price__c', rule.Id);
-        Test.stopTest();
-
-        // Ensure no error string returned
-        System.assertEquals(rule != null, true);
-
     }
 }

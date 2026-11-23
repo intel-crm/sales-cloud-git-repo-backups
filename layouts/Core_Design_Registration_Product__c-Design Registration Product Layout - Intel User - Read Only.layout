@@ -26,7 +26,7 @@
                 <field>Core_Full_Year_Qty__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Target_Resale_Amt__c</field>
             </layoutItems>
             <layoutItems>

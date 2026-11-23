@@ -1,0 +1,52 @@
+<!-- **********************************************************************************************
+* LWC Name - psg_fileUploader
+* Created By - Avani
+* Description - Attachments section on the Disty Quote Request and View Form for Community Portal
+************************************************************************************************ -->
+
+<template>
+    <div>
+        <div>
+            <template if:true={lockRecord}>
+                <lightning-input type="file" label=" " multiple disabled></lightning-input>
+            </template>
+            <template if:false={lockRecord}>
+                <lightning-input type="file" label=" " onchange={handleFileChanges} multiple></lightning-input>
+            </template>
+        </div><br/>
+        <div class="slds-text-body_small slds-text-color_error">
+            <template if:true={error}>
+                <p>{error}</p>
+            </template>
+        </div>
+        
+        <div if:true={fileNames} class="slds-text-body_small slds-text-color_error">
+            <template if:true={showLoadingSpinner}>
+                <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+            </template>
+        </div>
+    </div>
+    <template if:true={showList}>
+        <lightning-card title="Uploaded Files" icon-name="utility:file">
+            <div style="width:80%">
+                <template if:true={lockRecord}>
+                    <lightning-datatable data={data} 
+                                        columns={columnsLocked} 
+                                        key-field="id"
+                                        show-row-number-column
+                                        hide-checkbox-column>
+                    </lightning-datatable>
+                </template>
+                <template if:false={lockRecord}>
+                    <lightning-datatable data={data} 
+                                        columns={columns} 
+                                        key-field="id"
+                                        onrowaction={handleRowAction}
+                                        show-row-number-column
+                                        hide-checkbox-column>
+                    </lightning-datatable>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>

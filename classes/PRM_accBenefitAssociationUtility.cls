@@ -88,21 +88,28 @@ public without sharing class PRM_accBenefitAssociationUtility{
                 if(trigger.isInsert || (trigger.isUpdate && abc.PRM_Partner_Benefit_Id__c != abaDuplicate.PRM_Partner_Benefit_Id__c ))
                 {
 
-        
+				
                     if(duplicateCheckMap!= null && !duplicateCheckMap.isEmpty() && duplicateCheckMap.get(abaDuplicate.PRM_Account_Id__c) != null){
-                        if(! duplicateCheckMap.get(abaDuplicate.PRM_Account_Id__c).contains(abaDuplicate.PRM_Account_Partner_Benefit_Key__c) ) {finalList.add(abaDuplicate);
+                        if(! duplicateCheckMap.get(abaDuplicate.PRM_Account_Id__c).contains(abaDuplicate.PRM_Account_Partner_Benefit_Key__c) ) {
+                            finalList.add(abaDuplicate);
                         }
-                        else{Set<PRM_AccountBenefitAssociation__c> benefitSet=accAbaMap.get(abaDuplicate.PRM_Account_Id__c);for(PRM_AccountBenefitAssociation__c aba: benefitSet){
-                                if(aba.PRM_Account_Partner_Benefit_Key__c == abaDuplicate.PRM_Account_Partner_Benefit_Key__c && aba.PRM_Status_Nm__c =='Inactive'){benefitToUpdate.add(aba);abaUpdated=true;
+                        else{
+                            Set<PRM_AccountBenefitAssociation__c> benefitSet=accAbaMap.get(abaDuplicate.PRM_Account_Id__c);
+                            for(PRM_AccountBenefitAssociation__c aba: benefitSet){
+                                if(aba.PRM_Account_Partner_Benefit_Key__c == abaDuplicate.PRM_Account_Partner_Benefit_Key__c && aba.PRM_Status_Nm__c =='Inactive'){
+                                    benefitToUpdate.add(aba);
+                                    abaUpdated=true;
                                 }
                             }
-                                if(!abaUpdated){abaDuplicate.addError(System.Label.PRM_ABA_Error3);
+                                if(!abaUpdated){
+                                    abaDuplicate.addError(System.Label.PRM_ABA_Error3);
                                 }
                             }
                     }
                 }
             } 
-            if(benefitToUpdate!=null && !benefitToUpdate.isEmpty()){Database.delete(benefitToUpdate,false);
+            if(benefitToUpdate!=null && !benefitToUpdate.isEmpty()){
+                Database.delete(benefitToUpdate,false);
             }
         }catch(Exception ex){String exceptionMessage = ex.getTypeName() + ': ' + ex.getMessage() + ', ' + ex.getStackTraceString();
                             
@@ -181,9 +188,13 @@ Description : Check Wether correct benefit is associated with the account.
         //Fetching benefit group from speciality. 
         if(setOfSpeciality !=null && !setOfSpeciality.isEmpty()){
             for(PRM_Specialty_Benefit_Group_Association__c sbgRecord: [select id,name,PRM_Specialty_Id__c,PRM_Benefit_Group_Id__c,PRM_Specialty_Id__r.name from PRM_Specialty_Benefit_Group_Association__c where PRM_Specialty_Id__r.name IN: setOfSpeciality AND PRM_InActive_Ind__c = false AND PRM_Benefit_Group_Id__c != null]){
-                if(mapOfspecialityAndListOgBenifitGroup.containskey(sbgRecord.PRM_Specialty_Id__r.name)){Set<string> setOfbenifitGroup = mapOfspecialityAndListOgBenifitGroup.get(sbgRecord.PRM_Specialty_Id__r.name);setOfbenifitGroup.add(sbgRecord.PRM_Benefit_Group_Id__c);mapOfspecialityAndListOgBenifitGroup.put(sbgRecord.PRM_Specialty_Id__r.name,setOfbenifitGroup);
+                if(mapOfspecialityAndListOgBenifitGroup.containskey(sbgRecord.PRM_Specialty_Id__r.name)){
+                    Set<string> setOfbenifitGroup = mapOfspecialityAndListOgBenifitGroup.get(sbgRecord.PRM_Specialty_Id__r.name);
+                    setOfbenifitGroup.add(sbgRecord.PRM_Benefit_Group_Id__c);
+                    mapOfspecialityAndListOgBenifitGroup.put(sbgRecord.PRM_Specialty_Id__r.name,setOfbenifitGroup);
                 }
-                else{mapOfspecialityAndListOgBenifitGroup.put(sbgRecord.PRM_Specialty_Id__r.name, new Set<string> {sbgRecord.PRM_Benefit_Group_Id__c} );                 
+                else{
+                    mapOfspecialityAndListOgBenifitGroup.put(sbgRecord.PRM_Specialty_Id__r.name, new Set<string> {sbgRecord.PRM_Benefit_Group_Id__c} );                 
                 }
                 benifitGroup.add(sbgRecord.PRM_Benefit_Group_Id__c);
               
@@ -194,21 +205,28 @@ Description : Check Wether correct benefit is associated with the account.
         //Added Check of PRM_Status_Nm__c in BGBA Query as part of US : US594299
         if(benifitGroup !=null && !benifitGroup.isEmpty()){
             for(PRM_Benefit_Group_Benefit_Association__c bgbRecord: [select id,name,PRM_Benefit_Id__c,PRM_Benefit_Group_Id__c from PRM_Benefit_Group_Benefit_Association__c where PRM_Benefit_Group_Id__c In:benifitGroup AND PRM_InActive_Ind__c = false AND PRM_Benefit_Id__c != null AND PRM_Status_Nm__c ='Live']){
-                if(mapOfBenifitGroupToBenifit.containskey(bgbRecord.PRM_Benefit_Group_Id__c)){Set<String> setOfBenifitofBG = mapOfBenifitGroupToBenifit.get(bgbRecord.PRM_Benefit_Group_Id__c);setOfBenifitofBG.add(bgbRecord.PRM_Benefit_Id__c);mapOfBenifitGroupToBenifit.put(bgbRecord.PRM_Benefit_Group_Id__c,setOfBenifitofBG);
+                if(mapOfBenifitGroupToBenifit.containskey(bgbRecord.PRM_Benefit_Group_Id__c)){
+                    Set<String> setOfBenifitofBG = mapOfBenifitGroupToBenifit.get(bgbRecord.PRM_Benefit_Group_Id__c);
+                    setOfBenifitofBG.add(bgbRecord.PRM_Benefit_Id__c);
+                    mapOfBenifitGroupToBenifit.put(bgbRecord.PRM_Benefit_Group_Id__c,setOfBenifitofBG);
                 } 
-                else{mapOfBenifitGroupToBenifit.put(bgbRecord.PRM_Benefit_Group_Id__c, new Set<string> {bgbRecord.PRM_Benefit_Id__c});   
+                else{
+                    mapOfBenifitGroupToBenifit.put(bgbRecord.PRM_Benefit_Group_Id__c, new Set<string> {bgbRecord.PRM_Benefit_Id__c});   
                 }
             }   
         }
 
         // Associating speciality with benefits.
         if(mapOfspecialityAndListOgBenifitGroup.keyset() != null && !mapOfspecialityAndListOgBenifitGroup.keyset().isEmpty()){
-            for(string str: mapOfspecialityAndListOgBenifitGroup.keyset()){Set<string> listOfBenifit = new Set<string>();
+            for(string str: mapOfspecialityAndListOgBenifitGroup.keyset()){
+                Set<string> listOfBenifit = new Set<string>();
                 for(string lstOfBG: mapOfspecialityAndListOgBenifitGroup.get(str)){
-                    if(lstOfBG != null && mapOfBenifitGroupToBenifit.containskey(lstOfBG)){listOfBenifit.addall(mapOfBenifitGroupToBenifit.get(lstOfBG));  
+                    if(lstOfBG != null && mapOfBenifitGroupToBenifit.containskey(lstOfBG)){
+                            listOfBenifit.addall(mapOfBenifitGroupToBenifit.get(lstOfBG));  
                         }   
                     }
-                if(listOfBenifit != null && !listOfBenifit.IsEmpty()){mapOfSpeacailityIdAndBenifitId.put(str,listOfBenifit);
+                if(listOfBenifit != null && !listOfBenifit.IsEmpty()){
+                    mapOfSpeacailityIdAndBenifitId.put(str,listOfBenifit);
                 }
             }  
         }
@@ -221,11 +239,13 @@ Description : Check Wether correct benefit is associated with the account.
                 //strObj = mapOfAccountIdAndSpeciality.get(str);              
                 for(string strObj: mapOfAccountIdAndSpeciality.get(str)){
                     if(strObj !=null){
-                        if(mapOfSpeacailityIdAndBenifitId.containskey(strObj)){listOfSpecialityForObj.addall(mapOfSpeacailityIdAndBenifitId.get(strObj));   
+                        if(mapOfSpeacailityIdAndBenifitId.containskey(strObj)){
+                            listOfSpecialityForObj.addall(mapOfSpeacailityIdAndBenifitId.get(strObj));   
                         }   
                     } 
                 }
-                if(listOfSpecialityForObj != null && !listOfSpecialityForObj.IsEmpty()){mapOfAccountAndBenifit.put(str,listOfSpecialityForObj);
+                if(listOfSpecialityForObj != null && !listOfSpecialityForObj.IsEmpty()){
+                    mapOfAccountAndBenifit.put(str,listOfSpecialityForObj);
                 }
             }    
         }
@@ -296,9 +316,11 @@ Description : Check Wether correct benefit is associated with the account.
                 if(applicableBenefits.contains(aba.PRM_Partner_Benefit_Id__c)){ //source of benefit is benefit matrix.
                     sourceValue = System.Label.PRM_Source_BenefitMatrix;
                 }
-                if(allowedBenifitForSpeciality.contains(aba.PRM_Partner_Benefit_Id__c)){sourceValue = System.Label.PRM_Source_Specialty;
+                if(allowedBenifitForSpeciality.contains(aba.PRM_Partner_Benefit_Id__c)){ //source of benefit is specialty.
+                    sourceValue = System.Label.PRM_Source_Specialty;
                 }
-                if((applicableBenefits.contains(aba.PRM_Partner_Benefit_Id__c)) && (allowedBenifitForSpeciality.contains(aba.PRM_Partner_Benefit_Id__c))){sourceValue = System.Label.PRM_Source_Matrix_Specialty;
+                if((applicableBenefits.contains(aba.PRM_Partner_Benefit_Id__c)) && (allowedBenifitForSpeciality.contains(aba.PRM_Partner_Benefit_Id__c))){ //Benefit is available from both the place, benefit matrix awa specialty.
+                    sourceValue = System.Label.PRM_Source_Matrix_Specialty;
                 }
                 if(!string.ISBLANK(sourceValue)){
                     aba.PRM_Source__c = sourceValue;
@@ -530,7 +552,8 @@ Description : Check Wether correct benefit is associated with the account.
         List<String> nonProcessedRecords = new List<String>();
         List<PRM_Batch_Entitlement__c> newinProgressBatchEnt = [Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where (PRM_Status_Nm__c = 'New' OR PRM_Status_Nm__c = 'In Progress') AND PRM_Contact_Id__c IN:contactList AND PRM_Entitlement_Id__c IN :entitlementList and PRM_IsRemove_Ind__c=true];
         if(newinProgressBatchEnt!=null && !newinProgressBatchEnt.isEmpty()){
-            for(PRM_Batch_Entitlement__c be: newinProgressBatchEnt){nonProcessedRecords.add(be.PRM_Contact_Id__c+'_'+be.PRM_Entitlement_Id__c);
+            for(PRM_Batch_Entitlement__c be: newinProgressBatchEnt){
+                nonProcessedRecords.add(be.PRM_Contact_Id__c+'_'+be.PRM_Entitlement_Id__c);
             }
         }
         return nonProcessedRecords;
@@ -687,9 +710,14 @@ Description : Check Wether correct benefit is associated with the account.
                 }
 
                 if (!opidsForMpRelationshipDeactivation.isEmpty()) {
-                    List<PMP_OPID_MPI_Rel__c> opidMps = [SELECT Id,Is_Active__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsForMpRelationshipDeactivation AND Is_Active__c = TRUE ];
+                    List<PMP_OPID_MPI_Rel__c> opidMps = [SELECT Id,Is_Active__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsForMpRelationshipDeactivation AND Is_Active__c = TRUE ];
     
-                    if (!opidMps.isEmpty()) {for (PMP_OPID_MPI_Rel__c opidmp : opidMps) {opidmp.Is_Active__c = FALSE;opidmp.PMP_RelLastDeactivated__c = System.now(); }update opidMps;
+                    if (!opidMps.isEmpty()) {
+                        for (PMP_OPID_MPI_Rel__c opidmp : opidMps) {
+                            opidmp.Is_Active__c = FALSE;
+                        }
+    
+                        update opidMps;
                     }
                 }
             
@@ -716,8 +744,10 @@ Description : Check Wether correct benefit is associated with the account.
                 if(setofFinalAccid != null && ! setofFinalAccid.isEmpty() && setOfFinalBnft!=null && !setOfFinalBnft.isEmpty()){
                     for(PRM_AccountBenefitAssociation__c abaFinal: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Account_Id__r.Recordtypeid,PRM_Partner_Benefit_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Source__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c In: setofFinalAccid AND PRM_Status_Nm__c =: System.Label.PRM_Status_Active AND PRM_Partner_Benefit_Id__r.Name IN: setOfFinalBnft]){
                         If(abaFinal.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solution_Marketplace_Basic_Access && setOfChildAccId.contains(abaFinal.PRM_Account_Id__c)){
-                            abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;abaFinal.PRM_Status_Reason_Txt__c =System.Label.PRM_Aba_Inactive;abaFinal.PRM_Source__c='';
-			    lstOfAba.add(abaFinal);    
+                            abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
+                            abaFinal.PRM_Status_Reason_Txt__c =System.Label.PRM_Aba_Inactive;
+                            abaFinal.PRM_Source__c='';
+                            lstOfAba.add(abaFinal);    
                         }
                         else if(abaFinal.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solutions_Marketplace_Basic_Profile && setOfAccIdForOwnAbaInactivation.contains(abaFinal.PRM_Account_Id__c) && abaFinal.PRM_Account_Id__r.Recordtypeid == OpidAccRecordTypeId){
                             abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
@@ -749,7 +779,7 @@ Description : Check Wether correct benefit is associated with the account.
     * Return       : Void
     * Description  : This method is used to assign entitlement to the child contact of account when benefit assigned manually to the account.
     ****************************************************************************************************************************************** */
-    public static void onManualBenefitInsert(List<PRM_AccountBenefitAssociation__c> lstAccBenefit,Map<Id, PRM_AccountBenefitAssociation__c> abaOldMap, boolean assignEntitlement)
+    public static void onManualBenefitInsert(List<PRM_AccountBenefitAssociation__c> lstAccBenefit,Map<Id, PRM_AccountBenefitAssociation__c> abaOldMap)
     {   
     Set<Id> accId = new Set<Id>(); 
     List<Id> benefitList = new List<Id>();
@@ -770,9 +800,8 @@ Description : Check Wether correct benefit is associated with the account.
     PRM_AccountBenefitAssociation__c abaOld ;
   Set<Id> childAccId = new Set<Id>();
     Boolean updateCheck = false;
-    system.debug('assignEntitlement-->'+assignEntitlement);
 
-        if(!System.isBatch() || assignEntitlement) {
+        if(!System.isBatch()) {
             if(lstAccBenefit != null && ! lstAccBenefit.isEmpty()){
                 for(PRM_AccountBenefitAssociation__c aba: lstAccBenefit){
                     if(abaOldMap != null && abaOldMap.size() > 0){
@@ -884,10 +913,14 @@ Description : Check Wether correct benefit is associated with the account.
         if(finalCEList!= null && !finalCEList.IsEmpty()){
           for(Core_Contact_Entitlement__c ce :finalCEList){
             if(!ce.Core_Selected__c && contactIdEntIdMap.containsKey(ce.Core_Contact_Id__c) && contactIdEntIdMap.get(ce.Core_Contact_Id__c).contains(ce.Core_Entitlement_Id__c)){ // Updating Contact Entitlement status to pending when entitlement is inactive else status will remain same as previous.                
-              PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
-              be.PRM_Status_Nm__c = System.label.PRM_Status_New;be.PRM_Status_Reason_Txt__c = 'PRM_accBenefitAssociationUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
-	      be.PRM_IsRemove_Ind__c = false;
-              if(!beListTemp.Contains(be)  && PRM_ProfileResponse.activateInactivateBenefitExecuted == false){beListTemp.add(be);
+              PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();
+              be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;
+              be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
+              be.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                            be.PRM_Status_Reason_Txt__c = 'PRM_accBenefitAssociationUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
+              be.PRM_IsRemove_Ind__c = false;
+              if(!beListTemp.Contains(be)  && PRM_ProfileResponse.activateInactivateBenefitExecuted == false){
+                beListTemp.add(be);
               }
             }
           }
@@ -1078,7 +1111,19 @@ Description : Check Wether correct benefit is associated with the account.
                   
                     if(abRec.PRM_Account_RT__c == 'Core_Partner_Account_Group' && !accountIds.contains(abRec.PRM_Account_Id__c)) {
                         accountIds.add(abRec.PRM_Account_Id__c);
-                        trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID','BF_UPD_1PID',null,null,abRec.PRM_Account_Id__c,abRec.PRM_Account_Id__c,'','', true, '', '',String.valueOf(customMetadata.getInstance('BF_UPD_1PID').get('PRM_Milestone_Display_Name__c'))));
+                        trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
+                        'BF_UPD_1PID',
+                        null,
+                        null,
+                        abRec.PRM_Account_Id__c,
+                        abRec.PRM_Account_Id__c,
+                        '',
+                        '',
+                        true,
+                        '',
+                        '',
+                        String.valueOf(customMetadata.getInstance('BF_UPD_1PID').get('PRM_Milestone_Display_Name__c'))  
+                        ));
                     }
                     if(abRec.PRM_Account_RT__c == 'Mastered_Account' && !accountIds.contains(abRec.PRM_Account_Id__c)){
                         accountIds.add(abRec.PRM_Account_Id__c);

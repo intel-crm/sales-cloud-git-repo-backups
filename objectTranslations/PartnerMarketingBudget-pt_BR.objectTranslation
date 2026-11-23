@@ -345,11 +345,6 @@
         <name>Core_MDF_Legacy_Budget_Ind__c</name>
     </fields>
     <fields>
-        <help><!-- Full budget, visible to Intel only --></help>
-        <label><!-- Maximum Approved Budget --></label>
-        <name>Core_MDF_Maximum_Approved_Budget_Amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Owner --></label>
         <name>Core_MDF_Owner_Nm__c</name>
     </fields>
@@ -447,10 +442,6 @@
     <validationRules>
         <errorMessage><!-- Budget reduction amount must be greater or equal to zero --></errorMessage>
         <name>Core_MDF_Negative_Decrease_Amount</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Maximum Approved Budget cannot be negative. --></errorMessage>
-        <name>Core_MDF_Negative_Max_Approved_Amount</name>
     </validationRules>
     <validationRules>
         <errorMessage>O parceiro de orçamento não pode ser editado</errorMessage>

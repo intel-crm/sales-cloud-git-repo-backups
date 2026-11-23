@@ -76,11 +76,10 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                 campList = [Select Id,Core_MDF_Program__c,Core_MDF_Proposal_Based_Ind__c
                             FROM Campaign
                             WHERE Id =: recordId];  
-                //ATHR - Deeply Nested if 16209
-                if(campList.Size() > 0 && campList[0].Core_MDF_Program__c == 'Intel Partner Alliance'  && campList[0].Core_MDF_Proposal_Based_Ind__c == true){
-                    //if(campList[0].Core_MDF_Program__c == 'Intel Partner Alliance'  && campList[0].Core_MDF_Proposal_Based_Ind__c == true ) {
+                if(campList.Size() > 0){
+                    if(campList[0].Core_MDF_Program__c == 'Intel Partner Alliance'  && campList[0].Core_MDF_Proposal_Based_Ind__c == true ) {
                         accountbased = false;
-                    //}
+                    }
                 }
             }
             
@@ -185,17 +184,14 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         EditActivityWrapper userPermissionApprovalCamp = new EditActivityWrapper();
         try{
             List<Campaign> cmpval = new List<Campaign>();
-            //ATHR - Deeply Nested if 16209
-            if(cmpId == null ) return userPermissionApprovalCamp;
-            //if(cmpId != null ) {
+            if(cmpId != null ) {
 
                 cmpval = [SELECT Id,Core_MDF_Host_Region_cd__c,Core_MDF_Ultimate_Account_txt__c,Core_MDF_Region_cd__c,Core_MDF_Sub_Region_cd__c, 
                             Core_MDF_Budget_Type_txt__c, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c, Core_MDF_Market__c, Status,
                             Core_MDF_Approval_Stage_nm__c, Core_MDF_Account__c,recordtype.developername, RecordTypeId, Core_MDF_IPA_Approval_Status_nm__c,Core_MDF_Total_Campaign_Cost_Amt__c
                             FROM Campaign WHERE Id =: cmpId];
-                //ATHR - Deeply Nested if 16209
-                if (cmpval == null || cmpval.isEmpty()) return userPermissionApprovalCamp;
-                //if(cmpval.Size() > 0) {
+                
+                if(cmpval.Size() > 0) {
                     userPermissionApprovalCamp.campaignRecord = cmpval[0];
                     userPermissionApprovalCamp.piwitmGlb = fetchPiwitmId(cmpId);
 
@@ -286,13 +282,13 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                             userPermissionApprovalCamp.userPermissionsPowerPartner = false;
                         }
                     }
-                //}
+                }
 
                 //Indicates if active claims is assocated for a specified campaignId
                 List<Id> cmpClaimAssocList = new List<Id>();
                 cmpClaimAssocList.add(cmpId);
                 userPermissionApprovalCamp.isActiveClaimExist = isActiveClaimAssociated(cmpClaimAssocList); 
-            //}
+            }
 
         } catch(Exception e) {
             String errorDetails = Core_MDF_CCP_UtilityClass.getErrorDetails(e); 
@@ -306,7 +302,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
 
         EditActivityWrapper wrapper = new EditActivityWrapper();
         try {
-            PartnerFundClaim claim = [SELECT Id, Title, Core_MDF_Program__c, ChannelPartner.Name, Core_MDF_Status__c, RecordType.DeveloperName, Core_MDF_Ultimate_Account_ID__c, Core_MDF_Budget_Type_Options_Nm__c, 
+            PartnerFundClaim claim = [SELECT Id, Title, Core_MDF_Program__c, ChannelPartner.Name, Core_MDF_Status__c, RecordType.DeveloperName, Core_MDF_Ultimate_Account_ID__c, Core_MDF_Budget_Type_Nm__c, 
                                         Core_MDF_Proposal_Based_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Program__c, Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c, Core_MDF_Approval_Stage_nm__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c, Request.Core_MDF_Host_Region_txt__c, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
                                         FROM PartnerFundClaim WHERE Id =: claimId LIMIT 1];  //Roshan
 
@@ -381,14 +377,8 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
             cmpIds.add(cmpId);
             
             List <ProcessInstanceWorkItem> processInstanceList = [SELECT ProcessInstance.TargetObjectId, Id FROM ProcessInstanceWorkItem WHERE Id =: piwitmId AND ProcessInstance.Status = 'Pending'];
-            //ATHR - Deeply Nested if 16209
-            if (processInstanceList == null || processInstanceList.isEmpty()) {
-                appRejObj.isSuccess = false;
-                appRejObj.returnMessage = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Another_User_Responded');
-                appRejObj.type = 'warning';
-                return appRejObj;
-            }
-            //if(processInstanceList != null && !processInstanceList.isEmpty()) {
+            
+            if(processInstanceList != null && !processInstanceList.isEmpty()) {
                 Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
     
                 if (buttonName == Label.Core_MDF_Retail_Approve) {
@@ -402,14 +392,12 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                 if (buttonName == Label.Core_MDF_Activity_Recall_Nm) { 
                     cmpInst.status = 'Revision Required';
                     cmpInst.Core_MDF_Last_Rejected_Level_Nm__c = cmpInst.Core_MDF_Approval_Stage_nm__c;
-                    //ATHR - Deeply Nested if 16209
-                    /*if(String.isBlank(propApprovalComments)) {
+                    if(String.isBlank(propApprovalComments)) {
                         propApprovalComments = 'Recalled';
                     }
                     else {
                         propApprovalComments = 'Recalled - ' + propApprovalComments;
-                    }*/
-                    propApprovalComments = String.isBlank(propApprovalComments) ? 'Recalled' : 'Recalled - ' + propApprovalComments;
+                    }
                     req.setComments(propApprovalComments);
                     req.setAction('Reject'); 
                 }
@@ -422,11 +410,11 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     Database.update(cmpsToBeUpdated);             
                 }
                 approveOrRejectWorkItem(cmpInst.Id, req, appRejObj);
-            /*} else {
+            } else {
                 appRejObj.isSuccess = false;
                 appRejObj.returnMessage = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Another_User_Responded');
                 appRejObj.type = 'warning';
-            }*/
+            }
         } catch (Exception e) {
             handleApprovalException(e, cmpIds, 'approveRejectProposal Method', appRejObj, sp);
         }
@@ -629,139 +617,4 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         @AuraEnabled
         public Boolean isExternalUser;
     }
-    //16852 starts
-    @AuraEnabled
-    public static Map<String, List<String>> getEligibleApproversForRecord(Id recordId) {
-        Map<String, List<String>> result = new Map<String, List<String>>();
-        String recordTypeDevName;
-        String accountId;
-        String geo;
-        String subGeo;
-        String hostGeo;
-        String approvalStage;
-        String program; 
-        String budgetType;
-        String activityClassification;
-        String reviewType;
-        Map<String,Object> programNameByRecTypeDevNameMap;
-        Boolean isProposalBased = false;
-        String userId;
-        Core_MDF_GeneralPurpose_UI_Utility.InputDetailsWrapper resultObj;
-        String objectName = String.valueOf(recordId).startsWith('701') ? 'Campaign' : (String.valueOf(recordId).startsWith('0RB') ? 'PartnerFundClaim' : 'PartnerFundRequest');
-        Map<String,Object> programNameByRecNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecName();
-        List<String> geoList;
-        try {
-            if (String.isBlank(objectName)) return result;
-            switch on objectName {
-                when 'PartnerFundRequest' {
-                    List<PartnerFundRequest> pfrObj = [SELECT Id, Core_MDF_Program__c, Core_MDF_Ultimate_Account_Id__c, Core_MDF_Region_nm__c, Core_MDF_Approval_Stage__c, Core_MDF_Budget_Type_nm__c,recordType.DeveloperName,Core_MDF_Campaign_Ultimate_Account_Id__c,Core_MDF_Host_Region_or_Region_txt__c,Core_MDF_Sub_Region_nm__c,Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_Approval_Stage_nm__c,Core_MDF_Additional_Review_Type_txt__c FROM PartnerFundRequest WHERE Id = :recordId LIMIT 1];
-                    recordTypeDevName = pfrObj[0].recordType.DeveloperName;
-                    accountId = pfrObj[0].Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM && (pfrObj[0].Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER || pfrObj[0].Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL) ? pfrObj[0].Core_MDF_Campaign_Ultimate_Account_Id__c : pfrObj[0].Core_MDF_Ultimate_Account_Id__c;
-                    geo = pfrObj[0].Core_MDF_Host_Region_or_Region_txt__c;
-                    subGeo = pfrObj[0].Core_MDF_Sub_Region_nm__c;                
-                    approvalStage = pfrObj[0].Core_MDF_Proposal_Based_Ind__c == false ? pfrObj[0].Core_MDF_Approval_Stage__c : pfrObj[0].Campaign.Core_MDF_Approval_Stage_nm__c;
-                    budgetType = pfrObj[0].Core_MDF_Budget_Type_nm__c;         
-                    isProposalBased = pfrObj[0].Core_MDF_Proposal_Based_Ind__c;
-                    reviewType = pfrObj[0].Core_MDF_Additional_Review_Type_txt__c;
-                    program = pfrObj[0].recordType.DeveloperName;
-                    if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_MARKETING){
-                        activityClassification = 'Marketing';
-                    }
-                    else if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES){
-                        activityClassification = 'Sales';
-                    }else{
-                        activityClassification = '';
-                    }
-                }
-                when 'Campaign' {
-                    List<Campaign> campaignObj = [SELECT Id, Core_MDF_Program__c, Core_MDF_Ultimate_Account_txt__c, Core_MDF_Region_cd__c, Core_MDF_Approval_Stage_nm__c, Core_MDF_Budget_Type_txt__c,recordType.DeveloperName,Core_MDF_Sub_Region_cd__c,Core_MDF_Host_Region_cd__c,Core_MDF_Proposal_Based_Ind__c FROM Campaign WHERE Id = :recordId LIMIT 1];
-                    recordTypeDevName = campaignObj[0].recordType.DeveloperName;    
-                    accountId = campaignObj[0].Core_MDF_Ultimate_Account_txt__c;
-                    geo = campaignObj[0].Core_MDF_Region_cd__c;
-                    subGeo = campaignObj[0].Core_MDF_Sub_Region_cd__c;
-                    hostGeo = campaignObj[0].Core_MDF_Host_Region_cd__c;
-                    approvalStage = campaignObj[0].Core_MDF_Approval_Stage_nm__c;
-                    budgetType = campaignObj[0].Core_MDF_Budget_Type_txt__c;
-                    isProposalBased = campaignObj[0].Core_MDF_Proposal_Based_Ind__c;
-                    program = campaignObj[0].Core_MDF_Program__c;
-                    if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_MARKETING){
-                        activityClassification = 'Marketing';
-                    }
-                    else if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES){
-                        activityClassification = 'Sales';
-                    }                    
-                    else{
-                        activityClassification = '';
-                    }
-                }
-                when 'PartnerFundClaim' {
-                    List<PartnerFundClaim> pfcObj = [SELECT Id,recordType.DeveloperName,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c,Request.Core_MDF_Host_Region_txt__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Proposal_Based_Ind__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Approval_Stage_nm__c FROM PartnerFundClaim WHERE Id = :recordId LIMIT 1];
-                    recordTypeDevName = pfcObj[0].recordType.DeveloperName;
-                    accountId = pfcObj[0].Core_MDF_Ultimate_Account_ID__c;
-                    geo = pfcObj[0].Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c;
-                    hostGeo = pfcObj[0].Request.Core_MDF_Host_Region_txt__c;
-                    budgetType = pfcObj[0].Core_MDF_Budget_Type_Options_Nm__c;
-                    isProposalBased = pfcObj[0].Core_MDF_Proposal_Based_Ind__c;
-                    program = pfcObj[0].ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;
-                    approvalStage = pfcObj[0].Core_MDF_Approval_Stage_nm__c;
-                }
-                when else {       
-                    return result;
-                }       
-            }
-            programNameByRecTypeDevNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecordTypeDevName();
-            if(programNameByRecTypeDevNameMap.containsKey(program)){
-                program = (String)programNameByRecTypeDevNameMap.get(program);
-            }
-            geo= String.isNotBlank(geo)? String.escapeSingleQuotes(geo):'';
-            hostGeo = String.isNotBlank(hostGeo)? String.escapeSingleQuotes(hostGeo):'';
-            geo  = string.isNotBlank(hostGeo) ? hostGeo : geo;
-            String geoStr = Core_MDF_GeneralPurpose_UI_Utility.getGeoWithWWAsString(geo);
-            String geoBudgetTypeStr =  Core_MDF_GeneralPurpose_UI_Utility.getGeoBudgetTypeWithWWAsString(geo, budgetType);
-            activityClassification = (String.isNotBlank(activityClassification)) ?  activityClassification.contains(',') ?  activityClassification : Core_MDF_GeneralPurpose_UI_Utility.getActivityClassificationAsString(activityClassification) :'';     
-            Core_MDF_GeneralPurpose_UI_Utility.InputDetailsWrapper objInputDetailsWrapper = new Core_MDF_GeneralPurpose_UI_Utility.InputDetailsWrapper();
-            objInputDetailsWrapper.objectName = objectName;
-            objInputDetailsWrapper.programName = program;
-            objInputDetailsWrapper.approvalStage = approvalStage;
-            objInputDetailsWrapper.accountId = accountId;
-            objInputDetailsWrapper.region =  geoStr;
-            objInputDetailsWrapper.bugetType = budgetType;
-            objInputDetailsWrapper.geoBudgetType = geoBudgetTypeStr;
-            objInputDetailsWrapper.isProposalBased = isProposalBased;
-            objInputDetailsWrapper.activityClassification = activityClassification;
-            objInputDetailsWrapper.userId = userId;
-            if(objInputDetailsWrapper != null){
-                resultObj = Core_MDF_GeneralPurpose_UI_Utility.getRoleNameByApprovalStage(objInputDetailsWrapper);
-                if(approvalStage=='Additional Reviewer'){
-                    resultObj.role=(program=='Client CoMarketing Fund' && reviewType=='Field Review') ? 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr':
-                    (program=='Client CoMarketing Fund' && reviewType=='Marketing Review') ? 'Core_MDF_CCP_Internal_CCF_Acct_Mgr':
-                    (program=='Data Center CoMarketing Fund' && reviewType=='Field Review') ? 'Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr':
-                    (program=='Data Center CoMarketing Fund' && reviewType=='Marketing Review') ? 'Core_MDF_CCP_Internal_DCF_Acct_Mgr':null;                
-                }
-            }
-            String role = resultObj != null ? resultObj.role : null;
-            String geoString = geoStr.replace('(', '').replace(')', '').replace('\'', '');
-            List<String> accList = new List<String>{accountId};
-            List<String> progList = new List<String>{program};
-            List<String> geoListForUtil = geoString.split(',\\s*');
-            List<String> roles = new List<String>{role};
-            List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> resultList = Core_MDF_GeneralPurpose_UI_Utility.getIUPGMRecords(objInputDetailsWrapper);
-            if(resultList != null && !resultList.isEmpty()){
-                Set<Id> userIds = new Set<Id>();
-                for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : resultList){
-                    userIds.add(iupgm.Core_MDF_User_id__c);
-                }
-                if(!userIds.isEmpty()){
-                    for(User u : [SELECT Id, Name FROM User WHERE Id IN :userIds]){
-                        if(!result.containsKey(approvalStage)) result.put(approvalStage, new List<String>());
-                        result.get(approvalStage).add(u.Name);
-                    }
-                }
-            }
-        } catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-        return result;
-    }
-    //16852 ends
 }

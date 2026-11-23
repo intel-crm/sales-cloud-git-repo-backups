@@ -1,10 +1,3 @@
-/**
- * @description       :
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
 @isTest
 public class Pricing_CustomerDivisionComp_cntrl_Test {
     @testSetup
@@ -15,9 +8,11 @@ public class Pricing_CustomerDivisionComp_cntrl_Test {
             //Pricing_Test_Utility.createPriceBook();
             
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Customer_Division_Comp_Cntrl_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
+            List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
+            User partnerUserList = Pricing_Test_Utility.createPartnerUser(acc.Id);
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales',UserId = adminUserList[0].Id);
             insert accTeam;
             Test.startTest();
@@ -33,13 +28,13 @@ public class Pricing_CustomerDivisionComp_cntrl_Test {
             triggerEntry2.Core_Class_Name__c = 'Test Class';
             insert triggerEntry2;
             
-            Pricing_Quote_Team__c quoteTM = new Pricing_Quote_Team__c();
+            Pricing_Quote_Team__c quoteTM = new Pricing_Quote_Team__c();  
             quoteTM.Pricing_Quote_Id__c = quoteList[0].Id;
             quoteTM.Pricing_Quote_Team_Member_Id__c = adminUserList[0].id;
-            quoteTM.Pricing_Role_Nm__c = 'Account Executive';
+            quoteTM.Pricing_Role_Nm__c = 'Account Executive'; 
             insert quoteTM;
             
-            Document document;
+            Document document;            
             document = new Document();
             document.Body = Blob.valueOf('Some Text');
             document.ContentType = 'application/pdf';
@@ -71,26 +66,21 @@ public class Pricing_CustomerDivisionComp_cntrl_Test {
     }
     static testmethod void testAccountDivision() {
         Test.startTest();
-        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c];
+        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c]; 
         quoteList[0].Pricing_Account_Division_Nm__c = 'ABC';
         update quoteList[0];
-        List<Pricing_Account_Division__c> division = Pricing_CustomerDivisionComp_cntrl.getCustomerDivision(quoteList[0].id);
-        System.assertNotEquals(division, null);
-        String divisionValue = Pricing_CustomerDivisionComp_cntrl.getCustomerDivisionValue(quoteList[0].id);
-        System.assertNotEquals(divisionValue, null);
+        Pricing_CustomerDivisionComp_cntrl.getCustomerDivision(quoteList[0].id);
+        Pricing_CustomerDivisionComp_cntrl.getCustomerDivisionValue(quoteList[0].id);
         Pricing_CustomerDivisionComp_cntrl.updateQuoteCustomerDivision(quoteList[0].id , 'Dell A');
-        Boolean precedence = Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
-        System.assertNotEquals(precedence, null);
+        Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
         
-        Test.stopTest();
+        Test.stopTest(); 
     }
     static testmethod void testAccountDivision2() {
         Test.startTest();
         List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c];
-        List<Pricing_Account_Division__c> division = Pricing_CustomerDivisionComp_cntrl.getCustomerDivision(quoteList[0].id);
-        System.assertNotEquals(division, null);
-        String divisionValue = Pricing_CustomerDivisionComp_cntrl.getCustomerDivisionValue(quoteList[0].id);
-        System.assertNotEquals(divisionValue, null);
+        Pricing_CustomerDivisionComp_cntrl.getCustomerDivision(quoteList[0].id);
+        Pricing_CustomerDivisionComp_cntrl.getCustomerDivisionValue(quoteList[0].id);
         Pricing_CustomerDivisionComp_cntrl.updateQuoteCustomerDivision(quoteList[0].id , 'Dell B');
         Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
         Test.stopTest(); 

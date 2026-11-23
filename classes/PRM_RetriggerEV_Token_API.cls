@@ -8,7 +8,7 @@ Modification Log :
 * ------------------------------------------------------------------------------------------------------------------------              
 * GopiKrishna Vankadari         10/06/2021          Initial version
 *************************************************************************************************************************/
-Public with sharing class PRM_RetriggerEV_Token_API {  
+Public class PRM_RetriggerEV_Token_API {  
     public static final String LOG_ENTRY_ORIGIN   = 'SFDC';
     public static final String LOG_ENTRY_PROJECT  = 'Retrigger EV -API to Fetch new EV Token';
     public static final String LOG_ENTRY_SCOPE    = 'PRM_RetriggerEV_Token_API';
@@ -33,12 +33,12 @@ Public with sharing class PRM_RetriggerEV_Token_API {
                 CustomException ex = new CustomException();                    
                 ex.Message = response.getBody();                          
                 ex.StackTraceString = System.Label.PRM_Mulesoft_Api_Error;  
-                createLogEntryAPIWrapper obj2=new createLogEntryAPIWrapper();
-                obj2.message=ex.getMessage();
-                obj2.severity=LOG_ENTRY_INFO;
-                obj2.ex=null;
-                obj2.inputRequest=ex.getStackTraceString();
-                createLogEntry(obj2);//Athr fixes
+				createLogEntryAPIWrapper obj2=new createLogEntryAPIWrapper();
+				obj2.message=ex.getMessage();
+				obj2.severity=LOG_ENTRY_INFO;
+				obj2.ex=null;
+				obj2.inputRequest=ex.getStackTraceString();
+				createLogEntry(obj2);//Athr fixes
                 //createLogEntry('Failed To Retrieved EV Token', LOG_ENTRY_INFO,ex,EncodingUtil.urlDecode(response.getBody(), 'UTF-8')); 
             }else{
                 //Pick and Store the EV Token from Response

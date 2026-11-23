@@ -1,6 +1,16 @@
 {
 "en_US" : [
 	{
+	"Parent Identifier" : "",
+	"Parent Name" : "",
+	"Child Identifier" : "Solution_Marketplace_Hierarchy",
+	"Child Name" : "",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
 	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
 	"Parent Name" : "",
 	"Child Identifier" : "NPP_01_TYPE",
@@ -1132,8 +1142,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "1GbE",
-						"Values"	 : "1GbE"
+						"Identifier" : "10/100 Fast Ethernet",
+						"Values"	 : "10/100 Fast Ethernet"
 										}
 	},
 		{
@@ -1147,8 +1157,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "N/A"
+						"Identifier" : "1GbE",
+						"Values"	 : "1GbE"
 										}
 	},
 		{
@@ -1177,8 +1187,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "10/100 Fast Ethernet",
-						"Values"	 : "10/100 Fast Ethernet"
+						"Identifier" : ">10GbE",
+						"Values"	 : ">10GbE"
 										}
 	},
 		{
@@ -1192,8 +1202,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : ">10GbE",
-						"Values"	 : ">10GbE"
+						"Identifier" : "N/A",
+						"Values"	 : "N/A"
 										}
 	},
 		{
@@ -1357,23 +1367,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 4.0",
-						"Values"	 : "PCIe 4.0"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
-		"Sequence" : "3,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"PCI Express",
-   		"Level 3" :"PCIe Revision",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "N/A"
+						"Identifier" : "PCIe 1.0",
+						"Values"	 : "PCIe 1.0"
 										}
 	},
 		{
@@ -1402,8 +1397,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 1.0",
-						"Values"	 : "PCIe 1.0"
+						"Identifier" : "PCIe 3.0",
+						"Values"	 : "PCIe 3.0"
 										}
 	},
 		{
@@ -1417,8 +1412,23 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 3.0",
-						"Values"	 : "PCIe 3.0"
+						"Identifier" : "PCIe 4.0",
+						"Values"	 : "PCIe 4.0"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
+		"Sequence" : "3,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"PCI Express",
+   		"Level 3" :"PCIe Revision",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button (Single select)",
+					"Preset Values"   : {
+						"Identifier" : "N/A",
+						"Values"	 : "N/A"
 										}
 	},
 		{
@@ -2872,68 +2882,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "Intel® Wireless"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
 										}
 	},
 		{
@@ -2964,6 +2914,66 @@
 					"Preset Values"   : {
 						"Identifier" : "5G",
 						"Values"	 : "5G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "2G",
+						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -5047,21 +5057,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Intelligent Platform Management Interface (IPMI 1.0)",
-						"Values"	 : "Intelligent Platform Management Interface (IPMI 1.0)"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_DeviceManagement_Standards",
-		"Sequence" : "1,810",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"Device Management",
-   		"Level 3" :"Standards",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Platform Level Data Model",
 						"Values"	 : "Platform Level Data Model (PLDM)"
 										}
@@ -5092,8 +5087,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Other",
-						"Values"	 : "Other"
+						"Identifier" : "Intelligent Platform Management Interface (IPMI 1.0)",
+						"Values"	 : "Intelligent Platform Management Interface (IPMI 1.0)"
 										}
 	},
 		{
@@ -5109,6 +5104,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Intelligent Platform Management Interface (IPMI 2.0)",
 						"Values"	 : "Intelligent Platform Management Interface (IPMI 2.0)"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_DeviceManagement_Standards",
+		"Sequence" : "1,810",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"Device Management",
+   		"Level 3" :"Standards",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Other",
+						"Values"	 : "Other"
 										}
 	},
 		{
@@ -5152,6 +5162,21 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
+						"Identifier" : "10/100 Fast Ethernet",
+						"Values"	 : "10/100 Fast Ethernet"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "2,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"Ethernet",
+   		"Level 3" :"Standards",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button (Single select)",
+					"Preset Values"   : {
 						"Identifier" : "1GbE",
 						"Values"	 : "1GbE"
 										}
@@ -5182,38 +5207,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "100GbE",
-						"Values"	 : "100GbE"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "2,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"Ethernet",
-   		"Level 3" :"Standards",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "10/100 Fast Ethernet",
-						"Values"	 : "10/100 Fast Ethernet"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "2,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"Ethernet",
-   		"Level 3" :"Standards",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "400GbE or higher",
-						"Values"	 : "400GbE or higher"
+						"Identifier" : "25GbE",
+						"Values"	 : "25GbE"
 										}
 	},
 		{
@@ -5242,8 +5237,23 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "25GbE",
-						"Values"	 : "25GbE"
+						"Identifier" : "100GbE",
+						"Values"	 : "100GbE"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "2,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"Ethernet",
+   		"Level 3" :"Standards",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button (Single select)",
+					"Preset Values"   : {
+						"Identifier" : "400GbE or higher",
+						"Values"	 : "400GbE or higher"
 										}
 	},
 		{
@@ -5392,6 +5402,21 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
+						"Identifier" : "PCIe 1.0",
+						"Values"	 : "PCIe 1.0"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
+		"Sequence" : "3,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"PCI Express",
+   		"Level 3" :"PCIe Revision",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button (Single select)",
+					"Preset Values"   : {
 						"Identifier" : "PCIe 2.0",
 						"Values"	 : "PCIe 2.0"
 										}
@@ -5407,23 +5432,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "N/A"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
-		"Sequence" : "3,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"PCI Express",
-   		"Level 3" :"PCIe Revision",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "PCIe 1.0",
-						"Values"	 : "PCIe 1.0"
+						"Identifier" : "PCIe 3.0",
+						"Values"	 : "PCIe 3.0"
 										}
 	},
 		{
@@ -5452,8 +5462,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 3.0",
-						"Values"	 : "PCIe 3.0"
+						"Identifier" : "N/A",
+						"Values"	 : "N/A"
 										}
 	},
 		{
@@ -6337,53 +6347,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "Intel® Wireless"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
 										}
 	},
 		{
@@ -6412,8 +6377,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "2G",
 						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -6637,8 +6647,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -6652,8 +6662,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -6712,8 +6722,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -6727,21 +6737,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Board_Quality_Metrics_Conflict_Mineral_Policy_Compliant",
-		"Sequence" : "12,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900214",
-		"Level 1" :"Board Quality Metrics",
-   		"Level 2" :"Conflict Mineral Policy Compliant",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : "No_Boolean"
 										}
@@ -6759,6 +6754,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
 						"Values"	 : "Yes_Boolean"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Board_Quality_Metrics_Conflict_Mineral_Policy_Compliant",
+		"Sequence" : "12,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900214",
+		"Level 1" :"Board Quality Metrics",
+   		"Level 2" :"Conflict Mineral Policy Compliant",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -6774,6 +6784,21 @@
 					"Preset Values"   : {
 						"Identifier" : "",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Acceleration_Software_Stack_Enabled",
+		"Sequence" : "12,500",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Acceleration Software Stack Enabled on Board",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "Open FPGA Stack",
+						"Values"	 : "Open FPGA Stack"
 										}
 	},
 		{
@@ -6819,21 +6844,6 @@
 					"Preset Values"   : {
 						"Identifier" : "None",
 						"Values"	 : "None"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Acceleration_Software_Stack_Enabled",
-		"Sequence" : "12,500",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Acceleration Software Stack Enabled on Board",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
-						"Identifier" : "Open FPGA Stack",
-						"Values"	 : "Open FPGA Stack"
 										}
 	},
 		{
@@ -9282,68 +9292,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "Intel® Wireless"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -9374,6 +9324,66 @@
 					"Preset Values"   : {
 						"Identifier" : "5G",
 						"Values"	 : "5G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "2G",
+						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -61822,8 +61832,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "Labeled data-input"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -61852,8 +61862,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "Online learning"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "Labeled data-input"
 										}
 	},
 		{
@@ -61867,8 +61877,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Online learning",
+						"Values"	 : "Online learning"
 										}
 	},
 		{
@@ -62162,38 +62172,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "Others"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle Cloud"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -62222,8 +62202,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "Alibaba Cloud"
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle Cloud"
 										}
 	},
 		{
@@ -62252,8 +62247,38 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "Alibaba Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Private/On-Premises",
+						"Values"	 : "Private"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "On-Premises",
+						"Values"	 : "On-Premises"
 										}
 	},
 		{
@@ -62297,21 +62322,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private/On-Premises",
-						"Values"	 : "Private"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : "Edge Appliance"
 										}
@@ -62327,8 +62337,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
-						"Values"	 : "On-Premises"
+						"Identifier" : "Others",
+						"Values"	 : "Others"
 										}
 	},
 		{
@@ -62777,8 +62787,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
-						"Values"	 : "Machine Learning"
+						"Identifier" : "Federated Training",
+						"Values"	 : "Federated Training"
 										}
 	},
 		{
@@ -62792,8 +62802,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
-						"Values"	 : "Federated Training"
+						"Identifier" : "Machine Learning",
+						"Values"	 : "Machine Learning"
 										}
 	},
 		{
@@ -63252,53 +63262,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "Google Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Amazon Web Services (AWS)",
 						"Values"	 : "Amazon Web Services (AWS)"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "Alibaba Cloud"
 										}
 	},
 		{
@@ -63342,8 +63307,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "Others"
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle Cloud"
 										}
 	},
 		{
@@ -63357,8 +63322,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Jcloud/JD.com",
-						"Values"	 : "Jcloud/JD.com"
+						"Identifier" : "Google Cloud",
+						"Values"	 : "Google Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "Alibaba Cloud"
 										}
 	},
 		{
@@ -63387,21 +63367,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
-						"Values"	 : "SAP Cloud Platform"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "On-Premises",
 						"Values"	 : "On-Premises"
 										}
@@ -63417,8 +63382,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
+						"Values"	 : "SAP Cloud Platform"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Jcloud/JD.com",
+						"Values"	 : "Jcloud/JD.com"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : "Edge Appliance"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Others",
+						"Values"	 : "Others"
 										}
 	},
 		{
@@ -63867,8 +63877,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
-						"Values"	 : "Machine Learning"
+						"Identifier" : "Federated Training",
+						"Values"	 : "Federated Training"
 										}
 	},
 		{
@@ -63882,8 +63892,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
-						"Values"	 : "Federated Training"
+						"Identifier" : "Machine Learning",
+						"Values"	 : "Machine Learning"
 										}
 	},
 		{
@@ -64372,83 +64382,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "Others"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "Alibaba Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Amazon Web Services (AWS)",
 						"Values"	 : "Amazon Web Services (AWS)"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "Google Cloud"
 										}
 	},
 		{
@@ -64477,8 +64412,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
-						"Values"	 : "SAP Cloud Platform"
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Google Cloud",
+						"Values"	 : "Google Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "Alibaba Cloud"
 										}
 	},
 		{
@@ -64507,21 +64487,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Jcloud/JD.com",
-						"Values"	 : "Jcloud/JD.com"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "On-Premises",
 						"Values"	 : "On-Premises"
 										}
@@ -64537,8 +64502,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
+						"Values"	 : "SAP Cloud Platform"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Jcloud/JD.com",
+						"Values"	 : "Jcloud/JD.com"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : "Edge Appliance"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Others",
+						"Values"	 : "Others"
 										}
 	},
 		{
@@ -65297,8 +65307,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -65312,21 +65322,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Design_File_Available",
-		"Sequence" : "8,600",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Is Design file available?  (encrypted source code or post-synthesis netlist)",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : "No_Boolean"
 										}
@@ -65347,12 +65342,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_IP_Quality_Simulation_Model_FPGA",
-		"Sequence" : "8,700",
+		"Spec Identifier" : "NPP_IP_Quality_Design_File_Available",
+		"Sequence" : "8,600",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "TPS_900221",
 		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Is simulation model for ModelSim* for Intel® FPGA Edition Software available?",
+   		"Level 2" :"Is Design file available?  (encrypted source code or post-synthesis netlist)",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
@@ -65374,6 +65369,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
 						"Values"	 : "Yes_Boolean"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Simulation_Model_FPGA",
+		"Sequence" : "8,700",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"Is simulation model for ModelSim* for Intel® FPGA Edition Software available?",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -65447,8 +65457,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -65462,21 +65472,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Readme_File",
-		"Sequence" : "9,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Is a readme file available?",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : "No_Boolean"
 										}
@@ -65497,12 +65492,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_IP_Quality_Parameterization_GUI",
-		"Sequence" : "9,300",
+		"Spec Identifier" : "NPP_IP_Quality_Readme_File",
+		"Sequence" : "9,100",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "TPS_900221",
 		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Is there a parameterization GUI allowing end user to configure IP?",
+   		"Level 2" :"Is a readme file available?",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
@@ -65524,6 +65519,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
 						"Values"	 : "Yes_Boolean"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Parameterization_GUI",
+		"Sequence" : "9,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"Is there a parameterization GUI allowing end user to configure IP?",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -65567,8 +65577,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -65582,21 +65592,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_IP_XACT_Metadata",
-		"Sequence" : "10,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"IP-XACT Metadata included",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : "No_Boolean"
 										}
@@ -65614,6 +65609,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
 						"Values"	 : "Yes_Boolean"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_IP_XACT_Metadata",
+		"Sequence" : "10,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"IP-XACT Metadata included",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -65717,8 +65727,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
-						"Values"	 : "No_Boolean"
+						"Identifier" : "Yes_Boolean",
+						"Values"	 : "Yes_Boolean"
 										}
 	},
 		{
@@ -65732,21 +65742,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : "Yes_Boolean"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Interoperability_Reports_Available  ",
-		"Sequence" : "11,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Interoperability reports available  ",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : "No_Boolean"
 										}
@@ -65764,6 +65759,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
 						"Values"	 : "Yes_Boolean"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Interoperability_Reports_Available  ",
+		"Sequence" : "11,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"Interoperability reports available  ",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
+						"Values"	 : "No_Boolean"
 										}
 	},
 		{
@@ -65822,8 +65832,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "VHDL",
-						"Values"	 : "VHDL"
+						"Identifier" : "Verilog",
+						"Values"	 : "Verilog"
 										}
 	},
 		{
@@ -65837,21 +65847,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Verilog",
-						"Values"	 : "Verilog"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Testbench_Language",
-		"Sequence" : "12,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"Testbench language",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "VHDL",
 						"Values"	 : "VHDL"
 										}
@@ -65869,6 +65864,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Verilog",
 						"Values"	 : "Verilog"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Testbench_Language",
+		"Sequence" : "12,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"Testbench language",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "VHDL",
+						"Values"	 : "VHDL"
 										}
 	},
 		{
@@ -65912,36 +65922,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "None",
-						"Values"	 : "None"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
-		"Sequence" : "12,900",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"FPGA Simulation Tools",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "NCSIM",
-						"Values"	 : "NCSIM"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
-		"Sequence" : "12,900",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP Quality Metrics",
-   		"Level 2" :"FPGA Simulation Tools",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Questa SIM",
 						"Values"	 : "Questa SIM"
 										}
@@ -65972,8 +65952,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Other",
-						"Values"	 : "Other"
+						"Identifier" : "NCSIM",
+						"Values"	 : "NCSIM"
 										}
 	},
 		{
@@ -65989,6 +65969,36 @@
 					"Preset Values"   : {
 						"Identifier" : "VCS",
 						"Values"	 : "VCS"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
+		"Sequence" : "12,900",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"FPGA Simulation Tools",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Other",
+						"Values"	 : "Other"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
+		"Sequence" : "12,900",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP Quality Metrics",
+   		"Level 2" :"FPGA Simulation Tools",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "None",
+						"Values"	 : "None"
 										}
 	},
 		{
@@ -66972,38 +66982,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle Cloud"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "Others"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "Alibaba Cloud"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -67032,8 +67012,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM Cloud"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle Cloud"
 										}
 	},
 		{
@@ -67062,8 +67057,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM Cloud"
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "Alibaba Cloud"
 										}
 	},
 		{
@@ -67079,6 +67074,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Private/On-Premises",
 						"Values"	 : "Private"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "On-Premises",
+						"Values"	 : "On-Premises"
 										}
 	},
 		{
@@ -67122,8 +67132,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
-						"Values"	 : "On-Premises"
+						"Identifier" : "Edge Appliance",
+						"Values"	 : "Edge Appliance"
 										}
 	},
 		{
@@ -67137,8 +67147,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Edge Appliance",
-						"Values"	 : "Edge Appliance"
+						"Identifier" : "Others",
+						"Values"	 : "Others"
 										}
 	},
 		{
@@ -67587,8 +67597,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
-						"Values"	 : "Machine Learning"
+						"Identifier" : "Federated Training",
+						"Values"	 : "Federated Training"
 										}
 	},
 		{
@@ -67602,8 +67612,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
-						"Values"	 : "Federated Training"
+						"Identifier" : "Machine Learning",
+						"Values"	 : "Machine Learning"
 										}
 	},
 		{
@@ -68042,21 +68052,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "Labeled data-input"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"AI Functionality",
-   		"Level 2" :"AI Training",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Yes",
 						"Values"	 : "Yes"
 										}
@@ -68072,8 +68067,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "Online learning"
+						"Identifier" : "Data-input only",
+						"Values"	 : "Data-input only"
 										}
 	},
 		{
@@ -68087,8 +68082,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "Data-input only"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "Labeled data-input"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"AI Functionality",
+   		"Level 2" :"AI Training",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Online learning",
+						"Values"	 : "Online learning"
 										}
 	},
 		{
@@ -68237,8 +68247,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
-						"Values"	 : "Deployed"
+						"Identifier" : "Commercially Ready",
+						"Values"	 : "Commercially Ready"
 										}
 	},
 		{
@@ -68252,8 +68262,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
-						"Values"	 : "Commercially Ready"
+						"Identifier" : "Deployed",
+						"Values"	 : "Deployed"
 										}
 	},
 		{
@@ -68267,23 +68277,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "NLP Architect",
-						"Values"	 : "NLP Architect"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"ToolKit",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel IPC Catalyst",
-						"Values"	 : "Intel® IPC Catalyst"
+						"Identifier" : "Distiller",
+						"Values"	 : "Distiller"
 										}
 	},
 		{
@@ -68312,6 +68307,21 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "Intel IPC Catalyst",
+						"Values"	 : "Intel® IPC Catalyst"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"ToolKit",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Neural Compute SDK",
 						"Values"	 : "Intel® Movidius™ Neural Compute SDK"
 										}
@@ -68327,8 +68337,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Distiller",
-						"Values"	 : "Distiller"
+						"Identifier" : "NLP Architect",
+						"Values"	 : "NLP Architect"
 										}
 	},
 		{
@@ -68577,8 +68587,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "Pre-trained models only"
+						"Identifier" : "Data-input only",
+						"Values"	 : "Data-input only"
 										}
 	},
 		{
@@ -68592,8 +68602,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "Data-input only"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "Labeled data-input"
 										}
 	},
 		{
@@ -68622,8 +68632,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "Labeled data-input"
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "Pre-trained models only"
 										}
 	},
 		{
@@ -69007,21 +69017,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_VPU",
-		"Sequence" : "730",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"VPU",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Myriad 2 VPU",
 						"Values"	 : "Intel® Movidius™ Myriad™ 2 VPU"
 										}
@@ -69039,6 +69034,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Myriad X VPU",
 						"Values"	 : "Intel® Movidius™ Myriad™ X VPU"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_VPU",
+		"Sequence" : "730",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"VPU",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -69097,36 +69107,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "Online learning"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"AI Functionality",
-   		"Level 2" :"AI Training",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "Pre-trained models only"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"AI Functionality",
-   		"Level 2" :"AI Training",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Data-input only",
 						"Values"	 : "Data-input only"
 										}
@@ -69144,6 +69124,36 @@
 					"Preset Values"   : {
 						"Identifier" : "Labeled data-input",
 						"Values"	 : "Labeled data-input"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"AI Functionality",
+   		"Level 2" :"AI Training",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Online learning",
+						"Values"	 : "Online learning"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"AI Functionality",
+   		"Level 2" :"AI Training",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "Pre-trained models only"
 										}
 	},
 		{
@@ -69277,8 +69287,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
-						"Values"	 : "Deployed"
+						"Identifier" : "Commercially Ready",
+						"Values"	 : "Commercially Ready"
 										}
 	},
 		{
@@ -69292,8 +69302,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
-						"Values"	 : "Commercially Ready"
+						"Identifier" : "Deployed",
+						"Values"	 : "Deployed"
 										}
 	},
 		{
@@ -69307,8 +69317,38 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "NLP Architect",
-						"Values"	 : "NLP Architect"
+						"Identifier" : "Distiller",
+						"Values"	 : "Distiller"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"ToolKit",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Intel Distribution of OpenVINO toolkit",
+						"Values"	 : "Intel® Distribution of OpenVINO™ toolkit"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"ToolKit",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Intel IPC Catalyst",
+						"Values"	 : "Intel® IPC Catalyst"
 										}
 	},
 		{
@@ -69337,8 +69377,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Distiller",
-						"Values"	 : "Distiller"
+						"Identifier" : "NLP Architect",
+						"Values"	 : "NLP Architect"
 										}
 	},
 		{
@@ -69369,36 +69409,6 @@
 					"Preset Values"   : {
 						"Identifier" : "RL Coach",
 						"Values"	 : "RL Coach"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"ToolKit",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel IPC Catalyst",
-						"Values"	 : "Intel® IPC Catalyst"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"ToolKit",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel Distribution of OpenVINO toolkit",
-						"Values"	 : "Intel® Distribution of OpenVINO™ toolkit"
 										}
 	},
 		{
@@ -69602,23 +69612,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "Pre-trained models only"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"AI Functionality",
-   		"Level 2" :"AI Training",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "Labeled data-input"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -69647,8 +69642,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "Labeled data-input"
 										}
 	},
 		{
@@ -69664,6 +69659,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Online learning",
 						"Values"	 : "Online learning"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"AI Functionality",
+   		"Level 2" :"AI Training",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "Pre-trained models only"
 										}
 	},
 		{
@@ -71557,8 +71567,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "Data-input only"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -71572,8 +71582,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "Online learning"
+						"Identifier" : "Data-input only",
+						"Values"	 : "Data-input only"
 										}
 	},
 		{
@@ -71602,8 +71612,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Online learning",
+						"Values"	 : "Online learning"
 										}
 	},
 		{
@@ -71752,8 +71762,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
-						"Values"	 : "Deployed"
+						"Identifier" : "Commercially Ready",
+						"Values"	 : "Commercially Ready"
 										}
 	},
 		{
@@ -71767,8 +71777,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
-						"Values"	 : "Commercially Ready"
+						"Identifier" : "Deployed",
+						"Values"	 : "Deployed"
 										}
 	},
 		{
@@ -73392,8 +73402,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "Google Cloud"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -73452,23 +73462,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "Others"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Deployment Architecture",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "Google Cloud",
+						"Values"	 : "Google Cloud"
 										}
 	},
 		{
@@ -73497,8 +73492,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
-						"Values"	 : "SAP Cloud Platform"
+						"Identifier" : "Private/On-Premises",
+						"Values"	 : "Private"
 										}
 	},
 		{
@@ -73512,8 +73507,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private/On-Premises",
-						"Values"	 : "Private"
+						"Identifier" : "On-Premises",
+						"Values"	 : "On-Premises"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Deployment Architecture",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
+						"Values"	 : "SAP Cloud Platform"
 										}
 	},
 		{
@@ -73557,8 +73567,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
-						"Values"	 : "On-Premises"
+						"Identifier" : "Others",
+						"Values"	 : "Others"
 										}
 	},
 		{
@@ -74022,23 +74032,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "Online learning"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "1,263",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"AI Functionality",
-   		"Level 2" :"AI Training",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "Pre-trained models only"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -74067,8 +74062,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "Labeled data-input"
 										}
 	},
 		{
@@ -74082,8 +74077,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "Labeled data-input"
+						"Identifier" : "Online learning",
+						"Values"	 : "Online learning"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "1,263",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"AI Functionality",
+   		"Level 2" :"AI Training",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "Pre-trained models only"
 										}
 	},
 		{
@@ -74322,8 +74332,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
-						"Values"	 : "Deployed"
+						"Identifier" : "Commercially Ready",
+						"Values"	 : "Commercially Ready"
 										}
 	},
 		{
@@ -74337,38 +74347,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
-						"Values"	 : "Commercially Ready"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "1,290",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "5G",
-						"Values"	 : "5G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "1,290",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
+						"Identifier" : "Deployed",
+						"Values"	 : "Deployed"
 										}
 	},
 		{
@@ -74397,8 +74377,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
+						"Identifier" : "Private Wireless",
+						"Values"	 : "Private Wireless"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "1,290",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "5G",
+						"Values"	 : "5G"
 										}
 	},
 		{
@@ -74427,8 +74422,38 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private Wireless",
-						"Values"	 : "Private Wireless"
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "1,290",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "2G",
+						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WIFI",
+		"Sequence" : "1,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Wireless",
+   		"Level 2" :"WIFI",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "801.11ac",
+						"Values"	 : "801.11ac"
 										}
 	},
 		{
@@ -74472,8 +74497,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "802.11n",
-						"Values"	 : "802.11n"
+						"Identifier" : "802.11ad",
+						"Values"	 : "802.11ad"
 										}
 	},
 		{
@@ -74502,23 +74527,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "801.11ac",
-						"Values"	 : "801.11ac"
+						"Identifier" : "802.11n",
+						"Values"	 : "802.11n"
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_WIFI",
-		"Sequence" : "1,300",
+		"Spec Identifier" : "NPP_Wireless_NFC",
+		"Sequence" : "1,310",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"Wireless",
-   		"Level 2" :"WIFI",
+   		"Level 2" :"NFC",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "802.11ad",
-						"Values"	 : "802.11ad"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -74537,12 +74562,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_NFC",
-		"Sequence" : "1,310",
+		"Spec Identifier" : "NPP_Wireless_Bluetooth",
+		"Sequence" : "1,320",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"Wireless",
-   		"Level 2" :"NFC",
+   		"Level 2" :"Bluetooth",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
@@ -74567,33 +74592,18 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_Bluetooth",
-		"Sequence" : "1,320",
+		"Spec Identifier" : "NPP_Wireless_Zigbee (802.15)",
+		"Sequence" : "1,330",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"Wireless",
-   		"Level 2" :"Bluetooth",
+   		"Level 2" :"Zigbee (802.15)",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "1,330",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Devices and Interfaces",
-   		"Level 2" :"Ethernet",
-   		"Level 3" :"Standards",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button",
-					"Preset Values"   : {
-						"Identifier" : "1GbE",
-						"Values"	 : "1GbE"
+						"Identifier" : "",
+						"Values"	 : ""
 										}
 	},
 		{
@@ -74609,6 +74619,21 @@
 					"Preset Values"   : {
 						"Identifier" : "10/100 Fast Ethernet",
 						"Values"	 : "10/100 Fast Ethernet"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "1,330",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"Devices and Interfaces",
+   		"Level 2" :"Ethernet",
+   		"Level 3" :"Standards",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button",
+					"Preset Values"   : {
+						"Identifier" : "1GbE",
+						"Values"	 : "1GbE"
 										}
 	},
 		{
@@ -74669,21 +74694,6 @@
 					"Preset Values"   : {
 						"Identifier" : "2.5GbE",
 						"Values"	 : "2.5GbE"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_Zigbee (802.15)",
-		"Sequence" : "1,330",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"Wireless",
-   		"Level 2" :"Zigbee (802.15)",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "",
-						"Values"	 : ""
 										}
 	},
 	
@@ -75087,6 +75097,1816 @@
 										}
 	},
 	
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "NPP_01_Industry",
+	"Child Name" : "Industry",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Agriculture",
+	"Child Name" : "Agriculture",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_ArtsEntertain",
+	"Child Name" : "Arts and Entertainment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_ArtsEntertain",
+	"Parent Name" : "Arts and Entertainment",
+	"Child Identifier" : "IPA_Ind_AE_AmuseGambling",
+	"Child Name" : "Amusement and Gambling",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Auto",
+	"Child Name" : "Automotive",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Auto",
+	"Parent Name" : "Automotive",
+	"Child Identifier" : "IPA_Ind_AU_AutoDriving",
+	"Child Name" : "Autonomous Driving",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Auto",
+	"Parent Name" : "Automotive",
+	"Child Identifier" : "IPA_Ind_AU_InVehicleExp",
+	"Child Name" : "In Vehicle Infotainment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_CommAviation",
+	"Child Name" : "Commercial Aviation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_CommNw",
+	"Child Name" : "Communications",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
+	"Child Name" : "Data Processing, Hosting and Related Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_CNW_MediaSer",
+	"Child Name" : "Media Processing, Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_Com_Publish",
+	"Child Name" : "Publishing (except Internet)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_CNW_NwSecurityApps",
+	"Child Name" : "Network Security & Applications",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_Com_Tele",
+	"Child Name" : "Telecommunications",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_CNW_SDNNFV",
+	"Child Name" : "SDN / NFV",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_CNW_WirelessAccess",
+	"Child Name" : "Wireless Access",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "Communications",
+	"Child Identifier" : "IPA_Ind_CNW_Infra",
+	"Child Name" : "Wireless Infrastructure",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_AeroDef",
+	"Child Name" : "Defense and Space",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Education",
+	"Child Name" : "Education",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_EnergyUtil",
+	"Child Name" : "Energy and Utilities",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_EnergyUtil",
+	"Parent Name" : "Energy and Utilities",
+	"Child Identifier" : "IPA_Ind_EnergyUtil_ElectUtil",
+	"Child Name" : "Electric Power",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_EnergyUtil",
+	"Parent Name" : "Energy and Utilities",
+	"Child Identifier" : "IPA_Ind_EnergyUtil_Gasoline",
+	"Child Name" : "Oil and Gas",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Finance&Insurance",
+	"Child Name" : "Finance and Insurance",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Gaming",
+	"Child Name" : "Gaming",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Gaming",
+	"Parent Name" : "Gaming",
+	"Child Identifier" : "IPA_Ind_Game_Esport",
+	"Child Name" : "eSports",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Gaming",
+	"Parent Name" : "Gaming",
+	"Child Identifier" : "IPA_Ind_Game_PC",
+	"Child Name" : "PC Gaming",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Gov",
+	"Child Name" : "Government",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_HealthCare",
+	"Child Name" : "Health and Life Sciences",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HL_ClinicalSys",
+	"Child Name" : "Clinical Systems",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HC_Fitness",
+	"Child Name" : "Fitness and Wellness",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HL_LabLifeSci",
+	"Child Name" : "Life Sciences Tools and Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HC_DiagTherap",
+	"Child Name" : "Medical Devices",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HC_MedImg",
+	"Child Name" : "Medical Imaging",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "Health and Life Sciences",
+	"Child Identifier" : "IPA_Ind_HC_PatinentINfo",
+	"Child Name" : "Patient Infotainment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_AccomFoodServ",
+	"Child Name" : "Hospitality and Restaurants",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_AccomFoodServ",
+	"Parent Name" : "Hospitality and Restaurants",
+	"Child Identifier" : "IPA_Ind_AFS_Accommodation",
+	"Child Name" : "Accommodation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_AccomFoodServ",
+	"Parent Name" : "Hospitality and Restaurants",
+	"Child Identifier" : "IPA_Ind_AFS_FoodDrinkServ",
+	"Child Name" : "Food and Drink Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Hospitality",
+	"Child Name" : "Hospitality",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Hospitality",
+	"Parent Name" : "Hospitality",
+	"Child Identifier" : "IPA_Ind_Hos_HoMoLo",
+	"Child Name" : "Hotels, Motels and Lodging",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Hospitality",
+	"Parent Name" : "Hospitality",
+	"Child Identifier" : "IPA_Ind_Hos_Res",
+	"Child Name" : "Resorts and Casinos",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_IndAuto",
+	"Child Name" : "Industrial Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "Industrial Automation",
+	"Child Identifier" : "IPA_Ind_AU_FactoryAutom",
+	"Child Name" : "Factory Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "Industrial Automation",
+	"Child Identifier" : "IPA_Ind_AU_HumanMachInterface",
+	"Child Name" : "Human Machine Interfaces",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "Industrial Automation",
+	"Child Identifier" : "IPA_Ind_AU_WorkConsolidation",
+	"Child Name" : "Workload Consolidation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Manufacturing",
+	"Child Name" : "Manufacturing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "Manufacturing",
+	"Child Identifier" : "IPA_Ind_Manuf_Automation",
+	"Child Name" : "Automotive",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "Manufacturing",
+	"Child Identifier" : "IPA_Ind_Manuf_IndAuto",
+	"Child Name" : "Industrial Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "Manufacturing",
+	"Child Identifier" : "IPA_Ind_Manuf_TransEquip",
+	"Child Name" : "Transportation Equipment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_NotForProfit",
+	"Child Name" : "Not For Profit",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Others",
+	"Child Name" : "Others",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Professional&BusinessServices",
+	"Child Name" : "Professional and Business Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_RealEstateRentLeas",
+	"Child Name" : "Real Estate, Rental and Leasing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Retail",
+	"Child Name" : "Retail",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Software",
+	"Child Name" : "Software",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "Industry",
+	"Child Identifier" : "IPA_Ind_Trans",
+	"Child Name" : "Transportation and Warehouse",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_AirTransp",
+	"Child Name" : "Air Transportation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Fleet",
+	"Child Name" : "Fleet Management",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Rail",
+	"Child Name" : "Rail Transportation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_WareStorage",
+	"Child Name" : "Warehousing and Storage",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Logistics&Store",
+	"Child Name" : "Logistics, Freight & Storage",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Telematics",
+	"Child Name" : "Telematics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "NPP_01_APP",
+	"Child Name" : "Use Cases",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AdvancedAnalytics",
+	"Child Name" : "Advanced Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AlgoTradInvAdvCrypto",
+	"Child Name" : "Algorithmic Trading, Investment Advisory, Crypto",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ArtificalIntel",
+	"Child Name" : "Artificial Intelligence",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_AnomalyDetection",
+	"Child Name" : "Anomaly Detection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_ContentGeneration",
+	"Child Name" : "Content generation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_conv_bots_and_agnt",
+	"Child Name" : "Conversational Bots and Voice Agents",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_Data_prep_and_Mangmt",
+	"Child Name" : "Data preparation and management",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_DeepLearning",
+	"Child Name" : "Deep Learning",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_DrugDiscovery",
+	"Child Name" : "Drug Discovery",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_Facialdete_recong_classificn",
+	"Child Name" : "Facial Detection/Recognition/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_img_objetdetect_recog_classificn",
+	"Child Name" : "Image/Object Detection/ Recognition/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_MachineLearning",
+	"Child Name" : "Machine Learning",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_Medicalimag_analysis_and_diagn",
+	"Child Name" : "Medical imaging, Analysis and Diagnostics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_predictiveMaintence_and_Analytics",
+	"Child Name" : "Predictive Maintenance and Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_RoboticProcessAuto",
+	"Child Name" : "Robotic Process Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "Artificial Intelligence",
+	"Child Identifier" : "IPA_APP_VideoSurveilAnalytics",
+	"Child Name" : "Video Surveillance and Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AssetOperationsOpt",
+	"Child Name" : "Asset & Operations Optimization",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AMR",
+	"Child Name" : "Autonomous Mobile Robot (AMR)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AssistedDiagnosisPres",
+	"Child Name" : "Assisted or automated diagnosis and prescription",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_AugmentedSearch",
+	"Child Name" : "Augmented Search",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_CloudComp",
+	"Child Name" : "Cloud Computing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "Cloud Computing",
+	"Child Identifier" : "IPA_APP_CloudComp_Hybrid",
+	"Child Name" : "Hybrid Cloud",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "Cloud Computing",
+	"Child Identifier" : "IPA_APP_CloudComp_Private",
+	"Child Name" : "Private Cloud",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "Cloud Computing",
+	"Child Identifier" : "IPA_APP_CloudComp_PrivateSDI",
+	"Child Name" : "Private Cloud and Software Defined Infrastructure",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "Cloud Computing",
+	"Child Identifier" : "IPA_APP_CloudComp_Public",
+	"Child Name" : "Public Cloud",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_CognitiveReasoning",
+	"Child Name" : "Cognitive Reasoning",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Collaboration",
+	"Child Name" : "Collaboration",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ConnectedWorker",
+	"Child Name" : "Connected Worker",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_CntrlOptmizatioAutonomy",
+	"Child Name" : "Control Optimization & Autonomy",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ConverBotsCSA",
+	"Child Name" : "Conversational Bots, Customer Service Assistants",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DataLabeling",
+	"Child Name" : "Data Labeling",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DataManagMonitor",
+	"Child Name" : "Data management and monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DataPreparation",
+	"Child Name" : "Data Preparation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DataScience",
+	"Child Name" : "Data Science",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DigSecSurv",
+	"Child Name" : "Digital Security Surveillance",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "Digital Security Surveillance",
+	"Child Identifier" : "IPA_APP_DSS_EnterDSSSol",
+	"Child Name" : "Enterprise DSS Solutions with Intelligence (1000+ cameras)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "Digital Security Surveillance",
+	"Child Identifier" : "IPA_APP_DSS_EntryLvlSol",
+	"Child Name" : "Entry Level Solutions (1 to 20 cameras)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "Digital Security Surveillance",
+	"Child Identifier" : "IPA_APP_DSS_HighLvlSol",
+	"Child Name" : "High End Solutions with Intelligence (101 to 1000 cameras)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "Digital Security Surveillance",
+	"Child Identifier" : "IPA_APP_DSS_MidLvlSol",
+	"Child Name" : "Mid Level Solutions with Intelligence (21 to 100 cameras)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DigSignage",
+	"Child Name" : "Digital Signage",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_DigitalTwin",
+	"Child Name" : "Digital twin",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_EnergyMonitor",
+	"Child Name" : "Energy Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_EnvMonitor",
+	"Child Name" : "Environmental Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ERP",
+	"Child Name" : "ERP",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_FacialRecogDetectClass",
+	"Child Name" : "Facial Recognition/Detection/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_FactoryAutomation",
+	"Child Name" : "Factory Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_FinancialAnalyticsPlatform",
+	"Child Name" : "Financial Analytics Platform",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_FraudThreatDetect",
+	"Child Name" : "Fraud and Threat Detection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_HealthLifeSciences",
+	"Child Name" : "Health & Life Sciences",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_CT",
+	"Child Name" : "CT - Computerized Tomography",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_HealthIT",
+	"Child Name" : "Health IT",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_LabInstrumentationPharma",
+	"Child Name" : "Laboratory Instrumentation / Pharma",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_LIMSBox",
+	"Child Name" : "LIMS Box (Laboratory Instrumentation Management System Box )",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_MedicalRobots",
+	"Child Name" : "Medical Robots",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_MRI",
+	"Child Name" : "MRI - Magnetic Ressonance Imaging",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_Omics",
+	"Child Name" : "Omics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_PACS",
+	"Child Name" : "PACS - Picture Archiving and Communication System/VNA-Vendor Neutral Archiving",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_PatientMonitoring",
+	"Child Name" : "Patient Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_PET",
+	"Child Name" : "PET - Positron Emission Tomography",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_Telemedicine",
+	"Child Name" : "Telemedicine",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_Ultrasound",
+	"Child Name" : "Ultrasound",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "Health & Life Sciences",
+	"Child Identifier" : "IPA_APP_X-Ray",
+	"Child Name" : "X-Ray",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_HighPerfComputing",
+	"Child Name" : "High Performance Computing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_HumanEmotionAnalysis",
+	"Child Name" : "Human Emotion Analysis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_HumanWellnessMonitoring",
+	"Child Name" : "Human Wellness Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ImageRecog",
+	"Child Name" : "Image recognition",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ImageRecogDetectClass",
+	"Child Name" : "Image Recognition/Detection/ Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Intelgnt_vend",
+	"Child Name" : "Intelligent Vending",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_InterWhiteBoard",
+	"Child Name" : "Interactive Whiteboard",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_IOT",
+	"Child Name" : "Internet of Things",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_InventorySupplyChain",
+	"Child Name" : "Inventory and Supply Chain automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_InventoryMgmt",
+	"Child Name" : "Inventory Management",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_LogisticsTracking",
+	"Child Name" : "Logistics & Tracking",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_MachineConditionmontior",
+	"Child Name" : "Machine Condition Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_MediaEntertainment",
+	"Child Name" : "Media & Entertainment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "Media & Entertainment",
+	"Child Identifier" : "IPA_APP_Animatedfilms",
+	"Child Name" : "Animated films",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "Media & Entertainment",
+	"Child Identifier" : "IPA_APP_GameDev",
+	"Child Name" : "Game Development",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "Media & Entertainment",
+	"Child Identifier" : "IPA_APP_GraphicsDesign",
+	"Child Name" : "Graphics Design",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "Media & Entertainment",
+	"Child Identifier" : "IPA_APP_VideoEditingVisualEffctsMoviesTele",
+	"Child Name" : "Video Editing & Visual Effects / Movies / Television",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_MedicalImagAnalysis",
+	"Child Name" : "Medical imaging and Analysis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ModelManageTraining",
+	"Child Name" : "Model management and training",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_NLP",
+	"Child Name" : "Natural language processing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ObjectRecogDetectClass",
+	"Child Name" : "Object Recognition/Detection/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Other",
+	"Child Name" : "Other (pls specify)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Others",
+	"Child Name" : "Others",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_PatientDataAnalytics",
+	"Child Name" : "Patient Data Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_PersonalMedicCare",
+	"Child Name" : "Personalized medication and care",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_PredictiveDiagnosis",
+	"Child Name" : "Predictive diagnosis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_PredictiveMainten",
+	"Child Name" : "Predictive Maintenance",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_PrintImgnOffAuto",
+	"Child Name" : "Print Imaging and Office Automation",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_ProductInspection",
+	"Child Name" : "Product Inspection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_QualityAssessment",
+	"Child Name" : "Quality Assessment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_RecoSystems",
+	"Child Name" : "Recommender Systems",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_RetailBanking",
+	"Child Name" : "Retail Banking",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_RiskManageDetect",
+	"Child Name" : "Risk Management and Detection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Robot",
+	"Child Name" : "Robot",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_ArtR",
+	"Child Name" : "Articulated Robots",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_AGV",
+	"Child Name" : "Automated Guided Vehicles",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_AMR",
+	"Child Name" : "Autonomous Mobile Robot (AMR)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_Cobts",
+	"Child Name" : "Cobots",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_Hum",
+	"Child Name" : "Humanoids",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "Robot",
+	"Child Identifier" : "IPA_APP_Robot_Hybrid",
+	"Child Name" : "Hybrids",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SentimentAnalysis",
+	"Child Name" : "Sentiment Analysis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SituationalMonitoring",
+	"Child Name" : "Situational Monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SmartBuilding",
+	"Child Name" : "Smart Building",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SmartCity",
+	"Child Name" : "Smart City",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SmCtPbSfCrAt",
+	"Child Name" : "Smart City/Public Safety/Crowd Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SmartHome",
+	"Child Name" : "Smart Home",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SmartLogistics",
+	"Child Name" : "Smart logistics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_SocialMediaAnalytics",
+	"Child Name" : "Social Media Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Storage",
+	"Child Name" : "Storage",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_Telematics",
+	"Child Name" : "Telematics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_VideoMgmt",
+	"Child Name" : "Video Management",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "Use Cases",
+	"Child Identifier" : "IPA_APP_VoiceRecog",
+	"Child Name" : "Voice Recognition",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Child Name" : "Partner Program Segments",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "Partner Program Segments",
+	"Child Identifier" : "Intel_Segments_Client_Computing",
+	"Child Name" : "Client Computing",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "Partner Program Segments",
+	"Child Identifier" : "Intel_Segments_Data_Center",
+	"Child Name" : "Data Center",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "Partner Program Segments",
+	"Child Identifier" : "Intel_Segments_Embedded_IoT",
+	"Child Name" : "Embedded / IoT",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "Partner Program Segments",
+	"Child Identifier" : "Intel_Segments_Field_Programmable_Gate_Array",
+	"Child Name" : "Field Programmable Gate Array",
+	"Features" :	[ 
+					
 					{ }
 					]
 	},

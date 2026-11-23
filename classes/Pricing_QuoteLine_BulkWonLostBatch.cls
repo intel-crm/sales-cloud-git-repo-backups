@@ -2,8 +2,8 @@
  * @description       : Class to process bulk won/lost records in batches
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 04-26-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 07-12-2023
+ * @last modified by  : Sandeep Chamate
 **/
 public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sObject>, Database.Stateful{
 
@@ -52,8 +52,6 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
             csvRowVal = response; 
             csvRowValues.add(csvRowVal);
         }
-        List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
-        Id orgWideEmailAddId = orgWideEmailAdd[0].id;
         csvColumnHeader = 'Quote Line Number, Quote Line Status, Deal ID, Result\n';
         String csvFile = csvColumnHeader + String.join(csvRowValues,'\n');
         
@@ -72,7 +70,6 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
         String[] ccAddresses = new String[] {ccemailAddress};
         message.setToAddresses(toAddresses);
         message.setccAddresses(ccAddresses);
-        message.setOrgWideEmailAddressId(orgWideEmailAddId);
         message.setSubject('Result : Bulk Won/Lost Operation'); 
         message.setHtmlBody('Please see attached Bulk Won/Lost success error csv file');
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { message });

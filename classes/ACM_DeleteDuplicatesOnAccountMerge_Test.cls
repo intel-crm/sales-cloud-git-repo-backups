@@ -269,8 +269,20 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         accBusType.Account__c = account1.Id;
         accBusType.Business_Types__c = bussType.Id;
         accBussTypeList.add(accBusType);
-        System.debug('Account Id : Test : '+account2); 
         insert accBussTypeList;
+        
+        List<Core_Account_Compliance_Watch_List__c> cwlList  = new List<Core_Account_Compliance_Watch_List__c>();
+        Core_Account_Compliance_Watch_List__c cwl1 = new Core_Account_Compliance_Watch_List__c();
+        cwl1.Core_Account_Id__c = account1.Id;
+        cwl1.Core_Type__c = 'EC';
+        insert cwl1;
+        
+        Core_Account_Compliance_Watch_List__c cwl2 = new Core_Account_Compliance_Watch_List__c();
+        cwl2.Core_Account_Id__c = account1.Id;
+        cwl2.Core_Type__c = 'EC';
+        insert cwl2;
+
+
     }
     
     @isTest
@@ -288,4 +300,8 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         system.schedule('Batch Test' , cronExpression , batchschedule);    
         Test.stopTest();        
     }
+    
+    
+  
+ 
 }

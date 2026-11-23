@@ -8,16 +8,14 @@
 * Aayushi                    1/03/2019                    modified- US253172
 ****************************************************************************************************/
 
-Public with sharing class Core_IPS_AdminUtility
+Public without sharing class Core_IPS_AdminUtility
 {  
     
     //Added By Yogesh Sharma
     public  static void  DeleteEnvDetails(List<Core_IPS_Response__c> LstEnvironmentDetail)
     {
         /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
-        // Venrublity Fix - Refering query to service class
-        // delete LstEnvironmentDetail;
-        Core_IPS_QueryService.deleteRecords((List<SObject>) LstEnvironmentDetail);
+        delete LstEnvironmentDetail;
         
     } 
     
@@ -25,49 +23,33 @@ Public with sharing class Core_IPS_AdminUtility
     {
         /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
         if (Core_IPS_Environment_Details__c.sObjectType.getDescribe().isDeletable()) {
-            // Venrublity Fix - Refering query to service class
-            // delete LstEnvironmentDetail;
-            LstEnvironmentDetail = (List<Core_IPS_Environment_Details__c>) Core_IPS_QueryService.deleteRecords((List<SObject>) LstEnvironmentDetail);
+            delete LstEnvironmentDetail;
         }
         
     } 
     
     public static void insertLineItems(List<Core_IPS_Map_Par_Line_Item__c> lineItems){  
-        // Venrublity Fix - Refering query to service class
-        // insert lineItems;
-        lineItems = (List<Core_IPS_Map_Par_Line_Item__c>) Core_IPS_QueryService.insertRecords((List<SObject>) lineItems);  
+        insert lineItems;  
     }
     
     public static void insertProdAccessAccJOs(List<Core_IPS_MAP_Account__c> coreMapAccToInsert){
-        // Venrublity Fix - Refering query to service class
-        // insert coreMapAccToInsert;
-        coreMapAccToInsert = (List<Core_IPS_MAP_Account__c>) Core_IPS_QueryService.insertRecords((List<SObject>) coreMapAccToInsert);
+        insert coreMapAccToInsert;
     }
     
     public static void insertProdAccessProdJOs(List<Core_IPS_MAP_Product__c> coreMapPrdToInsert){
-        // Venrublity Fix - Refering query to service class
-        // insert coreMapPrdToInsert;
-        coreMapPrdToInsert = (List<Core_IPS_MAP_Product__c>) Core_IPS_QueryService.insertRecords((List<SObject>) coreMapPrdToInsert);
+        insert coreMapPrdToInsert;
     }
     
     public static void insertGECList(List<Core_IPS_GEC_Details__c> GECList){
-        // Venrublity Fix - Refering query to service class
-        // insert GECList;
-        GECList = (List<Core_IPS_GEC_Details__c>) Core_IPS_QueryService.insertRecords((List<SObject>) GECList);     
+        insert GECList;     
     } 
     
     //Addded By Yogesh Sharma
     public static void insertEnvDetailsToCreate(List<Core_IPS_Response__c> insertEnvDetails){
-        for (Core_IPS_Response__c v : insertEnvDetails){
-        System.debug('DDDGGG 49 : insertEnvDetails' + v);
-        }
-        // Venrublity Fix - Refering query to service class
-        // insert insertEnvDetails;
-        //Niyaz added as part of vulnerability    
-        insertEnvDetails = (List<Core_IPS_Response__c>) Core_IPS_QueryService.insertRecords((List<SObject>) insertEnvDetails); 
+        insert insertEnvDetails;     
         
     }
-     
+    
     
     public static void upsertEnvDetailsToCreate(List<Core_IPS_Response__c> insertEnvDetails,string caseId, boolean deleteExsitingResponses ){
         
@@ -82,34 +64,17 @@ Public with sharing class Core_IPS_AdminUtility
     
     
     public static void insertEnvDetailsToCreate(List<Core_IPS_Environment_Details__c> insertEnvDetails){
-        // Venrublity Fix - Refering query to service class
-        // insert insertEnvDetails;
-        insertEnvDetails = (List<Core_IPS_Environment_Details__c>) Core_IPS_QueryService.insertRecords((List<SObject>) insertEnvDetails);     
+        insert insertEnvDetails;     
     }
     
     //Added by Ashutosh - US103890 - to insert new interested parties
-    /*Start -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
     public static void insertInterestedParties(List<Core_IPS_Case_Interested_Party__c> interestedParties){
-        try {
-            // Venrublity Fix - Refering query to service class
-            // Database.insert(interestedParties, AccessLevel.USER_MODE);
-            interestedParties = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.insertRecords((List<SObject>) interestedParties);
-        } catch (DmlException e) {
-            // Log or handle the exception as needed
-            throw e;
-        }
+        insert interestedParties;
     } 
-    /*END -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
+    
     //Added by Aayushi - US253172 - to update Contact
     public static void updateContact(Contact cont){
-        try{
-            // Venrublity Fix - Refering query to service class
-            // update cont;
-            List<SObject> contList = Core_IPS_QueryService.updateRecords(new List<SObject>{ cont });
-            if(!contList.isEmpty()){
-                cont = (Contact) contList[0];
-            }
-        }
+        try{update cont;}
         catch(Exception e){ 
             Core_IPS_ExceptionHandling.logEntryWithException(e, 'Contact', 'Core_IPS_AdminUtility');
         }
@@ -185,20 +150,10 @@ Public with sharing class Core_IPS_AdminUtility
               }
             try{
                 if(newComment!=null){       
-                    // Venrublity Fix - Refering query to service class
-                    // insert newComment;
-                    List<SObject> newCommentList = Core_IPS_QueryService.insertRecords(new List<SObject>{ newComment });
-                    if(!newCommentList.isEmpty()){
-                        newComment = (Core_IPS_Case_Comments__c) newCommentList[0];
-                    }
+                    insert newComment;
                     newCommentId.add(newComment.id);
                     if(cs.Id != null){  
-                        // Venrublity Fix - Refering query to service class
-                        // update cs;
-                        List<SObject> csList = Core_IPS_QueryService.updateRecords(new List<SObject>{ cs });
-                        if(!csList.isEmpty()){
-                            cs = (Case) csList[0];
-                        }
+                        update cs; 
                     }
                     return newCommentId;
                 }
@@ -297,25 +252,16 @@ Public with sharing class Core_IPS_AdminUtility
         
         List<Asset> assetList = new List<Asset>();
         List<Core_Flat_Product_Hierarchy__c> prodHierarchyList = new List<Core_Flat_Product_Hierarchy__c>();
-        Set<String> ids = new Set<String>();
-        List<Product2> productList = new List<Product2>();
+        Set<String> Ids = new Set<String>();
+        List<Product2> ProductList = new List<Product2>();
         try{
             if(prodId != null || prodId != ''){
                 List<sObject> listprod = new List<sObject>();
-//Syed Vulnerability fix-- query refering to the service class
-                assetList = (List<Asset>) Core_IPS_QueryService.queryRecords(
-                    'select id, Name, Core_Product_Organization__c, core_supported_product__c, core_supported_product__r.Core_IPS_Is_Show_Variant__c, Core_IPS_Project__c, Core_Product_EPM_ID__c from asset where id = :productId',
-                    new Map<String, Object>{ 'productId' => productId }
-                );
+                assetList = Database.Query('select id, Name,Core_Product_Organization__c,core_supported_product__c,core_supported_product__r.Core_IPS_Is_Show_Variant__c,Core_IPS_Project__c,Core_Product_EPM_ID__c from asset where id=:productId');
                 if(!assetList.isEmpty() || assetList.size() > 0){
                     if(assetList[0].core_supported_product__r.Core_IPS_Is_Show_Variant__c== true){
                         if (Schema.sObjectType.Core_Flat_Product_Hierarchy__c.isAccessible()) {
-                           //Syed Vulnerability fix-- query refering to the service class
-                            String hierarchyFilter = '%' + assetList[0].Core_Product_EPM_ID__c + '%';
-                            prodHierarchyList = (List<Core_Flat_Product_Hierarchy__c>) Core_IPS_QueryService.queryRecords(
-                                'select id, Core_EPM_Hierarchy_Name__c, Core_L1_EPM_ID__c, Core_L1_EPM_Name__c, Core_L2_EPM_ID__c, Core_L2_EPM_Name__c, Core_Unique_ID__c from Core_Flat_Product_Hierarchy__c where Core_Unique_ID__c LIKE :hierarchyFilter',
-                                new Map<String, Object>{ 'hierarchyFilter' => hierarchyFilter }
-                            );
+                            prodHierarchyList = [select id,Core_EPM_Hierarchy_Name__c, Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_Unique_ID__c from Core_Flat_Product_Hierarchy__c where Core_Unique_ID__c LIKE: '%'+assetList[0].Core_Product_EPM_ID__c+'%'];
                         }
                         if(!prodHierarchyList.isEmpty() && prodHierarchyList.size()>0){
                             List<String> recorddata = new List<String>();
@@ -326,43 +272,39 @@ Public with sharing class Core_IPS_AdminUtility
                                     if(recorddata[i]==assetList[0].Core_Product_EPM_ID__c){
                                         if(System.label.Core_IPS_MAG_Support_Org.Contains((assetList[0].Core_Product_Organization__c+'').substring(0,15))){
                                             if(i>0 && i==1){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }else if(i>0 && i==2){
-                                                ids.add(recorddata.get(i-2));
+                                                Ids.add(recorddata.get(i-2));
                                             }else if(i>0 && i==3){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }
                                         } else {
                                             if(i>0){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        ids.remove(assetList[0].Core_Product_EPM_ID__c);
+                        Ids.remove(assetList[0].Core_Product_EPM_ID__c);
                         String strIPS = 'IPS';
                         if(ids!=null && ids.size()>0){
                             
-                            productList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :Ids order by Name];
+                            ProductList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :Ids order by Name];
                         }
                     }
                 }
             }
         } catch(Exception e){
         }
-        if(!productlist.isEmpty()){
-            return productlist;
+        if(!Productlist.isEmpty()){
+            return Productlist;
         }
         return null;
     }
     public static Case createCase(Case caseDetails){
-//Syed Vulnerability fix-- query refering to the service class
-         List<SObject> caseDetailsList = Core_IPS_QueryService.upsertRecords(new List<SObject>{ caseDetails });
-                if(!caseDetailsList.isEmpty()){
-                    caseDetails = (Case) caseDetailsList[0];
-                }
+        upsert caseDetails;
         return caseDetails;
     }
     

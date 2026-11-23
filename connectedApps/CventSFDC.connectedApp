@@ -5,7 +5,7 @@
     <label>Сvent SFDC</label>
     <oauthConfig>
         <callbackUrl>https://intel--cventevents.visualforce.com/apex/cventevents__oauthcallback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ic_QS0wlnnzHzAA3rk_4rlskne4u0Ry7BwShfpTGQgDDt6GvfIq7tgzcPsu</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKixLfd5zAhYfdJYCEOqgKVGdJX6ywLTnVOKt_fYmw1W5rlCDDcWZ2pcf3pqa</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

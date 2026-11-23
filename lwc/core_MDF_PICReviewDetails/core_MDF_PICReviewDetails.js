@@ -29,7 +29,6 @@ import ipaProgramName from "@salesforce/label/c.Core_MDF_IPA_Program_Name";
 import comments from "@salesforce/label/c.Core_MDF_IPA_Comments";
 import tactics from "@salesforce/label/c.Core_MDF_Activity_Tactics";
 import dash from "@salesforce/label/c.Core_MDF_Dash";
-import finalOutcomeBasedPicStatus from "@salesforce/label/c.Core_MDF_PaymentClearanceProcessing";  //Roshan - Final Outcome Based New Status
 
 export default class Core_MDF_PICReviewDetails extends LightningElement {
   @api recordId; //Hold claim record Id
@@ -53,8 +52,7 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
     pendingAccManagerClarification,
     ipaProgramName,
     comments, 
-    tactics,
-    finalOutcomeBasedPicStatus  //Roshan - Final Outcome Based New Status
+    tactics
   };
   displayPICReviewAccordion = false; //Flag to display PIC Review Detail List
   displayError = false; //Flag to display Error
@@ -69,7 +67,6 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
   picReviewResultDetails; //holds PIC Review Result details - Issues list
   hasClaimUndergonePICReview = false; //Indicates whether claim has undergone PIC Review or not
   ipaOutcomeBasedClaim = false;
-  finalOutcomeBasedClaim = false;  //Roshan - Final Outcome Based New Status
   //Initial load
   connectedCallback() {
     this.checkObjectAccess();
@@ -96,11 +93,6 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
       })
   }
 
-  //Roshan - Final Outcome Based New Status
-  get picReviewHeaderLabel() {
-    return this.finalOutcomeBasedClaim ? this.label.finalOutcomeBasedPicStatus : this.label.picReviewDetail;
-  }
-
   //To fetch the logged in user /PIC review /PIC Review Results details for a claim
   getUserAndPICReviewResultDetails() {
     getUserAndPICReviewResultDetails({ claimId: this.recordId })
@@ -116,7 +108,6 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
           this.isCCRMUserOrPICReviewer = userAndPICReviewDetails.isCCRMUserOrPICReviewer;
           this.hasClaimUndergonePICReview = userAndPICReviewDetails.hasClaimUndergonePICReview;
           this.ipaOutcomeBasedClaim = userAndPICReviewDetails.ipaOutcomeBasedClaim;
-          this.finalOutcomeBasedClaim = userAndPICReviewDetails.finalOutcomeBasedClaim;  //Roshan - Final Outcome Based New Status
           //If - If the claim has undergone PIC Review, then display the PIC Review Section under claim's related list
           //else - hide the PIC Review Section from claim's related list
           if (this.hasClaimUndergonePICReview) {
@@ -226,7 +217,7 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
       picReviewResultObject.hasInternalComments = this.displayPICInternalComments;
       picReviewResultObject.picCSS = picReviewStatus === this.label.completed ? 'picreview-completed' : 'picreview-failed';
       picReviewResultObject.picReviewCycleNumber = picReview.Core_MDF_CycleNumber_nbr__c;
-      picReviewResultObject.picReviewLabel = (this.finalOutcomeBasedClaim ? this.label.finalOutcomeBasedPicStatus : this.label.picReviewLabel) + ' - ' + picReview.Core_MDF_CycleNumber_nbr__c;  //Roshan - Final Outcome Based New Status
+      picReviewResultObject.picReviewLabel = this.label.picReviewLabel + ' - ' + picReview.Core_MDF_CycleNumber_nbr__c;
       picReviewResultDetailsLocalData.push(picReviewResultObject);
     });
     this.picReviewResultDetailsData = picReviewResultDetailsLocalData;
@@ -236,39 +227,20 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
   //To show/hide the columns based on Internal/external user
   assignColumns(isInternalUser, localizedFieldName) {
     console.log('localizedFileName', localizedFieldName);
-    //check if user is Internal && is final outcomeBased
-    if (isInternalUser && !this.finalOutcomeBasedClaim) {
+    //check if user is Internal
+    if (isInternalUser) {
       let localizedFieldNameInternal = "Core_MDF_Issue_English_txt__c";
       //Display column to internal user
       this.picReviewColumns = [
         {
           label: this.label.picChecks,
           fieldName: "Core_MDF_QuestionEnglish_txt__c",
-          type: "text",
-          wrapText: true
+          type: "text"
         },
         {
           label: this.label.picIssues,
           fieldName: localizedFieldNameInternal,
-          type: "text",
-          wrapText: true
-        }
-        // commenting as tactics needs to be added before filesAttached columns
-        /*{
-          label: this.label.picFilesAffected,
-          fieldName: "Core_MDF_FilesAffected_txt__c",
           type: "text"
-        }*/
-      ];
-    } else if (!this.finalOutcomeBasedClaim) {
-      let localizedFieldNameExternal = localizedFieldName;
-      //Display column to external user
-      this.picReviewColumns = [
-        {
-          label: this.label.picIssues,
-          fieldName: localizedFieldNameExternal,
-          type: "text",
-          wrapText: true
         }
         // commenting as tactics needs to be added before filesAttached columns
         /*{
@@ -278,16 +250,28 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
         }*/
       ];
     } else {
-      // Final Outcome Based Claim - initialize empty array
-      this.picReviewColumns = [];
+      let localizedFieldNameExternal = localizedFieldName;
+      //Display column to external user
+      this.picReviewColumns = [
+        {
+          label: this.label.picIssues,
+          fieldName: localizedFieldNameExternal,
+          type: "text"
+        }
+        // commenting as tactics needs to be added before filesAttached columns
+        /*{
+          label: this.label.picFilesAffected,
+          fieldName: "Core_MDF_FilesAffected_txt__c",
+          type: "text"
+        }*/
+      ];
     }
     if (this.ipaOutcomeBasedClaim) {
       this.picReviewColumns.push(
         {
           label: this.label.tactics,
-          fieldName: "Core_MDF_Tactics_nm__c",
-          type: "text",
-          wrapText: true
+          fieldName: "Core_MDF_Tactic_txt__c",
+          type: "text"
         }
       );
     }
@@ -297,19 +281,17 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
       {
         label: this.label.picFilesAffected,
         fieldName: "Core_MDF_FilesAffected_txt__c",
-        type: "text",
-        wrapText: true
+        type: "text"
       }
     );
 
     if(this.ipaOutcomeBasedClaim){
       this.picReviewColumns.push(
-      {
-        label: this.label.comments,
-        fieldName: "Core_MDF_Comment_txt__c",
-        type: "text",
-        wrapText: true
-      });
+        {
+          label: this.label.comments,
+          fieldName: "Core_MDF_Comment_txt__c",
+          type: "text"
+        });
     }
   }
 

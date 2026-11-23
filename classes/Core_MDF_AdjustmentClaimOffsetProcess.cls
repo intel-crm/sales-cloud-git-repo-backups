@@ -21,8 +21,6 @@ public static Set<Id> setOfSelAccounts=new Set<Id>();
 public static Set<Date> payStartDt = new Set<Date>();
 public static Set<Date> payEndDt = new Set<Date>();
 public static Set<String> mdfPaymentRunRecordTypes=new Set<String>();
-//OOC (Out of Cycle) - specific claims selected on the payment run
-public static Set<Id> selectedClaimIds = new Set<Id>();
 //Map of channel program meta data
 public static Map<String,String> mapOfProgramMetadata = new Map<String,String>();
 public static String surePay = Label.Core_MDF_nonTranslate_Sure_Pay;
@@ -85,32 +83,22 @@ Modified By:        Date:       Changes:
           }
       }
         else{ //For Comarketing Programs - MDF & CMP
-            //Account selection is mandatory for standard MDF payment runs, optional for OOC payment runs (selectedClaimIds populated)
-            if(mdfPaymentRunRecordTypes!=null && mdfPaymentRunRecordTypes.size()>0 && (setOfSelAccounts.size()>0 || !selectedClaimIds.isEmpty())){
-                 String paymentDueStatus = Label.Core_MDF_Status_Payment_Due;
-                 String mdfClaimsQuery = 'SELECT Id,CreatedDate,Core_MDF_Country_Location_nm__c,Core_MDF_Requested_Reimbursement_Amt__c,ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Program__c,Amount,Core_MDF_Status__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,'
-                 + 'Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,Core_MDF_Payment_Id__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_RMF_Last_POP_Submission_Dt__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_RMF_Claim_Approval_Dt__c,'
-                 + 'Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c ,Request.ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,'
-                 + 'ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_C_Type_Ind__c,'
-                 + 'Core_MDF_AccountCompany__c,Core_MDF_VAT_Eligibility_Ind__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Quarter_Year_Txt__c,ChannelPartner.Name,Core_MDF_Claim_Ref_Number__c,Title,Core_MDF_Activity_Types__c,Budget.Title,Request.Title,'
-                 + 'Request.Core_MDF_Intel_Activity_Owner_Id__c,Request.Core_MDF_Intel_Activity_Owner_Id__r.Name,Request.Core_MDF_Member_Owner_txt__c,Request.Core_MDF_Priorities__c,Request.Core_MDF_ProductType__c,Request.Core_MDF_TargetAudience__c,Request.Campaign.Name FROM PartnerFundClaim '
-                 + 'WHERE Core_MDF_Program__c IN:programSet'
-                 + ' AND Core_MDF_Budget_Type_Options_Nm__c IN: budgetTypeSet'
-                 + ' AND (Core_MDF_Status__c=:paymentDueStatus'
-                 + ' AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess)'
-                 + ' AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c'
-                 + ' NOT IN: testAccountIdstobeExcluded'
-                 + ' AND Core_MDF_Recovery_Hold_Ind__c = FALSE AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))';
-                 //Account filter is mandatory for standard MDF payment runs, optional for OOC
-                 if(!setOfSelAccounts.isEmpty()){
-                     mdfClaimsQuery += ' AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN:setOfSelAccounts';
-                 }
-                 //OOC payment run - run for specific claims
-                 if(!selectedClaimIds.isEmpty()){
-                     mdfClaimsQuery += ' AND Id IN :selectedClaimIds';
-                 }
-                 mdfClaimsQuery += ' ORDER BY Core_MDF_Status__c DESC';
-                 claimsTobeProcessed = Database.query(mdfClaimsQuery);
+            if(setOfSelAccounts.size()>0 && mdfPaymentRunRecordTypes!=null && mdfPaymentRunRecordTypes.size()>0){
+                 claimsTobeProcessed = [SELECT Id,CreatedDate,Core_MDF_Country_Location_nm__c,Core_MDF_Requested_Reimbursement_Amt__c,ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Program__c,Amount,Core_MDF_Status__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,
+                 Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,Core_MDF_Payment_Id__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_RMF_Last_POP_Submission_Dt__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_RMF_Claim_Approval_Dt__c,
+                 Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c ,Request.ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,
+                ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_C_Type_Ind__c,
+                Core_MDF_AccountCompany__c,Core_MDF_VAT_Eligibility_Ind__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Quarter_Year_Txt__c,ChannelPartner.Name,Core_MDF_Claim_Ref_Number__c,Title,Core_MDF_Activity_Types__c,Budget.Title,Request.Title,
+                Request.Core_MDF_Intel_Activity_Owner_Id__c,Request.Core_MDF_Intel_Activity_Owner_Id__r.Name,Request.Core_MDF_Member_Owner_txt__c,Request.Core_MDF_Priorities__c,Request.Core_MDF_ProductType__c,Request.Core_MDF_TargetAudience__c,Request.Campaign.Name FROM PartnerFundClaim 
+                 WHERE Core_MDF_Program__c IN:programSet
+                 AND Core_MDF_Budget_Type_Options_Nm__c IN: budgetTypeSet 
+                 
+                 AND (Core_MDF_Status__c=:Label.Core_MDF_Status_Payment_Due
+                 AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess)
+                 AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c 
+                 NOT IN: testAccountIdstobeExcluded
+                AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c IN:setOfSelAccounts AND Core_MDF_Recovery_Hold_Ind__c = FALSE AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))
+                ORDER BY Core_MDF_Status__c DESC];
                 
                 paymentDueClaimsToBeProcessed.addAll(claimsTobeProcessed);
             }
@@ -141,24 +129,19 @@ Modified By:        Date:       Changes:
         String uniqueKey = '';
         List<PartnerFundClaim> paymentDueClaimsToBeProcessed = new List<PartnerFundClaim>();
         if(setOfSelAccounts.size()==0 && mdfPaymentRunRecordTypes.size() == 0){ //Added Budget Type field in where condition as part of CMP Payments US- US1017409
-            String paymentDueStatus = Label.Core_MDF_Status_Payment_Due;
-            String cmpQuery = 'SELECT Id,ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Program__c,Amount,Core_MDF_Status__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,'
-             + 'Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,Core_MDF_Payment_Id__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,'
-             + 'Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c ,Request.ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,'
-             + 'ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_C_Type_Ind__c,Core_MDF_AccountCompany__c,Core_MDF_VAT_Eligibility_Ind__c,Request.Core_MDF_Activity_Number__c FROM PartnerFundClaim '
-             + 'WHERE Core_MDF_Program__c IN:programSet'
-             + ' AND Core_MDF_Budget_Type_Options_Nm__c IN: budgetTypeSet'
-             + ' AND Core_MDF_Region_Cd__c IN:geoSet';
-            //OOC payment run - run for specific claims
-            if(!selectedClaimIds.isEmpty()){
-                cmpQuery += ' AND Id IN :selectedClaimIds';
-            }
-            cmpQuery += ' AND ((Core_MDF_Status__c=:paymentDueStatus'
-             + ' AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess))'
-             + ' AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c'
-             + ' NOT IN: testAccountIdstobeExcluded AND Core_MDF_Recovery_Hold_Ind__c = FALSE AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))'
-             + ' ORDER BY Core_MDF_Status__c DESC';
-            claimsTobeProcessed = Database.query(cmpQuery);
+             claimsTobeProcessed = [SELECT Id,ChannelPartnerId,ChannelPartner.Core_MDF_Group_Id__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Program__c,Amount,Core_MDF_Status__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,
+             Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,Core_MDF_Payment_Id__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,
+             Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c ,Request.ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,
+             ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Type_Txt__c,Core_MDF_C_Type_Ind__c,Core_MDF_AccountCompany__c,Core_MDF_VAT_Eligibility_Ind__c,Request.Core_MDF_Activity_Number__c FROM PartnerFundClaim 
+             WHERE Core_MDF_Program__c IN:programSet
+             AND Core_MDF_Budget_Type_Options_Nm__c IN: budgetTypeSet 
+             AND Core_MDF_Region_Cd__c IN:geoSet
+            
+             AND ((Core_MDF_Status__c=:Label.Core_MDF_Status_Payment_Due
+             AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess))
+             AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c 
+            NOT IN: testAccountIdstobeExcluded AND Core_MDF_Recovery_Hold_Ind__c = FALSE AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))
+            ORDER BY Core_MDF_Status__c DESC];
         }
        /* if(claimsTobeProcessed!=Null && claimsTobeProcessed.size()>0){//
         for(PartnerFundClaim claimRecord : claimsTobeProcessed){
@@ -220,10 +203,9 @@ Modified By:        Date:      Changes:
     String adjusTypeLabel = Label.Core_MDF_NegativeClaim ;
     Set<Id> accountIdSet = new Set<Id>();
     String ipaProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
-    Set<String> applicableSuperClaimStatus = new Set<String>{'','Payment Due','Queued for Payment'};
 
     //Existing Retail Payment Due Claims
-    String paymentDueClaimsQuery = 'Select Id, Core_MDF_AccountCompany__c,Core_MDF_Bank__r.Core_MDF_Currency_cd__c,Core_MDF_Bank__r.Core_MDF_Payment_Currency_Cd__c,Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Sub_Region_Cd__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Bank__r.Core_MDF_VAT_pct__c, Core_MDF_Bank__r.Core_MDF_Bank_Beneficiary_Name__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Bank__r.Core_MDF_Supplier_City_txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Region_txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Postal_Code_cd__c,Core_MDF_Type_Txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Country_txt__c,ChannelPartner.Name,ChannelPartner.Core_MDF_Group_Id__c,Title,Core_MDF_Program__c,Core_MDF_Status__c,Status,Core_MDF_Country_Location_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,CreatedDate,Request.ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Audit_Adjustment_Amount__c,Amount,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Region_Cd__c,ChannelPartnerId,Core_MDF_Payment_Id__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_RMF_Claim_Approval_Dt__c,Core_MDF_RMF_Last_POP_Submission_Dt__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Bank__r.Core_MDF_Tax_codes_cd__c,Core_MDF_Claim_Ref_Number__c,Request.Core_MDF_Product_Category_txt__c,Core_MDF_Quarter_Year_txt__c,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_VAT_Amt__c,Core_MDF_C_Type_Ind__c, Core_MDF_Total_Claim_Recovery_Amount__c, Request.Core_MDF_BU_Split__c,Request.Core_MDF_BU1_Split_Percent_nbr__c,Request.Core_MDF_BU2_Split_Percent_nbr__c,Request.Core_MDF_BU3_Split_Percent_nbr__c,Request.Core_MDF_BU4_Split_Percent_nbr__c,Request.Core_MDF_BU5_Split_Percent_nbr__c,Request.Core_MDF_BU6_Split_Percent_nbr__c,Request.Core_MDF_BU7_Split_Percent_nbr__c,Request.Core_MDF_BU8_Split_Percent_nbr__c,Request.Core_MDF_BU9_Split_Percent_nbr__c,Request.Core_MDF_BU10_Split_Percent_nbr__c,Core_MDF_Payment_Type_nm__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id,Core_MDF_Applicable_VAT_Percentage_nm__c, Core_MDF_Claim_Id__c FROM PartnerFundClaim WHERE Core_MDF_Region_Cd__c IN: geoSet AND Core_MDF_Program__c IN: programSet AND((Core_MDF_Status__c=:pafLabel AND Core_MDF_Type_Txt__c =:adjusTypeLabel AND Core_MDF_C_Type_Ind__c = true AND Core_MDF_Program__c !=: ipaProgramName) OR (Core_MDF_Status__c=:paymentDueLabel AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess)) AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c NOT IN: testAccountIdstobeExcluded AND Core_MDF_Recovery_Hold_Ind__c = false AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))';
+    String paymentDueClaimsQuery = 'Select Id, Core_MDF_AccountCompany__c,Core_MDF_Bank__r.Core_MDF_Currency_cd__c,Core_MDF_Bank__r.Core_MDF_Payment_Currency_Cd__c,Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Sub_Region_Cd__c,Core_MDF_Bank__r.Core_MDF_Payment_Method_Code__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Bank__r.Core_MDF_VAT_pct__c, Core_MDF_Bank__r.Core_MDF_Bank_Beneficiary_Name__c,Core_MDF_Bank__r.Core_MDF_Supplier_Name__c,Core_MDF_Bank__r.Core_MDF_Supplier_City_txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Region_txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Postal_Code_cd__c,Core_MDF_Type_Txt__c,Core_MDF_Bank__r.Core_MDF_Supplier_Country_txt__c,ChannelPartner.Name,ChannelPartner.Core_MDF_Group_Id__c,Title,Core_MDF_Program__c,Core_MDF_Status__c,Status,Core_MDF_Country_Location_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,CreatedDate,Request.ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Audit_Adjustment_Amount__c,Amount,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Region_Cd__c,ChannelPartnerId,Core_MDF_Payment_Id__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_RMF_Claim_Approval_Dt__c,Core_MDF_RMF_Last_POP_Submission_Dt__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Bank__r.Core_MDF_Tax_codes_cd__c,Core_MDF_Claim_Ref_Number__c,Request.Core_MDF_Product_Category_txt__c,Core_MDF_Quarter_Year_txt__c,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_VAT_Amt__c,Core_MDF_C_Type_Ind__c, Core_MDF_Total_Claim_Recovery_Amount__c, Request.Core_MDF_BU_Split__c,Request.Core_MDF_BU1_Split_Percent_nbr__c,Request.Core_MDF_BU2_Split_Percent_nbr__c,Request.Core_MDF_BU3_Split_Percent_nbr__c,Request.Core_MDF_BU4_Split_Percent_nbr__c,Request.Core_MDF_BU5_Split_Percent_nbr__c,Request.Core_MDF_BU6_Split_Percent_nbr__c,Request.Core_MDF_BU7_Split_Percent_nbr__c,Request.Core_MDF_BU8_Split_Percent_nbr__c,Request.Core_MDF_BU9_Split_Percent_nbr__c,Request.Core_MDF_BU10_Split_Percent_nbr__c,Core_MDF_Payment_Type_nm__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id,Core_MDF_Applicable_VAT_Percentage_nm__c FROM PartnerFundClaim WHERE Core_MDF_Region_Cd__c IN: geoSet AND Core_MDF_Program__c IN: programSet AND((Core_MDF_Status__c=:pafLabel AND Core_MDF_Type_Txt__c =:adjusTypeLabel AND Core_MDF_C_Type_Ind__c = true AND Core_MDF_Program__c !=: ipaProgramName) OR (Core_MDF_Status__c=:paymentDueLabel AND Core_MDF_Type_Txt__c  IN:validClaimTypeForOffsetProcess)) AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c NOT IN: testAccountIdstobeExcluded AND Core_MDF_Recovery_Hold_Ind__c = false AND (Core_MDF_Processing_Preference_nm__c !=: surePay OR (Core_MDF_Processing_Preference_nm__c =: surePay AND (Core_MDF_VAT_Eligibility_Ind__c = TRUE OR (Core_MDF_Claim_Review_Case__c = NULL OR (Core_MDF_Claim_Review_Case__c != NULL AND Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c =: REVIEW_COMPLETED)))))';
     if(programSet.contains(Label.Core_MDF_Retail_Program_Name)){
         paymentDueClaimsQuery+= ' AND Core_MDF_Budget_Type_Options_Nm__c IN: budgetTypeSet';
     }
@@ -237,11 +219,7 @@ Modified By:        Date:      Changes:
     }
 
     if(programSet.contains(ipaProgramName)){//For IPA
-        paymentDueClaimsQuery += ' AND Core_MDF_Payment_Type_nm__c IN : paymentType AND Core_MDF_Has_Sub_Claims_Ind__c = false AND Core_MDF_Super_Claim_Status_nm__c IN : applicableSuperClaimStatus';
-    }
-    //OOC payment run - run for specific claims
-    if(!selectedClaimIds.isEmpty()){
-        paymentDueClaimsQuery += ' AND Id IN :selectedClaimIds';
+        paymentDueClaimsQuery += ' AND Core_MDF_Payment_Type_nm__c IN : paymentType';
     }
     paymentDueClaimsTobeProcessed = Database.query(String.escapeSingleQuotes(paymentDueClaimsQuery));
     return paymentDueClaimsTobeProcessed;
@@ -413,21 +391,14 @@ public static void generateQueryFilters(List<Core_MDF_Payment_Run__c> paymentRun
                 budgetTypeSet.addAll(budtypes);  
             }
             List<String> mdfRecTypes = Core_MDF_Configuration__c.getValues('Payment_Run_RecordTypes_MDF').Core_MDF_Value__c.split(',');
-
-            Boolean isMDFPayment = !mdfRecTypes.isEmpty() && mdfRecTypes.contains(prun.RecordType.DeveloperName);
-            if(isMDFPayment){
+        
+            if(!mdfRecTypes.isEmpty() && mdfRecTypes.contains(prun.RecordType.DeveloperName) && prun.Core_MDF_Payment_run_for_Accounts__c !=null){
                 mdfPaymentRunRecordTypes.add(prun.RecordType.DeveloperName);
+                List<Id> selectedAccounts = prun.Core_MDF_Payment_run_for_Accounts__c.split(',');
+                setOfSelAccounts.addAll(selectedAccounts);
+                
             }
-            //Accounts are optional for OOC payment runs, so record type is tracked independently of account population
-	        if(isMDFPayment && prun.Core_MDF_Payment_run_for_Accounts__c !=null){
-	            List<Id> selectedAccounts = prun.Core_MDF_Payment_run_for_Accounts__c.split('[,;]');
-	            setOfSelAccounts.addAll(selectedAccounts);
-            }
-            //OOC - collect the specific claims selected on the payment run
-            if(String.isNotBlank(prun.Core_MDF_Payment_Run_for_Claims_Id__c)){
-                List<Id> selectedClaimIdsList = prun.Core_MDF_Payment_Run_for_Claims_Id__c.split(';');
-                selectedClaimIds.addAll(selectedClaimIdsList);
-            }
+
     }
 }
 }

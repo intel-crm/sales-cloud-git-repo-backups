@@ -27,7 +27,7 @@ public without sharing class  Core_OppApprovalCtrl {
         //Custom setting to check Sales group
         Opportunity__c accountConsition = Opportunity__c.getOrgDefaults();
         
-        //List<String> errMessageList= new List<String>();
+        List<String> errMessageList= new List<String>();
         Map<String, List<String>> errMsgMap = new Map<String, List<String>>();        
         checklistWrapper wrpr = new checklistWrapper();
         try{
@@ -173,7 +173,7 @@ Added on/by:: 29/12/22 - Gaurav
                     }
                     //Vijay
                     //checking sales group for give time is same or Not
-                    String query = 'Select id , Core_Sales_Groups__c , '+String.escapeSingleQuotes(accountConsition.Core_Field_API_name__c) +' from Account where id = \''+String.escapeSingleQuotes(oppObject.AccountId)+'\' Limit 1';
+                    String query = 'Select id , Core_Sales_Groups__c , '+accountConsition.Core_Field_API_name__c +' from Account where id = \''+oppObject.AccountId+'\' Limit 1';
                     
                     Account accountDetails = Database.query(query);
                     if (accountDetails.get(accountConsition.Core_Field_API_name__c) != null && accountDetails.get('Core_Sales_Groups__c') != accountDetails.get(accountConsition.Core_Field_API_name__c) &&  Date.today() >= accountConsition.Core_Start_Date__c && Date.today() <= accountConsition.Core_End_Date__c && oppObject.Core_Opportunity_Coverage_Nm__c == 'Intel-Led Opportunity') {
@@ -526,11 +526,11 @@ errMsgMap.put('hardStop', new List<String> { err });
                     String strItemList = '';
                     Integer count = 1;
                     List<Core_Opp_FC_Prod_Schedule__c> tempList = new List<Core_Opp_FC_Prod_Schedule__c>();
-                    /*List<Core_Opp_FC_Prod_Schedule__c> tempList2 = new List<Core_Opp_FC_Prod_Schedule__c>([SELECT id,Core_Opp_FC_Opportunity__c,Core_Opp_FC_isdeleted__c,Core_Opp_FC_Claim_Date__c,Core_Opp_FC_Quantity__c,Core_Opp_FC_Sched_Revenue__c,Core_FC_Opportunity_Product__r.Core_Status__c
+                    List<Core_Opp_FC_Prod_Schedule__c> tempList2 = new List<Core_Opp_FC_Prod_Schedule__c>([SELECT id,Core_Opp_FC_Opportunity__c,Core_Opp_FC_isdeleted__c,Core_Opp_FC_Claim_Date__c,Core_Opp_FC_Quantity__c,Core_Opp_FC_Sched_Revenue__c,Core_FC_Opportunity_Product__r.Core_Status__c
                                                                                                          FROM Core_Opp_FC_Prod_Schedule__c
                                                                                                           WHERE Core_Opp_FC_Opportunity__c = :oppId AND 
                                                                                                           Core_Opp_FC_isdeleted__c = false AND Core_FC_Opportunity_Product__r.Core_Status__c not in ('Lost','Cancelled')
-                                                                                                          ORDER BY Core_Opp_FC_Product__r.Name,Core_Opp_FC_Quarter_Date__c]);*/
+                                                                                                          ORDER BY Core_Opp_FC_Product__r.Name,Core_Opp_FC_Quarter_Date__c]);
                      
                     for(OpportunityLineItem oliId : oppLineItemMap){
                         Decimal totalqty = 0;

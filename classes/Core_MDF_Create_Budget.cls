@@ -12,9 +12,12 @@ public without sharing class Core_MDF_Create_Budget {
 
     //to store IPA Record Type ID
     public static Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();  
+    //to store Channel MDF Proposal Based Record Type ID
+   // public static Id channelMDFProposalBasedRT = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_CMDF_Proposal_Based_RT).getRecordTypeId();  
     //to store IPA Allocation record Type ID
     public static Id ipaPFARecordtype = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_RecordType).getRecordTypeId();
-    
+    //Core_MDF_Channel_MDF
+   // public static Id channelMDFPFARecordtype = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_Channel_MDF).getRecordTypeId();
 /***************************************************************************************************** 
 Method Name:        manageBudget
 @return  :          Map<Campaign,PartnerMarketingBudget>
@@ -82,12 +85,13 @@ Added By:           Intel - SM      - 07/07/2020
 Modified By:        Intel - Areefa  - 08/09/2020 - Updating(Amount=camp.Core_MDF_Total_Campaign_Cost_Amt__c) with new campaign Amount field(Core_MDF_Reimbursement_Amount_Amt__c)
 ******************************************************************************************************/      
     public static PartnerMarketingBudget createBudgetForCampaigns(Campaign camp){
+        //Id recordType= camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name') ? ipaRecordtype : channelMDFProposalBasedRT;
 	Id recordType ;	
         if(camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')){
          	 recordType = ipaRecordtype;
 	}
         //to get IPA Program Name
-
+        String IPAProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
         //to store Campaign Account Id
         id campAccId = camp.Core_MDF_Account__c;
         //to store virtual Corp Account's Id
@@ -143,6 +147,7 @@ Modified By:
                 //to loop thro the each campaign
                 for(Campaign camp : campBudgetMapForNewPFA.keySet())
                 {	
+                    //Id PFARecordType = camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name') ? ipaPFARecordtype : channelMDFPFARecordtype;
                 Id PFARecordType ; 
                 if(camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')){
 			 PFARecordType = ipaPFARecordtype;

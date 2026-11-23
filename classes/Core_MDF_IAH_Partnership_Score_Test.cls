@@ -81,7 +81,7 @@ public class Core_MDF_IAH_Partnership_Score_Test {
                  System.runAs(usr)
                     {
                         Map<Id,string> programIdToLabelMap = new Map<Id,string>();
-                        for(Core_MDF_ChannelProgram__mdt channelProgram : [Select Id, Core_MDF_Technical_Program_Name__c,Core_MDF_Program_ID__c FROM Core_MDF_ChannelProgram__mdt limit 10]){//ATHR Fix - WW16
+                        for(Core_MDF_ChannelProgram__mdt channelProgram : [Select Id, Core_MDF_Technical_Program_Name__c,Core_MDF_Program_ID__c FROM Core_MDF_ChannelProgram__mdt]){
                 		programIdToLabelMap.put(channelProgram.Core_MDF_Program_ID__c, channelProgram.Core_MDF_Technical_Program_Name__c);
             			}
                         List<Core_MDF_Partnership_Score__c> newValues = new List<Core_MDF_Partnership_Score__c>();
@@ -136,8 +136,7 @@ public class Core_MDF_IAH_Partnership_Score_Test {
                         database.insert(newValues2);
                         
                          Core_MDF_IAH_Partnership_Score.insertCurrQuarterData('Q2 2022');
-                        // Highlight: Unused Local Variable 
-                       // List<Core_MDF_Partnership_Score__c> ps = [Select Id, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Account_Id__c, Core_MDF_Partnership_Score_Id__c From Core_MDF_Partnership_Score__c Where Core_MDF_Quarter_Year_Nm__c='Q2 2022'];
+                        List<Core_MDF_Partnership_Score__c> ps = [Select Id, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Account_Id__c, Core_MDF_Partnership_Score_Id__c From Core_MDF_Partnership_Score__c Where Core_MDF_Quarter_Year_Nm__c='Q2 2022'];
                         HTTPResponse res1 = new HTTPResponse();
                 HTTPResponse res2 = new HTTPResponse();
                 HTTPResponse res3 = new HTTPResponse();

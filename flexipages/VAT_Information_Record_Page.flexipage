@@ -9,7 +9,7 @@
                         <valueListItems>
                             <value>Edit</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                                <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Payment_Admin}</leftValue>
                                     <operator>EQUAL</operator>
@@ -17,6 +17,11 @@
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_IPA_Payment_Admin}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Channel_MDF_Payment_Admin}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
                                 </criteria>
@@ -30,7 +35,7 @@
                         <valueListItems>
                             <value>Core_MDF_Claim_VAT_Info__c.Core_MDF_Select_Payment_Document_for_approval</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 4 OR 5) AND (2 OR 3)</booleanFilter>
+                                <booleanFilter>(1 OR 4 OR 5 OR 6) AND (2 OR 3)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Payment_Admin}</leftValue>
                                     <operator>EQUAL</operator>
@@ -48,6 +53,11 @@
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_IPA_Payment_Admin}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Channel_MDF_Payment_Admin}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
                                 </criteria>
@@ -90,185 +100,6 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Name</fieldItem>
-                <identifier>RecordNameField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_VAT_Invoice_Number_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_VAT_Invoice_Number_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Reimbursement_Amt__c</fieldItem>
-                <identifier>RecordCore_MDF_Reimbursement_Amt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_VAT_Amt__c</fieldItem>
-                <identifier>RecordCore_MDF_VAT_Amt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Approved_File_Name_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Approved_File_Name_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Vat_Inv_Guide_Link__c</fieldItem>
-                <identifier>RecordCore_MDF_Vat_Inv_Guide_Link_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_VAT_CreatedBy_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_VAT_CreatedBy_Nm_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-8a678a87-ee13-483f-a72e-b1cb321c4a79</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Document_Type_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Document_Type_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Claim_Id__c</fieldItem>
-                <identifier>RecordCore_MDF_Claim_Id_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Account_nm__c</fieldItem>
-                <identifier>RecordCore_MDF_Account_txt__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_VAT_Per__c</fieldItem>
-                <identifier>RecordCore_MDF_VAT_Per_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Status_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Status_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Sub_Claim_Id__c</fieldItem>
-                <identifier>RecordCore_MDF_Sub_Claim_Id_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Claim_Id__r.Core_MDF_Has_Sub_Claims_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Last_VAT_ModifiedBy_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_Last_VAT_ModifiedBy_Nm_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-5933a0d1-3708-4571-a67c-c432689da1a9</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-8a678a87-ee13-483f-a72e-b1cb321c4a79</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-5933a0d1-3708-4571-a67c-c432689da1a9</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-3753017d-f42e-44f3-9503-845661536dcf</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>hideUpdateButton</name>
@@ -284,20 +115,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-3753017d-f42e-44f3-9503-845661536dcf</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Information</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

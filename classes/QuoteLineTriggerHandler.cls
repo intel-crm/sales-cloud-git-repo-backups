@@ -121,11 +121,6 @@ public without sharing class QuoteLineTriggerHandler extends TriggerHandler {
             //PSG_CPQuoteLinesBusinessLogic.afterInsertUpdateOperations(psgTriggerCPNewList,Trigger.isInsert,psgTriggerCPOldMap,psgTriggerNewMap);
         }
         system.debug('PSGQuoteLine afterInsert End 125 ***NARA*** '+Limits.getCpuTime());
-        //Citrus changes - AI Integration for Pricing Application
-        if(isActive('Pricing_Application_AI_Integration') && iqrTriggerNewList.size() > 0){
-            QuoteLineBusinessLogic.handleAIIntegrationForPricing(iqrTriggerNewList, iqrTriggerOldMap,Trigger.isInsert);
-        }
-        //Citrus changes end
     }
     public override void beforeInsert() {
         system.debug('PSGQuoteLine BeforeInsert Start 128 ***NARA*** '+Limits.getCpuTime());
@@ -181,13 +176,7 @@ public without sharing class QuoteLineTriggerHandler extends TriggerHandler {
         if(isActive('PSG_QuoteLine_After_Update') && psgTriggerNewList.size() > 0 ){
         	//PSG_QuoteLineBusinessLogic.afterInsertUpdateOperations(psgTriggerNewList,Trigger.isInsert,psgTriggerOldMap,psgTriggerNewMap);
         }
-        //Citrus changes - AI Integration for Pricing Application
-        if(isActive('Pricing_Application_AI_Integration') && iqrTriggerNewList.size() > 0){
-            QuoteLineBusinessLogic.handleAIIntegrationForPricing(iqrTriggerNewList, iqrTriggerOldMap,Trigger.isInsert);
-        }
-        //Citrus changes end
-        
-	/*if(isActive('Sales_QuoteLine_After_Update')&& psgTriggerNewList.size() > 0){
+        /*if(isActive('Sales_QuoteLine_After_Update')&& psgTriggerNewList.size() > 0){
             Sales_PriceChangeWarning.priceMismatchCheck(psgTriggerNewList,psgTriggerOldMap);
         }*/ 
         system.debug('PSGQuoteLine afterUpdate End 184 ***NARA*** '+Limits.getCpuTime());

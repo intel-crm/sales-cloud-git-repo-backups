@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BulkClaimTemplateParticulars</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_BulkClaimTemplateParticulars</value>
+    </caseValues>
+    <fields>
+        <label><!-- Channel program --></label>
+        <name>Core_MDF_Channel_program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Field API Name --></label>
+        <name>Core_MDF_Claim_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Column Index --></label>
+        <name>Core_MDF_Column_Index__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Data Type Text --></label>
+        <name>Core_MDF_Field_DataType_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Field API Name --></label>
+        <name>Core_MDF_Stage_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Required Indicator --></label>
+        <name>Core_MDF_Stage_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Field API Name --></label>
+        <name>Core_MDF_Target_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload Record Type --></label>
+        <name>Core_MDF_Upload_Record_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -250,6 +250,8 @@ public with sharing class Core_IPS_AddCommentController{
     }
     
     
+    
+    
     //{user stpry#:US67444 Iteration#:PSG Release 2 Developer Name:Sumukh}
     
     public PageReference saveComment(){
@@ -297,7 +299,7 @@ public with sharing class Core_IPS_AddCommentController{
             	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId() ,newAttachment.Core_FileUploadedBy__c);
             }
             else if(newComment.Core_IPS_Comment_Attachment_Id__c==null){
-            	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(),userinfo.getuserid());
+                newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(),userinfo.getuserid());
             }
             
             try{
@@ -372,8 +374,6 @@ public with sharing class Core_IPS_AddCommentController{
      * Description : modified complete function to make dynamic query to return all comments when click on 
      * export pdf button on case, previously this function was retuning only limited comments 
      */
-    /* Start ---- Tushar ---- Added with USER MODE vanuability changes*/
-    //Removed user_mode(As part of vulnerability fixes) - Nuthana
     public List<Core_IPS_Case_Comments__c> getcaseComments() {
         String query = 'select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,Core_IPS_Comment__c,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,CreatedBy.Contact.Account.name,CreatedBy.Profile.Name,CreatedBy.Firstname,CreatedBy.Profileid, CreatedDate,Core_IPS_BgColor__c,Core_IPS_NickName__c,CreatedBy_Name__c, Core_IPS_Case_Comment_Type__c ,CreatedBy.Email,Core_IPS_Comment_Author_Type__c,Core_IPS_Comment_Authored_By__r.Name,Core_IPS_Comment_Authored_By__r.Account.name,Core_IPS_Comment_Authored_By_Email__c,Core_IPS_Comment_Authored_By_FirstName__c,Core_IPS_Comment_Authored_By_Name__c from Core_IPS_Case_Comments__c ';   
         String pageURL = ApexPages.currentPage().getURL();
@@ -381,39 +381,38 @@ public with sharing class Core_IPS_AddCommentController{
         if(partnerAgentUser || userhasAccess) {
             internalColumn= true;
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\'  ORDER BY CreatedDate DESC NULLS LAST';      // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' ORDER BY CreatedDate DESC NULLS LAST';      // removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';
             }
         } else if(!(externalUser) || (partnerAgentUser)) {
             internalColumn= true;         
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' AND (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c= \''+String.escapeSingleQuotes(privateToPartner)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToIntel)+'\')  ORDER BY CreatedDate DESC NULLS LAST';  // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' AND (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c= \''+String.escapeSingleQuotes(privateToPartner)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToIntel)+'\') ORDER BY CreatedDate DESC NULLS LAST';  // removed limit & offset
             } else {
                 query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' AND (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToIntel)+'\') ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination        
             }
         } else if(ExtUser) {            externalColumn = true; 
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST';   // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' ORDER BY CreatedDate DESC NULLS LAST';   // removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination];      // Added by Prem CreatedBy.Email to this query because we are accessing email from visualforce page  
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination];      // Added by Prem CreatedBy.Email to this query because we are accessing email from visualforce page  
             }
         } else if(partnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))&& partnerType != 'Partner') {
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\')  ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\') ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\')  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';                        
+                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\') ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';                        
             }
         } else {
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
+                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
             } else {
-                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';       
+                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';       
             }
         }
         return Database.query(query);
     }
-    /* END ---- Tushar ---- Added with USER MODE vanuability changes*/
     //Authored by fields end for US108037
     /***********  added by venki for pagination as per DEF:23171 6/4/2017 ****/
     

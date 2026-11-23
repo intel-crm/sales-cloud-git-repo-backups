@@ -37,10 +37,6 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>用戶端</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>雲端</translation>
     </valueTranslation>
@@ -57,20 +53,12 @@
         <translation>系統元件</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>桌上型電腦</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation><!-- Edge Gateway --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>邊緣/IOT</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Programmable Solution</masterLabel>
@@ -177,10 +165,6 @@
         <translation>網路與電信</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>網路/乙太網路</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
         <translation>筆記型電腦</translation>
     </valueTranslation>
@@ -237,10 +221,6 @@
         <translation>儲存系統</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>電信</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
         <translation>輕薄裝置</translation>
     </valueTranslation>
@@ -267,9 +247,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>工作站 - 行動電腦</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

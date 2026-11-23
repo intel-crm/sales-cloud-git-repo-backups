@@ -139,14 +139,14 @@ public class PMP_Company_Info_TriggerHelper_Test {
         PMP_Company__c company = new PMP_Company__c();
         company.Name='company1';
         company.PMP_IPA_Badge_Tier_Txt__c='Gold';
-        company.PMP_Partner_Country_Txt__c = 'IND';
+        company.PMP_Partner_Country_Txt__c = 'India';
         company.PMP_Account_Id__c=newAccount.Id;
         compList.add(company);
 
         PMP_Company__c company12 = new PMP_Company__c();
         company12.Name='company2';
         company12.PMP_IPA_Badge_Tier_Txt__c='Gold';
-        company12.PMP_Partner_Country_Txt__c = 'IND';
+        company12.PMP_Partner_Country_Txt__c = 'India';
         company12.PMP_Account_Id__c=newAccount.Id;
         compList.add(company12);
 
@@ -161,81 +161,12 @@ public class PMP_Company_Info_TriggerHelper_Test {
         compIds.add(company.id);
         PMP_Company_Info_TriggerHelper.updatecompanyAttributeMappingRecords(compList, oldMap);
         //PMP_Company_Info_TriggerHelper.updateCompanyAttributeMappingRecordsAsynchronously(compIds);
-        system.assertEquals('IND', company.PMP_Partner_Country_Txt__c,'Company Name is matched');
+        system.assertEquals('India', company.PMP_Partner_Country_Txt__c,'Company Name is matched');
         system.assertEquals('Data Center', company.PMP_Partner_Segment_Nm__c,'Company segment is matched');
         Test.stopTest();
 
         
     }
-
-    @isTest
-    static void testCreateStagingFromCompany() {
-
-        // --- Setup Trigger Config (reuse pattern) ---
-        insert new Core_Trigger_Executions__c(
-            Name = 'Company_Autofill_Handler',
-            Core_Active__c = true,
-            Core_Class_Name__c = 'PMP_Company_Info_TriggerHandler',
-            Core_Object__c = 'PMP_Company__c',
-            Core_Trigger_Events__c = 'After Insert',
-            Core_Description__c = 'Test setup'
-        );
-
-        // --- Record Types ---
-        Id recordTypeIdAccount = Schema.SObjectType.Account
-            .getRecordTypeInfosByName()
-            .get('Intel Account')
-            .getRecordTypeId();
-
-        // --- Create Primary Account (parent) ---
-        Account parentAcc = new Account(
-            Name = 'Primary Account',
-            Core_User_Defined_Website__c = 'https://parent.com',
-            BillingCity='City',
-        	BillingStreet='Street',
-        	BillingCountry='India',
-        	BillingPostalCode='Postal code'
-        );
-        insert parentAcc;
-
-        // --- Create Account that references Primary Account ---
-        Account childAcc = new Account(
-            Name = 'Child Account',
-            RecordTypeId = recordTypeIdAccount,
-            UCD_Primary_Account__c = parentAcc.Id,
-            BillingCity='City',
-        	BillingStreet='Street',
-        	BillingCountry='India',
-        	BillingPostalCode='Postal code'
-        );
-        insert childAcc;
-
-        // --- Create Company (IMPORTANT: uses Text field with Account Id) ---
-        PMP_Company__c company = new PMP_Company__c(
-            Name = 'Test Company',
-            PMP_Company_Lifecycle_Status_Nm__c = 'Draft',
-            PMP_Is_Working_Copy_Ind__c = true,
-            PMP_Opid_Sfid_Txt__c = childAcc.Id   // TEXT field storing Account Id
-        );
-
-        Test.startTest();
-        insert company;
-        Test.stopTest();
-
-        // --- Verify staging record created ---
-        List<PMP_CompanyAutoFill__c> stagingList = [
-            SELECT Id, PMP_Partner_Id__c, PMP_Website__c, PMP_Autofill_Status__c
-            FROM PMP_CompanyAutoFill__c
-            WHERE PMP_Partner_Id__c = :company.Id
-        ];
-
-        System.assertEquals(1, stagingList.size(), 'One staging record should be created');
-
-        PMP_CompanyAutoFill__c staging = stagingList[0];
-
-        System.assertEquals(company.Id, staging.PMP_Partner_Id__c);
-        System.assertEquals('https://parent.com', staging.PMP_Website__c);
-        System.assertEquals('Staged', staging.PMP_Autofill_Status__c);
-    }
+    
     
 }

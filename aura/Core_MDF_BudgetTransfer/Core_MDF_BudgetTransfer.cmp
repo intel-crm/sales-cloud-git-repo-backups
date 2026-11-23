@@ -147,7 +147,7 @@
                         <div class="slds-notify__content">
                             <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_Transfer_of} ${!v.onSuccessAmount}&nbsp;{!$Label.c.Core_MDF_to} "{!v.partnerTransferTo}" {!$Label.c.Core_MDF_is_successful}</h2>
                         </div>
-                        <button class="slds-button slds-button_icon slds-notify__close " title="{!$Label.c.Core_MDF_Close}" 
+                        <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}" 
                                 onclick="{!c.CloseToast}">
                             <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
                                    xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
@@ -171,7 +171,7 @@
                         <div class="slds-notify__content">
                             <h2 class="slds-text-heading_small ">{!v.errorMsg}</h2>
                         </div>
-                        <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}"
+                        <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}"
                                 onclick="{!c.CloseErrorToast}"
                                 >
                             <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"

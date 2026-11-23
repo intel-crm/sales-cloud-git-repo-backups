@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRID</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRIDs</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- CPQ_Lookup --></label>
+        <name>CPQ_Lookup</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Inactivation Reason --></label>
+        <name>Inactivation_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>core_cpq_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active Pricing --></label>
+        <name>core_cpq_active_pricing_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>core_cpq_comments_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer Contract Flag --></help>
+        <label><!-- CCF --></label>
+        <name>core_cpq_cps_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- OPN --></help>
+        <label><!-- Device --></label>
+        <name>core_cpq_device__c</name>
+        <relationshipLabel><!-- PRIDs (Device) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ECP OPN Number --></label>
+        <name>core_cpq_ecp_opn_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Revised --></label>
+        <name>core_cpq_last_revised_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Updated --></label>
+        <name>core_cpq_last_updated_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower Bound Qty --></label>
+        <name>core_cpq_lower_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Active Quotes --></label>
+        <name>core_cpq_no_of_active_quotes_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price End Date --></label>
+        <name>core_cpq_price_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Start Date --></label>
+        <name>core_cpq_price_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Eligiblity Date --></label>
+        <name>core_cpq_prid_eligiblity_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID POS --></label>
+        <name>core_cpq_prid_pos__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Review Date --></label>
+        <name>core_cpq_prid_review_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Reviewer --></label>
+        <name>core_cpq_prid_reviewer__c</name>
+        <relationshipLabel><!-- PRIDs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Hunter Margin End Date --></label>
+        <name>core_cpq_prid_validity_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity (EAU) --></label>
+        <name>core_cpq_quantity_eau_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quote__c</name>
+        <relationshipLabel><!-- PRIDs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>core_cpq_quoteline__c</name>
+        <relationshipLabel><!-- PRIDs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Review --></label>
+        <name>core_cpq_review__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Date --></label>
+        <name>core_cpq_review_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Parent ID --></label>
+        <name>core_cpq_sap_ec_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Parent Name --></label>
+        <name>core_cpq_sap_ecp_nm__c</name>
+        <relationshipLabel><!-- PRIDs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Source System Id --></label>
+        <name>core_cpq_src_sys_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>core_cpq_type__c</name>
+        <picklistValues>
+            <masterLabel>Flat</masterLabel>
+            <translation><!-- Flat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Step</masterLabel>
+            <translation><!-- Non-Step --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prototype</masterLabel>
+            <translation><!-- Prototype --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qty Limited</masterLabel>
+            <translation><!-- Qty Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Step</masterLabel>
+            <translation><!-- Step --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Time Limited</masterLabel>
+            <translation><!-- Time Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VTP</masterLabel>
+            <translation><!-- VTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VTP not in use</masterLabel>
+            <translation><!-- VTP not in use --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unique Combination --></label>
+        <name>core_cpq_unique_combination_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Underlying QuoteLines --></label>
+        <name>core_cpq_update_underlying_quotelines_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper Bound Qty --></label>
+        <name>core_cpq_upper_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suggested Resale $ --></label>
+        <name>price_amt__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- PRID Record Type --></label>
+        <name>PRID_Record_Type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- PRID Record cannot be created or edited during Freeze Period! --></errorMessage>
+        <name>PSG_Restrict_PRID_Edit</name>
+    </validationRules>
+</CustomObjectTranslation>

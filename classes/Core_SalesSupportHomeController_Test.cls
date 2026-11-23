@@ -98,7 +98,7 @@ public class Core_SalesSupportHomeController_Test{
             
             designRegistration.Core_Opportunity_Id__c=opportunityRecord.id;
             
-            designRegistration.Core_Product_Group_Nm__c='Embedded/IOT';
+            designRegistration.Core_Product_Group_Nm__c='FPGA/Power';
             designRegistration.Core_Design_Registration_Nm__c='testDesignres';
             designRegistration.Core_Design_Registration_Dsc__c='desing res decription';
             designRegistration.Core_Opportunity_Volume_Cnt__c=20;
@@ -505,14 +505,13 @@ public class Core_SalesSupportHomeController_Test{
         Test.setCurrentPage(ssPage);
         Test.setMock(HttpCalloutMock.class, new Core_TestMockHttpResponseGenerator());
         Test.startTest();
-        string Tempvar ='Confirm';
         ssController = new Core_SalesSupportHomeController();
         
         //Code added on 12-20-2016 to avoid Attempt to Reference Null Object issue 
         ssController.bSamplesErrorFlag = false;
         ssController.lstFilteredSamples = null;
         ssController.err='Valid quote';
-        ssController.confirmPwd= Tempvar;
+        ssController.confirmPwd='Confirm';
         ssController.first='First';
         ssController.last='last';
         
@@ -686,7 +685,7 @@ public class Core_SalesSupportHomeController_Test{
         // Pages, controller, and parameter map we'll use for testing
         PageReference ssPage = Page.Core_SalesSupportHome;
         Core_SalesSupportHomeController ssController;
-        Id recordtypeId=[SELECT Id,name,developername from RecordType where sobjecttype='Account' and Developername='Mastered_Account' LIMIT 1].Id;
+        Id recordtypeId=[SELECT Id,name,developername from RecordType where sobjecttype='Account' and Developername='Core_Direct_Account' LIMIT 1].Id;
 
         // Set up a test account and opportunity that we'll use
         Account acct = new Account(Name='Test Account', BillingCountryCode='USA', BillingStateCode='OR',
@@ -811,7 +810,7 @@ public class Core_SalesSupportHomeController_Test{
 
 
         // @isTest(SeeAllData=false)
-        /*static testMethod void testSalesSupportHomeCreatePSGQuote_Test1() {
+        static testMethod void testSalesSupportHomeCreatePSGQuote_Test1() {
         
             //Core_OpportunityQuotePSGSales_Test.setupTestData();
             List<Account> accList = Core_SalesSupportPSGQuote_Test.createAccount(1,true);
@@ -891,15 +890,15 @@ public class Core_SalesSupportHomeController_Test{
             User usr1 = createUser1();
             usr1.ContactId = con.Id;
             system.debug('usr1  '+ usr1);
-            List<User> lstUsers2 = PSG_Test_Utility.createAdminUser(); 
+            /*List<User> lstUsers2 = PSG_Test_Utility.createAdminUser(); 
             system.debug('lstUsers2 '+lstUsers2);
             System.runAs(lstUsers2[0]){
                 //insert usr1;
-            }
+            }*/
             
-            User usr1 = createUser1();
+           /* User usr1 = createUser1();
             usr1.ContactId = con.Id;
-            insert usr1;
+            insert usr1;*/
     
             SBQQ.TriggerControl.disable();       
             Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
@@ -929,12 +928,12 @@ public class Core_SalesSupportHomeController_Test{
                
             //}
             test.stopTest();
-        }*/
+        }
     
 
     /************************************************************************************************************************* */
     // @isTest(SeeAllData=false)
-    /*static testMethod void createPSGQuoteonSiebel_NegativeTest() {
+    static testMethod void createPSGQuoteonSiebel_NegativeTest() {
         
         //Core_OpportunityQuotePSGSales_Test.setupTestData();
         List<Account> accList = Core_SalesSupportPSGQuote_Test.createAccount(1,true);
@@ -1028,7 +1027,7 @@ public class Core_SalesSupportHomeController_Test{
         }
         
         Test.startTest();
-		 
+         
         SBQQ.TriggerControl.disable();       
 
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
@@ -1092,7 +1091,7 @@ public class Core_SalesSupportHomeController_Test{
         //}
         test.stopTest();
         // Ranegsh - Changes End
-    }*/
+    }
     /*********************** */
 
     static testMethod void testSalesSupportHomeCreatePSGQuoteNew_NegativeTest() {
@@ -1149,7 +1148,7 @@ public class Core_SalesSupportHomeController_Test{
             insert opportunityRecord;
             Core_Design_Registration__c designRegistration =new Core_Design_Registration__c();
             designRegistration.Core_Opportunity_Id__c=opportunityRecord.id;
-            designRegistration.Core_Product_Group_Nm__c='Embedded/IOT';
+            designRegistration.Core_Product_Group_Nm__c='FPGA/Power';
             designRegistration.Core_Design_Registration_Nm__c='testDesignres';
             designRegistration.Core_Design_Registration_Dsc__c='desing res decription';
             designRegistration.Core_Opportunity_Volume_Cnt__c=20;
@@ -1224,7 +1223,7 @@ public class Core_SalesSupportHomeController_Test{
             opportunityProduct.add(optypdt1);
             insert opportunityProduct;
             System.assertEquals(acc.BillingCountry,'USA');            
-             
+            /* 
             List<OpportunityLineItem> oppLineItemList = Core_SalesSupportPSGQuote_Test.createOpportunityProduct(1,opportunityRecord,true);
             insert oppLineItemList;
             
@@ -1249,7 +1248,7 @@ public class Core_SalesSupportHomeController_Test{
 *               Below Test method is used for pulling the PSG Quote History data 
 *        
 ***********************************/
-    /*static testmethod void testSalesSupportHomePullPSGQuoteHistory_Test() {
+    static testmethod void testSalesSupportHomePullPSGQuoteHistory_Test() {
         
         //Core_OpportunityQuotePSGSales_Test.setupTestData();
         List<Account> accList = Core_SalesSupportPSGQuote_Test.createAccount(1,true);
@@ -1279,7 +1278,7 @@ public class Core_SalesSupportHomeController_Test{
         List<Core_Integration_Inbound_Message__c>  inboundMessageList = Core_SalesSupportPSGQuote_Test.insertIntegrationInboundMessage(1,oppList[0]);
         insert inboundMessageList;
         Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
-        //objHomeController.pullPSGQuoteHistory();
+        objHomeController.pullPSGQuoteHistory();
         //}
         //This functionality is used for loading the initial Tab
         objHomeController.sCurrentTab = 'tabSeeds';
@@ -1293,7 +1292,7 @@ public class Core_SalesSupportHomeController_Test{
         //System.AssertEquals(1,quoteGenarationList.size());
         
         
-    }*/
+    }
     
     
     /**********************************
@@ -1380,11 +1379,11 @@ public class Core_SalesSupportHomeController_Test{
         List<OpportunityLineItem> oppLineItemList = Core_SalesSupportPSGQuote_Test.createOpportunityProduct(1,oppList[0],true);
         insert oppLineItemList;
         
-        /*if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
+        if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
             List<Core_Integration_Inbound_Message__c>  inboundMessageList = Core_SalesSupportPSGQuote_Test.insertIntegrationInboundMessage(1,oppList[0]);
             insert inboundMessageList;
             
-        }*/
+        }
         
         List<Opportunity> oppUpdateList = [Select Id,name,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:oppList[0].Id];
         oppUpdateList[0].Core_PSG_Quote_Last_Processed_Status__c = 'Processing';
@@ -1488,7 +1487,7 @@ public class Core_SalesSupportHomeController_Test{
             '<cus:QuoteURL>Altera.com</cus:QuoteURL>'+
             '<cus:RFQ_ID>IY-13456321ewqw41</cus:RFQ_ID>'+
             '<cus:Opportunity_ID>'+'</cus:Opportunity_ID>'+
-            '<cus:Status>Quote successfully created â€“ all PSG products on the opportunity were quoted</cus:Status>'+
+            '<cus:Status>Quote successfully created – all PSG products on the opportunity were quoted</cus:Status>'+
             '</cus:AlteraSfdcQuoteIntegration_Output>'+
             '</soapenv:Body>'+
             '</soapenv:Envelope>';
@@ -1588,7 +1587,7 @@ public class Core_SalesSupportHomeController_Test{
     }
     
     // Added by Bishal Singh - Accenture
-    /*static testmethod void createPSGQuoteonSiebel_PositiveTest(){
+    static testmethod void createPSGQuoteonSiebel_PositiveTest(){
         SBQQ.TriggerControl.disable();
         Test.startTest();
         //List<User> lstUsers2 = PSG_Test_Utility.createAdminUser(); 
@@ -1599,7 +1598,7 @@ public class Core_SalesSupportHomeController_Test{
         Core_Design_Registration_Product__c designRegistrationProduct=[Select Id from Core_Design_Registration_Product__c LIMIT 1];
         List<product2> prods=[Select id from Product2];
         Test.stopTest();
-        System.runAs(lstUsers2[0]){
+        /*System.runAs(lstUsers2[0]){
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             ApexPages.currentPage().getParameters().put(system.label.Core_OpportunityID, opportunityRecord.Id);
             ApexPages.currentPage().getParameters().put('OppId', opportunityRecord.Id);
@@ -1609,11 +1608,11 @@ public class Core_SalesSupportHomeController_Test{
             objHomeController.selectedISR = 'Testing';
             objHomeController.sOppId = opportunityRecord.Id;
             //objHomeController.createPSGQuoteonSiebel();     
-        }
-    }*/
+        }*/
+    }
     
     // Added by Bishal Singh - Accenture
-    /*static testmethod void createPSGQuoteonSiebelNew_PositiveTest(){
+    static testmethod void createPSGQuoteonSiebelNew_PositiveTest(){
 
         SBQQ.TriggerControl.disable();
         Test.startTest();
@@ -1625,7 +1624,7 @@ public class Core_SalesSupportHomeController_Test{
         Core_Design_Registration_Product__c designRegistrationProduct=[Select Id from Core_Design_Registration_Product__c LIMIT 1];
         List<product2> prods=[Select id from Product2];
         Test.stopTest();
-        System.runAs(lstUsers2[0]){
+        /*System.runAs(lstUsers2[0]){
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             ApexPages.currentPage().getParameters().put(system.label.Core_OpportunityID, opportunityRecord.Id);
             ApexPages.currentPage().getParameters().put('OppId', opportunityRecord.Id);
@@ -1635,11 +1634,11 @@ public class Core_SalesSupportHomeController_Test{
             objHomeController.selectedISR = 'Testing';
             objHomeController.sOppId = opportunityRecord.Id;
             //Core_SalesSupportHomeController.createPSGQuoteonSiebelNew(opportunityRecord.Id);        
-        }
-    }*/
+        }*/
+    }
     
     // Added by Bishal Singh - Accenture
-    /*static testmethod void createQuote_PositiveTest(){
+    static testmethod void createQuote_PositiveTest(){
         SBQQ.TriggerControl.disable();
         //List<User> lstUsers2 = PSG_Test_Utility.createAdminUser(); 
         //List<User> SOSUser = PSG_Test_Utility.createDistyUser();
@@ -1648,7 +1647,7 @@ public class Core_SalesSupportHomeController_Test{
         Opportunity opportunityRecord=[Select Id,Core_First_Customer_Ship_Date__c from Opportunity LIMIT 1];
         Core_Design_Registration_Product__c designRegistrationProduct=[Select Id from Core_Design_Registration_Product__c LIMIT 1];
         List<product2> prods=[Select id from Product2];
-        System.runAs(lstUsers2[0]){
+        /*System.runAs(lstUsers2[0]){
             Test.startTest();
             Core_SalesSupportHomeController objHomeController = new Core_SalesSupportHomeController();
             ApexPages.currentPage().getParameters().put(system.label.Core_OpportunityID, opportunityRecord.Id);
@@ -1660,6 +1659,6 @@ public class Core_SalesSupportHomeController_Test{
             objHomeController.sOppId = opportunityRecord.Id;
             //objHomeController.createQuotes();
             Test.stopTest();
-        }
-    }*/
+        }*/
+    }
 }

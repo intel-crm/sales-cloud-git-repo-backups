@@ -4,12 +4,6 @@
     <attachmentOption>None</attachmentOption>
     <authenticationFailureAction>Discard</authenticationFailureAction>
     <authorizationFailureAction>Discard</authorizationFailureAction>
-    <emailServicesAddresses>
-        <developerName>Approval_Services</developerName>
-        <isActive>true</isActive>
-        <localPart>approval_services</localPart>
-        <runAsUser>salesforce.system.user@intel.com.crm</runAsUser>
-    </emailServicesAddresses>
     <functionInactiveAction>Discard</functionInactiveAction>
     <functionName>Approval Services</functionName>
     <isActive>true</isActive>

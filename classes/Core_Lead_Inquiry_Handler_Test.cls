@@ -123,12 +123,11 @@ public class Core_Lead_Inquiry_Handler_Test {
                 lstLeads[i].Street = 'te7sst';
                 lstLeads[i].postalCode = '5771' + i;
                 lstLeads[i].Company = 'Delitte' + i;
-                lstLeads[i].email = 'test77new' + i + '@teshht.com';
-                lstLeads[i].Core_Sales_Group__c='PRC Sales Group';
-                lstLeads[i].Core_System_Account_Sales_Group__c = 'US Sales Group';
-                lstLeads[i].Status = 'Sales Generated Lead';
-                lstLeads[i].Core_Lead_Status__c = 'Accepted';    
-                lstLeads[i].Core_Lead_Sub_Status__c = 'Attempting Contact';
+                lstleads[i].email = 'test77new' + i + '@teshht.com';
+                lstleads[i].Core_Sales_Group__c='PRC Sales Group';
+                lstleads[i].Core_System_Account_Sales_Group__c = 'US Sales Group';
+                lstleads[i].Status = 'Marketing Qualified Lead';
+                lstleads[i].Core_Lead_Status__c = 'New';        
             }
             
             insert lstLeads;
@@ -205,55 +204,46 @@ public class Core_Lead_Inquiry_Handler_Test {
         update lstLeads[0];                
         test.stoptest();        
     }*/
-
-    @isTest
-    public static void testUpdateCountryLabelOnLeadCountryChange(){
+    
+    @isTest 
+    private static void testupdateCountryLabel(){
+        List<Lead> lstLeads = [SELECT Id FROM Lead];
+        for(Lead leads : lstLeads){
+            leads.Country = 'United States';
+        } 
+        update lstLeads;
         
-        // Create country reference record with matching ISO code
+    }
+     @IsTest
+    public static void updateCountryLabelOnLeadCountryChange_Test(){
+        
+        List<Lead> lstLeads1 = [SELECT Id,CountryCode,Core_CountryLabel__c FROM Lead where CountryCode != null and Core_CountryLabel__c = null];
+        List<Lead> updateLead = new List<Lead>();
         List<Core_Country_Reference__c> countryRefList = new List<Core_Country_Reference__c>();
-        Core_Country_Reference__c countryRef = new Core_Country_Reference__c();
-        countryRef.Name = 'Test Country Ref';
-        countryRef.Core_ISO_Code__c = 'USA';
-        countryRef.Core_Geo__c = 'EMEA';
-        countryRefList.add(countryRef);
+
+            Core_Country_Reference__c countryRef = new Core_Country_Reference__c();
+            countryRef.Name = 'Test Country Ref';
+            countryRef.Core_ISO_Code__c = 'US';
+            countryRef.Core_Geo__c = 'EMEA';
+            countryRefList.add(countryRef);
+        
         insert countryRefList;
         
-        // Create a test lead with CountryCode that matches our country reference
-        Lead testLead = new Lead(
-            FirstName = 'Test',
-            LastName = 'Lead',
-            Company = 'Test Company',
-            CountryCode = 'USA',
-            StateCode = 'AL',
-            City = 'Test City',
-            Street = 'Test Street',
-            Status = 'Sales Generated Lead',
-            LeadSource = 'Email',
-            Email = 'test@example.com',
-            PostalCode = '12345',
-            Title = 'Test Title',
-            Core_Current_Architecture__c = 'Test',
-            Phone = '1234567890',
-            Core_Product_Interest__c = '10',
-            Core_Project_Phase__c = 'testing',
-            Core_Project_Size__c = '4',
-            Core_Project_Timeframe__c = '12-24 Months',
-            Core_Lead_State__c = 'In Pursuit',
-            Core_Lead_Status__c = 'Accepted',
-            Core_Sales_Group__c = 'PRC Sales Group',
-            Core_Lead_Sub_Status__c = 'Attempting Contact'
-           
-        );
-        insert testLead;
-        
-        // Test the method
         Test.startTest();
-        Core_Lead_Inquiry_Handler.updateCountryLabelOnLeadCountryChange(new List<Lead>{testLead});
-        Test.stopTest();
+        Core_Lead_Inquiry_Handler.updateCountryLabelOnLeadCountryChange(lstLeads1);
+        test.stoptest(); 
         
-        // Verify the method worked correctly
-        Lead updatedLead = [SELECT Id, CountryCode, Core_CountryLabel__c FROM Lead WHERE Id = :testLead.Id];
-        System.assertEquals('Test Country Ref', updatedLead.Core_CountryLabel__c, 'Core_CountryLabel__c should be set to the country reference name');
+        for(Lead ld : lstLeads1){
+            ld.CountryCode = 'US';
+            ld.Core_CountryLabel__c='United States';
+            updateLead.add(ld);
+        }
+
+        Core_Lead_Inquiry_Handler.updateCountryLabelOnLeadCountryChange(updateLead);
+
+        
+        List<Lead> updatedLeads = [SELECT Id, Core_CountryLabel__c,CountryCode FROM Lead WHERE Id IN :lstLeads1];
+        System.assertEquals('Test Country Ref', countryRefList[0].Name);
     }
     
 }

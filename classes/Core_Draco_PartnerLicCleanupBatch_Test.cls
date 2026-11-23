@@ -64,7 +64,6 @@ public class Core_Draco_PartnerLicCleanupBatch_Test {
                 FirstName = 'Test1',
                 LastName = 'Partneruser1',
                 ProfileId = partnerProfile.Id,
-                FederationIdentifier = '0987654',
                 TimeZoneSidKey = 'America/Los_Angeles',
                 LocaleSidKey = 'en_US',
                 EmailEncodingKey = 'UTF-8',

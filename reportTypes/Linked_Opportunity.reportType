@@ -668,6 +668,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__CurrentGenerators__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Customer_Project_Details__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -734,6 +739,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Decision_Opportunity_GEO__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__DeliveryInstallationStatus__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -1043,6 +1053,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__Is_Influenced__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_IsBlank_Competitive_Arch__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -1198,6 +1213,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__LinkedIn_Company_Id__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_LOEM__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -1258,6 +1278,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__MainCompetitors__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Manufacturing_Geo__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -1299,6 +1324,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Modern_Standby__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__My_DateTime__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__My_Geolocation__Latitude__s</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__My_Geolocation__Longitude__s</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -1629,6 +1669,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.SBQQ__OrderGroupID__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__OrderNumber__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -2333,6 +2378,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Linked_Opportunity__c.LID__TrackingNumber__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Type</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -2918,6 +2968,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__CurrentGenerators__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Customer_Project_Details__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -2984,6 +3039,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Decision_Opportunity_GEO__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__DeliveryInstallationStatus__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -3293,6 +3353,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__Is_Influenced__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_IsBlank_Competitive_Arch__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -3448,6 +3513,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__LinkedIn_Company_Id__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_LOEM__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -3508,6 +3578,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__MainCompetitors__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Manufacturing_Geo__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -3549,6 +3624,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Modern_Standby__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__My_DateTime__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__My_Geolocation__Latitude__s</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__My_Geolocation__Longitude__s</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -3879,6 +3969,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.SBQQ__OrderGroupID__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__OrderNumber__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -4579,6 +4674,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Total_Days_From_Creation__c</field>
+            <table>CRM_Linked_Opportunities__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Primary_Opportunity__c.LID__TrackingNumber__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>

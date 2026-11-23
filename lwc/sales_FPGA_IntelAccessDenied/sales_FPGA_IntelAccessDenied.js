@@ -1,12 +1,12 @@
 import { LightningElement, track } from 'lwc';
 //import HeaderLabel from '@salesforce/label/c.IPA_Access_Denied_Header';
-//import myResource from '@salesforce/resourceUrl/PMP_Resources';
-//import HeaderHome from '@salesforce/label/c.Sales_Home_header';
+import myResource from '@salesforce/resourceUrl/PMP_Resources';
+import HeaderHome from '@salesforce/label/c.Sales_Home_header';
 //import ContentLabel from '@salesforce/label/c.IPA_AccessDen_Text1';
 //import ChatLink from '@salesforce/label/c.IPA_Chat_Support';
 //import RegistrationLink from '@salesforce/label/c.FPGA_Registration_link_for_Intel_FPGA_SSLC_Account_Access';
 //import chatLinkText from '@salesforce/label/c.IPA_AccessDen_Text1';
-/*import registerLinkText from '@salesforce/label/c.Sales_AccessDen_Text2';
+import registerLinkText from '@salesforce/label/c.Sales_AccessDen_Text2';
 import loginLink from '@salesforce/label/c.Sales_AccessDen_Text3';
 import registerLinkContent from '@salesforce/label/c.Sales_AccessDen_Text4';
 import loginURL from '@salesforce/label/c.Sales_AccessDen_Text5';
@@ -37,7 +37,7 @@ import {
  *
  */
 export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
-  /*@track backgroundurl = `${myResource}/images/ipa-homepage-hub-hero-desktop-v4.jpg`;
+  @track backgroundurl = `${myResource}/images/ipa-homepage-hub-hero-desktop-v4.jpg`;
   loginLogo = logInIcon;
   loginScreen = logScreen;
   helpLogo = helpImg;
@@ -76,7 +76,7 @@ export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
      *
      * @private
      */
-    /*connectedCallback() {
+    connectedCallback() {
        this.redirectTest();
            //const chatStrMatch = this.matchString(chatLinkText);
       //const chatLink = `<a href=${ChatLink}>${chatStrMatch}</a>`;
@@ -109,7 +109,7 @@ export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
      *  @param {string} [replaceWith=''] string to be replaced with.
      *  @returns {string} returns string after replacing
      */
-    /*replaceString(str = '', replace = '', replaceWith = '') {
+    replaceString(str = '', replace = '', replaceWith = '') {
       if (str === '' && replace === '' && replaceWith === '') {
         return '';
       }
@@ -124,7 +124,7 @@ export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
      *
      * @returns {string} string - returns match string inside the curly braces.
      */
-    /*matchString(matchStr = '') {
+    matchString(matchStr = '') {
       if (matchStr === '') {
         return '';
       }
@@ -138,7 +138,7 @@ export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
      *
      * @private
      */
-    /*redirectTest() {
+    redirectTest() {
       // Get the site even though this should only be IPA
       const site = whichSite();
       if (!site) {
@@ -174,5 +174,5 @@ export default class Sales_FPGA_IntelAccessDenied extends LightningElement {
           }
         }
       }
-    }*/
+    }
 }

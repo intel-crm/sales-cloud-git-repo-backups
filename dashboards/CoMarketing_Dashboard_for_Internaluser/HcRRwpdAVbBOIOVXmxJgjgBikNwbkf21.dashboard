@@ -68,6 +68,10 @@
             <operator>includes</operator>
             <values>PRC</values>
         </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>includes</operator>
+            <values>INDIA</values>
+        </dashboardFilterOptions>
         <name>Region</name>
     </dashboardFilters>
     <dashboardGridLayout>

@@ -54,6 +54,10 @@
             <operator>equals</operator>
             <values>PRC</values>
         </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>INDIA</values>
+        </dashboardFilterOptions>
         <name>Region</name>
     </dashboardFilters>
     <dashboardFilters>

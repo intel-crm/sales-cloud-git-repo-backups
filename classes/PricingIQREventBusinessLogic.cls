@@ -2,8 +2,8 @@
  * @description       : Logic for event triggers
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : Gravity
- * @last modified on  : 11-04-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 06-16-2025
+ * @last modified by  : Bharath Chandrashekar
 **/
 public without sharing class PricingIQREventBusinessLogic {
     
@@ -84,7 +84,7 @@ public without sharing class PricingIQREventBusinessLogic {
             }                                                
             
             if(!quoteLineIdToActionMap.isEmpty()){               
-                   User loggedInUser = [SELECT Id,Core_WWID__c from User where Id =: pricingRecList[0].createdById];   //Get the WWID of the Current User
+                   User loggedInUser = [SELECT Id,Name,Core_WWID__c,Email from User where Id =: pricingRecList[0].createdById];   //Get the WWID of the Current User
                    Pricing_IntegrationSFDCToPricingSystems.insertQuoteOutBoundMessage(quoteLineIdToActionMap,quoteLineMap,loggedInUser.Core_WWID__c,false,qlIdToRuleIdRuleNameMap);
             }
             set<Id> quoteIds = new Set<Id>();            

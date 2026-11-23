@@ -114,7 +114,6 @@ public class Core_MDF_PGM_BatchHelper_Test{
         bypassFunctionKeys.add('Bypass_UpdateActivityFields');
         bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
         bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
           
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             
@@ -554,7 +553,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(intelCCF.id),pfa,null,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 500000;
             pfr.Amount = 500000;
@@ -1015,7 +1014,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast'; // Indira
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;

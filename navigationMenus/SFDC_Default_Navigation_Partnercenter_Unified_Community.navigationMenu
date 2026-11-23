@@ -16,21 +16,21 @@
                 <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Outcome-Based Campaigns</label>
-                <position>1</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>/outcome-based-campaigns-list-view</target>
-                <type>InternalLink</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
                 <label>Claims</label>
-                <position>2</position>
+                <position>1</position>
                 <publiclyAvailable>false</publiclyAvailable>
                 <target>PartnerFundClaim</target>
                 <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <label>Batch Claim Upload</label>
+                <position>2</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/batch-claim-upload</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Batch Claim History</label>
                 <position>3</position>
                 <publiclyAvailable>false</publiclyAvailable>
                 <target>Core_MDF_Claim_Batch__c</target>

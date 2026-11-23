@@ -473,16 +473,6 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
                     <default>false</default>
                     <label>External Partner Invite</label>
                 </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -659,41 +649,26 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>PRM_BlockedEmailDomain</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>The Account Contact Relationship can&apos;t be active for blocked domains for Intel Partner Alliance Program.</description>
         <errorConditionFormula>AND(
-	AND($User.FirstName &lt;&gt; &quot;IPA&quot;, $User.LastName &lt;&gt; &quot;Data Migration User &quot;),
-	NOT(PRM_InActive_Ind__c),
-	PRM_Contact_Id__r.RecordType.Name = &quot;Intel Contact&quot;,
-	OR(
-		/* PRC Logic */
-			AND(
-			ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;),
-			OR(
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
-			)
-			),
-			/* Non-PRC Logic */
-			AND(
-			NOT(ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;)),
-			OR(
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc3 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
-			)
-			)
-	)
-)</errorConditionFormula>
+NOT(PRM_InActive_Ind__c),
+PRM_Contact_Id__r.RecordType.Name = &quot;Intel Contact&quot;,
+OR(
+AND(ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;),
+OR(CONTAINS($Label.Blocked_Domains_Prc1, RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email)- FIND(&quot;@&quot;,PRM_Contact_Id__r.Email))),
+CONTAINS($Label.Blocked_Domains_Prc2, RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email)- FIND(&quot;@&quot;,PRM_Contact_Id__r.Email))))),
+AND(NOT(ISPICKVAL(PRM_Account_Id__r.Core_Geo__c,&quot;PRC&quot;)),
+OR(CONTAINS($Label.Blocked_Domains_Non_Prc1, RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email)- FIND(&quot;@&quot;,PRM_Contact_Id__r.Email))),
+CONTAINS($Label.Blocked_Domains_Non_Prc2, RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email)- FIND(&quot;@&quot;,PRM_Contact_Id__r.Email))),
+CONTAINS($Label.Blocked_Domains_Non_Prc3, RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email)- FIND(&quot;@&quot;,PRM_Contact_Id__r.Email)))))))</errorConditionFormula>
         <errorMessage>This email domain is not allowed for Intel Partner Alliance program. Please register with corporate email domain</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_Contact_Embargoed_Country_Check</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
-$Permission.PCC_Bypass_Automation = false,
 PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE,
-PRM_InActive_Ind__c = FALSE,
 OR(
 CONTAINS($Label.PRM_Embargoed_country , PRM_Contact_Id__r.MailingCountry),
 CONTAINS($Label.PRM_Embargoed_country , PRM_Account_Id__r.BillingCountry)

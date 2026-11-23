@@ -79,7 +79,7 @@ private class Core_MDF_ClaimsAutoClosureBatch_Test {
         
         Test.startTest();
         // Creating Activity with utility class
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfaRecord,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
+        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfaRecord,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
         testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
         testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
         testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today()-2;
@@ -89,10 +89,9 @@ private class Core_MDF_ClaimsAutoClosureBatch_Test {
         Database.insert(testPartnerFundRequestRecord);
         test.stopTest();
         
-        // Highlight: Unused Local Variable 
-       // Core_MDF_PICReviewQuestion__c picReviewQuestion = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POC document show cost?','POC document does not show cost',10);
-        // Highlight: Unused Local Variable 
-       // Core_MDF_PICReviewQuestion__c picReviewQuestion1 = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POE document show execution?','POE document does not show execution',20);
+        Core_MDF_PICReviewQuestion__c picReviewQuestion = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POC document show cost?','POC document does not show cost',10);
+        
+        Core_MDF_PICReviewQuestion__c picReviewQuestion1 = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POE document show execution?','POE document does not show execution',20);
     }
     
     @isTest

@@ -272,6 +272,7 @@
         <fields>core_cpq_product_nm__c</fields>
         <fields>core_cpq_quote_line_type_txt__c</fields>
         <fields>price_suggested_resale_amt__c</fields>
+        <fields>core_cpq_PRID__c</fields>
         <fields>price_brokencost_amt__c</fields>
         <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>core_cpq_distributor_margin_pct__c</fields>
@@ -280,6 +281,10 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Competitor_Info__c.core_cpq_quote__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

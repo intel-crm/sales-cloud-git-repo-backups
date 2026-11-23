@@ -119,7 +119,7 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                 // TWC3123-5182 - End
                 
                 //Areefa start : added below code as part of TWC4767-3387
-                String query = 'Select id , Core_Sales_Groups__c , '+String.escapeSingleQuotes(accountConsition.Core_Field_API_name__c) +' from Account where id = \''+String.escapeSingleQuotes(oppObject.AccountId)+'\' Limit 1';
+                String query = 'Select id , Core_Sales_Groups__c , '+accountConsition.Core_Field_API_name__c +' from Account where id = \''+oppObject.AccountId+'\' Limit 1';
                 Account accountDetails = Database.query(query);
                     if (accountDetails.get(accountConsition.Core_Field_API_name__c) != null && accountDetails.get('Core_Sales_Groups__c') != accountDetails.get(accountConsition.Core_Field_API_name__c) && Date.today() >= accountConsition.Core_Start_Date__c && Date.today() <= accountConsition.Core_End_Date__c && oppObject.Core_Opportunity_Coverage_Nm__c == 'Intel-Led Opportunity' && oppObject.RecordType.DeveloperName == 'Core_Design_Opportunity' && Boolean.valueOf(Core_CRM_Utility.getCRMLabel('Core_PW_ApprovalSubmissionRestrict'))) {
                         hardStop = true;

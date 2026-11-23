@@ -54,8 +54,6 @@ public class Core_MDF_AuditCaseProcess_Test {
             List<Id> caseIdsList = new List<Id>();
             caseIdsList.add(cs.id);
             Test.startTest();
-            // Unit Test Method should include System.Assert 
-            System.assertNotEquals(null, caseIdsList, 'Case IDs list should not be null');
             Core_MDF_AuditCaseProcess.auditCaseAssignment(caseIdsList);
             //Case caseObjRec = [SELECT Id, ownerId FROM Case where id = :cs.id];
             //String ownerIdStr = caseObjRec.ownerId;

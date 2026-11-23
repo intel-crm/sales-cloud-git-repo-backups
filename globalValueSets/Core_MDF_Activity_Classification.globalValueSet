@@ -10,11 +10,6 @@
         <default>false</default>
         <label>Sales</label>
     </customValue>
-    <customValue>
-        <fullName>Co-Engineering</fullName>
-        <default>false</default>
-        <label>Co-Engineering</label>
-    </customValue>
     <description>This global value set will store activity classification values</description>
     <masterLabel>Activity Classification</masterLabel>
     <sorted>false</sorted>

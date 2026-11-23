@@ -31,7 +31,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         Map<string,List<Core_MDF_Claim_Case_Checklist__c>> resultMap = new Map<string,List<Core_MDF_Claim_Case_Checklist__c>>();
 
         try{
-            for(Core_MDF_Claim_Case_Checklist__c checklistItem :[select Id, Core_MDF_Checklist_Line_Number__c, Core_MDF_Checklist_Item__c, Core_MDF_Checklist_Description__c, Core_MDF_Checklist_Category__c, Core_MDF_Case_ID__c,Core_MDF_Checklist_Status__c,Core_MDF_Claim_Case_Review_Findings__c,Core_MDF_Comment__c,Core_MDF_Impact_Amount__c, Core_MDF_Completion_Percentage__c,Core_MDF_AI_Checklist_Status_Nm__c,Core_MDF_AI_Generated_Comments_Txt__c
+            for(Core_MDF_Claim_Case_Checklist__c checklistItem :[select Id, Core_MDF_Checklist_Line_Number__c, Core_MDF_Checklist_Item__c, Core_MDF_Checklist_Description__c, Core_MDF_Checklist_Category__c, Core_MDF_Case_ID__c,Core_MDF_Checklist_Status__c,Core_MDF_Claim_Case_Review_Findings__c,Core_MDF_Comment__c,Core_MDF_Impact_Amount__c, Core_MDF_Completion_Percentage__c 
                                                             FROM Core_MDF_Claim_Case_Checklist__c
                                                                  where Core_MDF_Case_ID__c =: caseRecord ORDER BY Core_MDF_Checklist_Line_Number__c, Core_MDF_Checklist_Category__c ]){
                                                                      if(resultMap.containsKey(checklistItem.Core_MDF_Checklist_Category__c)){
@@ -64,7 +64,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         toBeUpdatedIds.addAll(checklistSelection.keyset());
         toBeUpdatedIds.addAll(impactAmount.keyset());
         toBeUpdatedIds.addAll(comments.keyset());
-      
+        //system.debug('performUpdate' + performUpdate);
         try{
             for(string key : toBeUpdatedIds){
             Core_MDF_Claim_Case_Checklist__c record = new Core_MDF_Claim_Case_Checklist__c(id=key); 
@@ -119,7 +119,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                 if(caseRecord != null){
                     updateClaimCaseReviewer(caseRecord);
                 } 
-            } 
+            }  
         }
 
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());}
@@ -136,7 +136,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
             result = [select Core_MDF_Case_ID__c, Core_MDF_Checklist_Status__c, toLabel(Core_MDF_Claim_Case_Review_Findings__c)
                                                             FROM Core_MDF_Claim_Case_Checklist__c
                                                             where Core_MDF_Case_ID__c =: caseRecord 
-                                                            and Core_MDF_Checklist_Status__c = 'Non-Compliant'];
+                                                            and Core_MDF_Checklist_Status__c = 'Non-Compliant'];  
             // Commented the below code, handling in updateClaimCaseReviewer method
             /*for (Core_MDF_Claim_Case_Checklist__c chklst : result){
                 reviewFindings.add(chklst.Core_MDF_Claim_Case_Review_Findings__c);
@@ -324,7 +324,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                             //DE60015 - fix
                             exceptionMessage = exceptionMessage == null?objErr.getMessage():exceptionMessage;
                         } 
-                    }
+                    }  
             }
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
@@ -414,11 +414,4 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         } catch(exception ex) { Core_MDF_CCP_UtilityClass.logError(ex); }
         return caseId;
     }  
-
-    //Audit functionality Method to get AI Status from Scorecard for displaying appropriate message
-    @AuraEnabled
-   public static Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper  getAIAuditStatusFromScorecard(Id caseRecordId){
-        Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper  aiWrapper = Core_MDF_Scorecard_Helper.getScoreCardDetailsAndAccess(caseRecordId);
-        return aiWrapper;
-    }
 }

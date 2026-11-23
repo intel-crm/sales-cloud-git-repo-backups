@@ -5,8 +5,8 @@
     <assignments>
         <name>Not_Approved_PW_Amount</name>
         <label>Not Approved PW Amount</label>
-        <locationX>264</locationX>
-        <locationY>647</locationY>
+        <locationX>750</locationX>
+        <locationY>247</locationY>
         <assignmentItems>
             <assignToReference>TotalPWAmount</assignToReference>
             <operator>Add</operator>
@@ -21,8 +21,8 @@
     <decisions>
         <name>Check_Product_price_and_Quantity</name>
         <label>Check Product price and Quantity</label>
-        <locationX>396</locationX>
-        <locationY>539</locationY>
+        <locationX>638</locationX>
+        <locationY>388</locationY>
         <defaultConnector>
             <targetReference>Get_All_Sales_Price_and_Quanitity</targetReference>
         </defaultConnector>
@@ -83,8 +83,8 @@
     <loops>
         <name>Get_All_Sales_Price_and_Quanitity</name>
         <label>Get All Sales Price and Quanitity</label>
-        <locationX>176</locationX>
-        <locationY>431</locationY>
+        <locationX>640</locationX>
+        <locationY>18</locationY>
         <collectionReference>Get_Related_All_PW_Submitted_Product</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -103,7 +103,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -116,8 +116,8 @@
     <recordLookups>
         <name>Get_Related_All_PW_Submitted_Product</name>
         <label>Get Related All PW Submitted Product</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationX>519</locationX>
+        <locationY>65</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_All_Sales_Price_and_Quanitity</targetReference>
@@ -180,8 +180,8 @@
     <recordUpdates>
         <name>Update_Parent_Opps_with_PW_Amount</name>
         <label>Update Parent Opps with PW Amount</label>
-        <locationX>176</locationX>
-        <locationY>923</locationY>
+        <locationX>1044</locationX>
+        <locationY>80</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -207,17 +207,14 @@
     </recordUpdates>
     <start>
         <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationY>50</locationY>
         <connector>
             <targetReference>Get_Related_All_PW_Submitted_Product</targetReference>
         </connector>
         <filterFormula>(( !ISNULL({!$Record.Core_PW_Quantity__c}) &amp;&amp;  !ISNULL({!$Record.Core_PW_Sales_Price__c}) ) || 
 ( !ISNULL({!$Record.Core_PW_Quantity__c}) &amp;&amp; ISCHANGED({!$Record.Core_PW_Quantity__c})) ||
 ( !ISNULL({!$Record.Core_PW_Sales_Price__c}) &amp;&amp; ISCHANGED({!$Record.Core_PW_Sales_Price__c})))
- &amp;&amp;
- ( {!$Record.Opportunity.RecordType.DeveloperName} = &apos;Core_Design_Opportunity&apos;)
-&amp;&amp;
-({!$Record.Opportunity.Account.RecordType.DeveloperName} = &apos;Mastered_Account&apos;)</filterFormula>
+ &amp;&amp; ( {!$Record.Opportunity.RecordType.DeveloperName} = &apos;Core_Design_Opportunity&apos;)</filterFormula>
         <object>OpportunityLineItem</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

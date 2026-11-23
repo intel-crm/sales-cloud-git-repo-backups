@@ -175,7 +175,7 @@ public without sharing class Core_OpportunitySupportServiceHandler{
         List<Core_Opportunity_Support__c> opportunitySuportCancelled = new List<Core_Opportunity_Support__c>();
          List<Id> OppSuppReqId = new List<Id>();
         //check for Approved record
-        //string recordtypeMS='CRM_Marketing_Support';
+        string recordtypeMS='CRM_Marketing_Support';
         string recordtypeMSId=  Schema.SObjectType.Core_Opportunity_Support__c.getRecordTypeInfosByDeveloperName().get('CRM_Marketing_Support').getRecordTypeId();
         
         for (Core_Opportunity_Support__c opp_supp : triggerNew) {
@@ -189,7 +189,7 @@ public without sharing class Core_OpportunitySupportServiceHandler{
             
         }
         if(opportunitiesSuportApprovered.size() > 0){
-            //List<OpportunityTeamMember> oppToShare = new List<OpportunityTeamMember>();           
+            List<OpportunityTeamMember> oppToShare = new List<OpportunityTeamMember>();           
             
             //List of user details tag to Opp support
             try {                
@@ -244,12 +244,12 @@ public without sharing class Core_OpportunitySupportServiceHandler{
     public static void checkOppSupportTeam(List<Core_Opportunity_Support__c> triggerNew ,Map<Id,Core_Opportunity_Support__c> triggerNewMap,Map<Id,Core_Opportunity_Support__c> triggerOldMap)
     {
         
-        //string recordtypeMS='CRM_Marketing_Support';
+        string recordtypeMS='CRM_Marketing_Support';
         string recordtypeMSId=  Schema.SObjectType.Core_Opportunity_Support__c.getRecordTypeInfosByDeveloperName().get('CRM_Marketing_Support').getRecordTypeId();
         try{
             List<Id> OppSuppReqId = new List<Id>();
-            //Map<Id,String> oppSuppReqMapIdStatus = new Map<Id,String>();
-            //List<Id> toTrackLastedOppId = new List<Id>();
+            Map<Id,String> oppSuppReqMapIdStatus = new Map<Id,String>();
+            List<Id> toTrackLastedOppId = new List<Id>();
             for(Core_Opportunity_Support__c opp: triggerNew){
                 if((opp.Core_Status__c == 'Approved' || opp.Core_Status__c == 'Rejected' ) && opp.Core_Status__c != triggerOldMap.get(opp.id).Core_Status__c  )// add status check only for approved record                  
                     OppSuppReqId.add(opp.Id);
@@ -269,9 +269,9 @@ public without sharing class Core_OpportunitySupportServiceHandler{
     
     public static void updateApproveOrRejectComents(List<Core_Opportunity_Support__c> triggerNew ,Map<Id,Core_Opportunity_Support__c> triggerOldMap){
         Set<Id> OppSuppReqId = new Set<Id>();
-        //List<Id> toTrackLastedOppId = new List<Id>();
+        List<Id> toTrackLastedOppId = new List<Id>();
         Set<Id> OppSuppReqIdRejected = new Set<Id>();
-        //string recordtypeMS='CRM_Marketing_Support';
+        string recordtypeMS='CRM_Marketing_Support';
         string recordtypeMSId=  Schema.SObjectType.Core_Opportunity_Support__c.getRecordTypeInfosByDeveloperName().get('CRM_Marketing_Support').getRecordTypeId();
         for(Core_Opportunity_Support__c opp: triggerNew){
             if((opp.Core_Status__c == 'Approved' || opp.Core_Status__c == 'Rejected' ) && opp.Core_Status__c != triggerOldMap.get(opp.id).Core_Status__c && opp.RecordTypeId != recordtypeMSId)// add status check only for approved record

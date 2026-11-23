@@ -9,7 +9,6 @@ private class Core_MDF_SchNotificationHandler_Test {
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
-        usr.IsActive = true;
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
         System.runAs(usr){  
@@ -21,9 +20,8 @@ private class Core_MDF_SchNotificationHandler_Test {
             bypassFunctionKeys.add('BypassRetailMDFBudgetValidation');
             bypassFunctionKeys.add('ShareActivityWithInternalUsers_Bypass');
 			bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
-			bypassFunctionKeys.add('byPassCampaignAndRelatedRecords'); 
-            bypassFunctionKeys.add('userGroupMappingIndicator');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');//14285
+			bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
+            
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -194,7 +192,6 @@ private class Core_MDF_SchNotificationHandler_Test {
             campIpa.Core_MDF_Proposal_Based_Ind__c = false;
             campIpa.Core_MDF_Budget_Type_txt__c = 'Account Plan';
             campIpa.Status ='Planned' ;
-            campIpa.Core_MDF_Technology__c='';//14285
             campList.add(campIpa);
             Database.insert(campList);
             list<PartnerFundRequest> pfrList = new list<PartnerFundRequest>();
@@ -233,7 +230,7 @@ private class Core_MDF_SchNotificationHandler_Test {
     
     @isTest
     static void scheduledNotificatonTest(){
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test'and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         System.runAs(sysAdm){
         Test.startTest();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -270,11 +267,11 @@ private class Core_MDF_SchNotificationHandler_Test {
     }
     @isTest
     static void scheduledNotificatonTestIpa(){
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         String notificationType = 'Proposal Approval Request';
         System.runAs(sysAdm){
          Test.startTest();
-
+        Campaign cmp = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP'];
         PartnerFundRequest ipaPFR =[select id,title,Core_MDF_ToBeClosedDate__c,ChannelPartnerId,Core_MDF_Fund_Request_Status__c,
                                        Core_MDF_Region_nm__c,Core_MDF_Ultimate_Account_Id__c,Core_MDF_Program__c from partnerfundrequest where title ='IPA Account Plan Activity' limit 1];
       	Set<ID> acc1 = new Set<ID>();
@@ -283,7 +280,7 @@ private class Core_MDF_SchNotificationHandler_Test {
         acc2.add(ipaPFR.Core_MDF_Ultimate_Account_Id__c); 
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         pfrList.add(ipaPFR);
-        Core_MDF_ScheduledNotificationHandler.notifyIPAUsers(acc1,acc2,pfrList,notificationType, false);
+        Core_MDF_ScheduledNotificationHandler.notifyIPAUsers(acc1,acc2,pfrList,notificationType);
         System.assertEquals(true, ipaPFR!=null);
             
         Test.stopTest();
@@ -291,9 +288,9 @@ private class Core_MDF_SchNotificationHandler_Test {
     }
     @isTest
     static void getUsersToSendMailTest() {
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test'and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         System.runAs(sysAdm){
-
+            Campaign cmp = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP'];
         	PartnerFundRequest ipaPFR =[select id,title,Core_MDF_ToBeClosedDate__c,ChannelPartnerId,Core_MDF_Fund_Request_Status__c,
                                        Core_MDF_Region_nm__c,Core_MDF_Ultimate_Account_Id__c,Core_MDF_Program__c from partnerfundrequest where title ='IPA Account Plan Activity' limit 1];
             Set<ID> usrId = new Set<ID>();

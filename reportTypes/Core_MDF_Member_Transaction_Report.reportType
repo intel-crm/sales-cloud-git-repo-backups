@@ -807,12 +807,6 @@
             <field>Core_MDF_Processing_Preference_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign id</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims</table>
-        </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
     <sections>
@@ -1083,17 +1077,6 @@
             <displayNameOverride>Activity Geo</displayNameOverride>
             <field>Core_MDF_Region_nm__c</field>
             <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Super Claim</displayNameOverride>
-            <field>Core_MDF_Claim_Id__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <masterLabel>All Fields Report</masterLabel>
     </sections>

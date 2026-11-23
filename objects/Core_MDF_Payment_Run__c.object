@@ -86,20 +86,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>true</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>true</skipRecordTypeSelect>
-        <type>LightningComponent</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -280,15 +276,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Is_OOC_Payment_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Out of Cycle Payment?</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_PaymentJob_Id__c</fullName>
         <externalId>false</externalId>
         <label>Payment Job Id</label>
@@ -335,16 +322,6 @@
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Payment_Run_for_Claims_Id__c</fullName>
-        <label>Payment Run for Claims</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Payment_Types_txt__c</fullName>
@@ -545,6 +522,7 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>
@@ -658,6 +636,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -775,6 +757,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -889,6 +875,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -975,6 +965,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -998,6 +992,148 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
             <picklist>Core_MDF_Program_Txt__c</picklist>
             <values>
                 <fullName>CoGTM</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Status_Txt__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Subgeo_Txt__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Channel_MDF</fullName>
+        <active>true</active>
+        <label>Channel MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo_Txt__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Nature_nm__c</picklist>
+            <values>
+                <fullName>Contra Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expense</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Program_Txt__c</picklist>
+            <values>
+                <fullName>Channel MDF</fullName>
                 <default>true</default>
             </values>
         </picklistValues>
@@ -1174,6 +1310,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1421,6 +1561,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1539,6 +1683,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1650,6 +1798,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1811,6 +1963,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -1897,14 +2053,16 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <fullName>Core_MDF_AccountsFieldMandatoryCheck</fullName>
         <active>true</active>
         <description>For MDF record types, checking if backend accounts field is populated</description>
-        <errorConditionFormula>IF( AND(OR(RecordType.Name == &apos;Client MDF&apos;,RecordType.Name == &apos;Datacenter MDF&apos;), AND(NOT(Core_MDF_Run_For_All_Accounts__c),ISBLANK(Core_MDF_Account_Id__c),ISBLANK(Core_MDF_Payment_run_for_Accounts__c)), Core_MDF_Is_OOC_Payment_Ind__c = false),true,false)</errorConditionFormula>
+        <errorConditionFormula>IF(AND(OR(RecordType.Name  = &apos;Client MDF&apos;,RecordType.Name  = &apos;Datacenter MDF&apos;), OR(Core_MDF_Run_For_All_Accounts__c, NOT(ISBLANK(Core_MDF_Account_Id__c))), Core_MDF_Payment_run_for_Accounts__c = Null) , true, false)</errorConditionFormula>
         <errorMessage>Please select Account(s) to proceed with the payment run</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Accounts_Not_Selected</fullName>
         <active>true</active>
         <description>show error if no account is selected</description>
-        <errorConditionFormula>IF( AND(OR(RecordType.Name == &apos;Client MDF&apos;,RecordType.Name == &apos;Datacenter MDF&apos;), AND(NOT(Core_MDF_Run_For_All_Accounts__c),ISBLANK(Core_MDF_Account_Id__c),ISBLANK(Core_MDF_Payment_run_for_Accounts__c)), Core_MDF_Is_OOC_Payment_Ind__c = false),true,false)</errorConditionFormula>
+        <errorConditionFormula>IF( AND(OR(RecordType.Name == &apos;Client MDF&apos;,RecordType.Name == &apos;Datacenter MDF&apos;,RecordType.Name == &apos;Co-Engineering&apos; ), AND(NOT(Core_MDF_Run_For_All_Accounts__c),ISBLANK(Core_MDF_Account_Id__c)))
+,
+true,false)</errorConditionFormula>
         <errorMessage>Atleast one option needs to be selected, please select either “Run for All Accounts” option or select an account from the “Account” lookup by typing in the account name.</errorMessage>
     </validationRules>
     <validationRules>
@@ -1917,20 +2075,6 @@ Core_MDF_Start_Dt__c &gt; Core_MDF_End_Dt__c ) ,
 TRUE, FALSE
 )</errorConditionFormula>
         <errorMessage>Execution start date cannot be greater than execution end date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_BlockPaymentNatureChange</fullName>
-        <active>true</active>
-        <description>Block Payment Nature changes for IPA and NRE Payment Runs when the status is In-progress or Completed.</description>
-        <errorConditionFormula>AND(
-    NOT(ISNEW()),
-    ISCHANGED(Core_MDF_Payment_Nature_nm__c),
-    OR(
-        RecordType.DeveloperName = &apos;Core_MDF_Intel_Partner_Alliance_MDF&apos;,
-        RecordType.DeveloperName = &apos;Co_Engineering&apos;
-    )
-)</errorConditionFormula>
-        <errorMessage>Payment Nature cannot be changed in this status.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_IPAValidationOnSendNotification</fullName>
@@ -1955,7 +2099,7 @@ NOT(ISNEW()),
         <fullName>Core_MDF_Mutually_Exclude_Account_Fields</fullName>
         <active>true</active>
         <description>To select only one of &apos;Account&apos; or &apos;Run for All Accounts&apos; option</description>
-        <errorConditionFormula>IF( AND(OR(RecordType.Name == &apos;Client MDF&apos;,RecordType.Name == &apos;Datacenter MDF&apos;), OR( AND(Core_MDF_Run_For_All_Accounts__c,
+        <errorConditionFormula>IF( AND(OR(RecordType.Name == &apos;Client MDF&apos;,RecordType.Name == &apos;Datacenter MDF&apos;,RecordType.Name == &apos;Co-Engineering&apos; ), OR( AND(Core_MDF_Run_For_All_Accounts__c,
 NOT(ISBLANK(Core_MDF_Account_Id__c))))
 ),
 true,false)</errorConditionFormula>
@@ -2029,27 +2173,12 @@ AND(NOT(ISNEW()),ISCHANGED(Core_MDF_Program_Id__c),ISBLANK(Core_MDF_Program_Id__
         <fullName>Core_MDF_Program_Permission_Validation</fullName>
         <active>true</active>
         <description>Logged In User Must have Permission to Run the Payment for a Particular Program.</description>
-        <errorConditionFormula>AND(
-    OR(
-        ISNEW(),
-        ISCHANGED(Core_MDF_Program_Txt__c)
-    ),
-	OR(
-		AND(
-		Core_MDF_Is_OOC_Payment_Ind__c  = false,
-			OR(
-				AND(RecordType.DeveloperName = &apos;Client_Co_Marketing_Fund_CMP&apos;, NOT($Permission.Core_MDF_CCF_CMP_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Client_Co_Marketing_Fund_MDF&apos;, NOT($Permission.Core_MDF_CCF_MDF_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Data_Center_Co_Marketing_Fund_CMP&apos;, NOT($Permission.Core_MDF_DCF_CMP_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Data_Center_Co_Marketing_Fund_MDF&apos;, NOT($Permission.Core_MDF_DCF_MDF_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Core_MDF_Retail_Marketing_Funds&apos;, NOT($Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Core_MDF_Intel_Partner_Alliance_MDF&apos;, NOT($Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin)),
-				AND(RecordType.DeveloperName = &apos;Co_Engineering&apos;, NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm))
-			)
-		),
-		AND(Core_MDF_Is_OOC_Payment_Ind__c  = true, NOT($Permission.Core_MDF_CCP_Internal_Payment_Admin_Manager))
-	)
-)</errorConditionFormula>
+        <errorConditionFormula>AND(OR(ISNEW(),ISCHANGED(Core_MDF_Program_Txt__c)),IF(RecordType.Name = &apos;Co-Marketing&apos;,
+IF(AND(TEXT(Core_MDF_Program_Txt__c) = &apos;Client CoMarketing Fund&apos;,NOT($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin)), true,
+IF(AND(TEXT(Core_MDF_Program_Txt__c) = &apos;Client CoMarketing Fund Boost&apos;,NOT($Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin)), true,
+IF(AND(TEXT(Core_MDF_Program_Txt__c) = &apos;Data Center CoMarketing Fund&apos;,NOT($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin)), true,
+IF(AND(TEXT(Core_MDF_Program_Txt__c) = &apos;Service Provider CoMarketing Fund&apos;,NOT($Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin)), true,
+false)))),false))</errorConditionFormula>
         <errorMessage>You do not have permission to create a Payment Run for the selected Program. Contact support for further assistance.</errorMessage>
     </validationRules>
     <validationRules>

@@ -7,20 +7,12 @@
 	<aura:attribute name="errorMessage" type="string" />
 	<aura:attribute name="acronym" type="string" default="" />
 	<aura:attribute name="programType" type="string" />
-    <aura:attribute name="quoteLine" type="SBQQ__QuoteLine__c" />
 
 	<aura:attribute name="iconName" type="string" default="" />
 	<aura:attribute name="alternativeText" type="string" default="" />
 	<aura:attribute name="variant" type="string" default="" />
 	<aura:attribute name="isRPMUser" type="boolean" default="false" />
-    
-    <aura:attribute name="aiIntegrationStatus" type="string" />
-    <aura:attribute name="aiIconName" type="string" default="" />
-	<aura:attribute name="aiAlternativeText" type="string" default="" />
-	<aura:attribute name="aiVariant" type="string" default="" />
-    <aura:attribute name="isRPMUserAlpha" type="boolean" default="false" />
-    <aura:attribute name="isPricingNotEligible" type="boolean" default="false" />
-		
+
 	<aura:if isTrue="{!v.isRPMUser}">
 		<div style="white-space: nowrap !important;display: inline-block;">
 			<aura:if isTrue="{!and(v.integrationStatus != '',v.isRPMUser)}">
@@ -28,12 +20,6 @@
 					alternativeText="{!v.alternativeText}" title="{!v.alternativeText}" variant="{!v.variant}"
 					size="x-small" />
 			</aura:if>
-            <aura:if isTrue="{!and(v.aiIntegrationStatus != '',v.isRPMUserAlpha)}">
-				<lightning:icon class="slds-var-p-right_xxx-small" iconName="{!v.aiIconName}"
-					alternativeText="{!v.aiAlternativeText}" title="{!v.aiAlternativeText}" variant="{!v.aiVariant}"
-					size="x-small" />
-			</aura:if>
-			
 		</div>
 	</aura:if>
 </aura:component>

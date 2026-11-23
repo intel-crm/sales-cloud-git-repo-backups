@@ -24,7 +24,7 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
         //variable declarations
         List<PartnerFundClaim> pfcListForNewCases = new List<PartnerFundClaim>();
         List<PartnerFundClaim> pfcListToBeUpdated = new List<PartnerFundClaim>();
-        //Map<Id,PartnerFundRequest> pfrIdMap; //Highlight Unused Local Variable - TWC3117-18226
+        Map<Id,PartnerFundRequest> pfrIdMap;
         List<Id> caseOwnerIdList = new List<Id>();
         
         // Added to fetch all the co-marketing record types
@@ -32,18 +32,15 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
         List<String> recTypeDeveloperName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_ClaimRecordType_API_Name').split(',');
         for(String str: recTypeDeveloperName){
             claimRecordTypeID.add(Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get(str).getRecordTypeId());
-        }   
-      	List<Core_MDF_ReverseAuditDecision.RequestInput> inputList = new List<Core_MDF_ReverseAuditDecision.RequestInput>();
+        }
+        
         try{
             for(PartnerFundClaim pfc : newClaimList){ 
                 // Checking claim record type matches with co-marketing record type
                 // included Core_MDF_Claim_Review_Case__c check in if condition
-                //ATHR - Deeply Nested if 16209
-                if(!claimRecordTypeID.contains(pfc.RecordTypeId) || oldClaimMap.isEmpty()){
-                    continue; // Skip if not a co-marketing record type or oldClaimMap is empty
-                }
-                //if(claimRecordTypeID.contains(pfc.RecordTypeId)){
-                    if(oldClaimMap.get(pfc.ID).Core_MDF_FlaggedForAudit__c != pfc.Core_MDF_FlaggedForAudit__c 
+                if(claimRecordTypeID.contains(pfc.RecordTypeId)){
+                    if(oldClaimMap != null && oldClaimMap.size() > 0   
+                       && oldClaimMap.get(pfc.ID).Core_MDF_FlaggedForAudit__c != pfc.Core_MDF_FlaggedForAudit__c 
                        && pfc.Core_MDF_FlaggedForAudit__c == true
                        && pfc.Core_MDF_Claim_Review_Case__c == NULL
                        && pfc.Core_MDF_Audit_Type__c  == 'Manual'){
@@ -55,7 +52,8 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
                     // JV-Accenture: Added a condition to check whether Requested Amount is changed to update the same on the resp. Case field
                     // SN-Accenture: Added conditions to check whether Claim Number and Invoice Number is changed to update the same on the respective Case field
                     // US977959: [OEM Integration] - [Case] - Activity Sub Type - Multiselect
-                    if(pfc.Core_MDF_FlaggedForAudit__c == true &&  !(oldClaimMap.get(pfc.ID).Core_MDF_Number_Of_Recoveries_Nbr__c != pfc.Core_MDF_Number_Of_Recoveries_Nbr__c)
+                    if(oldClaimMap != null && oldClaimMap.size() > 0
+                       && pfc.Core_MDF_FlaggedForAudit__c == true &&  !(oldClaimMap.get(pfc.ID).Core_MDF_Number_Of_Recoveries_Nbr__c != pfc.Core_MDF_Number_Of_Recoveries_Nbr__c)
                        && ((oldClaimMap.get(pfc.ID).Core_MDF_Status__c != pfc.Core_MDF_Status__c
                             && pfc.Core_MDF_Status__c == 'Cancelled')
                            || oldClaimMap.get(pfc.ID).Amount != pfc.Amount
@@ -84,17 +82,9 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
                                   caseOwnerIdList.add(pfc.OwnerId);   
                               }
                           }
-                
-                // Inactivate Recovery Request when processing pref is changed and new value is 'Settle, then get paid'
-                if(oldClaimMap.get(pfc.Id).Core_MDF_Processing_Preference_nm__c != pfc.Core_MDF_Processing_Preference_nm__c && pfc.Core_MDF_Processing_Preference_nm__c == 'Settle, then get paid' && pfc.Core_MDF_Claim_Review_Case__c != null){
-                    Core_MDF_ReverseAuditDecision.RequestInput input = new Core_MDF_ReverseAuditDecision.RequestInput();
-                    input.claimId = pfc.Id;
-                    inputList.add(input);
-                }                
+                }
             }
-            if(!inputList.isEmpty()){
-                Core_MDF_ReverseAuditDecision.inactivateRecoveryRequests(inputList);
-            }
+            
             
             // calling the method for case creation
             if(pfcListForNewCases.size()>0) {               
@@ -146,19 +136,6 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
 
         }
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
-    }
-
-    //Roshan - Case Cancellation
-    @AuraEnabled
-    public static Boolean getCancelCaseAccess() {
-        Boolean hasAccess = false;
-        try {
-            hasAccess = FeatureManagement.checkPermission(Core_MDF_CCP_ConstantClass.CCRM_CUSTOM_PS);
-            return hasAccess;
-        } catch (Exception ex) {
-            Core_MDF_CCP_UtilityClass.logError(ex);
-            return null;
-        }
     }
     
     //Added by Ealisha-Retry Case creation-US518106

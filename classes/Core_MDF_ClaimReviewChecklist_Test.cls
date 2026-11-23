@@ -28,9 +28,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         Map<string,string> checklistSelection = new Map<string,string>();
         Map<string,string> impactAmount = new Map<string,string>();
         Map<string,string> comments = new Map<string,string>();
-        integer result; 
-        // Highlight: Unused Local Variable
-        // string caseStatus;
+        integer result; string caseStatus;
         Case record = [select id from Case limit 1];
 
         Core_MDF_Claim_Case_Checklist__c checklistRecord = [select id from Core_MDF_Claim_Case_Checklist__c where Core_MDF_Checklist_Status__c='Compliant'];
@@ -171,7 +169,8 @@ private class Core_MDF_ClaimReviewChecklist_Test {
                         Case record = [select id from Case limit 1];
                         caseRecordId = record.id;
                         
-                        //List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
+
+                        List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
                         List<Core_MDF_Claim_Case_Checklist__c> testChecklistRecord = new List<Core_MDF_Claim_Case_Checklist__c>();
 
                         Core_MDF_Claim_Case_Checklist__c checklistRecord1 = new Core_MDF_Claim_Case_Checklist__c();
@@ -216,23 +215,12 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         es.Core_MDF_Escalation_Status_nm__c='Pending Review';
         es.Core_MDF_Escalation_Name_txt__c='Test3';
         es.Core_MDF_Total_Dollar_Impact_amt__c= 1; 
-        //es.Core_MDF_Root_Cause_nm__c = 'Creative';
+        es.Core_MDF_Root_Cause_nm__c = 'Claim Score Appeal';
         es.Core_MDF_Case_ID_Number_id__c = testCase.Id;
         es.Core_MDF_Channel_Program_id__c = retailCp.Id;
         es.recordtypeid = escalationRecType;
         es.Core_MDF_Do_not_Auto_Create_Claim_Ind__c = true;
         insert es;
         Core_MDF_ClaimReviewChecklist.getCaseIdFromEscalation(es.Id);
-        // Unit Test Method should include System.Assert
-        System.assertEquals(testCase.Id, es.Core_MDF_Case_ID_Number_id__c, 'Escalation should be linked to the correct Case.');
-    }
-   
-    @isTest static void testgetAIAuditStatusFromScorecard(){
-        
-        Case caseRec = [SELECT Id FROM Case LIMIT 1];
-       
-        Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper result = new Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper();
-       
-        result = Core_MDF_ClaimReviewChecklist.getAIAuditStatusFromScorecard(caseRec.Id);
     }
 }

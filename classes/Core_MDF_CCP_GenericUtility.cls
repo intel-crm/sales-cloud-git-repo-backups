@@ -78,7 +78,6 @@ public without sharing class Core_MDF_CCP_GenericUtility {
          List<String> assignedCustomPermission = new List<String>();
          Set<String> permissionSetIds = new Set<String>();
          Set<Id> assignedCustomPermSetIds = new Set<Id>();
-         fields = String.escapeSingleQuotes(fields);//ATHR-WW09
          
         if(fields != null){
             String queryString = 'SELECT '+fields+' FROM ' + 'PermissionSetAssignment';
@@ -341,7 +340,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
         Added By:           Accenture 
         Modified By:        Date:       Changes: 
         ******************************************************************************************************/
-        public static List<sObject> createShareRecForInternalPGMgrps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList, Boolean insertRecords){
+        public static List<sObject> createShareRecForInternalPGMgrps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList, Boolean insertRecords){        
             
             Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
             Map<Id,List<Id>> objectIdUserGroupIdListMapRead = new Map<Id,List<Id>>();
@@ -416,9 +415,8 @@ public without sharing class Core_MDF_CCP_GenericUtility {
             {
                 cpMdtMap.put(cpMdt.Label,cpMdt);
             }
-            //TWC3117-18333
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt mdtRec : [SELECT Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Region_cd__c FROM
-                                                                    Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt mdtRec : [SELECT Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Region_cd__c FROM
+                                                                    Core_MDF_ClaimActAllocRecTypeMapping__mdt WHERE
                                                                     Core_MDF_Region_cd__c != NULL])
             {
                 subGeoSharingReqProgSet.add(mdtRec.Core_MDF_Channel_Program_Name_txt__c);
@@ -536,7 +534,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                 geoBasedSharingReq = FALSE;
             }
             //To Loop thro each incoming record and store the groups that it should be shared with
-            for(Core_MDF_RecordPGMShareWrapper record: recordPGMShareList){     
+            for(Core_MDF_RecordPGMShareWrapper record: recordPGMShareList){                  
                 //to store rw group id's
                 List<Id> grpLst = new List<Id>();
                 Set<Id>grpSet = new Set<Id>();

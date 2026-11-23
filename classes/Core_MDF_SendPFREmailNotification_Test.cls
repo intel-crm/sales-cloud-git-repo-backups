@@ -5,7 +5,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
     static void createTestData(){
        
         
-
+        profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);    
         testUser.LastName = 'User Test';
@@ -86,7 +86,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
             database.insert(cpList);
             
             List<Account> accList = new List<Account>();
-
+            Account accIntel = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';            
@@ -149,7 +149,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Small Business','Desktop',
-                                                                                            'Intel® Core™ i9 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                            'Intel® Core™ i9 Processor','Broadcast','Radio','Draft',false);
             pfr2.Title = 'Test Activity2';
             pfr2.Core_MDF_Activity_Description__c = 'Test Activity2';
             pfr2.Core_MDF_Start_Date__c = System.today().addDays(5);//Date.newInstance(2021, 01, 01);
@@ -180,7 +180,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
             
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecordOpal,opalbudget,'INDIA','Small Business','Desktop',
-                                                                                              'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                              'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr.Title = 'Test Activity';
             MDFpfr.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr.Core_MDF_Start_Date__c = System.today().addDays(5);//Date.newInstance(2022, 01, 01);
@@ -210,7 +210,6 @@ public class Core_MDF_SendPFREmailNotification_Test {
             RetailPfr.Core_MDF_Budget_Currency_cd__c ='USD';
             RetailPfr.Core_MDF_Reimbursement_Rate_pct__c='100%';
             RetailPfr.Core_MDF_Activity_First_Approver_txt__c = usr.Id;
-            RetailPfr.Core_MDF_Activity_Types__c = '';
             pfrList.add(RetailPfr);
             
             Database.insert(pfrList);
@@ -287,7 +286,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
             
             PartnerFundRequest MDFpfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(ccfCamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(ccfAccount.id),null,null,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr1.Title = 'Test Opal Activity';
             MDFpfr1.Core_MDF_Activity_Description__c = 'Test Activity 1';
             MDFpfr1.Core_MDF_Start_Date__c = System.today()-25;
@@ -311,9 +310,6 @@ public class Core_MDF_SendPFREmailNotification_Test {
             update pfr;
         }
         Test.stopTest();
-     // US - TWC702-14285: Unit Test Method should include System.Assert
-    System.assertEquals('Revision Required', pfr.Core_MDF_Fund_Request_Status__c, 'Partner Fund Request status should be updated to Revision Required');
-    System.assertEquals(0, pfr.Core_MDF_Approval_Step_Completed__c, 'Approval step should be reset to 0');
     }
     @isTest
     public static void sendEmailInt(){
@@ -325,7 +321,5 @@ public class Core_MDF_SendPFREmailNotification_Test {
             update pfr;
         }
         Test.stopTest();
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertEquals('Revision Required', pfr.Core_MDF_Fund_Request_Status__c, 'Partner Fund Request status should be updated to Revision Required');
     }
 }

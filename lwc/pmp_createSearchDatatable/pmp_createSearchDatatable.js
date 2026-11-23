@@ -106,9 +106,7 @@ export default class PMP_createSearchDatatable extends LightningElement {
 		// 	this.placeholderSearch = 'Search by Partner Offering Name';
 
         // }
-        console.log('pageurl before'+pageUrl);
         if(pageUrl.includes('PMP_Company__c')){
-            console.log('pageurl after'+pageUrl);
             this.objectName = 'PMP_Company__c';
             this.columns = columnsPartners;
             this.searchName = 'Find Partners';

@@ -44,9 +44,7 @@ Ask Commissions - Update Initial Response field when Admin First Commented</desc
             <targetReference>myRule_1_A1</targetReference>
         </connector>
         <filterFormula>({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;) &amp;&amp;
-({!$Record.CreatedBy.Profile.Name} == &apos;Commissions Office Inquiries Admin User&apos;) &amp;&amp;
-((ISBLANK({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Initial_Response_Date_Time__c})) || 
-ISNULL({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Initial_Response_Date_Time__c}))</filterFormula>
+({!$Record.CreatedBy.Profile.Name} == &apos;Commissions Office Inquiries Admin User&apos;)</filterFormula>
         <object>Core_AAQC_Case_Comments__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Econocom Semic S.A.U Partner User</description>
+    <description>SEMIC, S.A. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Econocom Semic S.A.U Partner User</name>
+    <name>SEMIC, S.A. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12010877_Eva_Linares</parentRole>
+    <parentRole>Inactive_Accounts_Role</parentRole>
 </Role>

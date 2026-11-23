@@ -203,10 +203,10 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @track defaultTabItem = null;
     @track caseSubCategoryValue;
     isRequiredDesc = false;
-    @track PSAReadonly = true;
+
     //Added By Shruti
     userId = Id;
-    @track PSAReadonly = true; // Added by tushar---- vanuability changes
+
     @track surveyMessage = surveyMessage;
 
     @track currentPageReference;
@@ -388,9 +388,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.showProdEdqs = true;
                 this.subCatRecEdqs = res.subCatFields;
                 this.showSubCatEdqs = true;
-                console.log('DEBUG openEditModal prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
-                console.log('DEBUG openEditModal subCatRecEdqs=' + JSON.stringify(this.subCatRecEdqs));
-                  this.getSubCategoryEdqs(this.casesubcatedq);
+                this.getSubCategoryEdqs(this.casesubcatedq);
                 setTimeout(() => {this.enableEdit();}, 100);
             }
             else{
@@ -798,13 +796,12 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     getProjectStatus() {
         getProjStatus({ projectId: this.currentCaseData.Core_IPS_Project_Case__c })
             .then((result) => {
-                //if ((result != null && result != undefined && result?.length > 0)
-                //Kamala 26-05-2026 PRB10067533 -- removed 'result?.length > 0' condition
-                if ((result != null && result != undefined)) { 
+                if ((result != null && result != undefined && result?.length > 0)) {
+
                     this.projectStatus = result.Core_Status__c;
                     if (result.Core_Status__c == 'Active') {
                         this.isProjectProjuctActive = true;
-                    }
+                    } else {}
                 }
             })
             .catch((error) => {
@@ -818,18 +815,11 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     }
     ProductStatus;
     getProductStatus() {
-        console.log('this.currentCaseData.AssetId ',this.currentCaseData.AssetId);
         getProdStatus({ assetId: this.currentCaseData.AssetId })
             .then((result) => {
-                //if ((result != null || result != undefined || result?.length > 0) && result.Status == 'Active') 
-                //  Kamala 26-05-2026 PRB10067533 - removed 'result?.length > 0' condition and moved result.status == active check to line 823
-                if (result != null && result != undefined) { 
+                if ((result != null || result != undefined || result?.length > 0) && result.Status == 'Active') {
+                    this.isProductActive = true;
                     this.ProductStatus = result.Status;
-                    // Kamala 26-05-2026 PRB10067533  
-                    if(result.Status == 'Active')
-                    {
-                        this.isProductActive = true;
-                    }
                 }
             })
             .catch((error) => {
@@ -1500,8 +1490,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             if (rslt == 'PartnerAgent') {
                  this.isCaseCmt = true;
             }
-            console.log('this.currentCaseData.Status',this.currentCaseData);
-            console.log('this.currentCaseData.Status',this.currentCaseData.Status);
             if (this.currentCaseData.Status == 'Closed') {
                 this.isCaseCmt = false;
                 
@@ -1769,16 +1757,14 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     envQAs = new Map();
     edqdata;
     //Call Apex clone Method
-    CopyPartnerAccountRequired = false;
+    CopyPartnerAccountRequired = true;
     getcloneCaseData() {
         retriveCaseData({ recId: this.recordId })
-        
             .then(result => {
-                console.log('Clone Case1' +JSON.stringify(result));
+               // console.log('Clone Case1' + JSON.stringify(result));
                 if (result != '' && result != undefined && result != null) {
                     this.caseinsertion = result;
                     this.clonedCase = result[0];
-                    console.log(this.clonedCase);
                     if ((this.clonedCase.Core_External_Issue_Category__c == '' || this.clonedCase.Core_External_Issue_Category__c == undefined) && this.CaseCategoryoptions.length == 0){
                         this.showCategory = false;
                     } else {
@@ -1790,24 +1776,18 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         this.showSubCategory = true;
                     }
                     if (this.clonedCase.Core_IPS_Project_Case__r == undefined) {
-                        this.CopyPartnerAccountRequired = true;
+                        this.CopyPartnerAccountRequired = false;
                     }
                     for (let key in this.clonedCase) {
-                        console.log(key);
                         if (key == 'ContactId') {
                             if (this.clonedCase[key] != undefined) {
                                 this.contactId = this.clonedCase[key];
-                                console.log(this.contactId);
                             }
                         }
-                       
                         if (key == 'Subject') {
-                            console.log(key);
                             if (this.clonedCase[key] != undefined) {
                                 this.subject = this.clonedCase[key];
                                 this.caseInfo["Subject"] = this.subject;
-                                console.log(this.subject);
-                                console.log(this.caseInfo);
                             }
                         }
                         if (key == 'Core_Severity__c') {
@@ -1910,12 +1890,8 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                                 this.partnerSupportAccount = this.clonedCase[key];
                             }
                         }
-                        if (this.clonedCase['Asset'] != null && this.clonedCase['Asset'] != undefined &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != null &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != '' &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != undefined) {
+                        if (this.clonedCase['Asset']['Core_Supported_Product__c'] != null || this.clonedCase['Asset']['Core_Supported_Product__c'] != '' || this.clonedCase['Asset']['Core_Supported_Product__c'] != undefined) {
                             this.passSupportedProductID = this.clonedCase['Asset']['Core_Supported_Product__c'];
-                            console.log(' this.passSupportedProductID', this.passSupportedProductID);
                         }
                     }
                     if (this.caseIssueSubCategoryId != '' || this.caseIssueSubCategoryId != null || this.caseIssueSubCategoryId != undefined) {
@@ -1928,7 +1904,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             })
             .catch(error => {
                 console.log('Error in Clone Case-' + JSON.stringify(error));
-                console.log('Error in Clone Case-' + error);
                 this.errorMsg = error;
             })
     }
@@ -2044,21 +2019,10 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @api showSubCatEdqs;
     getSubCategoryEdqs(subcategoryId) {
         let tempVar = subcategoryId;
-        // capture values already resolved (e.g. from getCaseonLoad's subCatFields) before this.subCatRecEdqs gets overwritten below
-        let existingValueById = new Map((this.subCatRecEdqs || []).filter(f => f && f.value).map(f => [f.id, f.value]));
-
-	Promise.all([
-            getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach }),
-            // getCaseonLoad resolves true saved answers (via setCurrentEnvironmentDetails) that getSubCatEdq never populates
-            this.recordId ? getCaseonLoad({ caseId: this.recordId }).catch(() => null) : Promise.resolve(null)
-        ])
-            .then(([data, caseLoadRes]) => {
-               console.log('DEBUG getSubCategoryEdqs raw data from apex=' + JSON.stringify(data));
-               console.log('DEBUG getSubCategoryEdqs prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
-               if (caseLoadRes && caseLoadRes.subCatFields) {
-                   caseLoadRes.subCatFields.filter(f => f && f.value).forEach(f => existingValueById.set(f.id, f.value));
-               }
-            
+        
+	getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach })
+            .then(data => {
+               // console.log('subcatedmethod-');
 		let subCateboryEDQ = new Set();
                 let eDQSet = new Set();
                 let i;
@@ -2078,18 +2042,15 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 });
                 //this.subCatRecEdqs = JSON.parse(categoryEDQ);
                 this.subCatRecEdqs = JSON.parse(JSON.stringify(categoryEDQ));
-                let tempSubCatRecEdqs = JSON.parse(JSON.stringify(this.subCatRecEdqs));
                 
-                console.log('sab temp subcatrecedqs' +JSON.stringify(tempSubCatRecEdqs));
+                let tempSubCatRecEdqs = JSON.parse(JSON.stringify(this.subCatRecEdqs));
                 let tempEDQData = JSON.parse(JSON.stringify(this.edqdata));
-                // trim/case-insensitive compare so saved answers still match if the question label has leading/trailing spaces or casing drift
-                const isSameQuestion = (qstn, label) => qstn && label && qstn.trim().toLowerCase() === label.trim().toLowerCase();
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempSubCatRecEdqs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && !item2.lovs) {
+                        if (item.Qstn === item2.label && !item2.lovs) {
                             item2.value = item.Ansr;
                         }
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             let tempValArr = [];
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr && item2.type === 'Picklist') {
@@ -2117,17 +2078,11 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         }
                     })
                 })
-                // restore values already resolved server-side (e.g. Text answers from getCaseonLoad) when the edqdata JSON had no match
-                tempSubCatRecEdqs.forEach(item2 => {
-                    if (!item2.value && existingValueById.has(item2.id)) {
-                        item2.value = existingValueById.get(item2.id);
-                    }
-                })
                 this.subCatRecEdqs = tempSubCatRecEdqs;
                 let tempprodEdqRecs = JSON.parse(JSON.stringify(this.prodEdqRecs));
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempprodEdqRecs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr) {
                                     item2.value = item3.value;

@@ -40,10 +40,6 @@
             <translation>공동 마케팅 활동 내역</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Disbursement Status</masterLabel>
-            <translation>지급 현황</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>보류 기준 목록 내역</translation>
         </picklistValues>
@@ -66,14 +62,6 @@
         <picklistValues>
             <masterLabel>Partner Group Mapping History</masterLabel>
             <translation>파트너 그룹 매핑 내역</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Breakdown</masterLabel>
-            <translation>지불 분석</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Details</masterLabel>
-            <translation>지불 상세 정보</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment History</masterLabel>

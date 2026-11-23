@@ -51,7 +51,6 @@ global without sharing class Core_MDF_BatchClass_Multicurrency implements Databa
                 mail.setToAddresses(toAddresses);
                 mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce Multicurrency Job ');
                 mail.setHtmlBody(returnMessage);
-                mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
         		Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
             }
     }

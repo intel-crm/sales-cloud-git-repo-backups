@@ -11,7 +11,7 @@ Modification Log :
 ************************************************************************************************************************************************/
 @isTest
 public class PRM_PSG_RegistrationReqUtility_Test { 
-    /*
+    
     @testSetup    
     static void setupDataCreation()
     {
@@ -118,7 +118,7 @@ public class PRM_PSG_RegistrationReqUtility_Test {
         
         system.assert(conts.size() > 0);
         
-      //  PRM_PSG_RegistrationReqUtility.sendWelcomeEmailForPSG(new List<Id>{conts[0].Id});
+        PRM_PSG_RegistrationReqUtility.sendWelcomeEmailForPSG(new List<Id>{conts[0].Id});
         
         
         List<ChannelProgram> psgPrograms = [SELECT id FROM ChannelProgram WHERE PRM_programCode__c='PSG'];
@@ -126,7 +126,7 @@ public class PRM_PSG_RegistrationReqUtility_Test {
         newRequest.PRM_CIM_ID__c='';
         newRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         newRequest.PRM_EV_Token__c = 'gwiur#@98321327';
-        newRequest.PRM_Email_ID__c = 'testrequest11@mailinator.com';
+        newRequest.PRM_Email_ID__c = 'testrequest1@mailinator.com';
         newRequest.PRM_Channel_Program__c = psgPrograms[0].Id;
         newRequest.PRM_Legal_Agreements__c = 'IQR_TANDC';
         newRequest.PRM_Partner_Relationship__c = '';
@@ -178,8 +178,8 @@ public class PRM_PSG_RegistrationReqUtility_Test {
         Map<Id,Contact> conMap = new Map<Id,Contact>();
         conMap.put(conList[0].id,conList[0]);
         Map<Id,Contact> conMap2 = new Map<Id,Contact>();
-      //  PRM_PSG_RegistrationReqUtility.assignPSGEntitlements(conMap);
-      //  PRM_PSG_RegistrationReqUtility.createContactforPSG(regReq[0],conMap2);
+        PRM_PSG_RegistrationReqUtility.assignPSGEntitlements(conMap);
+        PRM_PSG_RegistrationReqUtility.createContactforPSG(regReq[0],conMap2);
         // regReq[0].PRM_Contact_Salesforce_Id__c=Null;
         // regReq[0].PRM_First_Name__c='test name';
         // regReq[0].PRM_Last_Name__c='test';
@@ -195,5 +195,5 @@ public class PRM_PSG_RegistrationReqUtility_Test {
         Test.stopTest();
     }    
     
-    */ //TWC729-8986 - PSG removal from PRM classes
+    
 }

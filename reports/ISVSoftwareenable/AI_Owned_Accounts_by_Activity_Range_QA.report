@@ -51,10 +51,6 @@
         <field>Account.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_IPA_Badge_Tier__c</field>
     </columns>
     <columns>
@@ -80,9 +76,6 @@
     </columns>
     <columns>
         <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Geo__c</field>
     </columns>
     <customDetailFormulas>
         <calculatedFormula>IF( AND(TODAY()-DUE_DATE &gt;=0 , TODAY()-DUE_DATE &lt;15),&quot;0-15&quot;,
@@ -111,13 +104,6 @@ IF( TODAY()-DUE_DATE &gt;=120 ,&quot;x_120+&quot;, &quot;y_Never&quot;
             <operator>equals</operator>
             <value>Malhar Thakkar,Tonya DeGance</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>RECORDTYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Account.Mastered_Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -139,7 +125,7 @@ IF( TODAY()-DUE_DATE &gt;=120 ,&quot;x_120+&quot;, &quot;y_Never&quot;
         <field>CDF1</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>!Owned Accounts by Activity Range [QA]</name>
+    <name>AI Owned Accounts by Activity Range [QA]</name>
     <params>
         <name>co</name>
         <value>1</value>

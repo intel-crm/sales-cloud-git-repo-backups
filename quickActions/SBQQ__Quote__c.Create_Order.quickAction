@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To create new Order from Quote with same page layout as it displays on clicking New button from Order list view.</description>
+    <height>150</height>
+    <label>Create Order</label>
+    <lightningComponent>Sales_OrderComponent</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

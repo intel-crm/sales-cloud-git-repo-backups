@@ -1,0 +1,26 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 75rem !important;
+        width:75% !important;
+      
+        padding: 0rem !important;
+        }
+        .slds-modal__container .cuf-content {
+        padding:1 !important;
+        }
+        .slds-modal__container .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content {
+       
+        max-height: 70% !important;
+        width: 80rem !important;
+        max-width: 100% !important;
+        border-bottom-left-radius: unset !important;
+        border-bottom-right-radius: unset !important;
+        }
+ 
+    </aura:html>
+    <c:sales_SplitSeatsOnLicense recordId="{!v.recordId}" isPartnerPortal="true"  onquickactionclose="{!c.closeQuickAction}" /> 
+</aura:component>

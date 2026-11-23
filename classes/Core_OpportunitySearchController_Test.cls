@@ -88,7 +88,8 @@ private class Core_OpportunitySearchController_Test {
                                                  Owner.Name, Name, Account.Name 
                                           FROM OPPORTUNITY 
                                           WHERE  Core_Intel_Platform__c = 'Broadwell'];
-          
+            for (Opportunity opp : testOpps)
+                System.debug('#9 Opportunity: ' + opp);
 
 
 
@@ -126,9 +127,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.add();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
-
                     }
 
                     List<SelectOption> chosentoRemoveMultiselect = new List<SelectOption>();
@@ -138,8 +136,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.remove();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
                     }
                 }
 
@@ -152,9 +148,12 @@ private class Core_OpportunitySearchController_Test {
 
             pageController.search();
 
-            
+            System.debug('pageController: ' + pageController);
 
-            
+            if (pageController.lstSearchOpportunities == NULL)
+                System.debug('pageController.lstSearchOpportunities IS NULL');
+            else    
+                System.debug('pageController.lstSearchOpportunities.size(): ' + pageController.lstSearchOpportunities.size());
 
             // Asserting that search retunred more than TEST_RECORD_SIZE records
             // System.assertEquals(pageController.bmoreRecords, true);
@@ -163,15 +162,12 @@ private class Core_OpportunitySearchController_Test {
 //[BM] 8/7            System.assertEquals(pageController.lstSearchOpportunities.size(), 50);
 
             Opportunity selectedOpportunity = lstOpportunityInsertion.get(0);
-            
+            System.debug('selectedOpportunity: ' + selectedOpportunity);
 
             pageController.selectedOpportunityId = selectedOpportunity.id;
             try{
                 pageController.sendEmail();
             }catch(Exception e){
-                 Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            	 insert logEntry;
- 
             }
 
             // Asserting whether email was sent
@@ -242,7 +238,8 @@ private class Core_OpportunitySearchController_Test {
                                           FROM OPPORTUNITY 
                                           WHERE  Core_Intel_Platform__c = :INTEL_PLATFORM];
 
-            
+            for (Opportunity opp : testOpps)
+                System.debug('#9 Opportunity: ' + opp);
 
 
             // Creating the instance of controller to be tested      
@@ -285,9 +282,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.add();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
- 
                     }
 
                     List<SelectOption> chosentoRemoveMultiselect = new List<SelectOption>();
@@ -297,9 +291,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.remove();
                     }catch(Exception e){
-                        Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			insert logEntry;
- 
                     }
                 }
 
@@ -307,7 +298,10 @@ private class Core_OpportunitySearchController_Test {
 
             pageController.autoPartnerSearch();
 
-            
+            if (pageController.lstSearchOpportunities == NULL)
+                System.debug('pageController.lstSearchOpportunities IS NULL');
+            else    
+                System.debug('pageController.lstSearchOpportunities.size(): ' + pageController.lstSearchOpportunities.size());
 
             pageController.next();
             pageController.first();

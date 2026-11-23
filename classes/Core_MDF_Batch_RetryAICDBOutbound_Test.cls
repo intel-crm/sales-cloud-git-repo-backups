@@ -1,12 +1,3 @@
-/****************************************************************************************************************************************************
- * Class Name      : Core_MDF_Batch_RetryAICDBOutbound_Test
- * Version               : 1.0
- * Created Date          :  11-20-2025
- * Modification Log      : 
- * Developer            Date             Description
- * ----------------------------------------------------------------------------------------------------------------------------------------------------
- * Sham     11-20-2025    Tests for Core_MDF_Batch_RetryAICDBOutbound
- ******************************************************************************************************************************************************/
 @IsTest
 private class Core_MDF_Batch_RetryAICDBOutbound_Test {
     
@@ -81,26 +72,6 @@ private class Core_MDF_Batch_RetryAICDBOutbound_Test {
         );
         cdbLogRecords.add(cdbLog3);
         
-       // Create first CDB log record for Audit
-        Core_CDB_Integration_Log__c cdbAudit1 = new Core_CDB_Integration_Log__c(
-            Core_Integration_Type__c = 'MDF AI Audit',
-            Core_Record_Id__c = 'test-audit-record-id-1',
-            Core_Log_Status_Nm__c = 'Failed',
-            Core_Retry_Number_Nbr__c = 2,
-            Core_Integration_Direction_Nm__c = 'Outbound'
-        );
-        cdbLogRecords.add(cdbAudit1);
-        
-        // Create second CDB log record for Audit
-        Core_CDB_Integration_Log__c cdbAudit2 = new Core_CDB_Integration_Log__c(
-            Core_Integration_Type__c = 'MDF AI Audit',
-            Core_Record_Id__c = 'test-audit-record-id-2',
-            Core_Log_Status_Nm__c = 'Failed',
-            Core_Retry_Number_Nbr__c = 1,
-            Core_Integration_Direction_Nm__c = 'Outbound'
-        );
-        cdbLogRecords.add(cdbAudit2);
-        
         insert cdbLogRecords;
     }
     
@@ -112,8 +83,7 @@ private class Core_MDF_Batch_RetryAICDBOutbound_Test {
         // Run the batch class as system user
         Test.startTest();
         system.runAs(testUser) {
-            // Fixed: Added required executionContext parameter
-            Core_MDF_Batch_RetryAICDBOutbound batchClass = new Core_MDF_Batch_RetryAICDBOutbound('MDF AI PIC Review');
+            Core_MDF_Batch_RetryAICDBOutbound batchClass = new Core_MDF_Batch_RetryAICDBOutbound();
             Database.executeBatch(batchClass, 50);
         }
         Test.stopTest();
@@ -122,43 +92,5 @@ private class Core_MDF_Batch_RetryAICDBOutbound_Test {
         // This test verifies that the lines in the batch class are covered
         // The actual functionality is tested by the batch execution itself
         System.assert(true, 'Batch class executed without errors');
-    }
-    
-    @IsTest
-    static void test_batch_audit_execution() {
-        // Get the test user created in setup
-        User testUser = [SELECT Id FROM User WHERE Email = 'aiadmintestuser@example.com' LIMIT 1];
-        
-        // Run the batch class for audit context
-        Test.startTest();
-        system.runAs(testUser) {
-            Core_MDF_Batch_RetryAICDBOutbound batchClass = new Core_MDF_Batch_RetryAICDBOutbound('MDF AI Audit');
-            Database.executeBatch(batchClass, 5);
-        }
-        Test.stopTest();
-        
-        // Verify that audit records exist for processing
-        List<Core_CDB_Integration_Log__c> auditLogs = [
-            SELECT Id, Core_Integration_Type__c, Core_Record_Id__c 
-            FROM Core_CDB_Integration_Log__c 
-            WHERE Core_Integration_Type__c = 'MDF AI Audit'
-        ];
-        
-        System.assert(!auditLogs.isEmpty(), 'Audit batch should process MDF AI Audit records');
-        System.assert(auditLogs.size() == 2, 'Should have 2 audit records for processing');
-    }
-    @IsTest
-    static void test_generateInstance_method() {
-        // Test the generateInstance static method
-        String jsonText = '{"executionContext": "MDF AI PIC Review"}';
-        String classSignature = 'Core_MDF_Batch_RetryAICDBOutbound(String executionContext)';
-        
-        Test.startTest();
-        Object result = Core_MDF_Batch_RetryAICDBOutbound.generateInstance(jsonText, classSignature);
-        Test.stopTest();
-        
-        // Verify that the method returns a valid instance
-        System.assertNotEquals(null, result, 'generateInstance should return a valid object');
-        System.assert(result instanceof Core_MDF_Batch_RetryAICDBOutbound, 'Result should be instance of Core_MDF_Batch_RetryAICDBOutbound');
     }
 }

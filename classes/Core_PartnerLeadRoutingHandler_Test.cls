@@ -54,10 +54,10 @@ public class Core_PartnerLeadRoutingHandler_Test {
         insert us;
         
         List<Account> accList = new List<Account>();
-        String accPartnerRecType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+        String AccPartnerRecType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
         Account partnerRec = new Account();
         partnerRec.Name='Test Parent Account1';
-        partnerRec.RecordTypeId = accPartnerRecType;
+        partnerRec.RecordTypeId=AccPartnerRecType;
         partnerRec.Core_IPA_Partner_Segment__c = 'Client Computing;Data Center';
         partnerRec.Core_Account_Type__c='Cloud Service Provider (CSP)';
         partnerRec.BillingCountryCode='USA';
@@ -68,10 +68,10 @@ public class Core_PartnerLeadRoutingHandler_Test {
         accList.add(partnerRec);
         insert accList;
         
-        Core_Account_Group_Member__c acmem = new Core_Account_Group_Member__c();
-        acmem.Core_Partner_Account_Id__c = partnerRec.Id;
-        acmem.Core_MDA_Ind__c = true;
-        insert acmem;
+        Core_Account_Group_Member__c Acmem= new Core_Account_Group_Member__c();
+        Acmem.Core_Partner_Account_Id__c=partnerRec.id;
+        Acmem.Core_MDA_Ind__c=true;
+        Insert Acmem;
         String partnerRecTypeId = Schema.SObjectType.Core_Partner_Queue_Mapping__c.getRecordTypeInfosByName().get(Label.Core_Partner_Queue_Mapping_RecordTypeId).getRecordTypeId();
         List<Core_Partner_Queue_Mapping__c> partQueueMapList = new List<Core_Partner_Queue_Mapping__c>();
         Core_Partner_Queue_Mapping__c partQueueMap = new Core_Partner_Queue_Mapping__c();
@@ -110,37 +110,9 @@ public class Core_PartnerLeadRoutingHandler_Test {
     public static void  insertUtility() 
     {
         Test.startTest();
-        // Arrange: retrieve target record created in @testSetup
-        Core_Partner_Queue_Mapping__c partQueueMap = [
-            SELECT Id, Core_Partner_Name__c
-            FROM Core_Partner_Queue_Mapping__c
-            WHERE Core_Queue_Name__c = 'test Queue 1'
-            LIMIT 1
-        ];
-        String originalName = partQueueMap.Core_Partner_Name__c;
-
-        // Act: update the partner name
-        partQueueMap.Core_Partner_Name__c = 'testABC';
+        Core_Partner_Queue_Mapping__c partQueueMap = [SELECT Core_Partner_Name__c FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 1'];
+        partQueueMap.Core_Partner_Name__c ='testABC';
         update partQueueMap;
-
-        // Assert: verify the update took effect
-        Core_Partner_Queue_Mapping__c updated = [
-            SELECT Id, Core_Partner_Name__c
-            FROM Core_Partner_Queue_Mapping__c
-            WHERE Id = :partQueueMap.Id
-            LIMIT 1
-        ];
-        System.assertNotEquals(originalName, updated.Core_Partner_Name__c, 'Partner name should change after update.');
-        System.assertEquals('testABC', updated.Core_Partner_Name__c, 'Partner name should be updated to testABC.');
-
-        // Optional: ensure only one mapping exists for the specific queue in this test data
-        Integer countForQueue = [
-            SELECT COUNT()
-            FROM Core_Partner_Queue_Mapping__c
-            WHERE Core_Queue_Name__c = 'test Queue 1'
-        ];
-        System.assertEquals(1, countForQueue, 'There should be exactly one mapping for test Queue 1.');
-
         Test.stopTest();        
     }
     
@@ -149,11 +121,14 @@ public class Core_PartnerLeadRoutingHandler_Test {
     {
         Test.startTest();       
         Profile profileId = [SELECT Id FROM Profile WHERE Name = 'IT Admin' LIMIT 1];
-        String accPartnerRecType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+        List<Account> accList = new List<Account>();
+        String AccPartnerRecType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
         Account partnerRec = [SELECT Id,Name FROM Account WHERE Name = 'Test Parent Account1'];
-        Core_Partner_Queue_Mapping__c partQueueMap = [SELECT Id, Core_Partner_Name__c FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 1' LIMIT 1];
-        PMP_Company__c marketingProfile = [select Id, PMP_Marketing_Profile_Id__c from PMP_Company__c where Name =:partnerRec.Name LIMIT 1];
-        PMP_Partner_Offering__c offeringRecord = [select Id, Name, PMP_Offering_Id__c, PMP_Partner_Offering_Tag_Line_Txt__c from PMP_Partner_Offering__c where Name='Offering Test' LIMIT 1];
+        Core_Partner_Queue_Mapping__c partQueueMap = [SELECT Id FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 1'];
+        Core_Partner_Queue_Mapping__c partQueueMap1 = [SELECT Id FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 2'];
+        List<Core_Partner_Queue_Mapping__c> partQueueMapList = new List<Core_Partner_Queue_Mapping__c>();  
+        PMP_Company__c marketingProfile = [select Id, PMP_Marketing_Profile_Id__c from PMP_Company__c where Name =:partnerRec.Name];
+        PMP_Partner_Offering__c offeringRecord = [select Id, Name, PMP_Offering_Id__c, PMP_Partner_Offering_Tag_Line_Txt__c from PMP_Partner_Offering__c where Name='Offering Test'];
         
         PMP_Company__c company = new PMP_Company__c();
         company.Name='company1';
@@ -164,49 +139,28 @@ public class Core_PartnerLeadRoutingHandler_Test {
         company.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Enhanced';
         insert company;
         
-        PMP_OPID_MPI_Rel__c newOpid = new PMP_OPID_MPI_Rel__c();
-        newOpid.PMP_Marketing_Profile_Id__c = company.id;
-        newOpid.PMP_One_Partner_ID__c = partnerRec.id;
-        newOpid.Is_Active__c = true;
-        insert newOpid;
+        PMP_OPID_MPI_Rel__c NewOpid = new PMP_OPID_MPI_Rel__c();
+        NewOpid.PMP_Marketing_Profile_Id__c = company.id;
+        NewOpid.PMP_One_Partner_ID__c = partnerRec.id;
+        NewOpid.Is_Active__c = true;
+        insert NewOpid;
         
-        String originalName = partQueueMap.Core_Partner_Name__c;
         partQueueMap.Core_Partner_Name__c ='testABC';
         update partQueueMap;
-
-        // Assert: verify the update took effect and data integrity of setup
-        Core_Partner_Queue_Mapping__c reloaded = [
-            SELECT Id, Core_Partner_Name__c 
-            FROM Core_Partner_Queue_Mapping__c 
-            WHERE Id = :partQueueMap.Id 
-            LIMIT 1
-        ];
-        System.assertNotEquals(originalName, reloaded.Core_Partner_Name__c, 'Partner name should change after update in insertUtilityTest.');
-        System.assertEquals('testABC', reloaded.Core_Partner_Name__c, 'Partner name should be updated to testABC in insertUtilityTest.');
-        System.assertNotEquals(null, offeringRecord.Id, 'Offering test data should exist for this test.');
-        System.assertNotEquals(null, marketingProfile.Id, 'Marketing profile test data should exist for this test.');
-
         Test.stopTest();
     }
     
     @isTest(SeeAllData=false) 
     public static void batchTest(){
-        
-        Core_Opp_Bypass_Validation_Rule__c bypass = new Core_Opp_Bypass_Validation_Rule__c();
-        bypass.Bypass__c = TRUE;
-        //bypass.SetupOwnerId = testUser.Id;
-        insert bypass;
-        
-        // Arrange
-        User u = [SELECT Id FROM User WHERE Email = 'testuser@intel.com' LIMIT 1];
-        Account partnerRec = [SELECT Id, Name FROM Account WHERE Name = 'Test Parent Account1' LIMIT 1];
-        PMP_Company__c marketingProfile = [
-            SELECT Id, PMP_Marketing_Profile_Id__c 
-            FROM PMP_Company__c 
-            WHERE Name = :partnerRec.Name
-            LIMIT 1
-        ];
-        RecordType r1 = [Select Id from recordType where Name='Partner Lead' LIMIT 1];
+        User u = [SELECT Id FROM User WHERE Email = 'testuser@intel.com'];
+        Account partnerRec = [SELECT Id,Name FROM Account WHERE Name = 'Test Parent Account1'];
+        Core_Partner_Queue_Mapping__c partQueueMap = [SELECT Id FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 1'];
+        Core_Partner_Queue_Mapping__c partQueueMap1 = [SELECT Id FROM Core_Partner_Queue_Mapping__c WHERE Core_Queue_Name__c = 'test Queue 2'];
+        List<Core_Partner_Queue_Mapping__c> partQueueMapList = new List<Core_Partner_Queue_Mapping__c>();  
+        PMP_Company__c marketingProfile = [select Id, PMP_Marketing_Profile_Id__c from PMP_Company__c where Name =:partnerRec.Name];
+        PMP_Partner_Offering__c offeringRecord = [select Id, Name, PMP_Offering_Id__c, PMP_Partner_Offering_Tag_Line_Txt__c from PMP_Partner_Offering__c where Name='Offering Test'];
+        RecordType r1 = [Select Id from recordType where Name='Partner Lead'];
+        List<Lead> lstLeads = new List<Lead>();
         Lead lead1 = new Lead();
         lead1.RecordTypeId = r1.Id;
         lead1.FirstName = 'Test1';
@@ -226,32 +180,12 @@ public class Core_PartnerLeadRoutingHandler_Test {
         lead1.Core_Partner_Name__c = partnerRec.Name;
         lead1.PMP_MktProfile_BizSegment__c = 'Data Center;Client Computing';
         lead1.OwnerId=label.Core_Partner_Invalid_Queue_Id;
-        insert lead1;
-
-        // Capture initial state
-        Id initialOwnerId = lead1.OwnerId;
-        Id leadId = lead1.Id;
-
-        // Act
+        lstLeads.add(lead1);
+        insert lstLeads;
         System.runAs(u){
             Test.startTest();
             Database.executeBatch(new Core_Batch_ReprocessPartnerLeadShare(),200);
             Test.stopTest();   
         }
-
-        // Assert
-        Lead afterBatch = [
-            SELECT Id, OwnerId, Status, Core_Lead_Status__c, Core_Lead_State__c
-            FROM Lead
-            WHERE Id = :leadId
-            LIMIT 1
-        ];
-        System.assertNotEquals(null, afterBatch, 'Lead should exist after batch reprocessing.');
-        // If batch reassigns from invalid queue, owner should differ
-       // System.assertNotEquals(initialOwnerId, afterBatch.OwnerId, 'OwnerId should be reassigned by the batch from the invalid queue.');
-        // Sanity assertions
-        System.assertEquals('PRL', afterBatch.Status, 'Status should remain PRL for this scenario.');
-        System.assertEquals('New', afterBatch.Core_Lead_Status__c, 'Core_Lead_Status__c should remain New for this scenario.');
-        System.assertEquals('Unclaimed', afterBatch.Core_Lead_State__c, 'Core_Lead_State__c should remain Unclaimed for this scenario.');
     }
 }

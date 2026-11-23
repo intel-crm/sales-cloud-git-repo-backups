@@ -19,8 +19,7 @@
         <aura:attribute name="underReview" type="String" default="Under Review"/>
     	<aura:attribute name="checklistItemsWithCat" type="List"/>
     	<aura:attribute name="checklistCompletionPer" type="integer" default=""/>
-    	<aura:attribute name="scorecardDetails" type="Object"/><!--Audit Functionality-->
-    	<aura:attribute name="aiStatusMessage" type="String"/><!--Audit Functionality-->
+    
         
         <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
         <aura:handler event="force:refreshView" action="{!c.doInit}"/>
@@ -35,19 +34,12 @@
                 </div>
         </aura:if>   
         <div>
-        <!--Audit start Display AI Audit Status Message-->
-        <aura:if isTrue="{!v.scorecardDetails.showAIMessage}">
-        	 <div style="text-align: center; color: #0176d3; margin-bottom: 16px; font-size: 14px;">
-             	{!v.aiStatusMessage}
-              </div>
-         </aura:if>
-        <!--Audit end-->
                  <!--Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users - Passing new boolean value isAClaimCaseReviewerOrManager -->
                  <!-- US567200: Violation Message Display-->
                 <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
                     <aura:iteration items="{!v.checklistItemsWithCat}" var="cl" indexVar="key">
                         <lightning:accordionSection name="{!cl.key}" label="{!cl.key}"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!cl.value}" checklisttype="{!cl.key}" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}" scorecardDetails="{!v.scorecardDetails}"/>
+                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!cl.value}" checklisttype="{!cl.key}" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
                         </lightning:accordionSection>
                     </aura:iteration>
                     

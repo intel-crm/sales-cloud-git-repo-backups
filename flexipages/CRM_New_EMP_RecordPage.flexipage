@@ -200,10 +200,10 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Time_Zone__c</fieldItem>
-                <identifier>RecordCRM_Time_Zone_cField</identifier>
+                <fieldItem>Record.CRM_Scheduled_Start_Time_txt__c</fieldItem>
+                <identifier>RecordCRM_Scheduled_Start_Time_txt_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -212,38 +212,18 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Start_Date__c</fieldItem>
-                <identifier>RecordCRM_Start_Date_cField</identifier>
+                <fieldItem>Record.CRM_Scheduled_End_Time_txt__c</fieldItem>
+                <identifier>RecordCRM_Scheduled_End_Time_txt_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Start_Time__c</fieldItem>
-                <identifier>RecordCRM_Start_Time_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Scheduled_End_Date__c</fieldItem>
-                <identifier>RecordCRM_Scheduled_End_Date_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Scheduled_End_Time_Only__c</fieldItem>
-                <identifier>RecordCRM_Scheduled_End_Time_Only_cField</identifier>
+                <fieldItem>Record.CRM_Dress_Code__c</fieldItem>
+                <identifier>RecordCRM_Dress_Code_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-c4214050-d93d-42a3-8bdc-7b84e8db53ea</name>
@@ -274,16 +254,6 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Technical_Assistant__c</fieldItem>
-                <identifier>RecordCRM_TA__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.CRM_Brief_Reviewer__c</fieldItem>
@@ -296,8 +266,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Dress_Code__c</fieldItem>
-                <identifier>RecordCRM_Dress_Code_cField</identifier>
+                <fieldItem>Record.CRM_Technical_Assistant__c</fieldItem>
+                <identifier>RecordCRM_TA__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-82bb6d82-2b65-462d-b180-25663b440523</name>
@@ -463,7 +433,7 @@
                     <value>linear</value>
                 </componentInstanceProperties>
                 <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
-                <identifier>runtime_sales_pathassistant_pathAssistant2</identifier>
+                <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -733,16 +703,10 @@
                             <value>CRM_Meeting_Agenda_Items__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CRM_Start_Date__c</value>
+                            <value>CRM_Start_Time_txt__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CRM_Start_Time_Only__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>CRM_End_Date__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>CRM_End_Time_Only__c</value>
+                            <value>CRM_End_Time_txt__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CRM_Presenters_Conversation_Lead__c</value>
@@ -891,6 +855,10 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-b9f68eaa-e2c3-4c59-990a-bfacbf82a59f</value>
                 </componentInstanceProperties>
@@ -988,6 +956,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-fdcfbd9e-eb26-48a4-b9f0-a050d60785fc</value>

@@ -31,15 +31,15 @@ public class PMP_SearchAttributeNewController_Test extends PMP_SearchWrapperStor
          partner1.PMP_Biz_Org_Type_Value_Txt__c='Intel Authorized Distributor (IAD)';
        // partner1.PMP_Account_Id__c = true; 
         insert partner1;
-        //TranslationEOL
-       /* PMP_Company_Translation__c trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=partner1.Id);
+         
+        PMP_Company_Translation__c trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=partner1.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Tag_Line__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=partner1.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Tag_Line__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=partner1.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=partner1.Id);
-        insert trans;*/
+        insert trans;
          
         //IPA2.0:US-4497-1631_OfferingEOL
         /*PMP_Partner_Offering__c off = new PMP_Partner_Offering__c();
@@ -395,13 +395,14 @@ public class PMP_SearchAttributeNewController_Test extends PMP_SearchWrapperStor
         insert company;
         System.assertNotEquals(company, Null);
         
-       /* PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+        PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
         acm.PRM_Account_Id__c=newPagAccount.id;
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cpIPA.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-        insert acm;*/
+        acm.PRM_Status_Reason_Txt__c = 'Approved';
+        insert acm;
         
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
         coreAccnt.Core_Partner_Account_Id__c = newPagAccount.id;

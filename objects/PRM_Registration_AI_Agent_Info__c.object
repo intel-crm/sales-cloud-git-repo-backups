@@ -156,7 +156,7 @@
     <fields>
         <fullName>PRM_AI_Comments__c</fullName>
         <label>AI Comments</label>
-        <length>1000</length>
+        <length>500</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>

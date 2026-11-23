@@ -262,10 +262,6 @@
                 <behavior>Readonly</behavior>
                 <field>PRM_Wechat_Union_Id__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Tax_Number__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

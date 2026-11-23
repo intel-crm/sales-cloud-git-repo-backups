@@ -55,9 +55,9 @@ public  class IPABenefitUtilityTest {
         cont.Core_IPA_PartnerRole__c='Service Provider';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.MailingCountry='USA';
-        
         //insert cont;
         contList.add(cont);
+        System.debug('in 60:'+cont.Id);
         
         Contact cont2 = new Contact();  //Contact
         cont2.AccountId=testAccount.Id;
@@ -73,7 +73,10 @@ public  class IPABenefitUtilityTest {
         //insert cont2;
         contList.add(cont2);
         insert contList;
-        
+        System.debug('in 76:'+contList);
+        System.debug('in 77:'+contList[0].Id);
+        System.debug('in 78:'+contList[1].Id);
+        System.debug('in 79:'+contList[2].Id);
         Profile communityUsrProfile = [SELECT id FROM Profile WHERE Name='Partner'];
         //user
         
@@ -87,12 +90,13 @@ insert r;*/
         insert partnerUser;
         Id userId=partnerUser.Id;
         
-        
+        System.debug('in 90:'+partnerUser.ContactId);
         User partnerUser2 = new User(FirstName='Test2',LastName='User',alias='t2user',Email='mrt2r@mailinator.com',UserName='notheruser@xyz.com', ContactId=cont2.Id,ProfileId=communityUsrProfile.Id,
                                      emailencodingkey='UTF-8', languagelocalekey='fr', localesidkey='fr_FR',timezonesidkey='Europe/London');//, UserRoleId = r.id);
         
         insert partnerUser2;
         Id userId2=partnerUser2.Id;
+        System.debug('in 96:'+partnerUser2.ContactId);
         
         Id selectBenRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();  
         Id specnRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();
@@ -234,13 +238,6 @@ insert r;*/
         pbTest9.PRM_InActive_Ind__c = false;
         pbTest9.PRM_Account_Type_Nm__c='Mastered_Account';
         pbList.add(pbTest9);*/
-        PRM_PartnerBenefit__c pbTest10 = new PRM_PartnerBenefit__c(); //Partner Benefit
-        pbTest10.Name = 'Developer Zone Premier Entitlement'; 
-        pbTest10.PRM_Benefit_Cd__c = 'BNFTDZP';
-        pbTest10.PRM_Channel_Program_Id__c= cpTest.id;
-        pbTest10.PRM_InActive_Ind__c = false;
-        pbTest10.PRM_Account_Type_Nm__c='Core_Partner_Account_Group';
-        pbList.add(pbTest10);
         insert pbList;
         
         prm_skip_trigger__c bm = new prm_skip_trigger__c();//Custom Setting Benefit Mapping
@@ -365,12 +362,31 @@ insert r;*/
         acctContRel1.PRM_Status_Reason_Txt__c = 'Test';
         acctContRelList.add(acctContRel1);
         
+        //JB
+        PRM_Account_Contact_Relationship__c acctContRel2=new PRM_Account_Contact_Relationship__c();
+        acctContRel2.PRM_Account_Id__c=testAccount.Id;
+        acctContRel2.PRM_Contact_Id__c=cont2.Id;
+        acctContRel2.PRM_Relationship_Id__c=contRelation2.Id;
+        acctContRel2.PRM_Status_Nm__c='Complete';
+        acctContRel2.PRM_InActive_Ind__c=false;
+        acctContRel2.PRM_Status_Reason_Txt__c = 'Test';
+        acctContRelList.add(acctContRel2);
+        
+        
         Core_Contact_Entitlement__c cce=new Core_Contact_Entitlement__c();
         cce.Core_Contact_Id__c=cont.Id;
         cce.Core_Status__c='Complete';
         cce.Core_Entitlement_Id__c=ed.Id;
         cce.Core_Selected__c = true;
         insert cce;
+        //JB
+        /*Core_Contact_Entitlement__c cee1=new Core_Contact_Entitlement__c();
+        cee1.Core_Contact_Id__c=cont2.Id;
+        cee1.Core_Status__c='Complete';
+        cee1.Core_Entitlement_Id__c=ed.Id;
+        cee1.Core_Selected__c = true;
+        cee1.Core_Entitlement_Id__r.Name='Points Redeem';
+        insert cee1;*/
         
         /*Core_Contact_Entitlement__c cce11=new Core_Contact_Entitlement__c();
         cce11.Core_Contact_Id__c=cont2.Id;
@@ -398,33 +414,14 @@ insert r;*/
         cce1.Core_Selected__c = true;
         insert cce1;
         
-        Core_ERPM_Engagement__c ee2 = new Core_ERPM_Engagement__c();//ERPM Engagement
-        ee2.Name = 'TestRDC';
-        ee2.Core_Technical_Engagement_Code__c = 'MKTSMP';
-        ee2.Core_Engagement_Type__c = 'SMP';
-        insert ee2; 
-        
-        Core_Entitlement__c ed2=new Core_Entitlement__c(); //Entitlement
-        ed2.Name='Resource & Design Center for Secure Content';
-        ed2.Core_Display_Name__c='Developer Zone Premier(CNDA required)';
-        ed2.Core_ERPM_Engagement_Id__c=ee2.id;
-        insert ed2;
-        
-        Core_Contact_Entitlement__c cce2=new Core_Contact_Entitlement__c();
-        cce2.Core_Contact_Id__c=cont.Id;
-        cce2.Core_Status__c='Complete';
-        cce2.Core_Entitlement_Id__c=ed2.Id;
-        cce2.Core_Selected__c = true;
-        insert cce2;
-        
-        List<Core_Contact_Entitlement__c> ENTS=[select Core_Display_Nm__c from Core_Contact_Entitlement__c where Core_Contact_Id__c =:cont.Id];
-        System.debug('JB Ent::'+ENTS);
         /*Core_Contact_Entitlement__c cce12=new Core_Contact_Entitlement__c();
         cce12.Core_Contact_Id__c=cont2.Id;
         cce12.Core_Status__c='Complete';
         cce12.Core_Entitlement_Id__c=ed1.Id;
         cce12.Core_Selected__c = true;
         insert cce12;*/
+        
+        
         
         PRM_Account_Contact_Relationship__c acctContRel3=new PRM_Account_Contact_Relationship__c();
         acctContRel3.PRM_Account_Id__c=testAccount.Id;
@@ -475,13 +472,12 @@ insert r;*/
         abassociationTest5.PRM_Status_Reason_Txt__c='Test';
         abaList.add(abassociationTest5);
         
-        PRM_AccountBenefitAssociation__c abassociationTest6 = new PRM_AccountBenefitAssociation__c();
+        /*PRM_AccountBenefitAssociation__c abassociationTest6 = new PRM_AccountBenefitAssociation__c();
         abassociationTest6.PRM_Account_Id__c = testAccount.id;
-        abassociationTest6.PRM_Partner_Benefit_Id__c = pbTest10.id;
+        abassociationTest6.PRM_Partner_Benefit_Id__c = pbTest9.id;
         abassociationTest6.PRM_Status_Nm__c = 'Active';
-        abassociationTest6.PRM_Status_Reason_Txt__c='Test';
-        abaList.add(abassociationTest6);
-		List<Core_CustomMetadata_Object__c> ccmdoList=new List<Core_CustomMetadata_Object__c>();
+        abaList.add(abassociationTest6);*/
+List<Core_CustomMetadata_Object__c> ccmdoList=new List<Core_CustomMetadata_Object__c>();
         Core_CustomMetadata_Object__c ccmdo=new Core_CustomMetadata_Object__c();
         ccmdo.Metadata_Name__c='PRM_CtaPriorities__mdt';
         ccmdo.Program__c='IPA';
@@ -788,7 +784,31 @@ insert r;*/
         ccmdo81.Field_3__c='getMarketPlace';    
         ccmdo81.Field_4__c='IPARefreshSwitch';
         ccmdoList.add(ccmdo81);
+        
+        
+        //JB start
+        Core_CustomMetadata_Object__c ccmd01=new Core_CustomMetadata_Object__c();
+        ccmd01.Metadata_Name__c='PRM_Benefit_Priority_Order__mdt';
+        ccmd01.Program__c='IPA';
+        ccmd01.Header_row__c=ccmdo.Id;
+        ccmd01.DeveloperName__c='Employee';
+        ccmd01.MasterLabel__c='Employee';
+        ccmd01.Field_1__c='Employee';
+        ccmd01.Field_2__c='04';
+        ccmdoList.add(ccmd01);
+       
+        
+        Core_CustomMetadata_Object__c ccmd02=new Core_CustomMetadata_Object__c();
+        ccmd02.Metadata_Name__c='PRM_Benefit_Priority_Order__mdt';
+        ccmd02.Program__c='IPA';
+        ccmd02.Header_row__c=ccmdo.Id;
+        ccmd02.DeveloperName__c='Partner Admin';
+        ccmd02.MasterLabel__c='Partner Admin';
+        ccmd02.Field_1__c='Partner Admin';
+        ccmd02.Field_2__c='01';
+        ccmdoList.add(ccmd02);
         insert ccmdoList;
+        //JB end
         Test.startTest();   
         PRM_aba_TriggerHandler.executeTrigger = false;
         insert abaList;
@@ -870,27 +890,27 @@ insert r;*/
         //insert accessmatrx4;
         
         //for dzs
-        PRM_PEx_Access_Matrix__c accessmatrixs=new PRM_PEx_Access_Matrix__c();  
-        accessmatrixs.PRM_Benefit_Blade__c='Intel® Developer Zone - Premier';
+        /*PRM_PEx_Access_Matrix__c accessmatrixs=new PRM_PEx_Access_Matrix__c();  
+        accessmatrixs.PRM_Benefit_Blade__c='Intel® Developer Zone - Standard';
         accessmatrixs.PRM_Entitlements__c='Partner Admin';
-        accessmatrixs.PRM_IPA_Partner_Role__c='Service Provider';
-        accessmatrixs.PRM_Click_To_Action__c='Intel Developer Zone';
+        accessmatrixs.PRM_IPA_Partner_Role__c='Distributor';
+        accessmatrixs.PRM_Click_To_Action__c='Access Intel® Developer Zone';
         accessmatrixs.PRM_CTA_Priority__c='1';
-        accessmatrixs.PRM_Partner_Benefit__c=pbTest10.Id;//prnbnft.Id;
+        accessmatrixs.PRM_Partner_Benefit__c=pbTest9.Id;//prnbnft.Id;
         accessmatrixs.PRM_Benefit_Priority__c=19;
         accessmatrixs.RecordTypeId=beneftAccRule;
         accessMatrixList.add(accessmatrixs);
         
         PRM_PEx_Access_Matrix__c accessmatrixs1=new PRM_PEx_Access_Matrix__c(); 
-        accessmatrixs1.PRM_Benefit_Blade__c='Intel® Developer Zone - Premier';
+        accessmatrixs1.PRM_Benefit_Blade__c='Intel® Developer Zone - Standard';
         accessmatrixs1.PRM_Entitlements__c='Partner Admin';
-        accessmatrixs1.PRM_IPA_Partner_Role__c='Service Provider';
-        accessmatrixs1.PRM_Click_To_Action__c='Intel Developer Cloud for the Edge & One API';
+        accessmatrixs1.PRM_IPA_Partner_Role__c='Distributor';
+        accessmatrixs1.PRM_Click_To_Action__c='Resource & Documentation Center';
         accessmatrixs1.PRM_CTA_Priority__c='2';
-        accessmatrixs1.PRM_Partner_Benefit__c=pbTest10.Id;//prnbnft.Id;
+        accessmatrixs1.PRM_Partner_Benefit__c=pbTest9.Id;//prnbnft.Id;
         accessmatrixs1.PRM_Benefit_Priority__c=19;
         accessmatrixs1.RecordTypeId=beneftAccRule;
-        accessMatrixList.add(accessmatrixs1);
+        accessMatrixList.add(accessmatrixs1);*/
         
         
         //for Select Benefit         
@@ -2683,7 +2703,7 @@ insert msgtrasf;
         IPABenefitUtility.getProfileInfo(userId,Label.IPA_Benefits_Manage_Benefits);
         IPABenefitUtility.getPartnerQuickLinks(userId);
         //IPABenefitUtility.getBenefitsInfo(userId1);
-        IPABenefitUtility.getBenefitsInfo(userId);
+        //IPABenefitUtility.getBenefitsInfo(userId);
         IPABenefitUtility.getBenefitsInfo(userId2);
         // IPABenefitUtility.setReadVisibility(emaillog.id,'Direct Message');
         // IPABenefitUtility.setReadVisibility(msglog.id,'Account');
@@ -2878,8 +2898,6 @@ insert msgtrasf;
         pbTest7.PRM_InActive_Ind__c = false;
         pbTest7.PRM_Account_Type_Nm__c='Both';
         pbList.add(pbTest7);
-        
-        
         insert pbList;
         
         
@@ -3085,7 +3103,7 @@ insert msgtrasf;
         abassociationTest4.PRM_Status_Nm__c = 'Active';
         abassociationTest4.PRM_Status_Reason_Txt__c='Test';
         abaList.add(abassociationTest4);
-
+        
         PRM_aba_TriggerHandler.executeTrigger = false;
         insert abaList;
         PRM_aba_TriggerHandler.executeTrigger = true;
@@ -3162,7 +3180,7 @@ insert msgtrasf;
         accessMatrixList1.add(accessmatrx41);
         // insert accessmatrx4;
         
-   
+        
         //Points
         PRM_PEx_Access_Matrix__c accessmatrxp1=new PRM_PEx_Access_Matrix__c();
         accessmatrxp1.PRM_Benefit_Blade__c='Points';
@@ -4950,7 +4968,7 @@ insert valueex;
         accessmatrxms81.PRM_Partner_Benefit__c=pbTest4.Id;//prnbnft.Id;
         accessmatrxms81.PRM_Benefit_Priority__c=3;
         accessmatrxms81.RecordTypeId=beneftAccRule;
-        accessMatrixList.add(accessmatrxms81);
+
         
         
         Date startDate = date.newInstance(2015, 12, 15);
@@ -5217,7 +5235,7 @@ insert valueex;
        @isTest
         public static void tcheckInternalUser(){  
             Profile p = [Select Id from Profile Where name='IT Admin'];
-                User pAGpartnerUser01 = new User(FirstName='MrTest01',LastName='User01',alias='t2user01',Email='mrtestuser890@intel.com',UserName='mrtestuser890@intel.com',ProfileId=p.Id,
+                User pAGpartnerUser01 = new User(FirstName='MrTest01',LastName='User01',alias='t2user01',Email='mrtestuser@intel.com',UserName='mrtestuser@intel.com',ProfileId=p.Id,
                                                emailencodingkey='UTF-8', languagelocalekey='en_US', localesidkey='en_US',timezonesidkey='Europe/London');//, UserRoleId = r.id
                 insert pAGpartnerUser01;
             
@@ -5227,7 +5245,6 @@ insert valueex;
                 psa.PermissionSetId = ps.Id;
                 insert psa;
             
-                IPABenefitUtility.checkInternalUser(pAGpartnerUser01.id,System.Label.IPA_Secure_Homepage_Link);
                 IPABenefitUtility.checkInternalUser(pAGpartnerUser01.id,System.Label.PMP_IPA_Dashboard_Url);
 }
         @isTest
@@ -5378,8 +5395,6 @@ static void testGetContactsWithCustomTestData() {
     cont3.Core_Preferred_Language__c = 'FRA';
     cont3.MailingCountry = 'USA';
     insert cont3;
-
-    
     PRM_ContactRelationships__c contRelation = new PRM_ContactRelationships__c();
     contRelation.Name = 'Partner Admin'; 
     contRelation.PRM_Contact_Relationship_Cd__c = 'PRIMARY'; 
@@ -5392,33 +5407,11 @@ static void testGetContactsWithCustomTestData() {
     acctContRel.PRM_isActive__c = true; // Ensure the record is active
     acctContRel.PRM_Status_Reason_Txt__c = 'Test';
     insert acctContRel;
-    
-    acctContRel = [
-        SELECT PRM_Status_Nm__c
-        FROM PRM_Account_Contact_Relationship__c
-        WHERE Id = :acctContRel.Id
-    ];
-    
-    System.debug('Status after insert=' + acctContRel.PRM_Status_Nm__c);
-	
-    acctContRel.PRM_Status_Nm__c = 'Complete';
-    update acctContRel;
-    System.debug('Status after update=' + acctContRel.PRM_Status_Nm__c);
 
     // Debugging to see if the role is correctly set
     System.debug('Created PRM_Relationship: ' + contRelation);
     System.debug('Created PRM_Account_Contact_Relationship: ' + acctContRel);
-	
-    PRM_Account_Contact_Relationship__c acr = [
-        SELECT PRM_Partner_Role__c,PRM_Relationship_Id__r.Name
-        FROM PRM_Account_Contact_Relationship__c
-        WHERE Id = :acctContRel.Id
-    ];
-    
-    System.debug('JB ACR.Role=' + acr.PRM_Partner_Role__c);
-    System.debug('JB ACR.Name = ' + acr.PRM_Relationship_Id__r.Name);
 
-    
     // Step 2: Create User Profile to pass into the method
     IPABenefitWrapper.UserProfile userProfile = new IPABenefitWrapper.UserProfile();
     userProfile.companyProfileId = testAccount.Id; // Use the created account as the company profile ID
@@ -5426,19 +5419,14 @@ static void testGetContactsWithCustomTestData() {
 
     // Step 3: Call the method under test
     Test.startTest();
-    
-
-
     IPABenefitWrapper.Contactdata contactData = IPABenefitUtility.getContacts('Partner Admin', userProfile);  // Call the method with 'Partner Admin' role
-    IPABenefitWrapper.Contactdata contactData1 = IPABenefitUtility.getContacts('Distributor', userProfile);  // Call the method with 'Distributor' role    
     Test.stopTest();
-    /*if (contactData.contacts != null) {
+    if (contactData.contacts != null) {
         System.assertEquals(1, contactData.contacts.size(), 'There should be one contact in the returned list');
         System.debug('Role of the first contact: ' + contactData.contacts[0].role);
     } else {
         System.debug('No contacts found. Please check the test data and logic in getContacts.');
-    }*/
-   
+    }
 }
  @isTest
     static void testNumberConversion() {
@@ -5464,11 +5452,147 @@ static void testGetContactsWithCustomTestData() {
         OwnerId = UserInfo.getUserId(),
         Core_User_Defined_Website__c = 'https://testpartner.com',
         Core_Geo__c = 'ASMO'
-        );
-        
+    );
         insert testAccount;
         List<String> strList = new List<String>();
-        List<String> strList01 = new List<String>{'Activation Zones', 'Intel® Partner Alliance Activation Zones','AI Zones', 'Data Center Modernization Zones', 'Security Zones', 'Edge And Networking', 'Industry Zones'};
+        //List<String> strList01 = new List<String>{'Activation Zones', 'Intel® Partner Alliance Activation Zones','AI Zones', 'Data Center Modernization Zones', 'Security Zones', 'Edge And Networking', 'Industry Zones'};
+        Core_CustomMetadata_Object__c headerRecord = new Core_CustomMetadata_Object__c();
+    headerRecord.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    headerRecord.Header_row__c = null; // This makes it a header row
+    headerRecord.MasterLabel__c = 'MasterLabel';
+    headerRecord.DeveloperName__c = 'DeveloperName';
+    // Map the field definitions (assuming these are the field names)
+    headerRecord.field_1__c = 'label';
+    headerRecord.field_2__c = 'externalUrl';
+    headerRecord.field_3__c = 'type';
+    headerRecord.field_4__c = 'IPARefreshSwitch';
+    insert headerRecord;
+    
+    // Create actual data records
+    List<Core_CustomMetadata_Object__c> testRecords = new List<Core_CustomMetadata_Object__c>();
+    
+    // Record 1
+    Core_CustomMetadata_Object__c record1 = new Core_CustomMetadata_Object__c();
+    record1.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record1.Header_row__c = headerRecord.id; // This makes it a data row
+    record1.MasterLabel__c = 'Links To Badges';
+    record1.DeveloperName__c = 'Links To Badges';
+    record1.field_1__c = 'IPA_MarketStudio_badges_bnftlnk_Label'; // type
+    record1.field_2__c = 'IPA_MarketStudio_badges_bnftlnk_Link'; // IPARefreshSwitch
+    record1.field_3__c = 'getMarketingStudio'; // label (existing custom label)
+    record1.field_4__c = 'TRUE'; // externalUrl (existing custom label)
+    testRecords.add(record1);
+    
+    // Record 2
+    Core_CustomMetadata_Object__c record2 = new Core_CustomMetadata_Object__c();
+    record2.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record2.Header_row__c = headerRecord.id;
+    record2.MasterLabel__c = 'Visit Partner Marketing Studio';
+    record2.DeveloperName__c = 'Visit Partner Marketing Studio';
+    record2.field_1__c = 'IPA_MarketStudio_visit_bnftlnk_Label';
+    record2.field_2__c = 'IPA_MarketStudio_visit_bnftlnk_Link';
+    record2.field_3__c = 'getMarketingStudio';
+    record2.field_4__c = 'TRUE';
+    testRecords.add(record2);
+    
+    // Record 3
+    Core_CustomMetadata_Object__c record3 = new Core_CustomMetadata_Object__c();
+    record3.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record3.Header_row__c = headerRecord.id;
+    record3.MasterLabel__c = 'Intel® Partner Alliance Welcome Kit';
+    record3.DeveloperName__c = 'Intel® Partner Alliance Welcome Kit';
+    record3.field_1__c = 'IPA_Email_Template';
+    record3.field_2__c = 'IPA_Email_Template_link';
+    record3.field_3__c = 'getMarketingStudio';
+    record3.field_4__c = 'TRUE';
+    testRecords.add(record3);
+
+    Core_CustomMetadata_Object__c record4 = new Core_CustomMetadata_Object__c();
+    record4.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record4.Header_row__c = headerRecord.id;
+    record4.MasterLabel__c = 'Earn Points';
+    record4.DeveloperName__c = 'Earn Points';
+    record4.field_1__c = 'IPA_Points_earn_bnftlnk_Label';
+    record4.field_2__c = 'IPA_Points_earn_bnftlnk_Link';
+    record4.field_3__c = 'getPoints';
+    record4.field_4__c = 'TRUE';
+    testRecords.add(record4);
+
+    Core_CustomMetadata_Object__c record5 = new Core_CustomMetadata_Object__c();
+    record5.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record5.Header_row__c = headerRecord.id;
+    record5.MasterLabel__c = 'Partner Assist';
+    record5.DeveloperName__c = 'Partner Assist';
+    record5.field_1__c = 'IPA_Points_assist_bnftlnk_Label';
+    record5.field_2__c = 'IPA_Points_assist_bnftlnk_Link';
+    record5.field_3__c = 'getPoints';
+    record5.field_4__c = 'TRUE';
+    testRecords.add(record5);
+
+    Core_CustomMetadata_Object__c record6 = new Core_CustomMetadata_Object__c();
+    record6.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record6.Header_row__c = headerRecord.id;
+    record6.MasterLabel__c = 'Intel Premier Support';
+    record6.DeveloperName__c = 'Intel Premier Support';
+    record6.field_1__c = 'IPA_Partnerhelp_Support_bnftlnk_Label';
+    record6.field_2__c = 'IPA_Partnerhelp_Support_bnftlnk_Link';
+    record6.field_3__c = 'getPartnerHelp';
+    record6.field_4__c = 'TRUE';
+    testRecords.add(record6);
+
+    Core_CustomMetadata_Object__c record7 = new Core_CustomMetadata_Object__c();
+    record7.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record7.Header_row__c = headerRecord.id;
+    record7.MasterLabel__c = 'Create Support Ticket';
+    record7.DeveloperName__c = 'Create Support Ticket';
+    record7.field_1__c = 'IPA_Partnerhelp_SupportTic_bnftlnk_Label';
+    record7.field_2__c = 'IPA_Partnerhelp_SupportTic_bnftlnk_Link';
+    record7.field_3__c = 'getPartnerHelp';
+    record7.field_4__c = 'TRUE';
+    testRecords.add(record7);
+
+    Core_CustomMetadata_Object__c record8 = new Core_CustomMetadata_Object__c();
+    record8.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record8.Header_row__c = headerRecord.id;
+    record8.MasterLabel__c = 'View Courses';
+    record8.DeveloperName__c = 'View Courses';
+    record8.field_1__c = 'IPA_Training_View_Courses_bnftlnk_Label';
+    record8.field_2__c = 'IPA_View_Courses_bnftlnk_Link';
+    record8.field_3__c = 'getTraining';
+    record8.field_4__c = 'TRUE';
+    testRecords.add(record8);
+
+    Core_CustomMetadata_Object__c record9 = new Core_CustomMetadata_Object__c();
+    record9.Metadata_Name__c = 'PRM_CtaPriorities__mdt';
+    record9.Header_row__c = headerRecord.id;
+    record9.MasterLabel__c = 'Competitive Guidance Presentation';
+    record9.DeveloperName__c = 'Competitive Guidance Presentation';
+    record9.field_1__c = 'IPA_Training_Dist_competitive_Label';
+    record9.field_2__c = 'IPA_Training_Dist_competitive_Link';
+    record9.field_3__c = 'getTraining';
+    record9.field_4__c = 'TRUE';
+    testRecords.add(record9);
+    
+    insert testRecords;
+    
+    // Update your test data to match the DeveloperName values
+    List<String> strList01 = new List<String>{
+        'Links To Badges', 
+        'Visit Partner Marketing Studio', 
+        'Intel® Partner Alliance Welcome Kit'
+    };
+    List<String> strList02 = new List<String>{
+        'Partner Assist',  
+        'Earn Points'
+    };
+    List<String> strList03 = new List<String>{
+        'Intel Premier Support',  
+        'Create Support Ticket'
+    };
+    List<String> strList04 = new List<String>{
+        'View Courses',  
+        'Competitive Guidance Presentation'
+    };
         Map<String,String> adhocMsgs = new Map<String,String>();
         String partnerrole = 'Builder';
         String Partnertier = 'Partner';
@@ -5498,20 +5622,26 @@ static void testGetContactsWithCustomTestData() {
             /*IPABenefitUtility.getActivationZones(new List<string>{str},adhocMsgs); 
             IPABenefitUtility.getPricingPointsPromotionsBlade(new List<string>{str},adhocMsgs);
             IPABenefitUtility.getProductRoadmapsBlade(new List<string>{str},adhocMsgs);*/
-            IPABenefitUtility.getPoints(new List<string>{str},alertTitles,adhocMsgs);
+            //IPABenefitUtility.getPoints(new List<string>{str},alertTitles,adhocMsgs);
             IPABenefitUtility.getMarketingStudio(new List<string>{str},alertTitles,adhocMsgs);
         }
+        for(String str : strList02){
+            IPABenefitUtility.getPoints(new List<string>{str},alertTitles,adhocMsgs);
+        }
+        /*for(String str : strList03){
+            IPABenefitUtility.getPartnerHelp(strList03,partnerrole,userData,Partnertier,adhocMsgs);
+        }*/
         /*IPABenefitUtility.getActivationZones(strList01,adhocMsgs);  
         IPABenefitUtility.getPricingPointsPromotionsBlade(strList01,adhocMsgs);
         IPABenefitUtility.getProductRoadmapsBlade(strList01,adhocMsgs);*/
-        IPABenefitUtility.getPoints(strList01,alertTitles,adhocMsgs);
+        IPABenefitUtility.getPoints(strList02,alertTitles,adhocMsgs);
         IPABenefitUtility.getMarketingStudio(strList01,alertTitles,adhocMsgs);
         IPABenefitUtility.getPartnerHelp(strList01,partnerrole,userData,Partnertier,adhocMsgs);
         trainingMetrics = IPABenefitUtility.getTrainingMetrics(userData, entitlementlist);
-        IPABenefitWrapper.UserBenefitInfo result = IPABenefitUtility.getTraining(strList01, alertTitles, adhocMsgs, trainingMetrics);
+        IPABenefitWrapper.UserBenefitInfo result = IPABenefitUtility.getTraining(strList04, alertTitles, adhocMsgs, trainingMetrics);
         
         trainingMetrics01 = IPABenefitUtility.getTrainingMetrics(userData01, entitlementlist);
-        IPABenefitWrapper.UserBenefitInfo result01 = IPABenefitUtility.getTraining(strList01, alertTitles, adhocMsgs, trainingMetrics01);
+        IPABenefitWrapper.UserBenefitInfo result01 = IPABenefitUtility.getTraining(strList04, alertTitles, adhocMsgs, trainingMetrics01);
         //IPABenefitUtility.getTrainingMetrics(userData, entitlementlist);
         test.stopTest();
         
@@ -5642,229 +5772,5 @@ ChannelProgram cpTest = new ChannelProgram();
 
     }
 
-   @isTest
-    static void testCoverInnerBenefitBranchesWithoutPartnerBenefitParent(){
-        
-	    // -------- Gate data ----------
-	    final String ENT = 'E1';
-        List<String> entitlementList = new List<String>{ ENT };
-        
-        List<String> benefitsList = new List<String>{
-        'Partner University',                            // for Training
-        'Partner Marketing Studio',                      // for Marketing Studio
-        System.Label.PRM_Solutions_Marketplace_Basic_Profile // for Marketplace
-    };
-        
-         List<String> ipaLookupRegionList = new List<String>{ 'EMEA' };
-		
-          Boolean showDistiDashboard        = true;
-          Boolean showDZPAndRDCPremierBlade = true;
-          Boolean showDZSAndRDCPublicBlade  = true;
-       
-        Id nonQuickRtId;
-        
-        for (RecordType rt : [
-        SELECT Id, DeveloperName
-        FROM RecordType
-        WHERE SObjectType = 'PRM_PEx_Access_Matrix__c'
-        LIMIT 200
-    ]) {
-        if (rt.DeveloperName != 'Quick_Links_Access_Rule') {
-            nonQuickRtId = rt.Id;
-            break;
-        }
-    }
-        
-        // -------- Create Access Matrix rows (no helper method, no parent benefit) ----------
-         List<PRM_PEx_Access_Matrix__c> bams = new List<PRM_PEx_Access_Matrix__c>();
-         
-        // Points (Spend and non-Spend)
-        PRM_PEx_Access_Matrix__c r1 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c      = 'Points',
-        PRM_Click_To_Action__c    = 'Spend Points',
-        PRM_Entitlements__c       = ENT,
-        PRM_Hide_Logo_Icon__c     = false,
-        PRM_Benefit_Priority__c   = 1,
-        PRM_CTA_Priority__c       = '1',
-        PRM_isActive_Indicator__c = true,
-        PRM_IPA_Partner_Role__c   = 'Distributor'
-    );
-        
-        if (nonQuickRtId != null) r1.RecordTypeId = nonQuickRtId; bams.add(r1);
-        
-        PRM_PEx_Access_Matrix__c r2 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c      = 'Points',
-        PRM_Click_To_Action__c    = 'View Balance',
-        PRM_Entitlements__c       = ENT,
-        PRM_Hide_Logo_Icon__c     = false,
-        PRM_Benefit_Priority__c   = 1,      
-        PRM_CTA_Priority__c       = '2',    
-        PRM_isActive_Indicator__c = true,
-        PRM_IPA_Partner_Role__c   = 'Distributor'
-    );
-        if (nonQuickRtId != null) r2.RecordTypeId = nonQuickRtId; bams.add(r2);
-        
-        // MDF
-    PRM_PEx_Access_Matrix__c r3 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='MDF', PRM_Click_To_Action__c='MDF Home', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r3.RecordTypeId = nonQuickRtId; bams.add(r3);
-        
-        // Training
-    PRM_PEx_Access_Matrix__c r4 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Training', PRM_Click_To_Action__c='Training Home', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r4.RecordTypeId = nonQuickRtId; bams.add(r4);
-	
-        // Leads
-    PRM_PEx_Access_Matrix__c r5 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Leads', PRM_Click_To_Action__c='Lead Center', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r5.RecordTypeId = nonQuickRtId; bams.add(r5);
-        
-        
-        // Marketplace
-    PRM_PEx_Access_Matrix__c r6 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Marketplace', PRM_Click_To_Action__c='Marketplace Home', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r6.RecordTypeId = nonQuickRtId; bams.add(r6);
-
-        
-        // Marketing Studio
-    PRM_PEx_Access_Matrix__c r7 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Marketing Studio', PRM_Click_To_Action__c='Open Studio', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r7.RecordTypeId = nonQuickRtId; bams.add(r7);
-
-        // FPGA Tools and Resources
-    PRM_PEx_Access_Matrix__c r8 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='FPGA Tools and Resources', PRM_Click_To_Action__c='FPGA Portal', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r8.RecordTypeId = nonQuickRtId; bams.add(r8);
-
-        // Partner Lookup Tool (regular + Partner Assist Dashboard)
-    PRM_PEx_Access_Matrix__c r9 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Partner Lookup Tool', PRM_Click_To_Action__c='Lookup Home', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r9.RecordTypeId = nonQuickRtId; bams.add(r9);
-
-        PRM_PEx_Access_Matrix__c r10 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Partner Lookup Tool', PRM_Click_To_Action__c='Partner Assist Dashboard', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='2',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r10.RecordTypeId = nonQuickRtId; bams.add(r10);
-
-        
-        // Enablement Zones
-    PRM_PEx_Access_Matrix__c r11 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Enablement Zones', PRM_Click_To_Action__c='Activation Zones', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r11.RecordTypeId = nonQuickRtId; bams.add(r11);
-
-        
-        // Deal Registration
-    PRM_PEx_Access_Matrix__c r12 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Deal Registration', PRM_Click_To_Action__c='Register a Deal', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r12.RecordTypeId = nonQuickRtId; bams.add(r12);
-
-        
-        // DZS / RDC Public
-    PRM_PEx_Access_Matrix__c r13 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Intel\u00AE Developer Zone - Standard', PRM_Click_To_Action__c='Open DZS', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r13.RecordTypeId = nonQuickRtId; bams.add(r13);
-	
-        
-        PRM_PEx_Access_Matrix__c r14 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Resource & Documentation Center - Public', PRM_Click_To_Action__c='Open RDC', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r14.RecordTypeId = nonQuickRtId; bams.add(r14);
-
-        
-        // Premier blades
-    PRM_PEx_Access_Matrix__c r15 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Intel\u00AE Developer Zone - Premier', PRM_Click_To_Action__c='Open DZP', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r15.RecordTypeId = nonQuickRtId; bams.add(r15);
-
-        
-        PRM_PEx_Access_Matrix__c r16 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Resource & Documentation Center - Premier Access', PRM_Click_To_Action__c='Open RDC Premier', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r16.RecordTypeId = nonQuickRtId; bams.add(r16);
-
-        
-        // DIT
-    PRM_PEx_Access_Matrix__c r17 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Design Enablement Services,DIT', PRM_Click_To_Action__c='Open DIT', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r17.RecordTypeId = nonQuickRtId; bams.add(r17);
-
-         // Partner Help
-    PRM_PEx_Access_Matrix__c r18 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Partner Help', PRM_Click_To_Action__c='Get Help', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r18.RecordTypeId = nonQuickRtId; bams.add(r18);
-
-        // Distributor-only PPP + Products & Roadmaps (include + exclude)
-    PRM_PEx_Access_Matrix__c r19 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Pricing, Points and Promotions', PRM_Click_To_Action__c='Open PPP', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r19.RecordTypeId = nonQuickRtId; bams.add(r19);
-
-        PRM_PEx_Access_Matrix__c r20 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Products & Roadmaps', PRM_Click_To_Action__c='Roadmaps Home', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='1',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r20.RecordTypeId = nonQuickRtId; bams.add(r20);
-
-        PRM_PEx_Access_Matrix__c r21 = new PRM_PEx_Access_Matrix__c(
-        PRM_Benefit_Blade__c='Products & Roadmaps', PRM_Click_To_Action__c='Intel\u00AE Solutions Library', PRM_Entitlements__c=ENT,
-        PRM_Hide_Logo_Icon__c=false, PRM_Benefit_Priority__c=1, PRM_CTA_Priority__c='2',
-        PRM_isActive_Indicator__c=true, PRM_IPA_Partner_Role__c='Distributor'
-    ); if (nonQuickRtId != null) r21.RecordTypeId = nonQuickRtId; bams.add(r21);
-
-        insert bams;
-        
-	 IPABenefitWrapper.UserProfile userInfo = new IPABenefitWrapper.UserProfile();
-        userInfo.onePartnerId = '001000000000001';
-        
-        Boolean showSelectBenefit = false;
-        List<String> selectBenefitList = new List<String>();
-        List<String> specialityList = new List<String>();
-        Boolean showDisti = true;
-        
-        Test.startTest();
-        List<IPABenefitWrapper.UserBenefitInfo> distResults = IPABenefitUtility.getBenefitBlades(
-        userInfo, ipaLookupRegionList, 'Distributor', entitlementList, benefitsList,
-        showSelectBenefit, selectBenefitList, specialityList, showDisti
-    );
-        /*List<IPABenefitWrapper.UserBenefitInfo> fpgaResults = IPABenefitUtility.getBenefitBlades(
-        userInfo, ipaLookupRegionList, 'FPGA Designer', entitlementList, benefitsList,
-        showSelectBenefit, selectBenefitList, specialityList, showDisti
-    );*/
-        Test.stopTest();
-        
-    System.assertNotEquals(0, distResults.size(), 'Expected blades for Distributor run.');
-    //System.assertNotEquals(0, fpgaResults.size(), 'Expected blades for FPGA Designer run.');
-              
-    }
     
 }

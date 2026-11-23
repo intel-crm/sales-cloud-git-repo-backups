@@ -163,8 +163,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         
         
         //creating ABM for bank1
-       // Highlight: Unused Local Variable 
-      //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
+        Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
         
         PartnerFundClaim indiaClaim1 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
                                                                                 testPartnerFundRequestRecord.Id, 
@@ -237,9 +236,8 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         Test.startTest();
         try{
             Core_MDF_Claim_Prediction_Event__e evt = new Core_MDF_Claim_Prediction_Event__e(Core_MDF_PE_ID__c='');
-           // Highlight: Unused Local Variable 
-          /*  Database.SaveResult sr = */ EventBus.publish(evt);
-           // List <Core_MDF_Claim_Prediction__c> obj  = [SELECT Id FROM Core_MDF_Claim_Prediction__c ]; 
+            Database.SaveResult sr = EventBus.publish(evt);
+            List <Core_MDF_Claim_Prediction__c> obj  = [SELECT Id FROM Core_MDF_Claim_Prediction__c ]; 
             
         }catch(Exception e){
             System.assertNotEquals(NULL,e);
@@ -252,8 +250,6 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
          Test.startTest();
          Core_MDF_ClaimPredictionServiceHandler.getCodeCoverage();
          Test.stopTest();
-        // Unit Test Method should include System.Assert 
-        System.assert(true, 'Code coverage method executed successfully');
     }
     
     @isTest 
@@ -261,7 +257,5 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
          Test.startTest();
          Core_MDF_ClaimPredictionTriggerHandler.getCodeCoverage();
          Test.stopTest();
-        // Unit Test Method should include System.Assert
-        System.assert(true, 'Code coverage method executed successfully');
     }
 }

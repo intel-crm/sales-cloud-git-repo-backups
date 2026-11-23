@@ -181,13 +181,20 @@
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
@@ -234,7 +241,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2026 Opportunity Tracker - 6QPS</name>
+    <name>2025 Opportunity Tracker - 6QPS</name>
     <params>
         <name>terr</name>
         <value>all</value>

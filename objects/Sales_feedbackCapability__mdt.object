@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To store Capability of Feedback</description>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To activate Capability of feedback</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Capability__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Capability</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>contact customer service</fullName>
+                    <default>false</default>
+                    <label>contact customer service</label>
+                </value>
+                <value>
+                    <fullName>create new admin</fullName>
+                    <default>false</default>
+                    <label>create new admin</label>
+                </value>
+                <value>
+                    <fullName>licenses menu</fullName>
+                    <default>false</default>
+                    <label>licenses menu</label>
+                </value>
+                <value>
+                    <fullName>feedback</fullName>
+                    <default>false</default>
+                    <label>feedback</label>
+                </value>
+                <value>
+                    <fullName>active maintenance licenses</fullName>
+                    <default>false</default>
+                    <label>active maintenance licenses</label>
+                </value>
+                <value>
+                    <fullName>view and manage admin</fullName>
+                    <default>false</default>
+                    <label>view and manage admin</label>
+                </value>
+                <value>
+                    <fullName>all computers</fullName>
+                    <default>false</default>
+                    <label>all computers</label>
+                </value>
+                <value>
+                    <fullName>active computers</fullName>
+                    <default>false</default>
+                    <label>active computers</label>
+                </value>
+                <value>
+                    <fullName>all licenses</fullName>
+                    <default>false</default>
+                    <label>all licenses</label>
+                </value>
+                <value>
+                    <fullName>sales signup evaluationlicenses</fullName>
+                    <default>false</default>
+                    <label>sales signup evaluationlicenses</label>
+                </value>
+                <value>
+                    <fullName>report</fullName>
+                    <default>false</default>
+                    <label>report</label>
+                </value>
+                <value>
+                    <fullName>sales sign up employeefreelicences</fullName>
+                    <default>false</default>
+                    <label>sales sign up employeefreelicences</label>
+                </value>
+                <value>
+                    <fullName>get legacy license</fullName>
+                    <default>false</default>
+                    <label>get legacy license</label>
+                </value>
+                <value>
+                    <fullName>license menu internal</fullName>
+                    <default>false</default>
+                    <label>license menu internal</label>
+                </value>
+                <value>
+                    <fullName>active computers internal</fullName>
+                    <default>false</default>
+                    <label>active computers internal</label>
+                </value>
+                <value>
+                    <fullName>all computers internal</fullName>
+                    <default>false</default>
+                    <label>all computers internal</label>
+                </value>
+                <value>
+                    <fullName>maintenance expired licenses</fullName>
+                    <default>false</default>
+                    <label>maintenance expired licenses</label>
+                </value>
+                <value>
+                    <fullName>generate legacy license internal</fullName>
+                    <default>false</default>
+                    <label>generate legacy license internal</label>
+                </value>
+                <value>
+                    <fullName>legacy licenses internal</fullName>
+                    <default>false</default>
+                    <label>legacy licenses internal</label>
+                </value>
+                <value>
+                    <fullName>maintenance expired licenses internal</fullName>
+                    <default>false</default>
+                    <label>maintenance expired licenses internal</label>
+                </value>
+                <value>
+                    <fullName>license menu</fullName>
+                    <default>false</default>
+                    <label>license menu</label>
+                </value>
+                <value>
+                    <fullName>License Chatbot</fullName>
+                    <default>false</default>
+                    <label>License Chatbot</label>
+                </value>
+                <value>
+                    <fullName>all license internal</fullName>
+                    <default>false</default>
+                    <label>all license internal</label>
+                </value>
+                <value>
+                    <fullName>active maintenance licenses internal</fullName>
+                    <default>false</default>
+                    <label>active maintenance licenses internal</label>
+                </value>
+                <value>
+                    <fullName>detail</fullName>
+                    <default>false</default>
+                    <label>detail</label>
+                </value>
+                <value>
+                    <fullName>sales license</fullName>
+                    <default>false</default>
+                    <label>sales license</label>
+                </value>
+                <value>
+                    <fullName>legacy licenses</fullName>
+                    <default>false</default>
+                    <label>legacy licenses</label>
+                </value>
+                <value>
+                    <fullName>relatedlist</fullName>
+                    <default>false</default>
+                    <label>relatedlist</label>
+                </value>
+                <value>
+                    <fullName>employee and evaluation licenses</fullName>
+                    <default>false</default>
+                    <label>employee and evaluation licenses</label>
+                </value>
+                <value>
+                    <fullName>employee and evaluation license internal</fullName>
+                    <default>false</default>
+                    <label>employee and evaluation license internal</label>
+                </value>
+                <value>
+                    <fullName>Generate License</fullName>
+                    <default>false</default>
+                    <label>Generate License</label>
+                </value>
+                <value>
+                    <fullName>Split Seats</fullName>
+                    <default>false</default>
+                    <label>Split Seats</label>
+                </value>
+                <value>
+                    <fullName>sales license admin delegate</fullName>
+                    <default>false</default>
+                    <label>sales license admin delegate</label>
+                </value>
+                <value>
+                    <fullName>sales host</fullName>
+                    <default>false</default>
+                    <label>sales host</label>
+                </value>
+                <value>
+                    <fullName>License Generation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>License Generation</label>
+                </value>
+                <value>
+                    <fullName>Split License</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Split License</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Sales_feedbackCapability</label>
+    <pluralLabel>Sales_feedbackCapabilities</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

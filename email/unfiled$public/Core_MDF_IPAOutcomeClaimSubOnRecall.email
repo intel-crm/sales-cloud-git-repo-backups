@@ -32,22 +32,17 @@
                             </apex:outputText>
                         </li>
                         <li>{!$Label.Core_MDF_Reimbursement_Amount_email}:&nbsp;<apex:outputText value="{0,number,$#,##0.00}"><apex:param value="{!relatedTo.Core_MDF_Requested_Reimbursement_Amt__c}" /></apex:outputText></li>
-                        <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Number & ':',$Label.Core_MDF_Activity)}&nbsp;{!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
-                        <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ':',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}
+                        <li>{!$Label.Core_MDF_Activity} {!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
+                        <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name}
                             <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner'}"
-                                value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
-                                            $Label.Core_MDF_Outcome_Community_Link + RelatedTo.RequestId,
-                                            $Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId)}">
-                                {!RelatedTo.Request.Title}
+                                value="{!$Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId}">{!RelatedTo.Request.Title}
                             </apex:outputLink>
                             <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard'}"
-                                value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
-                                            $Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,
-                                            $Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}">
+                                value="{!$Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId}">
                                 {!RelatedTo.Request.Title}
                             </apex:outputLink>
                         </li>
-                        <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
+                        <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Nm__c}</li>
                         <li>{!$Label.Core_MDF_IPA_Comments}: {!RelatedTo.Core_MDF_Comments_Appvr_Only_txt__c}</li>
                     </ul>
                                            

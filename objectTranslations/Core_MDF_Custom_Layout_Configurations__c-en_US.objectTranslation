@@ -9,14 +9,6 @@
         <value>Custom Layout Configurations</value>
     </caseValues>
     <fields>
-        <label><!-- API Visibility --></label>
-        <name>API_Visibility__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is API Required --></label>
-        <name>Core_MDF_API_Required_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Active --></label>
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
@@ -40,16 +32,8 @@
             <translation><!-- Account Based --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>OEM CMP</masterLabel>
-            <translation><!-- OEM CMP --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Proposal Based</masterLabel>
             <translation><!-- Proposal Based --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Provider CMP</masterLabel>
-            <translation><!-- Service Provider CMP --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -83,14 +67,6 @@
     <fields>
         <label><!-- Is Relationship --></label>
         <name>Core_MDF_Is_Relationship_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Lookup Custom URL Indicator --></label>
-        <name>Core_MDF_Lookup_Custom_URL_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Lookup Custom URL Link --></label>
-        <name>Core_MDF_Lookup_Custom_URL_Link_txt__c</name>
     </fields>
     <fields>
         <label><!-- Object API Name --></label>

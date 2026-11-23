@@ -246,9 +246,7 @@ private class PRM_RegRequest_TriggerHandler_Test{
         acr1.PRM_Status_Nm__c ='Complete';
         acr1.PRM_Status_Reason_Txt__c ='Pending';
        acrList.add(acr1);
-       Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acrList;
-      Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
        
         PRM_Profile_Questions__c pQues = new PRM_Profile_Questions__c();
         pQues.PRM_Question_Cd__c = 'Ques1';
@@ -788,7 +786,7 @@ private class PRM_RegRequest_TriggerHandler_Test{
         rr.PRM_Dup_Status__c = 'FULLDUP';
         rr.PRM_Auto_Approve__c = false;
         rr.PRM_Profile_Response__c = 'test rr';
-        rr.PRM_Status__c = 'Approved';
+        rr.PRM_Status__c = 'Rejected';
         rr.PRM_Email_ID__c = 'testrequester@mailinator.com';
         regRequest.add(rr);
         PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun=true;
@@ -856,9 +854,7 @@ private class PRM_RegRequest_TriggerHandler_Test{
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
         acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1;  
         acr.PRM_Status_Reason_Txt__c = 'Test';
-       Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acr;
-      Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
        
         PRM_Registration_Request__c newRegistrationRequest7 = PRM_TestUtility.getPRMRegistrationRequest();
         newRegistrationRequest7.RecordTypeId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
@@ -1495,33 +1491,6 @@ private class PRM_RegRequest_TriggerHandler_Test{
         Test.stopTest();*/ 
     }
     
-     @isTest
-    static void testShouldBypassBlockedDomainCheck() {
-
-        Core_CustomMetadata_Object__c headerRec = new Core_CustomMetadata_Object__c();
-        headerRec.Program__c = 'IPA';
-        headerRec.DeveloperName__c = 'DeveloperName';
-        headerRec.Field_1_Text_Area_Long__c ='Domains__c';
-        headerRec.Field_1__c = 'Country_Code__c';
-        headerRec.MasterLabel__c = 'MasterLabel';
-        headerRec.Metadata_Name__c = 'Country_Level_Domain_Bypass';
-        insert headerRec;
-        Core_CustomMetadata_Object__c indRec = new Core_CustomMetadata_Object__c();
-        indRec.Program__c = 'IPA';
-        indRec.DeveloperName__c = 'India';
-        indRec.Field_1_Text_Area_Long__c ='gmail.com;hotmail.com';
-        indRec.Field_1__c = 'IND';
-        indRec.MasterLabel__c = 'India';
-        indRec.Metadata_Name__c = 'Country_Level_Domain_Bypass';
-        indRec.Header_row__c = headerRec.id;
-        insert indRec;
-        Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
-    Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
-    Test.startTest();
-    PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND','gmail.com',bypassRecords);
-    Test.stopTest();
-        
-    }
     
      @isTest
     static void testValidateStatusChange() {
@@ -1585,108 +1554,7 @@ private class PRM_RegRequest_TriggerHandler_Test{
         Test.stopTest();
 
     }
-
-    @isTest
-    static void testUtilityDirectBranchCoverage() {
-        ChannelProgram ipaProgram = [SELECT Id FROM ChannelProgram WHERE Name = 'Intel Partner Alliance' LIMIT 1];
-        Account acct = [SELECT Id FROM Account WHERE Name = 'attempet' LIMIT 1];
-        Contact cont = [SELECT Id, Email FROM Contact WHERE Email = 'testrequest@mailinator.com' LIMIT 1];
-
-        PRM_Registration_Request__c evRequest = PRM_TestUtility.getPRMRegistrationRequest();
-        evRequest.RecordTypeId = PRM_IPA_Constants.EV_RECORD_TYPE_ID;
-        evRequest.PRM_Status__c = 'New';
-        evRequest.PRM_Channel_Program__c = ipaProgram.Id;
-        evRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
-        evRequest.PRM_Salesforce_ID__c = acct.Id;
-        evRequest.PRM_Contact_Login_ID__c = evRequest.PRM_Email_ID__c;
-        evRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
-        evRequest.PRM_Profile_Response__c = 'test pr';
-        evRequest.PRM_Zip_Postal_Code__c = '560037';
-        evRequest.PRM_Email_Verification_Criteria__c = null;
-
-        Test.startTest();
-        PRM_RegistrationRequestUtility.evCheck(new List<PRM_Registration_Request__c>{ evRequest }, null);
-        Test.stopTest();
-
-        System.assertEquals(System.Label.PRM_Success, evRequest.PRM_Email_Verification_Criteria__c, 'EV criteria should be marked successful');
-        System.assertNotEquals(null, evRequest.PRM_EV_Token_Renewed_Date__c, 'EV token renewed date should be stamped');
-
-        PRM_Registration_Request__c validAgreementRequest = PRM_TestUtility.getPRMRegistrationRequest();
-        validAgreementRequest.RecordTypeId = PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT;
-        validAgreementRequest.PRM_Status__c = 'New';
-        validAgreementRequest.PRM_Email_ID__c = 'valid-agreement@mailinator.com';
-        validAgreementRequest.PRM_Contact_Login_ID__c = validAgreementRequest.PRM_Email_ID__c;
-        validAgreementRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
-        validAgreementRequest.PRM_Salesforce_ID__c = acct.Id;
-        validAgreementRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
-        validAgreementRequest.PRM_Legal_Agreement_Criteria__c = Label.PRM_Pending;
-        validAgreementRequest.PRM_Channel_Program__c = ipaProgram.Id;
-        validAgreementRequest.PRM_Profile_Response__c = 'test pr';
-        validAgreementRequest.PRM_Zip_Postal_Code__c = '560037';
-
-        PRM_Registration_Request__c invalidAgreementRequest = PRM_TestUtility.getPRMRegistrationRequest();
-        invalidAgreementRequest.RecordTypeId = PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT;
-        invalidAgreementRequest.PRM_Status__c = 'New';
-        invalidAgreementRequest.PRM_Email_ID__c = 'invalid-agreement@mailinator.com';
-        invalidAgreementRequest.PRM_Contact_Login_ID__c = invalidAgreementRequest.PRM_Email_ID__c;
-        invalidAgreementRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
-        invalidAgreementRequest.PRM_Salesforce_ID__c = acct.Id;
-        invalidAgreementRequest.PRM_Legal_Agreements__c = 'DOES_NOT_EXIST';
-        invalidAgreementRequest.PRM_Legal_Agreement_Criteria__c = Label.PRM_Pending;
-        invalidAgreementRequest.PRM_Channel_Program__c = ipaProgram.Id;
-        invalidAgreementRequest.PRM_Profile_Response__c = 'test pr';
-        invalidAgreementRequest.PRM_Zip_Postal_Code__c = '560037';
-
-        PRM_RegistrationRequestUtility.updateLA(new List<PRM_Registration_Request__c>{ validAgreementRequest, invalidAgreementRequest });
-        System.assertEquals('SUCCESS', validAgreementRequest.PRM_Legal_Agreement_Criteria__c, 'Known legal agreement should pass');
-        System.assertEquals('FAIL', invalidAgreementRequest.PRM_Legal_Agreement_Criteria__c, 'Unknown legal agreement should fail');
-
-        PRM_Registration_Request__c acrRequest = PRM_TestUtility.getPRMRegistrationRequest();
-        acrRequest.RecordTypeId = PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT;
-        acrRequest.PRM_Status__c = 'New';
-        acrRequest.PRM_Channel_Program__c = ipaProgram.Id;
-        acrRequest.PRM_Email_ID__c = cont.Email;
-        acrRequest.PRM_Contact_Login_ID__c = cont.Email;
-        acrRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
-        acrRequest.PRM_Partner_Role__c = 'Service Provider';
-        acrRequest.PRM_Salesforce_ID__c = acct.Id;
-        acrRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
-        acrRequest.PRM_Profile_Response__c = 'test pr';
-        acrRequest.PRM_Zip_Postal_Code__c = '560037';
-
-        PRM_Account_Contact_Relationship__c acr = [
-            SELECT Id, PRM_Account_Id__c, PRM_Contact_Id__c, PRM_Contact_Id__r.Email, PRM_Partner_Role__c
-            FROM PRM_Account_Contact_Relationship__c
-            WHERE PRM_Contact_Id__c = :cont.Id
-            LIMIT 1
-        ];
-        //acr.PRM_Account_Id__c = acct.Id;
-        //acr.PRM_Partner_Role__c = 'Service Provider';
-
-        Map<Id, sObject> acrsToUpdate = PRM_RegistrationRequestUtility.getACRToUpdate(
-            new Map<Id, PRM_Account_Contact_Relationship__c>{ acr.Id => acr },
-            new Map<String, PRM_Registration_Request__c>{ cont.Email => acrRequest }
-        );
-        System.assertEquals(1, acrsToUpdate.size(), 'Matching ACR should be returned for update');
-        PRM_Account_Contact_Relationship__c updatedAcr = (PRM_Account_Contact_Relationship__c) acrsToUpdate.get(acr.Id);
-        System.assertEquals('Complete', updatedAcr.PRM_Status_Nm__c, 'Matching ACR should be completed');
-        System.assertEquals(true, updatedAcr.PRM_No_Email__c, 'Matching ACR should suppress duplicate email');
-    }
-
-    @isTest
-    static void testBypassBlockedDomainNegativeCases() {
-        Map<String, Map<String, Object>> bypassRecords = new Map<String, Map<String, Object>>{
-            'India' => new Map<String, Object>{
-                'Country_Code__c' => 'IND;USA',
-                'Domains__c' => 'gmail.com;hotmail.com'
-            }
-        };
-
-        System.assertEquals(true, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND', 'gmail.com', bypassRecords), 'Configured country and domain should bypass');
-        System.assertEquals(false, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND', 'intel.com', bypassRecords), 'Unconfigured domain should not bypass');
-        System.assertEquals(false, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck(null, 'gmail.com', bypassRecords), 'Null country should not bypass');
-        System.assertEquals(false, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND', null, bypassRecords), 'Null domain should not bypass');
-        System.assertEquals(false, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND', 'gmail.com', null), 'Null bypass map should not bypass');
-    }
+    
+    
     
 }

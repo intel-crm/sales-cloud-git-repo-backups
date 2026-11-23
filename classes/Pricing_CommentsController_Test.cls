@@ -5,6 +5,7 @@ Private class Pricing_CommentsController_Test {
     public static void setUpData(){
         List<User> adminUser = new List<User>(Pricing_Test_Utility.createAdminUser());
         List<User> userFSE = new List<User>(Pricing_Test_Utility.createFSEUser());
+        List<User> userRPM = new List<User>(Pricing_Test_Utility.createPricingMangerUser());
         Account acc;
         Contact con;
         List<User> accountExecutiveUserList;
@@ -81,7 +82,7 @@ Private class Pricing_CommentsController_Test {
     
     static testmethod void isPricingManagerTest(){
         Test.startTest();
-        List<User> fseUser = new List<User>([select id from User where isActive = true LIMIT 1]);
+        List<User> fseUser = new List<User>([select id from User LIMIT 1]);
         if(!fseUser.isEmpty()){
             System.runAs(fseUser[0]){
                 System.Assert(!Pricing_CommentsController.isPricingManager(), 'Is pricing manager returing a wrong value');
@@ -92,7 +93,7 @@ Private class Pricing_CommentsController_Test {
 
     static testmethod void isFinancialIncentivePricingManagerTest(){
         Test.startTest();
-        List<User> fseUser = new List<User>([select id from User where isActive = true LIMIT 1]);
+        List<User> fseUser = new List<User>([select id from User LIMIT 1]);
         if(!fseUser.isEmpty()){
             System.runAs(fseUser[0]){
                 System.Assert(!Pricing_CommentsController.isFinancialIncentivePricingManager(), 'Is Financial Incentive pricing manager returing a wrong value');
@@ -103,7 +104,7 @@ Private class Pricing_CommentsController_Test {
     
     static testmethod void isReadOnlyUserTest(){
         Test.startTest();
-        List<User> fseUser = new List<User>([select id from User where isActive = true LIMIT 1]);
+        List<User> fseUser = new List<User>([select id from User LIMIT 1]);
         if(!fseUser.isEmpty()){
             System.runAs(fseUser[0]){
                 System.Assert(!Pricing_CommentsController.isReadOnlyUser(), 'Is readonly user returing a wrong value');
@@ -129,14 +130,5 @@ Private class Pricing_CommentsController_Test {
         system.assert(accMaping==null);        
         Test.stopTest();
     }
-    
-    static testMethod void isPAAEligibleTest(){        
-        Test.startTest();
-        List<SBQQ__Quote__c> quoteList = new List<SBQQ__Quote__c>([select Id, SBQQ__Account__c from SBQQ__Quote__c LIMIT 1]);
-        List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(quoteList[0].Id, 3);
-        SBQQ__QuoteLine__C quoteLine = lstquoteLines[0];
-        Pricing_CommentsController.isPAAEligible(quoteLine);
-        Test.stopTest(); 
-     }
     
 }

@@ -22,12 +22,9 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
                             EmailEncodingKey = 'UTF-8',
                             LocaleSidKey = 'en_US'
                            );
-		User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-           insert usr; 
-        }
+		insert usr;
         System.assert(usr.Id != null, 'Record not created');
-		 Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+
          Account newAccount = new Account (
             name='XYZ',
             Phone = '+49-12345',
@@ -35,8 +32,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-            RecordTypeId = recordTypeIdAccount
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -49,7 +45,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             Email='Joe.Schmoe@test.de',
             AccountId=newAccount.id,
             MailingStreet=newAccount.BillingStreet,
-          //  Core_IPS_Active__c=true,
+            Core_IPS_Active__c=true,
             Core_IPS_Email_Opt_Out__c=false,
             MailingState = newAccount.BillingState,
             MailingCity=newAccount.BillingCity,
@@ -93,7 +89,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert caselst;  
         System.assert(caselst[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Case_Interested_Party__c> interestedParties = new List<Core_IPS_Case_Interested_Party__c>(); 
+        List<Core_IPS_Case_Interested_Party__c> Iparty = new List<Core_IPS_Case_Interested_Party__c>(); 
         
         Core_IPS_Case_Interested_Party__c party = new Core_IPS_Case_Interested_Party__c();
         party.User__c = usr.id;
@@ -101,17 +97,17 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         party.Contact__c=cc.id;
         party.Active__c= true ;
         party.Type__c= 'External';
-        interestedParties.add(party);
+        Iparty.add(party);
              
         Core_IPS_Case_Interested_Party__c party1 = new Core_IPS_Case_Interested_Party__c();
         party1.User__c = usr.id;
         party1.Case__c = cas1.id;
         party1.Contact__c=cc.id;
-        interestedParties.add(party1);   
-        insert interestedParties;
-        System.assert(interestedParties[0].Id != null, 'Record not created');
+        Iparty.add(party1);   
+        insert Iparty;
+        System.assert(Iparty[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Project_Member__c> projectMembers = new List<Core_IPS_Project_Member__c>();
+        List<Core_IPS_Project_Member__c> Pmem = new List<Core_IPS_Project_Member__c>();
                 
         Core_IPS_Project_Member__c mem = new Core_IPS_Project_Member__c();
         mem.Core_IPS_Project__c = pr.id;
@@ -121,7 +117,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         mem.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
         
         
-        projectMembers.add(mem);
+        Pmem.add(mem);
         
         //Core_IPS_Project__c =: CaseObj.Core_IPS_Project_Case__c AND Core_Status__c = 'Active' 
         //AND Core_IPS_Contact__r.Core_IPS_Active__c = true AND Core_IPS_Contact__r.Core_IPS_Email_Opt_Out__c=false
@@ -132,10 +128,10 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         mem1.Core_Status__c='Active';
         mem1.Core_Status__c='Active';
         mem1.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
-        projectMembers.add(mem1);  
+        Pmem.add(mem1);  
         
-        insert projectMembers;
-        System.assert(projectMembers[0].Id != null, 'Record not created');
+        insert Pmem;
+        System.assert(Pmem[0].Id != null, 'Record not created');
 
         Contact cc1 = new Contact(  
             
@@ -206,9 +202,9 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         //core_Ips_InterestedParties_CTRL Cipc=new core_Ips_InterestedParties_CTRL();
         
        // Cipc.simpleSort(caselst[0].id);
-        core_Ips_InterestedParties_CTRL interestedPartiesController=new core_Ips_InterestedParties_CTRL();
+        core_Ips_InterestedParties_CTRL Cipc=new core_Ips_InterestedParties_CTRL();
         try{
-        	interestedPartiesController.simpleSort(); 
+        	Cipc.simpleSort(); 
             
         }catch(Exception e){
         }
@@ -251,7 +247,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert pr;  
         System.assert(pr.Id != null, 'Record not created');
 
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+        
         Account newAccount = new Account (
             name='XYZ',
             Phone = '+49-12345',
@@ -259,8 +255,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-			RecordTypeId = recordTypeIdAccount
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -326,22 +321,22 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert cc3;
         System.assert(cc3.Id != null, 'Record not created');
 
-        List<Core_IPS_Project_Member__c> projectMembers = new List<Core_IPS_Project_Member__c>();
+        List<Core_IPS_Project_Member__c> Pmem = new List<Core_IPS_Project_Member__c>();
         
         Core_IPS_Project_Member__c mem = new Core_IPS_Project_Member__c();
         mem.Core_IPS_Project__c = pr.id;
         mem.Core_User__c = userDetails.id;
         mem.Core_IPS_Contact__c = cc.id;
-        projectMembers.add(mem);
+        Pmem.add(mem);
         
         Core_IPS_Project_Member__c mem1 = new Core_IPS_Project_Member__c();
         mem1.Core_IPS_Project__c = pr.id;
         mem1.Core_User__c = userDetails.id;
         mem1.Core_IPS_Contact__c = cc.id;
-        projectMembers.add(mem1);  
+        Pmem.add(mem1);  
         
-        insert projectMembers;
-        System.assert(projectMembers[0].Id != null, 'Record not created');
+        insert Pmem;
+        System.assert(Pmem[0].Id != null, 'Record not created');
 
         List<Case> caselst = new List<Case>();
         
@@ -358,13 +353,13 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert caselst; 
         System.assert(caselst[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Case_Interested_Party__c> interestedParties = new List<Core_IPS_Case_Interested_Party__c>(); 
+        List<Core_IPS_Case_Interested_Party__c> Iparty = new List<Core_IPS_Case_Interested_Party__c>(); 
         
         Core_IPS_Case_Interested_Party__c party = new Core_IPS_Case_Interested_Party__c();
         party.Contact__c = cc.id;
         party.Case__c = cas.id;
        // party.User__c=usr.id;
-        interestedParties.add(party);
+        Iparty.add(party);
    //   Iparty.add();
         List<Id> addIdList = new List<Id>();
         addIdList.add(party.Id);
@@ -384,9 +379,9 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         removeIdList.add(party.Id);
         core_Ips_InterestedParties_CTRL.core_Ips_InterestedParties_CTRL1(cas1.id);
         
-        core_Ips_InterestedParties_CTRL interestedPartiesController=new core_Ips_InterestedParties_CTRL();
+        core_Ips_InterestedParties_CTRL Cipc=new core_Ips_InterestedParties_CTRL();
         try{
-        	interestedPartiesController.simpleSort(); 
+        	Cipc.simpleSort(); 
             
         }catch(Exception e){
         }
@@ -400,8 +395,8 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
        core_Ips_InterestedParties_CTRL.ContactDataRetrieve ccdr= new core_Ips_InterestedParties_CTRL.ContactDataRetrieve();
         ccdr.getRecords('SELECT Id, Name FROM Contact',addIdListc,'SELECT Name FROM Contact',addIdListc,addIdListc);
         //sQuery = [SELECT Id, FirstName, LastName, Name, Email, AccountId, Account.Name FROM Contact WHERE AccountID =: newAccount.id]; 
-        ccdr.saveRecords(interestedParties);
-        ccdr.deleteRecords(interestedParties);
+        ccdr.saveRecords(Iparty);
+        ccdr.deleteRecords(Iparty);
         Set<Id> activeContactIds = new Set<Id>(); 
         activeContactIds.add(cc.id);
         ccdr.getActiveContactsNoSharing(activeContactIds,newAccount.id);
@@ -444,7 +439,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         pr.Core_IPS_EnableMemberasInterestedParties__c =True;
         insert pr;  
         System.assert(pr.Id != null, 'Record not created');
-		Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+
         Account newAccount = new Account (
             name='XYZ',
             Phone = '+49-12345',
@@ -452,8 +447,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-			RecordTypeId = recordTypeIdAccount
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -491,13 +485,13 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
 
         List<Id> contactlst1 = new List<Id>();
         contactlst1.add(cc1.id);
-        List<Core_IPS_Project_Member__c> projectMembers = new List<Core_IPS_Project_Member__c>();
+        List<Core_IPS_Project_Member__c> Pmem = new List<Core_IPS_Project_Member__c>();
         
         Core_IPS_Project_Member__c mem = new Core_IPS_Project_Member__c();
         mem.Core_IPS_Project__c = pr.id;
         mem.Core_User__c = userDetails.id;
         mem.Core_IPS_Contact__c = cc.id;
-        projectMembers.add(mem);
+        Pmem.add(mem);
         
         Core_IPS_Project_Member__c mem1 = new Core_IPS_Project_Member__c();
         mem1.Core_IPS_Project__c = pr.id;
@@ -505,10 +499,10 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
 		//Sowmya cc1 updated instead of cc - Start - 08/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
         mem1.Core_IPS_Contact__c = cc1.id;
         //Sowmya - End - 08/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        projectMembers.add(mem1);  
+        Pmem.add(mem1);  
         
-        insert projectMembers;
-        System.assert(projectMembers[0].Id != null, 'Record not created');
+        insert Pmem;
+        System.assert(Pmem[0].Id != null, 'Record not created');
 
         List<Case> caselst = new List<Case>();
         
@@ -526,13 +520,13 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert caselst;
         System.assert(caselst[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Case_Interested_Party__c> interestedParties = new List<Core_IPS_Case_Interested_Party__c>(); 
+        List<Core_IPS_Case_Interested_Party__c> Iparty = new List<Core_IPS_Case_Interested_Party__c>(); 
         
         Core_IPS_Case_Interested_Party__c party = new Core_IPS_Case_Interested_Party__c();
         party.Contact__c = cc.id;
         party.Case__c = cas.id;
        // party.Core_IPS_Active_Flag__c=TRUE
-        interestedParties.add(party);
+        Iparty.add(party);
         List<Id> addIdList = new List<Id>();
         addIdList.add(party.Id);
          //  Select ID, Contact__c,Core_IPS_Account_Name__c, First_Name__c, Email__c, Last_Name__c, User__c, Active__c from Core_IPS_Case_Interested_Party__c
@@ -545,9 +539,9 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         //Sowmya cc1 updated instead of cc - end - 08/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
         
         // party.Core_IPS_Active_Flag__c=TRUE
-        interestedParties.add(party1);   
-        insert interestedParties;
-        System.assert(interestedParties[0].Id != null, 'Record not created');
+        Iparty.add(party1);   
+        insert Iparty;
+        System.assert(Iparty[0].Id != null, 'Record not created');
 
         List<Id> removeIdList = new List<Id>();
         removeIdList.add(party1.Id);
@@ -601,7 +595,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         pr.Core_IPS_EnableMemberasInterestedParties__c =True;
         insert pr;  
         System.assert(pr.Id != null, 'Record not created');
-		Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+
         Account newAccount = new Account (
             name='XYZ',
             Phone = '+49-12345',
@@ -609,8 +603,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-			RecordTypeId = recordTypeIdAccount
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -752,7 +745,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         insert pr;
         System.assert(pr.Id != null, 'Record not created');
 
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+        
         Account newAccount = new Account (
             name='XYZ',
             Phone = '+49-12345',
@@ -760,8 +753,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-			RecordTypeId = recordTypeIdAccount
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -819,17 +811,15 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         
         
     }
-  /*  @isTest
+    @isTest
     public static void getcaseRecordsUnderprojectTest(){
        // User userDetails =[select Id,FirstName,LastName,Account.Id,Contact.Id,Email from User where Account.id != Null limit 1];
-		Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
-		account Acc=new account();
+        account Acc=new account();
         Acc.Name='test';
         Acc.BillingCity='new york';
         Acc.BillingCountry='united states';
         Acc.BillingCountryCode='';
         Acc.BillingStreet='st 124563 louis street';
-		Acc.RecordTypeId = recordTypeIdAccount;
         insert Acc;
         System.assert(Acc.Id != null, 'Record not created');
 
@@ -909,6 +899,6 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
         
         
        
-    }*/
+    }
     
 }

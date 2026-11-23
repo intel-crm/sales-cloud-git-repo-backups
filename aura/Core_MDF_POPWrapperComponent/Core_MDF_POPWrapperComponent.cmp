@@ -21,7 +21,6 @@
         description="indicates whether the claim belongs to 3rd party or not" />
     <aura:attribute name="isLegacyClaim" type="Boolean" default="false"
         description="Indicates whether the claim is legacy or not" />
-    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false" />
     <!--UI Implementation starts here-->
     <aura:if isTrue="{!v.enableDocumentUploadSection}">
         <div class="slds-grid slds-align_absolute-center proof_Of_Documents">
@@ -37,6 +36,6 @@
         <c:Core_MDF_ManageAuditDocumentWrapperComponent openManageAuditDocPopup="{!v.openManageAuditDocPopup}"
             recordId="{!v.recordId}" claimDetails="{!v.claimDetails}" isThirdPartyClaim="{!v.isThirdPartyClaim}"
             existingAuditDocuments="{!v.existingAuditDocuments}" actyPOPDescReq="{!v.actyPOPDescReq}"
-            isLegacyClaim="{!v.isLegacyClaim}" programName = "{!v.programName}" isCoGtm="{!v.isCoGtm}" isOutcomeBasedAccountBasedAct ="{!v.isOutcomeBasedAccountBasedAct}"/>
+            isLegacyClaim="{!v.isLegacyClaim}" programName = "{!v.programName}" isCoGtm="{!v.isCoGtm}"/>
     </aura:if>
 </aura:component>

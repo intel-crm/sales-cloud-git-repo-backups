@@ -172,11 +172,6 @@
             <isRequired>true</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Core_MDF_Baseline_Period_nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Core_MDF_Quantity_nbr__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -197,36 +192,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Baseline_Period_nm__c</fullName>
-        <inlineHelpText>The Baseline Period describes a point in time prior to this campaign when the Baseline Value was captured or estimated. Example: if this campaign will end in August, and the Baseline Value was captured in the previous August, choose the first option. If the Baseline Value is zero, choose the first option.</inlineHelpText>
-        <label>Baseline Period</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Same period as this campaign, one year before</fullName>
-                    <default>false</default>
-                    <label>Same period as this campaign, one year before</label>
-                </value>
-                <value>
-                    <fullName>Same period as this campaign, one half before</fullName>
-                    <default>false</default>
-                    <label>Same period as this campaign, one half before</label>
-                </value>
-                <value>
-                    <fullName>Same period as this campaign, one quarter before</fullName>
-                    <default>false</default>
-                    <label>Same period as this campaign, one quarter before</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Campaign_Id__c</fullName>
         <label>Campaign</label>
         <referenceTo>Campaign</referenceTo>
@@ -237,15 +202,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Campaign_Purpose_Desc_txt__c</fullName>
-        <label>Campaign Purpose Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Goal_Quantity_nbr__c</fullName>

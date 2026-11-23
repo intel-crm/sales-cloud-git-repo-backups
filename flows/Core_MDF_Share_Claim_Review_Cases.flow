@@ -3,8 +3,8 @@
     <actionCalls>
         <name>getExcludedUserList</name>
         <label>getExcludedUserList</label>
-        <locationX>314</locationX>
-        <locationY>1871</locationY>
+        <locationX>592</locationX>
+        <locationY>668</locationY>
         <actionName>Core_MDF_SubUnsub_Notifications_Utility</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -31,30 +31,10 @@
         </outputParameters>
     </actionCalls>
     <actionCalls>
-        <name>inactivateRecoveryRequests</name>
-        <label>inactivateRecoveryRequests</label>
-        <locationX>600</locationX>
-        <locationY>539</locationY>
-        <actionName>Core_MDF_ReverseAuditDecision</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>check_new_case_or_owner_changed</targetReference>
-        </connector>
-        <flowTransactionModel>Automatic</flowTransactionModel>
-        <inputParameters>
-            <name>claimId</name>
-            <value>
-                <elementReference>$Record.Core_MDF_Claim_Lookup_Id__r.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_ReverseAuditDecision</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <name>notify_CCF_DCF_EEF_Recovery_Admin</name>
         <label>notify CCF DCF EEF Recovery Admin</label>
-        <locationX>314</locationX>
-        <locationY>2987</locationY>
+        <locationX>1749</locationX>
+        <locationY>1503</locationY>
         <actionName>Core_MDF_DetermineRecipientsWithGroup</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -103,8 +83,8 @@
     <actionCalls>
         <name>notify_IPA_RMF_Ext_Recovery_Adm</name>
         <label>notify IPA RMF Ext Recovery Adm</label>
-        <locationX>50</locationX>
-        <locationY>2879</locationY>
+        <locationX>735</locationX>
+        <locationY>1599</locationY>
         <actionName>Core_MDF_DetermineEmailRecipients</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -165,8 +145,8 @@
     <actionCalls>
         <name>Notify_RSM_on_Backend_Review_Completion</name>
         <label>Notify RSM on Backend Review Completion</label>
-        <locationX>182</locationX>
-        <locationY>2579</locationY>
+        <locationX>1112</locationX>
+        <locationY>1135</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -221,8 +201,8 @@
     <actionCalls>
         <name>Process_Closed_Cases</name>
         <label>Process Closed Cases</label>
-        <locationX>314</locationX>
-        <locationY>1655</locationY>
+        <locationX>1254</locationX>
+        <locationY>1006</locationY>
         <actionName>Core_MDF_ProcessCCP_Case</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -241,8 +221,8 @@
     <actionCalls>
         <name>SendNotification_to_Claim_Submitter</name>
         <label>SendNotification to Claim Submitter</label>
-        <locationX>226</locationX>
-        <locationY>3503</locationY>
+        <locationX>2931</locationX>
+        <locationY>1024</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -279,8 +259,8 @@
     <actionCalls>
         <name>Share_Claim_Review_Case</name>
         <label>Share Claim Review Case</label>
-        <locationX>600</locationX>
-        <locationY>839</locationY>
+        <locationX>951</locationX>
+        <locationY>564</locationY>
         <actionName>Core_MDF_ClaimReviewCaseShare</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -301,8 +281,8 @@
     <assignments>
         <name>Create_Notification_and_Object_List</name>
         <label>Create Notification and Object List</label>
-        <locationX>314</locationX>
-        <locationY>1763</locationY>
+        <locationX>744</locationX>
+        <locationY>729</locationY>
         <assignmentItems>
             <assignToReference>NotificationTypeList</assignToReference>
             <operator>Add</operator>
@@ -324,8 +304,8 @@
     <assignments>
         <name>Create_Recipient_List</name>
         <label>Create Recipient List</label>
-        <locationX>402</locationX>
-        <locationY>2195</locationY>
+        <locationX>820</locationX>
+        <locationY>919</locationY>
         <assignmentItems>
             <assignToReference>excludedUserList</assignToReference>
             <operator>Add</operator>
@@ -340,8 +320,8 @@
     <assignments>
         <name>Recipient_Id_assignment</name>
         <label>Recipient Id assignment</label>
-        <locationX>226</locationX>
-        <locationY>3395</locationY>
+        <locationX>2941</locationX>
+        <locationY>1213</locationY>
         <assignmentItems>
             <assignToReference>RecipientId</assignToReference>
             <operator>Add</operator>
@@ -363,8 +343,8 @@
     <decisions>
         <name>check_case_status</name>
         <label>check case status</label>
-        <locationX>534</locationX>
-        <locationY>1439</locationY>
+        <locationX>1415</locationX>
+        <locationY>766</locationY>
         <defaultConnector>
             <targetReference>Status_as_Cancelled</targetReference>
         </defaultConnector>
@@ -395,8 +375,8 @@
     <decisions>
         <name>check_Contact_ID</name>
         <label>check Contact ID</label>
-        <locationX>534</locationX>
-        <locationY>1139</locationY>
+        <locationX>1142</locationX>
+        <locationY>743</locationY>
         <defaultConnector>
             <targetReference>check_case_status</targetReference>
         </defaultConnector>
@@ -420,8 +400,8 @@
     <decisions>
         <name>check_new_case_or_owner_changed</name>
         <label>check new case or owner changed</label>
-        <locationX>732</locationX>
-        <locationY>731</locationY>
+        <locationX>946</locationX>
+        <locationY>417</locationY>
         <defaultConnector>
             <targetReference>check_record_type</targetReference>
         </defaultConnector>
@@ -445,8 +425,8 @@
     <decisions>
         <name>check_record_type</name>
         <label>check record type</label>
-        <locationX>732</locationX>
-        <locationY>1031</locationY>
+        <locationX>1146</locationX>
+        <locationY>592</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Audit</name>
@@ -467,8 +447,8 @@
     <decisions>
         <name>Check_user_Active</name>
         <label>Check user Active</label>
-        <locationX>314</locationX>
-        <locationY>3179</locationY>
+        <locationX>1839</locationX>
+        <locationY>1338</locationY>
         <defaultConnector>
             <targetReference>Call_Claim_Update_Flow</targetReference>
         </defaultConnector>
@@ -499,8 +479,8 @@
     <decisions>
         <name>Check_Whether_Claim_Submitter_is_Part_of_Excluded_List</name>
         <label>Check Whether Claim Submitter is Part of Excluded List</label>
-        <locationX>138</locationX>
-        <locationY>3287</locationY>
+        <locationX>1299</locationX>
+        <locationY>1164</locationY>
         <defaultConnector>
             <targetReference>Recipient_Id_assignment</targetReference>
         </defaultConnector>
@@ -531,15 +511,15 @@
     <decisions>
         <name>Determine_Program_to_notify_recovery_admins</name>
         <label>Determine Program to notify recovery admins</label>
-        <locationX>314</locationX>
-        <locationY>2771</locationY>
+        <locationX>964</locationX>
+        <locationY>1337</locationY>
         <defaultConnector>
             <targetReference>Check_user_Active</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Notify_RMF_and_IPA_Ext_Recovery_Admins</name>
-            <conditionLogic>1 OR 2</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -561,7 +541,7 @@
         </rules>
         <rules>
             <name>Notify_CCF_DCF_EEF_Ext_Recovery_Admins</name>
-            <conditionLogic>1 OR 2 OR 3</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -592,8 +572,8 @@
     <decisions>
         <name>Filter_based_on_record_Type</name>
         <label>Filter based on record Type</label>
-        <locationX>963</locationX>
-        <locationY>323</locationY>
+        <locationX>945</locationX>
+        <locationY>266</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>core_MDF_record_type_filter</name>
@@ -613,7 +593,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>On_S_GP_Case_Creation</targetReference>
+                <targetReference>check_new_case_or_owner_changed</targetReference>
             </connector>
             <label>core MDF record type filter</label>
         </rules>
@@ -621,8 +601,8 @@
     <decisions>
         <name>Is_Claim_Submitter_Notification</name>
         <label>Is Claim Submitter Notification</label>
-        <locationX>534</locationX>
-        <locationY>2087</locationY>
+        <locationX>580</locationX>
+        <locationY>1040</locationY>
         <defaultConnector>
             <targetReference>Iterate_Over_Map</targetReference>
         </defaultConnector>
@@ -646,8 +626,8 @@
     <decisions>
         <name>Notify_RSM_Managers_on_Review_Completion</name>
         <label>Notify RSM Managers on Review Completion</label>
-        <locationX>314</locationX>
-        <locationY>2471</locationY>
+        <locationX>1009</locationX>
+        <locationY>984</locationY>
         <defaultConnector>
             <targetReference>Determine_Program_to_notify_recovery_admins</targetReference>
         </defaultConnector>
@@ -669,35 +649,10 @@
         </rules>
     </decisions>
     <decisions>
-        <name>On_S_GP_Case_Creation</name>
-        <label>On S&amp;GP Case Creation</label>
-        <locationX>732</locationX>
-        <locationY>431</locationY>
-        <defaultConnector>
-            <targetReference>check_new_case_or_owner_changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>New_S_GP_Case</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ifNewSGPCase</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>inactivateRecoveryRequests</targetReference>
-            </connector>
-            <label>New S&amp;GP Case</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Status_as_Cancelled</name>
         <label>Status as Cancelled</label>
-        <locationX>534</locationX>
-        <locationY>3971</locationY>
+        <locationX>1623</locationX>
+        <locationY>764</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_asCancelled</name>
@@ -734,15 +689,6 @@
         <expression>ISNEW()</expression>
     </formulas>
     <formulas>
-        <name>ifNewSGPCase</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(
-    $Record.RecordType.DeveloperName = &apos;Core_MDF_Audit&apos;,
-    ISNEW(),
-    TEXT($Record.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Processing_Preference_nm__c) = &apos;Settle, then get paid&apos;
-)</expression>
-    </formulas>
-    <formulas>
         <name>RecipientIdValue</name>
         <dataType>String</dataType>
         <expression>{!$Record.Core_MDF_Claim_Submitter__c}</expression>
@@ -752,8 +698,8 @@
     <loops>
         <name>Iterate_Over_Map</name>
         <label>Iterate Over Map</label>
-        <locationX>314</locationX>
-        <locationY>1979</locationY>
+        <locationX>592</locationX>
+        <locationY>797</locationY>
         <collectionReference>excludedUsersWrapper</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -772,7 +718,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -785,8 +731,8 @@
     <recordLookups>
         <name>Get_All_Access_Group_for_CCF_DCF_EEF</name>
         <label>Get All Access Group for CCF DCF EEF</label>
-        <locationX>314</locationX>
-        <locationY>2879</locationY>
+        <locationX>1599</locationX>
+        <locationY>1396</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>notify_CCF_DCF_EEF_Recovery_Admin</targetReference>
@@ -828,8 +774,8 @@
     <recordUpdates>
         <name>Update_Case_fields_on_closure</name>
         <label>Update Case fields on closure</label>
-        <locationX>314</locationX>
-        <locationY>1547</locationY>
+        <locationX>1408</locationX>
+        <locationY>908</locationY>
         <connector>
             <targetReference>Process_Closed_Cases</targetReference>
         </connector>
@@ -856,8 +802,8 @@
     <recordUpdates>
         <name>update_Contact_As_null</name>
         <label>update Contact As null</label>
-        <locationX>402</locationX>
-        <locationY>1247</locationY>
+        <locationX>1156</locationX>
+        <locationY>907</locationY>
         <connector>
             <targetReference>check_case_status</targetReference>
         </connector>
@@ -872,8 +818,8 @@
     <recordUpdates>
         <name>UpdateCloseCaseRecordType</name>
         <label>UpdateCloseCaseRecordType</label>
-        <locationX>402</locationX>
-        <locationY>4079</locationY>
+        <locationX>1893</locationX>
+        <locationY>761</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -889,8 +835,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>837</locationX>
-        <locationY>0</locationY>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
         <connector>
             <targetReference>Filter_based_on_record_Type</targetReference>
         </connector>
@@ -902,8 +848,8 @@
     <subflows>
         <name>Call_Claim_Update_Flow</name>
         <label>Call_Claim_Update_Flow</label>
-        <locationX>314</locationX>
-        <locationY>3779</locationY>
+        <locationX>1806</locationX>
+        <locationY>928</locationY>
         <connector>
             <targetReference>Status_as_Cancelled</targetReference>
         </connector>

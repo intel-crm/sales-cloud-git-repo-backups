@@ -262,6 +262,7 @@ public without sharing class Core_Create_SSR_Controller {
 ***********************************/
     /*@auraEnabled
     public static quoteResponse createPSGQuoteonSiebel(String soppId) {
+        
         try{ 
             UserRecordAccess recordAccessObj = [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId = :UserInfo.getUserId() AND RecordId = :soppId];
             if (recordAccessObj == null || recordAccessObj.HasEditAccess != true){                          
@@ -303,6 +304,7 @@ public without sharing class Core_Create_SSR_Controller {
             Core_SalesSupportHomeController.SharingInnerClass innClass = new Core_SalesSupportHomeController.SharingInnerClass();
             innClass.deleteSharing(string.valueof(soppId), UserInfo.getUserID());
         }
+        
     }
     */
     //TWC3123-4852 - End    
@@ -371,7 +373,7 @@ public without sharing class Core_Create_SSR_Controller {
     }
     
     //TWC3123-4852-Start
-    /*public static Boolean validateOpportuntyBeforeQuoteCreation(String soppId) {
+    public static Boolean validateOpportuntyBeforeQuoteCreation(String soppId) {
         
         // Check if Opportunity Id values exists
         if (String.isEmpty(soppId)) {
@@ -421,7 +423,7 @@ public without sharing class Core_Create_SSR_Controller {
         
         // No validation errors
         return true;
-    }*/
+    }
     
     public static void writeErrorMessage(String errorMessage) {
         errorMsg=errorMessage;       

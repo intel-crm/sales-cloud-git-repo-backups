@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">a2WHo000001BNKEMA4,a2WHo000001BNKBMA4,a2WHo000001BNKAMA4,a2WHo000001BNKDMA4,a2WHo000001BNKFMA4</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2WHo000001BNKCMA4</value>
+        <value xsi:type="xsd:string">a2WDw000007u7BmMAI</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">Co-Engineering User</value>
+        <value xsi:type="xsd:string">Co-Engineering Project Submitter</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2WHo000001Cr2sMAC</value>
+        <value xsi:type="xsd:string">a2WHo000001BNKCMA4</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">Co-Engineering Project Submitter</value>
+        <value xsi:type="xsd:string">Co-Engineering User</value>
     </values>
 </CustomMetadata>

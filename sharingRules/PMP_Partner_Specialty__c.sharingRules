@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>PMP_External_Anonymous_Users_Partner_Specialty</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Partner Specialty records to all Anonymous Users</description>
+        <label>PMP External - Anonymous Users - Partner Specialty</label>
+        <sharedTo>
+            <group>PMP_All_Anonymous_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PMP_External_Partner_Users_Partner_Specialty</fullName>
         <accessLevel>Read</accessLevel>
         <description>Share all Partner Specialty records to all Partner Users</description>
@@ -15,4 +35,24 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>PMP_External_Guest_User_Partner_Specialty</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Partner Specialty records to Guest User</description>
+        <label>PMP External - Guest User - Partner Specialty</label>
+        <sharedTo>
+            <guestUser>Intel_Solutions_Marketplace</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
 </SharingRules>

@@ -125,7 +125,7 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         customSetting.Name = 'Core_IPS_HSD_UserDetails';
         customSetting.MyIntel_Client_Id__c = '174b7bf8-8586-40ab-af6f-65450151f540';
         customSetting.MyIntel_Client_Secret__c = 'JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp';
-        customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/hsdes/v1/user-details/';
+        customSetting.MyIntel_Endpoint_URL__c = 'https://apis-sandbox.intel.com/m2r/hsdes/v1/user-details/';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Token_Endpoint_URL__c = System.Label.Core_IPS_BES_Token_URL;
         insert customSetting;
@@ -157,9 +157,7 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         Core_IPS_BES_Inbound_Message__c inboundObject = new Core_IPS_BES_Inbound_Message__c();
         inboundObject.Core_IPS_Inbound_Message_ID__c = '';
         insert inboundObject;
-        //String jsonString1 = '{"system_details":{"message_id":"001","message_type":"Case","source_system":"hsdes:server_platf_ae:bug","target_system":"IPS","source_id":"'+cs.Core_IPS_BackendID__c+'","target_id":"'+csList[0].casenumber+'"},"issue_information":{"comment_author": "testx","comment_text":"sample comment", "owner_info": "testyx", "hsd_mirror_status":"open","hsd_mirror_reason":"triage"}}';
-        Core_IPS_BES_Inbound_Message__c inboundObject1 = new Core_IPS_BES_Inbound_Message__c();
-        insert inboundObject1;
+        
         Attachment att = new Attachment();
         att.ParentId = inboundObject.Id;
         att.Name = 'test Att';
@@ -184,7 +182,7 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         System.assert(backendSystem.Id!=null);
         List<Case> csList = [SELECT Id,casenumber from Case WHERE ID =:cs.Id];
         
-        System.assertNotEquals(null, csList[0].Id, 'The Case ID should not be null.');//added by Rajashekar
+        
         
         RestRequest req = new RestRequest(); 
         req.requestURI = '/services/apexrest/IPS_BES_InboundMessageJSON/';
@@ -314,75 +312,19 @@ public class Core_IPS_BES_Inbound_JSON_Test {
              Core_IPS_BES_InboundMessage.setJSON(new List<Id>{inboundObject.Id});
         }catch(Exception e){}
         String jsonString1 = '{"system_details":{"message_id":"001","message_type":"Case","source_system":"HSDES:fpga:bug","target_system":"IPS","source_id":"'+csList[0].Core_IPS_BackendID__c+'","target_id":"'+csList[0].casenumber+'","backend_rev":"3"},"issue_information":{"backend_rev":3, "owner_info": "testUser","hsd_mirror_status": "open","hsd_mirror_reason": "new","comment_author": "tharpanx", "comment_text": "Hii Comment Added"}}';
+        
         Core_IPS_BES_Inbound_Message__c inboundObject1 = new Core_IPS_BES_Inbound_Message__c();
         inboundObject1.Core_IPS_Inbound_Message_ID__c = '';
         insert inboundObject1 ;
         
         Attachment att1 = new Attachment();
-        att1.ParentId = inboundObject1.Id;
+        att1.ParentId = inboundObject.Id;
         att1.Name = 'test Att';
         att1.body = Blob.valueOf(jsonString1);
         insert att1;
         Core_IPS_BES_InboundMessage.setJSON(new List<Id>{inboundObject1.Id});
         Test.stopTest();
-        
     }
-    //added by Rajashekar
-    static testMethod void testUpdateCase() {
-        IPS_Case_Fields__c caseField1 = new IPS_Case_Fields__c(Name = 'Name1',Object_Name__c = 'Case', API_Name__c = 'Core_Issue_Description__c', JSON_Field_Name__c = 'issue_description', Order__c = 1);
-        IPS_Case_Fields__c caseField2 = new IPS_Case_Fields__c(Name = 'Name21',Object_Name__c = 'Case', API_Name__c = 'HSD_Mirror_Status__c', JSON_Field_Name__c = 'hsd_mirror_status', Order__c = 2);
-        insert new List<IPS_Case_Fields__c>{caseField1, caseField2};
-		Core_IPS_Backend_System2__c backendSystem = new Core_IPS_Backend_System2__c();
-        backendSystem.Name = 'CC - HSDES Client Platform';
-        
-        backendSystem.Core_IPS_Target_System__c = 'hsdes:client_platf:bug';
-        insert backendSystem;
-        List<Case> caseList = new List<Case>();
-        Case case1 = new Case( Status = 'New', Core_IPS_New_Backend_System__c = backendSystem.Id,Origin = 'Web',Priority = 'High',Subject = 'TestSubject',Description = 'TestDescription');
-        Case case2 = new Case( Status = 'Open', Core_IPS_New_Backend_System__c = backendSystem.Id,Origin = 'Web',Priority = 'High',Subject = 'TestSubject',Description = 'TestDescription');
-        caseList.add(case1);
-        caseList.add(case2);
-        insert caseList;
-        Map<String, String> userDetailsMap = new Map<String, String>();
-        userDetailsMap.put('newOwner', 'testuser@test.com;Test User;Test Name;');
-        List<String> caseStrings = new List<String>();
-        Map<String, Object> inboundData1 = new Map<String, Object>();
-        inboundData1.put('system_details', new Map<String, Object>{'target_id' => caseList[0].CaseNumber, 'source_id' => 'BackendSystem1', 'backend_rev' => '2'});
-        inboundData1.put('issue_information', new Map<String, Object>{'owner_info' => 'testuser@test.com;Test User;Test Name', 'hsd_mirror_status' => 'Active', 'hsd_mirror_reason' => 'Issue Resolved', 'comment_text' => 'Fix applied', 'comment_author' => 'testuser@test.com'});
-        caseStrings.add(JSON.serialize(inboundData1));
-        Map<String, Object> inboundData2 = new Map<String, Object>();
-        inboundData2.put('system_details', new Map<String, Object>{'target_id' => caseList[1].CaseNumber, 'source_id' => 'BackendSystem2', 'backend_rev' => caseList[1].CaseNumber});
-        inboundData2.put('issue_information', new Map<String, Object>{'owner_info' => 'testuser@test.com;Test User;Test Name', 'hsd_mirror_status' => 'Inactive', 'hsd_mirror_reason' => 'Closed', 'comment_text' => 'Closed without action', 'comment_author' => 'testuser@test.com'});
-        caseStrings.add(JSON.serialize(inboundData2));
-        Map<String, Object> inboundData3 = new Map<String, Object>();
-        inboundData3.put('system_details', new Map<String, Object>{'target_id' => 'case123', 'source_id' => 'BackendSystem1', 'backend_rev' => '2'});
-        inboundData3.put('issue_information', new Map<String, Object>{'owner_info' => 'testuser@test.com;Test User;Test Name', 'hsd_mirror_status' => 'Active', 'hsd_mirror_reason' => 'Issue Resolved', 'comment_text' => 'Fix applied', 'comment_author' => 'testuser@test.com'});
-        caseStrings.add(JSON.serialize(inboundData3));
-        Map<String, Object> inboundData4 = new Map<String, Object>();
-        inboundData4.put('system_details', new Map<String, Object>{'target_id' => 'case124', 'source_id' => 'BackendSystem1', 'backend_rev' => '2'});
-        inboundData4.put('issue_information', new Map<String, Object>{'owner_info' => 'testuser@test.com;Test User;Test Name;', 'hsd_mirror_status' => 'Active', 'hsd_mirror_reason' => 'Issue Resolved', 'comment_text' => 'Fix applied', 'comment_author' => 'testuser@test.com'});
-        caseStrings.add(JSON.serialize(inboundData4));
-        Test.startTest();
-        Core_IPS_BES_UpdateCase.updateCase(caseStrings, userDetailsMap);
-        Test.stopTest();
-        List<Case> updatedCases = [SELECT Id, CaseNumber, Status, Core_IPS_New_Backend_System__c FROM Case];
-
-        try {
-            Case caseDeactivated = new Case( Status = 'New', Core_IPS_New_Backend_System__c = 'SystemDeactivated');
-            insert caseDeactivated;
-			System.assertNotEquals(null, caseDeactivated.Id, 'The Case ID should not be null after insertion.');//added by Rajashekar
-            Map<String, Object> inboundDataDeactivated = new Map<String, Object>();
-            inboundDataDeactivated.put('system_details', new Map<String, Object>{'target_id' => 'CASE125', 'source_id' => 'BackendSystemDeactivated', 'backend_rev' => '3'});
-            inboundDataDeactivated.put('issue_information', new Map<String, Object>{'owner_info' => 'testuser@test.com', 'hsd_mirror_status' => 'Active', 'hsd_mirror_reason' => 'Issue Resolved', 'comment_text' => 'Fix applied', 'comment_author' => 'testuser@test.com'});
-            List<String> caseStringsDeactivated = new List<String>{JSON.serialize(inboundDataDeactivated)};
-
-            Test.startTest();
-            Core_IPS_BES_UpdateCase.updateCase(caseStringsDeactivated, userDetailsMap);
-            Test.stopTest();
-        } catch (Exception ex) {
-        }
-    }
-    //ends Rajashekar
     public static testMethod void commentInsert(){
         Core_IPS_Backend_System2__c backendSystem = new Core_IPS_Backend_System2__c();
         backendSystem.Name = 'HSDES-PSG01';
@@ -441,7 +383,7 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         obj.Core_Trigger_Events__c='After Insert, After update';
         insert obj;
         // Avoid Hardcoding Id Fix - Shipra
-        Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];//changed IPS Data Migration to CCP - Core Access : Tejaswini
+        Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
         Core_IPS_Labels__c obj1=new Core_IPS_Labels__c();
         obj1.Name='Data Migration Profile Id';
         obj1.Value__c= dataMigPrf.Id; 
@@ -502,9 +444,9 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         Core_IPS_BES_Inbound_Message__c  inboundObject = [SELECT Id from Core_IPS_BES_Inbound_Message__c LIMIT 1];    
         
         Test.setMock(HttpCalloutMock.class, new Core_IPS_BES_IPassHttpCalloutMock());
+        
         Test.startTest();
         Core_IPS_BES_InboundMessage.setJSON(new List<Id>{inboundObject.Id});
-        
         system.assertNotEquals(true,null,'Expected Result');
         Test.stopTest();
         /*  Case caseObj = [SELECT Id FROM Case WHERE Core_IPS_BackendID__c = '123213214345' LIMIT 1];

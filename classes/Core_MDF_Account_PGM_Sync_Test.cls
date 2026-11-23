@@ -281,8 +281,7 @@ public class Core_MDF_Account_PGM_Sync_Test {
         }
 
         ChannelProgram ipaProgram = Core_MDF_CCP_TestDataUtility.createProgram(Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', true);
-      // Highlight: Unused Local Variable
-      //  ChannelProgram eefProgram =  Core_MDF_CCP_TestDataUtility.createProgram(Core_MDF_CCP_ConstantClass.EEF_PROGRAM,'Ecosystem Extension Fund', true);
+        ChannelProgram eefProgram =  Core_MDF_CCP_TestDataUtility.createProgram(Core_MDF_CCP_ConstantClass.EEF_PROGRAM,'Ecosystem Extension Fund', true);
     Id accOnboard_RecordType_IPA = Schema.SObjectType.Core_MDF_Account_Onboarding__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         
         List<Core_MDF_Account_Onboarding__c> accOnboardingList = new List<Core_MDF_Account_Onboarding__c>();
@@ -683,8 +682,7 @@ public class Core_MDF_Account_PGM_Sync_Test {
         te7.Core_Description__c = 'description';
         insert te7;
         Account acc = [SELECT Id FROM Account WHERE Name = '[Prime] Intel Account 6'];
-        // Highlight: Unused Local Variable
-       // Account acc1 = [SELECT Id,Core_MDF_CoMarketingActive__c FROM Account WHERE Name = '[Prime] Intel Account 1'];
+        Account acc1 = [SELECT Id,Core_MDF_CoMarketingActive__c FROM Account WHERE Name = '[Prime] Intel Account 1'];
         Account vcacc = [Select id from Account where Core_MDF_Parent_Fund_Account__r.Name = '[Prime] Intel Account 1' limit 1];
         Core_MDF_Partner_Group_Mapping__c pgmRecord = [SELECT Id, Core_MDF_Group_Id__c, Core_MDF_Group_Name__c, Core_MDF_Inactive_Ind__c, Core_MDF_Type_of_Access__c, Core_MDF_Channel_Program_Name_Txt__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_CoMarketingActive__c, Core_MDF_Channel_Program__c, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__r.Name = '[Prime] Intel Account 1' AND Core_MDF_Inactive_Ind__c = false LIMIT 1];
         Map<Id,Core_MDF_Partner_Group_Mapping__c> pgmMap1 = new Map<Id,Core_MDF_Partner_Group_Mapping__c>();
@@ -743,8 +741,8 @@ public class Core_MDF_Account_PGM_Sync_Test {
             ccfgrp.Name = 'CCP CCFINTELACCOUNT CCF EXT';
             ccfgrp.DeveloperName = 'Core_MDF_CCP_CCFINTELACCOUNT_CCF_EXT';
             Database.insert(ccfgrp);
-           // Highlight: Unused Local Variable 
-          //  Core_MDF_Partner_Group_Mapping__c pgmRec = [SELECT Id, Core_MDF_Account__c, Core_MDF_Group_Id__c, Core_MDF_Channel_Program__c, Core_MDF_Inactive_Ind__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: ccfAcc.Id AND Core_MDF_Inactive_Ind__c = false and Core_MDF_Type_of_Access__c = 'External' Limit 1]; 
+        
+            Core_MDF_Partner_Group_Mapping__c pgmRec = [SELECT Id, Core_MDF_Account__c, Core_MDF_Group_Id__c, Core_MDF_Channel_Program__c, Core_MDF_Inactive_Ind__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: ccfAcc.Id AND Core_MDF_Inactive_Ind__c = false and Core_MDF_Type_of_Access__c = 'External' Limit 1]; 
            Group ccfIntgrp = new Group();
             ccfIntgrp.Name = 'CCP CCFINTELACCOUNT CCF EMEA INTERNAL';
             ccfIntgrp.DeveloperName = 'Core_MDF_CCP_CCFINTELACCOUNT_CCF_EMEA_INTERNAL';

@@ -36,7 +36,7 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
     
     public Database.QueryLocator start(Database.BatchableContext bc) 
     {   
-    String query = 'Select Id, Core_MDF_Approved_File_Id__c,Core_MDF_Claim_Id__r.Title from Core_MDF_Claim_VAT_Info__c where (Core_MDF_Claim_Id__c IN : vatClaimList OR Core_MDF_Sub_Claim_Id__c IN :vatClaimList)';
+		String query = 'Select Id, Core_MDF_Approved_File_Id__c,Core_MDF_Claim_Id__r.Title from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c IN : vatClaimList';
         return Database.getQueryLocator(query);
     }
     

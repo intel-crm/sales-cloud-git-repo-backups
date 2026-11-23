@@ -16,4 +16,12 @@
     </criteria>
     <formulaFilterType>AllCriteriaMatch</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>9472fbf9-d01d-41e0-aaad-24ee4313bf0f$#$568c8496-6e8d-48cc-b962-9a2d89031988</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Partner_Fund_Claim_Detail_Record_Detail_Component</targetValue>
+        </target>
+    </targets>
 </Audience>

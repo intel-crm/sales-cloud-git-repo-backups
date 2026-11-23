@@ -26,10 +26,6 @@
         <name>Core_MDF_Budget_Type_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Comments --></label>
-        <name>Core_MDF_Comments_txt__c</name>
-    </fields>
-    <fields>
         <label>Tasso di conversione</label>
         <name>Core_MDF_Conversion_Rate_Nbr__c</name>
     </fields>
@@ -117,6 +113,11 @@
     <gender>Masculine</gender>
     <nameFieldLabel>Riferimento del pagamento</nameFieldLabel>
     <recordTypes>
+        <description><!-- Channel MDF Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Client Program Record Type --></description>
         <label><!-- Client --></label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>
@@ -173,10 +174,6 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- Payment status update is only allowed for Vistex Cash and Vistex Credit payments. --></errorMessage>
-        <name>Core_COGTM_Payment_Edit_Validation</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Actual Payment Amount Cannot Exceed the Proposed Payment Amount --></errorMessage>
         <name>Core_MDF_ActualAmtGreaterThanProposedAmt</name>
     </validationRules>
@@ -185,17 +182,9 @@
         <name>Core_MDF_Allow_Edit_MDF_Payments</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- A payment marked as Paid cannot be reverted to Pending Payment. --></errorMessage>
-        <name>Core_MDF_BlockPaidToPendingPayment</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Actual Payment Amount is mandatory. --></errorMessage>
         <name>Core_MDF_CheckActualPaymentAmtNotBlank</name>
     </validationRules>
-    <webLinks>
-        <label><!-- Core_MDF_Bulk_Update_Payment_Status --></label>
-        <name>Core_MDF_Bulk_Update_Payment_Status</name>
-    </webLinks>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>

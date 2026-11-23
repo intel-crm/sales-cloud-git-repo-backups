@@ -252,6 +252,9 @@
         <field>Activity.CventEvents__Event__c</field>
     </columns>
     <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
+    <columns>
         <field>Activity.Core_Description__c</field>
     </columns>
     <columns>
@@ -268,6 +271,9 @@
     </columns>
     <columns>
         <field>Activity.Core_Type_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>Activity.LID__URL__c</field>
     </columns>
     <columns>
         <field>ADDRESS2_STREET</field>

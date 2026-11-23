@@ -300,7 +300,7 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
                 Map<Id,Account> accountById = new Map<Id,Account>([Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,ShippingCountryCode,ShippingCountry,BillingCity,BillingStreet from Account where Name = 'MarketingRecordType']); 
                 Test.startTest();
                 Core_AccountTriggerHandlerController.createNodeSharingGroup(accountById);
-                //Core_MDF_AccountServiceHandler.createNodeSharingGroup(accountById);
+                Core_MDF_AccountServiceHandler.createNodeSharingGroup(accountById);
                 Test.stopTest();
         }
 
@@ -348,7 +348,7 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
                 Test.stopTest();
         }
 
-        /*@isTest
+        @isTest
         private static void whenmembershipFlagUpdate(){
                 List<Account> oldAccount = [Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Prime_Account_Name__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,ShippingCountryCode,ShippingCountry,OwnerId from Account where Name = 'TestParentAccount'];
                 oldAccount[0].ownerId = UserInfo.getUserId();
@@ -367,7 +367,7 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
                 Test.startTest();
                 Core_AccountTriggerHandlerController.membershipFlagUpdate(oldAccount,newAccount,oldMapAccount,newMapAccount);
                 Test.stopTest();
-        }*/
+        }
 
 
         @isTest

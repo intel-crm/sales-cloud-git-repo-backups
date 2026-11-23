@@ -70,6 +70,9 @@
         <field>SBQQ__QuoteLine__c.price_peak_annual_resale_amt__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_account_tier__c</field>
     </columns>
     <columns>

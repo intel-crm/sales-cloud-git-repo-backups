@@ -17,7 +17,7 @@ import totalSpendError2 from '@salesforce/label/c.Core_MDF_Total_Spend_Error';
 import intelContributionError1 from '@salesforce/label/c.Core_MDF_Intel_Contribution_Error1';
 import intelContributionError2 from '@salesforce/label/c.Core_MDF_Intel_Contribution_Error2';
 import totalPlannedSpendError from '@salesforce/label/c.Core_MDF_Total_Planned_Spend_error';
-import CURRENCY_CONVERTER_TITLE from '@salesforce/label/c.Core_MDF_Currency_Converter_Title';
+
 import total_planned_spend_help_text from '@salesforce/label/c.Core_MDF_total_planned_spend_help_text';
 import previous_period_spends_help_text from '@salesforce/label/c.Core_MDF_previous_period_spends_help_text';
 import remaining_spend_help_text from '@salesforce/label/c.Core_MDF_remaining_spend_help_text';
@@ -32,13 +32,10 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
     @api recordId; //Claim Id
     @api reimbursableAmountUsd;
     @api reimbursementRate;
-    @api editCmp = false;
     @track showTacticSpending = false;
-        @track showCurrencyConverter = false;
 
     //Custom Labels
     tacticSpendingText = TACTIC_SPENDING_TEXT;
-    currencyConverterHeader = CURRENCY_CONVERTER_TITLE;
     tacticText = TACTIC_TEXT;
     totalPlannedSpendText = TOTAL_PLANNED_SPEND_TEXT;
     previousPeriodSpendsText = PREVIOUS_PERIOD_SPENDS_TEXT;
@@ -67,13 +64,6 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
 
     connectedCallback() {
         this.loadTacticSpendingDetails();
-    }
-    openCurrencyConverter() {
-        this.showCurrencyConverter = true;
-    }
-
-    closeCurrencyConverter() {
-        this.showCurrencyConverter = false;
     }
 
     loadTacticSpendingDetails(){

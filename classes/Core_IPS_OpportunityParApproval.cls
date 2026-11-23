@@ -81,6 +81,7 @@ public without sharing class Core_IPS_OpportunityParApproval implements Queueabl
         }
         
         if(Operation == APPROVAL_CALL) {
+            System.debug(oppGroupMap);
             approval(oppGroupMap);            
         }
     }
@@ -103,6 +104,8 @@ public without sharing class Core_IPS_OpportunityParApproval implements Queueabl
     public Map<Id,List<Id>> createSupportOrgAdmin2AdminMap(List<Core_IPS_Product_Organization_Admin__c> newList, Map<Id, Core_IPS_Product_Organization_Admin__c> oldMap) {
         final Map<Id,List<Id>> supportAdminUserIdMap = new Map<Id,List<Id>>();
         for(Core_IPS_Product_Organization_Admin__c  orgAdmin: newList){
+            System.debug('1.'+orgAdmin.Core_IPS_Supported_Org_Admin__c);
+            System.debug('2.'+oldMap.get(orgAdmin.Id).Core_IPS_Supported_Org_Admin__c);
             if((orgAdmin.Core_IPS_Supported_Org_Admin__c!=null && oldMap!= null) && oldMap.get(orgAdmin.Id).Core_IPS_Supported_Org_Admin__c != orgAdmin.Core_IPS_Supported_Org_Admin__c){
                 if(supportAdminUserIdMap.get(orgAdmin.Core_IPS_Supported_Org_Admin__c)!=null){
                     supportAdminUserIdMap.get(orgAdmin.Core_IPS_Supported_Org_Admin__c).add(orgAdmin.Core_Admin__c);         
@@ -111,6 +114,7 @@ public without sharing class Core_IPS_OpportunityParApproval implements Queueabl
                 }  
             }
         }
+        System.debug('supportAdminUserIdMap=='+supportAdminUserIdMap);
         return supportAdminUserIdMap;
     }
     /*

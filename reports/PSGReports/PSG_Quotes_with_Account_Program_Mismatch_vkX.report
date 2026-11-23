@@ -44,6 +44,9 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_dollar_change_flag_cb__c</field>
     </columns>

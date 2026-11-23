@@ -75,7 +75,7 @@ private class Core_MDF_ActivityStatusTrigger_Test {
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         acc1.Core_MDF_CoMarketingActive__c = true;
         acc1.Core_Account_Type__c = 'Reseller';
-         acc1.Core_Sales_Groups__c = ''; //'Americas Brazil Sales Group'; 
+        acc1.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
         acc1.Industry = 'Food & Beverage';
         acc1.Core_MDF_Channel_Program__c = cp.Id;
         insert acc1; 
@@ -89,12 +89,13 @@ private class Core_MDF_ActivityStatusTrigger_Test {
         // Creating campaigns using utility class
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today().addDays(-25) , System.today().addYears(+1), 2000, 'Unite', acc.Id,'2-in-1', true);
         Test.startTest();
-
+        List<PartnerFundRequest> testPartnerFundRequestRecordList = new List<PartnerFundRequest>();
         //adding bypass feature to bypass access validation
             List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
+        	bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
+            bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
@@ -111,7 +112,7 @@ private class Core_MDF_ActivityStatusTrigger_Test {
             
         PartnerMarketingBudget testBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData',Core_MDF_CCP_TestDataUtility.budget_Record_Type, acc.id, cp.Id , 100000000 , System.today() - 25 , System.today() + 45 , false);
         //testBudget.IsIgnoreValidation = true;
-        testBudget.Core_MDF_Budget_Type_Txt__c='OEM CMP'; // 14285 Indira
+        testBudget.Core_MDF_Budget_Type_Txt__c='CCF 1.0';
         insert testBudget;
         /*testBudget.Core_MDF_Budget_Status__c = 'Released';
         update testBudget;*/
@@ -134,7 +135,6 @@ private class Core_MDF_ActivityStatusTrigger_Test {
         testPartnerFundRequestObj.status='Approved';
         testPartnerFundRequestObj.budgetid=testBudget.Id;
         testPartnerFundRequestObj.allocationid=allocation.Id;
-        testPartnerFundRequestObj.Core_MDF_ActivityCategory__c='Audio';  // 14285 Indira
         //Setting fund request status to in-progress
         //Id allocId = Core_MDF_PartnerFundRequestCreatePage.fundAllocationCreation(testPartnerFundRequestObj);
         //testPartnerFundRequestObj.AllocationId = allocId;
@@ -182,7 +182,7 @@ private class Core_MDF_ActivityStatusTrigger_Test {
                                                  WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer']; 
         
         //Assigning PermissionSet to User 
-
+        PermissionSetAssignment permSetAssignObj = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(usr.Id,permissionSetList[0].Id,true);
         //SELECT Id, ParentId, UserOrGroupId, AccessLevel FROM PartnerFundRequestShare
         
         
@@ -219,7 +219,7 @@ private class Core_MDF_ActivityStatusTrigger_Test {
                                                  WHERE PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer']; 
         
         //Assigning PermissionSet to User 
-
+        PermissionSetAssignment permSetAssignObj = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(usr.Id,permissionSetList[0].Id,true);
         //SELECT Id, ParentId, UserOrGroupId, AccessLevel FROM PartnerFundRequestShare
         
         

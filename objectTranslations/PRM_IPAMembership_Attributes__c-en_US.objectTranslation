@@ -30,10 +30,6 @@
         <name>PRM_Component_Point_earning_excl_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Inactive Indicator --></label>
-        <name>PRM_Inactive_ind__c</name>
-    </fields>
-    <fields>
         <label><!-- ODM whitebox Point earning excluded Date --></label>
         <name>PRM_ODM_whiteboxPointEarning_excl_Dt__c</name>
     </fields>

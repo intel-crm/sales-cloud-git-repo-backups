@@ -289,11 +289,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
             }
             
             if(!contentAssetList.isEmpty()){
-               //insert contentAssetList;  //inserting content asset
-               Database.SaveResult[] caList = Database.insert(contentAssetList, false);
-			   PMP_Utility.logDmlErrors((Object[]) caList, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
-
-
+               insert contentAssetList;  //inserting content asset
             }
             
             for(contentAsset ca: contentAssetList){
@@ -307,18 +303,13 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
             }
            
             if(!cdList.isEmpty()){
-               //update cdList; //Updating content document
-                Database.SaveResult[] cList = Database.update(cdList, false);
-			    PMP_Utility.logDmlErrors((Object[]) cList, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
+               update cdList; //Updating content document
             }  
             
             getContentDocumentList(contDocIds,cdlList);
          
             if(!cdlList.isEmpty()){
-                //update cdlList;
-                Database.SaveResult[] cdlList1 = Database.update(cdlList, false);
-			    PMP_Utility.logDmlErrors((Object[]) cdlList1, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
-
+                update cdlList;
             }
                
             

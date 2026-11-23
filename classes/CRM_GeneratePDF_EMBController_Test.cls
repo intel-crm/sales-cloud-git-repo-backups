@@ -3,7 +3,7 @@ public class CRM_GeneratePDF_EMBController_Test {
      @TestSetup
     static void setupTestData() {
         // Create test Account
-     Account testAccount = new Account();
+ 		Account testAccount = new Account();
         testAccount.name = 'TestAccount';
         testAccount.BillingCountryCode = 'USA';
         testAccount.BIllingStateCode = 'AL';
@@ -154,81 +154,6 @@ public class CRM_GeneratePDF_EMBController_Test {
         String sampleBase64 = CRM_GeneratePDF_EMBController.getPdfBase64(testEMB.Id);
         
         CRM_GeneratePDF_EMBController.attachFiletoExecutiveMeetingBrief(testEMB.Id, sampleBase64);
-        String reduceSize = '<table><tbody><tr><td><p style="margin: 0in; font-size: 11.0pt; color: black;"><span style="font-weight: bold;">Fiel</span></p></td><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 4.8625in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;"><span style="font-weight: bold;">Description</span></p></td></tr><tr><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 1.7354in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;">EventEngagement Name</p></td><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 4.9125in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;">Theofficial title of the meeting. A short, descriptive phrase that isrecognizable. </p></td></tr></tbody></table>';
         
-        CRM_GenerateWord_EMBController.reduceSizeForWordForWord(reduceSize);
         }
-        @isTest
-    static void testWordGenerationAndFileAttachment() {
-        Executive_Meeting_Brief__c testEMB = [SELECT Id, Core_Executive_Meeting_Brief_Name__c FROM Executive_Meeting_Brief__c WHERE Core_Executive_Meeting_Brief_Name__c = 'Test Executive Meeting Brief' LIMIT 1];
-        
-        Test.startTest();
-        
-        // Set up page parameters
-        PageReference pageRef = Page.CRM_GenerateWord_EMB;
-        pageRef.getParameters().put('id', testEMB.Id);
-        Test.setCurrentPage(pageRef);
-        
-        // Create controller instance
-        CRM_GenerateWord_EMBController controller = new CRM_GenerateWord_EMBController();
-        
-        
-        
-        Id ContentID = CRM_GenerateWord_EMBController.generateWordAndCreateFile(testEMB.Id);
-       
-        String originalUrl =
-            'https://intel--crmdevsls3.sandbox.file.force.com/servlet/rtaImage?' +
-            'eid=' + testEMB.Id +
-            '&refid=0EMWA000000wNM1';
-
-        Test.setMock(HttpCalloutMock.class, new CRM_FetchImageCalloutMockTest());
-        STring frmtSTring1 = CRM_GenerateWord_EMBController.convertImageToDataURI(originalUrl,'CRM_Attendee_Bio_s__c','Executive_Meeting_Brief__c');
-        STring frmtSTring = CRM_GenerateWord_EMBController.fetchImageAsBase64(originalUrl,'CRM_Attendee_Bio_s__c','Executive_Meeting_Brief__c');
-
-        String reduceSize = '<table class="ql-table-blob" border="1" style="border-style: solid; border-color: rgb(163, 163, 163); border-width: 1pt;margin-left: 0.3333in;"><tbody><tr><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width:1.7159in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;"><span style="font-weight: bold;">Field </span></p></td><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 4.8625in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;"><span style="font-weight: bold;">Description</span></p></td></tr><tr><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 1.7354in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;">EventEngagement Name</p></td><td colspan="1" rowspan="1" style="border-style: solid; border-color: #A3A3A3; border-width: 1pt; width: 4.9125in; padding: 4pt 4pt 4pt 4pt;"><p style="margin: 0in; font-size: 11.0pt; color: black;">Theofficial title of the meeting. A short, descriptive phrase that isrecognizable. </p></td></tr></tbody></table><p><br></p>';
-
-        CRM_GenerateWord_EMBController.reduceSizeForWord(reduceSize);
-        Test.stopTest();
-        }
-        @isTest
-    static void testWordForTalkingObj() {
-        Executive_Meeting_Brief__c testEMB = [SELECT Id, Core_Executive_Meeting_Brief_Name__c FROM Executive_Meeting_Brief__c WHERE Core_Executive_Meeting_Brief_Name__c = 'Test Executive Meeting Brief' LIMIT 1];
-        
-        Test.startTest();
-        
-        // Set up page parameters
-        PageReference pageRef = Page.CRM_GeneratePDF_EMB;
-        pageRef.getParameters().put('id', testEMB.Id);
-        Test.setCurrentPage(pageRef);
-        
-        // Create controller instance
-        CRM_GeneratePDF_EMBController controller = new CRM_GeneratePDF_EMBController();
-       
-        String originalUrl =
-            'https://intel--crmdevsls3.sandbox.file.force.com/servlet/rtaImage?' +
-            'eid=' + testEMB.Id +
-            '&refid=0EMWA000000wNM1';
-
-        //Test.setMock(HttpCalloutMock.class, new CRM_FetchImageCalloutMockTest());
-        Test.setMock(HttpCalloutMock.class, new CRM_FetchImageCalloutMockTest());
-        //String str= CRM_GeneratePDF_EMBController.getFormattedSchedule();
-        //STring frmtSTring = CRM_GeneratePDF_EMBController.fetchImageAsBase64(originalUrl,'CRM_Attendee_Bio_s__c','CRM_MeetingBriefBackground_TalkingPoints__c');
-        Test.stopTest();
-        }
-        public class CRM_FetchImageCalloutMockTest implements HttpCalloutMock {
-
-            public HTTPResponse respond(HTTPRequest req) {
-        
-                HttpResponse res = new HttpResponse();
-                res.setStatusCode(200);
-                res.setHeader('Content-Type', 'image/png');
-        
-                // Fake image blob
-                Blob fakeImage = Blob.valueOf('FAKE_IMAGE_DATA');
-                res.setBodyAsBlob(fakeImage);
-        
-                return res;
-            }
-       }
-
 }

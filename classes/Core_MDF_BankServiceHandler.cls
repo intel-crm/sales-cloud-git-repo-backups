@@ -423,14 +423,10 @@ Modified By:        Date:       Changes:
         Map<Id,Set<String>> bankIdProgramWithoutDashStringSetMap = new Map<Id,Set<String>>();
         
         //Create a Map of Program with key as Program API and value as Program Value
-        /*for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+        for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
                                                                    FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])){
                                                                        channelProgramBankProgramMap.put(bpem.Core_MDF_Bank_Program_Name__c, bpem.Core_MDF_Channel_Program__c);
-                                                                   }*/
-        for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c
-                                                                   FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                                                                       channelProgramBankProgramMap.put(bpem.Core_MDF_Bank_Program_Value__c, bpem.Label);
-                                                                   }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
+                                                                   }
         for(Core_MDF_Bank__c bankRecord : updatedBankMap.values()){
             //Check if Ineffective Selection is true
             if(bankRecord.Core_MDF_Ineffective_Selection_ind__c){
@@ -444,13 +440,13 @@ Modified By:        Date:       Changes:
                 //system.debug('bankIdProgramWithoutDashStringSetMap1'+bankIdProgramWithoutDashStringSetMap);
                 } else {
                     bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id,new Set<String>{technicalProgramName});
+                    //system.debug('bankIdProgramWithoutDashStringSetMap2'+bankIdProgramWithoutDashStringSetMap);
                 }*/ // ATHR comment
                 //ATHR Fix
                 Set<String> techPrograms = bankIdProgramWithoutDashStringSetMap.get(bankRecord.Id);
                 techPrograms = (techPrograms == null ? new Set<String>() : techPrograms);
                 techPrograms.add(technicalProgramName);
                 bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id, techPrograms);//ATHR end
-                 //system.debug('bankIdProgramWithoutDashStringSetMap2'+bankIdProgramWithoutDashStringSetMap);
                 }
 	    }
             //Check if Program is changed
@@ -796,7 +792,7 @@ Modified By:        Date:       Changes:
     public static void createShareForBank(List<Id> bankIdList, String context){
         //if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') || !Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing')){ // ATHR Comment
         if(Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') && Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing')){return;}// ATHR Fix - we can do early exist for this
-   
+
             try{
                 String accessType;
                 Boolean intSharing = false;
@@ -837,15 +833,10 @@ Modified By:        Date:       Changes:
                 Map<Id,List<Id>> bankIdGroupIdListMap = new Map<Id,List<Id>>();
                 
                 //Fetch the Custom Metadata (Core_MDF_BankProgram_Entitlement_Mapping__mdt) which will contain the Mapping between the Bank Program values, Channel Program.
-              /*  for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])){
+                for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])){
                     channelProgramBankProgramMap.put(bpem.Core_MDF_Channel_Program__c, bpem.Core_MDF_Bank_Program_Name__c);
                     bankProgramChannelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Name__c, bpem.Core_MDF_Channel_Program__c);
-                }*/
-                
-                for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                    channelProgramBankProgramMap.put(bpem.Label, bpem.Core_MDF_Bank_Program_Value__c);
-                    bankProgramChannelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Value__c, bpem.Label);
-                }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
+                }
                 
                 //Fetch the Channel Program Ids with the help of the ChannelProgram name
                 for(ChannelProgram cp : [SELECT Id, Name FROM ChannelProgram WHERE Name IN :channelProgramBankProgramMap.keySet()]){

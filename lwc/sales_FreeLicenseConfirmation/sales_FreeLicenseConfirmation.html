@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <div class="slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+      <div class="slds-region_medium" style="width:1000px;margin-left: 4%; cursor:default; pointer-events:none;">
+        <div class="slds-path">
+          <div class="slds-grid slds-path__track">
+            <div class="slds-grid slds-path__scroller-container">
+              <div class="slds-path__scroller">
+                <div class="slds-path__scroller_inner">
+                  <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" aria-labelledby="slds-path__stage-name">
+                
+                    <li class="slds-path__item slds-is-complete" role="presentation">
+                      <a aria-selected="false" class="slds-path__link" href="#" id="path-50" role="option" tabindex="-1">
+                        <span class="slds-path__stage">
+                            <lightning-icon icon-name="utility:check" alternative-text="Approved" title="Approved" class="my-icon">
+                            </lightning-icon> 
+                          <span class="slds-assistive-text">Stage Complete</span>
+                        </span>
+                        <span class="slds-path__title"></span>
+                      </a>
+                    </li>
+                    <li class="slds-path__item slds-is-complete" role="presentation">
+                        <a aria-selected="false" class="slds-path__link" href="#" id="path-51" role="option" tabindex="-1">
+                          <span class="slds-path__stage">
+                            <lightning-icon icon-name="utility:check" alternative-text="Approved" title="Approved" class="my-icon">
+                          </lightning-icon> 
+                          <span class="slds-assistive-text">Stage Complete</span>
+                          </span>
+                          <span class="slds-path__title"></span>
+                        </a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--div class="slds-box slds-p-vertical_x-large" style="border:rgb(8, 8, 10); border-width:2px; border-style:solid;margin-bottom:50px;margin-top:25px;margin-left:12.5%;margin-right:8%;"-->
+  <div class="slds-text-heading_medium" >
+    <div class="slds-text-align_center lgc-bc">
+    {label.Sales_LicenseCOnfirmationText1}  <a href={licenseFullUrl} target="_blank">{licenseName}</a>{label.Sales_LicenseCOnfirmationText2}
+  </div>
+</div>
+</template>

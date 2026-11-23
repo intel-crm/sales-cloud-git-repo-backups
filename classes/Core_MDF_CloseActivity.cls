@@ -94,17 +94,18 @@ Modified By:        Date:      Changes:
         PartnerFundRequest activity = NULL;
         try{
             
-            activity = [SELECT Id, Amount,campaign.Core_MDF_Program__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Start_Date__c, Core_MDF_Budget_Type_nm__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Program__c,Core_MDF_ToBeClosedDate__c,Core_MDF_Actual_closedt_beforeclosure_dt__c, Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Activity_Level_nm__c FROM PartnerFundRequest WHERE Id =: activityId LIMIT 1];
+            activity = [SELECT Id, Amount,campaign.Core_MDF_Program__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Start_Date__c, Core_MDF_Budget_Type_nm__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Program__c,Core_MDF_ToBeClosedDate__c,Core_MDF_Actual_closedt_beforeclosure_dt__c FROM PartnerFundRequest WHERE Id =: activityId LIMIT 1];
+            
             String actNotAllowedStatus = System.label.Core_MDF_Close_Activity_NotAllowed_ActStatus;
             List<String> actNotAllowedStatusList = new List<String>();
             actNotAllowedStatusList = actNotAllowedStatus.split(',');
             
-            //Avoid Deeply Nested IF Statements
-                if(activity != null && !actNotAllowedStatusList.contains(activity.Core_MDF_Fund_Request_Status__c) || 
+            //Avoid Deeply Nested IF Statements    
+                if(activity != null && !actNotAllowedStatus.contains(activity.Core_MDF_Fund_Request_Status__c) || 
                    (activity.Core_MDF_Fund_Request_Status__c == 'Revision Required' && activity.Core_MDF_Program__c == 'Retail Marketing Funds')
                   )
                 {
-                    Boolean actNotAllowedStatuss = (!(activity.Core_MDF_Start_Date__c > Date.Today()));
+                    Boolean actNotAllowedStatuss = (!actNotAllowedStatus.contains(activity.Core_MDF_Fund_Request_Status__c) && !(activity.Core_MDF_Start_Date__c > Date.Today()));
                     if (actNotAllowedStatuss)
                     {
                         claimActWrap = checkClaims(activityId);
@@ -182,15 +183,56 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
         
         
         try{
-            if(pfrMap != null && !pfrMap.isEmpty()){
-                // Check if this is an outcome-based parent activity
-                PartnerFundRequest parentActivity = pfrMap.values()[0];
-                if(isOutcomeBasedParentActivity(parentActivity)) {
-                    // Handle outcome-based activity closure
-                    handleOutcomeBasedActivityClosure(pfrMap, pfrClosureType, pfrClosureList);
-                } else {
-                    // Handle regular activity closure (existing logic)
-                    handleRegularActivityClosure(pfrMap, pfrClosureType, pfrClosureList, pfcMap, pfrToEscalationAmtMap, cmpBudgetType);
+            if(pfrMap != null && !pfrMap.isEmpty()){       
+                //Iterating AggregateResult to get claim amount and activity Id(requestId)      
+                for(AggregateResult pfcAmountMaps : [SELECT RequestId Id ,sum(Amount)amt 
+                                                     FROM PartnerFundClaim 
+                                                     WHERE RequestId IN:pfrMap.keyset() AND Core_MDF_Status__c IN:pfcCloseStatus AND Core_MDF_Escalation_Id__c = null 
+                                                     AND Core_MDF_Type_Txt__c =: TYPE_CLAIM                                                     
+                                                     AND (Core_MDF_Budget_Type_Options_Nm__c IN: pfrBudgetType OR 
+                                                          Request.Core_MDF_Program__c IN: pfrProgramSpecific) 
+                                                     GROUP BY RequestId]) {      
+                                                     pfrID = (Id)pfcAmountMaps.get('Id');
+                                                     pfrReleasedAmount = (Decimal)pfcAmountMaps.get('amt');
+                                                     pfcMap.put(pfrID, pfrReleasedAmount);
+                }
+                //Iterating AggregateResult to get escalation amount and activity Id(requestId) 
+                for(AggregateResult esc : [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
+                                           FROM Core_MDF_Escalation__c
+                                           WHERE Core_MDF_Co_Marketing_Activity_id__c IN:pfrMap.keyset() AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS
+                                           GROUP BY Core_MDF_Co_Marketing_Activity_id__c]){
+                                            pfrID = (Id)esc.get('Id');
+                                            pfrEscAmount = (Decimal)esc.get('amt');
+                                            pfrToEscalationAmtMap.put(pfrID, pfrEscAmount); 
+                }
+                for(PartnerFundRequest pfrList :pfrMap.values()){
+                    Decimal pfrAmountToBeUpdated = 0.0;
+                    pfrgetId = pfrMap.get(pfrList.Id); 
+                    //Checking BudgetType for Opal
+                    if(pfrgetId != null && ((pfrBudgetType.contains(pfrgetId.Core_MDF_Budget_Type_nm__c)) 
+                            || pfrProgramSpecific.contains(pfrgetId.Core_MDF_Program__c)))
+                    { 
+                        // Calculating PFR Amount [SUM(Claim Amount) + SUM(Excalation Amount)]
+                        if(!pfcMap.isEmpty() && pfcMap.containsKey(pfrgetId.Id)){
+                            pfrAmountToBeUpdated =  pfrAmountToBeUpdated + pfcMap.get(pfrgetId.Id);
+                        }
+                        if(!pfrToEscalationAmtMap.isEmpty() && pfrToEscalationAmtMap.containsKey(pfrgetId.Id)){
+                            pfrAmountToBeUpdated =  pfrAmountToBeUpdated + pfrToEscalationAmtMap.get(pfrgetId.Id);
+                        }
+                        if(pfrAmountToBeUpdated != null && pfrAmountToBeUpdated >= 0){  
+                            checkPfrAmount = cmpBudgetType.contains(pfrgetId.Core_MDF_Budget_Type_nm__c) ? 0 : pfrAmountToBeUpdated;
+                            //Check the Intel Contributon is greater equal to Activity amount
+                            //Avoid Deeply Nested IF Statements
+                            // Use ternary to determine the amount parameter
+                            Decimal amountToUse = (checkPfrAmount <= pfrgetId.Core_MDF_Activity_Reimbursement_Amt_nbr__c) ? checkPfrAmount : pfrgetId.Core_MDF_Activity_Reimbursement_Amt_nbr__c; 
+                            pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, amountToUse));
+                        } else { 
+                            // PFR Closed from Planned or RR Status 
+                            pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, 0));
+                        }
+                    } else {
+                        pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, 0));
+                    }
                 }
             }
             if(!pfrClosureList.isEmpty()){
@@ -203,142 +245,6 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
         }                  
         return pfrListAfterSave;  
     }
-    
-    /****************************************************************************************************** 
-    Method Name:        isOutcomeBasedParentActivity
-    Description:        Check if the activity is an outcome-based parent activity
-    Added By:           Modified for outcome-based activities
-    *******************************************************************************************************/
-    private static Boolean isOutcomeBasedParentActivity(PartnerFundRequest activity) {
-        return (activity.Core_MDF_Is_Outcome_Based_Ind__c == true && 
-                (activity.Core_MDF_Activity_Level_nm__c == null || activity.Core_MDF_Activity_Level_nm__c != 'Sub Activity'));
-    }
-    
-    /****************************************************************************************************** 
-    Method Name:        handleOutcomeBasedActivityClosure
-    Description:        Handle closure of outcome-based activities with sub-activities
-    Added By:           Modified for outcome-based activities
-    *******************************************************************************************************/
-    private static void handleOutcomeBasedActivityClosure(Map<Id,PartnerFundRequest> pfrMap, String pfrClosureType, List<PartnerFundRequest> pfrClosureList) {
-        try {
-            Id parentActivityId = pfrMap.keySet().iterator().next();
-            PartnerFundRequest parentActivity = pfrMap.get(parentActivityId);
-            
-            // Get all sub-activities for this parent
-            List<PartnerFundRequest> subActivities = [
-                SELECT Id, Amount, Core_MDF_Maximum_Intel_Investment_amt__c, RequestedAmount, ChannelPartnerId, Core_MDF_Fund_Request_Status__c, Core_MDF_ToBeClosedDate__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,AllocationId
-                FROM PartnerFundRequest WHERE Core_MDF_Parent_Activity_Id__c = :parentActivityId AND Core_MDF_Activity_Level_nm__c = 'Sub Activity'AND Core_MDF_Fund_Request_Status__c != 'Cancelled'
-            ];
-            // Get claims for all sub-activities
-            Map<Id, Decimal> subActivityClaimAmounts = getSubActivityClaimAmounts(subActivities);
-            // Process each sub-activity
-            for(PartnerFundRequest subActivity : subActivities) {
-                Decimal claimAmount = subActivityClaimAmounts.containsKey(subActivity.Id) ? subActivityClaimAmounts.get(subActivity.Id) : 0;
-                // Update sub-activity amount based on claims
-                PartnerFundRequest updatedSubActivity = updatedPfr(subActivity, pfrClosureType, claimAmount);
-                pfrClosureList.add(updatedSubActivity);
-            }
-            
-            // Calculate total claim amount for parent activity
-            Decimal totalClaimAmount = 0;
-            // Update parent activity
-            PartnerFundRequest updatedParentActivity = updatedPfr(parentActivity, pfrClosureType, totalClaimAmount);
-            pfrClosureList.add(updatedParentActivity);
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-            throw e;
-        }
-    }
-    
-    /****************************************************************************************************** 
-    Method Name:        getSubActivityClaimAmounts
-    Description:        Get claim amounts for sub-activities
-    Added By:           Modified for outcome-based activities
-    *******************************************************************************************************/
-    private static Map<Id, Decimal> getSubActivityClaimAmounts(List<PartnerFundRequest> subActivities) {
-        Map<Id, Decimal> claimAmounts = new Map<Id, Decimal>();
-        Set<Id> subActivityIds = new Set<Id>();
-        for(PartnerFundRequest subActivity : subActivities) {
-            subActivityIds.add(subActivity.Id);
-        }
-        // Get claim amounts for sub-activities
-        for(AggregateResult ar : [
-            SELECT RequestId, SUM(Amount) totalAmount FROM PartnerFundClaim WHERE RequestId IN :subActivityIds AND Core_MDF_Status__c IN :pfcCloseStatus AND Core_MDF_Escalation_Id__c = null AND Core_MDF_Type_Txt__c = :TYPE_CLAIM GROUP BY RequestId]) {
-            Id requestId = (Id)ar.get('RequestId');
-            Decimal totalAmount = (Decimal)ar.get('totalAmount');
-            claimAmounts.put(requestId, totalAmount != null ? totalAmount : 0);
-        }
-        return claimAmounts;
-    }
-    
-    /****************************************************************************************************** 
-    Method Name:        handleRegularActivityClosure
-    Description:        Handle closure of regular (non-outcome-based) activities - existing logic
-    Added By:           Modified for outcome-based activities
-    *******************************************************************************************************/
-    private static void handleRegularActivityClosure(Map<Id,PartnerFundRequest> pfrMap, String pfrClosureType, 
-                                                   List<PartnerFundRequest> pfrClosureList, Map<Id,Decimal> pfcMap, 
-                                                   Map<Id,Decimal> pfrToEscalationAmtMap, List<String> cmpBudgetType) {
-        Decimal pfrReleasedAmount = 0.0;
-        Decimal pfrEscAmount = 0.0;
-        Decimal checkPfrAmount = 0.0;
-        Id pfrID;
-        PartnerFundRequest pfrgetId = new PartnerFundRequest();
-        
-        //Iterating AggregateResult to get claim amount and activity Id(requestId)      
-        for(AggregateResult pfcAmountMaps : [SELECT RequestId Id ,sum(Amount)amt 
-                                             FROM PartnerFundClaim 
-                                             WHERE RequestId IN:pfrMap.keyset() AND Core_MDF_Status__c IN:pfcCloseStatus AND Core_MDF_Escalation_Id__c = null 
-                                             AND Core_MDF_Type_Txt__c =: TYPE_CLAIM                                                     
-                                             AND (Core_MDF_Budget_Type_Options_Nm__c IN: pfrBudgetType OR 
-                                                  Request.Core_MDF_Program__c IN: pfrProgramSpecific) 
-                                             GROUP BY RequestId]) {      
-                                             pfrID = (Id)pfcAmountMaps.get('Id');
-                                             pfrReleasedAmount = (Decimal)pfcAmountMaps.get('amt');
-                                             pfcMap.put(pfrID, pfrReleasedAmount);
-        }
-        //Iterating AggregateResult to get escalation amount and activity Id(requestId) 
-        for(AggregateResult esc : [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
-                                   FROM Core_MDF_Escalation__c
-                                   WHERE Core_MDF_Co_Marketing_Activity_id__c IN:pfrMap.keyset() AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS
-                                   GROUP BY Core_MDF_Co_Marketing_Activity_id__c]){
-                                    pfrID = (Id)esc.get('Id');
-                                    pfrEscAmount = (Decimal)esc.get('amt');
-                                    pfrToEscalationAmtMap.put(pfrID, pfrEscAmount); 
-        }
-        for(PartnerFundRequest pfrList :pfrMap.values()){
-            Decimal pfrAmountToBeUpdated = 0.0;
-            pfrgetId = pfrMap.get(pfrList.Id); 
-            //Checking BudgetType for Opal
-            if(pfrgetId != null && ((pfrBudgetType.contains(pfrgetId.Core_MDF_Budget_Type_nm__c)) 
-                    || pfrProgramSpecific.contains(pfrgetId.Core_MDF_Program__c)))
-            { 
-                // Calculating PFR Amount [SUM(Claim Amount) + SUM(Excalation Amount)]
-                if(!pfcMap.isEmpty() && pfcMap.containsKey(pfrgetId.Id)){
-                    pfrAmountToBeUpdated =  pfrAmountToBeUpdated + pfcMap.get(pfrgetId.Id);
-                }
-                if(!pfrToEscalationAmtMap.isEmpty() && pfrToEscalationAmtMap.containsKey(pfrgetId.Id)){
-                    pfrAmountToBeUpdated =  pfrAmountToBeUpdated + pfrToEscalationAmtMap.get(pfrgetId.Id);
-                }
-                if(pfrAmountToBeUpdated != null && pfrAmountToBeUpdated >= 0){  
-                    checkPfrAmount = cmpBudgetType.contains(pfrgetId.Core_MDF_Budget_Type_nm__c) ? 0 : pfrAmountToBeUpdated;
-                    //Check the Intel Contributon is greater equal to Activity amount
-                    //Avoid Deeply Nested IF Statements
-                    // Use ternary to determine the amount parameter
-                    Decimal amountToUse = (checkPfrAmount <= pfrgetId.Core_MDF_Activity_Reimbursement_Amt_nbr__c) ? 
-                        checkPfrAmount : pfrgetId.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                    
-                    pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, amountToUse));
-                } else { 
-                    // PFR Closed from Planned or RR Status 
-                    pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, 0));
-                }
-            } else {
-                pfrClosureList.add(updatedPfr(pfrgetId, pfrClosureType, 0));
-            }
-        }
-    }
-    
     /****************************************************************************************************** 
     Method Name:        updatedPfr
     Description:        Create PFR Object record which needs to updated
@@ -363,20 +269,4 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
         }
         return pfrToBeUpdated;
     }
-    /****************************************************************************************************** 
-    Method Name:        isOutcomeBasedActivity
-    Description:        Check whether given activity is Outcome-Based or not
-    Added By:           Rishabh 30/01/2026
-    Modified By:        Date:      Changes: 
-    *******************************************************************************************************/
-    @AuraEnabled
-    public static Boolean isOutcomeBasedActivity(String pfrId) {
-        
-        if(pfrId == null || pfrId == null){
-            return false;
-        }
-        PartnerFundRequest pfr = [SELECT Core_MDF_Is_Outcome_Based_Ind__c FROM PartnerFundRequest WHERE Id = :pfrId LIMIT 1];
-        return pfr.Core_MDF_Is_Outcome_Based_Ind__c;
-    }
-    
 }

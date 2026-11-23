@@ -13,14 +13,6 @@
         <name>CRM_AI_Generated__c</name>
     </fields>
     <fields>
-        <label><!-- End Date --></label>
-        <name>CRM_End_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- End Time --></label>
-        <name>CRM_End_Time_Only__c</name>
-    </fields>
-    <fields>
         <label><!-- End Time (MM/dd/YYYY HH:mm) --></label>
         <name>CRM_End_Time_txt__c</name>
     </fields>
@@ -39,20 +31,8 @@
         <relationshipLabel><!-- Meeting Brief Agenda --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Start Date --></label>
-        <name>CRM_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Start Time --></label>
-        <name>CRM_Start_Time_Only__c</name>
-    </fields>
-    <fields>
         <label><!-- Start Time (MM/dd/YYYY HH:mm) --></label>
         <name>CRM_Start_Time_txt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Start Date and Time must not be greater than End Date and Time. --></errorMessage>
-        <name>CRM_Agenda_StartDate_EndDate_Validation</name>
-    </validationRules>
 </CustomObjectTranslation>

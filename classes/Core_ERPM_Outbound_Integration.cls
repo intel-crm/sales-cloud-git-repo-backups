@@ -81,7 +81,7 @@ public without sharing class Core_ERPM_Outbound_Integration {
                                             //contactUpdateList.add(contact);                    
                                             //addedToContactList = true;
                                             contactsToBeUpdated.put(contact.id, contact);
-                                        } else if((contact.Core_ERPM_Integration_Status__c == 'Pending' || contact.Core_ERPM_Integration_Status__c == 'In-Progress' && UpdateERPMStatus && agsFlag==false) //Commented " && hasEntWithERPMEnga" and added "UpdateERPMStatus" as ERPM OBM was not sending while self registration
+                                        } else if((contact.Core_ERPM_Integration_Status__c == 'Pending' || contact.Core_ERPM_Integration_Status__c == 'In-Progress' && UpdateERPMStatus) //Commented " && hasEntWithERPMEnga" and added "UpdateERPMStatus" as ERPM OBM was not sending while self registration
                                                     && contact.Core_ERPM_Integration_Queue_txt__c != 'Full') {
                                                         contact.Core_ERPM_Integration_Queue_txt__c = 'Full';
                                                         //contactUpdateList.add(contact);                    

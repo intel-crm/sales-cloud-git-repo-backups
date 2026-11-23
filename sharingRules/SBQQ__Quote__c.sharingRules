@@ -344,31 +344,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Pricing_Share_Quotes_To_CDB_Intg_User</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>This rule is to share the Quotes to CDB Integration User</description>
-        <label>Pricing_Share_Quotes_To_CDB_Intg_User</label>
-        <sharedTo>
-            <group>Core_AI_CDB_Integrations_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Pricing_Quote_Program_Nm__c</field>
-            <operation>equals</operation>
-            <value>Tender</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Pricing Tender Quote - ReadOnly,Pricing Tender Client Quote - Submitted,Pricing Tender Quote - Submitted,Pricing Tender Quote - Edit,Pricing Tender Client Quote - Edit,Pricing Tender Client Quote - ReadOnly</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Status__c</field>
-            <operation>equals</operation>
-            <value>Submitted,Won,Draft,Approved,Lost</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Pricing_Tender_Business_User_Admin</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Tender Business User Admin</label>
@@ -379,6 +354,47 @@
             <field>Pricing_Quote_Program_Nm__c</field>
             <operation>equals</operation>
             <value>Tender</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_Write_Access_for_BM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sets Read/Write Access for BM</description>
+        <label>Read/Write Access for BM</label>
+        <sharedTo>
+            <group>ags_internal_bm</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>PSG Quote Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_Write_Access_for_BO</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sets read and write access to BO</description>
+        <label>Read/Write Access for BO</label>
+        <sharedTo>
+            <group>ags_internal_bo</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>PSG Quote Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

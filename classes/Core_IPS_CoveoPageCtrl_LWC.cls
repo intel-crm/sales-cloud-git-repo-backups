@@ -64,13 +64,11 @@ public without sharing class Core_IPS_CoveoPageCtrl_LWC {
     
     
     public static void generateTokenPart3(List<User> users ,Cache.SessionPartition sessionPart){ //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
-        if(users.size() > 0){ //TWC745-9001 End point url change for IAM webservices to microservices migration - Gagan
-
         String roles = '';
         String roles1 = '';
 
-	        		//String incluserrole = users[0].Core_WWID__c+'?includeUserRoles=true'; //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
-	        		String incluserrole = users[0].Core_WWID__c; //TWC745-9001 End point url change for IAM webservices to microservices migration - Gagan
+       		    String incluserrole = users[0].Core_WWID__c+'?includeUserRoles=true'; //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
+                    
                     HttpRequest req = new HttpRequest();
                     req.setTimeout(120000);
                     
@@ -111,7 +109,7 @@ public without sharing class Core_IPS_CoveoPageCtrl_LWC {
                         sessionPart.remove('customGroup');
                         
                     }
-              }//TWC745-9001 End point url change for IAM webservices to microservices migration - Gagan
+                
     }
     
      public static String generateTokenPart4(String userEmailvalue ){

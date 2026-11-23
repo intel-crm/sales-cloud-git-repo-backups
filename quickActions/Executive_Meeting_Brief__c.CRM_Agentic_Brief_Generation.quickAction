@@ -2,7 +2,7 @@
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionSubtype>ScreenAction</actionSubtype>
     <description>This button is used to make callout to CDB Agentic System</description>
-    <label>Generate AI Insights</label>
+    <label>Agentic Brief Generation</label>
     <lightningWebComponent>crm_Executive_Meeting_Brief_Agentic</lightningWebComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>LightningWebComponent</type>

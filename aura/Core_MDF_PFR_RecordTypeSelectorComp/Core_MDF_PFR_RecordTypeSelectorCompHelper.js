@@ -30,15 +30,6 @@
         homeEvent.fire();
     },
     
-    createPaymentRunRecord : function(component) {
-        var navEvt = $A.get("e.force:createRecord");    
-        navEvt.setParams({
-            entityApiName: $A.get("$Label.c.Core_MDF_Payment_Run"),
-            recordTypeId: component.get("v.selrecordtype")
-        });    
-        navEvt.fire();
-    },
-    
     // This function called to get page url and checking for PFR
     getPageUrl: function(component) {
         var curPageURL = decodeURIComponent(window.location.href);
@@ -49,9 +40,7 @@
         var campaignUrl = $A.get("$Label.c.Core_MDF_CampaignNew_URL").toLowerCase();
         var claimCommunityUrl = $A.get("$Label.c.Core_MDF_Community_ClaimURL").toLowerCase();
         var claimUrl = $A.get("$Label.c.Core_MDF_Claim_URL").toLowerCase();
-        var campaignText = $A.get("$Label.c.Core_MDF_CampaignText").toLowerCase();
-        var paymentRunUrl = $A.get("$Label.c.Core_MDF_Payment_Run").toLowerCase();
-        var adjustmentUrl = $A.get("$Label.c.Core_MDF_Adjustment").toLowerCase();
+        var campaignText = $A.get("$Label.c.Core_MDF_CampaignText").toLowerCase();       
         var pageRef = component.get("v.pageReference");
 		var isPfrFlag = pageRef && pageRef.state && pageRef.state.c__isPfrPage;
        	if(sPageURL.includes(pfrURL) || component.get("v.checkSaveandNew") || isPfrFlag){
@@ -74,10 +63,6 @@
         } else if(sPageURL.includes(campaignCommunityUrl) || sPageURL.includes(campaignUrl)){ //Changes for Create Campaign
             component.set("v.isCampaignPage", true);
             component.set("v.viewModal",true);
-        }else if(sPageURL.includes(paymentRunUrl.toLowerCase())){
-            component.set("v.isPaymentRunPage", true);
-        }else if(sPageURL.includes(adjustmentUrl.toLowerCase())){
-            component.set("v.isAdjustmentPage", true);
         }else{
             component.set("v.viewModal",false);
         }/* else if(sPageURL.includes(claimCommunityUrl) || sPageURL.includes(claimUrl)){ //Changes for Create claim
@@ -163,54 +148,9 @@
                         }  
                     } 
                 }
-           
-       }    
+               
+        }    
         
-    },
-    /*openCoEngineeringFlow : function(component, recordTypeId) {        
-        $A.createComponent(
-            "lightning:flow",
-            {
-                "aura:id": "flowData"
-            },
-            function(flowCmp, status, errorMessage) {                
-                if (status === "SUCCESS") {                    
-                    component.find('overlayLib').showCustomModal({
-                        body: flowCmp,
-                        showCloseButton: true,
-                        cssClass: "slds-modal_small"
-                    });                    
-                    flowCmp.startFlow(
-                        "Core_MDF_Co_GTM_Payment_Run_Screen_Flow",
-                        [
-                            {
-                                name: "recordTypeId",
-                                type: "String",
-                                value: recordTypeId
-                            }
-                        ]
-                    );                    
-                } else {
-                    console.log("Flow creation error: " + errorMessage);
-                }
-            }
-        );
-    },
-    /**
-     * Generic method to open any Screen Flow inside a modal popup.
-     * Delegates rendering to the reusable c:core_MDF_ScreenFlowLauncher LWC.
-     *
-     * @param {Aura.Component} component      - The component instance
-     * @param {String}         flowApiName    - API name of the flow to launch
-     * @param {String}         navigateTo     - Object API name to navigate to after flow finishes / is closed
-     * @param {Array}          inputVariables - Optional array of flow input variables [{ name, type, value }]
-     * @param {String}         headerTitle    - Optional modal header text; if empty header is hidden
-     */
-    openScreenFlow : function(component, flowApiName, navigateTo, inputVariables, headerTitle) {
-        component.set("v.activeFlowName", flowApiName);
-        component.set("v.activeFlowHeader", headerTitle || "");
-        component.set("v.activeFlowNavigateTo", navigateTo || "");
-        component.set("v.activeFlowInputVariables", inputVariables || []);
-        component.set("v.showScreenFlow", true);
-    }    
+}
+    
 })

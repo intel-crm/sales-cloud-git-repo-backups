@@ -16,9 +16,6 @@
         <field>CPT_Quota_Setup__c.CPT_Manager__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Manager_WWID__c</field>
-    </columns>
-    <columns>
         <field>CPT_Quota_Setup__c.CPT_Plan_Name__c</field>
     </columns>
     <columns>
@@ -36,6 +33,9 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Inaccurate_Data_Comments__c</field>
     </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Manager_WWID__c</field>
+    </columns>
     <description>Returns all commissioned employees with a given plan Desc</description>
     <format>Tabular</format>
     <name>Employees by Manager</name>
@@ -48,8 +48,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CPT_Quota_Setup__c.CPT_Manager__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

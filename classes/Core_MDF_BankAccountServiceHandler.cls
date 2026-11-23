@@ -146,7 +146,7 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
             // Load the accounts and its bank account map into the accountIdBankIdListMap variable
             accountIdBankIdListMap = loadAccountBankMaps(accountBankMap);
         }
-        if(accountIdUserIdListMap.size() > 0 && accountIdBankIdListMap.size() > 0){ 
+        if(accountIdUserIdListMap.size() > 0 && accountIdBankIdListMap.size() > 0){
             for (Id bankAccountId : accountIdBankIdListMap.keySet()){
                 if (!accountIdUserIdListMap.containsKey(String.valueOf(bankAccountId))){continue;} //ATHR Fix
                     // Load all the banks and its users to the map
@@ -163,7 +163,7 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
                     }
                 //}
             }
-        } 
+        }
 
         return bankIdUserIdListMap;
     }
@@ -654,9 +654,8 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
 
             //Core_MDF_Channel_Program_Name_txt__c - Client CoMarketing Fund
             //Core_MDF_Channel_Program_txt__c - Client Co-Marketing Fund
-            //TWC3117-18333
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt programMapping : [SELECT Id, Core_MDF_Channel_Program_txt__c, Core_MDF_Channel_Program_Name_txt__c
-                                                                            FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt limit 1000]){
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt programMapping : [SELECT Id, Core_MDF_Channel_Program_txt__c, Core_MDF_Channel_Program_Name_txt__c
+                                                                            FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt limit 1000]){
                 programMap.put(programMapping.Core_MDF_Channel_Program_Name_txt__c, programMapping.Core_MDF_Channel_Program_txt__c);
             }
             //NZ to add comments

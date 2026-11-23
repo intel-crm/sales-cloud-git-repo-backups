@@ -34,7 +34,7 @@
                     <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Payment_No_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Payment_No_Txt_cField1</identifier>
+                <identifier>RecordCore_MDF_Payment_No_Txt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -44,19 +44,15 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Paid_Amt__c</fieldItem>
-                <identifier>RecordCore_MDF_Paid_Amt_cField1</identifier>
+                <identifier>RecordCore_MDF_Paid_Amt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_RMF_Proposed_Payment_Amt__c</fieldItem>
                 <identifier>RecordCore_MDF_RMF_Proposed_Payment_Amt_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
@@ -72,11 +68,6 @@
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
@@ -87,7 +78,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Payment_Sent_Dt__c</fieldItem>
-                <identifier>RecordCore_MDF_Payment_Sent_Dt_cField1</identifier>
+                <identifier>RecordCore_MDF_Payment_Sent_Dt__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -97,7 +88,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Payment_Run_Id__c</fieldItem>
-                <identifier>RecordCore_MDF_Payment_Run_Id_cField1</identifier>
+                <identifier>RecordCore_MDF_Payment_Run_Id__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -107,7 +98,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Budget_Type_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_Budget_Type_Nm_cField1</identifier>
+                <identifier>RecordCore_MDF_Budget_Type_Nm__cField</identifier>
                 <visibilityRule>
                     <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
@@ -136,7 +127,7 @@
                 <fieldItem>Record.Core_MDF_Payment_Status_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Payment_Status_Txt_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
@@ -151,16 +142,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -172,9 +153,9 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Payment_Status_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Payment_Status_Txt_cField2</identifier>
+                <identifier>RecordCore_MDF_Payment_Status_Txt__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
@@ -189,30 +170,16 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_RMF_Actual_Payment_Amt__c</fieldItem>
                 <identifier>RecordCore_MDF_RMF_Actual_Payment_Amt_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
@@ -227,16 +194,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -250,7 +207,7 @@
                 <fieldItem>Record.Core_MDF_Payment_Made_Dt__c</fieldItem>
                 <identifier>RecordCore_MDF_Payment_Made_Dt_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
@@ -265,16 +222,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -286,9 +233,9 @@
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Payment_Made_Dt__c</fieldItem>
-                <identifier>RecordCore_MDF_Payment_Made_Dt_cField2</identifier>
+                <identifier>RecordCore_MDF_Payment_Made_Dt__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
@@ -303,16 +250,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -326,7 +263,7 @@
                 <fieldItem>Record.Core_MDF_EFT_Nbr__c</fieldItem>
                 <identifier>RecordCore_MDF_EFT_Nbr_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
@@ -341,16 +278,6 @@
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -362,9 +289,9 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_EFT_Nbr__c</fieldItem>
-                <identifier>RecordCore_MDF_EFT_Nbr_cField2</identifier>
+                <identifier>RecordCore_MDF_EFT_Nbr__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
@@ -380,16 +307,6 @@
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Payment_Admin_Manager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
@@ -397,10 +314,10 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Geo_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Geo_Txt_cField1</identifier>
+                <identifier>RecordCore_MDF_Geo_Txt__cField</identifier>
                 <visibilityRule>
                     <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
@@ -416,16 +333,6 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Comments_txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Comments_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-c293a6bc-9d0d-45e3-9424-ed80e9b0ae12</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -437,7 +344,7 @@
                     <value>Facet-8fb8ae3e-ab07-4dbe-98fe-1d39299c68e2</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column1</identifier>
+                <identifier>flexipage_column</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -456,22 +363,14 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_CreatedBy_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_CreatedBy_Nm_cField1</identifier>
+                <identifier>RecordCore_MDF_CreatedBy_Nm__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Last_ModifiedBy_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_Last_ModifiedBy_Nm_cField1</identifier>
+                <identifier>RecordCore_MDF_Last_ModifiedBy_Nm__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-348c1495-a81c-4809-a9ab-21023a06a2a3</name>
@@ -480,12 +379,8 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Owner_Nm__c</fieldItem>
-                <identifier>RecordCore_MDF_Owner_Nm_cField1</identifier>
+                <identifier>RecordCore_MDF_Owner_Nm__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-8bf5344d-a56c-4b15-a98e-b051cf3dcc0b</name>
@@ -523,15 +418,11 @@
                     <value>Facet-d0580a91-ffb9-48f5-a8fb-cda94357b11a</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>label</name>
                     <value>Payment Options</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection1</identifier>
+                <identifier>flexipage_fieldSection</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -539,10 +430,6 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-0c53ce5e-b499-46dd-9698-0ae88073bd65</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -571,7 +458,7 @@
                     <value>accordionSection1</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:accordionSection</componentName>
-                <identifier>flexipage_accordionSection1</identifier>
+                <identifier>customSection</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-dc32f71a-5819-4401-b661-747a30da58b8</name>
@@ -585,20 +472,17 @@
                     <value>Facet-dc32f71a-5819-4401-b661-747a30da58b8</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
-                <identifier>flexipage_accordion1</identifier>
+                <identifier>flexipage_accordion</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>fieldsToMask</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>c_core_MDF_HistoryComponent</identifier>
+                <identifier>core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>leftcol</name>
@@ -628,7 +512,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer1</identifier>
+                <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>rightcol</name>

@@ -374,14 +374,16 @@ public without sharing class UCD_ACM_Models {
             AccountAddress address = new AccountAddress();
             AccountResponseModel responseModel = new AccountResponseModel();
             String objectName = 'Account';
-            List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
-            if(account.Core_Compliance_Watch_List_Type__c!=null){
-                List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
-                for(String cwlValue : complianceWatchListValues){
-                    complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
+            if(Label.PerformScreeningFromCWLObject == 'false'){
+                List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
+                if(account.Core_Compliance_Watch_List_Type__c!=null){
+                    List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
+                    for(String cwlValue : complianceWatchListValues){
+                        complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
+                    }
                 }
+                responseModel.ComplianceWatchList=complianceWatchLists;
             }
-            responseModel.ComplianceWatchList=complianceWatchLists;
             responseModel.accountId = account.Id;
             responseModel.accountName = String.isNotBlank(account.Name)?account.Name:'';
             responseModel.SurvivorAccountId = String.isNotBlank(account.Core_Survivor_Account_Id__c) ? account.Core_Survivor_Account_Id__c : null;
@@ -437,7 +439,25 @@ public without sharing class UCD_ACM_Models {
                 return mappedAccountResponse;
             }
             return mappedAccountResponse;
-        } 
+        }
+        /*
+         * description : Map ComplianceWatchList Records To AccountResponseModel
+         * params : AccountResponseModel , List<Core_Account_Compliance_Watch_List__c>
+         * return : AccountResponseModel
+         * author and date : harshalx.sunil.gosavi@intel.com, 22nd August 2021
+         */
+        public AccountResponseModel mapComplianceWatchListToModel(UCD_ACM_Models.AccountResponseModel mappedAccountResponse, List<Core_Account_Compliance_Watch_List__c> complianceWatchListFromService) {
+            List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
+            For(Core_Account_Compliance_Watch_List__c complianceWatch: complianceWatchListFromService) {
+                complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(complianceWatch.Core_Type__c,UCD_ACM_Utils.getPicklistLabel('Core_Account_Compliance_Watch_List__c','Core_Type__c',complianceWatch.Core_Type__c)));
+            }
+            if (complianceWatchLists.size() > 0) {
+                mappedAccountResponse.ComplianceWatchList = complianceWatchLists;
+                return mappedAccountResponse;
+            }
+            return mappedAccountResponse;
+        }
+        
     }
 
      /***************************************

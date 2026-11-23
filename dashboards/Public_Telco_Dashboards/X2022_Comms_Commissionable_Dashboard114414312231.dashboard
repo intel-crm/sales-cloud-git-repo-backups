@@ -129,16 +129,16 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>4.0E8</gaugeMax>
+                <gaugeMax>5.15E8</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026-Comms Consumption Report Ap</header>
-                <indicatorBreakpoint1>1.33E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.66E8</indicatorBreakpoint2>
+                <header>2025 CoSP Consumption Report</header>
+                <indicatorBreakpoint1>1.5E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>3.0E8</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_Comms_Consumption_Report_Ap</report>
+                <report>unfiled$public/X2025_Comms_Consumption_Report_Approved</report>
                 <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
@@ -152,12 +152,13 @@
             <columnIndex>4</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
                     <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
                 </chartSummary>
-                <componentType>Gauge</componentType>
+                <componentType>Column</componentType>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
                 </dashboardFilterColumns>
@@ -166,20 +167,25 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>4.0E8</gaugeMax>
-                <gaugeMin>0.0</gaugeMin>
-                <groupingSortProperties/>
-                <header>2026-Comms Consumption-pipeline</header>
-                <indicatorBreakpoint1>1.33E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.67E8</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_Comms_Consumption_pipeline</report>
-                <showPercentage>true</showPercentage>
-                <showRange>false</showRange>
-                <showTotal>true</showTotal>
-                <showValues>false</showValues>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2025-Comms Consumption-pipeline</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>unfiled$public/Copy_of_2025_Comms_Consumption_pipeline1</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -212,17 +218,18 @@
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</sortColumn>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026-Comms Consumption-pipeline</header>
+                <header>2025-Comms Consumption-Product-Pipeline</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/X2026_Comms_Consumption_pipeline</report>
-                <showPercentage>false</showPercentage>
+                <report>unfiled$public/X2025_Comms_Consumption_Product_Pipeline</report>
+                <showPercentage>true</showPercentage>
                 <showTotal>true</showTotal>
                 <showValues>true</showValues>
                 <sortBy>RowValueDescending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
+                <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -250,13 +257,13 @@
                 <gaugeMax>3.5E8</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026 CoSP Deal Wins Won ASMO</header>
-                <indicatorBreakpoint1>1.17E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.33E8</indicatorBreakpoint2>
+                <header>2025 CoSP Deal Wins Won ASMO</header>
+                <indicatorBreakpoint1>1.16666667E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>2.33333333E8</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>Global_SPG/X2026_CoSP_Deal_Wins_Won_ASMO</report>
+                <report>Global_SPG/X2025_CoSP_Deal_Wins_Won_ASMO</report>
                 <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
@@ -296,13 +303,13 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026 CoSP Deal Win Pipeline ASMO</header>
+                <header>2025 CoSP Deal Win Pipeline ASMO</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>Global_SPG/X2026_CoSP_Deal_Win_Pipeline_ASMO</report>
+                <report>Global_SPG/X2025_CoSP_Deal_Win_Pipeline_ASMO</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
+                <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
@@ -360,8 +367,8 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>2026 CoSP Deal Win Pipeline ASMO</header>
-                <report>Global_SPG/X2026_CoSP_Deal_Win_Pipeline_ASMO</report>
+                <header>2025 CoSP Deal Win Pipeline ASMO</header>
+                <report>Global_SPG/X2025_CoSP_Deal_Win_Pipeline_ASMO1</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -385,16 +392,16 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>5.0E7</gaugeMax>
+                <gaugeMax>4.2E7</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026-Comms-CCG-CommDeal-DW$</header>
-                <indicatorBreakpoint1>1.6666666E7</indicatorBreakpoint1>
-                <indicatorBreakpoint2>3.3333333E7</indicatorBreakpoint2>
+                <header>2025-Comms-CCG-CommDeal-DW$</header>
+                <indicatorBreakpoint1>1.4E7</indicatorBreakpoint1>
+                <indicatorBreakpoint2>2.8E7</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_Comms_CCG_CommDeal_DW</report>
+                <report>unfiled$public/X2025_Comms_CCG_CommDeal_DW</report>
                 <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
@@ -434,9 +441,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026-Comms-CCG-CommDeal-pipe</header>
+                <header>2025-Comms-CCG-CommDeal-pipe</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/X2026_Comms_CCG_CommDeal_pipe</report>
+                <report>unfiled$public/X2024_Comms_CCG_CommDeal_pipe3</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -477,9 +484,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026-Comms-CCG-CommDeal-pipe</header>
+                <header>2025-Comms-CCG-CommDeal-pipe</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/X2026_Comms_CCG_CommDeal_pipe</report>
+                <report>unfiled$public/X2024_Comms_CCG_CommDeal_pipe3</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -512,13 +519,13 @@
                 <gaugeMax>3.5E8</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026-Comms-DCAI-CommDeal-DW$</header>
-                <indicatorBreakpoint1>1.16666667E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.33333333E8</indicatorBreakpoint2>
+                <header>2025-Comms-DCAI-CommDeal-DW$</header>
+                <indicatorBreakpoint1>1.17E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>2.34E8</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_Comms_DCAI_CommDeal_DW</report>
+                <report>unfiled$public/X2025_Comms_DCAI_CommDeal_DW</report>
                 <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
@@ -558,9 +565,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026-Comms-DCAI-CommDeal-pipe</header>
+                <header>2025-Comms-DCAI-CommDeal-pipe</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/X2026_Comms_DCAI_CommDeal_pipe</report>
+                <report>unfiled$public/X2025_Comms_DCAI_CommDeal_pipe</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -601,9 +608,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026-Comms-DCAI-CommDeal-pipe</header>
+                <header>2025-Comms-DCAI-CommDeal-pipe</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/X2026_Comms_DCAI_CommDeal_pipe</report>
+                <report>unfiled$public/X2025_Comms_DCAI_CommDeal_pipe</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -633,16 +640,16 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>3.9E7</gaugeMax>
+                <gaugeMax>100000.0</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026 AMR VRAN Wins</header>
-                <indicatorBreakpoint1>1.3E7</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.6E7</indicatorBreakpoint2>
+                <header>2025 AMR VRAN Wins</header>
+                <indicatorBreakpoint1>25000.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>75000.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_AMR_VRAN_Wins</report>
+                <report>unfiled$public/X2025_AMR_VRAN_Wins</report>
                 <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
@@ -682,9 +689,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026 AMR VRAN Pipeline</header>
+                <header>2025 AMR VRAN Pipeline</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/X2026_AMR_VRAN_Pipeline</report>
+                <report>unfiled$public/X2025_AMR_VRAN_Pipeline</report>
                 <showPercentage>true</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -711,43 +718,43 @@
                     <flexTableColumn>
                         <reportColumn>Opportunity.Core_Opp_Prime_Account_Name__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>OPPORTUNITY_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>STAGE_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>CLOSE_DATE</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>QUANTITY</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>AMOUNT</reportColumn>
                         <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
+                        <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
@@ -757,9 +764,18 @@
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>2026 AMR VRAN Pipeline Details</header>
-                <report>unfiled$public/X2026_AMR_VRAN_Pipeline_Details</report>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2025 AMR VRAN Pipeline Details</header>
+                <report>unfiled$public/X2025_AMR_VRAN_Pipeline_Details</report>
             </dashboardComponent>
             <rowIndex>32</rowIndex>
             <rowSpan>8</rowSpan>
@@ -783,13 +799,13 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
                 <groupingSortProperties/>
-                <header>2026 AMR 5G Core Wins</header>
+                <header>2025 AMR 5G Core Wins</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_AMR_5G_Core_Wins</report>
+                <report>unfiled$public/X2025_AMR_5G_Core_Wins</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>40</rowIndex>
@@ -814,13 +830,13 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>2026 AMR 5G Core Losses</header>
+                <header>2025 AMR 5G Core Losses</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>unfiled$public/X2026_AMR_5G_Core_Losses</report>
+                <report>unfiled$public/X2025_AMR_5G_Core_Losses</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>40</rowIndex>
@@ -859,12 +875,6 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>STAGE_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
                         <reportColumn>CLOSE_DATE</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
@@ -890,15 +900,15 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>2026 AMR 5G Core Pipeline</header>
-                <report>unfiled$public/X2026_AMR_5G_Core_Pipeline</report>
+                <header>2025 AMR 5G Core Pipeline</header>
+                <report>unfiled$public/X2025_AMR_5G_Core_Pipeline</report>
             </dashboardComponent>
             <rowIndex>40</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
+            <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
@@ -942,7 +952,7 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>CoSP Pipeline 2026-Comms Has No Solution</header>
+                <header>CoSP Pipeline 2025-Comms Has No Solution</header>
                 <report>unfiled$public/CoSP_Pipeline_2024_Comms_Has_No_Solution</report>
             </dashboardComponent>
             <rowIndex>48</rowIndex>
@@ -957,7 +967,7 @@
     <owner>10509724@intel.com.crm</owner>
     <runningUser>10509724@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>2026 AMR CoSP Dashboard</title>
+    <title>2025 AMR CoSP Dashboard</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

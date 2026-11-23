@@ -58,6 +58,9 @@
         <field>SBQQ__Quote__c$core_cpq_ddr_nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$ApprovalStatus__c</field>
     </columns>
     <columns>

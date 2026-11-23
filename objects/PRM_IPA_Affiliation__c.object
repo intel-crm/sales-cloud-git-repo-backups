@@ -176,18 +176,7 @@
         <fullName>PRM_Builder_Strategy__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <label>IPA Affiliation</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Association to account is not possible as Affiliation is Inactive</errorMessage>
-            <filterItems>
-                <field>PRM_Builder_Strategy__c.PRM_Active__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>PRM_Builder_Strategy__c</referenceTo>
-        <relationshipLabel>Account IPA Affiliations</relationshipLabel>
         <relationshipName>IPA_Affiliations</relationshipName>
         <required>true</required>
         <trackHistory>false</trackHistory>

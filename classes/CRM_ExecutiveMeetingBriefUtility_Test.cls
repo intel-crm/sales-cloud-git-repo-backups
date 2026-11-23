@@ -1,6 +1,6 @@
 @isTest
 public class CRM_ExecutiveMeetingBriefUtility_Test {
-  @isTest
+	@isTest
     public static void checkMandatoryFields() {
         
         // Create the custom setting record
@@ -14,7 +14,7 @@ public class CRM_ExecutiveMeetingBriefUtility_Test {
         insert triggerSetting;
          
         // Create test Account
-     Account testAccount = new Account();
+ 		Account testAccount = new Account();
         testAccount.name = 'TestAccount';
         testAccount.BillingCountryCode = 'USA';
         testAccount.BIllingStateCode = 'AL';
@@ -99,7 +99,7 @@ public class CRM_ExecutiveMeetingBriefUtility_Test {
         );
         insert testEMB;
 
-    Executive_Meeting_Brief__c embRec = [SELECT Id, CRM_Technical_Assistant__c, CRM_Brief_Reviewer__c FROM Executive_Meeting_Brief__c WHERE Id =: testEMB.Id];
+		Executive_Meeting_Brief__c embRec = [SELECT Id, CRM_Technical_Assistant__c, CRM_Brief_Reviewer__c FROM Executive_Meeting_Brief__c WHERE Id =: testEMB.Id];
         
         testEMB.CRM_Technical_Assistant__c = testUser1.Id;
         testEMB.CRM_Brief_Reviewer__c = testUser3.Id;
@@ -151,7 +151,7 @@ public class CRM_ExecutiveMeetingBriefUtility_Test {
       }
         
         // Create test Account
-     Account testAccount = new Account();
+ 		Account testAccount = new Account();
         testAccount.name = 'TestAccount';
         testAccount.BillingCountryCode = 'USA';
         testAccount.BIllingStateCode = 'AL';
@@ -206,9 +206,7 @@ public class CRM_ExecutiveMeetingBriefUtility_Test {
     
         // Call the method
         List<CRM_ExecutiveMeetingBrief_Utility.EmailResult> results = CRM_ExecutiveMeetingBrief_Utility.sendEmailFromTemplate(requests);
-        List<CRM_ExecutiveMeetingBrief_Utility.TimezoneOption> timeZoneOptions =  CRM_ExecutiveMeetingBrief_Utility.getAllTimezones();
-        CRM_ExecutiveMeetingBrief_Utility.getExecutiveMeetingBriefData(testEMB.Id);
-        CRM_ExecutiveMeetingBrief_Utility.saveTimezone(testEMB.Id,'Asia/Colombo');
+        
         Test.stopTest();
 
     }

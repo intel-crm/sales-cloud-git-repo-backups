@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata to store the Checklist Categories, Questions and Description.</description>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
+        <description>Stores the Budget type for Programs</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>true</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>CCF 1.0</fullName>
+                    <default>false</default>
+                    <label>CCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>DCF 1.0</fullName>
+                    <default>false</default>
+                    <label>DCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
+                    <fullName>OEM CMP</fullName>
+                    <default>false</default>
+                    <label>OEM CMP</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CMP</fullName>
+                    <default>false</default>
+                    <label>Service Provider CMP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Channel_Program_Txt__c</fullName>
+        <description>Stores the Channel Program of Checklist</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>All</fullName>
+                    <default>false</default>
+                    <label>All</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund</fullName>
+                    <default>true</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client Co-Marketing Fund Boost</label>
+                </value>
+                <value>
+                    <fullName>Data Center Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Datacenter</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>false</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+                <value>
+                    <fullName>Service Provider Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider Co-Marketing Fund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Label__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Checklist Label</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Checklist Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Attribution</fullName>
+                    <default>false</default>
+                    <label>Attribution</label>
+                </value>
+                <value>
+                    <fullName>Branding</fullName>
+                    <default>true</default>
+                    <label>Branding</label>
+                </value>
+                <value>
+                    <fullName>Documentation</fullName>
+                    <default>false</default>
+                    <label>Documentation</label>
+                </value>
+                <value>
+                    <fullName>Engagement</fullName>
+                    <default>false</default>
+                    <label>Engagement</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>POP</fullName>
+                    <default>false</default>
+                    <label>POP</label>
+                </value>
+                <value>
+                    <fullName>Submission</fullName>
+                    <default>false</default>
+                    <label>Submission</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Case_Review_Findings__c</fullName>
+        <description>This field stores the Non-Compliant values for Checklist</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Claim Case Review Findings</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Activity date mismatch</fullName>
+                    <default>false</default>
+                    <label>Activity date mismatch</label>
+                </value>
+                <value>
+                    <fullName>Activity not completely delivered/partially delivered</fullName>
+                    <default>false</default>
+                    <label>Activity not completely delivered/partially delivered</label>
+                </value>
+                <value>
+                    <fullName>Anti-corruption policy not met</fullName>
+                    <default>false</default>
+                    <label>Anti-corruption policy not met</label>
+                </value>
+                <value>
+                    <fullName>Balanced branding not met</fullName>
+                    <default>false</default>
+                    <label>Balanced branding not met</label>
+                </value>
+                <value>
+                    <fullName>Boost Ad Tagline not met</fullName>
+                    <default>false</default>
+                    <label>Boost Ad Tagline not met</label>
+                </value>
+                <value>
+                    <fullName>Brand image violation</fullName>
+                    <default>false</default>
+                    <label>Brand image violation</label>
+                </value>
+                <value>
+                    <fullName>Branding documents altered</fullName>
+                    <default>false</default>
+                    <label>Branding documents altered</label>
+                </value>
+                <value>
+                    <fullName>Claims outside of 6 months claiming window</fullName>
+                    <default>false</default>
+                    <label>Claims outside of 6 months claiming window</label>
+                </value>
+                <value>
+                    <fullName>Claims outside of claiming window</fullName>
+                    <default>false</default>
+                    <label>Claims outside of claiming window</label>
+                </value>
+                <value>
+                    <fullName>Competitive element violation</fullName>
+                    <default>false</default>
+                    <label>Competitive element violation</label>
+                </value>
+                <value>
+                    <fullName>Consistency Issue</fullName>
+                    <default>false</default>
+                    <label>Consistency Issue</label>
+                </value>
+                <value>
+                    <fullName>Cost documents altered</fullName>
+                    <default>false</default>
+                    <label>Cost documents altered</label>
+                </value>
+                <value>
+                    <fullName>Cost documents altered/not valid</fullName>
+                    <default>false</default>
+                    <label>Cost documents altered/not valid</label>
+                </value>
+                <value>
+                    <fullName>Duplicate claims</fullName>
+                    <default>false</default>
+                    <label>Duplicate claims</label>
+                </value>
+                <value>
+                    <fullName>Eligible ad space error</fullName>
+                    <default>false</default>
+                    <label>Eligible ad space error</label>
+                </value>
+                <value>
+                    <fullName>Eligible Product/Solution Not Prominent/Missing</fullName>
+                    <default>false</default>
+                    <label>Eligible Product/Solution Not Prominent/Missing</label>
+                </value>
+                <value>
+                    <fullName>Embargo countries</fullName>
+                    <default>false</default>
+                    <label>Embargo countries</label>
+                </value>
+                <value>
+                    <fullName>Event prior approval violation</fullName>
+                    <default>false</default>
+                    <label>Event prior approval violation</label>
+                </value>
+                <value>
+                    <fullName>Event prior approval violation. Pre-review documentation violation</fullName>
+                    <default>false</default>
+                    <label>Event prior approval violation. Pre-review documentation violation</label>
+                </value>
+                <value>
+                    <fullName>Exceeds Gift &amp; Entertainment guide</fullName>
+                    <default>false</default>
+                    <label>Exceeds Gift &amp; Entertainment guide</label>
+                </value>
+                <value>
+                    <fullName>Exceeds Gifts &amp; Entertainment guide</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Exceeds Gifts &amp; Entertainment guide</label>
+                </value>
+                <value>
+                    <fullName>Execution date mismatch</fullName>
+                    <default>false</default>
+                    <label>Execution date mismatch</label>
+                </value>
+                <value>
+                    <fullName>Incorrect/missing Additional Attribution</fullName>
+                    <default>false</default>
+                    <label>Incorrect/missing Additional Attribution</label>
+                </value>
+                <value>
+                    <fullName>Incorrect/missing Intel mention</fullName>
+                    <default>false</default>
+                    <label>Incorrect/missing Intel mention</label>
+                </value>
+                <value>
+                    <fullName>Incorrect activity type/category</fullName>
+                    <default>false</default>
+                    <label>Incorrect activity type/category</label>
+                </value>
+                <value>
+                    <fullName>Incorrect country submission</fullName>
+                    <default>false</default>
+                    <label>Incorrect country submission</label>
+                </value>
+                <value>
+                    <fullName>Incorrect country submission/ Multiple countries submission</fullName>
+                    <default>false</default>
+                    <label>Incorrect country submission/ Multiple countries submission</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel logo/sig ID</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel logo/sig ID</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel Mention</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel Mention</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel Processor Brands</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel Processor Brands</label>
+                </value>
+                <value>
+                    <fullName>Incorrect LED selection</fullName>
+                    <default>false</default>
+                    <label>Incorrect LED selection</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Product Executed</fullName>
+                    <default>false</default>
+                    <label>Incorrect Product Executed</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Program Selected</fullName>
+                    <default>false</default>
+                    <label>Incorrect Program Selected</label>
+                </value>
+                <value>
+                    <fullName>Intel Artwork Violation</fullName>
+                    <default>false</default>
+                    <label>Intel Artwork Violation</label>
+                </value>
+                <value>
+                    <fullName>Intel code name violation</fullName>
+                    <default>false</default>
+                    <label>Intel code name violation</label>
+                </value>
+                <value>
+                    <fullName>Intel logo/sig ID altered</fullName>
+                    <default>false</default>
+                    <label>Intel logo/sig ID altered</label>
+                </value>
+                <value>
+                    <fullName>Invalid POC amount</fullName>
+                    <default>false</default>
+                    <label>Invalid POC amount</label>
+                </value>
+                <value>
+                    <fullName>Invalid POC currency</fullName>
+                    <default>false</default>
+                    <label>Invalid POC currency</label>
+                </value>
+                <value>
+                    <fullName>Invalid rate card/calculation</fullName>
+                    <default>false</default>
+                    <label>Invalid rate card/calculation</label>
+                </value>
+                <value>
+                    <fullName>Lack of Intel Presence</fullName>
+                    <default>false</default>
+                    <label>Lack of Intel Presence</label>
+                </value>
+                <value>
+                    <fullName>Landing Page Branding violation</fullName>
+                    <default>false</default>
+                    <label>Landing Page Branding violation</label>
+                </value>
+                <value>
+                    <fullName>Legal Review violation</fullName>
+                    <default>false</default>
+                    <label>Legal Review violation</label>
+                </value>
+                <value>
+                    <fullName>Missing documents</fullName>
+                    <default>false</default>
+                    <label>Missing documents</label>
+                </value>
+                <value>
+                    <fullName>Multiple invoices submission in one claim</fullName>
+                    <default>false</default>
+                    <label>Multiple invoices submission in one claim</label>
+                </value>
+                <value>
+                    <fullName>Negative brand impact</fullName>
+                    <default>false</default>
+                    <label>Negative brand impact</label>
+                </value>
+                <value>
+                    <fullName>Non-eligible Intel product brand</fullName>
+                    <default>false</default>
+                    <label>Non-eligible Intel product brand</label>
+                </value>
+                <value>
+                    <fullName>Non-eligible product/solution</fullName>
+                    <default>false</default>
+                    <label>Non-eligible product/solution</label>
+                </value>
+                <value>
+                    <fullName>Non-reimbursable costs</fullName>
+                    <default>false</default>
+                    <label>Non-reimbursable costs</label>
+                </value>
+                <value>
+                    <fullName>Not promoting brand in positive manner</fullName>
+                    <default>false</default>
+                    <label>Not promoting brand in positive manner</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>Path to Purchase prerequisite not met</fullName>
+                    <default>false</default>
+                    <label>Path to Purchase prerequisite not met</label>
+                </value>
+                <value>
+                    <fullName>POC date mismatch</fullName>
+                    <default>false</default>
+                    <label>POC date mismatch</label>
+                </value>
+                <value>
+                    <fullName>POC detail submission error</fullName>
+                    <default>false</default>
+                    <label>POC detail submission error</label>
+                </value>
+                <value>
+                    <fullName>POE documents altered</fullName>
+                    <default>false</default>
+                    <label>POE documents altered</label>
+                </value>
+                <value>
+                    <fullName>POP contain redaction</fullName>
+                    <default>false</default>
+                    <label>POP contain redaction</label>
+                </value>
+                <value>
+                    <fullName>POP not in acceptable format</fullName>
+                    <default>false</default>
+                    <label>POP not in acceptable format</label>
+                </value>
+                <value>
+                    <fullName>Promoting Non-Intel Product</fullName>
+                    <default>false</default>
+                    <label>Promoting Non-Intel Product</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution altered</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution altered</label>
+                </value>
+                <value>
+                    <fullName>Qualified Processor Brands violation</fullName>
+                    <default>false</default>
+                    <label>Qualified Processor Brands violation</label>
+                </value>
+                <value>
+                    <fullName>SPIF underperformed</fullName>
+                    <default>false</default>
+                    <label>SPIF underperformed</label>
+                </value>
+                <value>
+                    <fullName>Third-party logos violation</fullName>
+                    <default>false</default>
+                    <label>Third-party logos violation</label>
+                </value>
+                <value>
+                    <fullName>Trademark infringement</fullName>
+                    <default>false</default>
+                    <label>Trademark infringement</label>
+                </value>
+                <value>
+                    <fullName>Underperformed metrics/Not Meeting FMV</fullName>
+                    <default>false</default>
+                    <label>Underperformed metrics/Not Meeting FMV</label>
+                </value>
+                <value>
+                    <fullName>Unsupported domains</fullName>
+                    <default>false</default>
+                    <label>Unsupported domains</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Description__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Description</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Line_Number__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Line Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Checklist Item</label>
+    <pluralLabel>Checklist Items</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -13,9 +13,6 @@
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Group_Name__c</field>
-    </columns>
-    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>

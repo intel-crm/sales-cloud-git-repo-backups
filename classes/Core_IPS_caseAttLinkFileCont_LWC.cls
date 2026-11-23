@@ -13,65 +13,62 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
     
     @AuraEnabled(cacheable = true)
     public static List<Core_IPS_File_Upload_Master__c> getFiles(String caseId){
+        fileList = new List<uFile>();
+        if (Schema.sObjectType.case.fields.Core_IPS_Supported_Product__c.isAccessible()) {
+            // Hassan Khan creating a "List<Case> caseList" to fix (List has no rows for assignment to Sobject) Exception Handling issue.
+            //caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
+            List<Case> caseList = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
+            if(!caseList.isEmpty()){
+                caseObj = caseList[0];
+            }
+        }
+        if(caseObj.Core_IPS_Supported_Product__c != null){
+            if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) {
+                CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
+                                        WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
+            }
+        }
+        else{
+            return null;
+        }
+        Set <ID> CIPSFAID = new Set<ID>();
+        if(CoreIPSFILEAssignLst != null && CoreIPSFILEAssignLst.size() > 0){
+            for(Core_IPS_File_Assignment__c CIPSFA : CoreIPSFILEAssignLst){
+                if(CIPSFA.Core_IPS_File_Upload_Master__c != null){
+                    CIPSFAID.add(CIPSFA.Core_IPS_File_Upload_Master__c);
+                }
+            }
+        } else {
+            return null;
+        }
+        Set <String> CoreFileGUID_Existing = new Set<String>();
+        if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_File_GUID__c.isAccessible()) {
+            ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
+        }
+        for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
+            CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
+        }
+        //Check File Upload Master for related records
         List<Core_IPS_File_Upload_Master__c> CIPSUpMasLst = new List<Core_IPS_File_Upload_Master__c>();   
-        /// Mohan code fix for null getting in caseId Line no 18 - 76
-        if(caseId != '' && caseId != null){          
-            fileList = new List<uFile>();
-            if (Schema.sObjectType.case.fields.Core_IPS_Supported_Product__c.isAccessible()) {
-                // Hassan Khan creating a "List<Case> caseList" to fix (List has no rows for assignment to Sobject) Exception Handling issue.
-                //caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
-                List<Case> caseList = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
-                if(!caseList.isEmpty()){
-                    caseObj = caseList[0];
-                }
+        //FLS Read permission added --Suresh ---23/11/2022
+        //if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()){
+        CIPSUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
+                        Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, 
+                        Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c
+                        WHERE id IN :CIPSFAID and Core_Upload_Status__c = 'Complete' and 
+                        Core_Expiration_Date__c >: datetime.now() and 
+                        Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate]; 
+     //   }
+        //Check to see if entries found   
+        if(CIPSUpMasLst.size() > 0){
+            for(Core_IPS_File_Upload_Master__c  f: CIPSUpMasLst) {
+                String url = f.Core_File_Hyperlink__c;
+                url = url.replace('<a href="', '').replace('amp;','').replace('" target="Self">Download</a>', ' ');
+                f.Core_File_URL__c = url;
+                fileList.add(new ufile(f));
             }
-            if(caseObj!= null && caseObj.Core_IPS_Supported_Product__c != null){ // TWC745-9175 - Exceptional Handling - Phani Added Null check
-                if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) {
-                    CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
-                                            WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
-                }
-            }
-            else{
-                return null;
-            }
-            Set <ID> CIPSFAID = new Set<ID>();
-            if(CoreIPSFILEAssignLst != null && CoreIPSFILEAssignLst.size() > 0){
-                for(Core_IPS_File_Assignment__c CIPSFA : CoreIPSFILEAssignLst){
-                    if(CIPSFA.Core_IPS_File_Upload_Master__c != null){
-                        CIPSFAID.add(CIPSFA.Core_IPS_File_Upload_Master__c);
-                    }
-                }
-            } else {
-                return null;
-            }
-            Set <String> CoreFileGUID_Existing = new Set<String>();
-            if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_File_GUID__c.isAccessible()) {
-                ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
-            }
-            for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
-                CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
-            }
-            //Check File Upload Master for related records
-            //FLS Read permission added --Suresh ---23/11/2022
-            //if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()){
-            CIPSUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
-                            Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, 
-                            Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c
-                            WHERE id IN :CIPSFAID and Core_Upload_Status__c = 'Complete' and 
-                            Core_Expiration_Date__c >: datetime.now() and 
-                            Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate]; 
-            //}
-            //Check to see if entries found   
-            if(CIPSUpMasLst.size() > 0){
-                for(Core_IPS_File_Upload_Master__c  f: CIPSUpMasLst) {
-                    String url = f.Core_File_Hyperlink__c;
-                    url = url.replace('<a href="', '').replace('amp;','').replace('" target="Self">Download</a>', ' ');
-                    f.Core_File_URL__c = url;
-                    fileList.add(new ufile(f));
-                }
-            }
-        }    
-        return CIPSUpMasLst;        
+        }
+        return CIPSUpMasLst;
     }
     
     @AuraEnabled

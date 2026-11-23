@@ -56,7 +56,6 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
     }
     
     global void execute(Database.BatchableContext bc, List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmObjList){
-        try{
         if(csvDataList.size() <= MAX_RECORDS){ // To restrict records more than 50K (If already 50K data reached don't even go inside)
             Set<Id> accountIdSet = new Set<Id>();                               
             Set<Id> programIdSet = new Set<Id>();
@@ -279,9 +278,6 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
                 }
             }
         }
-    }catch(Exception e){
-        Core_MDF_CCP_UtilityClass.logError(e);
-    }
     }
     
     /*-----------------------------------------------------------------------------------
@@ -320,7 +316,7 @@ Description         : This method creates file based on progam.
     }
     
     global void finish(Database.BatchableContext bc) {
-        try{
+        
         if(recordTrackingId == null){
             Core_MDF_Record_Tracking__c rt = new Core_MDF_Record_Tracking__c();
             rt.Core_MDF_Scope_nm__c = 'IUPGM Discrepancy Monitor'; 
@@ -369,9 +365,6 @@ Description         : This method creates file based on progam.
                 Core_MDF_GenericClassToSendMail.sendEmails(emailsToBeSent);
             }
         }
-    }catch(Exception e){
-        Core_MDF_CCP_UtilityClass.logError(e);
-    }
     }
     
     //creation of wrapper for IUPGM and PGM Fields

@@ -403,6 +403,11 @@ $Label.Core_MDF_Intel_System_User
             <operation>equals</operation>
             <value>Successful</value>
         </filters>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>Iiptrax Admin</value>
+        </filters>
         <label>Claim Batches - Successful</label>
     </listViews>
     <nameField>

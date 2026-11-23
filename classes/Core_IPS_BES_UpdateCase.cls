@@ -17,7 +17,7 @@ Map<String,String> sourceDetailsMap = new Map<String,String>();-- END*/
         try {
 	if(IPS_Case_Fields__c.SObjectType.getDescribe().isQueryable()){
                 //  List<IPS_Case_Fields__c> allCustomSettings =[Select id, Object_Name__c, API_Name__c, JSON_Field_Name__c,Order__c,Additional_Info__c from IPS_Case_Fields__c order by Order__c DESC ];
-                for(IPS_Case_Fields__c  cc : [Select id, Object_Name__c, API_Name__c, JSON_Field_Name__c,Order__c,Additional_Info__c from IPS_Case_Fields__c order by Order__c DESC Limit 49999]) {  //Limit Added by Tushar
+                for(IPS_Case_Fields__c  cc : [Select id, Object_Name__c, API_Name__c, JSON_Field_Name__c,Order__c,Additional_Info__c from IPS_Case_Fields__c order by Order__c DESC ]) {
             if(cc.Object_Name__c == 'Case') {
                 fieldMap.put(cc.JSON_Field_Name__c, cc.API_Name__c);
             }

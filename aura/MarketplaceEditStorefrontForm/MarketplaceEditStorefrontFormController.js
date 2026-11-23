@@ -74,7 +74,7 @@
                         component.set("v.summaryData.companyDetail.isUpdated", true);
                         component.set("v.summaryData.isUpdated", true);
                     }
-                  //  component.set("v.formValid", helper.isFormValid(component, helper));
+                    
                     // Input Change:
                     window.setTimeout($A.getCallback(function() {
                         // If errors are showing, see if we can remove them
@@ -83,7 +83,7 @@
                             helper.resetErrorsForCurrentStep(component, helper, component.get('v.currentStep'));
                         }
                         // Check if entire form is valid (for next/submit buttons)
-                       component.set("v.formValid", helper.isFormValid(component, helper));
+                        component.set("v.formValid", helper.isFormValid(component, helper));
                     }),5000);
                     
                 }
@@ -499,6 +499,7 @@
             component.set('v.isOpen', false);
         }
     },    
+    
     handleUploadAdditional : function(component, event, helper) {
         component.set('v.showAdditionalUploader', true);
     },
@@ -689,7 +690,7 @@
     handleSubmitEdits: function(component, event, helper) {
         const steps = component.get("v.steps");
         component.set("v.showSpinner", true);
-        component.set("v.currentStep", 0);
+        component.set("v.currentStep", 5);
         if (component.find("modal")) {component.find("modal").scrollTo();}
         helper.handleReSubmit(component, helper).then($A.getCallback(function() {
             component.set('v.currentStep', steps.length);

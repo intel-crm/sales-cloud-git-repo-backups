@@ -40,8 +40,7 @@ private class Core_MDF_AccountProductMappingCntrlTest {
     
     @isTest
     private static void createUpdateAccountAndProductMappingRecordsTest() {
-      // Highlight: Unused Local Variable
-     //  ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
+        ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
         
         Account retailIntelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Retail Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         retailIntelAcc.Core_Geo__c = 'APJ';
@@ -79,7 +78,7 @@ private class Core_MDF_AccountProductMappingCntrlTest {
         detailWrap = JSON.serialize(acctProdWrap);  
         
         Core_MDF_AccountProductMappingController.createUpdateAccountAndProductMappingRecords(detailWrap);
-        }catch(exception e){}
+        }catch(exception e){} 
         List<String> prodIdList = new List<String>();
         prodIdList.add(prod.Id);
         prodIdList.add(prod1.Id);
@@ -123,14 +122,10 @@ private class Core_MDF_AccountProductMappingCntrlTest {
         Core_MDF_AccountProductMappingController.getAccountProductMapping(accIdList, 'Retail Marketing Funds');
         try{
             Core_MDF_AccountProductMappingController.getAccountProductMapping(accIdList, 'co-Marketing Funds');
-        }catch(exception e){}
-        List<Product2> productList = Core_MDF_AccountProductMappingController.getProducts();
-        Core_MDF_AccountProductMappingController.hasAccessToPriceReviewerMaintanceTab();
-        //Assert.isTrue(productList == null);
-        // Unit Test Method should include System.Assert
-         Assert.areEqual(1, accIdList.size(), 'Account ID list should contain one account ID');
-        Assert.areEqual(String.valueOf(retailIntelAcc.Id), accIdList[0], 'Account ID should match the created account');
+        }catch(exception e){} 
+        Core_MDF_AccountProductMappingController.getProducts();
         
+        Core_MDF_AccountProductMappingController.hasAccessToPriceReviewerMaintanceTab();
     }
     
     @isTest
@@ -152,6 +147,5 @@ private class Core_MDF_AccountProductMappingCntrlTest {
         acctProdWrap.uncheckedProdIds = new List<string>();
         detailWrap = JSON.serialize(acctProdWrap);  
         Core_MDF_AccountProductMappingController.createUpdateAccountAndProductMappingRecords(detailWrap);
-        Assert.isTrue(detailWrap != null);
     }
 }

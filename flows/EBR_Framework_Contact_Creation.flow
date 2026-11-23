@@ -31,14 +31,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>ChannelProgram</targetReference>
+            <targetReference>Create_New_Contact</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_Account_Owner_as_ISO_DZP_Upd</name>
         <label>Assign Account Owner as ISO DZP Upd</label>
         <locationX>1062</locationX>
-        <locationY>3854</locationY>
+        <locationY>3338</locationY>
         <assignmentItems>
             <assignToReference>Get_Contact_Record.Core_IPS_Intel_Support_Owner__c</assignToReference>
             <operator>Assign</operator>
@@ -70,7 +70,7 @@
         <name>Assign_Active_AcountTeamMember_upd</name>
         <label>Assign Active AcountTeamMember upd</label>
         <locationX>1018</locationX>
-        <locationY>3470</locationY>
+        <locationY>2954</locationY>
         <assignmentItems>
             <assignToReference>ActiveAccountTeammeber</assignToReference>
             <operator>Assign</operator>
@@ -86,7 +86,7 @@
         <name>Assign_Contact_owner_as_Account_Owner_DZP_Upd</name>
         <label>Assign Contact owner as Account Owner DZP Upd</label>
         <locationX>930</locationX>
-        <locationY>3038</locationY>
+        <locationY>2522</locationY>
         <assignmentItems>
             <assignToReference>updateContact.OwnerId</assignToReference>
             <operator>Assign</operator>
@@ -102,7 +102,7 @@
         <name>assign_contact_record_output</name>
         <label>assign contact record output</label>
         <locationX>688</locationX>
-        <locationY>2822</locationY>
+        <locationY>2306</locationY>
         <assignmentItems>
             <assignToReference>contactRecordOutput</assignToReference>
             <operator>Assign</operator>
@@ -194,22 +194,6 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Partner_Role</name>
-        <label>Assign Partner Role</label>
-        <locationX>220</locationX>
-        <locationY>2114</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.Core_IPA_PartnerRole__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Account_Channel_Membership.PRM_Partner_Role__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Create_New_Contact</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_Reg_Email_to_List</name>
         <label>Assign Reg Email to List</label>
         <locationX>550</locationX>
@@ -238,14 +222,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>ChannelProgram</targetReference>
+            <targetReference>Create_New_Contact</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_technical_Owner_as_ISO_DZP_Upd</name>
         <label>Assign technical Owner as ISO DZP Upd</label>
         <locationX>798</locationX>
-        <locationY>3854</locationY>
+        <locationY>3338</locationY>
         <assignmentItems>
             <assignToReference>Get_Contact_Record.Core_IPS_Intel_Support_Owner__c</assignToReference>
             <operator>Assign</operator>
@@ -308,38 +292,6 @@
         </rules>
     </decisions>
     <decisions>
-        <name>IS_IPA_Account</name>
-        <label>IS IPA Account</label>
-        <locationX>352</locationX>
-        <locationY>2006</locationY>
-        <defaultConnector>
-            <targetReference>Create_New_Contact</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Set_Partner_Role</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Account_Channel_Membership</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Account_Channel_Membership.PRM_Partner_Role__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Partner_Role</targetReference>
-            </connector>
-            <label>Set Partner Role</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Validate_Active_AccountTeamMember</name>
         <label>Validate Active AccountTeamMember</label>
         <locationX>572</locationX>
@@ -375,7 +327,7 @@
         <name>Validate_Active_AccountTeamMember_Upd</name>
         <label>Validate Active AccountTeamMember Upd</label>
         <locationX>1150</locationX>
-        <locationY>3362</locationY>
+        <locationY>2846</locationY>
         <defaultConnector>
             <targetReference>Loop_through_AccounTeamMembers_Upd</targetReference>
         </defaultConnector>
@@ -407,7 +359,7 @@
         <name>Verify_Account_team_Member_upd</name>
         <label>Verify Account team Member upd</label>
         <locationX>930</locationX>
-        <locationY>3746</locationY>
+        <locationY>3230</locationY>
         <defaultConnector>
             <targetReference>Assign_Account_Owner_as_ISO_DZP_Upd</targetReference>
         </defaultConnector>
@@ -457,7 +409,7 @@
         <name>Verify_Engagement_code_is_IPS</name>
         <label>Verify Engagement code is IPS</label>
         <locationX>688</locationX>
-        <locationY>2930</locationY>
+        <locationY>2414</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Engagement_code_is_IPS</name>
@@ -557,7 +509,7 @@
         <name>Loop_through_AccounTeamMembers_Upd</name>
         <label>Loop through AccounTeamMembers Upd</label>
         <locationX>930</locationX>
-        <locationY>3254</locationY>
+        <locationY>2738</locationY>
         <collectionReference>Get_Account_team_members_upd</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -590,7 +542,7 @@
         <name>Create_Core_log_Entry_Rec_for_contact</name>
         <label>Create Core log Entry Rec for contact</label>
         <locationX>314</locationX>
-        <locationY>3146</locationY>
+        <locationY>2630</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -628,7 +580,7 @@
         <name>Create_New_Contact</name>
         <label>Create New Contact</label>
         <locationX>550</locationX>
-        <locationY>2390</locationY>
+        <locationY>1874</locationY>
         <connector>
             <targetReference>Get_Contact_Record</targetReference>
         </connector>
@@ -639,75 +591,10 @@
         <inputReference>newContact</inputReference>
     </recordCreates>
     <recordLookups>
-        <name>ChannelProgram</name>
-        <label>ChannelProgram</label>
-        <locationX>352</locationX>
-        <locationY>1790</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Account_Channel_Membership</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Partner Alliance</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>ChannelProgram</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Account_Channel_Membership</name>
-        <label>Get Account Channel Membership</label>
-        <locationX>352</locationX>
-        <locationY>1898</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>IS_IPA_Account</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Status_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>ChannelProgram.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>PRM_AccountChannelMembership__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Asc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Account_team_members_upd</name>
         <label>Get Account team members upd</label>
         <locationX>930</locationX>
-        <locationY>3146</locationY>
+        <locationY>2630</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Loop_through_AccounTeamMembers_Upd</targetReference>
@@ -771,7 +658,7 @@
         <name>Get_Contact_Record</name>
         <label>Get Contact Record</label>
         <locationX>688</locationX>
-        <locationY>2714</locationY>
+        <locationY>2198</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>assign_contact_record_output</targetReference>
@@ -824,7 +711,7 @@
         <name>Update_Contact</name>
         <label>Update Contact</label>
         <locationX>50</locationX>
-        <locationY>3038</locationY>
+        <locationY>2522</locationY>
         <faultConnector>
             <targetReference>Create_Core_log_Entry_Rec_for_contact</targetReference>
         </faultConnector>
@@ -848,7 +735,7 @@
         <name>Update_DZP_Contact</name>
         <label>Update DZP Contact</label>
         <locationX>930</locationX>
-        <locationY>4046</locationY>
+        <locationY>3530</locationY>
         <inputReference>Get_Contact_Record</inputReference>
     </recordUpdates>
     <start>

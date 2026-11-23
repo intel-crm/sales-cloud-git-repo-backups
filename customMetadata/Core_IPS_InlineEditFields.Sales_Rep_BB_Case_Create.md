@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">Core_IPS_Classification__c,Core_IPS_Customer_Visible__c,Core_Intel_Sup_Owner__c,Core_IPS_Restricted_Secret_Content__c,Core_Severity__c,Core_Severity_Reason__c,Core_CaseType__c,Core_End_Customer__c,Core_Customer_Reference_ID__c,Core_IPS_GEC_Case__c,Core_IPS_Knowledge_Base_Link__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_BackendID__c,Core_IPS_New_Backend_System__c,Status,Core_Sub_Status__c</value>
+        <value xsi:type="xsd:string">Core_IPS_Classification__c,Core_IPS_Customer_Visible__c,Core_Intel_Sup_Owner__c,Core_IPS_Restricted_Secret_Content__c,Core_Severity__c,Core_Severity_Reason__c,Core_CaseType__c,Core_End_Customer__c,Core_Customer_Reference_ID__c,Core_IPS_GEC_Case__c,Core_IPS_Knowledge_Base_Link__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_BackendID__c,Core_IPS_New_Backend_System__c,Status,Core_Sub_Status__c,Core_IPS_BES_Promote_Status__c</value>
     </values>
     <values>
         <field>Profile_Name__c</field>

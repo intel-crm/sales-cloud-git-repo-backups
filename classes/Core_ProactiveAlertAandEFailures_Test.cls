@@ -61,11 +61,7 @@ public class Core_ProactiveAlertAandEFailures_Test {
     
     static testMethod void processLogEntryTest() {
         Test.startTest();
-      //  list<string>listOfString=new list<string>();
-      //  listOfString.add('ProactiveAlert');
-         //listOfString.add('IntegrationReport');
         Core_ProactiveAlertAandEFailures.processLogEntry();
-        System.Assert(true, 'Process log entry method executed successfully');
         Test.stopTest();
     }
 }

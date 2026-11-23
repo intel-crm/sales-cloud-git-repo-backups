@@ -8,9 +8,6 @@ import { NavigationMixin } from 'lightning/navigation';
 import APPLICATION_ERROR from '@salesforce/label/c.Core_MDF_ApplicationErrorMessage';
 import Core_MDF_Comments_CharLimit from "@salesforce/label/c.Core_MDF_Comments_CharLimit";
 import checkClaimsAssociatedToCampaign from "@salesforce/apex/Core_MDF_IUPGM_ApprovalRequest.checkClaimsAssociatedToCampaign";
-//Gayathri-Related to Seperate section for outcome-based campaign story
-import CO_MARKETING_ACTIVITY_LABEL from '@salesforce/label/c.Core_MDF_CoMarketing_Activity';
-import OUTCOME_BASED_CAMPAIGN_LABEL from '@salesforce/label/c.Core_MDF_OutcomeBased_Campaign';
 
 	
 
@@ -57,24 +54,8 @@ export default class Core_MDF_Approval_Requests extends NavigationMixin(Lightnin
     isL1Approver = false;
     isL1Approval = false;
     
-    //made changes-Alekhya
-formatCurrency(value) {
-    if (value === null || value === undefined || value === '') return value;
-
-    let cleanValue = value.toString()
-        .replaceAll('$', '')
-        .replaceAll(',', '');
-
-    let numValue = Number(cleanValue);
-
-    if (Number.isNaN(numValue)) return value;
-
-    return '$' + numValue.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
-
+    
+    
     
 
     toggleSection(event) {
@@ -156,11 +137,7 @@ formatCurrency(value) {
             .then(data => {
                 if (data != '') {
                     this.recordsFromApex = JSON.parse(data);
-                    //Gayathri-Related to Seperate section for outcome-based campaign story
-                    //this.approvalRequestUI = JSON.parse(data);
-                    this.originalApprovalData = JSON.parse(data); // Store original data
-                    this.processApprovalRequestData();
-                    
+                    this.approvalRequestUI = JSON.parse(data);
                     let count = 0;
                     if (this.approvalRequestUI != null && this.approvalRequestUI.length > 0) {
                         this.approvalRequestUI.forEach(content => {
@@ -171,21 +148,6 @@ formatCurrency(value) {
                                 record.icon = content.icon;
                                 record.isSelected = false;
                                 this.recordsToFilter.push(record);
-                                //Made changes-ALekhya
-                               if (record.object === 'Budget') {
-                                // Format all field arrays
-                                 ['tableViewDetails', 'compactDetails', 'recordDetails'].forEach(detailType => {
-                                     if (record[detailType]) {
-                                         record[detailType].forEach(field => {
-                                         // Check if this field contains amount/currency data
-                                        if (field.value && field.value.toString().includes('$') && 
-                                            field.value.toString().match(/\d/)) {
-                                            field.value = this.formatCurrency(field.value);
-                                        }
-                                    });
-                             }
-                    });
-                }
                                 count++;
                                 if(record.object == 'Campaign'){
                                     campaignIdList.push(record.id);
@@ -193,7 +155,6 @@ formatCurrency(value) {
                                     if(field.label == 'ApprovalStage'){
                                         this.cmpObjToApprovalStageMap.set(record.id,field.value);
                                     }
-
                                  });
                                 }
                             });
@@ -232,62 +193,6 @@ formatCurrency(value) {
                 this.showToastMessage('Error',APPLICATION_ERROR, 'error', 'sticky');
             });
     }
-    //Gayathri-Related to Seperate section for outcome-based campaign story
-    // NEW METHOD: Process approval data to separate Co-Marketing Activity records
-    processApprovalRequestData() {
-        let processedData = [];
-        
-        this.originalApprovalData.forEach(objGroup => {
-            if (objGroup.objectName === CO_MARKETING_ACTIVITY_LABEL) {
-                // Separate Co-Marketing Activity records based on isIPAOutcomeBased flag
-                const separatedSections = this.separateCoMarketingRecords(objGroup);
-                processedData.push(...separatedSections);
-            } else {
-                processedData.push(objGroup);
-            }
-        });
-        
-        this.approvalRequestUI = processedData;
-    }
-
-    // NEW METHOD: Utility method to separate Co-Marketing records using isIPAOutcomeBased flag
-    separateCoMarketingRecords(coMarketingGroup) {
-        const sections = [];
-        const regularActivities = [];
-        const outcomeBasedCampaigns = [];
-        
-        coMarketingGroup.recordsToApprove.forEach((record) => {
-            if (record.isIPAOutcomeBased === true) {
-                outcomeBasedCampaigns.push(record);
-            } else {
-                regularActivities.push(record);
-            }
-        });
-        
-        if (regularActivities.length > 0) {
-            sections.push({
-                objectName: CO_MARKETING_ACTIVITY_LABEL,
-                count: regularActivities.length,
-                recordsToApprove: regularActivities,
-                icon: coMarketingGroup.icon,
-                userPermission: coMarketingGroup.userPermission,
-                byPassBulk: coMarketingGroup.byPassBulk
-            });
-        }
-        
-        if (outcomeBasedCampaigns.length > 0) {
-            sections.push({
-                objectName: OUTCOME_BASED_CAMPAIGN_LABEL,
-                count: outcomeBasedCampaigns.length,
-                recordsToApprove: outcomeBasedCampaigns,
-                icon: coMarketingGroup.icon,
-                userPermission: coMarketingGroup.userPermission,
-                byPassBulk: coMarketingGroup.byPassBulk
-            });
-        }
-        
-        return sections;
-    }
 
     refreshData(){
         location.reload();
@@ -315,19 +220,6 @@ formatCurrency(value) {
             if (record.id == this.specificContentId) {
                 this.contentDetailUI.push(record);
             }
-            // Format currency for the detailed view-made changes Alekhya
-            if (record.object === 'Budget') {
-                ['tableViewDetails', 'compactDetails', 'recordDetails'].forEach(detailType => {
-                if (record[detailType]) {
-                    record[detailType].forEach(field => {
-                    if (field.value && field.value.toString().includes('$') && 
-                        field.value.toString().match(/\d/)) {
-                        field.value = this.formatCurrency(field.value);
-                }
-            });
-        }
-    });
-}
         });
         this.showSpinner = false;
 
@@ -886,7 +778,7 @@ formatCurrency(value) {
         this.disableBulkApproveButton = false;
     }
 
-    /* handleNavigate(event) {
+    handleNavigate(event) {
         var selectedRecId = event.target.dataset.recordId;
         this[NavigationMixin.GenerateUrl]({
             type: 'standard__recordPage',
@@ -897,36 +789,7 @@ formatCurrency(value) {
         }).then(url => {
             window.open(url, "_blank");
         });
-    }*/
-    
-     handleNavigate(event) {
-    const selectedRecId = event.target.dataset.recordId;
-    
-    const selectedRecord = this.recordsToFilter.find(rec => rec.id === selectedRecId);
-    if (!selectedRecord) return;
-
-
-    if (selectedRecord.isIPAOutcomeBased) {
-
-        this[NavigationMixin.GenerateUrl]({
-            type: 'standard__navItemPage',
-            attributes: { apiName: 'Core_MDF_Outcome_Based_Campaign_Detail' },
-            state: { c__recordId: selectedRecId }
-        }).then(url => {
-            window.open(url, "_blank");
-        });
-
-    } else {
-
-        this[NavigationMixin.GenerateUrl]({
-            type: 'standard__recordPage',
-            attributes: { recordId: selectedRecId, actionName: 'view' }
-        }).then(url => {
-            window.open(url, "_blank");
-        });
-
     }
-}
 
     showToastMessage(title, message, variant, mode) {
         this.dispatchEvent(

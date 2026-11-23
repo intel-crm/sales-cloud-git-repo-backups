@@ -1057,6 +1057,12 @@
         <field>Contact.Core_Job_Function_Code__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__Languages__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__Level__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Local_First_Name__c</field>
     </columns>
     <columns>
@@ -1126,6 +1132,9 @@
         <field>Contact.Core_IPS_NDA_Acceptance_Date__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__No_longer_at_Company__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Personal_Email_Indicator__c</field>
     </columns>
     <columns>
@@ -1145,6 +1154,9 @@
     </columns>
     <columns>
         <field>Contact.Core_IPS_Region__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__Session_Id__c</field>
     </columns>
     <columns>
         <field>Contact.Core_IPS_Sub_Region__c</field>
@@ -1604,6 +1616,9 @@
     </columns>
     <columns>
         <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
+    </columns>
+    <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
         <field>Account.Core_MAG_Value__c</field>

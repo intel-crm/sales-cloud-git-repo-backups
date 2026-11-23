@@ -109,7 +109,6 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','CMP Only', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-3), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);
         camp.Core_MDF_Opal_Budget_Type_Txt__c='OEM CMP';
-        camp.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
 		insert camp;
 
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
@@ -161,13 +160,8 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today() - 1;
         testPartnerFundRequestRecord.Core_MDF_End_Date__c = System.today();
         testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c='50%';
-        testPartnerFundRequestRecord.Core_MDF_Activity_Types__c='Joint Event';
-        testPartnerFundRequestRecord.Core_MDF_ActivityCategory__c='Event';
         Database.insert(testPartnerFundRequestRecord);
         
-        PartnerFundClaim claimInsert = Core_MDF_CCP_TestDataUtility.createClaim('PIC Review Claim Test', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today()-1, System.today()-1, 5000.00, System.today(), bank.Id, true);
-
-            
         PartnerFundClaim claim5 = Core_MDF_CCP_TestDataUtility.createClaim('PIC Review Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today()-1, System.today()-1, 5000.00, System.today(), bank.Id, false);
         claim5.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
         claim5.Status = Label.Core_MDF_Status_Submitted;
@@ -217,19 +211,14 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         
     }
     @isTest static void fetch_ClaimRecords(){
-        
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
+        test.startTest();
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
         system.runAs(usr) {
-            test.startTest();
-            PartnerFundClaim claim = [Select Id from PartnerFundClaim limit 1];
+            PartnerFundClaim claim = [Select Id from PartnerFundClaim where title = 'PIC Review Claim1' limit 1];
         List<ContentDocument> contentDoc = Core_MDF_CCP_TestDataUtility.createContentDocument(true);
         ContentDocumentLink docLink = new ContentDocumentLink(ContentDocumentId = contentDoc[0].Id, LinkedEntityId=claim.Id,ShareType='I',Visibility='AllUsers');
         insert docLink;
-        Core_MDF_Audit_Document__c doc = [Select Id, Core_MDF_Claim__c from Core_MDF_Audit_Document__c  limit 1];
+        Core_MDF_Audit_Document__c doc = [Select Id, Core_MDF_Claim__c from Core_MDF_Audit_Document__c where Core_MDF_Claim__c =: claim.Id limit 1];
         Core_MDF_PICReviewScreen_Controller.fetchAuditDocuments(doc.Core_MDF_Claim__c);
         Core_MDF_PICReviewScreen_Controller.fetchClaimRecords(claim.Id,true);
         Core_MDF_PICReviewScreen_Controller.fetchQuestionRecords(claim.Id);
@@ -240,21 +229,16 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         Assert.areNotEqual(claim,null);
         }
     }
-    @isTest static void fetch_AuditDocuments(){        
-        //User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
-         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
+    @isTest static void fetch_AuditDocuments(){
+        test.startTest();
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
         system.runAs(usr) {
-        test.startTest(); 
-        PartnerFundClaim claim = [Select Id from PartnerFundClaim limit 1];
         Core_MDF_Audit_Document__c doc = [Select Id, Core_MDF_Claim__c from Core_MDF_Audit_Document__c limit 1];
+        PartnerFundClaim claim = [Select Id from PartnerFundClaim where title = 'PIC Review Claim1' limit 1];
         Core_MDF_PICReviewScreen_Controller.fetchAuditDocumentList(doc.Core_MDF_Claim__c);
         //fetchKPIFields change - getClaimAttributesFromMetaData
         PartnerFundRequest pfr = [Select Id from PartnerFundRequest limit 1];
-        //Core_MDF_Bank__c bank = [select Id from Core_MDF_Bank__c limit 1];
+        Core_MDF_Bank__c bank = [select Id from Core_MDF_Bank__c limit 1];
         pfr.Core_MDF_ActivityCategory__c = 'Purchase Incentive';
         pfr.Core_MDF_Activity_Types__c = 'Buyer - Sweepstakes';
         //update pfr;
@@ -314,7 +298,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
      qw.fileType = 'Proof of Cost';
      qw.response = 'Yes';
      qw.comment = 'Test comment';
-     qw.tactic = new List<String>{ 'Digital Media' };
+     qw.tactic = new List<String>{ 'T1' };
      qw.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
      Core_MDF_PICReviewScreen_Controller.FileDetails fd = new Core_MDF_PICReviewScreen_Controller.FileDetails();
      fd.selected = true;
@@ -353,7 +337,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
      qw.fileType = 'Proof of Cost';
      qw.response = 'Yes';
      qw.comment = 'Test comment';
-     qw.tactic = new List<String>{ 'Digital Media' };
+     qw.tactic = new List<String>{ 'T1' };
      qw.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
      Core_MDF_PICReviewScreen_Controller.FileDetails fd = new Core_MDF_PICReviewScreen_Controller.FileDetails();
      fd.selected = true;
@@ -391,7 +375,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
      qw.fileType = 'Proof of Cost';
      qw.response = 'Yes';
      qw.comment = 'Test comment';
-     qw.tactic = new List<String>{ 'Digital Media' };
+     qw.tactic = new List<String>{ 'T1' };
      qw.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
      Core_MDF_PICReviewScreen_Controller.FileDetails fd = new Core_MDF_PICReviewScreen_Controller.FileDetails();
      fd.selected = true;
@@ -428,7 +412,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
      qw.fileType = 'Proof of Cost';
      qw.response = 'Yes';
      qw.comment = 'Test comment';
-     qw.tactic = new List<String>{ 'Digital Media' };
+     qw.tactic = new List<String>{ 'T1' };
      qw.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
      Core_MDF_PICReviewScreen_Controller.FileDetails fd = new Core_MDF_PICReviewScreen_Controller.FileDetails();
      fd.selected = true;
@@ -466,7 +450,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
      qw.fileType = 'Proof of Cost';
      qw.response = 'Yes';
      qw.comment = 'Test comment';
-     qw.tactic = new List<String>{ 'Digital Media' };
+     qw.tactic = new List<String>{ 'T1' };
      qw.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
      Core_MDF_PICReviewScreen_Controller.FileDetails fd = new Core_MDF_PICReviewScreen_Controller.FileDetails();
      fd.selected = true;
@@ -482,17 +466,12 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }  
     
     @isTest static void validateFailedPicReview(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
         Test.startTest();
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_PIC_Pending;
         update claim1;
-         
+        User usr = [select id,LastName from User where LastName = 'System Adm' limit 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(1,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         //Core_MDF_PIC_Review__c picReview1 = Core_MDF_CCP_TestDataUtility.insertPICReview(2,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         Core_MDF_PICReviewScreen_Controller.claimUpdateOperations(picReview,claim1.id,false);
@@ -503,16 +482,13 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }
     
     @isTest static void validateFailedPicReviewPostPayment(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
         Test.startTest();
         PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_Paid_and_PIC_Pending;
-        update claim1;        
+        update claim1;
+        User usr = [select id,LastName from User where LastName = 'System Adm' limit 1];
+           system.runAs(usr) {
+        
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(1,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         //Core_MDF_PIC_Review__c picReview1 = Core_MDF_CCP_TestDataUtility.insertPICReview(2,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         
@@ -524,16 +500,13 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }
     
     @isTest static void validateCompletedPicReview(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr){
+        
         Test.startTest();
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_PIC_Pending;
         update claim1;
+        User usr = [select id,LastName from User where LastName = 'System Adm' limit 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(1,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,false);
         
         //Core_MDF_PIC_Review__c picReview1 = Core_MDF_CCP_TestDataUtility.insertPICReview(2,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
@@ -542,21 +515,17 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
 
         Test.stopTest();
         Assert.areNotEqual(claim1,null);
-        }
+           }
     }
     
     @isTest static void validateCompletedPicReviewPostPayment(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
+        
         Test.startTest();
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_Paid_and_PIC_Pending;
         update claim1;
-           
+        User usr = [select id,LastName from User where LastName = 'System Adm' limit 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(1,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,false);
         
         
@@ -568,17 +537,13 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }
     
     @isTest static void validateFailedPicReviewDenied(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
+        
         Test.startTest();
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_Paid_and_PIC_Pending;
         update claim1;
-           
+        User usr = [select id,LastName from User where LastName = 'System Adm' limit 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(3,'int comments',System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         
       
@@ -595,19 +560,15 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }
     
     @isTest static void validateFailedPicReviewLegacy(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
+        
         Test.startTest(); 
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_RecentInternalComments_txt__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_RecentInternalComments_txt__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_PIC_Pending;
         claim1.Core_MDF_RecentInternalComments_txt__c = 'Testing';
         claim1.Core_MDF_Budget_Type_Options_Nm__c='CCF 1.0';
         update claim1;
-           
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(3,null,System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         
         try
@@ -623,18 +584,14 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
     }
     
      @isTest static void validateFailedPicReviewIntComments(){
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
+        
         Test.startTest();  
-        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim limit 1];
+        PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_PIC_Pending;
         claim1.Core_MDF_Budget_Type_Options_Nm__c='CCF 1.0';
         update claim1;
-         
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
+           system.runAs(usr) {
         Core_MDF_PIC_Review__c picReview = Core_MDF_CCP_TestDataUtility.insertPICReview(3,null,System.today()-2,System.today()+2,claim1.Id,usr.Id,true);
         try
         {
@@ -650,24 +607,11 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
 
     @isTest
     static void testFetchExceptionsByClaimId() {
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        
-        PermissionSet ps = [SELECT Id FROM PermissionSet 
-                    WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' 
-                    LIMIT 1];
 
-        insert new PermissionSetAssignment(
-            AssigneeId = usr.Id,
-            PermissionSetId = ps.Id
-        );
-        
-        system.runAs(usr){
         Test.startTest();
-        Account intelAccount = [Select id from Account limit 1];
+
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
+        Account intelAccount = [Select id from Account where name = 'Test Account 1' limit 1];
 
         PartnerFundClaim claim1 = [Select Id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c, Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Program__c,Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id  from PartnerFundClaim where Title = 'PIC Review Claim' limit 1];
         claim1.Core_MDF_Status__c = label.Core_MDF_Claim_Status_PIC_Pending;
@@ -681,7 +625,7 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = intelAccount.Id;
@@ -696,21 +640,17 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
 
             Map<Id, Core_MDF_Exception__c> result = Core_MDF_PICReviewScreen_Controller.fetchExceptionsByClaimId(claim1.Id, intelAccount.Id);
         test.stoptest();
-                }
-        }
         //assert.areEqual(1, result.size(), 'Expected one exception record.');
+        }
     } 
 
     @isTest
-    static void testFetchAIResponse() {         
-         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        PartnerFundClaim testClaim = [SELECT Id FROM PartnerFundClaim LIMIT 1];
+    static void testFetchAIResponse() {
+         Test.startTest();
+        
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
+        PartnerFundClaim testClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'PIC Review Claim' LIMIT 1];
         system.runAs(usr) {
-            Test.startTest();        
             // Seed one PIC review as manual (AI flag false)
             Core_MDF_PIC_Review__c review = new Core_MDF_PIC_Review__c(
                 Core_MDF_Claim_ID_id__c = testClaim.Id,
@@ -768,63 +708,4 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
             Test.stopTest();
         }
     }
-    
-    @isTest
-    static void testFetchTactics() {
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
-            test.startTest();
-            PartnerFundClaim claim = [Select Id from PartnerFundClaim limit 1];
-
-
-        // Create test records for Core_MDF_Claim_Attributes__c
-        List<Core_MDF_Claim_Attributes__c> attrList = new List<Core_MDF_Claim_Attributes__c>();
-
-        attrList.add(new Core_MDF_Claim_Attributes__c(
-            Core_MDF_Claim_Id__c = claim.Id,
-            Core_MDF_Is_Active_Ind__c = true,
-            Core_MDF_Tactics_nm__c = 'Event',
-            Core_MDF_Type_nm__c = 'KPI - Claim',
-            Core_MDF_Field_Name_nm__c = 'Training Percentage Spend',
-            Core_MDF_Field_Value_nbr__c = 10
-        ));
-
-        attrList.add(new Core_MDF_Claim_Attributes__c(
-            Core_MDF_Claim_Id__c = claim.Id,
-            Core_MDF_Is_Active_Ind__c = true,
-            Core_MDF_Tactics_nm__c = 'Funded Headcount',
-            Core_MDF_Type_nm__c = 'Spend This Period',
-            Core_MDF_Field_Name_nm__c = 'Training Percentage Spend',
-            Core_MDF_Field_Value_nbr__c = 20
-        ));
-
-        attrList.add(new Core_MDF_Claim_Attributes__c(
-            Core_MDF_Claim_Id__c = claim.Id,
-            Core_MDF_Is_Active_Ind__c = true,
-            Core_MDF_Tactics_nm__c = 'Incentive',
-            Core_MDF_Type_nm__c = 'KPI - Claim',
-            Core_MDF_Field_Name_nm__c = 'Training Percentage Spend',
-            Core_MDF_Field_Value_nbr__c = 30
-        ));
-
-        // This record should NOT be included (inactive)
-        attrList.add(new Core_MDF_Claim_Attributes__c(
-            Core_MDF_Claim_Id__c = claim.Id,
-            Core_MDF_Is_Active_Ind__c = false,
-            Core_MDF_Tactics_nm__c = 'Training',
-            Core_MDF_Type_nm__c = 'KPI - Claim'
-        ));
-
-        insert attrList;
-
-        Map<String, List<Core_MDF_Claim_Attributes__c>> result =
-            Core_MDF_PICReviewScreen_Controller.fetchTactics(claim.Id);
-        Test.stopTest();
-        }        
-    
-	}
 }

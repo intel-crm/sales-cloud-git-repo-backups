@@ -5,7 +5,7 @@
         <ccEmails>IntelQuoteRequest@intel.com</ccEmails>
         <description>Initial Submission Action for Quote Approval</description>
         <protected>false</protected>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CPQ_Email_Templates/Pricing_QuoteLineApprovalInitial_Notify</template>
     </alerts>
@@ -21,7 +21,7 @@
             <field>Pricing_Sales_Rep__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CPQ_Email_Templates/Pricing_QuoteLineRejectedNotification</template>
     </alerts>

@@ -155,7 +155,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Sales_Legacy_License_Group_Id__c</fullName>
         <caseSensitive>false</caseSensitive>
@@ -178,6 +178,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sales_License_Generator__c</fullName>
+        <label>Sales License Generator</label>
+        <referenceTo>Sales_License_Generator__c</referenceTo>
+        <relationshipLabel>Sales License Groups</relationshipLabel>
+        <relationshipName>License_Groups</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
         <fullName>Sales_License_Parameter_txt__c</fullName>
         <externalId>false</externalId>
         <label>License Parameter</label>
@@ -197,6 +209,7 @@
         <columns>Sales_License_Description_dsc__c</columns>
         <columns>Sales_Legacy_License_Group_Id__c</columns>
         <columns>Sales_License_Parameter_txt__c</columns>
+        <columns>Sales_License_Generator__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -206,6 +219,6 @@
     </nameField>
     <pluralLabel>Sales License Groups</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

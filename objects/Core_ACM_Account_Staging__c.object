@@ -216,11 +216,6 @@
                     <default>false</default>
                     <label>IPSECBFlagCheck</label>
                 </value>
-                <value>
-                    <fullName>REMOVE_MPSHARE</fullName>
-                    <default>false</default>
-                    <label>REMOVE_MPSHARE</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

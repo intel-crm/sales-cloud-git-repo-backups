@@ -1,6 +1,6 @@
 public with sharing class caseAttachmentLinkFileController {
     public static List<uFile> fileList = new List<uFile>();
-    public static List <Core_IPS_File_Assignment__c> coreIPSFILEAssignLst = new List<Core_IPS_File_Assignment__c>();
+    public static List <Core_IPS_File_Assignment__c> CoreIPSFILEAssignLst = new List<Core_IPS_File_Assignment__c>();
     public static case caseObj;
     
     @AuraEnabled(cacheable = true)
@@ -10,43 +10,37 @@ public with sharing class caseAttachmentLinkFileController {
         if(case.SObjectType.getDescribe().isAccessible()){
             caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
         }
-		/*Start -- Tushar -- 16/06/2026 --- CRUD Added as part of vulnerability fix. */
-        Schema.DescribeFieldResult fieldDescribe = 
-            Case.Core_IPS_Supported_Product__c.getDescribe();
-        if (!fieldDescribe.isAccessible()) {
-            return null;
-        }
-        /*End -- Tushar -- 16/06/2026 --- added as part of vulnerability fix. */
+        
         if(caseObj.Core_IPS_Supported_Product__c != null){
             //FLS Check Added - Madhuri
             if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-                coreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
+                CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
                                         WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
             }
         }
         else {           
             return null;
         }
-        Set <ID> cIPSFAID = new Set<ID>();
-        if(coreIPSFILEAssignLst != null && coreIPSFILEAssignLst.size() > 0){
-            for(Core_IPS_File_Assignment__c cIPSFA : coreIPSFILEAssignLst){
-                if(cIPSFA.Core_IPS_File_Upload_Master__c != null){
-                    cIPSFAID.add(cIPSFA.Core_IPS_File_Upload_Master__c);
+        Set <ID> CIPSFAID = new Set<ID>();
+        if(CoreIPSFILEAssignLst != null && CoreIPSFILEAssignLst.size() > 0){
+            for(Core_IPS_File_Assignment__c CIPSFA : CoreIPSFILEAssignLst){
+                if(CIPSFA.Core_IPS_File_Upload_Master__c != null){
+                    CIPSFAID.add(CIPSFA.Core_IPS_File_Upload_Master__c);
                 }
             }
         } else {
             //No Files found to link
             return null;
         }
-        Set <String> coreFileGUID_Existing = new Set<String>();
-        List<Core_IPS_Case_Attachments__c> existingCIPSCaseAttLst;
+        Set <String> CoreFileGUID_Existing = new Set<String>();
+        List<Core_IPS_Case_Attachments__c> ExistingCIPSCaseAttLst;
         //FLS Check Added - Madhuri
         if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
-            existingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
+            ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
         }
         
-        for(Core_IPS_Case_Attachments__c cIPSFileAssignGUID : existingCIPSCaseAttLst){
-            coreFileGUID_Existing.add(cIPSFileAssignGUID.Core_File_GUID__c);
+        for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
+            CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
         }
         //Check File Upload Master for related records
         List<Core_IPS_File_Upload_Master__c> CIPSUpMasLst = new List<Core_IPS_File_Upload_Master__c>(); 
@@ -55,7 +49,7 @@ public with sharing class caseAttachmentLinkFileController {
             CIPSUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
                             Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, 
                             Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c
-                            WHERE id IN :cIPSFAID and Core_Upload_Status__c = 'Complete' and 
+                            WHERE id IN :CIPSFAID and Core_Upload_Status__c = 'Complete' and 
                             Core_Expiration_Date__c >: datetime.now() and 
                             Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate]; 
         }

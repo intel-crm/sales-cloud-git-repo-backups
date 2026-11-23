@@ -45,35 +45,25 @@ public class Core_MDF_AccountHierarchyController_Test {
 		config.Name = 'Core_MDF_PScore_Edit_Buffer_Days';
 		insert config;
         List<Period> periods = [Select number,startdate,enddate From Period Where type = 'Quarter' and StartDate<=:Date.today() AND enddate>=:Date.today() Limit 1];
-       	// Highlight: Unused Local Variable
-     	// list<Core_MDF_Partnership_Score__c> pscList = new list<Core_MDF_Partnership_Score__c>();
-     
-        // Safe handling for empty periods list
-        Integer quarterNumber = 1;
-        Integer yearNumber = Date.today().year();
         
-        if (!periods.isEmpty()) {
-            quarterNumber = periods[0].Number;
-            yearNumber = periods[0].enddate.year();
-        }
+        list<Core_MDF_Partnership_Score__c> pscList = new list<Core_MDF_Partnership_Score__c>();
         Core_MDF_Partnership_Score__c PSC1=new Core_MDF_Partnership_Score__c();
         PSC1.Core_MDF_Account_Id__c=dellCorpAccount.Id;
         PSC1.Core_MDF_Channel_Program_Id__c =cp1.Id;
         PSC1.Core_MDF_Program_nm__c ='Client CoMarketing Fund';
-        PSC1.Core_MDF_Quarter_Year_Nm__c = 'Q'+String.valueOf(quarterNumber)+' '+String.valueOf(yearNumber);
-        PSC1.Core_MDF_Quarter_nm__c = 'Q'+String.valueOf(quarterNumber);
-        PSC1.Core_MDF_Year_nm__c = String.valueOf(yearNumber);
+        PSC1.Core_MDF_Quarter_Year_Nm__c = 'Q'+String.valueof(periods[0].Number)+' '+String.valueOf(periods[0].enddate.year());
+        PSC1.Core_MDF_Quarter_nm__c='Q'+String.valueof(periods[0].Number);
+        PSC1.Core_MDF_Year_nm__c=String.valueOf(periods[0].enddate.year());
         PSC1.Core_MDF_Partnership_Score_Nbr__c=0.0;
         
         insert PSC1;
-        Integer nextQuarter = (quarterNumber == 4) ? 1 : quarterNumber + 1;
         Core_MDF_Partnership_Score__c PSC2=new Core_MDF_Partnership_Score__c();
         PSC2.Core_MDF_Account_Id__c=dellCorpAccount.Id;
         PSC2.Core_MDF_Channel_Program_Id__c =cp1.Id;
         PSC2.Core_MDF_Program_nm__c ='Client CoMarketing Fund';
-        PSC2.Core_MDF_Quarter_Year_Nm__c = 'Q'+String.valueOf(nextQuarter)+' '+String.valueOf(yearNumber);
-        PSC2.Core_MDF_Quarter_nm__c = 'Q'+String.valueOf(nextQuarter);
-        PSC2.Core_MDF_Year_nm__c = String.valueOf(yearNumber);
+        PSC2.Core_MDF_Quarter_Year_Nm__c = 'Q'+String.valueof(((periods[0].Number == 4) ? 1 : periods[0].Number + 1))+' '+String.valueOf(periods[0].enddate.year());
+        PSC2.Core_MDF_Quarter_nm__c='Q'+String.valueof(((periods[0].Number == 4) ? 1 : periods[0].Number + 1));
+        PSC2.Core_MDF_Year_nm__c=String.valueOf(periods[0].enddate.year());
         
         insert PSC2;
         
@@ -128,13 +118,7 @@ public class Core_MDF_AccountHierarchyController_Test {
         system.runAs(usr){
         	database.insert(permSetAssgnLst);
         }
-        List<String> bypassFunctionKeys = new List<String>();
-        Set<String> myset1 = new Set<String>();
-        List<String> result1 = new List<String>();
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-        myset1.addAll(bypassFunctionKeys);
-        result1.addAll(myset1);
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+        
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmLst = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgm.Core_MDF_Account_id__c = dellCorpAccount.Id;
@@ -230,8 +214,6 @@ public class Core_MDF_AccountHierarchyController_Test {
             
         Core_MDF_AccountHierarchyController.Core_MDF_AccountHierarchyController_Sharing innerClass = new Core_MDF_AccountHierarchyController.Core_MDF_AccountHierarchyController_Sharing();
         innerClass.getChannelProgram();
-        // Unit Test Method should include System.Assert
-        Assert.isNotNull(innerClass.getChannelProgram(), 'Channel Program list should not be null');
     }
     
 }

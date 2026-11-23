@@ -46,6 +46,9 @@
         <field>Case.Core_Contact_Name__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__Languages__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_Comment__c</field>
     </columns>
     <columns>

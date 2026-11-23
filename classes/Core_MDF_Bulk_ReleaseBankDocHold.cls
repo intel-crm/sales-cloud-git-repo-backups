@@ -84,13 +84,12 @@ public with sharing class Core_MDF_Bulk_ReleaseBankDocHold {
      Description:        Bulk Release Hold logic called on click of Release Hold button,if record is less than or equal to 30 for normal processing
      @Added By:          Accenture - Bishal - 15/03/2021
      Modified By:        Date:       Changes:
-     RP                  Added Core_MDF_Has_Sub_Claims_Ind__c
      ******************************************************************************************************/
 
     public static void immediateReleaseBankDocHold(List<Id> claimIds){
         
                    List<PartnerFundClaim> claimsToReleaseBankDocHold = new List<PartnerFundClaim>();
-				   claimsToReleaseBankDocHold = [select id, Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Audit_Hold__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Status__c, Core_MDF_Claim_Previous_Status__c, Core_MDF_Has_Sub_Claims_Ind__c from PartnerFundClaim where Core_MDF_Bank_Doc_Hold_Ind__c = true and Core_MDF_Audit_Hold__c = false and Core_MDF_Status__c = 'Hold' and id in:claimIds];
+				   claimsToReleaseBankDocHold = [select id, Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Audit_Hold__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Status__c, Core_MDF_Claim_Previous_Status__c from PartnerFundClaim where Core_MDF_Bank_Doc_Hold_Ind__c = true and Core_MDF_Audit_Hold__c = false and Core_MDF_Status__c = 'Hold' and id in:claimIds];
 				   List<String> releaseReasonList = new List<String>();
               //Added the bank document hold string to pass to the releaseHold method
               releaseReasonList.add(Label.Core_MDF_Bank_Document_Hold);

@@ -1,4 +1,4 @@
-public without sharing class Core_OpportunityDataFetcher {
+public class Core_OpportunityDataFetcher {
     
     public class OpportunityWrapper implements Pricing_RestAPI_SuccessContent {
         public Id oppId;
@@ -122,12 +122,15 @@ public without sharing class Core_OpportunityDataFetcher {
                     
                     wrappedOpp.partners.add(wrappedPartner);
                 }
+                //system.debug('wrapper --before'+wrappedOpp);
                 wrappedOpportunities.add(wrappedOpp);
             //}
             //else
             //    TotSpareCount += 1;
         }
+        //system.debug('wrapper --'+wrappedOpportunities);
         //String wrappedOpp = JSON.serializePretty(wrappedOpportunities);
+        //system.debug(wrappedOpp);
         return wrappedOpportunities;
     }
     
@@ -138,7 +141,9 @@ public without sharing class Core_OpportunityDataFetcher {
         String queryForUser = 'SELECT id from User where name LIKE \'%' + String.escapeSingleQuotes(sellerName) + '%\' LIMIT 1';
         List<User> users = Database.query(queryForUser);
         String userId = users[0].Id;
+        system.debug('userId:'+userId);
         
+        system.debug('accountId:'+accountId);
         String query = 'SELECT Id, StageName,Name, Description, Core_Risk_Reason__c, Core_Status_Update__c, ' +
                        '(SELECT Quantity, UnitPrice, TotalPrice, Core_BU_Short_Name__c, Product2.Name, Product2.Id, ' +
                        'Core_Competitor__c, Core_Competitor_Product__c, Core_OtherCompetitor_Product_Txt__c,Core_Loss_Cancel_Details__c, Core_Loss_Cancel_Reason__c,Core_Risk_Category__c, Core_Risk_Detail__c '+           
@@ -286,6 +291,7 @@ public without sharing class Core_OpportunityDataFetcher {
         feedList = getChatterFeeds(oppList);
         
         wrappedOpportunities = getWrappedOppData(oppList,taskList,feedList);
+        system.debug(wrappedOpportunities);
         return wrappedOpportunities;
     }
     
@@ -300,6 +306,7 @@ public without sharing class Core_OpportunityDataFetcher {
         feedList = getChatterFeeds(oppList);
         wrappedOpportunities = getWrappedOppData(oppList,taskList,feedList);
         //wrappedOpportunities = getOpportunityData(accountId);
+        system.debug(wrappedOpportunities);
         return wrappedOpportunities;
     }
     
@@ -313,6 +320,7 @@ public without sharing class Core_OpportunityDataFetcher {
         taskList = getTasks(oppList);
         feedList = getChatterFeeds(oppList);
         wrappedOpportunities = getWrappedOppData(oppList,taskList,feedList);
+        system.debug(wrappedOpportunities);
         return wrappedOpportunities;
     }
     
@@ -326,6 +334,7 @@ public without sharing class Core_OpportunityDataFetcher {
         taskList = getTasks(oppList);
         feedList = getChatterFeeds(oppList);
         wrappedOpportunities = getWrappedOppData(oppList,taskList,feedList);
+        system.debug(wrappedOpportunities);
         return wrappedOpportunities;
     }
     
@@ -382,12 +391,15 @@ public without sharing class Core_OpportunityDataFetcher {
                     
                     wrappedOpp.partners.add(wrappedPartner);
                 }
+                //system.debug('wrapper --before'+wrappedOpp);
                 wrappedOpportunities.add(wrappedOpp);
             //}
             //else
               //  TotSpareCount += 1;
         }
+        //system.debug('wrapper --'+wrappedOpportunities);
         //String wrappedOpp = JSON.serializePretty(wrappedOpportunities);
+        system.debug(wrappedOpportunities);
         return wrappedOpportunities;
     }
     

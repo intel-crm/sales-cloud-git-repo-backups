@@ -2023,7 +2023,7 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
     </fields>
     <fields>
         <fullName>CPT_Total_Allocated__c</fullName>
-        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Sales_OKR_Allocated__c + CPT_Sales_Team_Goal_Allocated__c+ CPT_MarVol_Allocated__c</formula>
+        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Sales_OKR_Allocated__c + CPT_Sales_Team_Goal_Allocated__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Total (Allocated)</label>
         <precision>18</precision>

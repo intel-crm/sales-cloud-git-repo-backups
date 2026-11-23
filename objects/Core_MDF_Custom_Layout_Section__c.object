@@ -220,11 +220,6 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
                     <default>false</default>
                     <label>Detail Layout</label>
                 </value>
-                <value>
-                    <fullName>API Create</fullName>
-                    <default>false</default>
-                    <label>API Create</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

@@ -70,7 +70,7 @@ public without sharing class Core_MDF_Budget_Approval {
     @AuraEnabled
     public static String approveRejectBudget(UserPermissionApproval mapValues){
         List<Approval.ProcessWorkitemRequest> processWorkItemReqList = new  List<Approval.ProcessWorkitemRequest>();
-
+        string ANOTHER_USER_RESPONDED = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Another_User_Responded');
         String message = '';
         String budgetId = '';
         try{

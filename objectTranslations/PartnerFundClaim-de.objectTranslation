@@ -153,10 +153,6 @@
         <name>Core_MDF_AccountCompany__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_nm__c</name>
-    </fields>
-    <fields>
         <help>Die Kategorie für diese Co-Marketing-Aktivität</help>
         <label>Aktionskategorie</label>
         <name>Core_MDF_Activity_Category__c</name>
@@ -202,10 +198,6 @@
         <help>Startdatum der Ausführung</help>
         <label>Startdatum der Ausführung</label>
         <name>Core_MDF_Ad_Run_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Amount Percentage --></label>
-        <name>Core_MDF_Amount_Percentage__c</name>
     </fields>
     <fields>
         <help>Anzuwendender MwSt.-Prozentsatz</help>
@@ -391,11 +383,6 @@
         <name>Core_MDF_Claim_Hold_Type_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Super Claim --></label>
-        <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Claim Previous Status --></label>
         <name>Core_MDF_Claim_Previous_Status__c</name>
         <picklistValues>
@@ -443,10 +430,6 @@
             <translation><!-- Paid and Resubmission Required --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation><!-- Payment Clearance Processing --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation><!-- Payment Due --></translation>
         </picklistValues>
@@ -473,10 +456,6 @@
         <picklistValues>
             <masterLabel>Pending Review</masterLabel>
             <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Resubmission Required</masterLabel>
@@ -647,10 +626,6 @@
     <fields>
         <label>Frequenz</label>
         <name>Core_MDF_Frequency_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Has Sub Claims --></label>
-        <name>Core_MDF_Has_Sub_Claims_Ind__c</name>
     </fields>
     <fields>
         <label>Wie viele Bildschirme</label>
@@ -1319,10 +1294,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
             <translation>Bezahlt und erneute Einreichung erforderlich</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation>Verarbeitung der Zahlungsfreigabe</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation>Fällige Zahlung</translation>
         </picklistValues>
@@ -1351,10 +1322,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
             <translation>Prüfung noch nicht erfolgt</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Resubmission Required</masterLabel>
             <translation>Erneute Einreichung erforderlich</translation>
         </picklistValues>
@@ -1379,10 +1346,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
     <fields>
         <label><!-- Approval Alert --></label>
         <name>Core_MDF_Submit_For_Approval_Alert_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim Status --></label>
-        <name>Core_MDF_Super_Claim_Status_nm__c</name>
     </fields>
     <fields>
         <label><!-- SurePay Processed Ind --></label>
@@ -1429,11 +1392,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
     <fields>
         <label><!-- Total Review Duration(Minutes) --></label>
         <name>Core_MDF_Total_Review_Duration_Mins_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
-        <label><!-- Total Offset Amount (USD) --></label>
-        <name>Core_MDF_Total_SubClaim_Offset_Amt__c</name>
     </fields>
     <fields>
         <label>Antragstyp</label>
@@ -1565,8 +1523,18 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
     <gender>Feminine</gender>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>Kanal MDF Kontobasiert</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>Kanal MDF-Vorschlag Basierend</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1622,10 +1590,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Amount_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- An application error occurred. Please try again. If error still persists, please contact Support Services. --></errorMessage>
-        <name>Core_MDF_BlockPendingReviewToDraft</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Das Start- und Enddatum eines Antrags kann nur einen Zeitraum von 3 Monaten abdecken.</errorMessage>
         <name>Core_MDF_ClaimEndDateBetween3Months</name>
     </validationRules>
@@ -1654,15 +1618,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Enddatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
-        <name>Core_MDF_EndDateValidation_OutcomeBased</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Sie können diese Ergebnisbasierte Werbekampagne nicht verwenden, da das zugehörige Account inaktiv ist</errorMessage>
-        <name>Core_MDF_InactiveAccountValidation_Outco</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You cannot use this Activity as the account over the Activity is inactive --></errorMessage>
+        <errorMessage><!-- You cannot use this activity as the account over the activity is inactive --></errorMessage>
         <name>Core_MDF_Inactive_Account_Validation</name>
     </validationRules>
     <validationRules>
@@ -1690,10 +1646,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Ein Antrag kann nicht für eine Ergebnisbasierte Werbekampagne mit dem Status Abgeschlossen/Abgebrochen gestellt werden.</errorMessage>
-        <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Mit dieser Eskalation wurde bereits ein Anspruch erstellt. Wenn zusätzliche Ansprüche eingereicht werden müssen, lösen Sie bitte eine neue Eskalation aus.</errorMessage>
         <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
     </validationRules>
@@ -1706,16 +1658,8 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Die Antragserstellung ist blockiert, da die Ergebnisbasierte Werbekampagne &apos;In Bearbeitung&apos; genehmigt werden muss.</errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Ein Antrag kann nicht für Aktivitäten mit dem Status geschlossen/storniert gestellt werden.</errorMessage>
         <name>Core_MDF_Restrict_ClaimforClosedActivity</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Super Claims having sub claims can be set to only Draft, Submitted or Rejected status. --></errorMessage>
-        <name>Core_MDF_Restrict_Status_For_Super_Claim</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim Status cannot be updated in its current status --></errorMessage>
@@ -1736,10 +1680,6 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
     <validationRules>
         <errorMessage>Bitte geben Sie ein Ausführungsstartdatum ein, das in den geschätzten Datumsbereich der Aktivität fällt.</errorMessage>
         <name>Core_MDF_StartDateValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Bitte geben Sie ein Startdatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
-        <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>
         <errorMessage>Startdatum der Ausführung darf nicht hinter dem Enddatum der Ausführung liegen</errorMessage>

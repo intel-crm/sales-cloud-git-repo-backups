@@ -32,7 +32,6 @@ Modified By:        Date:       Changes:
     Boolean isCCRMUserOrPICReviewer = false;
     Boolean hasClaimUndergonePICReview = false;
     Boolean ipaOutcomeBasedClaim = false;
-    Boolean finalOutcomeBasedClaim = false;  //Roshan - Final Outcome Based New Status
     try {
       userDetails = getUserDetails();
       picReviewLocalizedFieldAPIName = getPICReviewLocalizedFieldAPIName(userDetails.userLanguageLocaleKey);
@@ -43,11 +42,7 @@ Modified By:        Date:       Changes:
           for(Core_MDF_PIC_Review__c picReview : picReviewList) {
               picReviewIds.add(picReview.Id);
               if(!ipaOutcomeBasedClaim) {
-                ipaOutcomeBasedClaim = (picReview.Core_MDF_Claim_ID_id__r.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && picReview.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c) ? true : false;
-              }
-              //Roshan - Final Outcome Based New Status
-              if (!finalOutcomeBasedClaim) {
-                finalOutcomeBasedClaim = picReview.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c ? true : false;
+                ipaOutcomeBasedClaim = (picReview.Core_MDF_Claim_ID_id__r.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && picReview.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c) ? true : false;  //Roshan
               }
           }
           if(!picReviewIds.isEmpty()) {
@@ -62,8 +57,6 @@ Modified By:        Date:       Changes:
       wrapper.isCCRMUserOrPICReviewer = isCCRMUserOrPICReviewer;
       wrapper.hasClaimUndergonePICReview = hasClaimUndergonePICReview;
       wrapper.ipaOutcomeBasedClaim = ipaOutcomeBasedClaim;
-      wrapper.finalOutcomeBasedClaim = finalOutcomeBasedClaim;  //Roshan - Final Outcome Based New Status
-
     } catch (Exception e) {throw new AuraHandledException(e.getMessage());
     }
     return wrapper;
@@ -84,45 +77,29 @@ Modified By:        Date:       Changes:
     String userLanguageKey = userLangKey;
     try {
       if (userLanguageKey != null && userLanguageKey != '') {
-            localizedFieldList = [SELECT Core_MDF_LanguageLocalKey__c,Core_MDF_PIC_Review_Result_Field_Name__c FROM Core_MDF_Email_Translation_Resub_Reqd__mdt WHERE Core_MDF_LanguageLocalKey__c = :userLanguageKey LIMIT 1];
+        localizedFieldList = [
+          SELECT
+            Core_MDF_LanguageLocalKey__c,
+            Core_MDF_PIC_Review_Result_Field_Name__c
+          FROM Core_MDF_Email_Translation_Resub_Reqd__mdt
+          WHERE Core_MDF_LanguageLocalKey__c = :userLanguageKey
+          LIMIT 1
+        ];
 
-            /*if (localizedFieldList != null && localizedFieldList.size() > 0) {
-              if (
-                !String.isblank(
-                  localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c
-                )
-              ) {
-                localizedFieldName = localizedFieldList[0]
-                  .Core_MDF_PIC_Review_Result_Field_Name__c;
-              }
-            }*/
-            if (localizedFieldList != null && localizedFieldList.size() > 0 && !String.isBlank(localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c)) { //ATHR Fix WW19
-                localizedFieldName = localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c;
-            }
+        if (localizedFieldList != null && localizedFieldList.size() > 0) {
+          if (
+            !String.isblank(
+              localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c
+            )
+          ) {
+            localizedFieldName = localizedFieldList[0]
+              .Core_MDF_PIC_Review_Result_Field_Name__c;
+          }
+        }
       }
     } catch (exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());
     }
     return localizedFieldName;
-  }
-
-  public static String localizeTacticValues(String tacticValues) {
-
-    List<Schema.PicklistEntry> pickValues = Core_MDF_PICReviewResult__c.Core_MDF_Tactics_nm__c.getDescribe().getPicklistValues();
-    Map<String, String> apiToLabel = new Map<String, String>();
-
-    for (Schema.PicklistEntry pe : pickValues) {
-        apiToLabel.put(pe.getValue(), pe.getLabel());
-    }
-
-    List<String> apiValues = tacticValues.split(';');
-    List<String> localizedValues = new List<String>();
-
-    for (String val : apiValues) {
-        String key = val.trim();
-        localizedValues.add(apiToLabel.containsKey(key) ? apiToLabel.get(key) : key);
-    }
-
-    return String.join(localizedValues, '; ');
   }
 
 
@@ -206,10 +183,10 @@ Modified By:        Date:       Changes:
         // Query the Required fields data
         if(isPICReviewerOrCCRMUser) {
             picReviewQuery = 'Select '+'Id'+','+'Core_MDF_CycleNumber_nbr__c'+','+'Core_MDF_Review_Status_nm__c'+','+'format(Core_MDF_Review_Date_dt__c) formattedDate'+','+'Core_MDF_ReviewedBy_id__r.Name'+','+'Core_MDF_InternalComments_txt__c,'+
-            'Core_MDF_Claim_ID_id__r.Core_MDF_Program__c, Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c from  Core_MDF_PIC_Review__c'+' WHERE Core_MDF_Claim_ID_id__c =:claimId'+' and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c desc';
+            'Core_MDF_Claim_ID_id__r.Core_MDF_Program__c, Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c from  Core_MDF_PIC_Review__c'+' WHERE Core_MDF_Claim_ID_id__c =:claimId'+' and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c desc';  //Roshan
         } else {
             picReviewQuery = 'Select '+'Id'+','+'Core_MDF_CycleNumber_nbr__c'+','+'Core_MDF_Review_Status_nm__c'+','+'toLabel(Core_MDF_Review_Status_nm__c) LocalizedPICReviewStatus'+','+'format(Core_MDF_Review_Date_dt__c) formattedDate,'+
-            'Core_MDF_Claim_ID_id__r.Core_MDF_Program__c, Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c from Core_MDF_PIC_Review__c'+' WHERE Core_MDF_Claim_ID_id__c =:claimId'+' and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c desc';
+            'Core_MDF_Claim_ID_id__r.Core_MDF_Program__c, Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c from Core_MDF_PIC_Review__c'+' WHERE Core_MDF_Claim_ID_id__c =:claimId'+' and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c desc';  //Roshan
         }
         picReviewList = Database.query(String.escapeSingleQuotes(picReviewQuery));
         }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());
@@ -250,7 +227,7 @@ Modified By:        Date:       Changes:
             ',' +
             'Core_MDF_Comment_txt__c' +
             ',' +
-            'Core_MDF_Tactics_nm__c' +
+            'Core_MDF_Tactic_txt__c' +
             ' from Core_MDF_PICReviewResult__c' +
             ' WHERE Core_MDF_PIC_Review_id__c IN: picReviewIdsSet ' +
             ' And ' +
@@ -271,7 +248,7 @@ Modified By:        Date:       Changes:
               ',' +
               'Core_MDF_Comment_txt__c' +
               ',' +
-              'Core_MDF_Tactics_nm__c' +
+              'Core_MDF_Tactic_txt__c	' +
               ' from Core_MDF_PICReviewResult__c' +
               ' WHERE Core_MDF_PIC_Review_id__c IN: picReviewIdsSet ' +
               ' And ' +
@@ -283,9 +260,6 @@ Modified By:        Date:       Changes:
         for (
           Core_MDF_PICReviewResult__c picReviewResult : listOfPICReviewResults
         ) {
-            if (!isIntlUser && picReviewResult.Core_MDF_Tactics_nm__c != null) {
-                picReviewResult.Core_MDF_Tactics_nm__c = localizeTacticValues(picReviewResult.Core_MDF_Tactics_nm__c);
-            }
           if (
             picIdtoPICReviewResult.containsKey(
               picReviewResult.Core_MDF_PIC_Review_id__c
@@ -325,8 +299,6 @@ Modified By:        Date:       Changes:
     public Boolean hasClaimUndergonePICReview { get; set; }
     @AuraEnabled
     public Boolean ipaOutcomeBasedClaim { get; set; }
-    @AuraEnabled
-    public Boolean finalOutcomeBasedClaim { get; set; }  //Roshan - Final Outcome Based New Status
   }
 //wrapper to store the userdetails
   public class userDetailsWrapper {

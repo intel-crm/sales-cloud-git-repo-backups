@@ -163,21 +163,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_Account_nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    Core_MDF_Sub_Claim_Id__r.Request.ChannelPartner.Name,
-    Core_MDF_Claim_Id__r.Request.ChannelPartner.Name
-)</formula>
-        <label>Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Approved_File_Id__c</fullName>
         <description>To store the Id of the File that is selected as the approved file</description>
         <externalId>false</externalId>
@@ -303,13 +288,7 @@ $Label.Core_MDF_Intel_System_User
     <fields>
         <fullName>Core_MDF_Reimbursement_Amt__c</fullName>
         <description>Sum of Claim Reimbursement Amount and Offset Amount</description>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    Core_MDF_Sub_Claim_Id__r.Amount
-    + Core_MDF_Sub_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c,
-    Core_MDF_Claim_Id__r.Amount
-    + Core_MDF_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c
-)</formula>
+        <formula>Core_MDF_Claim_Id__r.Amount + Core_MDF_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Reimbursement amount without tax</inlineHelpText>
         <label>Reimbursement amount</label>
@@ -365,21 +344,9 @@ $Label.Core_MDF_Intel_System_User
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Sub_Claim_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Sub Claim</label>
-        <referenceTo>PartnerFundClaim</referenceTo>
-        <relationshipLabel>Payment Documents (Sub Claim)</relationshipLabel>
-        <relationshipName>Payment_Documents</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_VAT_Amt__c</fullName>
         <description>Claim VAT Amount</description>
-        <formula>IF(NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)), Core_MDF_Sub_Claim_Id__r.Core_MDF_VAT_Amt__c, Core_MDF_Claim_Id__r.Core_MDF_VAT_Amt__c)</formula>
+        <formula>Core_MDF_Claim_Id__r.Core_MDF_VAT_Amt__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>The tax amount</inlineHelpText>
         <label>Tax Amount</label>
@@ -421,51 +388,11 @@ $Label.Core_MDF_Intel_System_User)</formula>
         <fullName>Core_MDF_VAT_Per__c</fullName>
         <description>VAT percentage which we are inheriting from Bank object</description>
         <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    IF(
-        Core_MDF_Sub_Claim_Id__r.Core_MDF_VAT_Eligibility_Ind__c,
-        IF(
-            AND(
-                NOT(ISBLANK(TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c))),
-                OR(
-                    TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;650&apos;,
-                    TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;420&apos;
-                ),
-                OR(
-                    Core_MDF_Sub_Claim_Id__r.Core_MDF_Program__c = &apos;Intel Partner Alliance&apos;,
-                    Core_MDF_Sub_Claim_Id__r.Core_MDF_Program__c = &apos;Retail Marketing Funds&apos;,
-                    Core_MDF_Sub_Claim_Id__r.Core_MDF_Program__c = &apos;Ecosystem Extension Fund&apos;,
-                    Core_MDF_Sub_Claim_Id__r.Core_MDF_Program__c = &apos;Co-GTM&apos;
-                )
-            ),
-            TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c),
-            TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_VAT_pct__c)
-        ),
-        &apos;&apos;
-    ),
-    IF(
-        Core_MDF_Claim_Id__r.Core_MDF_VAT_Eligibility_Ind__c,
-        IF(
-            AND(
-                NOT(ISBLANK(TEXT(Core_MDF_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c))),
-                OR(
-                    TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;650&apos;,
-                    TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;420&apos;
-                ),
-                OR(
-                    Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Intel Partner Alliance&apos;,
-                    Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Retail Marketing Funds&apos;,
-                    Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Ecosystem Extension Fund&apos;,
-                    Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Co-GTM&apos;
-                )
-            ),
-            TEXT(Core_MDF_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c),
-            TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_VAT_pct__c)
-        ),
-        &apos;&apos;
-    )
-)</formula>
+        <formula>IF(Core_MDF_Claim_Id__r.Core_MDF_VAT_Eligibility_Ind__c,IF( AND( TEXT(Core_MDF_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c) != null,
+ OR(TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;650&apos;,
+ TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c) = &apos;420&apos;), 
+ OR(Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Intel Partner Alliance&apos;, Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Retail Marketing Funds&apos;, Core_MDF_Claim_Id__r.Core_MDF_Program__c = &apos;Co-GTM&apos;) ) , 
+TEXT(Core_MDF_Claim_Id__r.Core_MDF_Applicable_VAT_Percentage_nm__c),TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_VAT_pct__c)),&apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>The tax percentage applied on the reimbursement amount</inlineHelpText>
         <label>Tax %</label>
@@ -478,15 +405,11 @@ $Label.Core_MDF_Intel_System_User)</formula>
     <fields>
         <fullName>Core_MDF_Vat_Inv_Guide_Link__c</fullName>
         <externalId>false</externalId>
-        <formula>CASE(IF(
-        NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-        TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c),
-        TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c)
-    ), &apos;650&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here)),
-&apos;420&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here),
+        <formula>CASE(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c , &apos;650&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here), 
+HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here)), 
+&apos;420&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here), 
 HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here)), null)</formula>
         <label>Payment Document Guidelines</label>
         <required>false</required>

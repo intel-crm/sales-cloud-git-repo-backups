@@ -68,10 +68,10 @@
                         <div class="slds-modal__header">
                             <br/>
                             <div class="slds-text-heading_medium">Edit {!v.campaignName}</div>
-                            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.prevPage}">
-                                <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                                <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.prevPage}">
+                                X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                             </button>
+                            
                         </div>
                         <div class="slds-modal__content slds-p-around--medium">
                             <div class="slds-p-left_small slds-p-right_small">

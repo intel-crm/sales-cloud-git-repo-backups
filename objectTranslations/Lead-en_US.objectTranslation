@@ -4,10 +4,6 @@
         <label><!-- New Sales Lead --></label>
         <name>Groove_New_Sales_Lead</name>
     </fieldSets>
-    <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </fieldSets>
     <fields>
         <caseValues>
             <plural>false</plural>
@@ -1582,6 +1578,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -2247,10 +2247,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
             <translation><!-- No Valid Pain Point --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Interested</masterLabel>
-            <translation><!-- Not Interested --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Not Target Profile</masterLabel>
             <translation><!-- Not Target Profile --></translation>
         </picklistValues>
@@ -2803,10 +2799,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
             <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
             <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
@@ -2873,10 +2865,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
             <translation><!-- Scientist/Researcher --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
@@ -3316,6 +3304,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
             <translation><!-- IJKK --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Korea</masterLabel>
             <translation><!-- Korea --></translation>
         </picklistValues>
@@ -3696,54 +3688,12 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Groove_Convert_Lead_Lightning__c</name>
     </fields>
     <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Deal Registration Denied --></label>
-        <name>ImpartnerPRM__DealRegistrationDenied__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Registration Status --></label>
-        <name>ImpartnerPRM__DealRegistrationStatus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
-    </fields>
-    <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Lead Acceptance --></label>
-        <name>ImpartnerPRM__PartnerLeadAcceptance__c</name>
-        <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
-        </picklistValues>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
     </fields>
     <fields>
         <label><!-- Please click “Save” to own these Leads. --></label>
@@ -3842,16 +3792,8 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SWS_Claimed_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Entrance Date - MEL --></label>
-        <name>SWS_Entrance_Date_MEL__c</name>
-    </fields>
-    <fields>
         <label><!-- Entrance Date - SGL --></label>
         <name>SWS_Entrance_Date_SGL__c</name>
-    </fields>
-    <fields>
-        <label><!-- Exit Date - MEL --></label>
-        <name>SWS_Exit_Date_MEL__c</name>
     </fields>
     <fields>
         <label><!-- Exit Date - SGL --></label>
@@ -3872,10 +3814,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- Status --></label>
         <name>SWS_LeadConverted_fm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Lead Deletion --></label>
-        <name>SWS_Lead_Deletion__c</name>
     </fields>
     <fields>
         <help><!-- Indicates the source of the lead, such as HubSpot. --></help>
@@ -3966,90 +3904,9 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <label><!-- TQL to SAL Count --></label>
         <name>TQL_to_SAL_Count__c</name>
     </fields>
-    <fields>
-        <label><!-- Add to Marketo Campaign --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign__c</name>
-    </fields>
-    <fields>
-        <label><!-- Current Sales Campaign --></label>
-        <name>mkto_si__Current_Sales_Campaign__c</name>
-    </fields>
-    <fields>
-        <label><!-- Hide Date --></label>
-        <name>mkto_si__HideDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Activity by Sales --></label>
-        <name>mkto_si__Last_Activity_By_Sales__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Date --></label>
-        <name>mkto_si__Last_Interesting_Moment_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Desc --></label>
-        <name>mkto_si__Last_Interesting_Moment_Desc__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Source --></label>
-        <name>mkto_si__Last_Interesting_Moment_Source__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Type --></label>
-        <name>mkto_si__Last_Interesting_Moment_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment --></label>
-        <name>mkto_si__Last_Interesting_Moment__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Sales Engagement --></label>
-        <name>mkto_si__Last_Sales_Engagement__c</name>
-    </fields>
-    <fields>
-        <label><!-- MSIContactId --></label>
-        <name>mkto_si__MSIContactId__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Engagement --></label>
-        <name>mkto_si__Priority__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score Value --></label>
-        <name>mkto_si__Relative_Score_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score --></label>
-        <name>mkto_si__Relative_Score__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Insight --></label>
-        <name>mkto_si__Sales_Insight__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Last Replied --></label>
-        <name>mkto_si__Sales_Last_Replied__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Opt Out --></label>
-        <name>mkto_si__Sales_Opt_Out__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency Value --></label>
-        <name>mkto_si__Urgency_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency --></label>
-        <name>mkto_si__Urgency__c</name>
-    </fields>
-    <fields>
-        <label><!-- View in Marketo --></label>
-        <name>mkto_si__View_in_Marketo__c</name>
-    </fields>
     <recordTypes>
         <description><!-- DO NOT USE - Marketo ONLY --></description>
-        <label><!-- Marketing Lead --></label>
+        <label><!-- Lead --></label>
         <name>Lead</name>
     </recordTypes>
     <recordTypes>
@@ -4118,10 +3975,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <validationRules>
         <errorMessage><!-- To create a lead with record type “Lead”, please ensure that Lead Stage= &quot;Marketing Qualified Lead&quot; , Lead Status= “New”. --></errorMessage>
         <name>Core_Check_Stage_for_Eloqua_New_Lead</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- To create a lead with record type “Lead”, please ensure that Lead Stage= Marketing Engaged Lead/ Marketing Qualified Lead, Lead Status= “New”. --></errorMessage>
-        <name>Core_Check_Stage_for_Marketo_New_Lead</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please ensure Lead Status is &quot;Accepted&quot; and Lead Sub Status is &quot;In Contact&quot; prior to changing Lead stage to &quot;Sales Accepted Lead”. --></errorMessage>
@@ -4260,10 +4113,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Parner_Lead_Claim_Check</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please use the &apos;Reject&apos; button to Reject or Terminate the lead. --></errorMessage>
-        <name>Core_Partner_Lead_Reject_Button_Required</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Cannot bypass “Contacted” status - please select the next status in the lead path. --></errorMessage>
         <name>Core_Partner_Lead_Status_Skip</name>
     </validationRules>
@@ -4332,11 +4181,11 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Unreachable_Status_change</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Bad Data, Banned Company/Country, Already Engaged with Intel, Not Interested or Rep Inactivity.&quot; --></errorMessage>
+        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Bad Data, Banned Company/Country, Already Engaged with Intel, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_LeadSubStatus_for_MQLAtCon</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Bad Data, Already Engaged with Intel, Not Interested or Rep Inactivity.&quot; --></errorMessage>
+        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Bad Data, Already Engaged with Intel, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_LeadSubStatus_for_MQLInCon</name>
     </validationRules>
     <validationRules>
@@ -4400,12 +4249,20 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Validate_To_Select_SAL_Disqualified</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Already Engaged with Intel, Not accepted by Sales, Not Interested or Rep Inactivity.&quot; --></errorMessage>
+        <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Already Engaged with Intel, Not accepted by Sales, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_lead_sub_status_for_SAL</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile,Already Engaged with Intel, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_salelead_substatus_for_SAL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
     </validationRules>
     <webLinks>
         <label><!-- AltavistaNews --></label>
@@ -4508,10 +4365,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>HooversProfile</name>
     </webLinks>
     <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </webLinks>
-    <webLinks>
         <label><!-- LeadActivityOverview --></label>
         <name>LeadActivityOverview</name>
     </webLinks>
@@ -4530,33 +4383,5 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- Schedule_Jifflenow_Meetings --></label>
         <name>jiffle__Schedule_Jifflenow_Meetings</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Details --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Lightning --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Sales_Campaign --></label>
-        <name>mkto_si__Add_to_Sales_Campaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Watch_List --></label>
-        <name>mkto_si__Add_to_Watch_List</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Details --></label>
-        <name>mkto_si__Send_Marketo_Email_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Lightning --></label>
-        <name>mkto_si__Send_Marketo_Email_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Sales_Email --></label>
-        <name>mkto_si__Send_Sales_Email</name>
     </webLinks>
 </CustomObjectTranslation>

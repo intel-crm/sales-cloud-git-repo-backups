@@ -49,6 +49,7 @@ public class Core_IPS_MAPAccount_Test{
                  i++;                     
                 //SuppProductList.add(SupportedProductRecord);
         }
+        system.debug('test ### '+SuppProductList);
         insert SuppProductList;
         System.assert(SuppProductList <> null, 'Record not created');
          
@@ -482,6 +483,7 @@ public class Core_IPS_MAPAccount_Test{
             Usr.ProfileID = SalesRepBbProfile.id;
         }
         insert ListOfUsr;
+        System.debug('user test'+ListOfUsr);
         System.Assert(ListOfUsr[0].Id != null, 'Record not created');
         
     // Custom Setting - Ips Lables        
@@ -516,7 +518,9 @@ public class Core_IPS_MAPAccount_Test{
 
     // Create accountshare records
         List<AccountShare> ListOfAccountShare = [select UserOrGroupId,CaseAccessLevel,AccountId from AccountShare where AccountId =:ListOfAccounts AND RowCause = 'Manual'];
+        System.debug('set 4'+ListOfAccountShare);
         User ProflName = [select id, profile.name from user where id =: ListOfAccountShare[0].userOrGroupId];
+        system.debug('prfl0'+ProflName);
         for(AccountShare Share : ListOfAccountShare){
             Share.CaseAccessLevel = 'Edit';
         }       

@@ -2,7 +2,7 @@
  * @description       : Class to update quotelines to Won/Lost from Bulk Screen
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-13-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLine_BulkWonLost {
@@ -166,7 +166,6 @@ public without sharing class Pricing_QuoteLine_BulkWonLost {
                 }
             }
             if(quoteLineListtoUpdate.size() > 0){
-                Pricing_RecordJobHandler.isStopCalculatorForBulkWon = true;
                 SBQQ.TriggerControl.disable();
                 update quoteLineListtoUpdate;
                 SBQQ.TriggerControl.enable();

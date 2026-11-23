@@ -260,10 +260,6 @@
         <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Activity Level --></label>
-        <name>Core_MDF_Activity_Level_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Activity # --></label>
         <name>Core_MDF_Activity_Number__c</name>
     </fields>
@@ -631,10 +627,6 @@
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Ecosystem Modified --></label>
-        <name>Core_MDF_Ecosystem_Modified_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Effective Date/Time --></label>
         <name>Core_MDF_EffectiveDateTime__c</name>
     </fields>
@@ -876,10 +868,6 @@
         <name>Core_MDF_Maximum_Intel_Investment_amt__c</name>
     </fields>
     <fields>
-        <label><!-- Measurement Approach --></label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Member Acceptor --></label>
         <name>Core_MDF_Member_Acceptor_Id__c</name>
         <relationshipLabel><!-- Co-Marketing Activities (Member Acceptor) --></relationshipLabel>
@@ -1051,10 +1039,6 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Outcome Node Acc Mapping Modified --></label>
-        <name>Core_MDF_Node_Acc_Map_Modified_ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Number of Winners --></label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
@@ -1123,16 +1107,12 @@
         <name>Core_MDF_Other_Channel_Partner__c</name>
     </fields>
     <fields>
-        <label><!-- Milestone Details --></label>
+        <label><!-- Other Engineering Activity --></label>
         <name>Core_MDF_Other_Engineering_Activity_txt__c</name>
     </fields>
     <fields>
         <label><!-- Other Event Name --></label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Other Measurement Approach --></label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
         <label><!-- Other Quantity --></label>
@@ -1211,15 +1191,6 @@
     <fields>
         <label><!-- POP Requirements --></label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Activity --></label>
-        <name>Core_MDF_Parent_Activity_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activties --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
         <label><!-- Placement --></label>
@@ -1388,11 +1359,6 @@
     <fields>
         <label><!-- SPIF Segments Available --></label>
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
-    </fields>
-    <fields>
-        <help><!-- 100% contest-based incentive, winners capped at 33% of participants --></help>
-        <label><!-- 100% Contest-based Incentive --></label>
-        <name>Core_MDF_Skip_PCT_Approval_ind__c</name>
     </fields>
     <fields>
         <label><!-- # of Social Media Likes/Shares --></label>

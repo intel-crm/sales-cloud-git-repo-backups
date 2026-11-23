@@ -149,27 +149,6 @@
                                         </template>
                                     </lightning-layout-item>
                                 </template>
-                                <template if:true={campaignFieldVisibility.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}>
-                                <lightning-layout-item
-                                    flexibility="no-grow"
-                                    size="12"
-                                    small-device-size="12"
-                                    medium-device-size="6"
-                                    large-device-size="6"
-                                    padding="around-small">
-
-                                    <lightning-input
-                                        type="checkbox"
-                                        name="Core_MDF_IPA_Co_Engineering_Campaign_ind__c"
-                                        label={campaignFieldLabel.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}
-                                        field-level-help={campaignFieldHelpText.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}
-                                        checked={campaignFieldValue.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}
-                                        required={campaignRequiredFields.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}
-                                        disabled={campaignFieldDisabled.Core_MDF_IPA_Co_Engineering_Campaign_ind__c}>
-                                    </lightning-input>
-
-                                </lightning-layout-item>
-                            </template>
                                 <template if:true={loadBudgetTypefields}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
                                         medium-device-size="6" large-device-size="6" padding="around-small">
@@ -182,7 +161,6 @@
                                                 source-label={availableBudgetsLabel} selected-label={selectedBudgetsLabel}
                                                 options={availableBudgetValues} value={selectedCmpBudgets}
                                                 onchange={onBudgetSelection} required="true"
-                                                formatter="currency"
                                                 disabled={disableCampaignBudgets}
                                                 size={picklistSize.availableBudgetValues}>
                                             </lightning-dual-listbox>
@@ -197,7 +175,6 @@
                                                 value={campaignFieldValue.Core_MDF_Total_Campaign_Cost_Amt__c}
                                                 label={campaignFieldLabel.Core_MDF_Total_Campaign_Cost_Amt__c}
                                                 required={campaignRequiredFields.Core_MDF_Total_Campaign_Cost_Amt__c}
-                                                formatter="currency"
                                                 disabled={campaignFieldDisabled.Core_MDF_Total_Campaign_Cost_Amt__c}></lightning-input>
                                         </lightning-layout-item>
                                     </template>

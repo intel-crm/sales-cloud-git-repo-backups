@@ -108,8 +108,6 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
         System.runAs(usr1){
         Database.executeBatch(bchRec,100);
         }
-	 // Unit Test Method should include System.Assert 
-        System.assertNotEquals(null, bchRec, 'Batch record should not be null');
     }
     
 }

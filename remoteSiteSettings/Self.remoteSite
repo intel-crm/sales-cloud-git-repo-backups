@@ -2,6 +2,6 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Seismic App</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
-    <isActive>true</isActive>
-    <url>https://intel.lightning.seismic.vf.force.com</url>
+    <isActive>false</isActive>
+    <url>https://intel--devpsg2--seismic.sandbox.vf.force.com</url>
 </RemoteSiteSetting>

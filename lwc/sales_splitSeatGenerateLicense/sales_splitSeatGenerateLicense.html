@@ -1,0 +1,27 @@
+<template>
+
+        <div class="slds-modal__content slds-p-around--medium"><!--css for proper footer-->
+    <!--Cancel Order Confirmation-->
+    <header class="slds-modal__header">
+    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Host Change Confirmation</h2>
+    </header>
+    <div class="slds-m-around_medium">
+    <h3 class="slds-section__title">
+    <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Do you wish to Proceed with License Generation? </span>
+    </h3>
+  <!--  <div class="slds-grid slds-wrap"> 
+    <div class="slds-size_1-of-1 slds-p-around_medium"> 
+    
+    <br>
+    <br>
+    </div>
+    </div> -->
+    </div>
+    </div>
+    <!-- Modal Footer start-->
+    <footer class="slds-modal__footer">
+        <lightning-button variant="neutral" label="Yes" title="Yes" onclick={handleProceed} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="neutral" label="No" title="No" onclick={navigateToLicenseRecord} class="slds-m-left_x-small"></lightning-button>
+    </footer>
+    
+    </template>

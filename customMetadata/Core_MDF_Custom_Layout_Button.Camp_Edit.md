@@ -15,10 +15,6 @@
         <value xsi:type="xsd:string">LightningComponent</value>
     </values>
     <values>
-        <field>Core_MDF_Filter_Criteria_Field__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Proposal_Based_Ind__c == true</value>
-    </values>
-    <values>
         <field>Core_MDF_Object_API_Name_nm__c</field>
         <value xsi:type="xsd:string">Campaign</value>
     </values>

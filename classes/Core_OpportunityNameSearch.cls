@@ -69,7 +69,7 @@ global without sharing class Core_OpportunityNameSearch {
         
         if (searchString.left(3) == '006') {
             // Search by ID, which can be one or multiple
-            List<String> oppIds = searchString.split(',');
+            List<Id> oppIds = searchString.split(',');
             matchingOpptys = [select Id, Name, Account.Name, Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c from Opportunity where Id in :oppIds];
         }
         else {

@@ -49,7 +49,6 @@ public class ACM_DeleteDupsOnContactMerge_Test {
         conSub1.PRM_Contact_Id__c = contact1.Id;
         conSub1.PRM_Partner_Subscription_Id__c = sub.Id;
         conSub1.PRM_Status_Nm__c = 'Active';
-        conSub1.PRM_Status_Reason_Txt__c = 'Active';
         conSub1.CreatedDate = system.now();
         conSubList.add(conSub1);
         
@@ -57,7 +56,6 @@ public class ACM_DeleteDupsOnContactMerge_Test {
         conSub2.PRM_Contact_Id__c = contact1.Id;
         conSub2.PRM_Partner_Subscription_Id__c = sub.Id;
         conSub2.PRM_Status_Nm__c = 'Active';
-        conSub2.PRM_Status_Reason_Txt__c = 'Active';
         conSub2.CreatedDate = system.now();
         conSubList.add(conSub2);
         insert conSubList;

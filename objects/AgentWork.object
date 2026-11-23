@@ -27,10 +27,6 @@
         <fullName>AgentIntCapacityWhenDeclined</fullName>
     </fields>
     <fields>
-        <fullName>AgenticWorkerReferenceObjId</fullName>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>BotId</fullName>
         <type>Lookup</type>
     </fields>
@@ -57,10 +53,6 @@
     </fields>
     <fields>
         <fullName>DeclineReason</fullName>
-    </fields>
-    <fields>
-        <fullName>ExternalBotId</fullName>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>FinalStatusTime</fullName>

@@ -329,14 +329,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_IPA_Affiliation__c</fullName>
-        <description>This Field contains IPA Affiliations.</description>
-        <label>IPA Affiliation</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Program__c</fullName>
         <label>Program</label>
         <required>false</required>
@@ -431,22 +423,6 @@
             <value>Core_Lex_AlertMessage__mdt</value>
         </filters>
         <label>Lex AlertMessages</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Auto_Approval_Switch_mdt</fullName>
-        <columns>NAME</columns>
-        <columns>Header_row__c</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>Metadata_Name__c</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Field_1__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>equals</operation>
-            <value>PRM_Auto_Approval_Switch__mdt</value>
-        </filters>
-        <label>PRM_Auto_Approval_Switch__mdt</label>
     </listViews>
     <listViews>
         <fullName>PRM_CtaPriority_mdt</fullName>

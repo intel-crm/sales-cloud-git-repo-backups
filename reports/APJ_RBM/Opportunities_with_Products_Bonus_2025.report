@@ -164,12 +164,6 @@
     <columns>
         <field>Opportunity.CRM_Auditor_Comments__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
-    </columns>
     <description>This Report used to APJ Bonus Program - Intel Strategic Products Design</description>
     <filter>
         <criteriaItems>

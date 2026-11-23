@@ -29,9 +29,7 @@ export default class dynamicQuestion extends LightningElement {
     //Sowmya End
  
     connectedCallback() {
-        if(this.type == 'Multiselect Picklist'){
-            console.log('DEBUG dynamicField mvalue=' + JSON.stringify(this.mvalue) + ' lovs=' + JSON.stringify(this.lovs) + ' fielditself=' + JSON.stringify(this.fielditself));
-        }
+        
         if(this.type == 'Picklist'){
             if(this.fielditself.lovs == null || this.fielditself.lovs == undefined || this.fielditself.lovs == ''){
                 this.fromDependentField = true;
@@ -89,7 +87,6 @@ export default class dynamicQuestion extends LightningElement {
     get multiselectpiclistcheck() {
         return this.type === 'Multiselect Picklist' ? true : false;
     }
-    
     get textareacheck() {
         return this.type === 'Text Area' ? true : false;
     }

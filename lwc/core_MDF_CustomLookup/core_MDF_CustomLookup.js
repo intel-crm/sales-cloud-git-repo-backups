@@ -14,8 +14,7 @@ export default class customLookUp extends LightningElement {
     @api bypassSharing=false;
     @api programRecordType = '';
 
-    // Exposed as Flow output so screens can read the selected record Id on navigation.
-    @api selectedId;
+    @track selectedId;
     @track selectedName;
     @track records;
     @track isValueSelected;
@@ -78,12 +77,6 @@ export default class customLookUp extends LightningElement {
         if (this.programRecordType === 'Core_MDF_Co_GTM') {
             selectedRecordDetails = this.records.find(record => record.Id === selectedId);
             recordData = selectedRecordDetails;
-        }else if (this.programRecordType === 'Core_MDF_Intel_Partner_Alliance') {
-        selectedRecordDetails = this.records.find(record => record.Id === selectedId);
-        recordData = {
-            Id: selectedId, 
-            virtualCorpId: selectedRecordDetails?.Core_MDF_Virtual_Corp_Account_Id__c || selectedId
-            };
         } else {
             recordData = selectedId;
         }
@@ -137,14 +130,6 @@ export default class customLookUp extends LightningElement {
         } else {
             return true;
         }
-    }
-
-    // Flow screen validation hook (Flow calls validate(), not isValid()).
-    @api validate() {
-        if (!this.isValid()) {
-            return { isValid: false, errorMessage: 'Please select a value from the list before continuing.' };
-        }
-        return { isValid: true };
     }
 
     //this will be called from recovery js when external user logged in and only 1 account is accessible

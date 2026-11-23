@@ -13,14 +13,14 @@
     <aura:attribute name="isClone" type="Boolean" />
     <!-- Attribute to Store the error message when user clicks on edit on a CRR Positive claim -->
     <aura:attribute name="accessErrorMsg" type="String" default=""/>
-    <aura:attribute name="isEdit" type="Boolean" default="true" />
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
             
     <aura:if isTrue="{!not(empty(v.simpleNewClaim.Id))}">
         <c:Core_MDF_PFC_Create simpleNewClaim="{!v.simpleNewClaim}" isCloneClaim="{!v.isClone}"
             activityCountriesMap="{!v.activityCountriesMap}" activitySubTypesMap="{!v.activitySubTypesMap}"
             activityBudgetType="{!v.activityBudgetType}"
-            claimDataOnLoad="{!v.claimDetailsOnLoad}" isEdit="{!v.isEdit}"/>
+            claimDataOnLoad="{!v.claimDetailsOnLoad}"/>
     </aura:if>
   
 </aura:component>

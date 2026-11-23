@@ -15,8 +15,8 @@
                 <h2 class="slds-text-heading--medium" align="center">
                     Edit Opportunity Product
                 </h2>
-                <button class="slds-button slds-modal__close slds-button--icon" title="Close" onclick="{!c.fireCancelEvent}">
-                    <lightning:icon iconName="utility:close" size = "small" alternativeText="Close"/>
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.fireCancelEvent}">
+                    X
                 </button>
             </div>
             <div class="slds-modal__content slds-p-around--medium">

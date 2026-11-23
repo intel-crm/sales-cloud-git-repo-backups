@@ -39,6 +39,7 @@ public without sharing class UCD_ACM_AcctDeactivtionReactivtion_Batch implements
             //changed name of map from accToUpdateParentorMdmStatus to mAcctsToUpdate
             Map<Id,Account> mAcctsToUpdate = new Map<Id,Account>();
             Set<String> deactivatedAccBPIid = new Set<String>();
+            List<Core_Account_Compliance_Watch_List__c> lstAllAcctCWL = new List<Core_Account_Compliance_Watch_List__c>();
             
             for(Core_ACM_Account_Staging__c accStaging : accountStaging){
                 UCD_ACM_AccountDeactivationService acctReltioService = new UCD_ACM_AccountDeactivationService();
@@ -46,6 +47,7 @@ public without sharing class UCD_ACM_AcctDeactivtionReactivtion_Batch implements
                 if(responseFromReltio != null && (responseFromReltio.status == 'inactivated' || responseFromReltio.status == 'activated')){
                     accStaging.Status_Details__c = JSON.serialize(responseFromReltio);
                     if(responseFromReltio.status == 'inactivated'){
+                        removeCWLXwalk(accStaging,lstAllAcctCWL,acctReltioService);
                         deactivatedAccIdSet.add(accStaging.AccountId__c);
                         accStaging.Core_Status__c = 'COMPLETED';
                     }
@@ -83,7 +85,7 @@ public without sharing class UCD_ACM_AcctDeactivtionReactivtion_Batch implements
                         deactivatedAccBPIid.add(acc.Core_Business_Party_Id__c);
                         mAcctsToUpdate.put(acc.Id,UCD_ACM_AccountDeactivation.removeHierarchyAttr(acc));
                     }
-                    UCD_ACM_AccountDeactivation.removeUCDAttributes(accountsToRemoveParentAndCPE);
+                    UCD_ACM_AccountDeactivation.removeUCDAttributes(accountsToRemoveParentAndCPE, lstAllAcctCWL);
                 }
             }
             
@@ -210,5 +212,24 @@ public without sharing class UCD_ACM_AcctDeactivtionReactivtion_Batch implements
         accStag.Core_Status__c = 'NEW';
         accStag.Account_Action_Refrence__c = accActionRef;
         return accStag;
+    }
+    
+    /**
+     * This method is used to set CWL x-walk delete date in Reltio
+     * Author: Chethan Kunder
+     * Date: 17/10/2024
+     */
+    private void removeCWLXwalk(Core_ACM_Account_Staging__c acmAcctStg, List<Core_Account_Compliance_Watch_List__c> allAcctCWL, UCD_ACM_AccountDeactivationService acctReltioService) {
+        Set<Id> cwlIds = new Set<Id>();
+        List<Core_Account_Compliance_Watch_List__c> cwlRecords = [
+            SELECT Id 
+            FROM Core_Account_Compliance_Watch_List__c 
+            WHERE Core_Account_Id__c =:acmAcctStg.AccountId__c
+        ];
+        if(!cwlRecords.isEmpty()) {
+            allAcctCWL.addAll(cwlRecords);
+            cwlIds.addAll(new Map<Id, Core_Account_Compliance_Watch_List__c>(cwlRecords).keySet());
+            acctReltioService.removeCWLXwalk(acmAcctStg.Account_Action_Refrence__c, acmAcctStg.Core_Action__c, cwlIds);
+        }
     }
 }

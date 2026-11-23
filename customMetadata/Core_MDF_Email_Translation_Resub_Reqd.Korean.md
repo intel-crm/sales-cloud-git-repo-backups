@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">최종 통지: 청구 #</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;이벤트&quot;,&quot;Lead Cultivation&quot;:&quot;리드 육성&quot;,&quot;Technical Activation&quot;:&quot;기술 활성화&quot;,&quot;Incentive&quot;:&quot;인센티브&quot;,&quot;Training&quot;:&quot;교육&quot;,&quot;Digital Media&quot;:&quot;디지털 미디어&quot;,&quot;Legacy Media&quot;:&quot;레거시 미디어&quot;,&quot;Funded Headcount&quot;:&quot;기금 인원수&quot;,&quot;Brand Awareness&quot;:&quot;브랜드 인지도&quot;,&quot;Consideration&quot;:&quot;고려 단계&quot;,&quot;Purchase Intent&quot;:&quot;구매 의도&quot;,&quot;Preference&quot;:&quot;선호도&quot;,&quot;Share of Voice&quot;:&quot;점유율(Share of Voice)&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">감사합니다,</value>
     </values>

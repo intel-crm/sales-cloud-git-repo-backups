@@ -70,7 +70,7 @@ public with sharing class PCC_NewDesignRegProductCntrl {
                 if (dr.Core_Partner_Account_Region_Cd__c == 'ASMO' || dr.Core_Partner_Account_Region_Cd__c == 'EMEA') {
                     res.ddiFocused = mmattribute[0].DDI_focused__c;
                 }
-                else if (dr.Core_Partner_Account_Region_Cd__c == 'APJ' || dr.Core_Partner_Account_Region_Cd__c == 'PRC') {
+                else if (dr.Core_Partner_Account_Region_Cd__c == 'APJ' || dr.Core_Partner_Account_Region_Cd__c == 'PRC' || dr.Core_Partner_Account_Region_Cd__c == 'INDIA') {
                     res.ddiFocused = mmattribute[0].PCC_DDI_Program_Pay_Rate_APJ_PRC__c;
                 }
             }

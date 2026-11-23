@@ -50,7 +50,7 @@ public class ER_SalesCloud_Integration {
         acctInfo.CNDANumber = acct.Core_CNDA_Number__c;
         acctInfo.BusinessPartnerId = acct.Core_Business_Partner_Id__c;
         acctInfo.BusinessId = acct.Core_Business_ID__c;
-        //acctInfo.BizOrgType = acct.Core_Account_Type__c;// BizOrgType code removal
+        acctInfo.BizOrgType = acct.Core_Account_Type__c;
         acctInfo.PartnerRole = acct.Core_IPA_Partner_Role__c;        
         acctInfo.Region = acct.Core_Geo__c;
         acctInfo.SubRegion = acct.Core_Sub_Geo__c;
@@ -113,7 +113,7 @@ public class ER_SalesCloud_Integration {
         try{
             List<AE_ACM_Integration_change_event__e> accountChangeEvents  = new List<AE_ACM_Integration_change_event__e>();
             List<Account> accts = [SELECT Name,AccountNumber,Core_Prime_Account_Name__c,Core_Sales_Groups__c,Industry,Core_Covered_Account__c,Core_CNDA_Number__c,
-                                   Core_CIM_ID__c, Core_Business_Partner_Id__c,Core_Business_ID__c,/*Core_Account_Type__c, // BizOrgType code removal*/Core_IPA_Partner_Role__c,
+                                   Core_CIM_ID__c, Core_Business_Partner_Id__c,Core_Business_ID__c,Core_Account_Type__c,Core_IPA_Partner_Role__c,
                                    Core_Geo__c,Core_Sub_Geo__c,Core_User_Defined_Phone_Number__c,Core_User_Defined_Website__c,
                                    Core_English_Only_Name__c,Core_IPA_Partner_Segment__c,RecordTypeId,Core_IPA_Badge_Tier__c,
                                    Core_Account_Legal_Name__c,Core_Account_BU_Focus__c,LastModifiedDate,Core_Is_Active__c,
@@ -198,7 +198,7 @@ public class ER_SalesCloud_Integration {
         }        
         //To fetch Account with Account Id in Contact        
         if(!accountIdSet.isEmpty()){
-            accountsMap = new Map<Id, Account>([SELECT name,AccountNumber,Core_Business_Party_Id__c,Core_Sales_Groups__c,Industry,/*Core_Account_Type__c // BizOrgType code removal/,*/Core_IPA_Partner_Role__c,ShippingStreet,Shippingcity,ShippingState,ShippingStateCode,ShippingCountry,ShippingCountryCode,ShippingPostalCode,BillingStreet,BillingCity,BillingState,BillingStateCode,BillingCountry,BillingCountryCode,BillingPostalCode,Core_Business_ID__c, Core_Business_Partner_Id__c, Owner.Email, Owner.FirstName, Owner.LastName, Core_Prime_Account_Name__c,(SELECT name,Status__c,Status_Reason__c,Effective_End_Date__c,Effective_Start_Date__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Business_Types_Category__c,Business_Types__r.Name,Business_Types__r.Is_Active__c from Account_Business_Types__r) FROM Account WHERE Id IN :accountIdSet]);
+            accountsMap = new Map<Id, Account>([SELECT name,AccountNumber,Core_Business_Party_Id__c,Core_Sales_Groups__c,Industry,Core_Account_Type__c,Core_IPA_Partner_Role__c,ShippingStreet,Shippingcity,ShippingState,ShippingStateCode,ShippingCountry,ShippingCountryCode,ShippingPostalCode,BillingStreet,BillingCity,BillingState,BillingStateCode,BillingCountry,BillingCountryCode,BillingPostalCode,Core_Business_ID__c, Core_Business_Partner_Id__c, Owner.Email, Owner.FirstName, Owner.LastName, Core_Prime_Account_Name__c,(SELECT name,Status__c,Status_Reason__c,Effective_End_Date__c,Effective_Start_Date__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Business_Types_Category__c,Business_Types__r.Name,Business_Types__r.Is_Active__c from Account_Business_Types__r) FROM Account WHERE Id IN :accountIdSet]);
         }
         Map<String,List<ER_Customer_Master_File_Group__c>> cmfDataMap = new Map<String,List<ER_Customer_Master_File_Group__c>>();
         for(ER_Customer_Master_File_Group__c cmfData :[SELECT id,name,ER_Active__c,ER_Description__c,ER_Count_of_Customer_Master_Files__c,ER_Inactive_Customer_Master_Files__c,ER_Count_of_Contacts__c,ER_Inactive_Contacts__c,CreatedBy.Name,CreatedDate,LastModifiedDate,LastModifiedBy.Name,(SELECT id,ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Id,ER_Customer_Master_File_Group__r.NAme,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c,
@@ -259,7 +259,6 @@ public class ER_SalesCloud_Integration {
             UpdateACMRecords(contactIdSet,'Contact');
         }
     }
-    @TestVisible
     private static ER_SalesCloud_Integration_Model.AccountBasicInformation getAccountBasicInformation(Account acct){
         ER_SalesCloud_Integration_Model.AccountBasicInformation acctInfo = new ER_SalesCloud_Integration_Model.AccountBasicInformation();
         acctInfo.Name = acct.Name;
@@ -374,7 +373,6 @@ public class ER_SalesCloud_Integration {
             createLogEntry('Error in A&E CMFG Integration', ex, LOG_ENTRY_ERROR, 'High',params);
         }
     }
-    @TestVisible
     private static List<ER_SalesCloud_Integration_Model.cmfWrapper> getCMFDetails(List<ER_Customer_Master_File_Group__c> cmfData){
         Map<String,List<ER_CMFGroupAssociation__c>> cmfDataMap = new Map<String,List<ER_CMFGroupAssociation__c>>();
         for(ER_Customer_Master_File_Group__c grouprec:cmfData){

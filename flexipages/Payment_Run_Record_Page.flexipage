@@ -32,7 +32,7 @@
                 <fieldItem>Record.Core_MDF_Program_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Program_Txt_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CreatedBy.Email}</leftValue>
                         <operator>NE</operator>
@@ -41,11 +41,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -72,13 +67,13 @@
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-Engineering</rightValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>Channel MDF</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
+                        <rightValue>Co-Engineering</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -107,22 +102,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Is_OOC_Payment_Ind__c</fieldItem>
-                <identifier>RecordCore_MDF_Is_OOC_Payment_Ind_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Name}</leftValue>
-                        <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -169,7 +148,7 @@
                 <fieldItem>Record.Core_MDF_Run_Now_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Run_Now_Ind_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -179,11 +158,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -197,16 +171,10 @@
                 <fieldItem>Record.Core_MDF_ScheduleRun_Dtm__c</fieldItem>
                 <identifier>RecordCore_MDF_ScheduleRun_Dtm_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -220,16 +188,16 @@
                 <fieldItem>Record.Core_MDF_Send_Notification_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Send_Notification_Ind_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance MDF</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>Core_MDF_Channel_MDF</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -243,7 +211,7 @@
                 <fieldItem>Record.Core_MDF_Program_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Program_Txt_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CreatedBy.Email}</leftValue>
                         <operator>NE</operator>
@@ -252,11 +220,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -319,7 +282,7 @@
                 <fieldItem>Record.Core_MDF_Status_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Status_Txt_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -328,11 +291,6 @@
                     <criteria>
                         <leftValue>{!Record.Name}</leftValue>
                         <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -359,13 +317,13 @@
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-Engineering</rightValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>Channel MDF</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
+                        <rightValue>Co-Engineering</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -379,11 +337,16 @@
                 <fieldItem>Record.Core_MDF_Subgeo_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Subgeo_Txt__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Retail Marketing Funds</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>Channel MDF</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
@@ -430,7 +393,7 @@
                 <fieldItem>Record.Core_MDF_Account_Id__c</fieldItem>
                 <identifier>RecordCore_MDF_Account_Id_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -442,9 +405,9 @@
                         <rightValue>Datacenter MDF</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>Co-Engineering</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -458,7 +421,7 @@
                 <fieldItem>Record.Core_MDF_ScheduleRun_Dtm__c</fieldItem>
                 <identifier>RecordCore_MDF_ScheduleRun_Dtm_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -479,11 +442,6 @@
                         <operator>EQUAL</operator>
                         <rightValue>Client Co-Marketing Fund Boost</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
@@ -496,7 +454,7 @@
                 <fieldItem>Record.Core_MDF_Run_Now_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Run_Now_Ind__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -513,9 +471,9 @@
                         <rightValue>Retail Marketing Funds</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>Channel MDF</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -529,7 +487,7 @@
                 <fieldItem>Record.Core_MDF_ScheduleRun_Dtm__c</fieldItem>
                 <identifier>RecordCore_MDF_ScheduleRun_Dtm__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
@@ -554,11 +512,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -579,9 +532,9 @@
                         <rightValue>Retail Marketing Funds</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>Channel MDF</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -595,7 +548,7 @@
                 <fieldItem>Record.Core_MDF_Status_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Status_Txt__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Name}</leftValue>
                         <operator>NE</operator>
@@ -604,11 +557,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -728,7 +676,7 @@
                 <componentName>core_MDF_PaymentRunAccounts</componentName>
                 <identifier>c_core_MDF_PaymentRunAccounts1</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -738,16 +686,6 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Datacenter MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-Engineering</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

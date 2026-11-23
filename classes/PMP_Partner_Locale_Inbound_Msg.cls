@@ -8,11 +8,8 @@
 
 public with sharing class PMP_Partner_Locale_Inbound_Msg {
     
-    //TranslationEOL
-    public static Boolean isWorking() {
-        return true;
-    }
-   /* public class InboundPayload {
+    
+    public class InboundPayload {
         public String SourceLanguage {get; set;}
         public List<PartnerData> Partners {get; set;}
     }  
@@ -159,7 +156,7 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
                 } */
                 
                 //Modified by sooriya             
-        /*        if(!multiValue.contains(targetLanguageName)){
+                if(!multiValue.contains(targetLanguageName)){
                     multiValue += ';' +targetLanguageName;
                 }
                 
@@ -265,7 +262,6 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
             PMP_Utility.logError(e,'PMP_CompanyInboundTranslation');
             
         }
-    }  
-*/
+    }                 
     
 }

@@ -75,6 +75,9 @@
     <columns>
         <field>SBQQ__Quote__c.core_cpq_next_approver_nm__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
     <description>Overview of quote records with time-limited quote line type</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>

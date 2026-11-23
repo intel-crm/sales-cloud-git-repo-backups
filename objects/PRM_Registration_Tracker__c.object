@@ -290,16 +290,6 @@
                     <default>false</default>
                     <label>Bulk Add</label>
                 </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

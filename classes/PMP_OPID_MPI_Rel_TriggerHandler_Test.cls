@@ -83,6 +83,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
         company.PMP_Partner_Country_Txt__c = 'India';
         company.PMP_Company_Lifecycle_Status_Nm__c ='Draft';
         company.PMP_Is_Published_Ind__c = true;
+        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
         insert company;
                 
@@ -190,6 +191,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
         company22.PMP_Partner_Country_Txt__c = 'India';
         company22.PMP_Company_Lifecycle_Status_Nm__c ='Draft';
         company22.PMP_Is_Published_Ind__c = true;
+        //company22.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company22.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
         insert company22;
         
@@ -247,7 +249,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
         l.Core_Lead_State__c = 'Unclaimed';
         //l.Core_Partner_Lead_Owner__c = '';
         l.Core_MPI_Id__c = NewOpid44.PMP_Marketing_Profile_Id__c;
-       // insert l;
+        insert l;
         
     List<PMP_OPID_MPI_Rel__c> inActivatedJunctionRecords = new List<PMP_OPID_MPI_Rel__c>();
     List<PMP_OPID_MPI_Rel__c> ActivatedJunctionRecords = new List<PMP_OPID_MPI_Rel__c>();
@@ -296,6 +298,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
         company32.PMP_Partner_Country_Txt__c = 'India';
         company32.PMP_Company_Lifecycle_Status_Nm__c ='Draft';
         company32.PMP_Is_Published_Ind__c = true;
+        //company32.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company32.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
         insert company32;
             
@@ -392,6 +395,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
+        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
         company.PMP_Is_Published_Ind__c=true;
         company.PMP_Published_Copy_Id__c=Partner_pc.Id;
@@ -576,7 +580,7 @@ public class PMP_OPID_MPI_Rel_TriggerHandler_Test {
             List<PMP_Company__c> compinfo= new List<PMP_Company__c>(); 
             
              PMP_Company__c newcompany1 = new PMP_Company__c(OwnerId=newUser1.Id, Name='companyinformationtest1',
-                                                           PMP_Account_Industry__c='Agriculture',PMP_Is_Published_Ind__c=true,PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile);
+                                                           PMP_Account_Industry__c='Agriculture',PMP_Is_Published_Ind__c=true,PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile/*PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced*/);
             
             
             

@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">最終通告: 請求番号</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;イベント&quot;,&quot;Lead Cultivation&quot;:&quot;リード育成&quot;,&quot;Technical Activation&quot;:&quot;テクニカルアクティベーション&quot;,&quot;Incentive&quot;:&quot;インセンティブ&quot;,&quot;Training&quot;:&quot;トレーニング&quot;,&quot;Digital Media&quot;:&quot;デジタルメディア&quot;,&quot;Legacy Media&quot;:&quot;レガシーメディア&quot;,&quot;Funded Headcount&quot;:&quot;資金提供された人員&quot;,&quot;Brand Awareness&quot;:&quot;ブランド認知&quot;,&quot;Consideration&quot;:&quot;検討&quot;,&quot;Purchase Intent&quot;:&quot;購買意向&quot;,&quot;Preference&quot;:&quot;選好&quot;,&quot;Share of Voice&quot;:&quot;シェア・オブ・ボイス&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">よろしくお願いいたします,</value>
     </values>

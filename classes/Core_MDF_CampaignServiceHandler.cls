@@ -52,20 +52,12 @@ public without sharing class Core_MDF_CampaignServiceHandler {
                     ipaCampaignList.add(cmp);
                 }
                 proposalBasedCampaignList.add(cmp);
-                //ATHR - Deeply Nested if 16209
-                /*if(isUpdate) {
+                if(isUpdate) {
                     if(oldCampaignMap.containsKey(cmp.Id) && oldCampaignMap.get(cmp.Id) != NULL){ 
                         if(ipaCampaignRecordTypeIdList.contains(cmp.RecordTypeId)) {
                             ipaCampaignOldMap.put(cmp.Id,oldCampaignMap.get(cmp.Id));
                         }
                         proposalBasedCampaignOldMap.put(cmp.Id,oldCampaignMap.get(cmp.Id)); 
-                    } 
-                    proposalBasedCampaignNewMap.put(cmp.Id,cmp);
-                }*/
-                if(isUpdate && oldCampaignMap.containsKey(cmp.Id) && oldCampaignMap.get(cmp.Id) != NULL) {
-                    proposalBasedCampaignOldMap.put(cmp.Id, oldCampaignMap.get(cmp.Id));
-                    if(ipaCampaignRecordTypeIdList.contains(cmp.RecordTypeId)) {
-                        ipaCampaignOldMap.put(cmp.Id, oldCampaignMap.get(cmp.Id));
                     } 
                     proposalBasedCampaignNewMap.put(cmp.Id,cmp);
                 }
@@ -236,17 +228,9 @@ public without sharing class Core_MDF_CampaignServiceHandler {
                 for(Campaign c :cmp ){
                     Campaign newCmp = new Campaign();
                     newCmp.Id = c.Id;
-                    //ATHR - Deeply Nested if 16209
-                    if(c == null || !campIdProcessInstId.containsKey(c.Id) || campIdProcessInstId.get(c.Id) == null) {
-                        continue;
-                    }
-                    //if(campIdProcessInstId.containsKey(c.Id) && campIdProcessInstId.get(c.Id) != NULL){
+                    if(campIdProcessInstId.containsKey(c.Id) && campIdProcessInstId.get(c.Id) != NULL){
                         Id processInstanceId = campIdProcessInstId.get(c.Id);
-                        //ATHR - Deeply Nested if 16209
-                        if(processInstanceId == null || piAndListofPiStepMap.get(processInstanceId) == null || !piAndListofPiStepMap.containsKey(processInstanceId)) {
-                            continue;
-                        }
-                        //if(piAndListofPiStepMap.containsKey(processInstanceId) && piAndListofPiStepMap.get(processInstanceId) != NULL){
+                        if(piAndListofPiStepMap.containsKey(processInstanceId) && piAndListofPiStepMap.get(processInstanceId) != NULL){
                             for(ProcessInstanceStep pistep: piAndListofPiStepMap.get(processInstanceId)){
                                 if(pistep.StepStatus == 'Approved'){
                                     newCmp.Core_MDF_Comments_Appvr_Only_txt__c = pistep.Comments;
@@ -254,8 +238,8 @@ public without sharing class Core_MDF_CampaignServiceHandler {
                                     
                                 }  
                             }
-                        //}
-                    //}
+                        }
+                    }
                 }
               //  update toUpdateCampRecList;
             }

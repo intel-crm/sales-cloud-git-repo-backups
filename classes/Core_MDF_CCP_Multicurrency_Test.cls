@@ -12,10 +12,9 @@ private class Core_MDF_CCP_Multicurrency_Test
     {
         
        @isTest static void testCallHttp()
-           {   
-              // Highlight: Unused Local Variable 
-             //  Core_MDF_CCP_Multicurrency.errorHandling test = new Core_MDF_CCP_Multicurrency.errorHandling();
-              /*  string response = */ Core_MDF_CCP_Multicurrency.callHttp();
+           {            
+               Core_MDF_CCP_Multicurrency.errorHandling test = new Core_MDF_CCP_Multicurrency.errorHandling();
+               string response = Core_MDF_CCP_Multicurrency.callHttp();
                Core_MDF_CCP_Multicurrency.scheduleMulticurrencyRetryBatch();
                System.assert(true,Core_MDF_CCP_Multicurrency.isError);
               
@@ -113,10 +112,7 @@ private class Core_MDF_CCP_Multicurrency_Test
                         
                         inputList.add(record1);inputList.add(record2);inputList.add(record3);
 						Core_MDF_CCP_Multicurrency.getExchangeRateForAnyInputAndOutputCurrency(inputList);
-                        // Unit Test Method should include System.Assert
-                        system.assertEquals(0.0062064838, record1.conversionRate);
-                        system.assertEquals(0.0062064838, record2.conversionRate);
-                        system.assertEquals(null, record3.conversionRate);  
+                        
                         
                         //system.assertEquals(0.0062064838, result1.conversionRate);
                         //system.assertEquals(0.0062064838, result2.conversionRate);

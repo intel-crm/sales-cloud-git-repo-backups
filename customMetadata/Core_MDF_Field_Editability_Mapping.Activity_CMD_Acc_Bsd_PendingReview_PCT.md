@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_ReadOnly_API_Name__c</field>
-        <value xsi:type="xsd:string">ChannelPartnerId,Core_MDF_Budget_Type_nm__c,Title,Core_MDF_Activity_Description__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,CampaignId,Core_MDF_Budget_Amount_Local_amt__c,Core_MDF_Budget_Currency_cd__c,Core_MDF_ActivityCategory__c,Core_MDF_Activity_Types__c,Core_MDF_Metrics_txt__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_BU_Split__c,Core_MDF_Reimbursement_Rate_txt__c,Core_MDF_Country_nm__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Attribution_Variance_Pos_txt__c,Core_MDF_Attribution_Variance_Neg_txt__c,Core_MDF_Brand_nm__c,Core_MDF_ProductType__c,Core_MDF_Domain_Type_nm__c</value>
+        <value xsi:type="xsd:string">ChannelPartnerId,Core_MDF_Budget_Type_nm__c,Title,Core_MDF_Activity_Description__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,CampaignId,Core_MDF_Budget_Amount_Local_amt__c,Core_MDF_Budget_Currency_cd__c,Core_MDF_ActivityCategory__c,Core_MDF_Activity_Types__c,Core_MDF_Metrics_txt__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_BU_Split__c,Core_MDF_Reimbursement_Rate_txt__c,Core_MDF_Country_nm__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Attribution_Variance_Pos_txt__c,Core_MDF_Attribution_Variance_Neg_txt__c,Core_MDF_Brand_nm__c,Core_MDF_ProductType__c,Core_MDF_Domain_Type_nm__c,Core_MDF_Attribution_Requirements_txt__c,Core_MDF_POP_Requirements_txt__c</value>
     </values>
     <values>
         <field>Core_MDF_Is_Claim_Associated_Ind__c</field>

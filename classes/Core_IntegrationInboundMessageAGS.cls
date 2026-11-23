@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************
-Class Name  : Core_IntegrationInboundMessageAGS  
+Class Name  : Core_IntegrationInboundMessageAGS
 Version     : 1.0
 Created Date: 30 NOV 2016
 Function    : Business logic for processing inbound AGS messages   
@@ -49,7 +49,6 @@ public without sharing class Core_IntegrationInboundMessageAGS {
         Set<String> agsEmailIds  = new Set<String>();
         Map<String,InBoundMessageWrapper> agsEmailIdResponseMap  = new Map<String,InBoundMessageWrapper>();
         Map<String,Core_Integration_Inbound_Message__c> mapEmailInboundMsg = new Map<String,Core_Integration_Inbound_Message__c>();
-        
         // Check if the operation is Bulk. If it is in bulk then dont create log entries on failure or success
         if(newList.Size() > 1){
             dontCreateLogEntry = true;
@@ -124,7 +123,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
             for (Contact c : matchingContacts){
                 ConId.add(c.Id);
             }
-            List<User> UserList = [SELECT ContactId, IsActive, Core_License_Reclaimed_on_Creation__c FROM User WHERE ContactId IN : ConId];
+            List<User> UserList = [SELECT ContactId, IsActive FROM User WHERE ContactId IN : ConId];
             for (Contact c : matchingContacts) {
                 InBoundMessageWrapper ibMsgWrpr = null;
                 //Changes PopcornApps START
@@ -446,11 +445,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                     }
                     Map<Id, Boolean> IntEntUserMap = new Map<Id, Boolean>();
                     for(User use : IntEntContUserList){
-                        if(use.Core_License_Reclaimed_on_Creation__c){
-                            IntEntUserMap.put(use.ContactId, use.Core_License_Reclaimed_on_Creation__c);
-                        } else {
-                            IntEntUserMap.put(use.ContactId, use.IsActive);
-                        }
+                        IntEntUserMap.put(use.ContactId, use.IsActive);
                     }
                     for(Core_Contact_Entitlement__c currIntEnt : listPendingIntContEnt){
                 	String IntgLogTags = currIntEnt.Core_Display_Nm__c;                        
@@ -522,7 +517,13 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                 conMsg.Inbound_Message__c = filteredInboundMsgIdMap.get(conMsg.Outbound_Message__c);
             }
             //update conMsgList;
-            // TO DO: add exception handling            
+            // TO DO: add exception handling
+        
+            if (matchingContacts.size() > 0) {
+                insert ContactMsg;
+                update matchingContacts;
+            }
+            
             //--------Changes PopcornApps START
             
             //Update the entilement status to Completed
@@ -532,18 +533,13 @@ public without sharing class Core_IntegrationInboundMessageAGS {
             for(Map<String, Core_Contact_Entitlement__c> currentMap : allEntitlementsToUpdate){
                 entForUpdate.addAll(currentMap.values());
             }
-            
            
-            
             contactEntSuccessIdListToUpdate = Core_Draco_Misc_Functionalities.validateBeforeDML(entForUpdate,matchingContacts);
-            
+           
             if(contactEntSuccessIdListToUpdate != null && !contactEntSuccessIdListToUpdate.isEmpty()){
                 update contactEntSuccessIdListToUpdate;
             }
-            if (matchingContacts.size() > 0) {
-                insert ContactMsg;
-                update matchingContacts;
-            }
+            
             
             //Contact ReTrigger to make AGS outbound again for the pending entitlements
             if(String.isBlank(error)){
@@ -609,7 +605,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                 msg.Core_Retry_Counter__c = 0;
             }
             msg.Core_Log_Entry__c = ib.logEntryId; 
-            msg.Core_Tags__c = Ib.tags.length() > 255 ? Ib.tags.subString(0,255) : Ib.tags;
+            msg.Core_Tags__c = Ib.tags;
             msg.Core_Outbound_Message__c = ( Test.isRunningTest() == true ) ?  null  :  ib.outboundMessageId;
             if(msg.Core_Processing_Status__c == 'Failed'){
                 failedMessageSet.add(msg.Id);
@@ -834,40 +830,34 @@ return enterpriseIdSet;
     
     @future
     public static void reprocessFailedInboundAsync(){
-        try{
-            Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
-            List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
-            Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
-            Datetime timeOffset = System.now();
-            timeOffset = timeOffset.addMinutes(-addMins);
-            string failedVal='Failed';
-            string roleVal='Role 2.0';
-            Integer batchSize = integer.valueof(System.Label.Core_Reprocess_Batch_Size);
-            String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
-            
-            //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
-            List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
-            
-            for(Core_Integration_Inbound_Message__c IIM : failedIIM){
-                IIM.Core_Processing_Status__c = 'Pending';
-                IIM.Core_Retry_Counter__c += 1;
-                pendingIIM.add(IIM);
-                
-                
-                Map<String,Object> FailedIIMMap = new Map<String,Object>();
-                FailedIIMMap.put('InboundMessageId',IIM.Id);
-                
-                //create instance of Interview
-                Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
-                
-                //Invoke start method of the flow
-                pendingIIMFlow.start();
-            }
-        }catch(Exception e){
-            UCD_ACM_Logger.error('Core_IntegrationInboundMessageAGS','reprocessFailedInboundAsync',e.getMessage(), null);
-            UCD_ACM_Logger.setLogDetails();
-        }
+        Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
+        List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
+        Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
+        Datetime timeOffset = System.now();
+        timeOffset = timeOffset.addMinutes(-addMins);
+        string failedVal='Failed';
+        string roleVal='Role 2.0';
+        Integer batchSize = integer.valueof(System.Label.Core_Reprocess_Inbound_Batch_Size);
+        String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
+        //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
+        List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
         
+        for(Core_Integration_Inbound_Message__c IIM : failedIIM){
+            IIM.Core_Processing_Status__c = 'Pending';
+            IIM.Core_Retry_Counter__c += 1;
+            pendingIIM.add(IIM);
+
+            
+            Map<String,Object> FailedIIMMap = new Map<String,Object>();
+            FailedIIMMap.put('InboundMessageId',IIM.Id);
+
+            //create instance of Interview
+            Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
+
+            //Invoke start method of the flow
+            pendingIIMFlow.start();
+        }
+       
         //update pendingIIM;
     }
 
@@ -875,6 +865,7 @@ return enterpriseIdSet;
     // Added by Draco to format the payload information to convert errors in the roles from "Errors": "<some error>" format to 
     // "Errors": [{"description": "Failed to update role","code": 400,"serviceCode": "WorkflowExecutionError","sourceSystemCode": "","sourceSystemMessage": "<some error>","requestId": null}] format
     public static String errorFormatting (String payloadString){
+        
 	Map<String, String> errorMap = new Map<String, String>();
         if(payloadString != null && payloadString != '' && payloadString.containsIgnoreCase('"Errors": "')){
             List<String> strListErrorsSplit = payloadString.split('"Errors": "');

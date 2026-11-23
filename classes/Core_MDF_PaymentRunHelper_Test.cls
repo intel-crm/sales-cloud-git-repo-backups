@@ -18,7 +18,6 @@ private class Core_MDF_PaymentRunHelper_Test{
         PermissionSet paymentAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Payment_Adm' LIMIT 1];
         PermissionSet paymentScheduleAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Payment_Schedule_Admin' LIMIT 1];
         PermissionSet mdfPaymentScheduleAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin' LIMIT 1];
-        PermissionSet paymentAdminManagerAdm = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Payment_Admin_Manager' LIMIT 1];
         Test.startTest();
         List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -42,8 +41,6 @@ private class Core_MDF_PaymentRunHelper_Test{
         permSetAssgnmntList.add(assignPermissionSetObj1);
         PermissionSetAssignment assignPermissionSetObj2 = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(usr1.Id,mdfPaymentScheduleAdm.Id,false);
         permSetAssgnmntList.add(assignPermissionSetObj2);
-        PermissionSetAssignment assignPermissionSetObj3 = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(usr1.Id,paymentAdminManagerAdm.Id,false);
-        permSetAssgnmntList.add(assignPermissionSetObj3);
         system.runAs(usr){
             Database.insert(permSetAssgnmntList);
             
@@ -57,16 +54,6 @@ private class Core_MDF_PaymentRunHelper_Test{
             accntList.add(acc1);
             accntList.add(acc2);
             insert accntList;
-            Id accOnboard_RecordType_CCF = Schema.SObjectType.Core_MDF_Account_Onboarding__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_CoMarketing_Fund').getRecordTypeId();
-            Core_MDF_Account_Onboarding__c accOnb = new Core_MDF_Account_Onboarding__c();
-            accOnb.RecordTypeId = accOnboard_RecordType_CCF;
-            accOnb.Core_MDF_Account__c = acc.Id;
-            accOnb.Core_MDF_Technical_Program_nm__c = 'Client CoMarketing Fund';
-            accOnb.Core_MDF_Type__c = 'Intel Account';
-            accOnb.Core_MDF_SubParent_Account_to_be_Created__c = TRUE;
-            accOnb.Core_MDF_Domains_txt__c = 'ccf.com;ccf1.com';
-            accOnb.Core_MDF_Virtual_Account_Name_txt__c = 'CCF Virtual Corp Account';
-            Database.insert(accOnb);
             group grpCCFAllEmployees = [select DeveloperName from group where DeveloperName='CORE_MDF_CCP_CCF_ALL' LIMIT 1];
             
             //SELECT Id, AccountId, UserOrGroupId, AccountAccessLevel, OpportunityAccessLevel, CaseAccessLevel, ContactAccessLevel, RowCause FROM AccountShare
@@ -134,7 +121,7 @@ iupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_Read_Only';
 iupgm1.Core_MDF_All_Accounts_cd__c = 'Yes';
 iupgm1.Core_MDF_Active_Ind__c = true;
 iupgmLst.add(iupgm1); */
-            //database.insert(iupgmLst);
+            database.insert(iupgmLst);
             Group grp = new Group();
             grp.name = 'PGM_TEST';
             insert grp;
@@ -210,21 +197,18 @@ iupgmLst.add(iupgm1); */
             paymentRunRec4.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId();
             paymentRunRec4.Core_MDF_Budget_Type_nm__c = 'MDF';
             paymentRunRec4.Core_MDF_Account_Id__c = accList[0].Id;
-            paymentRunRec4.Core_MDF_Is_OOC_Payment_Ind__c = true;
             paymentRunRec4.Core_MDF_Program_Txt__c='Client CoMarketing Fund';
             paymentRunRec4.Core_MDF_ScheduleRun_Dtm__c = system.now().addMinutes(15);
             
             paymentRunRec5.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId();
             paymentRunRec5.Core_MDF_Budget_Type_nm__c = 'MDF+';
             paymentRunRec5.Core_MDF_Run_For_All_Accounts__c = true;
-            paymentRunRec5.Core_MDF_Is_OOC_Payment_Ind__c = true;
             paymentRunRec5.Core_MDF_Program_Txt__c='Client CoMarketing Fund';
             paymentRunRec5.Core_MDF_ScheduleRun_Dtm__c = system.now().addMinutes(20);
             
             paymentRunRec6.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId();
             paymentRunRec6.Core_MDF_Budget_Type_nm__c = 'MDF;MDF+';
             paymentRunRec6.Core_MDF_Account_Id__c = accList[2].Id;
-            paymentRunRec6.Core_MDF_Is_OOC_Payment_Ind__c = true;
              paymentRunRec6.Core_MDF_Program_Txt__c='Client CoMarketing Fund';
             paymentRunRec6.Core_MDF_ScheduleRun_Dtm__c = system.now().addMinutes(25);
             
@@ -232,14 +216,12 @@ iupgmLst.add(iupgm1); */
             paymentRunRec7.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Datacenter MDF').getRecordTypeId();
             paymentRunRec7.Core_MDF_Budget_Type_nm__c = 'MDF';
             paymentRunRec7.Core_MDF_Account_Id__c = accList[2].Id;
-            paymentRunRec7.Core_MDF_Is_OOC_Payment_Ind__c = true;
             paymentRunRec7.Core_MDF_Program_Txt__c='Data Center CoMarketing Fund';
             paymentRunRec7.Core_MDF_ScheduleRun_Dtm__c = system.now().addMinutes(30);
             
             paymentRunRec8.RecordTypeId = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId();
             paymentRunRec8.Core_MDF_Budget_Type_nm__c = 'MDF;MDF+';
             paymentRunRec8.Core_MDF_Account_Id__c = accList[1].Id;
-            paymentRunRec8.Core_MDF_Is_OOC_Payment_Ind__c = true;
             paymentRunRec8.Core_MDF_Program_Txt__c='Client CoMarketing Fund';
             paymentRunRec8.Core_MDF_ScheduleRun_Dtm__c = system.now().addMinutes(22);
             
@@ -441,67 +423,5 @@ iupgmLst.add(iupgm1); */
         }
     }
     
-    @isTest
-    static void testGetOOCPaymentDueClaims() {
-    	Account testAccount = [Select id from account where name='Test Account2' limit 1];
     
-        // Build request — program set to IPA to cover buildPaymentTypeSet IPA + Contra Revenue branch
-        Core_MDF_PaymentUtility.OOCClaimRequest req = new Core_MDF_PaymentUtility.OOCClaimRequest();
-        req.accountIds    = new List<String>{ testAccount.Id };
-        req.programName   = 'Test Program';
-        req.program       = 'Core_MDF_Intel_Partner_Alliance_MDF';
-        req.paymentNature = 'Contra Revenue';
-        req.geo           = 'ASMO';
-        req.subGeo        = 'LAR';
-        req.budgetTypes   = 'MDF';
-        req.startDate     = Date.today().addDays(-15);
-        req.endDate       = Date.today().addDays(15);
-    
-        Test.startTest();
-            // Cover null path
-            Core_MDF_PaymentUtility.getOOCPaymentDueClaims(null);
-    
-            // Cover empty list path
-            Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                new List<Core_MDF_PaymentUtility.OOCClaimRequest>()
-            );
-    
-            // Cover main path with all filters + IPA Contra Revenue (covers buildPaymentTypeSet IPA branch)
-            List<Core_MDF_PaymentUtility.OOCClaimResult> results =
-                Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                    new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ req }
-                );
-    		req.paymentNature = 'Expense';
-            // Cover main path with all filters + IPA Expense (covers buildPaymentTypeSet IPA branch)
-            List<Core_MDF_PaymentUtility.OOCClaimResult> results2 =
-                Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                    new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ req }
-                );
-            // Cover buildPaymentTypeSet Co-Engineering branch
-            Core_MDF_PaymentUtility.OOCClaimRequest reqCoEng = new Core_MDF_PaymentUtility.OOCClaimRequest();
-            reqCoEng.program       = 'Co_Engineering';
-            reqCoEng.paymentNature = 'Contra CSAR';
-            Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ reqCoEng }
-            );
-            // Cover buildPaymentTypeSet Co-Engineering branch
-            Core_MDF_PaymentUtility.OOCClaimRequest reqCoEng2 = new Core_MDF_PaymentUtility.OOCClaimRequest();
-            reqCoEng.program       = 'Co_Engineering';
-            reqCoEng.paymentNature = 'Contra Vistex';
-            Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ reqCoEng }
-            );
-            // Cover buildPaymentTypeSet Co-Engineering branch
-            Core_MDF_PaymentUtility.OOCClaimRequest reqCoEng3 = new Core_MDF_PaymentUtility.OOCClaimRequest();
-            reqCoEng.program       = 'Co_Engineering';
-            reqCoEng.paymentNature = 'Expense';
-            Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
-                new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ reqCoEng }
-            );
-    
-        Test.stopTest();
-    
-        System.assertNotEquals(null, results, 'Results should not be null');
-        System.assertEquals(1, results.size(), 'Should return one result wrapper');
-    }
 }

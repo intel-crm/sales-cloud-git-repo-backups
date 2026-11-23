@@ -55,15 +55,9 @@
 			"recordTypeName": rTypeName,
 			"sctrlvalue": cvalue
 		});
-		// Clear stale options immediately while waiting for latest dependent values.
-		component.set("v.myoptions", []);
-        
+
 		action.setCallback(this, function (response) {
-			var currentControllingValue = component.get("v.controllingvalue");
-			// Ignore stale async responses after another controlling value change.
-            if ((currentControllingValue == null ? '' : currentControllingValue) !== (cvalue == null ? '' : cvalue)) {
-				return;
-			}
+
 			if (response.getState() == "SUCCESS") {
 				var optionMap = new Map();
 				optionMap = response.getReturnValue();
@@ -85,7 +79,7 @@
 				}
 
 				//console.log("Campaign Values (opts) "+JSON.stringify(opts));
-				var updatedopts =component.get("v.options") || [];
+				var updatedopts = [];
 
 				/*if (fieldName == 'Core_MDF_Country__c') {
 					//console.log(" country myopts "+JSON.stringify(opts));
@@ -179,30 +173,15 @@
 		myopts.sort(this.case_insensitive_sort);
         }
 		var updatedopts = [];
-        var allowedValuesMap = {};
-		for (var index = 0; index < valuefromPFR.length; index++) {
-			if (valuefromPFR[index] && valuefromPFR[index].value != undefined) {
-				allowedValuesMap[valuefromPFR[index].value] = true;
-			}
-		}
-
-		for (var validOpt = 0; validOpt < myopts.length; validOpt++) {
-			if (myopts[validOpt] && (myopts[validOpt].value === "" || dependentPicklistField == true || allowedValuesMap[myopts[validOpt].value] === true)) {
-				updatedopts.push(myopts[validOpt]);
-			}
-		}
-
-		if (currentSelectedValue != null && currentSelectedValue !== "") {
-			var isSelectedValueAvailable = false;
-			for (var checkValue = 0; checkValue < updatedopts.length; checkValue++) {
-				if (updatedopts[checkValue] && updatedopts[checkValue].value === currentSelectedValue) {
-					isSelectedValueAvailable = true;
-					break;
+		for (var i = 0; i < valuefromPFR.length; i++) {
+			for (var j = 0; j < myopts.length; j++) {
+				if (valuefromPFR[i].value == myopts[j].value) {
+					updatedopts[j] = myopts[j];
 				}
-			}
-			if (!isSelectedValueAvailable) {
-				component.set("v.selectedValue", "");
-			}
+				else if (dependentPicklistField == true){
+					updatedopts[j] = myopts[j];
+				}
+            }
 		}
 
 		if (updatedopts.length == 2) {

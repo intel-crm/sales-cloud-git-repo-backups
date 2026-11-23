@@ -11,7 +11,7 @@ Modification Log :
 * Dave Hood                 01/30/2017              Original version
 * Ankita Roy				04/27/2020				US667275 - DEVELOPMENT ONLY : Security Scan Fixes - 3
 *****************************************************************************************************************************************/
-public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
+public  without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
     
     private static final Integer RECORD_LIMIT = 50;  // Limit used in SOQL queries
     public Integer getRecordLimit(){ return RECORD_LIMIT; }
@@ -115,54 +115,6 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
     public PageReference search() {
         
         // Reset the UI
-        resetUiFlags();
-        
-        // Trim whitespace
-        trimSearchInputs();
-        
-        Boolean searchMessagesLogsById = hasMessageOrLogId();
-        
-        // ================================== SEARCH CONTACTS =======================================
-        contacts = Database.query(buildContactSoql());
-        if (contacts.size() > 0) showContacts = true;
-        
-        Set<Id> contactIds = new Set<Id>();
-        for (Contact c : contacts) contactIds.add(c.Id);
-        
-        // ================================== SEARCH CONTACT ENTITLEMENTS ==================================
-        contactEntitlements = Database.query(buildContactEntitlementSoql(contactIds));
-        if (contactEntitlements.size() > 0) showContactEntitlements = true;
-        
-        // ================================== SEARCH OUTBOUND MESSAGES ==================================
-        outboundMessages = Database.query(buildOutboundMessageSoql(searchMessagesLogsById));
-        if (outboundMessages.size() > 0) showOutboundMessages = true;
-        
-        // ================================== SEARCH INBOUND MESSAGES ==================================
-        inboundMessages = Database.query(buildInboundMessageSoql(searchMessagesLogsById));
-        if (inboundMessages.size() > 0) showInboundMessages = true;
-        
-        // ================================== SEARCH LOG ENTRIES ==================================
-        logEntries = Database.query(buildLogEntrySoql(searchMessagesLogsById));
-        if (logEntries.size() > 0) showLogEntries = true;
-
-        // ================================== CONSOLIDATE RESULTS AND DISPLAY ==================================
-        consolidateInboundOutboundMessages();
-        //debugSearchResults();
-        
-        showResults = true;
-        
-        if (!(showContacts || showContactEntitlements || showOutboundMessages || showInboundMessages || showLogEntries))
-            showNoRecordsFound = true;
-        
-        return null;
-    }
-    
-    private String soqlFormat(DateTime theDateTime) {
-        return theDateTime.formatGmt('yyyy-MM-dd') + 'T' + theDateTime.formatGmt('HH:mm:ss') + 'z';
-    }
-    
-    // Helper: reset UI flags
-    private void resetUiFlags() {
         showContacts = false;
         showContactEntitlements = false;
         showOutboundMessages = false;
@@ -170,54 +122,64 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
         showLogEntries = false;
         showMessageHistory = false;
         showNoRecordsFound = false;
-    }
-    
-    // Helper: trim inputs safely
-    private void trimSearchInputs() {
-        if (contactId != null) contactId = contactId.trim();
-        else contactId = '';
-        if (erpmPersonId != null) erpmPersonId = erpmPersonId.trim();
-        else erpmPersonId = '';
-        if (enterpriseId != null) enterpriseId = enterpriseId.trim();
-        else enterpriseId = '';
-        if (emailAddr != null) emailAddr = emailAddr.trim();
-        else emailAddr = '';
-        if (inboundMessageId != null) inboundMessageId = inboundMessageId.trim();
-        else inboundMessageId = '';
-        if (outboundMessageId != null) outboundMessageId = outboundMessageId.trim();
-        else outboundMessageId = '';
-        if (logEntryId != null) logEntryId = logEntryId.trim();
-        else logEntryId = '';
-    }
-    
-    // Helper: detect if search should be by message/log Id
-    private Boolean hasMessageOrLogId() {
-        return (inboundMessageId != '' || outboundMessageId != '' || logEntryId != '');
-    }
-    
-    // Build contact SOQL string
-    private String buildContactSoql() {
-        String soql = 'select Id, Name, Email, Core_ERPM_Person_Id__c, Core_Enterprise_Id__c, Core_Login_Id__c, ' +
+        
+        // Trim whitespace
+        contactId = contactId.trim();
+        erpmPersonId = erpmPersonId.trim();
+        enterpriseId = enterpriseId.trim();
+        emailAddr = emailAddr.trim();
+        inboundMessageId = inboundMessageId.trim();
+        outboundMessageId = outboundMessageId.trim();
+        logEntryId = logEntryId.trim();
+        
+        Boolean searchMessagesLogsById = false;
+        if ((inboundMessageId != '') || (outboundMessageId != '') || (logEntryId != ''))
+            searchMessagesLogsById = true;
+        
+        // Update blank/null values to bogus values so they're effectively ignored in the queries
+        //String srchContactId = (contactId == '') ? '003000000000001' : contactId;
+        //String srchErpmPersonId = (erpmPersonId == '') ? '9999999' : erpmPersonId;
+        //String srchEnterpriseId = (enterpriseId == '') ? '999999999999' : enterpriseId;
+        //String srchEmailAddr = (emailAddr == '') ? '999999999999@testing.com' : emailAddr;
+        //DateTime srchStartDateTime = (startDateTime == null) ? DateTime.newInstance(2017, 01, 30, 00, 00, 00) : startDateTime;
+        //DateTime srchEndDateTime = (endDateTime == null) ? DateTime.newInstance(2018, 01, 01, 00, 00, 00) : endDateTime;
+        //String srchInboundMessageId = (inboundMessageId == '') ? 'a2Z000000000001' : inboundMessageId;
+        //String srchOutboundMessageId = (outboundMessageId == '') ? 'a0O000000000001' : outboundMessageId;
+        //String srchLogEntryId = (logEntryId == '') ? 'a0Q000000000001' : logEntryId;
+        
+        // ================================== SEARCH CONTACTS =======================================
+        contactSoql = 'select Id, Name, Email, Core_ERPM_Person_Id__c, Core_Enterprise_Id__c, Core_Login_Id__c, ' +
                 'Core_Login_Status__c, Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c, ' +
                 'Core_AGS_Integration_Status__c, Core_AGS_Integration_Message__c, LastModifiedDate ' +
             'from Contact ' +
             'where Id != null ';
+        //Below lines Commented and Added by Ankita Roy on 27-Apr-2020 for Security Scan Fix for Avoid Untrusted/Unescaped Variables in DML Query
         if (contactId != '')
-            soql += ' and Id = \'' + String.escapeSingleQuotes( contactId ) + '\'';
+            //contactSoql += ' and Id = \'' + contactId + '\'';
+              contactSoql += ' and Id = \'' + String.escapeSingleQuotes( contactId ) + '\'';
         if (emailAddr != '')
-            soql += ' and Email = \'' + String.escapeSingleQuotes( emailAddr ) + '\'';
+            //contactSoql += ' and Email = \'' + emailAddr + '\'';
+             // contactSoql += ' and Email = \'' + String.valueOf( emailAddr ) + '\''; // commented by DRACo
+              contactSoql += ' and Email = \'' + String.escapeSingleQuotes( emailAddr ) + '\''; // DRACO fix as part of security scan
         if (erpmPersonId != '')
-            soql += ' and Core_ERPM_Person_Id__c = \'' + String.escapeSingleQuotes( erpmPersonId ) + '\'';
+            //contactSoql += ' and Core_ERPM_Person_Id__c = \'' + erpmPersonId + '\'';
+              contactSoql += ' and Core_ERPM_Person_Id__c = \'' + String.escapeSingleQuotes( erpmPersonId ) + '\'';
         if (enterpriseId != '')
-            soql += ' and Core_Enterprise_Id__c = \'' + String.escapeSingleQuotes( enterpriseId ) + '\'';
-        soql += ' limit ' + String.valueOf( RECORD_LIMIT );
-        contactSoql = soql;
-        return soql;
-    }
-    
-    // Build contact entitlement SOQL
-    private String buildContactEntitlementSoql(Set<Id> contactIds) {
-        String soql = 'select Id, Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Selected__c, Core_From_Source__c, Core_Type__c, ' +
+            //contactSoql += ' and Core_Enterprise_Id__c = \'' + enterpriseId + '\'';
+              contactSoql += ' and Core_Enterprise_Id__c = \'' + String.escapeSingleQuotes( enterpriseId ) + '\'';
+        //contactSoql += ' limit ' + RECORD_LIMIT;
+          contactSoql += ' limit ' + String.valueOf( RECORD_LIMIT );
+        contacts = Database.query(contactSoql);
+        
+        if (contacts.size() > 0)
+            showContacts = true;
+        
+        Set<Id> contactIds = new Set<Id>();
+        for (Contact c : contacts)
+            contactIds.add(c.Id);
+        
+        // ================================== SEARCH CONTACT ENTITLEMENTS ==================================
+        contactEntitlementSoql = 'select Id, Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Selected__c, Core_From_Source__c, Core_Type__c, ' +
                 'Core_Contact_Id__r.Name, ' +
                 'Core_Entitlement_Id__r.Core_Display_Name__c, ' +
                 'Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c, ' +
@@ -229,18 +191,22 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
                 'Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c ' +
             'from Core_Contact_Entitlement__c ' +
             'where Core_Contact_Id__c in :contactIds ';
-        soql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
-        contactEntitlementSoql = soql;
-        return soql;
-    }
-    
-    // Build outbound message SOQL
-    private String buildOutboundMessageSoql(Boolean searchMessagesLogsById) {
-        String soql = 'select Id, LastModifiedDate, Core_MessageType__c, Core_Payload__c ' +
+        //Below lines Commented and Added by Ankita Roy on 27-Apr-2020 for Security Scan Fix for Avoid Untrusted/Unescaped Variables in DML Query
+        //contactEntitlementSoql += ' limit ' + RECORD_LIMIT;
+        contactEntitlementSoql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
+        contactEntitlements = Database.query(contactEntitlementSoql);
+        
+        if (contactEntitlements.size() > 0)
+            showContactEntitlements = true;
+        
+        // ================================== SEARCH OUTBOUND MESSAGES ==================================
+        outboundMessageSoql = 'select Id, LastModifiedDate, Core_MessageType__c, Core_Payload__c ' +
                 'from Core_Integration_Outbound_Message__c ' +
                 'where ';
+        //Below lines Commented and Added by Ankita Roy on 27-Apr-2020 for Security Scan Fix for Avoid Untrusted/Unescaped Variables in DML Query
         if (searchMessagesLogsById) {
-            soql += ' Id = \'' + String.escapeSingleQuotes( outboundMessageId ) + '\' ';
+            //outboundMessageSoql += ' Id = \'' + outboundMessageId + '\' ';
+              outboundMessageSoql += ' Id = \'' + String.escapeSingleQuotes( outboundMessageId ) + '\' ';
         }
         else {
             String outboundMessageTypes = 
@@ -249,32 +215,44 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
                         (messageTypes == 'ERPM Contact') ? '\'ERPM Contact Entitlement\'' :
                             (messageTypes == 'AGS') ? '\'AGS Contact Entitlement\'' : '\'XXXXXXXXXX\'';
             
-            soql += ' LastModifiedDate >= ' + soqlFormat(Date.valueOf( startDateTime ) ) +
+            /*outboundMessageSoql += ' LastModifiedDate >= ' + soqlFormat(startDateTime) +
+                    ' and LastModifiedDate < ' + soqlFormat(endDateTime) +
+                    ' and Core_MessageType__c in (' + outboundMessageTypes + ') ';*/
+            outboundMessageSoql += ' LastModifiedDate >= ' + soqlFormat(Date.valueOf( startDateTime ) ) +
                     ' and LastModifiedDate < ' + soqlFormat(Date.valueOf( endDateTime) ) +
                     ' and Core_MessageType__c in (' + String.valueOf( outboundMessageTypes ) + ') ';
             
             if (contactId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
+                //outboundMessageSoql += ' and Core_Tags__c like \'%' + contactId + '%\' ';
+                outboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
             if (emailAddr != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
+                //outboundMessageSoql += ' and Core_Tags__c like \'%' + emailAddr + '%\' ';
+                //outboundMessageSoql += ' and Core_Tags__c like \'%' + String.valueOf( emailAddr ) + '%\' ';
+                outboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
             if (erpmPersonId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
+                //outboundMessageSoql += ' and Core_Tags__c like \'%' + erpmPersonId + '%\' ';
+                outboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
             if (enterpriseId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( enterpriseId ) + '%\' ';
+                //outboundMessageSoql += ' and Core_Tags__c like \'%' + enterpriseId + '%\' ';
+                outboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( enterpriseId ) + '%\' ';
         }
-        soql += ' limit ' + String.valueOf( RECORD_LIMIT );
-        outboundMessageSoql = soql;
-        return soql;
-    }
-    
-    // Build inbound message SOQL
-    private String buildInboundMessageSoql(Boolean searchMessagesLogsById) {
-        String soql = 'select Id, LastModifiedDate, Core_Source_System__c, Core_Message_Type__c, Core_Processing_Status__c, Core_Payload__c, ' +
+        
+        //outboundMessageSoql += ' limit ' + RECORD_LIMIT;
+        outboundMessageSoql += ' limit ' + String.valueOf( RECORD_LIMIT );
+        outboundMessages = Database.query(outboundMessageSoql);
+        
+        if (outboundMessages.size() > 0)
+            showOutboundMessages = true;
+        
+        // ================================== SEARCH INBOUND MESSAGES ==================================
+        inboundMessageSoql = 'select Id, LastModifiedDate, Core_Source_System__c, Core_Message_Type__c, Core_Processing_Status__c, Core_Payload__c, ' +
             'Core_Exception_Message__c, Core_Log_Entry__c ' +
             'from Core_Integration_Inbound_Message__c ' +
             'where ';
+        //Below lines Commented and Added by Ankita Roy on 27-Apr-2020 for Security Scan Fix for Avoid Untrusted/Unescaped Variables in DML Query
         if (searchMessagesLogsById) {
-            soql += ' Id = \'' + String.escapeSingleQuotes( inboundMessageId ) + '\' ';
+            //inboundMessageSoql += ' Id = \'' + inboundMessageId + '\' ';
+            inboundMessageSoql += ' Id = \'' + String.escapeSingleQuotes( inboundMessageId ) + '\' ';
         }
         else {
             String inboundMessageTypes = 
@@ -285,70 +263,111 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
                                 (messageTypes == 'ERPM Blackbox') ? '\'Blackbox\'' :
                                     (messageTypes == 'AGS') ? '\'Role\'' : '\'XXXXXXXXXX\'';
             
-            // Use controller field inboundProcessingStatus (ensure it's set)
-            if (statusValue != null) {
-                inboundProcessingStatus = (statusValue == 'All') ? '\'Successful\', \'Failed\'' : '\'' + String.escapeSingleQuotes(statusValue) + '\'';
-            } else {
-                inboundProcessingStatus = '\'Successful\', \'Failed\'';
-            }
+            //String inboundProcessingStatus = (statusValue == 'All') ? '\'Successful\', \'Failed\'' : '\'' + statusValue + '\'';
+        if (statusValue != NULL)
+        {
+          String inboundProcessingStatus = (statusValue == 'All') ? '\'Successful\', \'Failed\'' : '\'' + String.escapeSingleQuotes(statusValue) + '\''; //DRACO fix   
+        }
+           
             
-            soql += ' LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime ) ) +
+            /*inboundMessageSoql += ' LastModifiedDate >= ' + soqlFormat(startDateTime) +
+                ' and LastModifiedDate < ' + soqlFormat(endDateTime) +
+                ' and Core_Message_Type__c in (' + inboundMessageTypes + ') ' +
+                ' and Core_Processing_Status__c in (' + inboundProcessingStatus + ') ';*/
+            inboundMessageSoql += ' LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime ) ) +
                 ' and LastModifiedDate < ' + soqlFormat(  Date.valueOf ( endDateTime ) ) +
                 ' and Core_Message_Type__c in (' + String.valueOf ( inboundMessageTypes ) + ') ' +
                 ' and Core_Processing_Status__c in (' +  String.valueOf ( inboundProcessingStatus ) + ') ';
             
             if (contactId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
+                //inboundMessageSoql += ' and Core_Tags__c like \'%' + contactId + '%\' ';
+                inboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
             if (emailAddr != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
+                //inboundMessageSoql += ' and Core_Tags__c like \'%' + emailAddr + '%\' ';
+                // inboundMessageSoql += ' and Core_Tags__c like \'%' + String.valueOf( emailAddr ) + '%\' ';
+                inboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
             if (erpmPersonId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
+                //inboundMessageSoql += ' and Core_Tags__c like \'%' + erpmPersonId + '%\' ';
+                inboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
             if (enterpriseId != '')
-                soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( enterpriseId ) + '%\' ';
+                //inboundMessageSoql += ' and Core_Tags__c like \'%' + enterpriseId + '%\' ';
+                inboundMessageSoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( enterpriseId ) + '%\' ';
         }
-        soql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
-        inboundMessageSoql = soql;
-        return soql;
-    }
-    
-    // Build log entry SOQL
-    private String buildLogEntrySoql(Boolean searchMessagesLogsById) {
-        String soql = 'select Id, LastModifiedDate, Core_Severity__c, Core_Message__c, Core_Details__c, ' +
+        //inboundMessageSoql += ' limit ' + RECORD_LIMIT;
+        inboundMessageSoql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
+        inboundMessages = Database.query(inboundMessageSoql);
+        
+        if (inboundMessages.size() > 0)
+            showInboundMessages = true;
+        
+        // ================================== SEARCH LOG ENTRIES ==================================
+        logEntrySoql = 'select Id, LastModifiedDate, Core_Severity__c, Core_Message__c, Core_Details__c, ' +
             	'Core_sObjectType__c, Core_sObjectId__c, Core_Tags__c ' +
             'from Core_Log_Entry__c ' +
             'where ';
+        //Below lines Commented and Added by Ankita Roy on 27-Apr-2020 for Security Scan Fix for Avoid Untrusted/Unescaped Variables in DML Query
         if (searchMessagesLogsById) {
-            soql += ' (Id != null ';
+            logEntrySoql += ' (Id != null ';
             if (logEntryId != '')
-               soql += ' and Id = \'' + String.escapeSingleQuotes( logEntryId ) + '\' ';
+            	//logEntrySoql += ' and Id = \'' + logEntryId + '\' ';
+            	  logEntrySoql += ' and Id = \'' + String.escapeSingleQuotes( logEntryId ) + '\' ';
             if (inboundMessageId != '')
-               soql += ' and Core_sObjectId__c = \'' + String.escapeSingleQuotes( inboundMessageId ) + '\' ';
+                //logEntrySoql += ' and Core_sObjectId__c = \'' + inboundMessageId + '\' ';
+                  logEntrySoql += ' and Core_sObjectId__c = \'' + String.escapeSingleQuotes( inboundMessageId ) + '\' ';
             if (outboundMessageId != '')
-               soql += ' and Core_sObjectId__c = \'' + String.escapeSingleQuotes( outboundMessageId ) + '\' ';
-            soql += ') ';
+                //logEntrySoql += ' and Core_sObjectId__c = \'' + outboundMessageId + '\' ';
+                  logEntrySoql += ' and Core_sObjectId__c = \'' + String.escapeSingleQuotes( outboundMessageId ) + '\' ';
+            logEntrySoql += ') ';
         }
         else if ((contactId != '') || (erpmPersonId != '') || (enterpriseId != '') || (emailAddr != '')) {
-            soql += ' (Id != null ';
+            logEntrySoql += ' (Id != null ';
             if (contactId != '')
-               soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
+                //logEntrySoql += ' and Core_Tags__c like \'%' + contactId + '%\' ';
+                  logEntrySoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( contactId ) + '%\' ';
             if (emailAddr != '')
-               soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
+                //logEntrySoql += ' and Core_Tags__c like \'%' + emailAddr + '%\' ';
+                //logEntrySoql += ' and Core_Tags__c like \'%' + String.valueOf( emailAddr ) + '%\' ';
+            	logEntrySoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( emailAddr ) + '%\' ';
             if (erpmPersonId != '')
-               soql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
+                //logEntrySoql += ' and Core_Tags__c like \'%' + erpmPersonId + '%\' ';
+                  logEntrySoql += ' and Core_Tags__c like \'%' + String.escapeSingleQuotes( erpmPersonId ) + '%\' ';
             if (enterpriseId != '')
-               soql += ' and Core_Tags__c like \'%' +  String.escapeSingleQuotes( enterpriseId ) + '%\' ';
-            soql += ') ';
-            soql += ' and LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime) ) +
+                //logEntrySoql += ' and Core_Tags__c like \'%' + enterpriseId + '%\' ';
+                  logEntrySoql += ' and Core_Tags__c like \'%' +  String.escapeSingleQuotes( enterpriseId ) + '%\' ';
+            logEntrySoql += ') ';
+            /*logEntrySoql += ' and LastModifiedDate >= ' + soqlFormat(startDateTime) +
+                 ' and LastModifiedDate < ' + soqlFormat(endDateTime);*/
+              logEntrySoql += ' and LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime) ) +
                  ' and LastModifiedDate < ' + soqlFormat( Date.valueOf ( endDateTime) );
         }
         else {
-             soql += ' LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime) ) +
+            /*logEntrySoql += ' LastModifiedDate >= ' + soqlFormat(startDateTime) +
+                ' and LastModifiedDate < ' + soqlFormat(endDateTime);*/
+             logEntrySoql += ' LastModifiedDate >= ' + soqlFormat( Date.valueOf ( startDateTime) ) +
                 ' and LastModifiedDate < ' + soqlFormat( Date.valueOf ( endDateTime ) ) ;
         }
-        soql += ' and Core_sObjectType__c in (\'Core_Integration_Inbound_Message__c\',\'Core_Integration_Outbound_Message__c\') ';
-        soql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
-        logEntrySoql = soql;
-        return soql;
+        logEntrySoql += ' and Core_sObjectType__c in (\'Core_Integration_Inbound_Message__c\',\'Core_Integration_Outbound_Message__c\') ';
+        //logEntrySoql += ' limit ' + RECORD_LIMIT;
+        logEntrySoql += ' limit ' + String.valueOf( RECORD_LIMIT ) ;
+        logEntries = Database.query(logEntrySoql);
+        
+        if (logEntries.size() > 0)
+            showLogEntries = true;
+
+        // ================================== CONSOLIDATE RESULTS AND DISPLAY ==================================
+        consolidateInboundOutboundMessages();
+        //debugSearchResults();
+        
+        showResults = true;
+        
+        if (!(showContacts || showContactEntitlements || showOutboundMessages || showInboundMessages || showLogEntries))
+        	showNoRecordsFound = true;
+        
+        return null;
+    }
+    
+    private String soqlFormat(DateTime theDateTime) {
+        return theDateTime.formatGmt('yyyy-MM-dd') + 'T' + theDateTime.formatGmt('HH:mm:ss') + 'z';
     }
     
     private void consolidateInboundOutboundMessages() {
@@ -368,16 +387,28 @@ public without sharing class Core_Contact_Entitlement_Log_Tool_Ctrllr {
     }
     
     /*private void debugSearchResults() {
+        
+        System.debug('================================ CONTACTS ==================================');
         for (Contact c : contacts)
             System.debug('====> Contact: ' + c);
+        
+        System.debug('================================ CONTACT ENTITLEMENTS ==================================');
         for (Core_Contact_Entitlement__c ce : contactEntitlements)
             System.debug('====> Contact Entitlement: ' + ce);
+        
+        System.debug('================================ OUTBOUND MESSAGES ==================================');
         for (Core_Integration_Outbound_Message__c msg : outboundMessages)
             System.debug('====> Outbound Messages: ' + msg);
+        
+        System.debug('================================ INBOUND MESSAGES ==================================');
         for (Core_Integration_Inbound_Message__c msg : inboundMessages)
             System.debug('====> Inbound Messages: ' + msg);
+        
+        System.debug('============================ MESSAGE HISTORY ACROSS OBJECTS ============================');
         for (SortableObject msg : messageHistory)
             System.debug('====> ' + msg.objectType + ': ' + msg.record);
+        
+        System.debug('================================ LOG ENTRIES ==================================');
         for (Core_Log_Entry__c logEntry : logEntries)
             System.debug('====> Log Entry: ' + logEntry);
     }*/

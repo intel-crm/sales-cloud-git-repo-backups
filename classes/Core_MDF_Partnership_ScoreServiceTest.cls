@@ -82,6 +82,7 @@ public class Core_MDF_Partnership_ScoreServiceTest {
         try{  
             Database.Update(partScrList);
         }catch(Exception ex){
+            system.debug('ex.getMessage()'+ex.getMessage());
         }
         Test.stopTest();
         

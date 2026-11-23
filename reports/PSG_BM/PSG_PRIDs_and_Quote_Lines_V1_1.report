@@ -48,6 +48,20 @@ V1.1 - added parent account and OPN to columns and filters</description>
             <value>,Budgetary,Design Win,Tools,Transfer Pricing,Contract Pricing</value>
         </criteriaItems>
         <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>P</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Distributor__c.Core_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -74,6 +88,11 @@ V1.1 - added parent account and OPN to columns and filters</description>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Core_OPN__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

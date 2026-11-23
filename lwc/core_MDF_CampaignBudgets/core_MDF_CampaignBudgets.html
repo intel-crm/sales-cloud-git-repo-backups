@@ -36,7 +36,6 @@
                                                 name="Budget Amount" 
                                                 class="budgamtcmp"
                                                 variant="label-hidden"
-                                                formatter="currency"
                                                 step="0.01" maxlength="16"
                                                 value={item.budgetAmount} 
                                                 onchange={handleChange}
@@ -50,7 +49,6 @@
                                             <lightning-input type="number"
                                                 name="Budget Amount" 
                                                 variant="label-hidden"
-                                                formatter="currency"
                                                 step="0.01" maxlength="16"
                                                 value={item.budgetAmount} 
                                                 onchange={handleChange}
@@ -82,10 +80,9 @@
                                 <td role="gridcell">
                                     <div class="" title={item.budgetRAmount}>
                                         <template if:false={isEdited}> 
-                                            <lightning-input type="number" 
+                                            <lightning-input type="decimal" 
                                                 name="Reimbursement Amount" 
                                                 variant="label-hidden"
-                                                formatter="currency"
                                                 step="0.01" maxlength="16"
                                                 value={item.budgetRAmount} 
                                                 disabled="true"

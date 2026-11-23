@@ -63,13 +63,13 @@ private class Core_MDF_PMBServiceHandler_Test {
         List<ChannelProgram> cpList = new List<ChannelProgram>();
             ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
             ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);
-            //ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Channel MDF','Channel MDF', false);
+            ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Channel MDF','Channel MDF', false);
             ChannelProgram cp3 = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', false);
             ChannelProgram cp4 = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', false);
             ChannelProgram cpEef = Core_MDF_CCP_TestDataUtility.createProgram ('Ecosystem Extension Fund','Ecosystem Extension Fund',false);
             cpList.add(cp);
             cpList.add(cp1);
-            //cpList.add(cp2);
+            cpList.add(cp2);
             cpList.add(cp3);
             cpList.add(cp4);
             cpList.add(cpEef);
@@ -156,7 +156,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             accRetail.Core_Business_Party_Id__c = '1234563';
             intAccList.add(accRetail);
             
-            Account accCMDF = Core_MDF_CCP_TestDataUtility.createAccount ('CMDF Test Account', cp1.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
+            Account accCMDF = Core_MDF_CCP_TestDataUtility.createAccount ('CMDF Test Account', cp2.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
             accCMDF.BillingCity = 'Test City';         
             accCMDF.BillingCountry= 'AUS';
             accCMDF.BillingStreet= 'Test Street';
@@ -207,7 +207,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             acc3.Core_MDF_Parent_Fund_Account__c = acc1.Id;
             accList.add(acc3);
             
-            Account acc4 = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account 4', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
+            Account acc4 = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account 4', cp2.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
             acc4.Core_MDF_Parent_Fund_Account__c = accCMDF.Id;
             accList.add(acc4);
             
@@ -355,7 +355,6 @@ private class Core_MDF_PMBServiceHandler_Test {
             bypassFunctionKeys.add('Bypass_PaymentsBulkAPISharing');
             bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
             //bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             Database.insert(accOnbList);
             Test.startTest();
@@ -719,6 +718,7 @@ private class Core_MDF_PMBServiceHandler_Test {
                 pmbRecordtobeUpdated = Core_MDF_CCP_TestDataUtility.createBudget('TestPMB',RecordTypeIdPMB,acc3.Id,cp.Id,123456,System.today().addDays(2),System.today().addDays(15),false);
                 pmbRecordtobeUpdated.Core_MDF_Budget_Type_Txt__c = 'MDF';
                 insert pmbRecordtobeUpdated;
+                system.debug('New-->'+pmbRecordtobeUpdated.id);
                 List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>();
                 pmbList.add(pmbRecordtobeUpdated);
                 Core_MDF_PMBServiceHandler.invokeBudgetShareRecordToGeoGroup(pmbList);
@@ -878,7 +878,7 @@ private class Core_MDF_PMBServiceHandler_Test {
         test.startTest();
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Account acc1 = [SELECT Id,Core_Business_Party_Id__c from Account where Name='Test Account 3' limit 1];
-        ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Client' limit 1];
+        ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Channel MDF' limit 1];
         PartnerMarketingBudget  pmbRecordtobeUpdated = new PartnerMarketingBudget();
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('Channel MDF Account Based').getRecordTypeId();
         System.runAs(usr){
@@ -932,7 +932,7 @@ private class Core_MDF_PMBServiceHandler_Test {
         PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader'];
         insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps1.Id);
         Account acc1 = [SELECT Id from Account where Name='CMDF Test Account' limit 1];//
-        ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Client' limit 1];
+        ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Channel MDF' limit 1];
         Group grp = new Group();
         grp.Name = 'CMDF_Int_Grp_WW';
         grp.DeveloperName = 'CMDF_Int_Grp_WW';
@@ -1127,7 +1127,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     @isTest static void validateOnCreateOrUpdateCMDFBudgets(){
         test.startTest();
         Account acc3 = [SELECT Id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 4' limit 1];
-        ChannelProgram cp = [Select id from ChannelProgram where Name='Client' limit 1];
+        ChannelProgram cp = [Select id from ChannelProgram where Name='Channel MDF' limit 1];
         Map<PartnerMarketingBudget,Id> channelMDFBudToAccMap= new Map<PartnerMarketingBudget,Id>();
         User usr = [SELECT Id,Email from User where LastName='CMDF Budget Loader' limit 1];
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('Channel MDF Account Based').getRecordTypeId();

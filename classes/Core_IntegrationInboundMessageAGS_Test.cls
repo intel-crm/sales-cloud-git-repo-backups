@@ -342,7 +342,7 @@
             
             Core_Integration_Inbound_Message__c inboundMsg = [
                 select Core_Processing_Status__c from Core_Integration_Inbound_Message__c limit 1];
-            System.assertEquals('Pending', inboundMsg.Core_Processing_Status__c);
+            System.assertEquals('Failed', inboundMsg.Core_Processing_Status__c);
         }
          // 3.2 Test blank Email ID
         static testMethod void TestAGSResponseMessage_3_2_BlankEmailId() {

@@ -69,27 +69,6 @@
         <name>PSG_Active_cb__c</name>
     </fields>
     <fields>
-        <label><!-- AI RFP Scraping Status --></label>
-        <name>Pricing_AI_RFP_Scraping_Status__c</name>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Success</masterLabel>
-            <translation><!-- Success --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- This field holds the AI Recommendation that will be reviewed by the RPM before performing the Create Deal action --></help>
-        <label><!-- AI Scraping Recommendation --></label>
-        <name>Pricing_AI_Scraping_Recommendation_Nm__c</name>
-    </fields>
-    <fields>
         <help><!-- Selecting an Account Division limits the billings that can be used for this quote to those of the account divisions selected. Leaving Account Divisions blank means all billings are eligible for this quote. --></help>
         <label><!-- Account Division --></label>
         <name>Pricing_Account_Division_Nm__c</name>
@@ -151,14 +130,6 @@
         <help><!-- Date requestors&apos; proposal is due to the end customer. --></help>
         <label><!-- Proposal Due Date --></label>
         <name>Pricing_Bid_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Change Request Summary --></label>
-        <name>Pricing_ChangeRequest_Summary__c</name>
-    </fields>
-    <fields>
-        <label><!-- Change Request --></label>
-        <name>Pricing_Change_Request_cb__c</name>
     </fields>
     <fields>
         <help><!-- Competition Assumptions (i.e. rationale for pricing request, etc.) --></help>
@@ -306,11 +277,6 @@
         <name>Pricing_IsUnifiedCustomer__c</name>
     </fields>
     <fields>
-        <help><!-- If checked, this end customer is covered by an Intel Account Executive. If not checked, the end customer is uncovered. --></help>
-        <label><!-- Is Covered Account --></label>
-        <name>Pricing_Is_Covered_Account_cb__c</name>
-    </fields>
-    <fields>
         <help><!-- If checked - This quote is denied because the End Customer has been identified as a Restricted Party by the US Government and you may not proceed with a transaction with this customer involving Intel products. --></help>
         <label><!-- On Restricted Party List --></label>
         <name>Pricing_Is_Sanctioned__c</name>
@@ -393,10 +359,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Maximum Approved Rejected Date --></label>
-        <name>Pricing_Maximum_Approved_Rejected_Date__c</name>
-    </fields>
-    <fields>
         <help><!-- Name to be used when creating the folio in My Deals. --></help>
         <label><!-- My Deals Folio Name --></label>
         <name>Pricing_My_Deals_Folio_Name_Nm__c</name>
@@ -430,23 +392,6 @@
         <help><!-- The name of the Channel partner on the deal; i.e. CDW, WWT, Insight, etc. --></help>
         <label><!-- Partner Name --></label>
         <name>Pricing_Partner_Name_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Pricing Manager Group Label --></label>
-        <name>Pricing_Pricing_Manager_Group_Label_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Pricing Manager Group Name --></label>
-        <name>Pricing_Pricing_Manager_Group_Name_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Pricing Manager Group --></label>
-        <name>Pricing_Pricing_Manager_Group__c</name>
-    </fields>
-    <fields>
-        <label><!-- Pricing Manager --></label>
-        <name>Pricing_Pricing_Manager__c</name>
-        <relationshipLabel><!-- Quotes (Pricing Manager) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Primary Contact Email --></label>
@@ -503,69 +448,13 @@
         <name>Pricing_Quote_Program_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Quote Segmentation --></label>
-        <name>Pricing_Quote_Routing_Category_Nm__c</name>
-        <picklistValues>
-            <masterLabel>High Touch</masterLabel>
-            <translation><!-- High Touch --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Low Touch</masterLabel>
-            <translation><!-- Low Touch --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No Touch</masterLabel>
-            <translation><!-- No Touch --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Quote To Mark As Won --></label>
         <name>Pricing_Quote_To_Mark_As_Won__c</name>
-    </fields>
-    <fields>
-        <label><!-- Re-Routing Reason --></label>
-        <name>Pricing_ReRouting_Reason_Nm__c</name>
-        <picklistValues>
-            <masterLabel>2nd Review</masterLabel>
-            <translation><!-- 2nd Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CR Re-Route</masterLabel>
-            <translation><!-- CR Re-Route --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Incorrect Routing</masterLabel>
-            <translation><!-- Incorrect Routing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Owner Exception</masterLabel>
-            <translation><!-- Owner Exception --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RPM Coverage</masterLabel>
-            <translation><!-- RPM Coverage --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- Dependent on the End Customer Country/Region selected. --></help>
         <label><!-- End Customer Sales Geography --></label>
         <name>Pricing_Region_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Route Rule Id --></label>
-        <name>Pricing_Route_Rule_Id_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Route Rule Name --></label>
-        <name>Pricing_Route_Rule_Name_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Route Rule Name --></label>
-        <name>Pricing_Route_Rule_Name__c</name>
     </fields>
     <fields>
         <label><!-- Account Name --></label>
@@ -3904,6 +3793,10 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>PSG_Quote_Type_Equivalent_To_Parent</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You cannot edit the Distributor field on the Quote. Please contact &lt;psg.iqr.l2.support@intel.com&gt; for any changes. --></errorMessage>
+        <name>PSG_Restrict_Distributor_Edit</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quote Record cannot be created or edited during Freeze Period! --></errorMessage>
         <name>PSG_Restrict_Quote_Edit</name>
     </validationRules>
@@ -3936,20 +3829,12 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_IntelResponseReqByDate_Check</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please provide a reason for re-routing the quote. --></errorMessage>
-        <name>Pricing_MandateReason_OnPricingMgrEdit</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Market Segment cannot be edited after deal is created in My Deals. --></errorMessage>
         <name>Pricing_MarketSegment_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Value must be one or multiple email addresses separated by semi-colons. Intel email addresses are not allowed. --></errorMessage>
         <name>Pricing_MultipleEmailCheck</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Pricing Manager and Re-Routing Reason is not editable for your role. --></errorMessage>
-        <name>Pricing_PricingMgrEdit_Restriction</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Exclude from Volume Exception Quota cannot be checked and Quota Exclusion Reason cannot have value when Volume Exception Quota is unchecked. --></errorMessage>
@@ -4046,10 +3931,6 @@ Please verify and re-select the appropriate Distributor Account or contact your 
     <validationRules>
         <errorMessage><!-- Quota Exclusion Reason is required whenever Exclude from Volume Exception Quota is checked. --></errorMessage>
         <name>Pricing_Volume_Exclude_Reason_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The pipe (|) character is not allowed in the Write In End Customer field; Please enter a valid value. --></errorMessage>
-        <name>Pricing_WriteInEndCustomer_NoPipeCheck</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Opportunity you are trying to select is software related opportunity --></errorMessage>

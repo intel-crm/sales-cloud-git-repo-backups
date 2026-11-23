@@ -71,10 +71,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Item_Sub_Component_Category_Nm__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Deactivation_Date__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -222,6 +218,16 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedPricebookEntryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_product_opn_txt__c</fields>
+        <fields>core_cpq_fc_start_date_dt__c</fields>
+        <fields>core_cpq_fc_end_date_dt__c</fields>
+        <fields>core_cpq_fc_active_cb__c</fields>
+        <fields>price_forward_cost_amt__c</fields>
+        <fields>core_cpq_product_name_txt__c</fields>
+        <relatedList>price_forward_cost__c.core_cpq_product_nm__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>

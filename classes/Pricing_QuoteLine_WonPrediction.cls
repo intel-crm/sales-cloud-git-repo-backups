@@ -58,12 +58,16 @@ public without sharing class Pricing_QuoteLine_WonPrediction {
             EinsteinDiscoveryWrapper requestWrapper = new EinsteinDiscoveryWrapper(predictionDefinition,type, columnNames, rows);
 
             String jsonBody = JSON.serialize(requestWrapper);
+            System.debug('Request JSON: ' + jsonBody);
             
             request.setBody(jsonBody);
             HttpResponse response = http.send(request);
+            System.debug('Response Body: ' + response.getBody());
             if(response.getStatusCode() == 201){
                 Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
         
+                System.debug('Response : ' + responseMap);
+                //List<Map<String, Object>> predictions = (List<Map<String, Object>>) responseMap.get('predictions');
                 List<Object> predictionObjects = (List<Object>) responseMap.get('predictions');
                 List<Map<String, Object>> predictions = new List<Map<String, Object>>();
                 for (Object obj : predictionObjects) {

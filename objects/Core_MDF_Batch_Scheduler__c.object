@@ -812,7 +812,7 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <filters>
             <field>Core_MDF_Batch_Class_Name_Txt__c</field>
             <operation>equals</operation>
-            <value>Core_Account_B2B_Flag_Cleanup_Batch</value>
+            <value>Core_Batch_A_E_PermSet_Mgmt</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -828,7 +828,6 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <columns>Core_MDF_Effective_Start_Time_Dt__c</columns>
         <columns>Core_MDF_Effective_End_Time_Dt__c</columns>
         <columns>Core_MDF_Inactive__c</columns>
-        <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program_Txt__c</field>
@@ -900,6 +899,24 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
             <value>DDR</value>
         </filters>
         <label>PCC Jobs</label>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Scheduled_Jobs</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Batch_Class_Name_Txt__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_Inactive__c</columns>
+        <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
+        <columns>Core_MDF_Program_Txt__c</columns>
+        <columns>Core_MDF_Status_Txt__c</columns>
+        <columns>Core_MDF_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
+            <operation>contains</operation>
+            <value>PSG_</value>
+        </filters>
+        <label>PSG Scheduled Jobs</label>
     </listViews>
     <listViews>
         <fullName>Pending_Batches</fullName>

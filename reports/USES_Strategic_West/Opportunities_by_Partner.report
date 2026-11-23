@@ -68,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>jose monroy,camille cudaback,kristy fay,emily schumacher,Kristen Call,Austin Davis,Andrew Meyer,Kevin Kim</value>
+            <value>Kristen Call,Austin Davis,Andrew Meyer,Kevin Kim</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -112,6 +112,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

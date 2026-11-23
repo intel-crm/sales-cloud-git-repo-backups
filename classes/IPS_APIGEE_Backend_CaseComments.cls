@@ -7,7 +7,8 @@
 *   
 ************************************************/
 
-public without sharing class IPS_APIGEE_Backend_CaseComments implements System.Queueable, Database.AllowsCallouts{ // TWC745-9117 - ATHR Critical fixed by Tushar
+public class IPS_APIGEE_Backend_CaseComments implements System.Queueable, Database.AllowsCallouts{
+    
     set<Id> caseCommentIds= new set<Id>();
     
     public IPS_APIGEE_Backend_CaseComments(set<Id> ids){

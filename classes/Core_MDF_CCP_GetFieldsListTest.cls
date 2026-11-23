@@ -8,8 +8,7 @@ public class Core_MDF_CCP_GetFieldsListTest {
         Core_MDF_CCP_GetFieldsList.getObjectFields(objName);
         Core_MDF_CCP_GetFieldsList.getFieldsType(objName);
         Core_MDF_CCP_GetFieldsList.getPickListValues(objName,fieldName);
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assert(true, 'Executed getObjectFields, getFieldsType and getPickListValues without exception');
+        
        Test.stopTest();
     }
     

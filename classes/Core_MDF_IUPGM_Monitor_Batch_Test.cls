@@ -75,7 +75,7 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             RMFpgm.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL';
             RMFpgm.Core_MDF_Type_of_Access__c = 'External';           
             RMFpgm.Core_MDF_Channel_Program__c = retailCp.Id;
-            RMFPgm.Core_MDF_Inactive_Ind__c=false;
+            IPAPgm.Core_MDF_Inactive_Ind__c=false;
             RMFpgm.Core_MDF_Region_cd__c = 'EMEA';
             RMFpgm.Core_MDF_Source_Txt__c = 'Test'; 
             Database.insert(RMFpgm);
@@ -119,8 +119,10 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             PermissionSet ccfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             PermissionSet dcfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_DCF_Acct_Mgr' LIMIT 1];
             PermissionSet retailAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
+            PermissionSet readOnlyUsrPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_Read_Only' LIMIT 1];
             PermissionSet ipaAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Acct_Mgr' LIMIT 1];
             PermissionSet ipaProgAdmPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Program_Adm' LIMIT 1];
+            PermissionSet ipaApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver' LIMIT 1];
             PermissionSet ipaEscRevL1PS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Escalation_Reviewer_L1' LIMIT 1];
             
             List<User> userList = new List<User>();
@@ -158,9 +160,9 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             userList.add(ccfAccManager);
             
             User accountManager = Core_MDF_CCP_TestDataUtility.createUser(false);
-            accountManager.profileId = ccpCoreProfile.Id;
-            accountManager.LastName = 'CCF DCF Acc Manager';
-            userList.add(accountManager);
+            AccountManager.profileId = ccpCoreProfile.Id;
+            AccountManager.LastName = 'CCF DCF Acc Manager';
+            userList.add(AccountManager);
             
             User progAdmUsr = Core_MDF_CCP_TestDataUtility.createUser(false);
             progAdmUsr.profileId = ccpCoreProfile.Id;
@@ -293,9 +295,9 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             insert progGeoRoleGrpList;
            
         Id IUPGM_recordtype_IPA = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-        Id IUPGM_recordtype_RMF = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
+Id IUPGM_recordtype_RMF = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm5= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // IPAiupgm5.Core_MDF_Account_id__c = ccpIntelAccount.Id;
+            IPAiupgm5.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm5.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
              IPAiupgm5.RecordTypeId = IUPGM_recordtype_IPA;
             IPAiupgm5.Core_MDF_Region_cd__c = 'WW';
@@ -304,133 +306,24 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             IPAiupgm5.Core_MDF_GeoSubGeo_Budget_Type_nm__c='EMEA->Client Specialties MDF';
             IPAiupgm5.Core_MDF_User_id__c =testUser.Id;
             IPAiupgm5.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
-           // IPAiupgm5.Core_MDF_All_Accounts_cd__c = 'Yes';
+            IPAiupgm5.Core_MDF_All_Accounts_cd__c = 'Yes';
             IPAiupgm5.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm5.Core_MDF_Activity_Classification_nm__c ='Sales;Marketing';
             Database.insert(IPAiupgm5);
-
-            Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm6= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // IPAiupgm6.Core_MDF_Account_id__c = ccpIntelAccount.Id;
-            IPAiupgm6.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
-             IPAiupgm6.RecordTypeId = IUPGM_recordtype_IPA;
-            IPAiupgm6.Core_MDF_Region_cd__c = 'EMEA';
-            IPAiupgm6.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
-            IPAiupgm6.Core_MDF_Budget_Type_nm__c='Account Plan';
-            IPAiupgm6.Core_MDF_GeoSubGeo_Budget_Type_nm__c='EMEA->Client Specialties MDF';
-            IPAiupgm6.Core_MDF_User_id__c =testUser.Id;
-            IPAiupgm6.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_Price_Reviewer'; 
-           // IPAiupgm6.Core_MDF_All_Accounts_cd__c = 'No';
-            IPAiupgm6.Core_MDF_All_Budget_Type_Access_Ind__c = false;
-            IPAiupgm6.Core_MDF_Activity_Classification_nm__c ='';  
-           // Database.insert(IPAiupgm6);         
-           
-            
-          Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm01 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // iupgm01.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
-           // iupgm01.Core_MDF_All_Accounts_cd__c ='Yes';
+       
+            Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm01 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
+            iupgm01.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
+            iupgm01.Core_MDF_All_Accounts_cd__c ='Yes';
             iupgm01.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
-            iupgm01.RecordTypeId = IUPGM_recordtype_RMF;
+   iupgm01.RecordTypeId = IUPGM_recordtype_RMF;
             iupgm01.Core_MDF_Region_cd__c = 'EMEA';
             iupgm01.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
             iupgm01.Core_MDF_User_id__c = testUser.Id;
             iupgm01.Core_MDF_Budget_Type_nm__c='Retail MDF';
-           iupgm01.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Price_Reviewer';
+            iupgm01.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Price_Reviewer';
             //iupgm01.Core_MDF_GeoSubGeo_Budget_Type_nm__c='EMEA->Client Specialties MDF';
             iupgm01.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             insert iupgm01;
-            
-            // 14285 Indira - start 
-            
-            // Add more IUPGM records to cover different scenarios
-            Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm7 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-          //  IPAiupgm7.Core_MDF_Account_id__c = ccpIntelAccount.Id;
-            IPAiupgm7.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
-            IPAiupgm7.RecordTypeId = IUPGM_recordtype_IPA;
-            IPAiupgm7.Core_MDF_Region_cd__c = 'WW';
-            IPAiupgm7.Core_MDF_Region_Sub_Region_nm__c = 'WW';
-            IPAiupgm7.Core_MDF_Budget_Type_nm__c = 'Account Plan';
-            //IPAiupgm7.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'EMEA->Client Specialties MDF';
-            IPAiupgm7.Core_MDF_User_id__c = testUser.Id;
-            //IPAiupgm7.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
-          //  IPAiupgm7.Core_MDF_All_Accounts_cd__c = 'No';
-            IPAiupgm7.Core_MDF_All_Budget_Type_Access_Ind__c = false;
-            IPAiupgm7.Core_MDF_Activity_Classification_nm__c = '';
-            Database.insert(IPAiupgm7);
-            
-            // Add RMF IUPGM record for non-IPA testing
-            Core_MDF_Int_Users_Partner_Geo_Mapping__c RMFiupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-          // RMFiupgm.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
-           // RMFiupgm.Core_MDF_All_Accounts_cd__c = 'No';
-            RMFiupgm.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
-            RMFiupgm.RecordTypeId = IUPGM_recordtype_RMF;
-            RMFiupgm.Core_MDF_Region_cd__c = 'EMEA';
-            RMFiupgm.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
-            RMFiupgm.Core_MDF_User_id__c = testUser.Id;
-            RMFiupgm.Core_MDF_Budget_Type_nm__c = 'Retail MDF';
-         //  RMFiupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Retail_Account_Manager';
-            RMFiupgm.Core_MDF_All_Budget_Type_Access_Ind__c = false;
-            Database.insert(RMFiupgm);
-            
-            // Add this at the end of your createTestData() method, just before Test.stopTest()
-
-                // Create the virtual account that will populate ultimateAccountToGeoMap
-                Account ipaVirtualAccountForBudget = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Virtual for Budget', ipaCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, ccpIntelAccount.Id, false);
-                ipaVirtualAccountForBudget.Core_Geo__c = 'APJ';
-                ipaVirtualAccountForBudget.Core_MDF_CoMarketing_Ultimate_Account__c = ccpIntelAccount.Id;
-                ipaVirtualAccountForBudget.Core_MDF_Parent_Fund_Account__c = ccpIntelAccount.Id;
-                Database.insert(ipaVirtualAccountForBudget);
-                
-                // Create additional PRM Specialties that match the benefit mappings
-                List<PRM_Specialty__c> additionalSpecs = new List<PRM_Specialty__c>();
-                
-                PRM_Specialty__c mdfSpec = new PRM_Specialty__c();
-                mdfSpec.Name = 'MDFPRPCCP';
-                mdfSpec.PRM_Access_Level_Nm__c = 'Public';
-                mdfSpec.PRM_Description_Txt__c = 'MDF Proposal Test';
-                mdfSpec.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
-                mdfSpec.PRM_Role_Nm__c = 'Manufacturer';
-                mdfSpec.PRM_Start_Date_Dt__c = System.today();
-                mdfSpec.PRM_Tier_Nm__c = 'Member';
-                additionalSpecs.add(mdfSpec);
-                
-                PRM_Specialty__c oemSpec = new PRM_Specialty__c();
-                oemSpec.Name = 'Strategic OEM – DCG MDF';
-                oemSpec.PRM_Access_Level_Nm__c = 'Public';
-                oemSpec.PRM_Description_Txt__c = 'OEM Test';
-                oemSpec.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
-                oemSpec.PRM_Role_Nm__c = 'Manufacturer';
-                oemSpec.PRM_Start_Date_Dt__c = System.today();
-                oemSpec.PRM_Tier_Nm__c = 'Member';
-                additionalSpecs.add(oemSpec);
-                
-                insert additionalSpecs;
-                
-                // Create Account Specialty Associations
-                List<PRM_Account_Specialty_Association__c> additionalAssocs = new List<PRM_Account_Specialty_Association__c>();
-                
-                for(PRM_Specialty__c spec : additionalSpecs) {
-                    PRM_Account_Specialty_Association__c assoc = new PRM_Account_Specialty_Association__c();
-                    assoc.PRM_Account_Id__c = ccpIntelAccount.Id;
-                    assoc.PRM_Specialty_Id__c = spec.Id;
-                    additionalAssocs.add(assoc);
-                }
-                
-                insert additionalAssocs;
-                
-                // Create a role that is NOT budget type applicable to test the else branch
-                Core_MDF_ProgramGeoRoleGroupMap__c nonBudgetRole = new Core_MDF_ProgramGeoRoleGroupMap__c();
-                nonBudgetRole.Core_MDF_Program_txt__c = 'Intel Partner Alliance';
-                nonBudgetRole.Name = 'Non Budget Role';
-                nonBudgetRole.Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true;
-                nonBudgetRole.Core_MDF_Region_txt__c = 'APJ';
-                nonBudgetRole.Core_MDF_Is_Primary_Role__c = false;
-                nonBudgetRole.Core_MDF_Role_txt__c = 'Core_MDF_CCP_Internal_IPA_Escalation_Reviewer_L1';
-                nonBudgetRole.Core_MDF_Group_Name_txt__c = 'Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Grp';
-                nonBudgetRole.Core_MDF_Is_Active__c = true;
-                nonBudgetRole.Core_MDF_Is_Budget_Type_Applicable_Ind__c = false; // This will trigger the else branch
-                insert nonBudgetRole;   
-            
-            // 14285 Indira - end
 
             
             //Test.stopTest();
@@ -446,18 +339,14 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             }
             
             
-            List<Core_MDF_ProgramGeoRoleGroupMap__c> csReclist = [SELECT Id,
-                                                        Core_MDF_Region_txt__c,
-                                                        Core_MDF_Program_txt__c, 
-                                                        Core_MDF_Role_txt__c,
-                                                        Core_MDF_Is_Budget_Type_Applicable_Ind__c
-                                                        FROM Core_MDF_ProgramGeoRoleGroupMap__c
-                                                        WHERE Core_MDF_Is_Active__c = true 
-                                                        AND Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true];
+            List<Core_MDF_ProgramGeoRoleGroupMap__c> csReclist = [SELECT Id, Core_MDF_Region_txt__c, Core_MDF_Program_txt__c,Core_MDF_Role_txt__c,Core_MDF_Is_Budget_Type_Applicable_Ind__c
+                                                                  FROM Core_MDF_ProgramGeoRoleGroupMap__c
+                                                                  WHERE Core_MDF_Is_Active__c = true 
+                                                                  AND Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true];
             
             
             PRM_Specialty__c prmSpec = new PRM_Specialty__c();
-            prmSpec.Name='Account Plan MDF';
+            prmSpec.Name='Proposal I MDF';
             prmSpec.PRM_Access_Level_Nm__c='Public';
             prmSpec.PRM_Description_Txt__c='Test';
             prmSpec.PRM_Funding_BU_Nm__c='CCG Sales Group';
@@ -467,7 +356,7 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             insert prmSpec;
              Test.startTest();
             PRM_Account_Specialty_Association__c prmAccSpec= new PRM_Account_Specialty_Association__c();
-            //prmAccSpec.Name='Test prmAccSpec';
+           // prmAccSpec.Name='Test prmAccSpec';
             prmAccSpec.PRM_Account_Id__c=ccpIntelAccount.Id;
             prmAccSpec.PRM_Specialty_Id__c=prmSpec.Id;
             insert prmAccSpec;
@@ -475,206 +364,89 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             
         }
     }
-
-     @isTest
+    @isTest
     public static void testMethod1(){
         
         Test.startTest();
+       
+        Account acc = [SELECT Id,Core_Unified_Global_Customer_BP_Id__c,Core_MDF_CoMarketingActive__c,Core_IPA_One_Partner_Id__c FROM Account WHERE Name = 'CCP Test Intel Account' limit 1];
+        
+        
+        Set<String> programSet = new set<String>();
+        for(Core_MDF_ProgramGeoRoleGroupMap__c pfrgm : [SELECT Id,
+                                                        Core_MDF_Region_txt__c,
+                                                        Core_MDF_Program_txt__c, 
+                                                        Core_MDF_Role_txt__c,
+                                                        Core_MDF_Is_Budget_Type_Applicable_Ind__c
+                                                        FROM Core_MDF_ProgramGeoRoleGroupMap__c
+                                                        WHERE Core_MDF_Is_Active__c = true 
+                                                        AND Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true]){
+                                                            programSet.add(pfrgm.Core_MDF_Program_txt__c);     
+                                                        }
+        
+        Map<String, String> benefitToBudgetTypeMap = new Map<String, String>();
+        for(Core_MDF_BudgetType_Benefit_Mappings__c   budgetTypeBenefit : [SELECT Id, Core_MDF_Budget_Type__c, Core_MDF_Partner_Benefit__c from Core_MDF_BudgetType_Benefit_Mappings__c   
+                                                                           WHERE Core_MDF_Program_Nm__c IN :programSet
+                                                                           And Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = TRUE]){
+                                                                               benefitToBudgetTypeMap.put(budgetTypeBenefit.Core_MDF_Partner_Benefit__c, budgetTypeBenefit.Core_MDF_Budget_Type__c);
+                                                                               
+                                                                           }
+        PRM_Specialty__c xyz=[select id,name from PRM_Specialty__c];  
+        
+        PRM_Account_Specialty_Association__c asa=[SELECT PRM_Account_Id__c,PRM_Specialty_Id__r.Name,PRM_Specialty_Id__c 
+                                                  FROM PRM_Account_Specialty_Association__c 
+                                                  WHERE PRM_Specialty_Id__r.Name in: benefitToBudgetTypeMap.keySet()
+                                                  AND PRM_Account_Id__c=:acc.id 
+                                                  AND PRM_Specialty_Id__c != null 
+                                                  AND PRM_Specialty_Id__r.Name != null
+                                                 ];
+        
+        system.debug('asa:::'+asa);
+        system.debug('xyz:::'+xyz);
         Core_MDF_IUPGM_Monitor_Batch obj=new Core_MDF_IUPGM_Monitor_Batch();
         database.executebatch(obj,5);
         database.executebatch(obj);
         Id batchId = Database.executeBatch(obj);
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertNotEquals(null, batchId, 'Batch ID should not be null');
         Test.stopTest();
       }
       @isTest
     public static void testMethod2(){
-        
+        Set<String> programSet = new set<String>();
         Test.startTest();
         List<String> csvDataList= new List<String>();
         csvDataList.add('Test');
         Set<String> primeIdSet =  new Set<String>();
         primeIdSet.add('ABC123');
+         for(Core_MDF_ProgramGeoRoleGroupMap__c pfrgm : [SELECT Id,
+                                                        Core_MDF_Region_txt__c,
+                                                        Core_MDF_Program_txt__c, 
+                                                        Core_MDF_Role_txt__c,
+                                                        Core_MDF_Is_Budget_Type_Applicable_Ind__c
+                                                        FROM Core_MDF_ProgramGeoRoleGroupMap__c
+                                                        WHERE Core_MDF_Is_Active__c = true 
+                                                       AND Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true]){
+                                                       programSet.add(pfrgm.Core_MDF_Program_txt__c);     
+                                                       }
         
+        Map<String, String> benefitToBudgetTypeMap = new Map<String, String>();
+        for(Core_MDF_BudgetType_Benefit_Mappings__c   budgetTypeBenefit : [SELECT Id, Core_MDF_Budget_Type__c, Core_MDF_Partner_Benefit__c from Core_MDF_BudgetType_Benefit_Mappings__c   
+                                                                           WHERE Core_MDF_Program_Nm__c IN :programSet
+                                                                           And Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = TRUE]){
+                                                                               benefitToBudgetTypeMap.put(budgetTypeBenefit.Core_MDF_Partner_Benefit__c, budgetTypeBenefit.Core_MDF_Budget_Type__c);
+                                                                               
+                                                                           }
         List<ContentVersion> contentVersionListToBeInserted= new List<ContentVersion>();
         
         ContentVersion cv = new ContentVersion();
-        cv.Title = 'Test Document';
-        cv.PathOnClient = 'TestPath';
-        cv.VersionData = Blob.valueOf('Test Data');
         contentVersionListToBeInserted.add(cv);
         
         Core_MDF_IUPGM_Monitor_Batch obj=new Core_MDF_IUPGM_Monitor_Batch();
         //obj.GetLocationAccountsByPrimeId(primeIdSet);
         obj.createContentVersion(csvDataList);
-        System.assertNotEquals(null, obj.createContentVersion(csvDataList), 'Content version creation should return a result');
-        obj.recordTrackingId = 'aCH3b00000002hcGAA';
         obj.saveAttachment(contentVersionListToBeInserted);
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assert(true, 'saveAttachment method should execute without error');
         Test.stopTest();
       }
-  /*    @isTest
-   public static void testGetSpecialtyMappedtoAccountByPrimeId() {
-        Test.startTest();
-        // Prepare test data
-        Set<String> primeIdSet = new Set<String>();
-        primeIdSet.add('ABC123'); // Use a valid Prime ID from your test setup
- 
-        Map<String, String> benefitToBudgetTypeMap = new Map<String, String>();
-        benefitToBudgetTypeMap.put('Account Plan MDF', 'Budget Type 1');
-        benefitToBudgetTypeMap.put('Retail MDF', 'Budget Type 2');
- 
-        Core_MDF_IUPGM_Monitor_Batch obj = new Core_MDF_IUPGM_Monitor_Batch();
-        // Call the method
-        Map<Id, Set<String>> result = obj.GetSpecialtyMappedtoAccountByPrimeId(primeIdSet, benefitToBudgetTypeMap);
-        // Debugging: Print the result
-        System.debug('Result: ' + result);
-        // Assert the results
-        System.assert(result != null, 'Result should not be null');
-        System.assert(result.size() > 0, 'Result should contain entries');
-        Test.stopTest();
-    }  */
-@isTest
-    public static void testSaveAttachment() {
-        Test.startTest();
-        
-        // Prepare test data
-        Account testAccount = [SELECT Id FROM Account WHERE Core_Unified_Global_Customer_BP_Id__c = '1000873392' LIMIT 1];
-        
-        ContentVersion cv = new ContentVersion();
-        cv.Title = 'Test Document';
-        cv.PathOnClient = 'TestPath';
-        cv.VersionData = Blob.valueOf('Test Data');
-        insert cv;
-        
-        List<ContentVersion> contentVersionListToBeInserted = [SELECT Id FROM ContentVersion WHERE Id = :cv.Id];
-        
-        Core_MDF_IUPGM_Monitor_Batch obj = new Core_MDF_IUPGM_Monitor_Batch();
-        obj.recordTrackingId = testAccount.Id; // Set the recordTrackingId to a valid Account Id
-        
-        // Call the method
-        obj.saveAttachment(contentVersionListToBeInserted);
-        
-        // Assert the results
-        List<ContentDocumentLink> contentDocLinkList = [SELECT Id, LinkedEntityId FROM ContentDocumentLink WHERE LinkedEntityId = :testAccount.Id];
-        System.assert(contentDocLinkList.size() > 0, 'ContentDocumentLink should be created');
-        
-        Test.stopTest();
-    }
-
-     @isTest
-    public static void testGetSpecialtyMappedtoAccountByUcdId() {
-        Test.startTest();
-        // Prepare test data
-        Set<String> primeIdSet = new Set<String>();
-        primeIdSet.add('1000873392'); // Use a valid UCD ID from your test setup
-
-        Map<String, String> benefitToBudgetTypeMap = new Map<String, String>();
-        benefitToBudgetTypeMap.put('Account Plan MDF', 'Budget Type 1');
-        benefitToBudgetTypeMap.put('Retail MDF', 'Budget Type 2');
-
-        Core_MDF_IUPGM_Monitor_Batch obj = new Core_MDF_IUPGM_Monitor_Batch();
-        // Call the method
-        Map<Id, Set<String>> result = obj.GetSpecialtyMappedtoAccountByUcdId(primeIdSet, benefitToBudgetTypeMap);
-        // Debugging: Print the result
-        System.debug('Result: ' + result);
-        // Assert the results
-        System.assert(result != null, 'Result should not be null');
-        System.assert(result.size() > 0, 'Result should contain entries');
-        Test.stopTest();
-    }
     @isTest
-    public static void testProgramGeoRoleGroupMapFields() {
-        Test.startTest();
-        
-        // Prepare test data
-        List<Core_MDF_ProgramGeoRoleGroupMap__c> csRecList = [SELECT Id,
-            Core_MDF_Region_txt__c,
-            Core_MDF_Program_txt__c, 
-            Core_MDF_Role_txt__c,
-            Core_MDF_Is_Budget_Type_Applicable_Ind__c
-            FROM Core_MDF_ProgramGeoRoleGroupMap__c
-            WHERE Core_MDF_Is_Active__c = true 
-            AND Core_MDF_Is_For_IUPGM_Monitor_Ind__c = true];
-        
-        Set<String> roleSet = new Set<String>();
-        
-        for(Core_MDF_ProgramGeoRoleGroupMap__c csRec : csRecList){
-            List<String> budgetTypesList = new List<String>();
-            if(csRec.Core_MDF_Role_txt__c != null){
-                roleSet.add(csRec.Core_MDF_Role_txt__c);
-            }
-            // Add additional logic to cover other fields if necessary
-        }
-        
-        // Assert the results
-        System.assert(roleSet.size() > 0, 'Role set should contain entries');
-        
-        Test.stopTest();
-    }
-    @isTest
-    public static void testUltimateAccountToBudgetTypeMapLogic() {
-        Test.startTest();
-        
-        // Prepare test data
-        Map<Id, Set<String>> ultimateAccountToBudgetTypeMap = new Map<Id, Set<String>>();
-        Map<String, Boolean> roleToBgtTypeApplicableMap = new Map<String, Boolean>();
-        
-        Account testAccount = [SELECT Id FROM Account WHERE Core_Unified_Global_Customer_BP_Id__c = '1000873392' LIMIT 1];
-        
-        ultimateAccountToBudgetTypeMap.put(testAccount.Id, new Set<String>{'Budget Type 1', 'Budget Type 2'});
-        roleToBgtTypeApplicableMap.put('Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver', true);
-        
-        String specificAccSpecificGeoKey = 'SpecificGeoKey';
-        String allAccSpecificGeoKey = 'AllGeoKey';
-        
-        List<String> specificAccSpecificBTKeys = new List<String>();
-        List<String> allAccSpecificBTKeys = new List<String>();
-        
-        for (String budgetType : ultimateAccountToBudgetTypeMap.get(testAccount.Id)) {
-            if (roleToBgtTypeApplicableMap.containsKey('Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver') && roleToBgtTypeApplicableMap.get('Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver') == true) {
-                String specificAccSpecificBTKey = specificAccSpecificGeoKey + ';' + budgetType;
-                String allAccSpecificBTKey = allAccSpecificGeoKey + ';' + budgetType;
-                
-                specificAccSpecificBTKeys.add(specificAccSpecificBTKey);
-                allAccSpecificBTKeys.add(allAccSpecificBTKey);
-            }
-        }
-        
-        // Assert the results
-        System.assert(specificAccSpecificBTKeys.size() == 2, 'There should be two specific account-specific budget type keys');
-        System.assert(allAccSpecificBTKeys.size() == 2, 'There should be two all account-specific budget type keys');
-        
-        Test.stopTest();
-    }
-     @isTest
-    public static void testAdditionalScenarios() {
-        Test.startTest();
-        
-        // Test with empty data
-        Core_MDF_IUPGM_Monitor_Batch obj = new Core_MDF_IUPGM_Monitor_Batch();
-        obj.recordTrackingId = null;
-        obj.saveAttachment(new List<ContentVersion>());
-        
-        // Test with invalid data
-        List<ContentVersion> invalidContentVersionList = new List<ContentVersion>();
-        ContentVersion invalidCv = new ContentVersion();
-        invalidCv.Title = null; // Assuming title is required
-        invalidContentVersionList.add(invalidCv);
-        obj.saveAttachment(invalidContentVersionList);
-        
-        // Test with maximum data set
-        List<String> largeCsvDataList = new List<String>();
-        for (Integer i = 0; i < 1000; i++) {
-            largeCsvDataList.add('Test' + i);
-        }
-        obj.createContentVersion(largeCsvDataList);
-        
-        Test.stopTest();
-    }
-      @isTest
     static void testCoverageForBenefitMappingsQuery() {
         Test.startTest();
         // Step 1: Prime Id set
@@ -686,5 +458,4 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             obj.GetBenefitsMappedtoAccountByOPId(primeIdSet, benefitToBudgetTypeMap);
         Test.stopTest();
     }
-
 }

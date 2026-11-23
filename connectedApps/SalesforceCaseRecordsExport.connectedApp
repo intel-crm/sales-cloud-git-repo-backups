@@ -4,7 +4,7 @@
     <label>SalesforceCaseRecordsExport</label>
     <oauthConfig>
         <callbackUrl>https://intel.my.salesforce.com/services/authcallback/SalesforceCaseListExportAuth</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6neSQDDa10OqOYsXKrjwOk0KNPoJUHj3tia29RhthNrbyZiHA_DXrshj0HPL</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKixLfd5zAhYfHhVSJaBh8s6IlP02rvcX8ktEo6_QG2rKkuUQH4MReAccVJgr</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

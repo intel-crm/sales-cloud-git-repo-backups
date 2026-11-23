@@ -233,19 +233,6 @@ $Label.Core_MDF_Intel_System_User
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
-    <fields>
-        <fullName>Core_MDF_Sub_Claim_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Sub Claim</label>
-        <referenceTo>PartnerFundClaim</referenceTo>
-        <relationshipLabel>Claim Offsets (Sub Claim)</relationshipLabel>
-        <relationshipName>Claim_Offsets1</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
     <label>Claim Offset</label>
     <listViews>
         <fullName>All</fullName>

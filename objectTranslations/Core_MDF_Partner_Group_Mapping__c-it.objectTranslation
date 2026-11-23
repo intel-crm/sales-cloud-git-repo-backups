@@ -951,6 +951,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -969,10 +973,6 @@
         <picklistValues>
             <masterLabel>Others</masterLabel>
             <translation><!-- Others --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ProcessEntitlement</masterLabel>
-            <translation><!-- ProcessEntitlement --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Test</masterLabel>

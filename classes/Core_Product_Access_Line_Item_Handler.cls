@@ -87,7 +87,7 @@ public class Core_Product_Access_Line_Item_Handler{
     }
     
     
-     public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
+    public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
          List<Core_IPS_Map_Par_Line_Item__c> lItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
          
         if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
@@ -105,37 +105,40 @@ public class Core_Product_Access_Line_Item_Handler{
             prodOrgIds.add(parRecord.Core_MAP_PAR__r.Core_Product_Organization__c);
             OwnerIdlist.add(parRecord.Core_MAP_PAR__r.Core_Product_Organization__r.OwnerId);
         }
-        List<Core_IPS_Product_Organization__c> prodorgRecList = new List<Core_IPS_Product_Organization__c>();
-        if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-            prodorgRecList = [Select id,OwnerId from Core_IPS_Product_Organization__c where id IN:prodOrgIds];  
-            for(Core_IPS_Product_Organization__c productorg: prodorgRecList){
-                OrgIdswithOwnerIds.put(Productorg.id,Productorg.OwnerId);
-            }
-        }
-        Map<Id,List<Approval.ProcessSubmitRequest>> mapOfApprovalProcess = new Map<Id,List<Approval.ProcessSubmitRequest>>();
+        
+        
         for(Core_IPS_Map_Par_Line_Item__c litem: LItemList){
-            if(mapOfApprovalProcess.containsKey(Litem.Core_Supported_Product__r.Core_Product_Organization__c)){
-                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
-                List<Id> approverIds2= new List<Id>();                    
-                approverIds2.add(OrgIdswithOwnerIds.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c));
-                req2.setObjectId(Litem.id);
-                req2.setNextApproverIds(approverIds2); 
-                mapOfApprovalProcess.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c).add(req2); 
+            if(OrgIdswithListofProductLitemIds1.containsKey(Litem.Core_Supported_Product__r.Core_Product_Organization__c)){
+                OrgIdswithListofProductLitemIds1.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c).add(Litem); 
             }
-            else{   
-                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
-                List<Id> approverIds2= new List<Id>();                    
-                approverIds2.add(OrgIdswithOwnerIds.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c));
-                req2.setObjectId(Litem.id);
-                req2.setNextApproverIds(approverIds2); 
-                mapOfApprovalProcess.put(Litem.Core_Supported_Product__r.Core_Product_Organization__c, new List<Approval.ProcessSubmitRequest>{req2}); 
+            else{
+                List<Core_IPS_Map_Par_Line_Item__c> lItemRecordsList = new List<Core_IPS_Map_Par_Line_Item__c>();
+                LItemRecordsList.add(Litem);        
+                OrgIdswithListofProductLitemIds1.put(Litem.Core_Supported_Product__r.Core_Product_Organization__c,LItemRecordsList); 
             }
         }
+        List<Core_IPS_Product_Organization__c> prodorgRecList = new List<Core_IPS_Product_Organization__c>();
+	if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
+        	prodorgRecList = [Select id,OwnerId from Core_IPS_Product_Organization__c where id IN:prodOrgIds];  
+        for(Core_IPS_Product_Organization__c productorg: prodorgRecList){
+            OrgIdswithOwnerIds.put(Productorg.id,Productorg.OwnerId);
+        }
+        }
         
-        
-        for(Id prodOrgRec1 :mapOfApprovalProcess.keyset()){                   
-            List<Approval.ProcessSubmitRequest> requests = mapOfApprovalProcess.get(prodOrgRec1);               
-            Approval.process(requests);
+        for(Id prodOrgRec1 :OrgIdswithListofProductLitemIds1.keyset()){                   
+            List<Approval.ProcessSubmitRequest> requests = new LIst<Approval.ProcessSubmitRequest>();                  
+            List<Approval.ProcessResult> result =new List<Approval.ProcessResult>(); 
+            //Start Added by Farooq
+            for(Core_IPS_Map_Par_Line_Item__c parRecord : OrgIdswithListofProductLitemIds1.get(ProdOrgRec1)){
+                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
+                List<Id> approverIds2= new List<Id>();                    
+                approverIds2.add(OrgIdswithOwnerIds.get(ProdOrgRec1));
+                req2.setObjectId(parRecord.id);
+                req2.setNextApproverIds(approverIds2);
+                requests.add(req2);                                                                                                                              
+            }
+            //
+            result = Approval.process(requests);  
         }
     }
     

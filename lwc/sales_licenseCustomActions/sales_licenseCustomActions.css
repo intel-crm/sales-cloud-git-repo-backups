@@ -1,0 +1,6 @@
+.redColor{
+    --lwc-colorTextIconDefault: red !important;
+}
+.greyColor{
+    --lwc-colorTextIconDefault: grey !important;
+}

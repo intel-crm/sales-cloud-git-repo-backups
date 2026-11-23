@@ -69,7 +69,7 @@ public class PRM_AGS_IdentityCreation_Test {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator()); 
         test.startTest();        
         Contact cont = [SELECT id,FirstName,LastName,Email,Core_Login_Id__c,MailingCountryCode,Core_Preferred_Language__c FROM Contact where Core_Login_Id__c = 'testcontact1@spamok.com' LIMIT 1];
-        
+        //System.debug('cont : '+cont);
         try {
             PRM_AGS_IdentityCreation.createIdentityInAGSAsync(cont.Id);  
         } catch(Exception ex){
@@ -287,7 +287,7 @@ public class PRM_AGS_IdentityCreation_Test {
         acrRec.PRM_InActive_Ind__c = true;
         update acrRec;*/
         
-       
+        //System.debug('acrRec'+acrRec);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
@@ -296,13 +296,15 @@ public class PRM_AGS_IdentityCreation_Test {
         conts[0].Core_Enterprise_Id__c = null;
         conts[0].Core_IPA_PartnerRole__c = 'Builder';
         update conts;
-
+        //System.debug('starting secon update>>>>'+conts[0].id);
+        //System.debug('????? query to be rremoved'+[Select id,Core_IPA_PartnerRole__c,Core_Enterprise_Id__c from Contact where id =: conts[0].id]);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
         update acrRec;
         
-        
+        //System.debug('acrRec'+acrRec);
+        //System.debug('Core_IPA_PartnerRole__c :'+acrRec.PRM_Partner_Role__c);
         system.assertEquals('Pending Action', acrRec.PRM_Status_Nm__c);
         PRM_RetriggerEV_Token_API.reTriggerEV(conts[0].Email);
         test.stopTest();
@@ -384,7 +386,7 @@ public class PRM_AGS_IdentityCreation_Test {
         acrRec.PRM_InActive_Ind__c = true;
         update acrRec;*/
         
-        
+        //System.debug('acrRec'+acrRec);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
@@ -393,13 +395,15 @@ public class PRM_AGS_IdentityCreation_Test {
         conts[0].Core_Enterprise_Id__c =null;
         conts[0].Core_IPA_PartnerRole__c = 'Builder';
         update conts;
-        
+        //System.debug('starting secon update>>>>'+conts[0].id);
+        //System.debug('????? query to be rremoved'+[Select id,Core_IPA_PartnerRole__c,Core_Enterprise_Id__c from Contact where id =: conts[0].id]);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
         update acrRec;
         
-       
+        //System.debug('acrRec'+acrRec);
+        //System.debug('Core_IPA_PartnerRole__c :'+acrRec.PRM_Partner_Role__c);
         system.assertEquals('Pending Action', acrRec.PRM_Status_Nm__c);
         test.stopTest();
     }
@@ -476,21 +480,23 @@ public class PRM_AGS_IdentityCreation_Test {
         acrs.add(acr1);
         insert acrs;
         
-       
+        //System.debug('acrs : '+acrs);
         PRM_Account_Contact_Relationship__c acrRec = [SELECT id,PRM_Partner_Role__c,PRM_InActive_Ind__c,PRM_Status_Nm__c FROM PRM_Account_Contact_Relationship__c WHERE Id= :acr1.Id];
         PRM_AccountChannelMembership__c acmRec = [SELECT id,PRM_Partner_Role__c,PRM_Status_Nm__c FROM PRM_AccountChannelMembership__c WHERE PRM_Account_Id__c= :intelAccount.id];
         /*acrRec.PRM_Status_Nm__c = 'Complete';
 acrRec.PRM_InActive_Ind__c = true;
 update acrRec;*/
         
-        
+        //System.debug('acrRec'+acrRec);
+        //System.debug('acmRec '+acmRec);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Complete';
         acrRec.PRM_InActive_Ind__c = false;
         update acrRec;
         
         acrRec = [SELECT id,PRM_Partner_Role__c,PRM_InActive_Ind__c,PRM_Status_Nm__c FROM PRM_Account_Contact_Relationship__c WHERE Id= :acr1.Id];
-       
+        //System.debug('acrRec'+acrRec);
+        //System.debug('Core_IPA_PartnerRole__c :'+acrRec.PRM_Partner_Role__c);
         //system.assertEquals('Complete', acrRec.PRM_Status_Nm__c);
         test.stopTest();
     }
@@ -805,14 +811,14 @@ update acrRec;*/
         acrRec.PRM_InActive_Ind__c = true;
         update acrRec;*/
         
-      
+        //System.debug('acrRec'+acrRec);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
         update acrRec;
         
-        
-        
+        //System.debug('acrRec'+acrRec);
+        //System.debug('Core_IPA_PartnerRole__c :'+acrRec.PRM_Partner_Role__c);
         system.assertEquals('Pending Action', acrRec.PRM_Status_Nm__c);
         test.stopTest();
     }
@@ -894,14 +900,14 @@ update acrRec;*/
         acrRec.PRM_InActive_Ind__c = true;
         update acrRec;*/
         
-       
+        //System.debug('acrRec'+acrRec);
         PRM_AcctContRel_TriggerHandler.firstUpdateRun = true;
         acrRec.PRM_Status_Nm__c = 'Pending Action';
         acrRec.PRM_InActive_Ind__c = false;
         update acrRec;
         
-        
-        
+        //System.debug('acrRec'+acrRec);
+        //System.debug('Core_IPA_PartnerRole__c :'+acrRec.PRM_Partner_Role__c);
         system.assertEquals('Pending Action', acrRec.PRM_Status_Nm__c);
         test.stopTest();
     }
@@ -976,7 +982,7 @@ update acrRec;*/
         
         User user  = [SELECT Id, Email FROM User 
                       WHERE Id IN ( SELECT UserOrGroupId FROM GroupMember  WHERE Group.Developername = :'PRM_IPA_Registration_Approvers') limit 1 ];
-        
+        //System.debug('user   ----> '+user);
         /*System.runAs(user)
         {
             PRM_AGS_IdentityCreation.sendEmailToAdminOnAgsIdentityCreationFailure(acrList);  //Add           
@@ -1039,7 +1045,7 @@ update acrRec;*/
         User user  = [SELECT Id, Email, IsPortalEnabled FROM User 
                       WHERE Id IN ( SELECT UserOrGroupId FROM GroupMember  WHERE Group.Developername = :'PRM_IPA_Registration_Approvers') limit 1 ];
         user.IsPortalEnabled = true;
-        
+        //System.debug('user   ----> '+user);
         /*System.runAs(user)
         {
             PRM_AGS_IdentityCreation.sendEmailToAdminOnAgsIdentityCreationFailure(acrList);  //Add           
@@ -1123,7 +1129,7 @@ update acrRec;*/
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGeneratorFailure()); 
         test.startTest();
         Contact cont = [SELECT id,FirstName,LastName,Email,Core_Login_Id__c,MailingCountryCode,Core_Preferred_Language__c FROM Contact where Core_Login_Id__c = 'testcontact1@spamok.com' LIMIT 1];
-        
+        //System.debug('cont : '+cont);
         PRM_AGS_IdentityCreation.createIdentityInAGSAsync(cont.Id);
         system.assertEquals('testcontact1@spamok.com', cont.Core_Login_Id__c );
         test.stopTest();
@@ -1145,7 +1151,7 @@ update acrRec;*/
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGeneratorFailure2()); 
         test.startTest();
         Contact cont = [SELECT id,FirstName,LastName,Email,Core_Login_Id__c,MailingCountryCode,Core_Preferred_Language__c FROM Contact where Core_Login_Id__c = 'testcontact1@spamok.com' LIMIT 1];
-       
+        //System.debug('cont : '+cont);
         PRM_AGS_IdentityCreation.createIdentityInAGSAsync(cont.Id);
         system.assertEquals('testcontact1@spamok.com', cont.Core_Login_Id__c );
         test.stopTest();
@@ -1173,7 +1179,7 @@ update acrRec;*/
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGeneratorFailure3()); 
         test.startTest();
         Contact cont = [SELECT id,FirstName,LastName,Email,Core_Login_Id__c,MailingCountryCode,Core_Preferred_Language__c FROM Contact where Core_Login_Id__c = 'testcontact1@spamok.com' LIMIT 1];
-        
+        //System.debug('cont : '+cont);
         PRM_AGS_IdentityCreation.createIdentityInAGSAsync(cont.Id);
         system.assertEquals('testcontact1@spamok.com', cont.Core_Login_Id__c );
         test.stopTest();

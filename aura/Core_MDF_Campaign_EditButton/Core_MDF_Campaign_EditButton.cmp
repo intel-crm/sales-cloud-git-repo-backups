@@ -22,9 +22,8 @@
             <div class="slds-modal__container">
                 <!-- Heading (Header of the Modal) -->
                 <div class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.closeModal}">
-                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                     </button>
                 </div>
                 <div class="slds-modal__content slds-p-around--medium">

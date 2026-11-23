@@ -18,7 +18,6 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
 	@AuraEnabled
     public static Map<String, TacticKpiWrapper> getTacticMappingsByRecordId(String recordId, Map<String, String> picklistValueToLocalizedLabelMap) {
         Map<String, TacticKpiWrapper> tacticMap = new Map<String, TacticKpiWrapper>();
-		List<String> programList = Label.Core_MDF_Program_Enabled_Tactics.split(',');
 
         for (Core_MDF_Claim_Attributes__c mapping : [SELECT Id, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c, Core_MDF_Type_nm__c, Core_MDF_Tactics_nm__c,
                                                      Core_MDF_Claim_Id__r.Core_MDF_Program__c, Core_MDF_Claim_Id__r.Core_MDF_Activity_Category__c
@@ -35,8 +34,10 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
                 wrapper = tacticMap.get(tacticName);
             } else {
                 wrapper = new TacticKpiWrapper();
-                wrapper.tactic = tacticName; // Rishabh
-                wrapper.ipaOutcomeBased = (programList.contains(mapping.Core_MDF_Claim_Id__r.Core_MDF_Program__c) && mapping.Core_MDF_Claim_Id__r.Core_MDF_Activity_Category__c == 'Outcome-Based') ? true : false;//made changes
+                wrapper.tactic = tacticName;
+                wrapper.ipaOutcomeBased = ((mapping.Core_MDF_Claim_Id__r.Core_MDF_Program__c == 'Intel Partner Alliance' ||
+                                            mapping.Core_MDF_Claim_Id__r.Core_MDF_Program__c == 'Datacenter' ||
+                                            mapping.Core_MDF_Claim_Id__r.Core_MDF_Program__c == 'Client') && mapping.Core_MDF_Claim_Id__r.Core_MDF_Activity_Category__c == 'Outcome-Based') ? true : false;//made changes
                 wrapper.kpis = new List<FieldValue>();
                 wrapper.kpiMap = new Map<String, FieldValue>();
                 tacticMap.put(tacticName, wrapper);
@@ -72,8 +73,7 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
 	@AuraEnabled
     public static Map<String, TacticKpiWrapper> getTacticMappingsByActivityId(String activityId, Map<String, String> picklistValueToLocalizedLabelMap) {
         Map<String, TacticKpiWrapper> tacticMap = new Map<String, TacticKpiWrapper>();
-		List<String> programList = Label.Core_MDF_Program_Enabled_Tactics.split(',');
-        
+
         for (Core_MDF_Activity_Attributes__c mapping : [SELECT Id, Core_MDF_Field_Name_nm__c, Core_MDF_Field_Value_nbr__c, Core_MDF_Co_Marketing_Activity__c, Core_MDF_Type_nm__c,
                                                         Core_MDF_Tactics_nm__c, Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c, Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c 
                                                         FROM Core_MDF_Activity_Attributes__c 
@@ -92,7 +92,9 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
                 wrapper = new TacticKpiWrapper();
                 wrapper.tactic = tacticName;
                 wrapper.tacticLabelForRecordCreation = mapping.Core_MDF_Tactics_nm__c;
-                wrapper.ipaOutcomeBased = (programList.contains(mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c) && mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;//made changes
+                wrapper.ipaOutcomeBased = ((mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Intel Partner Alliance' ||
+                                            mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Datacenter' ||
+                                            mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_Program__c == 'Client') && mapping.Core_MDF_Co_Marketing_Activity__r.Core_MDF_ActivityCategory__c == 'Outcome-Based') ? true : false;//made changes
                 wrapper.kpis = new List<FieldValue>();
                 wrapper.kpiMap = new Map<String, FieldValue>();
                 tacticMap.put(tacticName, wrapper);

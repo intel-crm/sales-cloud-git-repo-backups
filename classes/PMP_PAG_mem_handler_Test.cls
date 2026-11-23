@@ -130,8 +130,7 @@ public class PMP_PAG_mem_handler_Test {
         // System.debug('Account ID'+cntct.AccountId);
         acctMembership.PRM_Account_Id__c = cntct.AccountId;
         acctMembership.PRM_Channel_Program_Id__c = chnlprgm.Id;
-        acctMembership.PRM_Status_Nm__c = statusVal; 
-        acctMembership.PRM_Status_Reason_Txt__c = 'Approved';
+        acctMembership.PRM_Status_Nm__c = statusVal;        
         //acctMembership.PRM_Channel_Program_Level_Id__c = GetChannelProgramLevel(chnlprgm.Id).Id;     
         acctMembership.PRM_Partner_Role__c = 'Service Provider';
         acmlst.add(acctMembership);
@@ -222,11 +221,9 @@ public class PMP_PAG_mem_handler_Test {
     @isTest static void onGroupMemAfterUpdate_Test(){
         List<Account> partner_acc_list= [Select Id, Name,Core_IPA_Partner_Role__c, Core_User_Defined_Website__c,recordTypeId,Website from Account where RecordTypeId =: PMP_SearchTestDataFactory.Partner_Account_Record_Type];
         List<Account> intel_acc_list = [Select Id, Name,Core_IPA_Partner_Role__c, Core_User_Defined_Website__c,recordTypeId,Website from Account where RecordTypeId =: PMP_SearchTestDataFactory.intel_Account_Record_Type];
-        //intel_acc_list[0].Core_IPA_Partner_Role__c='FPGA Designer';IPA 2.0 partner role EOL
-        intel_acc_list[0].Core_IPA_Partner_Role__c='Builder';
+        intel_acc_list[0].Core_IPA_Partner_Role__c='FPGA Designer';
         update intel_acc_list[0];  
-        //partner_acc_list[0].Core_IPA_Partner_Role__c='FPGA Designer';IPA 2.0 partner role EOL
-        partner_acc_list[0].Core_IPA_Partner_Role__c='Builder';
+        partner_acc_list[0].Core_IPA_Partner_Role__c='FPGA Designer';
         update partner_acc_list[0];  
         Core_Account_Group_Member__c group_mem1 = PMP_SearchTestDataFactory.createPAGMember(partner_acc_list[0].Id, intel_acc_list[0].Id, false, false, true);
         //Core_Account_Group_Member__c group_mem2 = PMP_SearchTestDataFactory.createPAGMember(partner_acc_list[1].Id, intel_acc_list[1].Id, false, false, true);

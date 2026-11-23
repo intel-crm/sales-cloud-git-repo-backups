@@ -4,7 +4,7 @@ public class UCD_ACM_CPEManage_Batch_Test {
     @TestSetup
     static void createSetupData(){
         Account acc = TestUtilities.getAccountRecord();
-        acc.Core_Sales_Groups__c = 'Americas Canada Sales Group';
+        acc.Core_Sales_Groups__c = 'Global Solutions & Services Sales Group';
         acc.Industry ='Software and Services';
         acc.Core_Sub_Industry__c	='IT Services';
         acc.Core_Business_Party_Id__c = '1232243';

@@ -2,8 +2,8 @@ public class Core_SharingUtility{
 
     public static boolean AssetAccessFlag=false;
     // START - Added as part of Code Refactor
-    Public Static List<String> oldAccountIds = new List<String>(); 
-    Public Static List<String> oldUserRoleIds = new List<String>(); 
+    Public Static List<String> OldAccountIds = new List<String>(); 
+    Public Static List<String> OldUserRoleIds = new List<String>(); 
     Public Static List<UserRole> globalUserRoleRecords = new List<UserRole>();
     Public Static List<Group> globalGroupList = new List<Group>(); //ENS
     /***************************************************************************************************
@@ -21,13 +21,13 @@ public class Core_SharingUtility{
     * ----------------------------------------------------------------------------                 
     * JayaPrakash T                                      Created
     ****************************************************************************************************/    
-     public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,Set<id>> recordUserList){
+     public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,Set<id>> Record_UserList){
         List<sObject> shareRecords = new List<sObject>();
         Map<String, Schema.SObjectType> tokens = Schema.getGlobalDescribe();
         if(tokens.containsKey(shareTableName)) {
-            for(Id obj : recordUserList.keyset()){
-                if(recordUserList.get(obj) <> null){
-                    for(Id uId: recordUserList.get(obj)){
+            for(Id obj : Record_UserList.keyset()){
+                if(Record_UserList.get(obj) <> null){
+                    for(Id uId: Record_UserList.get(obj)){
                         SObject share = tokens.get(shareTableName).newSObject();
                         if(objectName=='Asset'){
                             share.put('assetId', obj);
@@ -47,10 +47,19 @@ public class Core_SharingUtility{
                 }
             }
         try{
-
-// Tushar Garg as part of vulnerabilty change
-            if (!shareRecords.isEmpty()) {
-                Core_IPS_QueryService.insertRecords(shareRecords);
+            Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);
+            for(Database.SaveResult sr:shareInsertResult){
+                if(sr.isSuccess()){
+                }
+                else {
+                   Database.Error err = sr.getErrors()[0];
+                
+                   if(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION  &&  
+                            err.getMessage().contains('AssetAccessLevel')){
+                   }
+                   else{
+                   }
+                 }
             }
         }catch(Exception e){
         }
@@ -74,12 +83,11 @@ public class Core_SharingUtility{
     * ----------------------------------------------------------------------------                 
     * JRK                        10/07/2015              Created
     ****************************************************************************************************/ 
-    public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,id> recordUserList){
+    public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,id> Record_UserList){
         List<sObject> shareRecords = new List<sObject>();
-
         Map<String, Schema.SObjectType> tokens = Schema.getGlobalDescribe();
         if(tokens.containsKey(shareTableName)) {
-            for(Id obj : recordUserList.keyset()){
+            for(Id obj : Record_UserList.keyset()){
                 SObject share = tokens.get(shareTableName).newSObject();
                 if(objectName=='Asset'){
                     share.put('assetId', obj);
@@ -94,15 +102,11 @@ public class Core_SharingUtility{
                 }
                 //share.put('ParentId', obj);
                 //share.put('AccessLevel',recordAccessLevel);
-
-                share.put('UserOrGroupId', recordUserList.get(obj));
+                share.put('UserOrGroupId', Record_UserList.get(obj));
                 share.put('RowCause', 'Manual');
                 shareRecords.add(share);
-            }    
- // Tushar Garg as part of vulnerabilty change
-            if (!shareRecords.isEmpty()) {
-                Core_IPS_QueryService.insertRecords(shareRecords);
-            }
+            } 
+            Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);    
         } 
     }
     
@@ -324,11 +328,11 @@ public class Core_SharingUtility{
         if(userRoleIdSet <> null && userRoleIdSet.size() > 0){
             // Start --> Added FLS for Query by Chiru
             List<Group> groupList = new List<Group>();
-            if(!newUserRoleIds.isEmpty() && ( Core_Utility.executeQuery(newUserRoleIds,oldUserRoleIds))){
+            if(!newUserRoleIds.isEmpty() && ( Core_Utility.executeQuery(newUserRoleIds,OldUserRoleIds))){
             //List<Group> groupList = [select id,developername,relatedid from Group where relatedid in :userRoleIdSet and type in ('role')];
               groupList = [select id,developername,relatedid from Group where relatedid in :userRoleIdSet and type in ('role')];
                globalGroupList = new List<Group>(groupList);
-                oldUserRoleIds = new List<String>(newUserRoleIds);
+                OldUserRoleIds = new List<String>(newUserRoleIds);
             } else if(globalGroupList != null && !globalGroupList.isEmpty()){
                groupList = new List<group> (globalGroupList); 
             }

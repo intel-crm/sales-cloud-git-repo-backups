@@ -33,13 +33,13 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
               
             permissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Finance_Usr' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
             
             ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', True);
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', True);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', True);
             List<Account> accList = new List<Account>();
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
@@ -79,10 +79,15 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             PartnerFundAllocation retailAlloc = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('retailAlloc',retailbudget,accRetail,200000.0,True);
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('TestRetailCamp','Gaming','Athena', 'MDF or both CMP & MDF',
                                                                          Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds',System.today()-90, 
-                                                                         System.today().addYears(1), 20000, 'Instore innovation', accRetail.Id,'2-in-1', true);
+                                                                         System.today().addYears(1), 20000, 'Instore innovation', accRetail.Id,'2-in-1', false);
+            camp1.Core_MDF_Activity_Category_Type__c = null;
+            camp1.Core_MDF_Budget_Type_txt__c = 'Retail MDF';
+            insert camp1;
             Campaign MDFcamp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCampOpal','Consumer','Intel® Corporate Logo', 'MDF or both CMP & MDF',
                                                                            Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today()-250 , 
-                                                                           System.today()+90, 2000, 'Unite', acc.Id,'2-in-1', true);
+                                                                           System.today()+90, 2000, 'Unite', acc.Id,'2-in-1', false);
+            MDFcamp.Core_MDF_Activity_Category_Type__c = null;
+            insert MDFcamp;
         system.runAs(usr1)
         {
             PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Finance_Usr' LIMIT 1];
@@ -115,8 +120,6 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         MDFpfr.Core_MDF_Activity_Closure_Type__c='Manual';
         MDFpfr.Core_MDF_PriorValueOfStatus__c='Pending Review';
         MDFpfr.RequestedAmount = 1001;
-        MDFpfr.Core_MDF_ActivityCategory__c='';
-        MDFpfr.Core_MDF_Activity_Types__c='';
         pfrList.add(MDFpfr);
         PartnerFundRequest RetailPfr2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
         RetailPfr2.Title ='Retail RSA MD Activity';
@@ -128,8 +131,7 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr2.Core_MDF_Fund_Request_Status__c = 'Pending Review';
         RetailPfr2.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr2.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr2.Core_MDF_ActivityCategory__c='';
-        RetailPfr2.Core_MDF_Activity_Types__c='';   
+        
         RetailPfr2.AllocationId=retailAlloc.id;
        
         pfrList.add(RetailPfr2);
@@ -145,9 +147,9 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr1.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr1.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr1.Core_MDF_ActivityCategory__c='';
+        
         RetailPfr1.AllocationId=retailAlloc.id;
-       RetailPfr1.Core_MDF_Activity_Types__c='';
+       
         pfrList.add(RetailPfr1);
         PartnerFundRequest RetailPfr3 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
         RetailPfr3.Title ='Retail RSA MD Activity';
@@ -161,8 +163,7 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr3.Core_MDF_Reimbursement_Rate_pct__c='100%';
         //RetailPfr3.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr3.AllocationId=retailAlloc.id;
-            RetailPfr3.Core_MDF_ActivityCategory__c='';
-        RetailPfr3.Core_MDF_Activity_Types__c='';
+        
         pfrList.add(RetailPfr3);
         
         PartnerFundRequest RetailPfr4 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
@@ -178,8 +179,6 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr4.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr4.AllocationId=retailAlloc.id;
         
-        RetailPfr4.Core_MDF_ActivityCategory__c='';
-            RetailPfr4.Core_MDF_Activity_Types__c='';
         pfrList.add(RetailPfr4);
         insert pfrList;
         }
@@ -195,6 +194,7 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             test.startTest();
             List<PartnerFundRequest> pfrList = [SELECT Id,Core_MDF_Budget_Type_nm__c,Core_MDF_Start_Date__c,Core_MDF_ATF_Flag_nm__c,Core_MDF_Fund_Request_Status__c,CreatedDate FROM PartnerFundRequest];
             Core_MDF_ATFFlagUpdateBatch obj =new Core_MDF_ATFFlagUpdateBatch();
+            Id batchId = Database.executeBatch(obj);
             Assert.isNotNull(pfrList);
             test.stopTest();
         }

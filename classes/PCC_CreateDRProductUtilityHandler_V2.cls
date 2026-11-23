@@ -27,7 +27,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
     public static final String PRODUCTSTATUS = LabelConfiguration__mdt.getInstance('PCC_ProdStatus_DRP').Value__c;
     public static final String CUSTOMERIND = LabelConfiguration__mdt.getInstance('PCC_CustomerIndStatus_DRP').Value__c;
     public static final String ELIGIBLE = LabelConfiguration__mdt.getInstance('PCC_Eligible_DRP').Value__c;
-    public static final Boolean mmidSwitch = Boolean.valueOf(System.Label.DDR_MMID_switch); // TWC729-8985 - Add switch for Old MMID based changes
+        
     /*****************************************************************************************************************
 * Method Name: createDDRProducts
 * Date: 04/06/2024   
@@ -100,10 +100,10 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                     }
                     if (drMap.containskey('designRegId') && drmap.get('designRegId')!= null && extId!= null) {
                         mapOfExtIdToDesignRegId.put(extId, String.valueOf(drmap.get('designRegId')));
-                    }/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    if (drMap.containskey('oldMMId') && drmap.get('oldMMId')!= null && mmidSwitch) { // TWC729-8985 - Add switch for Old MMID based changes
+                    }
+                    if (drMap.containskey('oldMMId') && drmap.get('oldMMId')!= null) {
                         listOfoldMMId.add(String.valueOf(drmap.get('oldMMId')));
-                    } 
+                    }
                 }
                 
             }
@@ -122,15 +122,9 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
             //System.debug('validExternalIdValue--> '+validExternalIdValue);
             //System.debug('listOfOrderingCd--->'+ listOfOrderingCd);
             //System.debug('listOfMMId--->'+ listOfMMId);
-            if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0 || listOfoldMMId.size() > 0){//  ) {
-                    pWrp = getProductId(listOfOrderingCd, listOfMMId, listOfoldMMId);//, );/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                }
-            }
-            else{
-                if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0){//  || listOfoldMMId.size() > 0) {
-                    pWrp = getProductId(listOfOrderingCd, listOfMMId,null);//, listOfoldMMId);/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                }
+            
+            if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0  || listOfoldMMId.size() > 0) {
+                pWrp = getProductId(listOfOrderingCd, listOfMMId, listOfoldMMId);
             }
             
             //create DDR instance fot valid DDR's
@@ -152,7 +146,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
             }
             namesDr=PCC_CreateDDRUtilityHandler_V2.getNameDDR(Drids);
             //get response of records that are successfully inserted and the records that have errors
-            system.debug('mapOfCountToDrmap--'+mapOfCountToDrmap);
+          //  system.debug('mapOfCountToDrmap--'+mapOfCountToDrmap);
             PCC_Wrapper.PCC_DRDetailsWrapper drProductWrp = PCC_CreateDDRUtilityHandler_V2.getDDRObjectResponses(mapIdTounexpected,mapOfCountToDrmap,mapExtIdToMissingFld, 
                                                                                                               mapExtIdToValidDr, mapExtIdtoInvalidValMsg, 
                                                                                                               mapDrRecordSaveResult, null,null, INSERT_ACTION, DESIGN_REG_PROD,namesDr);
@@ -226,22 +220,15 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                     listOfMMId.add(String.valueOf(drpMap.get('mmId')));
                 }else if (drpMap.containskey('orderingCd') && String.isNotBlank(String.valueOf(drpMap.get('orderingCd')))) {
                     listOfOrderingCd.add(String.valueOf(drpMap.get('orderingCd')));
-                }/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                          else if (mmidSwitch && drpMap.containskey('oldMMId') && String.isNotBlank(String.valueOf(drpMap.get('oldMMId')))) { // TWC729-8985 - Add switch for Old MMID based changes
+                }else if (drpMap.containskey('oldMMId') && String.isNotBlank(String.valueOf(drpMap.get('oldMMId')))) {
                     listOfOldMMId.add(String.valueOf(drpMap.get('oldMMId')));
                 }
                
             } count++;
             }
-            if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0 || listOfOldMMId.size() > 0){// ) {
-                    pWrp = getProductId(listOfOrderingCd, listOfMMId, listOfOldMMId);//, );
-                }
-            }
-            else{
-                if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0){// || listOfOldMMId.size() > 0) {
-                    pWrp = getProductId(listOfOrderingCd, listOfMMId,null);//, listOfOldMMId);
-                }
+            
+            if (listOfOrderingCd.size() > 0 || listOfMMId.size()>0 || listOfOldMMId.size() > 0) {
+                pWrp = getProductId(listOfOrderingCd, listOfMMId, listOfOldMMId);
             }
             
             
@@ -327,7 +314,6 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                     String quantity = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('quantity') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('quantity')) : null;
                     String orderingCd = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('orderingCd') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('orderingCd')) : null;
                     String mmId = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('mmId') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('mmId')) : null;
-                    /*TWC727-2709 - PCC: Remove all references from old MMID*/
                     String oldMMId = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('oldMMId') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('oldMMId')) : null;
                     String targetResalePrice = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('targetResalePrice') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('targetResalePrice')) : null;
                     String comments = mapOfRecIdOrExtIdtoValidDDR.get(str).containsKey('comments') ? String.valueOf(mapOfRecIdOrExtIdtoValidDDR.get(str).get('comments')) : null;
@@ -425,9 +411,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                             mapExtIdtoInvalidValMsg.put(str, LabelConfiguration__mdt.getInstance('PCC_NoProdForOrdCd_DRP').Value__c);
                             continue;
                         }
-                    }/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    // TWC729-8985 - Add switch for Old MMID based changes
-                    else if (String.isNotBlank(oldMMId) && mmidSwitch) { //Sandhya Changes
+                    }else if (String.isNotBlank(oldMMId)) {
                         if (pWrp.oldMMIdToProductIdMap.containsKey(oldMMId)) {
                             id productId = pWrp.oldMMIdToProductIdMap.get(oldMMId);
                             string drEligible = drEligible(pWrp,productId);
@@ -500,7 +484,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
 * Return: Returns Product_MM_Attribute_Mapping__c List
 ******************************************************************************************************************/ 
     
-    Public Static Productwrapper getProductId(List<String> listOfOrderingCd, List<String> listOfmmId, List<String> listOfoldMMId){//, List<String> listOfoldMMId) { //Remove Old MMID Changes
+    Public Static Productwrapper getProductId(List<String> listOfOrderingCd, List<String> listOfmmId, List<String> listOfoldMMId) { 
         Map<String, String> mmIdToProductIdMap = new Map<String, String>();
         Map<String, String> orderingCdToProductIdMap = new Map<String, String>();
         Map<String, String> oldMMIdToProductIdMap = new Map<String, String>();
@@ -510,10 +494,8 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
         Map<String, Id> uniqueIdToAttributeMap = new Map<String, Id>();
         
         Productwrapper pWrp = new Productwrapper();
-        List<Product_MM_Attribute_Mapping__c> listOfProductMMAtr = new List<Product_MM_Attribute_Mapping__c>();
         
-        if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-            listOfProductMMAtr = [SELECT Id, Ordering_Code__c, Name,MMID__c,Spec_Code__c,
+        List<Product_MM_Attribute_Mapping__c> listOfProductMMAtr = [SELECT Id, Ordering_Code__c, Name,MMID__c,Spec_Code__c,
                                                                     Custom_Indicator__c,Product_Status__c,L5_Product__r.id,
                                                                     L5_Product__r.Core_Product_Type__c, L4_Product__c, 
                                                                     L4_Product__r.id, L4_Product__r.Core_Sales_Visible_Flag__c, 
@@ -521,7 +503,6 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                                                                     FROM Product_MM_Attribute_Mapping__c
                                                                     WHERE (L4_Product__c != null OR L5_Product__c != null)
                     AND (Ordering_Code__c IN: listOfOrderingCd OR Name IN: listOfmmId OR MMID__c IN: listOfoldMMId)];
-                      /*TWC727-2709 - PCC: Remove all references from old MMID*/
                                                                     /*WHERE ((L4_Product__c != null
                                                                             AND L4_Product__r.Core_Sales_Visible_Flag__c= true 
                                                                             AND L4_Product__r.Core_Design_Registration_Eligible_Ind__c = true 
@@ -531,26 +512,12 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                                                                                AND L5_Product__r.Core_Design_Registration_Eligible_Ind__c = true 
                                                                                AND L5_Product__r.IsActive = true))
                                                                     AND (Ordering_Code__c IN: listOfOrderingCd OR Name IN: listOfmmId)]*/
-        }
-        else{
-            listOfProductMMAtr = [SELECT Id, Ordering_Code__c, Name,MMID__c,Spec_Code__c,
-                                                                    Custom_Indicator__c,Product_Status__c,L5_Product__r.id,
-                                                                    L5_Product__r.Core_Product_Type__c, L4_Product__c, 
-                                                                    L4_Product__r.id, L4_Product__r.Core_Sales_Visible_Flag__c, 
-                                                                    L4_Product__r.Core_Design_Registration_Eligible_Ind__c, L4_Product__r.IsActive 
-                                                                    FROM Product_MM_Attribute_Mapping__c
-                                                                    WHERE (L4_Product__c != null OR L5_Product__c != null)
-                    //AND (Ordering_Code__c IN: listOfOrderingCd OR Name IN: listOfmmId OR MMID__c IN: listOfoldMMId)];
-                      AND (Ordering_Code__c IN: listOfOrderingCd OR Name IN: listOfmmId)];
-        }
         if (listOfProductMMAtr.size() > 0) {
             for (Product_MM_Attribute_Mapping__c pm: listOfProductMMAtr) {
                 if (pm.L4_Product__r.id != null) {
                     mmIdToProductIdMap.put(pm.Name, pm.L4_Product__r.id);
                     orderingCdToProductIdMap.put(pm.Ordering_Code__c, pm.L4_Product__r.id);
-                    if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                    oldMMIdToProductIdMap.put(pm.MMID__c, pm.L4_Product__r.id);/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    }
+                    oldMMIdToProductIdMap.put(pm.MMID__c, pm.L4_Product__r.id);
                     specCdToProductIdMap.put(pm.L4_Product__r.id,pm.Spec_Code__c);
                     custIndToProductIdMap.put(pm.L4_Product__r.id,pm.Custom_Indicator__c);
                     prodStatusToProductIdMap.put(pm.L4_Product__r.id,pm.Product_Status__c);
@@ -558,9 +525,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
                 else if (pm.L5_Product__r.id != null && pm.L5_Product__r.Core_Product_Type__c == 'Intel® FPGAs') {
                     mmIdToProductIdMap.put(pm.Name, pm.L5_Product__r.id);
                     orderingCdToProductIdMap.put(pm.Ordering_Code__c, pm.L5_Product__r.id);
-                    if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                    oldMMIdToProductIdMap.put(pm.MMID__c, pm.L5_Product__r.id);/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    }
+                    oldMMIdToProductIdMap.put(pm.MMID__c, pm.L5_Product__r.id);
                     specCdToProductIdMap.put(pm.L5_Product__r.id,pm.Spec_Code__c);
                     custIndToProductIdMap.put(pm.L5_Product__r.id,pm.Custom_Indicator__c);
                     prodStatusToProductIdMap.put(pm.L5_Product__r.id,pm.Product_Status__c);
@@ -568,16 +533,12 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
 
         uniqueIdToAttributeMap.put(pm.Name, pm.Id);
                 uniqueIdToAttributeMap.put(pm.Ordering_Code__c, pm.Id);
-                if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                uniqueIdToAttributeMap.put(pm.MMID__c, pm.Id);/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                }
+                uniqueIdToAttributeMap.put(pm.MMID__c, pm.Id);
             }
         }
         pWrp.mmIdToProductIdMap = mmIdToProductIdMap;
         pWrp.orderingCdToProductIdMap = orderingCdToProductIdMap;
-        if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-        pWrp.oldMMIdToProductIdMap = oldMMIdToProductIdMap;/*TWC727-2709 - PCC: Remove all references from old MMID*/
-        }
+        pWrp.oldMMIdToProductIdMap = oldMMIdToProductIdMap;
         pWrp.specCdToProductIdMap = specCdToProductIdMap;
         pWrp.prodStatusToProductIdMap = prodStatusToProductIdMap;
         pWrp.custIndToProductIdMap = custIndToProductIdMap;
@@ -589,7 +550,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
     Public Class Productwrapper {
         Public Map<String, String> mmIdToProductIdMap {get;set;}
         Public Map<String, String> orderingCdToProductIdMap {get;set;}
-        Public Map<String, String> oldMMIdToProductIdMap {get;set;}/*TWC727-2709 - PCC: Remove all references from old MMID*/
+        Public Map<String, String> oldMMIdToProductIdMap {get;set;}
         Public Map<String, String> specCdToProductIdMap {get;set;}
         Public Map<String, String> prodStatusToProductIdMap {get;set;}
         Public Map<String, String> custIndToProductIdMap {get;set;}
@@ -654,9 +615,7 @@ public with sharing class PCC_CreateDRProductUtilityHandler_V2  {
         try {
             l4l5Wrp.mmid = l4l5mapping.Name;
             l4l5Wrp.orderingCode = l4l5mapping.Ordering_Code__c;
-            if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-              l4l5Wrp.oldMMid = l4l5mapping.MMID__c;/*TWC727-2709 - PCC: Remove all references from old MMID*/
-            }
+            l4l5Wrp.oldMMid = l4l5mapping.MMID__c;
             l4l5Wrp.l4Product = l4l5mapping.L4_Product__r.Name;
             l4l5Wrp.l5Product = l4l5mapping.L5_Product__r.Name;
         }

@@ -97,10 +97,6 @@
             <translation><!-- Incentive - # of Deals Registered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation><!-- Incentive - # of Design Wins --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
             <translation><!-- Incentive - # of Units Sold --></translation>
         </picklistValues>
@@ -153,24 +149,8 @@
             <translation><!-- Legacy Media Percentage Spend --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Activation - # of Person Days</masterLabel>
-            <translation><!-- Retail Activation - # of Person Days --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation Percentage Spend</masterLabel>
-            <translation><!-- Retail Activation Percentage Spend --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation><!-- Technical Activation - # of Deal Wins --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
             <translation><!-- Technical Activation - # of Deployments --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation><!-- Technical Activation - # of Design Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>
@@ -210,10 +190,6 @@
         <name>Core_MDF_Is_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Amount --></label>
-        <name>Core_MDF_Spending_Amount_amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
         <picklistValues>
@@ -239,10 +215,6 @@
         <picklistValues>
             <masterLabel>Legacy Media</masterLabel>
             <translation><!-- Legacy Media --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Activation</masterLabel>
-            <translation><!-- Retail Activation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation</masterLabel>

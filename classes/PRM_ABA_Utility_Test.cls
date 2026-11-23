@@ -1112,7 +1112,7 @@ insert lstOfMssg;  */
         PRM_accBenefitAssociationUtility.duplicateRecordCheck(abaList);
         PRM_accBenefitAssociationUtility.updateSuppressEmail(abaList,abaMap);
         PRM_accBenefitAssociationUtility.opidBenefitInactivation(lstOfAba,oldAbaMap);
-        PRM_accBenefitAssociationUtility.onManualBenefitInsert(lstOfAba,oldAbaMap,false);
+        PRM_accBenefitAssociationUtility.onManualBenefitInsert(lstOfAba,oldAbaMap);
         //PRM_accBenefitAssociationUtility.getActvieBatchEntitlement(entitlementsList, contactsList);
         //System.debug('No of SOQL Quieries executed at the end of benefitUtility : '+Limits.getQueries());
         Test.stopTest();   

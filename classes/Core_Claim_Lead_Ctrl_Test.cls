@@ -52,6 +52,9 @@ public class Core_Claim_Lead_Ctrl_Test {
             
             lstLead[1].OwnerId = UserInfo.getUserId();
             insert lstLead[1];
+            User usr = [select Id from User limit 1];
+            lstLead[1].OwnerId = usr.Id;
+            update lstLead[1];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
             System.assertEquals('Accepted', lstLead[1].Core_Lead_Status__c);
 
@@ -67,7 +70,7 @@ public class Core_Claim_Lead_Ctrl_Test {
         lstUser[0].Profileid = p1.id;
         insert lstUser;
         
-        String leadRecType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
+        String leadRecType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByName().get('Lead').getRecordTypeId();
         List<Lead> lstLead = new List<Lead>();
         lstLead = Core_Test_Utility.createLead(2);
         for (Lead sobjLead: lstLead) {
@@ -95,13 +98,12 @@ public class Core_Claim_Lead_Ctrl_Test {
             lstLead[0].OwnerId = lstUser[0].Id;
             insert lstLead[0];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
-            lstLead[0].Core_Lead_Status__c = 'Qualified';
-            lstLead[0].Core_Lead_Sub_Status__c = 'In Contact';
-            update lstLead[0];
-            Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
             
             lstLead[1].OwnerId = UserInfo.getUserId();
             insert lstLead[1];
+            User usr = [select Id from User limit 1];
+            lstLead[1].OwnerId = usr.Id;
+            update lstLead[1];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
             System.assertEquals('New', lstLead[1].Core_Lead_Status__c);
 
@@ -110,10 +112,9 @@ public class Core_Claim_Lead_Ctrl_Test {
         
     }
     
-    
     static testMethod void verifyOwnerTest2(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'IT Admin'];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -180,7 +181,7 @@ public class Core_Claim_Lead_Ctrl_Test {
     }
     static testMethod void verifyOwnerTest3(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'IT Admin'];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -246,7 +247,7 @@ public class Core_Claim_Lead_Ctrl_Test {
     
     static testMethod void verifyOwnerTest4(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : System.label.Core_StandardUser];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;

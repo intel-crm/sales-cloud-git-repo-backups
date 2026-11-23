@@ -115,7 +115,6 @@ AND Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = TRUE])*/
     }
     
     global void execute(Database.BatchableContext bc, List<Core_MDF_Partner_Group_Mapping__c> pgmObjList){
-        try {
         Set<String> accIdSet = new Set<String>();
         Set<String> programSet = new Set<String>();
         Set<String> roleSet = new Set<String>();
@@ -279,11 +278,43 @@ ultimateAccountToBudgetTypeMap.put(asa.PRM_Account_Id__c,new Set<String>{benefit
                                     String allAccSpecificBTKey = allAccSpecificGeoKey + ';' + budgetType;
                                     
                                     
-                                    String WW_specificAccSpecificBTKey = WW_specificAccSpecificGeoKey + ';' + budgetType;String WW_allAccSpecificBTKey = WW_allAccSpecificGeoKey + ';' + budgetType;
-                                    pgmWrapper pgmWrap = new pgmWrapper();pgmWrap.specificAccSpecificBT = specificAccSpecificBTKey;pgmWrap.allAccSpecificBT = allAccSpecificBTKey;pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;pgmWrap.WW_specificAccSpecificBT = WW_specificAccSpecificBTKey;pgmWrap.WW_allAccSpecificBT = WW_allAccSpecificBTKey;pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;pgmWrap.accId = pgm.Core_MDF_Account__c;pgmWrap.accName = pgm.Core_MDF_Account__r.Name;pgmWrap.role = role;pgmWrap.prog = program;pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);pgmWrap.budgetType = budgetType;pgmWrapperList.add(pgmWrap);
+                                    String WW_specificAccSpecificBTKey = WW_specificAccSpecificGeoKey + ';' + budgetType;
+                                    String WW_allAccSpecificBTKey = WW_allAccSpecificGeoKey + ';' + budgetType;
+                                    pgmWrapper pgmWrap = new pgmWrapper();
+                                    pgmWrap.specificAccSpecificBT = specificAccSpecificBTKey;
+                                    pgmWrap.allAccSpecificBT = allAccSpecificBTKey;
+                                    pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;
+                                    pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.WW_specificAccSpecificBT = WW_specificAccSpecificBTKey;
+                                    pgmWrap.WW_allAccSpecificBT = WW_allAccSpecificBTKey;
+                                    pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
+                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.accId = pgm.Core_MDF_Account__c;
+                                    pgmWrap.accName = pgm.Core_MDF_Account__r.Name;
+                                    pgmWrap.role = role;
+                                    pgmWrap.prog = program;
+                                    pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);
+                                    pgmWrap.budgetType = budgetType;
+                                    
+                                    pgmWrapperList.add(pgmWrap);
                                 }
-                                else{pgmWrapper pgmWrap = new pgmWrapper();pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
-                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;pgmWrap.accId = pgm.Core_MDF_Account__c;pgmWrap.accName = pgm.Core_MDF_Account__r.Name;pgmWrap.role = role;pgmWrap.prog = program;pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);pgmWrapperList.add(pgmWrap); 
+                                else{
+                                    pgmWrapper pgmWrap = new pgmWrapper();
+                                    pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
+                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;
+                                    pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.accId = pgm.Core_MDF_Account__c;
+                                    pgmWrap.accName = pgm.Core_MDF_Account__r.Name;
+                                    pgmWrap.role = role;
+                                    pgmWrap.prog = program;
+                                    pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);
+                                    
+                                    pgmWrapperList.add(pgmWrap); 
                                 }
                             }
                         }
@@ -482,9 +513,6 @@ ultimateAccountToBudgetTypeMap.put(asa.PRM_Account_Id__c,new Set<String>{benefit
             contentVersionListToBeInserted.add(createContentVersion(csvDataList));
             isNewContent = FALSE;
         }
-        } catch(Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
     }
     
     /*-----------------------------------------------------------------------------------
@@ -656,7 +684,7 @@ Description         : This method creates file based on progam.
     }
     
     global void finish(Database.BatchableContext bc) {
-        try {
+        
         if(recordTrackingId == null){
             Core_MDF_Record_Tracking__c rt = new Core_MDF_Record_Tracking__c();
             rt.Core_MDF_Scope_nm__c = IUPGMMonitor;
@@ -708,9 +736,7 @@ Description         : This method creates file based on progam.
             }
             
         }
-        } catch(Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
+        
     }
     
     public class pgmWrapper{

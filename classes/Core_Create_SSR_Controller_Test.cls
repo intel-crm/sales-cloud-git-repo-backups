@@ -60,7 +60,7 @@ public class Core_Create_SSR_Controller_Test {
         //catch exception
         try{
             string oppid='';
-            //Core_Create_SSR_Controller.validateOpportuntyBeforeQuoteCreation(oppid);
+            Core_Create_SSR_Controller.validateOpportuntyBeforeQuoteCreation(oppid);
             
         }catch(Exception e)
         {
@@ -119,28 +119,28 @@ system.Assert(testURLS!=Null); */
         Test.stopTest();                                                                                                    
     }
     
-    /*public static testMethod void Test_PSGQuoteCreation(){
+    public static testMethod void Test_PSGQuoteCreation(){
         
         Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
         // create Account Record
-        Account acc = PSG_Test_Utility.createDirectAccount();
+        /*Account acc = PSG_Test_Utility.createDirectAccount();
         Account testAccount = Core_Test_Utility.createAccount(2)[1];
         testAccount.RecordTypeId = newAccountRecTypeId;
         testAccount.Core_PSG_Account__c=true;
         testAccount.Core_Account_Type__c='End Customer';
         testAccount.Core_Direct_Pricing_Parent_Id__c=acc.id;
         testAccount.Core_Direct_Legal_Parent_Id__c=acc.id;
-        insert testAccount;
+        insert testAccount;*/
         
         
         // create Opty Record
         Id recOpportunityTypeId = [select Id from RecordType where DeveloperName = 'Core_Opportunity' limit 1][0].Id;
-        Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
+        /*Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
                                                       AccountId=testAccount.Id, StageName='Qualifying', RecordTypeId=recOpportunityTypeId,
                                                       CloseDate=System.Date.today().addYears(1),Core_First_Customer_Ship_Date__c=System.Date.today().addYears(1),Core_Volume__c=5, OwnerId= UserInfo.getUserId());
         
         
-        insert testOpportunity;
+        insert testOpportunity;*/
         Opportunity testOpportunity1 = [select id from Opportunity where Name = 'Test SSG Support Request with Account2']; 
         system.assertEquals(testOpportunity1<>null,true);
         List<Product2> testProducts = Core_Test_Utility.createProduct(3);
@@ -166,29 +166,29 @@ system.Assert(testURLS!=Null); */
         }catch(Exception e){
             PMP_Utility.logError(e, 'Core_Create_SSR_Controller_Test.Test_PSGQuoteCreation');
         }        
-    }*/
-    /*public static testMethod void Test_PSGQuoteCreationValidationFail1(){
+    }
+    public static testMethod void Test_PSGQuoteCreationValidationFail1(){
         
         Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
         // create Account Record
-        Account acc = PSG_Test_Utility.createDirectAccount();
+        /*Account acc = PSG_Test_Utility.createDirectAccount();
         Account testAccount = Core_Test_Utility.createAccount(2)[1];
         testAccount.RecordTypeId = newAccountRecTypeId;
         testAccount.Core_PSG_Account__c=true;
         testAccount.Core_Account_Type__c='End Customer';
         testAccount.Core_Direct_Pricing_Parent_Id__c=acc.id;
         testAccount.Core_Direct_Legal_Parent_Id__c=acc.id;
-        insert testAccount;
+        insert testAccount;*/
         
         
         // create Opty Record
         Id recOpportunityTypeId = [select Id from RecordType where DeveloperName = 'Core_Opportunity' limit 1][0].Id;
-        Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
+        /*Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
                                                       AccountId=testAccount.Id, StageName='Qualifying', RecordTypeId=recOpportunityTypeId,
                                                       CloseDate=System.Date.today().addYears(1),Core_Volume__c=5, OwnerId= UserInfo.getUserId());
         
         
-        insert testOpportunity;
+        insert testOpportunity;*/
         Opportunity testOpportunity1 = [select id from Opportunity where Name = 'Test SSG Support Request with Account2']; 
         system.assertEquals(testOpportunity1<>null,true);
         List<Product2> testProducts = Core_Test_Utility.createProduct(3);
@@ -202,18 +202,18 @@ system.Assert(testURLS!=Null); */
         
         // Insert these in a specific order that we can rely on, since we can only sort by ID value when querying them from the
         // opportunity product history object later (can't sort on Description or any other attribute)
-        OpportunityLineItem testOppLineItem;
+        /*OpportunityLineItem testOppLineItem;
         testOppLineItem = new OpportunityLineItem(OpportunityId=testOpportunity1.Id, PricebookEntryId=testPBEs[0].Id,
                                                   Description='Test 11', UnitPrice=11, Quantity=11,
                                                   Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending');
-        insert testOppLineItem;
+        insert testOppLineItem;*/
         
         SBQQ.TriggerControl.disable();
         //Core_Create_SSR_Controller.createPSGQuoteonSiebel(testOpportunity1.id);
         
-    }*/    
+    }    
     
-    /*public static testMethod void Test_PSGQuoteCreationException(){
+    public static testMethod void Test_PSGQuoteCreationException(){
         // create Account Record
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Account testAccount = Core_Test_Utility.createAccount(2)[1];
@@ -258,26 +258,26 @@ system.Assert(testURLS!=Null); */
                 PMP_Utility.logError(e, 'Core_Create_SSR_Controller_Test.Test_PSGQuoteCreationException');
             }
         } 
-    }*/
-    /*public static testMethod void Test_PSGQuoteCreationValidationFail2(){
+    }
+    public static testMethod void Test_PSGQuoteCreationValidationFail2(){
         // create Account Record
         System.runAs(Core_Test_Utility.systemAdminUser){
-            Account acc = PSG_Test_Utility.createDirectAccount();
+            /*Account acc = PSG_Test_Utility.createDirectAccount();
             Account testAccount = Core_Test_Utility.createAccount(2)[1];
             testAccount.Core_Account_Type__c='End Customer';
             testAccount.Core_Direct_Pricing_Parent_Id__c=acc.id;
             testAccount.Core_Direct_Legal_Parent_Id__c=acc.id;
-            insert testAccount;
+            insert testAccount;*/
             
             
             // create Opty Record
             Id recOpportunityTypeId = [select Id from RecordType where DeveloperName = 'Core_Opportunity' limit 1][0].Id;
-            Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
+            /*Opportunity testOpportunity = new Opportunity(Name='Test SSG Support Request with Account2',
                                                           AccountId=testAccount.Id, StageName='Qualifying', RecordTypeId=recOpportunityTypeId,
                                                           CloseDate=System.Date.today().addYears(1),Core_First_Customer_Ship_Date__c=System.Date.today().addYears(1),Core_Volume__c=5, OwnerId= UserInfo.getUserId());
             
             
-            insert testOpportunity;
+            insert testOpportunity;*/
             Opportunity testOpportunity1 = [select id,Core_Approval_Status__c from Opportunity where Name = 'Test SSG Support Request with Account2']; 
             system.assertEquals(testOpportunity1<>null,true);
             List<Product2> testProducts = Core_Test_Utility.createProduct(3);
@@ -301,7 +301,7 @@ system.Assert(testURLS!=Null); */
             //Core_Create_SSR_Controller.createPSGQuoteonSiebel(testOpportunity1.id);
             Core_Create_SSR_Controller.checkOpptyStage(testOpportunity1.id);
         }
-    }*/
+    }
 
     public static testMethod void TestIsPCCDealRegOpty(){
         Boolean bln_PCC_DealRegOpty= false;

@@ -400,8 +400,7 @@ PBE - Price book Entry
         List<Account> lstAccount = new List<Account>();
         List<Core_Design_Registration__c> lstUpdDesigns = new List<Core_Design_Registration__c>();
         
-    // FPGA LOGIC COMMENTED OUT: Map for FPGA/Power product group approver assignments
-    // Map<String,String>  mapFPGA_ISRCityToGroupName = new Map<String,String>();
+        Map<String,String>  mapFPGA_ISRCityToGroupName = new Map<String,String>();
         Map<String,String>  mapEmbedded_IOT_ISRCityToGroupName = new Map<String,String>();
         
         Map<Id, String> mapAccountToBillingState = new Map<Id, String>();
@@ -418,8 +417,6 @@ PBE - Price book Entry
                 
                 if(iISRMap.Core_Active_Ind__c == TRUE){
                     
-                // FPGA LOGIC COMMENTED OUT: Building mapping for FPGA/Power product group
-                /*
                     if(iISRMap.Core_Product_Group_Nm__c == 'FPGA/Power'){
                         if(iISRMap.Core_State_Cd__c != NULL){
                             mapFPGA_ISRCityToGroupName.put(iISRMap.Core_State_Cd__c + iISRMap.Core_Country_Cd__c,iISRMap.Core_Approver_Group_Nm__c);
@@ -429,9 +426,7 @@ PBE - Price book Entry
                         {
                             mapFPGA_ISRCityToGroupName.put('All',iISRMap.Core_Approver_Group_Nm__c);
                         }
-                }else 
-                */
-                if(prdGroupNames.contains(iISRMap.Core_Product_Group_Nm__c)){
+                    }else if(prdGroupNames.contains(iISRMap.Core_Product_Group_Nm__c)){
                         if(iISRMap.Core_State_Cd__c != NULL){
                             mapEmbedded_IOT_ISRCityToGroupName.put(iISRMap.Core_State_Cd__c + iISRMap.Core_Country_Cd__c,iISRMap.Core_Approver_Group_Nm__c);
                         }else if(iISRMap.Core_Country_Cd__c != NULL){
@@ -467,8 +462,6 @@ PBE - Price book Entry
             {
                 Core_Design_Registration__c groupDesign = new Core_Design_Registration__c(Id = iDR.Id);
                 
-            // FPGA LOGIC COMMENTED OUT: Processing approver group assignment for FPGA/Power products
-            /*
                 if(iDR.Core_Product_Group_Nm__c == 'FPGA/Power')
                 {
                     if(iDR.Core_Design_Solution_Network_Ind__c == TRUE)
@@ -487,9 +480,7 @@ PBE - Price book Entry
                         }
                     }
                 }
-            else 
-            */
-            if(iDR.Core_Product_Group_Nm__c == 'Embedded/IOT Boards & Systems')
+                else if(iDR.Core_Product_Group_Nm__c == 'Embedded/IOT Boards & Systems')
                 {
                     if(groupDesign.Core_Approver_Grp_Nm__c == NULL && iDR.Core_Partner_Account_Region_Cd__c!=null && iDR.PCC_End_Customer_Country__c!=null) {
                         groupDesign.Core_Approver_Grp_Nm__c = mapEmbedded_IOT_ISRCityToGroupName.get(iDR.PCC_End_Customer_Country__c);
@@ -509,15 +500,11 @@ PBE - Price book Entry
                         groupDesign.Core_Approver_Grp_Nm__c = mapEmbedded_IOT_ISRCityToGroupName.get(mapAccountToBillingCountry.get(iDR.Core_Partner_Account_Id__c));
                     }
                 }
-            // FPGA LOGIC COMMENTED OUT: Default group assignment for FPGA/Power
-            /*
                 if(groupDesign.Core_Approver_Grp_Nm__c == NULL && iDR.Core_Product_Group_Nm__c == 'FPGA/Power')
                 {
                     groupDesign.Core_Approver_Grp_Nm__c = mapFPGA_ISRCityToGroupName.get('All');
                 }
-            else 
-            */
-            if(groupDesign.Core_Approver_Grp_Nm__c == NULL && iDR.Core_Product_Group_Nm__c == 'Embedded/IOT'){
+                else if(groupDesign.Core_Approver_Grp_Nm__c == NULL && iDR.Core_Product_Group_Nm__c == 'Embedded/IOT'){
                     groupDesign.Core_Approver_Grp_Nm__c = mapEmbedded_IOT_ISRCityToGroupName.get('All');
                 }
                 lstUpdDesigns.add(groupDesign);
@@ -1016,7 +1003,7 @@ listLogEntries.add(ExcepLog);
         //query Partner Price Book
         try{
             logSwitch = Core_LogEntry_Switch__c.getall();
-        lstInsertOpportunities = [select id, name, Core_Design_Registration_Id__r.Core_Partner_Account_Id__c, Account.OwnerID, Core_Design_Registration_Id__c, Core_Design_Registration_Id__r.Core_Partner_Account_Id__r.OwnerID,Core_Design_Registration_Id__r.PCC_Design_Type__c,Core_Design_Registration_Id__r.PCC_ODM_Board_Partner_Account__c from Opportunity where id IN: insertOppIds with USER_MODE];//varun
+            lstInsertOpportunities = [select id, name, Core_Design_Registration_Id__r.Core_Partner_Account_Id__c, Account.OwnerID, Core_Design_Registration_Id__c, Core_Design_Registration_Id__r.Core_Partner_Account_Id__r.OwnerID from Opportunity where id IN: insertOppIds with USER_MODE];
             priceBook = [SELECT Id, Name FROM Pricebook2 WHERE Name =: PRICEBOOK_NAME with USER_MODE];
             logEntryMessage+='\n priceBook : '+JSON.serialize(priceBook);
             for(Opportunity iOpp : lstInsertOpportunities){
@@ -1171,52 +1158,15 @@ listLogEntries.add(ExcepLog);
             list<PCC_ODR_Onboarding_Matrix__c> odrList = [SELECT PCC_Account__c FROM PCC_ODR_Onboarding_Matrix__c WITH SYSTEM_MODE];
             for (PCC_ODR_Onboarding_Matrix__c odrMatrix : odrList) {
                 odrMatrixAcctIdSet.add(odrMatrix.PCC_Account__c);
-        }//varun
+            }
             
-       /* for(Opportunity opp : lstInsertOpportunities) {
+            for(Opportunity opp : lstInsertOpportunities) {
                 Core_Opportunity_Partner__c op = new Core_Opportunity_Partner__c(Core_Opportunity__c = opp.id, Core_Partner_Type__c = (odrMatrixAcctIdSet.contains(opp.Core_Design_Registration_Id__r.Core_Partner_Account_Id__c)) ? 'ODM' :'Distributor', Core_Partner_Role__c = 'Co-Design');
                 op.Core_Partner__c = opp.Core_Design_Registration_Id__r.Core_Partner_Account_Id__c;
                 OppPartnerlist.add(op);
-        }*/ //varun
-        for (Opportunity opp : lstInsertOpportunities) {
-
-    Core_Design_Registration__c ddr =
-        opp.Core_Design_Registration_Id__r;
-
-    /*
-     * Create the normal Distributor partner for both
-     * Chip-down and Board-based registrations.
-     */
-    if (ddr.Core_Partner_Account_Id__c != null) {
-        Core_Opportunity_Partner__c distributorPartner =
-            new Core_Opportunity_Partner__c();
-
-        distributorPartner.Core_Opportunity__c = opp.Id;
-        distributorPartner.Core_Partner_Type__c = 'Distributor';
-        distributorPartner.Core_Partner_Role__c = 'Co-Design';
-        distributorPartner.Core_Partner__c =
-            ddr.Core_Partner_Account_Id__c;
-
-        oppPartnerList.add(distributorPartner);
             }
 
             System.debug('OppPartnerlist -->'+JSON.serialize(OppPartnerlist));
-    if (
-        ddr.PCC_Design_Type__c == 'Board-based' &&
-        ddr.PCC_ODM_Board_Partner_Account__c != null
-    ) {
-        Core_Opportunity_Partner__c odmPartner =
-            new Core_Opportunity_Partner__c();
-
-        odmPartner.Core_Opportunity__c = opp.Id;
-        odmPartner.Core_Partner_Type__c = 'Original Design Manufacturer (ODM)';
-        odmPartner.Core_Partner_Role__c = 'Co-Design';
-        odmPartner.Core_Partner__c =
-            ddr.PCC_ODM_Board_Partner_Account__c;
-
-        oppPartnerList.add(odmPartner);
-    }
-}
             if(!OppPartnerlist.isEmpty()){
 
                 Database.SaveResult[] lstDesignProductUpdate = Database.insert(OppPartnerlist, false);
@@ -1275,7 +1225,6 @@ listLogEntries.add(ExcepLog);
                                                          {
                                                              list<Opportunity> lstOpportunities = new list<Opportunity>();
                                                              Boolean isOppUpdated = false;
-    
                                                              //Manage newly added and approved line items after approval
                                                              for(Core_Design_Registration__c iDR: newList)
                                                              {
@@ -2002,7 +1951,6 @@ listLogEntries.add(ExcepLog);
                                                                                                                                          }
             createOpp.Core_Product_Segment__c = iDR.Core_Product_Segment_Nm__c;
             createOpp.Core_Product_Application__c = iDR.Core_Product_Application_Nm__c;
-            createOpp.Core_Design_Type__c = iDR.PCC_Design_Type__c;
             createOpp.Core_Consumption_Market__c = iDR.Core_Vertical_Market_Nm__c;
             createOpp.Core_Manufacturing_Geo__c = iDR.Core_Manufacturing_Region_Cd__c;
             createOpp.Core_Production_End_Date__c = iDR.Core_Production_End_Dt__c;

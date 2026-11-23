@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PMP_CallOut_Organization_Id_Value_Txt__c</field>
-        <value xsi:type="xsd:string">intelcorporationproductione78n25s6</value>
+        <value xsi:type="xsd:string">intelcorporationnonproduction2ybdyblf7</value>
     </values>
     <values>
         <field>PMP_CallOut_Partner_TailURL_Txt__c</field>
@@ -36,7 +36,7 @@
     </values>
     <values>
         <field>PMP_CallOut_SearchHub_Txt__c</field>
-        <value xsi:type="xsd:string">entepriseSearch</value>
+        <value xsi:type="xsd:string">entepriseTestSearch</value>
     </values>
     <values>
         <field>PMP_CallOut_URL_Txt__c</field>

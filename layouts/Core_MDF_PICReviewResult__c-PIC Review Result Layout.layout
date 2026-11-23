@@ -29,18 +29,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Question_id__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_AI_Confidence_Score_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_AI_Response_Agreement_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Feedback_To_AI_Agent_Txt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -54,14 +42,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_FilesAffected_txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_AI_PIC_Review_Detail_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_ManualResp_Equal_AIResp_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

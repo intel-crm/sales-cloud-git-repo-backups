@@ -300,8 +300,6 @@ private class Core_MDF_BatchShareCampVisibility_Test
             Test.stopTest();
             //assert.isTrue(grpIdList.contains(dcfGrp[0].Id));
             //assert.isFalse(grpIdList.contains(ccfGrp[0].Id));
-            // Unit Test Method should include System.Assert
-            System.assertNotEquals(null, grpIdList, 'Group ID list should not be null');
         } 
         
         

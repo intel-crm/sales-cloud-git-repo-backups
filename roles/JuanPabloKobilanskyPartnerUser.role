@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Aillu Distributions Partner User</description>
+    <description>Juan Pablo Kobilansky Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Aillu Distributions Partner User</name>
+    <name>Juan Pablo Kobilansky Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

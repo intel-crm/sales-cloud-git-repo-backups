@@ -12,28 +12,7 @@
 **/
 @IsTest
 public class Core_IPS_BugAssistController_Test {
-    @TestSetup
-    static void setupAuthorizedUser() {
-        Profile systemAdministrator = [SELECT Id FROM Profile WHERE Name = :System.Label.Core_System_Admin_Profile_Name LIMIT 1];
-        User authorizedUser = TestUtilities.getListOfUser(1)[0];
-        authorizedUser.Alias = 'bugasst';
-        authorizedUser.LastName = 'BugAssistAuthorizedUser';
-        authorizedUser.ProfileId = systemAdministrator.Id;
-
-        User validationBypassUser = [SELECT Id FROM User WHERE ProfileId = :systemAdministrator.Id AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert authorizedUser;
-            PermissionSet ipsPermissionSet = [SELECT Id FROM PermissionSet WHERE Name = 'Core_IPS_Permission_Set' LIMIT 1];
-            insert new PermissionSetAssignment(AssigneeId = authorizedUser.Id, PermissionSetId = ipsPermissionSet.Id);
-        }
-    }
-
-    private static User getAuthorizedUser() {
-        return [SELECT Id FROM User WHERE Alias = 'bugasst' AND LastName = 'BugAssistAuthorizedUser' LIMIT 1];
-    }
-
     static testmethod void possitiveTest(){
-		System.runAs(getAuthorizedUser()) {
 		Case testCase = TestUtilities.getCase();
         insert testCase;
         
@@ -61,14 +40,12 @@ public class Core_IPS_BugAssistController_Test {
         Test.startTest();
         Core_IPS_BugAssistController.bugAssistRecordConversion(testCase.Id,bugAssistAttachment.Id);
         Core_IPS_BugAssistController.fetchBugAssistRecord(bugAssistAttachment.Id);
-        Core_IPS_BugAssistController.bugAssistRecordDeletion(bugAssistAttachment.Id);     
+        Core_IPS_BugAssistController.bugAssistRecordDeletion(bugAssistAttachment.Id);        
         Test.stopTest();
         
         System.assert(bugAssistAttachment.id != null);
-		}
     }
     static testmethod void possitiveTest2(){  
-		System.runAs(getAuthorizedUser()) {
         Core_IPS_Product_Organization__c prodOrg = TestUtilities.getSupportOrg();
         insert prodOrg;
         
@@ -92,6 +69,5 @@ public class Core_IPS_BugAssistController_Test {
         Core_IPS_BugAssistController.validateBugAssistProd(supportedProd.Id);
         Test.stopTest();
         System.assert(assetRec.id != null);
-		}
     }
 }

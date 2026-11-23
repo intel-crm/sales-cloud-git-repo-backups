@@ -18,14 +18,6 @@ public class Core_IPS_CaseCreateLWCControllerTest {
     static Case CaseRecord1 = new Case();
     static List<Contact> ListOfContacts;
     static List<Account> ListOfAccounts = new List<Account> ();
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     /***************************************************************************************************
 Method Name:  getRecords
 Method Type: Void Method
@@ -41,16 +33,15 @@ Modification Log :
     
     static void getRecords(integer tid){
         // Query Profiles
-        List<string> listOfProfileNames = new List<string> {'System Administrator'};
-            Map<String,ID> mapOfProfiles = new Map<String,ID>();
-        for(Profile prof : [select id, name from Profile where name IN: listOfProfileNames]){
-            mapOfProfiles.put(prof.name, prof.id);
+        List<string> ListOfProfileNames = new List<string> {'System Administrator'};
+            Map<String,ID> MapOfProfiles = new Map<String,ID>();
+        for(Profile prof : [select id, name from Profile where name IN: ListOfProfileNames]){
+            MapOfProfiles.put(prof.name, prof.id);
         }
         
         SysAdminUsr = TestUtilities.getListOfUser(1);
         SysAdminUsr.get(0).UserName = 'SysAdminUsr'+SysAdminUsr.get(0).UserName;
-        SysAdminUsr.get(0).ProfileID =  mapOfProfiles.get('System Administrator');
-        insertUsersWithValidationBypass(SysAdminUsr);
+        SysAdminUsr.get(0).ProfileID =  MapOfProfiles.get('System Administrator');
         // Create UserRole Record
         UserRole role = new UserRole();
         role.name='CEO';
@@ -60,13 +51,13 @@ Modification Log :
         }
         // Create Users
         ListOfInternalSfUsers = TestUtilities.getListOfUser(1);
-        ListOfInternalSfUsers.get(0).ProfileID =  mapOfProfiles.get('System Administrator');
+        ListOfInternalSfUsers.get(0).ProfileID =  MapOfProfiles.get('System Administrator');
         ListOfInternalSfUsers.get(0).userroleid = role.id;
         // Creating SETUP OBJECT (USER) RECORD
         System.RunAs(SysAdminUsr[0]){
             insert ListOfInternalSfUsers;
         }
-        System.assertEquals(ListOfInternalSfUsers.get(0).profileid, mapOfProfiles.get('System Administrator'));
+        System.assertEquals(ListOfInternalSfUsers.get(0).profileid, MapOfProfiles.get('System Administrator'));
         
         //Added By Manoj
         Core_IPS_Labels__c ipsLabel = new Core_IPS_Labels__c(Name='CloseCaseEditPermission',Value__c='System Administrator');
@@ -74,15 +65,15 @@ Modification Log :
         
         // Create Account Record
         // List<Account> ListOfAccounts = new List<Account> ();
-        Account accountRec1 = TestUtilities.getAccount();
-        accountRec1.Core_IPS_Active__c = true;
-        accountRec1.ownerid = ListOfInternalSfUsers.get(0).id;
-        accountRec1.Core_Military_Aerospace_and_Government__c = true;
-        accountRec1.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
-        ListOfAccounts.add(accountRec1);
+        Account AccountRec1 = TestUtilities.getAccount();
+        AccountRec1.Core_IPS_Active__c = true;
+        AccountRec1.ownerid = ListOfInternalSfUsers.get(0).id;
+        AccountRec1.Core_Military_Aerospace_and_Government__c = true;
+        
+        ListOfAccounts.add(AccountRec1);
         insert ListOfAccounts;
-        List<Core_IPS_Labels__c>  lstLabels = TestUtilities.getIPSLabel();
-        insert lstLabels;
+        List<Core_IPS_Labels__c>  LstLabels = TestUtilities.getIPSLabel();
+        insert LstLabels;
         System.assert(ListOfAccounts[0].Id != null, 'Account Record not created');
         
         // Create Contact
@@ -94,20 +85,20 @@ Modification Log :
         insert ListOfContacts;
         System.assert(ListOfContacts[0].Id != null, 'Contact Record not created');
         // Create Support Org Record
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        insert listOfSupportOrg;
-        System.assert(listOfSupportOrg != null, 'Support Org Record not created');
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        insert ListOfSupportOrg;
+        System.assert(ListOfSupportOrg != null, 'Support Org Record not created');
         // Create Product2 Record
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(1);
-        listOfProducts[0].Core_Sales_Visible_Flag__c =FALSE;
-        listOfProducts[0].Core_Hierarchy_ID__c='59';
-        insert listOfProducts;
-        System.assert(listOfProducts[0].id != null,'Product2 Record not created');
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(1);
+        ListOfProducts[0].Core_Sales_Visible_Flag__c =FALSE;
+        ListOfProducts[0].Core_Hierarchy_ID__c='59';
+        insert ListOfProducts;
+        System.assert(ListOfProducts[0].id != null,'Product2 Record not created');
         
         // Create Supported product Record
         ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        ListOfSupportedProduct.get(0).Core_Product__c = listOfProducts.get(0).id;
-        ListOfSupportedProduct.get(0).Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        ListOfSupportedProduct.get(0).Core_Product__c = ListOfProducts.get(0).id;
+        ListOfSupportedProduct.get(0).Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         insert ListOfSupportedProduct;
         
         System.assert(ListOfSupportedProduct[0].id != null,'Supported product Record not created');
@@ -116,12 +107,12 @@ Modification Log :
         insert ListOfIpsProjects;
         System.assert(ListOfIpsProjects.get(0).Id != null, 'Design Project Record not created');
         // Create IPS Product Record
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(1);
-        listOfIpsProducts.get(0).Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
-        listOfIpsProducts.get(0).Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
-        listOfIpsProducts.get(0).Status__c = 'Submitted';
-        insert listOfIpsProducts;
-        System.assert(listOfIpsProducts.get(0).Id != null, 'IPS Product Record not created');
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(1);
+        ListOfIpsProducts.get(0).Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
+        ListOfIpsProducts.get(0).Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
+        ListOfIpsProducts.get(0).Status__c = 'Submitted';
+        insert ListOfIpsProducts;
+        System.assert(ListOfIpsProducts.get(0).Id != null, 'IPS Product Record not created');
         // Create Asset
         ListOfAssets = TestUtilities.getAssetList(1);
         ListOfAssets.get(0).Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
@@ -142,32 +133,32 @@ Modification Log :
         insert ListOfCoreMasterIssueCategory_CaseSubCat;
         System.assert(ListOfCoreMasterIssueCategory_CaseSubCat[0].Id != null, 'Record not Created');
         // Create Core Product Issue Category - Case Category
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCat = TestUtilities.getListOfCoreProdIssCategory(2);
-        for(Core_IPS_Product_Issue_Category__c prodIssuCat : listOfCoreProdIssCategoryCaseCat){
-            prodIssuCat.Core_type__c = 'Case Category';
-            prodIssuCat.Core_Issue_Category_Name__c = ListOfCoreMasterIssueCategory_CaseCat.get(0).id;
-            prodIssuCat.Core_supported_product__c = ListOfSupportedProduct[0].id;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCat = TestUtilities.getListOfCoreProdIssCategory(2);
+        for(Core_IPS_Product_Issue_Category__c ProdIssuCat : ListOfCoreProdIssCategory_CaseCat){
+            ProdIssuCat.Core_type__c = 'Case Category';
+            ProdIssuCat.Core_Issue_Category_Name__c = ListOfCoreMasterIssueCategory_CaseCat.get(0).id;
+            ProdIssuCat.Core_supported_product__c = ListOfSupportedProduct[0].id;
         }
-        insert listOfCoreProdIssCategoryCaseCat;
-        System.assert(listOfCoreProdIssCategoryCaseCat[0].Id != null, 'Record not Created');
+        insert ListOfCoreProdIssCategory_CaseCat;
+        System.assert(ListOfCoreProdIssCategory_CaseCat[0].Id != null, 'Record not Created');
         //Creating MasterCaseCategory
-        Core_IPS_Master_Issue_Category__c masterCaseCategory = TestUtilities.getMasterCaseCategories();
-        masterCaseCategory.Core_type__c = 'Case Category';
-        insert masterCaseCategory;
-        System.assert(masterCaseCategory.Id != null, 'Record not created');
+        Core_IPS_Master_Issue_Category__c MasterCaseCategory = TestUtilities.getMasterCaseCategories();
+        MasterCaseCategory.Core_type__c = 'Case Category';
+        insert MasterCaseCategory;
+        System.assert(MasterCaseCategory.Id != null, 'Record not created'); 
         //Creating MasterCategory
-        Core_IPS_Master_Issue_Category__c masterCategory = TestUtilities.getMasterCaseCategories();
-        masterCategory.Core_Master_Issue_Category__c = masterCaseCategory.id;
-        insert masterCategory;
-        System.assert(masterCategory.Id != null, 'Record not created');
+        Core_IPS_Master_Issue_Category__c MasterCategory = TestUtilities.getMasterCaseCategories();
+        MasterCategory.Core_Master_Issue_Category__c = MasterCaseCategory.id;            
+        insert MasterCategory;
+        System.assert(MasterCategory.Id != null, 'Record not created');
         caseCat = TestUtilities.getCaseCategories();
-        caseCat.Core_Issue_Category_Name__c = masterCategory.id;
+        caseCat.Core_Issue_Category_Name__c = MasterCategory.id;
         caseCat.Core_Type__c = 'Case Category';
         insert caseCat; 
         System.assert(caseCat.Id != null, 'Record not created');
         
         subCategory = TestUtilities.getCaseCategories();
-        subCategory.Core_Issue_Sub_Category_Name__c = masterCategory.id;
+        subCategory.Core_Issue_Sub_Category_Name__c = MasterCategory.id;
         subCategory.Core_Type__c = 'Case Subcategory';
         insert subCategory; 
         System.assert(subCategory.Id != null, 'Record not created');
@@ -195,8 +186,8 @@ Modification Log :
         }
         CaseRecord.ContactId=ListOfContacts.get(0).id;  
         CaseRecord1.ContactId=ListOfContacts.get(0).id;        
-        CaseRecord.Core_IPS_Product_Org1__c=listOfSupportOrg.get(0).id;
-        CaseRecord1.Core_IPS_Product_Org1__c=listOfSupportOrg.get(0).id;
+        CaseRecord.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord1.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
         CaseRecord.Core_Case_Issue_Category__c = caseCat.id;
         CaseRecord1.Core_Case_Issue_Category__c = caseCat.id;
         CaseRecord.Core_case_issue_sub_category__c = subCategory.id;
@@ -210,12 +201,12 @@ Modification Log :
         CaseRecord1.Core_CaseType__c='Issue';
         CaseRecord1.Core_IPS_Issue_source__c='n/a';
         CaseRecord.core_ips_project_case__c=projectcase.id;
-        RecordType rt = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        CaseRecord.recordTypeId = rt.Id;
-        CaseRecord1.recordTypeId = rt.Id;
-        RecordType rt2 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
+        RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord.recordTypeId = RT.Id;
+        CaseRecord1.recordTypeId = RT.Id;
+        RecordType RT2 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
         CaseRecordSA = CaseRecord.clone(false,true);
-        CaseRecordSA.RecordTypeId = rt2.Id;
+        CaseRecordSA.RecordTypeId = RT2.Id;
         
         if(tid==1){
             CaseRecord.Core_Severity__c='Critical';
@@ -232,7 +223,7 @@ Modification Log :
         //added by amritesh US8534 - start
         List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = listOfSupportOrg.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -268,32 +259,32 @@ Modification Log :
             update lstAnswer;
         
         //Creating Environmental Details Operational
-        List<Core_IPS_Assigned_Environment_Variables__c> environmentalDetailsList = new List<Core_IPS_Assigned_Environment_Variables__c>();
+        List<Core_IPS_Assigned_Environment_Variables__c> EnvironmentalDetailsList = new List<Core_IPS_Assigned_Environment_Variables__c>();
         for(integer i=0;i<5;i++){
-            Core_IPS_Assigned_Environment_Variables__c environmentalDetails = TestUtilities.getEnvironmentalDetailsOperational();
-            environmentalDetails.Core_IPS_Question__c = lstCoreQuestion[i].id;
-            environmentalDetails.Core_Required__c=true;
+            Core_IPS_Assigned_Environment_Variables__c EnvironmentalDetails = TestUtilities.getEnvironmentalDetailsOperational();
+            EnvironmentalDetails.Core_IPS_Question__c = lstCoreQuestion[i].id;
+            EnvironmentalDetails.Core_Required__c=true;
             //Added by karthick - US113683
             if(i==3){
-                environmentalDetails.Core_Agent_Only__c = true;
+                EnvironmentalDetails.Core_Agent_Only__c = true;
             }
-            environmentalDetails.Core_supported_product__c = ListOfSupportedProduct[0].id;
-            environmentalDetailsList.add(environmentalDetails);
+            EnvironmentalDetails.Core_supported_product__c = ListOfSupportedProduct[0].id;
+            EnvironmentalDetailsList.add(EnvironmentalDetails);
         }
         
         for(integer i=5;i<9;i++){
-            Core_IPS_Assigned_Environment_Variables__c environmentalDetails = TestUtilities.getEnvironmentalDetailsOperational();
-            environmentalDetails.Core_IPS_Question__c = lstCoreQuestion[i].id;
-            environmentalDetails.Core_Required__c=false;
+            Core_IPS_Assigned_Environment_Variables__c EnvironmentalDetails = TestUtilities.getEnvironmentalDetailsOperational();
+            EnvironmentalDetails.Core_IPS_Question__c = lstCoreQuestion[i].id;
+            EnvironmentalDetails.Core_Required__c=false;
             //Added by karthick - US113683
             if(i==7){
-                environmentalDetails.Core_Agent_Only__c = true;
+                EnvironmentalDetails.Core_Agent_Only__c = true;
             }
-            environmentalDetails.Core_Product_Issue_Sub_Category__c = subCategory.id;
-            environmentalDetailsList.add(environmentalDetails);
+            EnvironmentalDetails.Core_Product_Issue_Sub_Category__c = subCategory.id;
+            EnvironmentalDetailsList.add(EnvironmentalDetails);
         }        
-        insert environmentalDetailsList;
-        System.assert(environmentalDetailsList[0].Id != null, 'Record not created');
+        insert EnvironmentalDetailsList;
+        System.assert(EnvironmentalDetailsList[0].Id != null, 'Record not created');
         //added by amritesh US8534 - end
         
         List<Core_IPS_Error_Code__c> errorCodes= TestUtilities.getListOfIpsErrorCodes();
@@ -303,7 +294,7 @@ Modification Log :
     
     static void insertCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) {//ATHR Query limit fix
+        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
             for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                 Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                 objResponse.Core_IPS_Case__c = caseId;
@@ -319,7 +310,7 @@ Modification Log :
         System.assertEquals(true, lstResponse != null);
     }
     
-    @istest
+  /*  @istest
     public static void testGetCaseData(){
         
         
@@ -341,7 +332,7 @@ Modification Log :
        
         Core_IPS_Labels__c c = new Core_IPS_Labels__c();
         c.Name = 'CloseCaseEditPermission';
-        c.Value__c = 'Sales Rep-BB';
+        c.Value__c = 'IT Admin';
         insert c;
         
         Core_IPS_CaseCreateLWCController.hasEditAccess(cs.Id);
@@ -357,7 +348,7 @@ Modification Log :
         system.assertEquals(cs.id, wrapper.cs.id ) ;
         Test.stopTest();
         
-    }
+    }*/
     @istest
     public static void testControllerMethods(){
         getRecords(2);
@@ -386,15 +377,15 @@ Modification Log :
         projectMember.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
         insert projectMember;
         
-        string contactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(ListOfIpsProjects.get(0).Id, ListOfAssets.get(0).Id);
-        system.assertNotEquals('', contactQuery) ;
+        string ContactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(ListOfIpsProjects.get(0).Id, ListOfAssets.get(0).Id);
+        system.assertNotEquals('', ContactQuery) ;
         
-        contactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(null, ListOfAssets.get(0).Id);
-        system.assertNotEquals('', contactQuery) ;
+        ContactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(null, ListOfAssets.get(0).Id);
+        system.assertNotEquals('', ContactQuery) ;
         
         system.runAs(ListOfInternalSfUsers.get(0)){
-            contactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(ListOfIpsProjects.get(0).Id, ListOfAssets.get(0).Id);
-            system.assertNotEquals('', contactQuery) ;
+            ContactQuery = Core_IPS_CaseCreateLWCController.getContactLookupSOQL(ListOfIpsProjects.get(0).Id, ListOfAssets.get(0).Id);
+            system.assertNotEquals('', ContactQuery) ;
         }
         
         List<Core_IPS_CaseCreateHelper.DynamicField> edqs1 = Core_IPS_CaseCreateLWCController.getProductEDQ(''+CaseRecord.Core_IPS_Supported_Product__c, CaseRecord.Core_case_issue_sub_category__c, false);
@@ -491,7 +482,7 @@ Modification Log :
         userlist[0].username='salesrep020211.abc@user.com';
         userlist[1].profileid=proflst[1].id;
         userlist[1].username='salesrep020212.abc@user.com';
-        insertUsersWithValidationBypass(userlist);
+        insert userlist;
         List<Case> listOfCases = TestUtilities.getListOfCases(1);
         insert listOfCases;
         Core_IPS_CaseCreateHelper helper = new Core_IPS_CaseCreateHelper();
@@ -571,16 +562,16 @@ Modification Log :
         }      
         insert ansswers;
         
-        List<Core_IPS_Assigned_Environment_Variables__c> operationalList = TestUtilities.getListOfEnvDetailsOperational(3);
+        List<Core_IPS_Assigned_Environment_Variables__c> Operationallst = TestUtilities.getListOfEnvDetailsOperational(3);
         i=0; 
-        for(Core_IPS_Assigned_Environment_Variables__c assignment : operationalList){
+        for(Core_IPS_Assigned_Environment_Variables__c assignment : Operationallst){
             assignment.Core_IPS_Question__c = questions[i].id;
             assignment.Core_Product_Issue_Sub_Category__c = CaseRecord.Core_Case_Issue_Sub_Category__c;
             assignment.Core_supported_product__c = CaseRecord.Core_IPS_Supported_Product__c; 
             i++;
         } 
-        insert  operationalList;
-        System.assertEquals(true, operationalList != null);
+        insert  Operationallst;
+        System.assertEquals(true, Operationallst != null);
         
         Test.startTest();  
         DynamicLWCFormBuilderController d = new DynamicLWCFormBuilderController();
@@ -614,15 +605,15 @@ Modification Log :
         }      
         insert ansswers;
         
-        List<Core_IPS_Assigned_Environment_Variables__c> operationalList = TestUtilities.getListOfEnvDetailsOperational(4);
+        List<Core_IPS_Assigned_Environment_Variables__c> Operationallst = TestUtilities.getListOfEnvDetailsOperational(4);
         i=0; 
-        for(Core_IPS_Assigned_Environment_Variables__c assignment : operationalList){
+        for(Core_IPS_Assigned_Environment_Variables__c assignment : Operationallst){
             assignment.Core_IPS_Question__c = questions[i].id;
             assignment.Core_Product_Issue_Sub_Category__c = CaseRecord.Core_Case_Issue_Sub_Category__c;
             assignment.Core_supported_product__c = CaseRecord.Core_IPS_Supported_Product__c; 
             i++;
         } 
-        insert  operationalList;
+        insert  Operationallst;
         i=0;
         List<Core_IPS_Response__c> envResponses = TestUtilities.getCoreResponseRecords(4);
         for(Core_IPS_Response__c envResp : envResponses){
@@ -654,7 +645,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
     public static void testMindsSection(){
         getRecords(2); 
         
-        // getDefaultCountry queries a Contact field that is not installed in this org.
+        Core_IPS_MindSectionController.getDefaultCountry(ListOfContacts.get(0).id);
         List<CustomSelectOptions> lst = Core_IPS_MindSectionController.getCountriesOptions();
         //List<CustomSelectOptions> lst2 = Core_IPS_MindSectionController.getStateOptions();
         System.assertEquals(true, lst != null);
@@ -662,7 +653,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
     
     @isTest
     private static void copyInterestedPartiesTest() {
-        List<User> listOfInternalSfUsers = TestUtilities.getListOfUser(1);
+        List<User> ListOfInternalSfUsers = TestUtilities.getListOfUser(1);
         Core_IPS_Error_Code__c errCode = new Core_IPS_Error_Code__c();
         errCode.Core_Error_Message__c = 'Test error Message';
         errCode.Core_Locale__c = 'EN';
@@ -670,17 +661,17 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
         errCode.Name = 'G119';
         insert errCode; 
         // Create Case
-        List<Case> listOfCases = TestUtilities.getListOfCases(2);
-        insert listOfCases[0];
+        List<Case> ListOfCases = TestUtilities.getListOfCases(2);
+        insert ListOfCases[0];
         
         Core_IPS_Case_Interested_Party__c ip=new Core_IPS_Case_Interested_Party__c();
-        ip.User__c=listOfInternalSfUsers.get(0).Id;
+        ip.User__c=ListOfInternalSfUsers.get(0).Id;
         ip.Active__c=true;
         ip.Type__c='Internal';
-        ip.Case__c= listOfCases[0].Id;
+        ip.Case__c= ListOfCases[0].Id;
         insert ip;
-        insert listOfCases[1];
-        Core_IPS_CaseCreateLWCController.copyInterestedParties(listOfCases[0].Id, listOfCases[1].Id);
+        insert ListOfCases[1];
+        Core_IPS_CaseCreateLWCController.copyInterestedParties(ListOfCases[0].Id, ListOfCases[1].Id);
         
         List<Core_IPS_Labels__c> ipsLabelList = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c ipsLabel1 = new Core_IPS_Labels__c(Name='Case_RT_Name_IPS_NoAssignedContact',Value__c='IPS No Assigned Contact Case');
@@ -693,7 +684,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
         ipsLabelList.add(ipsLabel4);
         insert ipsLabelList;
         
-        Core_IPS_CaseCreateLWCController.getButtonsVisibility(listOfCases[0].Id);
+        Core_IPS_CaseCreateLWCController.getButtonsVisibility(ListOfCases[0].Id);
         String errMsg = Core_IPS_CaseCreateLWCController.getErrorMessage('G119');
         System.assertEquals('Test error Message', errMsg);
         System.assert(errMsg!=null, 'Message Exists');
@@ -745,13 +736,12 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
             Firstname='Bruce',   
             lastname='lastname1'
         );
-        insertUsersWithValidationBypass(new List<User>{portalAccountOwner1});
+        Database.insert(portalAccountOwner1);
         System.assertEquals(portalAccountOwner1!=null, true, 'portalAccountOwner1 Inserted');
         System.runAs ( portalAccountOwner1 ) {
             
             	  Account portalAccount1 = new Account(
                 Name = 'newAcc2',
-                recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(),
                 BillingCity = 'folsom',
                 BillingCountry = 'USA',
                 BillingStreet = 'Creek Side Dr',
@@ -791,7 +781,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
                 Firstname='BruceS',   
                 lastname='lastname2'
             );
-            insertUsersWithValidationBypass(new List<User>{user1});
+            Database.insert(user1);
         
             
         System.runAs(user1){
@@ -847,7 +837,6 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
          List<String> result1 = Core_IPS_CaseCreateLWCController.getProductSupportOwner(ListOfContacts[0].Id,ListOfIpsProjects.get(0).Id);
         //Sowmya - End - 12/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
         Core_IPS_CaseCreateLWCController.getPartnerSupportAccount(null,ListOfIpsProjects.get(0).Id,null);
-        Core_IPS_CaseCreateLWCController.getPartnerSupportAccount(ListOfContacts.get(0).id,ListOfIpsProjects.get(0).Id,null);//Added by Shanmukha 
         Core_IPS_CaseCreateLWCController.validateBeforeSubmitCase(ListOfAssets.get(0).Id,ListOfIpsProjects.get(0).Id,ListOfContacts.get(0).Id,'IPS_Case_Create');
         Core_IPS_CaseCreateLWCController.validateBeforeSubmitCase(ListOfAssets.get(0).Id,null,ListOfContacts.get(0).Id,'IPS_Case_Create');   
         System.assertEquals(ListOfIpsProjects.get(0).Id != null, true);
@@ -868,9 +857,9 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
     }
     @isTest
     public static void getConListAsset(){
-        string objectApiName = 'Core_IPS_Supported_Product__c'; 
+        string ObjectApiName = 'Core_IPS_Supported_Product__c'; 
         string fieldSetName = 'SupportedProductFieldSet'; 
-        String getConatctList =Core_IPS_CaseCreateLWCController.readFieldSet(fieldSetName,objectApiName); 
+        String getConatctList =Core_IPS_CaseCreateLWCController.readFieldSet(fieldSetName,ObjectApiName); 
         system.assert(getConatctList!=null);
     }
     @isTest

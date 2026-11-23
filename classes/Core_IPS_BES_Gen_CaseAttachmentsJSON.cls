@@ -17,7 +17,7 @@ public without sharing class Core_IPS_BES_Gen_CaseAttachmentsJSON {
         try{
             if(IPS_Case_Attachment_Fields__c.SObjectType.getDescribe().isQueryable()){
                 if(attachmentIdList.size()>0){ 
-                    List<IPS_Case_Attachment_Fields__c> attachmentCustomSettings =[Select Id, Object_Name__c, Attachment_Field_Type__c, Attachment_Field_API_Name__c, JSON_Field_Name__c from IPS_Case_Attachment_Fields__c order by name DESC Limit 49999 ];// Limit Added by Tushar;
+                    List<IPS_Case_Attachment_Fields__c> attachmentCustomSettings =[Select Id, Object_Name__c, Attachment_Field_Type__c, Attachment_Field_API_Name__c, JSON_Field_Name__c from IPS_Case_Attachment_Fields__c order by name DESC ];
                     for(IPS_Case_Attachment_Fields__c ca : attachmentCustomSettings){                   
                         cafieldMap.put(ca.Attachment_Field_API_Name__c, ca.JSON_Field_Name__c); 
                     }

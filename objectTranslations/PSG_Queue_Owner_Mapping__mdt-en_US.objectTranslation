@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Queue Owner Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Queue Owner Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Country --></label>
+        <name>PSG_Account_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>PSG_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account State --></label>
+        <name>PSG_Account_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PSG_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti GEO --></label>
+        <name>PSG_Disti_GEO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Keyword --></label>
+        <name>PSG_Disty_Keyword__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Name --></label>
+        <name>PSG_Disty_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- EC keyword --></label>
+        <name>PSG_EC_keyword__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>PSG_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Type --></label>
+        <name>PSG_Quote_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- SOS Queue Name --></label>
+        <name>PSG_SOS_Queue_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>PSG_send_email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

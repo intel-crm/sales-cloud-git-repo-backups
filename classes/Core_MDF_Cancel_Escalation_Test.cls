@@ -102,7 +102,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             ipaCoMarketingAccount.Core_Geo__c = 'APJ';
             insert ipaCoMarketingAccount;
             
-
+            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
             List<Account> accountList = new List<Account>();
             Account ccfVc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing CCF Test Account', 
@@ -165,7 +165,6 @@ public class Core_MDF_Cancel_Escalation_Test {
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
             ipaCampaignForAP.Core_Approval_Status__c = 'Price Reviewer';
-            ipaCampaignForAP.Core_MDF_Technology__c=''; // Added by sumalatha
             database.insert(ipaCampaignForAP);
             
             Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
@@ -204,7 +203,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             }
             Test.startTest();
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-
+            PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
             
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(ccfVc.id),null,null,'INDIA','Small Business','Desktop',
@@ -227,8 +226,6 @@ public class Core_MDF_Cancel_Escalation_Test {
             MDFpfr.Core_MDF_Fund_Request_Status__c = 'Planned';
             MDFpfr.Core_MDF_MDFReimbursement_Amt__c = 1000;
             MDFpfr.RequestedAmount = 1000;
-            MDFpfr.Core_MDF_ActivityCategory__c=''; // Added by sumalatha
-            MDFpfr.Core_MDF_Activity_Types__c=''; // Added by sumalatha
             pfrList.add(MDFpfr);
             System.runAs(systemAdmin){
                 insert pfrList;
@@ -258,8 +255,9 @@ public class Core_MDF_Cancel_Escalation_Test {
             esc4.Core_MDF_Claim_Submitter_Id__c	=  usr1.Id;
             esc4.Core_MDF_Escalation_Status_nm__c = 'Approved';
             escList.add(esc4);
+            System.runAs(systemAdmin){
                 insert escList;
-            
+            }
             
             List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Paid Claim CCF', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, MDFpfr.Id, MDFpfr.Core_MDF_Start_Date__c, MDFpfr.Core_MDF_End_Date__c, 500.00, System.today(), null, false);
@@ -301,17 +299,17 @@ public class Core_MDF_Cancel_Escalation_Test {
             
             
             esc3.Core_MDF_Claim_Number_id__c = Claim1.id;
-            //database.update(esc3);// 14285 Suma
+            database.update(esc3);
             
             esc4.Core_MDF_Claim_Number_id__c = claim2.id;
-            //database.update(esc4);//14285 Suma
+            database.update(esc4);
             
             Test.stopTest();
             
         }
     }
     
-   @isTest
+    @isTest
     static void testMethod1(){
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         system.runAs(systemAdmin){
@@ -321,11 +319,11 @@ public class Core_MDF_Cancel_Escalation_Test {
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             List<Core_MDF_Escalation__c> escList = new List<Core_MDF_Escalation__c>();
             
-            /*PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest Where campaign.name = 'Test Campaign - AP' limit 1];
+            PartnerFundRequest ipaPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c from PartnerFundRequest Where campaign.name = 'Test Campaign - AP' limit 1];
             ipaPFR.Core_MDF_Fund_Request_Status__c = 'Planned';
             ipaPFR.Core_MDF_Region_nm__c = 'APJ';
             pfrList.add(ipaPFR);
-            Database.update(pfrList);*/
+            Database.update(pfrList);
             
             PartnerFundRequest opalPFR = [Select Id,Core_MDF_Fund_Request_Status__c,Core_MDF_Region_nm__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title = 'Test Activity' limit 1];
             pfrList.add(opalPFR);
@@ -340,7 +338,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             escList.add(opalEsc);
             escList.add(opalEsc2);
             
-            //pfrIds.add(ipaPFR.id);
+            pfrIds.add(ipaPFR.id);
             escIds.add(opalEsc.id);
             escIds.add(opalEsc2.id);
             

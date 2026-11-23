@@ -155,7 +155,7 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
         Map<Id, Core_MDF_Partner_Node_User_Mapping__c> pnumIdToPnumRecordMap = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>([SELECT Core_MDF_Account__c, Core_MDF_User__c, Core_MDF_Active_Ind__c
                                                                                                                     FROM Core_MDF_Partner_Node_User_Mapping__c
                                                                                                                     WHERE (Core_MDF_User__r.IsActive = true or Core_MDF_User__r.Partner_License_Reclaimed__c = true)
-                                                                                                                    AND Core_MDF_Account__c IN: accountIdSet limit 30000]);//Added limit for Unhandled exception fix
+                                                                                                                    AND Core_MDF_Account__c IN: accountIdSet]);
         
         for(Core_MDF_Partner_Node_User_Mapping__c pnumRecord : pnumIdToPnumRecordMap.values()) {
 
@@ -173,10 +173,8 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
 
             if(oldRecordsMap == null) {
                 
-                //if(accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c) != null && accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c).keySet().contains(pnuMappingRecord.Core_MDF_User__c)) {
-                    if (accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c) == null || !accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c).keySet().contains(pnuMappingRecord.Core_MDF_User__c)) {//ATHR Fix WW19
-                        continue; 
-                    }
+                if(accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c) != null && accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c).keySet().contains(pnuMappingRecord.Core_MDF_User__c)) {
+                    
                     String pnumRecordId = accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c).get(pnuMappingRecord.Core_MDF_User__c).Id;
                     if(accountIdtoUserIdAndPnumRecordMap.get(pnuMappingRecord.Core_MDF_Account__c).get(pnuMappingRecord.Core_MDF_User__c).Core_MDF_Active_Ind__c){
                         hasErrorInsert = true;
@@ -185,7 +183,7 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
                         hasErrorInsert = true;
                         pnuMappingRecord.addError('Inactive PNUM record already exist with this Account and User Details ' + (String.isNotBlank(pnumRecordId) ? pnumRecordId : ''));
                     }
-                //}
+                }
 
                 //Add newly inserted records to the PNUM Map
                 if(!hasErrorInsert && accountIdtoUserIdAndPnumRecordMap.containsKey(pnuMappingRecord.Core_MDF_Account__c)) {
@@ -256,9 +254,6 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
                                                 Map < Id, Id > mapOfUserIdToContactId) {
     //Looping all incoming PNUM's
     for (Core_MDF_Partner_Node_User_Mapping__c pnum: newPNUMappingList) {
-        if(!pnum.Core_MDF_Active_Ind__c){
-            continue;
-        }
         //List of contact id
         List < Id > listOfContacts = new List < Id > ();
         //hold contact entitlement name
@@ -318,9 +313,6 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
         //Looping all incoming PNUM's
         //Showing error if account group and user group does not match
         for(Core_MDF_Partner_Node_User_Mapping__c pnum : newPNUMappingList){
-            if(!pnum.Core_MDF_Active_Ind__c){
-                continue;
-            }
             //get ultimate account based on account
             Id ultimateAccount = accNodeToUltimateAccMap.containsKey(pnum.Core_MDF_Account__c) ? accNodeToUltimateAccMap.get(pnum.Core_MDF_Account__c) : null;
             //get account channel program based on account

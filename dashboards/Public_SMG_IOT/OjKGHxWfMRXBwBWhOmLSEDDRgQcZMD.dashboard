@@ -93,15 +93,19 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Greg Clifton,Rick Lisa,Rob Gillis</values>
+            <values>BILL GALLUCCIO,Joe Ward,Sunil Gupta,Steve Zurlo,Greg Clifton,Rob Gillis,Rick Lisa,David Phillips,Jason Brumfield,Cameron Chehreh,Mark Valcich,Elizabeth McGee,Kathleen Robinson</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>notEqual</operator>
-            <values>Rick Lisa,Greg Clifton,Rob Gillis</values>
+            <values>BILL GALLUCCIO,Sunil Gupta,Steve Zurlo,Joe Ward,Greg Clifton,Jason Brumfield,David Phillips,Rob Gillis,Rick Lisa,Elizabeth McGee,Kathleen Robinson,Cameron Chehreh</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Greg Clifton</values>
+            <values>Cameron Chehreh</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Greg Clifton,Mark Valcich</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -109,11 +113,50 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>David Phillips</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Jason Brumfield,Kathleen Robinson</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Rick Lisa,Elizabeth McGee</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>BILL GALLUCCIO</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Sunil Gupta</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Steve Zurlo</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Joe Ward</values>
         </dashboardFilterOptions>
         <name>Opportunity Owner: Manager</name>
     </dashboardFilters>
     <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>1/1/2023</values>
+            <values>12/31/2025</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>1/1/2023</values>
+            <values>12/31/2028</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>1/1/2024</values>
+            <values>12/31/2025</values>
+        </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
             <values>1/1/2023</values>
@@ -132,39 +175,22 @@
         <dashboardFilterOptions>
             <operator>between</operator>
             <values>1/1/2026</values>
-            <values>12/31/2026</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>1/1/2027</values>
-            <values>12/31/2031</values>
+            <values>12/31/2030</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>greaterThan</operator>
-            <values>12/31/2031</values>
+            <values>12/31/2030</values>
         </dashboardFilterOptions>
         <name>Decision Date</name>
     </dashboardFilters>
     <dashboardFilters>
         <dashboardFilterOptions>
-            <operator>notEqual</operator>
-            <values>PSG</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
             <operator>contains</operator>
             <values>CCG</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>CCG</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
             <operator>contains</operator>
-            <values>ECG</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>DCAI,DCG</values>
+            <values>DCAI</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>startsWith</operator>
@@ -181,6 +207,14 @@
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>,-</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>ECG</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>CCG</values>
         </dashboardFilterOptions>
         <name>BU Short Name</name>
     </dashboardFilters>
@@ -235,7 +269,7 @@
                 <showRange>true</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -244,7 +278,6 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
                 <componentType>Metric</componentType>
@@ -266,18 +299,18 @@
                 <decimalPrecision>1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
                 <groupingSortProperties/>
-                <header>WW PubSec Pending</header>
-                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>1.0E10</indicatorBreakpoint2>
+                <header>WW PubSec Total &apos;25 Pipeline</header>
+                <indicatorBreakpoint1>1.0E10</indicatorBreakpoint1>
+                <indicatorBreakpoint2>1.2E10</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <metricLabel>2026</metricLabel>
-                <report>unfiled$public/Global_PubSec_Pipeline_25_Pending</report>
-                <showRange>false</showRange>
+                <metricLabel>Wins + Pending</metricLabel>
+                <report>unfiled$public/Global_PubSec_PubSec_Total_25_Pipeline</report>
+                <showRange>true</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -286,9 +319,10 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Metric</componentType>
+                <componentType>Gauge</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
@@ -306,19 +340,24 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
+                <gaugeMax>1.2000000001E10</gaugeMax>
+                <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>WW PubSec CY Wins</header>
-                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>6.5E10</indicatorBreakpoint2>
+                <header>WW PubSec &apos;25 Pending Pipe</header>
+                <indicatorBreakpoint1>1.0E10</indicatorBreakpoint1>
+                <indicatorBreakpoint2>1.2E10</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <metricLabel>2026</metricLabel>
-                <report>unfiled$public/Global_PubSec_PubSec_Total_25_Pipeline</report>
-                <showRange>false</showRange>
+                <report>unfiled$public/Global_PubSec_Pipeline_25_Pending</report>
+                <showPercentage>true</showPercentage>
+                <showRange>true</showRange>
+                <showTotal>true</showTotal>
+                <showValues>false</showValues>
+                <title>Need $10KM and $12KM to hit $8KM</title>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -327,9 +366,10 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Metric</componentType>
+                <componentType>Gauge</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
@@ -347,19 +387,24 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
+                <gaugeMax>8.0E9</gaugeMax>
+                <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>WW PubSec Wins</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <header>Global PubSec Pipeline &apos;25 Wins</header>
+                <indicatorBreakpoint1>6.68671E9</indicatorBreakpoint1>
+                <indicatorBreakpoint2>7.9E9</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <metricLabel>2025</metricLabel>
-                <report>unfiled$public/Global_PubSec_Pipeline_25_Wins1</report>
-                <showRange>false</showRange>
+                <report>unfiled$public/Global_PubSec_Pipeline_25_Wins</report>
+                <showPercentage>true</showPercentage>
+                <showRange>true</showRange>
+                <showTotal>true</showTotal>
+                <showValues>false</showValues>
+                <title>&apos;25 Target: $8,000M ($8KM)</title>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -400,7 +445,7 @@
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -441,7 +486,7 @@
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>12</colSpan>
@@ -497,7 +542,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>4</rowIndex>
+            <rowIndex>7</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -552,7 +597,7 @@
                 <title>2023 - 2036</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>15</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -607,7 +652,7 @@
                 <title>Wins + Pending</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>15</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -663,7 +708,7 @@
                 <title>Pending + Wins</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>15</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -721,7 +766,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>23</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -780,7 +825,7 @@
                 <title>No Unified Group Account Name</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>23</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -840,7 +885,7 @@
                 <title>By Unified Group Name then Account Name</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>30</rowIndex>
+            <rowIndex>33</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -898,7 +943,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>38</rowIndex>
+            <rowIndex>41</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -956,7 +1001,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>38</rowIndex>
+            <rowIndex>41</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1011,7 +1056,7 @@
                 <title>2023 -2025</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>48</rowIndex>
+            <rowIndex>51</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1070,7 +1115,7 @@
                 <title>2025 - 20236</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>48</rowIndex>
+            <rowIndex>51</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1128,7 +1173,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>58</rowIndex>
+            <rowIndex>61</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1183,7 +1228,7 @@
                 <title>By Decision Date</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>58</rowIndex>
+            <rowIndex>61</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1240,7 +1285,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>58</rowIndex>
+            <rowIndex>61</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -1251,7 +1296,7 @@
     <owner>11380999@intel.com.crm</owner>
     <runningUser>11380999@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>&apos;26 WW Public Sector Pipeline &amp; Metrics</title>
+    <title>&apos;25 WW Public Sector Pipeline &amp; Metrics</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

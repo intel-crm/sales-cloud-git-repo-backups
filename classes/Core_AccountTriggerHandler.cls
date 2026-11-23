@@ -274,11 +274,11 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
     }
   
     /********************* Raushan US369121 - Update Membership flag when partner type is being changed.***************/
-    /*if (mapFunctionalityNameTriggerExecution.containsKey('accountPartnerTypeAfterUpate') &&
+    if (mapFunctionalityNameTriggerExecution.containsKey('accountPartnerTypeAfterUpate') &&
         mapFunctionalityNameTriggerExecution.get('accountPartnerTypeAfterUpate').Core_Active__c
     ) {
       Core_AccountTriggerHandlerController.membershipFlagUpdate((List<Account>) Trigger.Old,(List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap,(Map<Id, Account>) Trigger.NewMap);
-    }*/
+    }
   
     //Rahul Added for US759847
     if (mapFunctionalityNameTriggerExecution.containsKey('Roll_up_account') &&
@@ -300,11 +300,11 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
     /*Description: on Update Account Name call psg method which will update same in license record
   author and date:dnyanadax.argulwar@intel.com ,23Nov    
   */
-    // if (mapFunctionalityNameTriggerExecution.containsKey('accountDetailsUpdateOnPsgMethod') &&
-    //     mapFunctionalityNameTriggerExecution.get('accountDetailsUpdateOnPsgMethod').Core_Active__c
-    // ) {
-    //   Core_AccountTriggerHandlerController.sendAccountDetailsToPsgMethods((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
-    // }
+    if (mapFunctionalityNameTriggerExecution.containsKey('accountDetailsUpdateOnPsgMethod') &&
+        mapFunctionalityNameTriggerExecution.get('accountDetailsUpdateOnPsgMethod').Core_Active__c
+    ) {
+      Core_AccountTriggerHandlerController.sendAccountDetailsToPsgMethods((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
+    }
   
 
    

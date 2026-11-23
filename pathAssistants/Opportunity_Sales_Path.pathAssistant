@@ -5,7 +5,7 @@
     <fieldName>StageName</fieldName>
     <masterLabel>Opportunity Sales Path</masterLabel>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;img src=&quot;https://intel.file.force.com/servlet/rtaImage?eid=1CF1J00000001gM&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxS&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;img src=&quot;https://intel--devpsg2.sandbox.file.force.com/servlet/rtaImage?eid=1CF1J00000001gM&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxS&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
         <picklistValueName>Define</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
@@ -17,15 +17,15 @@
         <picklistValueName>Design Win</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;img src=&quot;https://intel.file.force.com/servlet/rtaImage?eid=1CF3b000000LAdJ&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxX&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;img src=&quot;https://intel--devpsg2.sandbox.file.force.com/servlet/rtaImage?eid=1CF3b000000LAdJ&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxX&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
         <picklistValueName>Develop</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;img src=&quot;https://intel.file.force.com/servlet/rtaImage?eid=1CF3b000000GtFV&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxc&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;img src=&quot;https://intel--devpsg2.sandbox.file.force.com/servlet/rtaImage?eid=1CF3b000000GtFV&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxc&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
         <picklistValueName>Production Win</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;img src=&quot;https://intel.file.force.com/servlet/rtaImage?eid=1CF3b000000LAdK&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxI&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;img src=&quot;https://intel--devpsg2.sandbox.file.force.com/servlet/rtaImage?eid=1CF3b000000LAdK&amp;amp;feoid=Info&amp;amp;refid=0EM3b0000061nxI&quot;&gt;&lt;/img&gt;&lt;/p&gt;</info>
         <picklistValueName>Qualify</picklistValueName>
     </pathAssistantSteps>
     <recordTypeName>Core_Opportunity</recordTypeName>

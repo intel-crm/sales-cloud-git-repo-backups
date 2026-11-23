@@ -37,9 +37,7 @@ public with sharing class PMP_SendEmailAlertsForCompanyInfo {
                  //To get the type of benefit assigned. (To differentiate from storefront and Profile)
                  if(!comInfoList.isEmpty()){
                      companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Enhanced'? 'Storefront': 'Profile';
-                  //   companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Basic Profile'? 'Storefront': 'Profile';
-                 }                  
-                 
+                 }
                  sendEmail(comInfoList,apexEmailRecName,companyInfoType);
                  
              }  
@@ -96,9 +94,7 @@ public with sharing class PMP_SendEmailAlertsForCompanyInfo {
                             comInfoList[0].PMP_Suppress_Email_Ind__c=false;
                             PMP_Company__c partnerPublishedCopy= new PMP_Company__c(Id=comInfoList[0].PMP_Published_Copy_Id__c,PMP_Suppress_Email_Ind__c=false);
                             comInfoList.add(partnerPublishedCopy);                        
-                            //update comInfoList;
-                            Database.SaveResult[] ciList = Database.update(comInfoList, false);
-                            PMP_Utility.logDmlErrors((Object[]) ciList, 'PMP_SendEmailAlertsForCompanyInfo-sendEmail');
+                            update comInfoList;
                         }   
                     }
             }

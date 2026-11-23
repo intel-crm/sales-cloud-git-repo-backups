@@ -538,6 +538,9 @@
         <field>Opportunity.Core_Current_Architecture__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__CurrentGenerators__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Customer_Project_Details__c</field>
     </columns>
     <columns>
@@ -563,6 +566,9 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Past_Due__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__DeliveryInstallationStatus__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Descriptive_Feature_Check__c</field>
@@ -700,6 +706,9 @@
         <field>Opportunity.Core_IoT__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__Is_Influenced__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_IsBlank_Competitive_Arch__c</field>
     </columns>
     <columns>
@@ -757,6 +766,9 @@
         <field>Opportunity.Core_Lead_to_Opportunity_Conversion__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_LOEM__c</field>
     </columns>
     <columns>
@@ -784,6 +796,9 @@
         <field>Opportunity.Core_MAG_Account__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__MainCompetitors__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Manufacturing_Geo__c</field>
     </columns>
     <columns>
@@ -806,6 +821,15 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Modern_Standby__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__My_DateTime__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__My_Geolocation__Latitude__s</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__My_Geolocation__Longitude__s</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Named_Strategic__c</field>
@@ -941,6 +965,9 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Oppty_Count__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__OrderNumber__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Org_URL__c</field>
@@ -1202,6 +1229,9 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.LID__TrackingNumber__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Ultrabook__c</field>
@@ -1751,6 +1781,9 @@
     </columns>
     <columns>
         <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
+    </columns>
+    <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
         <field>Account.Core_MAG_Value__c</field>
@@ -2488,8 +2521,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

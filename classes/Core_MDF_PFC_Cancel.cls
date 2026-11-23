@@ -96,7 +96,7 @@ Alekhya                                                25-02-2025     Included C
                         
                     
                     
-                }  
+                }	
                 
                 if(claimObj.Core_MDF_Total_Claim_Recovery_Amount__c > 0){
                     userInfoWrap.claimEligibleForCancel = false;
@@ -137,13 +137,40 @@ Modified By:        Date:       Changes:
 ******************************************************************************************************/    
     @AuraEnabled
     public static boolean cancelClaims(List<Id> claimIdList){
-        boolean success = true;
+        //Integer i= 5/0;
+        //Get the status in which Cancelling a claim is allowed. Added this additional check in case the method is called from backend
+        //List<string> validStatus = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_EditClaimStatusValues'); //Label.Core_MDF_Status_allowed_for_Cancel_Claim.split(';');
+        List<string> validStatus = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Status_allowed_for_Cancel_Claim');//Added as part New Status values like PIC Pending,Pending Documents,Resubmission Required
+        Boolean success = true;
         try{
-            cancelClaimInnerClass cancelClaimInner = new cancelClaimInnerClass();
-            success =  cancelClaimInner.cancelClaimsWithoutSharing(claimIdList);
-            return success;
-        }       
-       
+            List<PartnerFundClaim> claimList = [SELECT Id, ChannelPartnerId, Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_VAT_Eligibility_Ind__c 
+                                                FROM PartnerFundClaim 
+                                                where Id IN :claimIdList];
+            List<PartnerFundClaim> claimToBeCancelled = new List<PartnerFundClaim>();
+            Set<Id> vatClaimsToBeCancelled = new Set<Id>();
+            Set<Id> accountIds = new Set<Id>();
+            
+            
+            if(claimList != NULL && claimList.size() > 0)
+            {
+                for(PartnerFundClaim claim : claimList)
+                {
+                    
+                    if(validStatus.contains(string.valueof(claim.Core_MDF_Status__c)))
+                    {
+                        //set the status of the claim to Cancelled
+                        claim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled'); //Label.Core_MDF_Status_Cancelled; 
+                        //claim.Core_MDF_VAT_Hold_Ind__c=false; // If Adj get cancelling, Corresponding Claim and VAt also should get cancel and VAt hold should be false
+                        //add to the list of claims to be cancelled
+                        claimToBeCancelled.add(claim);
+                    }
+                    if(claim.Core_MDF_VAT_Eligibility_Ind__c){ vatClaimsToBeCancelled.add(claim.Id);  
+                                                             }
+                }
+            }
+            Database.update(claimToBeCancelled);  
+            if(vatClaimsToBeCancelled != NULL && vatClaimsToBeCancelled.size() > 0){cancelVatInformation(vatClaimsToBeCancelled);}            
+            return success;}
         catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e);throw e ;}
     }
     
@@ -159,7 +186,7 @@ Modified By:        Date:       Changes:
         
         
         List<Core_MDF_Claim_VAT_Info__c> vatInfoList = [Select Core_MDF_Claim_Id__c, Id, Core_MDF_Status_Txt__c from Core_MDF_Claim_VAT_Info__c 
-                                                        where Core_MDF_Claim_Id__c IN :vatClaimsToBeCancelled OR Core_MDF_Sub_Claim_Id__c IN :vatClaimsToBeCancelled];  //Roshan - added subclaim check
+                                                        where Core_MDF_Claim_Id__c IN :vatClaimsToBeCancelled];
         List<Id> vatIdsToBeRejected = new List<Id>();
         if(vatInfoList != NULL && vatInfoList.size() > 0)
         {
@@ -198,53 +225,6 @@ Alekhya           20/02/2025   Added Member Manual Hold, ESD Hold,Payment Hold
             return false; 
         }
     }
-  /***************************************************************************************************** 
-Method Name:        cancelClaimsWithoutSharing
-@return  :          string
-@parameters:        claimIdList
-Description:        This is a without sharing inner class to be used to Cancel a list of claims
-Added By:           SP - 1/19/2025
-Modified By:        Date:       Changes: 
-******************************************************************************************************/     
-    public without sharing class cancelClaimInnerClass{
-        public boolean cancelClaimsWithoutSharing(List<Id> claimIdList){
-        //Integer i= 5/0;
-        //Get the status in which Cancelling a claim is allowed. Added this additional check in case the method is called from backend
-        //List<string> validStatus = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_EditClaimStatusValues'); //Label.Core_MDF_Status_allowed_for_Cancel_Claim.split(';');
-        List<string> validStatus = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Status_allowed_for_Cancel_Claim');//Added as part New Status values like PIC Pending,Pending Documents,Resubmission Required
-        Boolean success = true;
-        try{
-            List<PartnerFundClaim> claimList = [SELECT Id, ChannelPartnerId, Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Claim_Id__c 
-                                                FROM PartnerFundClaim 
-                                                where (Id IN :claimIdList or Core_MDF_Claim_Id__c IN :claimIdList)];
-            List<PartnerFundClaim> claimToBeCancelled = new List<PartnerFundClaim>();
-            Set<Id> vatClaimsToBeCancelled = new Set<Id>();
-            //Set<Id> accountIds = new Set<Id>();
-                        
-            if(claimList != NULL && claimList.size() > 0)
-            {
-                for(PartnerFundClaim claim : claimList)
-                {
-                    if(validStatus.contains(string.valueof(claim.Core_MDF_Status__c)))
-                    {
-                        
-                        //set the status of the claim to Cancelled
-                        claim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled'); //Label.Core_MDF_Status_Cancelled; 
-                        //claim.Core_MDF_VAT_Hold_Ind__c=false; // If Adj get cancelling, Corresponding Claim and VAt also should get cancel and VAt hold should be false
-                        //add to the list of claims to be cancelled
-                        //claim.Core_MDF_ESD_Hold__c=false;
-                        claimToBeCancelled.add(claim);
-                    }
-                    if(claim.Core_MDF_VAT_Eligibility_Ind__c){ vatClaimsToBeCancelled.add(claim.Id);  
-                                                             }
-                    
-                }
-            }
 
-            Database.update(claimToBeCancelled); 
-            if(vatClaimsToBeCancelled != NULL && vatClaimsToBeCancelled.size() > 0){cancelVatInformation(vatClaimsToBeCancelled);}            
-            return success;}
-        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e);throw e ;}
-        }
-    }
+    
 }

@@ -35,7 +35,6 @@ public with sharing class Core_DRR_ApproveAllPendingProducts {
     List<Core_Design_Registration_Product__c> allDealRegProdsCompetitoractive=new List<Core_Design_Registration_Product__c>();
     List<Core_Design_Registration_Product__c> allDealRegProdsQuantity=new List<Core_Design_Registration_Product__c>();
     List<Core_Design_Registration_Product__c> allDealRegProdsDateCheck=new List<Core_Design_Registration_Product__c>();
-    List<Core_Design_Registration_Product__c> allDesignRegProdsNullTargetResalePrice=new List<Core_Design_Registration_Product__c>();
     public Core_Design_Registration__c recordddr;
     public static Boolean isApprovedall = false;
     Integer ApprovedDrpcount = 0;
@@ -95,9 +94,6 @@ public with sharing class Core_DRR_ApproveAllPendingProducts {
               if (designRegProd.Core_Active_Status__c == false) {
                 allDesignRegProdsInactivelist.add(designRegProd);
               }
-              if (designRegProd.Core_Target_Resale_Amt__c == null || designRegProd.Core_Target_Resale_Amt__c == 0) {
-            allDesignRegProdsNullTargetResalePrice.add(designRegProd);
-        }
             }
         }
         public void dealMethod(Core_Design_Registration_Product__c designRegProd)
@@ -133,8 +129,7 @@ public with sharing class Core_DRR_ApproveAllPendingProducts {
         public List<Core_Design_Registration_Product__c> returnDesigns(String DesignRegpProdId,List<Core_Design_Registration_Product__c> selectedProducts){
             List<Core_Design_Registration_Product__c> designprodsLst = new List<Core_Design_Registration_Product__c>();
             if(selectedProducts!=null && selectedProducts.size()>0){
-                designprodsLst =[SELECT id, Core_Design_Product_Status_Nm__c,Core_Product_Id__r.Core_Avail_for_New_Designs__c, Core_DR_Eligible_Status__c,Core_Active_Status__c,Core_Locked_Ind__c,PCC_Deal_Eligible_Status__c,RecordTypeId,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,Core_Full_Year_Qty__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c,Core_Target_Resale_Amt__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :DesignRegpProdId  and id in :selectedProducts];}
-                else{designprodsLst =[SELECT id, Core_Design_Product_Status_Nm__c,Core_Product_Id__r.Core_Avail_for_New_Designs__c, Core_DR_Eligible_Status__c,Core_Active_Status__c,Core_Locked_Ind__c,PCC_Deal_Eligible_Status__c,RecordTypeId,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,Core_Full_Year_Qty__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c,Core_Target_Resale_Amt__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :DesignRegpProdId];    
+                designprodsLst =[SELECT id, Core_Design_Product_Status_Nm__c,Core_Product_Id__r.Core_Avail_for_New_Designs__c, Core_DR_Eligible_Status__c,Core_Active_Status__c,Core_Locked_Ind__c,PCC_Deal_Eligible_Status__c,RecordTypeId,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,Core_Full_Year_Qty__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :DesignRegpProdId  and id in :selectedProducts];}else{designprodsLst =[SELECT id, Core_Design_Product_Status_Nm__c,Core_Product_Id__r.Core_Avail_for_New_Designs__c, Core_DR_Eligible_Status__c,Core_Active_Status__c,Core_Locked_Ind__c,PCC_Deal_Eligible_Status__c,RecordTypeId,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,Core_Full_Year_Qty__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :DesignRegpProdId];    
                 }
                 return designprodsLst;
         }
@@ -171,9 +166,6 @@ public with sharing class Core_DRR_ApproveAllPendingProducts {
                 alertMessage ='There are  Inactive Products added on this Design Registration, please remove the inactive products to proceed with Approval.';
             }else if(allDesignRegProdsInEligiblelist.size() > 0){
                 alertMessage ='There are  Ineligible Products added on this Design Registration, please remove the Ineligible products to proceed with Approval.';
-            }
-            else if(allDesignRegProdsNullTargetResalePrice.size() > 0){
-                alertMessage ='Target Resale Price is required for approval. There are ' + allDesignRegProdsNullTargetResalePrice.size() + ' product(s) with missing or zero Target Resale Price. Please populate valid Target Resale Price for all products before approving.';
             }
             else if(String.isNotBlank(InactiveLovFields)){ 
                 alertMessage='Current selected values of the following fields'+'"'+InactiveLovFields+'"'+'on this record are inactive. Please select a valid value and retry submission ';

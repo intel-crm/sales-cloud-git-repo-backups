@@ -86,10 +86,6 @@
     font-weight: bold;
 }
 
-.ai-response-none {
-    color: #FFBF00;
-    font-weight: bold;
-}
 
 .ai-pill {
     display: inline-flex;
@@ -126,36 +122,4 @@
 .ai-pill > * {
     position: relative;
     z-index: 1;
-}
-
-.slds-table td.wrapword {
-    word-wrap: break-word;
-}
-
-.slds-tooltip-trigger .slds-popover {
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.1s linear;
-    width: 500px !important;
-    max-width: none !important;
-}
-
-.slds-tooltip-trigger:hover .slds-popover,
-.slds-tooltip-trigger:focus .slds-popover {
-    display: block;
-    opacity: 1;
-}
-
-/* Base class for the floating tooltip */
-.custom-scroll-popover {
-    z-index: 10000;
-    overflow-y: auto;
-    height: fit-content;
-    max-height: 250px;
-    word-wrap: break-word;
-    text-align: left;
 }

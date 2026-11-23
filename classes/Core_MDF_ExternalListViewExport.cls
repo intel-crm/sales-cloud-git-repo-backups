@@ -14,8 +14,8 @@ public with sharing class Core_MDF_ExternalListViewExport {
     public static boolean isVaildSObject; 
     @TestVisible private static integer maxExportRows= Integer.valueOf(Label.Core_MDF_Max_export_limit);   
     /*method: Apex method to fetch wrapper of list views for an object
-     *input: Object name
-     *output: List of ListViewWrapper including name, developer name and id of the list views.*/
+	 *input: Object name
+	 *output: List of ListViewWrapper including name, developer name and id of the list views.*/
     
     @AuraEnabled
     public static list<ListViewWrapper> listValues(string objectInfo){
@@ -49,30 +49,30 @@ public with sharing class Core_MDF_ExternalListViewExport {
             for(string channelProToCP : Label.Core_MDF_CustomPermission_ChannelProgram_List.split(';'))
             {
                 List<string> record = channelProToCP.split(':');
-                    String channelProgram = record[0].toUpperCase();                    
-                    channelProgToCustomPermissionMap.put(channelProgram,record[1]);
+                String channelProgram = record[0].toUpperCase();
+                channelProgToCustomPermissionMap.put(channelProgram,record[1]);
                 if(FeatureManagement.checkPermission(record[0])){                    
                     customPermissionsList.add(record[0]);
                     
                 }  
                
             }
-                       
+          
             //geting the immediate group for the user.
             for(GroupMember gm : [SELECT Id, Group.DeveloperName, UserOrGroupId FROM GroupMember WHERE UserOrGroupId=: loggedUserId]){
                 groupSet.add(gm.Group.DeveloperName);
             }  
-
+            
 
             //getting all the ccp external groups
             Core_MDF_CCPExternalGroups ext = new Core_MDF_CCPExternalGroups();            
             allCCPExternalGroupIds = ext.getExternalGroups();
-            
+
             //getting the group name for the external groups based on id.
             for(Group g : [SELECT DeveloperName FROM Group WHERE ID IN : allCCPExternalGroupIds]){                
                 //if immediate group is part of any of the external group, add the parent group from channel prog to ccp external group map
                 if(groupSet.contains(g.DeveloperName))
-                {
+                {  
                     //loop through the audience list and add the parent external group based on program.
                     for(string a :customPermissionsList) //customPermissionsList
                     {             
@@ -80,13 +80,13 @@ public with sharing class Core_MDF_ExternalListViewExport {
                         {
                             
                             groupSet.add(channelPartnerToExtGrpMapping.get(channelProgToCustomPermissionMap.get(a.toUpperCase())));                       
-                            }
                         }
+                    }  
                     
                 }
                 
             }              
-            
+
                                                                 
             // for(Core_MDF_List_View_Group_Mapping__c mdt : [SELECT Core_MDF_Active_ind__c, Core_MDF_Group_Name_txt__c, Core_MDF_SObject_txt__c,  Core_MDF_ListView_Name_txt__c,
             //                                                 Core_MDF_Visible_to_all_users_ind__c FROM Core_MDF_List_View_Group_Mapping__c WHERE Core_MDF_SObject_txt__c=:objectInfo AND Core_MDF_Active_ind__c = TRUE
@@ -101,8 +101,8 @@ public with sharing class Core_MDF_ExternalListViewExport {
                 if(itrOnListViewMapping.Core_MDF_SObject_txt__c == objectInfo && itrOnListViewMapping.Core_MDF_Active_ind__c && itrOnListViewMapping.Core_MDF_ListView_Name_txt__c != null && !itrOnListViewMapping.Core_MDF_Whitelisted_Object__c && 
                     (itrOnListViewMapping.Core_MDF_Visible_to_all_users_ind__c || (groupSet != null && groupSet.contains(itrOnListViewMapping.Core_MDF_Group_Name_txt__c)))){
                         listViewSet.add(itrOnListViewMapping.Core_MDF_ListView_Name_txt__c); 
-                }
-            }
+                                                                }                                   
+                                                            }
             for(ListView lv : [SELECT Id, Name, DeveloperName,CreatedById FROM ListView
                                WHERE sObjectType = : objectInfo ORDER By Name ASC]){                              
                                    
@@ -121,8 +121,8 @@ public with sharing class Core_MDF_ExternalListViewExport {
     }
     
     /*method: Apex method to call describe api for selected list view.
-    *input: Object name and list view filter id
-    *output: void */
+*input: Object name and list view filter id
+*output: void */
     @AuraEnabled
     public static void listViewFilter(Id filterId, String sObjectName) {
         HttpRequest req = new HttpRequest();
@@ -152,20 +152,18 @@ public with sharing class Core_MDF_ExternalListViewExport {
             for(Core_MDF_List_View_Group_Mapping__c itrOnListViewMapping : Core_MDF_List_View_Group_Mapping__c.getall().values()){
                 if(itrOnListViewMapping.Core_MDF_Whitelisted_Object__c && itrOnListViewMapping.Core_MDF_Active_ind__c){
                     whiteListedObjApiNameList.add(itrOnListViewMapping.Core_MDF_SObject_txt__c); 
-                }
             }
-     
+            }
+            
             if((isVaildSObject && whiteListedObjApiNameList.contains(sanitizedSobjectName)) && (string.valueOf(filterId).length() == 15 || string.valueOf(filterId).length() == 18)){
                 endpointUrl = Label.Core_MDF_PFRCommunityLink+ Label.Core_MDF_Describe_API_URL4+sanitizedSobjectName +Label.Core_MDF_Describe_API_URL2 + filterId + Label.Core_MDF_Describe_API_URL3;
              
             }
             //SF Fix-Ealisha:end     
             
-            //ATHR - Deeply Nested if 16209
-            if(endpointUrl == ''){
-                return;
-            }
-            //if(endpointUrl != ''){   
+            
+            
+            if(endpointUrl != ''){     
                 req.setEndpoint(endpointUrl);
                 req.setMethod('GET');      
                 Http h = new Http();
@@ -180,29 +178,23 @@ public with sharing class Core_MDF_ExternalListViewExport {
                 //Parsing JSON string to get the column details    
                 JSONParser parser = JSON.createParser(res.getBody());
                 while (parser.nextToken() != null){ 
-                    if (parser.getCurrentToken() != JSONToken.START_ARRAY) continue; //ATHR - Deeply Nested if 16209
-                    //if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
+                    if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
                         while (parser.nextToken() != null) {
-                            if (parser.getCurrentToken() != JSONToken.START_OBJECT) continue; //ATHR - Deeply Nested if 16209
-                            //if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
+                            if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
                                 
                                 SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
-                                if (col == null || col.hidden == null || col.hidden == true || col.label == null || col.fieldNameOrPath == null || col.fieldNameOrPath.contains('Clone')) continue; //ATHR - Deeply Nested if 16209
-                                //if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {            
+                                if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {            
                                     
                                     col.label = col.label.replace(',', '');                            
-                                    lstColumn.add(col);   
-                                //}    
-                            //}
+                                    lstColumn.add(col);                    
+                                }    
+                            }
                         }
-                    //}
+                    }
                 }
-            //}
+            }
         }
-        catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-            throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
-        }  
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}  
         
     }
     
@@ -220,7 +212,7 @@ public with sharing class Core_MDF_ExternalListViewExport {
         List<sObject> lstRec = new List<sObject>();
         try{
             lstRec = Database.query(strQuery);
-
+            
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);} 
         return lstRec;
@@ -285,5 +277,5 @@ public with sharing class Core_MDF_ExternalListViewExport {
             
             return allCCPExternalGroupIds;
         }        
-    }  
+    }    
 }

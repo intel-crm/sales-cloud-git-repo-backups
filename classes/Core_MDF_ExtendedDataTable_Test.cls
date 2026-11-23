@@ -10,12 +10,13 @@ public class Core_MDF_ExtendedDataTable_Test {
         insert usr;
         
         System.runAs(usr){
-
+        String objName='Contact';
+        String objectName='Campaign';
         List<String> comList =new List<String>();
         List<Campaign> capList =new List<Campaign>();
         // List<Account> accList = new List<Account>();
         
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);//14285 Suma
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
         insert cp1;
         Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
                                                                           Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -34,9 +35,10 @@ public class Core_MDF_ExtendedDataTable_Test {
         
         Campaign campCAP = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', /*Date.newInstance(2021, 01, 01)*/System.Today().addDays(-180), /*Date.newInstance(2022, 06, 30).*/System.Today().addDays(180), 10000, 'Consumer Chromebook', ccfacc.Id, '2-in-1', false);
         //campCAP.Core_MDF_Opal_Budget_Type_Txt__c= 'CCF 1.0';
-        
+        campCAP.Core_MDF_Activity_Category_Type__c = null;
         Campaign campCAP2 = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', /*Date.newInstance(2021, 01, 01)*/System.Today().addDays(-180), /*Date.newInstance(2022, 06, 30)*/System.Today().addDays(180), 10000, 'Consumer Chromebook', ccfacc.Id, '2-in-1', false);
         //campCAP2.Core_MDF_Opal_Budget_Type_Txt__c= 'CCF 1.0';
+        campCAP2.Core_MDF_Activity_Category_Type__c = null;
         capList.add(campCAP);
         capList.add(campCAP2);
         Database.insert(capList);
@@ -44,7 +46,7 @@ public class Core_MDF_ExtendedDataTable_Test {
         
         comList.add(campCAP.Id);
         String campId = campCAP.Id;
-
+        String filterCondition ='Id ='+ '\'' +  campCAP.Id + '\'';
             
             //Account accCoMarket = [select id from Account WHERE Name = 'Test Account 3'];
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(campCAP.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,ccfacc.id,null,null,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event','Channel Partner Owned Event','Draft',false);
@@ -54,8 +56,8 @@ public class Core_MDF_ExtendedDataTable_Test {
             pfr.Core_MDF_Channel_Partner_Led__c = True;
             pfr.Core_MDF_Budget_Amount_Local_amt__c=100000000;
             pfr.Core_MDF_Budget_Currency_cd__c='USD';
-            pfr.Core_MDF_ActivityCategory__c = '';//14285 Suma
-            pfr.Core_MDF_Activity_Types__c = '';//14285 Suma
+            pfr.Core_MDF_ActivityCategory__c = 'Broadcast';
+            pfr.Core_MDF_Activity_Types__c = 'Radio';
             insert pfr;
             
             PartnerFundRequest  result = new PartnerFundRequest();

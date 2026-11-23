@@ -469,28 +469,15 @@ public class PRM_ACMUpdateBatchUtility_Test {
         
         aba1.PRM_Source__c='Tier';
         abaLst.add(aba1);
-        PRM_IPAR_ACMUpdateUtility.getListOfBenefits(abaLst);
+        
         PRM_PartnerBenefit__c pbTe = new PRM_PartnerBenefit__c(); //Partner Benefit
         pbTe.Name = 'Partner University1';
         pbTe.PRM_Channel_Program_Id__c = cp.id;
         pbTe.PRM_Benefit_Cd__c = 'BFTMKTPLBC';
         pbTe.PRM_Account_Type_Nm__c = 'Both'; 
         pbLst.add(pbTe);
+        
         test.startTest();
-         Account opidAcc1 = new Account();//Account
-        opidAcc1.RecordTypeId = recordTypeIdPagAccount;
-        opidAcc1.Name='OPID';
-        //;;
-        opidAcc1.BillingCity='City1';
-        opidAcc1.BillingStreet='Street1';
-        opidAcc1.BillingCountry='India';
-        opidAcc1.BillingPostalCode='Postal code';
-        opidAcc1.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
-        opidAcc1.Core_IPA_Partner_Role__c='Service Provider;Distributor';
-        opidAcc1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        opidAcc1.Website='www.abc.com';
-        opidAcc1.Core_User_Defined_Website__c='www.abc.com';
-        insert opidAcc1; 
         
         Account testAccount = new Account();
         testAccount.RecordTypeId = recordTypeIdAccount;
@@ -531,14 +518,6 @@ public class PRM_ACMUpdateBatchUtility_Test {
         testACM1.PRM_Partner_Role__c='Guest';
         testACM1.PRM_Status_Reason_Txt__c = 'Test class';
         insert testACM1;
-         PRM_AccountChannelMembership__c testopidACM1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
-        testopidACM1.PRM_Account_Id__c=testAccount.id;
-        testopidACM1.PRM_Status_Nm__c='Approved';
-        testopidACM1.PRM_Channel_Program_Id__c=cp.Id;
-        testopidACM1.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        testopidACM1.PRM_Partner_Role__c='Guest';
-        testopidACM1.PRM_Status_Reason_Txt__c = 'Test class';
-        insert testopidACM1;
 
         PRM_aba_TriggerHandler.executeTrigger = false;
         insert abaLst;

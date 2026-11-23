@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Avis final : Demande #</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Événement&quot;,&quot;Lead Cultivation&quot;:&quot;Développement des prospects&quot;,&quot;Technical Activation&quot;:&quot;Activation technique&quot;,&quot;Incentive&quot;:&quot;Offre incitative&quot;,&quot;Training&quot;:&quot;Formation&quot;,&quot;Digital Media&quot;:&quot;Médias numériques&quot;,&quot;Legacy Media&quot;:&quot;Médias traditionnels&quot;,&quot;Funded Headcount&quot;:&quot;Employés financés&quot;,&quot;Brand Awareness&quot;:&quot;Notoriété de la marque&quot;,&quot;Consideration&quot;:&quot;Considération&quot;,&quot;Purchase Intent&quot;:&quot;Intention d&apos;achat&quot;,&quot;Preference&quot;:&quot;Préférence&quot;,&quot;Share of Voice&quot;:&quot;Part de voix&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Merci,</value>
     </values>

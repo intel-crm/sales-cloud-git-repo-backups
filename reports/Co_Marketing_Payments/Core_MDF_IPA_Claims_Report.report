@@ -47,7 +47,7 @@
     <description>Program - IPA
 Budget Type - ALL</description>
     <filter>
-        <booleanFilter>(1 OR (3 AND 4)) AND 2 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
+        <booleanFilter>(1 OR (3 AND 4)) AND 2 AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -94,8 +94,8 @@ Budget Type - ALL</description>
             <column>PartnerFundClaim$Core_MDF_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>,APJ,ASMO,EMEA,PRC,INDIA</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Sub_Region_Cd__c</column>
@@ -109,14 +109,7 @@ Budget Type - ALL</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,Client Specialties MDF,Data Center Specialties MDF,Data Centric Acceleration - MDF,Global Ericsson Acceleration - MDF,Global IBM Acceleration - MDF,Global Microsoft Acceleration - MDF,Global Nokia Acceleration - MDF,Global Red Hat Acceleration - MDF,Global SAP Acceleration - MDF,Global SAS Acceleration - MDF,Global Suse Acceleration - MDF,Global VMware Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,ISV Scale Acceleration - MDF,Optane Specialties MDF,Red Hat &quot;Amplify&quot; - MDF,SOEM Client MDF,SOEM Data Center MDF,VMWare Amplify - MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Campaign_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>,Business Client Acceleration - MDF,Client Specialties MDF,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

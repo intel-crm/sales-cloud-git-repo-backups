@@ -77,15 +77,15 @@ public without sharing class PRM_SalesCloud_Integration {
                                    // Account ERPM Engagements
                                   //Commenting as its no longert used (SELECT Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c FROM Account_ERPM_Engagements__r),
                                    // Account Channel Memberships
-                                   (SELECT Id, PRM_Status_Change_Dt__c,PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Channel_Program_Level_Id__r.Rank,PRM_Partner_Role__c,PRM_Status_Nm__c,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r WHERE PRM_Channel_Program_Level_Id__r.PRM_inactind__c = false),
+                                   (SELECT Id, PRM_Status_Change_Dt__c,PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Channel_Program_Level_Id__r.Rank,PRM_Partner_Role__c,PRM_Status_Nm__c,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r),
                                    // Account Benefit Associations     
                                    (SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c/*,PRM_Quantity__c*/ FROM AccountBenefitAssociations__r),
                                    // Account Specialty Assciations       
                                    (SELECT Name,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Specialty_Id__r.Name,PRM_Specialty_Id__r.PRM_Role_Nm__c,PRM_Specialty_Id__r.PRM_Tier_Nm__c,PRM_Specialty_Type__c FROM Account_Specialty_Associations__r),
                                    // Account ONE PARTNER ID GROUP MEMEBRS       
-                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Name,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members1__r WHERE Core_Inactive_Ind__c=false AND Core_Business_Party_Id__c != null limit 1),
+                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Name,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members1__r WHERE Core_Inactive_Ind__c=false limit 1),
                                    //Partner Group Members                                   
-                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_CIM_ID__c,Core_Intel_Account_Id__r.Core_Business_Party_Id__c,Core_Intel_Account_Id__r.Name,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c ,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members__r WHERE Core_Business_Party_Id__c != null),                                   
+                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_CIM_ID__c,Core_Intel_Account_Id__r.Core_Business_Party_Id__c,Core_Intel_Account_Id__r.Name,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c ,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members__r),                                   
                                // Account Legal Agreements       
                                    (SELECT Name,PRM_Agreement_Sign_Dt__c,PRM_Signed_By_Name__c,PRM_Signed_By_Email__c,PRM_Partner_Agreement_Id__r.Name,PRM_Partner_Agreement_Id__r.PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Category_Nm__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c,PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name FROM AccountLegalAgreementAssociations__r),
                                    (SELECT Name,Partner_Program__r.name,Effective_End_Date_Time__c,Inactive_Indicator__c FROM Account_Whitelisted_Domains__r),
@@ -140,7 +140,7 @@ public without sharing class PRM_SalesCloud_Integration {
                     payload.LastModifiedDate = acct.LastModifiedDate;
                     //TWC729-7183 : Adding Deactivated checkbox and Deactivation Reason to Service cloud payload
                     payload.Deactivated = acct.Core_Deactivated__c;
-                    payload.DeactivatedReason = acct.Core_Deactivation_Reason__c!=null?acct.Core_Deactivation_Reason__c:'';
+                    payload.DeactivatedReason = acct.Core_Deactivation_Reason__c;
                     payload.AccountInformation = getAccountInformation(acct, PAGRecordTypeId);
                     //--------------------------------------------------------------------------------
                      payload.AccountSpecialities = /*(!IPARefresh)?getAccountSpecialityAssociations(acct):*/ new List<PRM_SalesCloud_Integration_Model.AccountSpecialityAssociation>(); //IPA2.0 Changes,send AccountSpecialities as '' 
@@ -347,9 +347,6 @@ public without sharing class PRM_SalesCloud_Integration {
         //Chaithaly - As part of IPA2.0 ,We fecth the benefits from Account's OPID only and not on location account.
         accBenefitList = /*(!IPARefresh) ? acct.AccountBenefitAssociations__r :*/ getAccountBenefits(acct);
         for(PRM_AccountBenefitAssociation__c acctBenefitAssoc : accBenefitList){
-            if(acctBenefitAssoc.PRM_Status_Nm__c != 'Active'){ // Defect fix - only active benefit mapping value on OBM
-                continue;
-            }
             String benefitCode;
             if(acctBenefitAssoc.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c!=null){
                 benefitCode = acctBenefitAssoc.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c.toUpperCase();
@@ -468,7 +465,6 @@ public without sharing class PRM_SalesCloud_Integration {
         acctInfo.address.SecondaryAddress = getAccountSecondaryAddress(acct);
         acctInfo.WhitelistedDomains = getWhiteListedDomains(acct);
         acctInfo.PartnerAssist = getPartnerAssist(acct);
-        acctInfo.PartnerRoleLabel ='';
         List<String> PRLabelList = new List<String>();
         if(!String.isEmpty(acct.Core_IPA_Partner_Role__c)){
             List<String> partnerRoles = acct.Core_IPA_Partner_Role__c.split(';');
@@ -579,13 +575,13 @@ public without sharing class PRM_SalesCloud_Integration {
             acm.PartnerProgramName = channelMembership.PRM_Channel_Program_Id__r.Name;
             acm.PartnerProgramCode = channelMembership.PRM_Channel_Program_Id__r.PRM_programCode__c;
             acm.PartnerTier = channelMembership.PRM_Channel_Program_Level_Id__r.Name;
-            /*if( IPARefresh ){*/ acm.PartnerTierLabel = channelMembership.PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c!=null?channelMembership.PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c:'';//} // IPA2.0 New attribute
-            acm.PartnerRole = (String.isEmpty(channelMembership.PRM_Partner_Role__c))?null:((String) channelMembership.PRM_Partner_Role__c).replace('<br>',','  );
+            /*if( IPARefresh ){*/ acm.PartnerTierLabel = channelMembership.PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c;//} // IPA2.0 New attribute
+            acm.PartnerRole = (String.isEmpty(channelMembership.PRM_Partner_Role__c))?null:((String) channelMembership.PRM_Partner_Role__c).replace('<br>',',');
             acm.Status = channelMembership.PRM_Status_Nm__c;
             //acm.AccountChannelMembershipId = channelMembership.Id;
             //acm.AccountId = acct.Id;
             acm.StatusChangeDateUtc = channelMembership.PRM_Status_Change_Dt__c;
-            acm.PartnerRoleLabel ='';
+            
             if(!String.isEmpty(channelMembership.PRM_Partner_Role__c)){
                 List<Schema.PicklistEntry> pickListValues = PRM_AccountChannelMembership__c.PRM_Partner_Role__c.getDescribe().getPicklistValues();
                 for (Schema.PicklistEntry picklistval : pickListValues) {
@@ -812,7 +808,6 @@ public without sharing class PRM_SalesCloud_Integration {
                 PartnerRoles = PartnerRoles.left(PartnerRoles.lastIndexOf(';'));
             }
             accContRel.PartnerRole = PartnerRoles;
-            accContRel.PartnerRoleLabel = '';
             //accContRel.ContactInfo = new PRM_SalesCloud_Integration_Model.ACRContact(cont.Email, cont.FirstName, cont.LastName, cont.Core_Login_Id__c, cont.Core_eRPM_Person_Id__c);
             if(!String.isEmpty(acr.PRM_Partner_Role__c)){
                 List<Schema.PicklistEntry> pickListValues = Contact.Core_IPA_PartnerRole__c.getDescribe().getPicklistValues();

@@ -16,7 +16,7 @@ Description:        This method is used to perform Budget Transfer in Bulk
 Added By:           Intel - SM
 Modified By:        Date:       Changes: 
 ******************************************************************************************************/
-    public static Boolean skipBudgetUpdate = false;
+
     public static string budgetTransfer(List<Core_MDF_BudgetTransferWrapper> budgetTransferLst)
     {
         //To store the Id's of accounts from which transfer has to be done
@@ -102,8 +102,8 @@ Modified By:        Date:       Changes:
             }  
             //Map to store Allocation Record Types
             Map<String,String> mapProgramToRecordTypeAPI = new Map<String,String>();
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
-                                                                           from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt where Core_MDF_Channel_Program_Name_txt__c IN :acctPgmMap.values()])
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
+                                                                           from Core_MDF_ClaimActAllocRecTypeMapping__mdt where Core_MDF_Channel_Program_Name_txt__c IN :acctPgmMap.values()])
             {
                 mapProgramToRecordTypeAPI.put(recTypeMetaData.Core_MDF_Channel_Program_Name_txt__c, recTypeMetaData.Core_MDF_Allocation_RecordType_txt__c);
             } 
@@ -209,7 +209,7 @@ Modified By:        Date:       Changes:
             {
                 Core_MDF_Budget_Utility.unlockBudget(pmbLstToUnlock);   
             }
-            if(pmbLstToUpdate != NULL && pmbLstToUpdate.size() > 0 && !skipBudgetUpdate)
+            if(pmbLstToUpdate != NULL && pmbLstToUpdate.size() > 0)
             {
                 Database.update(pmbLstToUpdate);
             }

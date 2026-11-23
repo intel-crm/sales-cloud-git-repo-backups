@@ -21,6 +21,7 @@ public without sharing class UCD_ACM_SelectorContracts {
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields);
         List<Account> selectAccountsByName(Set<String> accountNames, String queryFields);
         Map<Id,List<Business_Types__c>> getBusinessTypesByAccountId(Set<Id> accountIds, String queryFields);
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> getComplianceWatchListByAccountId(Set<Id> accountIds, String queryFields);
         Map<String,Business_Types__c> getBusinessTypeId(Set<String> typeCodes);
         //String getAccountByBpId(String bpId);
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields, String andClause);

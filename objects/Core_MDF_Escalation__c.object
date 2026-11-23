@@ -169,38 +169,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_Activity_Name_url__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(
-  IF(
-    ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c, &quot;Super Activity&quot;),
-    IF(
-      $Profile.Name = &quot;Partner&quot;,
-								$Label.Core_MDF_PFRCommunityLink &amp; &quot;s/outcome-based-campaign-details?recordId=&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
-      &quot;/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c
-    ),
-    IF(
-      $Profile.Name = &quot;Partner&quot;,
-								$Label.Core_MDF_PFRCommunityLink &amp; &quot;s/partnerfundrequest/&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
-      &quot;/lightning/r/PartnerFundRequest/&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c &amp; &quot;/view&quot;
-    )
-  ),
-  Core_MDF_Co_Marketing_Activity_id__r.Title,
-  IF(
-    ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c, &quot;Super Activity&quot;),
-    &quot;_blank&quot;,
-    &quot;_self&quot;
-  )
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Activity Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Approval_Flag_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Approval Flag</label>
@@ -673,7 +641,8 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType,
 IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;APJ&quot; ), &quot;APJ&quot;,null ) &amp;
 IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;EMEA&quot; ), &quot;EMEA&quot;,null ) &amp;
 IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;PRC&quot; ), &quot;PRC&quot;,null ) &amp;
-IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;ASMO&quot; ), &quot;ASMO&quot;,null ) ,
+IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;ASMO&quot; ), &quot;ASMO&quot;,null ) &amp;
+IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quot;INDIA&quot; ), &quot;INDIA&quot;,null ) ,
 &apos;&apos;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Region</label>
@@ -1831,20 +1800,6 @@ Core_MDF_Claim_Number_id__c != null
         <errorMessage>Required Fields:	
 Escalation Name,  Activity Name,
 Claim Submitter</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Prevent_Sub_Activity</fullName>
-        <active>true</active>
-        <description>Prevents users from selecting a Co-Marketing Activity where Activity Level is Sub Activity.</description>
-        <errorConditionFormula>AND(
-    NOT(ISBLANK(Core_MDF_Co_Marketing_Activity_id__c)),
-    ISPICKVAL(
-        Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c,
-        &quot;Sub Activity&quot;
-    )
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Co_Marketing_Activity_id__c</errorDisplayField>
-        <errorMessage>Escalations can only be created for Outcome Based Campaign records.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_RestrictMissedApprovalActivity</fullName>

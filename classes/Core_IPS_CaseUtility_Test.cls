@@ -16,11 +16,11 @@ Modification Log :
 @isTest
 public class Core_IPS_CaseUtility_Test{
     //Instance variables that are commonly used in multiple test methods
-    static List<User> listOfUser = new List<User> ();
+    static List<User> ListOfUser = new List<User> ();
     static String productId = null;
-    static String subCatId = null;
+    static String SubCatId = null;
     static boolean isAgent = null;
-    static List<Core_IPS_Assigned_Environment_Variables__c> listOfEnvDetailsOperational = new List<Core_IPS_Assigned_Environment_Variables__c> ();
+    static List<Core_IPS_Assigned_Environment_Variables__c> ListOfEnvDetailsOperational = new List<Core_IPS_Assigned_Environment_Variables__c> ();
     /***************************************************************************************************
 Method Name:  getRecords
 Method Type: Void Method
@@ -36,20 +36,17 @@ Modification Log :
     static void getRecords(){
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name = 'System Administrator'];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name = 'System Administrator'];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         // Create Users
-        listOfUser = TestUtilities.getListOfUser(1);
-        for(User usr : listOfUser){
-            usr.ProfileID =  profiles.get('System Administrator');
+        ListOfUser = TestUtilities.getListOfUser(1);
+        for(User Usr : ListOfUser){
+            Usr.ProfileID =  profiles.get('System Administrator');
         }
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert listOfUser;
-        }
-        System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'));     
+        insert ListOfUser;
+        System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));     
     }
     /***************************************************************************************************
 Method Name:  getRecordsForGetEnvVariablesTest
@@ -65,66 +62,66 @@ Modification Log :
 ****************************************************************************************************/
     static void getRecordsForGetEnvVariablesTest(){
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case Category
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseCat;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseCat;
         }
-        System.assert(listOfCoreProdIssCategoryCaseCat[0].Id != null, 'Record not Created');
+        System.assert(ListOfCoreProdIssCategory_CaseCat[0].Id != null, 'Record not Created');
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case SubCategory 
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseSubCat = TestUtilities.getListOfCoreProdIssCategory(1);
-        for(Core_IPS_Product_Issue_Category__c coreProdIssCategory : listOfCoreProdIssCategoryCaseSubCat){
-            coreProdIssCategory.Core_Product_Issue_Category__c = listOfCoreProdIssCategoryCaseCat.get(0).id;
-            coreProdIssCategory.Core_supported_product__c = listOfSupportedProduct.get(0).id;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseSubCat = TestUtilities.getListOfCoreProdIssCategory(1);
+        for(Core_IPS_Product_Issue_Category__c CoreProdIssCategory : ListOfCoreProdIssCategory_CaseSubCat){
+            CoreProdIssCategory.Core_Product_Issue_Category__c = ListOfCoreProdIssCategory_CaseCat.get(0).id;
+            CoreProdIssCategory.Core_supported_product__c = ListOfSupportedProduct.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseSubCat;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseSubCat;
         }
-        System.assert(listOfCoreProdIssCategoryCaseSubCat[0].Id != null, 'Record not Created');
+        System.assert(ListOfCoreProdIssCategory_CaseSubCat[0].Id != null, 'Record not Created');
         // Create Environmental Detail Master
-        List<Core_IPS_Environment_Variables__c> listOfEnDetailMaster = TestUtilities.getListOfEnDetailMaster(1);
-        for(Core_IPS_Environment_Variables__c environmentalDetailMaster : listOfEnDetailMaster){
-            environmentalDetailMaster.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Environment_Variables__c> ListOfEnDetailMaster = TestUtilities.getListOfEnDetailMaster(1);
+        for(Core_IPS_Environment_Variables__c EnvironmentalDetailMaster : ListOfEnDetailMaster){
+            EnvironmentalDetailMaster.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfEnDetailMaster;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfEnDetailMaster;
         }
-        System.assert(listOfEnDetailMaster != null, 'Record not created');
+        System.assert(ListOfEnDetailMaster != null, 'Record not created');
         // Create Environment Details Operational
-        listOfEnvDetailsOperational = TestUtilities.getListOfEnvDetailsOperational(200);
-        for(Core_IPS_Assigned_Environment_Variables__c envDetailsOperational : listOfEnvDetailsOperational){
-            envDetailsOperational.Core_Environment_Variable__c = listOfEnDetailMaster.get(0).id;
-            envDetailsOperational.Core_Supported_Product__c = listOfSupportedProduct.get(0).Id;
-            envDetailsOperational.Core_Product_Issue_Sub_Category__c = listOfCoreProdIssCategoryCaseSubCat.get(0).id;
+        ListOfEnvDetailsOperational = TestUtilities.getListOfEnvDetailsOperational(200);
+        for(Core_IPS_Assigned_Environment_Variables__c EnvDetailsOperational : ListOfEnvDetailsOperational){
+            EnvDetailsOperational.Core_Environment_Variable__c = ListOfEnDetailMaster.get(0).id;
+            EnvDetailsOperational.Core_Supported_Product__c = ListOfSupportedProduct.get(0).Id;
+            EnvDetailsOperational.Core_Product_Issue_Sub_Category__c = ListOfCoreProdIssCategory_CaseSubCat.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfEnvDetailsOperational;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfEnvDetailsOperational;
         }
-        System.assert(listOfEnvDetailsOperational != null, 'Record not created');
+        System.assert(ListOfEnvDetailsOperational != null, 'Record not created');
         // Common Input Variables used for testing
-        productId = listOfSupportedProduct.get(0).Id;
-        subCatId = listOfCoreProdIssCategoryCaseSubCat.get(0).id;
+        productId = ListOfSupportedProduct.get(0).Id;
+        SubCatId = ListOfCoreProdIssCategory_CaseSubCat.get(0).id;
         isAgent = true;
     }
     /***************************************************************************************************
@@ -139,35 +136,35 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSupportedProductPositiveTest(){
+    static testmethod void GetSupportedProduct_PositiveTest(){
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
-        Core_IPS_Supported_Product__c supportedProduct = [select Core_Product__c, Core_Product_Organization__r.name from Core_IPS_Supported_Product__c where id =: listOfSupportedProduct.get(0).id];
-        System.runAs(listOfUser.get(0)){
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
+        Core_IPS_Supported_Product__c SupportedProduct = [select Core_Product__c, Core_Product_Organization__r.name from Core_IPS_Supported_Product__c where id =: ListOfSupportedProduct.get(0).id];
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.Supported_product supportedProductWrapper = new Core_IPS_CaseUtility.Supported_product(supportedProduct.Core_Product__c,supportedProduct.Core_Product_Organization__r.name);
-            Core_IPS_CaseUtility.getSupportedProduct(supportedProduct.Core_Product__c,supportedProduct.Core_Product_Organization__r.name);
+            Core_IPS_CaseUtility.Supported_product SupportedProductWrapper = new Core_IPS_CaseUtility.Supported_product(SupportedProduct.Core_Product__c,SupportedProduct.Core_Product_Organization__r.name);
+            Core_IPS_CaseUtility.GetSupportedProduct(SupportedProduct.Core_Product__c,SupportedProduct.Core_Product_Organization__r.name);
             Test.stopTest();
         }
     }
@@ -183,15 +180,15 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSupportedProductNegativeTest(){
+    static testmethod void GetSupportedProduct_NegativeTest(){
         getRecords();
-        System.runAs(listOfUser.get(0)){
-            Id prodId = null;
-            string prodOrgName = null;
+        System.runAs(ListOfUser.get(0)){
+            Id ProdId = null;
+            string ProdOrgName = null;
             Test.startTest();
-            Core_IPS_CaseUtility.Supported_product supportedProductWrapper = new Core_IPS_CaseUtility.Supported_product(prodId,prodOrgName);
-            Core_IPS_CaseUtility.getSupportedProduct(prodId,prodOrgName);
-            System.assertEquals(true, supportedProductWrapper!=null);
+            Core_IPS_CaseUtility.Supported_product SupportedProductWrapper = new Core_IPS_CaseUtility.Supported_product(ProdId,ProdOrgName);
+            Core_IPS_CaseUtility.GetSupportedProduct(ProdId,ProdOrgName);
+            System.assertEquals(true, SupportedProductWrapper!=null);
             Test.stopTest();
         }
     }   
@@ -207,54 +204,54 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCategoriesPositiveTest(){
+    static testmethod void getCategories_PositiveTest(){
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Create Core_IPS_Master_Issue_Category__c - Core Master Issue Category - Type : Case Category
-        List<Core_IPS_Master_Issue_Category__c> listOfCoreMasterIssueCategoryCaseCat = TestUtilities.getListOfCoreMastIssCategory(1);
-        for(Core_IPS_Master_Issue_Category__c coreMasterIssCategory : listOfCoreMasterIssueCategoryCaseCat){
-            coreMasterIssCategory.Core_type__c = 'Case Category';
+        List<Core_IPS_Master_Issue_Category__c> ListOfCoreMasterIssueCategory_CaseCat = TestUtilities.getListOfCoreMastIssCategory(1);
+        for(Core_IPS_Master_Issue_Category__c CoreMasterIssCategory : ListOfCoreMasterIssueCategory_CaseCat){
+            CoreMasterIssCategory.Core_type__c = 'Case Category';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreMasterIssueCategoryCaseCat;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreMasterIssueCategory_CaseCat;
         }
-        System.Assert(listOfCoreMasterIssueCategoryCaseCat[0].Id != null, 'Record not Created');
+        System.Assert(ListOfCoreMasterIssueCategory_CaseCat[0].Id != null, 'Record not Created');
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case Category
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCat = TestUtilities.getListOfCoreProdIssCategory(200);
-        for(Core_IPS_Product_Issue_Category__c coreProdIssCategory : listOfCoreProdIssCategoryCaseCat){
-            coreProdIssCategory.Core_type__c = 'Case Category';
-            coreProdIssCategory.Core_Issue_Category_Name__c = listOfCoreMasterIssueCategoryCaseCat.get(0).id;
-            coreProdIssCategory.Core_supported_product__c = listOfSupportedProduct.get(0).id;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCat = TestUtilities.getListOfCoreProdIssCategory(200);
+        for(Core_IPS_Product_Issue_Category__c CoreProdIssCategory : ListOfCoreProdIssCategory_CaseCat){
+            CoreProdIssCategory.Core_type__c = 'Case Category';
+            CoreProdIssCategory.Core_Issue_Category_Name__c = ListOfCoreMasterIssueCategory_CaseCat.get(0).id;
+            CoreProdIssCategory.Core_supported_product__c = ListOfSupportedProduct.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseCat;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseCat;
         }
-        System.Assert(listOfCoreProdIssCategoryCaseCat[0].Id != null, 'Record not Created');
-        string coreSupportedProd = listOfSupportedProduct.get(0).id;
-        System.runAs(listOfUser.get(0)){
+        System.Assert(ListOfCoreProdIssCategory_CaseCat[0].Id != null, 'Record not Created');
+        string CoreSupportedProd = ListOfSupportedProduct.get(0).id;
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCatg = Core_IPS_CaseUtility.getCategories(coreSupportedProd);
+            List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCatg = Core_IPS_CaseUtility.getCategories(CoreSupportedProd);
             //[Jan/25/2016 - START]
             //System.assertEquals(ListOfCoreProdIssCategory_CaseCatg.get(0).id,ListOfCoreProdIssCategory_CaseCat.get(0).id);
             //[Jan/25/2016 - END]
@@ -273,13 +270,13 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCategoriesNegativeTest(){
+    static testmethod void getCategories_NegativeTest(){
         getRecords();
-        string coreSupportedProd = null;
-        System.runAs(listOfUser.get(0)){
+        string CoreSupportedProd = null;
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCatg = Core_IPS_CaseUtility.getCategories(coreSupportedProd);
-            System.assertEquals(listOfCoreProdIssCategoryCaseCatg,null);
+            List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCatg = Core_IPS_CaseUtility.getCategories(CoreSupportedProd);
+            System.assertEquals(ListOfCoreProdIssCategory_CaseCatg,null);
             Test.stopTest();
         }
     }
@@ -295,26 +292,26 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSubCategoriesPositiveTest(){
+    static testmethod void getSubCategories_PositiveTest(){
         getRecords();
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case Category
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseCat;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseCat;
         }
-        System.Assert(listOfCoreProdIssCategoryCaseCat[0].Id != null, 'Record not Created');
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseSubCat = TestUtilities.getListOfCoreProdIssCategory(200);
-        for(Core_IPS_Product_Issue_Category__c coreProdIssCategory : listOfCoreProdIssCategoryCaseSubCat){
-            coreProdIssCategory.Core_Product_Issue_Category__c = listOfCoreProdIssCategoryCaseCat.get(0).id;
+        System.Assert(ListOfCoreProdIssCategory_CaseCat[0].Id != null, 'Record not Created');
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseSubCat = TestUtilities.getListOfCoreProdIssCategory(200);
+        for(Core_IPS_Product_Issue_Category__c CoreProdIssCategory : ListOfCoreProdIssCategory_CaseSubCat){
+            CoreProdIssCategory.Core_Product_Issue_Category__c = ListOfCoreProdIssCategory_CaseCat.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseSubCat;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseSubCat;
         }
-        System.Assert(listOfCoreProdIssCategoryCaseSubCat[0].Id != null, 'Record not Created');
-        System.runAs(listOfUser.get(0)){
-            string coreProdIssCategoryCaseCat = listOfCoreProdIssCategoryCaseCat.get(0).id;
+        System.Assert(ListOfCoreProdIssCategory_CaseSubCat[0].Id != null, 'Record not Created');
+        System.runAs(ListOfUser.get(0)){
+            string CoreProdIssCategory_CaseCat = ListOfCoreProdIssCategory_CaseCat.get(0).id;
             Test.startTest();
-            List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseSubCatg = Core_IPS_CaseUtility.getSubCategories(coreProdIssCategoryCaseCat);
+            List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseSubCatg = Core_IPS_CaseUtility.getSubCategories(CoreProdIssCategory_CaseCat);
             //[Jan/25/2016 - START]
             //System.assertEquals(ListOfCoreProdIssCategory_CaseSubCat.get(0).id,ListOfCoreProdIssCategory_CaseSubCatg.get(0).id);
             //[Jan/25/2016 - END]
@@ -333,13 +330,13 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSubCategoriesNegativeTest(){
+    static testmethod void getSubCategories_NegativeTest(){
         getRecords();
-        System.runAs(listOfUser.get(0)){
-            string coreProdIssCategoryCaseCat;
+        System.runAs(ListOfUser.get(0)){
+            string CoreProdIssCategory_CaseCat;
             Test.startTest();
-            List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseSubCatg = Core_IPS_CaseUtility.getSubCategories(coreProdIssCategoryCaseCat);
-            System.assertEquals(null,coreProdIssCategoryCaseCat);
+            List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseSubCatg = Core_IPS_CaseUtility.getSubCategories(CoreProdIssCategory_CaseCat);
+            System.assertEquals(null,CoreProdIssCategory_CaseCat);
             Test.stopTest();
         }   
     }
@@ -355,52 +352,52 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSubCategoriesPositiveTest2(){
+    static testmethod void getSubCategories_PositiveTest2(){
         getRecords();
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case Category
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseCat;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseCat = TestUtilities.getListOfCoreProdIssCategory(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseCat;
         }
-        System.assert(listOfCoreProdIssCategoryCaseCat[0].Id != null, 'Record not Created');
+        System.assert(ListOfCoreProdIssCategory_CaseCat[0].Id != null, 'Record not Created');
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Create Core_IPS_Product_Issue_Category__c - Core Product Issue Category - Type : Case SubCategory 
-        List<Core_IPS_Product_Issue_Category__c> listOfCoreProdIssCategoryCaseSubCat = TestUtilities.getListOfCoreProdIssCategory(200);
-        for(Core_IPS_Product_Issue_Category__c coreProdIssCategory : listOfCoreProdIssCategoryCaseSubCat){
-            coreProdIssCategory.Core_Product_Issue_Category__c = listOfCoreProdIssCategoryCaseCat.get(0).id;
-            coreProdIssCategory.Core_supported_product__c = listOfSupportedProduct.get(0).id;
+        List<Core_IPS_Product_Issue_Category__c> ListOfCoreProdIssCategory_CaseSubCat = TestUtilities.getListOfCoreProdIssCategory(200);
+        for(Core_IPS_Product_Issue_Category__c CoreProdIssCategory : ListOfCoreProdIssCategory_CaseSubCat){
+            CoreProdIssCategory.Core_Product_Issue_Category__c = ListOfCoreProdIssCategory_CaseCat.get(0).id;
+            CoreProdIssCategory.Core_supported_product__c = ListOfSupportedProduct.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfCoreProdIssCategoryCaseSubCat;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfCoreProdIssCategory_CaseSubCat;
         }
-        System.assert(listOfCoreProdIssCategoryCaseSubCat[0].Id != null, 'Record not Created');
-        string coreSupportedProd = listOfSupportedProduct.get(0).id;
-        string coreProdIssCategoryCaseCat = listOfCoreProdIssCategoryCaseCat.get(0).id;
-        System.runAs(listOfUser.get(0)){
+        System.assert(ListOfCoreProdIssCategory_CaseSubCat[0].Id != null, 'Record not Created');
+        string CoreSupportedProd = ListOfSupportedProduct.get(0).id;
+        string CoreProdIssCategory_CaseCat = ListOfCoreProdIssCategory_CaseCat.get(0).id;
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.IssueSubCategories issueSubCategoriesWrapper = new Core_IPS_CaseUtility.IssueSubCategories(coreProdIssCategoryCaseCat,coreSupportedProd);
-            Core_IPS_CaseUtility.getSubCategories(coreProdIssCategoryCaseCat,coreSupportedProd);
+            Core_IPS_CaseUtility.IssueSubCategories IssueSubCategoriesWrapper = new Core_IPS_CaseUtility.IssueSubCategories(CoreProdIssCategory_CaseCat,CoreSupportedProd);
+            Core_IPS_CaseUtility.getSubCategories(CoreProdIssCategory_CaseCat,CoreSupportedProd);
             Test.stopTest();
         }   
     }
@@ -416,15 +413,15 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getSubCategoriesNegativeTest2(){
+    static testmethod void getSubCategories_NegativeTest2(){
         getRecords();
-        string coreSupportedProd = null;
-        string coreProdIssCategoryCaseCat = null;
-        System.runAs(listOfUser.get(0)){
+        string CoreSupportedProd = null;
+        string CoreProdIssCategory_CaseCat = null;
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.IssueSubCategories issueSubCategoriesWrapper = new Core_IPS_CaseUtility.IssueSubCategories(coreProdIssCategoryCaseCat,coreSupportedProd);
-            Core_IPS_CaseUtility.getSubCategories(coreProdIssCategoryCaseCat,coreSupportedProd);
-            System.assertEquals(true, issueSubCategoriesWrapper!=null);
+            Core_IPS_CaseUtility.IssueSubCategories IssueSubCategoriesWrapper = new Core_IPS_CaseUtility.IssueSubCategories(CoreProdIssCategory_CaseCat,CoreSupportedProd);
+            Core_IPS_CaseUtility.getSubCategories(CoreProdIssCategory_CaseCat,CoreSupportedProd);
+            System.assertEquals(true, IssueSubCategoriesWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -440,13 +437,13 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvVariablesAgentSubCatIdTest(){
+    static testmethod void getEnvVariables_Agent_SubCatId_Test(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,subCatId,isAgent);
-            System.assert(lstOfEnvDetailsOperational != null, 'Record not created');
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,SubCatId,isAgent);
+            System.assert(LstOfEnvDetailsOperational != null, 'Record not created');
             Test.stopTest();
         }   
     }
@@ -462,14 +459,14 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvVariablesCustomerSubCatIdTest(){
+    static testmethod void getEnvVariables_Customer_SubCatId_Test(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             isAgent = false;
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,subCatId,isAgent);
-            System.assert(lstOfEnvDetailsOperational != null, 'Record not created');
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,SubCatId,isAgent);
+            System.assert(LstOfEnvDetailsOperational != null, 'Record not created');
             Test.stopTest();
         }   
     }
@@ -485,15 +482,15 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvVariablesAgentProductIdTest(){
+    static testmethod void getEnvVariables_Agent_productId_Test(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            subCatId = null;
+            SubCatId = null;
             isAgent = true;
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,subCatId,isAgent);
-            System.assert(lstOfEnvDetailsOperational != null, 'Record not created');
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,SubCatId,isAgent);
+            System.assert(LstOfEnvDetailsOperational != null, 'Record not created');
             Test.stopTest();
         }   
     }
@@ -509,15 +506,15 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvVariablesCustomerProductIdTest(){
+    static testmethod void getEnvVariables_Customer_productId_Test(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            subCatId = null;
+            SubCatId = null;
             isAgent = false;
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,subCatId,isAgent);
-            System.assert(lstOfEnvDetailsOperational != null, 'Record not created');
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,SubCatId,isAgent);
+            System.assert(LstOfEnvDetailsOperational != null, 'Record not created');
             Test.stopTest();
         }   
     }
@@ -533,12 +530,12 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvVariablesNegativeTest(){
+    static testmethod void getEnvVariables_NegativeTest(){
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,subCatId,isAgent);
-            System.assertEquals(lstOfEnvDetailsOperational.isEmpty(),true);
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvVariables(productId,SubCatId,isAgent);
+            System.assertEquals(LstOfEnvDetailsOperational.isEmpty(),true);
             Test.stopTest();
         }   
     }
@@ -554,18 +551,18 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvironmentVariablesSubCatIdTest(){
+    static testmethod void getEnvironmentVariables_SubCatIdTest(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
         string envId;
         string envName;
         boolean agentOnly;
         boolean required;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.EnvironmentTemplates environmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
-            Core_IPS_CaseUtility.getEnvironmentVariables(subCatId,productId);
-            System.assertEquals(true, environmentTemplatesWrapper!=null);
+            Core_IPS_CaseUtility.EnvironmentTemplates EnvironmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
+            Core_IPS_CaseUtility.getEnvironmentVariables(SubCatId,productId);
+            System.assertEquals(true, EnvironmentTemplatesWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -581,18 +578,18 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvironmentVariablesProductIdTest(){
+    static testmethod void getEnvironmentVariables_productIdTest(){
         getRecords();
         getRecordsForGetEnvVariablesTest();
         string envId;
         string envName;
         boolean agentOnly;
         boolean required;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.EnvironmentTemplates environmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
-            Core_IPS_CaseUtility.getEnvironmentVariables(productId,subCatId);
-            System.assertEquals(true, environmentTemplatesWrapper!=null);
+            Core_IPS_CaseUtility.EnvironmentTemplates EnvironmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
+            Core_IPS_CaseUtility.getEnvironmentVariables(productId,SubCatId);
+            System.assertEquals(true, EnvironmentTemplatesWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -608,17 +605,17 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvironmentVariablesNegativeTest(){
+    static testmethod void getEnvironmentVariables_NegativeTest(){
         getRecords();
         string envId;
         string envName;
         boolean agentOnly;
         boolean required;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.EnvironmentTemplates environmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
-            Core_IPS_CaseUtility.getEnvironmentVariables(productId,subCatId);
-            System.assertEquals(true, environmentTemplatesWrapper!=null);
+            Core_IPS_CaseUtility.EnvironmentTemplates EnvironmentTemplatesWrapper = new Core_IPS_CaseUtility.EnvironmentTemplates(envId,envName,agentOnly,required);
+            Core_IPS_CaseUtility.getEnvironmentVariables(productId,SubCatId);
+            System.assertEquals(true, EnvironmentTemplatesWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -634,15 +631,15 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void assetListWrapperClassTest(){
+    static testmethod void AssetList_WrapperClassTest(){
         getRecords();
-        string assetName;
+        string AssetName;
         string assetid;
         string prodorgId;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.AssetList assetListWrapper = new Core_IPS_CaseUtility.AssetList(assetName,assetid,prodorgId);
-            System.assertEquals(true, assetListWrapper!=null);
+            Core_IPS_CaseUtility.AssetList AssetListWrapper = new Core_IPS_CaseUtility.AssetList(AssetName,assetid,prodorgId);
+            System.assertEquals(true, AssetListWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -658,14 +655,14 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void issueCategoriesWrapperClassTest(){
+    static testmethod void IssueCategories_WrapperClassTest(){
         getRecords();
         string issueCatId;
         string issueCatName;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Core_IPS_CaseUtility.IssueCategories issueCategoriesWrapper = new Core_IPS_CaseUtility.IssueCategories(issueCatId,issueCatName);
-            System.assertEquals(true, issueCategoriesWrapper!=null);
+            Core_IPS_CaseUtility.IssueCategories IssueCategoriesWrapper = new Core_IPS_CaseUtility.IssueCategories(issueCatId,issueCatName);
+            System.assertEquals(true, IssueCategoriesWrapper!=null);
             Test.stopTest();
         }   
     }
@@ -681,14 +678,14 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getIPSProjectListPositiveTest(){
+    static testmethod void getIPSProjectList_PositiveTest(){
         getRecords();
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(200);
-        for(Core_IPS_Project__c ipsProject : listOfIpsProjects){
-            ipsProject.Core_Status__c = 'Draft';
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(200);
+        for(Core_IPS_Project__c IpsProject : ListOfIpsProjects){
+            IpsProject.Core_Status__c = 'Draft';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfIpsProjects;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfIpsProjects;
             // TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
             
         }
@@ -696,8 +693,8 @@ Modification Log :
 IpsProject.Core_Status__c = 'Active';
 }
 update ListOfIpsProjects;*/
-        System.assert(listOfIpsProjects[0].Id != null, 'Record not created');
-        System.runAs(listOfUser.get(0)){
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> projectList = Core_IPS_CaseUtility.getIPSProjectList();
             //system.assertEquals(projectList.size(),1);
@@ -716,9 +713,9 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getIPSProjectListNegativeTest(){
+    static testmethod void getIPSProjectList_NegativeTest(){
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> projectList = Core_IPS_CaseUtility.getIPSProjectList();
             System.assertEquals(true, projectList!=null);
@@ -737,9 +734,9 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getGECAnswerOptionsPositiveTest(){
+    static testmethod void getGECAnswerOptions_PositiveTest(){
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> answerOptions = Core_IPS_CaseUtility.getGECAnswerOptions();
             system.assertEquals(answerOptions.size(),3);
@@ -758,25 +755,25 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCaseDynamiCSoqlAgentPositiveTest(){
+    static testmethod void getCase_DynamiCSOQL_Agent_PositiveTest(){
         getRecords(); 
         
-        List<Case> listOfCases = new List<Case> ();
-        Map<string,ID> caseRecordtype = new Map<string,ID>();
-        for(Recordtype rt:[Select ID,Name from Recordtype where sobjectType = 'Case'])
+        List<Case> ListOfCases = new List<Case> ();
+        Map<string,ID> CaseRecordtype = new Map<string,ID>();
+        for(Recordtype Rt:[Select ID,Name from Recordtype where sobjectType = 'Case'])
         {  
-            caseRecordtype.put(rt.Name,rt.ID);
+            CaseRecordtype.put(Rt.Name,Rt.ID);
         }  
         for(Integer i=1;i<=1;i++){
-            Case caseRecord = new Case(
+            Case CaseRecord = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubject '+i,
                 Description = 'TestDescription',
-                RecordTypeId = caseRecordtype.get('IPS Case Create')
+                RecordTypeId = CaseRecordtype.get('IPS Case Create')
             );
-            listOfCases.add(caseRecord);
+            ListOfCases.add(CaseRecord);
         }
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           Core_Account_Type__c='Other', Industry='Others',
@@ -787,23 +784,21 @@ Modification Log :
                                           AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
         insert testContact;
         System.assertNotEquals(null, testAccount.id);
-        for(Case cs:listOfCases )  {
+        for(Case cs:ListOfCases )  {
             cs.accountid=testAccount.id;
             cs.contactid=testContact.id;
         } 
-        System.RunAs(listOfUser[0]){  
-            insert listOfCases;
+        System.RunAs(ListOfUser[0]){  
+            insert ListOfCases;
         } 
         
         //System.assert(ListOfCases[0].Id != null, 'Record not created');
-        string csId = listOfCases.get(0).id;
-        boolean agent = true; 
-        System.runAs(listOfUser.get(0)){
+        string csId = ListOfCases.get(0).id;
+        boolean Agent = true; 
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Case caseRecord = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,agent);
-            //System.assert(CaseRecord.Id != null, 'Record not created');
-                        System.assertEquals(agent, true);
-
+            Case CaseRecord = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,Agent);
+            System.assertEquals(Agent, true);
             Test.stopTest();
         }   
     }
@@ -840,7 +835,7 @@ string csId = ListOfCases.get(0).id;
 boolean Agent = false; 
 System.runAs(ListOfUser.get(0)){
 Test.startTest();
-Case CaseRecord = Core_IPS_CaseUtility.getCaseDynamiCSoql(csId,Agent);
+Case CaseRecord = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,Agent);
 System.assert(CaseRecord.Id != null, 'Record not created');
 Test.stopTest();
 }   
@@ -857,25 +852,25 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCaseDynamiCSoqlNegativeTest(){
+    static testmethod void getCase_DynamiCSOQL_NegativeTest(){
         getRecords(); 
         //  TWC745-7160 - START Shipra
-        List<Case> listOfCases = new List<Case> ();
-        Map<string,ID> caseRecordtype = new Map<string,ID>();
-        for(Recordtype rt:[Select ID,Name from Recordtype where sobjectType = 'Case'])
+        List<Case> ListOfCases = new List<Case> ();
+        Map<string,ID> CaseRecordtype = new Map<string,ID>();
+        for(Recordtype Rt:[Select ID,Name from Recordtype where sobjectType = 'Case'])
         {  
-            caseRecordtype.put(rt.Name,rt.ID);
+            CaseRecordtype.put(Rt.Name,Rt.ID);
         }  
         for(Integer i=1;i<=1;i++){
-            Case caseRecord = new Case(
+            Case CaseRecord = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubject '+i,
                 Description = 'TestDescription',
-                RecordTypeId = caseRecordtype.get('IPS Case Create')
+                RecordTypeId = CaseRecordtype.get('IPS Case Create')
             );
-            listOfCases.add(caseRecord);
+            ListOfCases.add(CaseRecord);
         }
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           Core_Account_Type__c='Other', Industry='Others',
@@ -886,24 +881,23 @@ Modification Log :
                                           AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
         insert testContact;
         System.assertNotEquals(null, testAccount.id);
-        for(Case cs:listOfCases )  {
+        for(Case cs:ListOfCases )  {
             cs.accountid=testAccount.id;
             cs.contactid=testContact.id;
         } 
-        System.RunAs(listOfUser[0]){  
-            insert listOfCases;
+        System.RunAs(ListOfUser[0]){  
+            insert ListOfCases;
         } 
         
         //System.assert(ListOfCases[0].Id != null, 'Record not created');
-        string csId = listOfCases.get(0).id;
-        boolean agent = false; 
-        System.runAs(listOfUser.get(0)){
+        string csId = ListOfCases.get(0).id;
+        boolean Agent = false; 
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            Case caseRecord = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,agent);
-           // System.assert(CaseRecord.Id != null, 'Record not created');
+            Case CaseRecord = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,Agent);
             Test.stopTest();
         } 
-                        System.assertEquals(agent, false);
+        System.assertEquals(Agent, false);
 
           //  TWC745-7160 - END Shipra
     }
@@ -919,12 +913,12 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getFieldsAgentPositiveTest(){
+    static testmethod void getFields_Agent_PositiveTest(){
         getRecords();
-        boolean agent = true; 
-        System.runAs(listOfUser.get(0)){
+        boolean Agent = true; 
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Schema.FieldSetMember> fieldSetMemberLst = Core_IPS_CaseUtility.getFields(agent);
+            List<Schema.FieldSetMember> fieldSetMemberLst = Core_IPS_CaseUtility.getFields(Agent);
             System.assertEquals(true, fieldSetMemberLst!=null);
             Test.stopTest();
         }   
@@ -941,12 +935,12 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getFieldsCustomerPositiveTest(){
+    static testmethod void getFields_Customer_PositiveTest(){
         getRecords();
-        boolean agent = false; 
-        System.runAs(listOfUser.get(0)){
+        boolean Agent = false; 
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Schema.FieldSetMember> fieldSetMemberLst = Core_IPS_CaseUtility.getFields(agent);
+            List<Schema.FieldSetMember> fieldSetMemberLst = Core_IPS_CaseUtility.getFields(Agent);
             System.assertEquals(true, fieldSetMemberLst!=null);
             Test.stopTest();
         }   
@@ -985,13 +979,13 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getEnvironmentDetailsOperationalRecordsTest(){
+    static testmethod void getEnvironmentDetailsOperationalRecords_Test(){
         getRecords();
         string prod;
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
-            List<Core_IPS_Assigned_Environment_Variables__c> lstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvironmentDetailsOperationalRecords(prod);
-            System.assertEquals(lstOfEnvDetailsOperational, null);
+            List<Core_IPS_Assigned_Environment_Variables__c> LstOfEnvDetailsOperational = Core_IPS_CaseUtility.getEnvironmentDetailsOperationalRecords(prod);
+            System.assertEquals(LstOfEnvDetailsOperational, null);
             Test.stopTest();
         }   
     }
@@ -1007,54 +1001,54 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getPlatformPositiveTest(){
+    static testmethod void getPlatform_PositiveTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '59';
-            product.Core_Unique_ID__c = 'Product12345';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '59';
+            Product.Core_Unique_ID__c = 'Product12345';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
-        List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
+        List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
         integer counter = 0;
-        for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
+        for(Core_Flat_Product_Hierarchy__c FlatProductHierarchy : ListOfFlatProductHierarchy){
             if(counter < 3)
-                flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L5_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else if(counter < 6)
-                flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L4_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else
-                flatProductHierarchy.Core_L2_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L2_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             counter++;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfFlatProductHierarchy;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfFlatProductHierarchy;
         }
-        System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            suppProductIdList.add(supportedProduct.id);
+        System.assert(ListOfFlatProductHierarchy[0].id != null,'Record not created');
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            suppProductIdList.add(SupportedProduct.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String, Set<String>> prodHierarchyBySupProd = Core_IPS_CaseUtility.getPlatform(suppProductIdList);
             System.assert(prodHierarchyBySupProd != null,'Records are not fetched');
@@ -1073,10 +1067,10 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getPlatformNegativeTest(){
+    static testmethod void getPlatform_NegativeTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String, Set<String>> prodHierarchyBySupProd = Core_IPS_CaseUtility.getPlatform(suppProductIdList);
             System.assert(prodHierarchyBySupProd == null,'Records are fetched');
@@ -1095,40 +1089,40 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCodeNamePositiveTest(){
+    static testmethod void getCodeName_PositiveTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '59';
-            product.Core_Unique_ID__c = 'Product12345';
-            product.Core_Code_Name__c = 'ProductCoreCodeName';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '59';
+            Product.Core_Unique_ID__c = 'Product12345';
+            Product.Core_Code_Name__c = 'ProductCoreCodeName';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            suppProductIdList.add(supportedProduct.id);
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            suppProductIdList.add(SupportedProduct.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,String> suppProdIdCodeNameMap = Core_IPS_CaseUtility.getCodeName(suppProductIdList);
             System.assert(suppProdIdCodeNameMap != null,'Records are not fetched');
@@ -1147,10 +1141,10 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getCodeNameNegativeTest(){
+    static testmethod void getCodeName_NegativeTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,String> suppProdIdCodeNameMap = Core_IPS_CaseUtility.getCodeName(suppProductIdList);
             System.assert(suppProdIdCodeNameMap == null,'Records are fetched');
@@ -1169,61 +1163,61 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getVPHProductTypePositiveTest(){
+    static testmethod void getVPHProductType_PositiveTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '43';
-            product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
-            product.Core_Unique_ID__c = 'Product12345';
-            product.Core_Code_Name__c = 'ProductCoreCodeName';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '43';
+            Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+            Product.Core_Unique_ID__c = 'Product12345';
+            Product.Core_Code_Name__c = 'ProductCoreCodeName';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Create Flat Product Hierarchy
-        List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+        List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
         integer counter = 0;
-        for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
-            flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(0).Core_Hierarchy_ID__c;
-            flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(0).Core_Hierarchy_Name__c;
+        for(Core_Flat_Product_Hierarchy__c FlatProductHierarchy : ListOfFlatProductHierarchy){
+            FlatProductHierarchy.Core_EPM_Hierarchy_ID__c = ListOfProducts.get(0).Core_Hierarchy_ID__c;
+            FlatProductHierarchy.Core_EPM_Hierarchy_Name__c = ListOfProducts.get(0).Core_Hierarchy_Name__c;
             if(counter < 2)
-                flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L5_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else if(counter < 5)
-                flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L4_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else if(counter < 8)
-                flatProductHierarchy.Core_L3_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L3_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else
-                flatProductHierarchy.Core_L2_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L2_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             counter++;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfFlatProductHierarchy;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfFlatProductHierarchy;
         }
-        System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            suppProductIdList.add(supportedProduct.id);
+        System.assert(ListOfFlatProductHierarchy[0].id != null,'Record not created');
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            suppProductIdList.add(SupportedProduct.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,Set<String>> suppProdIdProdTypeMap = Core_IPS_CaseUtility.getVPHProductType(suppProductIdList);
             System.assert(suppProdIdProdTypeMap != null,'Records are not fetched');
@@ -1242,10 +1236,10 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getVPHProductTypeNegativeTest(){
+    static testmethod void getVPHProductType_NegativeTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,Set<String>> suppProdIdProdTypeMap = Core_IPS_CaseUtility.getVPHProductType(suppProductIdList);
             System.assert(suppProdIdProdTypeMap == null,'Records are fetched');
@@ -1264,58 +1258,58 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getVPLHProductTypePositiveTest(){
+    static testmethod void getVPLHProductType_PositiveTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '59';
-            product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
-            product.Core_Unique_ID__c = 'Product12345';
-            product.Core_Code_Name__c = 'ProductCoreCodeName';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '59';
+            Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+            Product.Core_Unique_ID__c = 'Product12345';
+            Product.Core_Code_Name__c = 'ProductCoreCodeName';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Create Flat Product Hierarchy
-        List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+        List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
         integer counter = 0;
-        for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
-            flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(0).Core_Hierarchy_ID__c;
-            flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(0).Core_Hierarchy_Name__c;
+        for(Core_Flat_Product_Hierarchy__c FlatProductHierarchy : ListOfFlatProductHierarchy){
+            FlatProductHierarchy.Core_EPM_Hierarchy_ID__c = ListOfProducts.get(0).Core_Hierarchy_ID__c;
+            FlatProductHierarchy.Core_EPM_Hierarchy_Name__c = ListOfProducts.get(0).Core_Hierarchy_Name__c;
             if(counter < 5)
-                flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L5_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else
-                flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L4_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             
             counter++;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfFlatProductHierarchy;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfFlatProductHierarchy;
         }
-        System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            suppProductIdList.add(supportedProduct.id);
+        System.assert(ListOfFlatProductHierarchy[0].id != null,'Record not created');
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            suppProductIdList.add(SupportedProduct.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,Set<String>> suppProdIdProdTypeMap = Core_IPS_CaseUtility.getVPLHProductType(suppProductIdList);
             System.assert(suppProdIdProdTypeMap != null,'Records are not fetched');
@@ -1334,10 +1328,10 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getVPLHProductTypeNegativeTest(){
+    static testmethod void getVPLHProductType_NegativeTest(){
         List<Id> suppProductIdList = new List<Id> ();
         getRecords();   //get records method called
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<String,Set<String>> suppProdIdProdTypeMap = Core_IPS_CaseUtility.getVPLHProductType(suppProductIdList);
             System.assert(suppProdIdProdTypeMap == null,'Records are fetched');
@@ -1356,80 +1350,79 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getplatformOptionsAssetPositiveTest(){
+    static testmethod void getplatform_Options_Asset_PositiveTest(){
         List<Id> idList = new List<Id> ();
         getRecords();
         // Account
-        List<Account> listOfAccounts;
-        System.RunAs(listOfUser[0]){
-            listOfAccounts = TestUtilities.getListOfAccounts(1);
-            insert listOfAccounts;
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfAccounts;
         }
-        System.Assert(listOfAccounts[0].Id != null, 'Record not created');
+        System.Assert(ListOfAccounts[0].Id != null, 'Record not created');
         // IPS Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfIpsProjects;
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfIpsProjects;
         }
-        System.Assert(listOfIpsProjects[0].Id != null, 'Record not created');
+        System.Assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '59';
-            product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
-            product.Core_Unique_ID__c = 'Product12345';
-            product.Core_Code_Name__c = 'ProductCoreCodeName';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '59';
+            Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+            Product.Core_Unique_ID__c = 'Product12345';
+            Product.Core_Code_Name__c = 'ProductCoreCodeName';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Asset
-        List<Asset> assetList  = TestUtilities.getAssetList(1);
-        for(Asset asst : assetList){
-            asst.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
-            asst.accountId = listOfAccounts.get(0).Id;
-            asst.core_supported_product__c = listOfSupportedProduct.get(0).id;
+        List<Asset> AssetList  = TestUtilities.getAssetList(1);
+        for(Asset Asst : AssetList){
+            Asst.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
+            Asst.accountId = ListOfAccounts.get(0).Id;
+            Asst.core_supported_product__c = ListOfSupportedProduct.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert assetList;
+        System.RunAs(ListOfUser[0]){
+            insert AssetList;
         }
-        System.Assert(assetList[0].Id != null, 'Record not created');
-        List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+        System.Assert(AssetList[0].Id != null, 'Record not created');
+        List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
         integer counter = 0;
-        for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
+        for(Core_Flat_Product_Hierarchy__c FlatProductHierarchy : ListOfFlatProductHierarchy){
             if(counter < 3)
-                flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L5_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else if(counter < 6)
-                flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L4_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else
-                flatProductHierarchy.Core_L2_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L2_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             counter++;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfFlatProductHierarchy;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfFlatProductHierarchy;
         }
-        System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
-        for(Asset assetRec : assetList){
-            idList.add(assetRec.id);
+        System.assert(ListOfFlatProductHierarchy[0].id != null,'Record not created');
+        for(Asset AssetRec : AssetList){
+            idList.add(AssetRec.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> platformOptions = Core_IPS_CaseUtility.getplatform_Options(idList);
             System.assert(platformOptions.size()>1,true);
@@ -1448,80 +1441,79 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getplatformOptionsSupProdPositiveTest(){
+    static testmethod void getplatform_Options_SupProd_PositiveTest(){
         List<Id> idList = new List<Id> ();
         getRecords();
         // Account
-        List<Account> listOfAccounts;
-        System.RunAs(listOfUser[0]){
-            listOfAccounts = TestUtilities.getListOfAccounts(1);
-            insert listOfAccounts;
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfAccounts;
         }
-        System.Assert(listOfAccounts[0].Id != null, 'Record not created');
+        System.Assert(ListOfAccounts[0].Id != null, 'Record not created');
         // IPS Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfIpsProjects;
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfIpsProjects;
         }
-        System.Assert(listOfIpsProjects[0].Id != null, 'Record not created');
+        System.Assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportOrg;
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportOrg;
         }
-        System.assert(listOfSupportOrg != null, 'Record not created');
+        System.assert(ListOfSupportOrg != null, 'Record not created');
         // Create Product
-        List<Product2>  listOfProducts = TestUtilities.getListOfProduct(1);
-        for(Product2 product : listOfProducts){
-            product.Core_Hierarchy_ID__c = '59';
-            product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
-            product.Core_Unique_ID__c = 'Product12345';
-            product.Core_Code_Name__c = 'ProductCoreCodeName';
+        List<Product2>  ListOfProducts = TestUtilities.getListOfProduct(1);
+        for(Product2 Product : ListOfProducts){
+            Product.Core_Hierarchy_ID__c = '59';
+            Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+            Product.Core_Unique_ID__c = 'Product12345';
+            Product.Core_Code_Name__c = 'ProductCoreCodeName';
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfProducts;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfProducts;
         }
-        System.assert(listOfProducts[0].id != null,'Record not created');
+        System.assert(ListOfProducts[0].id != null,'Record not created');
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            supportedProduct.Core_Product__c = listOfProducts.get(0).id;
-            supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
+            SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfSupportedProduct;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfSupportedProduct;
         }
-        System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         // Asset
-        List<Asset> assetList  = TestUtilities.getAssetList(1);
-        for(Asset asst : assetList){
-            asst.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
-            asst.accountId = listOfAccounts.get(0).Id;
-            asst.core_supported_product__c = listOfSupportedProduct.get(0).id;
+        List<Asset> AssetList  = TestUtilities.getAssetList(1);
+        for(Asset Asst : AssetList){
+            Asst.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
+            Asst.accountId = ListOfAccounts.get(0).Id;
+            Asst.core_supported_product__c = ListOfSupportedProduct.get(0).id;
         }
-        System.RunAs(listOfUser[0]){
-            insert assetList;
+        System.RunAs(ListOfUser[0]){
+            insert AssetList;
         }
-        System.Assert(assetList[0].Id != null, 'Record not created');
-        List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+        System.Assert(AssetList[0].Id != null, 'Record not created');
+        List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
         integer counter = 0;
-        for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
+        for(Core_Flat_Product_Hierarchy__c FlatProductHierarchy : ListOfFlatProductHierarchy){
             if(counter < 3)
-                flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L5_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else if(counter < 6)
-                flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L4_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             else
-                flatProductHierarchy.Core_L2_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                FlatProductHierarchy.Core_L2_EPM_ID__c = ListOfProducts.get(0).Core_Unique_ID__c;
             counter++;
         }
-        System.RunAs(listOfUser[0]){
-            insert listOfFlatProductHierarchy;
+        System.RunAs(ListOfUser[0]){
+            insert ListOfFlatProductHierarchy;
         }
-        System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
-        for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
-            idList.add(supportedProduct.id);
+        System.assert(ListOfFlatProductHierarchy[0].id != null,'Record not created');
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
+            idList.add(SupportedProduct.id);
         }
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> platformOptions = Core_IPS_CaseUtility.getplatform_Options(idList);
             System.assert(platformOptions.size()>1,true);
@@ -1540,10 +1532,10 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Syed Moosa Nazir TN       11/04/2015                Created
 ****************************************************************************************************/
-    static testmethod void getplatformOptionsNegativeTest(){  
+    static testmethod void getplatform_Options_NegativeTest(){  
         List<Id> idList = new List<Id> ();
         getRecords();
-        System.runAs(listOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             Test.startTest();
             List<SelectOption> platformOptions = Core_IPS_CaseUtility.getplatform_Options(idList);
             System.assert(platformOptions.size()==1,true);
@@ -1616,10 +1608,10 @@ Test.stopTest();
     //Added by Mahendra
     public static testmethod void selectedProject(){
         Asset astList = new Asset();
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
-        List<Asset> assetList  = TestUtilities.getAssetList(1);
-        insert assetList;
-        astList = [select Id,core_supported_product__c,Status  from Asset where id =: assetList[0].id];
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        List<Asset> AssetList  = TestUtilities.getAssetList(1);
+        insert AssetList;
+        astList = [select Id,core_supported_product__c,Status  from Asset where id =: AssetList[0].id];
         astList.Status = 'Open';
         update astList;
         Core_IPS_CaseUtility.getIPSProjListBasedOnSelectedProd(astList.id);

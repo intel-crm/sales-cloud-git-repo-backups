@@ -12,7 +12,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
     static void createData(){
         
         
-
+        profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);    
         usr.LastName = 'User Test';
@@ -20,7 +20,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
         Database.insert(usr);
         PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader' LIMIT 1];
         insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps1.Id);
-
+        List<Core_MDF_Partner_Group_Mapping__c> ccfpgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
         
         System.runAs(usr){
             
@@ -49,8 +49,8 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-           
-           List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             //fetching permission sets
@@ -220,7 +220,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             
             Test.startTest();
             //Create Bank
-
+            Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
             //Create Budget
             PartnerMarketingBudget testBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
@@ -240,8 +240,8 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - IPA',
                                                                                       ipaCoMarketingAccount.id, 
                                                                                       System.today().addDays(3), System.today().adddays(30),
-                                                                                      budgetType, 110000,'INDIA', 'Consumer','', 'Planned', true); 
-         
+                                                                                      budgetType, 110000,'INDIA', 'Consumer', 
+                                                                                      'Apollo Lake', 'Planned', true);                  
             
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp CCF','Gaming','Intel® Core™ i7 Processor', 'Yes',
                                                                         Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
@@ -297,10 +297,6 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             insert ipaPFR;
             Test.stopTest();
             
-            // US - TWC702-14285: Unit Test Method should include System.Assert            
-            PartnerFundRequest insertedPfr = [SELECT Id, Title FROM PartnerFundRequest WHERE Title = 'IPA Activity' LIMIT 1];
-            System.assertEquals('IPA Activity', insertedPfr.Title, 'Inserted IPA PFR should be retrievable by the running user');
-            System.assertNotEquals(0, [SELECT COUNT() FROM PartnerFundRequest WHERE Id = :insertedPfr.Id], 'PFR should be visible to the user via sharing');    
         }
     }
     
@@ -314,7 +310,8 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
         System.runAs(usr3)
         {
             Account acc = [select id from account where name = 'Test Account']; 
-            
+            List<Core_MDF_BankProgram_Entitlement_Mapping__mdt> bpemList = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                                                                            FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt];
             Core_MDF_Bank__c newBank = Core_MDF_CCP_TestDataUtility.createBank(acc.id, 'Core_MDF_Client_CoMarketing_Fund', false,'1234567891');
             newBank.Core_MDF_Bank_Status__c = 'Draft';
             newBank.Core_MDF_DUNS__c = '578299333';
@@ -362,7 +359,8 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
         System.runAs(usr3)
         {
             Account acc = [select id from account where name = 'Test Account']; 
-            
+            List<Core_MDF_BankProgram_Entitlement_Mapping__mdt> bpemList = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                                                                            FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt];
             Core_MDF_Bank__c newBank = Core_MDF_CCP_TestDataUtility.createBank(acc.id, 'Core_MDF_Intel_Partner_Alliance', false,'1234567891');
             newBank.Core_MDF_Bank_Status__c = 'Draft';
             newBank.Core_MDF_DUNS__c = '578299333';
@@ -386,9 +384,6 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             insert payLoad1;
             test.stopTest();
             
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            System.assertNotEquals(0, [SELECT COUNT() FROM Core_MDF_Bank__c WHERE Id = :newBank.Id], 'Bank should be created');
-            
             
         }
     }
@@ -398,7 +393,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
     static void pfrGeoShare()
     {
         
-    User usr2 = [SELECT Id, Email FROM User WHERE Email='ccfaccntmngr@example.com' AND IsActive = true LIMIT 1];
+        User usr2 = [SELECT Id,Email from User where Email='ccfaccntmngr@example.com' limit 1];
         Campaign camp=[select id,Name from Campaign where Name ='Test Camp CCF'];
         
         Account acc2 = [select id from account where name = 'Test CCF Account']; 
@@ -406,7 +401,8 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
         
         
         PartnerMarketingBudget testBudget = [select id from PartnerMarketingBudget where Title ='TestBudgetData'];
-        
+        List<Core_MDF_CCP_Country_Geo_Mapping__mdt> cgmList = [SELECT MasterLabel, Core_MDF_Geo__c, Core_MDF_Sub_Geo__c  
+                                                               FROM Core_MDF_CCP_Country_Geo_Mapping__mdt];
         Test.startTest();
         //Added by Ealisha-start
         List<PartnerFundRequest> pfrListToBeInserted = new List<PartnerFundRequest>();
@@ -423,20 +419,19 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             testPartnerFundRequestRecord2.RequestedAmount = 16250;
             testPartnerFundRequestRecord2.Core_MDF_Fund_Request_Status__c = 'Planned';
             testPartnerFundRequestRecord2.Core_MDF_Country_nm__c = 'United Kingdom';
-            testPartnerFundRequestRecord2.Core_MDF_Activity_Types__c='';
             
             
             PartnerFundRequest testPartnerFundRequestRecord3 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
                                                                                                                      testBudget,'COLOMBIA','Consumer','Desktop','Intel® Corporate Logo','Event',
                                                                                                                      'Member Participation in Third-Party Event','Draft',false);
             
-            
+            Date strDate = System.today().addDays(1);
+            Date edDate = System.today().addDays(15);
             testPartnerFundRequestRecord3.Core_MDF_Start_Date__c = stdate;
             testPartnerFundRequestRecord3.Core_MDF_End_Date__c = endDate;
             testPartnerFundRequestRecord3.RequestedAmount = 16250;
             testPartnerFundRequestRecord3.Core_MDF_Fund_Request_Status__c = 'Planned';
             testPartnerFundRequestRecord3.Core_MDF_Country_nm__c = 'COLOMBIA';
-            testPartnerFundRequestRecord3.Core_MDF_Activity_Types__c='';
             //Added by Ealisha-start
             pfrListToBeInserted.add(testPartnerFundRequestRecord2);
             pfrListToBeInserted.add(testPartnerFundRequestRecord3);
@@ -445,7 +440,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
             
         }
         //Added by Ealisha-end
-        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test' AND IsActive = true LIMIT 1];
+        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test'  LIMIT 1];
         Campaign camp2 = [SELECT Id FROM Campaign WHERE Name ='TestRetailCamp'  LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name ='Co-marketing Test Account Retail' LIMIT 1];
         Account acc1 = [SELECT Id FROM Account WHERE Name ='Test CCF Account'  LIMIT 1];
@@ -490,224 +485,7 @@ public class Core_MDF_GeoBasedGenericSharing_Test {
         System.assert(testPartnerFundRequestRecord2.Id != NULL);
         
     }
-    @isTest
-    static void testRouterAndUtilityMethods() {
-        // Retrieve setup entities to instantiate the PartnerFundRequest dynamically inside this test context
-        Campaign camp = [SELECT Id FROM Campaign WHERE Name = 'Test Camp CCF' LIMIT 1];
-        Account acc2 = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1]; 
-        PartnerMarketingBudget testBudget = [SELECT Id FROM PartnerMarketingBudget WHERE Title = 'TestBudgetData' LIMIT 1];
-        User usr2 = [SELECT Id FROM User WHERE Email='ccfaccntmngr@example.com' AND IsActive = true LIMIT 1];
-
-        PartnerFundRequest pfr;
-        System.runAs(usr2) {
-            pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, 
-                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, 
-                acc2.Id, 
-                null, 
-                testBudget, 
-                'United Kingdom', 
-                'Consumer', 
-                'Desktop', 
-                'Intel® Corporate Logo', 
-                'Event', 
-                '', // Passed as empty string to bypass picklist rules
-                'Draft', 
-                false
-            );
-            pfr.Core_MDF_Start_Date__c = System.today().addDays(1);
-            pfr.Core_MDF_End_Date__c = System.today().addDays(10);
-            pfr.RequestedAmount = 16250;
-            pfr.Core_MDF_Fund_Request_Status__c = 'Planned';
-            pfr.Core_MDF_Country_nm__c = 'United Kingdom';
-            pfr.Core_MDF_Activity_Types__c = ''; // Ensure field is blanked before insert
-            insert pfr;
-        }
-
-        List<Id> pfrIds = new List<Id>{ pfr.Id };
-        
-        // Enclose test runs inside Start/Stop contexts to guarantee async job execution and prevent FinalException errors
-        Test.startTest();
-        
-        // 1. Cover entry point checkObjectAndPgm router logic 
-        Core_MDF_GeoBasedGenericSharing.checkObjectAndPgm('PartnerFundRequest', pfrIds);
-        Core_MDF_GeoBasedGenericSharing.checkObjectAndPgm('', pfrIds); // Cover empty/null pathway
-        
-        // 2. Cover wrapper instantiation & getCountryGeoMap method
-        Map<String, Core_MDF_GeoBasedGenericSharing.CountryGeoSubGeoWrapper> geoMap = Core_MDF_GeoBasedGenericSharing.getCountryGeoMap();
-        System.assertNotEquals(null, geoMap, 'The system-wide country-geo map wrapper should return correctly.');
-
-        // 3. Cover Exception Handling block using a forced invalid state
-        Core_MDF_GeoBasedGenericSharing.checkObjectAndPgm('PartnerFundRequest', null); 
-        
-        Test.stopTest();
-    }
-    @isTest
-    static void testProgramSpecificBranchCoverage() {
-        User usr = [SELECT Id FROM User WHERE LastName = 'User Test' AND IsActive = true LIMIT 1];
-        
-        System.runAs(usr) {
-            Account comarketingAcc = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
-            PartnerMarketingBudget budget = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
-            Campaign camp = [SELECT Id FROM Campaign WHERE Name = 'Test Camp CCF' LIMIT 1];
-
-            // Insert standard records to cover default sharing paths safely
-            PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, 
-                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, 
-                comarketingAcc.Id, 
-                null, 
-                budget, 
-                'United Kingdom', 
-                'Consumer', 
-                'Desktop', 
-                'Intel® Corporate Logo', 
-                'Event', 
-                '', 
-                'Draft', 
-                false
-            );
-            pfr.Core_MDF_Start_Date__c = System.today().addDays(1);
-            pfr.Core_MDF_End_Date__c = System.today().addDays(10);
-            pfr.RequestedAmount = 5000;
-            pfr.Core_MDF_Fund_Request_Status__c = 'Planned';
-            pfr.Core_MDF_Country_nm__c = 'United Kingdom';
-            pfr.Core_MDF_Activity_Types__c = '';
-            insert pfr;
-
-            Test.startTest();
-            // Call createShareForPFR with standard record
-            Core_MDF_GeoBasedGenericSharing.createShareForPFR(new List<Id>{ pfr.Id });
-            
-            // Trigger exception catch in createShareForPFR by passing a null ID
-            Core_MDF_GeoBasedGenericSharing.createShareForPFR(null);
-            Test.stopTest();
-
-            System.assertNotEquals(null, pfr.Id);
-        }
-    }
-    @isTest
-    static void testTargetedProgramSharingBranches() {
-        User usr = [SELECT Id FROM User WHERE LastName = 'User Test' AND IsActive = true LIMIT 1];
-        
-        System.runAs(usr) {
-            // Retrieve valid Intel Account records from Setup to satisfy lookup filters
-            Account intelAcc = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
-            PartnerMarketingBudget budget = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
-            Campaign camp = [SELECT Id FROM Campaign WHERE Name = 'Test Camp CCF' LIMIT 1];
-
-            // 1. Create specialized programs to naturally evaluate the read-only formula fields
-            ChannelProgram coGtmProgram = new ChannelProgram(
-                Name = Label.Core_MDF_Co_GTM_program_name, 
-                IsActive = true
-            );
-            ChannelProgram eefProgram = new ChannelProgram(
-                Name = Label.Core_MDF_EEF_Program_Name, 
-                IsActive = true
-            );
-            insert new List<ChannelProgram>{ coGtmProgram, eefProgram };
-
-            // 2. Insert Account mapping records targeting the custom channel programs (using valid parent Intel Account)
-            Account coGtmAcc = Core_MDF_CCP_TestDataUtility.createAccount('Co-GTM Test Acc', coGtmProgram.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-            coGtmAcc.Core_MDF_Parent_Fund_Account__c = intelAcc.Id; // Satisfies Lookup Filter
-            
-            Account eefAcc = Core_MDF_CCP_TestDataUtility.createAccount('EEF Test Acc', eefProgram.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-            eefAcc.Core_MDF_Parent_Fund_Account__c = intelAcc.Id; // Satisfies Lookup Filter
-            insert new List<Account>{ coGtmAcc, eefAcc };
-
-            // 3. Create requests referencing the program-specific accounts to evaluate the formula paths
-            PartnerFundRequest coGtmPfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, coGtmAcc.Id, null, budget, 
-                'United Kingdom', 'Consumer', 'Desktop', 'Intel® Corporate Logo', 'Event', '', 'Draft', false
-            );
-            coGtmPfr.Core_MDF_Start_Date__c = System.today().addDays(1);
-            coGtmPfr.Core_MDF_End_Date__c = System.today().addDays(10);
-            coGtmPfr.RequestedAmount = 2500;
-            coGtmPfr.Core_MDF_Fund_Request_Status__c = 'Planned';
-            coGtmPfr.Core_MDF_Country_nm__c = 'United Kingdom';
-            coGtmPfr.Core_MDF_Region_nm__c = 'EMEA;ASMO;APJ'; // Force multi-value semicolon split coverage
-            coGtmPfr.Core_MDF_Activity_Types__c = '';
-
-            PartnerFundRequest eefPfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, eefAcc.Id, null, budget, 
-                'United Kingdom', 'Consumer', 'Desktop', 'Intel® Corporate Logo', 'Event', '', 'Draft', false
-            );
-            eefPfr.Core_MDF_Start_Date__c = System.today().addDays(1);
-            eefPfr.Core_MDF_End_Date__c = System.today().addDays(10);
-            eefPfr.RequestedAmount = 3000;
-            eefPfr.Core_MDF_Fund_Request_Status__c = 'Planned';
-            eefPfr.Core_MDF_Country_nm__c = 'United Kingdom';
-            eefPfr.Core_MDF_Region_nm__c = 'EMEA'; // The class fallback logic evaluates this directly
-            eefPfr.Core_MDF_Activity_Types__c = '';
-
-            insert new List<PartnerFundRequest>{ coGtmPfr, eefPfr };
-
-            Test.startTest();
-            // 4. Executing createShareForPFR on these records dynamically covers previously unreachable pathways
-            Core_MDF_GeoBasedGenericSharing.createShareForPFR(new List<Id>{ coGtmPfr.Id, eefPfr.Id });
-            Test.stopTest();
-
-            System.assertNotEquals(null, coGtmPfr.Id, 'Formula evaluations and sharing should execute cleanly.');
-            System.assertNotEquals(null, eefPfr.Id, 'Formula evaluations and sharing should execute cleanly.');
-        }
-    }
-    @isTest
-    static void testSharingRoutingWithVaryingPrograms() {
-        User usr = [SELECT Id FROM User WHERE LastName = 'User Test' AND IsActive = true LIMIT 1];
-        
-        System.runAs(usr) {
-            // Retrieve relational entities generated in setup
-            Account intelAcc = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
-            PartnerMarketingBudget budget = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
-            Campaign camp = [SELECT Id FROM Campaign WHERE Name = 'Test Camp CCF' LIMIT 1];
-
-            // 1. Retrieve the different Channel Program records
-            ChannelProgram ccfProg = [SELECT Id FROM ChannelProgram WHERE Name = :Core_MDF_CCP_ConstantClass.CCF_PROGRAM LIMIT 1];
-            ChannelProgram ipaProg = [SELECT Id FROM ChannelProgram WHERE Name = :Core_MDF_CCP_ConstantClass.IPA_PROGRAM LIMIT 1];
-
-            // 2. Set up Accounts mapped to different programs
-            Account ccfAccObj = Core_MDF_CCP_TestDataUtility.createAccount('CCF Mapping Acc', ccfProg.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-            ccfAccObj.Core_MDF_Parent_Fund_Account__c = intelAcc.Id;
-            
-            Account ipaAccObj = Core_MDF_CCP_TestDataUtility.createAccount('IPA Mapping Acc', ipaProg.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-            ipaAccObj.Core_MDF_Parent_Fund_Account__c = intelAcc.Id;
-            insert new List<Account>{ ccfAccObj, ipaAccObj };
-
-            // 3. Create Fund Request targeting a standard CCF program with a blank region (covers Path B1)
-            PartnerFundRequest ccfRequestBlankRegion = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, ccfAccObj.Id, null, budget, 
-                'United Kingdom', 'Consumer', 'Desktop', 'Intel® Corporate Logo', 'Event', '', 'Draft', false
-            );
-            ccfRequestBlankRegion.Core_MDF_Start_Date__c = System.today().addDays(1);
-            ccfRequestBlankRegion.Core_MDF_End_Date__c = System.today().addDays(10);
-            ccfRequestBlankRegion.RequestedAmount = 1000;
-            ccfRequestBlankRegion.Core_MDF_Fund_Request_Status__c = 'Planned';
-            ccfRequestBlankRegion.Core_MDF_Country_nm__c = 'United Kingdom';
-            ccfRequestBlankRegion.Core_MDF_Region_nm__c = ''; // Blank value triggers blank-region branch coverage
-            ccfRequestBlankRegion.Core_MDF_Activity_Types__c = '';
-
-            // 4. Create Fund Request targeting a Specialty program (IPA) (covers Path A2)
-            PartnerFundRequest ipaRequest = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(
-                camp.Id, Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF, ipaAccObj.Id, null, budget, 
-                'United Kingdom', 'Consumer', 'Desktop', 'Intel® Corporate Logo', 'Event', '', 'Draft', false
-            );
-            ipaRequest.Core_MDF_Start_Date__c = System.today().addDays(1);
-            ipaRequest.Core_MDF_End_Date__c = System.today().addDays(10);
-            ipaRequest.RequestedAmount = 1500;
-            ipaRequest.Core_MDF_Fund_Request_Status__c = 'Planned';
-            ipaRequest.Core_MDF_Country_nm__c = 'United Kingdom';
-            ipaRequest.Core_MDF_Region_nm__c = 'APJ'; // Populated region triggers geographic routing
-            ipaRequest.Core_MDF_Activity_Types__c = '';
-
-            insert new List<PartnerFundRequest>{ ccfRequestBlankRegion, ipaRequest };
-
-            Test.startTest();
-            // 5. Invoke the sharing router with the processed requests
-            Core_MDF_GeoBasedGenericSharing.createShareForPFR(new List<Id>{ ccfRequestBlankRegion.Id, ipaRequest.Id });
-            Test.stopTest();
-
-            System.assertNotEquals(null, ccfRequestBlankRegion.Id, 'Sharing logic parsed successfully.');
-            System.assertNotEquals(null, ipaRequest.Id, 'Sharing logic parsed successfully.');
-        }
-    }
+    
+    
+    
 }

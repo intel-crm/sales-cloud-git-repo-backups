@@ -129,8 +129,7 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
             customerResults = Database.update(customerListUpdated,false);
            // system.debug('customerResults --'+customerResults);
         }
-        if(customerResults != null && !customerResults.isEmpty()){
-            for(Integer i=0; i < customerResults.size(); i++) {
+        for(Integer i=0; i < customerResults.size(); i++) {
                 if(customerResults.get(i).isSuccess()) {
                     allSuccessCustomerId.add(customerResults.get(i).Id);
                 //    System.debug('NEWCUSTOMER Records are updated Successfully'+allSuccessId);
@@ -140,10 +139,8 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
                   //  System.debug('NEWCUSTOMER Error Occurs While Processing The Record'+errors.getMessage());
                     allFailedCustomerId.add(customerResults.get(i).Id);
                 }        
+ 
     	}
-
-        }
-        
        // system.debug('CUSTOMER SUCCESS ID:'+allSuccessCustomerId);
         //added for testing end
     }
@@ -188,13 +185,13 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
         
        //  system.debug('Logged in user is'+loggedUserEmail);
          Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-         String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+        
          mail.setToAddresses(new String[] {loggedUserEmail});
          mail.setReplyTo('wsm-postmaster@intel.com');
-         //mail.setSenderDisplayName('Intel Corporation-NoReply');
+         mail.setSenderDisplayName('Intel Corporation-NoReply');
          mail.setSubject(orgName.toUpperCase()+' CST CRM Customer Update');
          mail.setHtmlBody(mailBody);
-         mail.setOrgWideEmailAddressId(fromEmailAddress);  
+            
          Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         
         

@@ -2,8 +2,8 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 01-09-2025
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 06-16-2025
+* @last modified by  : Bharath Chandrashekar
 **/
 public without sharing class Pricing_QuoteEmailAlertController {
     //Logic to access image from documents folder
@@ -71,7 +71,7 @@ public without sharing class Pricing_QuoteEmailAlertController {
 		Integer counter = 0;
         for (String item : emails) {
              if (counter > 0) {
-                result += '; '; // Add a comma for separation
+                result += '; '; // Added a semi colon for separation
             }
     		result += item;
     		counter++;
@@ -157,6 +157,7 @@ public without sharing class Pricing_QuoteEmailAlertController {
                                                                                                               WHERE Id =:quoteLineId LIMIT 1]) : quoteLineDataToBeDisplayed;
             
             if(!quoteLineDataToBeDisplayed.isEmpty()){
+                boolean isDrafterLimitedContact = false;
                 quoteLineData = quoteLineDataToBeDisplayed[0];
                 quoteLineRequestedQuantity = (Integer) Math.round(quoteLineData.Pricing_Unit_Qty__c);
                 totalRequestedQuantity = (Integer) Math.round(quoteLineData.Pricing_Quote_Total_Requested_Quantity__c);

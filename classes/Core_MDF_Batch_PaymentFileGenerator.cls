@@ -45,12 +45,12 @@ public without sharing class Core_MDF_Batch_PaymentFileGenerator implements Data
         // From list of pruns ==> for one prun - based on its geo and program find All claims store it 
         Core_MDF_Payment_Run__c paymentRunInstance = [SELECT Id, Name,Core_MDF_Program_Txt__c, Core_MDF_Payment_Nature_nm__c,Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Program_Id__r.Name, Core_MDF_Geo_Txt__c,Core_MDF_Subgeo_Txt__c, 
                                                       Core_MDF_PaymentJob_Id__c, Core_MDF_ErrorDetails_Txt__c, Core_MDF_Status_Txt__c, Core_MDF_ScheduleRun_Dtm__c 
-                                                      ,Core_MDF_Start_Dt__c,RecordType.DeveloperName, Core_MDF_End_Dt__c, Core_MDF_Budget_Type_nm__c,Core_MDF_Files_Name_Txt__c,Core_MDF_Payment_run_for_Accounts__c,Core_MDF_Payment_Run_for_Claims_Id__c,Core_MDF_Payment_Types_txt__c FROM Core_MDF_Payment_Run__c WHERE Id =:prunInstance.Id LIMIT 1];
+                                                      ,Core_MDF_Start_Dt__c,RecordType.DeveloperName, Core_MDF_End_Dt__c, Core_MDF_Budget_Type_nm__c,Core_MDF_Files_Name_Txt__c,Core_MDF_Payment_run_for_Accounts__c,Core_MDF_Payment_Types_txt__c FROM Core_MDF_Payment_Run__c WHERE Id =:prunInstance.Id LIMIT 1];
         
         String prunInstanceId = paymentRunInstance.Id;
         prunInstance = paymentRunInstance;
         paymentRunProgram = paymentRunInstance.Core_MDF_Program_Id__r.Name;
-        String query = 'SELECT Id, Name,Core_MDF_Payment_Nature_nm__c,Core_MDF_Program_Txt__c, Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c,RecordType.DeveloperName,Core_MDF_Program_Id__r.Name, Core_MDF_Geo_Txt__c,Core_MDF_Subgeo_Txt__c, Core_MDF_PaymentJob_Id__c, Core_MDF_ErrorDetails_Txt__c, Core_MDF_Status_Txt__c, Core_MDF_ScheduleRun_Dtm__c, Core_MDF_Start_Dt__c, Core_MDF_End_Dt__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Payment_run_for_Accounts__c, Core_MDF_Payment_Run_for_Claims_Id__c, Core_MDF_Payment_Types_txt__c,Core_MDF_Account_Id__c'+ 
+        String query = 'SELECT Id, Name,Core_MDF_Payment_Nature_nm__c,Core_MDF_Program_Txt__c, Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c,RecordType.DeveloperName,Core_MDF_Program_Id__r.Name, Core_MDF_Geo_Txt__c,Core_MDF_Subgeo_Txt__c, Core_MDF_PaymentJob_Id__c, Core_MDF_ErrorDetails_Txt__c, Core_MDF_Status_Txt__c, Core_MDF_ScheduleRun_Dtm__c, Core_MDF_Start_Dt__c, Core_MDF_End_Dt__c,Core_MDF_Budget_Type_nm__c, Core_MDF_Payment_run_for_Accounts__c, Core_MDF_Payment_Types_txt__c,Core_MDF_Account_Id__c'+ 
             ' FROM Core_MDF_Payment_Run__c WHERE Id =:prunInstanceId LIMIT 1';
         return Database.getQueryLocator(String.escapeSingleQuotes(query)); 
     }
@@ -72,11 +72,9 @@ public without sharing class Core_MDF_Batch_PaymentFileGenerator implements Data
 
             // This method updates the Payment Run Status to Inprogress before claim grouping and Payment Record Creation
             Core_MDF_PaymentProcess.updatePaymentRunRecord(new List<Core_MDF_Payment_Run__c>{prunInstance},Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PayRunStatus_Inprogress'));
-            //ATHR - Deeply Nested if 16209
-            if (paymentDueClaimsToBeProcessedForPayment == null || paymentDueClaimsToBeProcessedForPayment.isEmpty()) {
-                errorFlag = false;
-                return;
-            }                
+            
+            if(paymentDueClaimsToBeProcessedForPayment!=NULL && paymentDueClaimsToBeProcessedForPayment.size() > 0){
+                
                 // If Budget Type is retail MDF Or Program is IPA
                 if((prunInstance.Core_MDF_Budget_Type_nm__c != NULL && prunInstance.Core_MDF_Budget_Type_nm__c==Label.Core_MDF_RetailMDF_BudgetType)){
                     // For Grouping of Claims For File generation
@@ -86,10 +84,8 @@ public without sharing class Core_MDF_Batch_PaymentFileGenerator implements Data
                     // Creating Payment record
                     resultantWrapperMap = Core_MDF_PaymentProcessRetailMdfIPA.createPaymentRecordRetailMDF(prunInstance, resultantWrapperMap, '');
           //claimsBUSplitList = Core_MDF_PaymentProcessRetailMdfIPA.claimsBUSplitList;         
-                errorFlag = false;
-				return;     
                 }
-            if(prunInstance.Core_MDF_Program_Id__r.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name'))
+                else if(prunInstance.Core_MDF_Program_Id__r.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name'))
                 {  
                     paymentTypeToClaims = Core_MDF_PaymentUtility.getPaymentTypeToClaimList(paymentDueClaimsToBeProcessedForPayment); 
         tempAccountNodeAttributesMap = Core_MDF_PaymentUtility.getAccountNodeAttributes(paymentDueClaimsToBeProcessedForPayment);
@@ -128,10 +124,8 @@ public without sharing class Core_MDF_Batch_PaymentFileGenerator implements Data
                         accountNodeAttributesMap.putAll(tempAccountNodeAttributesMap);
 
                     }
-                errorFlag = false;
-                return;
                 }
-            if(prunInstance.Core_MDF_Program_Id__r.Name == CoGTMProgram){
+                else if(prunInstance.Core_MDF_Program_Id__r.Name == CoGTMProgram){
                     //to prepare map of key-claims
                     paymentTypeToClaims = Core_MDF_PaymentUtility.getPaymentTypeToClaimList(paymentDueClaimsToBeProcessedForPayment);
                     
@@ -173,15 +167,14 @@ public without sharing class Core_MDF_Batch_PaymentFileGenerator implements Data
                             accountNodeAttributesMap.putAll(tempAccountNodeAttributesMap);
                         }
                     }
-                errorFlag = false;
-                return;
                 }
-                
+                else{ //This is for Retail MD and CCP program
                     // This method groups claim depending on Company, Bank and Supplier Number
                     resultantWrapperMap = Core_MDF_PaymentProcess.groupClaimsforPayment(paymentDueClaimsToBeProcessedForPayment);                    
                     // This method creates the Payment Records according to the grouping done
                     resultantWrapperMap = Core_MDF_PaymentProcess.createPaymentRecord(prunInstance,resultantWrapperMap);
-            errorFlag = false;
+                }               
+            }errorFlag = false;
         }catch(Exception e){ errorFlag = true;exceptionObject = e;Database.rollback(sp);        }  
     }   
     

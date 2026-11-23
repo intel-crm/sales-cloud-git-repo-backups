@@ -1,0 +1,31 @@
+<template>
+	<div class="slds-p-around_medium">
+			<div class="slds-grid slds-gutters">
+					<template if:false={isDistributedDisabled}>
+							<div class="slds-col slds-size_1-of-2">
+									<lightning-button-icon 
+																				 class={buttonClass}
+																				 icon-name="utility:warning"  
+																				 variant="bare" 
+																				 alternative-text="Distribution Action" 
+																				 title="Distribution Action" 
+																				 size="medium" 
+																				 onclick={fireDistribute}>
+									</lightning-button-icon>
+							</div>
+					</template>
+					<template if:true={showProcessOption}>
+							<div class="slds-col slds-size_1-of-2">
+									<lightning-button-icon 
+																				 icon-name="utility:add" 
+																				 variant="bare" 
+																				 alternative-text="Add Option License" 
+																				 class="slds-m-left_xx-small" 
+																				 title="Add License Option" size="medium"
+																				 onclick={fireProcess}>
+									</lightning-button-icon>
+							</div>
+					</template>
+			</div>
+	</div>
+</template>

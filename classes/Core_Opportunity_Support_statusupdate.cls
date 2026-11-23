@@ -2,7 +2,7 @@ public without sharing class Core_Opportunity_Support_statusupdate {
      @AuraEnabled(cacheable=true)
     public static Map<id,String> getStatusValue(String recId){
 
-     
+        System.debug('Check recordId'+recId);
         Map<id,String> opptSuppReqMap = new Map<id,String>();
         Core_Opportunity_Support__c opptSuppReq=  new Core_Opportunity_Support__c();
         try{

@@ -22,7 +22,13 @@
         ---------------------------------------------------------------------------------------------------------*/
         @AuraEnabled
         public static IntelMainOwnerWrapper getIntelActivityOwners(String accId,String primaryAcctId,String program, List<String> country,String budgetType,Boolean isPlannedEdited) { 
+            Set<String> customPermissionSet = new Set<String>();
+            String role;
             String region = '';
+            Set<String> roles = new Set<String>();
+            Set<Id> userIdSet = new Set<Id>();
+            //Map<String, string> programBudgetTypeWiseAcctMgrMap = new Map<String,String>();
+           
             //Map to store list of roles for Program+BudgetType combination
             Map<String, List<string>> programBudgetTypeWiseAcctMgrMap = new Map<String,List<String>>(); 
             IntelMainOwnerWrapper resultWrapper = new IntelMainOwnerWrapper();
@@ -180,7 +186,11 @@
         @AuraEnabled
         public static Boolean isApprover(String accId,String primaryAcctId,String program, List<String> country,String budgetType,String userId) { 
             Boolean result;
+            Set<String> customPermissionSet = new Set<String>();
+            String role;
             String region ='';
+            Set<String> roles = new Set<String>();
+            Set<Id> userIdSet = new Set<Id>();
             List<string> roleList = new List<string>(); //EEF
             List<Id> accountIdList = new List<Id>();
             String primaryAccountId;
@@ -197,7 +207,6 @@
             recordtypeMap.put('Core_MDF_Retail_Marketing_Funds','Retail Marketing Funds'); 
             recordtypeMap.put('Core_MDF_Service_Provider_CoMarketing_Fund','Service Provider CoMarketing Fund');
             recordtypeMap.put('Core_MDF_Ecosystem_Extension_Fund','Ecosystem Extension Fund');
-            recordtypeMap.put('Core_MDF_Co_GTM','CoGTM');
            
             if(program !=null && recordtypeMap.containsKey(program)){
                 program = recordtypeMap.get(program);
@@ -565,6 +574,8 @@ Description  : Wrapper class for User details
         @AuraEnabled
         public static Boolean isRecordApprover(String accId, String program, List<String> country, String approvalStage, String userId) { 
             Boolean result;
+            List<String> roles = new List<String>();
+            List<String> pctRolesList = new List<String>();
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             String pctRoleSet;
             
@@ -618,6 +629,8 @@ Description  : Wrapper class for User details
         @AuraEnabled
         public static Boolean isRecordApproverWithBudgetType(String accId, String program, List<String> country, String approvalStage, String userId, String budgetType) { 
             Boolean result;
+            List<String> roles = new List<String>();
+            List<String> pctRolesList = new List<String>();
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             String pctRoleSet;
             try{
@@ -828,6 +841,7 @@ Description  : Wrapper class for User details
         
 	public static Map<String, Map<String, List<Id>>> getIupgmRecordsForApprovers(List<String> accList, List<String> progList, List<String> geoList, List<String> roles, String category) {  //Roshan
         //public static Map<String, Map<String, List<Id>>> getIupgmRecordsForApprovers(List<String> accList, List<String> progList, List<String> geoList, List<String> roles) {     
+            Map<String,String> recordtypeMap = new Map<String,String>();
             List<String> program = new List<String>();
             //String classificationVal;
             Map<String,Object> programNameByRecNameMap = getProgramNameByRecName();
@@ -847,6 +861,7 @@ Description  : Wrapper class for User details
                                                                         FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                         AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c IN: roles];
         
+            List<String> values = new List<String>();
             
             for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                     roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
@@ -938,6 +953,7 @@ Description  : Wrapper class for User details
     Added By      :        Ayush - 02/09/2022
     ******************************************************************************************************/     
     public static Map<String, Map<String, List<Id>>> getIupgmForApproversWithBudgetType(List<String> accList, List<String> progList, List<String> geoList, List<String> roles, List<String> budgetTypeList,List<String> approvalStageList) {     
+        Map<String,String> recordtypeMap = new Map<String,String>();
         List<String> program = new List<String>();
 
         List<String> classificationValList = new List<String>();
@@ -968,6 +984,7 @@ Description  : Wrapper class for User details
                                                                     FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                     AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c IN: roles];
     
+        List<String> values = new List<String>();
         
         for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                 roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
@@ -1168,6 +1185,7 @@ Description  : Wrapper class for User details
                                                                         Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c
                                                                         FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                         AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c =: roles];
+            List<String> values = new List<String>();
             for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                     roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
             }
@@ -1287,6 +1305,7 @@ Description  : Wrapper class for User details
         String reviewType;
         Map<String,Object> programNameByRecTypeDevNameMap;
         Boolean isProposalBased = false;
+        List<String> activityClassficationList = new List<String>();
         InputDetailsWrapper resultObj;
         //get Object Name for sobject   
         String objectName = sObj != null ? sObj.id.getSObjectType().getDescribe().getName() :'';
@@ -1360,7 +1379,7 @@ Description  : Wrapper class for User details
                     geo = pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c;  //used for cogtm
                     //hostGeo = pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c;  //used for ipa outcome based
                     hostGeo = pfcObj.Request.Core_MDF_Host_Region_txt__c;  //Roshan
-                    budgetType = pfcObj.Core_MDF_Budget_Type_Options_Nm__c;
+                    budgetType = pfcObj.Core_MDF_Budget_Type_Nm__c;
                     isProposalBased = pfcObj.Core_MDF_Proposal_Based_Ind__c;
                     program = pfcObj.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;  //Roshan
                     approvalStage = pfcObj.Core_MDF_Approval_Stage_nm__c;
@@ -1533,12 +1552,9 @@ Description  : Wrapper class for User details
                     ' and Core_MDF_Role_nm__c =: role'+
                     ' and Core_MDF_is_User_Active_ind__c = true '+
                     ' and Core_MDF_Active_Ind__c = true' +
-                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
-                    //' and Core_MDF_User_id__c =: userId';
-					//16852
-                    if(String.isNotBlank(userId)){
-                        qryStr += ' and Core_MDF_User_id__c =: userId';
-                    }                    
+                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false'+  
+                    ' and Core_MDF_User_id__c =: userId';
+                    
 
                         qryStr += ' and (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'' +
                             ' OR (Core_MDF_All_Accounts_cd__c = ' +  '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
@@ -1549,26 +1565,15 @@ Description  : Wrapper class for User details
              activityClassification = String.escapeSingleQuotes(activityClassification).replaceAll('\\\\','');
             
             
-            //2. Filter condition for Geo/Geo->BudgetType 
-            // CHANGE START - Added by Shravani as part of Unhandled Exception fix (added null checks for region and geoBudgetType) 
-            // if region is blank use WW
-            if(String.isBlank(region)){
-                region = '(\'WW\')'; 
-            }
+            //2. Filter condition for Geo/Geo->BudgetType        
             if(isBudgetTypeCheckRequired){
-                if(String.isNotBlank(geoBudgetType)){
-                    qryStr +=' and ((Core_MDF_All_Budget_Type_Access_Ind__c = false and Core_MDF_GeoSubGeo_Budget_Type_nm__c INCLUDES ' + geoBudgetType +')' 
-                            + ' OR (Core_MDF_All_Budget_Type_Access_Ind__c = true and Core_MDF_Region_cd__c INCLUDES ' + region +'))'; 
-                }else{
-                    qryStr +=' and (Core_MDF_All_Budget_Type_Access_Ind__c = true and Core_MDF_Region_cd__c INCLUDES ' + region +')'; 
-
-                }
+            qryStr +=' and ((Core_MDF_All_Budget_Type_Access_Ind__c = false and Core_MDF_GeoSubGeo_Budget_Type_nm__c INCLUDES ' + geoBudgetType +')' 
+                            + ' OR (Core_MDF_All_Budget_Type_Access_Ind__c = true and Core_MDF_Region_cd__c INCLUDES ' + region +'))';  
             }else if(isApprovalBasedOnApprovalRegion(program,role)){
                 qryStr +=' and (Core_MDF_Approval_Region_nm__c INCLUDES ' + region + ')';   
             }else{
-                qryStr +=' and (Core_MDF_Region_cd__c INCLUDES ' + region + ')';     
+                qryStr +=' and (Core_MDF_Region_cd__c INCLUDES ' + region + ')';    
             }
-            // CHANGE END - Unhandled Exception fix
         
                     
             // 3. Filter condition for Activity classification

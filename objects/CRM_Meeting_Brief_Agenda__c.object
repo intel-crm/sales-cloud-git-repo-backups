@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Meeting_Brief_Agenda_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Meeting_Brief_Agenda_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -165,20 +165,6 @@
         <label>AI Generated</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>CRM_End_Date__c</fullName>
-        <label>End Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>CRM_End_Time_Only__c</fullName>
-        <label>End Time</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
     </fields>
     <fields>
         <fullName>CRM_End_Time_txt__c</fullName>
@@ -220,20 +206,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>CRM_Start_Date__c</fullName>
-        <label>Start Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>CRM_Start_Time_Only__c</fullName>
-        <label>Start Time</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
         <fullName>CRM_Start_Time_txt__c</fullName>
         <externalId>false</externalId>
         <label>Start Time (MM/dd/YYYY HH:mm)</label>
@@ -252,18 +224,5 @@
     <pluralLabel>Meeting Brief Agenda</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
-    <validationRules>
-        <fullName>CRM_Agenda_StartDate_EndDate_Validation</fullName>
-        <active>true</active>
-        <description>Validation to check the Endate &amp; Startdate</description>
-        <errorConditionFormula>OR(
-CRM_End_Date__c &lt; CRM_Start_Date__c,
-AND(
-CRM_End_Date__c = CRM_Start_Date__c,
-CRM_End_Time_Only__c &lt;= CRM_Start_Time_Only__c
-)
-)</errorConditionFormula>
-        <errorMessage>Start Date and Time must not be greater than End Date and Time.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -402,24 +402,14 @@ Modified By:        Date:       Changes: s
                 // validate the type of account onboarding
                 if(accOnboard.Core_MDF_Type__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IntelAccount')){                
                     programCode = prgmAbbName.get(cpMap.get(accOnboard.Core_MDF_Channel_Program__c).Core_MDF_Technical_Program_Name__c);
-                                //Use Virtual Corp Id instead of Intel Account Id for group name/developer name
-                                Id vcId;
-                                if(accOnboardToVCMap != null && accOnboardToVCMap.containsKey(accOnboard) && accOnboardToVCMap.get(accOnboard) != null){
-                                    vcId = accOnboardToVCMap.get(accOnboard).Id;
-                                }
-                                else{
-                                    continue;
-                                }
-                                groupName = 'CCP ' + vcId + ' ' + programCode + ' ' + 'EXT';
-                                groupDeveloperName = 'Core_MDF_CCP_' + vcId + '_' + programCode + '_' + 'EXT';
-                                
+                    groupName = 'CCP '+accOnboard.Core_MDF_Account__c+ ' ' + programCode + ' ' + 'EXT';
+                    groupDeveloperName = 'Core_MDF_CCP_'+accOnboard.Core_MDF_Account__c+'_'+programCode+'_'+'EXT'; 
                     //added EEF check for stamping all access group
                     if(programCode == 'CCF' || programCode == 'DCF' || programCode == 'EEF'){
-                                    //Use Virtual Corp Id for all access group as well
-                                    String vcIdStr = String.valueOf(vcId);
-                                    allAccessGroupName = 'CCP ALL ACCESS ' + vcIdStr.right(15) + ' ' + programCode + ' ' + 'EXT'; //38 charcters
-                                    allAccessGroupDeveloperName = 'Core_MDF_CCP_ALL_ACCESS_' + vcIdStr.right(15) + '_' + programCode + '_' + 'EXT'; //47 characters
-                                }
+                        accId = accOnboard.Core_MDF_Account__c;
+                        allAccessGroupName = 'CCP ALL ACCESS '+accId.right(15)+' ' + programCode + ' ' + 'EXT'; //38 charcters
+                        allAccessGroupDeveloperName = 'Core_MDF_CCP_ALL_ACCESS_'+accId.right(15)+'_'+programCode+'_'+'EXT'; //47 characters
+                    }
                     // New group instance
                     Group newGroup = new Group();
                     newGroup.Name = groupName;
@@ -523,14 +513,12 @@ Modified By:        Date:       Changes:
                 {
                     for(Id accId : mapOfUnifiedIdToMDFBenIntAccId.get(mapOfIntelAccountandUnifiedId.get(accOnboard.Core_MDF_Account__c))){
                         //New PGM instance
-                        if(accId != accOnboard.Core_MDF_Account__c ){
-                            Core_MDF_Partner_Group_Mapping__c pgmInstance = new Core_MDF_Partner_Group_Mapping__c();
-                            pgmInstance.Core_MDF_Account__c = accId;
-                            pgmInstance.Core_MDF_Channel_Program__c = accOnboard.Core_MDF_Channel_Program__c;
-                            pgmInstance.Core_MDF_Group_Name__c = grpName;
-                            pgmInstance.Core_MDF_Type_of_Access__c = 'External';                          
-                            newpgmList.add(pgmInstance);
-                        }
+                        Core_MDF_Partner_Group_Mapping__c pgmInstance = new Core_MDF_Partner_Group_Mapping__c();
+                        pgmInstance.Core_MDF_Account__c = accId;
+                        pgmInstance.Core_MDF_Channel_Program__c = accOnboard.Core_MDF_Channel_Program__c;
+                        pgmInstance.Core_MDF_Group_Name__c = grpName;
+                        pgmInstance.Core_MDF_Type_of_Access__c = 'External';                          
+                        newpgmList.add(pgmInstance);
                     }
                 }
             } 
@@ -538,12 +526,10 @@ Modified By:        Date:       Changes:
             if(!newpgmList.isEmpty()){
                 //Database.insert(newpgmList);
                 Database.SaveResult[] srList = Database.insert(newpgmList, false);
-                
-
-               Integer count = 0;
+                Integer count = 0;
                 // Iterate through each returned result
-               for (Database.SaveResult sr : srList) {
-                  /*  if (!sr.isSuccess()) {
+                for (Database.SaveResult sr : srList) {
+                    /*if (!sr.isSuccess()) {
                         // Operation failed, so get all errors                
                         for(Database.Error err : sr.getErrors()) { 
                             if(pgmAccOnboardMap.containsKey(newpgmList[count]) && pgmAccOnboardMap.get(newpgmList[count]) != NULL){
@@ -553,9 +539,9 @@ Modified By:        Date:       Changes:
                             }
                         }
                     }*/
-                   //ATHR FIX -Deeply nested if                   
-                    if (sr.isSuccess()) {   
-                        count++; 
+                    //ATHR FIX -Deeply nested if
+                    count++;
+                    if (sr.isSuccess()) {                        
                         continue; // Skip successful inserts
                     }
                     for (Database.Error err : sr.getErrors()) {
@@ -564,9 +550,8 @@ Modified By:        Date:       Changes:
                         }else{
                             ipaPGMErrorList.add(newpgmList[count].Core_MDF_Account__c);
                         }
-                    }//ATHR END*/
-                    count++;
-
+                    }//ATHR END
+                   
                 }
             }
             if(ipaPGMErrorList != NULL && ipaPGMErrorList.size()>0){

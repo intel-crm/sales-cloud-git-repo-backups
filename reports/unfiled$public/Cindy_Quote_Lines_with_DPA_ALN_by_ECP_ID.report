@@ -84,6 +84,54 @@
             <interval>INTERVAL_CUSTOM</interval>
         </timeFrameFilter>
     </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>fkx</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>FK_NAME</field>
+        </columns>
+        <columns>
+            <field>core_cpq_dpa_aln__c.core_cpq_ship_start_date_dt__c</field>
+        </columns>
+        <columns>
+            <field>core_cpq_dpa_aln__c.core_cpq_ship_end_date_dt__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>FK_$SBQQ__Quote__c.core_cpq_cmf_pricing_parent_id__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>6100205890,6100011734</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>core_cpq_dpa_aln__c.core_cpq_ship_end_date_dt__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>greaterThan</operator>
+                <value>TODAY</value>
+            </criteriaItems>
+        </filter>
+        <format>Tabular</format>
+        <name>DPAs &amp; ALNs with Quote # block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntity$core_cpq_dpa_aln__c@core_cpq_dpa_aln__c.core_cpq_active_quote__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>core_cpq_dpa_aln__c.core_cpq_aln_Rejection_Date_dt__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
     <blockInfo>
         <blockId xsi:nil="true"/>
         <joinTable>x</joinTable>

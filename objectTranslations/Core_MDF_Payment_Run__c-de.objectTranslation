@@ -78,10 +78,6 @@
         <name>Core_MDF_Geo_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Out of Cycle Payment? --></label>
-        <name>Core_MDF_Is_OOC_Payment_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Payment Job Id --></label>
         <name>Core_MDF_PaymentJob_Id__c</name>
     </fields>
@@ -104,10 +100,6 @@
             <masterLabel>Expense</masterLabel>
             <translation><!-- Expense --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Payment Run for Claims --></label>
-        <name>Core_MDF_Payment_Run_for_Claims_Id__c</name>
     </fields>
     <fields>
         <label><!-- Payment Types --></label>
@@ -202,6 +194,10 @@
         <name>Co_Engineering</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Intel Partner Alliance MDF --></label>
         <name>Core_MDF_Intel_Partner_Alliance_MDF</name>
     </recordTypes>
@@ -236,10 +232,6 @@
     <validationRules>
         <errorMessage>Startdatum der Ausführung darf nicht hinter dem Enddatum der Ausführung liegen</errorMessage>
         <name>Core_MDF_Ad_Run_StartDate_EndDate_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Nature cannot be changed in this status. --></errorMessage>
-        <name>Core_MDF_BlockPaymentNatureChange</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Send Notification can be checked only for EMEA/APJ Payment Run records and it cannot be edited. --></errorMessage>

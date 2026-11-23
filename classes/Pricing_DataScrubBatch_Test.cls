@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 09-25-2024
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_DataScrubBatch_Test {
     Public static PermissionSet permissionRec;
@@ -20,7 +13,7 @@ public class Pricing_DataScrubBatch_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Data_Scrub_Batch');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             
             List<User> accExecUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -58,16 +51,17 @@ public class Pricing_DataScrubBatch_Test {
             insert document;
             
             Group grp = Pricing_Test_Utility.createGroupRecord();
-
+            
             //Create Group Member
             GroupMember grpMem1 = new GroupMember();
             grpMem1.UserOrGroupId = adminUserList[0].id;
             grpMem1.GroupId = grp.Id;
             Insert grpMem1;
-
+            
             ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
-
-      
+            
+            List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,2);
+            
             Test.stopTest();
         }
     }

@@ -7,4 +7,3 @@ export default class Core_IPS_DescriptionView_Lex extends LightningElement {
     objectApiName='Case';
     @track caseDescriptionfields = [SUBJECT,DESCRIPTION];
 }
-//SFDX Test Deployment 24082026-WW35.1--only single comment

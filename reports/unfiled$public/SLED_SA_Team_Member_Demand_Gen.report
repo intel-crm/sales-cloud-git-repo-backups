@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>OpportunityTeamMember.Core_Account_Name__c</field>
     </columns>
     <columns>
@@ -25,34 +16,13 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY.NAME</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
     <columns>
-        <field>MEMBER_NAME</field>
-    </columns>
-    <columns>
-        <field>MEMBER_ROLE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approval_Status__c</field>
+        <field>OPPORTUNITY.NAME</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -64,15 +34,26 @@
         <field>ACCOUNT_INDUSTRY</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <description>Team Member Report for Government CoE</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
+        <booleanFilter>(1 AND 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Hugues Morin,Michael OBrien,Katherine Heidelman,Mel Fekete,David Minnaar,Alan Rose,Alastair Duncan,Darren Pulsipher,David Richard,Burnie Legette,Anna Scott,Tanya Pelletier,Joseph Rodriguez</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Contributor (50%),Contributor (33.3%),Viewer (0%)</value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -80,30 +61,29 @@
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Consumption_Market__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Education,Federal and Aerospace,Government,Smart Cities</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Defense and Space,Education,Government</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.sbaa__ApprovalStatus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Pending,Approved</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Approval_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>MEMBER_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>MEMBER_ROLE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>SLED_SA Team Member Demand Gen$</name>
     <params>
         <name>terr</name>
@@ -118,14 +98,12 @@
         <value>0</value>
     </params>
     <reportType>OpportunityTeam</reportType>
-    <scope>organization</scope>
+    <scope>scopingRule</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Decision_Date__c</dateColumn>
-        <endDate>2099-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

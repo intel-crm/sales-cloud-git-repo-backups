@@ -68,28 +68,8 @@
         <name>Core_MDF_EndTime_dtm__c</name>
     </fields>
     <fields>
-        <label><!-- External Id --></label>
-        <name>Core_MDF_External_Id__c</name>
-    </fields>
-    <fields>
         <label><!-- Internal Comments --></label>
         <name>Core_MDF_InternalComments_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Overall AI Confidence Score --></label>
-        <name>Core_MDF_Overall_AI_Confidence_Score_Nm__c</name>
-        <picklistValues>
-            <masterLabel>High</masterLabel>
-            <translation><!-- High --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Low</masterLabel>
-            <translation><!-- Low --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Medium</masterLabel>
-            <translation><!-- Medium --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Review Date --></label>

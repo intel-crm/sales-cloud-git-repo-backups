@@ -70,6 +70,12 @@
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
     }
     
     @isTest
@@ -174,6 +180,30 @@
         }
         Test.stopTest();
     }
+    
+    @isTest
+    private static void whenGetComplianceWatchListByAccountId(){
+        Account acc = [Select Id,Name from Account where Name = 'TestChildAccount'];
+        test.startTest();
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId= accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{acc.Id},'Core_Account_Id__c,Core_Type__c');
+        //system.debug('complianceWatchListByAccountId.get(acc.Id).size()--> '+complianceWatchListByAccountId);
+        system.assertEquals(2, complianceWatchListByAccountId.get(acc.Id).size());
+        
+        try{
+           Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId1 = accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{''},'Core_Account_Id__c,Core_Type__c'); 
+        }catch(Exception e){
+            system.assertEquals('Invalid id: ', e.getMessage());
+        }
+        
+        try{
+           Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId1 = accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{'wb3243'},'Core_Account_Id__c,Core_Type__c'); 
+        }catch(Exception e){
+            system.assertEquals('Invalid id: wb3243', e.getMessage());
+        }
+        Test.stopTest();
+    }
+    
+    
     
     @isTest
     private static void whenGetBusinessTypeById(){

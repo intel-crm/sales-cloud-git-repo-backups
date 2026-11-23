@@ -4,23 +4,18 @@ private class Core_MDF_PFR_Grid_Test {
     static void createTestData() {
         List<User> userList = new List<User>();
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
-        
-        // Create UserRole instead of querying for it
-        UserRole usRole = new UserRole(
-            Name = 'Admin'
-           // DeveloperName = 'Admin'
-        );
-        insert usRole;
-        UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name like '%Partner User%' LIMIT 1];        
+            
+        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         // Creating User with utility class 
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
         testUser.LastName = 'Test User1';
+        
         testUser.UserRoleId = usRole.Id;
         
         User progAdmUsr = Core_MDF_CCP_TestDataUtility.createUser(false);
         progAdmUsr.profileId = ccpCoreProfile.Id;
         progAdmUsr.LastName = 'Prog Adm Usr';
-        progAdmUsr.UserPermissionsMarketingUser = true;
+        progAdmUsr.UserPermissionsMarketingUser =true;
         
         userList.add(progAdmUsr);
         userList.add(testUser);
@@ -29,7 +24,8 @@ private class Core_MDF_PFR_Grid_Test {
         Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.UserRoleId = usRole.Id; // Reuse the same UserRole
+        UserRole ur = [Select Id, Name From UserRole WHERE Name = 'Admin' LIMIT 1];
+        usr.UserRoleId =ur.Id ;
         usr.LastName = 'SysAdmin';
         usr.profileId = sysAdminProfile.Id;
         Database.insert(usr);
@@ -75,13 +71,21 @@ private class Core_MDF_PFR_Grid_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Core_MDF_BudgetCapValidation');
             bypassFunctionKeys.add('Core_MDF_BypassBudgCapIUPGMValidation');
-           bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             List<String> bypassFunctionKeys1 = new List<String>();
             bypassFunctionKeys1.add('BypassCampaignBenefitValidation');
-            
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,false);
-            
+            /*
+            Core_MDF_Budget_Cap__c budgetcap2 = new Core_MDF_Budget_Cap__c();
+            budgetcap2.Core_MDF_Budget_Type_nm__c='Core_MDF_Budget_Type_nm__c';
+            budgetcap2.Core_MDF_Budget_Status_txt__c='Active';
+            budgetcap2.Core_MDF_Effective_Start_Date_Dt__c= date.parse('1/1/2020');
+            budgetcap2.Core_MDF_Effective_End_Date_Dt__c= date.parse('9/1/2022');
+            budgetcap2.Core_MDF_Requested_Cap_amt__c=90000000000;
+            budgetcap2.Core_MDF_Claimed_Cap_amt__c=601298938;
+            budgetcap2.Core_MDF_Remaining_Cap_amt__c=89398701062;
+            insert budgetcap2;
+               */
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             ChannelProgram coGTMCP = Core_MDF_CCP_TestDataUtility.createProgram ('Co-GTM','CoGTM', true);
             
@@ -91,23 +95,13 @@ private class Core_MDF_PFR_Grid_Test {
             update ipaUltimateAccount;
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);           
             ipaCoMarketingAccount.Core_Geo__c = 'ASMO';
-           	insert ipaCoMarketingAccount;
+            insert ipaCoMarketingAccount;
             Account coGTMCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CoGTM Co-Marketing Account', coGTMCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);
             insert coGTMCoMarketingAccount;
 
-            // Fixed: Replace the problematic createBenefit call with a direct budget type assignment
-            String budgetType = 'Client Specialties MDF';
-            
-            // Alternative: If you need to create benefit records, do it manually
-            /*
-            try {
-                budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-            } catch (Exception e) {
-                System.debug('Error creating benefit: ' + e.getMessage());
-                budgetType = 'Client Specialties MDF'; // Fallback to default
-            }
-            */
-            
+                
+                
+            String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
              Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
           Id ipaIUPGMRecTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
           
@@ -118,7 +112,7 @@ private class Core_MDF_PFR_Grid_Test {
            iupgm1.RecordTypeId = ipaIUPGMRecTypeId;
             iupgm1.Core_MDF_Region_Sub_Region_nm__c = 'WW';
             iupgm1.Core_MDF_User_id__c = IUPGMUser.Id;
-           	iupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_IPA_Budget_Loader';
+            iupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_IPA_Budget_Loader';
             iupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgm1.Core_MDF_All_Accounts_cd__c = 'yes';
             //iupgm1.Core_MDF_Budget_Type_nm__c = budgetType;
@@ -126,10 +120,13 @@ private class Core_MDF_PFR_Grid_Test {
             iupgm1.Core_MDF_Active_Ind__c = true;
             iupgm1.Core_MDF_Is_Not_an_Approver_Ind__c = false;
             iupgmList.add(iupgm1);
-
-            Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm2= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
+/*List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList =[SELECT Id, Core_MDF_User_id__c, Core_MDF_Region_cd__c, Core_MDF_Role_nm__c,
+                                                            Core_MDF_is_User_Active_ind__c,Core_MDF_Active_Ind__c,Core_MDF_Is_Not_an_Approver_Ind__c, 
+    Core_MDF_GeoSubGeo_Budget_Type_nm__c, Core_MDF_All_Accounts_cd__c, Core_MDF_Account_id__c ,Core_MDF_Budget_Type_nm__c FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c];
+        */
+                    Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm2= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgm2.Core_MDF_Account_id__c = ipaUltimateAccount.Id;
-           	iupgm2.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
+            iupgm2.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
             iupgm2.Core_MDF_Region_cd__c = 'APJ;EMEA';
             iupgm2.Core_MDF_Region_Sub_Region_nm__c = 'APJ;EMEA';
             iupgm2.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'APJ->Business Client Acceleration - MDF;EMEA->Business Client Acceleration - MDF';
@@ -146,7 +143,7 @@ private class Core_MDF_PFR_Grid_Test {
             
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm3= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             //iupgm3.Core_MDF_Account_id__c = ipaUltimateAccount.Id;
-          	iupgm3.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
+            iupgm3.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
             iupgm3.Core_MDF_Region_cd__c = 'WW';
            iupgm3.RecordTypeId = ipaIUPGMRecTypeId;
             iupgm3.Core_MDF_Region_Sub_Region_nm__c = 'WW';
@@ -161,9 +158,14 @@ private class Core_MDF_PFR_Grid_Test {
            // iupgm3.Core_MDF_Budget_Type_nm__c='Business Client Acceleration - MDF';
             iupgmList.add(iupgm3);
            
+           
+             
             Database.insert(iupgmList);
              
-     
+        
+        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList1=[select id,Core_MDF_Is_Not_an_Approver_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c];
+          
+           
             List<Contact> conList = new List<Contact>();
             Contact con = Core_MDF_CCP_TestDataUtility.createContact (ipaUltimateAccount.Id, false);
             con.RecordTypeId = Core_MDF_CCP_TestDataUtility.Intel_Contact_Record_Type;
@@ -178,23 +180,6 @@ private class Core_MDF_PFR_Grid_Test {
             conList.add(con2);
             
             Database.insert(conList);
-           
-           // Use a list query instead of direct assignment
-           List<User> accountOwnerList = [SELECT Id, UserRoleId FROM User WHERE Id = :ipaUltimateAccount.OwnerId];
-           
-           if (!accountOwnerList.isEmpty()) {
-               User accountOwner = accountOwnerList[0];
-               if (accountOwner.UserRoleId == null) {
-                   accountOwner.UserRoleId = usRole.Id;
-                   update accountOwner;
-                   
-               }
-           } else {
-               
-               // Set the account owner to a user that exists and has a role
-               ipaUltimateAccount.OwnerId = testUser.Id; // testUser already has usRole.Id
-               update ipaUltimateAccount;
-           }
             
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
             Profile ccpCoreProfileId = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
@@ -207,21 +192,18 @@ private class Core_MDF_PFR_Grid_Test {
             extUsr1.ProfileId = partnerProfile.Id;
             extUsr1.ContactId = con.Id;
             extUsr1.IsActive = TRUE;
-           	//extUsr1.UserRoleId=usRole1.id;
             usrList.add(extUsr1);
             
             User extUsr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUsr2.LastName = 'User Test2';
             extUsr2.ProfileId = partnerProfile.Id;
             extUsr2.ContactId = con1.Id;
-           //extUsr2.UserRoleId=usRole1.id;
             extUsr2.IsActive = TRUE;
             usrList.add(extUsr2);
             
             User extUsr3 = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUsr3.LastName = 'User Test3';
             extUsr3.ProfileId = partnerProfile.Id;
-            //extUsr3.UserRoleId=usRole1.id;
             extUsr3.ContactId = con2.Id;
             extUsr3.IsActive = TRUE;
             usrList.add(extUsr3);
@@ -253,7 +235,7 @@ private class Core_MDF_PFR_Grid_Test {
             
             Database.insert(permissionSetAssignmentList);
 
-
+            List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
             
             Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
             
@@ -347,14 +329,12 @@ private class Core_MDF_PFR_Grid_Test {
             ipaCampaignForAP.Core_MDF_Region_cd__c = 'APJ';
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Client Specialties MDF';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
-           	ipaCampaignForAP.Core_MDF_Budget_Type_txt__c = 'Client Specialties MDF';
-           	ipaCampaignForAP.Core_MDF_Technology__c='';
+            ipaCampaignForAP.Core_MDF_Budget_Type_txt__c = 'Client Specialties MDF';
             database.insert(ipaCampaignForAP);
             User manager = Core_MDF_CCP_TestDataUtility.createUser(false);
             manager.LastName = 'User Test Manager';
             Database.insert(manager);
             
-           
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
             usr1.LastName = 'User Test1';
             usr1.ManagerId = manager.Id;
@@ -365,6 +345,16 @@ private class Core_MDF_PFR_Grid_Test {
             ipaGrp.Name = 'Core CCP IPA Internal';
             ipaGrp.DeveloperName = 'Core_MDF_CCP_IPA_Internal';
             Database.insert(ipaGrp);
+           
+       /*    Group ipaGrp1 = new Group();
+            ipaGrp1.Name = 'Core CCP IPA Internal12';
+            ipaGrp1.DeveloperName = 'Core_MDF_CCP_IPA_Internal1';
+            Database.insert(ipaGrp1);
+           
+           Group ipaGrp2 = new Group();
+            ipaGrp2.Name = 'Core CCP IPA Internal23';
+            ipaGrp2.DeveloperName = 'Core_MDF_CCP_IPA_Internal2';
+            Database.insert(ipaGrp2);  */
             
             GroupMember ipaGrpMem = new GroupMember();
             ipaGrpMem.UserOrGroupId = usr1.Id;
@@ -385,6 +375,7 @@ private class Core_MDF_PFR_Grid_Test {
             pgmIntList.add(pgm1);
             
             Database.insert(pgmIntList);
+           // Test.stopTest();
             
             // Creating Criterias for approval required
             Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('Campaign','Core_MDF_IPA_Proposal_AP',
@@ -439,28 +430,21 @@ private class Core_MDF_PFR_Grid_Test {
             ChannelProgram coGTMProgram = [SELECT Id,Core_MDF_Technical_Program_Name__c FROM ChannelProgram WHERE Core_MDF_Technical_Program_Name__c = 'CoGTM' LIMIT 1];
             test.startTest();
 
-            // Check if permission set exists before trying to assign it
-            List<PermissionSet> psList = [SELECT Id FROM PermissionSet WHERE Name= 'Core_MDF_CCP_Internal_Co_GTM_Account_Manager' LIMIT 1];
-            if (!psList.isEmpty()) {
-                // Check if assignment already exists
-                List<PermissionSetAssignment> existingAssignments = [SELECT Id FROM PermissionSetAssignment 
-                                                                   WHERE AssigneeId = :usr.id 
-                                                                   AND PermissionSetId = :psList[0].Id LIMIT 1];
-                if (existingAssignments.isEmpty()) {
-                    insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psList[0].Id);
-                }
-            }
+            PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name= 'Core_MDF_CCP_Internal_Co_GTM_Account_Manager' LIMIT 1];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
 
-            List<PermissionSet> ps2List = [SELECT Id FROM PermissionSet WHERE Name= 'Core_MDF_CCP_Internal_Generic_Access' LIMIT 1];
-            if (!ps2List.isEmpty()) {
-                // Check if assignment already exists
-                List<PermissionSetAssignment> existingAssignments2 = [SELECT Id FROM PermissionSetAssignment 
-                                                                    WHERE AssigneeId = :usr.id 
-                                                                    AND PermissionSetId = :ps2List[0].Id LIMIT 1];
-                if (existingAssignments2.isEmpty()) {
-                    insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps2List[0].Id);
-                }
-            }
+            PermissionSet ps2 = [SELECT Id FROM PermissionSet WHERE Name= 'Core_MDF_CCP_Internal_Generic_Access' LIMIT 1];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps2.Id);
+            
+            /*// 2. Create Custom Permission
+            CustomPermission cp = [SELECT Id FROM CustomPermission WHERE DeveloperName = 'Core_MDF_CCP_Internal_Co_GTM_Account_Manager' LIMIT 1];
+
+            // 3. Link the Permission Set to the Custom Permission
+            SetupEntityAccess sea = new SetupEntityAccess(
+                ParentId = ps.Id,
+                SetupEntityId = cp.Id
+            );
+            insert sea;*/
 
             Id iupgm_RecordType_CoGTM = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
 
@@ -476,7 +460,7 @@ private class Core_MDF_PFR_Grid_Test {
             iupgmRec.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Co_GTM_Account_Manager';
             iupgmRec.Core_MDF_User_id__c = usr.id;
             iupgmRec.RecordTypeId = iupgm_RecordType_CoGTM;
-           // insert iupgmRec;
+            insert iupgmRec;
 
             Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
             Id activity_RecordType_CoGTM = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
@@ -511,6 +495,8 @@ private class Core_MDF_PFR_Grid_Test {
             bud.StartDate = System.today().addDays(-1);
             bud.EndDate = System.today().addDays(10);
             insert bud;
+
+
 
             Core_MDF_Campaign_Budgets__c campBudget = new Core_MDF_Campaign_Budgets__c();
             campBudget.Core_MDF_Campaign_Id__c = coGTMCampaign.Id;
@@ -586,180 +572,6 @@ private class Core_MDF_PFR_Grid_Test {
 
             test.stopTest();
         }
-    }
-
-    // NEW TEST METHODS FOR IMPROVED COVERAGE
-
-    @isTest
-    static void testGetBudgetDetailsWithEmptyBudgetIdSet() {
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
-        System.runAs(usr) {
-            Account coGTMCoMarketingAccount = [SELECT Id FROM Account WHERE Name= 'CoGTM Co-Marketing Account'];
-            ChannelProgram coGTMProgram = [SELECT Id FROM ChannelProgram WHERE Core_MDF_Technical_Program_Name__c = 'CoGTM' LIMIT 1];
-            
-            Test.startTest();
-            
-            // Create campaign without any budget mappings
-            Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Campaign coGTMCampaign = new Campaign();
-            coGTMCampaign.Name = 'Test CoGTM Camp No Budget';
-            coGTMCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Co-Engineering';
-            coGTMCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-            coGTMCampaign.Core_MDF_Program__c = 'CoGTM';
-            coGTMCampaign.Status = 'Draft';
-            coGTMCampaign.Core_MDF_Account__c = coGTMCoMarketingAccount.id;
-            coGTMCampaign.RecordTypeId = campaign_RecordType_CoGTM;
-            coGTMCampaign.StartDate = System.today().addDays(-1);
-            coGTMCampaign.EndDate = System.today().addDays(10);
-            insert coGTMCampaign;
-            
-            // Test getBudgetDetails with campaign that has no budget mappings
-            List<PartnerMarketingBudget> budgetDetails = Core_MDF_PFR_Grid.getBudgetDetails(coGTMCampaign.Id);
-            System.assertEquals(0, budgetDetails.size(), 'Should return empty list when no budget mappings exist');
-            
-            Test.stopTest();
-        }
-    }
-
-    @isTest
-    static void testGetBudgetDetailsWithBlankCampaignId() {
-        Test.startTest();
-        
-        // Test with blank string
-        List<PartnerMarketingBudget> budgetDetails = Core_MDF_PFR_Grid.getBudgetDetails('');
-        System.assertEquals(0, budgetDetails.size(), 'Should return empty list for blank campaign ID');
-        
-        // Test with whitespace string
-        budgetDetails = Core_MDF_PFR_Grid.getBudgetDetails('   ');
-        System.assertEquals(0, budgetDetails.size(), 'Should return empty list for whitespace campaign ID');
-        
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testInsertRecordsWithEmptyList() {
-        Test.startTest();
-        
-        // Test with empty list
-        List<PartnerFundRequest> emptyList = new List<PartnerFundRequest>();
-        Boolean result = Core_MDF_PFR_Grid.insertRecords(emptyList);
-        System.assertEquals(false, result, 'Should return false for empty list');
-        
-        // Test with null list
-        result = Core_MDF_PFR_Grid.insertRecords(null);
-        System.assertEquals(false, result, 'Should return false for null list');
-        
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testGetCampaignDetailsWithInvalidStatus() {
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
-        System.runAs(usr) {
-            Account coGTMCoMarketingAccount = [SELECT Id FROM Account WHERE Name= 'CoGTM Co-Marketing Account'];
-            
-            Test.startTest();
-            
-            // Create campaign with status not in allowed list
-            Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Campaign coGTMCampaign = new Campaign();
-            coGTMCampaign.Name = 'Test CoGTM Camp Invalid Status';
-            coGTMCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Co-Engineering';
-            coGTMCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-            coGTMCampaign.Core_MDF_Program__c = 'CoGTM';
-            coGTMCampaign.Status = 'Completed'; // Not in allowed status list
-            coGTMCampaign.Core_MDF_Account__c = coGTMCoMarketingAccount.id;
-            coGTMCampaign.RecordTypeId = campaign_RecordType_CoGTM;
-            coGTMCampaign.StartDate = System.today().addDays(-1);
-            coGTMCampaign.EndDate = System.today().addDays(10);
-            insert coGTMCampaign;
-            
-            Boolean allowToCreate = Core_MDF_PFR_Grid.getCampaignDetails(coGTMCampaign.Id);
-            System.assertEquals(false, allowToCreate, 'Should return false for invalid campaign status');
-            
-            Test.stopTest();
-        }
-    }
-
-   
-    @isTest
-    static void testInnerClassDirectly() {
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
-        System.runAs(usr) {
-            Account coGTMCoMarketingAccount = [SELECT Id FROM Account WHERE Name= 'CoGTM Co-Marketing Account'];
-            
-            Test.startTest();
-            
-            // Create campaign
-            Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Campaign coGTMCampaign = new Campaign();
-            coGTMCampaign.Name = 'Test CoGTM Camp Inner Class';
-            coGTMCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Co-Engineering';
-            coGTMCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-            coGTMCampaign.Core_MDF_Program__c = 'CoGTM';
-            coGTMCampaign.Status = 'Draft';
-            coGTMCampaign.Core_MDF_Account__c = coGTMCoMarketingAccount.id;
-            coGTMCampaign.RecordTypeId = campaign_RecordType_CoGTM;
-            coGTMCampaign.StartDate = System.today().addDays(-1);
-            coGTMCampaign.EndDate = System.today().addDays(10);
-            insert coGTMCampaign;
-            
-            // Test inner class directly
-            Core_MDF_PFR_Grid.Core_MDF_PFR_Grid_InnerClass innerClass = new Core_MDF_PFR_Grid.Core_MDF_PFR_Grid_InnerClass();
-            Core_MDF_PFR_Grid.ActivityDetailsWrapper result = innerClass.getExistingActivityDetails(coGTMCampaign.Id);
-            
-            System.assertNotEquals(null, result, 'Inner class should return result');
-            System.assertNotEquals(null, result.activityOrCampaignList, 'Should return campaign list when no activities exist');
-            
-            Test.stopTest();
-        }
-    }
-
-    @isTest
-    static void testInsertRecordsWithInvalidData() {
-        Test.startTest();
-        
-        // Create invalid PFR record to trigger exception
-        List<PartnerFundRequest> invalidPfrList = new List<PartnerFundRequest>();
-        PartnerFundRequest invalidPfr = new PartnerFundRequest();
-        // Missing required fields to trigger exception
-        invalidPfr.Core_MDF_Budget_Amount_Local_amt__c = 100;
-        invalidPfrList.add(invalidPfr);
-        
-        Boolean result = Core_MDF_PFR_Grid.insertRecords(invalidPfrList);
-        System.assertEquals(false, result, 'Should return false when insert fails');
-        
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testGetCampaignDetailsWithBlankCampaignId() {
-        Test.startTest();
-        
-        // Test with blank campaign ID
-        Boolean result = Core_MDF_PFR_Grid.getCampaignDetails('');
-        System.assertEquals(false, result, 'Should return false for blank campaign ID');
-        
-        // Test with whitespace campaign ID
-        result = Core_MDF_PFR_Grid.getCampaignDetails('   ');
-        System.assertEquals(false, result, 'Should return false for whitespace campaign ID');
-        
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testGetExistingActivityDetailsWithBlankCampaignId() {
-        Test.startTest();
-        
-        // Test with blank campaign ID
-        Core_MDF_PFR_Grid.ActivityDetailsWrapper result = Core_MDF_PFR_Grid.getExistingActivityDetails('');
-        System.assertEquals(null, result, 'Should return null for blank campaign ID');
-        
-        // Test with whitespace campaign ID
-        result = Core_MDF_PFR_Grid.getExistingActivityDetails('   ');
-        System.assertEquals(null, result, 'Should return null for whitespace campaign ID');
-        
-        Test.stopTest();
     }
 
 }

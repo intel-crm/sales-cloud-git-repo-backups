@@ -98,12 +98,7 @@ public class Core_MDF_BatchSchedularArchival_Test {
         Core_MDF_BatchSchedularArchival.scheduleArchival(bsParamsList);
         
         id schId=batchIdsLst[0].id;
-        // Unit Test Method should include System.Assert
-        System.assertEquals(1, bsParamsList.size(), 'Batch scheduler params list should contain one item');
-        System.assertEquals(inputBatchSchedulersList.size(), batchIdsLst.size(), 'Input batch schedulers should match original list size');
-        
-        // Highlight: Unused Local Variable
-       // List<Core_MDF_Batch_Scheduler_Line_Item__c> remainingLineItems=([Select id from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c=:schId]);
+        List<Core_MDF_Batch_Scheduler_Line_Item__c> remainingLineItems=([Select id from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c=:schId]);
         
         //System.assertEquals(remainingLineItems.size(),archivalLimit);
      

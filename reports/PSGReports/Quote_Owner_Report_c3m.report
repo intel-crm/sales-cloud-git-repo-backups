@@ -70,6 +70,9 @@
     <columns>
         <field>SBQQ__Quote__c$core_cpq_next_approver_nm__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
     <description>This Report shows Quote History and allows users filter by Quote Owner.</description>
     <filter>
         <criteriaItems>

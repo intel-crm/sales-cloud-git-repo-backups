@@ -45,6 +45,9 @@
         <field>SBQQ__QuoteLine__c.core_cpq_distributor_margin_pct__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_price_book_nm__c</field>
     </columns>
     <columns>

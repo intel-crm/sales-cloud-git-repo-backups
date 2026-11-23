@@ -321,8 +321,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         system.runAs(testUser){
             update claim2;
         }
-        // Highlight: Unused Local Variable 
-      //  List<Case> caseListToBeInserted = new List<Case>();
+        List<Case> caseListToBeInserted = new List<Case>();
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
         

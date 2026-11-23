@@ -197,14 +197,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>PRM_Inactive_ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Inactive Indicator</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_ODM_whiteboxPointEarning_excl_Dt__c</fullName>
         <label>ODM whitebox Point earning excluded Date</label>
         <required>false</required>

@@ -21,21 +21,9 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>CRM_GeneratePDF_EMBController_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>CRM_GenerateWord_EMBController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>ExecutiveMeetingBrief_TriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
-        <name>Core_CRM_Custom_Label_Configuration__mdt</name>
-    </customMetadataTypeAccesses>
     <customPermissions>
         <enabled>true</enabled>
         <name>CRM_New_Executive_Meeting_Brief_Custom_Permission</name>
@@ -67,16 +55,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CRM_Meeting_Brief_Agenda__c.CRM_End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Meeting_Brief_Agenda__c.CRM_End_Time_Only__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>CRM_Meeting_Brief_Agenda__c.CRM_End_Time_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -88,16 +66,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CRM_Meeting_Brief_Agenda__c.CRM_Presenters_Conversation_Lead__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Meeting_Brief_Agenda__c.CRM_Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Meeting_Brief_Agenda__c.CRM_Start_Time_Only__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -117,31 +85,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CRM_Timezone_values__c.CRM_Country_Code_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Timezone_values__c.CRM_Country_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Timezone_values__c.CRM_State_Code_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Timezone_values__c.CRM_State_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Timezone_values__c.CRM_Timezone_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Executive_Meeting_Brief__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -153,16 +96,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Executive_Meeting_Brief__c.CRM_Additional_Legal_Guidance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Agentic_Account_EmailIds__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Agentic_Attendee_Bio__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -237,16 +170,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Scheduled_End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Scheduled_End_Time_Only__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Executive_Meeting_Brief__c.CRM_Scheduled_End_Time_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -257,22 +180,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Start_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Executive_Meeting_Brief__c.CRM_Technical_Assistant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Executive_Meeting_Brief__c.CRM_Time_Zone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -328,26 +236,12 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>CRM_Timezone_values__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
         <object>Executive_Meeting_Brief__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <pageAccesses>
         <apexPage>CRM_GeneratePDF_EMB</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>CRM_GenerateWord_EMB</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <recordTypeVisibilities>

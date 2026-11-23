@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Product Status Code Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Product Status Code Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Orderable --></label>
+        <name>Orderable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Auth --></label>
+        <name>Price_Auth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quotable --></label>
+        <name>Quotable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shippable --></label>
+        <name>Shippable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Code --></label>
+        <name>Status_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

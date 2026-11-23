@@ -827,7 +827,7 @@
         <fullName>IPS_Altera_Go_Live_Comment_Restriction</fullName>
         <active>true</active>
         <description>Restricting the user to add comments on a cases with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_IPS_Case__r.Core_IPS_Product_name__c &lt;&gt;&apos;Licensed Products&apos;)</errorConditionFormula>
         <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

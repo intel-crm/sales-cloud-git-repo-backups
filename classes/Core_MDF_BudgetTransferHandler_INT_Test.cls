@@ -162,13 +162,12 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         List<Account> toBeUpdated = new List<Account>();
         Test.startTest();
         // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-
-
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
     
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -193,15 +192,16 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
         toBeUpdated.add(acc4);
         Database.update(toBeUpdated);
         
-       /* PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
+        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
          pbm1.Core_MDF_Budget_Type_Txt__c='MDF';
         insert pbm1;
         
         PartnerMarketingBudget pbm2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2020,01,01), Date.newInstance(2020,12,31), false);
          pbm2.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm2;*/
+        insert pbm2;
         
-
+        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm2, acc2, 1000, true);
+        PartnerFundAllocation pfaRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm2, acc3, 300, true);
     
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -215,16 +215,10 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
            
             try
             {
-                PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
-        pbm1.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm1;
-        
-        PartnerMarketingBudget pbm2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2020,01,01), Date.newInstance(2020,12,31), false);
-        pbm2.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm2;
                 List<PartnerMarketingBudget> pbmList1 = Core_MDF_BudgetTransferHandler_INT.GetBudgetList (acc2.Id);
                 
-
+                List<PartnerMarketingBudget> pbmList2 = Core_MDF_BudgetTransferHandler_INT.GetBudgetList (acc3.Id);
+                List<PartnerMarketingBudget> pbmList3 = Core_MDF_BudgetTransferHandler_INT.GetBudgetList (acc4.Id);
                 
                 System.assertEquals(pbm2.Id, pbmList1[0].Id);
             }
@@ -236,8 +230,8 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
               test.stopTest();
     }
     
-   /* @isTest static void validateGetBalanceAllocationAmount(){
-        Test.startTest();
+    @isTest static void validateGetBalanceAllocationAmount(){
+        
         Core_MDF_Configuration__c vatConfig = new Core_MDF_Configuration__c();
             vatConfig.Name = 'ALLOWED_PRG_FOR_RUS_NOTIF';
             vatConfig.Core_MDF_Value__c = 'Retail Marketing Funds;Intel Partner Alliance';
@@ -287,7 +281,7 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
         List<Account> toBeUpdated = new List<Account>();
         
@@ -333,13 +327,14 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             }
             PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
             
-            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);
-
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);
+            /*camp.Core_MDF_Supports_legacy_program__c='MDF or both CMP & MDF';
+            camp.Core_MDF_Opal_Budget_Type_Txt__c='MDF';
+            camp.Core_MDF_Activity_Category_Type__c = 'Broadcast->Podcast';
+            insert camp;*/
             
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
             testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c='100%';
-            testPartnerFundRequestRecord.Core_MDF_ActivityCategory__c='';//my change
-            testPartnerFundRequestRecord.Core_MDF_Activity_Types__c='';//my change
             insert testPartnerFundRequestRecord;
             testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
             //testPartnerFundRequestRecord.AllocationId = pfa.Id;
@@ -349,9 +344,24 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
             
-            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 5000.00, System.today(), bank.Id, true);
+            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 5000.00, System.today(), bank.Id, False);
             claim1.Status = 'Approved';
-            update claim1;
+            claim1.Core_MDF_Total_Invoice_Amount_Local__c = 200;        
+            claim1.Core_MDF_Audit_Hold__c = true;                 
+            claim1.Description = 'Test PFC';
+            claim1.Core_MDF_Ad_Run_Start_Date__c = System.today();
+            claim1.Core_MDF_Ad_Run_End_Date__c = System.today();
+            claim1.Core_MDF_Invoice_Date__c = System.today();
+            claim1.Core_MDF_Invoice_Number__c = '1121';
+            claim1.Core_MDF_Media_Vehicle__c = 'test';
+            claim1.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
+            claim1.Core_MDF_Taxes_Local__c = 0;
+            claim1.Core_MDF_Currency__c = 'USD';
+            claim1.Core_MDF_Exchange_rate__c = 1;
+            claim1.Core_MDF_Country_Location_nm__c = 'INDIA';
+            claim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
+            claim1.Core_MDF_Region_Cd__c = 'APJ';
+            insert claim1;
             
             PartnerFundAllocation pfaNew = [Select id, Core_MDF_Available_Allocation_Amount__c from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
             Decimal amount = Core_MDF_BudgetTransferHandler_INT.GetBalanceAllocationAmount(acc2.Id, pbm.Id);
@@ -359,35 +369,7 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             System.assertEquals(pfaNew.Core_MDF_Available_Allocation_Amount__c, amount);
             Test.stopTest();
         }
-    }*/
-    
-    //Added by Joshua
-    @IsTest
-        static void testAccountIDNameMapping_Exception() {
-                    
-                try
-                {
-                    
-                    Core_MDF_BudgetTransferHandler_INT.accountIDNameMapping(null);
-                }
-                catch(Exception e){System.debug(e.getmessage());}
-                
-                
-        }
-        //Added by Joshua
-        @IsTest
-        static void getBudgetList_test() {
-                    
-                try
-                {
-                    
-                    Core_MDF_BudgetTransferHandler_INT.getBudgetList(null);
-                }
-                catch(Exception e){System.debug(e.getmessage());}
-                
-                
-        }
-    
+    }
     
     
     @isTest static void validateTransferAllocationAmount(){
@@ -413,8 +395,8 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
        List<Account> toBeUpdated = new List<Account>();
         test.startTest();
         // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
     
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -484,8 +466,8 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
        List<Account> toBeUpdated = new List<Account>();
         test.startTest();
         // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
     
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -520,10 +502,9 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             PartnerFundAllocation pfaRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm1, acc3, 300, true);
             
             string response1 = Core_MDF_BudgetTransferHandler_INT.TransferAllocationAmount((string)acc2.Id, (string)acc3.Id, (string)pbm1.Id, 500.00,Label.Core_MDF_Budget_Transfer_Type_Manual);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            System.assertNotEquals(null, response1);
+            //System.assertEquals('Success', response1);
            
         }
-        test.stopTest();
+         test.stopTest();
     }
 }

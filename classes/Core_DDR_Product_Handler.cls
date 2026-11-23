@@ -200,7 +200,7 @@ DRLI - Design Registration Line Item (DR Product)
                 if (newRecord.MMID_or_Ordering_code__c != oldRecord.MMID_or_Ordering_code__c || (newRecord.Core_Opportunity_Product_Id__c!= oldRecord.Core_Opportunity_Product_Id__c && newRecord.Core_Opportunity_Product_Id__c!=null)) {
                     drpIdsForTransactionalRec.add(newRecord.id);
                 }
-         if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED && !newRecord.Core_Comment_Txt__c.contains('Expired from Design Registration Record')) {
+				 if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED && !newRecord.Core_Comment_Txt__c.contains('Expired from Design Registration Record')) {
                     drId.add(newRecord.Core_Design_Registration_Id__c);
                 } 
             }
@@ -278,7 +278,7 @@ DRLI - Design Registration Line Item (DR Product)
         }
         
         for (Core_Design_Registration_Product__c iDRLI : newUpdateList) {
-            //iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c); //TWC729-9048 
+            iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c);
             iDRLI.Core_Product_List_Price_Amt__c = (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c));
            
         }

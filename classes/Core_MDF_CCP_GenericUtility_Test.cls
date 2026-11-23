@@ -72,8 +72,6 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             bypassFunctionKeys.add('Bypass_ShareActivityWithAccNodeGroup');
             bypassFunctionKeys.add('Bypass_geoLeadApprovalProcess');
             
-            // ADD THE NEW BYPASS FEATURE HERE
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -121,6 +119,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'APJ->Account Plan';
             insert iupgm;
             
+            System.debug('@@@@'+iupgm);
             
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name ='CCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='CCF');
             insert cee;
@@ -177,14 +176,14 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             ChannelProgram rmfCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);    
             cpList.add(rmfCP);
             insert cpList;
-            // Highlight: Unused Local Variable 
-           /* String ccfProgramName = */  Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund');
-           /* String dcfProgramName = */  Core_MDF_CCP_GenericUtility.getProgramLabel('Data Center CoMarketing Fund');
-           /* String ccfbProgramName = */ Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund Boost');
-           /* String spcfProgramName = */ Core_MDF_CCP_GenericUtility.getProgramLabel('Service Provider CoMarketing Fund');
-           /* String ipaProgramName = */ Core_MDF_CCP_GenericUtility.getProgramLabel('Intel Partner Allaince');
-           /* String ccfLabel = */ Core_MDF_CCP_GenericUtility.getTechnicalProgramName('Client');
-           /* String dcfLabel = */ Core_MDF_CCP_GenericUtility.getTechnicalProgramName('Datacenter');
+            
+            String ccfProgramName = Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund');
+            String dcfProgramName = Core_MDF_CCP_GenericUtility.getProgramLabel('Data Center CoMarketing Fund');
+             String ccfbProgramName = Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund Boost');
+             String spcfProgramName = Core_MDF_CCP_GenericUtility.getProgramLabel('Service Provider CoMarketing Fund');
+            String ipaProgramName = Core_MDF_CCP_GenericUtility.getProgramLabel('Intel Partner Allaince');
+            String ccfLabel = Core_MDF_CCP_GenericUtility.getTechnicalProgramName('Client');
+            String dcfLabel = Core_MDF_CCP_GenericUtility.getTechnicalProgramName('Datacenter');
             String Fields = 'id,Assignee.name,PermissionSet.Profile.Name,PermissionSetGroup.DeveloperName,PermissionSet.Id,PermissionSet.Name';
             String whereClause = 'Assignee.name != null limit 1';
             Core_MDF_CCP_GenericUtility.getUserAccessMap(Fields,whereClause);
@@ -203,8 +202,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             accList.add(acc2);
             accList.add(acc3);
             insert accList;
-           // Highlight: Unused Local Variable
-           /* string budgetType = */ Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount); 
+            string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
 
             
             PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_TestDataUtility.budget_Record_Type,acc2.Id,cp.Id,200000,System.today() -20,System.today().addDays(40), false);
@@ -409,7 +407,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
                                                                                                               'Consumer',
                                                                                                               'Desktop',
                                                                                                               'Intel® Core™ i5 Processor',
-                                                                                                              'Broadcast (Pre-2025)',
+                                                                                                              'Broadcast',
                                                                                                               'Podcast',
                                                                                                               'Draft',
                                                                                                               false);
@@ -456,8 +454,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
                 Core_MDF_CCP_GenericUtility.createShareRecForInternalPGMgrps('Account', recordPGMShareList);
             }
         }catch(Exception e){}
-        // Highlight: Unused Local Variable 
-       // List<user> users = [select Id,Contact.Core_Audience_List__c from user where Email = 'test1@example.com' limit 1];
+        List<user> users = [select Id,Contact.Core_Audience_List__c from user where Email = 'test1@example.com' limit 1];
         
         
         
@@ -478,10 +475,8 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
         Core_MDF_CCP_GenericUtility.deletePFRShareForExternal(wrapperAct);
         Core_MDF_CCP_GenericUtility.deleteExternalShareForActivity(wrapperAct);
         Core_MDF_CCP_GenericUtility.getPickListvalues('PartnerFundRequest', 'Core_MDF_Brand_nm__c');
-        // Highlight: Unused Local Variable
-       // String fields = ' Id,PermissionSet.Name,PermissionSetGroup.DeveloperName,PermissionSet.Profile.Name,PermissionSet.Id ';
-       // String whereClause = ' PermissionSet.Profile.Name =\'' + 'IT Admin' +'\' ';  
-      
+        String fields = ' Id,PermissionSet.Name,PermissionSetGroup.DeveloperName,PermissionSet.Profile.Name,PermissionSet.Id ';
+        String whereClause = ' PermissionSet.Profile.Name =\'' + 'IT Admin' +'\' ';  
        // String sanitiZedWhereClause = whereClause.replaceAll('\\\\','');
         //Core_MDF_CCP_GenericUtility.getUserAccessMap(fields, sanitiZedWhereClause);
         //Core_MDF_CCP_GenericUtility.getPermSetAssignmentList(fields, sanitiZedWhereClause);
@@ -639,5 +634,13 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
         Date userDate = Core_MDF_CCP_GenericUtility.getUserTodayDate();
         Test.stopTest();
         assert.isTrue(userDate != null);
+    }
+    
+    @isTest static void testGetPermSetAssignmentList(){
+        Test.startTest();
+        List<PermissionSetAssignment> psList = Core_MDF_CCP_GenericUtility.getPermSetAssignmentList('Id', 'Id != null LIMIT 1');
+        Map<Id,Set<String>> psmap = Core_MDF_CCP_GenericUtility.getUserIdToPermissionSetsMapByPSNames(new List<String>{'Core_MDF_CCP_Internal_Co_GTM_Account_Manager'}, null);
+        Test.stopTest();
+        assert.isTrue(psList != null);
     }
 }

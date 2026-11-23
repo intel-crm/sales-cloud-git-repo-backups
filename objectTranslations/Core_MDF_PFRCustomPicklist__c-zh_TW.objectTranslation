@@ -8,10 +8,6 @@
         <label><!-- Core_MDF_ActivityCategory --></label>
         <name>Core_MDF_ActivityCategory__c</name>
         <picklistValues>
-            <masterLabel>Audio</masterLabel>
-            <translation><!-- Audio --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Audio 2025</masterLabel>
             <translation><!-- Audio 2025 --></translation>
         </picklistValues>
@@ -20,20 +16,8 @@
             <translation>廣播</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Broadcast (Pre-2025)</masterLabel>
-            <translation><!-- Broadcast (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Buyer Incentive</masterLabel>
-            <translation><!-- Buyer Incentive --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Buyer Incentive 2025</masterLabel>
             <translation><!-- Buyer Incentive 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Digital</masterLabel>
-            <translation><!-- Digital --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Digital 2025</masterLabel>
@@ -44,16 +28,8 @@
             <translation>數位媒體</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Digital Media (Pre-2025)</masterLabel>
-            <translation><!-- Digital Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Event</masterLabel>
             <translation>活動</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Event (Pre-2025)</masterLabel>
-            <translation><!-- Event (Pre-2025) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Event 2025</masterLabel>
@@ -68,20 +44,12 @@
             <translation>潛在客戶管理</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lead Management (Pre-2025)</masterLabel>
-            <translation><!-- Lead Management (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Online Ad</masterLabel>
             <translation><!-- Online Ad --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Out of Home</masterLabel>
             <translation><!-- Out of Home --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of Home (Pre-2025)</masterLabel>
-            <translation><!-- Out of Home (Pre-2025) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Out of Home 2025</masterLabel>
@@ -92,10 +60,6 @@
             <translation>戶外媒體</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
-            <translation><!-- Out of Home Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Outcome-Based</masterLabel>
             <translation><!-- Outcome-Based --></translation>
         </picklistValues>
@@ -104,16 +68,8 @@
             <translation>付費社群媒體</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
-            <translation><!-- Paid Social Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Print</masterLabel>
             <translation>平面廣告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Print (Pre-2025)</masterLabel>
-            <translation><!-- Print (Pre-2025) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Print 2025</masterLabel>
@@ -124,14 +80,6 @@
             <translation>平面廣告媒體</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Print Media (Pre-2025)</masterLabel>
-            <translation><!-- Print Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Production</masterLabel>
-            <translation><!-- Production --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Production 2025</masterLabel>
             <translation><!-- Production 2025 --></translation>
         </picklistValues>
@@ -140,24 +88,12 @@
             <translation>購買獎勵</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
-            <translation><!-- Purchase Incentive (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Sales Incentive</masterLabel>
             <translation>銷售獎勵</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
-            <translation><!-- Sales Incentive (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Sales Readiness</masterLabel>
             <translation>銷售能力整備</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
-            <translation><!-- Sales Readiness (Pre-2025) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales Readiness 2025</masterLabel>
@@ -168,16 +104,8 @@
             <translation>搜尋引擎行銷 (SEM)</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
-            <translation><!-- Search Engine Marketing (SEM) (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Search Performance</masterLabel>
             <translation><!-- Search Performance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller Incentive</masterLabel>
-            <translation><!-- Seller Incentive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Seller Incentive 2025</masterLabel>
@@ -188,24 +116,12 @@
             <translation>技術探索</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
-            <translation><!-- Tech Exploration (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Sales</masterLabel>
-            <translation><!-- Technical Sales --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Technical Sales 2025</masterLabel>
             <translation><!-- Technical Sales 2025 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Training</masterLabel>
             <translation><!-- Training --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video</masterLabel>
-            <translation><!-- Video --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Video 2025</masterLabel>
@@ -2388,10 +2304,6 @@
             <translation><!-- BRAZIL --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BRITISH VIRGIN ISLANDS</masterLabel>
-            <translation><!-- BRITISH VIRGIN ISLANDS --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>BRUNEI DARUSSALAM</masterLabel>
             <translation><!-- BRUNEI DARUSSALAM --></translation>
         </picklistValues>
@@ -3202,10 +3114,6 @@
         <picklistValues>
             <masterLabel>Edge Gateway</masterLabel>
             <translation><!-- Edge Gateway --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Edge/IOT</masterLabel>
-            <translation><!-- Edge/IOT --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Handheld</masterLabel>

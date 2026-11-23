@@ -142,8 +142,8 @@
     <decisions>
         <name>Core_MDF_Zero_Requested_Amount</name>
         <label>Zero Requested Amount</label>
-        <locationX>258</locationX>
-        <locationY>657</locationY>
+        <locationX>257</locationX>
+        <locationY>656</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Change_in_Request_CAP_Amount</targetReference>
         </defaultConnector>
@@ -163,6 +163,13 @@
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>Core_MDF_IPA_Budget_Type_Cap</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_MDF_Channel_MDF_Budget_Type_Cap</stringValue>
                 </rightValue>
             </conditions>
             <connector>

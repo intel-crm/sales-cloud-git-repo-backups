@@ -48,14 +48,15 @@ Modified By   :        Date:       Changes:
     public static void createShareForPFR(List<Id> pfrIdList){
        
         
-
+        Set<String> geoSet = new Set<String>();
         List<Core_MDF_RecordGeoShare> recordGeoShareList = new List<Core_MDF_RecordGeoShare>();
         
         List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList= new List<Core_MDF_RecordPGMShareWrapper>();
         
         String region = '';
         String subRegion = ''; 
-
+        String Region_sub='';
+        String reg_sub='';
         try{
             //Iterate over Country Geo Mapping metadat to prepare countryGeoMap
             
@@ -66,73 +67,77 @@ Modified By   :        Date:       Changes:
                                           ChannelPartner.Core_MDF_Channel_Program__c,Core_MDF_Country_nm__c,Core_MDF_Campaign_Ultimate_Account_Id__c, 
                                           ChannelPartner.Core_MDF_Channel_Program__r.Name, Core_MDF_Program__c, Core_MDF_Budget_Type_nm__c,Campaign.Core_MDF_Proposal_Based_Ind__c
                                           FROM PartnerFundRequest WHERE Id IN : pfrIdList]){
-            	// US - TWC702-14285: Flatten nested IFs (no logic change)                            
-            	if(pfr.ChannelPartnerId == NULL || pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c == NULL || pfr.ChannelPartner.Core_MDF_Channel_Program__c == NULL) continue;
+                                              if(pfr.ChannelPartnerId != NULL && pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c != NULL && pfr.ChannelPartner.Core_MDF_Channel_Program__c != NULL){
                                                   
                                                   
-            		//Budget Type based sharing program
-            		// US - TWC702-14285: Flatten nested IFs (no logic change)
-            		if(budgetTypeBasedProg.contains(pfr.Core_MDF_Program__c)){      
-                		if(String.isBlank(pfr.Core_MDF_Region_nm__c)) continue;
-                                if(pfr.Core_MDF_Program__c == Label.Core_MDF_Co_GTM_program_name){
-                                	for(String geo : pfr.Core_MDF_Region_nm__c.split(';')){
-                                        	recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, geo, subRegion, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name, pfr.Core_MDF_Budget_Type_nm__c));
+                                                  //Budget Type based sharing program
+                                                 
+                                                  if(budgetTypeBasedProg.contains(pfr.Core_MDF_Program__c)){      
+                                                       if(String.isNotBlank(pfr.Core_MDF_Region_nm__c)){
+                                                            if(pfr.Core_MDF_Program__c == Label.Core_MDF_Co_GTM_program_name){
+                                                                for(String geo : pfr.Core_MDF_Region_nm__c.split(';')){
+                                                                    recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, geo, subRegion, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name, pfr.Core_MDF_Budget_Type_nm__c));
                                                           
                                                                 
-                                                recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, geo,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
+                                                                    recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, geo,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
                                                                                                                             pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
-                                        }
-                                }
-                                else{
-                                	region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
-                                        subRegion = pfr.Core_MDF_Sub_Region_nm__c;
+                                                                }
+                                                            }
+                                                            else{
+                                                          region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
+                                                          subRegion = pfr.Core_MDF_Sub_Region_nm__c;
                                                           
-                                        recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, region, subRegion, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name, pfr.Core_MDF_Budget_Type_nm__c));
+                                                          recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, region, subRegion, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name, pfr.Core_MDF_Budget_Type_nm__c));
                                                          
                                                           
                                                           recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, region,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
                                                                                                                     pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
                                                            
-                                        //Share the activity with Primary Account users (Campaign Account)
-                                        if(pfr.Core_MDF_Program__c == Label.Core_MDF_EEF_Program_Name){
-                                        	recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, region,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
+                                                           //Share the activity with Primary Account users (Campaign Account)
+                                                           if(pfr.Core_MDF_Program__c == Label.Core_MDF_EEF_Program_Name){
+                                                               recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, region,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
                                                                                                                     pfr.Core_MDF_Campaign_Ultimate_Account_Id__c));
-                                        }
-                                }
+                                                           }
+                                                            }
                                                           
-                        }      
-                        else{ 
-                        	//US1098882: Replaced Core_MDF_Region_cd__c with Core_MDF_Region_nm__c && Core_MDF_Sub_Region_cd__c with Core_MDF_Sub_Region_nm__c
-                		if(String.isBlank(pfr.Core_MDF_Region_nm__c)) continue;
+                                                       }      
+                                                      
+                                                  }
+                                                  else{ 
+                                                      //US1098882: Replaced Core_MDF_Region_cd__c with Core_MDF_Region_nm__c && Core_MDF_Sub_Region_cd__c with Core_MDF_Sub_Region_nm__c
+                                                      if(String.isNotBlank(pfr.Core_MDF_Region_nm__c)){
                                                           
-                                String geo = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
-                                String subGeo = pfr.Core_MDF_Sub_Region_nm__c;
+                                                          String geo = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
+                                                          String subGeo = pfr.Core_MDF_Sub_Region_nm__c;
                                                           
                                                           
                                                           
-                                // US949836 : New Budget Type field changes replaced txt field with new global picklist field
+                                                          // US949836 : New Budget Type field changes replaced txt field with new global picklist field
                                                                             
                                                           
                                                           
-                                recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, geo, subGeo, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name));
+                                                              recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, geo, subGeo, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name));
                                                            
                                                           
-                                recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, geo, pfr.Core_MDF_Sub_Region_nm__c, pfr.Core_MDF_Program__c,
+                                                           recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, geo, pfr.Core_MDF_Sub_Region_nm__c, pfr.Core_MDF_Program__c,
                                                                                                                         pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c)); 
                                                           
                                                          
                                                              
+                                                      }
                                                       
                                                       
-                        }//end of ipa else
-                        //end of account check            
-                }
+                                                  }//end of ipa else
+                                              }
+                                              //end of account check
+                                              
+                                          }
             
             
-            	if(recordPGMShareList != null && recordPGMShareList.size() >0){
-                	Core_MDF_CCP_GenericUtility.createShareRecForInternalPGMgrps('PartnerFundRequest', recordPGMShareList);
-            	}
-            	if(recordGeoShareList != NULL && recordGeoShareList.size() >0){ 
+            if(recordPGMShareList != null && recordPGMShareList.size() >0){
+                Core_MDF_CCP_GenericUtility.createShareRecForInternalPGMgrps('PartnerFundRequest', recordPGMShareList);
+            }
+            if(recordGeoShareList != NULL && recordGeoShareList.size() >0){ 
                                      
                 Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroup('PartnerFundRequest',recordGeoShareList);
             }
@@ -327,98 +332,99 @@ Modified By   :        Date:       Changes:
         for(Core_MDF_ProgramGeoGroupMap__mdt rec : [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,
                                                     Core_MDF_Sub_Region__c,Core_MDF_Check_SubGeo__c,Core_MDF_Budget_Type_txt__c
                                                     FROM Core_MDF_ProgramGeoGroupMap__mdt WHERE Core_MDF_Program__c IN :programSet]){
-        	// US - TWC702-14285: Flatten nested IFs (no logic change)                                          
-        	if(rec.Core_MDF_Region__c != NULL && rec.Core_MDF_Check_SubGeo__c && rec.Core_MDF_Sub_Region__c != NULL){
-            		//Create a String with Program + Geo + SubGeo
-            		String programGeoSubGeoStr = '';
-            		programGeoSubGeoStr = rec.Core_MDF_Program__c + '-' + rec.Core_MDF_Region__c + '-' + rec.Core_MDF_Sub_Region__c;
-            		if(programGeoSubGeoRWGroupsMap.containsKey(programGeoSubGeoStr)){
-                		Set<String> groupSet = programGeoSubGeoRWGroupsMap.get(programGeoSubGeoStr);
-                
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programGeoSubGeoRWGroupsMap.put(programGeoSubGeoStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programGeoSubGeoRWGroupsMap.put(programGeoSubGeoStr, groupSet);
-            		}
-            
-            		if(programGeoSubGeoROGroupsMap.containsKey(programGeoSubGeoStr)){
-                		Set<String> groupSet = programGeoSubGeoROGroupsMap.get(programGeoSubGeoStr);
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programGeoSubGeoROGroupsMap.put(programGeoSubGeoStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programGeoSubGeoROGroupsMap.put(programGeoSubGeoStr, groupSet);
-            		}
-            
-            		groupNames.add(rec.Core_MDF_Group_Name__c);
-            		groupNames.add(rec.Core_MDF_Group_Name_RO__c);
-        	}
-        	// US - TWC702-14285: Flatten nested IFs (no logic change)
-        	else if(rec.Core_MDF_Region__c != NULL){
-            		//Program + Geo
-            		String programGeoStr = '';
-            		programGeoStr = rec.Core_MDF_Program__c + '-' + rec.Core_MDF_Region__c;
-            		if(programGeoRWGroupsMap.containsKey(programGeoStr)){
-                		Set<String> groupSet = programGeoRWGroupsMap.get(programGeoStr);
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programGeoRWGroupsMap.put(programGeoStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programGeoRWGroupsMap.put(programGeoStr, groupSet);
-            		}
-            
-            		if(programGeoROGroupsMap.containsKey(programGeoStr)){
-                		Set<String> groupSet = programGeoROGroupsMap.get(programGeoStr);
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programGeoROGroupsMap.put(programGeoStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programGeoROGroupsMap.put(programGeoStr, groupSet);
-            		}
-            
-            		groupNames.add(rec.Core_MDF_Group_Name__c);
-            		groupNames.add(rec.Core_MDF_Group_Name_RO__c);
-        	}
-        	// US - TWC702-14285: Flatten nested IFs (no logic change)
-        	else if(rec.Core_MDF_Program__c != NULL){
-            		//Program
-            		String programStr = '';
-            		programStr = rec.Core_MDF_Program__c + '-';
-            
-            		if(programRWGroupsMap.containsKey(programStr)){
-                		Set<String> groupSet = programRWGroupsMap.get(programStr);
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programRWGroupsMap.put(programStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name__c);
-                		programRWGroupsMap.put(programStr, groupSet);
-            		}
-            		if(programROGroupsMap.containsKey(programStr)){
-                		Set<String> groupSet = programROGroupsMap.get(programStr);
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programROGroupsMap.put(programStr, groupSet);
-            		}
-            		else{
-                		Set<String> groupSet = new Set<String>();
-                		groupSet.add(rec.Core_MDF_Group_Name_RO__c);
-                		programROGroupsMap.put(programStr, groupSet);
-            		}
-            		groupNames.add(rec.Core_MDF_Group_Name__c);
-            		groupNames.add(rec.Core_MDF_Group_Name_RO__c);
-        	}
-    	}
-    
+                                                        if(rec.Core_MDF_Region__c != NULL){
+                                                            if(rec.Core_MDF_Check_SubGeo__c){                    
+                                                                if(rec.Core_MDF_Sub_Region__c != NULL){
+                                                                    //Create a String with Program + Geo + SubGeo
+                                                                    String programGeoSubGeoStr = '';
+                                                                    programGeoSubGeoStr = rec.Core_MDF_Program__c + '-' + rec.Core_MDF_Region__c + '-' + rec.Core_MDF_Sub_Region__c;
+                                                                    if(programGeoSubGeoRWGroupsMap.containsKey(programGeoSubGeoStr)){
+                                                                        Set<String> groupSet = programGeoSubGeoRWGroupsMap.get(programGeoSubGeoStr);
+                                                                        
+                                                                        groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                        programGeoSubGeoRWGroupsMap.put(programGeoSubGeoStr, groupSet);
+                                                                    }
+                                                                    else{
+                                                                        Set<String> groupSet = new Set<String>();
+                                                                        groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                        programGeoSubGeoRWGroupsMap.put(programGeoSubGeoStr, groupSet);
+                                                                    }
+                                                                    
+                                                                    if(programGeoSubGeoROGroupsMap.containsKey(programGeoSubGeoStr)){
+                                                                        Set<String> groupSet = programGeoSubGeoROGroupsMap.get(programGeoSubGeoStr);
+                                                                        groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                        programGeoSubGeoROGroupsMap.put(programGeoSubGeoStr, groupSet);
+                                                                    }
+                                                                    else{
+                                                                        Set<String> groupSet = new Set<String>();
+                                                                        groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                        programGeoSubGeoROGroupsMap.put(programGeoSubGeoStr, groupSet);
+                                                                    }
+                                                                    
+                                                                    groupNames.add(rec.Core_MDF_Group_Name__c);
+                                                                    groupNames.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                }
+                                                            }
+                                                            else{
+                                                                //Program + Geo
+                                                                String programGeoStr = '';
+                                                                programGeoStr = rec.Core_MDF_Program__c + '-' + rec.Core_MDF_Region__c;
+                                                                if(programGeoRWGroupsMap.containsKey(programGeoStr)){
+                                                                    Set<String> groupSet = programGeoRWGroupsMap.get(programGeoStr);
+                                                                    groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                    programGeoRWGroupsMap.put(programGeoStr, groupSet);
+                                                                }
+                                                                else{
+                                                                    Set<String> groupSet = new Set<String>();
+                                                                    groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                    programGeoRWGroupsMap.put(programGeoStr, groupSet);
+                                                                }
+                                                                
+                                                                if(programGeoROGroupsMap.containsKey(programGeoStr)){
+                                                                    Set<String> groupSet = programGeoROGroupsMap.get(programGeoStr);
+                                                                    groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                    programGeoROGroupsMap.put(programGeoStr, groupSet);
+                                                                }
+                                                                else{
+                                                                    Set<String> groupSet = new Set<String>();
+                                                                    groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                    programGeoROGroupsMap.put(programGeoStr, groupSet);
+                                                                }
+                                                                
+                                                                groupNames.add(rec.Core_MDF_Group_Name__c);
+                                                                groupNames.add(rec.Core_MDF_Group_Name_RO__c);
+                                                            }
+                                                        }
+                                                        else{
+                                                            //Program
+                                                            String programStr = '';
+                                                            programStr = rec.Core_MDF_Program__c + '-';
+                                                            if(rec.Core_MDF_Program__c != NULL){
+                                                                if(programRWGroupsMap.containsKey(programStr)){
+                                                                    Set<String> groupSet = programRWGroupsMap.get(programStr);
+                                                                    groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                    programRWGroupsMap.put(programStr, groupSet);
+                                                                }
+                                                                else{
+                                                                    Set<String> groupSet = new Set<String>();
+                                                                    groupSet.add(rec.Core_MDF_Group_Name__c);
+                                                                    programRWGroupsMap.put(programStr, groupSet);
+                                                                }
+                                                                if(programROGroupsMap.containsKey(programStr)){
+                                                                    Set<String> groupSet = programROGroupsMap.get(programStr);
+                                                                    groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                    programROGroupsMap.put(programStr, groupSet);
+                                                                }
+                                                                else{
+                                                                    Set<String> groupSet = new Set<String>();
+                                                                    groupSet.add(rec.Core_MDF_Group_Name_RO__c);
+                                                                    programROGroupsMap.put(programStr, groupSet);
+                                                                }
+                                                                groupNames.add(rec.Core_MDF_Group_Name__c);
+                                                                groupNames.add(rec.Core_MDF_Group_Name_RO__c);
+                                                            }                
+                                                        }
+                                                    }
         //Fetch Group Ids
         for(Group grp:[SELECT Id, DeveloperName FROM Group where DeveloperName IN :groupNames]){
             grpNametoIdMap.put(grp.DeveloperName, grp.Id);

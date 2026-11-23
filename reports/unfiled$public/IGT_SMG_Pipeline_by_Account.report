@@ -167,16 +167,16 @@
         <criteriaItems>
             <column>Opportunity.Decision_Date__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Decision_Date__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>lessThan</operator>
-            <value>12/31/2026</value>
+            <value>12/31/2025</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,10 +1,3 @@
-<!--
-  @description       : 
-  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
-  @group             : 
-  @last modified on  : 01-22-2026
-  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
--->
 <aura:component controller="Core_MDF_PartnerFundClaim"
     implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
     <!--Style-->
@@ -110,7 +103,7 @@
     <aura:attribute name="activityRegion" type="String" default="" />
     <aura:attribute name="activityClosureTypeList" type="String[]" />
     <aura:attribute name="activityClosureTypeSeparated" type="String" />
-    <aura:attribute name="isEdit" type="Boolean" default="false" />
+
     <!--Attribute to Store Clone Button Variable-->
     <aura:attribute name="isCloneClaim" type="Boolean" description=" tells if it is clone record" />
     <!--To hold error msg (permission/status), in case of claim create from activity-->
@@ -270,7 +263,7 @@
     <!--IPA-Jegan-->
     <aura:attribute name="campaignPurposeWrapper" type="Object"/>
     <aura:attribute name="isOutcomeBased" type="Boolean" default="false" />
-    <aura:attribute name="tacticMetricsEditable" type="Boolean"/>
+    <aura:attribute name="tacticMetricsEditable" type="Boolean" default="false" />
     <aura:attribute name="columns" type="List" />
     <aura:attribute name="rows" type="List" />
     <aura:attribute name="editableTacticMetric" type="Boolean" default="true" />
@@ -284,15 +277,6 @@
     <aura:attribute name="isActivityPurposeVisible" type="Boolean" default="true" />
     <aura:attribute name="isCampaignPurposeVisible" type="Boolean" default="false" />
     <aura:attribute name="tableTitle" type="String"/>
-    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/>
-    <aura:attribute name="isOutcomeBasedActivity" type="Boolean" default="false"/>
-    <aura:attribute name="outcomeDesc" type="string" default="" />
-    <aura:attribute name="subClaimList" type="PartnerFundClaim[]" />
-    <aura:attribute name="isSuperClaim" type="Boolean" default="false"/>
-    <aura:attribute name="isOutcomeBasedIntUrl" type="Boolean" default="false" /> <!--Added by AJ-->
-    <aura:attribute name="isOutcomeBasedExtUrl" type="Boolean" default="false" /> <!--Added by AJ-->
-    <aura:attribute name="actionType" type="String" />
-    
     <!--Used to identify any change in the audit document(fired from Core_MDF_ManageAuditDocument_Revamp)-->
     <aura:handler name="enableSubmitButtonEvent" event="c:Core_MDF_EnableSubmitbuttonEvent"
         action="{!c.handleDocumentTypeChange}" />
@@ -305,13 +289,11 @@
         <div class="{!v.isNewClaimCreate ? 'slds-modal__container' : 'slds-modal__container claimClone-modal'}">
             <!-- Heading (Header of the Modal) -->
             <div class="slds-modal__header">
-                <lightning:buttonIcon iconName="utility:close" variant="bare" size="large" class="slds-button slds-button_icon slds-modal__close" onclick="{! c.closeModal }" alternativeText="Close" />
-                <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse .modalCloseButton" title="Close"
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
                     onclick="{!c.closeModal}">
-                     <lightning:icon class="slds-icon" iconName="utility:close" alternativeText="Close" />  [commented line]
+                    <!--  <lightning:icon class="slds-icon" iconName="utility:close" alternativeText="Close" />  -->
                     <lightning:icon class="closePop" iconName="utility:close" alternativeText="Close" />
-                </button> -->
-
+                </button>
                 <!--POP-->
                 <aura:if isTrue="{!(v.isClaimEditable)}">
                     <lightning:progressIndicator type="path" currentStep="{!v.currentStep}" variant="base">
@@ -372,12 +354,12 @@
                                     <!--activity will be in disabled mode , in case of edit/cone-->
                                     <aura:if isTrue="{!v.activityDisabled}">
                                         <lightning:input aura:id="ActIdEditRetail" name="ActivityIdEdit"
-                                            label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}" value="{!v.activitySearchString}"
+                                            label="{!$Label.c.Core_MDF_Request}" value="{!v.activitySearchString}"
                                             disabled="true" />
                                         <aura:set attribute="else">
                                             <c:Core_MDF_LightningSObjectLookUp aura:id="activityIdRetail"
-                                                label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}"
-                                                pluralLabel="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}"
+                                                label="{!$Label.c.Core_MDF_Request}"
+                                                pluralLabel="{!$Label.c.Core_MDF_Request}"
                                                 sObjectAPIName="PartnerFundRequest" instanceId="activityId"
                                                 helpText="{!$Label.c.Core_MDF_Activity_Activity_Name_Help}"
                                                 searchString="{!v.activitySearchString}"
@@ -407,14 +389,14 @@
                                         <!--activity will be in disabled mode , in case of edit/cone-->
                                         <aura:if isTrue="{!v.activityDisabled}">
                                             <lightning:input aura:id="ActIdEdit" name="ActivityIdEdit"
-                                                label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}" value="{!v.activitySearchString}"
+                                                label="{!$Label.c.Core_MDF_Request}" value="{!v.activitySearchString}"
                                                 disabled="true" />
 
                                             <aura:set attribute="else">
                                                 <!--<aura:if isTrue="{!v.showActivityLookupPill}">-->
                                                 <c:Core_MDF_LightningSObjectLookUp aura:id="activityId"
-                                                    label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}"
-                                                    pluralLabel="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}"
+                                                    label="{!$Label.c.Core_MDF_Request}"
+                                                    pluralLabel="{!$Label.c.Core_MDF_Request}"
                                                     sObjectAPIName="PartnerFundRequest" instanceId="activityId"
                                                     helpText="{!$Label.c.Core_MDF_Activity_Activity_Name_Help}"
                                                     searchString="{!v.activitySearchString}"
@@ -430,7 +412,6 @@
 
                             <!--Escalation Lookup will be disabled for retail claim submitter,while claim create from escalation-->
                             <!--if user is claim case reviewer/manager , in case of edit or if activity is not selected-->
-                            <aura:if isTrue = "{!v.simpleNewClaim.RequestId}">
                             <aura:if isTrue="{!v.escalationDisabled}">
                                 <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                     <lightning:input aura:id="escIdEdit" name="EscalationIdEdit"
@@ -449,7 +430,7 @@
                                                 helpText="{!$Label.c.Core_MDF_EscalationId_Help}"
                                                 searchString="{!v.escalationNoSearchString}"
                                                 returnFields="Core_MDF_Escalation_Name_txt__c,Name,Core_MDF_Total_Dollar_Impact_amt__c"
-                                                filterCriteria="{!'(Name LIKE @quote;%' + v.escalationNoSearchString + '%@quote; OR Core_MDF_Escalation_Name_txt__c LIKE @quote;%' + v.escalationNoSearchString + '%@quote;) AND Core_MDF_Co_Marketing_Activity_id__c = @quote;' + v.activityIdForEsc + '@quote; AND Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c != @quote;Sub Activity@quote; AND RecordType.DeveloperName = @quote;' + v.lateClaimRecType + '@quote; AND Core_MDF_Escalation_Status_nm__c = @quote;Approved@quote; AND Core_MDF_Claim_Number_id__c = NULL AND Core_MDF_Channel_Program_id__r.Name = @quote;' + v.programName + '@quote;'}" />
+                                                filterCriteria="{!'(Name LIKE @quote;%' + v.escalationNoSearchString + '%@quote; OR Core_MDF_Escalation_Name_txt__c LIKE @quote;%' + v.escalationNoSearchString + '%@quote;) AND Core_MDF_Co_Marketing_Activity_id__c = @quote;' + v.activityIdForEsc + '@quote; AND RecordType.DeveloperName = @quote;' + v.lateClaimRecType + '@quote; AND Core_MDF_Escalation_Status_nm__c = @quote;Approved@quote; AND Core_MDF_Claim_Number_id__c = NULL AND Core_MDF_Channel_Program_id__r.Name = @quote;' + v.programName + '@quote;'}" />
                                             <!-- </aura:if>-->
                                         </div>
                                     </aura:if>
@@ -503,13 +484,7 @@
                                     value="{!v.simpleNewClaim.ChannelPartner}" disabled="true"
                                     title="{!$Label.c.Core_MDF_Account_Node_Help}" />
                             </div>
-                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}">
-                            <div aura:id="OutcomeDescDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
-                            <lightning:textarea aura:id="outcomeDescription" name="outcomeDesc"
-                                                    label="{!$Label.c.Core_MDF_Outcome_Description}" disabled="true" value="{!v.outcomeDesc}"/>
-                            </div>
-                            <div class="slds-col slds-size_1-of-2"></div>
-                            <aura:set attribute="else">
+
                             <div aura:id="CampaignNameDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:textarea aura:id="campaignName" name="Name"
                                     label="{!$Label.c.Core_MDF_Campaign_Name}" disabled="true" value="{!v.campaignName}"
@@ -520,8 +495,7 @@
                                     label="{!$Label.c.Core_MDF_Campaign_description}" disabled="true"
                                     value="{!v.campaignDesc}" title="{!$Label.c.Core_MDF_Campaign_description_Help}" />
                             </div>
-                            </aura:set>
-                            </aura:if>
+
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:select value="{!v.simpleNewClaim.Core_MDF_Country_Location_nm__c}"
                                     aura:id="ActCountryLocation" name="Core_MDF_Country_Location_nm__c"
@@ -559,21 +533,7 @@
 
                                 </div>
                             </aura:if>
-                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}">
-                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
-                                <lightning:input type="date" aura:id="ActStartDate"
-                                    name="Core_MDF_Activity_Start_Date__c"
-                                    label="{!$Label.c.Core_MDF_Start_Date}"
-                                    value="{!v.simpleNewClaim.Core_MDF_Activity_Start_Date__c}" disabled="true"
-                                    title="{!$Label.c.Core_MDF_Act_Start_Date_Help}" />
-                            </div>
-                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
-                                <lightning:input type="date" aura:id="ActEndDate" name="Core_MDF_Activity_End_Date__c"
-                                    label="{!$Label.c.Core_MDF_End_Date}"
-                                    value="{!v.simpleNewClaim.Core_MDF_Activity_End_Date__c}" disabled="true"
-                                    title="{!$Label.c.Core_MDF_Act_End_Date_Help}" />
-                            </div>
-							<aura:set attribute="else">
+
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input type="date" aura:id="ActStartDate"
                                     name="Core_MDF_Activity_Start_Date__c"
@@ -587,9 +547,7 @@
                                     value="{!v.simpleNewClaim.Core_MDF_Activity_End_Date__c}" disabled="true"
                                     title="{!$Label.c.Core_MDF_Act_End_Date_Help}" />
                             </div>
-                                </aura:set>
-                            </aura:if>
-			    <aura:if isTrue="{!not(v.isOutcomeBasedAccountBasedAct)}">
+
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="ActCategory" name="Core_MDF_Activity_Category__c"
                                     label="{!$Label.c.Core_MDF_ActivityCategory}"
@@ -602,7 +560,7 @@
                                     value="{!v.simpleNewClaim.Core_MDF_Activity_Types__c}" disabled="true"
                                     title="{!$Label.c.Core_MDF_Act_Type_Help}" />
                             </div>
-			    </aura:if>
+
                             <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_RetailProgram}">
                                 <div aura:id="ActSubTypesDiv"
                                     class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">
@@ -796,7 +754,7 @@
                                     label="{!$Label.c.Core_MDF_Total_Invoice_Amount_Local}" required="true"
                                     value="{!v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c}"
                                     title="{!$Label.c.Core_MDF_Total_Invoice_Amount_Local_Help}" min="0" step="any"
-                                    disabled="{!v.isEditDisabled}" onchange="{!c.handleChange}" onblur="{!c.handleBlur}" />
+                                    disabled="{!v.isEditDisabled}" onchange="{! c.handleChange}"/>
                                     <aura:if isTrue="{!v.showExcludedTaxMessage}">
                                  <p class="informativeText">{!$Label.c.Core_MDF_Exclude_Tax_Message}</p>
                                     </aura:if>
@@ -809,8 +767,7 @@
                                     label="{!$Label.c.Core_MDF_OtherCostsnotReimbursable_Local}" required="true"
                                     value="{!v.simpleNewClaim.Core_MDF_OtherCostsnotReimbursable_Local__c}"
                                     title="{!$Label.c.Core_MDF_Other_Costs_not_Reimbursable_Local_Help}" min="0"
-                                    step="any" disabled="{!v.isEditDisabled}"
-                                    onchange="{!c.handleAmountValidation}" onblur="{!c.handleBlur}"/>
+                                    step="any" disabled="{!v.isEditDisabled}" onchange="{!c.handleAmountValidation}" />
                             </div>
                             <div aura:id="claimTaxesLocalDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="claimTaxesLocal" type="number" name="Core_MDF_Taxes_Local__c"
@@ -839,7 +796,6 @@
                                 </div>
                             </aura:if>
 
-                            <aura:if isTrue="{!not(v.isOutcomeBasedAccountBasedAct)}"><!-- TWC3117-15268 -->
                             <div aura:id="processingPrefDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:select aura:id="processingPref"
                                     value="{!v.simpleNewClaim.Core_MDF_Processing_Preference_nm__c}" name="processingPrefPicklist"
@@ -849,7 +805,6 @@
                                     <option value="{!$Label.c.Core_MDF_nonTranslate_Sure_Pay}">{!$Label.c.Core_MDF_Sure_Pay}</option>
                                 </lightning:select>
                             </div>
-                            </aura:if>
 			    
                             <aura:if isTrue="{!v.showApplicableVatPercentage}">
                                 <div aura:id="applicableVatPercentageDiv" class="slds-col slds-size_1-of-2 slds-var-p-around_small">
@@ -889,10 +844,6 @@
                                     </lightning:accordion>
                                 </div>
                             </div>
-                        <aura:if isTrue="{!v.isSuperClaim}">
-                        	<c:core_MDF_subClaimItemCreation aura:id="subClaimLwc" recordId="{!v.simpleNewClaim.Id}" recordtypeName="{!v.recordtypeName}" objectApiName="PartnerFundClaim" technicalProgName="{!v.programName}" superActivityId="{!v.simpleNewClaim.RequestId}" totalRequestedAmount="{!v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c}" totalCostNotReimbursable="{!v.simpleNewClaim.Core_MDF_OtherCostsnotReimbursable_Local__c}" onsubclaimchange="{!c.handleSubClaimChange}" isEditorClone="{!v.isEdit}" clonedEditClaimId="{!v.clonedClaimId}" isClaimEditable="{!v.isClaimEditable}" isCloneClaim="{!v.isCloneClaim}" claimCountry="{!v.simpleNewClaim.Core_MDF_Country_Location_nm__c}"/>
-                        </aura:if>
-                            </aura:if>   
                         </div>
                     </div>
 
@@ -928,14 +879,11 @@
                                 activityId="{!v.simpleNewClaim.RequestId}" 
                                 recordId="{!v.simpleNewClaim.Id}"/>
                     
-				            <aura:if isTrue="{!not(empty(v.tacticMetricsEditable))}">
                             <c:core_MDF_Tactic_Spending  aura:id="tacticSpendingCmp"
                                 activityId="{!v.simpleNewClaim.RequestId}" 
                                 recordId="{!v.simpleNewClaim.Id}" 
                                 editable="{!v.tacticMetricsEditable}" 
-                                reimbursableAmountUsd="{!v.reimbursableAmountUsd}"
-                                                        editCmp = "true"/>
-				            </aura:if>
+                                reimbursableAmountUsd="{!v.reimbursableAmountUsd}"/>
                             <aura:set attribute="else">
                                 <!-- This section displays the activity KPI field in read only mode -->
                                 <aura:renderIf isTrue="{!not(empty(v.simpleNewClaim.RequestId))}">
@@ -972,8 +920,6 @@
                         <div class="{!v.currentStep == '3' ? 'slds-show' : 'slds-hide'}">
                             <c:Core_MDF_ManageAuditDocument_Revamp sobjectType="PartnerFundClaim"
                                 auditDocument="{!v.auditDocument}"
-                                isOutcomeBasedAccountBasedAct="{!v.isOutcomeBasedAccountBasedAct}"
-                                isOutcomeBasedActivity="{!v.isOutcomeBasedActivity}"
                                 recordtypeDeveloperName="{!v.recordtypeDeveloperName}" budgetType="{!v.budgetType}"
                                 isFileUploadOnClaimCreation="{!v.isPOPEnabled}" aura:id="manageAuditRevamp"
                                 simpleNewClaim="{!v.simpleNewClaim}" editClaimId="{!v.simpleNewClaim.Id}"
@@ -1038,78 +984,9 @@
 
                     </aura:if>
                     <aura:if isTrue="{!v.currentStep == '3'}">
-                        <aura:if isTrue="{!v.isOutcomeBasedAccountBasedAct}">
-                            <!-- Create/Clone: Save as Draft, Submit-->
-                            <aura:if isTrue="{!or(not(v.isEdit), v.isCloneClaim, empty(v.simpleNewClaim.Id))}">
-                                <lightning:button class="slds-float--right" name="submitFinalOutcomeBasedClaim" variant="brand"
-                                    aura:id="submitButton" label="{!$Label.c.Core_MDF_Submit_Button_Label}"
-                                    title="{!$Label.c.Core_MDF_Submit_Button_Label}" onclick="{!c.finish}" disabled="{!v.isSaveDisabled}" />
-                                <lightning:button variant="neutral" name="saveAsDraftClaim" label="{!$Label.c.Core_MDF_SaveAsDraft_Button}" title="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
-                                    onclick="{!c.finish}" />
-                                <aura:set attribute="else">
-                                    <!-- Final Outcome Based Claim Edit: conditional by claim status -->
-                                    <!-- Pending Account Manager Clarification: Submit | Draft: Save as Draft also -->
-                                    <aura:if isTrue="{!or(v.simpleNewClaim.Core_MDF_Status__c == 'Pending Account Manager Clarification', v.simpleNewClaim.Core_MDF_Status__c == 'Draft')}">
-                                        <lightning:button class="slds-float--right" name="submitFinalOutcomeBasedClaim" variant="brand"
-                                            aura:id="submitButton" label="{!$Label.c.Core_MDF_Submit_Button_Label}"
-                                            title="{!$Label.c.Core_MDF_Submit_Button_Label}" onclick="{!c.finish}" disabled="{!v.isSaveDisabled}" />
-                                            <aura:if isTrue="{!v.simpleNewClaim.Core_MDF_Status__c == 'Draft'}">
-                                                <lightning:button variant="neutral" name="saveAsDraftClaim" label="{!$Label.c.Core_MDF_SaveAsDraft_Button}" title="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
-                                                    onclick="{!c.finish}" />
-                                            </aura:if>
-                                        <aura:set attribute="else">
-                                            <!-- Other Status: Save -->
-                                            <lightning:button class="slds-float--right" name="saveFinalOutcomeBasedClaim" variant="brand"
-                                                aura:id="finishButton" label="{!$Label.c.Core_MDF_Save_Button}"
-                                                title="{!$Label.c.Core_MDF_Save_Button}" onclick="{!c.finish}" disabled="{!v.isSaveDisabled}" />
-                                        </aura:set>
-                                    </aura:if>
-                                </aura:set>
-                            </aura:if>
-                            <!--TWC3117-18501 start-->                            
-                            <aura:set attribute="else">
-                                <!-- Co-GTM create/clone -->                                
-                                <aura:if isTrue="{!and(
-                                    v.isCoGtm,
-                                    or(
-                                        empty(v.simpleNewClaim.Id),
-                                        and(
-                                            v.isClaimEdit,
-                                            v.simpleNewClaim.Core_MDF_Status__c == 'Draft'
-                                        )
-                                    )
-                                )}">
-                                    <lightning:button
-                                        class="slds-float--right"
-                                        name="submitFinalOutcomeBasedClaim"
-                                        variant="brand"
-                                        aura:id="submitButton"
-                                        label="{!$Label.c.Core_MDF_Submit_Button_Label}"
-                                        title="{!$Label.c.Core_MDF_Submit_Button_Label}"
-                                        onclick="{!c.finish}"
-                                        disabled="{!v.isSaveDisabled}" />
-                                    <lightning:button
-                                        name="saveAsDraftClaim"
-                                        variant="neutral"
-                                        label="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
-                                        title="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
-                                        onclick="{!c.finish}" />
-                                    <aura:set attribute="else">
-                                        <!-- Existing behavior for other non-final-outcome claims -->
-                                        <lightning:button
-                                            class="slds-float--right"
-                                            name="saveClaim"
-                                            variant="brand"
-                                            aura:id="finishButton"
-                                            label="{!$Label.c.Core_MDF_Save_Button}"
-                                            title="{!$Label.c.Core_MDF_Save_Button}"
-                                            onclick="{!c.finish}"
-                                            disabled="{!v.isSaveDisabled}" />
-                                    </aura:set>
-                                </aura:if>
-                            </aura:set>
-                            <!--TWC3117-18501 end-->
-                        </aura:if>
+                        <lightning:button class="slds-float--right" variant="brand" aura:id="finishButton"
+                            label="{!$Label.c.Core_MDF_Save_Button}" title="{!$Label.c.Core_MDF_Save_Button}"
+                            onclick="{!c.finish }" disabled="{!v.isSaveDisabled}" />
                     </aura:if>
                     <aura:set attribute="else">
                         <lightning:button class="slds-float--right" variant="brand" aura:id="cancelButton"
@@ -1121,11 +998,7 @@
         </div>
         <aura:if isTrue="{!v.isConfirmPopupVisible}">
             <c:Core_MDF_UploadDocConfirmation
-                isThirdParty="{!v.simpleNewClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c}"
-                isCoGtm="{!v.isCoGtm}"
-		        isOutcomeBasedAccountBasedAct="{!v.isOutcomeBasedAccountBasedAct}"
-                actionType="{!v.actionType}"
-                claimStatus="{!v.simpleNewClaim.Core_MDF_Status__c}"
+                isThirdParty="{!v.simpleNewClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c}" isCoGtm = "{!v.isCoGtm}"
                 componentId="{!or(v.isClaimEdit, v.isNewClaimCreate) ? 'confirmation-modal' : 'confirmation-modal1'}" />
         </aura:if>
         <!--Duplicate Check Modal-->
@@ -1200,15 +1073,10 @@
                     <header class="slds-modal__header">
 
                         <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
-                            <!-- Aditya - TWC3117-16655 -->
-                           <aura:if isTrue="{!v.isOutcomeBasedAccountBasedAct}"> {!$Label.c.Core_MDF_Submit_For_Payment_Clearance}
-                               <aura:set attribute="else"> {!$Label.c.Core_MDF_Submit_For_PIC}
-                               </aura:set>
-                           </aura:if>        
-                        </h2>
+                            {!$Label.c.Core_MDF_Submit_For_PIC}</h2>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
-                        <div>{!v.isOutcomeBasedAccountBasedAct ? $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message : $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
+                        <div>{!$Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
                     </div>
 
                     <footer class="slds-modal__footer">
@@ -1236,12 +1104,11 @@
                     <h2 class="slds-text-heading_small ">{!v.claimErrorMsg}</h2>
                 </div>
                 <div class="slds-notify__close">
-                    <lightning:buttonIcon iconName="utility:close" variant="bare" size="medium" class="slds-button slds-button_icon slds-modal__close" onclick="{! c.closeErrorToast }" alternativeText="{!$Label.c.Core_MDF_Close}" />
-                    <!--<button aura:id="toastCloseButton" class="slds-button slds-button_icon slds-button_icon-inverse"
+                    <button aura:id="toastCloseButton" class="slds-button slds-button_icon slds-button_icon-inverse"
                         title="Close" onclick="{!c.closeErrorToast}">
                         <lightning:icon iconName="utility:close" alternativeText="Close" variant="close" size="small" />
                         <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
-                    </button>-->
+                    </button>
                 </div>
             </div>
         </div>

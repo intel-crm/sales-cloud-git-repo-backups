@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Seller Incentive-&gt;SPIF - Volume,Seller Incentive-&gt;SPIF - Target,Seller Incentive-&gt;SPIF - Other,Buyer Incentive-&gt;Offer - Bundle,Buyer Incentive-&gt;Offer - Other,Buyer Incentive-&gt;Offer - Target</value>
+        <value xsi:type="xsd:string">Seller Incentive 2025-&gt;SPIF - Volume,Seller Incentive 2025-&gt;SPIF - Target,Seller Incentive 2025-&gt;SPIF - Other,Buyer Incentive 2025-&gt;Offer - Bundle,Buyer Incentive 2025-&gt;Offer - Other,Buyer Incentive 2025-&gt;Offer - Target</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF,Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF,Sales Incentive (Pre-2025)-&gt;Seller - Other,Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer,Purchase Incentive (Pre-2025)-&gt;Buyer - Other,</value>
+        <value xsi:type="xsd:string">Sales Incentive-&gt;Seller - Per Unit SPIF,Sales Incentive-&gt;Seller - Target SPIF,Sales Incentive-&gt;Seller - Other,Purchase Incentive-&gt;Buyer - Bundle Offer,Purchase Incentive-&gt;Buyer - Other,</value>
     </values>
 </CustomMetadata>

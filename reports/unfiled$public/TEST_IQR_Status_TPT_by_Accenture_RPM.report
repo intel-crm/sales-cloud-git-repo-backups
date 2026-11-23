@@ -133,7 +133,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Anshuman,Parshu,Srishit,Praveen,Jayashree,Raj Kumar,Srini,Piyush,Hari,Snehali,Divya,Loren,Tristan,Janice,Courtney,Holly,Aaron,Thais,Fabiana,Paula,Sylvester</value>
+            <value>Anshuman,Parshu,Srishit,Praveen,Jayashree,Raj Kumar,Srini,Piyush,Hari,Snehali,Divya,Loren,Tristan,Janice,Courtney,Holly,Aaron,Thais,Fabiana,Paula</value>
         </criteriaItems>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Last_Approved_Date_dt__c</column>

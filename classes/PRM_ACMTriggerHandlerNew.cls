@@ -128,8 +128,6 @@ public with sharing class PRM_ACMTriggerHandlerNew extends TriggerHandler{
                                                                             PRM_Account_Id__r.Name,
                                                                             PRM_Channel_Program_Id__c,
                                                                             PRM_Channel_Program_Level_Id__r.Name,
-                                                                            PRM_Channel_Program_Level_Id__r.PRM_inactind__c,
-                                                                            PRM_Channel_Program_Level_Id__r.Program.Name,
                                                                             PRM_Account_Id__r.RecordTypeId,PRM_Status_Nm__c,
                                                                             PRM_Account_Channel_Program_Key__c 
                                                                             FROM PRM_AccountChannelMembership__c 
@@ -286,8 +284,6 @@ acmOldMap.put(acmRecOld.id, acmRecOld);
                                                                   PRM_Account_Id__r.Name,
                                                                   PRM_Channel_Program_Id__c,
                                                                   PRM_Channel_Program_Level_Id__r.Name,
-                                                                  PRM_Channel_Program_Level_Id__r.PRM_inactind__c,
-                                                                  PRM_Channel_Program_Level_Id__r.Program.Name,
                                                                   PRM_Account_Id__r.RecordTypeId,PRM_Status_Nm__c,
                                                                   PRM_Account_Channel_Program_Key__c 
                                                                   FROM PRM_AccountChannelMembership__c 
@@ -408,10 +404,7 @@ METHODS
                   acmRecMapTriggerRecs.put(acm.id, acm);
                   acmPartnerRole.add(acm.PRM_Partner_Role__c);
               }
-            if(acm.PRM_Account_RT__c== System.Label.PRM_Intel_Account
-               && ((acmOldMap == null && acm.PRM_Status_Nm__c == 'Approved') 
-               || (acmOld != null && acmOld.PRM_Status_Nm__c != acm.PRM_Status_Nm__c
-                   &&  acm.PRM_Status_Nm__c == 'Approved' )))
+            if((acmOldMap == null && acm.PRM_Status_Nm__c == 'Approved') || (acmOld != null && acmOld.PRM_Status_Nm__c != acm.PRM_Status_Nm__c &&  acm.PRM_Status_Nm__c == 'Approved' ))
             {
                 AcmWithOPIDCheckMap.put(acm.PRM_Account_Id__c,acm);
                 accountIdSet.add(acm.PRM_Account_Id__c);
@@ -445,7 +438,7 @@ METHODS
 
         }
         
-       // if(acmAccId!=null && !acmAccId.IsEmpty()){
+        if(acmAccId!=null && !acmAccId.IsEmpty()){
     List<Account> acntList = new List<Account>();
     if(AcmWithOPIDCheckMap!=null && !AcmWithOPIDCheckMap.isEmpty()){//NJ Soql issue
         logEntryMsgString+='\n AcmWithOPIDCheckMap: '+AcmWithOPIDCheckMap;
@@ -480,7 +473,7 @@ METHODS
                 //UCD-End - TWC729-6744
                 // UCD- Start - TWC729-6744
                }
-    // }
+        }
         
         if(acmid != null && !acmid.IsEmpty()){ //fetching parent account id.
             for(PRM_AccountChannelMembership__c acm:  [SELECT Id,
@@ -555,8 +548,7 @@ METHODS
        
 
         
-        if(((allACMAccid.isEmpty() || !parentACMAccId.isEmpty()) && !acmPartnerRole.isEmpty())
-            || !AcmWithoutOPIDSet.isEmpty())
+        if(allACMAccid.isEmpty() || !parentACMAccId.isEmpty())
         {
             for(PRM_AccountChannelMembership__c acmRec : [SELECT Id,
                                                           Name,
@@ -755,10 +747,7 @@ METHODS
         if(acmOldList == null){
             if(acmList != null && !acmList.IsEmpty()){
                 for(PRM_AccountChannelMembership__c acm :acmList){
-                    //dup acm role  
-                    if((acm.PRM_Channel_Program_Level_Id__r.PRM_inactind__c == FALSE) && (acm.PRM_Channel_Program_Level_Id__r.Program.Name == 'Intel Partner Alliance')){
-                        uniqueMap.put(acm.PRM_Account_Channel_Program_Key__c, acm.Id);
-                    } 
+                    uniqueMap.put(acm.PRM_Account_Channel_Program_Key__c, acm.Id);
                 }
             }
             if(acmNewList != null && !acmNewList.IsEmpty()){
@@ -772,10 +761,7 @@ METHODS
             if(acmList != null && !acmList.IsEmpty()){
                 for(PRM_AccountChannelMembership__c acm :acmList){
                     if((uniqstr != null && !uniqstr.IsEmpty()) && (idsList != null && !idsList.IsEmpty()) && (!idsList.contains(acm.Id)) && (uniqstr.contains(acm.PRM_Account_Channel_Program_Key__c))){
-                        //dup acm role 
-                        if((acm.PRM_Channel_Program_Level_Id__r.PRM_inactind__c == FALSE) && (acm.PRM_Channel_Program_Level_Id__r.Program.Name == 'Intel Partner Alliance')){
-                            uniqueUpdateMap.put(acm.PRM_Account_Channel_Program_Key__c,acm.Id);
-                        } 
+                        uniqueUpdateMap.put(acm.PRM_Account_Channel_Program_Key__c,acm.Id);
                     }
                     
                 }
@@ -1407,10 +1393,6 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
         Set<Id> activeParentAccIdSet = new Set<Id>();
         List<PRM_AccountChannelMembership__c> updateOPIDACM = new List<PRM_AccountChannelMembership__c>();
         List<PRM_Account_Contact_Relationship__c> inactiveACRIdList = new List<PRM_Account_Contact_Relationship__c>();
-        
-        // New IPA inactivation working sets/lists (mirrors inactiveACRIdList pattern)
-    List<PRM_IPAMembership_Attributes__c> inactiveIPAList = new List<PRM_IPAMembership_Attributes__c>();
-        
         Map<Id, Map<String, String>> accountIdOldNewPartnerROleMap = new Map<Id, Map<String, String>>();
         //List<PRM_Account_Contact_Relationship__c> activeACRIdList = new List<PRM_Account_Contact_Relationship__c>();
         List<PRM_AccountChannelMembership__c> acmAccountList = new List<PRM_AccountChannelMembership__c>();
@@ -1427,8 +1409,6 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
         //Set<Id>conPartRoleRemoveSet = new Set<Id>();
         List<Contact>contactsToUpdateList = new List<Contact>();
          Map<Id,String> actIdNewRole = new Map<Id,String>();
-         Map<Id,String> mapAccsWithAcmStatus=new  Map<Id,String>();
-		 set<string> addPartnerRoleForApprovedAcms=new set<string>();
         if(Trigger.isAfter){
             PRM_AccountChannelMembership__c oldACM;
             for(PRM_AccountChannelMembership__c acm:acmList){
@@ -1473,14 +1453,7 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
                     channelPrograms.add(acm.PRM_Channel_Program_Id__c);
                     cpLevels.add(acm.PRM_Channel_Program_Level_Id__c);
                     partnerRole.add(acm.PRM_Partner_Role__c);
-                   if(acm.PRM_Status_Reason_Txt__c==system.label.PRM_LastContact_InactivationReason){
-                            mapAccsWithAcmStatus.put(acm.PRM_Account_Id__c,acm.PRM_Status_Reason_Txt__c);
-                    }
-					
                 }
-                if(acm.PRM_Status_Nm__c==System.Label.PRM_Status){
-						addPartnerRoleForApprovedAcms.add(acm.PRM_Partner_Role__c);
-					}
                 //condition  - 5 - Activate IPA Account. added by Teja Munagala
                 if((oldACM == null && acm.PRM_Status_Nm__c == System.Label.PRM_Status )  || (oldACM != null && (oldACM.PRM_Status_Nm__c != acm.PRM_Status_Nm__c && acm.PRM_Status_Nm__c == System.Label.PRM_Status))){
                     activeIPAAccount=true;
@@ -1515,7 +1488,6 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
                  if(accountIdOldNewPartnerROleMap != null){
                 for(PRM_Account_Contact_Relationship__c acr : [Select Id,PRM_Account_Id__c,PRM_Contact_Id__c,PRM_Contact_Id__r.Core_IPA_PartnerRole__c, PRM_Partner_Role__c,PRM_InActive_Ind__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :accountId and PRM_InActive_Ind__c = false]){
                     String newRole = actIdNewRole.get(acr.PRM_Account_Id__c);
-                    if(accountIdOldNewPartnerROleMap.containsKey(acr.PRM_Account_Id__c) && accountIdOldNewPartnerROleMap.get(acr.PRM_Account_Id__c) != null){
                     String oldRole = accountIdOldNewPartnerROleMap.get(acr.PRM_Account_Id__c).get(newRole);
                    if(acr.PRM_Contact_Id__r.Core_IPA_PartnerRole__c == oldRole && acr.PRM_Contact_Id__r.Core_IPA_PartnerRole__c != newRole){
                                                 Contact con = new Contact();
@@ -1524,7 +1496,6 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
                                                 if(!contactsToUpdateList.contains(con)){
                                                     contactsToUpdateList.add(con);
                                                 }
-                    }
                     }
 
                 }
@@ -1550,15 +1521,7 @@ mapOFTierAndBusinessEvent.put(emailConfigList.PRM_Tier__c, emailConfigList.PRM_B
                 if(accountDetailsMap.size()>0 && accountDetailsMap.containsKey(accId)){ 
                     Account a = accountDetailsMap.get(accId);                            
                        // if(!ipaRefresh || Test.isRunningTest()) a.Core_Account_Type__c=(actIdBizTypes!=null && actIdBizTypes.containsKey(accId) && actIdBizTypes.get(accId).contains(bizType))?a.Core_Account_Type__c:a.Core_Account_Type__c+';'+bizType; // IPA Switch Removal
-                       
-
-            // Defect fix - Bizorg NULL - start
-                       //a.Core_Account_Type__c=a.Core_Account_Type__c+';'+bizType;
-                       if(bizType == 'Distributor'){
-                        a.Core_Account_Type__c = bizType;
-                       }
-                       //Defect fix - Bizorg NULL - end
-                       
+                       a.Core_Account_Type__c=a.Core_Account_Type__c+';'+bizType;
                     if(actIdPartnerRoles.size()>0 ){
                         if(actIdPartnerRoles.containsKey(accId) && actIdPartnerRoles.get(accId).contains(newRole)){                                    
                             a.Core_IPA_Partner_Role__c = a.Core_IPA_Partner_Role__c;
@@ -1877,15 +1840,7 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                             if(acctounsToUpdateMap.containsKey(acc.Id)){
                                 acctounsToUpdateMap.get(acc.Id).Core_Intel_Partner_Alliance_PartnerGroup__c = false;
                                 allInitialAccMap.get(acc.Id).Core_Intel_Partner_Alliance_PartnerGroup__c = false;
-
-                                //TWC729-9000-Removing the partner role when Account becomes inactive
-                                acctounsToUpdateMap.get(acc.Id).Core_IPA_Partner_Role__c = null;
-                                allInitialAccMap.get(acc.Id).Core_IPA_Partner_Role__c = null;
-
                             } else{acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
-                                    //TWC729-9000-Removing the partner role when Account becomes inactive
-                                    acc.Core_IPA_Partner_Role__c = null;
-                                    
                                     updateAcc.add(acc);
                                 }
                         }
@@ -2034,43 +1989,13 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                     }
                 }*/ // IPA Switch Removal
                 /*US775822 - END*/
-                // Build final account list eligible for AIA inactivation
-                Set<Id> affiliationAccountIds = new Set<Id>(); //TWC729-9422-If OPID ACM Inactivated, it should inactivate affiliations at 1PID and location accounts-Start   
-                // Accounts directly impacted by ACM inactivation
-                for(String accId : accountIds){
-                    affiliationAccountIds.add((Id)accId);
-                }
-                Set<Id> pendingInactiveACMIds = new Set<Id>();
-                // Accounts whose ACMs were auto-inactivated through OPID/Location roll-down
-                for(PRM_AccountChannelMembership__c acmRec : updateOPIDACM){
-                    affiliationAccountIds.add(acmRec.PRM_Account_Id__c);
-                    pendingInactiveACMIds.add(acmRec.Id);
-                }
-                
-                // Find accounts that still have at least one active ACM
-                Set<Id> accountsWithActiveACM = new Set<Id>();
-                
-                for(PRM_AccountChannelMembership__c acm : [
-                    SELECT Id, PRM_Account_Id__c
-                    FROM PRM_AccountChannelMembership__c
-                    WHERE PRM_Account_Id__c IN :affiliationAccountIds
-                    AND PRM_Status_Nm__c = :System.Label.PRM_Status
-                ]){
-                    if(!pendingInactiveACMIds.contains(acm.Id)){
-                       accountsWithActiveACM.add(acm.PRM_Account_Id__c);
-                    }
-                }
-                
-                // Remove accounts that still have active ACMs
-                affiliationAccountIds.removeAll(accountsWithActiveACM);////TWC729-9422-If OPID ACM Inactivated, it should inactivate affiliations at 1PID and location accounts-end
+
                 //TWC729-7521 -NJ -Inactivate AIA on location account when ACM is inactivated
-                if(/*accountIds != null && !accountIds.IsEmpty()*/!affiliationAccountIds.isEmpty() && !PRM_ACMUpdateUtility.isRTAInitiated){ //Inactivating ASA from Child account
-                    List<PRM_IPA_Affiliation__c> aiaList = [select id,PRM_Builder_Strategy__c, PRM_Account__c, PRM_Account__r.RecordTypeId,PRM_Active__c,PRM_Notes__c from PRM_IPA_Affiliation__c where PRM_Account__c in:affiliationAccountIds/*accountIds*/ and PRM_Active__c = true and PRM_Account__r.RecordTypeId IN:/*intelAccRecType*/intelAndOPIDAccRecTypes];
+                if(accountIds != null && !accountIds.IsEmpty() && !PRM_ACMUpdateUtility.isRTAInitiated){ //Inactivating ASA from Child account
+                    List<PRM_IPA_Affiliation__c> aiaList = [select id,PRM_Builder_Strategy__c, PRM_Account__c, PRM_Account__r.RecordTypeId,PRM_Active__c,PRM_Notes__c from PRM_IPA_Affiliation__c where PRM_Account__c in:accountIds and PRM_Active__c = true and PRM_Account__r.RecordTypeId=:intelAccRecType];
                     for(PRM_IPA_Affiliation__c aia :aiaList){
                         aia.PRM_Active__c = false;
                         aia.PRM_Notes__c = 'Inactivation as account has become Non IPA';//TWC729-8089 : Adding reason text : NJ
-                         if(mapAccsWithAcmStatus.containskey(aia.PRM_Account__c))
-                        aia.PRM_Notes__c = mapAccsWithAcmStatus.get(aia.PRM_Account__c);
                         updateChildAIA.add(aia);
                     }
                 }
@@ -2194,31 +2119,13 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                         /*US808806 - END*/
                     }
                 }
-                //Inactivate IPA Membership Attributes when ACM becomes inactive (NEW)
-                // Mirrors the inactiveACRIdList pattern
-                if(accountIds != null && !accountIds.IsEmpty()){
-                    for(PRM_IPAMembership_Attributes__c ipa : [Select Id, PRM_Account_Id__c, PRM_Inactive_ind__c 
-                                                               from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN : accountIds
-                                                               AND PRM_Inactive_ind__c = false]){
-                                                  ipa.PRM_Inactive_ind__c = true;
-                                                  inactiveIPAList.add(ipa);              
-                                                               }
-                }
-                
                 //Deactivating CSA records.
                 if(contactIds != null && !contactIds.IsEmpty()){
-                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id , name, PRM_Contact_Id__c,PRM_Contact_Id__r.AccountId, PRM_Status_Nm__c,PRM_Status_Reason_Txt__c, 
-                                                                     PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c from PRM_ContactSubscriptionAssociation__c 
-                                                                     where PRM_Contact_Id__c IN :contactIds
-                                                                    and PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c =false 
-                                                                    and PRM_Status_Nm__c =: System.Label.PRM_Status_Active ]){
+                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id , name, PRM_Contact_Id__c, PRM_Status_Nm__c,PRM_Status_Reason_Txt__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :contactIds]){
                         csa.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
                         csa.PRM_Status_Reason_Txt__c = 'Contact Subscription inactivated as part of membership inactivation.';//TWC729-8089 : Adding reason text : NJ
-                        if(mapAccsWithAcmStatus.containskey(csa.PRM_Contact_Id__r.AccountId))
-                        csa.PRM_Status_Reason_Txt__c = mapAccsWithAcmStatus.get(csa.PRM_Contact_Id__r.AccountId);
-                        csaList.add(csa);                                                
-                    } 
-                     
+                        csaList.add(csa);
+                    }
                 }
                 /*US775822 -UTKARSH - Update partner segment on location account when ACM become inactive*/
                 if(accountIds != null && !accountIds.IsEmpty()){
@@ -2260,8 +2167,7 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                                     accToUpdate.Core_IPA_Badge_Tier__c = acm.PRM_Channel_Program_Level_Id__r.Name;
                                     accToUpdate.PRM_IPA_Badge_Tier_Date__c = System.now();
                                     accToUpdate.Core_Intel_Partner_Alliance_PartnerGroup__c=TRUE;
-									if(addPartnerRoleForApprovedAcms.contains(acm.PRM_Partner_Role__c)){
-									accToUpdate.Core_IPA_Partner_Role__c=acm.PRM_Partner_Role__c ;}
+
                                     if(mapAccountsToUpdate.containsKey(accToUpdate.id) && 
                                        mapProgramToPriority.get(accToUpdate.Core_IPA_Badge_Tier__c) > mapProgramToPriority.get(mapAccountsToUpdate.get(accToUpdate.id).Core_IPA_Badge_Tier__c ))
                                     {
@@ -2312,13 +2218,6 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                       update inactiveACRIdList;   
                     }
                 }
-                 // Apply inactivation to IPA Membership Attributes
-                if (inactiveIPAList != null && !inactiveIPAList.isEmpty()) {
-                     logEntryMsgString+='\n inactiveIPAList: '+inactiveIPAList;                      
-                     Database.update(inactiveIPAList,false);                    
-                } 
-                system.debug('after update IPA list'+inactiveIPAList);
-                 
                 /*if(activeACRIdList != null && !activeACRIdList.IsEmpty()){update activeACRIdList;
 }
 if(inactiveAllACRIdList != null && !inactiveAllACRIdList.IsEmpty()){update inactiveAllACRIdList;
@@ -2491,7 +2390,7 @@ if(inactiveAllACRIdList != null && !inactiveAllACRIdList.IsEmpty()){update inact
                         String opidaccountName = parentCagRec.get(ucdRec.Core_Parent_Business_Party_Id__c).Core_Partner_Account_Id__r.Name;
                         Core_OnePartner_Inbound_Message__c  inboundOnePartner = createInbound(opidNumber,opidaccountName,ucdRec);
                         listOfInboundOnePartner.add(inboundOnePartner);
-                    }else if(ucdRec.Core_Unified_Global_Customer_BP_Id__c!=null && (AcmWithOPIDCheckMap.containsKey(ucdRec.id) || (noIpaAccountIds!=null && noIpaAccountIds.contains(ucdRec.Core_Unified_Global_Customer_BP_Id__c)))){
+                    }else if(AcmWithOPIDCheckMap.containsKey(ucdRec.id) || noIpaAccountIds.contains(ucdRec.Core_Unified_Global_Customer_BP_Id__c)){
                         globalIdSet.add(ucdRec.Core_Unified_Global_Customer_BP_Id__c);
                         
                     }
@@ -2526,14 +2425,14 @@ if(inactiveAllACRIdList != null && !inactiveAllACRIdList.IsEmpty()){update inact
                         }
                     }
                 }
-            }
+            }  
  
             //scenario 2
             if(!globalIdMap.isEmpty()){
                 logEntryMsgString+='\n globalIdMap:'+globalIdMap;
                 for(string globalId : globalIdMap.keySet()){
                     Integer ucd_OnePartnerID =integer.valueOf(fetchOpidNumber()); // one Id for all the childs. This will bind them together
-                    if(noIpaAccountIds!=null && noIpaAccountIds.contains(globalId)){
+                    if(noIpaAccountIds.contains(globalId)){
                         for(account globalAccountRec :  globalIdMap.get(globalId)){
                             if(!ucdIdInbMap.containsKey(globalAccountRec.Core_Business_Party_Id__c) && ucdIdInbMap.containsKey(globalAccountRec.Core_Parent_Business_Party_Id__c)){
                                 Integer opidNumber =  integer.valueof(ucdIdInbMap.get(globalAccountRec.Core_Parent_Business_Party_Id__c).Core_OnePartnerID__c);
@@ -2708,17 +2607,7 @@ if(inactiveAllACRIdList != null && !inactiveAllACRIdList.IsEmpty()){update inact
                 }    
           }
             
-            //update inactiveACRIdList;
-            Database.saveResult[] results = Database.update(inactiveACRIdList, false); 
-            for(Integer i=0; i<results.size(); i++){
-                if(!results[i].isSuccess()){
-                    for(Database.Error err : results[i].getErrors()){
-                         logEntryMsgString+= 'Message: ' + err.getMessage() + '\n'
-                                                + 'Fields: ' + err.Fields.toString() + '\n'
-                                                + 'StatusCode: ' + err.getStatusCode() + '\n';
-                    }
-                }
-            }
+            update inactiveACRIdList;
       }
     }
     //Method runs when IPA refresh is false

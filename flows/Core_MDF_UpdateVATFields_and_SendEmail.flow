@@ -419,15 +419,6 @@
     </decisions>
     <environments>Default</environments>
     <formulas>
-        <name>EffectiveClaimId</name>
-        <dataType>String</dataType>
-        <expression>IF(
-  NOT(ISBLANK({!$Record.Core_MDF_Sub_Claim_Id__c})),
-  {!$Record.Core_MDF_Sub_Claim_Id__r.Id},
-  {!$Record.Core_MDF_Claim_Id__r.Id}
-)</expression>
-    </formulas>
-    <formulas>
         <name>IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
@@ -488,7 +479,7 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>EffectiveClaimId</elementReference>
+                <elementReference>$Record.Core_MDF_Claim_Id__r.Id</elementReference>
             </value>
         </filters>
         <object>PartnerFundClaim</object>

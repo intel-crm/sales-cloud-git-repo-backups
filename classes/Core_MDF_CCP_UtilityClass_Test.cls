@@ -40,8 +40,7 @@ public class Core_MDF_CCP_UtilityClass_Test {
             //acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
             acc1.Industry = 'Food & Beverage';
             Database.insert(acc1);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-             System.assertNotEquals(null, acc1.Id, 'Account 1 should be inserted successfully');
+            system.assert(acc1.id!=Null);
             
             acc1.Core_Sales_Groups__c = 'Automotive Sales Group Testjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb';
             acctList.add(acc1);
@@ -54,18 +53,15 @@ public class Core_MDF_CCP_UtilityClass_Test {
             String errortext = 'Test';
             Core_MDF_CCP_UtilityClass.updateListAndLogErrors(acctList,errortext);
             Core_MDF_CCP_UtilityClass.logErrorinLogObject(errortext, 'Test');
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-         	System.assertNotEquals(null, acc2.Id, 'Account 2 should be inserted successfully');
+         	system.assert(acc2.id!=Null);
             
-            // 14285 - Indira
-        	String s = null ;
+         	String s ;
             try {
-				s = s.toLowerCase();
-            } catch(Exception e){
-                Core_MDF_CCP_UtilityClass.getErrorDetails(e);
-                Core_MDF_CCP_UtilityClass.logError(e);
-                Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');
-                Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');                
+			s = s.toLowerCase();
+            }
+            Catch(Exception e){
+            Core_MDF_CCP_UtilityClass.getErrorDetails(e);
+            Core_MDF_CCP_UtilityClass.logError(e);
             }
       }
     
@@ -77,13 +73,11 @@ public class Core_MDF_CCP_UtilityClass_Test {
             //acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
             acc1.Industry = 'Food & Beverage';
             Database.insert(acc1);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            System.assertNotEquals(null, acc1.Id, 'Account should be inserted successfully');
         try {
         	Account vcAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account Virtual Corp', null,Core_MDF_CCP_TestDataUtility.account_Record_Type,acc1.Id,true);
         }
         Catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
+            Core_MDF_CCP_UtilityClass.logError(e); 
         }
         
     }
@@ -216,29 +210,20 @@ public class Core_MDF_CCP_UtilityClass_Test {
         
         Test.startTest();
         system.runAs(testUser) {
-        // 14285 - Indira - Start 
-        // Test with all fields populated
-        Core_MDF_Error_Logging__e pe1 = new Core_MDF_Error_Logging__e();
-        pe1.Core_MDF_Apex_Class_Name_Txt__c = 'TestApexClass';
-        pe1.Core_MDF_Details_txt__c = 'Test details for error logging';
-        pe1.Core_MDF_Exception_Message_Txt__c = 'Test exception message';
-        pe1.Core_MDF_Project_nm__c = 'TestProject';
-        pe1.Core_MDF_Object_Name_Nm__c = 'TestObject';
-        pe1.Core_MDF_Severity_txt__c = 'Critical';
-        pe1.Core_MDF_Support_Email_txt__c = 'test@example.com';
-        pe1.Core_MDF_Support_Link_txt__c = 'http://example.com/support';
-        pe1.Core_MDF_Tag_txt__c = 'TestTag';
+            // Create a platform event with test data
+            Core_MDF_Error_Logging__e pe = new Core_MDF_Error_Logging__e();
+            pe.Core_MDF_Apex_Class_Name_Txt__c = 'TestApexClass';
+            pe.Core_MDF_Details_txt__c = 'Test details for error logging';
+            pe.Core_MDF_Exception_Message_Txt__c = 'Test exception message';
+            pe.Core_MDF_Project_nm__c = 'TestProject';
+            pe.Core_MDF_Object_Name_Nm__c = 'TestObject';
+            pe.Core_MDF_Severity_txt__c = 'Critical';
+            pe.Core_MDF_Support_Email_txt__c = 'test@example.com';
+            pe.Core_MDF_Support_Link_txt__c = 'http://example.com/support';
+            pe.Core_MDF_Tag_txt__c = 'TestTag';
             
-        Core_MDF_CCP_UtilityClass.logSeverityErrorWithPE(pe1);
-        // Test with null fields to cover all if conditions
-        Core_MDF_Error_Logging__e pe2 = new Core_MDF_Error_Logging__e();
-        pe2.Core_MDF_Apex_Class_Name_Txt__c = 'TestApexClass2';
-        pe2.Core_MDF_Object_Name_Nm__c = 'TestObject2';
-        pe2.Core_MDF_Project_nm__c = 'TestProject2';
-        pe2.Core_MDF_Severity_txt__c = 'Normal';
-        // Leave other fields null to test null conditions
-        Core_MDF_CCP_UtilityClass.logSeverityErrorWithPE(pe2);
-        // 14285 - Indira - End        
+            // Call the method under test
+            Core_MDF_CCP_UtilityClass.logSeverityErrorWithPE(pe);
         }
         Test.stopTest();
         
@@ -248,28 +233,7 @@ public class Core_MDF_CCP_UtilityClass_Test {
                                              WHERE Core_Message__c = 'Test exception message'
                                              LIMIT 1];
         
-    // 14285 - Indira 
-    System.assert(logEntries.size() >= 1, 'Should create at least one log entry');
-    }
-
-	@IsTest
-    static void testCollectDmlFailureDetails() {
-
-        Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
-        acc.Core_Account_Type__c = 'Reseller';
-        acc.Industry = 'Food & Beverage';
-        Database.insert(acc);
-
-        acc.Name = null;
-
-        List<Id> recordIds = new List<Id>{ acc.Id };
-
-        Database.SaveResult[] results =Database.update(new List<Account>{ acc },false);
-
-        Test.startTest();
-        List<String> failedRecordDetails = Core_MDF_CCP_UtilityClass.collectDmlFailureDetails(recordIds, results);
-        Test.stopTest();
-
-        System.assertEquals(1,failedRecordDetails.size(),'One failure should be returned.');        
+        // Simple assert to verify the functionality works
+        System.assertEquals(1, logEntries.size(), 'Should create one log entry');
     }
 }

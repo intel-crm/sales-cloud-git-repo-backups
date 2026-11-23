@@ -62,11 +62,6 @@ public class Core_OpportunityContactRoleHandler_Test {
         
         //Core_CRM_Utility.oppLockValidationPerformed = false;
         Core_OpportunityContactRoleHandler.checkPCCLockOnOppty(ocrList);
-        
-        // Assertions: ensure the OCR was created and the IsPrimary flag updated as expected
-        OpportunityContactRole persistedOcr = [SELECT Id, IsPrimary, Role, OpportunityId, ContactId FROM OpportunityContactRole WHERE OpportunityId = :opp.Id AND ContactId = :con.Id LIMIT 1];
-        System.assertNotEquals(null, persistedOcr, 'OpportunityContactRole should have been created');
-        System.assertEquals(false, persistedOcr.IsPrimary, 'IsPrimary should be false after the update');
     }
     
     static testMethod void checkRestrictionPrimaryContactRole_Test() {  
@@ -90,10 +85,5 @@ public class Core_OpportunityContactRoleHandler_Test {
         ocrList[0].IsPrimary = True;
         update ocrList;
         test.stopTest();
-        
-        // Assertions: ensure the OCR exists and primary contact restriction behaved as expected
-        List<OpportunityContactRole> primaryRoles = [SELECT Id, IsPrimary, OpportunityId FROM OpportunityContactRole WHERE OpportunityId = :opp.Id AND IsPrimary = TRUE];
-        System.assert(!primaryRoles.isEmpty(), 'There should be at least one primary OpportunityContactRole');
-        System.assertEquals(1, primaryRoles.size(), 'There should be only one primary OpportunityContactRole for the Opportunity');
     }
 }

@@ -35,14 +35,13 @@ export default class Core_MDF_HistoryComponent extends LightningElement {
   @api historyData;
   @api objectApiName;
   @api internalUserName;
-  @api isInternalUserNameMasked;
   @api fieldsToMask = '';
   @api profileNames;
   @api permSetNames;
   @api customPerms;
   @api recordId;
   @api queryTerm;
-  @track haserror = false;
+  @track haserror;
 
   data = [];
   columns = columns;
@@ -50,7 +49,7 @@ export default class Core_MDF_HistoryComponent extends LightningElement {
   
 
 // make describe call dynamically based on objectName
-@wire(getHistoryHeader, { objectInfo: "$objectApiName",recordId : "$recordId" })
+@wire(getHistoryHeader, { objectInfo: "$objectApiName" })
 wiredHistoryHeaderData({ data, error }) {
   if (data) {
     this.historyHeaderData = data.objectName;
@@ -118,7 +117,7 @@ connectedCallback()
                                       }
                                       `;
       document.head.appendChild(dataTableGlobalStyle);
-      */
+*/
 
 
       //this.historyData = data;

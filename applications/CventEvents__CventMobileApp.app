@@ -47,7 +47,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#4BCDFB</headerColor>
-        <logo>CventEvents__AppLauncherScreenLogo_128x128</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>

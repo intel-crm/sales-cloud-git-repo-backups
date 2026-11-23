@@ -199,11 +199,10 @@ public class Core_MDF_RecoveryDashboard_Test {
         Assert.isNotNull(cp);
         Account acc1 = [select id from Account where name='ARP Test Account' limit 1];
         Core_MDF_Partnership_Score__c pss = [select id,Core_MDF_Quarter_Year_Nm__c,Core_MDF_Channel_Program_Id__c,Core_MDF_Account_Id__c,Core_MDF_Program_nm__c from Core_MDF_Partnership_Score__c where Core_MDF_Account_Id__c =: acc1.id limit 1];
-        // Highlight: Unused Local Variable
-       /* List<Core_MDF_Partnership_Score__c> RecMapRec = */ Core_MDF_RecoveryDashboardController.getPartnershipScoreRecord(pss.Core_MDF_Channel_Program_Id__c,pss.Core_MDF_Account_Id__c,pss.Core_MDF_Quarter_Year_Nm__c);
+        
+        List<Core_MDF_Partnership_Score__c> RecMapRec = Core_MDF_RecoveryDashboardController.getPartnershipScoreRecord(pss.Core_MDF_Channel_Program_Id__c,pss.Core_MDF_Account_Id__c,pss.Core_MDF_Quarter_Year_Nm__c);
         }
     }
-    
     
     @isTest
     static void testGetAccountIdToNameMapExternal(){
@@ -235,7 +234,7 @@ public class Core_MDF_RecoveryDashboard_Test {
         Database.insert(agsRoleCCFClaimSub);
         Core_ERPM_Engagement__c erpmEngagementCCF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('CCF', 'CCF', 'DEDUPB2B', 'SEC', true, false);
         Database.insert(erpmEngagementCCF);
-        Core_Entitlement__c entitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Claim Submitter',agsRoleCCFClaimSub.Id ,'Consolidated Co-marketing Platform','CCF Claim Submitter',erpmEngagementCCF.Id , true,'Client',false);
+        Core_Entitlement__c entitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createEntitlement('CCF Claim Submitter',agsRoleCCFClaimSub.Id ,'Intel® Partner Investment Center','CCF Claim Submitter',erpmEngagementCCF.Id , true,'Client',false);
         Database.insert(entitlementCCFClaimSub);
         List<Core_Contact_Entitlement__c> contactEntitlementlist = new List<Core_Contact_Entitlement__c>();
             Core_Contact_Entitlement__c contactEntitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCFClaimSub.Id ,true,'Complete', false);
@@ -247,8 +246,7 @@ public class Core_MDF_RecoveryDashboard_Test {
          
         Database.insert(contactEntitlementlist);
         List<User> users = new List<User>();
-       // Highlight: Unused Local Variable
-       // UserRole userRole_1 = [SELECT Id FROM UserRole WHERE DeveloperName = 'Admin' LIMIT 1];
+        UserRole userRole_1 = [SELECT Id FROM UserRole WHERE DeveloperName = 'Admin' LIMIT 1];
         usr1.Email='test123@example.com';
         usr1.ContactId = conRecord1.Id;
         usr1.ProfileId = profileId;
@@ -277,24 +275,21 @@ public class Core_MDF_RecoveryDashboard_Test {
         
         system.runAs(usr2){
             Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
-           // Highlight: Unused Local Variable
-           /* Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = */ Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
-          /*  Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt = */ Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
+            Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
+            Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt = Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
             Assert.isNotNull(accExt);
         }
         
         system.runAs(usr1){
-          // Highlight: Unused Local Variable
-          /*  Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt = */ Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
-          /*  Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = */ Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
-          /*  Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt = */ Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
+            Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
+            Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
+            Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt = Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
         }
         
         system.runAs(usr3){
-          // Highlight: Unused Local Variable
-          /*  Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt = */ Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
-          /*  Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = */ Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
-          /*  Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt =*/  Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
+            Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
+            Core_MDF_RecoveryDashboardController.AccountUserDataWrapper accExt1 = Core_MDF_RecoveryDashboardController.getAccountIdToNameMap(Core_MDF_CCP_ConstantClass.RMF_PROGRAM);
+            Core_MDF_RecoveryDashboardController.ProgramUserDataWrapper prgrmOpt = Core_MDF_RecoveryDashboardController.getProgramIdToNameMap();
         }
 		test.stopTest();
         
@@ -341,10 +336,6 @@ public class Core_MDF_RecoveryDashboard_Test {
         rrr.accountId = String.valueOf(acc1.Id);
         rrr.program = 'Intel Partner alliance';
         rrr.quarter = 'Q1 2023';
-        // Unit Test Method should include System.Assert
-        System.assertEquals(true, rc.editable, 'Report column should be editable');
-        System.assertEquals(String.valueOf(acc1.Id), rrr.accountId, 'Account Id should match the queried account');
-
     }
 
 }

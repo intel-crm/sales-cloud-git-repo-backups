@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>DFI Partner User</description>
+    <description>DFI INC. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>DFI Partner User</name>
+    <name>DFI INC. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>EMP_11849202_Ashley_Hsiao</parentRole>
 </Role>

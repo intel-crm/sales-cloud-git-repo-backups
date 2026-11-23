@@ -32,13 +32,13 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     public override void afterInsert() {
         if(executeTrigger && isActive('Partner_Benefit')&& PRM_accBenefitAssociationUtility.firstRunAfterInsert && Trigger.isInsert){
             PRM_accBenefitAssociationUtility.firstRunAfterInsert = false;
-            PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap,false);
+            PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap);
             PRM_accBenefitAssociationUtility.opidBenefitInactivation((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); //Sheetal 14/5/2020
         }
 
         if(isActive('ABA_Insert_ERPM_Integration_Trigger') && firstRun) {
             if(system.isBatch()){
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+                new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType());
             }
             else{
                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
@@ -60,7 +60,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     public override void afterUpdate() {
         if(isActive('ABA_After_Update') && trigger.Isupdate && PRM_accBenefitAssociationUtility.firstRun) {
             PRM_accBenefitAssociationUtility.firstRun = false;
-            PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap,false);
+            PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap);
             PRM_accBenefitAssociationUtility.onOPIDBenefitStatusInactive((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); 
             PRM_accBenefitAssociationUtility.onStatusInactiveParent((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap);
             PRM_accBenefitAssociationUtility.opidBenefitInactivation((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); //Sheetal 14/5/2020
@@ -76,7 +76,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
         if(isActive('ABA_Update_ERPM_Integration_Trigger') && firstRun) {
             
             if(system.isBatch()){
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+                new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType());
             }
             else{
                 //Id jobid = 

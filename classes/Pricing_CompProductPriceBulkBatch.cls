@@ -2,8 +2,8 @@
  * @description       : Class to process Competitor Product Price records in batches
  * @author            : Suraj Barade
  * @group             : Accenture
- * @last modified on  : 04-26-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 05-06-2025
+ * @last modified by  : Suraj Barade
 **/
 public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<SObject>, Database.Stateful{
 
@@ -33,8 +33,6 @@ public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<SOb
             csvRowVal = response; 
             csvRowValues.add(csvRowVal);
         }
-        List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
-        Id orgWideEmailAddId = orgWideEmailAdd[0].id;
         csvColumnHeader = 'Competitor Product Id,Competitor Product Name,List Price,Region,Median Meet Comp Discount,Application,Final Meet Comp Price,Result\n';
         String csvFile = csvColumnHeader + String.join(csvRowValues,'\n');
         
@@ -54,7 +52,6 @@ public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<SOb
         String[] ccAddresses = new String[] {ccemailAddress};
         message.setToAddresses(toAddresses);
         message.setccAddresses(ccAddresses);
-        message.setOrgWideEmailAddressId(orgWideEmailAddId);
         message.setSubject('Result : Bulk Competitor Product Price Operation'); 
         message.setHtmlBody('Please see attached Bulk Competitor Product Price success error csv file');
         message.setSaveAsActivity(false);

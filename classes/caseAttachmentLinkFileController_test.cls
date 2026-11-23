@@ -9,7 +9,6 @@ public class caseAttachmentLinkFileController_test {
             Accnt.BillingCity = 'Alabama';
             Accnt.BillingStreet = 'street';
             Accnt.Core_IPS_Active__c = true;
-			Accnt.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
             Database.insert(Accnt);
 		integer counter = 0;
          List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);

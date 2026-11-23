@@ -124,148 +124,97 @@ public Without Sharing class Core_MDF_ScheduledNotificationHandler {
             Core_MDF_GenericClassToSendMail.sendEmails(emailTosendList);
         }
     }*/
-    public static void notifyIPAUsers (Set<Id> pfraccIdSet , Set<Id> pfrultimateAccIds,
-                                    List<Partnerfundrequest> pfrs, String notificationType, 
-                                    boolean IsOutcomebaseAct){
-    
-    Set<Id> intExtUserIdSet = new Set<Id>();
-    Set<String> remainderNotifyTemplateSet = Core_MDF_CCP_ConstantClass.ipaReminderEmailTemplates;
-    Set<String> ipaOutcomebaseReminderEmailTemplates = Core_MDF_CCP_ConstantClass.ipaOutcomebaseReminderEmailTemplates;
-
-    String allAccountYes = Core_MDF_CCP_ConstantClass.allAccountYes;
-    String ipaClaimSubmitterPS = Core_MDF_CCP_ConstantClass.ipaClaimSubmitterPS;
-    List<Messaging.SingleEmailMessage> emailTosendList = new List<Messaging.SingleEmailMessage>();
-    id pfrid = pfrs[0].id;
-    
-    Map<String,String> emailTemplateMap = new Map<String,String>();   
-    Set<Id> iupgmUserIdSet = new Set<Id>();
-    String pfrObjectNameForEmailPreferences = Core_MDF_CustomLabelConfig.getTextValues(
-        'Core_MDF_EmailPreferenceObject_PFR');
-    
-    Set<String> allTemplateNames = new Set<String>();
-    
-    if (!IsOutcomebaseAct && remainderNotifyTemplateSet != null) {
-        allTemplateNames.addAll(remainderNotifyTemplateSet);
-    }
-    
-    if (IsOutcomebaseAct && ipaOutcomebaseReminderEmailTemplates != null) {
-        allTemplateNames.addAll(ipaOutcomebaseReminderEmailTemplates);
-    }
-    
-    if (!allTemplateNames.isEmpty()) {
-        for (EmailTemplate template : [SELECT Id, Name, DeveloperName 
-                                       FROM EmailTemplate 
-                                       WHERE DeveloperName IN :allTemplateNames]) {
-            emailTemplateMap.put(template.DeveloperName, template.Id);
-        }
-    }
-    
-    if(pfraccIdSet != NULL && !pfraccIdSet.isEmpty()){           
-        for(Core_MDF_Partner_Node_User_Mapping__c pnum : [
-                SELECT Id, Core_MDF_Account__c, Core_MDF_User__c, Core_MDF_User__r.Id 
-                FROM Core_MDF_Partner_Node_User_Mapping__c 
-                WHERE Core_MDF_Account__c IN :pfraccIdSet 
-                AND Core_MDF_Active_Ind__c = TRUE 
-                AND (Core_MDF_User__r.IsActive = TRUE 
-                     OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)]){
-            intExtUserIdSet.add(pnum.Core_MDF_User__c);
-        }
-    }
-    
-    if(pfrultimateAccIds != NULL && !pfrultimateAccIds.isEmpty()){
+    public static void notifyIPAUsers (Set<Id> pfraccIdSet , Set<Id> pfrultimateAccIds,List<Partnerfundrequest> pfrs, String notificationType){
         
-        String ipaAccountManagerPS = Core_MDF_CustomLabelConfig.getTextValues(
-            'Core_MDF_IPA_Account_Manager_PS');
-        
-        for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : [
-                SELECT Id, Core_MDF_Account_id__c, Core_MDF_User_id__c,
-                       Core_MDF_Active_Ind__c, Core_MDF_Account_id__r.Name
-                FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                WHERE (Core_MDF_Account_id__c IN :pfrultimateAccIds OR 
-                       Core_MDF_All_Accounts_cd__c =:allAccountYes) 
-                AND Core_MDF_Role_nm__c =:ipaAccountManagerPS
-                AND Core_MDF_is_User_Active_ind__c = TRUE 
-                AND Core_MDF_Active_Ind__c = TRUE]){
-            iupgmUserIdSet.add(iupgm.Core_MDF_User_id__c);
+        Set<Id> intExtUserIdSet = new Set<Id>();
+        Set<String> remainderNotifyTemplateSet = Core_MDF_CCP_ConstantClass.ipaReminderEmailTemplates;
+        String allAccountYes = Core_MDF_CCP_ConstantClass.allAccountYes;
+         String ipaClaimSubmitterPS = Core_MDF_CCP_ConstantClass.ipaClaimSubmitterPS;
+        List<Messaging.SingleEmailMessage> emailTosendList= new List<Messaging.SingleEmailMessage>();
+        id pfrid =pfrs[0].id;
+        Map<String,String> emailTemplateMap = new Map<String,String>();   
+        Set<Id> iupgmUserIdSet = new Set<Id>();
+        String pfrObjectNameForEmailPreferences = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObject_PFR');
+        if(remainderNotifyTemplateSet != null && !remainderNotifyTemplateSet.isEmpty()){
+            for(EmailTemplate template : [SELECT Id, Name, DeveloperName 
+                                          FROM EmailTemplate 
+                                          WHERE DeveloperName IN: remainderNotifyTemplateSet]){                                                
+                                              emailTemplateMap.put(template.DeveloperName, template.Id);
+                                          }
         }
         
-        if(iupgmUserIdSet != null && iupgmUserIdSet.size() > 0 && 
-           notificationType != Null && pfrObjectNameForEmailPreferences != Null){
-            
-            List<Id> fiteredIupgmUserIdLst = Core_MDF_SubUnsub_Notifications_Utility.filterUserBasedOnSubscription(notificationType,pfrObjectNameForEmailPreferences,iupgmUserIdSet);
-            
-            if(fiteredIupgmUserIdLst != null && fiteredIupgmUserIdLst.size() > 0){
-                for(Id userId : fiteredIupgmUserIdLst){
-                    intExtUserIdSet.add(userId);
-                }
+        
+        
+        if(pfraccIdSet != NULL && !pfraccIdSet.isEmpty()){           
+            //Ayush - Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
+            for(Core_MDF_Partner_Node_User_Mapping__c pnum :[SELECT Id,Core_MDF_Account__c, Core_MDF_User__c,Core_MDF_User__r.Id 
+                                                             FROM Core_MDF_Partner_Node_User_Mapping__c 
+                                                             WHERE Core_MDF_Account__c IN : pfraccIdSet AND
+                                                              Core_MDF_Active_Ind__c = TRUE AND
+                                                             (Core_MDF_User__r.IsActive = TRUE OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)]){
+                                                                 
+                                                                     intExtUserIdSet.add(pnum.Core_MDF_User__c);
+                                                                
+                                                             }
+        }
+        if(pfrultimateAccIds != NULL && !pfrultimateAccIds.isEmpty()){
+            for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : [SELECT Id,Core_MDF_Account_id__c,Core_MDF_User_id__c,Core_MDF_Active_Ind__c,Core_MDF_Account_id__r.Name
+                                                                       FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                                       WHERE (Core_MDF_Account_id__c  IN: pfrultimateAccIds OR 
+                                                                       Core_MDF_All_Accounts_cd__c =:allAccountYes) AND 
+                                                                       Core_MDF_Role_nm__c =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Account_Manager_PS') AND
+                                                                       Core_MDF_is_User_Active_ind__c = TRUE AND
+                                                                       Core_MDF_Active_Ind__c = TRUE
+                                                                      ]){
+                                                                          //intExtUserIdSet.add(iupgm.Core_MDF_User_id__c);
+                                                                          iupgmUserIdSet.add(iupgm.Core_MDF_User_id__c);
             }
-        } else {
-            intExtUserIdSet.addAll(iupgmUserIdSet);
-        }
-    }
-    
-    Set<id> userIdSet = new Set<Id>();
-
-    if(intExtUserIdSet != Null && !intExtUserIdSet.isEmpty()) {
-        
-        String externalProposalManager = Core_MDF_CustomLabelConfig.getTextValues(
-            'Core_MDF_External_IPA_Proposal_Manager');
-        String externalActivityManager = Core_MDF_CustomLabelConfig.getTextValues(
-            'Core_MDF_External_IPA_Activity_Manager');
-        String ipaAccountManagerPS = Core_MDF_CustomLabelConfig.getTextValues(
-            'Core_MDF_IPA_Account_Manager_PS');
-        
-        for(PermissionSetAssignment userPer : [
-                SELECT Id, AssigneeId, Assignee.AccountId, 
-                       Assignee.IsActive, PermissionSet.Name 
-                FROM PermissionSetAssignment 
-                WHERE AssigneeId IN :intExtUserIdSet 
-                AND (PermissionSet.Name =:ipaClaimSubmitterPS 
-                     OR PermissionSet.Name =:externalProposalManager
-                     OR PermissionSet.Name =:externalActivityManager
-                     OR PermissionSet.Name =:ipaAccountManagerPS)]) {
-            
-            if(!userIdSet.contains(userPer.AssigneeId)) {
-                
-                if(userPer.PermissionSet.Name == ipaAccountManagerPS) {
-                    String intTemplateName = IsOutcomebaseAct ? 
-                        'Core_MDF_IPA_OB_RemindNotify_Int' : 
-                        'Core_MDF_IPA_ReminderNotification';
-                    
-                    if(emailTemplateMap.get(intTemplateName) != null) {
-                        emailTosendList.add(createEmailInstanceTarget(
-                            pfrid,
-                            emailTemplateMap.get(intTemplateName),
-                            userPer.AssigneeId));
+            if(iupgmUserIdSet!=null && iupgmUserIdSet.size()>0 && notificationType != Null && pfrObjectNameForEmailPreferences != Null){
+                List<Id> fiteredIupgmUserIdLst = Core_MDF_SubUnsub_Notifications_Utility.filterUserBasedOnSubscription(notificationType,pfrObjectNameForEmailPreferences,iupgmUserIdSet);
+                if(fiteredIupgmUserIdLst != null && fiteredIupgmUserIdLst.size() > 0){
+                    for(Id userId : fiteredIupgmUserIdLst){
+                        intExtUserIdSet.add(userId);
                     }
-                }
-                
-                if(userPer.PermissionSet.Name == 'Core_MDF_CCP_External_IPA_Claim_Submitter' || 
-                   userPer.PermissionSet.Name == externalProposalManager ||
-                   userPer.PermissionSet.Name == externalActivityManager) {
-                    
-                    String extTemplateName = IsOutcomebaseAct ? 
-                        'Core_MDF_IPA_OB_RemindNotify_Ext' : 
-                        'Core_MDF_IPA_ReminderNotification_Ext';
-                    
-                    if(emailTemplateMap.get(extTemplateName) != null) {
-                        emailTosendList.add(createEmailInstanceTarget(
-                            pfrid,
-                            emailTemplateMap.get(extTemplateName),
-                            userPer.AssigneeId));
-                    }
-                }
-                userIdSet.add(userPer.AssigneeId);
+                } 
             }
+            else{
+                intExtUserIdSet.addAll(iupgmUserIdSet);
+            }
+
         }
-        
-    }
-   
-    if(emailTosendList != NULL && !emailTosendList.isEmpty()) {
-List<Messaging.SendEmailResult> res= Core_MDF_GenericClassToSendMail.sendEmails(emailTosendList);
-    }
-    
-}
+        Set<id> userIdSet = new Set<Id>();
+
+        if(intExtUserIdSet!= Null && !intExtUserIdSet.isEmpty()) {
+            for(PermissionSetAssignment userPer : [SELECT Id, AssigneeId, Assignee.AccountId, Assignee.IsActive, PermissionSet.Name 
+                                                   FROM PermissionSetAssignment WHERE AssigneeId IN :intExtUserIdSet 
+                                                   AND (PermissionSet.Name =:ipaClaimSubmitterPS 
+                                                        OR PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_IPA_Proposal_Manager')  
+                                                        OR PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_IPA_Activity_Manager')
+                                                        OR PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Account_Manager_PS')
+                                                       )]) {
+                                                           if(!userIdSet.contains(userper.AssigneeId)) {
+                                                                 if(userPer.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Account_Manager_PS')) {
+                                                               
+                                                               emailTosendList.add(createEmailInstanceTarget(pfrid,emailTemplateMap.get('Core_MDF_IPA_ReminderNotification'),userper.AssigneeId));
+                                                           }
+                                                           if(userPer.PermissionSet.Name == 'Core_MDF_CCP_External_IPA_Claim_Submitter' || 
+                                                              userPer.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_IPA_Proposal_Manager') ||
+                                                              userPer.PermissionSet.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_IPA_Activity_Manager')) {
+                                                                  emailTosendList.add(createEmailInstanceTarget(pfrid,emailTemplateMap.get('Core_MDF_IPA_ReminderNotification_Ext'),userPer.AssigneeId));
+                                                              }
+                                                              userIdSet.add(userper.AssigneeId);
+                                                           }
+
+
+                                                       }
+            
+        }
+       
+        if(emailTosendList != NULL && !emailTosendList.isEmpty()) {
+            List<Messaging.SendEmailResult> res= Core_MDF_GenericClassToSendMail.sendEmails(emailTosendList);
+             
+        }             
+    } 
     public static Messaging.SingleEmailMessage createEmailInstanceTarget(Id recordId, Id templateId,String setTargetObjectId){
                              return Core_MDF_GenericClassToSendMail.createEmailInstanceTarget(recordId,templateId,setTargetObjectId);   
     }

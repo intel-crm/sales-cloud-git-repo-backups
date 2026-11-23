@@ -175,7 +175,6 @@
         <label>Account</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>1 AND ((2 AND 3) OR 4)</booleanFilter>
             <filterItems>
                 <field>Account.RecordType.DeveloperName</field>
                 <operation>equals</operation>
@@ -185,16 +184,6 @@
                 <field>Account.Core_MDF_Active_Ind__c</field>
                 <operation>equals</operation>
                 <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_MDF_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_MDF_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>False</value>
             </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
@@ -332,17 +321,7 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Account__c</columns>
         <columns>Core_MDF_User__c</columns>
         <columns>Core_MDF_Active_Ind__c</columns>
-        <filterScope>ScopingRule</filterScope>
-        <filters>
-            <field>Core_MDF_User__c</field>
-            <operation>contains</operation>
-            <value>rizzo</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>equals</operation>
-            <value>IPA - TD Synnex - UK - Component</value>
-        </filters>
+        <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
@@ -379,7 +358,7 @@ $Label.Core_MDF_Intel_System_User
     <validationRules>
         <fullName>Core_MDF_InActiveUserValidation</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(Core_MDF_Active_Ind__c,NOT(Core_MDF_User__r.IsActive),NOT(Core_MDF_User__r.Partner_License_Reclaimed__c))</errorConditionFormula>
+        <errorConditionFormula>AND(NOT(Core_MDF_User__r.IsActive),NOT(Core_MDF_User__r.Partner_License_Reclaimed__c))</errorConditionFormula>
         <errorMessage>The user selected has been deactivated. Please select a user that is in active status.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

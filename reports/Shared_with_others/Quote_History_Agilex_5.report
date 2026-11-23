@@ -47,6 +47,9 @@
         <field>SBQQ__QuoteLine__c.core_cpq_quote_line_type_txt__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__QuoteLine__c.core_cpq_price_eligibility_date_dt__c</field>
     </columns>
     <columns>

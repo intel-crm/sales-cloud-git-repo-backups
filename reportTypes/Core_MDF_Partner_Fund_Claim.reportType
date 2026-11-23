@@ -14,12 +14,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign ID</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Claim #</displayNameOverride>
             <field>Core_MDF_Claim_Ref_Number__c</field>
             <table>PartnerFundClaim</table>
@@ -198,11 +192,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Claim_Creation_Dur_Min_nbr__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Id__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Claims</masterLabel>

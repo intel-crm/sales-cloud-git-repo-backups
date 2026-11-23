@@ -39,7 +39,7 @@ public without sharing class Core_TaskHandler
     * Return Type  : VOID
     * Parameter    : List Trigger.new
     */
-   /* public static String Checkleadsource(List<Task> newlist)
+    public static String Checkleadsource(List<Task> newlist)
     {
         String message = 'Ok';
         String LeadSourceMsg = Label.Core_LeadSource_on_Task;
@@ -65,14 +65,14 @@ public without sharing class Core_TaskHandler
         }
         
         return message; 
-    } */
+    }
     
     /*
     * Method name  : addLeadSourceError
     * Description  : Helper method to add errors to tasks
     * Return Type  : VOID
     */
-   /* private static void addLeadSourceError(List<Task> newlist, Id leadId, String LeadSourceMsg)
+    private static void addLeadSourceError(List<Task> newlist, Id leadId, String LeadSourceMsg)
     {
         for(Task t : newlist)
         {
@@ -81,7 +81,7 @@ public without sharing class Core_TaskHandler
                 t.addError(LeadSourceMsg);
             }
         }
-    }*/
+    }
 
     /*
     * Method name  : UpdateTaskflag
@@ -89,7 +89,7 @@ public without sharing class Core_TaskHandler
     * Return Type  : VOID
     * Parameter    : List Trigger.new
     */
-    /* public static void UpdateTaskflag(List<Task> newlist) 
+    public static void UpdateTaskflag(List<Task> newlist) 
     {
         String message = Checkleadsource(newlist);
         if(message == 'Ok')
@@ -106,14 +106,14 @@ public without sharing class Core_TaskHandler
                 updateLeadTaskFlags(newlist, leadList, leadIds);
             }
         }
-    }*/
+    }
     
     /*
     * Method name  : processTaskSubjects
     * Description  : Helper method to process task subjects
     * Return Type  : VOID
     */    
-   /* private static void processTaskSubjects(List<Task> newlist, Set<Id> leadIds, Set<Id> queryLeadId)
+    private static void processTaskSubjects(List<Task> newlist, Set<Id> leadIds, Set<Id> queryLeadId)
     {
         for(Task t : newlist)
         {
@@ -126,14 +126,14 @@ public without sharing class Core_TaskHandler
                 queryLeadId.add(t.whoId);
             }
         }
-    }*/
+    }
     
     /*
     * Method name  : updateLeadTaskFlags
     * Description  : Helper method to update lead task flags
     * Return Type  : VOID
     */  
-   /* private static void updateLeadTaskFlags(List<Task> newlist, List<Lead> leadList, Set<Id> leadIds)
+    private static void updateLeadTaskFlags(List<Task> newlist, List<Lead> leadList, Set<Id> leadIds)
      {
     Map<Id, Lead> leadMap = new Map<Id, Lead>(leadList);
 
@@ -144,7 +144,7 @@ public without sharing class Core_TaskHandler
         
       }
     update leadList;
-    }*/
+    }
 
     /*
     * Method name  : UpdateTaskflagOnUpdate
@@ -152,7 +152,7 @@ public without sharing class Core_TaskHandler
     * Return Type  : VOID
     * Parameter    : List Trigger.new, Trigger.Old
     */
-  /*  public static void UpdateTaskflagOnUpdate(List<Task> oldList, List<Task> newList)
+    public static void UpdateTaskflagOnUpdate(List<Task> oldList, List<Task> newList)
     {
         Set<Id> leadIds = new Set<Id>();
         Set<Id> leadIdsnew = new Set<Id>();
@@ -166,13 +166,13 @@ public without sharing class Core_TaskHandler
         {
             updateLeadTaskFlags(newList, leadlst, leadIds);
         }
-    }*/
+    }
     /*
     * Method name  : processUpdateTaskSubjects
     * Description  : Helper method to process task subjects on update
     * Return Type  : VOID
     */
-  /*  private static void processUpdateTaskSubjects(List<Task> oldList, List<Task> newList, Set<Id> leadIds, Set<Id> leadIdsnew,Set<Id> queryLeadId)
+    private static void processUpdateTaskSubjects(List<Task> oldList, List<Task> newList, Set<Id> leadIds, Set<Id> leadIdsnew,Set<Id> queryLeadId)
     {
         for (Task t : oldList)
         {
@@ -185,19 +185,19 @@ public without sharing class Core_TaskHandler
                 }
             }        
         }
-    }*/
+    }
     /*
     * Method name  : addTaskLeadIds
     * Description  : Helper method to add task lead IDs based on subject
     * Return Type  : VOID
     */ 
-   /* private static void addTaskLeadIds(Task tnew, Set<Id> leadIds, Set<Id> leadIdsnew)
+    private static void addTaskLeadIds(Task tnew, Set<Id> leadIds, Set<Id> leadIdsnew)
     {
         if(tnew.Subject == 'Phone' || tnew.Subject =='Email' || tnew.Subject == 'Meeting'){
                         leadIds.add(tnew.whoId); 
                     }else{
                         leadIdsnew.add(tnew.whoId); 
                     }
-    }*/
+    }
 
 }

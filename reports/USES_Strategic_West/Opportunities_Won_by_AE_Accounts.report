@@ -68,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Emily Schumacher,Camille Cudaback,Andrew Meyer,Jose Monroy,Kristy Fay</value>
+            <value>Emily Schumacher,Camille Cudaback,Andrew Meyer,Jose Monroy,Kristen Call,Austin Davis,Kevin Kim</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>
@@ -119,6 +119,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

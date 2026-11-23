@@ -184,21 +184,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_MDF_Channel_Program_CCP_Payment_Admin_Manager</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Channel Program - AGS_CCP Payment Admin Manager</description>
-        <label>Channel Program - CCP Payment Admin Manager</label>
-        <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Technical_Program_Name__c</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_CCP_SPCF_EXTERNAL_ALL_Read</fullName>
         <accessLevel>Read</accessLevel>
         <label>Channel Program CCP SPCF EXTERNAL ALL Read</label>

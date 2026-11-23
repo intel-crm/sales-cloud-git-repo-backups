@@ -178,18 +178,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Account_nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Partnership_Score_Id__r.Core_MDF_Virtual_Corp_Account_Id__r.Core_MDF_Parent_Fund_Account__r.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Balance_Amount_Amt__c</fullName>
         <description>(Total Recovery Amount + Carry Over Amount) - Recovered Amount</description>
         <formula>((Core_MDF_Total_Recovery_Amt__c +  Core_MDF_Carry_Over_Amt__c ) - (Core_MDF_Recovered_Amt__c + Core_MDF_Recovery_Offset_Amt__c))</formula>
@@ -343,18 +331,6 @@
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Recovery_Account_nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF( NOT(ISBLANK(Core_MDF_Node_Account_Id__c)), Core_MDF_Node_Account_Id__r.Name, Core_MDF_Account_nm__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Recovery Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Recovery_Offset_Amt__c</fullName>
         <description>Used to hold Offset amount that&apos;s entered by Payment Admin in Claim Recovery page. Currently allowed only for RMF PRC region</description>
         <inlineHelpText>Payment Admin can set Recovery Offset for PRC RSA MD Recoveries only</inlineHelpText>
@@ -415,7 +391,6 @@
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>

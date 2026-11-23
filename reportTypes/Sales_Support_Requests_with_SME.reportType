@@ -1154,11 +1154,6 @@
             <field>CRM_Multi_boarded__c</field>
             <table>Opportunity</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sustainability_Compliance__c</field>
-            <table>Opportunity</table>
-        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>

@@ -1,11 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-05-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
-//Test class: Core_MDF_BulkClaimServerController_Test
 public without sharing class Core_MDF_BatchClaimHelper {    
     public static List<Core_MDF_CCP_Custom_Metadata_Utility__c> metadataRecordList;
     public static Core_MDF_Claim_Batch__c batch;
@@ -69,9 +61,6 @@ Accenture - JV      4/7/2019    Dynamically Mapping the Stage and Claim Records 
         string bankLE420 = Core_MDF_CCP_ConstantClass.Bank_LE420;
         string bankLE650 = Core_MDF_CCP_ConstantClass.Bank_LE650;
 
-        //ATHR Fix - 17214
-        List<PartnerFundClaim>  claimRecords = new List<PartnerFundClaim>();
-        if(stageClaimRecs == null || stageClaimRecs.isEmpty()) { return claimRecords; }
         for(Core_MDF_Claim_Batch_Stage__c claimBatchStg:stageClaimRecs) {
             claimbatchIds.add(claimBatchStg.Core_MDF_Batch_ID__c);
             pfrIdSet.add(claimBatchStg.Core_MDF_Request_Id__c);
@@ -118,135 +107,86 @@ Accenture - JV      4/7/2019    Dynamically Mapping the Stage and Claim Records 
                                                                     }
     
         
-        //ATHR Comment - 17214 (deeply nested ifs)
-        /*List<PartnerFundClaim>  claimRecords = new List<PartnerFundClaim>();
+        List<PartnerFundClaim>  claimRecords = new List<PartnerFundClaim>();
         if(stageClaimRecs != NULL && stageClaimRecs.size() > 0)
-        {*/	
-            //Populate Processing Preference on Claim based on Today's Date
+        {
+            // Roshan - Populate Processing Preference on Claim based on Today's Date
             Date claimDate = System.today();
             // Core_MDF_PartnerFundClaim.PayTypeWrapper payType = Core_MDF_PartnerFundClaim.getDefaultPayTypePicklist(claimDate);
             // String processingPreference = payType.surePay ? Label.Core_MDF_nonTranslate_Sure_Pay : Label.Core_MDF_nonTranslate_Fast_Pay;
             
             for(Core_MDF_Claim_Batch_Stage__c stageClaim: stageClaimRecs)
             {   
-                //ATHR Fix - 17214
-                if(stageClaim.Core_MDF_Processing_Status_Nm__c != Label.Core_MDF_Status_Submitted) { continue; }
 
-                String processingPreference;
                 String program = stageClaim.Core_MDF_Program_Txt__c;
                 String budgetType = stageClaim.Core_MDF_Budget_Type_Nm__c;
                 Core_MDF_PartnerFundClaim.PayTypeWrapper payType = Core_MDF_PartnerFundClaim.getDefaultPayTypePicklist(claimDate, program, budgetType);
-                //ATHR Comment - 17214 (deeply nested ifs)
-                /*if(program == Label.Core_MDF_CCF_Program_Name || program == Label.Core_MDF_Non_Localized_DCF_Program_Name){
-                    processingPreference = Label.Core_MDF_nonTranslate_Fast_Pay;
-                }else{
-                    processingPreference = payType.surePay ? Label.Core_MDF_nonTranslate_Sure_Pay : Label.Core_MDF_nonTranslate_Fast_Pay;
-                }*/
-                //ATHR Fix - 17214
-                processingPreference = (program == Label.Core_MDF_CCF_Program_Name || program == Label.Core_MDF_Non_Localized_DCF_Program_Name) ? Label.Core_MDF_nonTranslate_Fast_Pay : payType.surePay ? Label.Core_MDF_nonTranslate_Sure_Pay : Label.Core_MDF_nonTranslate_Fast_Pay;
-                
+                String processingPreference = payType.surePay ? Label.Core_MDF_nonTranslate_Sure_Pay : Label.Core_MDF_nonTranslate_Fast_Pay;
 
                 //if(stageClaim.Core_MDF_Processing_Status_Nm__c != Label.Core_MDF_Claim_Batch_Failed) 
-                //ATHR Comment - 17214 (deeply nested ifs)
-                /*if(stageClaim.Core_MDF_Processing_Status_Nm__c == Label.Core_MDF_Status_Submitted)
-                {*/
+                if(stageClaim.Core_MDF_Processing_Status_Nm__c == Label.Core_MDF_Status_Submitted)
+                {
                     PartnerFundClaim pfc = new PartnerFundClaim();
                     List<String> stageFieldsNotToBeMappedWithClaim = Label.Core_MDF_StageFieldsNotToBeMapped.split(',');
                     for(Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord:progToMetadataRecordsMap.get(claimbatchMaps.get(stageClaim.Core_MDF_Batch_ID__c).Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c))
                     {
-                        //ATHR Comment - 17214 (deeply nested ifs)
-                        /*if(!stageFieldsNotToBeMappedWithClaim.contains(metadataRecord.Core_MDF_Field_2_txt__c)){
+                        if(!stageFieldsNotToBeMappedWithClaim.contains(metadataRecord.Core_MDF_Field_2_txt__c)){
                             pfc.put(metadataRecord.Core_MDF_Field_3_txt__c,stageClaim.get(metadataRecord.Core_MDF_Field_2_txt__c));
-                        }*/
-                        //ATHR Fix - 17214
-                        switch on String.valueOf(stageFieldsNotToBeMappedWithClaim.contains(metadataRecord.Core_MDF_Field_2_txt__c)) {
-                            when 'false' {
-                                pfc.put(metadataRecord.Core_MDF_Field_3_txt__c,stageClaim.get(metadataRecord.Core_MDF_Field_2_txt__c));
-                            }
                         }
                     }
 
                     pfc.RequestId = stageClaim.Core_MDF_Request_Id__c;
                     pfc.Core_MDF_Bank__c =  stageClaim.Core_MDF_Bank_Id__c;
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && 
+                    if(bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && 
                        bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_Intel_Company_Code__c == bankLE420 && 
                        stageClaim.Core_MDF_VAT_Opt_In__c == vatApplicable)	
                     {
                         pfc.Core_MDF_Applicable_VAT_Percentage_nm__c = bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_VAT_pct__c;
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Applicable_VAT_Percentage_nm__c = bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_Intel_Company_Code__c == bankLE420 && stageClaim.Core_MDF_VAT_Opt_In__c == vatApplicable ? bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_VAT_pct__c : pfc.Core_MDF_Applicable_VAT_Percentage_nm__c;
+                    }
 		    // for 650 LE code bank 
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && 
+                    if(bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && 
                        bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_Intel_Company_Code__c == bankLE650)
                     {
                         pfc.Core_MDF_Applicable_VAT_Percentage_nm__c = stageClaim.Core_MDF_VAT_Opt_In__c == vatApplicable ? '10': stageClaim.Core_MDF_VAT_Opt_In__c == nonVatApplicable ?'0':'';
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Applicable_VAT_Percentage_nm__c = bankMap.containsKey(stageClaim.Core_MDF_Bank_Id__c) && bankMap.get(stageClaim.Core_MDF_Bank_Id__c).Core_MDF_Intel_Company_Code__c == bankLE650 ? stageClaim.Core_MDF_VAT_Opt_In__c == vatApplicable ? '10': stageClaim.Core_MDF_VAT_Opt_In__c == nonVatApplicable ?'0':'' : pfc.Core_MDF_Applicable_VAT_Percentage_nm__c;
+                    }
                     
                     pfc.Core_MDF_Claim_Batch_Stage__c = stageClaim.Id;
                     pfc.Core_MDF_Batch_Nbr__c = claimbatchMaps.get(stageClaim.Core_MDF_Batch_ID__c).Name;
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(pfc.Core_MDF_Country_Location_nm__c == null && stageClaim.Core_MDF_Country_Location_nm__c != null){
+                    if(pfc.Core_MDF_Country_Location_nm__c == null && stageClaim.Core_MDF_Country_Location_nm__c != null){
                         pfc.Core_MDF_Country_Location_nm__c = stageClaim.Core_MDF_Country_Location_nm__c;
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Country_Location_nm__c = pfc.Core_MDF_Country_Location_nm__c == null && stageClaim.Core_MDF_Country_Location_nm__c != null ? stageClaim.Core_MDF_Country_Location_nm__c : pfc.Core_MDF_Country_Location_nm__c;
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(stageClaim.Core_MDF_Review_Hold_Rule_Nm__c != null){
+                    }
+                    if(stageClaim.Core_MDF_Review_Hold_Rule_Nm__c != null){
                         pfc.Core_MDF_Review_Hold_Rule_Nm__c =stageClaim.Core_MDF_Review_Hold_Rule_Nm__c;
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Review_Hold_Rule_Nm__c = stageClaim.Core_MDF_Review_Hold_Rule_Nm__c != null ? stageClaim.Core_MDF_Review_Hold_Rule_Nm__c : pfc.Core_MDF_Review_Hold_Rule_Nm__c;
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(stageClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c!=null){
+                    }
+                    if(stageClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c!=null){
                         pfc.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c = stageClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c;
-                    }*/
+                    }
 
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c = stageClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c != null ? stageClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c : pfc.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c;
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(stageClaim.Core_MDF_Log_Info_txt__c != null){
+                    if(stageClaim.Core_MDF_Log_Info_txt__c != null){
                         pfc.Core_MDF_Log_Info_txt__c = stageClaim.Core_MDF_Log_Info_txt__c;
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Log_Info_txt__c = stageClaim.Core_MDF_Log_Info_txt__c != null ? stageClaim.Core_MDF_Log_Info_txt__c : pfc.Core_MDF_Log_Info_txt__c;
+                    }
 
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(stageClaim.Core_MDF_Program_Txt__c == Label.Core_MDF_Retail_Program_Name && stageClaim.Core_MDF_Activity_SubType_nm__c!=null){
+                    if(stageClaim.Core_MDF_Program_Txt__c == Label.Core_MDF_Retail_Program_Name && stageClaim.Core_MDF_Activity_SubType_nm__c!=null){
                         pfc.Core_MDF_Activity_SubType_nm__c = stageClaim.Core_MDF_Activity_SubType_nm__c;
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Activity_SubType_nm__c = stageClaim.Core_MDF_Program_Txt__c == Label.Core_MDF_Retail_Program_Name && stageClaim.Core_MDF_Activity_SubType_nm__c!=null ? stageClaim.Core_MDF_Activity_SubType_nm__c : pfc.Core_MDF_Activity_SubType_nm__c;
+                    }
                     // Avoid claim submitter, if execute in external user context.
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(UserInfo.getUserType() != 'PowerPartner') {
+                    if(UserInfo.getUserType() != 'PowerPartner') {
                         pfc.Core_MDF_Claim_Submitter_Id__c =stageClaim.CreatedById;//added by vaishali to update claim owner as claim submitter
-                    }*/
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Claim_Submitter_Id__c = UserInfo.getUserType() != 'PowerPartner' ? stageClaim.CreatedById : pfc.Core_MDF_Claim_Submitter_Id__c;//added by vaishali to update claim owner as claim submitter
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(stageClaim.Core_MDF_Budget_Type_Nm__c!=null){
+                    }
+                    if(stageClaim.Core_MDF_Budget_Type_Nm__c!=null){
                         pfc.Core_MDF_Budget_Type_Options_Nm__c = stageClaim.Core_MDF_Budget_Type_Nm__c;
-                    }*/
+                    }
 
-                    //ATHR Fix - 17214
-                    pfc.Core_MDF_Budget_Type_Options_Nm__c = stageClaim.Core_MDF_Budget_Type_Nm__c != null ? stageClaim.Core_MDF_Budget_Type_Nm__c : pfc.Core_MDF_Budget_Type_Options_Nm__c;
-                    //TWC3117-11893 Bulk claims going into Submitted status when edited after PIC is Passed
+                    // Roshan - TWC3117-11893 Bulk claims going into Submitted status when edited after PIC is Passed
                     pfc.Core_MDF_Taxes_Local__c = (stageClaim.Core_MDF_Taxes_Local_Amt__c == null) ? 0 : stageClaim.Core_MDF_Taxes_Local_Amt__c;
                     
-                    //Populate Processing Preference on Claim based on Today's Date
+                    // Roshan - Populate Processing Preference on Claim based on Today's Date
                     pfc.Core_MDF_Processing_Preference_nm__c = processingPreference;
 
                     claimRecords.add(pfc);
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //}
+                }
             }       
-        //ATHR Comment - 17214 (deeply nested ifs)
-        //}
+        }
         return claimRecords;        
     }
     
@@ -277,12 +217,9 @@ Modified By:        Date:       Changes:
         /*if(newClaimStageRecord.Core_MDF_Retry_Ind__c == TRUE && oldClaimStageMap.get(newClaimStageRecord.Id).Core_MDF_Retry_Ind__c == FALSE){
 isEdited = TRUE;
 }*/
-        //ATHR Comment - 17214 (deeply nested ifs)
-        /*if(isEdited){
+        if(isEdited){
             return TRUE;
-        }else{return FALSE;}*/
-        //ATHR Fix - 17214
-        return isEdited;
+        }else{return FALSE;}
     }
     
     /************************************************************************************************************ 
@@ -298,8 +235,7 @@ Modified By:        Date:       Changes:
         Set<Id> succesRecordIdSet = new Set<Id>();
         List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
         Map<Id,PartnerFundClaim> successClaimMap = new Map<Id,PartnerFundClaim>();
-        //ATHR Comment - 17214 (unused local variable)
-        //List<PartnerFundClaim> failedClaims = new List<PartnerFundClaim>();
+        List<PartnerFundClaim> failedClaims = new List<PartnerFundClaim>();
         List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
         List<Core_MDF_Claim_Batch_Stage__c> stageRecordsToUpdate = new List<Core_MDF_Claim_Batch_Stage__c>();
         Map<PartnerFundClaim,Id> claimToClaimStageIdMap = new Map<PartnerFundClaim,Id>();
@@ -320,8 +256,7 @@ Modified By:        Date:       Changes:
             {     
                 List<Core_MDF_Claim_Batch_Stage__c> successfulStageRecords = new List<Core_MDF_Claim_Batch_Stage__c>();
                 List<Core_MDF_Claim_Batch_Stage__c> failedStageRecords = new List<Core_MDF_Claim_Batch_Stage__c>();
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //if(claimList != NULL && claimList.size() > 0){
+                if(claimList != NULL && claimList.size() > 0){
                     Database.SaveResult[] result = Database.insert(claimList, false);
                     
                     for (Database.SaveResult sr : result) {
@@ -331,9 +266,9 @@ Modified By:        Date:       Changes:
                     }
 
                     successClaimMap = new Map<Id,PartnerFundClaim>([Select Id,Core_MDF_Claim_Batch_Stage__c, Core_MDF_Claim_Ref_Number__c, RequestId, Request.Status,
-                                                                    Request.Core_MDF_Fund_Request_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
+                                                                    Request.Core_MDF_Fund_Request_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
                                                                     Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
-                                                                    Core_MDF_Activity_Types__c, CreatedDate FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
+                                                                    Core_MDF_Activity_Types__c FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
                     
                     for(PartnerFundClaim claim : successClaimMap.values()){
                         successClaimToClaimStageIdMap.put(claim,claim.Core_MDF_Claim_Batch_Stage__c);
@@ -358,8 +293,7 @@ Modified By:        Date:       Changes:
                         else {                             
                             //start vaishali -
                             Database.Error errorMsg = result[index].getErrors()[0];
-                            //ATHR Comment - 17214 (deeply nested ifs)
-                            //String errorCode = String.valueOf(errorMsg.getStatusCode());
+                            String errorCode = String.valueOf(errorMsg.getStatusCode());
                             failedPFR.add(claimList.get(index).RequestId);
                             
                             ID stageid = claimList.get(index).Core_MDF_Claim_Batch_Stage__c;
@@ -367,8 +301,7 @@ Modified By:        Date:       Changes:
                             stageRecord.ID = stageid;
                             
                             //user exception or custom exception
-                            //ATHR Comment - 17214 (deeply nested ifs)
-                            /*if((Label.Core_MDF_UserExceptionErrorCode).contains(errorCode)){
+                            if((Label.Core_MDF_UserExceptionErrorCode).contains(errorCode)){
                                 String errorMessage = errorMsg.getMessage();  
                                 stageRecord.Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Claim_Batch_Failed;                            
                                 stageRecord.Core_MDF_Message_txt__c =  errorMessage;//Confirmed with Amal we can override message earlier we were appending messages
@@ -380,19 +313,6 @@ Modified By:        Date:       Changes:
                                 stageRecord.Core_MDF_Message_txt__c ='';
                                 stageRecord.Core_MDF_Failure_Reason_Txt__c = errorMessage; 
                                 stageRecord.Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Status_Submitted;
-                            }*/
-                            //ATHR Fix - 17214
-                            switch on String.valueOf((Label.Core_MDF_UserExceptionErrorCode).contains(String.valueOf(errorMsg.getStatusCode()))) {
-                                when 'true' {
-                                    stageRecord.Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Claim_Batch_Failed;                            
-                                    stageRecord.Core_MDF_Message_txt__c =  errorMsg.getMessage();//Confirmed with Amal we can override message earlier we were appending messages
-                                    stageRecord.Core_MDF_Failure_Reason_Txt__c ='';
-                                }
-                                when else {                                
-                                    stageRecord.Core_MDF_Message_txt__c ='';
-                                    stageRecord.Core_MDF_Failure_Reason_Txt__c = errorMsg.getMessage(); 
-                                    stageRecord.Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Status_Submitted;
-                                }
                             }
                             failedStageRecords.add(stageRecord);
                             //end - vaishali
@@ -429,16 +349,9 @@ Modified By:        Date:       Changes:
                     {
                         for(Id pfrID : failedPFR)
                         {
-                            //ATHR Comment - 17214 (deeply nested ifs)
-                            /*if(!pfrClaimMap.containsKey(pfrID) && pfrStatusMap.get(pfrID)=='Approved' && !Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MDF_BudgetTypes').contains(pfrBudgetMap.get(pfrID)))
+                            if(!pfrClaimMap.containsKey(pfrID) && pfrStatusMap.get(pfrID)=='Approved' && !Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MDF_BudgetTypes').contains(pfrBudgetMap.get(pfrID)))
                             {
                                 pfrToBeUpdated.add(new PartnerFundRequest(Id = pfrID, Status= 'Draft'));
-                            }*/
-                            //ATHR Fix - 17214
-                            switch on String.valueOf(!pfrClaimMap.containsKey(pfrID) && pfrStatusMap.get(pfrID)=='Approved' && !Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MDF_BudgetTypes').contains(pfrBudgetMap.get(pfrID))) {
-                                when 'true' {
-                                    pfrToBeUpdated.add(new PartnerFundRequest(Id = pfrID, Status= 'Draft'));
-                                }
                             }
                         }
                     }
@@ -446,18 +359,14 @@ Modified By:        Date:       Changes:
                     {
                         Database.Update(pfrToBeUpdated);   
                     }                    
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //}
+                }
             }  
             if(wrapperInst.failedStageRecordsList != null && wrapperInst.failedStageRecordsList.size()>0){
                 stageRecordsToUpdate.addAll(wrapperInst.failedStageRecordsList);//failed duplicate records
             }
 
             Database.update(stageRecordsToUpdate);
-            //ATHR Comment - 17214 (deeply nested ifs)
-            //if(succesRecordIdSet != null && succesRecordIdSet.size()>0){
-            //ATHR Fix - 17214
-            if(succesRecordIdSet == null || succesRecordIdSet.isEmpty()) { return; }
+            if(succesRecordIdSet != null && succesRecordIdSet.size()>0){
                 Map<Id, List<Core_MDF_Audit_Document__c>> auditList = new map<id, List<Core_MDF_Audit_Document__c>>();
                 List<Core_MDF_Audit_Document__c> auditDocumentList = new List<Core_MDF_Audit_Document__c>([select Id, Core_MDF_Claim_Batch_Record__c, Core_MDF_Claim__c, Core_MDF_Document_Id__c from Core_MDF_Audit_Document__c where Core_MDF_Claim_Batch_Record__c IN :successClaimToClaimStageIdMap.values()]);
                 for(Core_MDF_Audit_Document__c auditRecord : auditDocumentList) {
@@ -472,10 +381,7 @@ Modified By:        Date:       Changes:
                     }
                    
                 }
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //if(successClaimToClaimStageIdMap != null && successClaimToClaimStageIdMap.size()>0){
-                //ATHR Fix - 17214
-                if(successClaimToClaimStageIdMap == null || successClaimToClaimStageIdMap.isEmpty()) { return; }
+                if(successClaimToClaimStageIdMap != null && successClaimToClaimStageIdMap.size()>0){
                     Map<Id, PartnerFundClaim> claimIdToClaimRecMap = new Map<Id, PartnerFundClaim>();//AI PIC
                     for (PartnerFundClaim claim : successClaimToClaimStageIdMap.keySet()) {
                         if(auditList!=null && auditList.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {
@@ -489,22 +395,17 @@ Modified By:        Date:       Changes:
                     //Added by VB - AI PIC
                     try 
                         {
-                            //ATHR Comment - 17214 (deeply nested ifs)
-                            /*if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims'))) {
+                            if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims'))) {
                                 if(claimIdToClaimRecMap != null && !claimIdToClaimRecMap.isEmpty()) {
                                     Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, 'insert');
                                 }
-                            }*/
-                            //ATHR Fix - 17214
-                            if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims')) && claimIdToClaimRecMap != null && !claimIdToClaimRecMap.isEmpty()) {
-                                Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, 'insert');
                             }
                         }   
                         catch (Exception e) {
                             Core_MDF_CCP_UtilityClass.logError(e);
                         }
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                //}
+                    }
+                }
             
         }
         catch (Exception e) {
@@ -531,8 +432,7 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
         Map<String,List<String>> bnkSplrToBnkAccNumber = new Map<String,List<String>>();
         Map<String,Id> bnkSplrAccNbrToBnkId = new Map<String,Id>();
         Map<String,Id> validBankNumbers = new Map<String,Id>();
-        //ATHR Comment - 17214 (unused local variable)
-        //Set<Id> accounts = new Set<Id>();
+        Set<Id> accounts = new Set<Id>();
         Map<String,List<String>> bankAccountMap = new Map<String,List<String>>();
         Map<String,String> bankSupplierNumberToLegalEntity = new Map<String,String>();
         List<Core_MDF_Account_Bank_Mapping__c> accountBankMapping = new List<Core_MDF_Account_Bank_Mapping__c>();
@@ -541,11 +441,8 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
         activityNumberToPfrMap= new Map<String,PartnerFundRequest>();
         Map<String,Boolean> isPopRequired = new Map<String, Boolean>();
  
-        //ATHR Comment - 17214 (deeply nested ifs)
-        //if(claimStageListToBeProcessed != NULL && claimStageListToBeProcessed.size() > 0)
-        //{
-        //ATHR Fix - 17214
-        if(claimStageListToBeProcessed == null || claimStageListToBeProcessed.isEmpty()) { return claimStageListToBeProcessed; }
+        if(claimStageListToBeProcessed != NULL && claimStageListToBeProcessed.size() > 0)
+        {
             //To get a mapping of the Channel Program in the Bank Object
             Id batch = claimStageListToBeProcessed[0].Core_MDF_Batch_ID__c;
             Core_MDF_Claim_Batch__c programAccRec = [Select Id, Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Account__c,Core_MDF_Program_Id__r.Name
@@ -598,16 +495,9 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                 activityNumbers.add(claim.Core_MDF_Activity_Nbr__c);
                 bankNumbers.add(claim.Core_MDF_Bank_Nbr__c);
                 bankAccountNumberMap.put(claim.Core_MDF_Bank_Nbr__c+claim.Core_MDF_Bank_Account_Nbr__c,claim.Core_MDF_Bank_Nbr__c); //WW 11 - added by JK to map bank account numbers and supplier number 
-               //ATHR Comment - 17214 (deeply nested ifs)
-               /*if(claim.Id !=null)
+               if(claim.Id !=null)
                {
                    claimStageListToBeProcessedIds.add(claim.Id); //ids of the claimStageListToBeProcessed
-               }*/
-                //ATHR Fix - 17214
-                switch on String.valueOf(claim.Id != null) {
-                    when 'true' {
-                        claimStageListToBeProcessedIds.add(claim.Id); //ids of the claimStageListToBeProcessed
-                    }
                }                
             }
             
@@ -620,8 +510,7 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                                                        AND ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c = :ultimateAccountId
                                                        AND Core_MDF_Fund_Request_Status__c IN :Label.Core_MDF_PFR_Status_CreateClaim.split(';')
                                                        AND ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =:program];
-            //ATHR Comment - 17214 (unused local variable)                                     
-            //Map<String,Boolean> actNbrToHideMedia = new Map<String,Boolean>();
+            Map<String,Boolean> actNbrToHideMedia = new Map<String,Boolean>();
             Map<String,String> actNbrToBgtType = new Map<String,String>();
             Map <String,Set<String>> actNbrToActSubtype = new  Map <String,Set<String>>();
             Map <String,String> actNbrToActType = new  Map <String,String>();
@@ -691,60 +580,26 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                     for(Core_MDF_Account_Bank_Mapping__c abm : accountBankMapping)
                     {
                         // storing bank supplier number with list of bank account numbers
-                        //ATHR Comment - 17214 (deeply nested ifs)
-                        /*if(bnkSplrToBnkAccNumber.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c)){
+                        if(bnkSplrToBnkAccNumber.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c)){
                             bnkSplrToBnkAccNumber.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c).add(abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c);
                         }
                         else{
                             bnkSplrToBnkAccNumber.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, new List<String>{abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c});
-                        }*/
-                        //ATHR Fix - 17214
-                        switch on String.valueOf(bnkSplrToBnkAccNumber.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c)) {
-                            when 'true' {
-                                bnkSplrToBnkAccNumber.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c).add(abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c);
-                            }
-                            when else {
-                                bnkSplrToBnkAccNumber.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, new List<String>{abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c});
-                            }
                         }
                         // To check whether the given bank account number is valid or not
-                        //ATHR Comment - 17214 (deeply nested ifs)
-                        /*if(bankAccountNumberMap.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c+abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c) == abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c) {
+                        if(bankAccountNumberMap.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c+abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c) == abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c) {
                             validBankNumbers.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, abm.Core_MDF_Bank__c);
-                        }*/
-                        //ATHR Fix - 17214
-                        switch on String.valueOf(bankAccountNumberMap.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c+abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c) == abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c) {
-                            when 'true' {
-                                validBankNumbers.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, abm.Core_MDF_Bank__c);
-                            }
                         }
                         // To check when the bank account number is null
-                        //ATHR Comment - 17214 (deeply nested ifs)
-                        /*if(bnkSplrToBnkAccNumber.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c).size() == 1){
+                        if(bnkSplrToBnkAccNumber.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c).size() == 1){
                             
                             validBankNumbers.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, abm.Core_MDF_Bank__c);
-                        }*/
-                        //ATHR Fix - 17214
-                        switch on String.valueOf(bnkSplrToBnkAccNumber.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c).size() == 1) {
-                            when 'true' {
-                                validBankNumbers.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, abm.Core_MDF_Bank__c);
-                            }
                         }
-                        //ATHR Comment - 17214 (deeply nested ifs)
-                        /*if(bankAccountMap.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c)){
+                        if(bankAccountMap.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c)){
                             bankAccountMap.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c).add(abm.Core_MDF_Account__c);
                         }
                         else{
                             bankAccountMap.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, new List<String>{abm.Core_MDF_Account__c});
-                        }*/
-                        //ATHR Fix - 17214
-                        switch on String.valueOf(bankAccountMap.containsKey(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c)) {
-                            when 'true' {
-                                bankAccountMap.get(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c).add(abm.Core_MDF_Account__c);
-                            }
-                            when else {
-                                bankAccountMap.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, new List<String>{abm.Core_MDF_Account__c});
-                            }
                         }
                         bnkSplrAccNbrToBnkId.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c + abm.Core_MDF_Bank__r.Core_MDF_Bank_Account_Number__c, abm.Core_MDF_Bank__c);
                         validBankNumbers.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + abm.Core_MDF_Account__c, abm.Core_MDF_Bank__c);
@@ -781,11 +636,7 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                 List<String> errorList = new List<String>();
                
                 //Activity and Activity Subtype validations
-                //ATHR Comment - 17214 (deeply nested ifs)
-                /*if(activityNumberToPfrMap.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {*/ // to check a valid activity
-                //ATHR Fix - 17214
-                switch on String.valueOf(activityNumberToPfrMap.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {
-                    when 'true' {
+                if(activityNumberToPfrMap.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) { // to check a valid activity
                     //stamp Request id and activity types for a valid activity
                     claimStageRec.Core_MDF_Request_Id__c = (activityNumberToPfrMap.get(claimStageRec.Core_MDF_Activity_Nbr__c)).Id;
                     if(actNbrToActType.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c) 
@@ -836,23 +687,13 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                             }
                     
                 }
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //else {
-                //ATHR Fix - 17214
-                when else {
+                else {
                     //to check an invalid activity
                     errorList.add(Label.Core_MDF_Claim_Stage_Activity_Error);
-                //ATHR Comment - 17214 (deeply nested ifs)
-                //}
-                    }
                 }
 			
                 
-             //ATHR Comment - 17214 (deeply nested ifs)
-             //if(actNbrToCheckBankReq.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {
-             //ATHR Fix - 17214
-             switch on String.valueOf(actNbrToCheckBankReq.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {
-                when 'true' {
+             if(actNbrToCheckBankReq.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {
                     // To check if bank is mandatory
                     if(claimStageRec.Core_MDF_Bank_Nbr__c == null && actNbrToCheckBankReq.get(claimStageRec.Core_MDF_Activity_Nbr__c)) {
                         errorList.add(Label.Core_MDF_Bulk_claim_Bank_Mandatory);
@@ -901,19 +742,14 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                          claimStageRec.Core_MDF_VAT_Opt_In__c != vatApplicable)) 
                         && claimStageRec.Core_MDF_VAT_Opt_In__c != null)) || claimStageRec.Core_MDF_Bank_Nbr__c == null && claimStageRec.Core_MDF_VAT_Opt_In__c != null)
                    {
-                            //ATHR Comment - 17214 (deeply nested ifs)
-                            /*if((applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && 
+                            if((applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && 
                             applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && 
                             //JK - new Vat Process Changes
                             claimStageRec.Core_MDF_VAT_Opt_In__c == nonVatApplicable )){
                                 errorList.add(Label.Core_MDF_Vat_OptIn_Applicable_to_VAT_Percentage); //if 650 - VAT opt no there error
                             }else{
                         errorList.add(Label.Core_MDF_Bulk_Claim_Vat_Inapplicable);
-                            }*/
-                            //ATHR Fix - 17214
-                            errorList.add((applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && 
-                            applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && 
-                            claimStageRec.Core_MDF_VAT_Opt_In__c == nonVatApplicable ) ? Label.Core_MDF_Vat_OptIn_Applicable_to_VAT_Percentage : Label.Core_MDF_Bulk_Claim_Vat_Inapplicable);
+                            }
                     }
                     //To check if Vat opt-in is entered in template when applicable(Retail MDF)
                     else if(claimStageRec.Core_MDF_Bank_Nbr__c != null && bankSupplierNumberToLegalEntity.containsKey(claimStageRec.Core_MDF_Bank_Nbr__c) && vatOptInRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))
@@ -937,7 +773,6 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                         : validBankNumbers.get(claimStageRec.Core_MDF_Bank_Nbr__c + claimStageRec.Core_MDF_Node_Account_Txt__c) ;
                     }
                 }
-             }
                 
             //to check whether the tax is mandatory or not based on the program and budget type
             if(actNbrToCheckTaxReq.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c) 
@@ -945,23 +780,13 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                     errorList.add(Label.Core_MDF_Bulk_Claim_Tax_Mandatory);
             }
             //tax is not applicable for OPAL, MDF and MDF+
-            // TWC3117-11893 Bulk claims going into Submitted status when edited after PIC is Passed
+            // Roshan - TWC3117-11893 Bulk claims going into Submitted status when edited after PIC is Passed
             else if(actNbrToCheckTaxReq.containsKey(claimStageRec.Core_MDF_Activity_Nbr__c)) {
-                //ATHR Comment - 17214 (deeply nested ifs)
-                /*if (claimStageRec.Core_MDF_Taxes_Local_Amt__c == null) {
+                if (claimStageRec.Core_MDF_Taxes_Local_Amt__c == null) {
                     claimStageRec.Core_MDF_Taxes_Local_Amt__c = 0;
-                }*/
-                //ATHR Fix - 17214
-                claimStageRec.Core_MDF_Taxes_Local_Amt__c = claimStageRec.Core_MDF_Taxes_Local_Amt__c == null ? 0 : claimStageRec.Core_MDF_Taxes_Local_Amt__c;
-                //ATHR Comment - 17214 (deeply nested ifs)
-                /*if ((!actNbrToCheckTaxReq.get(claimStageRec.Core_MDF_Activity_Nbr__c)) && (claimStageRec.Core_MDF_Taxes_Local_Amt__c != null && claimStageRec.Core_MDF_Taxes_Local_Amt__c != 0)) {
+                }
+                if ((!actNbrToCheckTaxReq.get(claimStageRec.Core_MDF_Activity_Nbr__c)) && (claimStageRec.Core_MDF_Taxes_Local_Amt__c != null && claimStageRec.Core_MDF_Taxes_Local_Amt__c != 0)) {
                     errorList.add(Label.Core_MDF_Bulk_Claim_Tax_Inapplicable);
-                }*/
-                //ATHR Fix - 17214
-                switch on String.valueOf((!actNbrToCheckTaxReq.get(claimStageRec.Core_MDF_Activity_Nbr__c)) && (claimStageRec.Core_MDF_Taxes_Local_Amt__c != null && claimStageRec.Core_MDF_Taxes_Local_Amt__c != 0)) {
-                    when 'true' {
-                        errorList.add(Label.Core_MDF_Bulk_Claim_Tax_Inapplicable);
-                    }
                 }
             }
 
@@ -1010,19 +835,12 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                         (docLinkedclaimStageIds.contains(claimStageRec.Id) ? Label.Core_MDF_Status_Submitted : Label.Core_MDF_Status_PendingDocuments) : Label.Core_MDF_Status_PendingDocuments : Label.Core_MDF_Status_Submitted;
                     claimStageRec.Core_MDF_Message_txt__c = '';
                     
-                    //ATHR Comment - 17214 (deeply nested ifs)
-                    /*if(claimStageRec.Core_MDF_Bank_Nbr__c != null && bankSupplierNumberToLegalEntity != null && bankSupplierNumberToLegalEntity.containsKey(claimStageRec.Core_MDF_Bank_Nbr__c) 
+                    if(claimStageRec.Core_MDF_Bank_Nbr__c != null && bankSupplierNumberToLegalEntity != null && bankSupplierNumberToLegalEntity.containsKey(claimStageRec.Core_MDF_Bank_Nbr__c) 
                     && applicableVATPerRequired != null && applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))
                     && applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && claimStageRec.Core_MDF_Applicable_VAT_Percentage_nm__c != null){
 
                     	claimStageRec.Core_MDF_VAT_Opt_In__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NonTranslateYes');
-                	}*/
-                    //ATHR Fix - 17214
-                    claimStageRec.Core_MDF_VAT_Opt_In__c = claimStageRec.Core_MDF_Bank_Nbr__c != null && bankSupplierNumberToLegalEntity != null && bankSupplierNumberToLegalEntity.containsKey(claimStageRec.Core_MDF_Bank_Nbr__c) 
-                    && applicableVATPerRequired != null && applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))
-                    && applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c)) && claimStageRec.Core_MDF_Applicable_VAT_Percentage_nm__c != null
-                    ? Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NonTranslateYes')
-                    : claimStageRec.Core_MDF_VAT_Opt_In__c;
+                	}
                     
                 } else {
                     String errorString = String.join(errorList, Label.newLine);
@@ -1034,8 +852,7 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
         }
         
            
-    //ATHR Comment - 17214 (deeply nested ifs)
-    //}
+    }
     return claimStageListToBeProcessed;
     
 }
@@ -1086,10 +903,7 @@ Modified By:        Date:       Changes:
                 // provide unique name to job
                 Double randomNum = math.random();
                 claimBatchJobName = 'CCP_MDF_BulkClaimJob_'+nextRunTime+'_'+randomNum ;
-                //ATHR Comment - 17214 (unused local variable)
-                //string jobId = System.schedule(claimBatchJobName, nextRunCron, new Core_MDF_ClaimInsert_Schedule(runStartTime));
-                //ATHR Fix - 17214
-                System.schedule(claimBatchJobName, nextRunCron, new Core_MDF_ClaimInsert_Schedule(runStartTime));
+                string jobId = System.schedule(claimBatchJobName, nextRunCron, new Core_MDF_ClaimInsert_Schedule(runStartTime));
             }
             else {
                 // log custom exception 

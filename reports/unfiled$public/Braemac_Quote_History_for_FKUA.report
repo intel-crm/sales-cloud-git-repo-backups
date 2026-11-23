@@ -73,6 +73,9 @@
         <field>SBQQ__QuoteLine__c.core_cpq_active_Pricing__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__Opportunity2__c</field>
     </columns>
     <columns>

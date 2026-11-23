@@ -21,7 +21,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         List<Account> accts = new List<Account>();        
         Account partnerAccount = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                              Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=accountRTPartnerAccountGroup);
-        
+        // System.debug('partnerAccount ='+partnerAccount.IsPartner);
         accts.add(partnerAccount);
         Account intelAccount = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                            RecordTypeId=intelAccRecTypeId,Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
@@ -37,7 +37,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
             accToUpdate.add(acc);
         }
         Update accToUpdate ;
-        
+        // System.debug('accToUpdate ='+accToUpdate);
         List<Core_Account_Group_Member__c> accGroupMemlist = new List<Core_Account_Group_Member__c>();
         Core_Account_Group_Member__c  accGroupMem= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar[0].Id,Core_Intel_Account_Id__c =intelAccId[0].Id);
         accGroupMemlist.add(accGroupMem);
@@ -107,7 +107,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         
       /*  User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
         List<User> userList = new List<User>();
-        
+        System.debug('currentUser ='+currentUser);
         
         System.runAs (currentUser) {
             UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
@@ -129,7 +129,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
             insert userList ;
             
         }
-       */
+        System.debug('userList ='+userList);*/
         
         try{
             delete accGroupMemlist;           
@@ -147,7 +147,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         List<Account> accts1 = new List<Account>();        
         Account partnerAccount1 = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                               Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=accountRTPartnerAccountGroup);
-    
+        // System.debug('partnerAccount ='+partnerAccount1.IsPartner);
         accts1.add(partnerAccount1);
         Account intelAccount1 = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                             RecordTypeId=intelAccRecTypeId,Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
@@ -163,7 +163,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
             accToUpdate1.add(acc1);
         }
         Update accToUpdate1 ;
-        
+        // System.debug('accToUpdate ='+accToUpdate1);
         List<Core_Account_Group_Member__c> accGroupMemlist1 = new List<Core_Account_Group_Member__c>();
         Core_Account_Group_Member__c  accGroupMem1= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar1[0].Id,Core_Intel_Account_Id__c =intelAccId1[0].Id);
         accGroupMemlist1.add(accGroupMem1);
@@ -237,7 +237,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         
       /*  User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
         List<User> userList = new List<User>();
-        
+        System.debug('currentUser ='+currentUser);
         
         System.runAs (currentUser) {
            UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
@@ -259,7 +259,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
             insert userList ;
             
         }
-        */
+        System.debug('userList ='+userList);*/
         
      /*   try{
 
@@ -587,7 +587,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         List<Account> accts1 = new List<Account>();        
        /* Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                               Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=accountRTPartnerAccountGroup);
-        
+        System.debug('partnerAccount ='+partnerAccount1.IsPartner);
         accts1.add(partnerAccount1);
         Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
@@ -752,7 +752,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         cp.PRM_programCode__c='IPA';
         insert cp;
         
-        
+        // System.debug('cp-->'+cp);
         
         ChannelProgramLevel cpl = new ChannelProgramLevel(); 
         cpl.Name='Prestige';
@@ -768,7 +768,7 @@ public class PMP_Acct_Grp_Mbr_TriggerHandler_Test {
         acctChnlMem.PRM_Partner_Role__c='Service Provider';
         insert acctChnlMem;
         
-        
+        // System.debug('acctChnlMem-->'+acctChnlMem);
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c();
         pt.Name = 'Cloud Service Provider (CSP)';
@@ -787,7 +787,8 @@ pq.PRM_Question_Cd__c='PRM_Point_Not_Eligible' ;
 pq.PRM_Question_Display_Txt__c = 'Points Not eligible';
 pq.PRM_InActive_Ind__c = false;
 insert pq;
-
+system.debug('Id of the created question'+pq.Id);
+system.debug('The value of question cd'+pq.PRM_Question_Cd__c);
 */
         
         list<PRM_Profile_Questions__c> listQuestion = new list<PRM_Profile_Questions__c>();
@@ -904,8 +905,8 @@ insert pq;
         
         
         insert responseInsertList;    
-       
-        
+        // system.debug('Id of the Account in response'+ pr.PRM_Account_Id__c);
+        // system.debug('The value of question cd'+pq.PRM_Question_Cd__c);
         
         /*     
 PRM_Profile_Responses__c pr2 = new PRM_Profile_Responses__c();
@@ -913,7 +914,8 @@ pr2.PRM_Account_Id__c = 'Dummy';
 pr2.PRM_Profile_Answer_Id__c = pa.Id;
 pr2.PRM_Profile_Questions_Id__c = pq.Id;
 insert pr2;    
-
+system.debug('Id of the Account in response'+ pr2.PRM_Account_Id__c);
+system.debug('The value of question cd'+pq.PRM_Question_Cd__c);
 */
         
         list<Core_Account_Group_Member__c> listAgm = new list<Core_Account_Group_Member__c>() ;
@@ -950,21 +952,11 @@ insert pr2;
         
         
         insert listAgm;
-        
-        List<Core_Account_Group_Member__c> agmToUpdate = [SELECT Id, Core_Inactive_Ind__c, Core_Intel_Partner_Alliance_PartnerGroup__c, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c FROM Core_Account_Group_Member__c
-    															WHERE Core_Partner_Account_Id__c = :parent4.Id];
-
-		for (Core_Account_Group_Member__c agmTest : agmToUpdate) {
-                    agm4.Core_Inactive_Ind__c = true;
-			}
-
-		update agmToUpdate;
-
         // PRM_ProfileResponseCtlr.disableFlagValues(acc2.Id);
         //PRM_ProfileResponseCtlr.disableFlagValues(acc.Id);
         Map<id,Core_Account_Group_Member__c>  oldmap = new  Map<id,Core_Account_Group_Member__c>  () ;
         
-        PMP_Acct_Grp_Mbr_TriggerHandler.RollUpLocFlagToOPID(agmToUpdate,null);
+        PMP_Acct_Grp_Mbr_TriggerHandler.RollUpLocFlagToOPID(listAgm,null);
         Test.stopTest();
     }
     @isTest
@@ -1002,9 +994,8 @@ insert pr2;
         
         acclist1.add(newAccount);
         insert acclist1;
-		
-        // Active Location IPA
-        PRM_IPAMembership_Attributes__c ipaMem = new PRM_IPAMembership_Attributes__c();
+
+         PRM_IPAMembership_Attributes__c ipaMem = new PRM_IPAMembership_Attributes__c();
         ipaMem.PRM_Account_Id__c = newAccount.Id;
         ipaMem.RecordTypeId = inteIpaMemAttrRecordId;
         ipaMem.PRM_Registration_Source_Txt__c = 'Web';
@@ -1012,10 +1003,8 @@ insert pr2;
         ipaMem.PRM_Points_Opt_in_Dt__c = System.today();
         ipaMem.PRM_Point_Status_Txt__c = 'Active';
         ipaMem.PRM_Point_Status_Dt__c = System.today();
-        ipaMem.PRM_Inactive_ind__c = false; //The record is Active
         ipaMemList.add(ipaMem);
         
-        // ❗ INACTIVE OPID IPA (THIS IS THE IMPORTANT CHANGE)
         PRM_IPAMembership_Attributes__c ipaMemOpid = new PRM_IPAMembership_Attributes__c();
         ipaMemOpid.PRM_Account_Id__c = opidAcc.Id;
         ipaMemOpid.RecordTypeId = opidIpaMemAttrRecordId;
@@ -1024,7 +1013,6 @@ insert pr2;
         ipaMemOpid.PRM_Points_Not_Eligible_Dt__c = System.today();
         ipaMemOpid.PRM_Point_Status_Txt__c = 'Not Eligible';
         ipaMemOpid.PRM_Point_Status_Dt__c = System.today();
-        ipaMemOpid.PRM_Inactive_ind__c = true;  // ✅ intentionally inactive
         ipaMemList.add(ipaMemOpid);
 
         TriggerHandler.bypass('PRM_IPAMembership_TriggerHandler');
@@ -1049,64 +1037,5 @@ insert pr2;
         oldMap.put(agm4.id,agm4);
         PMP_Acct_Grp_Mbr_TriggerHandler.PRM_IPAR_rollUpDownIPAMembership(listAgm,oldMap);
         Test.stopTest();
-        
-        
-        // -----------------------------
-        // ✅ ASSERTIONS (PROVE FIX WORKS)
-        // -----------------------------
-        
-        
-         // 1️⃣ OPID IPA must remain inactive and NOT copied
-            PRM_IPAMembership_Attributes__c opidAfter =
-                [SELECT PRM_Inactive_ind__c
-                 FROM PRM_IPAMembership_Attributes__c
-                 WHERE PRM_Account_Id__c = :opidAcc.Id
-                 LIMIT 1];
-        
-        
-         System.assertEquals(
-                true,
-                opidAfter.PRM_Inactive_ind__c,
-                'Inactive OPID IPA must not be used for roll-down'
-            );
-        
-        
-         // 2️⃣ Location IPA must NOT inherit OPID values
-            PRM_IPAMembership_Attributes__c locAfter =
-                [SELECT PRM_Point_Status_Txt__c
-                 FROM PRM_IPAMembership_Attributes__c
-                 WHERE PRM_Account_Id__c = :newAccount.Id
-                 LIMIT 1];
-                
-         System.assertEquals(
-                'Active',
-                locAfter.PRM_Point_Status_Txt__c,
-                'Location IPA must not be updated from inactive OPID IPA'
-            );
-        
-        
-        // 3️⃣ Ensure no unintended IPA records were created
-            
-        List<PRM_IPAMembership_Attributes__c> locIpaList =
-            [
-                SELECT Id, RecordTypeId, PRM_Point_Status_Txt__c
-                FROM PRM_IPAMembership_Attributes__c
-                WHERE PRM_Account_Id__c = :newAccount.Id
-            ];
-        
-            System.assertEquals(
-                1,
-                locIpaList.size(),
-                'Inactive IPA records must not cause new records to be created'
-            ); 
-        
-        
-        System.assertNotEquals(
-            'Not Eligible',
-            locIpaList[0].PRM_Point_Status_Txt__c,
-            'Inactive OPID IPA values must never roll down'
-        );
-
-
     }
 }

@@ -45,10 +45,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_AI_PIC_Review_Ind__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Overall_AI_Confidence_Score_Nm__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

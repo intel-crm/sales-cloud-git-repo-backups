@@ -129,7 +129,7 @@ public without sharing class Core_Lead_Inquiry_Handler{
         
         //Map to hold the Custom Setting Country Reference Value
         Map<String, Core_Country_Reference__c> countryRef = new Map<String, Core_Country_Reference__c>();
-       // List<Lead> leadtoBeUpdated = new List<Lead>();
+        List<Lead> leadtoBeUpdated = new List<Lead>();
         
         //put the country code values in a Map
         for(Core_Country_Reference__c countryRefRec : Core_Country_Reference__c.getall().values()){

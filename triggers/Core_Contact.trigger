@@ -51,7 +51,6 @@ trigger Core_Contact on Contact(after insert, after update, before update,before
                     Core_ContactHandler.checkForDuplicateContact(Trigger.new);
                 }
             Core_ContactHandler.emptyAGSStatusOnInsert(Trigger.new);// Added by shreyash- empty AGS status while insert-unhandled exceptions
-            Core_ContactHandler.countryCodeConversion(Trigger.new); // Added by rohitx.podder@intel.com - Country code coversion from two character to three character
 
             //commenting as part of TWC729-7704 - R4c issue to prvent outbound on creation of contact through PCR invite START
            /* if(mapFunctionalityNameTriggerExecution.containsKey('Contact_Insert_IPA_Integration_Trigger') &&
@@ -197,23 +196,19 @@ trigger Core_Contact on Contact(after insert, after update, before update,before
     if(trigger.isAfter && trigger.isDelete){
         ACM_DeleteDupsOnContactMergeHandler.contactStagingRecords(trigger.oldmap.keySet());
     }
-    //  if(Trigger.isAfter && Trigger.isUpdate) {
-    //     if (!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('SendContactstoLicense') && mapFunctionalityNameTriggerExecution.get('SendContactstoLicense').Core_Active__c) {
-    //     Core_SendContact_to_AGS_onGECChange.SendUpdatedContactsDatatoLicence(Trigger.new, Trigger.OldMap);
-    //     }
-    // }
+     if(Trigger.isAfter && Trigger.isUpdate) {
+        if (!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('SendContactstoLicense') && mapFunctionalityNameTriggerExecution.get('SendContactstoLicense').Core_Active__c) {
+        Core_SendContact_to_AGS_onGECChange.SendUpdatedContactsDatatoLicence(Trigger.new, Trigger.OldMap);
+        }
+    }
     if(Trigger.isAfter && Trigger.isUpdate) {
         // ERPM Outbound Message for Entitlement     
         //Core_Entitlement_Outbound_Integrations.generateAGSeRPMOBM(Trigger.new, Trigger.OldMap);
         //Core_Entitlement_Outbound_Integrations.generateErpmOutboundMessage(Trigger.new, Trigger.OldMap);
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(Trigger.new, Trigger.OldMap);
         //Added by Draco related to A&E changes.....Changes In-progress
-        Boolean isERPMNewDesign=false;
-        if(!mapFunctionalityNameTriggerExecution.isEmpty() &&mapFunctionalityNameTriggerExecution.containsKey('ErpmApiCallProcess') && mapFunctionalityNameTriggerExecution.get('ErpmApiCallProcess').Core_Active__c){
-            isERPMNewDesign=true;
-        }
         Core_Entitlement_Outbound_Integrations.publishAGSMessage(Trigger.new, Trigger.OldMap);
-        if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger)) && !isERPMNewDesign){
+        if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))){
             Core_Entitlement_Outbound_Integrations.publishERPMMessage(Trigger.new, Trigger.OldMap);
         }
         if(System.Label.PRM_Tracker_Enabled=='true'){
@@ -233,7 +228,7 @@ trigger Core_Contact on Contact(after insert, after update, before update,before
             for(integer i = 0; i < trigger.new.size(); i++){
                 Contact objNewCon = Trigger.new[i];
                 Contact objOldCon = Trigger.old[i];
-                if(objNewCon.AccountId != NULL && objNewCon.AccountId != objOldCon.AccountId ){
+                if(objNewCon.AccountId != objOldCon.AccountId){
                     lstAccUpdatedContacts.add(objNewCon);
                 }
             } 
@@ -277,8 +272,8 @@ trigger Core_Contact on Contact(after insert, after update, before update,before
     //Pratiksha
     // Praveena addded custom Setting logic
     if(Trigger.isAfter && Trigger.isUpdate){
-        /*if (mapFunctionalityNameTriggerExecution.containsKey('UpdateMembershipFlagInd') && mapFunctionalityNameTriggerExecution.get('UpdateMembershipFlagInd').Core_Active__c) 
-        Core_ContactHandler.UpdateMembershipFlag(Trigger.oldMap, Trigger.newMap);*/
+        if (mapFunctionalityNameTriggerExecution.containsKey('UpdateMembershipFlagInd') && mapFunctionalityNameTriggerExecution.get('UpdateMembershipFlagInd').Core_Active__c) 
+        Core_ContactHandler.UpdateMembershipFlag(Trigger.oldMap, Trigger.newMap);
          if (mapFunctionalityNameTriggerExecution.containsKey('UpdateExternalUserLanguageInd') && mapFunctionalityNameTriggerExecution.get('UpdateExternalUserLanguageInd').Core_Active__c) 
         Core_ContactHandler.UpdateExternalUserLanguage(Trigger.oldMap, Trigger.newMap);
         

@@ -12,15 +12,15 @@ public without sharing class Core_MDF_UpdateActivityFields {
     public static void getActivityRejectionComments(List<flowInputs> inputIdList){
         Set<Id> pfrIDSet = new Set<Id>();
         Set<Id> acctIdSet = new Set<Id>();
-
+        Map<Id,String> pfrIdCommentsMap = new Map<Id,String>();
         Map<Id,String> pfrIdmemberIdMap = new Map<ID,String>();
         List<PartnerFundRequest> ipaPFRList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         Map<Id,List<ProcessInstanceStep>> piAndListofPiStepMap = new Map<Id,List<ProcessInstanceStep>>();
         Map<Id,Id> pfrIdProcessInstId = new Map<Id,Id>();
-
+        Set<Id> stepNodeIdSet = new Set<Id>();
         Map<Id,String> stepNodeIdStepNameMap = new Map<Id,String>();
-
+        Map<Id,List<String>> actorIDPermSetMap = new map<Id,List<String>>();
         List<Id> processDefList = new List<id>();
         Boolean priceReviewerFlag = FeatureManagement.checkPermission('Core_MDF_PriceReviewer');
         List<Id> pfrIdList = new List<Id>();
@@ -34,19 +34,22 @@ public without sharing class Core_MDF_UpdateActivityFields {
                 //Ayush - quering if createdby user of member user is active or is partner liscence reclaimed and storing in a map of PFRId to boolean.
                 for(PartnerFundRequest pfrRecord : [SELECT Id, CreatedById, CreatedBy.IsActive, CreatedBy.Partner_License_Reclaimed__c, Core_MDF_Member_Acceptor_Id__c, Core_MDF_Member_Acceptor_Id__r.IsActive, Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c 
                                                     FROM PartnerFundRequest WHERE Id IN: pfrIdList ]){
-                                                    
-                                                    // Flatten nested IF statements for CreatedById user active check
-                                                     //US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                
                                                     if(pfrRecord.CreatedById != null && !userActiveMap.containsKey(pfrRecord.CreatedById)){
-                                                        Boolean isActive = pfrRecord.CreatedBy.IsActive || pfrRecord.CreatedBy.Partner_License_Reclaimed__c;
-                                                        userActiveMap.put(pfrRecord.CreatedById, isActive);
+                                                        if(pfrRecord.CreatedBy.IsActive || pfrRecord.CreatedBy.Partner_License_Reclaimed__c){
+                                                            userActiveMap.put(pfrRecord.CreatedById,true);
+                                                        }
+                                                        else{
+                                                            userActiveMap.put(pfrRecord.CreatedById,false);
+                                                        }
                                                     }
-                                                    
-                                                    // Flatten nested IF statements for Core_MDF_Member_Acceptor_Id__c user active check
-                                                     //US - TWC702-14285: Flatten nested IFs (no logic change)
                                                     if(pfrRecord.Core_MDF_Member_Acceptor_Id__c != null && !userActiveMap.containsKey(pfrRecord.Core_MDF_Member_Acceptor_Id__c)){
-                                                        Boolean isActive = pfrRecord.Core_MDF_Member_Acceptor_Id__r.IsActive || pfrRecord.Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c;
-                                                        userActiveMap.put(pfrRecord.Core_MDF_Member_Acceptor_Id__c, isActive);
+                                                        if( pfrRecord.Core_MDF_Member_Acceptor_Id__r.IsActive || pfrRecord.Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c){
+                                                            userActiveMap.put(pfrRecord.Core_MDF_Member_Acceptor_Id__c,true);
+                                                        }
+                                                        else{
+                                                            userActiveMap.put(pfrRecord.Core_MDF_Member_Acceptor_Id__c,false);
+                                                        }
                                                     }
                                                 }
             }
@@ -80,54 +83,27 @@ public without sharing class Core_MDF_UpdateActivityFields {
                     stepNodeIdStepNameMap.put(pn.Id, pn.Name);
                 }
             }
-             //US - TWC702-14285: Flatten nested IFs (no logic change)
-            if (piAndListofPiStepMap == null || piAndListofPiStepMap.size() == 0) {
-                return; // or continue with next operation
-            }
-
-            for (Id pfr : pfrIDSet) {
-                PartnerFundRequest p = new PartnerFundRequest();
-                p.Id = pfr;
-                
-                // Early exit if no process instance ID exists
-                 //US - TWC702-14285: Flatten nested IFs (no logic change)
-                if (!pfrIdProcessInstId.containsKey(p.Id) || pfrIdProcessInstId.get(p.Id) == null) {
-                    continue;
-                }
-                
-                Id processInstanceId = pfrIdProcessInstId.get(p.Id);
-                
-                // Early exit if no process instance steps exist
-                 //US - TWC702-14285: Flatten nested IFs (no logic change)
-                if (!piAndListofPiStepMap.containsKey(processInstanceId) || piAndListofPiStepMap.get(processInstanceId) == null) {
-                    continue;
-                }
-                
-                for (ProcessInstanceStep pistep : piAndListofPiStepMap.get(processInstanceId)) {
-                    // Only process rejected steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (pistep.StepStatus != 'Rejected') {
-                        continue;
+            if(piAndListofPiStepMap != null && piAndListofPiStepMap.size() > 0){
+                for(Id pfr : pfrIDSet){
+                    PartnerFundRequest p = new PartnerFundRequest();
+                    p.Id = pfr;
+                    if(pfrIdProcessInstId.containsKey(p.Id) && pfrIdProcessInstId.get(p.Id) != NULL){
+                        Id processInstanceId = pfrIdProcessInstId.get(p.Id);
+                        if(piAndListofPiStepMap.containsKey(processInstanceId) && piAndListofPiStepMap.get(processInstanceId) != NULL){
+                            for(ProcessInstanceStep pistep: piAndListofPiStepMap.get(processInstanceId)){
+                                if(pistep.StepStatus == 'Rejected'){
+                                    if(stepNodeIdStepNameMap.get(pistep.StepNodeId) != 'Price Reviewer'){
+                                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments != null ? pistep.Comments : '';
+                                    }else if(priceReviewerFlag && stepNodeIdStepNameMap.get(pistep.StepNodeId) == 'Price Reviewer'){
+                                        p.Core_MDF_Rejection_Comments_txt__c=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PCTApprover_GenericComment'); }
+                                    else if( !priceReviewerFlag && stepNodeIdStepNameMap.get(pistep.StepNodeId) == 'Price Reviewer'){
+                                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments;
+                                    }
+                                    pfrList.add(p);
+                                }  
+                            }
+                        }
                     }
-                    
-                    String stepName = stepNodeIdStepNameMap.get(pistep.StepNodeId);
-                    
-                    // Handle non-Price Reviewer steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (stepName != 'Price Reviewer') {
-                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments != null ? pistep.Comments : '';
-                        pfrList.add(p);
-                        continue;
-                    }
-                    
-                    // Handle Price Reviewer steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (priceReviewerFlag) {
-                        p.Core_MDF_Rejection_Comments_txt__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PCTApprover_GenericComment');
-                    } else {
-                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments;
-                    }
-                    pfrList.add(p);
                 }
             }
             List<PartnerFundRequest> activityList = [Select Id,ChannelPartnerId,Core_MDF_Approval_Step_Completed__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Program__c,Core_MDF_Internal_Approval_Comment_txt__c,Core_MDF_Proposal_Based_Ind__c

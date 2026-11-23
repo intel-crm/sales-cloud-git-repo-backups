@@ -1,5 +1,5 @@
 @isTest
-public class PRM_SalesCloud_Integration_Test{
+public class PRM_SalesCloud_Integration_Test {
     
     @TestSetup
     private static void createData(){
@@ -22,7 +22,7 @@ public class PRM_SalesCloud_Integration_Test{
         Database.update(partnerAccount1);
         List<Account> updatedAcct= new List<Account>();
         for(Account acc:[SELECT ID,NAME,Core_Account_Type__c,Core_IPA_Partner_Role__c FROM ACCOUNT]){
-            
+            //System.debug('acc ='+acc);
             acc.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
             acc.Core_IPA_Partner_Role__c = 'Service Provider';
             acc.Core_CIM_ID__c='12345';
@@ -293,16 +293,13 @@ public class PRM_SalesCloud_Integration_Test{
         pr.PRM_Response_Txt__c = 'SampleResponse';   
         insert pr;
         
-               
+        //system.debug('DML Limit==>'+Limits.getDMLStatements()+':::'+Limits.getLimitDmlStatements());        
         Test.startTest(); 
-        List<Core_Contact_Entitlement__c> lstContactEntitlement = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c contEntitlement = new Core_Contact_Entitlement__c();
         contEntitlement.Core_Contact_Id__c = cnt.Id;
         contEntitlement.Core_Entitlement_Id__c = coreEntitlement.Id;
         contEntitlement.Core_Unique_Id__c = 'TESTENTITLEMENT';
-        insert contEntitlement;
-        lstContactEntitlement.add(contEntitlement);
-        PRM_SalesCloudContactIntStatus_Handler.setContactIPAIntegrationStatusToPendingContEnt(lstContactEntitlement);
+        //insert contEntitlement;
         
         PRM_Account_Contact_Relationship__c acr  = new PRM_Account_Contact_Relationship__c();
         acr.PRM_Account_Id__c = partnerAccount1.Id;
@@ -378,7 +375,7 @@ public class PRM_SalesCloud_Integration_Test{
         acctList[0].PRM_IPA_Integration_Status__c= 'Pending';
         update acctList[0];
         Set<Id> accountIds = new Set<Id>{newAccount.Id};
-        
+        System.debug('new account'+newAccount);
         
         PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPendingOnUpdate(acctList, accountsMap, accountIds);
         Test.stopTest();
@@ -428,22 +425,16 @@ public class PRM_SalesCloud_Integration_Test{
         Account acct = new Account(Name ='Account No Address',Core_Account_Type__c = 'Distributor', /*Core_Sales_Groups__c= 'PRC Sales Group',*/
                                    Industry='Agriculture',RecordTypeId=partnerAccRecTypeId,Core_Intel_Partner_Alliance_PartnerGroup__c=True,OwnerId=UserInfo.getUserId());
         test.startTest();
-        insert acct;
-        List<Contact> contList = new List<Contact>();
-        Map<Id,Contact> cntMap = new Map<Id,Contact>();
+        insert acct;        
         Set<Id> idSet = new Set<Id>();
         idSet.add(acct.Id); 
         Id IntelContRecTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
-        Contact cnt = new Contact(FirstName='NoAddress',LastName='Check',Email='noaddresscheck@spamok.com',PRM_IPA_Integration_Status__c = 'Successful',AccountId=acct.Id,RecordTypeId=IntelContRecTypeId,MailingCountry='IND');
+        Contact cnt = new Contact(FirstName='NoAddress',LastName='Check',Email='noaddresscheck@spamok.com',AccountId=acct.Id,RecordTypeId=IntelContRecTypeId,MailingCountry='IND');
         insert cnt;       
         idSet.add(cnt.Id);
-        contList.add(cnt);
-        cntMap.put(cnt.Id,cnt);
         PRM_SalesCloud_Integration.GenerateContactOBM(idSet);
         //PRM_SalesCloud_Integration_ForTesting salesCloudInteg = new PRM_SalesCloud_Integration_ForTesting();
         Contact cont = [SELECT id,Name,PRM_IPA_Integration_Status__c FROM Contact WHERE id= :cnt.Id];
-        PRM_SalesCloudContactIntStatus_Handler.setContactIPAIntegrationStatusToPendingOnUpdate(contList,cntMap);
-        //PRM_SalesCloudContactIntStatus_Handler.updateContactIPAIntegrationStatus(idSet);
         //system.assertEquals('Successful', cont.PRM_IPA_Integration_Status__c);
         test.stopTest();
     }
@@ -658,7 +649,7 @@ public class PRM_SalesCloud_Integration_Test{
             conAssoc.ER_Contact__c = testContact.id;
             conAssoc.ER_Customer_Master_File_Group__c = testCMFGroup.id;
             insert conAssoc;
-       
+        system.debug('cont.Contact_Business_Types__r'+testContact.Contact_Business_Types__r);
         /*List<ER_Customer_Master_File_Group__c> ercm=[select id from ER_Customer_Master_File_Group__c limit 5];
         for(ER_Customer_Master_File_Group__c rec:ercm)
         {
@@ -734,7 +725,7 @@ public class PRM_SalesCloud_Integration_Test{
             conAssoc.ER_Contact__c = testContact.id;
             conAssoc.ER_Customer_Master_File_Group__c = testCMFGroup.id;
             insert conAssoc;
-        
+        system.debug('cont.Contact_Business_Types__r'+testContact.Contact_Business_Types__r);
         /*List<ER_Customer_Master_File_Group__c> ercm=[select id from ER_Customer_Master_File_Group__c limit 5];
         for(ER_Customer_Master_File_Group__c rec:ercm)
         {

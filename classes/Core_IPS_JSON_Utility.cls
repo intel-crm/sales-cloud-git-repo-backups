@@ -25,6 +25,7 @@ public without sharing class Core_IPS_JSON_Utility {
         Transient String s3= '';
         Transient String s2 = '';
         List<String> allimgString = richTextAreaString.split('<img ');
+        System.debug(allimgString );
         List <String> allImageUrls = new List<String>(); 
         
         For(String str: allimgString ){

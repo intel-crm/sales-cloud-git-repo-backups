@@ -9,10 +9,6 @@
         <value><!-- Claim Adjustment Request --></value>
     </caseValues>
     <fields>
-        <label><!-- Account Node --></label>
-        <name>Core_MDF_Account_Node_nm__c</name>
-    </fields>
-    <fields>
         <help><!-- Unique identifier of Claim created based on the Adjustment Request --></help>
         <label>Nombre de la reclamación de liquidación</label>
         <name>Core_MDF_Adjustment_Claim_Nbr__c</name>
@@ -85,11 +81,6 @@
         <name>Core_MDF_Reference_Claim_Nbr__c</name>
         <relationshipLabel><!-- Claim Adjustment Requests --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Claim Adjustment Requests (Sub Claim) --></relationshipLabel>
-    </fields>
     
     <nameFieldLabel><!-- Adjustment Request Number --></nameFieldLabel>
     <validationRules>
@@ -109,7 +100,7 @@
         <name>Core_MDF_Amount_Val</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold/Queued for Payment status. --></errorMessage>
+        <errorMessage><!-- Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold status. --></errorMessage>
         <name>Core_MDF_Block_Adjustment_Req_Creation</name>
     </validationRules>
     <validationRules>

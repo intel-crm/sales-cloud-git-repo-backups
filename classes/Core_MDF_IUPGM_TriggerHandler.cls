@@ -12,9 +12,6 @@ public class Core_MDF_IUPGM_TriggerHandler extends TriggerHandler {
     
     public override void beforeInsert(){
         if(isActive('Core_MDF_beforeInsertIUPGM')){ 
-           if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_AccOnboardValidation')){
-            Core_MDF_IUPGM_ServiceHandler.validateAccountOnboardedForProgram((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new); 
-           } 
             Core_MDF_IUPGM_ServiceHandler.checkUserPermission((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new,
                                                               Trigger.isInsert,
                                                               Trigger.isUpdate,

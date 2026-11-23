@@ -217,7 +217,6 @@ public with sharing class PMP_GeoRegion_CreateJunctionData {
             try{
                 Schema.SObjectField upsertSpecKey = PMP_Category_Specification_Association__c.Fields.PMP_Category_Specification_External_Key__c;//fetch the cat-spec externalkey
                 upsertResultData = Database.upsert(uploadableCatSpecAssoc,upsertSpecKey,false);//upsert the records
-                PMP_Utility.logDmlErrors((Object[]) upsertResultData, 'PMP_GeoRegion_CreateJunctionData-createAssociationRecords');
             }
             catch(Exception exp1){
                 throw exp1;

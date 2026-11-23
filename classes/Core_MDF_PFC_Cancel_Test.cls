@@ -208,7 +208,7 @@ public class Core_MDF_PFC_Cancel_Test {
         Test.startTest();
         
        
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
+        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
            
         testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
         testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c ='OEM CMP';

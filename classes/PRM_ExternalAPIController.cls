@@ -34,7 +34,7 @@ public without sharing class PRM_ExternalAPIController {
             Id accountId = [SELECT Contact.AccountId, Id FROM User WHERE Id = :UserInfo.getUserId()].Contact.AccountId;
             // Check if the account ID exists in the partner consent distributor table
             List<PRM_Partner_Consent_Distributor__c> pcd = [SELECT Id FROM PRM_Partner_Consent_Distributor__c WHERE PRM_Account_Id__c = :accountId];
-            if(pageName == 'partner-assist' || pageName == 'emea-distributors')
+            if(pageName == 'partner-assist')
             {
                 return pcd.size() > 0 ? accountId : null;
             }

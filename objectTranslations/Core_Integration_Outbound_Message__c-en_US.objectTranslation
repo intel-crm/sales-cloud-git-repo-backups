@@ -25,16 +25,8 @@
         <name>Core_Retry_Number__c</name>
     </fields>
     <fields>
-        <label><!-- Status Message --></label>
-        <name>Core_Status_Message__c</name>
-    </fields>
-    <fields>
         <label><!-- Status --></label>
         <name>Core_Status__c</name>
-        <picklistValues>
-            <masterLabel>Discard</masterLabel>
-            <translation><!-- Discard --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Failed</masterLabel>
             <translation><!-- Failed --></translation>

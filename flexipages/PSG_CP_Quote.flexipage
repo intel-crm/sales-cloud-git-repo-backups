@@ -1350,6 +1350,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>pSG_Feedback_Form</componentName>
+                <identifier>c_pSG_Feedback_Form</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>forceChatter:recordFeedContainer</componentName>
                 <identifier>forceChatter_recordFeedContainer</identifier>
             </componentInstance>

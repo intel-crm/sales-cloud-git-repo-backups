@@ -4,7 +4,7 @@ public without sharing class UCD_ACM_ServiceContracts {
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse getBusinessOrganization(UCD_ACM_BusinessOrganizationModel requestModel);
         Map<Id,Business_Types__c> getBusinessTypeMap(Set<Id> businessTypeIds, String queryFields);
         void updateACMIntegrationMessage(Set<Id> accountIds);
-        //Map<Id,String> getComplianceWatchListByAccountId(Set<Id> accountIds);
+        Map<Id,String> getComplianceWatchListByAccountId(Set<Id> accountIds);
         Map<Id,List<Business_Types__c>> getActiveBusinessTypeForAccount(Set<Id> accountIds);
     }
     

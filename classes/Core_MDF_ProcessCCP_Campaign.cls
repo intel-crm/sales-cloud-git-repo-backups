@@ -129,24 +129,26 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
             if(geoRecordTypeIdList.contains(cmp.RecordTypeId)){                
                 accIdSet.add(cmp.Core_MDF_Account__c);
                 //Populate Budget type and start date and end date//btype,sd,ed,account
-                if((isInsert || (isUpdate && (campOldMap.get(cmp.Id).Core_MDF_Opal_Budget_Type_Txt__c != cmp.Core_MDF_Opal_Budget_Type_Txt__c ||
+                if(isInsert || (isUpdate && (campOldMap.get(cmp.Id).Core_MDF_Opal_Budget_Type_Txt__c != cmp.Core_MDF_Opal_Budget_Type_Txt__c ||
                                              campOldMap.get(cmp.Id).StartDate != cmp.StartDate || campOldMap.get(cmp.Id).EndDate != cmp.EndDate ||
-                                             campOldMap.get(cmp.Id).Core_MDF_Account__c != cmp.Core_MDF_Account__c))) && cmp.Core_MDF_Opal_Budget_Type_Txt__c =='Retail MDF') 
+                                             campOldMap.get(cmp.Id).Core_MDF_Account__c != cmp.Core_MDF_Account__c)))
                 {
-                
+                    if (cmp.Core_MDF_Opal_Budget_Type_Txt__c =='Retail MDF'){
                         BudgetTypeCamp.add(cmp.Core_MDF_Opal_Budget_Type_Txt__c);
                         
-                        if(cmp.StartDate < CampEarliestFutureStartDate && cmp.StartDate < CampEarliestStartDate){ 
-                          
+                        if(cmp.StartDate < CampEarliestFutureStartDate ){
+                            if(cmp.StartDate < CampEarliestStartDate ){   
                                 CampEarliestStartDate =cmp.StartDate;
-                            
+                            }
                         }
-                        if (cmp.StartDate >= CampEarliestFutureStartDate){
+                        else{
                             CampEarliestFutureStartDate = cmp.StartDate;
-                          
+                            if(cmp.StartDate < CampEarliestFutureStartDate ){   
+                                CampEarliestFutureStartDate =cmp.StartDate;     
+                            }
                         }
                         RMFBudgettoCampaignList.add(cmp);
-                    
+                    }
                 }
                 
             }
@@ -173,8 +175,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                     campIdSet.add(cmp.Id);
             }
             
-            if(!isUpdate) {continue;} 
-         
+            if(isUpdate){
                     //NP - WW33 IPA Account Based - Do not edit RR, Custom RR and Budget type if active activites are present
                     /*else if(cmp.RecordTypeId  == ipaRecordTypeId && !cmp.Core_MDF_Proposal_Based_Ind__c){
                         String removeAllAttr =   cmpProgWithPLfieldsMap.remove(cmp.Core_MDF_Program__c);
@@ -196,11 +197,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                 //for text fields
                 if(cmpProgWithTextfieldsMap.containsKey(cmp.Core_MDF_Program__c) && cmpProgWithTextfieldsMap.get(cmp.Core_MDF_Program__c) != NULL){
                     for(String textFields: cmpProgWithTextfieldsMap.get(cmp.Core_MDF_Program__c).Split(',')){
-                    
-                        if(campOldMap.get(cmp.Id).get(textFields) == null || campOldMap.get(cmp.Id).get(textFields) == cmp.get(textFields)){
-                            continue;
-                        }
-                                         
+                        if(campOldMap.get(cmp.Id).get(textFields) != NULL && campOldMap.get(cmp.Id).get(textFields) != cmp.get(textFields)){                              
                             campIdSet.add(cmp.Id);
                             String labelValue = fieldMap.get(textFields).getDescribe().getLabel();
                             
@@ -214,7 +211,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                                 cmpIdTextFieldListMap.put(cmp.Id, new List<String>{labelValue});
                                 
                             }
-                        
+                        }
                     } 
                 }
                 //US819148 : [CCP] Campaign Level CAP - Campaign Validations
@@ -242,7 +239,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                         eefCmpList.add(cmp);
                         eefOldMap.put(cmp.id,campOldMap.get(cmp.Id));
             }
-        
+        }
             }
         
         if(campaignIDToCAPAmountMap.size() > 0){
@@ -306,17 +303,21 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                     for(PartnerFundClaim pfcObj : [SELECT Id, Amount, Core_MDF_Status__c, RequestId,BudgetId FROM PartnerFundClaim WHERE RequestId IN :pfrIdToQueryClaimAmount
                                                   and Core_MDF_Status__c IN :validClaimStatus and Core_MDF_Type_Txt__c =: TYPE_CLAIM AND Core_MDF_Escalation_Id__c = null])
                     {
-
-                        Decimal existingClaimAmount = pfrClaimAmtMap.containsKey(pfcObj.RequestId) ? pfrClaimAmtMap.get(pfcObj.RequestId) : 0;
-                        pfrClaimAmtMap.put(pfcObj.RequestId, existingClaimAmount + pfcObj.Amount);
+                        if(pfrClaimAmtMap.containsKey(pfcObj.RequestId)){
+                            pfrClaimAmtMap.put(pfcObj.RequestId, pfrClaimAmtMap.get(pfcObj.RequestId) + pfcObj.Amount);
+                        }
+                        else{pfrClaimAmtMap.put(pfcObj.RequestId, pfcObj.Amount);
+                            }  
                     }
                     for(Core_MDF_Escalation__c escObj : [SELECT Core_MDF_Co_Marketing_Activity_id__c,Core_MDF_Approved_Amount_amt__c
                                                                                       FROM Core_MDF_Escalation__c
                                                                                       WHERE Core_MDF_Co_Marketing_Activity_id__c IN:pfrIdToQueryClaimAmount AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS])
                     {
-                        
-                        Decimal existingEscAmount = pfrEscAmtMap.containsKey(escObj.Core_MDF_Co_Marketing_Activity_id__c) ? pfrEscAmtMap.get(escObj.Core_MDF_Co_Marketing_Activity_id__c) : 0;
-                        pfrEscAmtMap.put(escObj.Core_MDF_Co_Marketing_Activity_id__c, existingEscAmount + escObj.Core_MDF_Approved_Amount_amt__c);
+                        if(pfrEscAmtMap.containsKey(escObj.Core_MDF_Co_Marketing_Activity_id__c)){
+                            pfrEscAmtMap.put(escObj.Core_MDF_Co_Marketing_Activity_id__c, pfrEscAmtMap.get(escObj.Core_MDF_Co_Marketing_Activity_id__c) + escObj.Core_MDF_Approved_Amount_amt__c);
+                        }
+                        else{pfrEscAmtMap.put(escObj.Core_MDF_Co_Marketing_Activity_id__c, escObj.Core_MDF_Approved_Amount_amt__c);
+                            }  
                     }
                 }
             
@@ -370,10 +371,10 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                 for (Account acc : [SELECT Id, Core_MDF_CoMarketing_Ultimate_Account__c FROM Account WHERE Core_MDF_Parent_Fund_Account__c IN: accIdSetUltimate.keyset() and Core_MDF_Channel_Program__r.name = 'Retail Marketing Funds' ])
                 {
                     //Added by Sai for null pointer error fix
-
-                    Set<Id> nodeAccountSet = accIdSetUltimate.get(acc.Core_MDF_CoMarketing_Ultimate_Account__c);
-                    for(Id acc1 : (nodeAccountSet == null ? new Set<Id>() : nodeAccountSet)){
-                        AccNodeVirtualCorpMap.put(acc1,acc.id);
+                    if(accIdSetUltimate.get(acc.Core_MDF_CoMarketing_Ultimate_Account__c) != null){
+                        for(Id acc1 : accIdSetUltimate.get(acc.Core_MDF_CoMarketing_Ultimate_Account__c)){
+                            AccNodeVirtualCorpMap.put(acc1,acc.id);
+                        }
                     }
                     accIdPmbSet.add(acc.Id);
                     
@@ -395,15 +396,15 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                 //Iterate over Activty ID's associated with Campaign
                 //US773772 Edit OPAL campaign, if campaign has active activites and fields "Start Date , End date" are change it throws and error - start
                 //TWC702-336
-                if((cmp.RecordTypeId == retailRecordTypeId || (cmp.RecordTypeId == dcfRecordTypeId || cmp.RecordTypeId == ccfRecordTypeId ) || cmp.RecordTypeId == ipaRecordTypeId || cmp.RecordTypeId == eefRecordTypeId) && cmp.Core_MDF_Supports_legacy_program__c != 'Yes'){
-         
+                if(cmp.RecordTypeId == retailRecordTypeId || (cmp.RecordTypeId == dcfRecordTypeId || cmp.RecordTypeId == ccfRecordTypeId ) || cmp.RecordTypeId == ipaRecordTypeId || cmp.RecordTypeId == eefRecordTypeId){
+                    if(cmp.Core_MDF_Supports_legacy_program__c != 'Yes'){
                         for(Id pfr: cmpIdPfrIdListMap.get(cmp.Id)){                    
                             if(pfrMap.get(pfr) != NULL && (cmp.StartDate > pfrMap.get(pfr).Core_MDF_Start_Date__c || cmp.EndDate < pfrMap.get(pfr).Core_MDF_End_Date__c)){
                                 cmp.addError(Label.Core_MDF_Campaign_Date_Check_Error); //Core_MDF_Campaign_Date_Check_Error //Core_MDF_Campaign_Date_Error: Campaign Date should comply with Activity Date.
                             }
                         }  
                         
-                        
+                    }     
                 }
                 //Core_MDF_MDF_BudgetTypes - MDF;MDF+;Retail MDF;Account Plan
                 List<String> mdfBudgetTypeList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MDF_BudgetTypes').split(';');
@@ -484,8 +485,8 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                     }
                 }   */
             }
-            if(!coMarketingCampaignRecordTypeID.contains(cmp.RecordTypeId)){ continue; }
-                         
+            
+            if(coMarketingCampaignRecordTypeID.contains(cmp.RecordTypeId)){                         
                 //Setting Channel Program lookup value in Campaign
                 if(programtype.containsKey(cmp.Core_MDF_Program__c) && programtype.get(cmp.Core_MDF_Program__c) != NULL ){
                     cmp.Core_MDF_Channel_Program__c = programtype.get(cmp.Core_MDF_Program__c);
@@ -538,12 +539,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                 //NP - WW33 Check for Region change too
                 if(countryRecordTypeIdList.contains(cmp.RecordTypeId) && 
                    (isInsert || (isUpdate && (campOldMap.get(cmp.Id).Core_MDF_Market__c != cmp.Core_MDF_Market__c || campOldMap.get(cmp.Id).Core_MDF_Region_cd__c != cmp.Core_MDF_Region_cd__c)))){
-                     
-                        if(cmp.Core_MDF_Market__c == null){
-                            cmp.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Campaign_Country_Field_Error'));
-                        }
-                       
-                            else{
+                        if(cmp.Core_MDF_Market__c != null){
                     String geo = returnsGeoForCampaign(cmp.Core_MDF_Market__c.split(';'));
                     if(String.isNotBlank(geo) && (geo.contains('ASMO-LAR') || geo.contains('ASMO-NAR'))){
                             geo= geo.replace('ASMO-LAR','ASMO');
@@ -557,9 +553,9 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                     String finalGeoString = String.join(new List<String>(geoSet), ';');
                     
                     cmp.Core_MDF_Region_cd__c = finalGeoString;
+                        }else{
+                            cmp.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Campaign_Country_Field_Error'));
                         }
-                            
-                        
                 }
                 
                 
@@ -601,7 +597,7 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                     activitySet.clear();
                     finalGeoSet.clear();                    
                 }
-            
+            }
             
             //US819148 : [CCP] Campaign Level CAP - Campaign Validations
             if(campaignIDToCAPAmountMap.containsKey(cmp.id) && (campaignIDToCAPAmountMap.get(cmp.id)< campaignIDToExistingCAPAmountMap.get(cmp.id))){cmp.addError(Label.Core_MDF_Campaign_CAP_Error_Message + campaignIDToExistingCAPAmountMap.get(cmp.id));    
@@ -798,16 +794,14 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
         Set<Id> campEEFSet = new Set<Id>();
 
         //Iterate over campaign list and get geoSet, accId, programIdSet, campaignToBeShared and campaignShareToBeDeleted
-        for(Campaign cmp : newCmpList){   
-         
-            if(!((isInsert || (isUpdate && 
+        for(Campaign cmp : newCmpList){          
+            if((isInsert || (isUpdate && 
                              (cmp.OwnerId != campOldMap.get(cmp.Id).OwnerId || 
                               ((cmp.Core_MDF_External_Visibility_Date__c != campOldMap.get(cmp.Id).Core_MDF_External_Visibility_Date__c ||
-                                cmp.Core_MDF_Region_cd__c != campOldMap.get(cmp.Id).Core_MDF_Region_cd__c) && cmp.Core_MDF_Program__c !=Label.Core_MDF_IPA_Program_Name) ||
+                              cmp.Core_MDF_Region_cd__c != campOldMap.get(cmp.Id).Core_MDF_Region_cd__c) && cmp.Core_MDF_Program__c !=Label.Core_MDF_IPA_Program_Name) ||
                               cmp.Core_MDF_Account__c != campOldMap.get(cmp.Id).Core_MDF_Account__c ||
                               cmp.Core_MDF_Opal_Budget_Type_Txt__c != campOldMap.get(cmp.Id).Core_MDF_Opal_Budget_Type_Txt__c ||
-                              cmp.Core_MDF_Partner_Mapping_Txt__c != campOldMap.get(cmp.Id).Core_MDF_Partner_Mapping_Txt__c)))))
-                              { continue; }       
+                              cmp.Core_MDF_Partner_Mapping_Txt__c != campOldMap.get(cmp.Id).Core_MDF_Partner_Mapping_Txt__c)))){ 
                                   
                                   programIdSet.add(cmp.Core_MDF_Channel_Program__c);                                  
                                   accId.add(cmp.Core_MDF_Account__c);
@@ -821,15 +815,14 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                                                   cmp.Core_MDF_Partner_Mapping_Txt__c != campOldMap.get(cmp.Id).Core_MDF_Partner_Mapping_Txt__c)){
                                                       campaignShareToBeDeleted.add(cmp.Id);
                                                   }
-                                  if(cmp.Core_MDF_Program__c != Label.Core_MDF_EEF_Program_Name){ continue; }            
-            
+                                  if(cmp.Core_MDF_Program__c == Label.Core_MDF_EEF_Program_Name){
                                       accId.addAll((List<Id>)cmp.Core_MDF_Partner_Mapping_Txt__c.split(';'));
                                       
                                       if(isUpdate){
                                           campEEFSet.add(cmp.Id);
                                       }
-                                  
-                              
+                                  }
+                              }
         }
         programIdList.addAll(programIdSet);
         
@@ -916,16 +909,15 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
             List<String> geoLst = new List<String>();// = cmp.Core_MDF_Region_cd__c.Split(';');
             List<Id> grpLst = new List<Id>();
             Set<Id> grpSet = new Set<Id>();
-            if(cmp.Core_MDF_Program__c == Label.Core_MDF_Retail_Program_Name)
-            {
-                geoLSt = new list<String>{'APJ','EMEA','PRC','ASMO'};}//Swati - removed INDIA from geo as part of TWC3117-17204
-            else if(hostRegionSharingReqProg.contains(cmp.Core_MDF_Program__c) && objectsForHostRegSharing.contains(objectName))
-            {
-                geoLSt.add(cmp.Core_MDF_Host_Region_cd__c);
-            }
-            else{
-                geoLst = cmp.Core_MDF_Region_cd__c.Split(';');
-            }
+            if(cmp.Core_MDF_Program__c == Label.Core_MDF_Retail_Program_Name){
+                geoLSt = new list<String>{'APJ','EMEA','PRC','ASMO','INDIA'};
+                    }else if(hostRegionSharingReqProg.contains(cmp.Core_MDF_Program__c) && objectsForHostRegSharing.contains(objectName))
+                    {
+                        geoLSt.add(cmp.Core_MDF_Host_Region_cd__c);
+                    }
+                    else{
+                        geoLst = cmp.Core_MDF_Region_cd__c.Split(';');
+                    }
             
             for(String geo : geoLst){
                 
@@ -985,20 +977,20 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
                 // Iterating over Campaigns to prepare the campId and the set of all account id's associated to the campaign - For RMF Max 3 levels and for IPA Max 5 levels
                 if(accountIdPFAIdMap.containsKey(cmp.Core_MDF_Account__c) && accountIdPFAIdMap.get(cmp.Core_MDF_Account__c) != NULL){
                     for(Id accountId : accountIdPFAIdMap.get(cmp.Core_MDF_Account__c)){
-                      
-                        if((cmp.Core_MDF_Program__c != Label.Core_MDF_Co_GTM_Technical_program_name) || (cmp.Core_MDF_Program__c == Label.Core_MDF_Co_GTM_Technical_program_name && cmp.Core_MDF_External_Visibility_Date__c <= Date.Today())){
+                        if(cmp.Core_MDF_Program__c != Label.Core_MDF_Co_GTM_Technical_program_name){
                             grpSet.add(accountIdExternalGroupIdMap.get(accountId)); 
+                        }else if(cmp.Core_MDF_Program__c == Label.Core_MDF_Co_GTM_Technical_program_name && cmp.Core_MDF_External_Visibility_Date__c <= Date.Today()){
+                            grpSet.add(accountIdExternalGroupIdMap.get(accountId));
                         }
                     }                    
                 }
                 
                 //If Node based sharing is required, then share cmapaign with Internal Node groups
-               
-                if(geoRecordTypeIdList.contains(cmp.RecordTypeId) && accIdToAccGroupIdMap.containsKey(cmp.Core_MDF_Account__c) && accIdToAccGroupIdMap.get(cmp.Core_MDF_Account__c) != NULL){
+                if(geoRecordTypeIdList.contains(cmp.RecordTypeId)){
                     
-
+                    if(accIdToAccGroupIdMap.containsKey(cmp.Core_MDF_Account__c) && accIdToAccGroupIdMap.get(cmp.Core_MDF_Account__c) != NULL){
                         grpSet.add(accIdToAccGroupIdMap.get(cmp.Core_MDF_Account__c)); 
-                    
+                    }
                 }
                 
                 
@@ -1287,15 +1279,16 @@ public without sharing class Core_MDF_ProcessCCP_Campaign {
             // Checking if accountIdPFAIdMap contains campaign's account id and getting the value from it
             if(accountIdPFAIdMap.containsKey(cmp.Core_MDF_Account__c) && accountIdPFAIdMap.get(cmp.Core_MDF_Account__c) != NULL){
                 for(Id accountId : accountIdPFAIdMap.get(cmp.Core_MDF_Account__c)){
-                     
-                    Id externalGroupId = accountIdExternalGroupIdMap.get(accountId);
-                    if(externalGroupId == null){
-                        continue;
+                    if(campIdExternalGroupIdMap.containsKey(cmp.Id)){
+                        if(accountIdExternalGroupIdMap.get(accountId) != null){
+                            campIdExternalGroupIdMap.get(cmp.Id).add(accountIdExternalGroupIdMap.get(accountId));
+                        }
                     }
-                    if(!campIdExternalGroupIdMap.containsKey(cmp.Id)){
-                        campIdExternalGroupIdMap.put(cmp.Id, new List<Id>());
-                    }
-                    campIdExternalGroupIdMap.get(cmp.Id).add(externalGroupId);
+                    else{
+                        if(accountIdExternalGroupIdMap.get(accountId) != null){
+                            campIdExternalGroupIdMap.put(cmp.Id, new List<Id> {accountIdExternalGroupIdMap.get(accountId)});
+                        }
+                    }  
                 }
             }
         }

@@ -794,8 +794,7 @@ private class Core_MDF_GenericApprovalProcess_Test
             Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
             
             }catch(exception e){ 
-                // Highlight: Unused Local Variable 
-              //  String message = e.getMessage();
+                String message = e.getMessage();
             }
 
             

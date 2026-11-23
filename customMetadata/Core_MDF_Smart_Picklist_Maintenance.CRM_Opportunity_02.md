@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Core_MDF_RecordTypeAPIName_txt__c</field>
-        <value xsi:type="xsd:string">Core_Opportunity,Core_Solution_Group</value>
+        <value xsi:type="xsd:string">Core_Deal_Opportunity,Core_Design_Opportunity</value>
     </values>
     <values>
         <field>Core_MDF_RecordType_TabName_txt__c</field>

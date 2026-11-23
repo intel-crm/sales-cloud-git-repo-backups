@@ -45,12 +45,12 @@ Modification Log :
                 for(Core_IPS_Project_Member__c projMember: oldList){
                     projIdList.add(projMember.Core_IPS_Project__c);    
                 }
-                //Avoid Deeply Nested IF Statements Kamala
-                if((projIdList!=null && projIdList.size()>0) &&(Case.SObjectType.getDescribe().isAccessible())){
+                
+                if(projIdList!=null && projIdList.size()>0){
                     //FLS check added-Venugopal
-
+                    if(Case.SObjectType.getDescribe().isAccessible()){
                         caseList=[Select Id,ContactId,Core_IPS_Project_Case__c from Case where Core_IPS_Project_Case__c In: projIdList AND Status!='Closed'];
-                    
+                    }
                 }//end
                 for(Core_IPS_Project_Member__c ProjMember: oldList){
                     //start added by Aayushi for US109046 
@@ -586,11 +586,9 @@ Modification Log :
                             cp.addError('Contact IPS is Not Checked ');  
                         } else if (objUser.containsKey(cp.Core_User__c) && objUser.get(cp.Core_User__c).Contact.Core_IPS_Email_Opt_Out__c){
                             cp.addError('Cannot enable as Interested Parties since Contact Email opt Out is Checked');   
-                        } 
-						/*else if (objUser.containsKey(cp.Core_User__c) && !objUser.get(cp.Core_User__c).Isactive){
+                        } else if (objUser.containsKey(cp.Core_User__c) && !objUser.get(cp.Core_User__c).Isactive){
                             cp.addError('User is Not Active ');   
-                        } */
-						else{
+                        } else{
                          setProjectId.add(cp.Core_IPS_Project__c);  
                         }
                         //  PRB10061297-  End - Shipra
@@ -693,10 +691,11 @@ Modification Log :
                 } 
             } 
         }
-        //Avoid Deeply Nested IF Statements Kamala
-        if((caseMap.size()>0 && caseMap!=null) && (Core_IPS_Case_Interested_Party__c.sObjectType.getDescribe().isDeletable())){
+        if(caseMap.size()>0 && caseMap!=null){
             /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+            if (Core_IPS_Case_Interested_Party__c.sObjectType.getDescribe().isDeletable()) {
                 delete [select id from Core_IPS_Case_Interested_Party__c where Case__c in : caseMap.keySet() and Contact__c in:caseMap.values()];
+            } 
         }
         
     }

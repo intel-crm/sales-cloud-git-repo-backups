@@ -96,10 +96,6 @@
             <translation>История совместных маркетинговых действий</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Disbursement Status</masterLabel>
-            <translation>Статус выплаты</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>История списка критериев удержания</translation>
         </picklistValues>
@@ -122,14 +118,6 @@
         <picklistValues>
             <masterLabel>Partner Group Mapping History</masterLabel>
             <translation>История отображения данных группы партнеров</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Breakdown</masterLabel>
-            <translation>Разбивка платежа</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Details</masterLabel>
-            <translation>Сведения о платеже</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment History</masterLabel>

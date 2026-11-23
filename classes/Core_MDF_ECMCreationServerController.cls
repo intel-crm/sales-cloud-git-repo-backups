@@ -110,7 +110,12 @@ public without sharing class Core_MDF_ECMCreationServerController {
     public static Boolean saveECMRecordsCtrl(String caseRecordId, String listToSaveString) {
         //List of Exception Case Mapping to be inserted
         List<Core_MDF_Exception_Case_Mapping__c> ecmList = new List<Core_MDF_Exception_Case_Mapping__c>();
+        List<Core_MDF_Exception_Case_Mapping__c> ecmListToBeDeleted = new List<Core_MDF_Exception_Case_Mapping__c>();
+        //List<Core_MDF_Exception_Case_Mapping__Share> ecmShareList = new List<Core_MDF_Exception_Case_Mapping__Share>();
         try{
+            Case caseRecord = [SELECT Id, Core_MDF_Claim_ID__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c, Account.Core_MDF_Channel_Program__r.Name
+                               FROM Case
+                               WHERE Id = :caseRecordId LIMIT 1];
             for(ExceptionWrapper ew : (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class)){
                 if(ew.isECMAlreadyCreated && !String.isNotBlank(ew.ecmRecordId)){
                     //Creation of Exception Case Mapping Record
@@ -130,6 +135,9 @@ public without sharing class Core_MDF_ECMCreationServerController {
             }
 
             List<ExceptionWrapper> ewList = (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class);
+            String accountId = ewList[0].corpAccountId;
+            String cpId = ewList[0].channelProgramId;
+
             //Insert Exception Case Mapping Record List
             if(ecmList.size() > 0){
                 insert ecmList;

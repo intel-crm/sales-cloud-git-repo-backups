@@ -25,6 +25,12 @@ public class UCD_ACM_AccountMerge_Test {
         accountBusinessType.Business_Types__c = businessType.Id;
         accountBusinessType.Effective_Start_Date__c = system.today();
         insert accountBusinessType; 
+        
+        Core_Account_Compliance_Watch_List__c complianceWatchList =  new Core_Account_Compliance_Watch_List__c();
+        complianceWatchList.Core_Account_Id__c = mergeAccount.Id;
+        complianceWatchList.Core_Type__c = 'NOSNCTN';
+        complianceWatchList.Core_Effective_Start_Date__c = system.today();
+        insert complianceWatchList;
     }
 
     @IsTest
@@ -53,6 +59,7 @@ public class UCD_ACM_AccountMerge_Test {
 
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, new Core_HttpCallouts_MockResponse());
+        UCD_ACM_AccountDeactivationService.setCWLDeleteDate('test','test');
         Test.stopTest();
     }
 

@@ -367,11 +367,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Type_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -456,11 +451,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_OtherCostsnotReimbursable_Local__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Id__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>

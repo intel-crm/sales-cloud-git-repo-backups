@@ -2,14 +2,14 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Team Member (100%)</fullName>
+        <fullName>Team member (100% commitment over the lifetime of the opportunity)</fullName>
         <default>false</default>
         <label>Team member (100% commitment over the lifetime of the opportunity)</label>
     </standardValue>
     <standardValue>
         <fullName>Technical Owner (100%)</fullName>
         <default>false</default>
-        <label>Technical Owner (100% commitment over the lifetime of the opportunity)</label>
+        <label>Technical Owner (100%)</label>
     </standardValue>
     <standardValue>
         <fullName>Contributor (50%)</fullName>

@@ -18,7 +18,6 @@ public class PMP_SearchTestDataFactory {
         if(isInsert){
             
             insert testUser;
-
         }
         return testUser;
     }
@@ -78,7 +77,7 @@ public class PMP_SearchTestDataFactory {
     
     /***************Partner and related objects **********************/
     
-    public static PMP_Partner_Offering__c createOffering(string offeringName, string offeringVisibility, string offeringDesc, Id cmpId, Boolean isInsert, String status, String tagline){//IPA 2.0 Offering EOL Sathwika
+    public static PMP_Partner_Offering__c createOffering(string offeringName, string offeringVisibility, string offeringDesc, Id cmpId, Boolean isInsert, String status, String tagline){
         PMP_Partner_Offering__c testOffering = new PMP_Partner_Offering__c(PMP_Partner_Offering_Visibility_Nm__c=offeringVisibility, 
                                                                            PMP_Partner_Offering_Dsc__c=offeringDesc,
                                                                            PMP_Partner_Offering_Nm__c=offeringName, 
@@ -122,7 +121,7 @@ public class PMP_SearchTestDataFactory {
     
     
     
-    public static Id getOffering(){//IPA 2.0 Offering EOL
+    public static Id getOffering(){
         PMP_Partner_Offering__c newOffering = new PMP_Partner_Offering__c();
         newOffering.PMP_Partner_Offering_Nm__c = 'testOffering_1';    
         insert newOffering;
@@ -131,7 +130,7 @@ public class PMP_SearchTestDataFactory {
     }
     
     
-    public static PMP_Partner_Offering_Category__c getPMPOfferingCategory(Id newOfferingId){//IPA 2.0 OFFERING EOL
+    public static PMP_Partner_Offering_Category__c getPMPOfferingCategory(Id newOfferingId){
         
         PMP_Category__c newCategory=getCategory(system.label.PMP_application, 'NPP_01_APP','NPP Taxonomy', 'en_us'); // value change from Application to Use Cases   
         PMP_Partner_Offering_Category__c newPMPOfferingCat=new PMP_Partner_Offering_Category__c();
@@ -146,7 +145,7 @@ public class PMP_SearchTestDataFactory {
         return newPMPOfferingCat;
     }
     //Added for US274100
-    public static PMP_Partner_Offering_Category__c getActivatedOfferingCategory(Id newOfferingId){//IPA 2.0 OFFERING EOL
+    public static PMP_Partner_Offering_Category__c getActivatedOfferingCategory(Id newOfferingId){
         
         PMP_Category__c newCategory=getCategory(system.label.PMP_application, 'NPP_01_APP','NPP Taxonomy', 'en_us'); // value change from Application to Use Cases
         newCategory.PMP_Active_Ind__c=false;              
@@ -173,7 +172,7 @@ public class PMP_SearchTestDataFactory {
         return category;
     }
     
-    public static PMP_Partner_Offering_Specification__c getPMPOfferingSpecification(Id newOfferingId){//IPA 2.0 OFFERING EOL
+    public static PMP_Partner_Offering_Specification__c getPMPOfferingSpecification(Id newOfferingId){
         //Added for US274100
         PMP_Specification__c newSpec=getSpecs();
         PMP_Specification_Value__c newSpecVal=getSpecVals();
@@ -312,8 +311,8 @@ public class PMP_SearchTestDataFactory {
         }
         return specValAsc;
     }
-    //TranslationEOL
-   /* public static 	PMP_Company_Translation__c getCompanyTranslation(String partnerId,String name, String fieldName ){
+    
+    public static 	PMP_Company_Translation__c getCompanyTranslation(String partnerId,String name, String fieldName ){
         PMP_Company_Translation__c trans = new PMP_Company_Translation__c();
         trans.Name = name;
         trans.PMP_Field_Nm__c = fieldName;
@@ -323,7 +322,7 @@ public class PMP_SearchTestDataFactory {
         trans.PMP_Chinese_Txt__c= 'Test_Chinese';
         insert trans;
         return trans;
-    }*/
+    }
     
     public static Core_Account_Group_Member__c createPAGMember(Id part_acc_id, Id intel_acc_id, Boolean is_MDA, Boolean is_inactive, Boolean isInsert){
         

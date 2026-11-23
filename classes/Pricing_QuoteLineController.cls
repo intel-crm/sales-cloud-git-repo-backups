@@ -18,8 +18,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
     @AuraEnabled
     public static List < SBQQ__QuoteLine__c > getQuoteLines(Id recordId) {  
         String getQuoteLinesQuery;
-        String statusToExclude = Label.Pricing_Tender_QuoteLine_Status_Revised;
-        getQuoteLinesQuery='SELECT Id, Name, SBQQ__ProductName__c, Pricing_Other_Product_Nm__c, Pricing_Quote_Line_Number__c,Pricing_Application_Agent_Status__c,Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c, Pricing_Error_Messages__c,Pricing_Program_Type_Nm__c,Pricing_Quote_Program_Nm__c,Pricing_Approved_End_Date_Dt__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = : recordId and Pricing_Status_Nm__c != :statusToExclude ORDER BY Pricing_Quote_Line_Number__c ASC';
+        getQuoteLinesQuery='SELECT Id, Name, SBQQ__ProductName__c, Pricing_Other_Product_Nm__c, Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c, Pricing_Error_Messages__c,Pricing_Program_Type_Nm__c,Pricing_Quote_Program_Nm__c,Pricing_Approved_End_Date_Dt__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = : recordId and Pricing_Status_Nm__c !=\''+Label.Pricing_Tender_QuoteLine_Status_Revised+'\' ORDER BY Pricing_Quote_Line_Number__c ASC';
         return Database.query(getQuoteLinesQuery);
     }
     
@@ -71,7 +70,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
         SBQQ__QuoteLine__c quoteLine = [SELECT Id, Pricing_New_Change_Request_cb__c, Pricing_Status_Nm__c, SBQQ__Quote__r.SBQQ__Status__c, SBQQ__Quote__r.Pricing_On_Hold_Cb__c, Pricing_Sales_Rep__c,Pricing_Sales_Rep__r.DelegatedApproverId,Pricing_Approved_End_Date_Dt__c,
                                         CreatedById,SBQQ__ProductName__c, Pricing_Primary_Contact_Nm__c, SBQQ__Quote__r.OwnerId, SBQQ__Quote__r.CreatedById,Pricing_Other_Product_Nm__c,Pricing_Reference_Quote_Line_Nbr__r.SBQQ__ProductName__c,
                                         Pricing_Change_Request_cb__c, Pricing_Deal_RFQ_Status_Nm__c,Pricing_Integration_Status_Nm__c,Pricing_Deal_RFQ_Id__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_RFQ_Id__c,SBQQ__Quote__c,
-                                        Pricing_Reference_Quote_Line_Nbr__c,SBQQ__Quote__r.SBQQ__Account__c,Pricing_Program_Type_Nm__c,Pricing_Error_Messages__c,Pricing_Quote_Program_Nm__c,SBQQ__Quote__r.SBQQ__Opportunity2__r.Core_Approval_Status__c,Pricing_SIPP_Cb__c,Pricing_Market_Segment_values_Nm__c,Pricing_Form_Factor_Nm__c From SBQQ__QuoteLine__c
+                                        Pricing_Reference_Quote_Line_Nbr__c,SBQQ__Quote__r.SBQQ__Account__c,Pricing_Program_Type_Nm__c,Pricing_Error_Messages__c,Pricing_Quote_Program_Nm__c,SBQQ__Quote__r.SBQQ__Opportunity2__r.Core_Approval_Status__c From SBQQ__QuoteLine__c
                                         WHERE Id = : quoteLineId];        
         Id delegateApprover = quoteLine.Pricing_Sales_Rep__r.DelegatedApproverId;
         
@@ -268,11 +267,6 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             actions.add(Label.Pricing_Tender_QuoteLine_Action_Approve);
             actions.add(Label.Pricing_Tender_QuoteLine_Action_Reject);
         }
-        //Added by VB
-        Boolean notEligibleForPricing =  eligibleForPricingSupportCheck(quoteLine);
-        if(Pricing_CommentsController.isPricingManagerAlpha() && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && quoteLine.Pricing_New_Change_Request_cb__c == false && !notEligibleForPricing) {
-            actions.add(Label.Pricing_Get_Price_Button);
-        }
     }
     
     public static void getAvailableUserActionsApproved(List < string > actions, SBQQ__QuoteLine__c quoteLine,Set < String > isRPMPersona,Set < String > allPersona){
@@ -367,16 +361,11 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             List<Pricing_Quote_Line_Status_Age__c> deleteTPTList = new List<Pricing_Quote_Line_Status_Age__c>();
             deleteTPTList = [SELECT Id,Pricing_TPT_Quote_Line_Number__c from Pricing_Quote_Line_Status_Age__c where 
                              Pricing_TPT_Quote_Line_Number__c =: quoteLineId];
-            // Bulkify deletes into a single DML where possible
-            List<SObject> toDelete = new List<SObject>();
             if(quoteLine != null) {
-                toDelete.add(quoteLine);
+                delete quoteLine;
             }
             if(!deleteTPTList.isEmpty()){
-                toDelete.addAll(deleteTPTList);
-            }
-            if(!toDelete.isEmpty()){
-                delete toDelete;
+                delete deleteTPTList;
             }
         }
     }
@@ -577,7 +566,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             quoteLine.Customer_Revision_Count_Cnt__c = (quoteLine.Customer_Revision_Count_Cnt__c == null) ? 1 :quoteLine.Customer_Revision_Count_Cnt__c + 1;
             //TPT
             quoteLineList.add(quoteLine);
-            chatterPostCreation(revisionComment, quoteLine, false, showRevisionFields,false);
+            chatterPostCreation(revisionComment, quoteLine, false, showRevisionFields);
         } else if(status == Label.Pricing_Tender_QuoteLine_Action_Reject) {
             //If Rejected then Reject the Approval Process and set the status to Rejected
             approvalAction = Label.Pricing_Tender_QuoteLine_Action_Reject;
@@ -628,7 +617,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                     : quoteLine.Pricing_Billing_Start_Date_Dt__c;
                 quoteLine.Customer_Revision_Count_Cnt__c = (quoteLine.Customer_Revision_Count_Cnt__c == null) ? 1 : quoteLine.Customer_Revision_Count_Cnt__c + 1;
                 //TPT
-                chatterPostCreation(revisionComment, quoteLine, false, showRevisionFields, false);
+                chatterPostCreation(revisionComment, quoteLine, false, showRevisionFields);
             }
             //TPT
             if(status == Label.Pricing_Tender_QuoteLine_Action_RevisionRequiredbyField){
@@ -650,7 +639,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                     quoteLineList.remove(quoteLineList.indexOf(quoteLine));
                     retMsg = Label.Pricing_Tender_Quote_Sales_Rep_Error_Message;
                 }
-                chatterPostCreation(revisionComment, quoteLine, true, showRevisionFields, false);
+                chatterPostCreation(revisionComment, quoteLine, true, showRevisionFields);
             }
             //TPT
         }
@@ -697,7 +686,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
         }
     }
     
-    public static void chatterPostCreation(String revisionComment, SBQQ__QuoteLine__c quoteline, Boolean isFieldRevision, Boolean showRevisionFields ,Boolean isDPMRevision) {
+    public static void chatterPostCreation(String revisionComment, SBQQ__QuoteLine__c quoteline, Boolean isFieldRevision, Boolean showRevisionFields) {
         Set<Id> submitterIds = new Set<Id>();
         if(showRevisionFields){
             ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
@@ -707,39 +696,37 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             
             //mention primary contact
             ConnectApi.MentionSegmentInput mentionSegmentInput;
-            if(!isDPMRevision){
-                List<User> primaryContact = [Select Id, ContactId from User where ContactId = :quoteline.SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id];
-                if(!isFieldRevision){
-                    if(primaryContact.size() > 0){
-                        submitterIds.add(primaryContact[0].Id);
-                    }     
-                    submitterIds.add(quoteline.Pricing_Last_Submitted_By_Id__c);  
-                    if(submitterIds.size() > 0){
-                        for(Id submitterId: submitterIds){
-                            mentionSegmentInput = new ConnectApi.MentionSegmentInput();
-                            mentionSegmentInput.id = submitterId;
-                            messageBodyInput.messageSegments.add(mentionSegmentInput);
-                            
-                            textSegmentInput = new ConnectApi.TextSegmentInput(); 
-                            textSegmentInput.text = '  ';
-                            messageBodyInput.messageSegments.add(textSegmentInput);
-                        }
-                    }        
-                    
-                    //visible for all users with access
-                    feedItemInput.visibility = ConnectApi.FeedItemVisibilityType.AllUsers;
-                }else{
-                    //mention sales rep approver
-                    if(quoteline.Pricing_Sales_Rep_Approver__r.Id != null){
-                        
+            List<User> primaryContact = [Select Id, ContactId from User where ContactId = :quoteline.SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id];
+            if(!isFieldRevision){
+                if(primaryContact.size() > 0){
+                    submitterIds.add(primaryContact[0].Id);
+                }     
+                submitterIds.add(quoteline.Pricing_Last_Submitted_By_Id__c);  
+                if(submitterIds.size() > 0){
+                    for(Id submitterId: submitterIds){
                         mentionSegmentInput = new ConnectApi.MentionSegmentInput();
-                        mentionSegmentInput.id = quoteline.Pricing_Sales_Rep_Approver__r.Id;
+                        mentionSegmentInput.id = submitterId;
                         messageBodyInput.messageSegments.add(mentionSegmentInput);
                         
                         textSegmentInput = new ConnectApi.TextSegmentInput(); 
                         textSegmentInput.text = '  ';
                         messageBodyInput.messageSegments.add(textSegmentInput);
                     }
+                }        
+                
+                //visible for all users with access
+                feedItemInput.visibility = ConnectApi.FeedItemVisibilityType.AllUsers;
+            }else{
+                //mention sales rep approver
+                if(quoteline.Pricing_Sales_Rep_Approver__r.Id != null){
+                    
+                    mentionSegmentInput = new ConnectApi.MentionSegmentInput();
+                    mentionSegmentInput.id = quoteline.Pricing_Sales_Rep_Approver__r.Id;
+                    messageBodyInput.messageSegments.add(mentionSegmentInput);
+                    
+                    textSegmentInput = new ConnectApi.TextSegmentInput(); 
+                    textSegmentInput.text = '  ';
+                    messageBodyInput.messageSegments.add(textSegmentInput);
                 }
             }
             
@@ -753,7 +740,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             
             // post body
             textSegmentInput = new ConnectApi.TextSegmentInput();
-            String postBody = isDPMRevision ? 'DPM Revision Comments : '+revisionComment : revisionComment;
+            String postBody = revisionComment;
             textSegmentInput.text = '\n'+postBody.stripHtmlTags();
             messageBodyInput.messageSegments.add(textSegmentInput);
             
@@ -772,7 +759,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
     // Get the document Id from the name
     @AuraEnabled
     public static Id getDocumentId(string name) {
-        List < Document > document = [SELECT Id FROM Document where Name = : name LIMIT 1];
+        List < Document > document = [SELECT Id, Name FROM Document where Name = : name LIMIT 1];
         return document.isEmpty() ? null : document[0].Id;
     }
     
@@ -798,7 +785,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                                                        Pricing_Quote_Line_Number__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Pricing_Unified_EndCustomer_Id__c,Pricing_Market_Segment_values_Nm__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_ECAP_Price_Amt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Unit_Qty__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Start_Date_Dt__c,
                                                        Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_End_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Billing_Start_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Billing_End_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Consumption_Platform__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Platform__c,Pricing_Consumption_Sale_Geo__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Region__c,
                                                        SBQQ__Product__r.Id,SBQQ__Product__r.Name,SBQQ__Product__r.Core_Product_Name_EPM_ID__c,SBQQ__Product__r.Core_Family_Nm__c,SBQQ__Product__r.Core_Forecast_Product_Name__c,SBQQ__Product__r.Core_Processor_Number_Nm__c,Pricing_Product_Nm__r.Name,Pricing_Competetor_Product__r.Id,Pricing_Integration_Status_Nm__c,
-                                                       Pricing_Additional_T_C_s_Txt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_Description__c,Pricing_Additional_RPM_Notify_Recipients__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_RPM_Notify_Recipients__c,Pricing_Competetor_Product__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Name,
+                                                       Pricing_Additional_T_C_s_Txt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_Description__c,Pricing_Competetor_Product__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Name,
                                                        SBQQ__Quote__r.Pricing_End_Customer__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__c,SBQQ__Quote__r.Pricing_End_Customer__c,SBQQ__Quote__r.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,
                                                        SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,SBQQ__Quote__r.Pricing_IsUnifiedCustomer__c,SBQQ__Quote__r.Pricing_End_Customer_Name__c,Pricing_Program_Type_Nm__c,
                                                        SBQQ__Quote__r.Pricing_Is_Sanctioned__c,Pricing_Account_Division_Nm__c,Pricing_Comp_Product_Txt__c,Pricing_Performance_Metric_Nm__c,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,Pricing_SDM_Fast_Track__c,(SELECT Id,Name,Pricing_Weighting_Pct__c,Pricing_Quote_Line__r.Name,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,
@@ -1188,7 +1175,7 @@ to be shown on the UI*/
 * @description method checks if Enable or disable RPM bulk action for bulk deal creations 
 * @author Accenture | 11-17-2022  
 * @return count 
-**/  
+**/	
     @AuraEnabled(cacheable=true)
     public static Boolean isBulkDealCreations() {
         
@@ -1211,7 +1198,7 @@ to be shown on the UI*/
     * @description method checks if User has RPM Permission Sets assigned or not 
     * @author Accenture  
     * @return count 
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Boolean hasPricingManagerAccess() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
@@ -1223,7 +1210,7 @@ to be shown on the UI*/
     * @description method checks if User has FinancialIncentivePricingManager Permission Sets assigned or not 
     * @author Accenture  
     * @return Boolean true if has access , false is not.
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Boolean hasFinancialIncentivePricingManagerPS() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
@@ -1234,20 +1221,13 @@ to be shown on the UI*/
     * @description method returns picklist options available for Rejection Reasons
     * @author Accenture | 02-02-2023
     * @return options
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Map<String, String> getRejectionReasonsValue(Id recId){
 
         Map<String, String> options = new Map<String, String>();
-        if(recId == null){
-            return options;
-        }
         try{
-        List<SBQQ__Quote__c> quotes = [SELECT Id,Pricing_Quote_Program_Nm__c FROM SBQQ__Quote__c WHERE Id =: recId LIMIT 1];
-        if(quotes.isEmpty()){
-            return options;
-        }
-        String quoteProgram = quotes[0].Pricing_Quote_Program_Nm__c;        
+        String quoteProgram = [SELECT Id,Pricing_Quote_Program_Nm__c FROM SBQQ__Quote__c WHERE Id =: recId].Pricing_Quote_Program_Nm__c;               
         Map<String, List<String>> quoteProgramRejectionReasonsMap = Pricing_RestAPI_QuotesUtilityV2.getFieldDependencies('SBQQ__QuoteLine__c', 'Pricing_Quote_Program_Nm__c', 'Pricing_Rejection_Reason__c');
         if(quoteProgramRejectionReasonsMap.size() > 0 && quoteProgramRejectionReasonsMap.containsKey(quoteProgram)){
             for(String rejectionReason : quoteProgramRejectionReasonsMap.get(quoteProgram)){
@@ -1278,7 +1258,7 @@ to be shown on the UI*/
 * @description method will call publishIQR and publish IQR event  
 * @author Accenture | 08-08-2023
 * @param quoteLineId 
-**/  
+**/	
     @AuraEnabled
     public static void handleSyncStatus(Id quoteLineId){
         try {
@@ -1403,38 +1383,5 @@ to be shown on the UI*/
         }else{
             return ((!getSVDQuoteLineActiveStatus() && quoteLineType == Label.Pricing_Tender_Small_Volume_Quote ) || quoteLineType != Label.Pricing_Tender_Small_Volume_Quote);
         }        
-    }
-
-    //Description : Returns all the permission sets assigned to the user.
-    @AuraEnabled(cacheable=true)
-    public static List<PermissionSetAssignment> getUserPemissionSets(String userId){
-        List<PermissionSetAssignment> userPermissionSets = [SELECT PermissionSet.Name FROM PermissionSetAssignment WHERE Assigneeid = : userId];
-        return userPermissionSets;
-    }
-    /**
-* @description method checks if product is Non-SIPP, Market Segment is Corp,Form factor Notebook
-* @author Accenture | 07-03-2026
-* @return Boolean 
-**/	
-    @AuraEnabled(cacheable=true)
-    public static Boolean eligibleForPricingSupportCheck(SBQQ__QuoteLine__c quoteLine) {//PAA V2
-        Boolean notEligibleForPricing = false;
-        if(quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote && quoteLine.Pricing_SIPP_Cb__c == false && quoteLine.Pricing_Market_Segment_values_Nm__c == 'Corp' && quoteLine.Pricing_Form_Factor_Nm__c == 'Notebook'){
-            notEligibleForPricing = true;
-        }
-        return notEligibleForPricing;
-    }
-    
-    @AuraEnabled(cacheable=true)
-    public static Boolean getRecommendedPrice(Id quoteLineId) {
-        Boolean isError = false;
-        try {
-            Pricing_Application_Agent_AI_Integration.populateJSON(new List<Id>{quoteLineId}, new Map<String,Integer>()); 
-        }
-        catch(Exception ex){
-            isError = true;
-            Pricing_Tender_Utility.logError(ex);
-        }
-        return isError;
     }
 }

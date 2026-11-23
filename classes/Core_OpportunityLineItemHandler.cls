@@ -301,8 +301,8 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                 List<OpportunityLineItem> newList, Map<Id,OpportunityLineItem> newMap,
                                                                 Boolean isUpdate){         
                                                                     //START - Added condition to update the Approval Status in Opportunity back to Recalled when Approved Opportunity is recalled by Manager
-                                                                    //Set<Id> opptyIdUpdateSet = new Set<Id>();
-                                                                    //Set<Id> opptyIdSet =new Set<Id>();
+                                                                    Set<Id> opptyIdUpdateSet = new Set<Id>();
+                                                                    Set<Id> opptyIdSet =new Set<Id>();
                                                                     if(isUpdate){                                                                          
                                                                         for(OpportunityLineItem oli : newList){
                                                                             if(oldMap.get(oli.Id).Core_Status__c != CORE_PENDING && oli.Core_Status__c == CORE_PENDING){
@@ -346,7 +346,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                
                                                                try
                                                                {
-                                                                   //String debugPrefix = 'II: opportunityLineItemAfterHandler - ';            
+                                                                   String debugPrefix = 'II: opportunityLineItemAfterHandler - ';            
                                                                    
                                                                    
                                                                    // Create UNIQUE list of Opportunities to be updated
@@ -662,11 +662,11 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
 */ 
     
     public static void beforeInsertForecastRecords(list<OpportunityLineItem> newopplineitem){
-        //boolean oliPresentFlag = false;
-        //Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
+        boolean oliPresentFlag = false;
+        Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
         Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
         Set<Id> opptyIdSet = new Set<Id>();
-        //List<OpportunityLineItem> tempList;
+        List<OpportunityLineItem> tempList;
         
         for(OpportunityLineItem oli : newopplineitem){
             opptyIdSet.add(oli.OpportunityId);
@@ -724,9 +724,9 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
         List<Core_Opp_FC_Prod_Schedule__c> forecastRecList = new List<Core_Opp_FC_Prod_Schedule__c>();
         List<String> divisionLogic = (Label.Core_FC_ForecastDivision).split(';');
         Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter); // Change to custom settings US852627:6QPS : Pending Items fixes-Sanket
-        //boolean oliPresentFlag = false;
-       //Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
-        //Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
+        boolean oliPresentFlag = false;
+        Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
+        Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
         Set<Id> opptyIdSet = new Set<Id>();
         Set<Id> oliIdSet = new Set<Id>();
         String approvalStatus = '';
@@ -993,7 +993,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
             Set<Id> oliSet = oldOliMap.keySet();
             boolean counter = false;
             Integer count1 = 0;
-            //Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter);
+            Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter);
             Set<Id> oliApprovedSet = new Set<Id>();
             Set<Id> fcApprovedSet = new Set<Id>();
             Map<Id, OpportunityLineItem> oliDeleteMap = new Map<Id, OpportunityLineItem>();
@@ -1448,7 +1448,7 @@ delete newKpiList;
         for(Opportunity oppl : opp){
           
             shortnameSet.add(oppl.Core_Opportunity_Owner_Geo__c); 
-            if(!oppreg.containsKey(oppl.id) && (oppl.Core_Opportunity_Owner_Geo__c == 'AMR') || (oppl.Core_Opportunity_Owner_Geo__c == 'APJ') || (oppl.Core_Opportunity_Owner_Geo__c == 'EMEA') || (oppl.Core_Opportunity_Owner_Geo__c == 'PRC') || (oppl.Core_Opportunity_Owner_Geo__c == 'ASMO') /*|| (oppl.Core_Opportunity_Owner_Geo__c =='INDIA')*/ ){                        //key in side the map   opp id for opp reg in map      
+            if(!oppreg.containsKey(oppl.id) && (oppl.Core_Opportunity_Owner_Geo__c == 'AMR') || (oppl.Core_Opportunity_Owner_Geo__c == 'APJ') || (oppl.Core_Opportunity_Owner_Geo__c == 'EMEA') || (oppl.Core_Opportunity_Owner_Geo__c == 'PRC') || (oppl.Core_Opportunity_Owner_Geo__c == 'ASMO') || (oppl.Core_Opportunity_Owner_Geo__c =='INDIA') ){                        //key in side the map   opp id for opp reg in map      
                 oppreg.put(oppl.id,oppl.Core_Opportunity_Owner_Geo__c);
             }            
         }        
@@ -1520,14 +1520,9 @@ delete newKpiList;
             }
                                    else{
                                        
-                                      /* for(String BUOwnerId:BUOwnerIds)
+                                       for(String BUOwnerId:BUOwnerIds)
                                        {
                                            user userinfo = [select id,email from user where id =:BUOwnerId]; 
-                                           emaillist.add(userinfo.email);
-                                       }*/ //commented to fix ATHR issue and added below code
-                                       
-                                       List<User> userInfoList = [select id,email from user where id IN:BUOwnerIds]; 
-                                       for( User userinfo : userInfoList){
                                            emaillist.add(userinfo.email);
                                        }
                                    }
@@ -1830,7 +1825,7 @@ delete newKpiList;
 * Parameter    : List<OpportunityLineItem> newOppLineList
 */
     public static void updateEOLonUpdate(List<OpportunityLineItem> newOppLineList,Map<Id,OpportunityLineItem> newMap,Map<Id,OpportunityLineItem> oldMap){
-        if(/*!updateEOLonUpdateRecCheck*/ updateEOLonUpdateRecCheck != true){
+        if(!updateEOLonUpdateRecCheck){
             Map<id,List<OpportunityLineItem>> mapOppLineItem = new Map<id,List<OpportunityLineItem>>();
             
             List<OpportunityLineItem> OppFinalList = new List<OpportunityLineItem>();

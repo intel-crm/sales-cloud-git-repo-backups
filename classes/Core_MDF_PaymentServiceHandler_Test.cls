@@ -158,15 +158,15 @@ public class Core_MDF_PaymentServiceHandler_Test {
             triggerActive.Core_Trigger_Events__c = 'after insert, after update';
             insert triggerActive;
             
-            //Commented for ATHR fix - WW16  
-            /*List<Core_MDF_CCP_EmailContentTranslationMap__mdt> metaData = [SELECT Id, Core_MDF_MailSubject__c, Core_MDF_MailBody1__c, 
+            
+            List<Core_MDF_CCP_EmailContentTranslationMap__mdt> metaData = [SELECT Id, Core_MDF_MailSubject__c, Core_MDF_MailBody1__c, 
                                                                            Core_MDF_MailBody2__c,Core_MDF_MailBody3__c, Core_MDF_MailBody4__c, 
                                                                            Core_MDF_MailBody5__c, Core_MDF_MailBody6__c,  Core_MDF_MailBody7__c,
                                                                            Core_MDF_MailFooter1__c, Core_MDF_MailFooter2__c, Core_MDF_MailFooter3__c, 
                                                                            Core_MDF_MailFooter4__c, Core_MDF_MailFooter5__c, Core_MDF_Program__c,  
                                                                            Core_MDF_MailBody8__c,Core_MDF_MailBody9__c, Core_MDF_LocaleKey__c,
                                                                            Core_MDF_Translated_Program__c,Core_MDF_MailBody8_1__c
-                                                                           FROM   Core_MDF_CCP_EmailContentTranslationMap__mdt];*/
+                                                                           FROM   Core_MDF_CCP_EmailContentTranslationMap__mdt];
             //Test.startTest();
             List<ChannelProgram> cpList = new List<ChannelProgram>();
             ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
@@ -217,9 +217,9 @@ public class Core_MDF_PaymentServiceHandler_Test {
             Database.insert(erpmEngagementList);
             
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Support','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Intel® Partner Investment Center','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF);
-            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Support','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Intel® Partner Investment Center','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF_ABA);
             Database.insert(entitlementList);
             
@@ -308,8 +308,6 @@ public class Core_MDF_PaymentServiceHandler_Test {
             indiaActivity5.Amount=1000;
             indiaActivity5.Status = 'Approved';
             indiaActivity5.AllocationId=rsaMdAlloc.id;
-            indiaActivity5.Core_MDF_ActivityCategory__c = 'Broadcast (Pre-2025)';
-            indiaActivity5.Core_MDF_Activity_Types__c = 'Podcast';
             
             pfrList.add(indiaActivity5);
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.Id), 
@@ -318,7 +316,7 @@ public class Core_MDF_PaymentServiceHandler_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast (Pre-2025)',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);

@@ -8,7 +8,7 @@
             <recipient>PRM_IPAAdminsListForEPUM</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPA_English_Templates/IPA_AGS_IdentityFail</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>PRM_Initiated_By__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPA_English_Templates/IPA_AGS_IdentityFail</template>
     </alerts>

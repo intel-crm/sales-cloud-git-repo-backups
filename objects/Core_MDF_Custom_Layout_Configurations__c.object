@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Custom_Layout_Configuration_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Custom_Layout_Configuration_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -160,24 +160,6 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>API_Visibility__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To check whether the field is visible in API</description>
-        <label>API Visibility</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_API_Required_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Is the field mandatory field for API</description>
-        <label>Is API Required</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <fields>
         <fullName>Core_MDF_Active_Ind__c</fullName>
         <defaultValue>false</defaultValue>
@@ -229,19 +211,9 @@
                     <label>Account Based</label>
                 </value>
                 <value>
-                    <fullName>OEM CMP</fullName>
-                    <default>false</default>
-                    <label>OEM CMP</label>
-                </value>
-                <value>
                     <fullName>Proposal Based</fullName>
                     <default>false</default>
                     <label>Proposal Based</label>
-                </value>
-                <value>
-                    <fullName>Service Provider CMP</fullName>
-                    <default>false</default>
-                    <label>Service Provider CMP</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -321,25 +293,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Lookup_Custom_URL_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Lookup Custom URL Indicator</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Lookup_Custom_URL_Link_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Lookup Custom URL Link</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Object_API_Name_txt__c</fullName>

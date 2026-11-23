@@ -127,7 +127,7 @@ Code added on 12-5-2016.Calls the controller for Quote creation   -->
                 <div class="spinner" />
             </apex:facet>
         </apex:actionstatus>
-        <!--<apex:actionFunction name="processOpportuntyQuote" status="seedsTabLoadStatus1" action="{!createPSGQuoteonSiebel}" rerender="pnlRequestTypeSection,theTabPanel" oncomplete="loadTab()"/>-->
+        <apex:actionFunction name="processOpportuntyQuote" status="seedsTabLoadStatus1" action="{!createPSGQuoteonSiebel}" rerender="pnlRequestTypeSection,theTabPanel" oncomplete="loadTab()"/>
         <apex:actionFunction name="processSSGRequest" action="{!processSSGRequest}"></apex:actionFunction>
         
         
@@ -155,7 +155,7 @@ Code added on 12-5-2016.Used for displaying the notification message on quote cr
                     <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
                                    
                     <!-- Intel Altera Phase1: code added on 12-5-2016 -->
-                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
+                    <apex:selectOption rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>                    
                     <apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>                      
                     <apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
                 </apex:selectList>
@@ -172,7 +172,7 @@ Code added on 12-5-2016.Used for displaying the notification message on quote cr
                     <apex:selectOption itemLabel="Request Sample" itemValue="Request Sample"/>
                     <apex:selectOption itemLabel="Order Seed" itemValue="Order Seed"/>                    
                     <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
-                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'System Administrator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
+                    <apex:selectOption rendered="{!IF($Profile.Name == 'System Administrator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>
 					<apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>  
 					<apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
             	</apex:selectList>
@@ -196,7 +196,7 @@ Code added on 12-5-2016.Used for displaying the notification message on quote cr
                     <!-- Intel Altera Phase1:
 This Table row will be added only if the user has the access to the Sales support page 
 -->
-                    <!--<tr rendered="{!bSalesSupportHomePageAccessible}"><TH class="recordTypeName" scope="row">{!$Label.Core_PSG_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a PSG quote to be created in InteliQuote</td></tr>-->
+                    <tr rendered="{!bSalesSupportHomePageAccessible}"><TH class="recordTypeName" scope="row">{!$Label.Core_PSG_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a PSG quote to be created in InteliQuote</td></tr>
                     
                     <tr><TH class="recordTypeName" scope="row">{!$Label.Core_SSR_Support_Request}</TH><td class="recordTypeDescription">Get expert software support for competitive and/or strategic opportunities.&nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/ssg-sales-support/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
                     <tr><TH class="recordTypeName" scope="row">{!$Label.Core_Web_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a WebQuote</td></tr>
@@ -663,7 +663,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                 
                 <!--Intel Altera Phase1: 
 Below method is used for showing the PSG Quote History associated with Opportunity. --> 
-                <!--<apex:tab label="PSG Quotes" name="tabPSGQuote" id="tabPSGQuote"  labelWidth="120" onTabEnter="clickTab('tabPSGQuote','{!$Component.pageblk.pgBlkPSGQuoteTbl}','');"  rendered="{!bPSGQuoteTabVisible}" disabled="true">
+                <apex:tab label="PSG Quotes" name="tabPSGQuote" id="tabPSGQuote"  labelWidth="120" onTabEnter="clickTab('tabPSGQuote','{!$Component.pageblk.pgBlkPSGQuoteTbl}','');"  rendered="{!bPSGQuoteTabVisible}" disabled="true">
                     <apex:outputPanel id="psgQuoteHistoryPnl" >
                         <apex:actionFunction name="pullPSGQuote" action="{!pullPSGQuoteHistory}" reRender="psgQuoteHistoryPnl" status="samplePSGQuoteLoadStatus"/>
                         <apex:actionstatus id="samplePSGQuoteLoadStatus">
@@ -693,7 +693,7 @@ Below method is used for showing the PSG Quote History associated with Opportuni
                             </div>
                         </div>
                     </apex:outputPanel>
-                </apex:tab> -->
+                </apex:tab> 
                 
                 <!-- SSG Support Request Grid Buddy Flow Changes Start -->
                 <!-- Display if User Navigates from Account Record -->

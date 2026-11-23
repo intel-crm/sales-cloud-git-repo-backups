@@ -561,6 +561,11 @@
             <sortOrder>18</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>Contact.LID__LinkedIn_Message</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>19</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>20</sortOrder>
@@ -709,9 +714,8 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Message_Type__c</fields>
-        <fields>ACM_Integration_Queue__c</fields>
-        <fields>Inbound_Message__c</fields>
         <fields>Outbound_Message__c</fields>
+        <fields>Inbound_Message__c</fields>
         <fields>Core_Inbound_Message_Status__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>

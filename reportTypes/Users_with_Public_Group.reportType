@@ -673,11 +673,6 @@
             <field>IsBroadcast</field>
             <table>User.CollaborationGroup$OwnerId</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IsActivityGroup</field>
-            <table>User.CollaborationGroup$OwnerId</table>
-        </columns>
         <masterLabel>Groups (Owner)</masterLabel>
     </sections>
 </ReportType>

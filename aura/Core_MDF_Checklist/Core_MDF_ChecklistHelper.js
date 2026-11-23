@@ -8,15 +8,8 @@
         //On init, populates the checklist items for the case
         helper.callServer(component, "c.queryAllChecklistItems", (response) => {  var checklist = []; var conts = response;for ( var key in conts ) {checklist.push({value:conts[key], key:key}); }component.set('v.checklistItemsWithCat', checklist); }, {caseRecord : caseId}, helper,event);
         //On init, gets the case status so that the checklist is editable only under status 'Under Review'
-        //AI Audit changes
-	    helper.callServer(component, "c.getCaseStatus", (response) => {
-            component.set('v.caseStatus',response);
-            // Only call AI audit status if case status is "Under Review"
-            if (response === "Under Review") {
-                helper.getAIAuditStatus(component, helper, event);
-            }
-        }, {caseRecord : caseId}, helper,event);
-		//Check if the logged in user is a Claim Case Reviewer / Manager [Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users]
+        helper.callServer(component, "c.getCaseStatus", (response) => {component.set('v.caseStatus',response);}, {caseRecord : caseId}, helper,event);
+        //Check if the logged in user is a Claim Case Reviewer / Manager [Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users]
         helper.callServer(component, "c.checkEditability", (response) => {component.set('v.isAClaimCaseReviewerOrManager',response);},{}, helper,event);
         helper.callServer(component, "c.calculateChecklistCompletion", (response) => {component.set('v.checklistCompletionPer',response);}, {caseRecord : caseId}, helper,event);
     },
@@ -60,24 +53,6 @@
         
         toastEvent.fire();
     },
-   //Method to get AI Status from Scorecard
-   getAIAuditStatus: function (component, helper, event) {
-        var caseId = component.get("v.recordId");
-        helper.callServer(component, "c.getAIAuditStatusFromScorecard", (response) => { 
-            var result = response;
-            component.set('v.scorecardDetails', result);
-            if(result && result.scorecardRec) {
-            	if(result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c =='' || result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c == null || result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c == undefined){
-                	component.set("v.aiStatusMessage", 'AI Validation in progress. Please check back shortly or continue review.');
-            		
-                 }
-               	else if(result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c =='AI Processing Failed'){
-                	component.set("v.aiStatusMessage", 'AI Response not available. Please continue with review.');
-                }
-             }
-        }, {caseRecordId : caseId}, helper, event);
-    },
-
     callServer: function (component, method, callback, params, helper,event) {
         var action = component.get(method);
         if (params) {

@@ -99,7 +99,6 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             console.log('error:'+error);
         })
     }
-    //Tushar bug fix
     getExistingMembers(){
         return getExistingMembers({
             projectId1 : this.recordId,
@@ -107,19 +106,15 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             offset1 : this.rowOffSet1,
         })
         .then(data=>{
-            if (!data || data.length === 0) {
-                if (this.targetDatatable1) {
-                    this.targetDatatable1.enableInfiniteLoading = false;
-                }
-                this.showTable = true;
-                return;
+            if (this.targetDatatable1 && data==null) {
+                this.targetDatatable1.enableInfiniteLoading = false;
             }
             for (let i = 0; i < data.length; i++) {
                 let obj = {
-                    'FirstName' : data[i].Core_IPS_Contact__r?.FirstName,
-                    'LastName' : data[i].Core_IPS_Contact__r?.LastName,
-                    'Email' : data[i].Core_IPS_Contact__r?.Email,
-                    'Name' : data[i].Core_IPS_Contact__r?.Account?.Name,
+                    'FirstName' : data[i].Core_IPS_Contact__r.FirstName,
+                    'LastName' : data[i].Core_IPS_Contact__r.LastName,
+                    'Email' : data[i].Core_IPS_Contact__r.Email,
+                    'Name' : data[i].Core_IPS_Contact__r.Account.Name,
                 };
                 this.existingMemList = [...this.existingMemList, obj];
             }
@@ -130,7 +125,7 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             console.log('existingMemCount:'+this.existingMemList.length);
         })
         .catch(error=>{
-            console.log('error in fetching existing members '+(error?.body?.message || error?.message || JSON.stringify(error)));
+            console.log('error in fetching existing members '+error.message);
         })
     }
     loadMoreData(event){
@@ -177,7 +172,7 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
         .catch(error=>{
             this.showMemTable = false;
             this.switchView = false;
-            console.log(' error in fetching add members: '+JSON.stringify(error));
+            console.log(' error in fetching add members: '+error.message);
         })
     }
     handleLoadMore(event) {

@@ -53,7 +53,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
         if (mapFunctionalityNameTriggerExecution.containsKey('updateProductLineItems') &&
             mapFunctionalityNameTriggerExecution.get('updateProductLineItems').Core_Active__c && !opp.Core_Created_from_CPQ__c)
         { 
-            
+            system.debug('line 45 is getting called');
             Core_OppApproval.updateProductLineItems((Map<Id,Opportunity>)Trigger.oldMap, Trigger.new);}
         
         //Call the method to update the technical owner on a opportunity
@@ -62,7 +62,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
             Core_OpportunityHandler.opportunityTechnicalOwnerUpdate((Map<Id,Opportunity>)Trigger.Oldmap, (Map<Id,Opportunity>)Trigger.Newmap , True);
         
         //Call the method to update Pending line items to Lost/Cancelled if opportunity is Lost/Cancelled
-        if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('opportunityStageUpdate') &&
+        if (mapFunctionalityNameTriggerExecution.containsKey('opportunityStageUpdate') &&
             mapFunctionalityNameTriggerExecution.get('opportunityStageUpdate').Core_Active__c && !opp.Core_Created_from_CPQ__c)
             Core_OpportunityHandler.opportunityStageUpdate((Map<Id,Opportunity>)Trigger.Oldmap,(Map<Id,Opportunity>) Trigger.Newmap);
         
@@ -122,11 +122,6 @@ public class Core_OpportunityHelper extends TriggerHandler {
         if(mapFunctionalityNameTriggerExecution.containsKey('ILO_syncStatus_Opportunity_IQRQuote') && mapFunctionalityNameTriggerExecution.get('ILO_syncStatus_Opportunity_IQRQuote').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.syncStatus_Opportunity_IQRQuote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
         }
-        /*Utkarsh - Start - IPA Changes - Partner Deal Registration*/
-        if(mapFunctionalityNameTriggerExecution.containsKey('PRM_PartnerDealSharing') && mapFunctionalityNameTriggerExecution.get('PRM_PartnerDealSharing').Core_Active__c){
-            Core_OpportunityHandler_2.sharePRMDealOpptyToOpptyOwner(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
-        }
-        /*Utkarsh - End - IPA Changes - Partner Deal Registration*/
     }
     
     public override void beforeInsert() {
@@ -159,7 +154,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
             }
         
         //Opportunity Stage Update Blank fields Check - Added by Hira(Accenture Team) as a part of TWC3123-3502
-        if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') &&
+        if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c ) {
                 Core_OpportunityHandler.restrictBlankFieldUpdates(Trigger.New,null,null,False);
             }
@@ -230,7 +225,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
             }
         
         //Opportunity Stage Update Blank fields Check - Added by Hira(Accenture Team) as a part of TWC3123-3502
-        if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') && mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c) {
+        if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') && mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c) {
                 Core_OpportunityHandler.restrictBlankFieldUpdates(Trigger.New,(Map<Id,Opportunity>)Trigger.OldMap,Trigger.Old,True);
             }
         

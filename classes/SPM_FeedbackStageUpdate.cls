@@ -62,7 +62,6 @@ public without sharing class SPM_FeedbackStageUpdate implements Database.Batchab
     public void finish(Database.BatchableContext context) {
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
         List<String> toAddresses = Core_CRM_Utility.getCRMLabel('CST_Error_Email').split(';');
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
         email.setToAddresses(toAddresses);
         if(errorMessage != '' && errorMessage != null )
             email.setSubject(' Error Occurred While updating Feedback records '+objectName);
@@ -70,7 +69,6 @@ public without sharing class SPM_FeedbackStageUpdate implements Database.Batchab
             email.setSubject('Feedback records updated succesfully '+objectName);    
         
         email.setPlainTextBody(errorMessage);  
-        email.setOrgWideEmailAddressId(fromEmailAddress);
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
     }
 }

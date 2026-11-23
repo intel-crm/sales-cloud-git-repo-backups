@@ -179,7 +179,7 @@ public without sharing class Core_MDF_CCP_Multicurrency {
        
         return outputMap;
     }
-	@AuraEnabled
+
     public static Map<string,getExchangeRateAndAmount> getExchangeRateForAnyInputAndOutputCurrency(List<getExchangeRateAndAmount> inputList){
 
         List<string> allUniqueKeys = new List<string>();
@@ -284,12 +284,12 @@ public without sharing class Core_MDF_CCP_Multicurrency {
     }
     
     public class getExchangeRateAndAmount{
-     @AuraEnabled   public decimal inputAmount{get;set;}
-     @AuraEnabled   public string inputCurrency{get;set;}
-     @AuraEnabled   public string outputCurrency{get;set;}
-     @AuraEnabled   public date inputDate{get;set;}
-     @AuraEnabled   public decimal conversionRate {get;set;}
-     @AuraEnabled   public decimal convertedAmount{get;set;}
+        public decimal inputAmount{get;set;}
+        public string inputCurrency{get;set;}
+        public string outputCurrency{get;set;}
+        public date inputDate{get;set;}
+        public decimal conversionRate {get;set;}
+        public decimal convertedAmount{get;set;}
     }
     
     public class errorHandling{

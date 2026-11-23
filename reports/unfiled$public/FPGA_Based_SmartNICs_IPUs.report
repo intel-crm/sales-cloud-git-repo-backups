@@ -110,6 +110,9 @@
         <field>Opportunity.Core_OEM__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__MainCompetitors__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Competitor__c</field>
     </columns>
     <columns>

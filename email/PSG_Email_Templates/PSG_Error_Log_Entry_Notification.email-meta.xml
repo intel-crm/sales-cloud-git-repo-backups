@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <available>true</available>
+    <description>Used to notify Tech team for Error Logs in the Log Entries Object for PSG.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG_Error_Log_Entry_Notification</name>
+    <style>none</style>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

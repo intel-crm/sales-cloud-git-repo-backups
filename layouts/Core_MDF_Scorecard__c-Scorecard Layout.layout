@@ -38,15 +38,11 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Score_Nbr__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Right_to_Recover_Amt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Audit_Summary_Txt__c</field>
+                <field>Core_MDF_Right_to_Recover_Amt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -65,19 +61,11 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Attribution_Comments_Txt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Attribution_PV_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Attribution_Score_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Attribution_Comments_Txt__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Attribution_PV_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -104,15 +92,11 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_POP_Comments_Txt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_POP_PV_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_POP_Score_Nm__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_POP_PV_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -121,10 +105,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Redaction_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_POP_Comments_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -140,12 +120,7 @@
                 <field>Core_MDF_POC_Strength_Nm__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_POC_Strength_Nm__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -162,19 +137,11 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Engagement_Comments_Txt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Engagement_PV_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Engagement_Score_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Engagement_Comments_Txt__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Engagement_PV_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -191,6 +158,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_MDF_Highlight_Partner_Review_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Recommended_investigation_Ind__c</field>
             </layoutItems>
             <layoutItems>
@@ -198,16 +169,7 @@
                 <field>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Highlight_Partner_Review_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -228,10 +190,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_PII_Present_Ind__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Process_Feedback_Comments_Txt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -243,8 +201,8 @@
                 <field>Core_MDF_PIC_Accuracy_Ind__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_AI_PII_Present_Nm__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Process_Feedback_Comments_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

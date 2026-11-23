@@ -164,7 +164,7 @@ public class Core_MDF_Recovery_Helper_Test {
                                                                                                               'Consumer',
                                                                                                               'Desktop',
                                                                                                               'Intel® Core™ i5 Processor',
-                                                                                                              'Broadcast (Pre-2025)',
+                                                                                                              'Broadcast',
                                                                                                               'Podcast',
                                                                                                               'Draft',
                                                                                                               false);
@@ -187,7 +187,7 @@ public class Core_MDF_Recovery_Helper_Test {
                                                                                                                   'Consumer',
                                                                                                                   'Desktop',
                                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                                  'Broadcast (Pre-2025)',
+                                                                                                                  'Broadcast',
                                                                                                                   'Podcast',
                                                                                                                   'Draft',
                                                                                                                   false);
@@ -208,15 +208,15 @@ public class Core_MDF_Recovery_Helper_Test {
                                                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                          string.valueof(intelRetail.id),NULL,NULL,
                                                                                                          'AFGHANISTAN','Business','Workstation',
-                                                                                                         'EVO','Broadcast (Pre-2025)',
+                                                                                                         'EVO','Broadcast',
                                                                                                          'Podcast','Draft',false);
             
             currentQuarterPfr.Title ='RSA MD Activity';
             currentQuarterPfr.Core_MDF_Activity_Description__c ='RSA MD Activity';
             //currentQuarterPfr.Core_MDF_Budget_Type_txt__c ='RSA MD';
             currentQuarterPfr.Core_MDF_Budget_Type_nm__c = 'RSA MD';
-            currentQuarterPfr.Core_MDF_Start_Date__c = System.today().addDays(-2);
-            currentQuarterPfr.Core_MDF_End_Date__c  = System.today().addDays(+2);
+            currentQuarterPfr.Core_MDF_Start_Date__c = System.today();
+            currentQuarterPfr.Core_MDF_End_Date__c  = System.today();
             currentQuarterPfr.RequestedAmount =1000;
             currentQuarterPfr.Amount=1000;
             //currentQuarterPfr.Core_MDF_Country__c ='GERMANY';
@@ -251,17 +251,10 @@ public class Core_MDF_Recovery_Helper_Test {
                 }                                  
                 pfc.Core_MDF_Status__c = 'Submitted';
                 pfc.Description = 'Test PFC ';
-                pfc.Core_MDF_Ad_Run_Start_Date__c = system.today().addDays(-1);
+                pfc.Core_MDF_Ad_Run_Start_Date__c = system.today();
                 pfc.Core_MDF_Ad_Run_End_Date__c = system.today();
                 pfc.Core_MDF_Currency__c = 'USD';
                 pfc.Core_MDF_Country_Location_nm__c= 'GERMANY';
-                pfc.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
-                pfc.Core_MDF_Currency__c = 'USD';
-                pfc.Core_MDF_Invoice_Date__c = system.today();
-                pfc.Core_MDF_Invoice_Number__c = '123';
-                pfc.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-                pfc.Core_MDF_Taxes_Local__c = 0;
-                pfc.Amount = 10;
                 
                 pfcList.add(pfc);
             }
@@ -275,11 +268,6 @@ public class Core_MDF_Recovery_Helper_Test {
             recoveryClaim1.Core_MDF_BackendReviewSelection_Ind__c = false;
             recoveryClaim1.Amount = 10;
             recoveryClaim1.Core_MDF_Currency__c='USD'; 
-            recoveryClaim1.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
-            recoveryClaim1.Core_MDF_Invoice_Date__c = system.today();
-            recoveryClaim1.Core_MDF_Invoice_Number__c = '123';
-            recoveryClaim1.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-            recoveryClaim1.Core_MDF_Taxes_Local__c = 0;
             pfcList.add(recoveryClaim1);
             
             PartnerFundClaim recoveryClaim2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,recoveryFranceActivity.Id,
@@ -289,12 +277,7 @@ public class Core_MDF_Recovery_Helper_Test {
             recoveryClaim2.Core_MDF_BackendReviewSelection_Ind__c = false;
             recoveryClaim2.Amount = 30;
             recoveryClaim2.Core_MDF_Reimbursable_Transaction_Amount__c=30;
-            recoveryClaim2.Core_MDF_Currency__c='USD';
-            recoveryClaim2.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
-            recoveryClaim2.Core_MDF_Invoice_Date__c = system.today();
-            recoveryClaim2.Core_MDF_Invoice_Number__c = '123';
-            recoveryClaim2.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-            recoveryClaim2.Core_MDF_Taxes_Local__c = 0;
+            recoveryClaim2.Core_MDF_Currency__c='USD'; 
             pfcList.add(recoveryClaim2);
             
             
@@ -305,14 +288,6 @@ public class Core_MDF_Recovery_Helper_Test {
             recoveryClaimMDFP.Core_MDF_Document_Submission_Missed_Ind__c = true;
             recoveryClaimMDFP.Amount = 300;
             recoveryClaimMDFP.Core_MDF_Currency__c='USD'; 
-            recoveryClaimMDFP.Core_MDF_Ad_Run_Start_Date__c = system.today().addDays(-1);
-            recoveryClaimMDFP.Core_MDF_Ad_Run_End_Date__c = system.today();
-            recoveryClaimMDFP.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
-            recoveryClaimMDFP.Core_MDF_Invoice_Date__c = system.today();
-            recoveryClaimMDFP.Core_MDF_Invoice_Number__c = '123';
-            recoveryClaimMDFP.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-            recoveryClaimMDFP.Core_MDF_Taxes_Local__c = 0;
-            
             pfcList.add(recoveryClaimMDFP);
             Database.insert(pfcList);
             

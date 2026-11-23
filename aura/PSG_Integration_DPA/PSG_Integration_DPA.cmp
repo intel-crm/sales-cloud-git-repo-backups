@@ -1,0 +1,9 @@
+<!--<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="PSG_Integration_DPA" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <br/><br/><br/>
+    <div class="slds-modal__container">
+        <lightning:spinner class="slds-is-relative" variant="brand"/>
+    </div>
+</aura:component>-->
+<aura:component>
+</aura:component>

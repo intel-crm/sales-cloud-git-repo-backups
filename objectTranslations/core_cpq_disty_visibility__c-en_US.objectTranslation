@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Disty Visibility</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Disty Visibilities</value>
+    </caseValues>
+    <fields>
+        <help><!-- Select Distributor to extend the Quote Visibility --></help>
+        <label><!-- Distributor --></label>
+        <name>core_cpq_distributor__c</name>
+        <relationshipLabel><!-- Disty Visibilities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quote__c</name>
+        <relationshipLabel><!-- Disty Visibilities --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- PSG Disty Visibility --></label>
+        <name>PSG_Disty_Visibility</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This is already the distributor to which the quote belongs. Please select another distributor account. --></errorMessage>
+        <name>Duplicate_Distributor</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a valid distributor account --></errorMessage>
+        <name>Valid_Distributor_Account</name>
+    </validationRules>
+</CustomObjectTranslation>

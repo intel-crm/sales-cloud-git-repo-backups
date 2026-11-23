@@ -2,28 +2,23 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
 }
+
+/*th {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.tight-row td{
+    padding: 2px 4px;
+    line-height: 1.2;
+}*/
+
 .scrollable-table {
     overflow-x: auto;
     max-width: 100%;
-}
-.header-title {
-    font-weight: 700; /* extra bold if needed */
-        font-size: .8rem;   /* increase size */
-    /* border-bottom: 2px solid #d8dde6; */
-    padding-bottom: 0.25rem;
-}
-.small-input {
-    width: 100px;       
-}
-/*.small-input .slds-input {
-    height: 28px;       
-    padding: 0 6px;
-    font-size: 12px;
-}*/
-.combobox-fix {
-    width: 320px;      
 }

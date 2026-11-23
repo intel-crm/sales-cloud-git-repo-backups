@@ -167,10 +167,6 @@
         <value xsi:type="xsd:string">Letzter Hinweis: Antragsnr.</value>
     </values>
     <values>
-        <field>Core_MDF_Tactics_nm__c</field>
-        <value xsi:type="xsd:string">{&quot;Event&quot;:&quot;Veranstaltung&quot;,&quot;Lead Cultivation&quot;:&quot;Lead-Kultivierung&quot;,&quot;Technical Activation&quot;:&quot;Technische Aktivierung&quot;,&quot;Incentive&quot;:&quot;Incentive&quot;,&quot;Training&quot;:&quot;Schulung&quot;,&quot;Digital Media&quot;:&quot;Digitalmedien&quot;,&quot;Legacy Media&quot;:&quot;Ältere Medien&quot;,&quot;Funded Headcount&quot;:&quot;Finanzierte Mitarbeiter&quot;,&quot;Brand Awareness&quot;:&quot;Markenbekanntheit&quot;,&quot;Consideration&quot;:&quot;Erwägung&quot;,&quot;Purchase Intent&quot;:&quot;Kaufabsicht&quot;,&quot;Preference&quot;:&quot;Präferenz&quot;,&quot;Share of Voice&quot;:&quot;Stimmanteil&quot;}</value>
-    </values>
-    <values>
         <field>Core_MDF_Thank_You__c</field>
         <value xsi:type="xsd:string">Mit freundlichen Grüßen,</value>
     </values>

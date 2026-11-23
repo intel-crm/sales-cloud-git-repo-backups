@@ -45,6 +45,7 @@ public with sharing class Core_MDF_TargetSettingController {
     @AuraEnabled
     public static UserPermissionAccesss checkLoggedInUserhasAccess(String channelProgram){
         
+	List<PermissionSetAssignment> permissionSetsAssigned = new List<PermissionSetAssignment>();
 	UserPermissionAccesss userPermission = new UserPermissionAccesss();
         
         List<String> permissionsetList = new List<String>();

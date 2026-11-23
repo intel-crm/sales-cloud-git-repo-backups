@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 03-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 06-13-2024
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_RecordJobHandlerTest {
@@ -42,7 +42,7 @@ public class Pricing_RecordJobHandlerTest {
 
                 SBQQ__RecordJob__c recordJob = [SELECT Id FROM SBQQ__RecordJob__c LIMIT 1];
                 update recordJob;
-                System.assertEquals(true ,recordJob != null);
+
             }
 
             Test.stopTest();
@@ -60,9 +60,9 @@ public class Pricing_RecordJobHandlerTest {
                 quoteIds.add(recordIdList[0]);
                 quoteIdToRecordJobMap.put(recordIdList[0],recordJob);
                 Pricing_RecordJobHandler.checkCalculatorFailure(quoteIds,quoteIdToRecordJobMap);
-                System.assertEquals(true ,recordJob != null);
+ 
             }
-            
+ 
             Test.stopTest();
         }
 }

@@ -35,10 +35,13 @@ public without sharing class PRM_EmailUtility {
     //             hence, code and the design used for framework will not work for multiple records at once.  
     public static set<String> sendEmail(List<EmailNotification> objEmailNotifList){
         set<String> regRequestIdSet = new set<String>();
+        // System.debug('>>>>>objEmailNotifList inside calling'+objEmailNotifList);
         if(!objEmailNotifList.isEmpty()){
             /*if(System.isBatch() || System.isFuture() || System.isQueueable()){
+                System.debug('aaaaa');
                 sendEmailUtil(objEmailNotifList);
             }else {
+                System.debug('bbbbb');
                 System.enqueueJob(new sendEmailQueuable(objEmailNotifList));
             }*/
             regRequestIdSet = sendEmailUtil(objEmailNotifList);
@@ -73,6 +76,8 @@ public without sharing class PRM_EmailUtility {
         emailConfigList = database.query(queryForTemplateDetails);
         for(EmailNotification emailNot : objEmailNotifList){  
             SendEmailWrapper sendWrap = sendEmail(emailNot);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails.size());
             allmails.addAll(sendWrap.allEmails);
             logList.addAll(sendWrap.logListWrap);
             regReqLst.add(sendWrap.regReqId);
@@ -427,6 +432,7 @@ public without sharing class PRM_EmailUtility {
                         targetIdLog.put(l.PRM_User__c,l);
                     }
                 }
+                //system.debug('logList-->'+logList);
                 for(Messaging.SendEmailResult result : resultList)
                 {
                     if(! result.isSuccess())
@@ -734,32 +740,13 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         }
         /*Utkarsh - US741977 - Changes to accomodate Team RUBY Flow*/
         if(partnerAdmin == false){
-            //[TWC729-9164] -- START
-            String twoDigitCode='';
-            Map<String,PRM_Language_Culture_Mapping__mdt > metadataMap = PRM_Language_Culture_Mapping__mdt.getAll();
-
-            if(metadataMap!=null &&  metadataMap.size() > 0){
-                for(PRM_Language_Culture_Mapping__mdt record:metadataMap.values()){
-                    if(record.MasterLabel==language){
-                        if(record.MasterLabel=='SPA'){
-                            twoDigitCode='es_MX';
-                        }
-                        else{
-                            twoDigitCode=record.PRM_Culture__c+'_'+record.PRM_Country_Cd__c;
-                        }
-                        break;
-                    }
-                }
-            }
-            String translatedLangTemplate = System.Label.get('', 'PRM_Secondary_Invite_Link', twoDigitCode);
-            tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,translatedLangTemplate);
-           //[TWC729-9164] -- END
-           //tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,System.Label.PRM_Non_Partner_Admin_Link);
+           tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,System.Label.PRM_Non_Partner_Admin_Link);
         }
         /*END - US741977*/
     /*Utkarsh - TWC727-864 - Remove DZS releated line from welcome email template when contact partner role is Guest*/
     if((businessEvent == System.Label.PRM_Welcome_Email_New_Event) || (businessEvent == System.Label.PRM_Welcome_Email_Existing_Event) || (businessEvent == System.Label.PRM_Email_Admin_Approval_Event)){
           if(partnerRole == 'Guest'){
+            system.debug('inside welcome template');
                 if(language == 'ENG'){
                     tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
                 }
@@ -810,6 +797,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                 }
           }
         }
+    system.debug('tempHtmlValue-->'+tempHtmlValue);
     /*END - TWC727-864*/
         return tempHtmlValue ;
     }
@@ -1836,5 +1824,5 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         }
         
     }//End of Method    
-   
+       
 }

@@ -56,10 +56,7 @@ public with sharing class PMP_ParentCategoryUpdate
             if(updateCatList.size()>0){
                     PMP_CategoryTriggerHandler.triggerSwitch = false;
                     if (Schema.sObjectType.PMP_Category__c.isUpdateable()) {
-                        //update updateCatList;
-                        Database.SaveResult[] catList = Database.update(updateCatList, false);
-						PMP_Utility.logDmlErrors((Object[]) catList, 'PMP_ParentCategoryUpdate-updateParentOnInsert');
-
+                        update updateCatList;
                     }
                   	PMP_CategoryTriggerHandler.triggerSwitch = true;
             }

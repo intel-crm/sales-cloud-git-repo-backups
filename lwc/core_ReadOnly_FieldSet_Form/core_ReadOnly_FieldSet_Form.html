@@ -61,13 +61,6 @@
                   </div>
                   <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
                      <lightning-input-field field-name="Core_Status__c" onchange={handleStatus}></lightning-input-field>
-                     <template if:false={DesignOrDeal}>
-                     <div class="slds-p-left_x-small"> 
-                     <span >{qtyStaticTextBody} 
-                        <a href={qtyStaticTextHyperLink} target="_blank" rel="noopener noreferrer" class="quantity-link">{qtyStaticTextHyperLinkText}</a>
-                     </span>
-                     </div>   
-                     </template>
                      <lightning-input-field field-name="Quantity" onchange={handleQuantity} disabled={toDisableQty}></lightning-input-field>
                      <template if:true={DesignOrDeal}>
                      <lightning-input-field field-name="Core_PW_Quantity__c" onchange={handlePWQty}></lightning-input-field>
@@ -112,13 +105,6 @@
                   </div>
                   <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
                      <lightning-output-field field-name="Core_Status__c" class="underline-field"></lightning-output-field>
-                     <template if:false={DesignOrDeal}>
-                     <div class="slds-p-left_xx-small"> 
-                     <span >{qtyStaticTextBody} 
-                        <a href={qtyStaticTextHyperLink} target="_blank" rel="noopener noreferrer" class="quantity-link">{qtyStaticTextHyperLinkText}</a>
-                     </span>
-                     </div>
-                     </template>
                      <lightning-output-field field-name="Quantity" class="underline-field"></lightning-output-field>
                      <template if:true={DesignOrDeal}>
                      <lightning-output-field field-name="Core_PW_Quantity__c" class="underline-field"></lightning-output-field>

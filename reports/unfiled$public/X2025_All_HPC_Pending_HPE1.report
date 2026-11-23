@@ -183,7 +183,7 @@
         <sortOrder>Desc</sortOrder>
         <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>All HPC Pending-HPE</name>
+    <name>2025 All HPC Pending-HPE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -209,7 +209,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-03-17</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

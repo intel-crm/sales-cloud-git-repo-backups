@@ -29,7 +29,7 @@ public without sharing class PRM_AccountActvityOverview {
         Map<Id, Map<Decimal, String>> vxMap = new Map<Id, Map<Decimal, String>>();
         //Map<String, decimal> trainingCreditMap = new Map<String,decimal>();
         //List<AggregateResult> totalApprovedOfferingList = new List<AggregateResult>();//IPA2.0 TWC727-3228
-      //List<AggregateResult> totalApprovedSolutionsList = new List<AggregateResult>();//IPA2.0 TWC727-3228
+	    //List<AggregateResult> totalApprovedSolutionsList = new List<AggregateResult>();//IPA2.0 TWC727-3228
         Map<ID,List<String>> accSalesCombination = new Map<ID,List<String>>();
         map<id,Decimal> trainingCurMap=new map<id,Decimal>();
         map<id,Decimal> trainingPrevMap=new map<id,Decimal>();
@@ -263,7 +263,7 @@ public without sharing class PRM_AccountActvityOverview {
                 errorRecord.acc=accounts[0];
                 errorRecord.ex=ex;
                 errorRecord.severity=LOG_ENTRY_ERROR;
-              createErrorRecord(errorRecord); 
+            	createErrorRecord(errorRecord); 
                 //createErrorRecord(ex.Message, accounts[0], ex, LOG_ENTRY_ERROR);
             }
         }catch(Exception ex){
@@ -336,7 +336,7 @@ public without sharing class PRM_AccountActvityOverview {
         //     totalApprovedOffering = (Decimal)vx.get('approvedOffer');
         // }
         //IPA2.0 TWC727-3228
-     //ApprovedSolutions Calculation//IPA2.0: US-TWC729-7976
+		 //ApprovedSolutions Calculation//IPA2.0: US-TWC729-7976
         /*for(AggregateResult vx: totalApprovedSolutionsList){
             totalApprovedSolutions = (Decimal)vx.get('approvedSolution');
         }*/
@@ -346,7 +346,7 @@ public without sharing class PRM_AccountActvityOverview {
                 for( AggregateResult ux: Database.query(uxQuery)){ // aggregate result
                     totalAWRremaining=(Decimal)ux.get('remaining');
                     totalAWRallocated=(Decimal)ux.get('allocated');
-            }
+        		}
             }
         
         
@@ -391,7 +391,7 @@ public without sharing class PRM_AccountActvityOverview {
                 response = new Http().send(httpReq); 
             }else{
                 response = new HttpResponse();
-                response.setBody('{"access_token": "TestToken124","token_type": "Bearer","expires_in": "3599","ext_expires_in": "3599"}');
+                response.setBody('{"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im5Pbz","token_type": "Bearer","expires_in": "3599","ext_expires_in": "3599"}');
                 response.setStatusCode(200);
             }
             
@@ -456,7 +456,7 @@ public without sharing class PRM_AccountActvityOverview {
         // public Boolean publishedStorefront {get;set;}//IPA2.0 TWC727-3228
         @AuraEnabled
         public Decimal totalTrainedResourcesMax {get;set;}
-    // @AuraEnabled
+		// @AuraEnabled
         // public Decimal totalApprovedSolutions {get;set;}//IPA2.0 TWC727-3228
     }
     
@@ -469,7 +469,7 @@ public without sharing class PRM_AccountActvityOverview {
         }     
             return con.AccountId;
     }
-    /* public static void createErrorRecord(String msg, Account acc, CustomException ex, String severity){
+  	/* public static void createErrorRecord(String msg, Account acc, CustomException ex, String severity){
         try{ 
             Id recId = acc?.Id;
             String strDetailsAndEx = '';
@@ -546,8 +546,8 @@ public without sharing class PRM_AccountActvityOverview {
             //if(msg.length() > 10 && !msg.contains('No Data retrieved')){
                 //system.debug('>>>>>listval'+[Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c]);
                 //pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c != false];
-              //TWC729-7584 - ApexGuru
-              pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c = true];
+            	//TWC729-7584 - ApexGuru
+            	pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c = true];
 
             //}
             
@@ -650,12 +650,12 @@ public without sharing class PRM_AccountActvityOverview {
     }*/
     //IPA2.0 TWC727-3228
     //IPA2.0: US-TWC729-7976
-   /*public static List<AggregateResult> getTotalApprovedSolutions(Id accID){
-     List<AggregateResult> approvedSolutionsList = new List<AggregateResult>();
-     approvedSolutionsList=[select  count(PSS_Partner_Account_Id__c) approvedSolution from ArdiraSurvey__Survey_Result__c where PSS_Partner_Account_Id__c=: accID 
-                and PSS_Partner_Solution_Lifecycle_Status_Nm__c in ('Converted To MP Offerings', 'Approved') ];
-     return approvedSolutionsList;
-   }*/
+	 /*public static List<AggregateResult> getTotalApprovedSolutions(Id accID){
+		 List<AggregateResult> approvedSolutionsList = new List<AggregateResult>();
+		 approvedSolutionsList=[select  count(PSS_Partner_Account_Id__c) approvedSolution from ArdiraSurvey__Survey_Result__c where PSS_Partner_Account_Id__c=: accID 
+								and PSS_Partner_Solution_Lifecycle_Status_Nm__c in ('Converted To MP Offerings', 'Approved') ];
+		 return approvedSolutionsList;
+	 }*/
     /*public static boolean getPublishedStorefront(Id accId,id opidAcnt){
        // Account acc = [select id, name, Core_IPA_One_Partner_Id__c from Account where id=: accID];
         Boolean isPublished= false;

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF;Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF;Sales Incentive (Pre-2025)-&gt;Seller - Other;Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer;Purchase Incentive (Pre-2025)-&gt;Buyer - Other</value>
+        <value xsi:type="xsd:string">Sales Incentive-&gt;Seller - Per Unit SPIF;Sales Incentive-&gt;Seller - Target SPIF;Sales Incentive-&gt;Seller - Other;Purchase Incentive-&gt;Buyer - Bundle Offer;Purchase Incentive-&gt;Buyer - Other</value>
     </values>
 </CustomMetadata>

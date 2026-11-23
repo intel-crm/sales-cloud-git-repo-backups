@@ -28,7 +28,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#E14FDD</headerColor>
-        <logo>IntelLogowithAsterisk6_1</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>

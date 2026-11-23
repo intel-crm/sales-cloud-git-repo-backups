@@ -28,7 +28,7 @@
     <aura:attribute name="isLegacyClaim" type="boolean" default="false" />
     <!--Added by VB-->
     <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
-    <aura:attribute name="isOutComeBased" type="boolean" default="false" description="Indicates whether the claim is super/subclaim"/>
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
         <!--This is to fire a component event to close a modal popup-->
     <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
@@ -40,12 +40,7 @@
         <aura:set attribute="else">
             <header>
                 <div class="slds-modal__header slds-text-heading_medium">
-                    <aura:if isTrue="{!v.isOutComeBased}">
-                        {!$Label.c.Core_MDF_Submit_For_Payment_Clearance}
-                        <aura:set attribute="else">
                     {!$Label.c.Core_MDF_Submit_For_PIC}
-                        </aura:set>
-                    </aura:if>
                 </div>
             </header>
             <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center slds-var-m-top_large slds-var-m-bottom_large slds-var-m-left_small slds-var-m-right_small"
@@ -53,7 +48,7 @@
                 <aura:if isTrue="{!v.isValidClaimUser}">
                     <aura:if isTrue="{!v.isClaimEligibleForPIC}">
                         <aura:if isTrue="{!v.AreDocsAvailable}">
-                            <div>{!v.isOutComeBased ? $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message : $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
+                            <div>{!$Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
                             <aura:set attribute="else">
                                 <div>{!$Label.c.Core_MDF_Mandatory_Document_Types_Error_Message}</div>
                             </aura:set>

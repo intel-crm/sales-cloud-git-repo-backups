@@ -49,7 +49,7 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                     stgToFph_fieldMappingTable.put(mappingRec.FPH_Field__c,mappingRec.Product_staging_field__c);
                 }           
             } 
-            
+
             processProduct2FPHRecords(stgRecords,stgToProd_fieldMappingTable,stgToProd_fieldMappingTableL4Only,stgToProd_fieldMappingTableMMID,stgToProd_fieldMappingTableVplch,stgToFph_fieldMappingTable);
         }catch(Exception ex){
             Product_Utility.createLogEntryAndNotifyUser(ex.getMessage(),ipaasId,'Product_upsertProduct2Records',null,null);
@@ -61,50 +61,47 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
         Product2 prdVPHRec = new Product2();
         List<Core_Flat_Product_Hierarchy__c> fphToUpsertList = new List<Core_Flat_Product_Hierarchy__c>();
         // auto insert/update product2 records using external id -- Core_Unique_ID__c
-        if(!stgRecords.isEmpty() && stgRecords.size()>0){
-            for (Core_Products_Staging__c stgRec :stgRecords){
-                // for Sales and IPS - VPH
-                Product2 productToUpsert = new Product2();  
-                if (isVPHRecord(stgRec)) { 
-                    prdVPHRec=mappingVPHFields(stgRec, stgToProd_fieldMappingTable,stgToProd_fieldMappingTableL4Only,stgToProd_fieldMappingTableMMID);
-                    productsToUpsertList.add(prdVPHRec);
-                }
-                // for Sales and IPS - VPLCH
-                else if(isVPLCHRecord(stgRec)){
-                    // fields mapping
-                    for(String field: stgToProd_fieldMappingTableVplch.keySet()) {                
-                        productToUpsert.put(field, stgRec.get(stgToProd_fieldMappingTableVplch.get(field)));                   
-                    } 
-                    productToUpsert.IsActive              = stgRec.Core_IsActive__c ;
-                    productToUpsert.Core_OPN__c           = stgRec.Core_OPN__c ;
-                    productToUpsert.Core_Product_Org__c   = stgRec.Core_Product_Org__c;
-                    productToUpsert.Core_Unique_ID__c     = stgRec.Core_Unique_ID__c;
-                    productToUpsert.Core_Sales_Visible_Flag__c = stgRec.Core_Sales_Visible_Flag__c;
-                    productToUpsert.Core_IQR_Visible__c =  stgRec.Core_Is_IQR_Visible__c ;
-                    productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
-                    productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
-                    if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5'&& stgRec.Deactivation_Date__c != null) {
-                        productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
+            if(!stgRecords.isEmpty() && stgRecords.size()>0){
+                for (Core_Products_Staging__c stgRec :stgRecords){
+                    // for Sales and IPS - VPH
+                    Product2 productToUpsert = new Product2();  
+                    if (isVPHRecord(stgRec)) { 
+                        prdVPHRec=mappingVPHFields(stgRec, stgToProd_fieldMappingTable,stgToProd_fieldMappingTableL4Only,stgToProd_fieldMappingTableMMID);
+                        productsToUpsertList.add(prdVPHRec);
                     }
-                    productsToUpsertList.add(productToUpsert); 
-                    
-                }
-                // for FPH
-                else{
-                    Core_Flat_Product_Hierarchy__c fphRecordToUpsert = new Core_Flat_Product_Hierarchy__c();            
-                    //fields mapping
-                    for(String field: stgToFph_fieldMappingTable.keySet()) {
-                        fphRecordToUpsert.put(field, stgRec.get(stgToFph_fieldMappingTable.get(field)));  
+                    // for Sales and IPS - VPLCH
+                    else if(isVPLCHRecord(stgRec)){
+                        // fields mapping
+                        for(String field: stgToProd_fieldMappingTableVplch.keySet()) {                
+                            productToUpsert.put(field, stgRec.get(stgToProd_fieldMappingTableVplch.get(field)));                   
+                        } 
+                        productToUpsert.IsActive              = stgRec.Core_IsActive__c ;
+                        productToUpsert.Core_OPN__c           = stgRec.Core_OPN__c ;
+                        productToUpsert.Core_Product_Org__c   = stgRec.Core_Product_Org__c;
+                        productToUpsert.Core_Unique_ID__c     = stgRec.Core_Unique_ID__c;
+                        productToUpsert.Core_Sales_Visible_Flag__c = stgRec.Core_Sales_Visible_Flag__c;
+                        productToUpsert.Core_IQR_Visible__c =  stgRec.Core_Is_IQR_Visible__c ;
+                        productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
+                        productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
+                        productsToUpsertList.add(productToUpsert); 
+
                     }
-                    fphToUpsertList.add(fphRecordToUpsert);
-                }      					
-                
+                    // for FPH
+                    else{
+                        Core_Flat_Product_Hierarchy__c fphRecordToUpsert = new Core_Flat_Product_Hierarchy__c();            
+                        //fields mapping
+                        for(String field: stgToFph_fieldMappingTable.keySet()) {
+                            fphRecordToUpsert.put(field, stgRec.get(stgToFph_fieldMappingTable.get(field)));  
+                        }
+                        fphToUpsertList.add(fphRecordToUpsert);
+                    }      					
+					
+                }
             }
-        }
-        upsertProduct2FPHRecords(productsToUpsertList,fphToUpsertList); 
-    }
-    
-    public boolean isVPHRecord(Core_Products_Staging__c stgRec) {
+			upsertProduct2FPHRecords(productsToUpsertList,fphToUpsertList); 
+	}
+	
+	public boolean isVPHRecord(Core_Products_Staging__c stgRec) {
         Boolean VPHCondition=false;
         if(stgRec.Core_Unique_ID__c != null && (stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.sales || stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.ips) && stgRec.Core_Hierarchy_ID__c == '43' ){
             VPHCondition=true;
@@ -119,16 +116,13 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                 || (stgToProd_fieldMappingTableMMID.keyset().contains(field) && stgRec.Is_MMID_Blank__c == true)
                 || (retainOldValues.contains(field) && String.isBlank(String.valueOf(stgRec.get(fieldMappingTable.get(field)))))){
                     continue;
-                } 
-            else {
-                productToUpsert.put(field, stgRec.get(fieldMappingTable.get(field)));
+		    
+	    } 
+	    else {
+	        productToUpsert.put(field, stgRec.get(fieldMappingTable.get(field)));
             }
         }
         
-    if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5' && stgRec.Deactivation_Date__c != null) {
-        productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
-    }
-    
         productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
         productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
         return productToUpsert;
@@ -138,37 +132,37 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
         Boolean VPLCHCondition=false;
         if(stgRec.Core_Unique_ID__c != null && (stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.sales || (stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.ips && !vplchIpsFilter.contains(stgRec.Core_Unique_ID__c) ) ) && stgRec.Core_Hierarchy_ID__c == '59'){
             VPLCHCondition= true;
-            
+
         }
-        return VPLCHCondition; 
+        return VPLCHCondition;
     }
-    
+
     public void upsertProduct2FPHRecords(List<Product2> productsToUpsertList,List<Core_Flat_Product_Hierarchy__c> fphToUpsertList) {
         //upserting the final list of product2
-        if(!productsToUpsertList.isEmpty()){
-            Database.UpsertResult [] results = Database.upsert(productsToUpsertList, Product2.Core_Unique_ID__c, false);
-            //upsert productsToUpsertList Core_Unique_ID__c;            
-            for(Database.UpsertResult sr : results ) {
-                if(!sr.isSuccess()){
-                    logEntries.add(new Core_Log_Entry__c(Core_Details__c = sr.getErrors()[0].getMessage(),Core_XID__c = ipaasId,Core_Message__c = 'Product2 upsert '+sr.getErrors()[0].getMessage(),Core_Severity__c = 'High',Core_Project__c='Product',Core_Origin__c='Product_upsertProduct2Records',Core_When__c = System.now(),Core_sObjectId__c = sr.getId()));                    
+            if(!productsToUpsertList.isEmpty()){
+                Database.UpsertResult [] results = Database.upsert(productsToUpsertList, Product2.Core_Unique_ID__c, false);
+                //upsert productsToUpsertList Core_Unique_ID__c;            
+                for(Database.UpsertResult sr : results ) {
+                    if(!sr.isSuccess()){
+                        logEntries.add(new Core_Log_Entry__c(Core_Details__c = sr.getErrors()[0].getMessage(),Core_XID__c = ipaasId,Core_Message__c = 'Product2 upsert '+sr.getErrors()[0].getMessage(),Core_Severity__c = 'High',Core_Project__c='Product',Core_Origin__c='Product_upsertProduct2Records',Core_When__c = System.now(),Core_sObjectId__c = sr.getId()));                    
+                    }
                 }
             }
-        }
-        //upserting the final list of fph
-        if(!fphToUpsertList.isEmpty()){
-            Database.UpsertResult [] results = Database.upsert(fphToUpsertList, Core_Flat_Product_Hierarchy__c.Core_Unique_ID__c , false);
-            //upsert fphToUpsertList Core_Unique_ID__c;            
-            for(Database.UpsertResult sr : results ) {
-                if(!sr.isSuccess()){
-                    logEntries.add(new Core_Log_Entry__c(Core_Details__c = sr.getErrors()[0].getMessage(),Core_XID__c = ipaasId,Core_Message__c = 'Core_Flat_Product_Hierarchy__c upsert '+sr.getErrors()[0].getMessage(),Core_Severity__c = 'High',Core_Project__c='Product',Core_Origin__c='Product_upsertProduct2Records',Core_When__c = System.now(),Core_sObjectId__c = sr.getId())); 
+            //upserting the final list of fph
+            if(!fphToUpsertList.isEmpty()){
+                Database.UpsertResult [] results = Database.upsert(fphToUpsertList, Core_Flat_Product_Hierarchy__c.Core_Unique_ID__c , false);
+                //upsert fphToUpsertList Core_Unique_ID__c;            
+                for(Database.UpsertResult sr : results ) {
+                    if(!sr.isSuccess()){
+                        logEntries.add(new Core_Log_Entry__c(Core_Details__c = sr.getErrors()[0].getMessage(),Core_XID__c = ipaasId,Core_Message__c = 'Core_Flat_Product_Hierarchy__c upsert '+sr.getErrors()[0].getMessage(),Core_Severity__c = 'High',Core_Project__c='Product',Core_Origin__c='Product_upsertProduct2Records',Core_When__c = System.now(),Core_sObjectId__c = sr.getId())); 
+                    }
                 }
             }
-        }
-        if(!logEntries.isEmpty()){
-            Database.insert(logEntries,false);
-        }
+            if(!logEntries.isEmpty()){
+                Database.insert(logEntries,false);
+            }
     }
-    
+
     public void finish(Database.BatchableContext BC) {
         //for analysis
         hp.End_Time__c = system.now();
@@ -193,7 +187,6 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                 body += '<b> Failed Records Count - ' + logEntryListSize + '</b>, <br>';  
                 body += 'For IpaasLoadId - ' + ipaasId+'.';                                       
                 mail.setHtmlBody(body);
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 Messaging.sendEmail(new Messaging.SingleEmailMessage []{mail},false);
             }
         }

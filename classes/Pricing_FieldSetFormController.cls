@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-07-2026
+ * @last modified on  : 10-01-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class Pricing_FieldSetFormController {
@@ -21,25 +21,16 @@ public with sharing class Pricing_FieldSetFormController {
     
     @AuraEnabled
     public static List<FieldSetForm> getFormFieldsAndSectionLabel(Id recordId) {
-        SBQQ__QuoteLine__c quoteLine = null;
-        if(recordId != null) {
-            List<SBQQ__QuoteLine__c> quoteLines = [Select Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Payable_Quantity__c,
-                                                   Pricing_Approved_End_Date_Dup_Dt__c,Pricing_Approved_Start_Date_Dup_Dt__c, 
-                                                   Pricing_Billing_End_Date_Dt__c, Pricing_Billing_Start_Date_Dt__c, 
-                                                   Pricing_End_Date_dt__c, Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Start_Date_dt__c,
-                                                   Pricing_Revised_Pricing_Start_Date_D_dt__c,Pricing_Last_Credit_Debit_Date_Dt__c,Pricing_Program_Type_Nm__c 
-                                                   from SBQQ__QuoteLine__c 
-                                                   WHERE Id =: recordId LIMIT 1];
-            if(!quoteLines.isEmpty()) {
-                quoteLine = quoteLines[0];
-            }
-        }
-        String quoteLineType;
-        if(quoteLine != null){                                
-         quoteLineType = quoteLine.Pricing_Program_Type_Nm__c;
-        }
+        SBQQ__QuoteLine__c quoteLine = [Select Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Payable_Quantity__c,
+                                        Pricing_Approved_End_Date_Dup_Dt__c,Pricing_Approved_Start_Date_Dup_Dt__c, 
+                                        Pricing_Billing_End_Date_Dt__c, Pricing_Billing_Start_Date_Dt__c, 
+                                        Pricing_End_Date_dt__c, Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Start_Date_dt__c,
+                                        Pricing_Revised_Pricing_Start_Date_D_dt__c,Pricing_Last_Credit_Debit_Date_Dt__c,Pricing_Program_Type_Nm__c 
+                                        from SBQQ__QuoteLine__c 
+                                        WHERE Id =: recordId LIMIT 1];
+        String quoteLineType = [Select Id, Pricing_Program_Type_Nm__c FROM SBQQ__QuoteLine__c WHERE id =:recordId].Pricing_Program_Type_Nm__c;
         String pfile = [Select Name from Profile where Id =: userinfo.getProfileid()].Name;
-        Boolean isPartneruser = !String.isblank(pfile) && pfile == 'Partner' ? true : false;
+        Boolean isPartneruser = pfile == 'Partner' ? true : false;
         String objectName = 'SBQQ__QuoteLine__c';
         List<FieldSetForm> form = new List<FieldSetForm>(); 
         List<Pricing_FieldSet_PageLayout_Config__mdt> metadataResult = new List<Pricing_FieldSet_PageLayout_Config__mdt>();
@@ -64,18 +55,16 @@ public with sharing class Pricing_FieldSetFormController {
             FieldSetForm frm = new FieldSetForm();
             frm.Fields = Pricing_FieldSetUtil.getFields(recordId, objectName, mdt.Pricing_Field_Set_Nm__c,mdt.Pricing_Hide_Blank_Fields_cb__c);
             for(Pricing_Field field:frm.Fields){
-                if(quoteLine != null){
-                    if(field.Type == 'DATE'){
-                        field.fieldValue = date.valueOf(quoteLine.get(field.APIName));
-                    }
-                    if(field.APIName == 'Pricing_Program_Type_Nm__c'){
-                        field.programType = String.valueOf(quoteLine.get(field.APIName));
-                    }
-                    if(field.Type == 'DOUBLE' && field.APIName == 'Pricing_Payable_Quantity__c'){
-                        field.doubleFieldValue = (Double)quoteLine.get(field.APIName);
-                        field.fieldDisabled = false;
+                if(field.Type == 'DATE'){
+                    field.fieldValue = date.valueOf(quoteLine.get(field.APIName));
+                }
+                if(field.APIName == 'Pricing_Program_Type_Nm__c'){
+                    field.programType = String.valueOf(quoteLine.get(field.APIName));
+                }
+                if(field.Type == 'DOUBLE' && field.APIName == 'Pricing_Payable_Quantity__c'){
+                    field.doubleFieldValue = (Double)quoteLine.get(field.APIName);
+                    field.fieldDisabled = false;
 
-                    }
                 }
             }
             frm.sectionLabel = mdt.Pricing_Section_Label_Pkl__c;

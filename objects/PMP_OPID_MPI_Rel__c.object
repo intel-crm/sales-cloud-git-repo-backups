@@ -269,14 +269,6 @@ TEXT(PMP_Marketing_Profile_Id__r.PMP_Active_OPID_Cnt__c)+&quot; Active OPID asso
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
-        <fullName>PMP_RelLastDeactivated__c</fullName>
-        <label>Relation Last Deactivated date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>PMP_Storefront_Published_Copy__c</fullName>
         <description>This field is used to reference storefront published copy directly from junction</description>
         <externalId>false</externalId>

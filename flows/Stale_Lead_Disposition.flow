@@ -220,7 +220,7 @@
         <connector>
             <targetReference>Loop_Over_Lead_Ids</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>RecordTypeId</field>
             <operator>In</operator>
@@ -302,7 +302,7 @@
             </value>
         </filters>
         <filters>
-            <field>DeveloperName</field>
+            <field>Name</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Lead</stringValue>

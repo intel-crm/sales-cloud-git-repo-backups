@@ -155,9 +155,9 @@ public without sharing class CRM_Software_And_ServicesQuote {
     }
     
     
-    /*@AuraEnabled
+    @AuraEnabled
     public static Boolean hideAndshowPSGQuoteFlag() {       
-       String gethideAndshowPSGQuoteValue = Core_CRM_Utility.getCRMLabel('hideAndshowPSGQuote');   
+       String gethideAndshowPSGQuoteValue = Core_CRM_Utility.getCRMLabel('hideAndshowPSGQuote'); 
        return 'true'.equalsIgnoreCase(gethideAndshowPSGQuoteValue);  
-    }*/
+    }
 }

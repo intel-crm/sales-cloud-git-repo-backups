@@ -268,9 +268,14 @@
             <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
-                <componentType>Bar</componentType>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>Column</componentType>
                 <dashboardFilterColumns>
                     <column>FK_$Opportunity.Decision_Date__c</column>
                 </dashboardFilterColumns>
@@ -286,20 +291,28 @@
                 <dashboardFilterColumns>
                     <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
                 </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingSortProperties/>
-                <header>1. DDR Opportunities All - by PL (AD)</header>
-                <report>DDR_EMEA_Reporting/X1_DDR_Opportunities_All_by_PL_AD</report>
+                <groupingColumn>FK_$Opportunity.Core_Sales_Groups__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Opportunities by Sales Group</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>DDR_EMEA_Reporting/DDR_Opportunities_All_by_PL_IL</report>
                 <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>false</showValues>
+                <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <useReportChart>true</useReportChart>
+                <title>Partner Led vs Intel Led</title>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>2</rowIndex>
             <rowSpan>10</rowSpan>
@@ -367,6 +380,62 @@
                 <groupingSortProperties/>
                 <header>2. DDR Opportunities All</header>
                 <report>DDR_EMEA_Reporting/DDR_Opportunities_All</report>
+            </dashboardComponent>
+            <rowIndex>2</rowIndex>
+            <rowSpan>10</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>5</colSpan>
+            <columnIndex>7</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Decision_Date__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Core_Design_Registration__c.Core_Partner_Account_Id__c</groupingColumn>
+                <groupingColumn>FK_$Opportunity.Core_Coverage_Type_Nm__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Opportunities by disti partners</header>
+                <legendPosition>Right</legendPosition>
+                <report>DDR_EMEA_Reporting/DDR_Opportunities_All_by_disti_partner</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>2</rowIndex>
             <rowSpan>10</rowSpan>
@@ -458,6 +527,64 @@
                 <groupingSortProperties/>
                 <header>DDR Opportunities - by value</header>
                 <report>DDR_EMEA_Reporting/DDR_Opportunities_All</report>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
+            <rowSpan>11</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>9</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Decision_Date__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
+                <groupingColumn>FK_$Opportunity.Core_Coverage_Type_Nm__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>DDR Opportunities by Countries</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>DDR_EMEA_Reporting/DDR_Opportunities_All_by_countries</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>12</rowIndex>
             <rowSpan>11</rowSpan>
@@ -561,6 +688,9 @@
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
@@ -637,6 +767,9 @@
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -679,6 +812,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -749,6 +885,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -832,6 +971,9 @@
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -875,6 +1017,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -952,6 +1097,9 @@
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -995,6 +1143,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>FK_OPP_STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -1058,7 +1209,7 @@
     <owner>11468525@intel.com.crm</owner>
     <runningUser>11468525@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>EMEA DDR data 2026 (AD)</title>
+    <title>EMEA DDR data 2025 (AD)</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

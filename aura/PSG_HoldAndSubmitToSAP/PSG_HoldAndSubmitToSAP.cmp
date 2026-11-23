@@ -1,0 +1,59 @@
+<!--<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="PSG_Integration_DPA" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+	
+    <aura:attribute name="showConfirmDialog" type="boolean" default="false"/>
+    <aura:attribute name="alnNo" type="String" />
+
+      
+ <aura:html tag="style">
+  .cuf-content {
+    padding: 0 0rem !important;
+    }
+    .slds-p-around  medium {
+    padding: 1rem !important;
+    }
+    .slds-modal__content{
+    overflow-y:hidden !important;
+    height:unset !important;
+    max-height:unset !important;
+    overflow-x:hidden !important;
+    width:unset !important;
+    max-width:unset !important; 
+    }
+    .slds-col{
+    padding:10px;
+    }
+    </aura:html>
+    
+	<aura:if isTrue="{!v.showConfirmDialog}">
+				
+				<div class="slds-border_top slds-border_right slds-border_bottom slds-border_left">
+						
+						<header class="slds-modal__header">
+							<h1 class="slds-text-heading  medium">Confirmation</h1>
+						</header>
+						
+						<div class="slds-modal__content slds-p-around  medium">
+							<center><b>Are you sure to put the ALN on HOLD?</b></center>
+						</div>
+						
+						 
+						
+						<footer class="slds-modal__footer">
+                            <lightning:button variant="destructive" name='No' label='No' onclick='{!c.handleConfirmDialogNo}'/>
+                            <lightning:button variant="success" name='Yes' label='Yes' onclick='{!c.handleConfirmDialogYes}'/>
+							
+						</footer>
+        		</div>
+						
+		
+	</aura:if>
+	<aura:if isTrue="{!not(v.showConfirmDialog)}">
+        <div class="slds-modal__container">
+			<lightning:spinner variant="brand"/>
+        </div>    
+	</aura:if>
+</aura:component>-->
+<aura:component>
+  
+</aura:component>

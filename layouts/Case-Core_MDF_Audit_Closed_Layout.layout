@@ -65,15 +65,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_MDF_Data_Entry_Correction__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_More_Documentation_Required__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Audit_Reversal_Count_Nbr__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -85,11 +85,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Days_SLA_Remaining__c</field>
+                <field>Core_MDF_Claim_Case_Reviewer_Lookup__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -114,20 +110,16 @@
                 <field>Core_MDF_ReasonForMoreDocumentation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Reason_for_Cancellation_txt__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Claim_Review_Closure_Note__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_ClaimReviewClosureHistory_txt__c</field>
+                <field>Core_MDF_Days_SLA_Remaining__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Claim_Case_Reviewer_Lookup__c</field>
+                <field>Core_MDF_Audit_Reversal_Count_Nbr__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

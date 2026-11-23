@@ -53,9 +53,6 @@
             <field>PartnerFundRequest$ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c</field>
         </columns>
         <columns>
-            <field>PartnerFundRequest$Core_MDF_Activity_Types__c</field>
-        </columns>
-        <columns>
             <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
         </columns>
         <columns>
@@ -69,8 +66,8 @@
                 <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
-                <operator>notEqual</operator>
-                <value>Declined,Cancelled</value>
+                <operator>equals</operator>
+                <value>Planned,In-Progress,In-Progress Revision Required,In-Progress Pending Review,In-Progress Pending Approval,Closed</value>
             </criteriaItems>
             <criteriaItems>
                 <column>PartnerFundRequest$Core_MDF_Program__c</column>
@@ -92,13 +89,6 @@
                 <isUnlocked>false</isUnlocked>
                 <operator>equals</operator>
                 <value>LAST_N_DAYS:365</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>false</isUnlocked>
-                <operator>equals</operator>
-                <value>0</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -141,8 +131,8 @@
                 <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
-                <operator>notEqual</operator>
-                <value>Declined,Cancelled</value>
+                <operator>equals</operator>
+                <value>Planned,In-Progress,In-Progress Revision Required,In-Progress Pending Review,In-Progress Pending Approval,Closed</value>
             </criteriaItems>
             <criteriaItems>
                 <column>PartnerFundRequest$Core_MDF_Program__c</column>
@@ -164,13 +154,6 @@
                 <isUnlocked>false</isUnlocked>
                 <operator>equals</operator>
                 <value>LAST_N_DAYS:365</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>false</isUnlocked>
-                <operator>equals</operator>
-                <value>0</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>

@@ -111,6 +111,7 @@ Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
              try {
               Database.insert(acc1);
              }catch (DMLException e) {
+                 System.debug('Error-> '+e.getMessage());
              }
             /*acc1.Core_Account_Type__c = 'Reseller';
             acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
@@ -157,8 +158,7 @@ Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.id,'Core_MDF_Client_CoMarketing_Fund',true,'1234567890');
             
             //ABM
-            // Highlight: Unused Local Variable 
-            //Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.id,bank.id,true);
+            Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.id,bank.id,true);
            // Creating BudgetCap Record
       Id budget_Cap_Record_Type = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_CCP_Budget_Cap').getRecordTypeId();
             Core_MDF_Budget_Cap__c budgetCap = new Core_MDF_Budget_Cap__c();
@@ -174,7 +174,7 @@ Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb1,'INDIA','Small Business',
-                                                                                           'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Podcast','Draft',false);
             pfr.RequestedAmount = 90000;
             pfr.Amount = 90000;
@@ -183,7 +183,7 @@ Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb1,'INDIA','Small Business',
-                                                                                           'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Podcast','Draft',false);
             pfr1.Core_MDF_Channel_Partner_Led__c = true;
             pfr1.RequestedAmount = 90000;
@@ -194,7 +194,7 @@ Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb1,'INDIA','Small Business',
-                                                                                           'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Podcast','Draft',false);
             pfr2.Core_MDF_Channel_Partner_Led__c = true;
             pfr2.RequestedAmount = 90000;

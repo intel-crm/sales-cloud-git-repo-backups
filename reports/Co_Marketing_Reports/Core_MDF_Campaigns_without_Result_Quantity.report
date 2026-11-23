@@ -40,18 +40,6 @@
     <columns>
         <field>Campaign.Campaign_Outcomes__r$Core_MDF_Outcome_Criteria_txt__c</field>
     </columns>
-    <crossFilters>
-        <criteriaItems>
-            <column>Core_MDF_Status__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Paid</value>
-        </criteriaItems>
-        <operation>with</operation>
-        <primaryTableColumn>Campaign$Id</primaryTableColumn>
-        <relatedTable>PartnerFundClaim</relatedTable>
-        <relatedTableJoinColumn>Core_MDF_Campaign_Id__c</relatedTableJoinColumn>
-    </crossFilters>
     <description>Completed Outcome Based Campaigns with missing Result Quantity data</description>
     <filter>
         <criteriaItems>
@@ -62,10 +50,10 @@
             <value>Client CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Campaign$Core_MDF_Opal_Budget_Type_Txt__c</column>
+            <column>Campaign$Core_MDF_Budget_Type_txt__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
+            <operator>equals</operator>
             <value>MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,Account Plan,Proposal I MDF,Proposal II MDF</value>
         </criteriaItems>
         <criteriaItems>

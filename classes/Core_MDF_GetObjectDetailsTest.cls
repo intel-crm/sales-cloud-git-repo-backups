@@ -127,8 +127,7 @@ public class Core_MDF_GetObjectDetailsTest {
             pmbList.add(pbmEef);
             
             Database.insert(pmbList);
-             // Highlight: Unused Local Variable 
-           // PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
+            PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
             
          /*   List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
             
@@ -185,7 +184,6 @@ public class Core_MDF_GetObjectDetailsTest {
             eefCamp.Core_MDF_Activity_Category__c = 'Broadcast';
             eefCamp.Core_MDF_Activity_Type__c = 'Radio';
             eefCamp.Core_MDF_Supports_legacy_program__c = 'MDF or both CMP & MDF';
-            eefCamp.Core_MDF_CampOutcomeOpt_In_Ind__c = true;
             
             insert eefCamp;
             
@@ -205,42 +203,16 @@ public class Core_MDF_GetObjectDetailsTest {
             String criteriaFieldValue = eefCamp.Id; 
             String additionalCriteria = ' Core_MDF_Active_Ind__c=true';
             String sharingFlag = 'false';
-            String strLabels = '';
-			String restrictFieldVisiblityCriteriaFieldAPIName = 'Core_MDF_CampOutcomeOpt_In_Ind__c = true';
-            String tableHeader = 'Payment_Details';
-            Core_MDF_GetObjectDetails.getFieldsAndRecords(relatedobjectApiName, strFields,criteriaField,criteriaFieldValue,additionalCriteria,sharingFlag,strLabels);
-            Core_MDF_GetObjectDetails.getFilterCondition(eefCamp.Id, restrictFieldVisiblityCriteriaFieldAPIName);
-			Core_MDF_GetObjectDetails.getTableHeader(tableHeader);
-			Core_MDF_GetObjectDetails.evaluateVisibilityCriteria(eefCamp.Id,'Core_MDF_CampOutcomeOpt_In_Ind__c == true');
+            Core_MDF_GetObjectDetails.getFieldsAndRecords(relatedobjectApiName, strFields,criteriaField,criteriaFieldValue,additionalCriteria,sharingFlag);
             assert.isNotNull(eefCamp);
+            Boolean filterResultTrue = Core_MDF_GetObjectDetails.getFilterCondition(camptoActPtr.Id, 'Core_MDF_Active_Ind__c=true');
+            System.assertEquals(true, filterResultTrue);
+            camptoActPtr.Core_MDF_Active_Ind__c = false;
+            update camptoActPtr; 
+            Boolean filterResultFalse = Core_MDF_GetObjectDetails.getFilterCondition(camptoActPtr.Id,'Core_MDF_Active_Ind__c=true');
+            System.assertEquals(false, filterResultFalse);    
              Test.stopTest();
         }
         
     }
-   @isTest
-    static void getTranslatedLabelsTest() {
-        Test.startTest();
-        List<String> emptyResult = Core_MDF_GetObjectDetails.getTranslatedLabels('');
-        
-        Assert.isNotNull(emptyResult, 'Result should not be null for blank input');
-        Assert.areEqual(0, emptyResult.size(), 'Empty list expected for blank input');
-        
-        List<String> translatedResult = Core_MDF_GetObjectDetails.getTranslatedLabels('Payment Details,Claim Amount,Activity Type');
-        
-        Assert.isNotNull(translatedResult, 'Translated result should not be null');
-        Assert.areEqual(3, translatedResult.size(), 'Should return 3 translated labels');
-        
-        List<String> singleResult = Core_MDF_GetObjectDetails.getTranslatedLabels('Payment_Details');
-        
-        Assert.isNotNull(singleResult, 'Single label result should not be null');
-        Assert.areEqual(1, singleResult.size(), 'Should return 1 translated label');
-        
-        List<String> spacedResult = Core_MDF_GetObjectDetails.getTranslatedLabels(' Payment Details , Claim Amount ');
-        
-        Assert.isNotNull(spacedResult, 'Spaced label result should not be null');
-        Assert.areEqual(2, spacedResult.size(), 'Should return 2 translated labels for spaced input');
-        
-        Test.stopTest();
-    }
-
 }

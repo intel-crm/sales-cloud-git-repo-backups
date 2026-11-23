@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
+        <masterLabel>Channel MDF</masterLabel>
+        <translation>MDF canal</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Client</masterLabel>
         <translation>Client</translation>
     </valueTranslation>

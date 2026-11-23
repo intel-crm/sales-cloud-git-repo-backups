@@ -762,7 +762,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
             }
             
             var intelDomain = false;
-            if (domainCheck.toLowerCase()===('intel.com'.toLowerCase())){ 
+            if (domainCheck.toLowerCase().includes('intel.com'.toLowerCase())){ 
                intelDomain = true;
                this.validationmsg = this.label.EPUM_IntelDomainMail;
                 return false;
@@ -1012,7 +1012,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
     }
 
     showInviteUser() {
-        if (this.searchKeyword.toLowerCase()===('intel.com'.toLowerCase())){ 
+        if (this.searchKeyword.toLowerCase().includes('intel.com'.toLowerCase())){ 
             this.validationmsg = this.label.EPUM_IntelDomainMail;
             this.message = '';
             this.sendInvite = false;

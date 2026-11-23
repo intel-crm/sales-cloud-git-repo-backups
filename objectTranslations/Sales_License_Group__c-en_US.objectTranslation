@@ -17,6 +17,11 @@
         <name>Sales_License_Description_dsc__c</name>
     </fields>
     <fields>
+        <label><!-- Sales License Generator --></label>
+        <name>Sales_License_Generator__c</name>
+        <relationshipLabel><!-- Sales License Groups --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- License Parameter --></label>
         <name>Sales_License_Parameter_txt__c</name>
     </fields>

@@ -9,8 +9,6 @@
     <aura:attribute name="isCoGtm" type="Boolean" default="false" />
     <!--<aura:attribute name="recordTypeName" type="String" />-->
     <aura:attribute name="fieldAPIName" type="String" />
-    
-    <aura:attribute name="fieldAPIoperator" type="String" /><!--14820-->
     <aura:attribute name="isCompactLayout" type="String" />
     
     <aura:attribute name="compactLayoutFields" type="List" />
@@ -37,7 +35,6 @@
     <aura:attribute name="showLoading" type="Boolean" default="false" />
     <aura:attribute name="isSpinner" type="Boolean" default="false" />
     <aura:attribute name="modalPopConfMessage" type="String" />
-    <aura:attribute name="isDefaultQuickAction" type="Boolean" default="false" />
     <aura:attribute name="hiddenFieldsMap" type="Map"/>
     <!--Event Handler - Close Modal event-->
     <aura:handler event="c:Core_MDF_CloseModalAndLogErrorMessageEvent" action="{!c.closeModalAndDisplayErrorMsg}" name="closeModalAndLogErrorMessageEvent" />
@@ -211,11 +208,8 @@
             <div class="slds-modal__container">
                 <!--HEADER Section-->
                 <!--<div class="slds-modal__header">-->
-                <!-- Roshan - Hide close button conditionally -->
-                <aura:if isTrue="{!not(AND(v.objAPIName == 'PartnerFundClaim', OR(v.openCmp == 'Edit', v.openCmp == 'Clone Claim')))}">
-                    <lightning:buttonIcon iconName="utility:close" alternativeText="Close this window" size="large"
-                        variant="bare" onclick="{!c.closeModal}" class="slds-modal__close" />
-                </aura:if>
+                <lightning:buttonIcon iconName="utility:close" alternativeText="Close this window" size="large"
+                    variant="bare-inverse" onclick="{!c.closeModal}" class="slds-modal__close" />
                 <aura:if isTrue="{!(v.isShowHeaderFooter)}">
                     <div class="slds-modal__header">
                         <h2 style="font-size: 21px;">{!v.modalHeader}</h2>
@@ -245,7 +239,7 @@
                         <c:Core_MDF_PFC_EditSwitch recordId ="{!v.recordId}"/>
                     </aura:if>
                     <aura:if isTrue="{!AND((v.openCmp == 'Clone Claim'),v.objAPIName == 'PartnerFundClaim')}">
-                        <c:Core_MDF_PFC_Clone_Claim recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                        <c:Core_MDF_PFC_Clone_Claim recordId ="{!v.recordId}"/>
                     </aura:if>
                     <aura:if isTrue="{!AND((v.openCmp == 'Hold Claim'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:Core_MDF_PFC_Manual_Hold_Claim recordId ="{!v.recordId}" isCustomComp = 'true'/>
@@ -269,15 +263,8 @@
                     <aura:if isTrue="{!AND((v.openCmp == 'Submit For PIC'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
                     </aura:if>
-                    <aura:if isTrue="{!AND((v.openCmp == 'Submit for Payment Clearance'),v.objAPIName == 'PartnerFundClaim')}">
-                        <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
-                    </aura:if>
                     <aura:if isTrue="{!AND((v.openCmp == 'Manual Audit'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:Core_MDF_PFC_Manual_Audit recordId ="{!v.recordId}" isCustomComp = 'true'/>
-                    </aura:if>
-                    <!--16654-->
-                    <aura:if isTrue="{!AND((v.openCmp == 'Complete Payment Clearance Processing'),v.objAPIName == 'PartnerFundClaim')}">
-                        <c:core_MDF_PicReviewProcess recordId ="{!v.recordId}"/>
                     </aura:if>
 
                 </div>
@@ -300,7 +287,7 @@
                 <!--HEADER Section-->
                 <div class="slds-modal__header">
                     <lightning:buttonIcon iconName="utility:close" alternativeText="Close this window" size="large"
-                                          variant="bare" onclick="{!c.closeModal}" class="slds-modal__close" />
+                                          variant="bare-inverse" onclick="{!c.closeModal}" class="slds-modal__close" />
                     <h2 style="font-size: 21px;">{!v.modalHeader}</h2>
                 </div>
                 <!--Body Section-->
@@ -317,10 +304,7 @@
                     </div>
                 </aura:if>
                 <div class="slds-modal__content slds-p-around_medium">
-                    
-                    <!-- Roshan - WW19 UAT feedback -->
-                    <p class="slds-p-left_small">{!if(and(v.objAPIName == 'PartnerFundClaim', v.modalHeader == 'Submit For Approval'), 'IMPORTANT', 'Alert')}</p>
-
+                    <p class="slds-p-left_small">Alert</p>
                     <aura:if isTrue="{!v.openCmp == 'Close Activity'}">
                     <p class="slds-p-left_small">Press “Save” to {!v.modalHeader} or “Cancel” to continue editing the
                         {!v.modalBody}.</p>
@@ -341,11 +325,9 @@
                             <span>
                                 <lightning:button label="Cancel" variant="brand" onclick="{!c.closeModal}" />
                             </span>
-                            <aura:if isTrue="{!not(v.isDefaultQuickAction)}">
-                                <span class="slds-p-left_small">
-                                    <lightning:button label="Save" variant="brand" onclick="{!c.saveModal}" />
-                                </span>
-                            </aura:if>
+                            <span class="slds-p-left_small">
+                                <lightning:button label="Save" variant="brand" onclick="{!c.saveModal}" />
+                            </span>
                         </aura:set>
                     </aura:if>
                 </div>

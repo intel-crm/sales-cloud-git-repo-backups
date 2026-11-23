@@ -208,7 +208,7 @@ public class Core_IPS_Case_Comments_Test{
     }
     private static testMethod void RerenderRTF_PositiveTest() {
         getRecords();
-        user u = [Select Id from user Where IsActive = true LIMIT 1];
+        user u = [Select Id from user LIMIT 1];
         System.runAs(u){
             caseList = TestUtilities.getListOfCases(3);
             insert caseList;
@@ -224,10 +224,10 @@ public class Core_IPS_Case_Comments_Test{
             }
             try{
             insert caseCommentList;
-                //Test.startTest();
+                Test.startTest();
                 Core_IPS_Case_Comments__c newCaseComment = [SELECT Id, Core_IPS_Rich_Comment__c FROM Core_IPS_Case_Comments__c WHERE core_ips_Case__c = :caseList[0].Id ORDER BY CreatedDate DESC LIMIT 1];
                 System.assertEquals('Test Comment0', newCaseComment.Core_IPS_Rich_Comment__c, 'Comment should match');
-           	//Test.stopTest();
+           Test.stopTest();
             }
             catch(exception e)
             {}

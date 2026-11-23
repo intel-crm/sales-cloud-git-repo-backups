@@ -202,6 +202,11 @@
                     <label>NTG</label>
                 </value>
                 <value>
+                    <fullName>CCG AMS</fullName>
+                    <default>false</default>
+                    <label>CCG AMS</label>
+                </value>
+                <value>
                     <fullName>CCG ECG</fullName>
                     <default>false</default>
                     <label>CCG ECG</label>
@@ -217,12 +222,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>AXG</label>
-                </value>
-                <value>
-                    <fullName>CCG AMS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCG AMS</label>
                 </value>
                 <value>
                     <fullName>CORP</fullName>

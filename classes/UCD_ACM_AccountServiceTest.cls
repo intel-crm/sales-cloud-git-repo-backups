@@ -74,6 +74,12 @@ public class UCD_ACM_AccountServiceTest{
         }
         insert accountBusinessTypes;
         
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
+        
         // Create Parent Account With Business Party Id
         List<Account> accountToInsertForBpId = new List<Account>();
         Account parentAccountWithBpId1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccountWithBpId1','Intel Account','UNFD_GLBL_CUST');
@@ -482,6 +488,16 @@ public class UCD_ACM_AccountServiceTest{
         accountServiceInstance.updateParentAccountRecordtype(accounts, new Map<Id, Account>(accounts));
         test.stopTest();
     }*/
+
+    @isTest
+    private static void getComplianceWatchListByAccountId(){
+        List<Account> accounts = [Select Id,Name,ParentId,RecordtypeId,LastModifiedById from Account Where Name = 'TestChildAccountWithBpId3' LIMIT 1];
+        test.startTest();
+        accountServiceInstance.getComplianceWatchListByAccountId(new Set<Id>{accounts[0].Id});
+        test.stopTest();
+        Assert.isTrue(accounts.size() > 0, 'Account should more than 1');
+
+    }
 
     @isTest
     private static void getActiveBusinessTypeForAccount(){

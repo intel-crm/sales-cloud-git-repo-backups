@@ -134,6 +134,11 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>SBQQ__Quote__c$core_cpq_quote_type_nm__c</field>
         <sortOrder>Desc</sortOrder>
     </groupingsDown>

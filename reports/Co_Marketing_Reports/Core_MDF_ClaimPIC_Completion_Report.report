@@ -46,7 +46,7 @@
     </columns>
     <description>Claims and status after POP screening completion for all programs.</description>
     <filter>
-        <booleanFilter>2 AND (((3 OR 4) AND 1) OR 5 OR 6) AND 7 AND 8 AND 9</booleanFilter>
+        <booleanFilter>2 AND (((3 OR 4) AND 1) OR 5 OR 6) AND 7 AND 8</booleanFilter>
         <criteriaItems>
             <column>PartnerFundClaim$Request.Core_MDF_Intel_Activity_Owner_Id__c</column>
             <columnToColumn>false</columnToColumn>
@@ -97,18 +97,11 @@
             <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,Test_company,北京苏尔泰科技有限公司-CST_CCPTest</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundClaim.PIC_Reviews__r$Core_MDF_Review_Status_nm__c</column>
+            <column>PartnerFundClaim.PIC_Reviews__r$Core_MDF_AI_PIC_Review_Ind__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Completed,Failed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Campaign_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

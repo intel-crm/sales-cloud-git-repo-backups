@@ -4,19 +4,22 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
         <field>Account.Core_Unified_Global_Customer_Name__c</field>
     </columns>
     <columns>
-        <field>ACCOUNT_NAME</field>
+        <field>Opportunity.Opportunity_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
@@ -73,9 +76,6 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <columns>
@@ -83,7 +83,7 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4) AND 5</booleanFilter>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -96,7 +96,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>,Pending,Lost,Cancelled,On Hold,Production Lost,Production Cancelled,Delete In Progress (&lt;15 min)</value>
+            <value>Cancelled,Delete In Progress (&lt;15 min),Lost,Pending,Production Cancelled,Production Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rick Lisa,Elizabeth McGee</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
@@ -104,13 +118,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>APJ</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Alastair Duncan,Michael OBrien,Rick Lisa,Alan Rose,Katherine Heidelman,Robert Udermann,David Minnaar,Hugues Morin,Mel Fekete</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -132,7 +139,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ADDRESS1_STATE_CODE</field>
+        <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>USA SLED Pipeline Won</name>

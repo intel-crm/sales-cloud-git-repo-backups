@@ -97,7 +97,7 @@ public class Core_MDF_ExceptionAccController_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = null;

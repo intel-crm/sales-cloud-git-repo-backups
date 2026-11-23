@@ -28,7 +28,6 @@ Description: This method return all the profiles to whom the send notification i
     public static void sendEmail(List<Id> contactId)
     {  
         if(System.IsBatch() == false && System.isFuture() == false){
-            // your future method call here
             
             sendEmailFuture(contactId);
         }
@@ -36,13 +35,14 @@ Description: This method return all the profiles to whom the send notification i
     //sendEmailFuture() method converted to future context to reduce SOQL Count.[TWC1811-5410]-Bhavani(Draco)
     @future
     public static void sendEmailFuture(List<Id> contactId){
+        
         Set<Id> setRequestorId = new Set<Id>();
         Map<String,Set<Id>> mapProfileWithRequesterId = new Map<String,Set<Id>>();
         
         lstContactEntitlements = new List<Core_Contact_Entitlement__c>();
         
         // Fetching all the contact entitlements where ags status on contact is successfull or failed
-        try{
+        
         lstContactEntitlements = [SELECT Core_Entitlement_Requester_Id__r.Id , Core_Entitlement_Id__r.Core_Display_Name__c, Core_Entitlement_Requester_Id__c,Core_Entitlement_Requester_Id__r.UserType, Core_Entitlement_Requester_Id__r.ProfileId,Core_Email_Pending_To_Requester_Ind__c
                                   FROM Core_Contact_Entitlement__c
                                   WHERE Core_Contact_Id__c =:contactId[0]
@@ -87,7 +87,8 @@ Description: This method return all the profiles to whom the send notification i
             }                
             
             
-            sendEmailToRequester(setRequestorId,mapProfileWithRequesterId,contactId,lstContactEntitlements);  
+            sendEmailToRequester(setRequestorId,mapProfileWithRequesterId,contactId,lstContactEntitlements);
+            
         }
         
         /*********************************Added by Raushan***********************/
@@ -116,10 +117,7 @@ Description: This method return all the profiles to whom the send notification i
             
             sendEmailToRequester(setRequestorId,mapProfileWithRequesterId,contactId,lstConEntListOfAgsPending);
         }
-        }catch(exception e){
-            Core_Log_Entry__c logEntry = new Core_Log_Entry__c( Core_Message__c = 'Error in class Core_A_E_Notify_Requester method sendEmailFuture',Core_Project__c = 'Draco',Core_Origin__c = 'Core_A_E_Notify_Requester',Core_Details__c = e.getMessage(),Core_Severity__c = 'Error',Core_When__c = System.now());
-            Database.insert(logEntry, false);
-        }  
+        
     }
     
     
@@ -130,13 +128,12 @@ Description: This method will trigger mail to all the requester whose profile is
 */
     
     public static void sendEmailToRequester(set<Id> setRequestorId,Map<String,Set<Id>> mapProfileWithRequesterId,list<Id> contactId,List<Core_Contact_Entitlement__c> lstContactEntitlements){
-        try{
         if(setRequestorId.size()>0){
             Messaging.Email[] lstEmails = new Messaging.Email[0];
             string whoId = '';
             string WhatId = '';
             String templateId = '';
-            //System.debug('mapProfileWithRequesterId -=='+mapProfileWithRequesterId);
+        
             string templateName = 'Core_A_E_Notify_Grant_Access_Completion';
             List<EmailTemplate> emailTemplateList = new List<EmailTemplate>([SELECT Id,Subject,Description,HtmlValue,DeveloperName,Body from EmailTemplate where DeveloperName =: templateName LIMIT 1]);
             //query on entitlement profile access object for all the profile where send notification is enabled
@@ -156,22 +153,15 @@ Description: This method will trigger mail to all the requester whose profile is
                 }                        
             }
             //Moving this part of code outside of For Each Loop as a part of Sela Code Scan Fixes(TWC1811-6067)
-            if(templateId != ''){
-                Messaging.SingleEmailMessage email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
-                email.saveAsActivity = false;
-                lstEmails.add(email);
-                
-                OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
-            }
-            //System.debug('lstEmails ='+lstEmails);
+            Messaging.SingleEmailMessage email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
+            email.saveAsActivity = false;
+            lstEmails.add(email);
+          
             
             if(lstEmails.size()>0){
                 Messaging.sendEmail(lstEmails);
                 
-            }              
+            }                 
         }
         
         //Once the mail is triggerd to requestors make the send notification as false
@@ -182,12 +172,15 @@ Description: This method will trigger mail to all the requester whose profile is
                 contEnt.Core_Email_Pending_To_Requester_Ind__c = false;
                 conEntToUpdate.add(contEnt);
             }
-        }    
+        }
+        
+        try{
             Database.Update(conEntToUpdate);
         }catch(Exception e) {
             Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'sendEmailToRequester', Core_Project__c = 'Core_A_E_Notify_Requester' , Core_Details__c = 'Error while sending email', Core_Severity__c = 'info', Core_When__c = System.Now());     
             insert excepLog;
         }
+        
     }
     
     

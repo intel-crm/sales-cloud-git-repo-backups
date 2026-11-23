@@ -1,7 +1,7 @@
 public class PMP_Acc_ERPM_Eng_TriggerActions {
     
     final static String[] PROGRAMS = new String[]{'ISA', 'CSPx2'};
-     final static String NO_TIER = 'ODM-LOEM';    
+   	final static String NO_TIER = 'ODM-LOEM';    
     final static String INVALID_TIER = 'UNDETERMND';
     static Id PARTNER_RECTYPEID = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
     static Id INTEL_RECTYPEID = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
@@ -31,9 +31,7 @@ public class PMP_Acc_ERPM_Eng_TriggerActions {
             updatePartners(IntelCompInfo_Map, erpm_accounts_Map, update_partners_lst);
 
             if (!update_partners_lst.isEmpty()) {
-                Database.SaveResult[] results = Database.update(update_partners_lst, false);
-            	PMP_Utility.logDmlErrors((Object[]) results, 'PMP_Acc_ERPM_Eng_TriggerActions-updatePartnerMembership');
-                //Database.update(update_partners_lst);
+                Database.update(update_partners_lst);
             }
         } catch (Exception ex) {
             handleException(ex);

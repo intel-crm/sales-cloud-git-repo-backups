@@ -104,6 +104,7 @@ export default class Core_IPS_supportTeamMemberLex extends NavigationMixin(Light
             }
         })
         .catch(error=>{
+            console.log('error occured in fetching team members: '+error);
             this.showTable = false;
         })
     }
@@ -147,7 +148,6 @@ export default class Core_IPS_supportTeamMemberLex extends NavigationMixin(Light
         for(let i =0; i<this.recsToInsert.length; i++) {
             finalStrList = [...finalStrList , JSON.stringify(this.recsToInsert[i])];
         }
-        
         insertTeamMembers({
             inputStrings: finalStrList,
             projId : this.recordId

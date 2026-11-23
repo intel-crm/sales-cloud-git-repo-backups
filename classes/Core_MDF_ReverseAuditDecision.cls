@@ -3,7 +3,7 @@ public without sharing class Core_MDF_ReverseAuditDecision{
     
     
     @AuraEnabled
-    public static string reverseAuditDecision(id caseId, Core_MDF_Scorecard__c scorecardRecord){
+    public static string reverseAuditDecision(id caseId){
         string result;
         string quarter;
         string preClosedDateQuarter;
@@ -14,7 +14,7 @@ public without sharing class Core_MDF_ReverseAuditDecision{
         Id caseOpenRecordId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get(Core_MDF_CCP_ConstantClass.CASE_OPEN_RECORDTYPE_NAME).getRecordTypeId();
         Savepoint sp;
         try {
-            Case caseRec = [select id,CreatedDate,ClosedDate,Core_MDF_Claim_Lookup_Id__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_SurePay_Processed_Ind__c,Core_MDF_Previous_Closed_Dt__c,Core_MDF_Earlier_Quarter_Closed_Dt__c, AccountId, Account.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program_txt__c, Core_MDF_Budget_Type_nm__c, Core_MDF_Claim_ID__c,Core_MDF_Audit_Reversal_Count_Nbr__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Processing_Preference_nm__c,Account.Core_MDF_Channel_Program__c, Account.Core_MDF_Virtual_Corp_Account_Id__c, Core_MDF_Region_SubRegion_txt__c
+            Case caseRec = [select id, ClosedDate,Core_MDF_Claim_Lookup_Id__r.Core_MDF_SurePay_Processed_Ind__c,Core_MDF_Previous_Closed_Dt__c,Core_MDF_Earlier_Quarter_Closed_Dt__c, AccountId, Account.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program_txt__c, Core_MDF_Budget_Type_nm__c, Core_MDF_Claim_ID__c,Core_MDF_Audit_Reversal_Count_Nbr__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Processing_Preference_nm__c,Account.Core_MDF_Channel_Program__c, Account.Core_MDF_Virtual_Corp_Account_Id__c
                             from Case where id =: caseId];
             
             if(caseRec.Core_MDF_Previous_Closed_Dt__c != null){
@@ -76,12 +76,7 @@ public without sharing class Core_MDF_ReverseAuditDecision{
                 if(caseRec.Core_MDF_Earlier_Quarter_Closed_Dt__c == null){
                     caseRec.Core_MDF_Earlier_Quarter_Closed_Dt__c = caseRec.Core_MDF_Previous_Closed_Dt__c;
                 }
-                if(caseRec.Core_MDF_Region_SubRegion_txt__c != null && caseRec.Core_MDF_Region_SubRegion_txt__c  == 'INDIA - INDIA'){
-                    Core_MDF_CCP_Country_Geo_Mapping__mdt cgm = [SELECT Core_MDF_Geo__c, Core_MDF_Sub_Geo__c FROM Core_MDF_CCP_Country_Geo_Mapping__mdt WHERE MasterLabel = 'INDIA' LIMIT 1];
-                    if(cgm != null){
-                        caseRec.Core_MDF_Region_SubRegion_txt__c = cgm.Core_MDF_Geo__c +' - '+ cgm.Core_MDF_Sub_Geo__c;
-                    }
-                }
+                
                 
                 sp = Database.setSavepoint();
 				
@@ -89,66 +84,26 @@ public without sharing class Core_MDF_ReverseAuditDecision{
                 Database.SaveResult srCase = Database.update(caseRec);
 
                 if(srCase.isSuccess()){
-                    //Audit AI change
-                    Set<Id> caseIdForAudit = new Set<Id>();
-                    caseIdForAudit.add(srCase.getId());
-                    //Audit AI change end
-
                     Id virtualCorpAccountId = String.isNotBlank(caseRec.Account.Core_MDF_Virtual_Corp_Account_Id__c) ? caseRec.Account.Core_MDF_Virtual_Corp_Account_Id__c : caseRec.AccountId;
                     String budgetType = String.isNotBlank(caseRec.Core_MDF_Budget_Type_nm__c) ? caseRec.Core_MDF_Budget_Type_nm__c : 'null';
-                    //Swati- Exclude RSA MD 
-                    Boolean isRetailMarketingFunds = caseRec.Core_MDF_Channel_Program_txt__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM;
-                    Boolean isBudgetRsaMd =caseRec.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.RMF_RSA_MD_BUDGET_TYPE;
-                    Boolean iscaseClosedDate = (caseRec.Core_MDF_Previous_Closed_Dt__c.date() >= Date.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Exclude_RSA_MD')));
-                    Boolean skipRSA_MD = isRetailMarketingFunds && isBudgetRsaMd && iscaseClosedDate;
+                    extIdDataWrapper extIdExtIdListwrapper = prepareExtIdKeyList(caseRec.Account.Core_MDF_Channel_Program__c, virtualCorpAccountId, caseRec.AccountId, budgetType ,caseRec.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c,qtrLstForPSDUpdateOnCaseReopen,quarter,caseRec.Core_MDF_Channel_Program_txt__c);
 
-                    if(!skipRSA_MD){
-                        extIdDataWrapper extIdExtIdListwrapper = prepareExtIdKeyList(caseRec.Account.Core_MDF_Channel_Program__c, virtualCorpAccountId, caseRec.AccountId, budgetType ,caseRec.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c,qtrLstForPSDUpdateOnCaseReopen,quarter,caseRec.Core_MDF_Channel_Program_txt__c);
-    
-                        Boolean isIPAorRMFPrgm = nodeAccountSupportedProgramsSet.contains(caseRec.Core_MDF_Channel_Program_txt__c) ? true : false;
-                        String psdExternalId = '' + String.valueOf(caseRec.Account.Core_MDF_Channel_Program__c) + String.valueOf(virtualCorpAccountId) + quarter + (isIPAorRMFPrgm ? String.valueOf(caseRec.AccountId) : '') + budgetType  + caseRec.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c;
-    
-                        //TWC3117-18331
-                        List<Core_MDF_Partnership_Score_Detail__c> currentQuarterPsdRecords = [SELECT Id,Core_MDF_Total_Recovery_Amt__c, Core_MDF_Balance_Amount_Amt__c, Core_MDF_Carry_Over_Amt__c, Core_MDF_Recovery_Offset_Amt__c, Core_MDF_Recovery_Offset_Comments_txt__c, Core_MDF_Offset_Comment_Details_txt__c FROM Core_MDF_Partnership_Score_Detail__c WHERE Core_MDF_External_ID__c =: psdExternalId LIMIT 1];
-                        Core_MDF_Partnership_Score_Detail__c currentQuarterPsdRecord = currentQuarterPsdRecords.isEmpty() ? null : currentQuarterPsdRecords[0];
-                        
-                        updateRecoveryDashboardRec(caseRec.id);			
-                        //TWC3117-9689 - Do not consider current quarter PSD for carry over amount adjustment during case reopen
-                        if (!quarter.equals(quarterList[0])) {
-                            //TWC3117-18331
-                            if (currentQuarterPsdRecord != null) { updatePSDRecords(extIdExtIdListwrapper, currentQuarterPsdRecord); }
-                        }
-                    }//Skip RSA MD end
-                    // Inactivate recovery request when case is reopened
-                    Core_MDF_ReverseAuditDecision.RequestInput input = new Core_MDF_ReverseAuditDecision.RequestInput();
-                    input.claimId = caseRec.Core_MDF_Claim_Lookup_Id__c;
-                    List<Core_MDF_ReverseAuditDecision.RequestInput> inputList = new List<Core_MDF_ReverseAuditDecision.RequestInput>();
-                    inputList.add(input);
+                    Boolean isIPAorRMFPrgm = nodeAccountSupportedProgramsSet.contains(caseRec.Core_MDF_Channel_Program_txt__c) ? true : false;
+                    String psdExternalId = '' + String.valueOf(caseRec.Account.Core_MDF_Channel_Program__c) + String.valueOf(virtualCorpAccountId) + quarter + (isIPAorRMFPrgm ? String.valueOf(caseRec.AccountId) : '') + budgetType  + caseRec.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c;
+
+                    Core_MDF_Partnership_Score_Detail__c currentQuarterPsdRecord = [SELECT Id,Core_MDF_Total_Recovery_Amt__c, Core_MDF_Balance_Amount_Amt__c, Core_MDF_Carry_Over_Amt__c, Core_MDF_Recovery_Offset_Amt__c, Core_MDF_Recovery_Offset_Comments_txt__c, Core_MDF_Offset_Comment_Details_txt__c FROM Core_MDF_Partnership_Score_Detail__c WHERE Core_MDF_External_ID__c =: psdExternalId LIMIT 1];
                     
-                    // Call method
-                    Core_MDF_ReverseAuditDecision.inactivateRecoveryRequests(inputList);
+                    updateRecoveryDashboardRec(caseRec.id);			
+                    //TWC3117-9689 - Do not consider current quarter PSD for carry over amount adjustment during case reopen
+                    if (!quarter.equals(quarterList[0])) {
+                        updatePSDRecords(extIdExtIdListwrapper, currentQuarterPsdRecord);
+                    }
                     
                     PartnerFundClaim claimRec = new PartnerFundClaim(id = caseRec.Core_MDF_Claim_ID__c);
                     claimRec.Core_MDF_Audit_Hold__c = true;
                     //Update Claim
                     Database.SaveResult srClaim = Database.update(claimRec);
                     if(srClaim.isSuccess()){result = 'Success';} 
-
-                    //Audit AI Change
-                    try{
-                    Date aiEnableDate = Date.valueOf(Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_AI_Audit_Enable_Date')?.Core_MDF_Value_Txt__c);//WW16.4 date
-                    Integer auditBatchsize = Integer.valueOf(Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_AI_Audit_Batch_Size')?.Core_MDF_Value_Txt__c);//Audit Batch size
-            	
-                        if(scorecardRecord!=null && (scorecardRecord.Core_MDF_AI_Processing_Status_Nm__c == '' || scorecardRecord.Core_MDF_AI_Processing_Status_Nm__c == null) && caseIdForAudit.size()>0 && caseRec.CreatedDate >=aiEnableDate){
-                                if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessCasesWithAIForAudit','Core_MDF_Bypass_AI_CDB_CallForAudit'))) {
-                                        Core_MDF_Audit_AI_Integration auditAIIntegrationBatch = new Core_MDF_Audit_AI_Integration(caseIdForAudit);
-                                        Database.executeBatch(auditAIIntegrationBatch, auditBatchsize);
-                                }
-                        }
-                    }
-                    catch(Exception e){
-                        Core_MDF_CCP_UtilityClass.logError(e);
-                    }
                 }
             }
             
@@ -197,9 +152,6 @@ public without sharing class Core_MDF_ReverseAuditDecision{
     }
     
     public static void updatePSDRecords(extIdDataWrapper extIdExtIdListwrapper, Core_MDF_Partnership_Score_Detail__c currentQuarterPsdRecord){
-
-        //TWC3117-18331
-        if (currentQuarterPsdRecord == null) { return; }
         
         //set<String> extIdKeyForCaseCloseDtQtrSet = extIdForCurrCaseClosedateToExtIdList.keySet();
         list<String> extIdKeyList = extIdExtIdListwrapper.extIdKeyList;
@@ -254,48 +206,8 @@ public without sharing class Core_MDF_ReverseAuditDecision{
         
         return result;
     }
-
-     //Audit AI changes
-    @AuraEnabled(cacheable=true)
-    public static Core_MDF_Scorecard__c getScorecardRecord(Id caseId) {
-        try {
-            Core_MDF_Scorecard__c scorecardRecord = [SELECT Id, Name, Core_MDF_Case_Id__c,Core_MDF_AI_Processing_Status_Nm__c FROM Core_MDF_Scorecard__c WHERE Core_MDF_Case_Id__c = :caseId LIMIT 1];
-            return scorecardRecord;
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-            return null;
-        }
-    }
-
     public class extIdDataWrapper {
         public String extIdKeyForCaseCloseDtQtr;
         public List<string> extIdKeyList;
-    }
-    
-    public class RequestInput {
-        @InvocableVariable(required=true)
-        public Id claimId;
-    }
-    
-    @InvocableMethod
-    public static void inactivateRecoveryRequests(List<RequestInput> inputs) {
-        
-        Set<Id> claimIds = new Set<Id>();
-        for(RequestInput inp : inputs){
-            claimIds.add(inp.claimId);
-        }
-        List<Core_MDF_Recovery_Request__c> recReqUpdateList = new List<Core_MDF_Recovery_Request__c>();
-        List<Core_MDF_Recovery_Request__c> recList = [SELECT Id,Core_MDF_Active_Ind__c FROM Core_MDF_Recovery_Request__c WHERE Core_MDF_Claim_Id__r.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid' AND Core_MDF_Claim_Id__c IN :claimIds AND Core_MDF_Active_Ind__c = true AND Core_MDF_Recovery__c = ''];
-        if(!recList.isEmpty()){
-            for(Core_MDF_Recovery_Request__c rec : recList){
-                Core_MDF_Recovery_Request__c tempRR = new Core_MDF_Recovery_Request__c();
-                tempRR.Id = rec.Id;            
-                tempRR.Core_MDF_Active_Ind__c = false;
-                recReqUpdateList.add(tempRR);
-            }
-        }
-        if(!recReqUpdateList.isEmpty()){
-            update recReqUpdateList;
-        }
     }
 }

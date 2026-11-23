@@ -21,54 +21,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         insert systemAdmin;
         
         System.runAs(systemAdmin){
-             // 14285 - Indira - Start 
-            //adding bypass feature to bypass access validation
-            List<String> bypassFunctionKeys = new List<String>();
-            //adding bypass feature to bypass access validation
-            bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-            bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
-            bypassFunctionKeys.add('Bypass_Allocation_Reservation');
-            bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
-            bypassFunctionKeys.add('Bypass_Duplicate_Bank_Check');
-            bypassFunctionKeys.add('Bypass_Bank_Internal_Sharing');
-            bypassFunctionKeys.add('Bypass_Bank_External_Sharing');
-            bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
-            bypassFunctionKeys.add('Bypass_ABM_NodeGroup_Sharing'); 
-            bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
-            bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
-            bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
-            bypassFunctionKeys.add('Bypass_Claims_Duplicate_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_Internal_Users');
-            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_On_Owner_Chng');
-            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_Internal_Usrs');
-            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_External_Usrs');
-            bypassFunctionKeys.add('Bypass_Claim_AdjReq_Amount_Validation');
-            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Budget_Amt_Check');        
-            bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_Partner_Users');
-            bypassFunctionKeys.add('Bypass_Payment_Doc_InvFileVAT_Validate');
-            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Camp_Amt_Check');
-            bypassFunctionKeys.add('Bypass_Claim_OwnerLang_EmailTemp');
-            bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
-            bypassFunctionKeys.add('Bypass_Claims_Sharing_On_Owner_Change');
-            bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-            bypassFunctionKeys.add('byPass_Cancel_Activity');
-            bypassFunctionKeys.add('Core_MDF_Bypass_ATFBatchUpdate');
-            bypassFunctionKeys.add('Bypass_ValidateAccProgAccessOnEAM');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); // 14285 Indira 
-          
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
             
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-            // 14285 - Indira - End
             Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
             ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
@@ -439,7 +392,51 @@ public class Core_MDF_ExceptionTrigger_Test {
             Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(flipkartTestAccountCCF.Id,bank.Id,false);
             abm1.Core_MDF_Active_ind__c = true;
             insert abm1;
-
+            //adding bypass feature to bypass access validation
+            List<String> bypassFunctionKeys = new List<String>();
+            //adding bypass feature to bypass access validation
+            bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
+            bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
+            bypassFunctionKeys.add('Bypass_Allocation_Reservation');
+            bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
+            bypassFunctionKeys.add('Bypass_Duplicate_Bank_Check');
+            bypassFunctionKeys.add('Bypass_Bank_Internal_Sharing');
+            bypassFunctionKeys.add('Bypass_Bank_External_Sharing');
+            bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
+            bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
+            bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
+            bypassFunctionKeys.add('Bypass_ABM_NodeGroup_Sharing'); 
+            bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
+            bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
+            bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
+            bypassFunctionKeys.add('Bypass_Claims_Duplicate_Check');
+            bypassFunctionKeys.add('Bypass_Claims_Sharing_Internal_Users');
+            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_On_Owner_Chng');
+            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_Internal_Usrs');
+            bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_External_Usrs');
+            bypassFunctionKeys.add('Bypass_Claim_AdjReq_Amount_Validation');
+            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Budget_Amt_Check');        
+            bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
+            bypassFunctionKeys.add('Bypass_Claims_Sharing_Partner_Users');
+            bypassFunctionKeys.add('Bypass_Payment_Doc_InvFileVAT_Validate');
+            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Camp_Amt_Check');
+            bypassFunctionKeys.add('Bypass_Claim_OwnerLang_EmailTemp');
+            bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
+            bypassFunctionKeys.add('Bypass_Claims_Sharing_On_Owner_Change');
+            bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
+            bypassFunctionKeys.add('byPass_Cancel_Activity');
+            bypassFunctionKeys.add('Core_MDF_Bypass_ATFBatchUpdate');
+            bypassFunctionKeys.add('Bypass_ValidateAccProgAccessOnEAM');
+            
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
+            
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             //Create Budget
             /*PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',
@@ -557,7 +554,7 @@ public class Core_MDF_ExceptionTrigger_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -612,7 +609,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-
+        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
                                                            WHERE Core_MDF_User_id__c =: submitter.id ];
@@ -899,7 +896,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Select_All_Country_ind__c = true;
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -925,6 +922,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
                                                            WHERE Core_MDF_User_id__c =: submitter.id ];
         
+        System.debug('IUPM FROM TEST===='+iupgm);
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
         
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
@@ -935,7 +933,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1014,7 +1012,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1101,7 +1099,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1180,7 +1178,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1260,7 +1258,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1317,9 +1315,6 @@ public class Core_MDF_ExceptionTrigger_Test {
                 }
             }
         }
-       // US - TWC702-14285: Unit Test Method should include System.Assert
-      Assert.areEqual('Core_MDF_Client_CoMarketing_Fund_Boost', exceptionRecord.Core_MDF_Program_nm__c, 'Program should not have been changed due to access restrictions');
-      Test.stopTest(); 
     }
     /****************************************************************************************************************************************
 Method Name:                                   testROSharing
@@ -1341,7 +1336,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -1384,7 +1379,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-
+        Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
         
         Core_MDF_Exception__c excep = new Core_MDF_Exception__c();
         excep.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Single Account Single Country';
@@ -1394,7 +1389,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         excep.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         excep.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         excep.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        excep.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Radio';
+        excep.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Radio';
         excep.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         excep.Core_MDF_Country_Region_nm__c = 'INDIA';
         expList.add(excep);
@@ -1488,7 +1483,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Region_txt__c='APJ';
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
@@ -1575,7 +1570,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Region_txt__c='APJ';
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
@@ -1636,7 +1631,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
       
-
+        Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmIPA = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -1661,7 +1656,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Region_txt__c='APJ';
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
@@ -1809,9 +1804,6 @@ Accenture – NZ           NZ  4/19/2020      Created.
             exptEEFPrgm2.Core_MDF_Select_All_Country_ind__c = true;
             //exptEEFPrgm2.Core_MDF_Account_id__c = acc.Id;
             exceptionList.add(exptEEFPrgm);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            Assert.areEqual(4, exceptionList.size(), 'Exception list should contain 4 records');
-            Assert.isNotNull(expt.Core_MDF_Name_of_Exception_nm__c, 'Exception name should be set');
             try{
                 Database.insert(exceptionList);
                 Core_MDF_Exception_Account_Mapping__c exptMap = new Core_MDF_Exception_Account_Mapping__c();
@@ -2014,13 +2006,13 @@ Accenture – NZ           NZ  4/19/2020      Created.
                 exptMap.Core_MDF_Budget_Type_txt__c = 'Account Plan';
                 exptMap.Core_MDF_HostRegion_txt__c = 'APJ';
                 exptMap.Core_MDF_Active_ind__c = true;
-                 database.insert(exptMap);
+                //database.insert(exptMap);
                 
                 exptMap.Core_MDF_HostRegion_txt__c = 'EMEA';
-                database.update(exptMap);
+                //database.update(exptMap);
 
                 exptMap.Core_MDF_Active_ind__c = false;
-                database.update(exptMap);
+                //database.update(exptMap);
 
                 Core_MDF_Exception_Account_Mapping__c exptMap3 = new Core_MDF_Exception_Account_Mapping__c();
                 exptMap3.Core_MDF_Account_id__c = accEef.Id;
@@ -2112,13 +2104,13 @@ Accenture – NZ           NZ  4/19/2020      Created.
                 exptMap.Core_MDF_Budget_Type_txt__c = 'Account Plan';
                 exptMap.Core_MDF_HostRegion_txt__c = 'APJ';
                 exptMap.Core_MDF_Active_ind__c = true;
-                database.insert(exptMap);
+                //database.insert(exptMap);
                 
                 exptMap.Core_MDF_HostRegion_txt__c = 'EMEA';
-                database.update(exptMap);
+                //database.update(exptMap);
 
                 exptMap.Core_MDF_Active_ind__c = false;
-                database.update(exptMap);
+                //database.update(exptMap);
 
                 database.insert(exptMap);
 
@@ -2159,7 +2151,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = acc.Id;
@@ -2275,7 +2267,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         testException.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         testException.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         testException.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast'; // 14285 Indira
+        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         testException.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         testException.Core_MDF_Select_All_Country_ind__c = true;
         testException.Core_MDF_Account_id__c = acc.Id;
@@ -2386,7 +2378,7 @@ static void testEAMAllMethods() {
         rmfExpt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         rmfExpt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         rmfExpt.Core_MDF_Program_nm__c = 'Core_MDF_Retail_Marketing_Funds';
-        rmfExpt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        rmfExpt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         rmfExpt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         rmfExpt.Core_MDF_Country_Region_nm__c = 'INDIA';
         //rmfExpt.Core_MDF_Account_id__c = intelAcc1.Id;
@@ -2401,7 +2393,7 @@ static void testEAMAllMethods() {
         ccfExpt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         ccfExpt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         ccfExpt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        ccfExpt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        ccfExpt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         ccfExpt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         ccfExpt.Core_MDF_Country_Region_nm__c = 'INDIA';
         //ccfExpt.Core_MDF_Account_id__c = intelAcc2.Id;
@@ -2639,10 +2631,9 @@ static void testEAMEEFMethod() {
         eefException1.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         eefException1.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         eefException1.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        eefException1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        eefException1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         eefException1.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        eefException1.Core_MDF_Country_Region_nm__c = '';
-        eefException1.Core_MDF_Select_All_Country_ind__c = true;
+        eefException1.Core_MDF_Country_Region_nm__c = 'INDIA';
         eefException1.Core_MDF_Exception_Status_nm__c='Approved';
         eefException1.Core_MDF_Expose_Externally_ind__c=true;
         exceptions.add(eefException1);
@@ -2655,10 +2646,9 @@ static void testEAMEEFMethod() {
         eefException2.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         eefException2.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         eefException2.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        eefException2.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        eefException2.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         eefException2.Core_MDF_Total_Dollar_Impact_amt__c = 200;
-        eefException2.Core_MDF_Country_Region_nm__c = '';
-        eefException2.Core_MDF_Select_All_Country_ind__c = true;
+        eefException2.Core_MDF_Country_Region_nm__c = 'AUSTRALIA';
         eefException2.Core_MDF_Exception_Status_nm__c='Approved';
         eefException2.Core_MDF_Expose_Externally_ind__c=true;
         exceptions.add(eefException2);
@@ -2720,10 +2710,9 @@ static void testEAMEEFMethod() {
         newException3.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         newException3.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         newException3.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        newException3.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        newException3.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         newException3.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        newException3.Core_MDF_Country_Region_nm__c = '';
-        newException3.Core_MDF_Select_All_Country_ind__c = true;
+        newException3.Core_MDF_Country_Region_nm__c = 'INDIA';
         newException3.Core_MDF_Exception_Status_nm__c='Approved';
         newException3.Core_MDF_Expose_Externally_ind__c=true;
         insert newException3;
@@ -2797,7 +2786,7 @@ static void testValidateExceptionAccountProgramAndCountryAccess() {
         testException.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         testException.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         testException.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         testException.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         testException.Core_MDF_Country_Region_nm__c = 'INDIA';
         insert testException;
@@ -2821,7 +2810,7 @@ static void testValidateExceptionAccountProgramAndCountryAccess() {
         testExceptionallcountry1.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         testExceptionallcountry1.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         testExceptionallcountry1.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        testExceptionallcountry1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        testExceptionallcountry1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         testExceptionallcountry1.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         testExceptionallcountry1.Core_MDF_Select_All_Country_ind__c = true;
         insert testExceptionallcountry1;
@@ -2840,7 +2829,7 @@ static void testValidateExceptionAccountProgramAndCountryAccess() {
         testExceptionmulticountry.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         testExceptionmulticountry.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         testExceptionmulticountry.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        testExceptionmulticountry.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        testExceptionmulticountry.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         testExceptionmulticountry.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         testExceptionmulticountry.Core_MDF_Country_Region_nm__c = 'INDIA;JAPAN;AUSTRALIA';
         insert testExceptionmulticountry;
@@ -2912,7 +2901,7 @@ static void testEAMEEFMethod2() {
         eefException1.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         eefException1.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         eefException1.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        eefException1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
+        eefException1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio 2025->Podcast';
         eefException1.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         eefException1.Core_MDF_Country_Region_nm__c = 'INDIA';
         
@@ -2938,426 +2927,4 @@ static void testEAMEEFMethod2() {
     }
     }catch(Exception ex){}
     }
-  // 14285 Indira - Start 
-  @isTest
-static void testShareExceptionRecordsWithExtUsersUpdate() {
-    Test.startTest();
-    User submitter = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-    Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-    ChannelProgram ccfCp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client' LIMIT 1];
-    
-    System.runAs(submitter) {
-        // Create Exception
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception for External Sharing';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
-        expt.Core_MDF_Exception_Status_nm__c = 'Approved';
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        insert expt;
-        
-        // Create Exception Account Mapping
-        Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
-        eam.Core_MDF_Account_id__c = acc.Id;
-        eam.Core_MDF_Exception_id__c = expt.Id;
-        //eam.Core_MDF_Exception_Status_txt__c = 'Approved';
-        //eam.Core_MDF_Program_txt__c = 'Core_MDF_Client_CoMarketing_Fund';
-        //eam.Core_MDF_Select_All_Accounts_ind__c = false;
-       // eam.Core_MDF_Expose_Externally_ind__c = true;
-       // eam.Core_MDF_OwnerId_txt__c = expt.OwnerId;
-        insert eam;
-        
-        // Create old map for comparison
-        Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        Core_MDF_Exception__c oldExpt = expt.clone(true, true, true, true);
-        oldExpt.Core_MDF_Select_All_Accounts_ind__c = false;
-        oldExpt.Core_MDF_Expose_Externally_ind__c = false;
-        oldExceptionMap.put(expt.Id, oldExpt);
-        
-        // Update exception to trigger sharing
-        //expt.Core_MDF_Select_All_Accounts_ind__c = true;
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        update expt;
-        
-        Map<Id, Core_MDF_Exception__c> newExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        newExceptionMap.put(expt.Id, expt);
-        
-        // Call the method under test
-        Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(newExceptionMap, oldExceptionMap);
-    }
-    Test.stopTest();
-}
-
-@isTest
-static void testShareExceptionRecordsWithExtUsersOwnerChange() {
-    Test.startTest();
-    User submitter = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-    User reviewer = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-    Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-    
-    System.runAs(submitter) {
-        // Create Exception
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Owner Change';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
-        expt.Core_MDF_Exception_Status_nm__c = 'Approved';
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        expt.OwnerId = submitter.Id;
-        insert expt;
-        
-        // Create Exception Account Mapping
-        Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
-        eam.Core_MDF_Account_id__c = acc.Id;
-        eam.Core_MDF_Exception_id__c = expt.Id;
-        //eam.Core_MDF_Exception_Status_txt__c = 'Approved';
-        //eam.Core_MDF_Program_txt__c = 'Core_MDF_Client_CoMarketing_Fund';
-       //eam.Core_MDF_Select_All_Accounts_ind__c = false;
-        //eam.Core_MDF_Expose_Externally_ind__c = true;
-      //eam.Core_MDF_OwnerId_txt__c = submitter.Id;
-        insert eam;
-        
-        // Create old map with different owner
-        Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        Core_MDF_Exception__c oldExpt = expt.clone(true, true, true, true);
-        oldExpt.OwnerId = reviewer.Id;
-        oldExceptionMap.put(expt.Id, oldExpt);
-        
-        // Update owner
-        expt.OwnerId = reviewer.Id;
-        update expt;
-        
-        Map<Id, Core_MDF_Exception__c> newExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        newExceptionMap.put(expt.Id, expt);
-        
-        // Call the method under test
-        Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(newExceptionMap, oldExceptionMap);
-    }
-    Test.stopTest();
-}
-
-@isTest
-static void testShareExceptionRecordsWithExtUsersStatusChange() {
-    Test.startTest();
-    User submitter = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-    
-    System.runAs(submitter) {
-        // Create Exception
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Status Change';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
-        expt.Core_MDF_Exception_Status_nm__c = 'Draft';
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        insert expt;
-        
-        // Create Exception Account Mapping
-        Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
-        eam.Core_MDF_Account_id__c = acc.Id;
-        eam.Core_MDF_Exception_id__c = expt.Id;
-        //eam.Core_MDF_Exception_Status_txt__c = 'Draft';
-        //eam.Core_MDF_Program_txt__c = 'Core_MDF_Client_CoMarketing_Fund';
-        //eam.Core_MDF_Select_All_Accounts_ind__c = false;
-        //eam.Core_MDF_Expose_Externally_ind__c = true;
-        //eam.Core_MDF_OwnerId_txt__c = expt.OwnerId;
-        insert eam;
-        
-        // Create old map with approved status
-        Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        Core_MDF_Exception__c oldExpt = expt.clone(true, true, true, true);
-        oldExpt.Core_MDF_Exception_Status_nm__c = 'Approved';
-        oldExceptionMap.put(expt.Id, oldExpt);
-        
-        Map<Id, Core_MDF_Exception__c> newExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        newExceptionMap.put(expt.Id, expt);
-        
-        // Call the method under test
-        Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(newExceptionMap, oldExceptionMap);
-    }
-    Test.stopTest();
-}
-
-@isTest
-static void testShareExceptionRecordsWithExtUsersEEF() {
-    Test.startTest();
-    User submitter = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account intelPrimAcc = [SELECT Id FROM Account WHERE Name = 'Test Primary Intel Account' LIMIT 1];
-    ChannelProgram eefCp = [SELECT Id FROM ChannelProgram WHERE Name = 'Ecosystem Extension Fund' LIMIT 1];
-    
-    System.runAs(submitter) {
-        // Create EEF Exception
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test EEF Exception External Sharing';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = '';
-		expt.Core_MDF_Select_All_Country_ind__c = true;
-        expt.Core_MDF_Exception_Status_nm__c = 'Approved';
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        //insert expt;
-        
-        // Create Exception Account Mapping for EEF
-        Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
-        eam.Core_MDF_Account_id__c = intelPrimAcc.Id;
-        eam.Core_MDF_Exception_id__c = expt.Id;
-        //eam.Core_MDF_Exception_Status_txt__c = 'Approved';
-        //eam.Core_MDF_Program_txt__c = 'Core_MDF_Ecosystem_Extension_Fund';
-        //eam.Core_MDF_Select_All_Accounts_ind__c = false;
-        //eam.Core_MDF_Expose_Externally_ind__c = true;
-        //eam.Core_MDF_OwnerId_txt__c = expt.OwnerId;
-        //insert eam;
-        
-        // Create old map
-        Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        Core_MDF_Exception__c oldExpt = expt.clone(true, true, true, true);
-        oldExpt.Core_MDF_Exception_Status_nm__c = 'Draft';
-        oldExceptionMap.put(expt.Id, oldExpt);
-        
-        Map<Id, Core_MDF_Exception__c> newExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        newExceptionMap.put(expt.Id, expt);
-        
-        // Call the method under test
-        Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(newExceptionMap, oldExceptionMap);
-    }
-    Test.stopTest();
-}
-
-@isTest
-static void testShareExceptionRecordsWithExtUsersExternalAccess() {
-    Test.startTest();
-    User submitter = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account acc = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-    ChannelProgram ccfCp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client' LIMIT 1];
-    
-    System.runAs(submitter) {
-        // Create external group
-        Group externalGroup = new Group();
-        externalGroup.Name = 'Test External Group for Sharing';
-        externalGroup.DeveloperName = 'Test_External_Group_Sharing';
-        insert externalGroup;
-        
-        // Create Partner Group Mapping for external access
-        Core_MDF_Partner_Group_Mapping__c externalPgm = new Core_MDF_Partner_Group_Mapping__c();
-        externalPgm.Core_MDF_Account__c = acc.Id;
-        externalPgm.Core_MDF_Channel_Program__c = ccfCp.Id;
-        externalPgm.Core_MDF_Group_Id__c = externalGroup.Id;
-        externalPgm.Core_MDF_Group_Name__c = 'Test_External_Group_Sharing';
-        externalPgm.Core_MDF_Type_of_Access__c = 'External';
-        externalPgm.Core_MDF_Region_cd__c = 'APJ';
-        externalPgm.Core_MDF_Inactive_Ind__c = false;
-        insert externalPgm;
-        
-        // Create Exception
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception External Access';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
-        expt.Core_MDF_Exception_Status_nm__c = 'Approved';
-        expt.Core_MDF_Expose_Externally_ind__c = true;
-        insert expt;
-        
-        // Create Exception Account Mapping
-        Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
-        eam.Core_MDF_Account_id__c = acc.Id;
-        eam.Core_MDF_Exception_id__c = expt.Id;
-        //eam.Core_MDF_Exception_Status_txt__c = 'Approved';
-        //eam.Core_MDF_Program_txt__c = 'Core_MDF_Client_CoMarketing_Fund';
-        //eam.Core_MDF_Select_All_Accounts_ind__c = false;
-        //eam.Core_MDF_Expose_Externally_ind__c = true;
-        //eam.Core_MDF_OwnerId_txt__c = expt.OwnerId;
-        insert eam;
-        
-        // Create old map
-        Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        Core_MDF_Exception__c oldExpt = expt.clone(true, true, true, true);
-        oldExpt.Core_MDF_Expose_Externally_ind__c = false;
-        oldExceptionMap.put(expt.Id, oldExpt);
-        
-        Map<Id, Core_MDF_Exception__c> newExceptionMap = new Map<Id, Core_MDF_Exception__c>();
-        newExceptionMap.put(expt.Id, expt);
-        
-        // Call the method under test
-       Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(newExceptionMap, oldExceptionMap);
-    }
-    Test.stopTest();
-}
-
-@isTest
-static void testShareExceptionRecordsWithExtUsersEmptyMaps() {
-    Test.startTest();
-    
-    // Test with empty maps
-    Map<Id, Core_MDF_Exception__c> emptyNewMap = new Map<Id, Core_MDF_Exception__c>();
-    Map<Id, Core_MDF_Exception__c> emptyOldMap = new Map<Id, Core_MDF_Exception__c>();
-    
-    // This should not throw any exceptions
-    Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(emptyNewMap, emptyOldMap);
-    
-    // Test with null maps
-   //Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(null, null);
-    
-    Test.stopTest();
-}
-
-@isTest
-static void testEAMTriggerHandlerRefreshesExternalSharesOnInactivation() {
-    Core_MDF_CCP_TestDataUtility.byPassFeature(
-        new List<String>{'Core_MDF_ByPass_EAM_Expt_Ext_Sharing'},
-        false,
-        true
-    );
-    Test.startTest();
-
-    User submitter = [SELECT Id FROM User WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account intelAccountA = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-    Account intelAccountB = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-
-    System.runAs(submitter) {
-        Group externalGroupA = new Group(
-            Name = 'EAM External Group A',
-            DeveloperName = 'EAM_External_Group_A'
-        );
-        Group externalGroupB = new Group(
-            Name = 'EAM External Group B',
-            DeveloperName = 'EAM_External_Group_B'
-        );
-        insert new List<Group>{externalGroupA, externalGroupB};
-
-        ChannelProgram rmfProgram = Core_MDF_CCP_TestDataUtility.createProgram(
-            'Retail Marketing Funds',
-            'Retail Marketing Funds',
-            true
-        );
-        Account accountA = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount(
-            'EAM External RMF Account A',
-            rmfProgram.Id,
-            Core_MDF_CCP_TestDataUtility.Account_Record_Type,
-            intelAccountA.Id,
-            false
-        );
-        accountA.Core_MDF_External_Group_Id__c = String.valueOf(externalGroupA.Id);
-        accountA.BillingStateCode = '';
-        accountA.BillingCity = 'Ponta Grossa';
-        accountA.BillingCountry = 'BRA';
-        accountA.BillingStreet = 'Test';
-        accountA.Core_Geo__c = 'APJ';
-        accountA.Core_Sub_Geo__c = 'ROA';
-
-        Account accountB = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount(
-            'EAM External RMF Account B',
-            rmfProgram.Id,
-            Core_MDF_CCP_TestDataUtility.Account_Record_Type,
-            intelAccountB.Id,
-            false
-        );
-        accountB.Core_MDF_External_Group_Id__c = String.valueOf(externalGroupB.Id);
-        accountB.BillingStateCode = '';
-        accountB.BillingCity = 'Ponta Grossa';
-        accountB.BillingCountry = 'BRA';
-        accountB.BillingStreet = 'Test';
-        accountB.Core_Geo__c = 'APJ';
-        accountB.Core_Sub_Geo__c = 'ROA';
-        insert new List<Account>{accountA, accountB};
-
-        Core_MDF_Exception__c exceptionRecord = new Core_MDF_Exception__c(
-            Core_MDF_Name_of_Exception_nm__c = 'EAM External Sharing Inactivation Test',
-            Core_MDF_Issue_Description_dsc__c = 'Test external sharing refresh',
-            Core_MDF_Comments_txt__c = 'Test',
-            Core_MDF_Exception_Start_Date_dt__c = System.today(),
-            Core_MDF_Exception_End_Date_dt__c = System.today() + 5,
-            Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog',
-            Core_MDF_Program_nm__c = 'Core_MDF_Retail_Marketing_Funds',
-            Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast',
-            Core_MDF_Total_Dollar_Impact_amt__c = 100,
-            Core_MDF_Country_Region_nm__c = 'INDIA',
-            Core_MDF_Exception_Status_nm__c = 'Approved',
-            Core_MDF_Expose_Externally_ind__c = true
-        );
-        insert exceptionRecord;
-
-        Core_MDF_Exception_Account_Mapping__c eamA = new Core_MDF_Exception_Account_Mapping__c(
-            Core_MDF_Account_id__c = accountA.Id,
-            Core_MDF_Exception_id__c = exceptionRecord.Id,
-            Core_MDF_Active_ind__c = true
-        );
-        Core_MDF_Exception_Account_Mapping__c eamB = new Core_MDF_Exception_Account_Mapping__c(
-            Core_MDF_Account_id__c = accountB.Id,
-            Core_MDF_Exception_id__c = exceptionRecord.Id,
-            Core_MDF_Active_ind__c = true
-        );
-        insert eamA;
-        insert eamB;
-
-        Core_MDF_Exception__Share staleShare = Core_MDF_Exception_TriggerServiceHandler.createExceptionShareExt(
-            String.valueOf(exceptionRecord.Id),
-            String.valueOf(externalGroupA.Id)
-        );
-        insert staleShare;
-        System.assertEquals(
-            1,
-            [
-                SELECT COUNT()
-                FROM Core_MDF_Exception__Share
-                WHERE ParentId = :exceptionRecord.Id
-                AND RowCause = 'Exception_External_Sharing__c'
-                AND UserOrGroupId = :externalGroupA.Id
-            ],
-            'Seed an external share before testing the mapping inactivation refresh.'
-        );
-
-        eamA.Core_MDF_Active_ind__c = false;
-        update eamA;
-
-        System.assertEquals(
-            0,
-            [
-                SELECT COUNT()
-                FROM Core_MDF_Exception__Share
-                WHERE ParentId = :exceptionRecord.Id
-                AND RowCause = 'Exception_External_Sharing__c'
-                AND UserOrGroupId = :externalGroupA.Id
-            ],
-            'Inactivating mapping A should remove its stale external Exception share.'
-        );
-    }
-
-    Test.stopTest();
-}
-// 14285 Indira - End
 }

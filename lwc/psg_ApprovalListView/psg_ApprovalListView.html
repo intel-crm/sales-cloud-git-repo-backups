@@ -1,0 +1,31 @@
+<template>
+        <lightning-card title="Quotes for Approval" icon-name="custom:custom4">
+                
+                <!--div slot="actions">
+                        <lightning-button-icon icon-name="utility:refresh" onclick={onRefreshClick} alternative-text="Settings" title="Refresh"></lightning-button-icon>
+                </div-->
+                <template if:true={dataPresent}>
+                        <div style="height:320px">
+                        <lightning-datatable
+                        key-field="Id" 
+                        data ={quoteLineList} 
+                        columns ={columns}
+                        sorted-by={sortBy}
+                        sorted-direction={sortDirection}
+                        onsort={doSorting}
+                        enable-infinite-loading 
+                        show-row-number-column
+                        hide-checkbox-column
+                        class="slds-table_header-fixed_container slds-table_bordered"
+                        >
+                        </lightning-datatable>
+                </div>
+                </template>
+                <template if:false={dataPresent}>
+                        <div class="slds-align_absolute-center">No Records to Display</div>
+                </template>
+                <template if:true={spinnerOn}>
+                        <lightning-spinner variant="brand"></lightning-spinner>
+                </template>
+        </lightning-card>
+</template>

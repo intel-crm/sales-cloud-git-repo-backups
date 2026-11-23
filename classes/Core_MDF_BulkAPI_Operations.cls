@@ -49,10 +49,7 @@ public without sharing class Core_MDF_BulkAPI_Operations {
          
          }
          String requestString ='';
-        //ATHR - Deeply Nested if 16209
-        if(shareRecordIds.isEmpty()){
-            return new AysncJobDetailWrapper(null,'Bulk API',null,null,'In Progress');
-        }
+         if(shareRecordIds.size()>0){
             
             requestString = '"Id"'+'\r\n';
            
@@ -79,10 +76,8 @@ public without sharing class Core_MDF_BulkAPI_Operations {
         request.setBody(body);
         Http h = new Http();
         HttpResponse resp = h.send(request);
-            //ATHR - Deeply Nested if 16209
-            if(resp.getStatusCode() > 299){
-                return new AysncJobDetailWrapper(null,'Bulk API',null,null,'In Progress');
-            }
+      
+        if(resp.getStatusCode() <= 299) {
             respMap = (Map<String, Object>) Json.deserializeUntyped(resp.getBody());
              jobId = (String)respMap.get('id');
             
@@ -114,6 +109,8 @@ public without sharing class Core_MDF_BulkAPI_Operations {
               
             }
 
+        }
+    }
         String jobIds = (String)respMap.get('id');
         String operation = (String)respMap.get('operation');
         String objectName = (String)respMap.get('object');

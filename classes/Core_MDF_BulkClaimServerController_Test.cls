@@ -85,10 +85,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         userList.add(RMFUser);
         
         User sysAdminUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-        sysAdminUser.Email = 'sysadmin.test@example.com';
-        sysAdminUser.Username = 'sysadmin.test.@example.com';
         sysAdminUser.LanguageLocaleKey = 'en_US';
-        sysAdminUser.isActive = TRUE;
         userList.add(sysAdminUser);
         database.insert(userList);
         
@@ -212,7 +209,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                           'Small and Medium Business',
                                                                                                           'Chromebook',
                                                                                                           'Intel® Core™ i7 Processor',
-                                                                                                          'Digital Media (Pre-2025)',
+                                                                                                          'Digital Media',
                                                                                                           'NonPartner.com',
                                                                                                           'Draft',
                                                                                                           false);       
@@ -232,7 +229,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Digital Media (Pre-2025)',
+                                                                                                          'Digital Media',
                                                                                                           'EcosystemPartner.com',
                                                                                                           'Draft',
                                                                                                           false);
@@ -240,7 +237,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         //testPartnerFundRequest.Core_MDF_Budget_Type_txt__c = 'CCF 1.0';
         testPartnerFundRequest.Core_MDF_Activity_SubType_nm__c = 'Email';
         testPartnerFundRequest.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequest.Core_MDF_Start_Date__c = system.today().addDays(-1);
+        testPartnerFundRequest.Core_MDF_Start_Date__c = system.today();
         testPartnerFundRequest.Core_MDF_End_Date__c	 = system.today().addDays(3);
         testPartnerFundRequest.Amount=5000;
         testPartnerFundRequest.Core_MDF_Country_nm__c = 'INDIA';
@@ -252,7 +249,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Digital Media (Pre-2025)',
+                                                                                                           'Digital Media',
                                                                                                            'EcosystemPartner.com',
                                                                                                            'Draft',
                                                                                                            false);
@@ -260,7 +257,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         //testPartnerFundRequest2.Core_MDF_Budget_Type_txt__c = 'CCF 1.0';
         //testPartnerFundRequest2.Core_MDF_Activity_SubType_nm__c = 'Email';
         testPartnerFundRequest2.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequest2.Core_MDF_Start_Date__c = system.today().addDays(-1);
+        testPartnerFundRequest2.Core_MDF_Start_Date__c = system.today();
         testPartnerFundRequest2.Core_MDF_End_Date__c = system.today().addDays(3);
         testPartnerFundRequest2.Amount=5000;
         testPartnerFundRequest.Core_MDF_Country_nm__c = 'INDIA';
@@ -272,7 +269,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Broadcast (Pre-2025)',
+                                                                                                           'Broadcast',
                                                                                                            'Podcast',
                                                                                                            'Draft',
                                                                                                            false);
@@ -291,7 +288,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Broadcast (Pre-2025)',
+                                                                                                           'Broadcast',
                                                                                                            'Podcast',
                                                                                                            'Draft',
                                                                                                            false);
@@ -308,7 +305,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Broadcast (Pre-2025)',
+                                                                                                           'Broadcast',
                                                                                                            'Podcast',
                                                                                                            'Draft',
                                                                                                            false);
@@ -326,7 +323,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                            'Consumer',
                                                                                                            'Desktop',
                                                                                                            'Intel® Core™ i5 Processor',
-                                                                                                           'Digital Media (Pre-2025)',
+                                                                                                           'Digital Media',
                                                                                                            'NonPartner.com',
                                                                                                            'Draft',
                                                                                                            false);
@@ -343,7 +340,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Digital Media (Pre-2025)',
+                                                                                                          'Digital Media',
                                                                                                           'NonPartner.com',
                                                                                                           'Draft',
                                                                                                           false);
@@ -365,7 +362,7 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Digital Media (Pre-2025)',
+                                                                                                          'Digital Media',
                                                                                                           'NonPartner.com',
                                                                                                           'Draft',
                                                                                                           false);
@@ -799,8 +796,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                WHERE Core_MDF_Channel_program__c = :channelProgramName
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
 /*Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :channelProgramName AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  AND Core_MDF_Category__c = :Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             Test.startTest();
             
@@ -861,12 +858,11 @@ private class Core_MDF_BulkClaimServerController_Test{
     //Test Method to fetchUserAndTemplateDetails 
     @isTest static void testFetchUserAndTemplateDetails() {
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
 
         Test.startTest();
-         // Highlight: Unused Local Variable 
-        // User japaneseUser = [Select Id from User WHERE LanguageLocaleKey = 'ja' LIMIT 1];
+        User japaneseUser = [Select Id from User WHERE LanguageLocaleKey = 'ja' LIMIT 1];
         List <String> fetchUserList = new List <String>();
         fetchUserList = Core_MDF_BulkClaimServerController.fetchUserAndTemplateDetails('CCF');
         assert.areEqual(FALSE,fetchUserList.contains('PowerPartner'));
@@ -879,15 +875,14 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testParseFileAndDuplicateRecordInsertion() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             List<Account> accounts = [Select Id, Name, Core_MDF_CoMarketing_Ultimate_Account__c  from Account where Name in ('Test Acc New 2','Test Acc New 3')];
             List<PartnerFundRequest> activityRecordList = [Select id, Title, Core_MDF_Activity_Number__c,ChannelPartner.Core_MDF_Active_Ind__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Fund_Request_Status__c from PartnerFundRequest where ChannelPartnerId IN :accounts limit 2];
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Account_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
             String dateFormatString = 'dd-MMM-yy';
-            // Highlight: Unused Local Variable
-           // Date d = Date.today();
+            Date d = Date.today();
             Datetime dt = system.today();
             String dateString = dt.format(dateFormatString);
            
@@ -920,8 +915,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template'
                                                                                                                                          ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Test.startTest();
@@ -951,7 +946,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testUpdateScenariosOnClaimBatchStageRecords() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE LanguageLocaleKey='en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             Account intelAccount = [Select id from Account where Name = 'Test Acc New 1'];
@@ -968,8 +963,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template'
                                                                                                                                          ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
@@ -980,8 +975,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c, Core_MDF_Bank_Account_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
-            // Highlight: Unused Local Variable 
-           // String fileName = 'file1.csv';
+            String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             String csvStringForFailedRecord = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle","Bank","Bank Account Number(last 4 digits)","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Dell DCF Claim from Bulk 1,' 
             + activityRecord.Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email,7011,' + '1245678981'+ ',' + '1243'+ ',' +dateString + ',1234,USD,10,0,0,DCF2Claim2';
@@ -1002,7 +996,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testUIErrorMessages() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE LanguageLocaleKey='en_US' LIMIT 1];
         System.runAs(sysAdminUser){
              Account intelAccount = [Select id from Account where Name = 'Test Acc New 1'];
             
@@ -1016,8 +1010,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
@@ -1027,9 +1021,8 @@ private class Core_MDF_BulkClaimServerController_Test{
             Date d = Date.today();
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
-            // Highlight: Unused Local Variable
-          //  Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
-           // String fileName = 'file1.csv';
+            Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
+            String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             // Invalid Activity Sub Type error
             String csvStringForRecord = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle","Bank","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Dell DCF Claim from Bulk 1,' + activityRecord.Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,'+'Banner/Display;Video;qwerty'+',7011,' + null+ ',' + dateString + ',1234,USD,10,0,0,Dell DCFClaim1';
@@ -1060,7 +1053,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testValidationErrorMessages() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM User WHERE LanguageLocaleKey='en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             String channelProgramName = [Select Core_MDF_Technical_Program_Name__c From ChannelProgram  LIMIT 1].Core_MDF_Technical_Program_Name__c;
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
@@ -1073,8 +1066,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
             Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :channelProgramName AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  AND Core_MDF_Category__c = :Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             List<String> pfrTitleList = new List<String>();
@@ -1091,8 +1084,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Account_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
-            // Highlight: Unused Local Variable 
-           // String fileName = 'file1.csv';
+            String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             // Invalid Activity Sub Type error
             String csvStringForRecord = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle","Bank","Bank Account Number(last 4 digits)","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Bulk Claim 1,' + pfrMap.get('OEM CMP').Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,'+'Video'+',7011,' + '1234567898'+ ',' + '1246' + ',' +dateString + ',1234,USD,10,0,0,Bulk Claim Claim1';                      
@@ -1159,7 +1151,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testUIValidationsAndFailedStageScenarios() {
         
         
-        User sysAdminUser = [SELECT ID FROM User WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT ID FROM User WHERE LanguageLocaleKey='en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             String channelProgramName = [Select Core_MDF_Technical_Program_Name__c From ChannelProgram  LIMIT 1].Core_MDF_Technical_Program_Name__c;
             Account intelAccount = [Select id from Account where Name = 'Test Acc New 1'];
@@ -1175,14 +1167,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             PartnerFundRequest activityRecord = [Select id, Title, Core_MDF_Activity_Number__c, Core_MDF_Fund_Request_Status__c from PartnerFundRequest where Title = 'test' Limit 1];
-            // Highlight: Unused Local Variable 
-           // Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
+            Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
 
             
@@ -1218,7 +1209,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testFetchClaimRecType() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             List<Account> accounts = [Select Id, Name, Core_MDF_CoMarketing_Ultimate_Account__c  from Account where Name in ('Test Acc New 2','Test Acc New 3')];
@@ -1231,15 +1222,13 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             Datetime wrongdt = Datetime.newInstance(wdate.year(), wdate.month(),wdate.day());
             String dateString = dt.format(dateFormatString);
-            // Highlight: Unused Local Variable 
-           // String wrongDateString = wrongdt.format(dateFormatString);
+            String wrongDateString = wrongdt.format(dateFormatString);
             
             String csvString = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle,Bank,Bank Account Number(last 4 digits)","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Dell DCF Claim from Bulk 1,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email,Krishna1011,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',1234,USD,10,0,0,Dell DCF Bulk Claim1 \n Dell DCF Claim from Bulk 1,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString +',India,Email,99999997644,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',1234,USD,10,0,0,Dell DCF Bulk Claim1 \n Dell DCF Claim from Bulk 3,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email,99999997644,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString +',1234,USD,10,0,0,Dell DCF Bulk Claim1';
             csvString = csvString + '\n Dell DCF Claim from Bulk 4,' + pfrList[1].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email' +',Krishna1014,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',12345,USD,50,0,0,Dell DCF Bulk Claim1' ;
             Blob myBlob = Blob.valueof(csvString);
-            // Highlight: Unused Local Variable 
-           // String base64Data = EncodingUtil.base64Encode(myBlob);
-          //  String fileName = 'fileName.csv';
+            String base64Data = EncodingUtil.base64Encode(myBlob);
+            String fileName = 'fileName.csv';
             
             ChannelProgram channelProgram = [Select id,Name from ChannelProgram where Name = 'Client'];
             Test.startTest();    
@@ -1264,14 +1253,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             
             List<Core_MDF_Claim_Batch_Stage__c> listOfbatchStagerecords = Core_MDF_BulkClaimServerController.validateDataType(metadataIdToRecordMap,myBlob,accounts[0].Core_MDF_CoMarketing_Ultimate_Account__c,channelProgram.Id);
             Core_MDF_BulkClaimServerController.insertClaimBatchStageRecords(listOfbatchStagerecords,claimbatchinstance,recordType);
-            
             String jobId = System.schedule('claimbsvd111','0 15 * * * ?', new Core_MDF_ClaimInsert_Schedule(System.now()));
             assert.areEqual(bankRecord.Core_MDF_Supplier_Number__c,'1231231230'); 
         }
@@ -1280,7 +1268,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testActivityUpdate() {
         
         Test.startTest();
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             List<Account> accounts = [Select Id, Name from Account where Name in ('Test Acc New 1','Test Acc New 2','Test Acc New 4','Test Acc New 5')];
@@ -1300,9 +1288,8 @@ private class Core_MDF_BulkClaimServerController_Test{
             csvString = csvString + '\n Dell DCF Claim from Bulk 6,' + pfrList[2].Core_MDF_Activity_Number__c + ',' + wrongDateString + ',' + dateString + ',India,Email,Krishna1017,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + dateString + ',12345,USD,50,0,0,Claim from Bulk 7 Claim1' ;
             csvString = csvString + '\n Dell DCF Claim from Bulk 7,' + pfrList[2].Core_MDF_Activity_Number__c + ',' + wrongDateString + ',' + dateString + ',India,Email,Krishna1018,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + dateString + ',12345,USD,50,0,0,Claim from Bulk 7 Claim1' ;
             Blob myBlob = Blob.valueof(csvString);
-            // Highlight: Unused Local Variable 
-          //  String base64Data = EncodingUtil.base64Encode(myBlob);
-          //  String fileName = 'fileName.csv';
+            String base64Data = EncodingUtil.base64Encode(myBlob);
+            String fileName = 'fileName.csv';
             
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
             
@@ -1317,14 +1304,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                WHERE Core_MDF_Channel_program__c = :channelProgramName
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable 
-         /*   Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
+            Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
-                                                                                                                                         AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);  */
+                                                                                                                                         AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             
@@ -1478,7 +1464,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testStageClaimErrorRecord() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             Test.startTest();  
             List<Account> accounts = [Select Id, Name from Account where Name in ('Test Acc New 2','Test Acc New 3')];
@@ -1510,14 +1496,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                 FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                 WHERE Core_MDF_Channel_program__c = :channelProgramName1
                                                                                                                                                 AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable
-          /*  Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
+            Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName1 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
-                                                                                                                                         AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);  */
+                                                                                                                                         AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                      FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                      FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                       WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName1 LIMIT 1];
             
             List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List <Core_MDF_Claim_Batch_Stage__c>();
@@ -1566,7 +1551,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testStageClaimFlowRecord() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             List<Account> accounts = [Select Id, Name from Account where Name in ('Test Acc New 2','Test Acc New 3')];
@@ -1597,14 +1582,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                 FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                 WHERE Core_MDF_Channel_program__c = :channelProgramName1
                                                                                                                                                 AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable
-          /*  Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap1 = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id,Core_MDF_Field_2_txt__c,Core_MDF_Field_1_txt__c,Core_MDF_Sort_Order_Nbr__c,
+            Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap1 = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id,Core_MDF_Field_2_txt__c,Core_MDF_Field_1_txt__c,Core_MDF_Sort_Order_Nbr__c,
                                                                                                                                                 Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c
                                                                                                                                                 FROM Core_MDF_CCP_Custom_Metadata_Utility__c
                                                                                                                                                 WHERE Core_MDF_Category__c = 'bulk claim template' AND Core_MDF_Program__c = :channelProgramName1
-                                                                                                                                                AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText]);  */
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                      FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+                                                                                                                                                AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText]);
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                      FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                       WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName1 LIMIT 1];
             Test.startTest();  
             List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List<Core_MDF_Claim_Batch_Stage__c>();
@@ -1670,7 +1654,7 @@ private class Core_MDF_BulkClaimServerController_Test{
     @isTest static void testJobLimitException() {
         
         
-        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE Email = 'sysadmin.test@example.com' LIMIT 1];
+        User sysAdminUser = [SELECT Id,LanguageLocaleKey FROM USER WHERE LanguageLocaleKey = 'en_US' LIMIT 1];
         System.runAs(sysAdminUser){
             
             List<Account> accounts = [Select Id, Name,Core_MDF_CoMarketing_Ultimate_Account__c  from Account where Name in ('Test Acc New 2','Test Acc New 3','Test Acc New 4','Test Acc New 6','Test Acc New 7')];
@@ -1724,8 +1708,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Test.startTest();

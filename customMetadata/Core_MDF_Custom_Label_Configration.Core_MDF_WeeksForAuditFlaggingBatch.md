@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">2</value>
+        <value xsi:type="xsd:string">1</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">1;2;3;4;5;6;7;8;9;10;11;12;13</value>
+        <value xsi:type="xsd:string">1;2;4;6;8;9;10;13;11</value>
     </values>
 </CustomMetadata>

@@ -2,51 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>TempEMAIL</name>
-        <label>TempEMAIL</label>
-        <locationX>264</locationX>
-        <locationY>539</locationY>
-        <assignmentItems>
-            <assignToReference>emailId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>calcEmail</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_Contact_Fields</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>Email_Check</name>
-        <label>Email Check</label>
-        <locationX>176</locationX>
-        <locationY>431</locationY>
-        <defaultConnector>
-            <targetReference>TempEMAIL</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Is_Email_Contain_Deleted</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Email</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>deleted</stringValue>
-                </rightValue>
-            </conditions>
-            <label>Is Email Contain Deleted</label>
-        </rules>
-    </decisions>
     <description>Triggered from a checkbox field, this will &quot;tokenize&quot; a contact - replace their name &amp; email with junk characters and blank out their phone numbers</description>
     <environments>Default</environments>
-    <formulas>
-        <name>calcEmail</name>
-        <dataType>String</dataType>
-        <expression>IF(NOT(ISBLANK({!$Record.Core_eRPM_Person_Id__c})), {!$Record.Core_eRPM_Person_Id__c} &amp; &apos;@deleted.com&apos;, {!$Record.Id} &amp; &apos;@deleted.com&apos;)</expression>
-    </formulas>
     <interviewLabel>Core_Contact_Tokenize {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ACM_Core_Contact_Tokenize</label>
     <processMetadataValues>
@@ -68,56 +25,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>Create_Log_Entry_Record</name>
-        <label>Create Log Entry Record</label>
-        <locationX>528</locationX>
-        <locationY>755</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>Core_Contact_Tokenize</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Update Contact Fields</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordLookups>
         <description>get Contact DO not contact record type</description>
         <name>getContact_Recordtype</name>
@@ -126,7 +33,7 @@
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Email_Check</targetReference>
+            <targetReference>Update_Contact_Fields</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -153,11 +60,8 @@
         <description>Tokenize contact by updating fields.</description>
         <name>Update_Contact_Fields</name>
         <label>Update Contact Fields</label>
-        <locationX>264</locationX>
-        <locationY>647</locationY>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_Record</targetReference>
-        </faultConnector>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Core_English_Only_First_Name__c</field>
             <value>
@@ -185,19 +89,19 @@
         <inputAssignments>
             <field>Email</field>
             <value>
-                <elementReference>emailId</elementReference>
+                <stringValue>?????@example.com</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>FirstName</field>
             <value>
-                <stringValue>Deleted</stringValue>
+                <stringValue>?????</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>LastName</field>
             <value>
-                <stringValue>User</stringValue>
+                <stringValue>?????</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -240,13 +144,6 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <variables>
-        <name>emailId</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
     <variables>
         <name>RecordTypeID</name>
         <dataType>String</dataType>

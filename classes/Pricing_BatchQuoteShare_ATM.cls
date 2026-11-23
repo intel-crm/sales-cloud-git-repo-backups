@@ -87,6 +87,9 @@ public without sharing class Pricing_BatchQuoteShare_ATM  implements Database.Ba
     * @param bc 
     **/
     public void finish(Database.BatchableContext bc){
+        // Get the batch job information
+        AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
+                          FROM AsyncApexJob WHERE Id =:bc.getJobId()];
         
     }
 }

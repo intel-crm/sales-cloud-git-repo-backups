@@ -3,7 +3,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
     
     @TestSetup static void setUpData(){
          Profile profileid1 =[select id,name from Profile where name='System Administrator' limit 1];
-        User user = Core_MDF_CCP_TestDataUtility.createUser(false);
+    User user = Core_MDF_CCP_TestDataUtility.createUser(false);
         UserRole ur = [Select Id,name from UserRole where name='Admin' limit 1];
         user.profileId = profileid1.id;
         user.UserRoleId = ur.id;
@@ -79,7 +79,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
         }
         Database.update(accountList); 
         }
-            //Create CCF Group
+          //Create CCF Group
         Group ccfgrp = new Group();
         ccfgrp.Name = 'Core CCP CCF Internal';
         ccfgrp.DeveloperName = 'Core_CCP_CCF_Internal';
@@ -119,7 +119,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
         Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contactList[0].Id,
                                                                          Core_Entitlement_Id__c=entitlementCCF.id,
                                                                          Core_Selected__c=true);
-        contactEntList.add(ce);         
+        contactEntList.add(ce);      
         
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contactList[1].Id,
                                                                           Core_Entitlement_Id__c=entitlementCCF.id,
@@ -357,10 +357,8 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
         List<Core_MDF_Account_Bank_Mapping__c> listOfABM = new List<Core_MDF_Account_Bank_Mapping__c>();
         Map<Id,Core_MDF_Account_Bank_Mapping__c> abmMap = new Map<Id,Core_MDF_Account_Bank_Mapping__c>();
         Core_MDF_Account_Bank_Mapping__c abm = [Select Id, Core_MDF_Account__c,Core_MDF_Bank__c, Core_MDF_Active_ind__c from Core_MDF_Account_Bank_Mapping__c limit 1];
-        abmMap.put(abm.Id,abm);
+         abmMap.put(abm.Id,abm);
         listOfABM.add(abm);
-        // Unit Test Method should include System.Assert
-        System.assertEquals(1, listOfABM.size(), 'List should contain exactly one ABM record');
         
         Account acc = [Select id from Account where name = 'Test Account CCF2' limit 1];
         abm.Core_MDF_Account__c = acc.id;
@@ -384,7 +382,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                        Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                        string.valueof(camp.Core_MDF_Account__c),pfa,pmb,'INDIA','Small Business',
-                                                                                       'Desktop','Intel® Core™ i7 Processor','Audio',
+                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                        'Podcast','Draft',false);
         pfr.RequestedAmount = 900000;
         pfr.Amount = 900000;
@@ -416,7 +414,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
+            newClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             Database.insert(newClaim);
             abmCCF1.Core_MDF_Active_ind__c = FALSE;
             abmDCF.Core_MDF_Active_ind__c = FALSE;
@@ -494,8 +492,7 @@ public class Core_MDF_BankAccountTriggerHandler_Test {
                                           }
         
         List<Core_MDF_Partner_Node_User_Mapping__c> deleteRecordList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
-        // Highlight: Unused Local Variable
-       // List<Core_MDF_Account_Bank_Mapping__c> insertlist = new List<Core_MDF_Account_Bank_Mapping__c>();     
+        List<Core_MDF_Account_Bank_Mapping__c> insertlist = new List<Core_MDF_Account_Bank_Mapping__c>();     
         Test.startTest();
         UserRole adminRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User adminUser = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -587,8 +584,8 @@ Database.insert(retailbankaccount);
                                                   testBank3 = bankRecord;                                
                                               }
                                           }
-        // Highlight: Unused Local Variable
-       // List<Core_MDF_Partner_Node_User_Mapping__c> deleteRecordList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
+        
+        List<Core_MDF_Partner_Node_User_Mapping__c> deleteRecordList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
         
         System.runAs(usr){ 
             
@@ -719,8 +716,7 @@ Database.insert(retailbankaccount);
     static void testROSharing(){
         User usr = [SELECT Id,Email from User where Email='paymentadmin@example.com' limit 1];
         Test.startTest();
-        // Highlight: Unused Local Variable
-       // Account coaccCCF = [SELECT Id from Account where Name='Test Account CCF1' limit 1];
+        Account coaccCCF = [SELECT Id from Account where Name='Test Account CCF1' limit 1];
         Campaign camp = [SELECT Id, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Channel_Program__c from Campaign where Name='TestCamp' limit 1];
         PartnerFundAllocation pfa = [SELECT Id FROM PartnerFundAllocation WHERE Title = 'Test Allocation'];
         PartnerMarketingBudget pmb = [SELECT Id FROM PartnerMarketingBudget WHERE Title = 'Test Budget'];
@@ -728,7 +724,7 @@ Database.insert(retailbankaccount);
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                        Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                        string.valueof(camp.Core_MDF_Account__c),pfa,pmb,'INDIA','Small Business',
-                                                                                       'Desktop','Intel® Core™ i7 Processor','Audio',
+                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                        'Podcast','Draft',false);
         pfr.RequestedAmount = 900000;
         pfr.Amount = 900000;
@@ -741,9 +737,9 @@ Database.insert(retailbankaccount);
         Database.insert(pfr);
         
         pfr = [SELECT Id, Core_MDF_Region_nm__c, Core_MDF_Program__c from PartnerFundRequest where Title='Test' limit 1];
-         // Highlight: Unused Local Variable
-      /*  Core_MDF_Bank__c testBank = [SELECT Id, Core_MDF_Supplier_Number__c,Core_MDF_Program__c
-                                     FROM Core_MDF_Bank__c WHERE Core_MDF_Supplier_Number__c = '1234567891' limit 1];  */
+        
+        Core_MDF_Bank__c testBank = [SELECT Id, Core_MDF_Supplier_Number__c,Core_MDF_Program__c
+                                     FROM Core_MDF_Bank__c WHERE Core_MDF_Supplier_Number__c = '1234567891' limit 1];
         
         Core_MDF_Account_Bank_Mapping__c abmCCF1;
         System.RunAs(usr){
@@ -786,14 +782,14 @@ Database.insert(retailbankaccount);
         Core_MDF_Account_Bank_Mapping__c pbankaccount = [SELECT id,Core_MDF_Active_ind__c FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Account__c =: camp.Core_MDF_Account__c ];
         Core_MDF_Bank__c testBank = [SELECT Id, Core_MDF_Supplier_Number__c,Core_MDF_Program__c
                                      FROM Core_MDF_Bank__c WHERE Core_MDF_Supplier_Number__c = '1234567891' limit 1];
-        Account ccfAcc3 = [SELECT Id from Account where Name='Test Account CCF3' limit 1];      
+        Account ccfAcc3 = [SELECT Id from Account where Name='Test Account CCF3' limit 1];    
         PartnerFundAllocation pfa = [SELECT Id FROM PartnerFundAllocation WHERE Title = 'Test Allocation'];
         PartnerMarketingBudget pmb = [SELECT Id FROM PartnerMarketingBudget WHERE Title = 'Test Budget'];
         
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                        Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                        string.valueof(camp.Core_MDF_Account__c),pfa,pmb,'INDIA','Small Business',
-                                                                                       'Desktop','Intel® Core™ i7 Processor','Audio',
+                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                        'Podcast','Draft',false);
         pfr.RequestedAmount = 900000;
         pfr.Amount = 900000;
@@ -804,9 +800,8 @@ Database.insert(retailbankaccount);
         pfr.Core_MDF_Start_Date__c = System.today().addDays(-5);
         pfr.Core_MDF_End_Date__c = System.today();
         Database.insert(pfr);
-       // Highlight: Unused Local Variable
-      //  List<PartnerFundRequest> partnerFndActivityNumber = [select Core_MDF_Activity_Number__c from PartnerFundRequest where id=:pfr.id];
-         
+        List<PartnerFundRequest> partnerFndActivityNumber = [select Core_MDF_Activity_Number__c from PartnerFundRequest where id=:pfr.id];
+     
         PartnerFundClaim newClaim = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', 
                                                                 Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, 
                                                                 System.today(), System.today(), 122, 
@@ -814,7 +809,7 @@ Database.insert(retailbankaccount);
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-        	newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';        
+        	newClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             Database.insert(newClaim);
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();

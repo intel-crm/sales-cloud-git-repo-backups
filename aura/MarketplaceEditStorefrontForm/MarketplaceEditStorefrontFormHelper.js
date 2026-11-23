@@ -299,88 +299,12 @@
     },
     
     handleReSubmit : function(component, helper) {
-        console.log('current step for handlerresubmit',component.get('v.currentStep'));
+        
         return new Promise($A.getCallback(function(resolve, reject) {
             const data = helper.generateFormData(component, helper);
-            console.log(data+'data');
-         console.log(data+'entered into data loop');
-                 //new code for validation on resubmit button
-        let logoImage;
-        let messageForToast='';
-        //Modified by Ajay for form validation and tab content logic
-            const logoCmp = component.find("uploader1");
-            console.log(logoCmp+'logoCmp315');
-            if(logoCmp) {
-                logoImage = logoCmp.get('v.images');
-                const logo = (logoCmp!=null && logoCmp.get('v.images') && logoCmp.get('v.images').length > 0)?true:false;
-                console.log('check data logo : '+logo);
-                component.set('v.logoCheck',logo);
-            }
-        
-        if(logoImage) {
-            if (logoImage[0] != undefined) {
-                component.set('v.logourl', logoImage[0].url);
-            }
-        } else {
-            component.set('v.hasLogo',false);
-        }
-
-        const logoCheck = component.get('v.logoCheck');
-        console.log(logoCheck+'logoCheck334');
-        if (!logoCheck) {
-          messageForToast=messageForToast+$A.get("$Label.c.PMP_Edit_Storefront_Logo_Error")+'\n';
-           console.log(messageForToast+'messageForToast338');
-        }
-        console.log('check data logoCheck1: '+logoCheck);
-         // step 2 
-        if (data.descriptionData && !data.descriptionData.tagline) {
-           messageForToast=messageForToast+$A.get("$Label.c.PMP_Edit_Storefront_Tagline_Error")+'\n';
-        }
-        if (data.descriptionData && !data.descriptionData.language) {
-            messageForToast=messageForToast+$A.get("$Label.c.PMP_Edit_Storefront_Language_Error")+'\n';
-        }
-        if ((data.descriptionData && !data.descriptionData.description) ||(data.descriptionData && data.descriptionData.description && data.descriptionData.description.length>131072)) {
-          messageForToast=messageForToast+$A.get("$Label.c.PMP_Edit_Storefront_Description_Error")+'\n';
-        }  //US954587 added OR Condition
-        //state country validation code
-         const partner = component.get("v.partner");
-        console.log('partnerfor messagetoast',partner);
-         if(!partner.country || partner.country == ''){
-         messageForToast=messageForToast+$A.get("$Label.c.PMP_Invalid_Address")+'\n';
-          component.set("v.isStateDisabled", true);
-           console.log('partnerfor isStateDisabled', component.get("v.isStateDisabled"));   
-         }
-        if(partner.country && (!partner.state|| partner.state == '')){
-            messageForToast=messageForToast+$A.get("$Label.c.PMP_Invalid_Address")+'\n';
-           	console.log('partnerfor state', partner.state);   
-        }
-		console.log('messageForToast'+messageForToast);
-        if(messageForToast!=null || messageForToast!=undefined || messageForToast!=''){
-                        component.set('v.showSpinner', false);  
-            component.set('v.isAnyError', true);
-            const currentstep=0;
-            const tabset = component.find("tabset");
-            console.log('tabset',tabset);                
-               const logErrorToastEvent = $A.get("e.force:showToast");
-               logErrorToastEvent.setParams({
-                            "title":  "Error",
-                            "type": "error",
-                            "mode":"sticky",
-                            "message":  messageForToast
-                        });
-               logErrorToastEvent.fire();
-               if(tabset) tabset.changeTab("0");
-            console.log('anyerror:1'+component.get('v.isAnyError'));
-               
-        }
-             if(messageForToast==null || messageForToast==''){  
-             component.set('v.isAnyError', false);
-                  console.log('anyerror:noerros'+component.get('v.isAnyError'));
-             }
-            console.log('anyerror:2'+component.get('v.isAnyError'));
-		if(!component.get('v.isAnyError')){
-            console.log('anyerror:'+component.get('v.isAnyError'));
-        const action = component.get("c.saveEditFormData");
+            
+            
+            const action = component.get("c.saveEditFormData");
             action.setParams({
                 'partnerId':component.get('v.partnerId'),
                 'requestJSON': JSON.stringify(data)
@@ -395,7 +319,6 @@
             savingInProgressStorefrontToastEvent.fire();
             action.setCallback(this, function(response) {
                 const status = response.getState();
-                console.log('status of saveform',status);
                 if (status === "SUCCESS") {
                     //IPA 2.0 TWC729-7887
                     if (data.status==='Approved' && component.get('v.isIntelAdmin') /*&& !component.get('v.isEnhanced')*/) { 
@@ -430,7 +353,6 @@
                         if (errors[0] && errors[0].message) {
                             
                             component.set('v.showSpinner', false); 
-                            
                             const SaveStoreFrontErrorToastEvent = $A.get("e.force:showToast");
                             SaveStoreFrontErrorToastEvent.setParams({
                                 "title":  $A.get("$Label.c.PMP_Storefront_Edit_Error_Title"),
@@ -464,10 +386,8 @@
                     reject('Unknown error.');
                 }
             });
-		//}
             
-            
-            $A.enqueueAction(action);}
+            $A.enqueueAction(action);
         }));
     },
 //IPA 2.0 TWC729-7887
@@ -686,7 +606,7 @@
         if (!logoCheck) {
             msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Logo_Error"));
         }
-        console.log('check data logoCheck2 : '+logoCheck);
+        console.log('check data logoCheck : '+logoCheck);
 
         if (!data.partner || !data.partner.name) {msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Partner_Name_Error")); }//Added by Subash for US682883
        // website field Changes- Starts
@@ -722,7 +642,7 @@
         if (!isDistributor && !data.regionsSelected.length) {msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Geo_Error"));}   //'You need to select at least one region.'
         
         // step 4
-        /*if (!data.resources.length) {msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Resource_Error"));}   //'You need at least one resource.'
+        if (!data.resources.length) {msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Resource_Error"));}   //'You need at least one resource.'
         
         component.set('v.formErrorMsgs', msgs);
         
@@ -734,56 +654,7 @@
         
         
                 
-        return ((resourcesValid  && msgs.length == 0) && websiteValid);*/
-        //resourceUrlStart
-        if (!data.resources.length) {
-            msgs.push($A.get("$Label.c.PMP_Edit_Storefront_Resource_Error"));
-        }
-        
-        component.set('v.formErrorMsgs', msgs);
-        
-        /* -----------------------
-           Validate Title & Type
-        ------------------------*/
-        const resources = component.find("resource") ? [].concat(component.find("resource")) : [];
-        let resourcesValid = true;
-        
-        resources.forEach(function(input) {
-            if (!input.checkValidity()) {
-                resourcesValid = false;
-            }
-        });
-        
-        /* -----------------------
-           Validate Resource URL
-        ------------------------*/
-        let patternresource = component.get("v.urlMatchingPattern");
-        const resourceUrls = component.find("resourceUrl") ? [].concat(component.find("resourceUrl")) : [];
-        let resourceUrlsValid = true;
-        
-        resourceUrls.forEach(function(input) {
-        
-            let value = input.get("v.value");
-        
-            input.setCustomValidity(""); // clear previous error
-        
-            if (!value) {
-                input.setCustomValidity("Complete required field - URL");
-                input.showHelpMessageIfInvalid();
-                resourceUrlsValid = false;
-        
-            } else if (!value.match(patternresource)) {
-                input.setCustomValidity("Please enter URL in valid format");
-                input.showHelpMessageIfInvalid();
-                resourceUrlsValid = false;
-            }
-        });
-        
-        /* -----------------------
-           Final Return
-        ------------------------*/
-        return ((resourcesValid && resourceUrlsValid && msgs.length == 0) && websiteValid);
-        //resourceUrlEnd
+        return ((resourcesValid  && msgs.length == 0) && websiteValid);
        
         return [0,1,2,3].find(function(step) {
             return !helper.isStepValid(component, helper, step);
@@ -835,40 +706,13 @@
         
         //Added by Nikhil
         if (currentStep == 3) {
-            /*let resValid = true;
+            let resValid = true;
             data.resources.forEach(function(res, i){
                     if (!res.title || !res.type || !res.url || !res.url.match(component.get('v.urlMatchingPattern'))) {
                        
                         resValid = false;
                     }
                 });
-            return resValid;*/
-            
-    	let resValid = true;
-        let pattern = component.get("v.urlMatchingPattern");
-    
-        // Find URL inputs, normalize to array
-        let urlCmps = component.find("resourceUrl");
-        if (urlCmps && !Array.isArray(urlCmps)) {
-            urlCmps = [urlCmps];
-        }
-    
-        data.resources.forEach(function(res, i) {
-            // Title or Type missing
-            if (!res.title || !res.type) {
-                resValid = false;
-            }
-    
-            // URL missing or invalid
-            let urlValue = res.url;
-            if (urlCmps && urlCmps[i]) {
-                urlValue = urlCmps[i].get("v.value"); // read latest input value
-            }
-    
-            if (!urlValue || !urlValue.match(pattern)) {
-                resValid = false;
-            }
-        });    
             return resValid;
         }
         
@@ -1111,7 +955,7 @@
             currentHeading = labels.isAdminStep2;
         }
         
-        if(component.get('v.isFromLink') && !component.get('v.isAnyError')) {	
+        if(component.get('v.isFromLink')) {	
             currentHeading = $A.get("$Label.c.PMP_Edit_Storefront_Modal_Heading_Review");	
         }
         component.set('v.modalHeading', currentHeading);
@@ -1245,78 +1089,23 @@
         }
         
         if (currentStep == 3) {
-            let pattern = component.get("v.urlMatchingPattern");
-
-            // Find URL inputs (normalize to array)
-            let urlCmps = component.find("resourceUrl");
-            if (!Array.isArray(urlCmps)) urlCmps = [urlCmps];
-        
-            // Clear previous URL errors
-            urlCmps.forEach(cmp => {
-                if (cmp) {
-                    cmp.setCustomValidity("");
-                    cmp.showHelpMessageIfInvalid();
-                }
-            });//check
             if (!data.resources.length) {
                 errorInputs.push({
                     name: 'resScrollId',
                     label: $A.get("$Label.c.PMP_Edit_Storefront_Company_Resources")
                 });
-            } else 
-                /*data.resources.forEach(function(res, i){
+            } else {
+                data.resources.forEach(function(res, i){
                     if (!res.title || !res.type || !res.url || !res.url.match(component.get('v.urlMatchingPattern'))) {
                        const resourceString = $A.get("$Label.c.PMP_Edit_Storefront_Resources_Res");
                         errorInputs.push({
                             name: 'resource' + i,
-                            label: resourceString + (i + 1) + ' - Missing title/type/URL or invalid URL'
+                            label: resourceString + (i + 1)
                         });
                     }
-                });*/
-                data.resources.forEach(function(res, i){
-
-                const resourceString = $A.get("$Label.c.PMP_Edit_Storefront_Resources_Res");
-            
-                    // Title missing
-                    if (!res.title) {
-                        errorInputs.push({
-                            name: 'resource' + i,
-                            label: resourceString + (i + 1) + ' - Complete required field - Title'
-                        });
-                    }
-                
-                    // Type missing
-                    if (!res.type) {
-                        errorInputs.push({
-                            name: 'resource' + i,
-                            label: resourceString + (i + 1) + ' - Complete required field - Type'
-                        });
-                    }
-                
-                    // URL missing
-		    if (urlCmps[i]) {
-                    if (!res.url) {
-                        urlCmps[i].setCustomValidity("Complete required field - URL");
-                        urlCmps[i].showHelpMessageIfInvalid();
-    
-                        errorInputs.push({
-                            name: 'resourceUrl' + i,
-                            label: resourceString + (i + 1) + ' - Complete required field - URL'
-                        });
-                    } else if (!res.url.match(pattern)) {
-                        urlCmps[i].setCustomValidity("Please enter URL in valid format");
-                        urlCmps[i].showHelpMessageIfInvalid();
-    
-                        errorInputs.push({
-                            name: 'resourceUrl' + i,
-                            label: resourceString + (i + 1) + ' - Please enter URL in valid format'
-                        });
-                    }
-                }
-                
                 });
-
             }
+        }
         
         component.set('v.errorInputs', errorInputs);
         component.set('v.showErrors', errorInputs.length > 0);

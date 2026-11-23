@@ -24,8 +24,8 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
     * author and date : Harshal Gosavi, 4th August 2021
     */
     public Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields){
-        String query = 'SELECT '+queryFields+' FROM account WHERE Id IN :accountIds';
-        List<Account> accounts = Database.query(String.escapeSingleQuotes(query));
+        String query = 'SELECT '+String.escapeSingleQuotes(queryFields)+' FROM account WHERE Id IN :accountIds';
+        List<Account> accounts = Database.query(query);
 
         Map<Id,Account> accountsById = new Map<Id,Account>(accounts);
         return accountsById.size() > 0 ? accountsById : null;
@@ -53,8 +53,8 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
     */
     public List<Account> selectAccountsByName(Set<String> accountNames, String queryFields){
         List<Account> accounts = new List<Account>();
-        String query = 'SELECT '+queryFields+' FROM account WHERE ( Name IN :accountNames OR Core_Data_Simplified_Account_Nm__c IN :accountNames) AND (RecordType.Id =:ecdAccRecordTypeId OR RecordType.Id =:reqAccRecordTypeId) ORDER BY RecordType.Name ASC , CreatedDate ASC';
-        return Database.query(String.escapeSingleQuotes(query));
+        String query = 'SELECT '+String.escapeSingleQuotes(queryFields)+' FROM account WHERE ( Name IN :accountNames OR Core_Data_Simplified_Account_Nm__c IN :accountNames) AND (RecordType.Id = \''+ecdAccRecordTypeId+'\' OR RecordType.Id = \''+reqAccRecordTypeId+'\') ORDER BY RecordType.Name ASC , CreatedDate ASC';
+        return Database.query(query);
     }
 
     /**
@@ -118,7 +118,7 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
             String query = String.format('SELECT {0} FROM Account_Business_Types__c Where Account__c IN :accountIds AND Effective_End_Date__c = null',new List<String>{queryFields});
             //System.debug('query==>'+query);
             //System.debug('Created Date '+System.now());
-            List<Account_Business_Types__c> accountBusinessTypes = Database.query(String.escapeSingleQuotes(query));
+            List<Account_Business_Types__c> accountBusinessTypes = Database.query(query);
             //System.debug('Created Date after '+System.now());
             //System.debug('accountBusinessTypes==>'+accountBusinessTypes);
 
@@ -145,6 +145,39 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
         if(businessTypesByAccountId.size() > 0){
             //System.debug('businessTypesByAccountId'+businessTypesByAccountId);
             return businessTypesByAccountId;
+        }
+        return null;
+    }
+
+     /*
+    * description : get Compliance Watch List record using Account Id.
+    * params : Set of accountIds , String queryFields
+    * return : Map<AccountId,List<Core_Account_Compliance_Watch_List__c>>
+    * author and date : Harshal Gosavi, 19th August 2021
+    */
+    public Map<Id,List<Core_Account_Compliance_Watch_List__c>> getComplianceWatchListByAccountId(Set<Id> accountIds, String queryFields){
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId = new Map<Id,List<Core_Account_Compliance_Watch_List__c>>();
+        try{
+            String formattedDate = getFormattedDate();
+            //String query = String.format('SELECT {0} FROM Core_Account_Compliance_Watch_List__c Where Core_Account_Id__c IN :accountIds AND (Core_Effective_End_Date__c = null OR (Core_Effective_End_Date__c != null AND (Core_Effective_Start_Date__c <= {1} AND Core_Effective_End_Date__c > {1})))',new List<String>{queryFields,formattedDate});
+            String query = String.format('SELECT {0} FROM Core_Account_Compliance_Watch_List__c Where Core_Account_Id__c IN :accountIds AND Core_Effective_End_Date__c = null',new List<String>{queryFields});
+            List<Core_Account_Compliance_Watch_List__c> complianceWatchs = Database.query(query);
+            // Create a map of AccountId By List of Compliance Watch List.
+            For(Core_Account_Compliance_Watch_List__c complianceWatchList : complianceWatchs){
+                if(complianceWatchListByAccountId.containsKey(complianceWatchList.Core_Account_Id__c)){
+                    List<Core_Account_Compliance_Watch_List__c> complianceWatchFromMap = complianceWatchListByAccountId.get(complianceWatchList.Core_Account_Id__c);
+                    complianceWatchFromMap.add(complianceWatchList);
+                }else{
+                    complianceWatchListByAccountId.put(complianceWatchList.Core_Account_Id__c,new List<Core_Account_Compliance_Watch_List__c>{complianceWatchList});
+                }
+            }
+        }catch(Exception ex){
+            // UCD_ACM_Logger.error('UCD_ACM_AccountSelector','getBusinessTypesByAccountId','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+accountIds.toString());
+            // UCD_ACM_Logger.setLogDetails();
+        }
+        
+        if(complianceWatchListByAccountId.size() > 0){
+            return complianceWatchListByAccountId;
         }
         return null;
     }
@@ -180,9 +213,9 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
     * author and date : ankit1x.sharma@intel.com, 22/11/2022
     */
     public Map<Id,Account> getAccountsByParentId(Set<Id> parentIds, String queryFields){
-        String query = 'SELECT ' +queryFields+ ' FROM Account WHERE ParentId IN :parentIds LIMIT 200';
+        String query = 'SELECT ' + String.escapeSingleQuotes(queryFields) + ' FROM Account WHERE ParentId IN :parentIds LIMIT 200';
         ////System.debug('@@Query '+query);
-        List<Account> childAccounts = Database.query(String.escapeSingleQuotes(query));
+        List<Account> childAccounts = Database.query(query);
         Map<Id,Account> mChildAccounts = new Map<Id,Account>(childAccounts);
         return mChildAccounts.size() > 0 ? mChildAccounts : null;
     }
@@ -194,8 +227,8 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
      * author and date : harshalx.sunil.gosavi@intel.com, 30 Dec 2021
      */
     public Map<Id,Business_Types__c> getBusinessTypeById(Set<Id> businessTypeIds,String queryFields){
-        String query = 'SELECT '+queryFields+' FROM Business_Types__c WHERE Id IN :businessTypeIds AND Is_Active__c = true';
-        List<Business_Types__c> businessTypes = Database.query(String.escapeSingleQuotes(query));
+        String query = 'SELECT '+String.escapeSingleQuotes(queryFields)+' FROM Business_Types__c WHERE Id IN :businessTypeIds AND Is_Active__c = true';
+        List<Business_Types__c> businessTypes = Database.query(query);
 
         Map<Id,Business_Types__c> businessTypeById = new Map<Id,Business_Types__c>(businessTypes);
         return businessTypeById.size() > 0 ? businessTypeById : null;

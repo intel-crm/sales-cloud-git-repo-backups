@@ -66,15 +66,12 @@ public class Core_CRM_Utility_Test {
     }
     
     @isTest static void testCompetitorData(){
-        //TWC4767-3990 
-        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
-
+        
         List<Account> accountList = Core_Test_Utility.createAccount(1);
         accountList[0].Name = 'Dell';
         accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[0].Industry = 'Telecommunications';
         accountList[0].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
-        accountList[0].RecordTypeId =  newAccountRecTypeId;
         insert accountList;
         
         List<Opportunity> listOpportunity = Core_Test_Utility.createOpportunity(1); 
@@ -91,7 +88,6 @@ public class Core_CRM_Utility_Test {
                            Core_Division_Code__c = '000',
                            Core_Division_Code_Short_Name__c = 'BBB',
                            Core_Group_Code__c = '111',
-                           Core_Sales_Visible_Flag__c = true,
                            Core_Group_Code_Short_Name__c = 'AAA');
         System.runAs(Core_Test_Utility.systemAdminUser){  
             insert pd2;
@@ -121,10 +117,6 @@ public class Core_CRM_Utility_Test {
        
         }
         
-    @isTest static void getTagsCountTest(){
-        Test.startTest();
-        Map<String, Object> result = Core_CRM_Utility.getTagsWithCount(5, 0, '');
-        Test.stopTest();
-        System.assertEquals(true,result.size() > 1);
-    }   
+        
+    
 }

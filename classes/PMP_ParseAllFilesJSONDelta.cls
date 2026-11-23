@@ -51,12 +51,9 @@ public with sharing class PMP_ParseAllFilesJSONDelta {
                 }
                 if(updatedSpecValuesList.size()>0)
                 {  
-                    //update updatedSpecValuesList;
-                    Database.SaveResult[] updatedSVlist = Database.update(updatedSpecValuesList, false);
-					PMP_Utility.logDmlErrors((Object[]) updatedSVlist, 'PMP_ParseAllFilesJSONDelta-parseAllFilesJSONDelta');
-
+                    update updatedSpecValuesList;
                 }
-                //IPA2.0 As part of TWC729-7977 commented the reference of publishFutureUpdateOfferings
+                //IPA2.0 - As part of TWC729-7977 commented the reference of publishFutureUpdateOfferings
                 //Calling the batch class to publish and republish the offerings
                 /*PMP_PublishFutureUpdateOfferings publishFutureUpdateOfferings = new PMP_PublishFutureUpdateOfferings();   
                 Database.executebatch(publishFutureUpdateOfferings,1); */

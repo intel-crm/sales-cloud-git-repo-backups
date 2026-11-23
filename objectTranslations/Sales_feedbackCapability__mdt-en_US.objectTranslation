@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales_feedbackCapability</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales_feedbackCapabilities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capability --></label>
+        <name>Capability__c</name>
+        <picklistValues>
+            <masterLabel>Generate License</masterLabel>
+            <translation><!-- Generate License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>License Chatbot</masterLabel>
+            <translation><!-- License Chatbot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Split Seats</masterLabel>
+            <translation><!-- Split Seats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>active computers</masterLabel>
+            <translation><!-- active computers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>active computers internal</masterLabel>
+            <translation><!-- active computers internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>active maintenance licenses</masterLabel>
+            <translation><!-- active maintenance licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>active maintenance licenses internal</masterLabel>
+            <translation><!-- active maintenance licenses internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>all computers</masterLabel>
+            <translation><!-- all computers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>all computers internal</masterLabel>
+            <translation><!-- all computers internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>all license internal</masterLabel>
+            <translation><!-- all license internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>all licenses</masterLabel>
+            <translation><!-- all licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contact customer service</masterLabel>
+            <translation><!-- contact customer service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>create new admin</masterLabel>
+            <translation><!-- create new admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>detail</masterLabel>
+            <translation><!-- detail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>employee and evaluation license internal</masterLabel>
+            <translation><!-- employee and evaluation license internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>employee and evaluation licenses</masterLabel>
+            <translation><!-- employee and evaluation licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>feedback</masterLabel>
+            <translation><!-- feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>generate legacy license internal</masterLabel>
+            <translation><!-- generate legacy license internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>get legacy license</masterLabel>
+            <translation><!-- get legacy license --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>legacy licenses</masterLabel>
+            <translation><!-- legacy licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>legacy licenses internal</masterLabel>
+            <translation><!-- legacy licenses internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>license menu</masterLabel>
+            <translation><!-- license menu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>license menu internal</masterLabel>
+            <translation><!-- license menu internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>licenses menu</masterLabel>
+            <translation><!-- licenses menu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>maintenance expired licenses</masterLabel>
+            <translation><!-- maintenance expired licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>maintenance expired licenses internal</masterLabel>
+            <translation><!-- maintenance expired licenses internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>relatedlist</masterLabel>
+            <translation><!-- relatedlist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>report</masterLabel>
+            <translation><!-- report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales host</masterLabel>
+            <translation><!-- sales host --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales license</masterLabel>
+            <translation><!-- sales license --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales license admin delegate</masterLabel>
+            <translation><!-- sales license admin delegate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales sign up employeefreelicences</masterLabel>
+            <translation><!-- sales sign up employeefreelicences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales signup evaluationlicenses</masterLabel>
+            <translation><!-- sales signup evaluationlicenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>view and manage admin</masterLabel>
+            <translation><!-- view and manage admin --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -131,17 +131,23 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Smart Cities</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation</sourceValue>
+            </sourceValues>
+            <value>CCID</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>Undefined</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Sports</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Agriculture</sourceValue>
             </sourceValues>
             <value>Other</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Automotive</sourceValue>
             </sourceValues>
@@ -160,16 +166,10 @@
             <sourceValues>
                 <sourceValue>Government</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Sports</sourceValue>
+            </sourceValues>
             <value>Don&apos;t in put</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Smart Cities</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Transportation</sourceValue>
-            </sourceValues>
-            <value>CIFA</value>
         </values>
     </buckets>
     <chart>
@@ -313,7 +313,7 @@
     </columns>
     <description>2025 MSQ create</description>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND (8 OR 9)) AND 10) AND 11</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND (8 OR 9)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -361,7 +361,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ECG,CCG,DCAI</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager_Email__c</column>
@@ -376,20 +376,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>jing.wu@intel.com,charlie.hu@intel.com,yixin.fu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -2,8 +2,8 @@
 * @description       : Class containing all the validation related to Ver>2 API
 * @author            : Accenture
 * @group             : Gravity
-* @last modified on  : 03-09-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 06-20-2025
+* @last modified by  : Bharath Chandrashekar
 **/
 global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHandler {
     
@@ -83,7 +83,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         sObjPerformanceMatrixFieldMap = Schema.sObjectType.Pricing_Performance_Metric__c.fields.getMap();
         SObjectCommentsMap=Schema.SObjectType.Pricing_Comments__c.fields.getMap();
         currentUser = [SELECT id,Name,AccountId,ContactId,Email FROM User WHERE id= :UserInfo.getUserId()];
-        List<Pricing_Rest_API_Validation_Error_Msgs__mdt> errorMdts  = [SELECT Error_Code__c,Error_Message__c FROM Pricing_Rest_API_Validation_Error_Msgs__mdt limit 500];
+        List<Pricing_Rest_API_Validation_Error_Msgs__mdt> errorMdts  = [SELECT Error_Code__c,Error_Message__c FROM Pricing_Rest_API_Validation_Error_Msgs__mdt];
         for(Pricing_Rest_API_Validation_Error_Msgs__mdt errMdt : errorMdts){
             errorMsgMap.put( ((Integer) errMdt.Error_Code__c), errMdt.Error_Message__c);
         }
@@ -91,7 +91,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         quoteTeamRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Quote_Team__c',Label.Pricing_Tender_Quote_Team_RecordType);
         quoteCreateRecordTypeId = [SELECT Id,Name,DeveloperName FROM RecordType WHERE SobjectType='SBQQ__Quote__c' and DeveloperName = 'Pricing_Tender_Quote_Create' limit 1].Id;
         quoteLineCreateRecordTypeId = [SELECT Id,Name,DeveloperName FROM RecordType WHERE SobjectType='SBQQ__QuoteLine__c' and DeveloperName = 'Pricing_Tender_Quote_Line_Create' limit 1].Id;
-        writeInUnifiedId = [Select Id from Pricing_UnifiedEndCustomerAccountMapping__c where Name = :Label.Pricing_IQR_API_WriteInEndCustomer limit 1].Id;
+        writeInUnifiedId = [Select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Name = :Label.Pricing_IQR_API_WriteInEndCustomer limit 1].Id;
     }
     
     /*************************** validate Quote details **********************************/
@@ -425,10 +425,6 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
     **/
     public static boolean validateEndCustomer(QuoteDetails quoteDetails, Map<String,ErrorMsg> errorMsgs){
         boolean isValidEndCustomer = true;
-        if(quoteDetails.endCustomer != null && quoteDetails.endCustomer.contains('|')){
-            addValidationError(errorMsgs, 'endCustomer', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1103, null); 
-            isValidEndCustomer = false;
-        }
         if(quoteDetails.endCustomer != null && quoteDetails.endCustomer.toLowerCase().equals('any')){
             addValidationError(errorMsgs, 'endCustomer', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1064, null); 
             isValidEndCustomer = false;
@@ -749,7 +745,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
             isValid = false;
             addValidationError(errorMsgs, 'primaryContactEmail', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1051, null);
         }
-        List<Contact> contact = [Select Id from Contact where Email= :primaryContactEmail and Account.Id = :currentUser.AccountId];
+        List<Contact> contact = [Select Id, Account.Id from Contact where Email= :primaryContactEmail and Account.Id = :currentUser.AccountId];
         if(contact.size()>0){
             //checking weather user is having permission set or not
             if(!hasPartnerPermissionSet(primaryContactEmail) || contact == null){
@@ -1246,7 +1242,6 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         if(isSubmitQuote || (Pricing_RestAPI_QuotesV2.isResubmit && quotelineList.size() > 0 && quotelineList[0].Pricing_Original_Submitted_Date_dt__c == null && quotelineList[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft)){
             List<String> productSeriesList = Label.Pricing_Product_Series_Exclude.split(',');
             for(QuoteLineCPU q : quoteLinesCPU){
-
                 if(productIdMap.containsKey(q.productId)){
                     String productSeries = productIdMap.get(q.productId).Name == Label.Pricing_Tender_Write_In_Product ? Label.Pricing_Tender_Write_In_Product : productIdMap.get(q.productId).Core_Product_Series__c;
                     if(q.noOfCPUsPerSystem>0 && q.noOfSystems>0 && (!productSeriesList.contains(productIdMap.get(q.productId).Core_Product_Series__c) && productSeries != null && productSeries != '' && !productSeries.startswith('Intel Atom® Processor'))){
@@ -2490,112 +2485,53 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         return isCurrencyValid;
     }
     
-      
-    public static Boolean validatePicklistValues(Map<String, Schema.SObjectField> objectMap,String fieldName,String fldValue,Boolean isMandatory,Map<String, ErrorMsg> errorMsgs,String jsonLabel) {
-    Boolean isFldValid = false;
-    Boolean isEmpty = false;
-    Map<String, String> consumptionCountryStoreMap = new Map<String, String>();
-    
-    if (!isMandatory && String.isBlank(fldValue)) {
-        isFldValid = true;
-    } else {
-        Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
-	List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
- 
-        if (String.isBlank(fldValue)) {
-            isEmpty = true;
-            addValidationError(
-                errorMsgs,
-                jsonLabel,
-                Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1020,
-                null
-            );
-        }
-        else if (jsonLabel == 'consumptionCountry') {
-            consumptionCountryStoreMap.remove(fldValue);
- 
-            Set<String> activeValues = new Set<String>();
- 
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive()) {
-                    activeValues.add(entry.getValue());
-                }
-            }
- 
-            List<String> tokens = fldValue.split(',');
-            List<String> selected = new List<String>();
-            Integer tokenIndex = 0;
- 
-            isFldValid = !fldValue.trim().endsWith(',');
- 
-            while (isFldValid && tokenIndex < tokens.size()) {
-                String matchedValue = null;
-                Integer matchedTokens = 0;
-                String candidate = '';
- 
-                for (Integer j = tokenIndex; j < tokens.size(); j++) {
-                    candidate = j == tokenIndex
-                        ? tokens[j].trim()
-                        : candidate + ',' + tokens[j].trim();
- 
-                    // Preserve commas inside the longest valid country value.
-                    if (activeValues.contains(candidate)) {
-                        matchedValue = candidate;
-                        matchedTokens = j - tokenIndex + 1;
+    public static boolean validatePicklistValues(Map<String,Schema.SObjectField> objectMap, String fieldName, String fldValue, boolean isMandatory, Map<String,ErrorMsg> errorMsgs, String jsonLabel){
+        boolean isFldValid = false;
+        boolean isEmpty = false;
+        if(!isMandatory && String.isBlank(fldValue)){
+            isFldValid = true;
+            //do nothing - value can be blank if the field is not mandatory
+        }else{
+            Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
+            List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
+            if(!String.isBlank(fldValue) && !fldValue.contains(',')){               
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && f.getValue() == fldValue){
+                        isFldValid =  true; 
+                        break;
                     }
                 }
- 
-                if (matchedValue == null) {
+            }
+            //For checking Multi Picklist values for consumption country and region.
+            else if(!String.isBlank(fldValue) && fldValue.contains(',')){
+                List<String> multiFldValue = fldValue.split(',');
+                integer count = 0;
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && multiFldValue.contains(f.getValue())){
+                        count++;
+                    }
+                }
+                if(count == multiFldValue.size()){
+                    isFldValid =  true;
+                }
+                else{
                     isFldValid = false;
-                    break;
-                }
- 
-                selected.add(matchedValue);
-                tokenIndex += matchedTokens;
+                }  
             }
- 
-            if (isFldValid) {
-                consumptionCountryStoreMap.put(
-                    fldValue,
-                    String.join(selected, ', ')
-                );
+            else {
+                isEmpty = true;
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1020, null);
+            }
+            if(!isEmpty && !isFldValid){
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1026, 
+                                   new Map<String,String>{'{{fieldValue}}' => fldValue});
             }
         }
-        else if (fldRes.getType() != Schema.DisplayType.MultiPicklist ||
-             !fldValue.contains(',')) {
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive() && entry.getValue() == fldValue) {
-                    isFldValid = true;
-                    break;
-                }
-            }
-        }
-        else if (fldValue.contains(',')) {
-            List<String> multiFldValue = fldValue.split(',');
-            Integer count = 0;
- 
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive() &&
-                    multiFldValue.contains(entry.getValue())) {
-                    count++;
-                }
-            }
- 
-            isFldValid = count == multiFldValue.size();
-        }
- 
-        if (!isEmpty && !isFldValid) {
-            addValidationError(
-                errorMsgs,
-                jsonLabel,
-                Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1026,
-                new Map<String, String>{ '{{fieldValue}}' => fldValue }
-            );
-        }
+        return isFldValid;
     }
- 
-    return isFldValid;
-}    
+    
     public static Map<String, List<String>> getFieldDependencies(String objectName, String controllingField, String dependentField){
         
         Map<String, List<String>> controllingInfo = new Map<String, List<String>>();        
@@ -3117,6 +3053,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
     * @param exp Error
     **/
     private static void handleRecordApprovalRegenerate(Exception exp, Id recId){        
+        System.debug('inside Pricing_Regenerate_Approval_Record_Check');
         Boolean isRecordLockIssue = false;
         Set<Id> quoteLinesSet = new Set<Id>();
         List<ProcessInstance> approvalRecords = new List<ProcessInstance>();

@@ -118,7 +118,7 @@ public class Core_MDF_Claim_Utility_Test {
             camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             database.insert(camp);
             
-            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Television','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Podcast','Draft',false);
             testPartnerFundRequestRecord.Title = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Activity_Description__c = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today();
@@ -139,6 +139,10 @@ public class Core_MDF_Claim_Utility_Test {
             PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim2', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 500.00, System.today(), bank.Id, false);
             PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim3', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 500.00, System.today(), bank.Id, false);
             PartnerFundClaim claim4 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim4', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 500.00, System.today(), bank.Id, false);
+            claim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
+            claim2.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
+            claim3.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
+            claim4.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
             claimList1.add(claim1);
             claimList1.add(claim2);
             claimList1.add(claim3);
@@ -243,7 +247,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim.Core_MDF_Audit_Hold__c = true;
             claim.Status= 'Submitted';
             claim.Core_MDF_Status__c = 'Hold';
@@ -265,7 +269,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList2 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim2 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim2 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim2.Core_MDF_ESD_Hold__c = true;
             claim2.Status= 'Submitted';
             claim2.Core_MDF_Status__c = 'Hold';
@@ -290,7 +294,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList3 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim3 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim3 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim3.Core_MDF_Audit_Hold__c = true;
             claim3.Core_MDF_ESD_Hold__c = true;
             claim3.Status= 'Submitted';
@@ -318,7 +322,7 @@ public class Core_MDF_Claim_Utility_Test {
         List<PartnerFundClaim> claimList4 = new List<PartnerFundClaim>();
         List<PartnerFundClaim> claimList5 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim4 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim4 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim4.Core_MDF_Audit_Hold__c = true;
             claim4.Core_MDF_ESD_Hold__c = true;
             claim4.Core_MDF_Payment_Hold_ind__c = true;
@@ -351,7 +355,7 @@ public class Core_MDF_Claim_Utility_Test {
             update claim4;
             /*claim4.Core_MDF_Status__c = Label.Core_MDF_Status_Denied;
             update claim4;*/
-            PartnerFundClaim claim5 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim2'];
+            PartnerFundClaim claim5 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim2'];
             claim5.Core_MDF_Audit_Hold__c = true;
             claim5.Core_MDF_ESD_Hold__c = true;
             claim5.Core_MDF_Payment_Hold_ind__c = true;
@@ -412,8 +416,6 @@ public class Core_MDF_Claim_Utility_Test {
         Core_MDF_Claim_Utility.updateStatusToSubmitted(inputClaimMap, claims);
         //Core_MDF_Claim_Utility.sendClaimsToAudit(claims,inputClaimMap);
         test.stopTest();
-        // Unit Test Method should include System.Assert 
-        System.assertEquals(claims.size(), inputClaimMap.size(), 'Map size should match claims list size');
     }
     @isTest
     public static void duplicateClaimCheckOnUpdateTest(){
@@ -426,8 +428,6 @@ public class Core_MDF_Claim_Utility_Test {
         Core_MDF_PFC_Sharing.shareClaimToInternalUsers(claims);
         Core_MDF_Claim_Utility.duplicateClaimCheckOnUpdate(claims,inputClaimMap);
         test.stopTest();
-        // Unit Test Method should include System.Assert 
-       System.assert(inputClaimMap.size() <= claims.size(),'Map should correctly reflect claim list');
     }
     @isTest
     public static void calculateClaimFieldsforUpdateTest(){
@@ -439,8 +439,6 @@ public class Core_MDF_Claim_Utility_Test {
         }
         Core_MDF_Claim_Utility.calculateClaimFieldsforUpdate(inputClaimMap,inputClaimMap,claims);
         test.stopTest();
-	 // Unit Test Method should include System.Assert
-         System.assert(inputClaimMap.keySet().size() > 0, 'Map should contain claim IDs');
     }
 
 	@isTest 

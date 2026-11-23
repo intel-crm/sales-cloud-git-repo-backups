@@ -5,14 +5,14 @@
 * Created Date: 4-26-2021
 * Modification Log :
 * Developer                         Date                          Description
-Accenture - NZ				06/23/2021					Bulk Data Insert/Update
+  Accenture - NZ				06/23/2021					Bulk Data Insert/Update
 **********************************************************************************************************************************************************************************/
 public without sharing class Core_MDF_Bulk_TransactionServiceHandler {
     
     public static String logEntryMsg = '';
     public static final String SOBJECT_TYPE = 'User';
-    
-    /*****************************************************************************************************
+   
+/*****************************************************************************************************
 Method Name :   upsertRecords 
 @return     :   NULL
 @parameters :   list of Core_MDF_Bulk_Transaction__e platform event record
@@ -22,17 +22,14 @@ Added By    :   Accenture - NZ - 06/23/2021
     public static void upsertRecords(List<Core_MDF_Bulk_Transaction__e> newList){
         try{
             set<Id> recordIds = new set<Id>();
-            set<Id> escalationIds = new set<Id>();
-            set<Id> activityIdSet = new set<Id>();// Rishabh
-            String actionNameRelatedToUpdateActivityStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BulkPE_ActionName_UpdateActivit');
+	    set<Id> escalationIds = new set<Id>();
             Map<String,List<Sobject>> sobjectsMap = new Map<String,List<Sobject>>();
-            Map<String, Schema.SObjectType> glblDesc = Schema.getGlobalDescribe();// Defined the global describe map outside the loop as part of ATHR fix.
-            for(Core_MDF_Bulk_Transaction__e eventObj: newList){ 
+            for(Core_MDF_Bulk_Transaction__e eventObj: newList){  
                 //Get the Object Name 
                 String objectName = eventObj.Core_MDF_Object_Name__c;
                 /* Call global describe to get the map of string to token. */
-                //Map<String, Schema.SObjectType> glblDesc = Schema.getGlobalDescribe();
-                List<String> MDFBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetReversal_BudgetTypes').split(';');
+                Map<String, Schema.SObjectType> glblDesc = Schema.getGlobalDescribe();
+		 List<String> MDFBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetReversal_BudgetTypes').split(';');
                 Schema.SObjectType sObjctTyp = glblDesc.get(objectName);
                 Sobject sObj = sObjctTyp.newSobject();                
                 //Fetch Data from JSON
@@ -58,11 +55,7 @@ Added By    :   Accenture - NZ - 06/23/2021
                         if(pfcObj.Core_MDF_Escalation_Id__c != null){
                             escalationIds.add(pfcObj.Core_MDF_Escalation_Id__c);
                         }
-                    }
-                    //Rishabh 
-                    else if(eventObj.Core_MDF_Action_Name__c == actionNameRelatedToUpdateActivityStatus){
-                        PartnerFundClaim pfcObj = (PartnerFundClaim)sObj;
-                        activityIdSet.add(pfcObj.RequestId);
+                        
                     }
                 }
                 
@@ -78,10 +71,7 @@ Added By    :   Accenture - NZ - 06/23/2021
             if(!recordIds.isEmpty()){
                 Core_MDF_PFR_PlatformEventHandler.updateActivityAmount(recordIds);
             }
-            //Rishabh 
-            if(!activityIdSet.isEmpty()){
-                Core_MDF_PFR_PlatformEventHandler.updateActivityStatus(activityIdSet);
-            }
+            
         }
         catch(exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);         
@@ -108,25 +98,25 @@ Added By    :   Accenture - NZ - 06/23/2021
         }
         
     }    
-    
+
     //Test with 200 record with 3 object at time and records was updated.
     public static void upsertData(Map<String,List<Sobject>> sobjectsMap) {
         //if(!sobjectsMap.isEmpty()) {
         try{
             Map<Id,Boolean> userToUpdateFlag = new Map<Id,Boolean>();
             List<SObject> allRecords = new List<SObject>();
-            
+
             for(String objName:sobjectsMap.keySet()) {
                 String listType = 'List<' + objName + '>';  
                 List<SObject> sObjList = (List<SObject>)Type.forName(listType).newInstance();
                 sObjList.addAll(sobjectsMap.get(objName));
-                
+               
                 if(sObjList != null && !sObjList.isEmpty()){
                     allRecords.addAll(sObjList);
                 }
             }
-            
-            if (!allRecords.isEmpty()) {
+
+           if (!allRecords.isEmpty()) {
                 insertUserGroupMappingRecords(allRecords, userToUpdateFlag);
             }
         }
@@ -135,7 +125,7 @@ Added By    :   Accenture - NZ - 06/23/2021
         }
         //}
     }
-    
+
     public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id,Boolean> userToUpdateFlag) {
         List<Database.UpsertResult> saveList = Database.upsert(allRecords, false);
         for (Database.UpsertResult sr : saveList) {
@@ -144,24 +134,22 @@ Added By    :   Accenture - NZ - 06/23/2021
                 if (objName == SOBJECT_TYPE) {
                     userToUpdateFlag.put(sr.getId(), true);
                 }
-                continue;
             }
-            //ATHR - Deeply Nested if 16209
-            if (sr.getErrors() == null || sr.getErrors().isEmpty()) {
-                continue;
-            }
+            else {
+                if (!sr.getErrors().isEmpty()) {
                     Database.Error error = sr.getErrors().get(0);
-            if (error.getFields() == null || error.getFields().isEmpty()) {
-                continue;
-            }
+                    if (error.getFields() != null && error.getFields().size() > 0) {
                         String objName = error.getFields()[0];
                         if (objName == SOBJECT_TYPE) {
                             userToUpdateFlag.put(sr.getId(), false);
+                        }
+                    }
+                }
             }
         }
-        
+
         if (!userToUpdateFlag.isEmpty()) {
-            insertUserGroupMappingRecords(userToUpdateFlag);
+                insertUserGroupMappingRecords(userToUpdateFlag);
         }
     }
 }

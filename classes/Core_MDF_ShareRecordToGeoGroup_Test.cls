@@ -73,7 +73,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_Payment_Doc_InvFileVAT_Validate');
             bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
-            bypassFunctionKeys.add('Core_MDF_Bypass_Manual_Share');
+        	bypassFunctionKeys.add('Core_MDF_Bypass_Manual_Share');
             bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
   
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
@@ -90,7 +90,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         Account acc5 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 5', cp2.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, false);
         
         Account acc6 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 3', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, false);
-        //Account acc4 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 4', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc3.Id, false);
+		//Account acc4 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 4', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc3.Id, false);
         // Updating Accounts 
         acc1.isPartner = true;
         //acc1.Core_Geo__c='ASMO';
@@ -117,7 +117,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         Core_ERPM_Engagement__c erpmEngagementIPA = Core_MDF_CCP_TestDataUtility.createErpmEngagement('IPA', 'IPA', 'DEDUPB2B', 'SEC', true, false);
         Database.insert(erpmEngagementIPA);
         
-        Core_Entitlement__c entitlementIPA = Core_MDF_CCP_TestDataUtility.createEntitlement('IPA MDF User',agsRoleCCF.Id ,'Pricing','IPA MDF User',erpmEngagementIPA.Id , true,'Solutions Marketplace',false);
+        Core_Entitlement__c entitlementIPA = Core_MDF_CCP_TestDataUtility.createEntitlement('IPA MDF User',agsRoleCCF.Id ,'Intel® Partner Investment Center','IPA MDF User',erpmEngagementIPA.Id , true,'Solutions Marketplace',false);
         Database.insert(entitlementIPA); 
         
         Core_Contact_Entitlement__c contactEntitlementIPA = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementIPA.Id ,true,'Complete', false);
@@ -127,7 +127,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         
         PartnerMarketingBudget pmb1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, System.Today(), System.Today().addDays(10), true);
         
-        //test.stopTest();
+		//test.stopTest();
         // Creating Account with utility class
         /*Account acc3 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 3', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         //acc3.isPartner = true;
@@ -146,7 +146,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         Database.upsert(toBeUpdated);*/
         
         
-        insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business_Client_Acceleration_Managed_M', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = false, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = '', Core_MDF_Budget_Type__c = 'Business Client Acceleration - MDF', Core_MDF_Program_Nm__c = '', Core_MDF_RecordType__c = '');
+        
         string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc6);
         Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Record_Type_Developer_Name')).getRecordTypeId();  
         
@@ -158,7 +158,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         
         PartnerMarketingBudget pmb4 = new PartnerMarketingBudget(Title='Test Budget 4',StartDate=System.today(),EndDate=System.today(),
         Core_MDF_Budget_Partner__c=acc6.Id,Core_MDF_Program__c=cp.Id,Core_MDF_Budget_Type_Txt__c=budgetType, Amount=10000, RecordTypeId = ipaRecordtype,Core_MDF_Budget_Status__c ='Released');
-        Test.startTest();
+		Test.startTest();
        Campaign cmp  = new Campaign();
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -169,7 +169,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         system.runAs(usr){
              cmp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc5.Id,'Desktop', false);
             
-             cmp.Core_MDF_Budget_Type_txt__c = 'OEM CMP';
+       		 cmp.Core_MDF_Budget_Type_txt__c = 'OEM CMP';
         }
         
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
@@ -188,12 +188,12 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         
         
         System.runAs(usr){
-                
-                GroupMember newGroupMember = new GroupMember();
-                newGroupMember.GroupId = newGroup.ID;
-                newGroupMember.UserOrGroupId = usr1.Id;
-                Database.insert(newGroupMember);
-                Database.insert(pnum);
+            	
+            	GroupMember newGroupMember = new GroupMember();
+        		newGroupMember.GroupId = newGroup.ID;
+        		newGroupMember.UserOrGroupId = usr1.Id;
+        		Database.insert(newGroupMember);
+            	Database.insert(pnum);
            // try
             //{
             //
@@ -222,7 +222,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
                 shareLst.add(share3);
                 shareLst2.add(share4);
                 shareLst3.add(share5);
-                Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
+            	Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
             Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
                 Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
                 Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
@@ -299,20 +299,17 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         }
         test.stopTest();
     }
+    
     @isTest static void testCreateShareBulkString() {
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
-        Account Masteracc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-       	Account acc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account CCF', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, Masteracc.Id, true);        
-        User usr = [Select Id from User limit 1];
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-        
-        //Core_MDF_Payment__Share testShare = new Core_MDF_Payment__Share(ParentId = 'a01xx000000001A', UserOrGroupId = '005xx0000000AAA', RowCause = 'Manual', AccessLevel = 'Read');
-        Core_MDF_Payment__Share testShare = new Core_MDF_Payment__Share(ParentId = acc.Id, UserOrGroupId = usr.Id, RowCause = 'Manual', AccessLevel = 'Read');
+        Core_MDF_Payment__Share testShare = new Core_MDF_Payment__Share(ParentId = 'a01xx000000001A', UserOrGroupId = '005xx0000000AAA', RowCause = 'Manual', AccessLevel = 'Read');
+
         List<sObject> dynObjectList = new List<sObject>{testShare};
 
         Test.startTest();
         Core_MDF_GenericShareRecordActionClass.createShareBulkString(dynObjectList, 'Core_MDF_Payment__Share');
         Test.stopTest();
     }
+    
     
 }

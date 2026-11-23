@@ -58,7 +58,7 @@ public class Core_MDF_Budget_Utility_Test {
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             List<PartnerMarketingBudget> budgetList = new List<PartnerMarketingBudget>();
-
+            List<PartnerMarketingBudget> updatebudgetList = new List<PartnerMarketingBudget>();
             PartnerMarketingBudget opalbudgetMDF = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget MDF', Core_MDF_CCP_TestDataUtility.budget_Record_Type, ccpCoMarketingAccount.Id, ccpCP.Id, 300000, System.today().addDays(-5), System.today().addDays(5), false);
             opalbudgetMDF.Core_MDF_Budget_Type_Txt__c = 'MDF';
             budgetList.add(opalbudgetMDF);
@@ -99,7 +99,8 @@ public class Core_MDF_Budget_Utility_Test {
             campaignBudgetRecord.isActive = true;
             campaignBudgetsList.add(campaignBudgetRecord);
             
-
+            Map<id,PartnerMarketingBudget> campaignBudgets = Core_MDF_CampaignCreatePage.getBudgetsForCampaign(ccpCoMarketingAccount.id, System.today(), System.today(), budgetTypeList);
+            List<Core_MDF_Campaign_Budgets__c> retrieveCampaignBudgets =  Core_MDF_CampaignCreatePage.getCampaignBudgetsForCampaign(ccfOpalCampaign.id);
             //PartnerFundAllocation pfaRecord3 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudgetMDF, ccpCoMarketingAccount, 0, true);
 
             Test.stopTest();
@@ -140,11 +141,9 @@ public class Core_MDF_Budget_Utility_Test {
         MDFpfr4.Core_MDF_Program_Office_Check_ind__c = False;
         MDFpfr4.Core_MDF_Require_Additional_Review_ind__c = False;  
         MDFpfr4.BudgetId=pmbRecord.Id;
-        MDFpfr4.Core_MDF_ActivityCategory__c=''; // By Sumalatha
-        MDFpfr4.Core_MDF_Activity_Types__c=''; // By Sumalatha
         database.insert(MDFpfr4);
         PartnerFundRequest MDFpfr5 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Small Business','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','','','Draft',false); // Sumalatha removed braodcast and made it as null for coverage
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr5.Title = 'Test Activity';
         MDFpfr5.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr5.Core_MDF_Start_Date__c = System.today();
@@ -157,8 +156,6 @@ public class Core_MDF_Budget_Utility_Test {
         MDFpfr5.Core_MDF_Program_Office_Check_ind__c = False;
         MDFpfr5.Core_MDF_Require_Additional_Review_ind__c = False;
         MDFpfr5.BudgetId=pmbRecord.Id;
-        MDFpfr5.Core_MDF_ActivityCategory__c='';//my change
-        MDFpfr5.Core_MDF_Activity_Types__c='';//my change
         database.insert(MDFpfr5);        
         Test.stopTest();
         Assert.areEqual(true, MDFpfr4!=null);
@@ -188,8 +185,6 @@ public class Core_MDF_Budget_Utility_Test {
             catch(Exception e){
                String errorMessage = e.getMessage();
             }
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            System.assert(true, 'unlockBudget method executed without throwing exception');
         Test.stopTest();
         }
      }

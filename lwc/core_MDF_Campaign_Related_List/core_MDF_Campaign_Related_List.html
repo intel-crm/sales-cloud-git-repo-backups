@@ -1,18 +1,13 @@
 <template>    
-    <div if:true={isComponentVisible}>
     <div class="c-container">
-        <div class="slds-card"> 
+        <div class="slds-card">
             <div class="slds-media__body">
                 <h2 class="slds-card__header-title">
                     <span>
-                        <!--{objectName} ({recordCount})-->
-                        {resolvedHeader} ({recordCount})
+                        {objectName} ({recordCount})
                     </span>
                 </h2>
             </div>
-            <!--<div if:true={showStaticText}>
-                <h2>Static Text</h2>
-            </div>-->
             <div class="slds-card__body">
                 <lightning-datatable 
                     key-field="Id"
@@ -21,14 +16,9 @@
                     min-column-width=200
                     hide-checkbox-column="true"
                     column-widths-mode="fixed"
-                    wrap-text-max-lines="10"
                     resize-column-disabled="true">
                 </lightning-datatable> 
-                <template if:true={tableMessage}>
-                    <div class="slds-p-around_small slds-text-body_regular">{tableMessage}</div>
-                </template>
             </div>                           
         </div> 
-    </div> 
-    </div>   
+    </div>    
 </template>

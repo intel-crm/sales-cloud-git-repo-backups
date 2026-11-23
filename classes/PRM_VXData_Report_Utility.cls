@@ -409,33 +409,4 @@ public without sharing class  PRM_VXData_Report_Utility {
             }
         }
     }
-    public static void shareRecordWithPublicGroup(List<PRM_Value_Exchange_Data__c> vxDataList){
-        try{
-            List<PRM_Value_Exchange_Data__Share> vxDataShareRecList = new List<PRM_Value_Exchange_Data__Share>();
-            Group grp = [
-                SELECT Id
-                FROM Group
-                WHERE DeveloperName = 'PMP_All_Partner_Users'
-                LIMIT 1
-            ];
-            if(vxDataList != null && vxDataList.size() > 0 &&  !vxDataList.isEmpty()){
-                for(PRM_Value_Exchange_Data__c vxData :vxDataList){
-                    PRM_Value_Exchange_Data__Share shareRec = new PRM_Value_Exchange_Data__Share();
-                    shareRec.ParentId = vxData.Id;
-                    shareRec.UserOrGroupId = grp.Id;
-                    shareRec.AccessLevel = 'Edit'; // Read or Edit
-                    shareRec.RowCause = Schema.PRM_Value_Exchange_Data__Share.RowCause.Manual;
-                    vxDataShareRecList.add(shareRec);
-                    
-                }
-            }
-            system.debug('vxDataShareRecList-->'+vxDataShareRecList);
-            if(vxDataShareRecList != null && vxDataShareRecList.size() > 0 &&  !vxDataShareRecList.isEmpty()){
-                insert vxDataShareRecList;
-            }
-        }
-        catch(exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'PRM_VXData_Report_Utility', Core_Project__c = 'PRM_VXData_Report_Utility' , Core_Details__c = 'Getting exception for VX Data record sharing', Core_Severity__c = 'info', Core_When__c = System.Now());
-        }
-    }
 }

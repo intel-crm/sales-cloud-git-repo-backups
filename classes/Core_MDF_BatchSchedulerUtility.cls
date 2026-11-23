@@ -6,7 +6,7 @@
 * Developer   Vivek                  Date                          Description
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_BatchSchedulerUtility {        
-    //Start batch job for specific program      
+    //Start batch job for specific program  	  
     public static list<Core_MDF_Batch_Scheduler_Line_Item__c> startBatchJob(string program){
         //Integer maxSchedule = 50;  
         
@@ -144,7 +144,7 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
             jobIds.add(sch.Core_MDF_Job_Id_Txt__c);
         }
         if(jobIds != null && jobIds.size()>0){
-            for(AsyncApexJob apexJob : [Select Id, Status, NumberOfErrors, ExtendedStatus FROM AsyncApexJob WHERE Status IN ('Failed','Completed') AND ID IN : jobIds]){
+            for(AsyncApexJob apexJob : [Select Id, Status FROM AsyncApexJob WHERE Status IN ('Failed','Completed') AND ID IN : jobIds]){
                 jobIdToStatusMap.put(apexJob.Id, apexJob);
             }
         }
@@ -152,18 +152,8 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
         for(Core_MDF_Batch_Scheduler_Line_Item__c sch : pendingRecords){
             if(jobIdToStatusMap != null && jobIdToStatusMap.size()>0 && jobIdToStatusMap.containsKey(sch.Core_MDF_Job_Id_Txt__c)){
                 sch.Core_MDF_Status_Txt__c = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).Status;
-
-                Integer numberOfFailures = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).NumberOfErrors;
-                String StatusErrorDetail = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).ExtendedStatus;
-                sch.Core_MDF_Number_of_errors__c = numberOfFailures;
-                sch.Core_MDF_Status_Detail__c = StatusErrorDetail;
-
                 // Filtering Line Items For Email Notification
-                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && ((!sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c   && sch.Core_MDF_Status_Txt__c == 'Failed') ||  sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c)) {
-                    schItemsForEmail.add(sch);
-                }
-                //Added condition for IPA batches, to get emails in case batch is completed with 1 or more failure batches
-                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && !sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c && sch.Core_MDF_Status_Txt__c == 'Completed' && (numberOfFailures >= 1 || String.isNotBlank(StatusErrorDetail))){
+                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && ((!sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c	 && sch.Core_MDF_Status_Txt__c == 'Failed') ||  sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c)) {
                     schItemsForEmail.add(sch);
                 }
             }
@@ -234,7 +224,6 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
                 message.setSaveAsActivity(false); 
                 message.setTemplateID(emailTemplate.Id);
                 message.setTreatTargetObjectAsRecipient(false);
-                message.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
                 String[] toAddresses = new String[]{sch.Core_MDF_Batch_Scheduler__r.CreatedBy.Email};
                 if(!String.isBlank(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Email_Receipients__c)){
                     toAddresses.addAll(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Email_Receipients__c.split(','));

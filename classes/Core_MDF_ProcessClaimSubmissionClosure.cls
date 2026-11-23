@@ -199,9 +199,6 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
     
     private static Date getDate(InternalMetdata intMtd){
         List<String> rulesplit=new List<String>();
-        if(intMtd == null || intMtd.rule == null){
-            return null;
-        }
         Date returnDate = intMtd.dt;
         if(intMtd.rule.contains('+')){
            rulesplit = intMtd.rule.split('\\+');

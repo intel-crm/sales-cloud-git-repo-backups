@@ -847,8 +847,7 @@ appRejObj.insertOpptyShare(opptyShareList);
     
     public void sendEmail(List<String> toAddList, List<String> ccAddList, Opportunity opptyObj, String qtrSubmitted){
         String[] toAdd = new String[]{};
-        String[] ccAdd = new String[]{};
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+            String[] ccAdd = new String[]{};
                 for(String str : toAddList){
                     toAdd.add(str);
                 }
@@ -865,7 +864,6 @@ appRejObj.insertOpptyShare(opptyShareList);
         Core_Sales_Opp_Internal_URL__mdt urlValue = [SELECT developerName, masterlabel, Core_Opp_URLValue__c FROM Core_Sales_Opp_Internal_URL__mdt WHERE developerName = 'Core_Url' LIMIT 1];
         String globalUrl = String.valueOf(urlValue.Core_Opp_URLValue__c);
         email.setHtmlBody('Hello, <br/><br/>'+opptyObj.Owner.Name+', has requested for 6QPS approval for the below Opportunity. <br/><br/> Account Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+opptyObj.Account.name+'<br/> Opportunity Name: &nbsp;'+opptyObj.Name+'<br/><br/> '+globalUrl+'/'+opptyObj.Id+'<br/><br/>');
-        email.setOrgWideEmailAddressId(fromEmailAddress);
         try{
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
         }catch(exception e){

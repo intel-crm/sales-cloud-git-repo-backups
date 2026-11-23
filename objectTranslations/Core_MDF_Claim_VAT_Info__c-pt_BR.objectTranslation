@@ -9,10 +9,6 @@
         <value>Documentos de pagamento</value>
     </caseValues>
     <fields>
-        <label>Nome da conta</label>
-        <name>Core_MDF_Account_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved File Id --></label>
         <name>Core_MDF_Approved_File_Id__c</name>
     </fields>
@@ -93,11 +89,6 @@
             <masterLabel>Under Review</masterLabel>
             <translation>Em revisão</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>O total de impostos</help>

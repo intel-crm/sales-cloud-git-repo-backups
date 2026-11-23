@@ -23,6 +23,7 @@
     <aura:attribute name="showDeclinePopupInd" type="boolean" default="false"/>
     <aura:attribute name="isActiveClaimExist" type="Boolean" default="false" description="" />
     <aura:attribute name="hasUserClickedOnReject" type="Boolean" default="false" description="" />
+    <!-- Roshan - Co-GTM campaign setup -->
     <aura:attribute name="isLegalReviewer" type="Boolean" default="false" />
     <aura:attribute name="isL2Approver" type="Boolean" default="false" />
     <aura:attribute name="isBusinessApprover" type="Boolean" default="false" />
@@ -80,6 +81,7 @@
                             value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
 		    
+		    <!-- Roshan - Co-GTM campaign setup -->
                     <aura:if isTrue="{!v.isLegalReviewer}">
                         <p id="header23" class="slds-text-heading--small headings">Legal Reviewer Acceptance</p>
                         <br></br>
@@ -98,6 +100,7 @@
                             value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
 
+                    <!-- Roshan - Co-GTM claim setup -->
                     <aura:if isTrue="{!v.isTechnicalApprover}">
                         <p id="header23" class="slds-text-heading--small headings">
                             Technical Approver Acceptance</p>
@@ -183,11 +186,8 @@
             <div class="slds-modal__container">
                 <!-- Heading (Header of the Modal) -->
                 <div class="slds-modal__header">
-                    <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModal }" alternativeText="Close" /> -->
-
-                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.closeModal}">
-                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text"></span>
                     </button>
                     <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.commentType}
                     </h1>
@@ -220,9 +220,8 @@
                                     <lightning:buttonIcon iconName="utility:close"
                                                           onclick="{! c.onClickofNo }"
                                                           alternativeText="close"
-                                                          variant="bare"
-                                                          size="small"
-                                                          class="slds-button slds-button_icon slds-modal__close"/>
+                                                          variant="bare-inverse"
+                                                          class="slds-modal__close"/>
                                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_Terminal_Rejection}</h2>
                                 </header>
                                     <!--showDeclinePopupInd Box Body Starts here-->

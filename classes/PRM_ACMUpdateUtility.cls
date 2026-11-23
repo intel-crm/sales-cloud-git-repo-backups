@@ -693,11 +693,11 @@ public without sharing class PRM_ACMUpdateUtility{//implements Database.Batchabl
           //  PRM_accBenefitAssociationUtility.profileResponseOnBenefitUpdate(finalABAList); //---->when aba status changed--->pr-->change
             //system.debug('Heap size -->'+Limits.getHeapSize());
         if (!opidsToMPIdeactivation.isEmpty()) {
-            List<PMP_OPID_MPI_Rel__c> opidMps = [SELECT Id,Is_Active__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIdeactivation AND Is_Active__c = TRUE ];
+            List<PMP_OPID_MPI_Rel__c> opidMps = [SELECT Id,Is_Active__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIdeactivation AND Is_Active__c = TRUE ];
             //system.debug('opidMps -->'+opidMps);
             if (!opidMps.isEmpty()) {
                 for (PMP_OPID_MPI_Rel__c opidmp : opidMps) {
-                    opidmp.Is_Active__c = FALSE;opidmp.PMP_RelLastDeactivated__c = System.now();
+                    opidmp.Is_Active__c = FALSE;
                 }
                 
                 update opidMps;

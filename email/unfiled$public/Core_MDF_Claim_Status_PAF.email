@@ -19,7 +19,7 @@
                                                 {!$Label.Core_MDF_EmailTemp_Claim_Body3}        <br/>
                                                 <ul>
                                                     <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body4} &nbsp; {!RelatedTo.ChannelPartner.Name}<br/></li>
-                                                    <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ' :',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}&nbsp;{!RelatedTo.Request.Title}<br/></li>
+                                                    <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name}&nbsp;{!RelatedTo.Request.Title}<br/></li>
                                                     <apex:outputPanel rendered="{!IF(relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name, true, false)}">
                                                         <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} &nbsp;{!RelatedTo.Core_MDF_Country_Location_nm__c}   <br/> </li>
                                                     </apex:outputPanel>

@@ -85,7 +85,7 @@ public without sharing class Core_Opportunity_RenewalController {
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Core_Opportunity_Features__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(originalOpportunity.Id) + '\'' + 
+                                          'WHERE Core_Opportunity__c = \'' + originalOpportunity.Id + '\'' + 
                                           '  AND IsDeleted = false');
         Boolean showOppFeatures = iQueryCount > 0;  
         
@@ -94,7 +94,7 @@ public without sharing class Core_Opportunity_RenewalController {
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Core_Opportunity_Partner__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(originalOpportunity.Id) + '\'' + 
+                                          'WHERE Core_Opportunity__c = \'' + originalOpportunity.Id + '\'' + 
                                           '  AND Core_Partner__r.Core_Deactivated__c = false ' + 
                                           '  AND Core_Partner_Role__c != \'' + VENDOR_TEXT + '\'');
         Boolean showOppPartner = iQueryCount > 0;
@@ -104,7 +104,7 @@ public without sharing class Core_Opportunity_RenewalController {
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM OpportunityLineItem ' + 
-                                          'WHERE Opportunity.Id = \'' + String.escapeSingleQuotes(originalOpportunity.Id) + '\'' + 
+                                          'WHERE Opportunity.Id = \'' + originalOpportunity.Id + '\'' + 
                                           '  AND Product2.IsActive = true ' + 
                                           '  AND Product2.isDeleted = false');
         
@@ -123,7 +123,7 @@ public without sharing class Core_Opportunity_RenewalController {
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Opportunity_Solution_Area__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(originalOpportunity.Id) + '\'');
+                                          'WHERE Core_Opportunity__c = \'' + originalOpportunity.Id + '\'');
         
         Boolean showOpportunitySolution = iQueryCount > 0;
         if (showOpportunitySolution)
@@ -155,7 +155,7 @@ public without sharing class Core_Opportunity_RenewalController {
         List<Opportunity_Solution_Area__c> lstOppSolution = Database.query(String.escapeSingleQuotes(itemQuery).replaceAll('\\\\', ''));
         
         List<Opportunity_Solution_Area__c> lstNewSolution = new List<Opportunity_Solution_Area__c>();
-        //Opportunity_Solution_Area__c newOppSolution;
+        Opportunity_Solution_Area__c newOppSolution;
         
         for (Opportunity_Solution_Area__c itemRec : lstOppSolution) {
    

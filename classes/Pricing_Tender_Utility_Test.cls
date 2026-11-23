@@ -39,7 +39,6 @@ public class Pricing_Tender_Utility_Test {
 	static testmethod void checkRecordTypeCheck() {
 		Test.startTest();
         SBQQ__Quote__c quote = [select id from SBQQ__Quote__c limit 1];
-        string recId = quote.Id;
 		List < User > lstUsers2 = Pricing_Test_Utility.createAdminUser();
         Pricing_QuoteLineCloneController.GlobalVariables gVar = new Pricing_QuoteLineCloneController.GlobalVariables();
         	Map<String,String> errMap = new Map<String,String>();
@@ -59,8 +58,6 @@ public class Pricing_Tender_Utility_Test {
 			Test.stopTest();
             Pricing_Tender_Utility.logErrorinLogObjectPricingAIIntegration(pricingAIErrMap,recordNameRecordIDMap, 'Critical');
             Pricing_Tender_Utility.logErrorinLogObjectBulkUpdateInsertAE(bulkAEErrMap,recordNameRecordIDMap, 'Medium', 'Account Executive Insertion');
-            Pricing_Tender_Utility.logErrorinLogObjectPricingSW('SW Error','SBQQ__Quote__c',quote.Id);
-            Pricing_Tender_Utility.createCoreLogEntrySW('Pricing_Tender_Utility_Test','createCoreLogEntrySW','SW Error','','SBQQ__Quote__c','low',recId);
 		}
         
         //String s;

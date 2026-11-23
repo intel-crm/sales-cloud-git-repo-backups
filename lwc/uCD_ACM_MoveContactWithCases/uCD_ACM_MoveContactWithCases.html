@@ -155,15 +155,10 @@
         <div style="margin-top: 2%;">
           <span class="slds-form-element__label"> Identify the Contact to transfer the Cases to: </span>
         </div>
-        
-<c-core_-m-d-f_-searchable_-dropdownlist
-    place-holder="Search Contact...."
-    input-data-list={contactsListforCaseMove}
-    field-disabled={disableDropdown}
-    onselecteditem={handleSelectContCase}
-    >
-</c-core_-m-d-f_-searchable_-dropdownlist>
-
+        <c-core_-m-d-f_-searchable_-dropdownlist place-holder="Search Contact...."
+          input-data-list={contactsListforCaseMove} field-disabled={disableDropdown}
+          onselecteditem={handleSelectContCase}>
+        </c-core_-m-d-f_-searchable_-dropdownlist>
       </div>
 
       <template if:true={casewithoutProjData}>

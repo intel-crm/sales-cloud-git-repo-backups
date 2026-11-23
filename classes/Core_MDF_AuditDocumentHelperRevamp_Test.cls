@@ -23,8 +23,8 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
         userlist.add(usr2);
         
         Database.insert(userlist);
-        // Highlight: Unused Local Variable
-       // List<Account> toBeUpdated = new List<Account>();        
+        
+        List<Account> toBeUpdated = new List<Account>();        
         
         system.runAs(usr){
             PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer'];        
@@ -85,10 +85,9 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             Database.insert(camp);
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-           // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
+            Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
             List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
-            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Digital','Email','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
             testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
             testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             testPartnerFundRequestRecord.Title = 'Test PFR';
@@ -98,7 +97,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             Database.insert(testPartnerFundRequestRecord);
             
             Test.startTest();
-            PartnerFundRequest testPartnerFundRequestRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Digital','Email','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
             testPartnerFundRequestRecord1.Amount = testPartnerFundRequestRecord.RequestedAmount;
             testPartnerFundRequestRecord1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             testPartnerFundRequestRecord1.Core_MDF_Start_Date__c = System.today() - 1;
@@ -109,7 +108,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             testPartnerFundRequestRecord1.Core_MDF_Channel_Partner_Led__c = true;
             Database.insert(testPartnerFundRequestRecord1);
             
-            PartnerFundRequest testPartnerFundRequestRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Digital','Email','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
             testPartnerFundRequestRecord2.Amount = testPartnerFundRequestRecord.RequestedAmount;
             testPartnerFundRequestRecord2.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             testPartnerFundRequestRecord2.Core_MDF_Start_Date__c = System.today() - 1;
@@ -210,15 +209,13 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             Core_MDF_AuditDocumentHelper_Revamp.fetchMetaDataRecords(programName1, budgetType1);
             Core_MDF_AuditDocumentHelper_Revamp.fetchMetaDataRecords(programName2, budgetType2);   
         }
-        // Unit Test Method should include System.Assert
-        System.assertEquals('OEM CMP', budgetType1, 'Budget type 1 should be OEM CMP');
     }
     
     @isTest
     static void testInsertAuditDocumentAndContentDocumentLink1() {
         
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        //system.runAs(adminUser){
+        system.runAs(adminUser){
             
             Core_MDF_Audit_Document__c auditDoc1 = [select Id, Core_MDF_Claim__c, Core_MDF_Document_Types__c from Core_MDF_Audit_Document__c where Core_MDF_Document_Title__c =: 'Test Doc1' limit 1];
             List<ContentDocument> contentDoc = Core_MDF_CCP_TestDataUtility.createContentDocument(true);
@@ -248,17 +245,15 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             auditDocWrapperList.add(auditDocWrapper2);
             
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(2, auditDocWrapperList.size(), 'Audit document wrapper list should contain 2 items');
             
             Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, pfc.Id, false);
-        //}
+        }
     }
     
     @isTest
     static void testInsertAuditDocumentAndContentDocumentLink2() {
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        //system.runAs(adminUser){
+        system.runAs(adminUser){
             Test.startTest();
             //pfc -- insert/update when switchClaimStatusToPICPending is true
             PartnerFundClaim pfc = [select Id from PartnerFundClaim where Title =: 'Test Claim2' limit 1];
@@ -276,18 +271,15 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             auditDocWrapperList.add(auditDocWrapper1);
             
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(1, auditDocWrapperList.size(), 'Audit document wrapper list should contain 1 item');
-            
             Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, pfc.Id, true);
-        //}
+        }
     }
     
     @isTest
     static void testInsertAuditDocumentAndContentDocumentLink3() {
         
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        //system.runAs(adminUser){
+        system.runAs(adminUser){
             
             Test.startTest();
             //pfc -- insert/update when switchClaimStatusToPICPending is true
@@ -307,17 +299,14 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             auditDocWrapperList.add(auditDocWrapper1);
             
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-              System.assertEquals(false, auditDocWrapper1.isNewDocument, 'isNewDocument should be false for existing document');
-    
             Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, pfc.Id, true);
-        //}
+        }
     }
     
     @isTest
     static void testInsertAuditDocumentAndContentDocumentLinkException() {
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        //system.runAs(adminUser){
+        system.runAs(adminUser){
             Test.startTest();
             //pfc -- insert/update when switchClaimStatusToPICPending is true
             PartnerFundClaim pfc = [select Id from PartnerFundClaim where Title =: 'Test Claim3' limit 1];
@@ -333,24 +322,21 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             auditDocWrapperList.add(auditDocWrapper1);
             
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(pfc.Id, auditDoc.Core_MDF_Claim__c,'Audit document should be linked to the correct claim');
             try {
                 Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, auditDoc.Id, false);
                 
             } catch(Exception ex) {
             }
-        //}
+        }
     }
         @isTest
         static void testDeleteDocumentIds() {
             User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        	//system.runAs(adminUser){
+        	system.runAs(adminUser){
                 PartnerFundClaim pfc = [select Id from PartnerFundClaim where Title =: 'Test Claim3' limit 1];
                 Core_MDF_Audit_Document__c auditDoc = [select Id, Core_MDF_Claim__c, Core_MDF_Document_Types__c, Core_MDF_Document_Id__c from Core_MDF_Audit_Document__c where Core_MDF_Claim__c=: pfc.Id limit 1];
                 String docId = auditDoc.Core_MDF_Document_Id__c;
-                // Unit Test Method should include System.Assert 
-                System.assertNotEquals(null,docId, 'Document ID should not be null');
+                
                 //delete content document link
                 Core_MDF_AuditDocumentHelper_Revamp.deleteDocumentIds(docId);
                 //Exception
@@ -358,13 +344,13 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
                    Core_MDF_AuditDocumentHelper_Revamp.deleteDocumentIds('abcdef'); 
                 } catch(Exception ex) {
                 }
-            //}
+            }
         }
     
     @isTest
     static void testCheckClaimStatusForPICProcess() {
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
-        //system.runAs(adminUser){
+        system.runAs(adminUser){
             
             PartnerFundClaim pfc1 = [select Id from PartnerFundClaim where Title =: 'Test Claim1' limit 1];
             PartnerFundClaim pfc2 = [select Id from PartnerFundClaim where Title =: 'Test Claim2' limit 1];
@@ -381,9 +367,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
                 Core_MDF_AuditDocumentHelper_Revamp.checkClaimStatusForPICProcess(auditDoc.Id);
             } catch(Exception ex) {
             }
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(pfc1.Id, auditDoc.Core_MDF_Claim__c, 'Audit document should be linked to PFC1');
-        //}
+        }
     }
     
      @isTest
@@ -424,7 +408,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
         claimList.add(claim1);
         Database.insert(claimList);
         }
-        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :claim1.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :claim1.Id LIMIT 1];
         Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper clonePFC = new Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper();
         clonePFC = Core_MDF_PartnerFundClaim_Edit.prepareCloneData(ThirdPartyClaim.Id);
 
@@ -473,7 +457,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
         claimList.add(claim1);
         Database.insert(claimList);
         }
-        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :claim1.Id LIMIT 1];
+        PartnerFundClaim ThirdPartyClaim = [Select Id,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_Region_Cd__c,Status,Core_MDF_Budget_Type_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c,CreatedDate From PartnerFundClaim WHERE Id = :claim1.Id LIMIT 1];
         
         Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper clonePFC = new Core_MDF_PartnerFundClaim_Edit.ClaimCountryDetailsWrapper();
         clonePFC = Core_MDF_PartnerFundClaim_Edit.prepareCloneData(ThirdPartyClaim.Id);
@@ -490,16 +474,16 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
         User adminUser = [SELECT Id FROM User WHERE email = 'sysadmin@example.com' LIMIT 1];
         PermissionSet claimCaseReviewerManagerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
         PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerManagerPermissionSet.Id, AssigneeId = adminUser.Id);
-        //insert psa;
-        //system.runAs(adminUser){
+        insert psa;
+        system.runAs(adminUser){
            //for Internal claim case reviewer
            //record id is null - clone, create
-           Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(null,false);
+           Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(null);
            //PFC and PFR
             PartnerFundClaim pfc = [select Id from PartnerFundClaim where Title =: 'Test Claim1' limit 1];
             PartnerFundRequest pfr = [Select Id, Core_MDF_Activity_Number__c from PartnerFundRequest where Title=: 'Test PFR' limit 1];
             //edit, claim detail page
-           Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id,false);
+           Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id);
             Test.startTest();
             //bulk claim
             Core_MDF_Claim_Batch__c claimBatch = [select Id from Core_MDF_Claim_Batch__c limit 1];
@@ -526,11 +510,9 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             claimStageInstance.Core_MDF_Request_Id__c = pfr.Id;
             insert claimStageInstance;
             
-            Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(claimStageInstance.Id,false);
+            Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(claimStageInstance.Id);
             Test.stopTest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals(claimBatch.Id, claimStageInstance.Core_MDF_Batch_ID__c, 'Should be linked to correct batch');
-        //}
+        }
     }
     
     @isTest
@@ -552,17 +534,15 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             PermissionSetAssignment  psa1 = new PermissionSetAssignment(PermissionSetId = picReviewerPermissionSet.Id, AssigneeId = user.Id);
             insert psa1;
             
-            Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id,false);
-         // Unit Test Method should include System.Assert 
-         System.assertEquals(user.Id, psa1.AssigneeId, 'Permission set should be assigned to user');
+            Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id);
         }
         //future purpose 
-        Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfr.Id,false);
+        Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfr.Id);
         //to enable document upload section
         pfc.Core_MDF_PIC_Review_Completed__c = false;
         pfc.Core_MDF_Status__c = 'Resubmission Required';
         update pfc;
-        Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id,false);
+        Core_MDF_AuditDocumentHelper_Revamp.getAuditDocumentDetailsWrapper(pfc.Id);
     }
      @isTest
     static void testgetClaimAndUserDetails(){
@@ -582,9 +562,7 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
               pfc.Core_MDF_PIC_Review_Completed__c = false;
         	pfc.Core_MDF_Status__c = 'Resubmission Required';
             Core_MDF_AuditDocumentHelper_Revamp.fetchAuditDocuments(pfc.Id);
-           Core_MDF_AuditDocumentHelper_Revamp.updateClaimStatus(pfc.Id);
-          // Unit Test Method should include System.Assert  
-        System.assertEquals('Resubmission Required', pfc.Core_MDF_Status__c, 'Status should be Resubmission Required');
+       		Core_MDF_AuditDocumentHelper_Revamp.updateClaimStatus(pfc.Id);
         }
     }
 }

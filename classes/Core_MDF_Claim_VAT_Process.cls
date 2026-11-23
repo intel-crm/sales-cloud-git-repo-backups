@@ -184,19 +184,13 @@ Intel       Sara                17 Nov,2020
         List<Core_MDF_Claim_VAT_Info__c> vatRecToBeInsertedOrUpdated = new List<Core_MDF_Claim_VAT_Info__c>();  
         
         for(PartnerFundClaim claim : inputClaims){ 
-
-            if (claim.Core_MDF_Has_Sub_Claims_Ind__c == true) { continue; }  //Roshan - Outcome based VAT process
-
             if(claim.Core_MDF_VAT_Eligibility_Ind__c || 
                (!claim.Core_MDF_VAT_Eligibility_Ind__c && claim.Core_MDF_VAT_Eligibility_Ind__c !=oldClaimMap.get(claim.Id).Core_MDF_VAT_Eligibility_Ind__c)){
                    // For All  input claim looking for Currency or Amount or Bank change
                    vatEligibleClaimIds.add(claim.Id); 
-                   //ATHR - Deeply Nested if 16209
-                   if(oldClaimMap == null && oldClaimMap.isEmpty()){
-                    continue;
-                   }
-                   //if(oldClaimMap!=null && oldClaimMap.size()>0)
-                   //{
+                   
+                   if(oldClaimMap!=null && oldClaimMap.size()>0)
+                   {
                        if(((claim.Core_MDF_Total_Invoice_Amount_Local__c!=null && claim.Core_MDF_Total_Invoice_Amount_Local__c != oldClaimMap.get(claim.Id).Core_MDF_Total_Invoice_Amount_Local__c) ||
                            (claim.Core_MDF_Audit_Adjustment_Amount__c!=null && claim.Core_MDF_Audit_Adjustment_Amount__c != oldClaimMap.get(claim.Id).Core_MDF_Audit_Adjustment_Amount__c) || 
                            (claim.Core_MDF_Currency__c != oldClaimMap.get(claim.Id).Core_MDF_Currency__c) ||
@@ -212,23 +206,14 @@ Intel       Sara                17 Nov,2020
                           &&  claim.Core_MDF_Status__c!='Denied'){
                                   claimsAmtBankChangeToBeProcess.add(claim.Id);                      
                               }  
-                   //} 
+                   } 
                }   
         }
-        //ATHR - Deeply Nested if 16209
-        if(vatEligibleClaimIds == null || vatEligibleClaimIds.isEmpty()){
-            return;
-        }
-        //if(vatEligibleClaimIds != null && vatEligibleClaimIds.size()>0)
-        //{
-            for(Core_MDF_Claim_VAT_Info__c vatInfo : [Select Core_MDF_Claim_Id__c, Id, Core_MDF_Status_Txt__c, Core_MDF_Sub_Claim_Id__c from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c IN :vatEligibleClaimIds OR Core_MDF_Sub_Claim_Id__c IN :vatEligibleClaimIds])
-            {
-                if(vatInfo.Core_MDF_Sub_Claim_Id__c == null){
-             		claimsWithVatAvailible.put(vatInfo.Core_MDF_Claim_Id__c,vatInfo);  
-                }
-                else{
-                    claimsWithVatAvailible.put(vatInfo.Core_MDF_Sub_Claim_Id__c,vatInfo);
-                }
+        if(vatEligibleClaimIds != null && vatEligibleClaimIds.size()>0)
+        {
+            for(Core_MDF_Claim_VAT_Info__c vatInfo : [Select Core_MDF_Claim_Id__c, Id, Core_MDF_Status_Txt__c from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c IN :vatEligibleClaimIds]) 
+            {  
+             claimsWithVatAvailible.put(vatInfo.Core_MDF_Claim_Id__c,vatInfo);        
             }
             for(PartnerFundClaim claim : inputClaims)
             {
@@ -262,14 +247,7 @@ Intel       Sara                17 Nov,2020
                         vatEligibleClaimIds.contains(claim.Id) && claimsWithVatAvailible!=null && !claimsWithVatAvailible.containsKey(claim.Id) && claim.Core_MDF_VAT_Amt__c!= null && ((String.isNotBlank(claim.Core_MDF_Applicable_VAT_Percentage_nm__c) && claim.Core_MDF_Bank_Legal_Entity_Code_cd__c ==bankLE650) || Math.abs(claim.Core_MDF_VAT_Amt__c) > 0) && claim.Core_MDF_VAT_Eligibility_Ind__c) // Core_MDF_VAT_Amt__c // Claim 0%, Audit:Partial comp, Bank= 0.00
                 {
                     Core_MDF_Claim_VAT_Info__c newVatRec = new Core_MDF_Claim_VAT_Info__c();
-
-                    //Roshan - Outcome based VAT process
-                    if (claim.Core_MDF_Claim_Id__c != NULL) {
-                        newVatRec.Core_MDF_Claim_Id__c = claim.Core_MDF_Claim_Id__c;
-                        newVatRec.Core_MDF_Sub_Claim_Id__c = claim.Id;
-                    } else {
-                        newVatRec.Core_MDF_Claim_Id__c = claim.Id;
-                    }
+                    newVatRec.Core_MDF_Claim_Id__c = claim.Id;
                     vatRecToBeInsertedOrUpdated.add(newVatRec);
                 }
                 
@@ -280,12 +258,10 @@ Intel       Sara                17 Nov,2020
             }
             
             if(vatRecToBeInsertedOrUpdated!=null && vatRecToBeInsertedOrUpdated.size()>0){ 
-                try{
                 database.upsert(vatRecToBeInsertedOrUpdated);              
-                } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}  
             }
             
-        //}
+        }
         
     }
     

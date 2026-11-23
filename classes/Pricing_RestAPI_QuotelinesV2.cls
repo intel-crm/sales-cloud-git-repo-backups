@@ -125,7 +125,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
             }
                 else{
                     Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-                response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Submit_Error_Msg;
+		            response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Submit_Error_Msg;
                 }
             }
         }catch(Exception exp){
@@ -212,7 +212,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
                     isValid = false;
                 }      
                 if(isValid){
-                    Pricing_BulkSalesRepActionController.recordApproval(rollBackQuoteLine, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
+                    String msg = Pricing_BulkSalesRepActionController.recordApproval(rollBackQuoteLine, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
                     
                     // creating a chatter post for the quote
                     FeedItem post = new FeedItem();

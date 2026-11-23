@@ -27,9 +27,7 @@ global without sharing class UCD_ACM_BusinessOrganization {
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse response = mappingInController(requestModel);
         Long dt2Long = DateTime.now().getTime();
         Decimal milliseconds2 = Decimal.valueOf(dt2Long - dt1Long);
-        if(response!=null){
-            response.ExecutionTime = milliseconds2;
-        }
+        response.ExecutionTime = milliseconds2;
         return response;
     }    
 

@@ -62,80 +62,6 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>Notify_CoGTM_Business_Approvers_On_Acceptance</name>
-        <label>Notify CoGTM Business Approvers On Acceptance</label>
-        <locationX>1458</locationX>
-        <locationY>2495</locationY>
-        <actionName>Core_MDF_DetermineEmailRecipients</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Notify_proposal_based_project_based_Users_on_Proposal_Rejection</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>notificationName</name>
-            <value>
-                <stringValue>ProjectAcceptance</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>objectName</name>
-            <value>
-                <stringValue>CAMP - Campaign</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>permissionSetName</name>
-            <value>
-                <stringValue>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>programName</name>
-            <value>
-                <elementReference>$Record.Core_MDF_Program__c</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipients</name>
-            <value>
-                <stringValue>InternalUsers</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recordId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>region</name>
-            <value>
-                <stringValue>WW</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>sendDiff</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>templateName</name>
-            <value>
-                <stringValue>Core_MDF_NotifyOnIPAProposalApproval</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>ultimateAccountId</name>
-            <value>
-                <elementReference>$Record.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_DetermineEmailRecipients</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <name>Recall_Approval</name>
         <label>Recall Approval</label>
         <locationX>314</locationX>
@@ -162,9 +88,6 @@
         <locationY>2279</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
-        <connector>
-            <targetReference>Check_CoGTM_Program_For_IUPGM</targetReference>
-        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -530,31 +453,6 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_CoGTM_Program_For_IUPGM</name>
-        <label>Check CoGTM Program For IUPGM</label>
-        <locationX>1590</locationX>
-        <locationY>2387</locationY>
-        <defaultConnector>
-            <targetReference>Notify_proposal_based_project_based_Users_on_Proposal_Rejection</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>CoGTM_Program</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Program__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>CoGTM</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Notify_CoGTM_Business_Approvers_On_Acceptance</targetReference>
-            </connector>
-            <label>CoGTM Program</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Check_PFR_Status</name>
         <label>Check PFR Status</label>
         <locationX>1661</locationX>
@@ -870,7 +768,7 @@
     <formulas>
         <name>checkIPAnotification</name>
         <dataType>Boolean</dataType>
-        <expression>(ISPICKVAL({!$Record.Core_MDF_Program__c} ,&apos;Intel Partner Alliance&apos;)) &amp;&amp; (ISPICKVAL({!$Record__Prior.Status},&apos;Pending Review&apos;))</expression>
+        <expression>(ISPICKVAL({!$Record.Core_MDF_Program__c} ,&apos;Intel Partner Alliance&apos;)||ISPICKVAL({!$Record.Core_MDF_Program__c} ,&apos;Channel MDF&apos;)) &amp;&amp; (ISPICKVAL({!$Record__Prior.Status},&apos;Pending Review&apos;))</expression>
     </formulas>
     <formulas>
         <name>currentTime_3m</name>

@@ -54,9 +54,6 @@
     <columns>
         <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
     </columns>
-    <columns>
-        <field>FK_$Opportunity.Core_Risk_Reason__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>

@@ -352,6 +352,16 @@
             <field>Core_Approval_Comment_History__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Geo_INDIA__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
+            <table>Opportunity</table>
+        </columns>
         <masterLabel>Opportunity Support Team</masterLabel>
     </sections>
     <sections>
@@ -632,6 +642,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Technical_Owner__c.User_Unique__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Technical_Owner__c.Core_WWID__c</field>
             <table>Opportunity</table>
         </columns>
@@ -733,11 +748,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Opportunity_URL__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Not_Progressed__c</field>
             <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

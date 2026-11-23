@@ -11,7 +11,7 @@ Description :
 *Anupam Agarwal                 12/08/2019               Added beforeUpdate and beforeInsert methods to handle the MDA indicator and duplicate records related validations.
 *Akshay More [Draco]            21-09-2021               Added condition to avoid clearing OPID at Account if non-Active Core_Account_Group_Member__c is deleted
 
-*Akshay More [Draco]       23-08-2024     Added condition not to clear the OPID from Intel Account if it contains other Active Account-OPID relationships (upon PAG Delete in removeOnePartIdFromIntelAccOnDeletion method)
+*Akshay More [Draco]	   	23-08-2024		 Added condition not to clear the OPID from Intel Account if it contains other Active Account-OPID relationships (upon PAG Delete in removeOnePartIdFromIntelAccOnDeletion method)
 *************************************************************************************/
 public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
     
@@ -29,7 +29,7 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
     public static Map<Id,sObject> objectsToDelete = new Map<Id,sObject>();
     public static Boolean objectsToDeleteCounter = false;
     
-    public static void afterMethod(Map<Id,Core_Account_Group_Member__c> oldMap, List<Core_Account_Group_Member__c> newList){
+    public static void afterMethod(List<Core_Account_Group_Member__c> oldList, List<Core_Account_Group_Member__c> newList){
         
         if(Trigger.isAfter){
             
@@ -37,15 +37,9 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 
                 Set<Id> accId=new Set<Id>();
                 List<String> lstEntitlementIds = new List<String>();
-                Map<id,Id> intelOpidAccMap = new Map<Id,Id>();
                 
                 for(Core_Account_Group_Member__c ce: newList){
-                    if(((oldMap!=null && !oldMap.isEmpty() && oldMap.get(ce.Id).Core_Inactive_Ind__c !=ce.Core_Inactive_Ind__c ) ||(oldMap==null)) && ce.Core_Inactive_Ind__c==false){
-		    
                     accId.add(ce.Core_Intel_Account_Id__c);
-                        intelOpidAccMap.put(ce.Core_Intel_Account_Id__c,ce.Core_Partner_Account_Id__c);
-                    }
-                    
                 }
                 
                 if(accId !=null){
@@ -71,83 +65,47 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                             lstEntitlementIds.add(coreEntitlement.Id);
                         }
                     }
-                    set<id> opidsFromCEs=new set<id>();
-                    Map<Id,Set<Id>> intelAccContEntMap = new Map<Id,Set<Id>>();
-                    List<Core_Contact_Entitlement__c> conEnt =[Select Core_Entitlement_Id__c,Core_Contact_Id__r.AccountId from 
-                                                               Core_Contact_Entitlement__c 
+                    
+                    List<Core_Contact_Entitlement__c> conEnt =[Select Core_Entitlement_Id__c from Core_Contact_Entitlement__c 
                                                                where Core_Contact_Id__c IN : conId 
-															   and Core_Selected__c =true 
-            												   and Core_Status__c = 'Complete'
                                                                AND Core_Entitlement_Id__c IN :lstEntitlementIds];
-					if(!conEnt.isEmpty()){
-						for(Core_Contact_Entitlement__c ceMp: conEnt){
-                            if(intelAccContEntMap.containsKey(ceMp.Core_Contact_Id__r.AccountId)){
-                                intelAccContEntMap.get(ceMp.Core_Contact_Id__r.AccountId).add(ceMp.Id);
-                            }else{
-                                intelAccContEntMap.put(ceMp.Core_Contact_Id__r.AccountId,new Set<Id>{ceMp.id});
-                            }
-						}
-					}							   
-                    system.debug('opidsFromCEs'+opidsFromCEs);
+                    
                     
                     //if(!conEnt.isEmpty()){
-                    Set<id> opidIdsToSetChangeInd = new Set<Id>();
-                    List<Account> accToUpdate = new List<Account>();
-                    if(intelAccContEntMap!=null && !intelAccContEntMap.isEmpty()){
-                        for(Id intelAcc: intelAccContEntMap.keySet()){
-                            if(intelOpidAccMap.containsKey(intelAcc)){
-                                opidIdsToSetChangeInd.add(intelOpidAccMap.get(intelAcc));
-                            }
-                        }
-                    }
-                    //  FIX: correct condition
-            	    if(!opidIdsToSetChangeInd.isEmpty()){
-                        for(Account opidAcc : [Select Core_PMP_Membership_Change_Ind__c from Account where Id IN :opidIdsToSetChangeInd]){
-                            if(opidAcc.Core_PMP_Membership_Change_Ind__c==false){
-                                opidAcc.Core_PMP_Membership_Change_Ind__c=true;
-                                accToUpdate.add(opidAcc);
-                            }
-                        }
-                    }
+
+                    List<Core_Account_Group_Member__c>  allPartnerAcc = [SELECT Id, Core_Partner_Account_Id__c,
+                                                                         Core_Intel_Account_Id__c FROM Core_Account_Group_Member__c 
+                                                                         WHERE Core_Intel_Account_Id__c IN:accId ];
                     
-               /*for(Core_Account_Group_Member__c partneraccount : allPartnerAcc){ 
-				if(opidsFromCEs.Contains(partneraccount.Core_Partner_Account_Id__c)){
-                    system.debug('partneraccount.Core_Partner_Account_Id__c'+partneraccount.Core_Partner_Account_Id__c);
-					 partneracctIds.add(partneraccount.Core_Partner_Account_Id__c);
-				}
-                       
+                    for(Core_Account_Group_Member__c partneraccount : allPartnerAcc){                                   
+                        partneracctIds.add(partneraccount.Core_Partner_Account_Id__c);
                     }//end of for loop
-                     system.debug('partneracctIds'+partneracctIds);
-                    List<Account> Acc=[Select Core_PMP_Membership_Change_Ind__c from Account where Id IN :partneracctIds];
                     
+                    List<Account> Acc=[Select Core_PMP_Membership_Change_Ind__c from Account where Id IN :partneracctIds];
+                    List<Account> accToUpdate = new List<Account>();
                     
                     for(Account accRec : Acc){
                         if(accRec.Core_PMP_Membership_Change_Ind__c == false){
                             accRec.Core_PMP_Membership_Change_Ind__c =true ;
                             accToUpdate.add(accRec);      
                         } 
-                    }//end of for loop*/
+                    }//end of for loop
                     
-                    //update accToUpdate ;
-		    if(!accToUpdate.isEmpty()){
-                    	Database.SaveResult[] accUpdateList = Database.update(accToUpdate, false);
-        				PMP_Utility.logDmlErrors((Object[]) accUpdateList, 'PMP_Acct_Grp_Mbr_TriggerHandler-afterMethod'); 
-                    }
+                    update accToUpdate ; 
+                    
                     //}//end of if
                     
                 }//end of if
             }// end of isInsert and isUpdate
         }// end of isAfter
-     }// end of afterMethod
+    }// end of afterMethod
     /** Remove One Partner Id from Intel Account when Inactive Indicator is checked and update One partner Id to Intel Account when Inactive Indicator is unchecked**/
     public static void populateOnePartnerIdOnIntelAccount(List<Core_Account_Group_Member__c> lstOfOPIDGrpMbr,  Map<Id, Core_Account_Group_Member__c> mapOldOpidGrmMbr){
         List<Account> lstAccToUpdate = new List<Account>();
         List<Id> listIntelAccountsIds = new List<Id>();
         Map<Id,Id> mapActiveInteltoOPIDIds = new Map<Id,Id>();
         for(Core_Account_Group_Member__c agm : lstOfOPIDGrpMbr){
-            if(agm.Core_Intel_Account_Id__c != null){ //  null check
-                listIntelAccountsIds.add(agm.Core_Intel_Account_Id__c);
-            }
+            listIntelAccountsIds.add(agm.Core_Intel_Account_Id__c);
         }
         
         List<Core_Account_Group_Member__c> opidListToAcc = new List<Core_Account_Group_Member__c>([SELECT Id, Name, Core_Inactive_Ind__c, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c FROM Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c IN: listIntelAccountsIds]);
@@ -175,13 +133,12 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         }
         
         if(!lstAccToUpdate.isEmpty()){
-            Database.SaveResult[] result = Database.update(lstAccToUpdate, false); 
-            PMP_Utility.logDmlErrors((Object[]) result, 'PMP_Acct_Grp_Mbr_TriggerHandler-populateOnePartnerIdOnIntelAccount');
+            Database.update(lstAccToUpdate, false); 
         }
     }
     
     /** Remove One Partner Id from Intel Account when OPId Group is deleted ***/
-   /* public static void removeOnePartIdFromIntelAccOnDeletion(List<Core_Account_Group_Member__c> lstOfOPIDGrpMbr){
+    public static void removeOnePartIdFromIntelAccOnDeletion(List<Core_Account_Group_Member__c> lstOfOPIDGrpMbr){
         Set<Account> lstAccToUpdate = new Set<Account>();
         List<Id> listIntelAccountsIds = new List<Id>();
         List<Id> listDeletedAGMIds = new List<Id>();
@@ -211,12 +168,11 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         }  
         
         if(lstAccToUpdate.size()>0){
-            Database.SaveResult[] result = Database.update(new List<Account>(lstAccToUpdate), false); 
-            PMP_Utility.logDmlErrors((Object[]) result, 'PMP_Acct_Grp_Mbr_TriggerHandler-removeOnePartIdFromIntelAccOnDeletion');
+            Database.update(new List<Account>(lstAccToUpdate), false); 
         }
-    }*/
+    }
     
-  /*  public static void beforeMethod(List<Core_Account_Group_Member__c> oldList, List<Core_Account_Group_Member__c> newList){
+    public static void beforeMethod(List<Core_Account_Group_Member__c> oldList, List<Core_Account_Group_Member__c> newList){
         
         //if (Trigger.isDelete){
         
@@ -273,14 +229,11 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                     accToUpdate.add(accRec);      
                 }                       
             }
-            //update accToUpdate;  
-             Database.SaveResult[] accUpdateList = Database.update(accToUpdate, false); 
-             PMP_Utility.logDmlErrors((Object[]) accUpdateList, 'PMP_Acct_Grp_Mbr_TriggerHandler-beforeMethod');
-             
+            update accToUpdate;   
             //}
         }                
         //}
-    }*/
+    }
     public static void checkMDAIndicator(List<Core_Account_Group_Member__c> PAGMNewList, Map<Id, Core_Account_Group_Member__c> PAGMOldMap)
     {   
         Set<String> accountIds = new Set<String>();
@@ -291,29 +244,29 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         List<Core_Account_Group_Member__c> pagmList = new List<Core_Account_Group_Member__c>();
         List<Id> pagmIntelActiveRecords = new List<Id>();
         for(Core_Account_Group_Member__c pagm:PAGMNewList){
-        Core_Account_Group_Member__c pagmOldValue =(PAGMOldMap != null) ? PAGMOldMap.get(pagm.Id) : null; // ✅ cached
-	if(pagm.Id != null){
-
-            
-	    
-	    if(pagm.Core_MDA_Ind__c == true &&(pagmOldValue != null && pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c)){
-	    pagmList.add(pagm);
-	    accountIds.add(pagm.Core_Partner_Account_Id__c);
-	    }
-	    
-	    if(pagm.Core_MDA_Ind__c != true &&(pagmOldValue != null && pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c)){
-	    pagmList.add(pagm);
-	    accountIds.add(pagm.Core_Partner_Account_Id__c);
-	    }
-	    
-	    if(!pagm.Core_Inactive_Ind__c &&pagmOldValue != null &&pagm.Core_Inactive_Ind__c != pagmOldValue.Core_Inactive_Ind__c){
-	    pagmIntelActiveRecords.add(pagm.Core_Intel_Account_Id__c);
-	    }
-
-            if(pagm.Core_MDA_Ind__c == true &&pagmOldValue != null &&pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c &&pagm.Core_Inactive_Ind__c == true){
-
-                pagm.addError(System.label.PRM_checkMDA_Error);
-            }
+            //To check if the Update Operation is performed
+            if(pagm.Id !=null){
+                //To check if the Intel Account Lookup is updated
+                Core_Account_Group_Member__c pagmOldValue = PAGMOldMap.get(pagm.Id);
+                
+                //Checking if Non-MDA is updated to MDA record             
+                if(pagm.Core_MDA_Ind__c ==true && (pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c)) {
+                    pagmList.add(pagm);
+                    accountIds.add(pagm.Core_Partner_Account_Id__c);
+                }
+                //Checking if MDA is updated to Non-MDA record   
+                if(pagm.Core_MDA_Ind__c !=true && (pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c)) {
+                    pagmList.add(pagm);
+                    accountIds.add(pagm.Core_Partner_Account_Id__c);
+                }
+                //To check if the same Intel Account is active with more than 1 Partner Account
+                if(pagm.Core_Inactive_Ind__c == false && pagm.Core_Inactive_Ind__c != pagmOldValue.Core_Inactive_Ind__c){
+                    pagmIntelActiveRecords.add(pagm.Core_Intel_Account_Id__c);
+                }
+                //Validation to restrict the user from modifying the Inactive record to a MDA 
+                if(pagm.Core_MDA_Ind__c == true && (pagmOldValue.Core_MDA_Ind__c != pagm.Core_MDA_Ind__c) && pagm.Core_Inactive_Ind__c == true) { 
+                    pagm.addError(System.label.PRM_checkMDA_Error); 
+                }
                 //To check if the Inactive Indicator is set for MDA Members
                 if(pagm.Core_MDA_Ind__c == true && (pagmOldValue.Core_Inactive_Ind__c != pagm.Core_Inactive_Ind__c) && pagm.Core_Inactive_Ind__c == true) {
                     recordsToInactivate.add(pagm.Core_Intel_Account_Id__c);
@@ -377,11 +330,11 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         }
         //To check if a MDA Record is inactivated for PAG
         if(recordsToInactivate.size()>0){
-            //List<Core_Account_Group_Member__c> pagmRecordList = [Select Id, Core_Intel_Account_Id__c, Core_MDA_Ind__c, Core_Inactive_Ind__c from Core_Account_Group_Member__c where Core_Intel_Account_Id__c in :recordsToInactivate and Core_MDA_Ind__c = true];
-            //if(pagmRecordList.size()>0){
+            List<Core_Account_Group_Member__c> pagmRecordList = [Select Id, Core_Intel_Account_Id__c, Core_MDA_Ind__c, Core_Inactive_Ind__c from Core_Account_Group_Member__c where Core_Intel_Account_Id__c in :recordsToInactivate and Core_MDA_Ind__c = true];
+            if(pagmRecordList.size()>0){
                 //for(Core_Account_Group_Member__c pagm:PAGMNewList){pagm.addError(System.label.PRM_Restrict_MDA_Removal);
                 
-            //}
+            }
             List<Account> intelAccRecords = [Select id, name, Core_Is_PAG_Member_Ind__c from Account where id in:recordsToInactivate];
             if(intelAccRecords.size()>0){
                 for(Account acc : intelAccRecords){
@@ -390,9 +343,7 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 }
             }
             if(accToUpsert.size()>0){
-                //update accToUpsert;
-                Database.SaveResult[] accUpsertList = Database.update(accToUpsert, false); 
-             	PMP_Utility.logDmlErrors((Object[]) accUpsertList, 'PMP_Acct_Grp_Mbr_TriggerHandler-checkMDAIndicator');
+                update accToUpsert;
             }
         }
     }
@@ -402,61 +353,44 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         List<Account> accToUpsert = new List<Account>();
         Set<Id> oldIntelAccounts = new Set<Id>();
         for(Core_Account_Group_Member__c pagm:PAGMNewList){
-        Core_Account_Group_Member__c pagmOldValue =(PAGMOldMap != null) ? PAGMOldMap.get(pagm.Id) : null; //  cached
-	
-	if(pagmOldValue == null){
-	if(pagm.Core_Intel_Account_Id__c != null){ //  null safety
-	pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
-	}
-	}else{
-	
-	if(pagmOldValue.Core_Inactive_Ind__c != pagm.Core_Inactive_Ind__c && pagm.Core_Inactive_Ind__c == true){
-	if(pagmOldValue.Core_Intel_Account_Id__c != null){
-    		oldIntelAccounts.add(pagmOldValue.Core_Intel_Account_Id__c); // safety
-	}
-	} else if(pagmOldValue.Core_Inactive_Ind__c != pagm.Core_Inactive_Ind__c && pagm.Core_Inactive_Ind__c == false){
-	if(pagm.Core_Intel_Account_Id__c != null){
-	    pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
-	}
-	} else if(pagm.Core_Intel_Account_Id__c != pagmOldValue.Core_Intel_Account_Id__c){
-	if(pagmOldValue.Core_Intel_Account_Id__c != null){
-	oldIntelAccounts.add(pagmOldValue.Core_Intel_Account_Id__c);
-	}
-	if(pagm.Core_Intel_Account_Id__c != null){
-	pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
+            if(PAGMOldMap == null){
+                pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
+            }else{
+                Core_Account_Group_Member__c pagmOldValue = PAGMOldMap.get(pagm.Id);
+                if(pagmOldValue.Core_Inactive_Ind__c != pagm.Core_Inactive_Ind__c && pagm.Core_Inactive_Ind__c == true){
+                    oldIntelAccounts.add(pagmOldValue.Core_Intel_Account_Id__c);
+                } else if(pagmOldValue.Core_Inactive_Ind__c != pagm.Core_Inactive_Ind__c && pagm.Core_Inactive_Ind__c == false){
+                    pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
+                } else if (pagm.Core_Intel_Account_Id__c !=pagmOldvalue.Core_Intel_Account_Id__c){
+                    oldIntelAccounts.add(pagmOldValue.Core_Intel_Account_Id__c);
+                    pagmIntelAccRecords.add(pagm.Core_Intel_Account_Id__c);
                 }
             }
         }
-    }
         // Setting IsPAGMember to true for Intel Account when the PAG Member record is created
-          //  Activate
-    	    if(!pagmIntelAccRecords.isEmpty()){
+        if(pagmIntelAccRecords.size()>0){
             List<Account> intelAccRecords = [Select id,name, Core_Is_PAG_Member_Ind__c from Account where id in:pagmIntelAccRecords ];
-            
+            if(intelAccRecords.size()>0){
                 for(Account acc : intelAccRecords){
 
                     acc.Core_Is_PAG_Member_Ind__c = true;
                     accToUpsert.add(acc); 
                 }
             }
-        
+        }
         // Setting IsPAGMember to false when the Intel Account is changed on PAG Member record
-           //  Deactivate
-           if(!oldIntelAccounts.isEmpty()){
+        if(oldIntelAccounts.size()>0){
             List<Account> oldIntelAccRecords = [Select id,name, Core_Is_PAG_Member_Ind__c from Account where id in:oldIntelAccounts ];
-            
+            if(oldIntelAccRecords.size()>0){
                 for(Account acc : oldIntelAccRecords){
 
                     acc.Core_Is_PAG_Member_Ind__c = false;
                     accToUpsert.add(acc); 
                 }
             }
-    
-	//  Avoid empty DML
-        if(!accToUpsert.isEmpty()){
-            //update accToUpsert;
-             Database.SaveResult[] accToUpsertList = Database.update(accToUpsert, false); 
-             PMP_Utility.logDmlErrors((Object[]) accToUpsertList, 'PMP_Acct_Grp_Mbr_TriggerHandler-toggleIsPAGMember');
+        }
+        if(accToUpsert.size()>0){
+            update accToUpsert;
         }
     }
     public static void PopulateLegalAgreeOnOPID(List<Core_Account_Group_Member__c> PAGMNewList,Map<Id,Core_Account_Group_Member__c> oldMap){
@@ -469,15 +403,13 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         List<PRM_AccountLegalAgreemntAssociation__c> FinalLegalAggrList= New List<PRM_AccountLegalAgreemntAssociation__c>();
         
         for(Core_Account_Group_Member__c PAGM:PAGMNewList) {
-           Core_Account_Group_Member__c PAGOld =(oldMap != null) ? oldMap.get(PAGM.Id) : null; //  cached
-            
-            if((oldMap == null) ||(PAGOld != null &&PAGOld.Core_Inactive_Ind__c == true &&PAGOld.Core_Inactive_Ind__c != PAGM.Core_Inactive_Ind__c)){
-	    if(PAGM.Core_Intel_Account_Id__c != null){ // null safety
-	    	LocationAccntsIdset.add(PAGM.Core_Intel_Account_Id__c);
-            }
-	    if(PAGM.Core_Partner_Account_Id__c != null){
+            Core_Account_Group_Member__c PAGOld ; //getting old values from map
+            if(oldMap!=null && oldMap.size()>0)
+            { PAGOld = (Core_Account_Group_Member__c) oldMap.get(PAGM.id) ;}
+            if((oldMap==null) || ((oldMap!=null && oldMap.size()>0) &&((PAGOld.Core_Inactive_Ind__c==true) && (PAGOld.Core_Inactive_Ind__c != PAGM.Core_Inactive_Ind__c))))
+            {
+                LocationAccntsIdset.add(PAGM.Core_Intel_Account_Id__c);  // adding specialties to a set
                 OPIDAndLocationAccntsMap.add(PAGM.Core_Partner_Account_Id__c);
-	    }
                 OPIDmemberlist.add(PAGM);
 
             }
@@ -499,35 +431,35 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
             }
         }
         if(!OPIDWithoutLegalAggrLocMap.isEmpty()){
-      Map<Id, PRM_AccountChannelMembership__c> ipaAccountIdACMMap = new Map<Id, PRM_AccountChannelMembership__c>();
-      //Checking if location account is an IPA account i.e. it should have atleast one approved ACM
-      for(PRM_AccountChannelMembership__c acm: [Select id, PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN: OPIDWithoutLegalAggrLocMap.keyset() and PRM_Channel_Program_Id__r.Name = 'Intel Partner Alliance' and PRM_Status_Nm__c = 'Approved']){
-        ipaAccountIdACMMap.put(acm.PRM_Account_Id__c, acm);  
-      }
+			Map<Id, PRM_AccountChannelMembership__c> ipaAccountIdACMMap = new Map<Id, PRM_AccountChannelMembership__c>();
+			//Checking if location account is an IPA account i.e. it should have atleast one approved ACM
+			for(PRM_AccountChannelMembership__c acm: [Select id, PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN: OPIDWithoutLegalAggrLocMap.keyset() and PRM_Channel_Program_Id__r.Name = 'Intel Partner Alliance' and PRM_Status_Nm__c = 'Approved']){
+				ipaAccountIdACMMap.put(acm.PRM_Account_Id__c, acm);	
+			}
             // IPA Refresh 2.0 - TWC729-7874
-           List<PRM_AccountLegalAgreemntAssociation__c> AccLegalAgrmnt = [
-            SELECT Id, PRM_Signed_By_Email__c, PRM_Signed_By_Name__c,PRM_Account_Id__c, PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c, PRM_InActive_Ind__c,PRM_Notes_Txt__c, PRM_Account_Id__r.Name FROM PRM_AccountLegalAgreemntAssociation__c WHERE PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c = 'IPA_TANDC' AND PRM_Account_Id__c IN :OPIDWithoutLegalAggrLocMap.keySet() ORDER BY CreatedDate ASC];
+		    List<PRM_AccountLegalAgreemntAssociation__c> AccLegalAgrmnt = new List<PRM_AccountLegalAgreemntAssociation__c>();
+		    AccLegalAgrmnt = [select id,PRM_Signed_By_Email__c,PRM_Signed_By_Name__c, PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c,PRM_InActive_Ind__c,PRM_Notes_Txt__c,PRM_Account_Id__r.name from PRM_AccountLegalAgreemntAssociation__c where PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c='IPA_TANDC' AND PRM_Account_Id__c IN:OPIDWithoutLegalAggrLocMap.keyset() Order by Createddate Asc];
 
 
             for(PRM_AccountLegalAgreemntAssociation__c ala : AccLegalAgrmnt){
                 //system.debug('ALA record'+ala);
-        if(ipaAccountIdACMMap.containsKey(ala.PRM_Account_Id__c)){
-          PRM_AccountLegalAgreemntAssociation__c OPIDAla = new PRM_AccountLegalAgreemntAssociation__c();
-          
-          OPIDAla.PRM_Account_Id__c= OPIDWithoutLegalAggrLocMap.get(ala.PRM_Account_Id__c);
-          //IPA Refresh 2.0 - TWC729-7874
-                OPIDAla.PRM_Signed_By_Email__c=ala.PRM_Signed_By_Email__c;
-                OPIDAla.PRM_Signed_By_Name__c=ala.PRM_Signed_By_Name__c;
+				if(ipaAccountIdACMMap.containsKey(ala.PRM_Account_Id__c)){
+					PRM_AccountLegalAgreemntAssociation__c OPIDAla = new PRM_AccountLegalAgreemntAssociation__c();
+					
+					OPIDAla.PRM_Account_Id__c= OPIDWithoutLegalAggrLocMap.get(ala.PRM_Account_Id__c);
+					//IPA Refresh 2.0 - TWC729-7874
+		            OPIDAla.PRM_Signed_By_Email__c=ala.PRM_Signed_By_Email__c;
+		            OPIDAla.PRM_Signed_By_Name__c=ala.PRM_Signed_By_Name__c;
 
-          OPIDAla.PRM_Agreement_Sign_Dt__c=ala.PRM_Agreement_Sign_Dt__c;
-          OPIDAla.PRM_Partner_Agreement_Id__c=ala.PRM_Partner_Agreement_Id__c;
-          OPIDAla.PRM_InActive_Ind__c=ala.PRM_InActive_Ind__c;
-          OPIDAla.PRM_Notes_Txt__c = 'Terms and Condition acceptance rolled up from the location account' + ' ' + ala.PRM_Account_Id__r.name + ' '+'as part of T&C roll up.';
-          if(!OPIDLegalAggrMap.containsKey(OPIDAla.PRM_Account_Id__c)){
-            OPIDLegalAggrMap.put(OPIDWithoutLegalAggrLocMap.get(ala.PRM_Account_Id__c),OPIDAla);  
-          }
-        }
-          
+					OPIDAla.PRM_Agreement_Sign_Dt__c=ala.PRM_Agreement_Sign_Dt__c;
+					OPIDAla.PRM_Partner_Agreement_Id__c=ala.PRM_Partner_Agreement_Id__c;
+					OPIDAla.PRM_InActive_Ind__c=ala.PRM_InActive_Ind__c;
+					OPIDAla.PRM_Notes_Txt__c = 'Terms and Condition acceptance rolled up from the location account' + ' ' + ala.PRM_Account_Id__r.name + ' '+'as part of T&C roll up.';
+					if(!OPIDLegalAggrMap.containsKey(OPIDAla.PRM_Account_Id__c)){
+					  OPIDLegalAggrMap.put(OPIDWithoutLegalAggrLocMap.get(ala.PRM_Account_Id__c),OPIDAla);  
+					}
+				}
+					
                // FinalLegalAggrList.add(OPIDAla);
             }
         }
@@ -537,11 +469,7 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
             } 
         }
         if(!FinalLegalAggrList.isEmpty()){
-            //insert(FinalLegalAggrList);
-             Database.SaveResult[] finalAggrList = Database.insert(FinalLegalAggrList, false);
-			 PMP_Utility.logDmlErrors((Object[]) finalAggrList, 'PMP_Acct_Grp_Mbr_TriggerHandler-PopulateLegalAgreeOnOPID');
-            
-            
+            insert(FinalLegalAggrList);
         }
     }
     /**
@@ -570,8 +498,8 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         Map<Id,Id> opidWithoutPriorAssociationMap = new Map<Id,Id>();
         List<PRM_IPAMembership_Attributes__c> lisOfIpaMemAttribute = new List<PRM_IPAMembership_Attributes__c>();
         List<Core_Account_Group_Member__c> cagForRollDown = new List<Core_Account_Group_Member__c>();
-        String errorMsg ='*****PRM_IPAR_rollUpDownIPAMembership*****';
-        errorMsg+= 'pagNewList: '+pagNewList+'******';
+        String errorMsg ='';
+
         for(Core_Account_Group_Member__c cagNew:pagNewList) {
             Core_Account_Group_Member__c PAGOld ; //getting old values from map
             if(oldMap!=null && oldMap.size()>0){
@@ -584,7 +512,6 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 cagList.add(cagNew);  
             }
         }
-        errorMsg+= 'cagList: '+cagList+'******';
         //Query to fetch all the Intel accounts associated with the OPID
         if(!opidAcctIds.isEmpty() && !locationAcctIds.isEmpty()){
             for(Core_Account_Group_Member__c cag :[SELECT Name,Core_Partner_Account_Id__c,Core_Inactive_Ind__c,Core_Intel_Account_Id__c FROM Core_Account_Group_Member__c  WHERE Core_Partner_Account_Id__c IN:opidAcctIds AND Core_Inactive_Ind__c=false AND Core_Intel_Partner_Alliance_PartnerGroup__c=true]){
@@ -610,7 +537,7 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         }
         //querying all IPA Membership Attribute record for OPID and Intel Account
         if(!intelAndOpidAccts.IsEmpty()){
-            for(PRM_IPAMembership_Attributes__c ipaMemAtt:[SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c WHERE PRM_Account_Id__c IN:intelAndOpidAccts And PRM_Inactive_ind__c= false]){
+            for(PRM_IPAMembership_Attributes__c ipaMemAtt:[SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c WHERE PRM_Account_Id__c IN:intelAndOpidAccts]){
                 if(opidAcctIds.contains(ipaMemAtt.PRM_Account_Id__c)){
                     opidMemAttMap.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }
@@ -646,43 +573,33 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 }
             }
         }
-
         
         //creating new IPA membership attribute for OPID
-        errorMsg+= 'opidWithoutPriorAssociationMap: '+opidWithoutPriorAssociationMap.size()+'******';
         if(!opidWithoutPriorAssociationMap.isEmpty() && !locMemAttMap.IsEmpty()){
             for(PRM_IPAMembership_Attributes__c  locIpaMemAtt : locMemAttMap.values()){
-
                 if(opidWithoutPriorAssociationMap.containskey(locIpaMemAtt.PRM_Account_Id__c)){            
                     PRM_IPAMembership_Attributes__c opidIpaMemAtt = new PRM_IPAMembership_Attributes__c();                
                     opidIpaMemAtt = PRM_ProfileResponse.createIpaMembershipAttribute_IPAR(opidIpaMemAtt,locIpaMemAtt);
                     opidIpaMemAtt.PRM_Account_Id__c = opidWithoutPriorAssociationMap.get(locIpaMemAtt.PRM_Account_Id__c);
-                    opidIpaMemAtt.RecordTypeId = opidIpaMemAttrRecordId;
-                   
+                    opidIpamemAtt.RecordTypeId = opidIpaMemAttrRecordId;
                     lisOfIpaMemAttribute.add(opidIpaMemAtt);                            
                 }
             }
         }
-        errorMsg+= 'lisOfIpaMemAttribute :'+lisOfIpaMemAttribute+'*****';
 
         //Roll Down Logic Starts here
         if(!opidMemAttMap.isEmpty()){
             // A Map with key as intel Id and value as OPID
             for(PRM_IPAMembership_Attributes__c opidIpaMemAtt : opidMemAttMap.values()){  
-                               
                 for(Core_Account_Group_Member__c cag : cagList ){  
                     if (opidIpaMemAtt.PRM_Account_Id__c == cag.Core_Partner_Account_Id__c ){
                         PRM_IPAMembership_Attributes__c locMemAttr = new PRM_IPAMembership_Attributes__c();
-                        //if intel account already has a record we roll down to that record                                           
+                        //if intel account already has a record we roll down to that record
                         if (!locMemAttMap.keyset().isEmpty() && locMemAttMap.containskey(cag.Core_Intel_Account_Id__c)){
                             locMemAttr = locMemAttMap.get(cag.Core_Intel_Account_Id__c);
-                            locMemAttr.PRM_Inactive_ind__c = false;
-                            
-                            
                         }else{//if intel account does not have a record then create new IPA membership attribute an roll down
                             locMemAttr.PRM_Account_Id__c= cag.Core_Intel_Account_Id__c;
                             locMemAttr.RecordTypeId =inteIpaMemAttrRecordId;
-                            locMemAttr.PRM_Inactive_ind__c = false;
                         }   
                             locMemAttr = PRM_ProfileResponse.createIpaMembershipAttribute_IPAR(locMemAttr,opidIpaMemAtt);
                             lisOfIpaMemAttribute.add(locMemAttr);
@@ -690,20 +607,18 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 }
             }
         }
-        errorMsg+= 'lisOfIpaMemAttribute :'+lisOfIpaMemAttribute+'*****';
         try{       
             if(!lisOfIpaMemAttribute.IsEmpty()){
                 //upsert all ipa membership attributes for OPID and intel account
                 Database.UpsertResult[] result = Database.upsert(lisOfIpaMemAttribute,false);
-                PMP_Utility.logDmlErrors((Object[]) result, 'PMP_Acct_Grp_Mbr_TriggerHandler-PRM_IPAR_rollUpDownIPAMembership');
-                /*for(Database.UpsertResult sr : result){
+                for(Database.UpsertResult sr : result){
                     if(!sr.isSuccess()){
                         for(Database.Error err : sr.getErrors()) {
                             errorMsg = errorMsg+err.getMessage()+' ';
                         } 
                         errorMsg= errorMsg+'\n';
                     }
-                }*/
+                }
             }
         }catch(Exception ex){
             errorMsg=ex.getMessage();   
@@ -772,19 +687,14 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
 
         //Iterate the Input
         for(Core_Account_Group_Member__c PAGM:PAGMNewList) {
-           Core_Account_Group_Member__c PAGOld =(oldMap != null) ? oldMap.get(PAGM.Id) : null;
-
-        
-
-if((oldMap == null &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&!PAGM.Core_Inactive_Ind__c)||(PAGOld != null &&PAGOld.Core_Inactive_Ind__c &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&PAGOld.Core_Inactive_Ind__c != PAGM.Core_Inactive_Ind__c)){
-
-            if(PAGM.Core_Intel_Account_Id__c != null)
-                LocationAccntsIdset.add(PAGM.Core_Intel_Account_Id__c);
-
-            if(PAGM.Core_Partner_Account_Id__c != null){
+            Core_Account_Group_Member__c PAGOld ; //getting old values from map
+            if(oldMap!=null && oldMap.size()>0)
+            { PAGOld = (Core_Account_Group_Member__c) oldMap.get(PAGM.id) ;}
+            if((oldMap==null && PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c==true && PAGM.Core_Inactive_Ind__c==false ) || ((oldMap!=null && oldMap.size()>0) &&((PAGOld.Core_Inactive_Ind__c==true) &&  (PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c==true)&&(PAGOld.Core_Inactive_Ind__c != PAGM.Core_Inactive_Ind__c))))
+            {
+                LocationAccntsIdset.add(PAGM.Core_Intel_Account_Id__c);  // adding specialties to a set
                 OPIDAndLocationAccnts.add(PAGM.Core_Partner_Account_Id__c);
                 OPIDsAllRolldown.add(PAGM.Core_Partner_Account_Id__c);
-            }
                 locationAndOpidMap.put(PAGM.Core_Intel_Account_Id__c,PAGM.Core_Partner_Account_Id__c);
                 
                 OPIDmemberlist.add(PAGM);  
@@ -794,7 +704,6 @@ if((oldMap == null &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&!PAGM.Co
         
         //Query to fetch all the Intel accounts associated with the OPID
         if(!OPIDAndLocationAccnts.isEmpty() && !LocationAccntsIdset.isEmpty() ){
-            //query to identify OPID with prior assocaition and get the first association
             for(Core_Account_Group_Member__c CagMember :[SELECT Name,Core_Partner_Account_Id__c,Core_Inactive_Ind__c,Core_Intel_Account_Id__c FROM Core_Account_Group_Member__c  WHERE Core_Partner_Account_Id__c IN:OPIDAndLocationAccnts AND Core_Inactive_Ind__c=false AND Core_Intel_Partner_Alliance_PartnerGroup__c=true]){
                 // In this below IF condition, we fetch all the Location account that are associated with OPID. If there are any additional Intel account associated with OPID apart from the Trigger.new Loc Id's, then we would say that OPID has had Prior Association
                 if(!LocationAccntsIdset.contains(CagMember.Core_Intel_Account_Id__c)){
@@ -909,9 +818,7 @@ if((oldMap == null &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&!PAGM.Co
             if(!FinalProfileRespnseList.isEmpty()){
                 try
                 {
-                    //Insert FinalProfileRespnseList;
-                    Database.SaveResult[] fpResList = Database.insert(FinalProfileRespnseList, false);
-					PMP_Utility.logDmlErrors((Object[]) fpResList, 'PMP_Acct_Grp_Mbr_TriggerHandler-RollUpLocFlagToOPID');
+                    Insert FinalProfileRespnseList;
                     
                 }catch(Exception ex){
                     PRM_ErrorUtilityClass.logError(ex);
@@ -1026,20 +933,16 @@ if((oldMap == null &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&!PAGM.Co
         {       
 
             if(!FinalProfileRespnseListRollDown.IsEmpty()){
-                //upsert FinalProfileRespnseListRollDown;
-                Database.UpsertResult[] FinalResList = Database.upsert(FinalProfileRespnseListRollDown,false);
-                PMP_Utility.logDmlErrors((Object[]) FinalResList, 'PMP_Acct_Grp_Mbr_TriggerHandler-RollUpLocFlagToOPID');
+                upsert FinalProfileRespnseListRollDown;
             }   
             // Since there are no responses are OPID level, but if the location has some data. Then we would clear it to have it in sync with OPID.
             if(!locResponseClearList.IsEmpty()){
-                //delete locResponseClearList ;
-                Database.DeleteResult[] locClearList = Database.delete(locResponseClearList, false);
-				PMP_Utility.logDmlErrors((Object[]) locClearList, 'PMP_Acct_Grp_Mbr_TriggerHandler-RollUpLocFlagToOPID');
+                delete locResponseClearList ;
             }
         }catch(Exception ex){
             PRM_ErrorUtilityClass.logError(ex);
         }  
-       
+        
         
         
     } 
@@ -1072,16 +975,14 @@ if((oldMap == null &&PAGM.Core_Intel_Partner_Alliance_PartnerGroup__c &&!PAGM.Co
                 '',
                 true,
                 '',
-                '',                
+                '',
                 cag.Core_Inactive_Ind__c?String.valueOf(customMetadata.getInstance('LOC_DISASSC').get('PRM_Milestone_Display_Name__c')):
                 String.valueOf(customMetadata.getInstance('LOC_ASSC').get('PRM_Milestone_Display_Name__c'))                                             
                 ));
             }
         }
         if (!trackers.isEmpty()) {
-            //insert trackers;
-            Database.SaveResult[] trackersList = Database.insert(trackers, false);
-			PMP_Utility.logDmlErrors((Object[]) trackersList, 'PMP_Acct_Grp_Mbr_TriggerHandler-createTrackerMilestonesForOPIDUpdates');
+            insert trackers;
         }
     }
     

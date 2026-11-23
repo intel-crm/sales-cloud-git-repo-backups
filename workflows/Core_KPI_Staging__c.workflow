@@ -8,7 +8,7 @@
             <recipient>Core_KPI_Failure_UserGroup</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_KPI_Failure_Template</template>
     </alerts>

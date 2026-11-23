@@ -14844,23 +14844,6 @@
 				{ }
     	]
 },
-{
-"Parent Identifier" : "Solution_Marketplace_Hierarchy",
-"Parent Name" : "",
-"Child Identifier" : "Intel_Segments_NPP_01_Busines_",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,147,483,647",
-"Is_Active" : "False",
-"Selection Type" : "",
-"Remarks" : "",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
 	{
 				"Spec Identifier" : "End of Hierarchy", 		
 				"Spec Display Name" : "", 

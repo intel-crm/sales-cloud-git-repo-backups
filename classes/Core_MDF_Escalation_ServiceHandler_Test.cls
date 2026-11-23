@@ -16,7 +16,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
     public static Id channelProgramId;
     @TestSetup static void setUpData() {
         List<User> usrList = new List<User>();
-
+        List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -306,7 +306,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             Id mysterShopPSIs ;
             Id claimCCFSubPSId ;
             Id cscClaimSubPSId ;
-
+            Id ipaAccPFRSubId;
             //List<PermissionSet> claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList LIMIT 1];
 
             for(PermissionSet claimSubmitterPS : [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList]){
@@ -409,8 +409,6 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             testPartnerFundRequest1.Core_MDF_Activity_Closure_Type__c = 'Manual';
             testPartnerFundRequest1.Core_MDF_Budget_Currency_cd__c ='USD'; 
             testPartnerFundRequest1.Core_MDF_Reimbursement_Rate_pct__c='100%';
-            testPartnerFundRequest1.Core_MDF_ActivityCategory__c='Audio';
-            testPartnerFundRequest1.Core_MDF_Activity_Types__c='Radio';
             //Database.insert(testPartnerFundRequest1);
             toBeInsertedActivities.add(testPartnerFundRequest1);
           
@@ -453,7 +451,6 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             bypassFunctionKeys.add('Core_MDF_Bypass_ATFBatchUpdate');
             bypassFunctionKeys.add('Core_MDF_BypassATFFlagUpdateBatch');
             bypassFunctionKeys.add('Core_MDF_BypassATFFlagUpdate');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -568,7 +565,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,opalbudgetMDF,'INDIA','Partner Sales Force',
-                                                                                           'Desktop','Intel® Corporate Logo','Audio',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
@@ -587,7 +584,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),omCmpPfa,opalbudgetMDF,'INDIA','Partner Sales Force',
-                                                                                           'Desktop','Intel® Corporate Logo','Audio',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr1.RequestedAmount = 9000;
             pfr1.Amount = 9000;
@@ -612,8 +609,6 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             //pfr2.Core_MDF_Region_cd__c = 'APJ';
             pfr2.Core_MDF_Region_nm__c = 'APJ';
             pfr2.Core_MDF_Budget_Type_nm__c = 'Retail MDF';
-            pfr2.Core_MDF_ActivityCategory__c='Audio';
-            pfr2.Core_MDF_Activity_Types__c='Radio';
             pfr2.AllocationId = rmfPfa.Id;
             pfr2.BudgetId = pmb.Id;
             toBeInsertedActivities.add(pfr2);
@@ -621,7 +616,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Audio',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr3.RequestedAmount = 9000;
             pfr3.Amount = 9000;
@@ -638,7 +633,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Audio',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr4.RequestedAmount = 400;
             pfr4.Amount = 400;
@@ -656,7 +651,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr5 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Audio',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr5.RequestedAmount = 9000;
             pfr5.Amount = 9000;
@@ -672,7 +667,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             PartnerFundRequest pfr6 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Audio',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr6.RequestedAmount = 9000;
             pfr6.Amount = 9000;
@@ -697,15 +692,13 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             //pfr7.Core_MDF_Region_cd__c = 'APJ';
             pfr7.Core_MDF_Region_nm__c = 'APJ';
             pfr7.Core_MDF_Budget_Type_nm__c = 'Retail MDF';
-            pfr7.Core_MDF_ActivityCategory__c='Audio';
-            pfr7.Core_MDF_Activity_Types__c='Radio';
             pfr7.AllocationId = rmfPfa.Id;
             pfr7.BudgetId = pmb.Id;
             toBeInsertedActivities.add(pfr7);
 
             PartnerFundRequest IPApfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                              Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(iPACoMarketingAcc.id),NULL,NULL,'India','C-Suite','Traditional Notebook',
-                                                                                            'Intel® 11ᵗʰ Gen','Seller Incentive','SPIF - Target','Draft',false); 
+                                                                                            'Intel® 11ᵗʰ Gen','Sales Incentive','Seller - Target SPIF','Draft',false); 
             IPApfr.Core_MDF_Activity_Description__c = 'Test IPA Activity';
             IPApfr.Title = 'Test IPA Activity';
             IPApfr.Core_MDF_Start_Date__c = System.today().addDays(1);
@@ -721,7 +714,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             
             PartnerFundRequest IPApfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                              Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(iPACoMarketingAcc.id),NULL,NULL,'India','C-Suite','Traditional Notebook',
-                                                                                            'Intel® 11ᵗʰ Gen','Seller Incentive','SPIF - Target','Draft',false); 
+                                                                                            'Intel® 11ᵗʰ Gen','Sales Incentive','Seller - Target SPIF','Draft',false); 
             IPApfr2.Core_MDF_Activity_Description__c = 'Test IPA Activity 2';
             IPApfr2.Title = 'Test IPA Activity 2';
             IPApfr2.Core_MDF_Start_Date__c = System.today().addDays(1);
@@ -1028,11 +1021,11 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         User clmSub =[select Id from user where email ='xyz@mail.com' limit 1];
         Case compliantCase = new Case();
         Case nonCompliantCase = new Case();
-
+        Case paymentDueCase = new Case();
         Id caseRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Claim_Case_Review_Result').getRecordTypeId();
         ChannelProgram cp = [Select Id, Name from ChannelProgram where Name ='Client'];
         
-        
+        System.debug('**profile**'+user1.Profile.Name);
         System.runAs(user1){
 
             Integer tempCounter = 0;
@@ -1405,7 +1398,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
     }
         @isTest static void testCompliantCaseEscalation2(){
         
-
+        List<Core_MDF_Escalation__c> escListToBeInserted = new List<Core_MDF_Escalation__c>();
         List<Core_MDF_Escalation__c> escToBeupdated = new List<Core_MDF_Escalation__c>();       
         List<PartnerFundClaim> toBeupdatedClaims = new List<PartnerFundClaim>();   
         List<Core_MDF_Claim_Case_Checklist__c> checklistRecords = new List<Core_MDF_Claim_Case_Checklist__c>();
@@ -1571,7 +1564,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
                 
                 esc2.Core_MDF_Escalation_Status_nm__c='Approved';
                 update esc2;
-               
+                system.debug('**esc2.Core_MDF_Escalation_Status_nm__c**'+esc2.Core_MDF_Escalation_Status_nm__c);
                 esc2.Core_MDF_Approved_Amount_amt__c=100;
                 update esc2;
                 //Database.insert(escList);
@@ -2058,7 +2051,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         try{
             Core_MDF_Escalation_ServiceHandler.validateCampAmt( null, null);
             Core_MDF_Escalation_ServiceHandler.shareEscalation( null, null, true);
-
+            Core_MDF_Escalation_ServiceHandler.validateEscalationWithCampaign( null, null, null, null, null, null,null);
             Core_MDF_Escalation_ServiceHandler.initializeEscalationFields( null, null, true);
         } catch(exception e){
         }

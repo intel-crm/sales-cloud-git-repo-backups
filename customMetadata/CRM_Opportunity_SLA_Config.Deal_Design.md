@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>CRM_SLA_Breach_2__c</field>
-        <value xsi:type="xsd:double">74.0</value>
+        <value xsi:type="xsd:double">726.0</value>
     </values>
     <values>
         <field>CRM_Stage_Name__c</field>

@@ -5,7 +5,8 @@
         <label>Send Welcome Email to PSG Contact</label>
         <locationX>647</locationX>
         <locationY>143</locationY>
-        <actionName>01p3b0000019BGxNotFound</actionName>
+        <actionName>PRM_PSG_RegistrationReqUtility</actionName>
+        <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>contactIds</name>
@@ -13,6 +14,7 @@
                 <elementReference>$Record.Core_Contact_Id__c</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>PRM_PSG_RegistrationReqUtility</nameSegment>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -71,5 +73,5 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

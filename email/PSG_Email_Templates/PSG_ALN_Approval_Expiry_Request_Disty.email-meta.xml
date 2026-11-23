@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <available>true</available>
+    <description>Email template to notify the Disti users on Approval of a ALN Expiry</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG - ALN Approval Expiry Request Disty</name>
+    <style>none</style>
+    <subject>DPA Request rejected for: CIS #  |</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

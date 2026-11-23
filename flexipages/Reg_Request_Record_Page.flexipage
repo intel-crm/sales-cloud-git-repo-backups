@@ -581,24 +581,6 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>flowArguments</name>
-                    <value>[{&quot;label&quot;:&quot;regReq&quot;,&quot;dataType&quot;:&quot;SObject&quot;,&quot;supportsRecordId&quot;:true,&quot;value&quot;:&quot;{!Record.Id}&quot;}]</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowLayout</name>
-                    <value>oneColumn</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowName</name>
-                    <value>PRM_Related_Registration_Requests</value>
-                </componentInstanceProperties>
-                <componentName>flowruntime:interview</componentName>
-                <identifier>flowruntime_interview</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>relatedTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1072,40 +1054,6 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ACM_SDP_Product_Code__c</fieldItem>
-                <identifier>RecordACM_SDP_Product_Code__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>EPS Verified Company</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ACM_SDP_System_Serial_Number__c</fieldItem>
-                <identifier>RecordACM_SDP_System_Serial_Number__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>EPS Verified Company</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-6644a212-ea59-400b-872a-363ceb50c018</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1411,16 +1359,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Tax_Number__c</fieldItem>
-                <identifier>RecordPRM_Tax_Number_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Account_URL__c</fieldItem>
                 <identifier>RecordPRM_Account_URL_cField</identifier>
             </fieldInstance>
@@ -1540,16 +1478,6 @@
                         <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Is_Returning_User__c</fieldItem>
-                <identifier>RecordPRM_Is_Returning_User_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-315ef91d-87c0-4268-9662-776fdd492330</name>

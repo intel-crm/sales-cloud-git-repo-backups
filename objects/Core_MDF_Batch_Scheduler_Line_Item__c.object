@@ -197,20 +197,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Number_of_errors__c</fullName>
-        <description>Number of Errors/Failures from Async Apex Job</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Number of Errors/Failures from Async Apex Job</inlineHelpText>
-        <label>Number of errors</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Scheduled_Time_Dt__c</fullName>
         <description>Time at which batch needs to be executed</description>
         <label>Scheduled Time</label>
@@ -218,16 +204,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Status_Detail__c</fullName>
-        <description>Status Detail from Async Apex job</description>
-        <inlineHelpText>Status Detail from Async Apex job</inlineHelpText>
-        <label>Status Detail</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Status_Txt__c</fullName>

@@ -1,12 +1,5 @@
 @isTest
 public class Core_Product_Access_Line_Item_Test {
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     
     
@@ -146,7 +139,7 @@ public class Core_Product_Access_Line_Item_Test {
         lItem.Core_Supported_Product__c = supProd.id;
         lItem.Core_Status__c = 'PENDING';
         litem.Core_Approval_Type__c = 'Approval Required';
-        litem.Recordtypeid  =  schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId(); //'012210000004IHZ';
+        litem.Recordtypeid  =  schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId(); //'012210000004IHY';
         Test.startTest();
         
         //Inserting Line Item for after Insert
@@ -356,21 +349,17 @@ Modification Log :
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        List<Profile> profileList = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
-        
-        if(profileList.isEmpty()){
-        System.debug('Profile not found');
-        return;
+        strProf.add('CCP - Core Access');
+        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : profileList){
+            profiles.put(prf.name, prf.id);
         }
-        
-        ID profileId = profileList[0].Id;
-        
         // Create Users
-        List<User> listOfUser = new List<User>();
+        List<User> listOfUser = new List<User> ();
         listOfUser = TestUtilities.getListOfUser(1);
-        listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
-        //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
+        listOfUser.get(0).ProfileID =  profiles.get('CCP - Core Access');
+        insert listOfUser;
+        System.assertEquals(listOfUser.get(0).profileid, profiles.get('CCP - Core Access'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts
             List<Account> accountList =  new List<Account>();
@@ -418,9 +407,8 @@ Modification Log :
             insert parRec;
             System.assert(parRec <> null, 'Record not created');
             // inserting Prodcut Acces Line Item- MAP
-            /*Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
+            Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
             lItem.Core_MAP_PAR__c = mapRec.id;
-            lItem.Name = 'Test';
             lItem.Core_Account__c = accountList[0].id;
             // lItem.Core_isPARRequest__c=true;
             lItem.Core_Supported_Product__c = suppProductList[0].id;
@@ -445,7 +433,7 @@ Modification Log :
             lItemPARAA.Core_isPARRequest__c= true;
             lItemPARAA.Core_Supported_Product__c = suppProductList[0].id;
             lItemPARAA.Core_Approval_Type__c = 'Auto Approve';
-            insert lItemPARAA;*/
+            insert lItemPARAA;
         }   
     }
 /***************************************************************************************************
@@ -464,21 +452,17 @@ Modification Log :
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        List<Profile> profileList = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
-        
-        if(profileList.isEmpty()){
-        System.debug('Profile not found');
-        return;
+        strProf.add('CCP - Core Access');
+        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : profileList){
+            profiles.put(prf.name, prf.id);
         }
-        
-        ID profileId = profileList[0].Id;
-        
         // Create Users
-        List<User> listOfUser = new List<User>();
+        List<User> listOfUser = new List<User> ();
         listOfUser = TestUtilities.getListOfUser(1);
-        listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
-        //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
+        listOfUser.get(0).ProfileID =  profiles.get('CCP - Core Access');
+        insert listOfUser;
+        System.assertEquals(listOfUser.get(0).profileid, profiles.get('CCP - Core Access'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts
             List<Account> accountList =  new List<Account>();
@@ -536,9 +520,8 @@ Modification Log :
             insert parRec;
             System.assert(parRec <> null, 'Record not created');
             // inserting Prodcut Acces Line Item- MAP
-           /* Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
+            Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
             lItem.Core_MAP_PAR__c = mapRec.id;
-            lItem.Name = 'Test';
             lItem.Core_Account__c = accountList[0].id;
             // lItem.Core_isPARRequest__c=true;
             lItem.Core_Supported_Product__c = suppProductList[0].id;
@@ -563,7 +546,7 @@ Modification Log :
             lItemPARAA.Core_isPARRequest__c= true;
             lItemPARAA.Core_Supported_Product__c = suppProductList[0].id;
             lItemPARAA.Core_Approval_Type__c = 'Auto Approve';
-            insert lItemPARAA;*/
+            insert lItemPARAA;
         }   
     }
 /***************************************************************************************************

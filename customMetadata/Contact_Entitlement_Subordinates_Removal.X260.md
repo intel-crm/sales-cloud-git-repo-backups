@@ -4,19 +4,19 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3eu,a2W3b00000EW3et,a2W3b00000EW3es,a2W3b00000EW3gF,a2W3b00000EW3gE,a2W3b00000EW3ev</value>
+        <value xsi:type="xsd:string">a2W3b00000EW3esEAD,a2W3b00000EW3etEAD,a2W3b00000EW3euEAD,a2W3b00000EW3evEAD,a2W3b00000EW3gEEAT,a2W3b00000EW3gFEAT</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000F9bHR</value>
+        <value xsi:type="xsd:string">a2W3b00000F9bHREAZ</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">Quote Request Customer Drafter Limited Access</value>
+        <value xsi:type="xsd:string">Customer Drafter Limited Access</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3er</value>
+        <value xsi:type="xsd:string">a2W3b00000EW3erEAD</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>

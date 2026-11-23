@@ -6,13 +6,7 @@
         component.set("v.message", "");
         component.set("v.messageType", "");
         component.set("v.maxIntelInvestment",null);
-        // Set default reimbursement rate to 100% for new activities
-        var mode = component.get("v.mode");
-        if(mode === 'clone' || mode ==='create' || mode ==='') {
-    component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));        
-}
+
         var recordType = component.get("v.recordtypeDeveloperName");
         this.setAccountFilter(component, recordType);
 
@@ -62,14 +56,6 @@
         /*if(mode === 'edit' || mode === 'clone') {
             this.loadPFR(component);
         }*/
-        // Set default reimbursement rate to 100% for new activities and clones
-        if(mode === 'clone' || mode === 'create' || mode ==='') {
-            
-            component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-            component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-            component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-       
-        }
        
         this.partnerEffortMetricForActivityCreation(component);
         this.getInitialDataFromServer(component);
@@ -125,11 +111,6 @@
                 var child = component.find("tacticMetrics");
                 if (child && component.get("v.pfrFieldEditablity.Core_MDF_Tactics_nm__c")) {
                     child.handleEdit(component.get("v.pfrFieldEditablity.Core_MDF_Tactics_nm__c"));
-                }
-                //Akash
-                var child = component.find("activityAccNode");
-                if (child && component.get("v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c")) {
-                    child.handleEdit(component.get("v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c"));
                 }
             }
             
@@ -292,10 +273,6 @@
     var pickLabel = $A.get("$Label.c.Core_MDF_IPA_PFR_UI_Fields");
     
     var pickListFields = pickLabel.split(",");
-    // Anjali changes - Add Measurement Approach field to the list of fields to fetch picklist values from server
-    if (pickListFields.indexOf("Core_MDF_Measurement_Approach_nm__c") === -1) {
-        pickListFields.push("Core_MDF_Measurement_Approach_nm__c");
-    }
     var action = component.get("c.customPicklistFetcher");
     
     action.setParams({
@@ -401,10 +378,6 @@
                 component.set("v.activityTacticsOptions", ParPickField);
                 this.updateTacticsPickVals(component);
             }
-            // Anjali changes - Set Measurement Approach initial options during parent picklist loading
-            if(fldname == "Core_MDF_Measurement_Approach_nm__c"){
-                component.set("v.measurementApproachOptions", ParPickField);
-            }
             
         } else {
             // Handle dependent picklists
@@ -462,11 +435,6 @@
                 component.set("v.technologies", childPickField);
                 this.fetchTechnologies(component);
                 break;
-            // Anjali changes - Handle Measurement Approach dependent picklist - filters based on Focus Area
-            case "Core_MDF_Measurement_Approach_nm__c":
-               component.set("v.measurementApproachPicklistValues", childPickField);
-               this.fetchMultiMeasurementApproach(component);
-               break;
             
         }
     },
@@ -478,31 +446,13 @@
         var availableBudget = [];
         var action = component.get("c.fetchBudgetInfo");
         var ultimateAccId = component.get("v.selectedAccount.Core_MDF_CoMarketing_Ultimate_Account__c");
-        var mode = component.get("v.mode"); // create, edit, clone
-        var currentBudgetIdVal = null;
-
-        if(mode && mode.toLowerCase() === 'edit') {
-            var oldPfrRef = component.get("v.oldPFR");
-            var newPfrRef = component.get("v.newPFR");
-
-            if (oldPfrRef && oldPfrRef.BudgetId) {
-                currentBudgetIdVal = oldPfrRef.BudgetId ;
-            } 
-            else if (newPfrRef && newPfrRef.BudgetId) {
-                currentBudgetIdVal = newPfrRef.BudgetId;
-            } 
-            else if (component.get("v.selAvailableBudget")) {
-                currentBudgetIdVal = component.get("v.selAvailableBudget");
-            }
-        }
         
         action.setParams({
             accountId: ultimateAccId,
             startDate: component.get("v.newPFR.Core_MDF_Start_Date__c"),
             endDate: component.get("v.newPFR.Core_MDF_End_Date__c"),
             budgetType: 'Account Plan',
-            isIPAAccBased: true,
-            currentBudgetId: currentBudgetIdVal
+            isIPAAccBased: true
         });
 
         action.setCallback(this, function (response) {
@@ -538,68 +488,58 @@
         $A.enqueueAction(action);
     },
 
-fetchBudgetTypesBasedOnBenefits: function (component){
-    var mode = component.get("v.mode");
-    var action = component.get("c.getBudgetType");
-    action.setParams({
-        accId: component.get('v.selectedAccount').Id,
-        operation: component.get('v.mode'),
-        isProposalBased: String(component.get("v.isPropBasedCampaign")),
-        program: 'Intel Partner Alliance'
-    });
+    fetchBudgetTypesBasedOnBenefits: function (component){
+        var mode = component.get("v.mode");
+        var action = component.get("c.getBudgetType");
+        action.setParams({
+            accId: component.get('v.selectedAccount').Id,
+            operation: component.get('v.mode'),
+            isProposalBased: String(component.get("v.isPropBasedCampaign")),
+            program: 'Intel Partner Alliance'
+        });
 
-    action.setCallback(this, function (response) {
-        var status = response.getState();
-        
-        if (status == "SUCCESS") {
+        action.setCallback(this, function (response) {
+            var status = response.getState();
             
-            var budgetTypeList = component.get("v.budgetTypeVal");
+            if (status == "SUCCESS") {
+                
+                var budgetTypeList = component.get("v.budgetTypeVal");
 
-            if (budgetTypeList && budgetTypeList.length > 1) {
-                return;
-            }
-            
-            var result = response.getReturnValue();
-            var budgetTypeOptionList = [];
-            budgetTypeOptionList.push({
-                label: "---None---",
-                value: ""
-                    });
-            //Show only Account Plan as Budget Type  
-            for (var key in result) {
-                    if (result[key] && key.toLowerCase() === 'account plan') {
-                        budgetTypeOptionList.push({ label: result[key], value: key});
-            }
-            }
+                if (budgetTypeList && budgetTypeList.length > 1) {
+                    return;
+                }
+                
+                var result = response.getReturnValue();
+                var budgetTypeOptionList = [];
+                budgetTypeOptionList.push({
+                    label: "---None---",
+                    value: ""
+                        });
+                    
+                for (var key in result) {
+                        budgetTypeOptionList.push({ label: result[key], value: key });
+                }
 
-            if(result && Object.keys(result).length > 0){
-                component.set('v.showBudgetTypeError', false);
-            }else{
-                component.set('v.showBudgetTypeError', true);
-            }
+                if(result && Object.keys(result).length > 0){
+                    component.set('v.showBudgetTypeError', false);
+                }else{
+                    component.set('v.showBudgetTypeError', true);
+                }
 
-            component.set("v.budgetTypeVal", budgetTypeOptionList);
-            if(mode != '' && component.get('v.newPFR.Core_MDF_Budget_Type_nm__c')){
-                window.setTimeout($A.getCallback(function() {
-                    let val = component.get('v.newPFR.Core_MDF_Budget_Type_nm__c');
-                    component.set('v.selBudgetType', val);
-                }), 0);
+                component.set("v.budgetTypeVal", budgetTypeOptionList);
+                if(mode != '' && component.get('v.newPFR.Core_MDF_Budget_Type_nm__c')){
+                    window.setTimeout($A.getCallback(function() {
+                        let val = component.get('v.newPFR.Core_MDF_Budget_Type_nm__c');
+                        component.set('v.selBudgetType', val);
+                    }), 0);
+                }
+            } else {
+                
             }
-            if (mode === '' && budgetTypeOptionList.length > 1) {
-                var selectedValue = budgetTypeOptionList[1].value;
-                var selectedLabel = budgetTypeOptionList[1].label;
-                setTimeout($A.getCallback(function() {
-                    component.set('v.selBudgetType', selectedValue);
-                    component.set('v.newPFR.Core_MDF_Budget_Type_nm__c', selectedValue);
-                }), 50);
-            }
-        } else {
-            console.error('[Budget Type] Apex call failed with state: ' + response.getState());
-        }
-    });
+        });
 
-    $A.enqueueAction(action);
-},
+        $A.enqueueAction(action);
+    },
 
     checkAvailAllocationAmt: function (component) {
         var formatter = new Intl.NumberFormat('en-US', {
@@ -672,12 +612,6 @@ fetchBudgetTypesBasedOnBenefits: function (component){
                 /*var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
                 this.displaySuccessErrorMsg(errorMessage, "Error", "error");*/
             }
-             var mode = component.get("v.mode");
-    if (mode === 'create' || mode === 'clone' || mode === '') {
-        component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-    }
         });
 },
 
@@ -721,197 +655,6 @@ fetchBudgetTypesBasedOnBenefits: function (component){
 
     isNotBlank: function(value) {
         return (value !== undefined && value !== null && value !== '');
-    },
-
-    resetPartnerContactValidation: function(component) {
-        component.set("v.showPartnerContactError", false);
-        component.set("v.partnerContactErrorMsg", "");
-    },
-
-    getPartnerContactDomainErrorMessage: function(component) {
-        return $A.get("$Label.c.Core_MDF_No_ApprovedDomain_Error");
-    },
-
-    getIntelPartnerContactDomainErrorMessage: function() {
-        return $A.get("$Label.c.Core_MDF_IntelDomainError");
-    },
-
-    isUnsupportedPartnerContactDomain: function(value) {
-        if (!value) {
-            return false;
-        }
-
-        var normalizedValue = String(value).trim().toLowerCase().replace(/^@/, "");
-        var domainValue = normalizedValue.indexOf("@") !== -1 ? normalizedValue.split("@").pop() : normalizedValue;
-        domainValue = domainValue.replace(/^\*\./, "");
-
-        return domainValue === "intel.com" || domainValue.endsWith(".intel.com");
-    },
-
-    getPartnerContactAccountId: function(component) {
-        var selectedAccount = component.get("v.selectedAccount");
-        if (selectedAccount && selectedAccount.Id) {
-            return selectedAccount.Id;
-        }
-
-        return component.get("v.newPFR.ChannelPartnerId");
-    },
-
-    loadPartnerContactDomains: function(component, callback) {
-        var accountId = this.getPartnerContactAccountId(component);
-
-        if (!accountId) {
-            component.set("v.allowedPartnerContactDomains", []);
-            component.set("v.partnerContactDomainsLoaded", false);
-            this.resetPartnerContactValidation(component);
-            if (callback) {
-                callback();
-            }
-            return;
-        }
-
-        var action = component.get("c.getDomainsForAccount");
-        action.setParams({
-            accountId: accountId
-        });
-
-        var helper = this;
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                var domainMappings = response.getReturnValue() || [];
-                var allowedValues = [];
-
-                for (var index = 0; index < domainMappings.length; index++) {
-                    var mappingName = domainMappings[index] && domainMappings[index].Name;
-                    if (mappingName) {
-                        mappingName.split(/[;\n\r,]+/).forEach(function(value) {
-                            var normalizedValue = String(value).trim().toLowerCase();
-                            if (normalizedValue && !helper.isUnsupportedPartnerContactDomain(normalizedValue) && allowedValues.indexOf(normalizedValue) === -1) {
-                                allowedValues.push(normalizedValue);
-                            }
-                        });
-                    }
-                }
-
-                component.set("v.allowedPartnerContactDomains", allowedValues);
-                component.set("v.partnerContactDomainsLoaded", true);
-                this.resetPartnerContactValidation(component);
-
-                if (callback) {
-                    callback();
-                }
-            } else {
-                component.set("v.allowedPartnerContactDomains", []);
-                component.set("v.partnerContactDomainsLoaded", true);
-                if (callback) {
-                    callback();
-                } else if (component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c")) {
-                    this.validatePartnerContactEmails(component);
-                }
-            }
-        });
-
-        $A.enqueueAction(action);
-    },
-
-    isAllowedPartnerContactEmail: function(email, allowedValues) {
-        var normalizedEmail = String(email).trim().toLowerCase();
-        var emailParts = normalizedEmail.split("@");
-
-        if (emailParts.length !== 2 || !emailParts[0] || !emailParts[1]) {
-            return false;
-        }
-
-        var emailDomain = emailParts[1];
-
-        if (this.isUnsupportedPartnerContactDomain(emailDomain)) {
-            return false;
-        }
-
-        return allowedValues.some(function(allowedValue) {
-            if (!allowedValue) {
-                return false;
-            }
-
-            if (allowedValue === normalizedEmail) {
-                return true;
-            }
-
-            if (allowedValue.indexOf("@") !== -1) {
-                return false;
-            }
-
-            var allowedDomain = allowedValue.replace(/^@/, "");
-            if (allowedDomain.indexOf("*.") === 0) {
-                return emailDomain === allowedDomain.substring(2) || emailDomain.endsWith(allowedDomain.substring(1));
-            }
-
-            return emailDomain === allowedDomain;
-        });
-    },
-
-    validatePartnerContactEmails: function(component) {
-        var partnerContactValue = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
-
-        if (!partnerContactValue || !String(partnerContactValue).trim()) {
-            this.resetPartnerContactValidation(component);
-            return true;
-        }
-
-        var emailValues = String(partnerContactValue).split(/[;\n\r,]+/).map(function(value) {
-            return value.trim();
-        }).filter(function(value) {
-            return value !== "";
-        });
-
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        for (var index = 0; index < emailValues.length; index++) {
-            if (!emailPattern.test(emailValues[index])) {
-                component.set("v.showPartnerContactError", true);
-                component.set("v.partnerContactErrorMsg", $A.get("$Label.c.Core_MDF_InvalidEmailError") || "Invalid email address. Please enter a valid email address.");
-                return false;
-            }
-        }
-
-        for (var unsupportedIndex = 0; unsupportedIndex < emailValues.length; unsupportedIndex++) {
-            if (this.isUnsupportedPartnerContactDomain(emailValues[unsupportedIndex])) {
-                component.set("v.showPartnerContactError", true);
-                component.set("v.partnerContactErrorMsg", this.getIntelPartnerContactDomainErrorMessage());
-                return false;
-            }
-        }
-
-        var accountId = this.getPartnerContactAccountId(component);
-        if (!accountId) {
-            component.set("v.showPartnerContactError", true);
-            component.set("v.partnerContactErrorMsg", $A.get("$Label.c.Core_MDF_No_ApprovedDomain_Error"));
-            return false;
-        }
-
-        if (!component.get("v.partnerContactDomainsLoaded")) {
-            component.set("v.showPartnerContactError", true);
-            component.set("v.partnerContactErrorMsg", this.getPartnerContactDomainErrorMessage(component));
-            return false;
-        }
-
-        var allowedValues = component.get("v.allowedPartnerContactDomains") || [];
-
-        if (allowedValues.length === 0) {
-            component.set("v.showPartnerContactError", true);
-            component.set("v.partnerContactErrorMsg",this.getPartnerContactDomainErrorMessage(component));
-            return false;
-        }
-        for (var allowedIndex = 0; allowedIndex < emailValues.length; allowedIndex++) {
-            if (!this.isAllowedPartnerContactEmail(emailValues[allowedIndex], allowedValues)) {
-                component.set("v.showPartnerContactError", true);
-                component.set("v.partnerContactErrorMsg", ($A.get("$Label.c.Core_MDF_UnsupportedDomain_Error") || '') + ' ' + allowedValues.join(", "));
-                return false;
-            }
-        }
-
-        this.resetPartnerContactValidation(component);
-        return true;
     },
 
     hasIUPGMRecord: function(component) {
@@ -1115,10 +858,6 @@ updateBrandPickVals: function(component) {
     var localizedMap = component.get("v.apitoLabelConvert");
     var processedOptions = [];
     
-    // Gayathri-Get current value for edit mode support
-    var currentValue = component.get("v.newPFR.Core_MDF_Brand_nm__c");
-    var mode = component.get("v.mode");
-    
     if(brandOptions && brandOptions.length > 0) {
         for(var i = 0; i < brandOptions.length; i++) {
             var option = brandOptions[i];
@@ -1135,37 +874,6 @@ updateBrandPickVals: function(component) {
         }
     }
     
-    // Gayathri-Add old value support for edit mode - multi-select brand
-    if(mode === 'edit' && currentValue) {
-        var currentValues = [];
-        
-        // Handle multi-select values (semicolon-separated string)
-        if(typeof currentValue === 'string' && currentValue.includes(';')) {
-            currentValues = currentValue.split(';').map(function(val) {
-                return val.trim();
-            });
-        } else if(currentValue) {
-            currentValues = [currentValue];
-        }
-        
-        // Add any missing values to the options
-        for(var valueIndex = 0; valueIndex < currentValues.length; valueIndex++) {
-            var valueToCheck = currentValues[valueIndex];
-            if(valueToCheck && !processedOptions.some(opt => opt.value === valueToCheck)) {
-                var currentLabel = valueToCheck;
-                if(localizedMap && localizedMap[valueToCheck]) {
-                    currentLabel = localizedMap[valueToCheck];
-                }
-                
-                // Add legacy value to the options
-                processedOptions.push({
-                    label: currentLabel,
-                    value: valueToCheck
-                });
-            }
-        }
-    }
-    
     component.set("v.AllBrandOptions", processedOptions);
 },
 
@@ -1173,10 +881,6 @@ updateInitiativePickVals: function(component) {
     var initiativeOptions = component.get("v.MultiInitiativeValues") ;
     var localizedMap = component.get("v.apitoLabelConvert");
     var processedOptions = [];
-    
-    // Get current value for edit mode support
-    var currentValue = component.get("v.newPFR.Core_MDF_Initiative_nm__c");
-    var mode = component.get("v.mode");
     
     if(initiativeOptions && initiativeOptions.length > 0) {
         for(var i = 0; i < initiativeOptions.length; i++) {
@@ -1195,39 +899,6 @@ updateInitiativePickVals: function(component) {
         }
     }
     
-    // Add old value support for edit mode - multi-select initiative
-    // This ensures previously selected values still appear in the selected side even if field dependency has removed them from available options
-    if(mode === 'edit' && currentValue) {
-        var currentValues = [];
-        
-        // Handle multi-select values
-        if(typeof currentValue === 'string' && currentValue.includes(';')) {
-            currentValues = currentValue.split(';').map(function(val) {
-                return val.trim();
-            });
-        } else if(currentValue) {
-            currentValues = [currentValue.trim()];
-        }
-        
-        // Add any missing values to the options so they show on the selected side
-        for(var valueIndex = 0; valueIndex < currentValues.length; valueIndex++) {
-            var valueToCheck = currentValues[valueIndex];
-            if(valueToCheck && !processedOptions.some(function(opt) { 
-                return opt.value === valueToCheck; 
-            })) {
-                var currentLabel = valueToCheck;
-                if(localizedMap && localizedMap[valueToCheck]) {
-                    currentLabel = localizedMap[valueToCheck].replace("&amp;", "&");
-                }
-                
-                // Add legacy/removed value to the options so it remains visible
-                processedOptions.push({
-                    label: currentLabel,
-                    value: valueToCheck
-                });
-            }
-        }
-    }
     component.set("v.AllInitiativeOptions", processedOptions);
 },
 
@@ -1259,14 +930,11 @@ updateProductTypePickVals: function(component) {
     var productTypeOptions = component.get("v.ProductTypeDependent") ;
     var localizedMap = component.get("v.apitoLabelConvert");
     var processedOptions = [];
-    // Gayathri - for old PRODUCT TYPE
-    var currentValue = component.get("v.newPFR.Core_MDF_ProductType__c");
-    var mode = component.get("v.mode");
 
-    /*processedOptions.push({
+    processedOptions.push({
     label: "---None---",
     value: ""
-        });*/
+        });
     
     if(productTypeOptions && productTypeOptions.length > 0) {
         for(var i = 0; i < productTypeOptions.length; i++) {
@@ -1279,40 +947,9 @@ updateProductTypePickVals: function(component) {
             }
             
             processedOptions.push({
-                label: label,
-                value: value
+                "label": label,
+                "value": value
             });
-        }
-    }
-    
-    // Gayathri - ADD OLD VALUE SUPPORT FOR EDIT MODE - MULTI-SELECT PRODUCT TYPE
-    if(mode === 'edit' && currentValue) {
-        var currentValues = [];
-        
-        // Handle multi-select values (semicolon-separated string)
-        if(typeof currentValue === 'string' && currentValue.includes(';')) {
-            currentValues = currentValue.split(';').map(function(val) {
-                return val.trim();
-            });
-        } else if(currentValue) {
-            currentValues = [currentValue];
-        }
-        
-        // Add any missing values to the options
-        for(var valueIndex = 0; valueIndex < currentValues.length; valueIndex++) {
-            var valueToCheck = currentValues[valueIndex];
-            if(valueToCheck && !processedOptions.some(opt => opt.value === valueToCheck)) {
-                var currentLabel = valueToCheck;
-                if(localizedMap && localizedMap[valueToCheck]) {
-                    currentLabel = this.decodeHtmlEntities(localizedMap[valueToCheck]);
-                }
-                
-                // Add legacy value to the options
-                processedOptions.push({
-                    label: currentLabel,
-                    value: valueToCheck
-                });
-            }
         }
     }
     
@@ -1347,8 +984,6 @@ localizeSubType: function(component, options) {
         for(var i = 0; i < options.length; i++) {
             var option = options[i];
             var label = option.label;
-            var picklistValue = options[i].value;
-            var optionValue = (picklistValue != null && picklistValue.includes('&amp;')) ? picklistValue.replace("&amp;", "&") : picklistValue;
             
             if(localizedMap && localizedMap[option.value]) {
                 label = localizedMap[option.value];
@@ -1356,7 +991,7 @@ localizeSubType: function(component, options) {
             
             localizedOptions.push({
                 label: label,
-                value: optionValue,
+                value: option.value,
                 class: option.class || "optionClass"
             });
         }
@@ -1554,10 +1189,6 @@ updatePriorityPickVals: function(component) {
         var localizedMap = component.get("v.apitoLabelConvert");
         var processedOptions = [];
         
-        //Gayathri- Get current value for edit mode support
-        var currentValue = component.get("v.newPFR.Core_MDF_Technology_txt__c");
-        var mode = component.get("v.mode");
-        
         if(priorityOptions && priorityOptions.length > 0) {
             for (var i = 0; i < priorityOptions.length; i++) {
                 var option = priorityOptions[i];
@@ -1572,101 +1203,12 @@ updatePriorityPickVals: function(component) {
                     "value": value
                 });
             }
-        }
-        
-        // Anjali changes - Add old value support for edit/clone mode - multi-select technology (allows clone to show previously selected values)
-        if((mode === 'edit' || mode === 'clone') && currentValue) {
-            var currentValues = [];
             
-            // Handle multi-select values (semicolon-separated string)
-            if(typeof currentValue === 'string' && currentValue.includes(';')) {
-                currentValues = currentValue.split(';').map(function(val) {
-                    return val.trim();
-                });
-            } else if(currentValue) {
-                currentValues = [currentValue];
-            }
-            
-            // Add any missing values to the options
-            for(var valueIndex = 0; valueIndex < currentValues.length; valueIndex++) {
-                var valueToCheck = currentValues[valueIndex];
-                if(valueToCheck && !processedOptions.some(opt => opt.value === valueToCheck)) {
-                    var currentLabel = valueToCheck;
-                    if(localizedMap && localizedMap[valueToCheck]) {
-                        currentLabel = localizedMap[valueToCheck].replace("&amp;", "&");
-                    }
-                    
-                    // Add legacy value to the options
-                    processedOptions.push({
-                        label: currentLabel,
-                        value: valueToCheck
-                    });
-                }
-            }
         }
         
         component.set("v.AllTechnologyOptions", processedOptions);
     },
 
-// Anjali changes - Process and display filtered Measurement Approach picklist options with support for edit/clone mode value display
-updateMeasurementApproachPickVals: function(component) {
-    var measurementApproachOptions = component.get("v.measurementApproachValues");
-    var localizedMap = component.get("v.apitoLabelConvert");
-    var processedOptions = [];
-    
-    // Anjali changes - Get current value for edit mode support
-    var currentValue = component.get("v.newPFR.Core_MDF_Measurement_Approach_nm__c");
-    var mode = component.get("v.mode");
-    
-    if(measurementApproachOptions && measurementApproachOptions.length > 0) {
-        for (var i = 0; i < measurementApproachOptions.length; i++) {
-            var option = measurementApproachOptions[i];
-            var label = option.label ? option.label.replace("&amp;", "&") : "";
-            var value = option.value ? option.value.replace("&amp;", "&") : "";
-            if (localizedMap && localizedMap[option.value]) {
-                label = localizedMap[option.value].replace("&amp;", "&");
-            }
-            
-            processedOptions.push({
-                "label": label,
-                "value": value
-            });
-        }
-    }
-    
-    // Anjali changes - Add old value support for edit/clone mode - multi-select measurement approach
-    if((mode === 'edit' || mode === 'clone') && currentValue) {
-        var currentValues = [];
-        
-        // Handle multi-select values (semicolon-separated string)
-        if(typeof currentValue === 'string' && currentValue.includes(';')) {
-            currentValues = currentValue.split(';').map(function(val) {
-                return val.trim();
-            });
-        } else if(currentValue) {
-            currentValues = [currentValue];
-        }
-        
-        // Anjali changes - Add any missing values to the options for multi-select backward compatibility
-        for(var valueIndex = 0; valueIndex < currentValues.length; valueIndex++) {
-            var valueToCheck = currentValues[valueIndex];
-            if(valueToCheck && !processedOptions.some(opt => opt.value === valueToCheck)) {
-                var currentLabel = valueToCheck;
-                if(localizedMap && localizedMap[valueToCheck]) {
-                    currentLabel = localizedMap[valueToCheck].replace("&amp;", "&");
-                }
-                
-                // Add legacy value to the options
-                processedOptions.push({
-                    label: currentLabel,
-                    value: valueToCheck
-                });
-            }
-        }
-    }
-    
-    component.set("v.measurementApproachOptions", processedOptions);
-},
 
 updateSecondPriorityPickVals: function(component) {
     var priority2Options = component.get("v.priority2Dependants");
@@ -1733,25 +1275,6 @@ fetchTechnologies: function (component) {
            component.set("v.technologiesDependant", childValuesReturn);
             this.updateTechnologyPickVals(component);
    },
-
-// Anjali changes - Fetch and filter Measurement Approach values based on selected Focus Area (dependent picklist logic)
-fetchMultiMeasurementApproach: function (component) {
-    var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
-    var childValuesReturn = [];
-    
-    if(recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType")){
-        var selectedFocusArea = component.get("v.selectedFocusArea");
-        var measurementApproachPicklistValues = component.get("v.measurementApproachPicklistValues");
-        
-        // Filter Measurement Approach values based on selected Focus Area
-        if(selectedFocusArea && measurementApproachPicklistValues) {
-            childValuesReturn = this.setChildPicklistValues(component, selectedFocusArea, measurementApproachPicklistValues);
-        }
-    }
-    
-    component.set("v.measurementApproachValues", childValuesReturn);
-    this.updateMeasurementApproachPickVals(component);
-},
 
 fetchSecondPriority: function (component) {
     var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
@@ -1906,7 +1429,6 @@ loadPFR: function(component) {
 
     component.set("v.showSpinner", true);
     var mode = component.get("v.mode");
-    var helper = this;
     
     var actionLoadPfr = component.get("c.loadPFRRecord");
     actionLoadPfr.setParams({
@@ -1922,11 +1444,6 @@ loadPFR: function(component) {
                 // Set the core PFR object
                 component.set("v.newPFR", result);
                 
-                // Immediately blank Partner Contact for clone right after newPFR is set
-                if (component.get("v.checkCloneAttribute")) {
-                    component.set("v.newPFR.Core_MDF_Partner_Contact_txt__c", "");
-                }
-                
                 // Set record type information
                 if (result.RecordType) {
                     component.set("v.recordtypeName", result.RecordType.Name);
@@ -1937,7 +1454,6 @@ loadPFR: function(component) {
                 // Set selected account if available
                 if (result.ChannelPartner) {
                     component.set("v.selectedAccount", result.ChannelPartner);
-                    this.loadPartnerContactDomains(component);
                 }
                 
                 // Set budget information for IPA
@@ -1966,26 +1482,7 @@ loadPFR: function(component) {
 
                     //this.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"));
                     component.set("v.showDependentFields", true);
-                     
-                    // Anjali changes - Re-fetch dependent picklists when Focus Area is loaded (for clone/edit mode) to filter values correctly
-                    if(component.get("v.measurementApproachPicklistValues")) {
-                        this.fetchMultiMeasurementApproach(component);
-                    }
-                    if(component.get("v.MultiBrandTypes")) {
-                        this.fetchMultiBrandType(component);
-                    }
-                    if(component.get("v.audiencePicklistValues")) {
-                        this.fetchMultiTargetAudience(component);
-                    }
-                    if(component.get("v.initiativePicklistValues")) {
-                        this.fetchMultiInitiative(component);
-                    }
-                    if(component.get("v.ProductTypes")) {
-                        this.fetchProdType(component);
-                    }
-                    if(component.get("v.technologies")) {
-                        this.fetchTechnologies(component);
-                    }
+                    
                 }
                 
                 component.set("v.initialLoadCompleted", true);
@@ -2019,35 +1516,19 @@ loadPFR: function(component) {
                 var newObject = new Object;
                 var mergedObject = Object.assign(newObject, this.sanitizeResults(result));
                 component.set("v.oldPFR", mergedObject);
-                //indu RR Banner
-                if(component.get("v.mode") === 'edit') {
-                    this.checkRRBanner(component);
-                }
-                //Gayathri-Added as part of Account Manager edit defect
-                if(mode == 'edit'){
-                    var ipaL2Approver = component.get("v.ipaL2Approver");
-                    var status = component.get("v.newPFR.Core_MDF_Fund_Request_Status__c");
-                    if(ipaL2Approver && status == 'Pending Review'){
-                        // For L2 approvers, check IUPGM first, then call dependent methods in callback
-                        this.isRecordApproverWithCallback(component);
-                    } else {
-                        // For non-L2 scenarios, call methods normally
-                        this.getFieldEditabilityMapping(component);
-                    }
-                } 
-                //Gayathri-Added as part of Account Manager edit defect
-                //Enhanced edit validation - blocking users when activity is not in their queue
+
+                //new edit validation 
                 if(component.get("v.mode") == 'edit'){
-    if((((component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType") ||
-    component.get("v.newPFR.Core_MDF_Program__c") == ($A.get("$Label.c.Core_MDF_IPA_Program_Name"))) &&
-    component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false) && 
-        !helper.isCurrentUsrIsApprover(component) && 
-        (component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'Pending Review' || 
-        component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'Pending Approval' ||
-        component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress Pending Review')))
-    {
-                        // NOTE: This check will be handled in the L2 callback for L2 approvers
-                        if(!ipaL2Approver || status != 'Pending Review') {
+                    if((((component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType") ||
+                    component.get("v.newPFR.Core_MDF_Program__c") == ($A.get("$Label.c.Core_MDF_IPA_Program_Name"))) &&
+                    component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == true) && 
+                        !helper.isCurrentUsrIsApprover(component) && 
+                        (component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'Pending Review' || 
+                        component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'Pending Approval' ||
+                        component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress Pending Review')) || 
+            (helper.isCurrentUsrIsApprover(component) && component.get("v.ipaApproverPer") && component.get("v.ipaAcctMgr") == false && 
+                component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") != 'Pending Review'))
+                        {
                             var alertMsg = $A.get("$Label.c.Core_MDF_CloneAccessError");
                             helper.displaySuccessErrorMsg(alertMsg, "Error!", "error", 'dismissible');
                             var sObectEvent = $A.get("e.force:navigateToSObject");
@@ -2057,7 +1538,6 @@ loadPFR: function(component) {
                             });
                             sObectEvent.fire(); 
                         }
-                    }
                 }
                 
             } else {
@@ -2079,73 +1559,6 @@ loadPFR: function(component) {
     $A.enqueueAction(actionLoadPfr);
 },
 
-// Gayathri - New method to handle L2 approver IUPGM check with proper callback sequencing
-isRecordApproverWithCallback: function(component) {
-    if(component.get("v.newPFR") != null && component.get("v.newPFR") != undefined) {
-        var userID = $A.get("$SObjectType.CurrentUser.Id");
-        component.set("v.userId", userID);
-        var action = component.get("c.checkCurrentUserIsApprover");
-        
-        action.setParams({
-            "obj": component.get("v.newPFR"),
-            "userId": component.get("v.userId")
-        });
-        
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            
-            if (state === "SUCCESS") {
-                var result = response.getReturnValue();
-                if(result == true) {
-                    // User has IUPGM record with correct classification for current stage
-                    component.set("v.hasIUPGMRecord", true);
-                    component.set("v.isUserCurrentIPAApprover", true);
-                    
-                    // Now call methods that depend on these flags
-                    this.getFieldEditabilityMapping(component);
-                    
-                } else {
-                    // User doesn't have IUPGM record OR has wrong classification for current stage
-                    component.set("v.hasIUPGMRecord", false);
-                    component.set("v.isUserCurrentIPAApprover", false);
-                    // Show error and redirect for edit mode
-                    if(component.get("v.mode") == 'edit') {
-                        var alertMsg = $A.get("$Label.c.Core_MDF_CloneAccessError");
-                        this.displaySuccessErrorMsg(alertMsg, "Error!", "error", 'dismissible');
-                        
-                        var sObjectEvent = $A.get("e.force:navigateToSObject");
-                        sObjectEvent.setParams({
-                            "recordId": component.get("v.recordId"),
-                            "slideDevName": "detail"
-                        });
-                        sObjectEvent.fire();
-                    }
-                }
-            } else {
-                // Error in Apex call - treat as no access
-                component.set("v.hasIUPGMRecord", false);
-                component.set("v.isUserCurrentIPAApprover", false);
-                if(component.get("v.mode") == 'edit') {
-                    var alertMsg = $A.get("$Label.c.Core_MDF_CloneAccessError");
-                    this.displaySuccessErrorMsg(alertMsg, "Error!", "error", 'dismissible');
-                    
-                    var sObjectEvent = $A.get("e.force:navigateToSObject");
-                    sObjectEvent.setParams({
-                        "recordId": component.get("v.recordId"),
-                        "slideDevName": "detail"
-                    });
-                    sObjectEvent.fire();
-                }
-            }
-            
-            // Hide spinner after L2 check is complete
-            component.set("v.showSpinner", false);
-        });
-        
-        $A.enqueueAction(action);
-    }
-},
-    
 setMultiSelectValues: function(component, result) {
     // Set Country values
     if (result.Core_MDF_Country_nm__c) {
@@ -2171,16 +1584,6 @@ setMultiSelectValues: function(component, result) {
         component.set("v.selectedTacticsOptions", tacticsValues);
     }
     
-    // Anjali changes - Set Measurement Approach values for edit/clone mode and manage conditional field visibility
-    if (result.Core_MDF_Measurement_Approach_nm__c) {
-        var measurementApproachValues = result.Core_MDF_Measurement_Approach_nm__c.split(';');
-        component.set("v.selectedMeasurementApproachOptions", measurementApproachValues);
-        
-        // Anjali changes - Check if "Other (Specify)" is selected to show/hide the Other Measurement Approach text field
-        var showOtherField = result.Core_MDF_Measurement_Approach_nm__c.includes('Other (Specify)');
-        component.set("v.showOtherMeasurementApproachField", showOtherField);
-    }
-    
     // Set Outcome Metric values
     if (result.Core_MDF_Outcomes_nm__c) {
         var outcomeValues = result.Core_MDF_Outcomes_nm__c.split(';');
@@ -2204,13 +1607,6 @@ setMultiSelectValues: function(component, result) {
         var ecoPartnerValues = result.Core_MDF_EcosystemPartner_nm__c.split(';');
         component.set("v.selectedEcosystemPartnerOptions", ecoPartnerValues);
     }
-    // Gayathri-ADD PRODUCT TYPE VALUES - NEW
-    if (result.Core_MDF_ProductType__c) {
-        var productTypeValues = result.Core_MDF_ProductType__c.split(';').map(function(val) {
-            return val.trim();
-        });
-        component.set("v.selectedProductTypeOptions", productTypeValues);
-    }
 },
 
 setEssentialFields: function(component, result) {
@@ -2220,29 +1616,9 @@ setEssentialFields: function(component, result) {
     }
     
     // Set reimbursement rate
-   /* if (result.Core_MDF_Reimbursement_Rate_pct__c) {
+    if (result.Core_MDF_Reimbursement_Rate_pct__c) {
         component.set("v.SelReimbursementRate", result.Core_MDF_Reimbursement_Rate_pct__c);
-    }*/
-    // Set reimbursement rate - always 100% for edit mode
-   // Set reimbursement rate
-var mode = component.get("v.mode");
-if (mode === 'create' || mode === 'clone' || mode ==='') {
-    // For new activities, set default 100%
-    component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-} else if (mode === 'edit') {
-    // For edit mode, preserve existing reimbursement rate
-    if (result.Core_MDF_Reimbursement_Rate__c !== null && result.Core_MDF_Reimbursement_Rate__c !== undefined) {
-        component.set("v.SelReimbursementRate", result.Core_MDF_Reimbursement_Rate__c);
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", result.Core_MDF_Reimbursement_Rate__c);
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", result.Core_MDF_Reimbursement_Rate__c);
     }
-    // If text field exists, use that for display
-    if (result.Core_MDF_Reimbursement_Rate_txt__c) {
-        component.set("v.SelReimbursementRate", result.Core_MDF_Reimbursement_Rate_txt__c);
-    }
-}
     
     // Set priority values
     if (result.Core_MDF_Priority_nm__c) {
@@ -2258,13 +1634,8 @@ if (mode === 'create' || mode === 'clone' || mode ==='') {
         component.set("v.SelRegion", result.Core_MDF_Outcome_Region_nm__c);
     }
     
-    // Set product type - Gayathri UPDATED FOR MULTI-SELECT
+    // Set product type
     if (result.Core_MDF_ProductType__c) {
-        // For multi-select, convert semicolon-separated string to array
-        var productTypeValues = result.Core_MDF_ProductType__c.split(';').map(function(val) {
-            return val.trim();
-        });
-        component.set("v.selectedProductTypeOptions", productTypeValues);
         component.set("v.SelProductType", result.Core_MDF_ProductType__c);
     }
     
@@ -2288,10 +1659,6 @@ handleCloneScenario: function(component, result) {
     for (var i = 1; i <= 10; i++) {
         component.set("v.newPFR.Core_MDF_Approver_" + i + "__c", null);
     }
-     // Set reimbursement rate to 100% for cloned activities
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-    component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-    component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
     
     // Clear other fields that shouldn't be cloned
     component.set("v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c", null);
@@ -2300,10 +1667,6 @@ handleCloneScenario: function(component, result) {
     component.set("v.newPFR.Core_MDF_Attribution_Requirements_txt__c", null);
     component.set("v.newPFR.Core_MDF_Internal_Tracking_txt__c", null);
     component.set("v.newPFR.Core_MDF_Metrics_txt__c", null);
-    //Skip PCT Approval
-    component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
-    // Clear Partner Contact — should not be copied from source record on clone
-    component.set("v.newPFR.Core_MDF_Partner_Contact_txt__c", "");
 },
 
 
@@ -2344,27 +1707,6 @@ onRegionChange: function(component, event, helper) {
         this.fetchCountriesByRegionUsingAllOptions(component, selectedRegion);
     },
 calculateReimbursementRate: function(component, budgetAmount, maxIntelContribution,spifCheck) {
-	 var mode = component.get("v.mode");
-    
-    // For create or clone mode, ALWAYS set to 100% - don't calculate
-    if (mode === 'create' || mode === 'clone' || mode ==='') {
-        component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-        
-        if(spifCheck){
-            this.getActivityAmount(component);
-        }
-        return; // Exit immediately - don't do any calculations
-    }
-    
-    // For edit mode, preserve existing value - don't recalculate
-    if (mode === 'edit') {
-        if(spifCheck){
-            this.getActivityAmount(component);
-        }
-        return; // Exit immediately - don't recalculate
-    }
     var calculatedPercentage = 0;
 
     if (budgetAmount > 0 && maxIntelContribution >= 0) {
@@ -2505,17 +1847,14 @@ isCurrentUsrIsApprover: function (component) {
 		if(component.get("v.newPFR.Core_MDF_Approval_Stage__c") == 'Price Reviewer' && component.get("v.priceReviewersPer")){
 				usrIsApprover = true;
 		} 
-		
-		//Gayathri-Added as part of Account Manager edit defect,For L2 Approvers, use the flag set by isRecordApprover
-         if(ipaL2Approver) {
-            var currentStage = component.get("v.newPFR.Core_MDF_Approval_Stage__c");
-            var isUserCurrentIPAApprover = component.get("v.isUserCurrentIPAApprover");
-            if((currentStage == 'L2 Regional Marketing' || currentStage == 'L2 Regional Sales') && isUserCurrentIPAApprover) {
-                usrIsApprover = true;
-            }
-        }
+		if(ipaL2Approver){
+			if((component.get("v.newPFR.Core_MDF_Approval_Stage__c") == 'L2 Regional Marketing' ||
+				  component.get("v.newPFR.Core_MDF_Approval_Stage__c") == 'L2 Regional Sales')){
+			usrIsApprover = true;
+		}
     }
-    return usrIsApprover;
+}
+	return usrIsApprover;
 },
 
 //Method to check if selected tactics is spif/incentive eligible
@@ -2655,8 +1994,6 @@ fieldEligibleForApprovalModified: function (component, editedFieldRequiresApprov
         var isModified = false;
                               
         var metricsModified = component.get("v.newPFR.Core_MDF_Metrics_Modified_ind__c");
-        //Akash - changes
-        var outcomeModified = component.get("v.newPFR.Core_MDF_Node_Acc_Map_Modified_ind__c");
         if (((this.checkRecordTypeSelected(component, $A.get("$Label.c.Core_MDF_IPA_RecordType"))&&(component.get("v.isPropBasedCampaign") == true))) 
             &&(this.fieldEligibleForApprovalModified(component, editedFieldRequiresApproval.split(",")) || component.get("v.isSPIFSecModified"))) 
         {
@@ -2668,7 +2005,7 @@ fieldEligibleForApprovalModified: function (component, editedFieldRequiresApprov
                               
             if(component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'Planned'){
                 //Approval triggering for Planned - future dated activities
-                if((component.get("v.ipaAcctMgr")|| component.get("v.ipaApproverPer")) && component.get("v.oldPFR.Core_MDF_Start_Date__c") >= todaysDate && IPAEditFieldAccPropBasedPlannedFuture!= null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccPropBasedPlannedFuture.split(","))||metricsModified || outcomeModified ){
+                if((component.get("v.ipaAcctMgr")|| component.get("v.ipaApproverPer")) && component.get("v.oldPFR.Core_MDF_Start_Date__c") >= todaysDate && IPAEditFieldAccPropBasedPlannedFuture!= null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccPropBasedPlannedFuture.split(","))||metricsModified  ){
                     isModified = true;
                     
                 }
@@ -2684,15 +2021,15 @@ fieldEligibleForApprovalModified: function (component, editedFieldRequiresApprov
                     }
                 
             }
-            else if((component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'Revision Required') && ((IPAAccEditedFieldRequiresApproval!= null && this.fieldEligibleForApprovalModified(component, IPAAccEditedFieldRequiresApproval.split(","))) || component.get("v.isSPIFSecModified")||spifModified||metricsModified || outcomeModified)) {
+            else if((component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'Revision Required') && ((IPAAccEditedFieldRequiresApproval!= null && this.fieldEligibleForApprovalModified(component, IPAAccEditedFieldRequiresApproval.split(","))) || component.get("v.isSPIFSecModified")||spifModified||metricsModified)) {
                 isModified = true;
             }
           //Ramapriya - retrigger approval in In-Progress and In-Progress Revision required status          
-           else if(component.get("v.ipaAcctMgr") &&  (component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress' && (IPAEditFieldAccBasedInProgress!=null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccBasedInProgress.split(",")) || component.get("v.isSPIFSecModified")||spifModified||metricsModified || outcomeModified))){
+           else if(component.get("v.ipaAcctMgr") &&  (component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress' && (IPAEditFieldAccBasedInProgress!=null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccBasedInProgress.split(",")) || component.get("v.isSPIFSecModified")||spifModified||metricsModified))){
                 isModified = true;
             }
 
-           else if(component.get("v.ipaAcctMgr") &&  (component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress Revision Required' && (IPAEditFieldAccBasedInProgress!=null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccBasedInProgress.split(",")) || component.get("v.isSPIFSecModified")||spifModified||metricsModified || outcomeModified))){
+           else if(component.get("v.ipaAcctMgr") &&  (component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress Revision Required' && (IPAEditFieldAccBasedInProgress!=null && this.fieldEligibleForApprovalModified(component, IPAEditFieldAccBasedInProgress.split(",")) || component.get("v.isSPIFSecModified")||spifModified||metricsModified))){
                 isModified = true;
             }
                     }
@@ -2824,19 +2161,6 @@ setIPAAccountBasedActivityStatus: function (component) {
                {
                  component.set("v.newPFR.Core_MDF_StartTime_dtm__c", component.get("v.activityCreationStartTime"));
             	}
-        	// FORCE 100% for create/clone before saving
-    var mode = component.get("v.mode");
-    if (mode === 'create' || mode === 'clone' || mode ==='') {
-        component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", parseInt($A.get("$Label.c.Core_MDF_ReimburesementNum")));
-        component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-    }
-        	 // Fix reimbursement rate data type before saving
-                var reimbursementRate = component.get("v.SelReimbursementRate");
-                if (reimbursementRate && typeof reimbursementRate === $A.get("$Label.c.Core_MDF_ReimbursementRateString")) {
-                    var numericValue = parseFloat(reimbursementRate.replace('%', ''));
-                    component.set("v.newPFR.Core_MDF_Reimbursement_Rate__c", numericValue);
-                }
             this.multiselectfieldvaluesStringConversion(component);
             if(component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false) {   
                 
@@ -2855,7 +2179,6 @@ setIPAAccountBasedActivityStatus: function (component) {
                     "mdfReimbursement":newPFR.Core_MDF_MDFReimbursement_Amt__c ?''+newPFR.Core_MDF_MDFReimbursement_Amt__c:'',
                     "tacticMetrics": this.isNotBlank(component.get("v.tacticMetricsValues")) ? component.get("v.tacticMetricsValues") : null,
                     "outcomeActivity": this.isNotBlank(component.get("v.outcomeActivityValues")) ? component.get("v.outcomeActivityValues") : null,
-                    "outcomeAccountNode": this.isNotBlank(component.get("v.ActivityNodeAccValues")) ? component.get("v.ActivityNodeAccValues") : null
                 });
                 
                 action.setCallback(this, function (response) {
@@ -2864,10 +2187,7 @@ setIPAAccountBasedActivityStatus: function (component) {
                     
                     if (state === "SUCCESS") {
                         
-                        // Reimbursement rate display 
-                        if (component.get("v.mode") === 'create' || component.get("v.mode") === 'clone' || component.get("v.mode") === '' ) {
-                            component.set("v.SelReimbursementRate", $A.get("$Label.c.Core_MDF_ReimburementVal"));
-                        }
+                        
                         var toastEvent = $A.get("e.force:showToast");
                         toastEvent.setParams({
                             title: $A.get("$Label.c.Core_MDF_SuccessToastTitle"),
@@ -2885,7 +2205,7 @@ setIPAAccountBasedActivityStatus: function (component) {
                         
                             else {
                                 
-                               /* var navEvt = $A.get("e.force:navigateToSObject");
+                                var navEvt = $A.get("e.force:navigateToSObject");
                                 navEvt.setParams({
                                     "recordId": response.getReturnValue(),
                                     "slideDevName": "detail"
@@ -2898,62 +2218,8 @@ setIPAAccountBasedActivityStatus: function (component) {
                                     setTimeout(function () {
                                         window.location.reload();
                                     }, 2000);
-                                }*/
-                                var navService = component.find("navService");
-                                var communityUrl = component.get("v.externalper");
-                                var recordId = response.getReturnValue();
-                                var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
-                                
-                                // Finalize and persist AI tracking records if they exist
-                                // Finalize and persist AI tracking records if they exist
-                                var aiTrackingEntries = component.get("v.aiTrackingEntries");
-                                
-                                if (aiTrackingEntries && aiTrackingEntries.length > 0) {
-                                    var finalizedEntries = this.finalizeAiTrackingEntries(component);
-                                    if (finalizedEntries && finalizedEntries.length > 0) {
-                                        this.persistAiTrackingRecords(component, recordId, finalizedEntries);
-                                    } else {
-                                    }
-                                } else {
-                                }
-
-
-                                var pageReference;
-                                
-                                if (communityUrl) {
-                                    
-                                    pageReference = {
-                                        type: 'comm__namedPage',
-                                        attributes: {
-                                            name: 'Outcome_based_Campaign_Details__c'
-                                        },
-                                        state: {
-                                            c__recordId: recordId
-                                        }
-                                    };
-                                } else {
-                                    
-                                    pageReference = {
-                                        type: 'standard__navItemPage',
-                                        attributes: {
-                                            apiName: 'Core_MDF_Outcome_Based_Campaign_Detail'
-                                        },
-                                        state: {
-                                            recordId: recordId
-                                        }
-                                    };
                                 }
                                 
-                                
-                                try {
-                                    navService.navigate(pageReference, true);
-                                    
-                                } catch (e) {
-                                    var url = communityUrl
-                                    ? communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId
-                                    : '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
-                                    window.location.href = url;
-                                }
                             }
                     } else {
                         // Disable Save button
@@ -3118,448 +2384,7 @@ clearDependentFieldSelections: function(component) {
         return str.replace(/&amp;/g, '&');
                  
     },
-    getFilteredPicklistValues: function(component) {
-    var picklistValues = {};
     
-    try {
-        // Focus Area
-        var focusAreaOptions = component.get("v.focusAreaDependent") || [];
-        picklistValues.focusArea = focusAreaOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Priority
-        var priorityOptions = component.get("v.priorityDependent") || [];
-        picklistValues.priority = priorityOptions.map(function(option) {
-            return option.value;
-        }).filter(function(value) {
-            return value !== ""; // Remove empty values
-        });
-        
-        // Country
-        var countryOptions = component.get("v.CountryDependants") || [];
-        picklistValues.country = countryOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Target Audience
-        var audienceOptions = component.get("v.MultiTargetAudienceValues") || [];
-        picklistValues.targetAudience = audienceOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Brands
-        var brandOptions = component.get("v.MultiBrandValues") || [];
-        picklistValues.brands = brandOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Technologies
-        var technologyOptions = component.get("v.technologiesDependant") || [];
-        picklistValues.technologies = technologyOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Initiatives
-        var initiativeOptions = component.get("v.MultiInitiativeValues") || [];
-        picklistValues.initiatives = initiativeOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Ecosystem Partners
-        var ecoPartnerOptions = component.get("v.MultiEcoPartnerValues") || [];
-        picklistValues.ecosystemPartners = ecoPartnerOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Product Types
-        var productTypeOptions = component.get("v.ProductTypeDependent") || [];
-        picklistValues.productTypes = productTypeOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Tactics
-        var tacticsOptions = component.get("v.activityTacticsOptions") || [];
-        picklistValues.tactics = tacticsOptions.map(function(option) {
-            return option.value;
-        });
-        
-        // Outcome Metrics
-        var outcomeOptions = component.get("v.outcomesDependants") || [];
-        picklistValues.outcomeMetrics = outcomeOptions.map(function(option) {
-            return option.value;
-        });
-
-        // Account context for AI suggestion matching
-        var selectedAccount = component.get("v.selectedAccount");
-        if (selectedAccount && selectedAccount.Name) {
-            picklistValues.account = {
-                name: selectedAccount.Name,
-                id: selectedAccount.Id || null
-            };
-        }
-
-        // Include current spending values to guide AI for spending-related suggestions.
-        var totalInvestment = component.get("v.BudgetLocal");
-        if (totalInvestment !== null && totalInvestment !== undefined && totalInvestment !== '') {
-            picklistValues.spendingAmount = totalInvestment;
-        }
-
-        var reimbursementRate = component.get("v.newPFR.Core_MDF_Reimbursement_Rate__c");
-        if (reimbursementRate !== null && reimbursementRate !== undefined && reimbursementRate !== '') {
-            picklistValues.spendingPercentage = reimbursementRate;
-        }
-
-        // Include tactic metric context if available in the child component.
-        var lwcTacticMetricsComp = component.find("tacticMetrics");
-        if (lwcTacticMetricsComp != null) {
-            try {
-                var tacticMetricsValues;
-                if (this.isNotBlank(lwcTacticMetricsComp[0])) {
-                    tacticMetricsValues = lwcTacticMetricsComp[0].getTacticMetricsValues();
-                } else if (lwcTacticMetricsComp.getTacticMetricsValues) {
-                    tacticMetricsValues = lwcTacticMetricsComp.getTacticMetricsValues();
-                }
-                if (tacticMetricsValues) {
-                    picklistValues.tacticMetrics = tacticMetricsValues;
-                    picklistValues.goalValues = tacticMetricsValues;
-                }
-            } catch (metricError) {
-                console.warn('Unable to read tactic metric values for AI context:', metricError);
-            }
-        }
-        
-    } catch (error) {
-        console.error('Error collecting picklist values:', error);
-    }
-    
-    return picklistValues;
-},
-performSmartAIAnalysis: function(component, description, uploadedIds, recordTypeDeveloperName) {
-    var hasDescription = description && description.trim() !== '';
-    var hasFiles = uploadedIds && uploadedIds.length > 0;
-    
-    if (hasDescription && hasFiles) {
-        // Both description and files - call combined analysis
-        this.performCombinedAnalysis(component, description, uploadedIds, recordTypeDeveloperName);
-    } else if (hasDescription) {
-        // Description only
-        this.analyzeDescriptionOnly(component, description, recordTypeDeveloperName);
-    } else if (hasFiles) {
-        // Files only
-        this.analyzeFilesOnly(component, uploadedIds, recordTypeDeveloperName);
-    }
-},
-
-performCombinedAnalysis: function(component, description, uploadedIds, recordTypeDeveloperName) {
-    // Call the new combined analysis Apex method
-    var picklistValues = this.getFilteredPicklistValues(component);
-    var action = component.get("c.analyzeCombinedContent");
-    action.setParams({
-        description: description,
-        contentDocumentIds: uploadedIds,
-        recordTypeDeveloperName: recordTypeDeveloperName,
-        picklistValues: picklistValues
-    });
-    
-    action.setCallback(this, function(response) {
-        component.set("v.isLoadingAI", false);
-        var state = response.getState();
-        
-        if (state === "SUCCESS") {
-            var result = response.getReturnValue();
-            if (result && result.success) {
-                this.openAISuggestionsModal(component, result, recordTypeDeveloperName);
-            } else {
-                this.displaySuccessErrorMsg(result.error || 'Failed to analyze content', 'Error', 'error', 'dismissible');
-            }
-        } else {
-            this.displaySuccessErrorMsg('Error occurred during AI analysis', 'Error', 'error', 'dismissible');
-        }
-    });
-    
-    $A.enqueueAction(action);
-},
-
-analyzeDescriptionOnly: function(component, description, recordTypeDeveloperName) {
-    var picklistValues = this.getFilteredPicklistValues(component);
-    var action = component.get("c.analyzeDescriptionWithAI");
-    action.setParams({
-        description: description,
-        recordTypeDeveloperName: recordTypeDeveloperName,
-        picklistValues: picklistValues
-    });
-    
-    action.setCallback(this, function(response) {
-        component.set("v.isLoadingAI", false);
-        var state = response.getState();
-        
-        if (state === "SUCCESS") {
-            var result = response.getReturnValue();
-            if (result && result.success) {
-                this.openAISuggestionsModal(component, result, recordTypeDeveloperName);
-            } else {
-                this.displaySuccessErrorMsg(result.error || 'Failed to analyze description', 'Error', 'error', 'dismissible');
-            }
-        } else {
-            this.displaySuccessErrorMsg('Error occurred during description analysis', 'Error', 'error', 'dismissible');
-        }
-    });
-    
-    $A.enqueueAction(action);
-},
-checkUserEmailForAIAccess: function(component) {
-    var action = component.get("c.checkCurrentUserEmailForAI");
-    
-    action.setCallback(this, function(response) {
-        var state = response.getState();
-        if (state === "SUCCESS") {
-            var hasAccess = response.getReturnValue();
-            component.set("v.showAISuggestions", hasAccess);
-        } else {
-            console.error('Error checking user email for AI access:', response.getError());
-            component.set("v.showAISuggestions", false);
-        }
-    });
-    
-    $A.enqueueAction(action);
-},
-
-analyzeFilesOnly: function(component, uploadedIds, recordTypeDeveloperName) {
-    var picklistValues = this.getFilteredPicklistValues(component);
-    var action = component.get("c.analyzeFileWithAI");
-    action.setParams({
-        contentDocumentIds: uploadedIds,
-        recordTypeDeveloperName: recordTypeDeveloperName,
-        picklistValues: picklistValues
-    });
-    
-    action.setCallback(this, function(response) {
-        component.set("v.isLoadingAI", false);
-        var state = response.getState();
-        
-        if (state === "SUCCESS") {
-            var result = response.getReturnValue();
-            if (result && result.success) {
-                this.openAISuggestionsModal(component, result, recordTypeDeveloperName);
-            } else {
-                this.displaySuccessErrorMsg(result.error || 'Failed to analyze files', 'Error', 'error', 'dismissible');
-            }
-        } else {
-            this.displaySuccessErrorMsg('Error occurred during file analysis', 'Error', 'error', 'dismissible');
-        }
-    });
-    
-    $A.enqueueAction(action);
-},
-
-openAISuggestionsModal: function(component, result, recordTypeDeveloperName) {
-    var aiComponent = component.find("aiSuggestionsComponent");
-    
-    // Create a combined result object
-    var combinedResult = {
-        suggestions: result.data,
-        rawData: result.rawData,
-        analysisMode: component.get("v.smartAnalysisMode"),
-        filesAnalyzed: result.filesAnalyzed || [],
-        description: component.get("v.newPFR.Core_MDF_Activity_Description__c") || ''
-    };
-    
-    // Open modal with combined results
-    aiComponent.openModalWithResults(combinedResult, recordTypeDeveloperName);
-},
-determineFocusAreaFromDescription: function(description) {
-    if (!description || typeof description !== 'string') {
-        return 'Client Computing'; // Default value
-    }
-    
-    // Use regex with whole-word boundaries (\b) to avoid false positives
-    // e.g. "knowledge" must not match "edge", "datacenter" must not match "data center"
-    var focusAreaPatterns = [
-        {
-            name: 'Client Computing',
-            patterns: [/\bclient\s+computing\b/i]
-        },
-        {
-            name: 'Data Center',
-            patterns: [/\bdata\s+center\b/i, /\bdatacenter\b/i, /\bdata-center\b/i]
-        },
-        {
-            name: 'Networking & Telco',
-            patterns: [/\bnetworking\s*&\s*telco\b/i, /\bnetworking\s+and\s+telco\b/i]
-        },
-        {
-            name: 'Edge',
-            patterns: [/\bedge\b/i]
-        }
-    ];
-    
-    // Check each focus area for pattern matches
-    for (var i = 0; i < focusAreaPatterns.length; i++) {
-        var focusArea = focusAreaPatterns[i];
-        
-        for (var j = 0; j < focusArea.patterns.length; j++) {
-            if (focusArea.patterns[j].test(description)) {
-                return focusArea.name;
-            }
-        }
-    }
-    
-    // If no patterns matched, return default
-    return 'Client Computing';
-},
-
-// Helper method to check if focus area exists in available options
-validateFocusAreaOption: function(component, focusAreaValue) {
-    var availableOptions = component.get("v.AllFocusAreaOptions") || [];
-    
-    for (var i = 0; i < availableOptions.length; i++) {
-        if (availableOptions[i].value === focusAreaValue) {
-            return focusAreaValue;
-        }
-    }
-    
-    // If not found in available options, try to find Edge as fallback
-    for (var i = 0; i < availableOptions.length; i++) {
-        if (availableOptions[i].value === 'Client Computing') {
-            return 'Client Computing';
-        }
-    }
-    
-    // If Edge not found either, return first available option or empty
-    return availableOptions.length > 0 ? availableOptions[0].value : '';
-},
-detectFocusAreaFromUploadedFile: function(component, contentDocumentIds) {
-    component.set("v.showSpinner", true);
-    
-    var action = component.get("c.detectFocusAreaFromFile");
-    action.setParams({
-        contentDocumentIds: contentDocumentIds
-    });
-    
-    action.setCallback(this, function(response) {
-        component.set("v.showSpinner", false);
-        var state = response.getState();
-        
-        if (state === "SUCCESS") {
-            var result = response.getReturnValue();
-            if (result && result.success) {
-                var detectedFocusArea = result.focusArea;
-                
-                // Check current focus area and its source
-                var currentFocusArea = component.get("v.selectedFocusArea");
-                var detectionSource = component.get("v.focusAreaDetectionSource");
-                
-                // Only update if:
-                // 1. No focus area is set, OR
-                // 2. Current focus area is default "Client Computing" and wasn't manually set or set by description, OR
-                // 3. Focus area was previously set by file (allow file updates)
-                var shouldUpdate = !currentFocusArea || 
-                                  currentFocusArea === '' || 
-                                  (currentFocusArea === 'Client Computing' && detectionSource !== 'manual' && detectionSource !== 'description') ||
-                                  detectionSource === 'file';
-                
-                if (shouldUpdate && detectedFocusArea) {
-                    // Validate against available options
-                    var validatedFocusArea = this.validateFocusAreaOption(component, detectedFocusArea);
-                    
-                    if (validatedFocusArea) {
-                        // Set the focus area
-                        component.set("v.selectedFocusArea", validatedFocusArea);
-                        component.set("v.newPFR.Core_MDF_Focus_Area_nm__c", validatedFocusArea);
-                        
-                        // Mark source as file
-                        component.set("v.focusAreaDetectionSource", "file");
-                        
-                        // Trigger focus area change to load dependent fields
-                        if (!component.get("v.initialFocusAreaLoaded")) {
-                            this.clearDependentFieldSelections(component);
-                        } else {
-                            component.set("v.initialFocusAreaLoaded", false);
-                        }
-                        
-                        this.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"));
-                        component.set("v.showDependentFields", true);
-                        
-                    }
-                } else {
-                }
-            } else {
-            }
-        } else {
-        }
-    });
-    
-    $A.enqueueAction(action);
-},
-
-// RR Banner Dynamic Date - Start
-checkRRBanner : function(component) {
-    var action = component.get("c.shouldShowRRBanner");
-
-    action.setParams({
-        recordId : component.get("v.recordId")
-    });
-
-    action.setCallback(this, function(response) {
-        if(response.getState() === "SUCCESS") {
-            var showBanner = response.getReturnValue();
-
-            if(showBanner) {
-                var dateAction = component.get("c.getRRBannerDate");
-
-                dateAction.setCallback(this, function(dateResponse) {
-                    if(dateResponse.getState() === "SUCCESS") {
-                        component.set("v.rrBannerDate", dateResponse.getReturnValue());
-                        component.set("v.showBanner", true);
-                    }
-                });
-
-                $A.enqueueAction(dateAction);
-            } else {
-                component.set("v.showBanner", false);
-            }
-        }
-    });
-
-    $A.enqueueAction(action);
-},
-// RR Banner Dynamic Date - End Indu
-
-/*checkRRBanner : function(component) {
-
-    var action = component.get("c.shouldShowRRBanner");
-
-    action.setParams({
-        recordId : component.get("v.recordId")
-    });
-
-    action.setCallback(this, function(response) {
-
-        if(response.getState() === "SUCCESS") {
-
-            component.set(
-                "v.showBanner",
-                response.getReturnValue()
-            );
-
-            var today = new Date();
-            var aug5 = new Date(2026, 7, 5); // Aug 5, 2026
-
-            component.set(
-                "v.rrBannerDate",
-                today <= aug5
-                    ? ' July 24, 2026.'
-                    : ' October 23, 2026.'
-            );
-
-
-        }
-    });
-
-    $A.enqueueAction(action);
-},*/
-
     sanitizeResults : function(result){
         if(result != null && result != undefined && result != {} && Object.keys(result).length > 0){
             return result;
@@ -3567,602 +2392,7 @@ checkRRBanner : function(component) {
         else{
             return null;
         }
-    },
-
-    // Helper to apply deferred country suggestions after region filtering completes
-    // This ensures country values are resolved against region-filtered options
-    fetchCountriesByRegionWithCallback: function(component, region, countryValues, countryMapping, resolveFunction, normalizeTokenFunc) {
-        var self = this;
-        var masterList = component.get("v.AllCountryOptionsMain") || [];
-        
-        if (!region || masterList.length === 0 || !Array.isArray(countryValues) || countryValues.length === 0) {
-            return;
-        }
-
-        // Extract labels/values into plain string list
-        var allowedLabels = masterList.map(function(c) {
-            return c.label;
-        });
-
-        var action = component.get("c.getCountryLabelsByRegion");
-        action.setParams({
-            region: region,
-            allowedCountryLabels: allowedLabels
-        });
-
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-
-            if (state === "SUCCESS") {
-                var serverList = response.getReturnValue() || [];
-                var filteredOptions = [];
-                
-                for (var j = 0; j < serverList.length; j++) {
-                    filteredOptions.push({
-                        label: serverList[j],
-                        value: serverList[j]
-                    });
-                }
-
-                // Temporarily update component with filtered options
-                component.set("v.AllCountryOptions", filteredOptions);
-
-                // Now resolve the country values against filtered options
-                var normalizedCountries = countryValues;
-                if (Array.isArray(countryValues) && countryValues.length > 0) {
-                    normalizedCountries = countryValues.map(function(value) {
-                        var normalizedInput = normalizeTokenFunc(value);
-                        var match = filteredOptions.find(function(option) {
-                            return normalizeTokenFunc(option.value) === normalizedInput || normalizeTokenFunc(option.label) === normalizedInput;
-                        });
-
-                        // If no exact match, try fuzzy matching
-                        if (!match) {
-                            match = filteredOptions.find(function(option) {
-                                var optionValueNorm = normalizeTokenFunc(option.value);
-                                var optionLabelNorm = normalizeTokenFunc(option.label);
-                                return (optionValueNorm && normalizedInput.indexOf(optionValueNorm) >= 0) ||
-                                    (optionLabelNorm && normalizedInput.indexOf(optionLabelNorm) >= 0) ||
-                                    (optionValueNorm && optionValueNorm.indexOf(normalizedInput) >= 0) ||
-                                    (optionLabelNorm && optionLabelNorm.indexOf(normalizedInput) >= 0);
-                            });
-                        }
-
-                        return match ? match.value : value;
-                    });
-                }
-
-                // Apply resolved countries
-                if (normalizedCountries.length > 0) {
-                    component.set("v." + countryMapping.component, normalizedCountries);
-                    component.set("v.newPFR." + countryMapping.pfr, normalizedCountries.join(';'));
-                }
-            } else {
-                var errs = response.getError();
-                var msg = 'Error fetching countries for region';
-                if (errs && errs[0] && errs[0].message) msg = errs[0].message;
-                console.error('Error in fetchCountriesByRegionWithCallback:', msg);
-            }
-        });
-
-        $A.enqueueAction(action);
-    },
-
-    // ═══════════════════════════════════════════════════════════════════════════════
-    // AI RECOMMENDATION TRACKING METHODS
-    // ═══════════════════════════════════════════════════════════════════════════════
-
-    initializeAiTracking: function(component, suggestions, selectedFields, userInputs, analysisType, filesAnalyzed, aiRequestGroupId) {
-        var self = this;
-        
-        // Store pre-AI values (current form values before applying suggestions)
-        var preAiValues = this.captureCurrentFieldValues(component);
-        component.set('v.preAiFieldValues', preAiValues);
-        
-        // Store AI source metadata
-        var sourceType = analysisType || 'Description';
-        if (sourceType === 'description') sourceType = 'Description';
-        if (sourceType === 'files') sourceType = 'File';
-        if (sourceType === 'combined') sourceType = 'Combined';
-        
-        component.set('v.aiSourceType', sourceType);
-        component.set('v.aiSourceFiles', Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : (filesAnalyzed || ''));
-        
-        // Build tracking entries for ALL suggested fields (selected and unselected)
-        var trackingEntries = [];
-        var fieldMappings = this.getAiFieldMappings();
-        
-        // Get all suggested field names from the suggestions object
-        var allSuggestedFields = suggestions ? Object.keys(suggestions) : [];
-        
-        allSuggestedFields.forEach(function(fieldName) {
-            // Skip complex nested objects that are handled separately
-            if (fieldName === 'tacticMetrics' || fieldName === 'outcomeActivityValues' || fieldName === 'goalValues' || fieldName === 'spendingPercentage') {
-                return;
-            }
-            
-            var aiSuggestedValue = suggestions[fieldName];
-            // For account field the AI returns an object {name: "..."} — extract just the name string
-            if (fieldName === 'account' && aiSuggestedValue && typeof aiSuggestedValue === 'object') {
-                aiSuggestedValue = aiSuggestedValue.name || aiSuggestedValue.Name || '';
-            }
-            // Skip null/undefined/empty suggestions
-            if (aiSuggestedValue === null || aiSuggestedValue === undefined || aiSuggestedValue === '') {
-                return;
-            }
-            
-            var isSelected = selectedFields && selectedFields[fieldName] === true;
-            var mapping = fieldMappings[fieldName] || { apiName: fieldName, label: fieldName, targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.' + fieldName };
-            
-            var appliedValue = '';
-            var modificationType = 'Not Applied';
-            var recommendationUsed = false;
-            
-            if (isSelected) {
-                appliedValue = (userInputs && userInputs[fieldName] !== undefined) 
-                    ? userInputs[fieldName] 
-                    : aiSuggestedValue;
-                modificationType = 'Accepted As-Is';
-                recommendationUsed = true;
-            }
-            
-            var entry = {
-                groupId: aiRequestGroupId,
-                sourceType: sourceType,
-                sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : (filesAnalyzed || ''),
-                fieldApiName: mapping.apiName,
-                fieldLabel: mapping.label,
-                targetObject: mapping.targetObject || 'PartnerFundRequest',
-                targetRecordKey: mapping.targetRecordKey || null,
-                fieldPath: mapping.fieldPath || ('PartnerFundRequest.' + mapping.apiName),
-                preAiValue: preAiValues[fieldName] !== undefined ? self.serializeTrackingValue(preAiValues[fieldName]) : '',
-                aiSuggestedValue: self.serializeTrackingValue(aiSuggestedValue),
-                appliedValue: self.serializeTrackingValue(appliedValue),
-                finalSavedValue: null,
-                isModifiedAfterApply: false,
-                modificationType: modificationType,
-                recommendationUsed: recommendationUsed,
-                userDecision: modificationType
-            };
-            
-            trackingEntries.push(entry);
-        });
-        
-
-        // Handle tactic metrics (child rows) if selected.
-        // The "Tactics" checkbox uses data-field="tactics" → selectedFields.tactics.
-        // AI may return goal values in suggestions.goalValues (flat: {tacticName: {goalValue:N}})
-        // and/or in suggestions.tacticMetrics (may be flat OR nested under .metrics sub-object).
-        // Spending amounts only come from tacticMetrics.
-        // Strategy: collect tactic names from BOTH sources; resolve goal value with multiple fallbacks.
-        var tacticMetricsData = (suggestions && suggestions.tacticMetrics && typeof suggestions.tacticMetrics === 'object' && Object.keys(suggestions.tacticMetrics).length > 0)
-            ? suggestions.tacticMetrics : {};
-        var goalValuesData = (suggestions && suggestions.goalValues && typeof suggestions.goalValues === 'object' && Object.keys(suggestions.goalValues).length > 0)
-            ? suggestions.goalValues : {};
-
-        var allTacticNames = {};
-        Object.keys(tacticMetricsData).forEach(function(k) { allTacticNames[k] = true; });
-        Object.keys(goalValuesData).forEach(function(k) { allTacticNames[k] = true; });
-
-        if (selectedFields && (selectedFields.tactics || selectedFields.tacticMetrics || selectedFields.goalValues) && Object.keys(allTacticNames).length > 0) {
-            Object.keys(allTacticNames).forEach(function(tacticName) {
-                var tm = tacticMetricsData[tacticName];
-                var gv = goalValuesData[tacticName];
-
-                // Normalize plain numbers to objects
-                if (typeof tm === 'number') { tm = { goalValue: tm }; }
-                if (typeof gv === 'number') { gv = { goalValue: gv }; }
-                if (!tm || typeof tm !== 'object') { tm = {}; }
-                if (!gv || typeof gv !== 'object') { gv = {}; }
-
-                // Resolve goal value with cascading fallbacks:
-                // 1. goalValues[tacticName].goalValue (cleanest flat format)
-                // 2. tacticMetrics[tacticName].goalValue (flat format)
-                // 3. tacticMetrics[tacticName].metrics[*].goalValue (nested format)
-                var resolvedGoalValue = null;
-                if (gv.goalValue !== undefined && gv.goalValue !== null && gv.goalValue !== '') {
-                    resolvedGoalValue = gv.goalValue;
-                } else if (tm.goalValue !== undefined && tm.goalValue !== null && tm.goalValue !== '') {
-                    resolvedGoalValue = tm.goalValue;
-                } else if (tm.metrics && typeof tm.metrics === 'object') {
-                    var mKeys = Object.keys(tm.metrics);
-                    for (var mi = 0; mi < mKeys.length; mi++) {
-                        var me = tm.metrics[mKeys[mi]];
-                        var mg = (me && typeof me === 'object')
-                            ? (me.goalValue !== undefined ? me.goalValue : (me.firstKpiValue !== undefined ? me.firstKpiValue : null))
-                            : me;
-                        if (mg !== undefined && mg !== null && mg !== '') {
-                            resolvedGoalValue = mg;
-                            break;
-                        }
-                    }
-                }
-
-                if (resolvedGoalValue !== null) {
-                    trackingEntries.push({
-                        groupId: aiRequestGroupId,
-                        sourceType: sourceType,
-                        sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : '',
-                        fieldApiName: 'Core_MDF_Goal_Value__c',
-                        fieldLabel: 'Tactic Goal Value - ' + tacticName,
-                        targetObject: 'Core_MDF_Tactic_KPI__c',
-                        targetRecordKey: tacticName,
-                        fieldPath: 'Core_MDF_Tactic_KPI__c.' + tacticName + '.Goal_Value__c',
-                        preAiValue: '',
-                        aiSuggestedValue: String(resolvedGoalValue),
-                        appliedValue: String(resolvedGoalValue),
-                        finalSavedValue: null,
-                        isModifiedAfterApply: false,
-                        modificationType: 'Accepted As-Is',
-                        recommendationUsed: true,
-                        userDecision: 'Accepted As-Is'
-                    });
-                }
-
-                // Spending amount comes from tacticMetrics only
-                if (tm.spendingAmount !== undefined && tm.spendingAmount !== null && tm.spendingAmount !== '') {
-                    trackingEntries.push({
-                        groupId: aiRequestGroupId,
-                        sourceType: sourceType,
-                        sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : '',
-                        fieldApiName: 'Core_MDF_Spending_Amount_amt__c',
-                        fieldLabel: 'Tactic Spending Amount - ' + tacticName,
-                        targetObject: 'Core_MDF_Tactic_KPI__c',
-                        targetRecordKey: tacticName,
-                        fieldPath: 'Core_MDF_Tactic_KPI__c.' + tacticName + '.Spending_Amount_amt__c',
-                        preAiValue: '',
-                        aiSuggestedValue: String(tm.spendingAmount),
-                        appliedValue: String(tm.spendingAmount),
-                        finalSavedValue: null,
-                        isModifiedAfterApply: false,
-                        modificationType: 'Accepted As-Is',
-                        recommendationUsed: true,
-                        userDecision: 'Accepted As-Is'
-                    });
-                }
-            });
-        }
-        
-        // Akash changes AI start
-        // Handle outcomeActivityValues (child record) if selected.
-        // The LWC breaks outcomeActivityValues into three individual checkboxes and deletes
-        // selectedFields.outcomeActivityValues, so gate on the individual component keys.
-        var hasAnyOutcomeField = selectedFields && (selectedFields.outcomeBaselineValue || selectedFields.outcomeGoalValue || selectedFields.outcomeBaselinePeriod);
-        if (hasAnyOutcomeField && suggestions && suggestions.outcomeActivityValues && typeof suggestions.outcomeActivityValues === 'object') {
-            var outcomeData = suggestions.outcomeActivityValues;
-            var outcomeMetricKey = outcomeData.outcomeMetric || 'Primary';
-            
-            if (selectedFields.outcomeBaselineValue && outcomeData.baselineValue !== undefined && outcomeData.baselineValue !== null) {
-                trackingEntries.push({
-                    groupId: aiRequestGroupId,
-                    sourceType: sourceType,
-                    sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : '',
-                    fieldApiName: 'Core_MDF_Baseline_Value_nbr__c',
-                    fieldLabel: 'Baseline Value',
-                    targetObject: 'Core_MDF_Outcome_Activity__c',
-                    targetRecordKey: outcomeMetricKey,
-                    fieldPath: 'Core_MDF_Activity_Outcome__c.Core_MDF_Baseline_Value_nbr__c',
-                    preAiValue: '',
-                    aiSuggestedValue: String(outcomeData.baselineValue),
-                    appliedValue: String(outcomeData.baselineValue),
-                    finalSavedValue: null,
-                    isModifiedAfterApply: false,
-                    modificationType: 'Accepted As-Is',
-                    recommendationUsed: true,
-                    userDecision: 'Accepted As-Is'
-                });
-            }
-            
-            if (selectedFields.outcomeGoalValue && outcomeData.goalValue !== undefined && outcomeData.goalValue !== null) {
-                trackingEntries.push({
-                    groupId: aiRequestGroupId,
-                    sourceType: sourceType,
-                    sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : '',
-                    fieldApiName: 'Core_MDF_Goal_Value_nbr__c',
-                    fieldLabel: 'Goal Value',
-                    targetObject: 'Core_MDF_Outcome_Activity__c',
-                    targetRecordKey: outcomeMetricKey,
-                    fieldPath: 'Core_MDF_Activity_Outcome__c.Core_MDF_Goal_Value_nbr__c',
-                    preAiValue: '',
-                    aiSuggestedValue: String(outcomeData.goalValue),
-                    appliedValue: String(outcomeData.goalValue),
-                    finalSavedValue: null,
-                    isModifiedAfterApply: false,
-                    modificationType: 'Accepted As-Is',
-                    recommendationUsed: true,
-                    userDecision: 'Accepted As-Is'
-                });
-            }
-            
-            if (selectedFields.outcomeBaselinePeriod && outcomeData.baselinePeriod) {
-                trackingEntries.push({
-                    groupId: aiRequestGroupId,
-                    sourceType: sourceType,
-                    sourceFiles: Array.isArray(filesAnalyzed) ? filesAnalyzed.join(', ') : '',
-                    fieldApiName: 'Core_MDF_Baseline_Period_nm__c',
-                    fieldLabel: 'Baseline Period',
-                    targetObject: 'Core_MDF_Outcome_Activity__c',
-                    targetRecordKey: outcomeMetricKey,
-                    fieldPath: 'Core_MDF_Activity_Outcome__c.Core_MDF_Baseline_Period_nm__c',
-                    preAiValue: '',
-                    aiSuggestedValue: String(outcomeData.baselinePeriod),
-                    appliedValue: String(outcomeData.baselinePeriod),
-                    finalSavedValue: null,
-                    isModifiedAfterApply: false,
-                    modificationType: 'Accepted As-Is',
-                    recommendationUsed: true,
-                    userDecision: 'Accepted As-Is'
-                });
-            }
-        }
-        
-        // Store applied AI values for comparison at save time
-        var appliedValues = {};
-        trackingEntries.forEach(function(entry) {
-            var key = entry.targetObject + '.' + entry.fieldApiName + (entry.targetRecordKey ? '.' + entry.targetRecordKey : '');
-            appliedValues[key] = entry.appliedValue;
-        });
-        component.set('v.appliedAiFieldValues', appliedValues);
-        
-        component.set('v.aiTrackingEntries', trackingEntries);
-    },
-
-    captureCurrentFieldValues: function(component) {
-        var newPFR = component.get('v.newPFR') || {};
-        return {
-            campaignName: newPFR.Title || '',
-            campaignDescription: newPFR.Core_MDF_Activity_Description__c || '',
-            startDate: newPFR.Core_MDF_Start_Date__c || '',
-            endDate: newPFR.Core_MDF_End_Date__c || '',
-            totalInvestment: component.get('v.BudgetLocal') || '',
-            maxIntelInvestment: component.get('v.maxIntelInvestment') || '',
-            focusArea: component.get('v.selectedFocusArea') || '',
-            priority: component.get('v.SelPriority') || '',
-            region: component.get('v.selectedRegion') || '',
-            country: (component.get('v.selectedCountryOptions') || []).join(';'),
-            targetAudience: (component.get('v.selectedTargetAudienceOptions') || []).join(';'),
-            brands: (component.get('v.selectedBrandOptions') || []).join(';'),
-            technologies: (component.get('v.selectedTechnologyOptions') || []).join(';'),
-            initiatives: (component.get('v.selectedInitiativeOptions') || []).join(';'),
-            ecosystemPartners: (component.get('v.selectedEcosystemPartnerOptions') || []).join(';'),
-            productTypes: (component.get('v.selectedProductTypeOptions') || []).join(';'),
-            tactics: (component.get('v.selectedTacticsOptions') || []).join(';'),
-            outcomeMetrics: (component.get('v.selectedOutcomeMetricOptions') || []).join(';'),
-            account: component.get('v.selectedAccount') ? (component.get('v.selectedAccount').Name || component.get('v.selectedAccount').Id || '') : ''
-        };
-    },
-
-    getAiFieldMappings: function() {
-        return {
-            campaignName: { apiName: 'Title', label: 'Campaign Name', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Title' },
-            campaignDescription: { apiName: 'Core_MDF_Activity_Description__c', label: 'Activity Description', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Activity_Description__c' },
-            startDate: { apiName: 'Core_MDF_Start_Date__c', label: 'Start Date', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Start_Date__c' },
-            endDate: { apiName: 'Core_MDF_End_Date__c', label: 'End Date', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_End_Date__c' },
-            totalInvestment: { apiName: 'Core_MDF_Budget_Amount_Local_amt__c', label: 'Total Investment', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Budget_Amount_Local_amt__c' },
-            maxIntelInvestment: { apiName: 'Core_MDF_Maximum_Intel_Investment_amt__c', label: 'Max Intel Investment', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Maximum_Intel_Investment_amt__c' },
-            focusArea: { apiName: 'Core_MDF_Focus_Area_nm__c', label: 'Focus Area', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Focus_Area_nm__c' },
-            priority: { apiName: 'Core_MDF_Priority__c', label: 'Priority', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Priority__c' },
-            region: { apiName: 'Core_MDF_Geo__c', label: 'Region', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Geo__c' },
-            country: { apiName: 'Core_MDF_Country_nm__c', label: 'Country', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Country_nm__c' },
-            targetAudience: { apiName: 'Core_MDF_TargetAudience_nm__c', label: 'Target Audience', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_TargetAudience_nm__c' },
-            brands: { apiName: 'Core_MDF_Brand_nm__c', label: 'Brands', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Brand_nm__c' },
-            technologies: { apiName: 'Core_MDF_Technology_txt__c', label: 'Technologies', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Technology_txt__c' },
-            initiatives: { apiName: 'Core_MDF_Initiative_nm__c', label: 'Initiatives', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Initiative_nm__c' },
-            ecosystemPartners: { apiName: 'Core_MDF_EcosystemPartner_nm__c', label: 'Ecosystem Partners', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_EcosystemPartner_nm__c' },
-            productTypes: { apiName: 'Core_MDF_Product_Type__c', label: 'Product Types', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Product_Type__c' },
-            tactics: { apiName: 'Core_MDF_Tactics_nm__c', label: 'Tactics', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Tactics_nm__c' },
-            outcomeMetrics: { apiName: 'Core_MDF_Outcomes_nm__c', label: 'Outcome Metrics', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Outcomes_nm__c' },
-            account: { apiName: 'ChannelPartnerId', label: 'Account', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.ChannelPartnerId' },
-            spendingAmount: { apiName: 'Core_MDF_Spending_Amount__c', label: 'Spending Amount', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Spending_Amount__c' },
-            spendingPercentage: { apiName: 'Core_MDF_Spending_Percentage__c', label: 'Spending Percentage', targetObject: 'PartnerFundRequest', fieldPath: 'PartnerFundRequest.Core_MDF_Spending_Percentage__c' },
-            tacticMetrics: { apiName: 'tacticMetrics', label: 'Tactic Metrics', targetObject: 'Core_MDF_Tactic_KPI__c', targetRecordKey: null, fieldPath: 'Core_MDF_Tactic_KPI__c' },
-            goalValues: { apiName: 'goalValues', label: 'Goal Values', targetObject: 'Core_MDF_Tactic_KPI__c', targetRecordKey: null, fieldPath: 'Core_MDF_Tactic_KPI__c.goalValues' },
-            outcomeActivityValues: { apiName: 'outcomeActivityValues', label: 'Outcome Values', targetObject: 'Core_MDF_Outcome_Activity__c', targetRecordKey: null, fieldPath: 'Core_MDF_Outcome_Activity__c' }
-        };
-    },
-
-    serializeTrackingValue: function(value) {
-        if (value === null || value === undefined) {
-            return '';
-        }
-        if (typeof value === 'string') {
-            return value;
-        }
-        if (typeof value === 'number' || typeof value === 'boolean') {
-            return String(value);
-        }
-        if (Array.isArray(value)) {
-            return value.join(';');
-        }
-        if (typeof value === 'object') {
-            try {
-                return JSON.stringify(value);
-            } catch (e) {
-                return String(value);
-            }
-        }
-        return String(value);
-    },
-
-    finalizeAiTrackingEntries: function(component) {
-        var self = this;
-        var trackingEntries = component.get('v.aiTrackingEntries') || [];
-        if (trackingEntries.length === 0) {
-            return [];
-        }
-        
-        var currentValues = this.captureCurrentFieldValues(component);
-        var fieldMappings = this.getAiFieldMappings();
-        
-        // Create reverse lookup: API name -> JS field name
-        var apiToJsField = {};
-        Object.keys(fieldMappings).forEach(function(jsField) {
-            apiToJsField[fieldMappings[jsField].apiName] = jsField;
-        });
-        
-        // Pre-fetch live values from child components so final saved values reflect user edits
-        var currentTacticRows = null;
-        var lwcTacticComp = component.find('tacticMetrics');
-        if (lwcTacticComp) {
-            var tComp = Array.isArray(lwcTacticComp) ? lwcTacticComp[0] : lwcTacticComp;
-            if (tComp && tComp.getTacticMetricsValues) {
-                try { currentTacticRows = tComp.getTacticMetricsValues(); } catch(e) {}
-            }
-        }
-
-        var currentOutcomeRows = null;
-        var lwcOutcomeComp = component.find('activityOutcomeCmp');
-        if (lwcOutcomeComp) {
-            var oComp = Array.isArray(lwcOutcomeComp) ? lwcOutcomeComp[0] : lwcOutcomeComp;
-            if (oComp && oComp.getAllActivityOutcomesDetails) {
-                try { currentOutcomeRows = oComp.getAllActivityOutcomesDetails(); } catch(e) {}
-            }
-        }
-
-        trackingEntries.forEach(function(entry) {
-            // Skip "Not Applied" entries - they already have correct state
-            if (entry.modificationType === 'Not Applied') {
-                entry.finalSavedValue = entry.preAiValue || '';
-                return;
-            }
-            
-            var finalValue = '';
-            
-            // For main PFR fields
-            if (entry.targetObject === 'PartnerFundRequest') {
-                var jsFieldName = apiToJsField[entry.fieldApiName];
-                if (jsFieldName && currentValues[jsFieldName] !== undefined) {
-                    finalValue = self.serializeTrackingValue(currentValues[jsFieldName]);
-                }
-            } else if (entry.targetObject === 'Core_MDF_Tactic_KPI__c' && currentTacticRows && entry.targetRecordKey) {
-                var tacticFinal = self.extractTacticFinalValue(currentTacticRows, entry);
-                finalValue = tacticFinal !== '' ? tacticFinal : (entry.appliedValue || '');
-            } else if (entry.targetObject === 'Core_MDF_Outcome_Activity__c' && currentOutcomeRows && entry.targetRecordKey) {
-                var outcomeFinal = self.extractOutcomeFinalValue(currentOutcomeRows, entry);
-                finalValue = outcomeFinal !== '' ? outcomeFinal : (entry.appliedValue || '');
-            } else {
-                finalValue = entry.appliedValue || '';
-            }
-            
-            entry.finalSavedValue = finalValue;
-            var appliedValue = entry.appliedValue || '';
-            
-            // Determine modification type (only for applied suggestions)
-            if (finalValue === appliedValue || self.trackingValuesAreEquivalent(finalValue, appliedValue)) {
-                entry.isModifiedAfterApply = false;
-                entry.modificationType = 'Accepted As-Is';
-                entry.userDecision = 'Accepted As-Is';
-            } else if (finalValue === '' || finalValue === null || finalValue === 'null' || finalValue === '""') {
-                entry.isModifiedAfterApply = true;
-                entry.modificationType = 'Cleared After Apply';
-                entry.userDecision = 'Cleared After Apply';
-            } else {
-                entry.isModifiedAfterApply = true;
-                entry.modificationType = 'Modified After Apply';
-                entry.userDecision = 'Modified After Apply';
-            }
-        });
-        
-        component.set('v.aiTrackingEntries', trackingEntries);
-        return trackingEntries;
-    },
-
-    trackingValuesAreEquivalent: function(val1, val2) {
-        var normalize = function(v) {
-            if (v === null || v === undefined) return '';
-            var str = String(v).trim();
-            // Sort semicolon-separated values for comparison
-            if (str.indexOf(';') > -1) {
-                return str.split(';').map(function(s) { return s.trim().toLowerCase(); }).sort().join(';');
-            }
-            return str.toLowerCase();
-        };
-        return normalize(val1) === normalize(val2);
-    },
-
-    extractTacticFinalValue: function(tacticRows, entry) {
-        if (!Array.isArray(tacticRows) || !entry.targetRecordKey) {
-            return '';
-        }
-        var normalizeToken = function(v) {
-            return v ? String(v).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-        };
-        var normKey = normalizeToken(entry.targetRecordKey);
-        for (var i = 0; i < tacticRows.length; i++) {
-            var r = tacticRows[i];
-            var rowApi = r.tactic && r.tactic.api ? r.tactic.api : String(r.tactic || '');
-            var rowLabel = r.tactic && r.tactic.label ? r.tactic.label : '';
-            if (normalizeToken(rowApi) === normKey || normalizeToken(rowLabel) === normKey) {
-                if (entry.fieldApiName === 'Core_MDF_Goal_Value__c') {
-                    var kv = r.firstKpi && r.firstKpi.value !== undefined && r.firstKpi.value !== null && r.firstKpi.value !== '' ? r.firstKpi.value : null;
-                    return kv !== null ? String(kv) : '';
-                }
-                if (entry.fieldApiName === 'Core_MDF_Spending_Amount_amt__c') {
-                    var sv = r.intelContri !== undefined && r.intelContri !== null && r.intelContri !== '' ? r.intelContri : null;
-                    return sv !== null ? String(sv) : '';
-                }
-                return '';
-            }
-        }
-        return '';
-    },
-
-    extractOutcomeFinalValue: function(outcomeRows, entry) {
-        if (!Array.isArray(outcomeRows) || !entry.targetRecordKey) {
-            return '';
-        }
-        var normalizeToken = function(v) {
-            return v ? String(v).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-        };
-        var normKey = normalizeToken(entry.targetRecordKey);
-        for (var i = 0; i < outcomeRows.length; i++) {
-            var r = outcomeRows[i];
-            var rowMetric = r.outcomeMetric ? String(r.outcomeMetric) : '';
-            if (normalizeToken(rowMetric) === normKey || normKey === normalizeToken('Primary')) {
-                if (entry.fieldApiName === 'Core_MDF_Baseline_Value_nbr__c') {
-                    return r.baselineValue !== undefined && r.baselineValue !== null && r.baselineValue !== '' ? String(r.baselineValue) : '';
-                }
-                if (entry.fieldApiName === 'Core_MDF_Goal_Value_nbr__c') {
-                    return r.goalValue !== undefined && r.goalValue !== null && r.goalValue !== '' ? String(r.goalValue) : '';
-                }
-                if (entry.fieldApiName === 'Core_MDF_Baseline_Period_nm__c') {
-                    // getAllActivityOutcomesDetails returns baseLinePeriod (capital L)
-                    var period = r.baseLinePeriod !== undefined ? r.baseLinePeriod : (r.baselinePeriod !== undefined ? r.baselinePeriod : '');
-                    return period !== null && period !== undefined ? String(period) : '';
-                }
-                return '';
-            }
-        }
-        return '';
-    },
-
-    persistAiTrackingRecords: function(component, recordId, trackingEntries) {
-        if (!trackingEntries || trackingEntries.length === 0) {
-            return;
-        }
-        
-        var action = component.get('c.saveAiTrackingRecords');
-        action.setParams({
-            activityId: recordId,
-            trackingEntriesJson: JSON.stringify(trackingEntries)
-        });
-        
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state === 'SUCCESS') {
-                // Clear tracking entries after successful save
-                component.set('v.aiTrackingEntries', []);
-                component.set('v.aiRequestGroupId', '');
-                component.set('v.preAiFieldValues', {});
-                component.set('v.appliedAiFieldValues', {});
-            } else {
-                var errors = response.getError();
-                var errorMsg = errors && errors[0] && errors[0].message ? errors[0].message : 'Unknown error';
-                console.error('[AI Tracking] Failed to persist tracking records:', errorMsg);
-            }
-        });
-        
-        $A.enqueueAction(action);
     }
+
 
 })

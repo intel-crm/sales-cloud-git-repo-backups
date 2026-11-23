@@ -4531,7 +4531,7 @@ True))</formula>
         <label>Profession</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -4551,12 +4551,6 @@ True))</formula>
                     <fullName>CONSULTANT</fullName>
                     <default>false</default>
                     <label>Consultant</label>
-                </value>
-                <value>
-                    <fullName>Consultant/Analyst</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Consultant/Analyst</label>
                 </value>
                 <value>
                     <fullName>COO</fullName>
@@ -4592,11 +4586,6 @@ True))</formula>
                     <fullName>FPGAENGG</fullName>
                     <default>false</default>
                     <label>FPGA Engineering</label>
-                </value>
-                <value>
-                    <fullName>GOVT</fullName>
-                    <default>false</default>
-                    <label>Government</label>
                 </value>
                 <value>
                     <fullName>HDE</fullName>
@@ -4674,18 +4663,6 @@ True))</formula>
                     <label>Press Analyst</label>
                 </value>
                 <value>
-                    <fullName>Product/Service Management</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Product/Service Management</label>
-                </value>
-                <value>
-                    <fullName>Professor/Teacher</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Professor/Teacher</label>
-                </value>
-                <value>
                     <fullName>SALES</fullName>
                     <default>false</default>
                     <label>Sales</label>
@@ -4699,11 +4676,6 @@ True))</formula>
                     <fullName>SADE</fullName>
                     <default>false</default>
                     <label>Software/Application Development/Engineering</label>
-                </value>
-                <value>
-                    <fullName>SFTOP</fullName>
-                    <default>false</default>
-                    <label>Software Operations</label>
                 </value>
                 <value>
                     <fullName>SSA</fullName>
@@ -5056,6 +5028,112 @@ True))</formula>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>LID__Languages__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Languages</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__Level__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Secondary</fullName>
+                    <default>false</default>
+                    <label>Secondary</label>
+                </value>
+                <value>
+                    <fullName>Tertiary</fullName>
+                    <default>false</default>
+                    <label>Tertiary</label>
+                </value>
+                <value>
+                    <fullName>Primary</fullName>
+                    <default>false</default>
+                    <label>Primary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Company_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the company</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Company Id</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Member_Token__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the contact</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Member Token</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__No_longer_at_Company__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <deprecated>false</deprecated>
+        <inlineHelpText>Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share.</inlineHelpText>
+        <label>Not at Company Flag</label>
+        <required>false</required>
+        <securityClassification>Public</securityClassification>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not at Company</fullName>
+                    <default>false</default>
+                    <label>Not at Company</label>
+                </value>
+                <value>
+                    <fullName>Ignore</fullName>
+                    <default>false</default>
+                    <label>Ignore</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LID__Session_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>$Api.Session_ID</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Session Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>LastCURequestDate</fullName>
     </fields>
     <fields>
@@ -5214,15 +5292,6 @@ True))</formula>
         </valueSet>
     </fields>
     <fields>
-        <fullName>PRM_Impartner_Deal_Sync__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field is used to identify whether contact has Deal Incentive User Entitlement or not.</description>
-        <label>Impartner Deal Sync</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_Wechat_Union_Id__c</fullName>
         <description>Field to capture Wechat Union Id</description>
         <externalId>false</externalId>
@@ -5296,240 +5365,6 @@ True))</formula>
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>mkto_si__Add_to_Marketo_Campaign__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Add_to_Marketo_Campaign?contactType=Contact&amp;contactIds=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;Add to Marketo Campaign&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Add to Marketo Campaign</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Current_Sales_Campaign__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Current Sales Campaign</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__HideDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Hide Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Activity_By_Sales__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Activity by Sales</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Date__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Interesting Moment Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Desc__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Interesting Moment Desc</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Source__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Last Interesting Moment Source</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Type__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Last Interesting Moment Type</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>IF(!ISNULL(mkto_si__Last_Interesting_Moment_Date__c),
-    HYPERLINK(&quot;/apex/mkto_si__Contact_Full_List?mode=fullList&amp;view=IM&amp;id=&quot; &amp; Id, mkto_si__Last_Interesting_Moment_Type__c &amp; &quot; -- &quot; &amp; SUBSTITUTE(mkto_si__Last_Interesting_Moment_Desc__c,SUBSTITUTE($Label.mkto_si__System_Newline, &quot;--linebreak--&quot;, &quot;&quot;),&quot; &quot;) ), &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Last Interesting Moment</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Sales_Engagement__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Sales Engagement</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Mkto_Lead_Score__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Mkto Lead Score</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Priority__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Engagement</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Relative_Score_Value__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Relative Score Value</label>
-        <precision>4</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Relative_Score__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>CASE( MIN(MAX(mkto_si__Relative_Score_Value__c, 0), 3),
-            0, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star0_small.png&quot;,&quot;0&quot;),
-            1, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star1_small.png&quot;,&quot;1&quot;),
-            2, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star2_small.png&quot;,&quot;2&quot;),
-            3, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star3_small.png&quot;,&quot;3&quot;),
-        &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Relative Score</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Insight__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Contact_Full_List?mode=fullList&amp;id=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;Sales Insight&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Sales Insight</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Last_Replied__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Sales Last Replied</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Opt_Out__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Sales Opt Out</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Urgency_Value__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Urgency Value</label>
-        <precision>4</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Urgency__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>CASE( MIN(MAX(mkto_si__Urgency_Value__c, 0),3),
-            0, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire0_small.png&quot;,&quot;0&quot;),
-            1, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire1_small.png&quot;,&quot;1&quot;),
-            2, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire2_small.png&quot;,&quot;2&quot;),
-            3, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire3_small.png&quot;,&quot;3&quot;),
-        &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Urgency</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__View_in_Marketo__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Marketo_Lead_Detail?objType=Contact&amp;objId=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;View in Marketo&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>View in Marketo</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <listViews>
         <fullName>All_IPS_Customer_contact2</fullName>
         <columns>FULL_NAME</columns>
@@ -5537,6 +5372,7 @@ True))</formula>
         <columns>ACCOUNT.NAME</columns>
         <columns>CONTACT.CREATED_DATE</columns>
         <columns>Core_Primary_Contact__c</columns>
+        <columns>Core_Status__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Contacts</label>
         <sharedTo>
@@ -7614,10 +7450,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -7694,10 +7526,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SSA</fullName>
                 <default>false</default>
             </values>
@@ -7753,6 +7581,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -10856,10 +10710,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -10936,10 +10786,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SSA</fullName>
                 <default>false</default>
             </values>
@@ -10995,6 +10841,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14086,10 +13958,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -14166,10 +14034,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SSA</fullName>
                 <default>false</default>
             </values>
@@ -14225,6 +14089,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -17220,10 +17110,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -17300,10 +17186,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>SFTOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SSA</fullName>
                 <default>false</default>
             </values>
@@ -17359,6 +17241,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -18777,6 +18685,28 @@ Core_Central_Block__c = true)</errorConditionFormula>
         <errorMessage>This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>LID__Check_CompanyId_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_Company_Id_Value</fullName>
+        <active>false</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Mailing_Country_cannot_be_blank</fullName>
         <active>true</active>
         <description>Mailing Country/ Region field cannot be blank</description>
@@ -19083,89 +19013,5 @@ Account.Id
         <openType>replace</openType>
         <protected>false</protected>
         <url>/apex/jiffle__JNEvents?accid={!CASESAFEID(Account.Id)}&amp;contactid={!CASESAFEID(Contact.Id)}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Marketo_Campaign_Details</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Add to Marketo Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/mkto_si__Add_to_Marketo_Campaign?contactType=Contact&amp;contactIds={!Contact.Id}&amp;retUrl=detailsPage</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Marketo_Campaign_Lightning</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Marketo Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__AddToMarketoCampaignContactLightning</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Sales_Campaign</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Sales Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__Add_to_Sales_Campaign_Contact</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Watch_List</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Watch List</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__AddToWatchListContact</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Marketo_Email_Details</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Send Marketo Email</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/mkto_si__Send_Marketo_Email?contactType=Contact&amp;contactIds={!Contact.Id}&amp;retUrl=detailsPage</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Marketo_Email_Lightning</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Send Marketo Email</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__EmailMarketoContactLightning</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Sales_Email</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Send Sales Email</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__Send_Sales_Email_Contact</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
     </webLinks>
 </CustomObject>

@@ -44,40 +44,12 @@
             <outputField>Core_Lead_Conversion_Flag__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>mkto_si__Priority__c</inputField>
-            <outputField>mkto_si__Priority__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>Core_Job_Function__c</inputField>
             <outputField>Core_Job_Function__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>mkto_si__Last_Interesting_Moment_Date__c</inputField>
-            <outputField>mkto_si__Last_Interesting_Moment_Date__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>mkto_si__Last_Interesting_Moment_Desc__c</inputField>
-            <outputField>mkto_si__Last_Interesting_Moment_Desc__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>mkto_si__Last_Interesting_Moment_Source__c</inputField>
-            <outputField>mkto_si__Last_Interesting_Moment_Source__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>mkto_si__Last_Interesting_Moment_Type__c</inputField>
-            <outputField>mkto_si__Last_Interesting_Moment_Type__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>Core_Profession__c</inputField>
             <outputField>Core_Profession__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>mkto_si__Relative_Score_Value__c</inputField>
-            <outputField>mkto_si__Relative_Score_Value__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>mkto_si__Urgency_Value__c</inputField>
-            <outputField>mkto_si__Urgency_Value__c</outputField>
         </mappingFields>
         <outputObject>Contact</outputObject>
     </objectMapping>

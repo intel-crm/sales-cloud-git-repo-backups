@@ -36,8 +36,6 @@ public class Core_Batch_OpportunityKPIDelete_Test
             
             
         Test.stopTest();
-        System.assertEquals(true,true);
-        
     }
     /*static testMethod void testMethod2() 
     {

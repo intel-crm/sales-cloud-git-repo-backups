@@ -23,6 +23,7 @@ public class Pricing_RestAPI_PickList_Test {
             Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_PickList_Test');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
+            List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
                                                               TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);

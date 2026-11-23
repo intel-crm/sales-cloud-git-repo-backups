@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Sales Incentive (Pre-2025)-&gt;Seller - Other;Purchase Incentive (Pre-2025)-&gt;Buyer - Other;Broadcast (Pre-2025)-&gt;Other (Broadcast);Event (Pre-2025)-&gt;Other (Event);Out of Home (Pre-2025)-&gt;Other (Out of Home);Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</value>
+        <value xsi:type="xsd:string">Sales Incentive-&gt;Seller - Other;Purchase Incentive-&gt;Buyer - Other;Broadcast-&gt;Other (Broadcast);Event-&gt;Other (Event);Out of Home-&gt;Other (Out Of Home);Sales Readiness-&gt;Other (Sales Readiness);Tech Exploration-&gt;Other (Tech Exploration)</value>
     </values>
 </CustomMetadata>

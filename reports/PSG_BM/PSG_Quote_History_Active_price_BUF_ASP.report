@@ -6,6 +6,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c.core_cpq_active_cb__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_dollar_change_flag_cb__c</field>
     </columns>
     <columns>
@@ -58,6 +62,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c$core_cpq_approved_by_nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
     </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>

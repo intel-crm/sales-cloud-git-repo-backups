@@ -11,6 +11,9 @@
         <field>SBQQ__Quote__c.SBQQ__Account__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__QuoteLine__c.Core_OPN__c</field>
     </columns>
     <columns>

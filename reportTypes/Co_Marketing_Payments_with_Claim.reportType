@@ -221,12 +221,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
-            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Activity Priority</displayNameOverride>
             <field>Request.Core_MDF_Priorities__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>

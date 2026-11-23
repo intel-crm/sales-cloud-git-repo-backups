@@ -10,12 +10,25 @@ Modification Log :
 *********************************************************************************************************************/
 public without sharing class UCD_ACM_AccountDeactivation {
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
-    //mAccts contains BusinessType Ids
-    public static void removeUCDAttributes(Map<Id,Account> mAccts) {
+    //mAccts contains BusinessType Ids and lstAllAcctCWL contains CWL Ids
+    public static void removeUCDAttributes(Map<Id,Account> mAccts, List<Core_Account_Compliance_Watch_List__c> lstAllAcctCWL) {
         if(!mAccts.isEmpty()) {
             removeBusinessType(mAccts); 
         }
+        if(!lstAllAcctCWL.isEmpty()) {
+            removeCWL(lstAllAcctCWL); 
+        }
     }
+    /**
+     * This method takes all the CWL ids and deletes them.
+     * Author: Chethan Kunder 
+     * Date: 17/10/2024
+     */
+    private static void removeCWL(List<Core_Account_Compliance_Watch_List__c> lstAllAcctCWL) {       
+        if (Core_Account_Compliance_Watch_List__c.sObjectType.getDescribe().isDeletable()) {
+            delete lstAllAcctCWL;
+        }
+    }  
     
     private static void removeBusinessType(Map<Id,Account> mAccts) { 
         List<Account_Business_Types__c> cpetoDelete = new List<Account_Business_Types__c>();
@@ -36,7 +49,7 @@ public without sharing class UCD_ACM_AccountDeactivation {
             for(Account_Business_Types__c cpe : cpeRecords) {
                 cpetoDelete.add(cpe);
             }
-            if (Schema.sObjectType.Account_Business_Types__c.isDeletable()){
+            if (Account_Business_Types__c.sObjectType.getDescribe().isDeletable()){
                 delete cpetoDelete;
             }
         }        

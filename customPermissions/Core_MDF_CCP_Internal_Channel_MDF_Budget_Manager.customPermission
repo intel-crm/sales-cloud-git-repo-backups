@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Custom Permission will grant budget transfer acess to Channel MDF Budget Manager based on Budget Type</description>
+    <isLicensed>false</isLicensed>
+    <label>CCP Internal Channel MDF Budget Manager</label>
+</CustomPermission>

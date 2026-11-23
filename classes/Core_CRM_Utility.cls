@@ -225,42 +225,6 @@ public without sharing class Core_CRM_Utility {
         
     }
     
-        @AuraEnabled(cacheable=true)
-        public static Map<String, Object> getTagsWithCount(Integer limitSize, Integer offsetSize, String searchKey) {
-            try {
-                String filterSearchKey = '';
-                String coreQuery = System.Label.CRM_getTagsDetailsQuery;
-                String filterQuery = System.Label.CRM_showTagsFilter;
-                String orderByQuery = System.Label.CRM_tagsOrderByQuery;
-                String recordQuery='';
-                String countQuery ='';
-                
-                String key = '%' + searchKey + '%';
-                filterSearchKey = 'Name LIKE :key';
-                
-                String whereClause = '';
-                if (String.isNotBlank(searchKey) || filterQuery.length() > 1) {
-                    List<String> conditions = new List<String>();
-                    if (String.isNotBlank(searchKey)) conditions.add(filterSearchKey);
-                    if (filterQuery.length() > 1) conditions.add(filterQuery);
-                    whereClause = ' WHERE ' + String.join(conditions, ' AND ');
-                }
-                
-                recordQuery = coreQuery + whereClause + ' ' + orderByQuery;
-                countQuery = 'SELECT COUNT() FROM UniTag__Tag__c' + whereClause;
-                
-                List<UniTag__Tag__c> tags = Database.query(recordQuery);
-                Integer totalCount = Database.countQuery(countQuery);
-                
-                return new Map<String, Object>{
-                    'tags' => tags,
-                    'totalCount' => totalCount
-                };
-                
-            } catch (Exception e) {
-                throw new AuraHandledException(e.getMessage());
-            }
-        }
     
     
     // Areefa: Bulkified method to check if Opportunities are low touch and if the current user has a specific custom permission

@@ -11,8 +11,6 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
     
     /* Method to Setup Test Data */
     @TestSetup static void setUpData(){        
-        User tempUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-		insert tempUser;
         
         List<Account> toBeUpdated = new List<Account>();
         
@@ -41,7 +39,6 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         PermissionSet clmCaseRevPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Claim_Case_Reviewer' LIMIT 1];
         PermissionSet clmSubmitter = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Claim_Submitter' LIMIT 1];
         
-        System.runAs(tempUser){
         // Creating User with utility class 
         List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -71,7 +68,7 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         system.runAs(usr){
             Database.insert(lstPSAssignment);
         }
-        }
+        
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
         //adding bypass feature to bypass access validation
 			List<String> bypassFunctionKeys = new List<String>();
@@ -93,13 +90,13 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         
         PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
         
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-1, System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);
+        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);
         
         camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         Database.insert(camp);
          
         Test.startTest();
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft', false);
+        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft', false);
         testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
         testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
         testPartnerFundRequestRecord.Title = 'Test Activity For Manual Hold';
@@ -235,7 +232,7 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
                 System.assertEquals('Submitted', claimAfterUpdate.Core_MDF_Status__c);
                 System.assertEquals(true, claimAfterUpdate.Core_MDF_Intel_Manual_Hold_Ind__c);
                 System.assertEquals(true, claimRec);
-            }catch(Exception e){}
+            }catch(Exception e){System.debug('EXCEPTION::::'+e.getMessage());}
         }
         System.runAs(usr1)
         {		
@@ -246,7 +243,7 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
                 System.assertEquals('Submitted', claimAfterUpdate.Core_MDF_Status__c);
                 System.assertEquals(true, claimAfterUpdate.Core_MDF_Member_Manual_Hold_Ind__c);
                 System.assertEquals(true, claimRec);
-            }catch(Exception e){}
+            }catch(Exception e){System.debug('EXCEPTION::::'+e.getMessage());}
         }
         test.stopTest();
     }

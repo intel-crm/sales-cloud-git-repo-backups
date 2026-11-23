@@ -35,14 +35,15 @@ public with sharing class Core_MDF_PaymentServiceHandler {
         return isUpdated;
     }
 
-    //checking if the payment number is RMF or IPA or COGTM
+    //checking if the payment number is RMF or IPA
     public static string checkIIMPayment(string paymentRefNo) {
         string paymentNo  = '';
         // if (string.isNotBlank(paymentRefNo) && paymentRefNo.contains('MDF') && (paymentRefNo.contains('RSA') || paymentRefNo.contains('IPA'))) {
         if (string.isNotBlank(paymentRefNo) && paymentRefNo.contains('MDF') &&
-            (paymentRefNo.contains('RSA') || paymentRefNo.contains('IPA') || paymentRefNo.contains('COGTM'))) {
+            (paymentRefNo.contains('RSA') || paymentRefNo.contains('IPA'))) {
                 paymentNo = getPaymentNFromIIMString(paymentRefNo);
-        } else{
+        }
+        else {
             paymentNo = paymentRefNo;
         }
         return paymentNo;
@@ -228,25 +229,15 @@ public with sharing class Core_MDF_PaymentServiceHandler {
         if (payNoSplits.size() > 2 && payNoSplits[2].contains('RSA') && payNoSplits[1].contains('MDF')) { 
             return payNoSplits[2].substring(3, 9) + ' - ' + 'RMF' + ' - ' + payNoSplits[1];
         }
-    	// IPA program type format Example - Q420/MDF/IPA000123-APJ
-        else if(payNoSplits.size() == 3 && payNoSplits[2].contains('IPA') && payNoSplits[1].contains('MDF')) 
-        {
-            return payNoSplits[2].substring(3, 9) + ' - ' + 'IPA';
-        }
-        // COGTM program: CSAR Cash type format Example: CSAR:120381 Q425/MDF/COGTM272117
-        else if(payNoSplits.size() == 3 && payNoSplits[2].contains('COGTM') && payNoSplits[1].contains('MDF')) 
-        {
-            return payNoSplits[2].substring(5, 11) + ' - ' + 'COGTM';
-        }
-        else if(payNoSplits.size() == 4 && payNoSplits[3].contains('IPA') && payNoSplits[2].contains('MDF')) 
+    // IPA program type format Example - Q420/MDF/IPA000123-APJ
+       else if(payNoSplits.size() == 3 && payNoSplits[2].contains('IPA') && payNoSplits[1].contains('MDF')) 
+       {
+         return payNoSplits[2].substring(3, 9) + ' - ' + 'IPA';
+       }
+       else if(payNoSplits.size() == 4 && payNoSplits[3].contains('IPA') && payNoSplits[2].contains('MDF')) 
         { 
-            return payNoSplits[3].substring(3, 9) + ' - ' + 'IPA';        
-        }
-        // COGTM program: CSAR Credit type format Example: CSAR#1293454/1 Q425/MDF/COGTM272117
-        else if(payNoSplits.size() == 4 && payNoSplits[3].contains('COGTM') && payNoSplits[2].contains('MDF')) 
-        { 
-            return payNoSplits[3].substring(5, 11) + ' - ' + 'COGTM';       
-        }
+          return payNoSplits[3].substring(3, 9) + ' - ' + 'IPA';        
+        }  
         else{
             return paymentNo;
         }        

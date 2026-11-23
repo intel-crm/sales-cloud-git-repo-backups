@@ -424,13 +424,13 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
         proccessEntitlement();
 		List<PMP_OPID_MPI_Rel__c> opidMps = new List<PMP_OPID_MPI_Rel__c>();
           if (!opidsToMPIdeactivation.isEmpty()) {
-            opidMps = [SELECT Id,Is_Active__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIdeactivation AND Is_Active__c = TRUE ];
+            opidMps = [SELECT Id,Is_Active__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIdeactivation AND Is_Active__c = TRUE ];
 		  //TWC729-8027 - RTA changes for MPI activation
-          }else if(!opidsToMPIactivation.isEmpty()){opidMps = [SELECT Id,Is_Active__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIactivation AND Is_Active__c = FALSE ];
+          }else if(!opidsToMPIactivation.isEmpty()){opidMps = [SELECT Id,Is_Active__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIactivation AND Is_Active__c = FALSE ];
 		  }
             if (!opidMps.isEmpty()) {
-                for (PMP_OPID_MPI_Rel__c opidmp : opidMps) { if(opidmp.Is_Active__c == TRUE ){
-                        opidmp.Is_Active__c = FALSE;opidmp.PMP_RelLastDeactivated__c = System.now();}
+                for (PMP_OPID_MPI_Rel__c opidmp : opidMps) {if(opidmp.Is_Active__c == TRUE )
+                    opidmp.Is_Active__c = FALSE;
                 
 					else if(opidmp.Is_Active__c == FALSE )
                     opidmp.Is_Active__c = TRUE;

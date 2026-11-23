@@ -698,36 +698,6 @@
         <label>New Opportunity</label>
     </fieldSets>
     <fieldSets>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availableFields>
-            <field>ImpartnerPRM__DateAssignedToPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__NotifyPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__PartnerOpportunityAcceptance__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <description>Mass Assign Opportunities to Partner Page</description>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerContact__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerAccount__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <label>Mass Assign to Partner</label>
-    </fieldSets>
-    <fieldSets>
         <fullName>OPTY_VBS_FieldSet</fullName>
         <description>Core_Opportunity_Clone_Controller</description>
         <displayedFields>
@@ -3121,30 +3091,6 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Design_Type__c</fullName>
-        <label>Design Type</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Chip-down</fullName>
-                    <default>false</default>
-                    <label>Chip-down</label>
-                </value>
-                <value>
-                    <fullName>Board-based</fullName>
-                    <default>false</default>
-                    <label>Board-based</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_Direct_Support_Req__c</fullName>
         <externalId>false</externalId>
         <formula>Core_Opportunity_Facts_ID__r.Core_Direct_Support_Req__c</formula>
@@ -3899,19 +3845,9 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <label>COOPER LAKE SP</label>
                 </value>
                 <value>
-                    <fullName>CRESCENT ISLAND</fullName>
-                    <default>false</default>
-                    <label>CRESCENT ISLAND</label>
-                </value>
-                <value>
                     <fullName>Cyclone</fullName>
                     <default>false</default>
                     <label>CYCLONE</label>
-                </value>
-                <value>
-                    <fullName>DUNLOW</fullName>
-                    <default>false</default>
-                    <label>DUNLOW</label>
                 </value>
                 <value>
                     <fullName>Eagle Stream</fullName>
@@ -4022,11 +3958,6 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <fullName>MALIBOU LAKE</fullName>
                     <default>false</default>
                     <label>MALIBOU LAKE</label>
-                </value>
-                <value>
-                    <fullName>MAPLE STREAM</fullName>
-                    <default>false</default>
-                    <label>MAPLE STREAM</label>
                 </value>
                 <value>
                     <fullName>MAX</fullName>
@@ -4182,11 +4113,6 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <fullName>WILDCAT LAKE M</fullName>
                     <default>false</default>
                     <label>WILDCAT LAKE M</label>
-                </value>
-                <value>
-                    <fullName>WILDCAT LAKE REFRESH</fullName>
-                    <default>false</default>
-                    <label>WILDCAT LAKE REFRESH</label>
                 </value>
                 <value>
                     <fullName>WIZARD LAKE</fullName>
@@ -4473,15 +4399,6 @@ IF((INCLUDES(Core_Solution_Focus__c , &quot;SP/Telco: Client GTM&quot;) ||
     <fields>
         <fullName>Core_Last_KPI_Update__c</fullName>
         <label>Last KPI Update</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Core_Last_Opportunity_Progressed_Date__c</fullName>
-        <description>Automatically tracks the most recent activity timestamp (Tasks, Events, Status Updates) for opportunities in Develop, Design, Define, and Qualify stages. Updated by batch process.</description>
-        <label>Last Opportunity Progressed Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -4808,6 +4725,11 @@ IF (Core_MAG_Questionnaire_ID__c != &apos;&apos;,&apos;&amp;Id=&apos;+Core_MAG_Q
                     <fullName>EMEA</fullName>
                     <default>false</default>
                     <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
                 </value>
                 <value>
                     <fullName>PRC</fullName>
@@ -6789,15 +6711,6 @@ IF( Core_Date_Submitted_for_Approval__c - DATEVALUE(CreatedDate) &gt; 90, &quot;
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Opportunity_Not_Progressed__c</fullName>
-        <description>A formula field that identifies opportunities in early stages (Define, Develop, Design, Qualify) that have not progressed within the defined timeframe based on their record type.Flags opportunities in Define/Develop/Design/Qualify stages as stale: Core Deal Opportunity after 30 days, Core Design Opportunity after 90 days without progression from either Core Last Opportunity Progressed Date or Creation Date.</description>
-        <formula>IF( (ISPICKVAL(StageName, &apos;Define&apos;) || ISPICKVAL(StageName, &apos;Develop&apos;) || ISPICKVAL(StageName, &apos;Design&apos;) || ISPICKVAL(StageName, &apos;Qualify&apos;)) &amp;&amp; ( ( RecordType.DeveloperName = &apos;Core_Deal_Opportunity&apos; &amp;&amp; ( (!ISBLANK(Core_Last_Opportunity_Progressed_Date__c) &amp;&amp; NOW() - Core_Last_Opportunity_Progressed_Date__c &gt; 30) || (ISBLANK(Core_Last_Opportunity_Progressed_Date__c) &amp;&amp; NOW() - CreatedDate &gt; 30) ) ) || ( RecordType.DeveloperName = &apos;Core_Design_Opportunity&apos; &amp;&amp; ( (!ISBLANK(Core_Last_Opportunity_Progressed_Date__c) &amp;&amp; NOW() - Core_Last_Opportunity_Progressed_Date__c &gt; 90) || (ISBLANK(Core_Last_Opportunity_Progressed_Date__c) &amp;&amp; NOW() - CreatedDate &gt; 90) ) ) ), True, False )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Not Progressed</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Opportunity_Owner_Geo__c</fullName>
         <description>The Region of the Opportunity. It is the Region of the Account for Channel Opportunities. It is the Region of the Opportunity Owner when the Opportunity goes into any of these Stages for the first time - Design Win, Production Win, Lost, Cancelled. It is the Region of the Current Opportunity Owner if the Opportunity never went into those Stages.</description>
         <externalId>false</externalId>
@@ -6955,11 +6868,13 @@ IMAGE(&quot;/profilephoto/005/T&quot;, &quot;&quot;, 16, 16) + &quot; &quot; + H
         <formula>LEFT( IF(Core_Opportunity_Team_Geo_APJ__c, &quot;APJ,&quot;, &quot;&quot;) &amp;     
 IF(Core_Opportunity_Team_Geo_ASMO__c, &quot;ASMO,&quot;, &quot;&quot;) &amp;     
 IF(Core_Opportunity_Team_Geo_EMEA__c, &quot;EMEA,&quot;, &quot;&quot;) &amp;     
-IF(Core_Opportunity_Team_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;),     
+IF(Core_Opportunity_Team_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)&amp;
+IF(CRM_Opportunity_Team_Geo_INDIA__c,&quot;INDIA,&quot;,&quot;&quot;),     
 LEN(IF(Core_Opportunity_Team_Geo_APJ__c, &quot;APJ,&quot;, &quot;&quot;) &amp;         
 IF(Core_Opportunity_Team_Geo_ASMO__c, &quot;ASMO,&quot;, &quot;&quot;) &amp;         
 IF(Core_Opportunity_Team_Geo_EMEA__c, &quot;EMEA,&quot;, &quot;&quot;) &amp;         
-IF(Core_Opportunity_Team_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
+IF(Core_Opportunity_Team_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)&amp; 
+IF(CRM_Opportunity_Team_Geo_INDIA__c,&quot;INDIA,&quot;,&quot;&quot;)) - 1 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Opportunity Team Regions</label>
         <required>false</required>
@@ -7321,11 +7236,13 @@ IF(Core_Opportunity_Team_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</for
         <formula>LEFT( IF(Core_Opportunity_Geo_APJ__c, &quot;APJ,&quot;, &quot;&quot;) &amp;     
 IF(Core_Opportunity_Geo_ASMO__c, &quot;ASMO,&quot;, &quot;&quot;) &amp;     
 IF(Core_Opportunity_Geo_EMEA__c, &quot;EMEA,&quot;, &quot;&quot;) &amp;     
-IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;),     
+IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;) &amp;
+IF(CRM_Opportunity_Geo_INDIA__c, &quot;INDIA,&quot;,&quot;&quot;),     
 LEN(IF(Core_Opportunity_Geo_APJ__c, &quot;APJ,&quot;, &quot;&quot;) &amp;         
 IF(Core_Opportunity_Geo_ASMO__c, &quot;ASMO,&quot;, &quot;&quot;) &amp;         
 IF(Core_Opportunity_Geo_EMEA__c, &quot;EMEA,&quot;, &quot;&quot;) &amp;         
-IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
+IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)&amp;
+IF(CRM_Opportunity_Geo_INDIA__c, &quot;INDIA,&quot;,&quot;&quot;)) - 1 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Participating Regions</label>
         <required>false</required>
@@ -7559,7 +7476,6 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <value>
                     <fullName>AI Software</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>AI Software</label>
                 </value>
                 <value>
@@ -8901,7 +8817,6 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <value>
                     <fullName>Other</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Other</label>
                 </value>
                 <value>
@@ -8943,7 +8858,6 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <value>
                     <fullName>Performance</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Performance</label>
                 </value>
                 <value>
@@ -9397,7 +9311,6 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <value>
                     <fullName>Service</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Service</label>
                 </value>
                 <value>
@@ -9682,7 +9595,6 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <value>
                     <fullName>Trust</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Trust</label>
                 </value>
                 <value>
@@ -10190,6 +10102,26 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
                 <controllingFieldValue>Comms Infra. / Networking</controllingFieldValue>
                 <valueName>Wireline &amp; Cable Access</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software &amp; Services</controllingFieldValue>
+                <valueName>AI Software</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software &amp; Services</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software &amp; Services</controllingFieldValue>
+                <valueName>Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software &amp; Services</controllingFieldValue>
+                <valueName>Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software &amp; Services</controllingFieldValue>
+                <valueName>Trust</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -10361,6 +10293,11 @@ true,false
                     <fullName>Automotive / Transportation</fullName>
                     <default>false</default>
                     <label>Automotive / Transportation</label>
+                </value>
+                <value>
+                    <fullName>Software &amp; Services</fullName>
+                    <default>false</default>
+                    <label>Software &amp; Services</label>
                 </value>
                 <value>
                     <fullName>AI - Artificial Intelligence</fullName>
@@ -10673,12 +10610,6 @@ true,false
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Software</label>
-                </value>
-                <value>
-                    <fullName>Software &amp; Services</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Software &amp; Services</label>
                 </value>
                 <value>
                     <fullName>Visual Display Solutions</fullName>
@@ -25853,17 +25784,6 @@ Scale Estimate: Only applies selected scale partner</inlineHelpText>
         <type>TextArea</type>
     </fields>
     <fields>
-        <fullName>Core_Sustainability_Compliance__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity_Facts_ID__r.Core_Sustainability_Compliance__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Sustainability Compliance</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_System_First_Approved_Sales_Group__c</fullName>
         <description>Field to store the value of Sales Group at the time of FIRST Opportunity approval.</description>
         <externalId>false</externalId>
@@ -26551,113 +26471,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>ImpartnerPRM__DateAssignedToPartner__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Date Assigned to Partner</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__IsDealRegistration__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Is Deal Registration</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerOpportunityAcceptance__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Opportunity Acceptance</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>false</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Accepted</fullName>
-                    <default>false</default>
-                    <label>Accepted</label>
-                </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>IqScore</fullName>
     </fields>
     <fields>
@@ -26667,6 +26480,126 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <fullName>IsPrivate</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>LID__CurrentGenerators__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Generator(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__DeliveryInstallationStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Delivery/Installation Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In progress</fullName>
+                    <default>false</default>
+                    <label>In progress</label>
+                </value>
+                <value>
+                    <fullName>Yet to begin</fullName>
+                    <default>false</default>
+                    <label>Yet to begin</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LID__Is_Influenced__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Opportunity was influenced by activities on LinkedIn Sales Navigator</description>
+        <label>Is_Influenced</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Company_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the company</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Company Id</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__MainCompetitors__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Main Competitor(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__My_DateTime__c</fullName>
+        <deprecated>false</deprecated>
+        <label>My DateTime</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LID__My_Geolocation__c</fullName>
+        <deprecated>false</deprecated>
+        <displayLocationInDecimal>false</displayLocationInDecimal>
+        <label>My Geolocation</label>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>LID__OrderNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <length>8</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__TrackingNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Tracking Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>LastSyncTime</fullName>
@@ -27016,70 +26949,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Current_Sales_Campaign__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Current Sales Campaign</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Activity_By_Sales__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Activity by Sales</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Sales_Engagement__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Sales Engagement</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__MarketoAnalyzer__c</fullName>
-        <deprecated>false</deprecated>
-        <description>This creates a link to the Marketo Opportunity Influence Analyzer. This feature requires an active subscription to Marketo Revenue Cycle Analytics.</description>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__MarketoRedirect?actionName=salesInsightAnalytics&amp;reportType=AccountAnalyzer&amp;objType=Opportunity&amp;objId=&quot; &amp; Id, IMAGE($Label.mkto_si__Marketo_Logo_16, $Label.mkto_si__Marketo_Opportunity_Analysis))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Marketo Opportunity Analysis</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Insight__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Opportunity_Full_List?mode=fullList&amp;id=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;Sales Insight&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Sales Insight</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Last_Replied__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Sales Last Replied</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>sbaa__ApprovalStatus__c</fullName>
@@ -28284,17 +28153,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -28532,10 +28390,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -28573,10 +28427,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28661,10 +28511,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28780,10 +28626,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -28859,6 +28701,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30078,6 +29924,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>AI Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>ASIC Prototyping%2FEmulation</fullName>
                 <default>false</default>
             </values>
@@ -30198,11 +30048,19 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PLC %26 PAC</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>POS %2F ATM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30246,6 +30104,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Storage</fullName>
                 <default>false</default>
             </values>
@@ -30255,6 +30117,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Thin Client%2C Cloud Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30369,6 +30235,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Embedded %2F IOT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software %26 Services</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -36521,17 +36391,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -37244,17 +37114,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -37492,10 +37351,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -37533,10 +37388,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37621,10 +37472,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37740,10 +37587,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -37819,6 +37662,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39038,6 +38885,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>AI Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>ASIC Prototyping%2FEmulation</fullName>
                 <default>false</default>
             </values>
@@ -39158,11 +39009,19 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PLC %26 PAC</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>POS %2F ATM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39206,6 +39065,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Storage</fullName>
                 <default>false</default>
             </values>
@@ -39215,6 +39078,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Thin Client%2C Cloud Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -45481,17 +45348,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -46156,17 +46023,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -47926,6 +47782,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>AI Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>ASIC Prototyping%2FEmulation</fullName>
                 <default>false</default>
             </values>
@@ -48046,11 +47906,19 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PLC %26 PAC</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>POS %2F ATM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -48094,6 +47962,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Storage</fullName>
                 <default>false</default>
             </values>
@@ -48103,6 +47975,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Thin Client%2C Cloud Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -48213,6 +48089,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Embedded %2F IOT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software %26 Services</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -54345,17 +54225,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -54851,17 +54731,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -55347,6 +55216,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -59405,17 +59278,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -60078,17 +59951,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -60554,6 +60416,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -68196,17 +68062,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -68702,17 +68568,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Geo_Initiative__c</picklist>
             <values>
                 <fullName>APJ - HP Seeding program</fullName>
@@ -69170,6 +69025,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -73228,17 +73087,17 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
+            <picklist>LID__DeliveryInstallationStatus__c</picklist>
             <values>
-                <fullName>Accepted</fullName>
+                <fullName>Completed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pending</fullName>
+                <fullName>In progress</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rejected</fullName>
+                <fullName>Yet to begin</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -74307,31 +74166,6 @@ text(StageName) = &quot;Cancelled&quot;))
         <errorMessage>Loss/Cancel Reason is required if Stage is set to Lost or Cancelled</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_Opp_Reason_if_Lost_non_PCC</fullName>
-        <active>true</active>
-        <description>Require a value in the Reason field if the stage is set to Lost or Cancelled.</description>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
-IF((TEXT(Core_Opportunity_Coverage_Nm__c)=&apos;Partner-Led Opportunity&apos; &amp;&amp; TEXT(Core_Coverage_Type_Nm__c) =&apos;Deal Registration&apos;)=TRUE, FALSE,
-AND(
-NOT(CONTAINS($Label.CRM_Bypass_Validation_Profile_Name, $Profile.Name )),
-NOT(Core_Bypass_Field_Validation__c),
-NOT(Core_Created_from_CPQ__c),
-OR(
-ISCHANGED(Core_Loss_Cancel_Reason__c),
-ISCHANGED(StageName)
-),
-ISBLANK(TEXT(Core_Loss_Cancel_Reason__c)),
-OR(
-text(StageName) = &quot;Lost&quot;,
-AND(
-ISPICKVAL(StageName, &apos;Cancelled&apos;),
-ISPICKVAL(Core_Opportunity_Coverage_Nm__c, &apos;Partner-Led Opportunity&apos;)
-)))
-))</errorConditionFormula>
-        <errorDisplayField>Core_Loss_Cancel_Reason__c</errorDisplayField>
-        <errorMessage>Loss/Cancel Reason is required if Stage is set to Lost or Cancelled</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_Opp_Req_First_Cust_Ship_Date</fullName>
         <active>false</active>
         <description>Require First Customer Ship Date on Design opportunities if Sales Group is Global Accounts or Regional Sales or PSG Sales.</description>
@@ -74847,9 +74681,9 @@ NOT(CONTAINS($Label.Core_DataOpsProfile , $User.Id ))
         <description>Technical Owner update should be restricted for Opportunities which are created from Design Registration</description>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
-NOT($Permission.PCC_Bypass_Automation),
-NOT(CONTAINS($Label.CRM_Bypass_Validation_Profile_Name, $Profile.Name )),
+$Profile.Name &lt;&gt; $Label.Core_IT_Admin_Profile_Name,
 NOT(CONTAINS($Label.Core_DataOpsProfile , $User.Id )),
+$Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name,
 ISPICKVAL(Core_Opportunity_Coverage_Nm__c,&apos;Partner-Led Opportunity&apos;) ,
 Core_Design_Registration_Id__c !=null,
 ISCHANGED(Core_Technical_Owner__c),
@@ -75040,6 +74874,28 @@ ISPICKVAL(StageName,&quot;Production Cancelled&quot;)
         <errorMessage>This record is locked . The status cannot be changed once submitted for approval. If you need to edit it contact your admin.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>LID__Check_CompanyId_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_Company_Id_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Low_Touch_Admin_Check_on_Recall</fullName>
         <active>true</active>
         <description>When Low Touch Admin Users change any of the stages from Production Win to Qualify/Define/Develop/Design</description>
@@ -75087,6 +74943,25 @@ NOT( ISCHANGED(Push_Reason_Details__c) ), NOT(ISNEW())
 )</errorConditionFormula>
         <errorMessage>Opportunity has been pushed, please update the push reason and push reason details.</errorMessage>
     </validationRules>
+    <webLinks>
+        <fullName>Core_Create_PSG_Quote</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Create FPGA Quote</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/{!$Label.core_ddr_site_url}/apex/Core_CreatePSGQuote?{!$Label.Core_OpportunityID}={!CASESAFEID(Opportunity.Id)}&amp;{!$Label.Core_OpportunityName}={!Opportunity.Name}&amp;{!$Label.Core_CIMID}={!Account.Core_CIM_ID__c}</url>
+    </webLinks>
     <webLinks>
         <fullName>Core_Deal_Support</fullName>
         <availability>online</availability>
@@ -75179,18 +75054,6 @@ NOT( ISCHANGED(Push_Reason_Details__c) ), NOT(ISNEW())
         <openType>sidebar</openType>
         <protected>false</protected>
         <url>/apex/Core_SalesSupportHome?{!$Label.Core_OpportunityID}={!CASESAFEID(Opportunity.Id)}&amp;{!$Label.Core_OpportunityName}={!Opportunity.Name}&amp;{!$Label.Core_CIMID}={!Account.Core_CIM_ID__c}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Assign to Partner</masterLabel>
-        <openType>sidebar</openType>
-        <page>ImpartnerPRM__MassAssignOpportunitiesToPartner</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
     </webLinks>
     <webLinks>
         <fullName>SBQQ__Amend_Assets</fullName>

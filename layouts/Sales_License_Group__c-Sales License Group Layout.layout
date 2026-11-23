@@ -11,6 +11,10 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Sales_License_Generator__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -53,6 +57,14 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Sales_License_Generator_Switch__c</fields>
+        <fields>Sales_License_Value_txt__c</fields>
+        <fields>Sales_License_Sequence_nbr__c</fields>
+        <fields>Sales_License_Description_dsc__c</fields>
+        <relatedList>Sales_License_Group_Switch_config__c.Sales_License_Group__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Core_Product_Ext_Attribute__c.Core_SW_Lic_Group_Id__c</relatedList>

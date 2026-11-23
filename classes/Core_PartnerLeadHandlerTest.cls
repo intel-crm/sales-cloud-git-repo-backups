@@ -14,10 +14,6 @@ public class Core_PartnerLeadHandlerTest {
     @testSetup 
     static void setup(){
         
-        Core_Opp_Bypass_Validation_Rule__c rec = new Core_Opp_Bypass_Validation_Rule__c();
-        rec.Bypass__c = true;
-		insert rec;
-        
         insertPublicGroup();
         List<Core_Trigger_Executions__c> triggerSettingList = new List<Core_Trigger_Executions__c>();
         List<String> settingNameList = new List<String>();
@@ -32,8 +28,9 @@ public class Core_PartnerLeadHandlerTest {
         settingNameList.add('leadConversionDeduplication');
         settingNameList.add('OPIDStampingOnOnePartnerId');
 
+        Core_Trigger_Executions__c triggerSetting;
         for(String settingName : settingNameList){
-            Core_Trigger_Executions__c triggerSetting = new Core_Trigger_Executions__c();
+            triggerSetting = new Core_Trigger_Executions__c();
             triggerSetting.name = settingName;
             triggerSetting.Core_Object__c = 'Lead';
             triggerSetting.Core_Active__c = TRUE;
@@ -298,7 +295,6 @@ public class Core_PartnerLeadHandlerTest {
         lstLeads.add(lead9);
         system.assertEquals(9, lstLeads.size());
         system.runAs(us){
-            Test.startTest();
             insert lstLeads;
             String groupIds = [select Id, Core_Public_Group_Id__c from Lead where Id =: lstLeads[0].Id].Core_Public_Group_Id__c;
             if(groupIds <> null){
@@ -311,7 +307,6 @@ public class Core_PartnerLeadHandlerTest {
                     gmList.add(gm);
                 }
                 insert gmList;
-                
             }
            // Core_PartnerLeadHandler.NewPartnerLeadNotification(lstLeads);
             Lead lead10 = new Lead();
@@ -332,7 +327,6 @@ public class Core_PartnerLeadHandlerTest {
           //  lead10.Core_One_Partner_Id__c = partnerRec.Id;
             lead10.PMP_MktProfile_BizSegment__c = 'Data Center;Client Computing';
             insert lead10;
-            Test.stopTest();
         }
         
         
@@ -549,6 +543,9 @@ public class Core_PartnerLeadHandlerTest {
         opids.Core_OPID_Name__c=acct.id;
         opids.Core_Public_Group_Ids__c=grp.id;
         insert opids;
+        String s1='gdhdjkk';
+        String s2='Fghfdr';
+        
         
         System.assertEquals('New', lead4.Core_Lead_Status__c);
        // Core_PartnerLeadHandler.sendNotificationEmails(lstLeads,true);
@@ -559,7 +556,7 @@ public class Core_PartnerLeadHandlerTest {
         Core_PartnerLeadHandler.populateGroupsToRoutePartnerLead(lstLeads);
 
        // Core_PartnerLeadHandler.NewPartnerLeadNotification(lstLeads);
-        Core_PartnerLeadHandler.generatePartnerKey('gdhdjkk','Fghfdr');
+        Core_PartnerLeadHandler.generatePartnerKey(s1,s2);
         //Core_PartnerLeadHandler.prepareHtmlBody(lstLeads,true,false);
         //Core_PartnerLeadHandler.prepareHtmlBody(lstLeads,false,false);
         //Core_PartnerLeadHandler.sendEmailNotification(lstLeads);
@@ -818,6 +815,7 @@ public class Core_PartnerLeadHandlerTest {
           
           
          List<Lead> lstLeads3 = new List<Lead>();
+        RecordType r3 = [Select Id from recordType where Name='Partner Lead'];
         Lead lead7 = new Lead();
         lead7.RecordTypeId = r2.Id;
         lead7.FirstName = 'Test1lead51';
@@ -1125,22 +1123,9 @@ public class Core_PartnerLeadHandlerTest {
         l = [SELECT Id, FirstName, LastName, Company, Country, Email, Phone, RecordTypeId, LeadSource, CreatedDate, Core_Lead_Source_Pkt__c,Core_Lead_PMP_Action__c,Core_1st_Reminder__c, Core_2nd_Reminder__c, Core_3rd_Reminder__c, Core_4th_Reminder__c FROM Lead WHERE Id = :l.Id LIMIT 1];
         
         List<Messaging.SingleEmailMessage> emailList = new List<Messaging.SingleEmailMessage>();
-        // Test for new leads (isReminder = false)
-        SWS_LeadWrappers.PrepareEmailCtx ctx1 = new SWS_LeadWrappers.PrepareEmailCtx();
-        ctx1.isReminder = false;
-        ctx1.userId = UserInfo.getUserId();
-        ctx1.leadList = new List<Lead>{l};
-        ctx1.emailList = emailList;
-        emailList = Core_PartnerLeadHandler.prepareGroupWiseEmail(ctx1);
-        
-        // Test for reminder leads (isReminder = true)
-        SWS_LeadWrappers.PrepareEmailCtx ctx2 = new SWS_LeadWrappers.PrepareEmailCtx();
-        ctx2.isReminder = true;
-        ctx2.userId = UserInfo.getUserId();
-        ctx2.leadList = new List<Lead>{l};
-        ctx2.emailList = emailList;
-        emailList = Core_PartnerLeadHandler.prepareGroupWiseEmail(ctx2);
-            }
+        Core_PartnerLeadHandler.prepareGroupWiseEmail(false, UserInfo.getUserId(), new List<Lead>{l}, emailList);
+        Core_PartnerLeadHandler.prepareGroupWiseEmail(true, UserInfo.getUserId(), new List<Lead>{l}, emailList);
+    }
     
     @isTest
     static void test_prepareHtmlBody_reminderAndNew() {
@@ -1277,6 +1262,8 @@ public class Core_PartnerLeadHandlerTest {
         Core_PartnerLeadHandler.stampFieldOnRejectLead(newLeadList, oldLeadMap);
         
         // Verify the stamping occurred
+        DateTime testStartTime = System.now().addMinutes(-1);
+        
         Test.stopTest();
     }
     
@@ -1285,6 +1272,7 @@ public class Core_PartnerLeadHandlerTest {
         Test.startTest();
         
         RecordType partnerLeadRT = [SELECT Id FROM RecordType WHERE Name='Partner Lead' LIMIT 1];
+        RecordType nonPartnerLeadRT = [SELECT Id FROM RecordType WHERE SObjectType = 'Lead' AND Name != 'Partner Lead' LIMIT 1];
         
         // Test case 2: Already terminated old lead
         Lead alreadyTerminatedNew = new Lead();

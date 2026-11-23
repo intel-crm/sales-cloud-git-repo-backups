@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>29</activeVersionNumber>
+    <activeVersionNumber>28</activeVersionNumber>
     <description>This is used to send notification to payment admins &amp; RSM when claims is put on bank document hold</description>
     <masterLabel>Claim Notification to Payment Admins on Bank Document Hold</masterLabel>
 </FlowDefinition>

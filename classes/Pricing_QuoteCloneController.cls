@@ -101,8 +101,6 @@ public without sharing class Pricing_QuoteCloneController {
                 parent.Pricing_Intel_Response_Requested_By_Date__c = null;
                 parent.Pricing_Volume_Exception_Quota_Cb__c = false;
                 parent.Pricing_Exclude_from_Volume_Excep_Quota__c = false;
-               
-                parent.Pricing_Is_Covered_Account_cb__c = false;
                 parent.Pricing_Quota_Exclusion_Reason__c = null;
                 parent.Pricing_AdditionalRecipients__c = null;
                 parent.Pricing_Account_Division_Nm__c = null;
@@ -110,17 +108,6 @@ public without sharing class Pricing_QuoteCloneController {
                 parent.Pricing_On_Hold_Cb__c = false;
                 parent.Pricing_On_Hold_Comment__c = null;
                 parent.Pricing_Partner_Name_Nm__c = null;
-                //Citrus Change - Start
-                parent.Pricing_AI_RFP_Scraping_Status__c = null;
-                parent.Pricing_AI_Scraping_Recommendation_Nm__c = null;
-                parent.Pricing_Pricing_Manager__c = null;
-                parent.Pricing_ReRouting_Reason_Nm__c = null;
-                parent.Pricing_Pricing_Manager_Group_Label_Txt__c = null;
-                parent.Pricing_Pricing_Manager_Group_Name_Txt__c = null;
-                parent.Pricing_Route_Rule_Name_Txt__c = null;
-                parent.Pricing_Route_Rule_Id_Txt__c = null;
-                parent.Pricing_Quote_Routing_Category_Nm__c = null;
-                //Citrus change - End
                 //Clone Logic for End Customer and Write In End Customer
                 if(parent.Pricing_IsUnifiedCustomer__c==true){
                     Pricing_UnifiedEndCustomerCountryMapping__c unifiedCountryObj = [SELECT Id,Name,Pricing_Unified_EndCustomer_Id__c,Pricing_Unified_EndCustomer_Act_Mapping__c FROM 
@@ -298,7 +285,7 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Save_After_Calculation_cb__c = false;
                 newQuoteLine.Pricing_Lost_Reason_Nm__c = null;
                 newQuoteLine.Pricing_SDM_Fast_Track__c = false;
-                newQuoteLine.Pricing_Change_Request_Type__c = null;
+                
                 //TPT
                 newQuoteLine.Pricing_Original_Submitted_By_Id__c = null;
                 newQuoteLine.Pricing_Original_Submitted_Date_dt__c = null;
@@ -314,7 +301,6 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Deal_RFQ_Status_Nm__c = null;
                 newQuoteLine.Pricing_Error_Messages__c = null;
                 newQuoteLine.Pricing_Price_Rule_Error_Message__c = null;
-                newQuoteLine.Pricing_Approval_Price_Rule_Name__c = null;
                 //walk story updates US544539
                 
                 newQuoteLine.Pricing_Additional_T_C_s_Txt__c = null;
@@ -354,18 +340,14 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Reason_for_FeedBack_Txt__c = null;
                 newQuoteLine.Pricing_Recommendation_FeedBack_Nm__c = null;  
                 newQuoteLine.Pricing_Recommended_Price_Amt__c   = null;
-          	    newQuoteLine.Pricing_Price_Interval_Txt__c = null;
+                newQuoteLine.Pricing_Price_Interval_Txt__c = null;
                 newQuoteLine.Pricing_Discount_Pct__c = null;
                 newQuoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
-                newQuoteLine.Pricing_HPC_Eligible_Pricing_Envelope__c = null;//PAA V2
-                newQuoteLine.Pricing_Rationale_for_Pricing__c = null;//citrus change
-                newQuoteLine.Pricing_Application_Agent_Status__c = null;//citrus change
                 newQuoteLine.Pricing_Debit_Volume_qty__c = null;
                 newQuoteLine.Pricing_Debit_Dollars_Amt__c = null;
                 newQuoteLine.Pricing_Last_Credit_Debit_Date_Dt__c = null;
                 newQuoteLine.Pricing_Credit_Volume_qty__c = null;
                 newQuoteLine.Pricing_Credit_Dollars_Amt__c = null;
-		
                 //insert newQuoteLine;
                 quoteLineList.add(newQuoteLine);
                 //Database.insert(newQuoteLine);

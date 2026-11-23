@@ -407,7 +407,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Loop_Lead_records.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>Loop_Lead_records.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lead</stringValue>
@@ -471,7 +471,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Loop_Lead_records.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>Loop_Lead_records.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lead</stringValue>
@@ -564,7 +564,7 @@
             <name>Lead</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop_Lead_records.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>Loop_Lead_records.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lead</stringValue>
@@ -749,7 +749,7 @@ NULL)</expression>
             </value>
         </filters>
         <filters>
-            <field>DeveloperName</field>
+            <field>Name</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Lead</stringValue>

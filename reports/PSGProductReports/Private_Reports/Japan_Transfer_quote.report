@@ -71,6 +71,9 @@
         <field>SBQQ__Quote__c.core_cpq_first_bm_approver__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.core_cpq_parentaccount__c</field>
     </columns>
     <columns>

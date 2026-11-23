@@ -45,12 +45,7 @@
                 <value>
                     <fullName>Close Activity</fullName>
                     <default>false</default>
-                    <label>Close</label>
-                </value>
-                <value>
-                    <fullName>Complete Payment Clearance Processing</fullName>
-                    <default>false</default>
-                    <label>Complete Payment Clearance Processing</label>
+                    <label>Close Activity</label>
                 </value>
                 <value>
                     <fullName>Complete PIC Review</fullName>
@@ -83,11 +78,6 @@
                     <label>Manual Audit</label>
                 </value>
                 <value>
-                    <fullName>None</fullName>
-                    <default>false</default>
-                    <label>None</label>
-                </value>
-                <value>
                     <fullName>Notify Partner</fullName>
                     <default>false</default>
                     <label>Notify Partner</label>
@@ -112,11 +102,6 @@
                     <fullName>Submit For Approval</fullName>
                     <default>false</default>
                     <label>Submit For Approval</label>
-                </value>
-                <value>
-                    <fullName>Submit for Payment Clearance</fullName>
-                    <default>false</default>
-                    <label>Submit for Payment Clearance</label>
                 </value>
                 <value>
                     <fullName>Submit For PIC</fullName>
@@ -148,16 +133,6 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Filter_Criteria_Field__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Filter Criteria Field</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Object_API_Name_nm__c</fullName>
@@ -211,11 +186,6 @@
                     <fullName>Claim</fullName>
                     <default>false</default>
                     <label>Claim</label>
-                </value>
-                <value>
-                    <fullName>Outcome-Based Campaign</fullName>
-                    <default>false</default>
-                    <label>Outcome-Based Campaign</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

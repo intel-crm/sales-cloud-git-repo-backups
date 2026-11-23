@@ -145,9 +145,6 @@
     <columns>
         <field>PRODUCT_NAME</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Type__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name__c</column>

@@ -1,0 +1,120 @@
+<template>
+    <lightning-card variant="Narrow">
+        <lightning-layout horizontal-align="spread" vertical-align="stretch">
+            <lightning-layout-item padding="around-small" size="12">
+                <div>
+                   
+                    <template if:true={dataAvailable}>
+                        <lightning-datatable data={result} columns={columnsList} key-field="id" max-row-selection="1"
+                            onrowselection={getSelectedRow} suppress-bottom-bar="true" oncellchange={handleNoSeatsEdit}
+                            draft-values={draftValues} show-row-number-column= "false">
+                        </lightning-datatable>
+                    </template>
+              
+                </div>
+              <div>
+            <template if:true={isload}>
+             <template if:false={dataAvailable}>
+                        <div class="slds-m-vertical_medium" style="padding-left:7.5%">
+                            {label.NoProducts}
+                        </div>
+            </template>
+            </template>
+            </div>
+               
+            </lightning-layout-item>
+     </lightning-layout>
+     <lightning-layout>
+          <!-- <lightning-layout-item size="1"></lightning-layout-item>--> 
+            <lightning-layout-item size="9" style="padding-left: 1%;">
+              <template if:true={termandcondition}>
+                <p>
+                  <lightning-input type="checkbox"
+                        label={TermsConditionTxt} onchange={handleTandC}>
+                  </lightning-input>
+                </p>
+                <!--<strong><p>{termsCondition}</p></strong>-->
+                <lightning-formatted-rich-text
+                    value={termsCondition}
+                ></lightning-formatted-rich-text>
+                <p>
+                  <lightning-input type="checkbox"
+                        label={TermsCondition_Optin}
+                        onchange={handleOptin}>
+                  </lightning-input>
+                </p>  
+               <!--  <p>{TermsCondition_Optin}</p>--> 
+                </template>
+       </lightning-layout-item>
+            <lightning-layout-item size="2"></lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout horizontal-align="spread" vertical-align="stretch">
+            <lightning-layout-item size="8"></lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="4">
+                <lightning-button variant="brand" label={label.Sales_getlegacylic} onclick={handleLicCreate} disabled={buttonClicked} class="slds-float_right">
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        <!--modal for optional prod-->
+        
+        <template if:false={skipOptionalScreen}>
+        <template if:true={bShowModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+                <div class="slds-modal__container">
+
+                    <header class="slds-modal__header slds-modal__header_empty">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding-top: 5%;">{label.Sales_Create_Optional_License}</h2>
+                    </header>
+
+                    <div class="slds-modal__content slds-p-around_medium"  id="modal-content-id-1" >
+                        <lightning-card variant="Narrow">
+                            <c-Sales_-Create-Option-Product-For-Evalution-License parent-licprod-id={parentLicprodId}
+                                                                                    parent-lic-id={lic_id} 
+                                                                                    parent-activation-code={licActivationId}
+                                                                                    primarycontact={primarycontact}
+                                                                                    licensetypevalue={licensetypevalue}
+                                                                                    onclosemodal={closeOptionModal}>
+                            </c-Sales_-Create-Option-Product-For-Evalution-License>
+                        </lightning-card>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        </template>
+        <!--modal for generate license-->
+       
+        
+    </lightning-card>
+    <template if:true={showGenrateLicense}>
+     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_small">
+                <div class="slds-modal__container">
+
+                    <header class="slds-modal__header slds-modal__header_empty">
+                        
+                    </header>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                      <lightning-card variant="Narrow">  
+                    <!-- <section aria-labelledby="panel-heading-id" class="slds-modal  slds-fade-in-open slds-modal_small" style="position: fixed; right:0%;bottom: 0%; width:0%;" role="dialog">
+                            <div class="slds-popover__body  section" style="position: fixed;left:8%; right:3%;top:25%;width: 80%;"  id="dialog-body-id-98">
+                        -->  
+                                <c-sales_-generate-license_-on-license-Record activatecodeonload={licActivationId}
+                                licneserecordid={lic_id} primarycontact={primarycontact} tooltype={tooltype}
+                                licensetypevalue={licensetypevalue}>
+                            </c-sales_-generate-license_-on-license-Record> 
+                        <!--</div>
+                      </section>  --> 
+                    
+                       
+                         
+                    </lightning-card>
+                    </div>
+                </div>
+            </section>
+   <div class="slds-backdrop slds-backdrop_open"></div>  
+        </template>
+        
+</template>

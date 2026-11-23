@@ -10,7 +10,7 @@
 @IsTest
 public class Pricing_RestAPI_PerformanceMetrics_Test {
     
-       
+    
     @testSetup static void testSetup() {
         List<Product2> prodList = new List<Product2>();
         Product2 prod = new Product2();
@@ -40,7 +40,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
         
         insert prodList;
         insert cp;
-        List<User> lstUsers2 = Pricing_Test_Utility.createAdminUser();          
+        List<User> lstUsers2 = Pricing_Test_Utility.createAdminUserWithParam('perfmetrics_test');          
         System.runAs(lstUsers2[0])
         {
             test.startTest();
@@ -49,7 +49,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_Performance_Metrics_Test');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
-            Pricing_Test_Utility.createAEUser();
+            List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
                                                               TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
@@ -227,7 +227,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
         User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         SBQQ__Quote__c quote = [Select Id,Name from SBQQ__Quote__c quote LIMIT 1];
         SBQQ__QuoteLine__c quoteLine=[Select Id, SBQQ__Quote__c from SBQQ__QuoteLine__c quoteLine where SBQQ__Quote__c = :quote.Id LIMIT 1];
-        system.runAs(usr){
+        system.runAs(usr){          
             RestRequest request = new RestRequest();
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'POST';
@@ -239,15 +239,15 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             Pricing_RestAPI_Response restResponse = Pricing_RestAPI_PerformanceMetrics.doPost();
             system.assert(restResponse!=null);
             test.stopTest();
-    	}
+        }
     }
     
     @isTest static void testDoPost_FailCase() {
         test.startTest();     
-		 User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         SBQQ__Quote__c quote = [Select Id,Name from SBQQ__Quote__c quote LIMIT 1];
         SBQQ__QuoteLine__c quoteLine=[Select Id, SBQQ__Quote__c from SBQQ__QuoteLine__c quoteLine where SBQQ__Quote__c = :quote.Id LIMIT 1];
-        system.runAs(usr){
+        system.runAs(usr){       
             RestRequest request = new RestRequest();
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'POST';
@@ -260,16 +260,16 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             Pricing_RestAPI_Response restResponse = Pricing_RestAPI_PerformanceMetrics.doPost();
             system.assertEquals(restResponse.isSuccess, false);
             test.stopTest();
-    	}
-   }
-     
-   static testMethod void testDoGet() {
+        }
+    }
+    
+    static testMethod void testDoGet() {
         User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             List<Pricing_Performance_Metric__c> pmList = [Select Id from Pricing_Performance_Metric__c limit 1];
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
-            RestContext.response = new RestResponse();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
             req.addParameter('id', pmList[0].Id);
@@ -281,44 +281,49 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     }
     
     static testMethod void testDoGet_Negative() {
-		 User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
-            RestContext.response = new RestResponse();
+            RestResponse resp = RestContext.response;     
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
             req.addParameter('id', 'asdasdw');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_PerformanceMetrics.doGet();
+            system.debug('response-->'+response);
             system.assert(response!=null);
             test.stopTest();
-    	}
+        }
     }
-    	@isTest static void testSuccessUpdatePM() {
+    @isTest static void testSuccessUpdatePM() {
         User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
+            List<SBQQ__Quote__c> quotes = [SELECT Id,Name From SBQQ__Quote__c LIMIT 1];
             List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,Name From SBQQ__QuoteLine__c LIMIT 1];
             List<Pricing_Performance_Metric__c> pmList = [Select Id,Name,Pricing_Quote_Line__c, Pricing_Performance_Metric_Nm__c,Pricing_Intel_SKU_Performance_Nbr__c,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Weighting_Pct__c,Pricing_Other_Nm__c from Pricing_Performance_Metric__c where Pricing_Quote_Line__c IN :quoteLineList];
             RestRequest request = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'PATCH';
             request.addHeader('Content-Type', 'application/json');
+            // request.requestBody = Blob.valueOf('{ "quoteLineId":"'+quoteLineList[0].Id+'", "performanceMetrics":[{"performanceMetricsUsed":"Other","weighting":10,"intelScore":10,"compScore":5,"otherText":"Test" }]}');
             request.requestBody = Blob.valueOf('{	"quoteLineId":"'+quoteLineList[0].Id+'",	"performanceMetrics":[{"performanceMetricsId" : "'+pmList[0].id+'","performanceMetricsReferenceId":"PM-77","performanceMetricsUsed":"Other","weighting":"10","intelScore":10,"compScore":5,"otherText":"Test"}]}');
             RestContext.request = request;        
             RestResponse res = new RestResponse();
             RestContext.response= res;
             Pricing_RestAPI_Response restResponse = Pricing_RestAPI_PerformanceMetrics.updatePM();
+            system.debug('restResponse---->'+restResponse);
             system.assertEquals(restResponse.isSuccess, true);
             test.stopTest();
-    	}
+        }
     }
     
     @isTest static void testUpdatePM_Negative() {
         User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
+            List<SBQQ__Quote__c> quotes = [SELECT Id,Name From SBQQ__Quote__c LIMIT 1];
             List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,Name From SBQQ__QuoteLine__c LIMIT 1];
             RestRequest request = new RestRequest();
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
@@ -332,6 +337,6 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             Pricing_RestAPI_Response restResponse = Pricing_RestAPI_PerformanceMetrics.updatePM();
             system.assertEquals(restResponse.isSuccess, false);
             test.stopTest();
-    	}
+        }
     }
 }

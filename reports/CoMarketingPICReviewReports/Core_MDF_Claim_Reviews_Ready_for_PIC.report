@@ -69,20 +69,6 @@
             <operator>equals</operator>
             <value>PIC Pending,Paid and PIC Pending</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Claim_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Campaign_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

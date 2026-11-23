@@ -294,8 +294,8 @@ public without sharing class Pricing_QuoteLine_BulkDealController {
     @AuraEnabled
     public static List<User> findRecords(String searchKey) {  
         //This method is called by LWC to find the user from searchkey
-        String searchText = String.escapeSingleQuotes(searchKey) + '%';               
-        String query =  'SELECT Id, Name, Email, Isactive,IsPortalEnabled FROM User WHERE Name LIKE :searchText AND IsPortalEnabled = false AND ContactId = null AND Isactive = true LIMIT 5';
+        String searchText = '\'' + String.escapeSingleQuotes(searchKey) + '%\'';               
+        String query =  'SELECT Id, Name, Email, Isactive,IsPortalEnabled FROM User WHERE Name LIKE '+searchText+' AND IsPortalEnabled = false AND ContactId = null AND Isactive = true LIMIT 5';
         return Database.query(query);
     }
 

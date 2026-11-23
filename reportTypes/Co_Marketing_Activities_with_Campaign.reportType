@@ -547,17 +547,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_POP_Requirements_txt__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Is_Scheduled_Activity_Ind__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Other_Engineering_Activity_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
@@ -670,11 +660,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Campaign.Core_MDF_Reimbursement_Amount_Amt__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <masterLabel>Co-Marketing Activities</masterLabel>

@@ -40,10 +40,6 @@
             <translation><!-- Blockchain --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CPU Host for GPU</masterLabel>
-            <translation><!-- CPU Host for GPU --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Cloud Resource Optimization</masterLabel>
             <translation><!-- Cloud Resource Optimization --></translation>
         </picklistValues>
@@ -900,6 +896,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -918,6 +918,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -960,10 +964,6 @@
             <masterLabel>Test 5</masterLabel>
             <translation><!-- Test 5 --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Solution Partners --></label>
-        <name>Core_Solution_Partners_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Solution Title --></label>

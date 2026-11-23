@@ -12,11 +12,11 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Seller Incentive-&gt;SPIF - Other,Buyer Incentive-&gt;Offer - Other,Audio-&gt;Other (Audio),Out of Home-&gt;Other (Out Of Home),Sales Readiness-&gt;Other (Sales Readiness),Technical Sales-&gt;Other (Technical Sales),</value>
+        <value xsi:type="xsd:string">Seller Incentive 2025-&gt;SPIF - Other,Buyer Incentive 2025-&gt;Offer - Other,Audio 2025-&gt;Other (Audio),Out of Home 2025-&gt;Other (Out of Home),Sales Readiness 2025-&gt;Other (Sales Readiness),Technical Sales 2025-&gt;Other (Technical Sales),</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
-        <value xsi:type="xsd:string">Digital-&gt;Other (Digital),Print-&gt;Other (Print),Video-&gt;Other (Video),Production-&gt;Other (Production),Event-&gt;Other (Event)</value>
+        <value xsi:type="xsd:string">Digital 2025-&gt;Other (Digital),Print 2025-&gt;Other (Print),Video 2025-&gt;Other (Video),Production 2025-&gt;Other (Production),Event 2025-&gt;Other (Event)</value>
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Sales Incentive (Pre-2025)-&gt;Seller - Other,Purchase Incentive (Pre-2025)-&gt;Buyer - Other,Broadcast (Pre-2025)-&gt;Other (Broadcast),Event (Pre-2025)-&gt;Other (Event)Out of Home (Pre-2025)-&gt;Other (Out of Home),Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness),</value>
+        <value xsi:type="xsd:string">Sales Incentive-&gt;Seller - Other,Purchase Incentive-&gt;Buyer - Other,Broadcast-&gt;Other (Broadcast),Event-&gt;Other (Event),Out of Home-&gt;Other (Out Of Home),Sales Readiness-&gt;Other (Sales Readiness),Tech Exploration-&gt;Other (Tech Exploration),</value>
     </values>
 </CustomMetadata>

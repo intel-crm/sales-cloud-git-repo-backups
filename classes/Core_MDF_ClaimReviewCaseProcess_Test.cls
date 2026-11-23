@@ -85,8 +85,8 @@ Accenture – Alka            04/03/2019         Created.
             Contact con = Core_MDF_CCP_TestDataUtility.createContact (acc1.Id, false);
             con.RecordTypeId = Core_MDF_CCP_TestDataUtility.Intel_Contact_Record_Type;
             Database.insert(con);
-            // Highlight: Unused Local Variable
-           // Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
+            
+            Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
             
             /* Creating User with utility class 
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -117,7 +117,7 @@ Accenture – Alka            04/03/2019         Created.
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
@@ -135,8 +135,7 @@ Accenture – Alka            04/03/2019         Created.
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.id,'Core_MDF_Client_CoMarketing_Fund',true,'1234567890');
              
             //creating ABM for bank1
-         // Highlight: Unused Local Variable
-       // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
+        Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
         //test.startTest();
             // Creating claims
             for(Integer i = 0; i < 10; i++) {  
@@ -227,7 +226,6 @@ Accenture – Alka            04/03/2019         Created.
             pfcRec = pfc;
             pfcRec.Core_MDF_FlaggedForAudit__c = true;
             pfcRec.Core_MDF_Status__c = 'Hold';
-            pfcRec.Core_MDF_Document_Submission_Missed_Ind__c = true;
             pfcListToCreateCases.add(pfcRec);
         }
         update pfcListToCreateCases;
@@ -332,48 +330,14 @@ Accenture – Alka            04/03/2019         Created.
         
         List<Core_MDF_Audit_Document__c> doclst = new List<Core_MDF_Audit_Document__c>();
         doclst.add(aDoc);
-      
+        
         claimIdWithConDocId.put(pfc1.Id,doclst);
-        // Unit Test Method should include System.Assert
-        System.assertEquals(true, claimIdWithConDocId.containsKey(pfc1.Id), 'Claim Id should exist in document map.');
-            
         Core_MDF_ClaimReviewCaseProcessHelper.insertAuditDocuments(caseList,claimIdWithConDocId);
         Core_MDF_ClaimReviewCaseProcessHelper.validateAuditDocuments(caseList,claimIdWithConDocId,'UpdateCases');
-       // Highlight: Unused Local Variable
-      /*  List<Case> csListReturn = */ Core_MDF_ClaimReviewCaseProcessHelper.validateAuditDocuments(caseList,claimIdWithConDocId,'CreateCases');
+        List<Case> csListReturn = Core_MDF_ClaimReviewCaseProcessHelper.validateAuditDocuments(caseList,claimIdWithConDocId,'CreateCases');
         
         //assert.areEqual('Under Review', csListReturn[0].Core_MDF_Status__c );
         Test.StopTest(); 
     	}
-    }
-
-    @isTest
-    static void testGetCancelCaseAccess() {
-        Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
-        PermissionSet cancelCaseAccessPS = [SELECT Id FROM PermissionSet WHERE Name = :Core_MDF_CCP_ConstantClass.CCRM_CUSTOM_PS LIMIT 1];
-
-        User CCRMUSER = Core_MDF_CCP_TestDataUtility.createUser(false);
-        CCRMUSER.LastName = 'CCRM';
-        CCRMUSER.ProfileId = ccpCoreProfile.Id;
-        insert CCRMUSER;
-
-        insert new PermissionSetAssignment(AssigneeId = CCRMUSER.Id, PermissionSetId = cancelCaseAccessPS.Id);
-
-        User nonCCRMUSER = Core_MDF_CCP_TestDataUtility.createUser(false);
-        nonCCRMUSER.LastName = 'nonCCRM';
-        nonCCRMUSER.ProfileId = ccpCoreProfile.Id;
-        insert nonCCRMUSER;
-
-        Test.startTest();
-        System.runAs(CCRMUSER) {  
-            Boolean hasAccess = Core_MDF_ClaimReviewCaseProcess.getCancelCaseAccess();
-            System.assertEquals(true, hasAccess);
-        }
-
-        System.runAs(nonCCRMUSER) {
-            Boolean hasAccess = Core_MDF_ClaimReviewCaseProcess.getCancelCaseAccess();
-            System.assertEquals(false, hasAccess);
-        }
-        Test.stopTest();
     }
 }

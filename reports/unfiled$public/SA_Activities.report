@@ -25,16 +25,6 @@
         <field>TASK</field>
     </columns>
     <description>This shows the activities that we have with customers and partners and market influence.</description>
-    <filter>
-        <criteriaItems>
-            <column>START_DATE_TIME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>3/31/2026 12:00 AM</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -67,6 +57,6 @@
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

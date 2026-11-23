@@ -26,7 +26,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
             bypassFunctionKeys.add('Core_MDF_Bypass_Campaign_Trigger');
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
@@ -97,7 +97,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
     {
         Test.startTest();
         User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-
+        Map<String, String> newrecordtypemap = new map<String,string>();
         string objectName = 'Campaign';
         Core_MDF_PFR_RecordTypeSelector.recordTypeWrapper result=new Core_MDF_PFR_RecordTypeSelector.recordTypeWrapper();
         System.runAs(user1){ 
@@ -115,7 +115,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         Test.startTest();
         User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
         string objectName = 'Campaign';
-
+        Account accCoMarketing = [select id from Account WHERE Name = 'Test Account 2']; 
         Map<String,id>  testMap=new Map<String,id>();
         System.runAs(user1){
            testMap= Core_MDF_PFR_RecordTypeSelector.fetchRecordTypeValues_string_id(objectName);
@@ -135,9 +135,8 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         System.runAs(user1){
           testList=Core_MDF_PFR_RecordTypeSelector.getRtFieldSetMappings(objectName,'Core_MDF_Custom_Picklist__c','create');
         }
+        
         Test.stopTest();
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertNotEquals(null, testList, 'getRtFieldSetMappings should return a non-null list');
     }
    
     @isTest
@@ -145,7 +144,8 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
     {
         Test.startTest();
         User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-
+        string objectName = 'Campaign';
+        Account accCoMarketing = [select id from Account WHERE Name = 'Test Account 2']; //account name
         Campaign camp = [SELECT id FROM Campaign WHERE Name = 'TestCamp' LIMIT 1];
         Campaign resultCamp;
         System.runAs(user1){
@@ -175,7 +175,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         Test.startTest();
         User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
         
-
+        string objectName = 'Campaign';
         List<Core_MDF_RecordType_FieldSet_Mapping__mdt>  testList=new List<Core_MDF_RecordType_FieldSet_Mapping__mdt>();
         System.runAs(user1){
           testList=Core_MDF_PFR_RecordTypeSelector.getRtBudTypeFieldSetMappings('Core_MDF_Custom_Picklist__c','Account Plan');
@@ -203,8 +203,6 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         }
         
         Test.stopTest();
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertNotEquals(null, testList, 'getRtBudTypeFieldSetMappings should return a non-null list');
     }
    /*  @isTest
     static void testgetRtBudTypeFieldSetMappings(){

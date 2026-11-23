@@ -30,34 +30,33 @@ public class Core_OpportunityLineItemHandler_Test {
     
     static void setupTest() {
         // Create and Insert test accounts
-        Id recordTypeIDAct = [select id from RecordType where DeveloperName = 'Mastered_Account' limit 1].id;
+        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         accountList = Core_Test_Utility.createAccount(6);
         accountList[0].Name = 'Dell';
         accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[0].Industry = 'Telecommunications';
         accountList[0].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
+        accountList[0].RecordTypeId = accountRecordTypeIntel;
         accountList[1].Name = 'HP';
         accountList[1].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[1].Industry = 'Telecommunications';
         accountList[1].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
+        accountList[1].RecordTypeId = accountRecordTypeIntel;
         accountList[2].Name = 'Google';
         accountList[2].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[2].Industry = 'Telecommunications';
         accountList[2].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
+        accountList[2].RecordTypeId = accountRecordTypeIntel;
         accountList[3].Name = 'Apple';
         accountList[3].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[3].Industry = 'Telecommunications';
         accountList[3].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
+        accountList[3].RecordTypeId = accountRecordTypeIntel;
         accountList[4].Name = 'Target';
         accountList[4].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[4].Industry = 'Telecommunications';
         accountList[4].Core_Sub_Industry__c = 'Diversified Telecommunications Services';
-        accountList[0].RecordTypeId = recordTypeIDAct;
-        accountList[1].RecordTypeId = recordTypeIDAct;
-        accountList[2].RecordTypeId = recordTypeIDAct;
-        accountList[3].RecordTypeId = recordTypeIDAct;
-        accountList[4].RecordTypeId = recordTypeIDAct;
-       
+        accountList[4].RecordTypeId = accountRecordTypeIntel;
         insert accountList;
         
         // Create and Insert a test Opportunity
@@ -574,7 +573,7 @@ public class Core_OpportunityLineItemHandler_Test {
         system.assertEquals(accountList[4].Id, oppLineItems[8].Core_Vendor__c, 'the vendor is should be 5th account id');
         
         
-        //List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         Test.stopTest();
     }
     
@@ -587,7 +586,7 @@ public class Core_OpportunityLineItemHandler_Test {
         lstOppPartner[0].Core_Partner__c = accountList[0].Id;
         insert lstOppPartner;
         
-        //List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         List<OpportunityLineItem> oppLineItems = Core_Test_Utility.createOpportunityLineItems(1, listPBE, opp);
         oppLineItems[0].Core_Vendor__c = accountList[0].Id;
@@ -602,7 +601,7 @@ public class Core_OpportunityLineItemHandler_Test {
             //delete oppLineItems;
         }
         
-        //List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         //System.assertEquals(1, existingPartners.size());
         //System.assertEquals(accountList[0].Id, existingPartners.get(0).Core_Partner__c);
@@ -624,7 +623,7 @@ public class Core_OpportunityLineItemHandler_Test {
         system.assertEquals(2, oppLineItems.size(),'Opportunity lineitems should be 2');
         system.assertEquals(accountList[0].Id, oppLineItems[0].Core_Vendor__c,'Opportunity lineitems vendor should be an Account');
         
-        //List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Core_Opp_Bypass_Validation_Rule__c vrBypass = new Core_Opp_Bypass_Validation_Rule__c();
@@ -635,7 +634,7 @@ public class Core_OpportunityLineItemHandler_Test {
         }
         
         
-        //List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         Test.stopTest();
     }
     
@@ -658,7 +657,7 @@ public class Core_OpportunityLineItemHandler_Test {
         Test.setMock(HttpCalloutMock.class, new Core_KPITestHttpResponse(200));
         system.assertEquals(8, oppLineItems.size(),'Opportunity lineitems should be 8');
         
-        //List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Core_Opp_Bypass_Validation_Rule__c vrBypass = new Core_Opp_Bypass_Validation_Rule__c();
@@ -675,7 +674,7 @@ public class Core_OpportunityLineItemHandler_Test {
         }
         // Test.stopTest();
         
-        //List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         List<OpportunityLineItem> relatedLineItems = [SELECT Id, OpportunityId, Core_Vendor__c FROM OpportunityLineItem WHERE OpportunityId =:opp.Id];
         Integer vendors = Core_OpportunityLineItemHandler.multipleVendors(relatedLineItems, oppLineItems[1]);
         Test.stopTest();
@@ -691,7 +690,7 @@ public class Core_OpportunityLineItemHandler_Test {
         oppLineItems[0].Core_Vendor__c = accountList[0].Id;
         insert oppLineItems[0];
         system.assertEquals(1, oppLineItems.size(),'');
-        //List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> existingPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         oppLineItems[0].Core_Vendor__c = accountList[1].Id;
         
@@ -700,7 +699,7 @@ public class Core_OpportunityLineItemHandler_Test {
         Test.setMock(HttpCalloutMock.class, new Core_KPITestHttpResponse(200));
         // Test.stopTest();
         
-        //List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> relatedPartners = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         Test.stopTest();
     }   
     
@@ -822,7 +821,7 @@ public class Core_OpportunityLineItemHandler_Test {
         update update1List;
         
         Test.setMock(HttpCalloutMock.class, new Core_KPITestHttpResponse(200));
-        //List<Core_Opportunity_Partner__c> update1 = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
+        List<Core_Opportunity_Partner__c> update1 = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id]; 
         
         List<OpportunityLineItem> update2List = new List<OpportunityLineItem>();
         oppLineItems[0].Core_BypassFlow__c = true;
@@ -838,7 +837,7 @@ public class Core_OpportunityLineItemHandler_Test {
         
         update update2List;
         
-        //List<Core_Opportunity_Partner__c> update2 = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id];
+        List<Core_Opportunity_Partner__c> update2 = [SELECT Id, Core_Partner__c, Core_Partner_Role__c FROM Core_Opportunity_Partner__c WHERE Core_Opportunity__c = :opp.Id];
         
         System.assertEquals(3, existingPartners.size(),'');
         //System.assertEquals(1, update1.size(),'');
@@ -1140,6 +1139,13 @@ public class Core_OpportunityLineItemHandler_Test {
         ];
         
         //System.assert(!lct.isEmpty());
+        for(Integer i=0; i<lct.size(); i++) {
+            System.debug('CT Entries: ' + lct.get(i).Core_Status__c + ' ' + lct.get(i).Core_Employee_Name__c + ' ' 
+                         + lct.get(i).Core_WWID__c + ' ' + lct.get(i).Core_Opportunity_Team_Member_Role__c 
+                         + ' ' + lct.get(i).Core_Percent_Contribution__c);
+            
+            
+        }
         op.Core_Status__c = 'Pending';
         try {
             
@@ -1205,6 +1211,13 @@ public class Core_OpportunityLineItemHandler_Test {
         ];
         
         //System.assert(!lct.isEmpty());
+        for(Integer i=0; i<lct.size(); i++) {
+            System.debug('CT Entries: ' + lct.get(i).Core_Status__c + ' ' + lct.get(i).Core_Employee_Name__c + ' ' 
+                         + lct.get(i).Core_WWID__c + ' ' + lct.get(i).Core_Opportunity_Team_Member_Role__c 
+                         + ' ' + lct.get(i).Core_Percent_Contribution__c);
+            
+            
+        }
         op.Core_Status__c = 'Pending';
         try {
             
@@ -1294,8 +1307,16 @@ public class Core_OpportunityLineItemHandler_Test {
             FROM Core_Commissionable_Transaction__c 
             ORDER BY Core_WWID__c ASC, Core_Employee_Name__c ASC
         ];
+        for(Core_Commissionable_Transaction__c ct : lct)
+        {        
+            System.debug('Core_Account_Name__c ' + ct.Core_Account_Name__c + 
+                         ' Core_Approved_Total_Price__c ' + ct.Core_Approved_Total_Price__c + 
+                         ' Core_Last_Approved_Date__c ' + ct.Core_Last_Approved_Date__c + 
+                         ' Core_Status__c ' + ct.Core_Status__c);
+        }   
         
         //System.assert(!lct.isEmpty());
+        System.debug(lct.size() + ' entries in Commissionable Transactions associated with OP ' + op.Id);  
         //System.assert(lct.size() == 5);  
         
         lop = 
@@ -1332,13 +1353,20 @@ public class Core_OpportunityLineItemHandler_Test {
             ORDER BY Core_WWID__c ASC, Core_Employee_Name__c ASC
         ];
         
+        for(Core_Commissionable_Transaction__c ct : lct2)
+        {        
+            System.debug('UNAPPROVED Core_Account_Name__c ' + ct.Core_Account_Name__c + ' Core_Approved_Total_Price__c ' 
+                         + ct.Core_Approved_Total_Price__c + ' Core_Last_Approved_Date__c ' + ct.Core_Last_Approved_Date__c + ' Core_Status__c ' + ct.Core_Status__c);
+        }
         
         //System.assert(!lct2.isEmpty());
+        System.debug(lct2.size() + ' unapproved entries in Commissionable Transactions associated with OP ' + op.Id);  
         
         lop = 
             [SELECT Id, Core_Status__c, Core_Approved_By__c, Core_Approved_Decision_Date__c, Core_Approved_Total_Price__c, Core_Claim_Date__c, TotalPrice, UnitPrice, Quantity, Core_BU_Short_Name__c
              FROM OpportunityLineItem WHERE Id = :lstOP.get(0).Id];
         //System.assert(!lop.isEmpty());
+        System.debug('Status After Update:' + lop.get(0).Core_Status__c + ' Core_Approved_By__c ' + lop.get(0).Core_Approved_By__c );
         
         op = lop.get(0);  
         op.Core_Status__c = 'Win Approved';
@@ -1368,11 +1396,13 @@ public class Core_OpportunityLineItemHandler_Test {
         ];
         
         //System.assert(!lct3.isEmpty());
+        System.debug(lct3.size() + ' total entries in Commissionable Transactions associated with OP ' + op.Id);    
         
         lop = 
             [SELECT Id, Core_Status__c, Core_Approved_By__c, Core_Approved_Decision_Date__c, Core_Approved_Total_Price__c, Core_Claim_Date__c, TotalPrice, UnitPrice, Quantity, Core_BU_Short_Name__c
              FROM OpportunityLineItem WHERE Id = :lstOP.get(0).Id];
         //System.assert(!lop.isEmpty());
+        System.debug('Status After Update:' + lop.get(0).Core_Status__c + ' Core_Approved_By__c ' + lop.get(0).Core_Approved_By__c );
         
         op = lop.get(0);  
         op.Core_Status__c = 'Production Win Approved';
@@ -1397,6 +1427,7 @@ public class Core_OpportunityLineItemHandler_Test {
             [SELECT Id, Core_Status__c, Core_Approved_By__c, Core_Approved_Decision_Date__c, Core_Approved_Total_Price__c, Core_Claim_Date__c, TotalPrice, UnitPrice, Quantity, Core_BU_Short_Name__c
              FROM OpportunityLineItem WHERE Id = :lstOP.get(0).Id];
         //System.assert(!lop.isEmpty());
+        System.debug('Status After Update:' + lop.get(0).Core_Status__c + ' Core_Approved_By__c ' + lop.get(0).Core_Approved_By__c );
         
         op = lop.get(0);  
         op.Core_Status__c = 'Pending';
@@ -1526,7 +1557,7 @@ public class Core_OpportunityLineItemHandler_Test {
         
        Account ac=new Account(Name='CEP Test Account',recordtypeid=accRecordType.id,BillingCountryCode = 'USA',BIllingStateCode = 'AL', 
                                Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI(), BillingCity = 'Alabama',BillingStreet = 'test',Core_Account_Type__c = 'Other',
-                               Core_Sales_Segment__c = 'Reseller/Channel', Core_Sub_Geo__c = 'CEE', Industry = 'Agriculture',Core_Sub_Industry__c = 'Forestry'); 
+                               Core_Sales_Segment__c = 'Reseller/Channel', Core_Sub_Geo__c = 'CEE', Industry = 'Agriculture',Core_Sub_Industry__c = 'Forestry',Core_Not_an_Embargoed_Country__c=FALSE); 
         insert ac;
         // Simple test data
         test.startTest();
@@ -1733,7 +1764,6 @@ Test.StopTest();
         Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         // Create and Insert test accounts
-        Id recordTypeIDAct = [select id from RecordType where DeveloperName = 'Mastered_Account' limit 1].id;
         accountList = Core_Test_Utility.createAccount(6);       
         accountList[0].Name = 'Dell';
         accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
@@ -2041,7 +2071,6 @@ insert triggercs;
         //System.assertEquals(1, relatedPartners.size(),'');
         //System.assertEquals(accountList[0].Id, relatedPartners.get(0).Core_Partner__c);
        // System.assertEquals('Vendor', relatedPartners.get(0).Core_Partner_Role__c,'');
-       System.assertEquals(true,true);
         
         
     }
@@ -2181,8 +2210,7 @@ insert triggercs;
         testAcct.BillingStreet = 'Risk';
         testAcct.Industry = 'Agriculture';
         testAcct.Core_Sub_Industry__c = 'Forestry';
-        List<RecordType> recIds = [select id from RecordType where DeveloperName = 'Mastered_Account' limit 1];
-        testAcct.RecordTypeId = recIds[0].id;
+        testAcct.RecordTypeId = '012o0000000GlzTAAS';
         insert testAcct;
         system.assertEquals('Risk Email Testttt1233', testAcct.name,'Account Name should be Risk Email Testttt1233');
         Contact contact = new Contact();
@@ -2423,7 +2451,6 @@ insert triggercs;
         
         
         Core_OpportunityLineItemHandler.validateQtyDecimal(oppLineItemList);
-        System.assertEquals(true,true);
         
     }
     
@@ -2443,7 +2470,6 @@ insert triggercs;
         insert oppLineItem1;
         oppLineItem1.Core_Status__c = System.Label.Core_LineItem_Status;
         update oppLineItem1;    
-        System.assertEquals(true,true);   
     }
     
      testMethod static void PCCCancelledOLITest(){
@@ -2460,7 +2486,6 @@ insert triggercs;
                                                                    Core_Risk_Reason1__c= 'Legal',
                                                                    Core_Risk_Reason2__c = 'COVID-19');
         insert oppLineItem1;
-        System.assertEquals(true,true);
         }
     
     testMethod static void deleteOLITest(){
@@ -2475,7 +2500,6 @@ insert triggercs;
         insert oppLineItem1;
         oppLineItem1.Core_Status__c = System.Label.Core_LineItem_Status;
         update oppLineItem1;    
-        System.assertequals(true,true); 
     }
     
      static testMethod void PCCDealRegOPTYLineQuoteSync_Test(){

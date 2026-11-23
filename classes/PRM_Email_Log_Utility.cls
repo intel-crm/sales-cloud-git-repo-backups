@@ -133,13 +133,7 @@ private static List<Core_Platform_Event_Bus__e> buildEmailEventRecordList(List<P
                 updatedwrap.EnterpriseId=emaillogs.PRM_EnterpriseId__c!=null ?emaillogs.PRM_EnterpriseId__c:null;
                 updatedwrap.MessageDeleteInd=emaillogs.IsDeleted;
                 String emailMsgInJsonFormat = JSON.serialize(updatedwrap);
-                Object obj = JSON.deserializeUntyped(emailMsgInJsonFormat);
-                String cleanJson = JSON.serialize(obj);
-                
-                
-                
-                //emailEventRecord.Core_Message__c = updatedwrap.toString();
-                emailEventRecord.Core_Message__c = cleanJson;
+                emailEventRecord.Core_Message__c = emailMsgInJsonFormat;
                 emailEventRecord.Core_IsActive__c =true;
                 emailEventRecord.Core_Object_Type__c ='PRM_EmailLog__c';
                 
@@ -277,15 +271,9 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
     }
     
     //Send Email of Failure Record Id's to Support Team 
-    public static void sendEmailOnFailure(List<Id> failedRecordIds, List<String> toEmailAddressList){   
-		
-		List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
-        owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
-		
-		
+    public static void sendEmailOnFailure(List<Id> failedRecordIds, List<String> toEmailAddressList){       
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         message.toAddresses = toEmailAddressList;
-		message.setOrgWideEmailAddressId(owea.get(0).Id);
         message.optOutPolicy = 'FILTER';
         message.subject = 'SF to iPaaS Failure Record Notification';
         message.plainTextBody = 'Hi Everyone,';

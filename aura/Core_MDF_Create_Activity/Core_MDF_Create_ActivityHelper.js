@@ -1180,16 +1180,7 @@
                 this.fetchEngineringActivityOptions(component);
             }
             if (fldname == "Core_MDF_POP_Requirement_nm__c") {
-                let modifiedMap = {};
-                Object.keys(childPickField).forEach(key => {
-                    modifiedMap[key] = childPickField[key].map(item => ({
-                        class: item.class,
-                        label: item.label.replace(/&#39;/g, "'"),
-                        value: item.value.replace(/&#39;/g, "'")
-                    }));
-                });
-                
-                component.set("v.POPRequirementValuesMap", modifiedMap);
+                component.set("v.POPRequirementValuesMap", childPickField);
                 this.dependentPickValAdditionAndRemoval(component, fldname);
                 this.fetchPopRequirementOptions(component);
             }

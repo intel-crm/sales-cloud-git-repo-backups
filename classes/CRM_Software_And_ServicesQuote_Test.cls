@@ -71,9 +71,17 @@ public class CRM_Software_And_ServicesQuote_Test {
         List<Opportunity> listOpportunity = Core_Test_Utility.createOpportunity(4);
         Id oppDealID = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
         
+         
+         Id accDealIDs = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        // Create a new account        
+        Account accts = new Account(Name = 'New Test Account123', BillingStreet = '123456 Fake St',Industry ='Gaming', Core_Sub_Industry__c   ='eSports',
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingPostalCode = '1234578', Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI(), RecordTypeId = accDealIDs);//Core_CIM_ID__c = '8675309'
+        insert accts;
+        
         opp = listOpportunity[0];  
         opp.Name = 'SWOpptyTest';
-        opp.AccountId = accountList[0].Id;
+        opp.AccountId = accts.Id;
         opp.Core_Commissionable__c='Yes'; 
         opp.RecordTypeId = oppDealID;
         opp.StageName = 'Qualify';    

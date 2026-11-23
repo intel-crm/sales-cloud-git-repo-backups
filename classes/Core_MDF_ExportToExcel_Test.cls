@@ -25,7 +25,7 @@ public class Core_MDF_ExportToExcel_Test {
         usr.LastName = 'User Test';
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
-
+        List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
 
         System.runAs(usr){
             
@@ -87,7 +87,7 @@ public class Core_MDF_ExportToExcel_Test {
             ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             
             // Creating IntelAccount with utility class
-            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.intel_Account_Record_Type, 
+            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';
             //acc1.Core_Sales_Groups__c = 'CCG Sales Group';
@@ -135,15 +135,17 @@ public class Core_MDF_ExportToExcel_Test {
             
             Account accountInstance = new Account();
                             
-
+            String bom = ete.bom;
+            String newLine = ete.newLine;
             
             ete.exportToExcel();
             ete.exportToCSV();
             PageReference pr = ete.returnToPage();
             System.assert(pr != null);
-
+            String fieldToString = ete.fieldToString(null,null,false,null);
+            String fieldToString1 = ete.fieldToString(accountInstance,'Core_Account_Team_Audit_Due_Date__c', true,'date');
             accountInstance.Core_Account_Team_Audit_Due_Date__c = System.today();
-
+            String fieldToString2 = ete.fieldToString(accountInstance,'Core_Account_Team_Audit_Due_Date__c', true,'datetime');
             ete.loadData(null);
             ete.scrubDataFields(null,null);
             ete.fieldToString(accountInstance,'Core_Account_Team_Audit_Due_Date__c', null,null);
@@ -165,7 +167,7 @@ public class Core_MDF_ExportToExcel_Test {
             PageReference pageRef1 = Page.Core_MDF_ExportToExcel;
             Test.setCurrentPage(pageRef1);
             ApexPages.currentPage().getParameters().put('ObjName','PartnerFundClaim');    
-                    
+            Core_MDF_ExportToExcel ete1 = new Core_MDF_ExportToExcel();                      
         
        Test.stopTest(); 
     }

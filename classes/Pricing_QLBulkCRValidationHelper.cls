@@ -2,7 +2,7 @@
 * @description       : Helper class is created to validate, clone and insert Quote Line and Performance Matrix records.
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 04-27-2026
+* @last modified on  : 07-28-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 
@@ -368,6 +368,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
         Set<Id> quotelinIds = New Set<Id>();
         Set<Id> successQLIds =New Set<Id>();
         Set<Id> successPMIds =New Set<Id>();
+        Set<Id> successPMQL =New Set<Id>();
         Map<Id, Id> qlNewOldIdsMap = New Map<Id, Id>();
         Map<Id,List<SBQQ__QuoteLine__c>> rejectedQLMap = new Map<Id,List<SBQQ__QuoteLine__c>>();
         List<SBQQ__QuoteLine__c> newCRList = New List<SBQQ__QuoteLine__c>();
@@ -466,7 +467,6 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
     **/ 
     public static SBQQ__QuoteLine__c quotelineFieldPopulation(SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c parentSObjects, SBQQ__QuoteLine__c quoteLine,  Map<Id,List<SBQQ__QuoteLine__c>> rejectedQLMap){
         
-        parent.Pricing_Change_Request_Type__c = Pricing_QuoteLineCloneController.populateChangeRequestType(parent,quoteLine,false);// Method to track the field values changed during change request in a picklist field
         parent.Pricing_Reference_Quote_Line_Nbr__c = parentSObjects.Id;
         parent.Pricing_Quote_Line_Number__c = generateQuoteLineNumber(parentSObjects.Id, parentSObjects.Pricing_Quote_Line_Number__c, parentSObjects.Pricing_Reference_Quote_Line_Nbr__c, rejectedQLMap);                                
         
@@ -499,7 +499,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
         parent.Pricing_Reason_for_FeedBack_Txt__c = null;
         parent.Pricing_Recommendation_FeedBack_Nm__c = null;    
         parent.Pricing_Recommended_Price_Amt__c = null;
-  parent.Pricing_Price_Interval_Txt__c = null;
+	parent.Pricing_Price_Interval_Txt__c = null;
         parent.Pricing_Discount_Pct__c = null;
         parent.Pricing_Tentative_ECAP_Price_Amt__c = null;
         if(parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == parentSObjects.Pricing_Product_Nm__c){

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Audio</masterLabel>
-        <translation>Áudio</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Audio 2025</masterLabel>
         <translation>Áudio 2025</translation>
     </valueTranslation>
@@ -13,20 +9,8 @@
         <translation>Difusão</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)</masterLabel>
-        <translation>Difusão (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive</masterLabel>
-        <translation>Incentivo ao comprador</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Buyer Incentive 2025</masterLabel>
         <translation>Incentivo ao comprador 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital</masterLabel>
-        <translation><!-- Digital --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025</masterLabel>
@@ -37,16 +21,8 @@
         <translation>Mídia digital</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)</masterLabel>
-        <translation>Mídia digital (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Event</masterLabel>
         <translation>Evento</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)</masterLabel>
-        <translation>Evento (Pré-2025)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025</masterLabel>
@@ -65,20 +41,12 @@
         <translation>Gerenciamento de oportunidades de vendas</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)</masterLabel>
-        <translation>Gerenciamento de oportunidades de vendas (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Online Ad</masterLabel>
         <translation><!-- Online Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home</masterLabel>
         <translation>Externo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)</masterLabel>
-        <translation>Externo (Pré-2025)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025</masterLabel>
@@ -89,10 +57,6 @@
         <translation>Mídia externa</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
-        <translation>Mídia externa (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Outcome-Based</masterLabel>
         <translation>Com base em resultados</translation>
     </valueTranslation>
@@ -101,16 +65,8 @@
         <translation>Mídia social paga</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
-        <translation>Mídia social paga (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Print</masterLabel>
         <translation>Material impresso</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)</masterLabel>
-        <translation>Material impresso (Pré-2025)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025</masterLabel>
@@ -121,14 +77,6 @@
         <translation>Mídia impressa</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)</masterLabel>
-        <translation>Mídia impressa (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production</masterLabel>
-        <translation>Produção</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Production 2025</masterLabel>
         <translation>Produção 2025</translation>
     </valueTranslation>
@@ -137,24 +85,12 @@
         <translation>Incentivo de compra</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
-        <translation>Incentivo de compra (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Incentive</masterLabel>
         <translation>Incentivo de vendas</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
-        <translation>Incentivo de vendas (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Readiness</masterLabel>
         <translation>Prontidão para vendas</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
-        <translation>Prontidão para vendas (Pré-2025)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025</masterLabel>
@@ -165,16 +101,8 @@
         <translation>Marketing de mecanismo de pesquisa (SEM)</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
-        <translation>Marketing de mecanismo de pesquisa (SEM) (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Search Performance</masterLabel>
         <translation><!-- Search Performance --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive</masterLabel>
-        <translation>Incentivo ao vendedor</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025</masterLabel>
@@ -185,24 +113,12 @@
         <translation>Exploração de tecnologia</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
-        <translation>Exploração de tecnologia (Pré-2025)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales</masterLabel>
-        <translation>Vendas técnicas</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Technical Sales 2025</masterLabel>
         <translation>Vendas técnicas 2025</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Training</masterLabel>
         <translation><!-- Training --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video</masterLabel>
-        <translation>Vídeo</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025</masterLabel>

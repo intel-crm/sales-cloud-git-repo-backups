@@ -64,7 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>CAMPAIGN_STATUS</column>
@@ -85,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>[#CCG-5AZ01#],[#DCA-5EV05#],[#NEX-5EV05#],[#NEX-5HS08#]</value>
+            <value>[#CCG-5AZ01#],[#CCG-5BW03#],[#CCG-5BZ12#],[#CCG-5CX03#],[#CCG-5GA14#],CCG-5AZ01#,#CCG-5BW03#,#CCG-5BZ12#,#CCG-5CX03#,#CCG-5GA14#</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -105,7 +105,7 @@
         <field>Campaign.Core_MDF_Approval_Stage_nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Builder Billings Report</name>
+    <name>Client Billings Report</name>
     <params>
         <name>scopeid</name>
         <value></value>

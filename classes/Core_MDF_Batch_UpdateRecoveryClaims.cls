@@ -141,16 +141,10 @@ public without sharing class Core_MDF_Batch_UpdateRecoveryClaims implements Data
         try{
             for(PartnerFundClaim claim:(List<PartnerFundClaim>) scopeRecords){
                 //checking if claim amount is greater that recovery amount,reducing recovery amount from claim amount
-                //ATHR - Deeply Nested if 16209
-                if(claim == null || claim.Amount == null || claim.Amount <= 0 || !clmIdToClmRecovery.containsKey(claim.Id)) {
-                    continue;
-                }
+                if(claim.Amount!=Null && claim.Amount>0 && clmIdToClmRecovery.containsKey(claim.id)){
                     //Loop through recoveries for each claim
                     for(Core_MDF_Recovery__c recovery:clmIdToClmRecovery.get(claim.id)){
-                        //ATHR - Deeply Nested if 16209
-                        if(recovery == null || claim.Amount < recovery.Core_MDF_Amount_Amt__c) {
-                            continue;
-                        }
+                        if(claim.Amount>=recovery.Core_MDF_Amount_Amt__c){
                             claim.Amount =(claim.Amount - recovery.Core_MDF_Amount_Amt__c);
                             if(claim.Core_MDF_Number_Of_Recoveries_Nbr__c!=null){
                                 claim.Core_MDF_Number_Of_Recoveries_Nbr__c += 1;
@@ -176,7 +170,8 @@ public without sharing class Core_MDF_Batch_UpdateRecoveryClaims implements Data
                             mapOfRecoveriesToInsert.get(claim.id).add(recovery);
                         }
                     }
-            
+                }
+            }
             List<Database.SaveResult> updateResults = new List<Database.SaveResult>();
             //Non PAF
             if(!mapOfNonPAFClaims.isempty()){

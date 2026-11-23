@@ -7,7 +7,6 @@
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Malhotra, Abhimanyu S     11/23/2015              Created
-* //System.assert()--> statement Added By Hassan Khan 02-02-2024
 ****************************************************************************************************/
 @isTest public class Core_IPS_File_Assignment_Handler_Test {
     
@@ -67,7 +66,7 @@
 * Malhotra, Abhimanyu S      11/30/2015              Created
 ****************************************************************************************************/     
     private static testMethod void SPAccSingleContactWithError(){
-        Setup_Common_Test_Data(true, true, true, false, true); //added by Rajashekar
+        Setup_Common_Test_Data(true, false, true, false, true); 
         SPAccSingleContactRun(true);
         System.assert(Accnt.id != null, true);
     }
@@ -105,8 +104,6 @@
         Setup_Common_Test_Data(true, false, true, false, true); 
         SPAccMultipleContactsRun(11, true);
         System.assert(Accnt.id != null, true);
-           
-    
     }
 /***************************************************************************************************
 * Method Name:  SPAccMultipleContactsWithError
@@ -420,10 +417,10 @@
                         }
                     }                   
                 }
-                //System.assertEquals(0,numberOfSuccessfulMessages);
-                //System.assertEquals(1,numberOfErrorMessages); 
+                System.assertEquals(0,numberOfSuccessfulMessages);
+                System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);
             }
         }
@@ -604,7 +601,7 @@
                 System.assertEquals(0,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);
             }
         }
@@ -756,7 +753,7 @@
                 System.assertEquals(10,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages);
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);                
             }
         }

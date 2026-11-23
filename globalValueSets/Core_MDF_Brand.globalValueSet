@@ -721,62 +721,6 @@
         <label>Intel Xeon 6 Processor</label>
     </customValue>
     <customValue>
-        <fullName>Intel® Core™ Ultra X9</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra X9</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra X7</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra X7</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ G3 Processor</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ G3 Processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ G3 Extreme Processor</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ G3 Extreme Processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Infrastructure Processing Unit (Intel® IPU)</fullName>
-        <default>false</default>
-        <label>Intel® Infrastructure Processing Unit (Intel® IPU)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 system‑on‑chip (SoC)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 system‑on‑chip (SoC)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 processors with Performance‑cores (P‑cores), 6700/6500 Series</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 processors with Performance‑cores (P‑cores), 6700/6500 Series</label>
-    </customValue>
-    <customValue>
-        <fullName>4th Gen Intel® Xeon® Scalable processors with Intel® vRAN Boost</fullName>
-        <default>false</default>
-        <label>4th Gen Intel® Xeon® Scalable processors with Intel® vRAN Boost</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® AI</fullName>
-        <default>false</default>
-        <label>Intel® AI</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Robotics</fullName>
-        <default>false</default>
-        <label>Intel® Robotics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® vPro® platform</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel® vPro® platform</label>
-    </customValue>
-    <customValue>
         <fullName>Intel® Optane™ DC Persistent Memory </fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -787,6 +731,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel® Optane™ Solid State Drives  </label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® vPro® platform</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel® vPro® platform</label>
     </customValue>
     <description>Store Brand Values</description>
     <masterLabel>Brand</masterLabel>

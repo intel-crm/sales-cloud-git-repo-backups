@@ -77,7 +77,7 @@ public class Core_MDF_BudgetTransfer_Test {
         
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
         
-
+        List<Account> toBeUpdated = new List<Account>();
         
         // Creating channel program with utility class
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
@@ -147,7 +147,7 @@ public class Core_MDF_BudgetTransfer_Test {
         }
         
         PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 50000, System.today().addDays(-5), System.today().addDays(50), false);
-        pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+        pbm.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
         system.runAs(usr){
             Database.insert(pbm);
         }
@@ -160,10 +160,10 @@ public class Core_MDF_BudgetTransfer_Test {
         System.runAs(usr){
             PartnerMarketingBudget pbm2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 3', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, rmfVirtualCorp.Id, cp2.Id, 30000, System.today(), System.today().addDays(50), true);
             PartnerMarketingBudget pbmCCF = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget CCF', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2020,01,01), Date.newInstance(2020,12,31), false);
-            pbmCCF.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+            pbmCCF.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
             pmbList.add(pbmCCF);
             PartnerMarketingBudget pbmCCF2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget CCF2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2018,01,01), Date.newInstance(2018,12,31), false);
-            pbmCCF2.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+            pbmCCF2.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
             pmbList.add(pbmCCF2);
             PartnerMarketingBudget pbmEef = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget EEF', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, eefPrimaryVirtualCorp.Id, eefCp.Id, 90000, System.today()-30, System.today()+30, false);
 		    pbmEef.Core_MDF_Budget_Status__c = 'Released';
@@ -273,7 +273,8 @@ pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_Te
     @isTest static void validateSearchAccountsLookup(){
         Test.startTest();
         List<Account> toBeUpdated = new List<Account>();
-
+        User usr3 = [select id,Lastname from User where lastname ='MDF Budget Loader' Limit 1];
+        Boolean primaryBudgetLoader = true;
         for(Account acc: [Select id,isPartner,Name from Account where Name IN ('Test Account 1','Test Account 2')]){
             acc.isPartner = true;
             toBeUpdated.add(acc);
@@ -302,7 +303,7 @@ pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_Te
         try{
             Test.startTest();
             List<Account> toBeUpdated = new List<Account>();
-
+            Boolean primaryBudgetLoader = true;
             for(Account acc: [Select id,isPartner,Name from Account where Name IN ('Test Account 1','Test Account 2')]){
                 acc.isPartner = true;
                 toBeUpdated.add(acc);
@@ -439,7 +440,7 @@ pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_Te
         csShare.RowCause = 'Manual';
         insert csShare;
         
-
+        PartnerMarketingBudget pbm1 = [Select id from PartnerMarketingBudget where title = 'Test Budget 2'];
         system.runAs(usr1){
             PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Finance_Usr' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = usr1.id, PermissionSetId = psFinance.Id);
@@ -455,7 +456,8 @@ Database.insert(pbm2);
 
 
 }*/
-
+        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm2, acc2, 1000, true);
+        PartnerFundAllocation pfaRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm2, acc3, 300, true);
         Test.startTest();
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -469,7 +471,8 @@ Database.insert(pbm2);
         System.runAs(usr){
             try
             {
-
+                List<Core_MDF_SearchableDropDownItemWrapper> pbmList1 = Core_MDF_BudgetTransfer.GetBudgetList (acc2.Id);
+                List<Core_MDF_SearchableDropDownItemWrapper> pbmList4 = Core_MDF_BudgetTransfer.GetBudgetList (acc5.Id);
             }catch(Exception ex)
             {
                 Core_MDF_CCP_UtilityClass.logError(ex);
@@ -486,7 +489,8 @@ Database.insert(pbm2);
             try
             {
                 List<Core_MDF_SearchableDropDownItemWrapper> pbmList1 = Core_MDF_BudgetTransfer.GetBudgetList (acc2.Id);                
-
+                List<Core_MDF_SearchableDropDownItemWrapper> pbmList2 = Core_MDF_BudgetTransfer.GetBudgetList (acc3.Id);
+                List<Core_MDF_SearchableDropDownItemWrapper> pbmList3 = Core_MDF_BudgetTransfer.GetBudgetList (acc4.Id);
                 System.assertEquals(pbm2.Id, pbmList1[0].Id);
             }
             catch(Exception ex)
@@ -810,7 +814,7 @@ Database.insert(pbm1);
         usr2.LastName = 'EEF Budget Loader';
         usr2.profileId = systemAdminProfile2.Id;
         Database.insert(usr2);
-
+        Boolean primaryBudgetLoader = true;
         User usr = [select id,Lastname from User where lastname ='MDF Budget Loader' Limit 1];
         User usr1 = [select id,Lastname from User where lastname ='TestClass TestUser' Limit 1];
         Account Acc= [Select id,Core_MDF_Channel_Program__r.name from Account where name ='EEF Primary Virtual Corp' Limit 1];
@@ -818,7 +822,7 @@ Database.insert(pbm1);
         Account accNode =  [Select id,Core_MDF_Channel_Program__r.name from Account where name ='EEF Activating Node' Limit 1];
         PartnerMarketingBudget pmb =[select id,title from PartnerMarketingBudget where title ='Test Budget EEF' Limit 1 ];
         PartnerFundAllocation pfa =[select id,title from PartnerFundAllocation where title ='Test EEF PFA' Limit 1];
-
+        Core_MDF_Partner_Mapping__c map1 = [Select Id,  Core_MDF_Activating_Partner_Account_id__c From Core_MDF_Partner_Mapping__c Where Core_MDF_Primary_Partner_Account_id__c =:Acc.id ];
         map<id, Account> mapOfAcc = new map<id, Account>();
         PermissionSet eefBudLoader = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Budget_Loader' LIMIT 1];
 		insert new PermissionSetAssignment(AssigneeId = usr2.id, PermissionSetId = eefBudLoader.Id);

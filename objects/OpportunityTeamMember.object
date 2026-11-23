@@ -220,12 +220,12 @@
                 <value>
                     <fullName>Team Member (100%)</fullName>
                     <default>false</default>
-                    <label>Team member (100% commitment over the lifetime of the opportunity)</label>
+                    <label>Team Member (100%)</label>
                 </value>
                 <value>
                     <fullName>Technical Owner (100%)</fullName>
                     <default>false</default>
-                    <label>Technical owner (100% commitment over the lifetime of the opportunity)</label>
+                    <label>Technical Owner (100%)</label>
                 </value>
                 <value>
                     <fullName>Contributor (50%)</fullName>

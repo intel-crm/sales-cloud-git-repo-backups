@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
-    <isExposed>true</isExposed>
-    <targets>
-        <target>lightning__FlowScreen</target>
-    </targets>
-    <targetConfigs>
-        <targetConfig targets="lightning__FlowScreen">
-            <propertyType name="T" extends="SObject" label="Record Type" />
-            <property name="title" type="String" label="Table Title" />
-            <property name="columns" type="String" label="Columns (JSON)" />
-            <property name="tableData" type="{T[]}" label="Table Data" />
-            <property name="keyField" type="String" label="Key Field API Name (e.g. Id)" />
-            <property name="enableRowSelection" type="Boolean" label="Enable Row Selection" />
-            <property name="preSelectedKeys" type="String[]" label="Pre-Selected Keys" />
-            <property name="selectedRows" type="{T[]}" label="Selected Rows" role="outputOnly" />
-        </targetConfig>
-    </targetConfigs>
+    <isExposed>false</isExposed>
 </LightningComponentBundle>

@@ -16,7 +16,7 @@ public class Core_OpportunitySupport_Test {
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='CCP - Core Access'];
         //User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
         PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='Core_CRM_Special_Access' and Assignee.IsActive = true LIMIT 1];
-		//User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
+		User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
         List<Core_Trigger_Executions__c> triggercontroller = new List<Core_Trigger_Executions__c>();
         /* test data creation for Opportunity support team addtion*/
         Core_Trigger_Executions__c triggerSetting = new Core_Trigger_Executions__c();
@@ -158,7 +158,7 @@ public class Core_OpportunitySupport_Test {
         
         // Create a new opportunity using the account created above'
         System.runAs(Core_Test_Utility.systemAdminUser) {
-            
+            system.debug('a--' +a);
            
             Opportunity opportunity1 = new Opportunity(Name = 'Test Opportunity1', Core_Channel_Opportunity_Ind__c=true,RecordTypeId = newOppRecTypeId,Core_Approved_Opportunity_Region__c='APJ',Core_Opportunity_Geo_APJ__c=true,
                                                       AccountId = a.Id, StageName = 'Qualify', CloseDate = System.Date.today().addYears(1),Core_Approval_Status__c='Not Submitted');
@@ -174,10 +174,10 @@ public class Core_OpportunitySupport_Test {
     static testMethod void createOpportunitySupportRequest1() {
         List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
         test.starttest();
-         //List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
+         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
 		
         Opportunity opportunity1 = [select Id, Name, Amount, RecordTypeId, Description,StageName,Core_Opportunity_Owner_Geo__c,Core_Opportunity_Owner__c  FROM Opportunity WHERE Name='Test Opportunity1'];
-        
+        system.debug('opportunity1:::'+opportunity1);
      Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_CSA_RecordType').getRecordTypeId();
 
               //  Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Marketing_Support').getRecordTypeId();
@@ -190,7 +190,8 @@ public class Core_OpportunitySupport_Test {
         creatOpptSupportReq.Opportunity__c = opportunity1.Id;
         creatOpptSupportReq.RecordTypeId = recordTypeId;
         
-        
+        system.debug('line 164'+creatOpptSupportReq.Core_Region__c);
+         system.debug('line 166'+opportunity1.Core_Opportunity_Owner_Geo__c);
      	/*creatOpptSupportReq.Core_Approver_1__c=usr1[2].id;
         creatOpptSupportReq.Core_Approver_2__c=usr1[2].id;
         creatOpptSupportReq.Core_Approver_3__c=usr1[2].id;
@@ -203,7 +204,7 @@ public class Core_OpportunitySupport_Test {
          System.runAs(Core_Test_Utility.systemAdminUser) {
         insert opp_supp;  
          }
-        
+        system.debug('Line 71'+creatOpptSupportReq.Core_Region__c);
         System.assert(true, creatOpptSupportReq.id != null);
         System.assert(true,opportunity1.Description=='test oppt Support request description');
         
@@ -215,24 +216,24 @@ public class Core_OpportunitySupport_Test {
         try{
             
             Opportunity opportunity1 = [select Id, Name, Amount, RecordTypeId, Description,StageName  FROM Opportunity WHERE Name='Test Opportunity1'];
-            
+            system.debug('opportunity1:::'+opportunity1);
             Opportunity opportunity2;
             Core_OpportunitySupport.wrapperOpptSupportRequest obj = new Core_OpportunitySupport.wrapperOpptSupportRequest();
             
-            
+            system.debug('obj.isThereAnOpenOpptSupportReq'+obj.isThereAnOpenOpptSupportReq);
             Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_CSA_RecordType').getRecordTypeId();
 
             Core_Opportunity_Support__c opptSuppReq = [Select Id from Core_Opportunity_Support__c 
                                                        where Core_Status__c='Submitted' 
                                                        and Opportunity__c =:opportunity2.Id];
-            
+            system.debug('opptSuppReq123'+opptSuppReq);
             obj = Core_OpportunitySupport.getOpportunityDetails(opportunity1.Id,recordTypeId,'');
-            
+            system.debug('obj123'+obj);
             //System.assert(obj.isThereAnOpenOpptSupportReq, true);
             
         }catch(Exception e){
             System.assertNotEquals(NULL,e);
-            
+            System.debug('Exception occured' +e.getMessage());
         }
         
         test.stopTest();
@@ -244,7 +245,7 @@ public class Core_OpportunitySupport_Test {
         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
         
         Opportunity opportunity1 = [select Id, Name, Amount, RecordTypeId, Description,StageName FROM Opportunity WHERE Name='Test Opportunity1'];
-        
+        system.debug('opportunity1:::'+opportunity1);
         Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_CSA_RecordType').getRecordTypeId();
 
         Core_OpportunitySupport.getOpportunityDetails(opportunity1.Id,recordTypeId,'');
@@ -289,17 +290,16 @@ public class Core_OpportunitySupport_Test {
         creatOpptSupportReq1.RecordTypeId=recordTypeId;
         opp_supp.add(creatOpptSupportReq);
         opp_supp.add(creatOpptSupportReq1);
-        
+        system.debug('before insert opp_supp'+opp_supp);
         insert opp_supp;   
-        
+        system.debug('After insert opp_supp'+opp_supp);
         //Core_OpportunitySupportServiceHandler.determineApprovers(opp_supp);       
-        
+        system.debug('creatOpptSupportReq::-'+creatOpptSupportReq);
         test.stopTest();
-        System.assertEquals(true,true);
     }
     
     static testMethod void testOppTeamShare() {
-        //List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
+        List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
         Opportunity opportunity1 = [select Id, Name, Amount, Core_Approved_Opportunity_Region__c, RecordTypeId, Description,StageName 
                                     FROM Opportunity WHERE Name='Test Opportunity1'];
         opportunity1.Core_Approved_Opportunity_Region__c = 'APJ';
@@ -326,7 +326,7 @@ public class Core_OpportunitySupport_Test {
         Set<Id> pInstanceWorkitems = (new Map<Id, ProcessInstanceWorkitem>([SELECT Id,ProcessInstanceId FROM ProcessInstanceWorkitem WHERE ProcessInstanceId in :pIds])).keySet();
         List<Approval.ProcessWorkitemRequest> allReq = new List<Approval.ProcessWorkitemRequest>(); 
         for (Id pInstanceWorkitemsId:pInstanceWorkitems){
-            
+            system.debug(pInstanceWorkitemsId);
             Approval.ProcessWorkitemRequest req2 = new Approval.ProcessWorkitemRequest();
             req2.setComments('mRequest.');
             req2.setAction('Approve'); 
@@ -356,17 +356,16 @@ public class Core_OpportunitySupport_Test {
             addTeamMem.Core_Opportunity_Support_Team_Member__c = usr1[2].id;
             update addTeamMem;
         }catch (Exception e) {
-            System.assertNotEquals(NULL,e);
+            system.debug('creating exception adding same user'+e);
         }
         try{
             //Core_OppSupTeamAccOrRej.updateStatusOppRequestTeam('Accepte',addTeamMem1.id,'comments',updateUser[0]);
         }catch(Exception e){
-            System.assertNotEquals(NULL,e);
+            system.debug('creating exception while Accepted or Deined request'+e);
         }
         // delete user from Opportunity support team
         delete addTeamMem1;
         test.stopTest();
-        System.assertEquals(true,true);
     }
     
 }

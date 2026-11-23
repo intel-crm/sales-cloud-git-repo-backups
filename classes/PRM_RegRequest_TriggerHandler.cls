@@ -151,9 +151,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 if(isActive('EV_Stamp_Check')){
                     PRM_RegistrationRequestUtility.evCheck((List<PRM_Registration_Request__c>)Trigger.new,null);
                 }
-                /*if(isActive('PSG_Approval_Check')){
+                if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, null);         
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }
                 //LA check needs to be implemented for admin reg req at time of insertion (for AccountCreateReq--> in before update)
                 if(isActive('Legal_Agreement_Check')){
                     //String recordTypeId == Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()
@@ -172,9 +172,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 if(isActive('Req_Request_WeChatId_Decryption')){
                     PRM_RegistrationRequestUtility.DecryptWeChatUnionId_BeforeInsert((List<PRM_Registration_Request__c>)Trigger.new);            
                 }
-                /*if(isActive('Update_Submitted_Date')){
+                if(isActive('Update_Submitted_Date')){
                     PRM_RegistrationRequestUtility.updateSubmittedDate((List<PRM_Registration_Request__c>)Trigger.new);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }
                 if(isActive('Auto_Approve_User_Registration') && PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun==false){            
                     PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun=true;
                     PRM_RegistrationRequestUtility.autoApproveEndUserRegistration((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap, isSysAccMap, mapAccIdToListContact , mapAccount, acmList);
@@ -396,9 +396,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                     PRM_RegistrationRequestUtility.evCheck((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
                     
                 }
-                /*if(isActive('PSG_Approval_Check')){
+                if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }
                 
                 
                 if(isActive('Legal_Agreement_Check')){

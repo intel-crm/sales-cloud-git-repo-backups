@@ -58,10 +58,6 @@ Description: This method send email to contact entitlement requester  .*/
                     Messaging.SingleEmailMessage email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
                     email.saveAsActivity = false;
                     lstEmails.add(email);
-                    OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
                     contactUser.add(conEntl.Core_Entitlement_Requester_Id__c +'__'+ conEntl.Core_Contact_Id__r.Id);
                 }
             }

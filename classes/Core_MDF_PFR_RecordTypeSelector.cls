@@ -70,7 +70,7 @@ public static Campaign getCampaignFields(Id recordId){
     try{
         Campaign campObj = [SELECT Id, Name, Core_MDF_Account__c, Core_MDF_Account__r.Name,Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Budget_Type_txt__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Brand__c,Core_MDF_Industry_Nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Focus_Area_nm__c,Core_MDF_Audience__c,Core_MDF_Product_Type__c,Core_MDF_IPA_Priority_nm__c,
                                  tolabel(Campaign.Core_MDF_Opal_Budget_Type_Txt__c) localizedBudType, Core_MDF_Priority__c, Core_MDF_Priority_2_nm__c, Core_MDF_Priority_3_nm__c, Core_MDF_Channel_Program__c,Core_MDF_Budget_Cap__c,Core_MDF_Program__c,StartDate,EndDate,RecordTypeId,RecordType.DeveloperName,RecordType.Name,
-                                 Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Channel_Program__r.Name,Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Technology__c, Status, Core_MDF_Market__c, Core_MDF_Reimbursement_Rate__c,Core_MDF_ReimbursementRate_pct__c,Core_MDF_Available_BudgetCap_amt__c,Core_MDF_Reimbursement_Amount_Amt__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Strategic_Marketing_Fund_Ind__c, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c
+                                 Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Channel_Program__r.Name, Core_MDF_Technology__c, Status, Core_MDF_Market__c, Core_MDF_Reimbursement_Rate__c,Core_MDF_ReimbursementRate_pct__c,Core_MDF_Available_BudgetCap_amt__c,Core_MDF_Reimbursement_Amount_Amt__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Strategic_Marketing_Fund_Ind__c, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c
                                  FROM Campaign WHERE Id=:recordId LIMIT 1];
         
         if(campObj != null){
@@ -140,7 +140,7 @@ Modified By:                      Date:10/25/2018                     Changes:No
         try{
        
         Map<String,boolean> userPermissions = new Map<String,boolean>();
-
+        List<PermissionSetAssignment> userPerSets = new List<PermissionSetAssignment>();
         for(String perKey : permissionsets.keySet())
         {
             for(String customPermissionStr : permissionsets.get(perKey))

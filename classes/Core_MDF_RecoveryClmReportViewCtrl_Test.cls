@@ -304,7 +304,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
                                                                                                          'Consumer',
                                                                                                          'Desktop',
                                                                                                          'Intel® Core™ i5 Processor',
-                                                                                                         'Broadcast (Pre-2025)',
+                                                                                                         'Broadcast',
                                                                                                          'Podcast',
                                                                                                          'Draft',
                                                                                                          false);
@@ -328,7 +328,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
                                                                                                                'Consumer',
                                                                                                                'Desktop',
                                                                                                                'Intel® Core™ i5 Processor',
-                                                                                                               'Broadcast (Pre-2025)',
+                                                                                                               'Broadcast',
                                                                                                                'Podcast',
                                                                                                                'Draft',
                                                                                                                false);
@@ -409,7 +409,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
             String grpName = '';
             grpName = pgmCheck.Core_MDF_Group_Name__c;
             Core_MDF_Partnership_Score__c pss = [select id, Core_MDF_External_Id__c, Core_MDF_Virtual_Corp_Account_Id__c, Core_MDF_Quarter_Year_Nm__c,Core_MDF_Channel_Program_Id__c,Core_MDF_Account_Id__c,Core_MDF_Program_nm__c from Core_MDF_Partnership_Score__c where Core_MDF_Account_Id__c =: acc1.id limit 1];
-            
+          	
             List<Core_MDF_Partnership_Score_Detail__c> pgdList = new List<Core_MDF_Partnership_Score_Detail__c>();
             Decimal recAmt = 0.0;
             List<String> regionList = new List<String>{'APJ', 'EMEA', 'PRC', 'ASMO'};
@@ -717,9 +717,9 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         system.runAs(usrs){
             
             Boolean result = Core_MDF_RecoveryClaimReportViewCtrl.checkRecoveryMode('Intel Partner Alliance');
-          Assert.areEqual(false, result);
+        	Assert.areEqual(false, result);
             
-           insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet.Id);   
+         	insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet.Id);   
             
             List<Core_MDF_Payment_Run__c> paymentRunList = new List<Core_MDF_Payment_Run__c>();
             paymentRunList.add(new Core_MDF_Payment_Run__c(RecordTypeId = ccfMdfRecordType, Core_MDF_Program_Id__c = ccfCP.Id, Core_MDF_Program_Txt__c ='Client CoMarketing Fund', Core_MDF_Budget_Type_nm__c = 'MDF', Core_MDF_Run_For_All_Accounts__c = true, Core_MDF_Payment_run_for_Accounts__c = String.valueOf(acc1.Id), Core_MDF_Status_Txt__c = 'Scheduled', Core_MDF_Geo_Txt__c = 'ASMO', Core_MDF_ScheduleRun_Dtm__c = DateTime.Now() + 1));
@@ -766,7 +766,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         Database.insert(franceClaim2);
         
         
-        PartnerFundClaim pc = [select Id,Core_MDF_Claim_Review_Case__r.Core_MDF_Scorecard_Score_Nbr__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Manual_Recovery_Amount_USD_Amt__c,Core_MDF_Country_Location_nm__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Status__c,Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, Amount,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Recovery_Hold_Ind__c from partnerFundClaim where Core_MDF_Program__c = :Core_MDF_CCP_ConstantClass.CCF_PROGRAM and Core_MDF_AccountCompany__c ='ARP Test Account' limit 1];
+        PartnerFundClaim pc = [select Id,Core_MDF_Country_Location_nm__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Status__c,Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, Amount,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Recovery_Hold_Ind__c from partnerFundClaim where Core_MDF_Program__c = :Core_MDF_CCP_ConstantClass.CCF_PROGRAM and Core_MDF_AccountCompany__c ='ARP Test Account' limit 1];
         pcList.add(pc);
             
         List<string> budgetTypeList = new List<string>();
@@ -790,7 +790,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         rrd.consumedBudget = 'test';
         eligibileClaimsBTGeo.put(pc.Id,rrd);
         Test.stopTest();
-        Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows fr = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(pcList,eligible,eligibileClaimsBTGeo,false,budgetTypeList,clmToBtRecoveryAmt,crossBTorProgToBTMap,eligible);
+        Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows fr = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(pcList,eligible,eligibileClaimsBTGeo,false,budgetTypeList,clmToBtRecoveryAmt,crossBTorProgToBTMap);
           Assert.isNotNull(fr);
         }
         
@@ -844,8 +844,9 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         eligibileClaimsBTGeo.put(pc.Id,rrd);
         Test.stopTest();
         try{
-        Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(pcList,eligible,eligibileClaimsBTGeo,true,budgetTypeList,clmToBtRecoveryAmt,crossBTorProgToBTMap,eligible);
+        Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(pcList,eligible,eligibileClaimsBTGeo,true,budgetTypeList,clmToBtRecoveryAmt,crossBTorProgToBTMap);
         }catch(Exception e){
+           	System.debug('Exception thrown: '+e.getMessage());
         }
         }
         

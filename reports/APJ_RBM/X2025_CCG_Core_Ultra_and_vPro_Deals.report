@@ -148,12 +148,6 @@
     <columns>
         <field>STAGE_NAME</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opp_Strategic_Opportunity__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Coverage_Nm__c</field>
-    </columns>
     <filter>
         <booleanFilter>(((1 AND 2) OR (3 AND 4 AND 5)) OR (6 AND 7)) OR (8 AND 9 AND 10)</booleanFilter>
         <criteriaItems>

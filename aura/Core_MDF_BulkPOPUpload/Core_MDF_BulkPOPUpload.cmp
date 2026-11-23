@@ -277,10 +277,10 @@
            
                 <span class="slds-notify__close slds-p-left_large">
                     <button aura:id="toastCloseButton"
-                        class="slds-button slds-button_neutral slds-button_icon" title="Close"
-                        onclick="{!c.closeErrorToast}">
-                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                        class="slds-button slds-button_neutral slds-button_icon slds-button_icon-inverse" title="Close"
+                            onclick="{!c.closeErrorToast}">
+                        <lightning:icon iconName="utility:close" alternativeText="Close" variant="close" size="small"/>
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span> 
                     </button>
                 </span>
             </div>

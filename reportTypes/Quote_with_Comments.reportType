@@ -42,11 +42,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Is_Covered_Account_cb__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Account_Executive_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>

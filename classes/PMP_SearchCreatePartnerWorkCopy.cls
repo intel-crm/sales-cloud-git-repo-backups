@@ -29,10 +29,7 @@ public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
             
         }
         if(!createworkcopies.isEmpty()){
-            //Insert(createworkcopies);
-            Database.SaveResult[] cwcList = Database.insert(createworkcopies, false);
-			PMP_Utility.logDmlErrors((Object[]) cwcList, 'PMP_SearchCreatePartnerWorkCopy-execute');
-
+            Insert(createworkcopies);
             
             //Set<Id> partnerIdsCreated = new Set<Id>();
             for(PMP_Company__c wc : createworkcopies) {
@@ -42,9 +39,7 @@ public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
                 updatepublished.add(pc);
             }
             if(!updatepublished.isEmpty()){
-                //update(updatepublished);
-                Database.SaveResult[] upList = Database.update(updatepublished, false);
-				PMP_Utility.logDmlErrors((Object[]) upList, 'PMP_SearchCreatePartnerWorkCopy-execute');
+                update(updatepublished);
             }                    
         }
     }

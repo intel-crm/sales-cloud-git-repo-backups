@@ -168,14 +168,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>9/28/2025 12:00 AM</value>
+            <value>6/29/2025 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Last_Approved_Date_dt__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>12/27/2025 12:00 AM</value>
+            <value>9/27/2025 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

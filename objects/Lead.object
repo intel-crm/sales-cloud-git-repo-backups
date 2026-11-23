@@ -261,12 +261,8 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Marketing Engaged Lead</fullName>
-            <default>true</default>
-        </values>
-        <values>
             <fullName>Marketing Qualified Lead</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Sales Accepted Lead</fullName>
@@ -418,36 +414,6 @@
             <isRequired>true</isRequired>
         </displayedFields>
         <label>New Sales Lead</label>
-    </fieldSets>
-    <fieldSets>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availableFields>
-            <field>ImpartnerPRM__DateAssignedToPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__NotifyPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__PartnerLeadAcceptance__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <description>Mass Assign Leads to Partner Page</description>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerAccount__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerContact__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <label>Mass Assign to Partner</label>
     </fieldSets>
     <fields>
         <fullName>Address</fullName>
@@ -2919,6 +2885,11 @@ IF (NOW() - Core_State_Entrance_Date_Open__c &lt;= 7, &quot;In Progress&quot;,
                     <default>false</default>
                     <label>PRC</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -3999,21 +3970,11 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
         <valueSet>
             <controllingField>Core_Lead_Status__c</controllingField>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Accepted by Partner</fullName>
-                    <default>false</default>
-                    <label>Accepted by Partner</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Already Engaged With Intel</fullName>
                     <default>false</default>
                     <label>Already Engaged With Intel</label>
-                </value>
-                <value>
-                    <fullName>Attempting Contact</fullName>
-                    <default>false</default>
-                    <label>Attempting Contact</label>
                 </value>
                 <value>
                     <fullName>Bad Data</fullName>
@@ -4026,39 +3987,14 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
                     <label>Banned Company/Country</label>
                 </value>
                 <value>
-                    <fullName>Disqualified by Partner</fullName>
+                    <fullName>Not Target Profile</fullName>
                     <default>false</default>
-                    <label>Disqualified by Partner</label>
+                    <label>Not Target Profile</label>
                 </value>
                 <value>
-                    <fullName>Embargo Country</fullName>
+                    <fullName>Rep Inactivity</fullName>
                     <default>false</default>
-                    <label>Embargo Country</label>
-                </value>
-                <value>
-                    <fullName>Expired Attempts</fullName>
-                    <default>false</default>
-                    <label>Expired Attempts</label>
-                </value>
-                <value>
-                    <fullName>Expired SLA</fullName>
-                    <default>false</default>
-                    <label>Expired SLA</label>
-                </value>
-                <value>
-                    <fullName>In Contact</fullName>
-                    <default>false</default>
-                    <label>In Contact</label>
-                </value>
-                <value>
-                    <fullName>Misrouted Lead</fullName>
-                    <default>false</default>
-                    <label>Misrouted Lead</label>
-                </value>
-                <value>
-                    <fullName>No Budget</fullName>
-                    <default>false</default>
-                    <label>No Budget</label>
+                    <label>Rep Inactivity</label>
                 </value>
                 <value>
                     <fullName>Not accepted by Sales</fullName>
@@ -4066,44 +4002,29 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
                     <label>Not accepted by Sales</label>
                 </value>
                 <value>
-                    <fullName>Not Interested</fullName>
+                    <fullName>Unreachable</fullName>
                     <default>false</default>
-                    <label>Not Interested</label>
+                    <label>Unreachable</label>
                 </value>
                 <value>
-                    <fullName>Not Target Profile</fullName>
+                    <fullName>In Contact</fullName>
                     <default>false</default>
-                    <label>Not Target Profile</label>
+                    <label>In Contact</label>
                 </value>
                 <value>
-                    <fullName>No Valid Pain Point</fullName>
+                    <fullName>Attempting Contact</fullName>
                     <default>false</default>
-                    <label>No Valid Pain Point</label>
+                    <label>Attempting Contact</label>
                 </value>
                 <value>
-                    <fullName>Outside of Timeframe</fullName>
+                    <fullName>Expired SLA</fullName>
                     <default>false</default>
-                    <label>Outside of Timeframe</label>
+                    <label>Expired SLA</label>
                 </value>
                 <value>
-                    <fullName>Partner Unreachable</fullName>
+                    <fullName>Embargo Country</fullName>
                     <default>false</default>
-                    <label>Partner Unreachable</label>
-                </value>
-                <value>
-                    <fullName>Rejected by Partner</fullName>
-                    <default>false</default>
-                    <label>Rejected by Partner</label>
-                </value>
-                <value>
-                    <fullName>Rejected by Sales</fullName>
-                    <default>false</default>
-                    <label>Rejected by Sales</label>
-                </value>
-                <value>
-                    <fullName>Rep Inactivity</fullName>
-                    <default>false</default>
-                    <label>Rep Inactivity</label>
+                    <label>Embargo Country</label>
                 </value>
                 <value>
                     <fullName>Service/Support Request</fullName>
@@ -4121,14 +4042,59 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
                     <label>Unable to Reassign</label>
                 </value>
                 <value>
+                    <fullName>No Budget</fullName>
+                    <default>false</default>
+                    <label>No Budget</label>
+                </value>
+                <value>
+                    <fullName>No Valid Pain Point</fullName>
+                    <default>false</default>
+                    <label>No Valid Pain Point</label>
+                </value>
+                <value>
+                    <fullName>Outside of Timeframe</fullName>
+                    <default>false</default>
+                    <label>Outside of Timeframe</label>
+                </value>
+                <value>
                     <fullName>Under Budget Threshold</fullName>
                     <default>false</default>
                     <label>Under Budget Threshold</label>
                 </value>
                 <value>
-                    <fullName>Unreachable</fullName>
+                    <fullName>Rejected by Sales</fullName>
                     <default>false</default>
-                    <label>Unreachable</label>
+                    <label>Rejected by Sales</label>
+                </value>
+                <value>
+                    <fullName>Expired Attempts</fullName>
+                    <default>false</default>
+                    <label>Expired Attempts</label>
+                </value>
+                <value>
+                    <fullName>Misrouted Lead</fullName>
+                    <default>false</default>
+                    <label>Misrouted Lead</label>
+                </value>
+                <value>
+                    <fullName>Accepted by Partner</fullName>
+                    <default>false</default>
+                    <label>Accepted by Partner</label>
+                </value>
+                <value>
+                    <fullName>Rejected by Partner</fullName>
+                    <default>false</default>
+                    <label>Rejected by Partner</label>
+                </value>
+                <value>
+                    <fullName>Disqualified by Partner</fullName>
+                    <default>false</default>
+                    <label>Disqualified by Partner</label>
+                </value>
+                <value>
+                    <fullName>Partner Unreachable</fullName>
+                    <default>false</default>
+                    <label>Partner Unreachable</label>
                 </value>
                 <value>
                     <fullName>Waiting to be Claimed</fullName>
@@ -4142,12 +4108,12 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Accepted</controllingFieldValue>
-                <valueName>Attempting Contact</valueName>
+                <controllingFieldValue>Qualified</controllingFieldValue>
+                <valueName>In Contact</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Accepted</controllingFieldValue>
-                <controllingFieldValue>Qualified</controllingFieldValue>
-                <valueName>In Contact</valueName>
+                <valueName>Attempting Contact</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rejected</controllingFieldValue>
@@ -4162,15 +4128,11 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rejected</controllingFieldValue>
-                <valueName>Embargo Country</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Rejected</controllingFieldValue>
                 <valueName>Expired SLA</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rejected</controllingFieldValue>
-                <valueName>Misrouted Lead</valueName>
+                <valueName>Embargo Country</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rejected</controllingFieldValue>
@@ -4181,16 +4143,12 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
                 <valueName>Unable to Reassign</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Rejected</controllingFieldValue>
+                <valueName>Misrouted Lead</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Disqualified</controllingFieldValue>
                 <valueName>Already Engaged With Intel</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Disqualified</controllingFieldValue>
-                <valueName>Not accepted by Sales</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Disqualified</controllingFieldValue>
-                <valueName>Not Interested</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Disqualified</controllingFieldValue>
@@ -4202,11 +4160,27 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Disqualified</controllingFieldValue>
+                <valueName>Not accepted by Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Disqualified</controllingFieldValue>
                 <valueName>Unreachable</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Passed to Partner</controllingFieldValue>
+                <valueName>Under Budget Threshold</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Passed to Partner</controllingFieldValue>
+                <valueName>Rejected by Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Passed to Partner</controllingFieldValue>
                 <valueName>Accepted by Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Passed to Partner</controllingFieldValue>
+                <valueName>Rejected by Partner</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Passed to Partner</controllingFieldValue>
@@ -4215,18 +4189,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued)<
             <valueSettings>
                 <controllingFieldValue>Passed to Partner</controllingFieldValue>
                 <valueName>Partner Unreachable</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Passed to Partner</controllingFieldValue>
-                <valueName>Rejected by Partner</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Passed to Partner</controllingFieldValue>
-                <valueName>Rejected by Sales</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Passed to Partner</controllingFieldValue>
-                <valueName>Under Budget Threshold</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Unreachable</controllingFieldValue>
@@ -5111,11 +5073,6 @@ null)</formula>
                     <label>FPGA Engineering</label>
                 </value>
                 <value>
-                    <fullName>GOVT</fullName>
-                    <default>false</default>
-                    <label>Government</label>
-                </value>
-                <value>
                     <fullName>HDE</fullName>
                     <default>false</default>
                     <label>Hardware Development/Engineering</label>
@@ -5210,11 +5167,6 @@ null)</formula>
                     <fullName>SADE</fullName>
                     <default>false</default>
                     <label>Software/Application Development/Engineering</label>
-                </value>
-                <value>
-                    <fullName>SFTOP</fullName>
-                    <default>false</default>
-                    <label>Software Operations</label>
                 </value>
                 <value>
                     <fullName>SSA</fullName>
@@ -6129,6 +6081,11 @@ IF(Core_Stagnant_Lead_State_Time__c&gt;=2,&quot;More than 2 days&quot;,&quot;Wit
                     <default>false</default>
                     <label>WEUR</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -6749,134 +6706,6 @@ IF(AND(NOT(ISNULL(Core_Entrance_Date_SAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entr
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>ImpartnerPRM__DateAssignedToPartner__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Date Assigned to Partner</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DealRegistrationDenied__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Deal Registration Denied</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DealRegistrationStatus__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>IF(ImpartnerPRM__IsDealRegistration__c, IF(IsConverted, &quot;Approved&quot;, IF(ImpartnerPRM__DealRegistrationDenied__c, &quot;Denied&quot;, &quot;Pending&quot;)), null)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Registration Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__IsDealRegistration__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Is Deal Registration</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Leads</relationshipLabel>
-        <relationshipName>Leads</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Leads</relationshipLabel>
-        <relationshipName>Leads</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLeadAcceptance__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Lead Acceptance</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>false</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Accepted</fullName>
-                    <default>false</default>
-                    <label>Accepted</label>
-                </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>IndividualId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -6892,6 +6721,32 @@ IF(AND(NOT(ISNULL(Core_Entrance_Date_SAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entr
         <fullName>Jigsaw</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Company_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the company</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Company Id</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Member_Token__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the member/lead</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Member Token</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>LastTransferDate</fullName>
@@ -7169,24 +7024,8 @@ IF(AND(NOT(ISNULL(Core_Entrance_Date_SAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entr
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>SWS_Entrance_Date_MEL__c</fullName>
-        <label>Entrance Date - MEL</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>SWS_Entrance_Date_SGL__c</fullName>
         <label>Entrance Date - SGL</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>SWS_Exit_Date_MEL__c</fullName>
-        <label>Exit Date - MEL</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -7233,15 +7072,6 @@ IF(AND(NOT(ISNULL(Core_Entrance_Date_SAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entr
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>SWS_Lead_Deletion__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Boolean for deleting a lead from Marketo.</description>
-        <label>Lead Deletion</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>SWS_Lead_Source_System__c</fullName>
@@ -7473,243 +7303,8 @@ NULL))))</formula>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
-    <fields>
-        <fullName>mkto_si__Add_to_Marketo_Campaign__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Add_to_Marketo_Campaign?contactType=Lead&amp;contactIds=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;Add to Marketo Campaign&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Add to Marketo Campaign</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Current_Sales_Campaign__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Current Sales Campaign</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__HideDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Hide Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Activity_By_Sales__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Activity by Sales</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Date__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Interesting Moment Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Desc__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Interesting Moment Desc</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Source__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Last Interesting Moment Source</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment_Type__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Last Interesting Moment Type</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Interesting_Moment__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>IF(!ISNULL(mkto_si__Last_Interesting_Moment_Date__c),
-    HYPERLINK(&quot;/apex/mkto_si__Lead_Full_List?mode=fullList&amp;view=IM&amp;id=&quot; &amp; Id, mkto_si__Last_Interesting_Moment_Type__c &amp; &quot; -- &quot; &amp; SUBSTITUTE(mkto_si__Last_Interesting_Moment_Desc__c,SUBSTITUTE($Label.mkto_si__System_Newline, &quot;--linebreak--&quot;, &quot;&quot;),&quot; &quot;) ), &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Last Interesting Moment</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Last_Sales_Engagement__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Last Sales Engagement</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__MSIContactId__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>MSIContactId</label>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Leads</relationshipLabel>
-        <relationshipName>Leads</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Priority__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Engagement</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Relative_Score_Value__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Relative Score Value</label>
-        <precision>4</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Relative_Score__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>CASE( MIN(MAX(mkto_si__Relative_Score_Value__c, 0), 3),
-            0, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star0_small.png&quot;,&quot;0&quot;),
-            1, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star1_small.png&quot;,&quot;1&quot;),
-            2, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star2_small.png&quot;,&quot;2&quot;),
-            3, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/star3_small.png&quot;,&quot;3&quot;),
-        &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Relative Score</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Insight__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Lead_Full_List?mode=fullList&amp;id=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;Sales Insight&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Sales Insight</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Last_Replied__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Sales Last Replied</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Sales_Opt_Out__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Sales Opt Out</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Urgency_Value__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Urgency Value</label>
-        <precision>4</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__Urgency__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>CASE( MIN(MAX(mkto_si__Urgency_Value__c, 0),3),
-            0, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire0_small.png&quot;,&quot;0&quot;),
-            1, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire1_small.png&quot;,&quot;1&quot;),
-            2, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire2_small.png&quot;,&quot;2&quot;),
-            3, IMAGE(&quot;https://s3.amazonaws.com/marketo-sales-insight/images/fire3_small.png&quot;,&quot;3&quot;),
-        &quot;&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Urgency</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>mkto_si__View_in_Marketo__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK (&quot;/apex/mkto_si__Marketo_Lead_Detail?objType=Lead&amp;objId=&quot; &amp; Id, IMAGE(&quot;https://app.marketo.com/images/icons16/marketo16.png&quot;,&quot;View in Marketo&quot;))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>View in Marketo</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <listViews>
         <fullName>All_Leads4</fullName>
-        <columns>Core_Partner_Name__c</columns>
         <columns>FULL_NAME</columns>
         <columns>PMP_Offering_Id__c</columns>
         <columns>LEAD.COMPANY</columns>
@@ -7721,6 +7316,11 @@ NULL))))</formula>
         <columns>LEAD.RECORDTYPE</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Partner_Name__c</field>
+            <operation>contains</operation>
+            <value>nutanix</value>
+        </filters>
         <label>All Leads</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -7898,11 +7498,6 @@ NULL))))</formula>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>LEAD.UNREAD</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>ALL GLOBAL (Catch All)</label>
         <queue>Core_ALL_GLOBAL_Catch_All</queue>
         <sharedTo>
@@ -8191,11 +7786,6 @@ NULL))))</formula>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>LEAD.UNREAD</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>EMEA BNZ UK</label>
         <queue>EMEA_BNZ_UK</queue>
         <sharedTo>
@@ -8216,11 +7806,6 @@ NULL))))</formula>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>LEAD.UNREAD</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>EMEA CPL</label>
         <queue>EMEA_CPL</queue>
         <sharedTo>
@@ -8241,11 +7826,6 @@ NULL))))</formula>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>LEAD.UNREAD</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>EMEA HOLD</label>
         <queue>EMEA_HOLD</queue>
         <sharedTo>
@@ -8303,11 +7883,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR APJ</label>
         <queue>MGL_LDR_APJ</queue>
         <sharedTo>
@@ -8326,11 +7901,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR Brazil</label>
         <queue>MGL_LDR_Brazil</queue>
         <sharedTo>
@@ -8349,11 +7919,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR EMEA</label>
         <queue>MGL_LDR_EMEA</queue>
         <sharedTo>
@@ -8372,11 +7937,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR French</label>
         <queue>MGL_LDR_French</queue>
         <sharedTo>
@@ -8395,11 +7955,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR German</label>
         <queue>MGL_LDR_German</queue>
         <sharedTo>
@@ -8418,11 +7973,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR Indonesia</label>
         <queue>MGL_LDR_Indonesia</queue>
         <sharedTo>
@@ -8441,11 +7991,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR JAPAN</label>
         <queue>MGL_LDR_JAPAN</queue>
         <sharedTo>
@@ -8464,11 +8009,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR LAR</label>
         <queue>MGL_LDR_LAR</queue>
         <sharedTo>
@@ -8487,11 +8027,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR NAR</label>
         <queue>MGL_LDR_NAR</queue>
         <sharedTo>
@@ -8510,11 +8045,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR PRC</label>
         <queue>MGL_LDR_PRC</queue>
         <sharedTo>
@@ -8533,11 +8063,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR Russian</label>
         <queue>MGL_LDR_Russian</queue>
         <sharedTo>
@@ -8556,11 +8081,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR South Korea</label>
         <queue>MGL_LDR_South_Korea</queue>
         <sharedTo>
@@ -8579,11 +8099,6 @@ NULL))))</formula>
         <columns>LEAD.STATE_CODE</columns>
         <columns>LEAD.COUNTRY_CODE</columns>
         <filterScope>Queue</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>notEqual</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
         <label>MGL LDR Taiwan</label>
         <queue>MGL_LDR_Taiwan</queue>
         <sharedTo>
@@ -8743,9 +8258,9 @@ NULL))))</formula>
         <columns>Core_Reprocess_Lead_Sharing__c</columns>
         <filterScope>Queue</filterScope>
         <filters>
-            <field>Core_Partner_Name__c</field>
-            <operation>contains</operation>
-            <value>silicon</value>
+            <field>LEAD.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Lead.Partner_Lead</value>
         </filters>
         <label>PTNR - Global Partner Queue</label>
         <queue>Core_PTNR_Global_Partner_Queue</queue>
@@ -8873,10 +8388,6 @@ NULL))))</formula>
             <operation>notEqual</operation>
             <value>Dispositioned for Partner Lead Pilot</value>
         </filters>
-        <filters>
-            <field>LEAD.LAST_ACTIVITY</field>
-            <operation>equals</operation>
-        </filters>
         <label>Leads - From Marketplace</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
@@ -8905,48 +8416,6 @@ NULL))))</formula>
             <value>partner wechat</value>
         </filters>
         <label>Partner wechat leads</label>
-    </listViews>
-    <listViews>
-        <fullName>SWS_MEL_Leads</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>LEAD.EMAIL</columns>
-        <columns>LEAD.COMPANY</columns>
-        <columns>LEAD.STATE_CODE</columns>
-        <columns>LEAD.STATUS</columns>
-        <columns>LEAD.UNREAD</columns>
-        <columns>LEAD.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>equals</operation>
-            <value>Marketing Engaged Lead</value>
-        </filters>
-        <label>MEL Leads</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>SMG</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>SWS_Marketing_Leads</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>LEAD.EMAIL</columns>
-        <columns>LEAD.COMPANY</columns>
-        <columns>LEAD.STATE_CODE</columns>
-        <columns>LEAD.STATUS</columns>
-        <columns>LEAD.UNREAD</columns>
-        <columns>LEAD.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>LEAD.STATUS</field>
-            <operation>equals</operation>
-            <value>Marketing Engaged Lead,Marketing Qualified Lead</value>
-        </filters>
-        <label>Marketing Leads</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>SMG</roleAndSubordinatesInternal>
-        </sharedTo>
     </listViews>
     <listViews>
         <fullName>TodaysLeads</fullName>
@@ -8991,7 +8460,7 @@ NULL))))</formula>
         <businessProcess>Lead</businessProcess>
         <compactLayoutAssignment>Core_Lead_Compact_Layout</compactLayoutAssignment>
         <description>DO NOT USE - Marketo ONLY</description>
-        <label>Marketing Lead</label>
+        <label>Lead</label>
         <picklistValues>
             <picklist>Core_Account_Sales_Segment__c</picklist>
             <values>
@@ -10283,6 +9752,10 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -10651,10 +10124,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Not Interested</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Not Target Profile</fullName>
                 <default>false</default>
             </values>
@@ -10957,10 +10426,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -11034,10 +10499,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11269,6 +10730,10 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Korea</fullName>
                 <default>false</default>
             </values>
@@ -11409,21 +10874,6 @@ NULL))))</formula>
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Industry</picklist>
             <values>
                 <fullName>Agriculture</fullName>
@@ -11506,10 +10956,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Sales AI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Salesforce</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12914,6 +12360,10 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -13576,10 +13026,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -13653,10 +13099,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13840,6 +13282,10 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Korea</fullName>
                 <default>false</default>
             </values>
@@ -13920,21 +13366,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Unable To Contact</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14029,10 +13460,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Referral - Employee</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Salesforce</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -16251,21 +15678,6 @@ NULL))))</formula>
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Industry</picklist>
             <values>
                 <fullName>Agriculture</fullName>
@@ -17756,6 +17168,10 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -18422,10 +17838,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -18499,10 +17911,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18738,6 +18146,10 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19034,21 +18446,6 @@ NULL))))</formula>
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Industry</picklist>
             <values>
                 <fullName>Agriculture</fullName>
@@ -19139,10 +18536,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Sales AI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Salesforce</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19334,7 +18727,7 @@ ISCHANGED(Core_Partner_Lead_Owner__c)
 AND( 
 ISCHANGED(Core_Lead_Status__c),
 NOT(ISNEW()),
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),
 ISPICKVAL(Core_Lead_Status__c, &quot;New&quot;), 
 OR(
@@ -19350,27 +18743,17 @@ $Profile.Name &lt;&gt; &quot;System Administrator&quot;
         <fullName>Core_Cannot_Change_On_Reject</fullName>
         <active>true</active>
         <description>Can not change the lead  or claim on Reject.</description>
-        <errorConditionFormula>IF(
-    $Setup.Core_Opp_Bypass_Validation_Rule__c = TRUE,
-    FALSE,
-    AND(
-        NOT(ISNEW()),
-        RecordType.Name = &apos;Partner Lead&apos;,
-        ISCHANGED(Core_Lead_State__c),
-        TEXT(PRIORVALUE(Core_Lead_State__c)) = &quot;Terminated&quot;,
-
-        OR(
-            ISPICKVAL(Core_Lead_State__c, &quot;Unclaimed&quot;),
-            ISPICKVAL(Core_Lead_State__c, &quot;In Pursuit&quot;)
-        ),
-
-        NOT(ISCHANGED(Core_Lead_Status__c)),
-        NOT(ISCHANGED(Core_Lead_State_Change_Date_Time__c)),
-        NOT(ISCHANGED(Core_Lead_Stage_Change_Date_Time__c)),
-
-        $Profile.Name &lt;&gt; &quot;System Administrator&quot;,
-        NOT($Setup.Core_Validation_Bypass_for_Flow__c.Bypass__c)
-    )
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, 
+AND( 
+NOT(IsNew()),
+RecordType.Name = &apos;Partner Lead&apos;, 
+NOT(ISCHANGED(Core_Lead_Status__c)), 
+NOT(ISCHANGED(Core_Lead_State__c)),
+TEXT(PRIORVALUE(Core_Lead_State__c)) = &quot;Terminated&quot;,
+NOT(ISCHANGED(Core_Lead_State_Change_Date_Time__c)),NOT(ISCHANGED(Core_Lead_Stage_Change_Date_Time__c)),
+$Profile.Name &lt;&gt; &quot;System Administrator&quot;,
+NOT($Setup.Core_Validation_Bypass_for_Flow__c.Bypass__c)
+)
 )</errorConditionFormula>
         <errorMessage>This Lead has already been marked as “Rejected” and cannot be claimed.</errorMessage>
     </validationRules>
@@ -19378,19 +18761,15 @@ $Profile.Name &lt;&gt; &quot;System Administrator&quot;
         <fullName>Core_Cannot_Move_On_Reject</fullName>
         <active>true</active>
         <errorConditionFormula>IF(
-    $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c = TRUE,
-    FALSE,
-    AND(
-        RecordType.Name = &apos;Partner Lead&apos;,
-        NOT(ISNEW()),
-        ISCHANGED(Core_Lead_State__c),
-        TEXT(PRIORVALUE(Core_Lead_State__c)) = &quot;Terminated&quot;,
-        OR(
-            ISPICKVAL(Core_Lead_State__c, &quot;Unclaimed&quot;),
-            ISPICKVAL(Core_Lead_State__c, &quot;In Pursuit&quot;)
-        ),
-        $Profile.Name &lt;&gt; &quot;System Administrator&quot;
-    )
+  $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c = TRUE,
+  FALSE,
+  AND(
+    RecordType.Name = &apos;Partner Lead&apos;,
+    NOT(IsNew()),
+    ISCHANGED(Core_Lead_Status__c),
+    TEXT(PRIORVALUE(Core_Lead_State__c)) = &quot;Terminated&quot;,
+    $Profile.Name &lt;&gt; &quot;System Administrator&quot;
+  )
 )</errorConditionFormula>
         <errorDisplayField>Core_1st_Reminder__c</errorDisplayField>
         <errorMessage>This Lead has been “Rejected” and cannot progress further.</errorMessage>
@@ -19433,7 +18812,7 @@ ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;)
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISPICKVAL(Core_Lead_State__c ,&quot;Unclaimed&quot;),
 OR(
   ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;)
@@ -19445,17 +18824,17 @@ OR(
     <validationRules>
         <fullName>Core_Check_Backward_Stage_Movement</fullName>
         <active>true</active>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, 
 OR(
-AND(
-ISCHANGED(Status),
-AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
-Text(Status) = &quot;Marketing Qualified Lead&quot;,
-ISPICKVAL(PRIORVALUE(Status), &quot;Sales Accepted Lead&quot;) ,
-Core_Rejected_Flag__c = false
-),
-$Profile.Name &lt;&gt; &quot;System Administrator&quot;
+AND( 
+ISCHANGED(Status), 
+AND( 
+RecordType.Name = &quot;Lead&quot;,
+Text(Status) =&quot;Marketing Qualified Lead&quot;, 
+ISPICKVAL(PRIORVALUE(Status), &quot;Sales Accepted Lead&quot;),
+Core_Rejected_Flag__c = false  
+), 
+$Profile.Name &lt;&gt; &quot;System Administrator&quot; 
 ),
 AND(
 ISCHANGED(Status),
@@ -19505,54 +18884,45 @@ $Profile.Name &lt;&gt; &quot;System Administrator&quot;
         <fullName>Core_Check_Lead_Stage_Skip</fullName>
         <active>true</active>
         <errorConditionFormula>IF(
-$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+	$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, 
 AND(
-ISCHANGED(Status),
-RecordType.DeveloperName = &quot;Lead&quot;,
-AND(
-ISPICKVAL(PRIORVALUE(Status), &quot;Marketing Qualified Lead&quot;),
+		ISCHANGED(Status),
+		RecordType.Name = &quot;Lead&quot;,
+				AND(
+					ISPICKVAL(PRIORVALUE(Status), &quot;Marketing Qualified Lead&quot;),
 ISPICKVAL(Status,&quot;Sales Qualified Lead&quot;)
-)
-)
+					)
+	)
 )</errorConditionFormula>
         <errorMessage>Cannot bypass stage.  Please select the next stage in the Lead path.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Check_Stage_for_Eloqua_New_Lead</fullName>
-        <active>false</active>
-        <errorConditionFormula>IF(
-$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
-AND
-(
-ISNEW(),
-RecordType.DeveloperName = &quot;Lead&quot;,
-NOT(ISCLONE()),
-OR(NOT(ISPICKVAL (Core_Lead_Status__c, &quot;New&quot;)),
-AND(
-NOT(ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;)),
-NOT($Profile.Name = &quot;Sales Rep-CW&quot;))
-)))</errorConditionFormula>
-        <errorDisplayField>Core_1st_Reminder__c</errorDisplayField>
-        <errorMessage>To create a lead with record type “Lead”, please ensure that Lead Stage= &quot;Marketing Qualified Lead&quot; , Lead Status= “New”.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_Check_Stage_for_Marketo_New_Lead</fullName>
         <active>true</active>
-        <description>Allow only MEL or MQL stage while creating a Marketing Lead.</description>
         <errorConditionFormula>IF(
+
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+
 AND
+
 (
+
 ISNEW(),
-RecordType.DeveloperName = &quot;Lead&quot;,
+
+RecordType.Name = &quot;Lead&quot;,
+
 NOT(ISCLONE()),
+
 OR(NOT(ISPICKVAL (Core_Lead_Status__c, &quot;New&quot;)),
+
 AND(
-NOT(ISPICKVAL(Status, &quot;Marketing Engaged Lead&quot;)),
+
 NOT(ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;)),
+
 NOT($Profile.Name = &quot;Sales Rep-CW&quot;))
+
 )))</errorConditionFormula>
-        <errorMessage>To create a lead with record type “Lead”, please ensure that Lead Stage= Marketing Engaged Lead/ Marketing Qualified Lead, Lead Status= “New”.</errorMessage>
+        <errorMessage>To create a lead with record type “Lead”, please ensure that Lead Stage= &quot;Marketing Qualified Lead&quot; , Lead Status= “New”.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Check_Status_Accepted_PriorTo_SAL</fullName>
@@ -19589,7 +18959,7 @@ ISPICKVAL(Core_Lead_Status__c, &quot;Accepted&quot;)
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISCHANGED(Status),
 ISPICKVAL(PRIORVALUE(Status), &quot;Marketing Qualified Lead&quot;),
 ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;),
@@ -20288,50 +19658,11 @@ $Profile.Name =&apos;Data Ops&apos;
 NOT(ISCHANGED( OwnerId )),
 NOT(ISCHANGED(Core_Is_Lead_Shared__c)),
 NOT(ISCHANGED(Core_Lead_Sharing_Error__c)),
-NOT(ISCHANGED(Core_Reprocess_Lead_Sharing__c)),
-AND(
-NOT(ISCHANGED(Core_One_Partner_Id__c)),
-NOT(ISNULL(Core_One_Partner_Id__c))
-)
+NOT(ISCHANGED(Core_Reprocess_Lead_Sharing__c))
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_1st_Reminder__c</errorDisplayField>
         <errorMessage>Please click the “Claim” button to update this Lead.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_Partner_Lead_Reject_Button_Required</fullName>
-        <active>true</active>
-        <description>Prevents Partner Lead records from being updated to Disqualified, Rejected, or Terminated status without using the Reject button.</description>
-        <errorConditionFormula>IF(
-    $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c = TRUE,
-    FALSE,
-    AND(
-        NOT(ISNEW()),
-        RecordType.Name = &quot;Partner Lead&quot;,
-        $Profile.Name &lt;&gt; &quot;System Administrator&quot;,
-
-        OR(
-            AND(
-                ISCHANGED(Core_Lead_Status__c),
-                ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;)
-            ),
-            AND(
-                ISCHANGED(Status),
-                ISPICKVAL(Status, &quot;Rejected&quot;)
-            ),
-            AND(
-                ISCHANGED(Core_Lead_State__c),
-                ISPICKVAL(Core_Lead_State__c, &quot;Terminated&quot;)
-            )
-        ),
-
-        OR(
-            ISBLANK(TEXT(Core_Rejection__c)),
-            ISBLANK(Core_Rejection_Comments__c)
-        )
-    )
-)</errorConditionFormula>
-        <errorMessage>Please use the &apos;Reject&apos; button to Reject or Terminate the lead.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Partner_Lead_Status_Skip</fullName>
@@ -20369,7 +19700,7 @@ ISPICKVAL(Core_Lead_Status__c,&quot;Qualified&quot;)
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
 NOT(IsConverted),
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),  
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),  
 OR(
 ISPICKVAL(Status, &quot;Sales Qualified Lead&quot;),
 ISPICKVAL(Status, &quot;Contact - No Opportunity&quot;)
@@ -20386,7 +19717,7 @@ ISPICKVAL(Status, &quot;Contact - No Opportunity&quot;)
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
 NOT(ISNEW()),
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
 Core_Flag_on_Queue_or_User__c=&apos;Queue&apos;,
 NOT(ISCHANGED(OwnerId)),
 $Profile.Name &lt;&gt; &quot;Core Integration&quot;,
@@ -20418,7 +19749,7 @@ $RecordType.DeveloperName = &quot;Sales_Lead&quot;
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(ISCHANGED(RecordTypeId),
-OR(RecordType.DeveloperName = &apos;Lead&apos;,RecordType.Name = &apos;Sales Lead&apos;),
+OR(RecordType.Name = &apos;Lead&apos;,RecordType.Name = &apos;Sales Lead&apos;),
 $Profile.Name &lt;&gt; &quot;System Administrator&quot; 
 
 ))</errorConditionFormula>
@@ -20442,14 +19773,14 @@ RecordType.Name &lt;&gt; &quot;Partner_Lead&quot;
         <fullName>Core_Restrict_CreateOpp_OnConvert</fullName>
         <active>true</active>
         <description>US356477
-During lead conversion if a user selects the checkbox “Do not create an Opportunity upon conversion” and does not set Converted Status to “Contact - No Opportunity” then  user should get a error.</description>
+During lead conversion if a user selects the checkbox “Do not create an Opportunity upon conversion” and does not set Converted Status to “Contact - No Opportunity” then  user should get a error. </description>
         <errorConditionFormula>IF( 
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, 
 AND(IsConverted=true,
 ConvertedOpportunityId=&quot;&quot;,
-ISPICKVAL(Core_Lead_Status__c, &quot;Qualified&quot;),
+ISPICKVAL(Core_Lead_Status__c, &quot;Accepted&quot;),
 NOT(ISPICKVAL(Status, &quot;Contact - No Opportunity&quot;)),
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;) 
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;) 
 )
 )</errorConditionFormula>
         <errorMessage>Please select Converted status as &quot;Contact - No Opportunity&quot; to proceed.</errorMessage>
@@ -20590,17 +19921,17 @@ RecordType.Name &lt;&gt; &quot;Partner_Lead&quot;
         <fullName>Core_StatusCannot_change</fullName>
         <active>true</active>
         <description>From Passed to Partner, disqulaified,Rejected we can&apos;t change the status</description>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, 
 AND(
 ISPICKVAL(PRIORVALUE(Core_Lead_Status__c),&apos;Disqualified&apos;),
 ISCHANGED(Core_Lead_Status__c),
-Core_Rejected_Flag__c = false,
-OR(RecordType.DeveloperName = &apos;Lead&apos;,RecordType.Name = &apos;Sales Lead&apos;),
+Core_Rejected_Flag__c = false, 
+OR(RecordType.Name = &apos;Lead&apos;,RecordType.Name = &apos;Sales Lead&apos;),
 $Profile.Name &lt;&gt; &quot;System Administrator&quot;,
 $Profile.Name &lt;&gt; &quot;Data Ops&quot;,
 OR(AND($User.FirstName  &lt;&gt; &quot;Marketo&quot;,
 $User.LastName  &lt;&gt; &quot;User&quot;))
-)
+) 
 )</errorConditionFormula>
         <errorDisplayField>Core_1st_Reminder__c</errorDisplayField>
         <errorMessage>Can&apos;t change the Lead status and Lead stage when lead current status is &quot;Disqualified”, Please contact system admin.</errorMessage>
@@ -20633,7 +19964,7 @@ $Profile.Name &lt;&gt; &quot;System Administrator&quot;
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),
 OR(ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;New&quot;),
 ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;Accepted&quot;),
@@ -20647,21 +19978,20 @@ ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Bad Data&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Banned Company&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Already Engaged with Intel&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Unreachable&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not Interested&quot;)
+ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Unreachable&quot;)
 )
 )
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_Lead_Sub_Status__c</errorDisplayField>
-        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Bad Data, Banned Company/Country, Already Engaged with Intel, Not Interested or Rep Inactivity.&quot;</errorMessage>
+        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Bad Data, Banned Company/Country, Already Engaged with Intel, or Rep Inactivity.&quot;</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Validate_LeadSubStatus_for_MQLInCon</fullName>
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),
 OR(ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;New&quot;),
 ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;Accepted&quot;),
@@ -20675,14 +20005,13 @@ OR(
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not Target Profile&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Bad Data&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Already Engaged with Intel&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not Interested&quot;)
+ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;)
 )
 )
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_Lead_Sub_Status__c</errorDisplayField>
-        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Bad Data, Already Engaged with Intel, Not Interested or Rep Inactivity.&quot;</errorMessage>
+        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Bad Data, Already Engaged with Intel, or Rep Inactivity.&quot;</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Validate_LeadSubStatus_for_SGLAtCon</fullName>
@@ -20737,7 +20066,7 @@ ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;)
 AND( 
 ISNEW(),
 NOT(ISCLONE()),
-RecordType.DeveloperName = &quot;Lead&quot;, 
+RecordType.Name = &quot;Lead&quot;, 
 NOT(ISPICKVAL (Core_Lead_Status__c, &quot;New&quot;)),
 NOT(ISPICKVAL (Core_Lead_State__c, &quot;Unclaimed&quot;)), 
 NOT(ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;))
@@ -20752,8 +20081,8 @@ NOT(ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;))
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
 ISCLONE(),
-RecordType.DeveloperName=&quot;Lead&quot;,
-OR(NOT(ISPICKVAL ( Core_Lead_Status__c ,&quot;New&quot;)),
+RecordType.Name=&quot;Lead&quot;,
+OR(NOT(ISPICKVAL (Core_Lead_Status__c, &quot;New&quot;)),
 NOT(ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;))),
 NOT($Permission.Lead_Bypass_Permission),
 $Profile.Name &lt;&gt; &quot;Core Integration&quot;,
@@ -20804,7 +20133,7 @@ $Profile.Name = &quot;Core Integration&quot;
 AND(
 ISNEW(),
 NOT(ISCLONE()),
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 NOT(OR(
 $Profile.Name = &quot;Integration&quot;,
 $Permission.Lead_Bypass_Permission,
@@ -20815,7 +20144,6 @@ $Profile.Name = &quot;Sales Rep-CW&quot;,
 ))
 )
 )</errorConditionFormula>
-        <errorDisplayField>Core_1st_Reminder__c</errorDisplayField>
         <errorMessage>Record type &quot;Lead &quot; cannot select manually in Salesforce,Please select &quot;Sales Lead&quot; Recordtype .If you are trying to Clone an existing record of &quot;Lead &quot; recordtype please switch back to classic .</errorMessage>
     </validationRules>
     <validationRules>
@@ -20847,19 +20175,19 @@ NOT(ISPICKVAL(Core_Lead_State__c, &quot;Converted&quot;))
         <fullName>Core_Validate_Status_For_Stage_MAQL</fullName>
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
-AND(
+AND( 
 ISCHANGED(Core_Lead_Status__c),
 NOT(ISNEW()),
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),
-NOT(
-OR(
-ISPICKVAL(Core_Lead_Status__c, &quot;New&quot;),
-ISPICKVAL(Core_Lead_Status__c, &quot;Accepted&quot;),
+NOT( 
+	OR( 
+                ISPICKVAL(Core_Lead_Status__c, &quot;New&quot;), 
+		ISPICKVAL(Core_Lead_Status__c, &quot;Accepted&quot;), 
 ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;),
 ISPICKVAL(Core_Lead_Status__c, &quot;Qualified&quot;)
-)
-)
+	) 
+) 
 )
 )</errorConditionFormula>
         <errorMessage>Not a valid status for stage &quot;Marketing Qualified Lead&quot;. If you are in SalesForce Lightning, please follow the Guidance for Success mentioned in the Lead path.  Guidance for Success can be found by clicking on the arrow next to the Lead stages.</errorMessage>
@@ -20871,7 +20199,7 @@ ISPICKVAL(Core_Lead_Status__c, &quot;Qualified&quot;)
 AND( 
 NOT(ISNEW()), 
 ISCHANGED(Core_Lead_Status__c), 
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;), 
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;), 
 ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;), 
 NOT( 
 		OR(
@@ -20953,7 +20281,7 @@ NOT(
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND( 
 IsConverted, 
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
 ISPICKVAL(Status, &quot;Contact - No Opportunity&quot;),
 NOT(ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;))
 )
@@ -20967,7 +20295,7 @@ NOT(ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;))
 $Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND( 
 IsConverted, 
-OR(RecordType.DeveloperName = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
+OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;),
 ISPICKVAL(Status, &quot;Sales Qualified Lead&quot;), 
 ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;)
 )
@@ -20979,7 +20307,7 @@ ISPICKVAL(Core_Lead_Status__c, &quot;Disqualified&quot;)
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE, FALSE,
 AND(
-RecordType.DeveloperName = &quot;Lead&quot;,
+RecordType.Name = &quot;Lead&quot;,
 OR(
 ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;),ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;)),
 AND(
@@ -20992,14 +20320,13 @@ ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not Target Profile&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not accepted by Sales&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Unreachable&quot;),
 ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Already Engaged with Intel&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;),
-ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Not Interested&quot;)
+ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;)
 )
 )
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_Lead_Sub_Status__c</errorDisplayField>
-        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Already Engaged with Intel, Not accepted by Sales, Not Interested or Rep Inactivity.&quot;</errorMessage>
+        <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile, Unreachable, Already Engaged with Intel, Not accepted by Sales, or Rep Inactivity.&quot;</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Validate_salelead_substatus_for_SAL</fullName>
@@ -21023,6 +20350,28 @@ ISPICKVAL(Core_Lead_Sub_Status__c, &quot;Rep Inactivity&quot;)
 )</errorConditionFormula>
         <errorDisplayField>Core_Lead_Sub_Status__c</errorDisplayField>
         <errorMessage>&quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile,Already Engaged with Intel, or Rep Inactivity.&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_CompanyId_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_Company_Id_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>AltavistaNews</fullName>
@@ -21857,18 +21206,6 @@ alert( &quot;An error has occurred while updating lead &quot; + result[0].errors
         <url>http://search.hoovers.com/cgi-bin/hol_search?which=company&amp;query_string={!Lead_Company}</url>
     </webLinks>
     <webLinks>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Assign to Partner</masterLabel>
-        <openType>sidebar</openType>
-        <page>ImpartnerPRM__MassAssignLeadsToPartner</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
         <fullName>LeadActivityOverview</fullName>
         <availability>online</availability>
         <displayType>link</displayType>
@@ -21947,89 +21284,5 @@ alert( &quot;An error has occurred while updating lead &quot; + result[0].errors
         <openType>replace</openType>
         <protected>false</protected>
         <url>/apex/jiffle__JNEvents?source=leadFlow&amp;lead_ids={!CASESAFEID(Lead.Id)}&amp;isLeadDetail=true</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Marketo_Campaign_Details</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Add to Marketo Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/mkto_si__Add_to_Marketo_Campaign?contactType=Lead&amp;contactIds={!Lead.Id}&amp;retUrl=detailsPage</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Marketo_Campaign_Lightning</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Marketo Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__AddToMarketoCampaignLeadLightning</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Sales_Campaign</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Sales Campaign</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__Add_to_Sales_Campaign_Lead</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Add_to_Watch_List</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add to Watch List</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__AddToWatchListLead</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Marketo_Email_Details</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Send Marketo Email</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/mkto_si__Send_Marketo_Email?contactType=Lead&amp;contactIds={!Lead.Id}&amp;retUrl=detailsPage</url>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Marketo_Email_Lightning</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Send Marketo Email</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__EmailMarketoLeadLightning</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>mkto_si__Send_Sales_Email</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Send Sales Email</masterLabel>
-        <openType>sidebar</openType>
-        <page>mkto_si__Send_Sales_Email_Lead</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
     </webLinks>
 </CustomObject>

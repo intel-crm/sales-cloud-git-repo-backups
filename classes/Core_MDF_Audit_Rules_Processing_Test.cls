@@ -74,8 +74,8 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         PartnerFundAllocation pfaARPCCFFrance = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaARPCCFFrance',arpPmbRecord, arpEMEAFrance, 1000, true);
 
         Core_MDF_Bank__c arpBank = Core_MDF_CCP_TestDataUtility.createBank(arpIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-        // Highlight: Unused Local Variable 
-       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
+        
+        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
 
         Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
         arpCamp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
@@ -237,8 +237,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
             Map<id,boolean> popMapFalse = new Map<id,boolean>();
             popMapFalse.put(franceClaim.id,false);
             claimIDList.add(franceClaim.id);
-            // Highlight: Unused Local Variable 
-          /*  Map<id,boolean> popMap = */ Core_MDF_Audit_Rules_Processing.checkPOPDocuments(claimIDList);
+            Map<id,boolean> popMap = Core_MDF_Audit_Rules_Processing.checkPOPDocuments(claimIDList);
             List<string> result = new List<string>();
             result.add('true');
             result.add('Immediate Rules'); 

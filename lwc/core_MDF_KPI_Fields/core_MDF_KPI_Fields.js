@@ -7,8 +7,6 @@ import {OLD_KPI_FIELDS_ALL} from 'c/core_MDF_utilityModule';
 import othersHelpText from '@salesforce/label/c.Core_MDF_KPI_Others_Help_Text';
 import decimalError from '@salesforce/label/c.Core_MDF_KPI_Decimal_Error';
 import numberError from '@salesforce/label/c.Core_MDF_KPI_Number_Error';
-import logErrorImperative from '@salesforce/apex/Core_MDF_KPIDetailPage.logErrorImperative'; //Unhandeled Exception fix added by Shravani
-
 
 export default class Core_MDF_KPI_Fields extends LightningElement {
     // Global Variables
@@ -205,22 +203,6 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
                 console.log('error->' + e.name);
                 this.loaded = true;
                 this.error = true;
-                //START: Unhandled exception fix added by Sharavani 
-                // Logs error received from Apex and persists it for tracking purposes
-                const errorPayload = {
-                        message: e?.body?.message,
-                        stackTrace: e?.body?.stackTrace,
-                        exceptionType: e?.body?.exceptionType,
-                        pageErrors: e?.body?.pageErrors,
-                        fieldErrors: e?.body?.fieldErrors
-                    };
-
-                    logErrorImperative({
-                        errorMessage: JSON.stringify(errorPayload),
-                        objectApiName: this.objectName
-                    });
-                //END: Unhandled exception fix added by Sharavani 
-
             });
     }
     validateValSelection(kpiValues, fieldName) {

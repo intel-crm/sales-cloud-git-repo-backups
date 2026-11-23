@@ -26,22 +26,16 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
     
     //checks if EFT Number on payment is updated and payment status is paid
     public static Boolean isPaymentUpdated(Map<Id,Core_MDF_Payment__c> oldPaymentMap, Core_MDF_Payment__c paymentRecord) {
-
         Boolean isUpdated = false;
-		
-        if (isNotEmpty(oldPaymentMap) && oldPaymentMap.containsKey(paymentRecord.Id) && oldPaymentMap.get(paymentRecord.Id).Core_MDF_Payment_Status_Txt__c != paymentRecord.Core_MDF_Payment_Status_Txt__c && paymentRecord.Core_MDF_Payment_Status_Txt__c == paymentStatus 
-			
-            && (FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Payment_Admin_Manager') //Tejaswini
-            || (paymentRecord.Core_MDF_Program_Txt__c == Label.Core_MDF_Retail_Program_Name && paymentRecord.Core_MDF_Budget_Type_Nm__c.contains(Label.Core_MDF_Retail_RSA_MD_Budget_Type))   //RMF: RSA MD
-            || (paymentRecordTypes.contains(Schema.SObjectType.Core_MDF_Payment__c.getRecordTypeInfosById().get(paymentRecord.recordTypeId).getDeveloperName()))  // CCF MDF and DCF MDF
-            || (paymentRecord.Core_MDF_Program_Txt__c == Label.Core_MDF_Co_GTM_program_name) //Co-GTM
-            
-            // Recordtype bypass logic for L3 users
+        if(isNotEmpty(oldPaymentMap) && oldPaymentMap.containsKey(paymentRecord.Id) && 
+            oldPaymentMap.get(paymentRecord.Id).Core_MDF_Payment_Status_Txt__c !=paymentRecord.Core_MDF_Payment_Status_Txt__c &&
+            paymentRecord.Core_MDF_Payment_Status_Txt__c == paymentStatus &&
+            ((paymentRecord.Core_MDF_Program_Txt__c == Label.Core_MDF_Retail_Program_Name  && paymentRecord.Core_MDF_Budget_Type_Nm__c.contains(Label.Core_MDF_Retail_RSA_MD_Budget_Type))  || 
+            (paymentRecordTypes.contains(Schema.SObjectType.Core_MDF_Payment__c.getRecordTypeInfosById().get(paymentRecord.recordTypeId).getDeveloperName()))
             || (Core_Trigger_Executions__c.getValues('Core_MDF_Bypass_PaymentBudgetTypeCheck').Core_Active__c 
                     && Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c != null 
                     && Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c.contains(UserInfo.getUserName())))) {
-          			
-                    isUpdated = true;
+                isUpdated = true;  
         }
         else{
             isUpdated = false;
@@ -74,7 +68,7 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
                     paymentToEFTNbrMap.put(paymentRecord.Id,paymentRecord.Core_MDF_EFT_Nbr__c);
             }
             //if(isPaymentUpdated(oldPaymentMap,paymentRecord))
-             if(isPaymentUpdated(oldPaymentMap,paymentRecord)) {               
+             if(isPaymentUpdated(oldPaymentMap,paymentRecord)) {                
                     // Map of Payment Id and Payment Record                  
                     paymentIdToPaymentMap.put(paymentRecord.Id, paymentRecord);
              }

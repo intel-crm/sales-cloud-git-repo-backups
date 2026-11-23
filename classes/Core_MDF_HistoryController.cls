@@ -3,6 +3,7 @@
 * Version     : 1.0 
 * Created Date: 11/20/2019
 * Modification & Enhancement Log :
+* Developer               Date                          Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Mayuri              21/05/2024                   This class hold the custom history component methods. Modified the code to resolve below existing issues 
 1) Number and ID issue - 15 digit number is considered as Id
@@ -23,7 +24,7 @@ public with sharing class Core_MDF_HistoryController {
     public static List<String> userNames = new List<String>();
     
     //mask user name and url
-    public static void maskUserName(Map<Id,User> userIdToUserMapping,string internalUserName, Boolean isPFR){
+    public static void maskUserName(Map<Id,User> userIdToUserMapping,string internalUserName){
         uidToNameMap = new Map<String,String> {};
             userIdToUserNameMapping = new Map<String,String> {};
                 userIdToUrlMapping = new Map<String,String> {};
@@ -45,15 +46,8 @@ public with sharing class Core_MDF_HistoryController {
                     }
                 }
                 else{
-                    if(isPFR){
-                        //get the internal url link
-                        userName = userIdToUserMapping.get(uId).Name;
-                        url=Label.Core_MDF_Environment_URL + 'User/' + uId + '/view';
-                    }else{
-                        userName = internalUserName;
-                        url='';
-                    }
-                    
+                    userName = internalUserName;
+                    url='';
                 }
                 userIdToUrlMapping.put(String.valueOf(uId),url);
                 userIdToUserNameMapping.put(String.valueOf(uId),userName);
@@ -186,24 +180,13 @@ public with sharing class Core_MDF_HistoryController {
             userIdTouserTypeMap = userValueList.getUserDetails(valueList);
             
             //call method to mask user name
-            //maskUserName(userIdTouserTypeMap,internalUserName,true);
+            maskUserName(userIdTouserTypeMap,internalUserName);
             //form history data and return to UI.
-            if(objectInfo=='PartnerFundRequest'){
-                //call method to mask user name
-                maskUserName(userIdTouserTypeMap,internalUserName,true);
-                 Boolean isOutcomeBased = [Select id,Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundRequest where Id=:recordId].Core_MDF_Is_Outcome_Based_Ind__c;
-                    if(isOutcomeBased){
-                        newHistList = formHistoryData(historyData,true);
-                    }else{
-                        newHistList = formHistoryData(historyData,false);
-                    }
-            }else{
-                //call method to mask user name
-                maskUserName(userIdTouserTypeMap,internalUserName,false);
-                newHistList = formHistoryData(historyData,false);
-            }
+            newHistList = formHistoryData(historyData);
         }
-        catch(Exception e) {newHistList = new List<History>();}
+        catch(Exception e) {
+     Core_MDF_CCP_UtilityClass.logError(e); 
+     throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
         return newHistList;
     }
     
@@ -251,7 +234,7 @@ public with sharing class Core_MDF_HistoryController {
     
     
     //form history data
-    public static List<History> formHistoryData(List<sObject> historyData,Boolean isOutcomeBased){
+    public static List<History> formHistoryData(List<sObject> historyData){
         List<History> newHistList = new List<History>();
         try{
             //Again loop through the history data and form all values required for UI.
@@ -266,56 +249,8 @@ public with sharing class Core_MDF_HistoryController {
                 String hisField ='';
                 
                 if(!Test.isRunningTest()) {
-                     hisField = String.valueOf(his.get('localizedField'));  //activity status (tolabel)
+                     hisField = String.valueOf(his.get('localizedField'));
                   }
-                
-                
-                // Outcome-based PFR: relabel Activity Status -> Status in history UI
-                // Only when object is PartnerFundRequest and the changed field is Core_MDF_Fund_Request_Status__c
-                // We cannot derive parent object directly from history sObject row here, so we apply a safe rename by field label,
-                // which is what localizedField represents, while keeping scope to the specific API field via nonLocField.
-                if(isOutcomeBased) {
-                    if(nonLocField == 'Core_MDF_Fund_Request_Status__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Status')) {
-                            hisField = Label.Core_MDF_Status;
-                        }
-                    }
-                    if(nonLocField == 'RequestedAmount') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Spending Limit')) {
-                            hisField = Label.Core_MDF_Activity_Total_Investment;
-                        }
-                    }
-                    if(nonLocField == 'Title') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Name')) {
-                            hisField = Label.Core_MDF_Activity_Name;
-                        }
-                    }
-                    if(nonLocField == 'Core_MDF_Activity_Description__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Description')) {
-                            hisField = Label.Core_MDF_Outcome_Description;
-                        }
-                    }
-                    if(nonLocField == 'Core_MDF_Activity_Closure_Type__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Closure Type')) {
-                            hisField = Label.Core_MDF_Closure_Type_OB;
-                        }
-                    }
-                }
                 
 
                 if(maskedFields.contains(nonLocField) && ((userNames.contains(oldStr) || userNames.contains(newStr))) )
@@ -370,7 +305,7 @@ public with sharing class Core_MDF_HistoryController {
     
     
     @AuraEnabled(cacheable=true)
-    public static HistoryHeader getHistoryHeader(string objectInfo,Id recordId){
+    public static HistoryHeader getHistoryHeader(string objectInfo){
         HistoryHeader hh = new HistoryHeader();
         //setting default lang to English.
         String userLang = 'en_US';
@@ -386,13 +321,8 @@ public with sharing class Core_MDF_HistoryController {
             else
             {objectName= objectInfo+'History';}
                 //Get the label value for the history object.
-                //ATHR Fix 
-                //List<Schema.DescribeSObjectResult> describeSobjectsResult = Schema.describeSObjects(new List<String>{objectName}); // this can accept list of strings, we describe only one object here
-            	//String objectLabel = describeSobjectsResult[0].getLabel();	
-            	Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectName);   
-            	Schema.DescribeSObjectResult describeSobjectsResult = objType.getDescribe();
-            	String objectLabel = describeSobjectsResult.getLabel();
-            	
+                List<Schema.DescribeSObjectResult> describeSobjectsResult = Schema.describeSObjects(new List<String>{objectName}); // this can accept list of strings, we describe only one object here
+                String objectLabel = describeSobjectsResult[0].getLabel();
                 if(String.isNotBlank(objectLabel)){
 
                 
@@ -400,7 +330,7 @@ public with sharing class Core_MDF_HistoryController {
                 String[] customHeader = objectLabel.contains(':') ? objectLabel.split(':') : null; 
                 //Set the history header to include history at end with the object name for custom object else just show the object label for the standard object.
                 hh.objectName= (customHeader != null) ? (customHeader[1]+' History').trim() : objectLabel.trim();                                  
-                //Get the user language
+                //Get the user language.
                 userLang = (UserInfo.getLanguage() != null) ? UserInfo.getLanguage() : 'en_US';
                     String query = 'Select toLabel(Core_MDF_History_Header_Translation_nm__c) '+
                         ' from Core_MDF_History_Header_Translation__mdt where Core_MDF_obj_nm__c=\''+
@@ -409,29 +339,22 @@ public with sharing class Core_MDF_HistoryController {
                     langTrans=Database.query(v1);
                     if(langTrans.size() > 0){
                         
-                        if(objectInfo=='PartnerFundRequest'){
-                            Boolean isOutcomeBased = [Select id,Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundRequest where Id=:recordId].Core_MDF_Is_Outcome_Based_Ind__c;
-                            if(isOutcomeBased){
-                                hh.objectName = Label.Core_MDF_OutcomeBased_Campaign_History_Header;
-                            }else{
-                                hh.objectName = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
-                            }
-                        }else{
-                            hh.objectName = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
-                        }
-                        
+                        hh.objectName = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
                     }
                 }
                 hh.errorMessage = '';
                        
-        } catch(Exception e) {
+        }
+        catch(Exception e) {
             if(e.getMessage().contains('Invalid sobject provided')){
                 hh.objectName = Label.Core_MDF_History;
                 hh.errorMessage = Label.Core_MDF_Invalid_Sobject_Error;
-            } else{
-                hh.objectName = Label.Core_MDF_History;
-                hh.errorMessage = Label.Core_MDF_ApplicationErrorMessage;
             }
+            else{
+                hh.errorMessage = Label.Core_MDF_ApplicationErrorMessage;
+                Core_MDF_CCP_UtilityClass.logError(e);
+            }
+           
         }
         return hh;
     }

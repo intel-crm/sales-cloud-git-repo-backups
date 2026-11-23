@@ -1,0 +1,31 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content{
+        overflow-y:hidden !important;
+        height:unset !important;
+        max-height:unset !important;
+        }
+        .slds-modal__close {
+        display:none !important;
+        }
+          
+        .slds-modal__container{
+        	max-width: 75rem !important;
+        	width:68% !important;
+        	padding: 0rem !important;
+         }
+         .slds-modal__container .cuf-content {
+          	padding:1 !important;
+          }
+          .slds-modal__container .slds-p-around--medium {
+          	padding: 0rem !important;
+          }
+ </aura:html>
+ <c:sales_SplitSeatsOnLicense recordId="{!v.recordId}" isMergeSeats="true" onquickactionclose="{!c.closeQuickAction}"/> 
+</aura:component>

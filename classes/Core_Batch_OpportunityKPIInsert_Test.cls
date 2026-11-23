@@ -55,7 +55,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
             DataBase.executeBatch(obj); 
             
         Test.stopTest();
-        System.assertEquals(true,true);
     }
     static testMethod void negativetestMethod1() 
     {
@@ -93,7 +92,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
             DataBase.executeBatch(obj); 
             
         Test.stopTest();
-        System.assertEquals(true,true);
     }
     
     static testMethod void testMethod3() 
@@ -176,7 +174,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
             Core_Batch_OpportunityKPIInsert obj = new Core_Batch_OpportunityKPIInsert(lstOpptyStage[0].Core_Batch_ID__c, 'full');
             DataBase.executeBatch(obj);
         Test.stopTest();
-        System.assertEquals(true,true);
     }
     
     static testMethod void testMethod4() 
@@ -259,7 +256,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
             Core_Batch_OpportunityKPIInsert obj = new Core_Batch_OpportunityKPIInsert(lstOpptyStage[0].Core_Batch_ID__c, 'full');
             DataBase.executeBatch(obj);
         Test.stopTest();
-        System.assertEquals(true,true);
     }
     static testMethod void testMethod5() 
     {
@@ -340,7 +336,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
         Core_Batch_OpportunityKPIInsert obj = new Core_Batch_OpportunityKPIInsert(lstOpptyStage[0].Core_Batch_ID__c, 'full');
         DataBase.executeBatch(obj);
         Test.stopTest();
-        System.assertEquals(true,true);
     }
 
 
@@ -423,7 +418,6 @@ public class Core_Batch_OpportunityKPIInsert_Test
                 Core_Batch_OpportunityKPIInsert obj = new Core_Batch_OpportunityKPIInsert(lstOpptyStage[0].Core_Batch_ID__c, 'full');
                 DataBase.executeBatch(obj);
                 Test.stopTest();
-                System.assertEquals(true,true);
     }
 
     static testMethod void testMethod7() {
@@ -505,6 +499,18 @@ public class Core_Batch_OpportunityKPIInsert_Test
                 Core_Batch_OpportunityKPIInsert obj = new Core_Batch_OpportunityKPIInsert(lstOpptyStage[0].Core_Batch_ID__c, 'full');
                 DataBase.executeBatch(obj);
                 Test.stopTest();
-                System.assertEquals(true,true);
-    }    
+    }
+
+
+
+
+                
+
+
+
+
+
+
+    
+    
 }

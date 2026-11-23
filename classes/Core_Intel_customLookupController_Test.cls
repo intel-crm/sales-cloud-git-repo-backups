@@ -163,9 +163,12 @@ public class Core_Intel_customLookupController_Test{
         test.stopTest();
         
     }
-    @isTest
+        @isTest
        private static void testFetchWithAccountPowerPartner() {
-        ChannelProgram cp = [Select Id from ChannelProgram Where Name = 'Client' limit 1];
+        UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
+ 		User usr = [Select Id,UserRoleId from User where UserRoleId=:portalRole.Id];
+    	System.RunAs(usr) {
+        ChannelProgram cp = [Select Id from ChannelProgram Where Name = 'Client' limit 1]; //Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME, true);
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         acc1.BillingStateCode = '';
         insert acc1;
@@ -177,18 +180,8 @@ public class Core_Intel_customLookupController_Test{
         Database.insert(accList);
          
         Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
-        
-        List<User> userList = new List<User>();
-        Id profileId = [SELECT Id FROM Profile WHERE Name='Partner' limit 1].Id;
-        User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);        
-        usr1.Email='test1@example.com';
-        usr1.ContactId = conRecord1.Id;
-        usr1.ProfileId = profileId;
-        usr1.isActive = true;
-        userList.add(usr1);
-        Database.insert(userList);
            
-        //Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc.Id,usr1.Id,true);
+        //Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc.Id,usr.Id,true);
 
         Test.startTest();
         List<sObject> results = Core_Intel_customLookupController.fetchLookUpValues('Test', 'Account', 'Core_MDF_Channel_Program__c != null');
@@ -196,5 +189,6 @@ public class Core_Intel_customLookupController_Test{
 
         System.assertNotEquals(null, results);
     }
+  }
     
 }

@@ -24,7 +24,6 @@
     <aura:attribute name="showModal" type="boolean" default="false"/><!-- Added by Megha as part of US619896-->
     <aura:attribute name="isFromLink" type="boolean" default="false"/><!-- Added by Subash as part of US619896-->
     <!-- other internal attributes -->
-      <aura:attribute name="isAnyError" type="boolean" default="false"/>
     <aura:attribute name="activeStep" type="Integer" default="6" description="Internal (this form does not keep track of 'pristine' steps in the form" />
     <aura:attribute name="steps" type="Object[]" description="Internal" />
     <aura:attribute name="stepLabels" type="string[]" description="Internal" />
@@ -143,7 +142,7 @@
                         <lightning:spinner alternativeText="Loading..." />                            
                     </aura:if>
                     <div class="modalContainer">
-                          <aura:if isTrue="{! or(!v.isFromLink, v.isAnyError)}">
+                        <aura:if isTrue="{!!v.isFromLink}">
                             <aura:if isTrue="{!or(v.isLocked, v.currentStep == v.steps.length)}">
                                 <!-- LOCKED (already submitted / just submitted) progress display -->
                                 <h5 class="locked-state-heading heading-24 color-dark-gray">{!$Label.c.PMP_Storefront_ProfileSubmitted}</h5><!--As per copy Deck changes-->
@@ -468,7 +467,7 @@
                                                                     </lightning:select>
                                                                 </lightning:layoutItem>
                                                                 <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
-                                                                    <lightning:input aura:id="resourceUrl" type="url" label="{!$Label.c.PMP_Edit_Storefront_Resources_URL_Label}" value="{!resource.url}" pattern="{!v.urlMatchingPattern}" messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}" required="true" maxlength="255" onblur="{!c.handleChange}" onchange="{!c.handleChange}" />
+                                                                    <lightning:input aura:id="resource" type="url" label="{!$Label.c.PMP_Edit_Storefront_Resources_URL_Label}" value="{!resource.url}" pattern="{!v.urlMatchingPattern}" messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}" required="true" maxlength="255" onblur="{!c.handleChange}" onchange="{!c.handleChange}" />
                                                                     <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
                                                                 </lightning:layoutItem>
                                                             </lightning:layout>

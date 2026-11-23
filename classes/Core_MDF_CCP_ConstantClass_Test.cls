@@ -20,7 +20,7 @@ public class Core_MDF_CCP_ConstantClass_Test {
              string cnstName = 'CAMPAIGN_APPROVAL_HISTORY_JSON';
              Core_MDF_CCP_ConstantClass cnstCls = new Core_MDF_CCP_ConstantClass();
              string value = (string)cnstCls.getValue(cnstName);
-
+             string jsonValue = '[ {"record":[{"step_Name": "Price Reviewer","comments_masked": "true","comments_desc":"Comments masked through JSON"}],"ps_name":"Core_MDF_CCP_External_IPA_Proposal_Manager"}]';
              Assert.isNotNull(value);
          }
              Core_MDF_CCP_ConstantClass.getAllConstants();

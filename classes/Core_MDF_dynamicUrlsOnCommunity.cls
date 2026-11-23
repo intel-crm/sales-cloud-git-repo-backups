@@ -10,7 +10,7 @@ Public without sharing class Core_MDF_dynamicUrlsOnCommunity {
     @AuraEnabled
     public static List<ContentWrapperObj> getHomeContent(string sectionCode) { // e.g., sectionCode = 'Home_KeyResources_IPA'
         
-
+        List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>();
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper();
         List<ContentWrapperObj> resultList = new List<ContentWrapperObj>();
         String loggedinUserLang =''; //Get LoggedIn users language
@@ -54,7 +54,7 @@ Description :   This Method is used to fetch content configuration records for r
         Map<Id, Set<Id>> headerIdToSubIdSetMap = new Map<Id, Set<Id>>();     
         Map<string,List<Core_MDF_Content_Configuration__c>> subHeaderToContentMap = new Map<string,List<Core_MDF_Content_Configuration__c>>(); 
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper(); 
-
+        List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>(); 
         Map<Id, Core_MDF_Content_Configuration__c> idToContentRecMap = new Map<Id, Core_MDF_Content_Configuration__c>(); 
         List<sectionWrapper> sectionWrapList = new List<sectionWrapper>(); // final wrapper list
         
@@ -74,9 +74,7 @@ Description :   This Method is used to fetch content configuration records for r
         string helpTextFieldAPIName =  ContentResultWrap.helpTextFieldAPIName;  //e.g lang->zh_CN , helpTextFieldAPIName = Core_MDF_HelpText_zh_CN_txt__c
         
         try{
-            if(ContentResultWrap == null || ContentResultWrap.ContentConfigList == null || ContentResultWrap.ContentConfigList.isEmpty()){
-                return sectionWrapList;         //Refactored: Using guard clauses to avoid deep nesting
-            }
+            if(ContentResultWrap != null && ContentResultWrap.ContentConfigList != null && !ContentResultWrap.ContentConfigList.isEmpty()){  
                 for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
                     idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
                     if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
@@ -97,25 +95,20 @@ Description :   This Method is used to fetch content configuration records for r
                 }
                 
                 
-            if(headerIdToSubIdSetMap.isEmpty()){
-                return sectionWrapList;        //Refactored: Using guard clauses to avoid deep nesting
-            }
+                if(!headerIdToSubIdSetMap.isEmpty()){
                     for(string headerId : headerIdToSubIdSetMap.KeySet()){
                         sectionWrapper resultWrapper = new sectionWrapper();
                         list<subSectionWrapper> subSectionWrapList = new list<subSectionWrapper>();
                         resultWrapper.contentHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
                         resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
-                if(headerIdToSubIdSetMap.get(headerId).isEmpty()){
-                    sectionWrapList.add(resultWrapper);
-                    continue;         //Refactored: Using guard clauses to avoid deep nesting
-                }
+                        if(!headerIdToSubIdSetMap.get(headerId).isEmpty()){
                             for(string subId : headerIdToSubIdSetMap.get(headerId)){
                                 subSectionWrapper subSecWrap = new subSectionWrapper();
                                 List<contentLineItemWrapper> contentWrapList = new List<contentLineItemWrapper>();
                                 subSecWrap.contentSubHeader = idToContentRecMap.get(subId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(subId).get(labelfieldAPIName) : '';
                                 subSecWrap.sortOrder = idToContentRecMap.get(subId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(subId).get(SORT_ORDER)) : 0;
                                 subSecWrap.style = (string)idToContentRecMap.get(subId).get('Core_MDF_Style_txt__c');
-                    if(subHeaderToContentMap != null && !subHeaderToContentMap.keySet().isEmpty() && subHeaderToContentMap.get(subId) != null){
+                                if(subHeaderToContentMap != null && !subHeaderToContentMap.keySet().isEmpty()){
                                     for(Core_MDF_Content_Configuration__c content: subHeaderToContentMap.get(subId)){
                                         contentLineItemWrapper contentWrap = new contentLineItemWrapper();
                                             contentWrap.contentLabel =content.get(labelfieldAPIName) != null ? (string)content.get(labelfieldAPIName) : '';
@@ -132,8 +125,12 @@ Description :   This Method is used to fetch content configuration records for r
                                 subSectionWrapList.add(subSecWrap);
                             }
                             resultWrapper.subSectionList = subSectionWrapList;
+                            
+                        }
                         
                         sectionWrapList.add(resultWrapper);
+                    }          
+                }
                 
                 
             }
@@ -157,7 +154,7 @@ Description :   This Method is used to fetch content configuration records for b
         Map<Id, Set<Id>> headerIdToSubIdSetMap = new Map<Id, Set<Id>>();     
         Map<string,List<Core_MDF_Content_Configuration__c>> subHeaderToContentMap = new Map<string,List<Core_MDF_Content_Configuration__c>>(); 
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper(); 
-
+        List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>(); 
         Map<Id, Core_MDF_Content_Configuration__c> idToContentRecMap = new Map<Id, Core_MDF_Content_Configuration__c>(); 
         List<tableRowHeaderWrapper> sectionWrapList = new List<tableRowHeaderWrapper>(); 
         
@@ -172,10 +169,9 @@ Description :   This Method is used to fetch content configuration records for b
             ContentResultWrap = Core_MDF_DynamicContentGenerator.getData(sectionCode,loggedinUserLang ); 
         }
         string labelfieldAPIName    =  ContentResultWrap.labelfieldAPIName;     //e.g lang->zh_CN , labelfieldAPIName = Core_MDF_Label_zh_CN_txt__c
+        
         try{
-            if(ContentResultWrap == null || ContentResultWrap.ContentConfigList == null || ContentResultWrap.ContentConfigList.isEmpty()){
-                return sectionWrapList;          //Refactored: Using guard clauses to avoid deep nesting
-            }
+            if(ContentResultWrap != null && ContentResultWrap.ContentConfigList != null && !ContentResultWrap.ContentConfigList.isEmpty()){  
                 for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
                     idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
                     if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
@@ -194,62 +190,65 @@ Description :   This Method is used to fetch content configuration records for b
                         headerIdToSubIdSetMap.get(headerId).add(subHeaderId);   //Key:Header Id (ParentId of subHeaderId) Value:set of subHeader Ids
                     }
                 }                
-            if(headerIdToSubIdSetMap.isEmpty()){
-                return sectionWrapList;         //Refactored: Using guard clauses to avoid deep nesting
-            }
+                if(!headerIdToSubIdSetMap.isEmpty()){
                     for(string headerId : headerIdToSubIdSetMap.KeySet()){
                         tableRowHeaderWrapper resultWrapper = new tableRowHeaderWrapper();
                         list<tableRowSectionWrapper> subSectionWrapList = new list<tableRowSectionWrapper>();
                         resultWrapper.rowHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
                         resultWrapper.rowSpan = idToContentRecMap.get(headerId).get(ROWSPAN) != null ?  Integer.valueOf(idToContentRecMap.get(headerId).get(ROWSPAN)) : 0;
                         resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
-
-                if(headerIdToSubIdSetMap.get(headerId).isEmpty()){
-                    sectionWrapList.add(resultWrapper);
-                    continue;                  //Refactored: Using guard clauses to avoid deep nesting
+                        if(!headerIdToSubIdSetMap.get(headerId).isEmpty()){
+                            for(string subId : headerIdToSubIdSetMap.get(headerId)){
+                                tableRowSectionWrapper subSecWrap = new tableRowSectionWrapper();
+                                subSecWrap.sortOrder = idToContentRecMap.get(subId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(subId).get(SORT_ORDER)) : 0;
+                                Map<integer,List<string>> colHeaderIdtoContentMap = new Map<integer,List<string>>();
+                                if(subHeaderToContentMap != null && !subHeaderToContentMap.keySet().isEmpty() && subHeaderToContentMap.get(subId)!= null){
+                                    for(Core_MDF_Content_Configuration__c content: subHeaderToContentMap.get(subId)){
+                                        list<string> contentLabelList = new List<string>(); 
+                                        string contentLabel =content.get(labelfieldAPIName) != null ? (string)content.get(labelfieldAPIName) : '';
+                                        if(string.isNotBlank(contentLabel)){
+                                            contentLabelList = contentLabel.split(';\\|');
+                                            
+                                        }          
+                                        if(contentLabelList.size() > 0) {
+                                            for(integer index=0;index<3;index++){
+                                                if(!colHeaderIdtoContentMap.containsKey(index)){//Sub Header
+                                                    colHeaderIdtoContentMap.put(index, new List<string>());
+                                                }
+                                                if(contentLabelList.size() > index){
+                                                    colHeaderIdtoContentMap.get(index).add(contentLabelList[index]);
+                                                }   
+                                                
+                                            }
+                                        }
+                                        
+                                    }
+                                    subSecWrap.firstColContentList = colHeaderIdtoContentMap.values()[0];
+                                    subSecWrap.secondColContentList = colHeaderIdtoContentMap.values()[1];
+                                    subSecWrap.thirdColContentList = colHeaderIdtoContentMap.values()[2];
+                                    
+                                    
+                                }
+                                subSectionWrapList.add(subSecWrap);
+                                
+                            }
+                            resultWrapper.tableSectionList = subSectionWrapList;
+                            
+                        }
+                        
+                        sectionWrapList.add(resultWrapper);
+                    }          
                 }
                 
-                for(string subId : headerIdToSubIdSetMap.get(headerId)){
-                    tableRowSectionWrapper subSecWrap = new tableRowSectionWrapper();
-                    subSecWrap.sortOrder = idToContentRecMap.get(subId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(subId).get(SORT_ORDER)) : 0;
-                    Map<integer,List<string>> colHeaderIdtoContentMap = new Map<integer,List<string>>();
-                    
-                    // Process content line items
-                    if(subHeaderToContentMap != null && !subHeaderToContentMap.keySet().isEmpty() && subHeaderToContentMap.get(subId) != null){
-                        for(Core_MDF_Content_Configuration__c content: subHeaderToContentMap.get(subId)){
-                            list<string> contentLabelList = new List<string>(); 
-                            string contentLabel =content.get(labelfieldAPIName) != null ? (string)content.get(labelfieldAPIName) : '';
-                            if(string.isNotBlank(contentLabel)){
-                                contentLabelList = contentLabel.split(';\\|');
-                            }          
-                            
-                            if(contentLabelList.size() > 0) {
-                                for(integer index=0;index<3;index++){
-                                    if(!colHeaderIdtoContentMap.containsKey(index)){//Sub Header
-                                        colHeaderIdtoContentMap.put(index, new List<string>());
-                                    }
-                                    if(contentLabelList.size() > index){
-                                        colHeaderIdtoContentMap.get(index).add(contentLabelList[index]);
-                                    }   
-                                }
-                            }
-                        }
-                        subSecWrap.firstColContentList = colHeaderIdtoContentMap.values()[0];
-                        subSecWrap.secondColContentList = colHeaderIdtoContentMap.values()[1];
-                        subSecWrap.thirdColContentList = colHeaderIdtoContentMap.values()[2];
-                    }
-                    subSectionWrapList.add(subSecWrap);
-                }
-                resultWrapper.tableSectionList = subSectionWrapList;
-                sectionWrapList.add(resultWrapper);
-            }          
+                
+            }
         }catch(Exception ex){
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
         return sectionWrapList;
     }
-    
-   
+
+       
     
     //Start - Wrappers for resources page//
     public class sectionWrapper{

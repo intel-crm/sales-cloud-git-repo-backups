@@ -177,10 +177,6 @@
         <name>Core_MDF_Reminder2_Subject__c</name>
     </fields>
     <fields>
-        <label><!-- Tactics --></label>
-        <name>Core_MDF_Tactics_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Thank You, --></label>
         <name>Core_MDF_Thank_You__c</name>
     </fields>

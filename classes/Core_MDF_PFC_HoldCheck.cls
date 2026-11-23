@@ -130,7 +130,7 @@ public without sharing class Core_MDF_PFC_HoldCheck{
     public static void checkESDHoldAndUpdateClaimStatusForUpdate(Set<ID> bankIDs,List<PartnerFundClaim> claimListToBeProcessed,Map<Id,PartnerFundClaim> inputClaimMap,Map<Id,PartnerFundClaim> oldClaimMap){
         List<String> claimPICStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimPICStatus').split(';');
         if(bankIDs !=null & bankIDs.size()>0){
-            bankIdTobankInstance = new Map<ID,Core_MDF_Bank__c>([SELECT ID,Core_MDF_Bank_Status__c,Core_MDF_Bank_Location__c,Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Hold_Payments_from_AP_file_ind__c,Core_MDF_Program__c,Core_MDF_VAT_pct__c,Core_MDF_Intel_Company_Code__c FROM Core_MDF_Bank__c WHERE ID IN:bankIDs]);
+            bankIdTobankInstance = new Map<ID,Core_MDF_Bank__c>([SELECT ID,Core_MDF_Bank_Status__c,Core_MDF_Bank_Location__c,Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Hold_Payments_from_AP_file_ind__c FROM Core_MDF_Bank__c WHERE ID IN:bankIDs]);
             List<PartnerFundClaim> claimsToBeReleased = new List<PartnerFundClaim>();
             if(claimListToBeProcessed!=null && claimListToBeProcessed.size()>0){
                 for(PartnerFundClaim pfc : claimListToBeProcessed){ 

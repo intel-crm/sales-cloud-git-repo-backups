@@ -162,7 +162,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         batchProcessing.Core_Batch_Size__c = batchSize;        
         batchProcessing.Core_Send_Email__c = true;                
         update batchProcessing;     
-        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage(); 
+        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage();        
         list<string> emailRecipientlist=new list<string>();
         for (Core_Uncover_Account_Batch_Recipient__c usEmail : Core_Uncover_Account_Batch_Recipient__c.getAll().values()){
              if(string.isnotblank(usEmail.Core_Recipient_Email1__c)){
@@ -175,10 +175,6 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         email.setSubject(subject);
         email.setToAddresses(emailRecipientlist);
         email.setPlainTextBody('The batch Apex job processed '+ a.TotalJobItems +' batches with '+ a.NumberOfErrors +' failures and extended tatus : '+a.ExtendedStatus );
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
         Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});      
     }
     /***********************************************************************************************/

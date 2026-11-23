@@ -4,7 +4,7 @@
     <label>Marketplace API</label>
     <oauthConfig>
         <callbackUrl>https://intel.lightning.force.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6v0lpllEpk2iipPUt.gzYHQWBWiJmFUxI8WQerhlun_arZayBUj0VejsBaOs</consumerKey>
+        <consumerKey>3MVG9WCdh6PFin0jN5Df21kRJKugG4NrbvOv1OBoZoZUZ4OI2xMDlkG..cjuAyCtPNBrzvookRTMs3SH4UuMm</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>

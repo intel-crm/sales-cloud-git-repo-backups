@@ -197,7 +197,6 @@ public with sharing class PMP_ParseCategoryJSON {
             try{
                 Schema.SObjectField upsertKey = PMP_Category__c.Fields.PMP_Partner_Product_Category_Key__c;//fetch the category ExternalKey
                 categoryUpsertResultData = Database.upsert(uploadableCategories,upsertKey,false);//upsert the categories
-                PMP_Utility.logDmlErrors((Object[]) categoryUpsertResultData, 'PMP_ParseCategoryJSON-parseCategoryJSON');
             }
             catch(Exception exp){
                 //System.debug(PMP_StaticConstants_MasterData.Core_PMP_ParseCategoryJSON_Exception_Message + exp.getMessage());
@@ -206,5 +205,5 @@ public with sharing class PMP_ParseCategoryJSON {
             
         }
         return categoryUpsertResultData;//return upsert results data
-    }
+    }              
 }

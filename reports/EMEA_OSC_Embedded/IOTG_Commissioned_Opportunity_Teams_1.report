@@ -1,32 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_70902047</developerName>
-        <masterLabel>Commissioned</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>MEMBER_ROLE</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Team Member (100%)</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Technical Owner (100%)</sourceValue>
-            </sourceValues>
-            <value>commissioned</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Contributor (50%)</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Viewer (0%)</sourceValue>
-            </sourceValues>
-            <value>not commissioned</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -60,9 +33,6 @@
     </columns>
     <columns>
         <field>MEMBER_ROLE</field>
-    </columns>
-    <columns>
-        <field>BucketField_70902047</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

@@ -9,6 +9,13 @@
     <columns>
         <field>Product2$Core_Product_Family__c</field>
     </columns>
+    <columns>
+        <field>Product2.price_forward_costs__r$core_cpq_forward_cost_period_name_nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Product2.price_forward_costs__r$price_forward_cost_amt__c</field>
+    </columns>
     <filter>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>

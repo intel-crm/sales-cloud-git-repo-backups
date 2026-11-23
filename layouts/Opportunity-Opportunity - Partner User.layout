@@ -104,10 +104,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Loss_Cancel_Details__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Design_Type__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>

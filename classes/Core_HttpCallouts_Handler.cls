@@ -2,84 +2,6 @@ public without sharing class Core_HttpCallouts_Handler {
     private static final String UPDATE_REASON_AGS_SYNC = 'Azure Sync'; 
     //private static final String UPDATE_REASON_AZURE_SYNC = 'Azure Sync';
     
-    // Utility helpers to reduce cognitive complexity and nested IFs
-    private static Boolean isInProgressOrPending(String status){
-        return status == 'In Progress' || status == 'Pending';
-    }
-    private static Boolean isCompleteOrBlank(String status){
-        return status == 'Complete' || String.isBlank(status);
-    }
-    private static String getEntitlementRoleTechName(Core_Contact_Entitlement__c conEntRef){
-        try{
-            return conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c;
-        }catch(Exception e){
-            return null;
-        }
-    }
-    // Build the update record based on selection/status/AGS presence. Returns null if no update required.
-    private static Core_Contact_Entitlement__c buildUpdateForSelectionState(Core_Contact_Entitlement__c conEntRef, Set<String> stAGSRoles){
-        String roleTechName = getEntitlementRoleTechName(conEntRef);
-        if(roleTechName == null) return null;
-        
-        Core_Contact_Entitlement__c updateConEntRef = new Core_Contact_Entitlement__c(id = conEntRef.Id);
-        Boolean selected = conEntRef.Core_Selected__c;
-        String status = conEntRef.Core_Status__c;
-        Boolean rolePresent = stAGSRoles.contains(roleTechName);
-        
-        // Flatten logic using guard clauses and explicit branches
-        if(selected){
-            // Case: selected & In Progress/Pending & rolePresent => Complete, Successful Assignment
-            if(isInProgressOrPending(status) && rolePresent){
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';
-                return updateConEntRef;
-            }
-            // Case: selected & Complete/Blank & role absent => deselect, Failed Assignment
-            if(isCompleteOrBlank(status) && !rolePresent){
-                updateConEntRef.Core_Selected__c = false;
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                return updateConEntRef;
-            }
-            // Case: selected & In Progress/Pending & role absent => Complete + deselect + Failed Assignment
-            if(isInProgressOrPending(status) && !rolePresent){
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Selected__c = false;
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                return updateConEntRef;
-            }
-        } else {
-            // Not selected cases
-            // Case: not selected & In Progress/Pending & role absent => Complete, Successful Removal
-            if(isInProgressOrPending(status) && !rolePresent){
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Successful Removal';
-                return updateConEntRef;
-            }
-            // Case: not selected & Complete/Blank & role present => select + Complete + Failed Removal
-            if(isCompleteOrBlank(status) && rolePresent){
-                updateConEntRef.Core_Selected__c = true;
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Removal';
-                return updateConEntRef;
-            }
-            // Case: not selected & In Progress/Pending & role present => Complete + select + Failed Removal
-            if(isInProgressOrPending(status) && rolePresent){
-                updateConEntRef.Core_Status__c = 'Complete';
-                updateConEntRef.Core_Selected__c = true;
-                updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
-                updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Removal';
-                return updateConEntRef;
-            }
-        }
-        return null;
-    }
-    
     // Pass in the endpoint to be used using the string url
     public static String getUpdatedAGSStatus(Contact conRef) {
         String strAzureResponse = '';
@@ -146,19 +68,56 @@ public without sharing class Core_HttpCallouts_Handler {
         if(!stAGSRoles.isEmpty()){ //Process further if we have received AGS role AND/OR Azure Group response 
             for(Core_Contact_Entitlement__c conEntRef : lstConEnt){
                 if(conEntRef.Core_Entitlement_Id__r.Entitlement_B2B_B2C_Indicator__c == 'B2C'){
-                    Core_Contact_Entitlement__c updateConEntRef = buildUpdateForSelectionState(conEntRef, stAGSRoles);
-                    if(updateConEntRef != null){
+                    Core_Contact_Entitlement__c updateConEntRef = new Core_Contact_Entitlement__c(id = conEntRef.id);
+                    if((conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'In Progress' || conEntRef.Core_Status__c == 'Pending') && stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){ 
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';
                         lstToUpdate.add(updateConEntRef);
+                        
+                    } else if((conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'Complete' || String.isBlank(conEntRef.Core_Status__c)) && !stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){
+                        updateConEntRef.Core_Selected__c = false;
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
+                        lstToUpdate.add(updateConEntRef);
+                        
+                    } else if((conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'In Progress' || conEntRef.Core_Status__c == 'Pending') && !stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){ 
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Selected__c = false;
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
+                        lstToUpdate.add(updateConEntRef);
+                    } else if(!(conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'In Progress' || conEntRef.Core_Status__c == 'Pending') && !stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Successful Removal';
+                        lstToUpdate.add(updateConEntRef); 
+                            
+                    } else if(!(conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'Complete' || String.isBlank(conEntRef.Core_Status__c)) && stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){
+                        updateConEntRef.Core_Selected__c = true;
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Removal';
+                        lstToUpdate.add(updateConEntRef); 
+                    } else if(!(conEntRef.Core_Selected__c) && (conEntRef.Core_Status__c == 'In Progress' || conEntRef.Core_Status__c == 'Pending') && stAGSRoles.contains(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c)){
+                        updateConEntRef.Core_Status__c = 'Complete';
+                        updateConEntRef.Core_Selected__c = true;
+                        updateConEntRef.Core_Update_Reason__c = UPDATE_REASON_AGS_SYNC;
+                        updateConEntRef.Core_Status_of_Assignment_Failure__c = 'Failed Removal';
+                        lstToUpdate.add(updateConEntRef); 
                     }
+
                     //To use when inserting 'core contact entitlement' that exist in AGS and record not exist under contact
-                    mapAGSConEntId.put(getEntitlementRoleTechName(conEntRef),conEntRef.id);
+                    mapAGSConEntId.put(conEntRef.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c,conEntRef.id);
+                    //mapidConEnt.put(conEntRef.id,conEntRef);
                     
                     // Mark B2B Indicator on Contact to TRUE if B2B Entitlements are updated to TRUE - Complete
-                    if(updateConEntRef != null && updateConEntRef.Core_Status__c == 'Complete' && updateConEntRef.Core_Selected__c == true && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r != null && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c == 'B2B'){
+                    If(updateConEntRef.Core_Status__c != null && updateConEntRef.Core_Status__c == 'Complete' && updateConEntRef.Core_Selected__c && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r != null && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c == 'B2B'){
                         B2BContact = true;
                     }
                     // Mark B2B Indicator on Contact to TRUE if B2B Entitlements are not updated via AGS Sync, but are already TRUE - Complete
-                    if(updateConEntRef == null && conEntRef.Core_Status__c == 'Complete' && conEntRef.Core_Selected__c && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r != null && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c == 'B2B'){
+                    If(updateConEntRef.Core_Status__c == null && conEntRef.Core_Status__c == 'Complete' && conEntRef.Core_Selected__c && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r != null && conEntRef.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c == 'B2B'){
                         B2BContact = true;
                     }
                 }

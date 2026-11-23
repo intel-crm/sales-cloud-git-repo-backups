@@ -2,10 +2,8 @@
 public class CRM_EMB_AI_Integration_Outbound_Test {
      @TestSetup
     static void setupTestData() {
-    
-    Id newBriefRecordTypeId = Schema.SObjectType.Executive_Meeting_Brief__c.getRecordTypeInfosByDeveloperName().get('CRM_New_Executive_Meeting_Brief').getRecordTypeId();
         // Create test Account
-     Account testAccount = new Account();
+ 		Account testAccount = new Account();
         testAccount.name = 'TestAccount';
         testAccount.BillingCountryCode = 'USA';
         testAccount.BIllingStateCode = 'AL';
@@ -122,27 +120,6 @@ public class CRM_EMB_AI_Integration_Outbound_Test {
             CRM_AI_Generated__c= true
         );
         insert bgTalkingPoint1;
-         // Create Executive Meeting Brief record
-       /* Executive_Meeting_Brief__c testEMB1 = new Executive_Meeting_Brief__c(
-            Core_Executive_Meeting_Brief_Name__c = 'Test Executive Meeting Brief 2',
-            Account__c = testAccount.Id,
-            CRM_Brief_Reviewer__c = testUser2.Id,
-            CRM_Intels_Meeting_Objectives__c = 'Test Intel Objectives <img src="test.jpg"> with image',
-            CRM_Most_Critical_Messages_to_Get_Across__c = 'Critical Messages; Second Message; Third Message',
-            CRM_Other_Partys_Meeting_Objectives__c = 'Other Party Objectives',
-            Industry_Insights_Political_Climate__c = 'Political Climate Info',
-            How_They_Buy_Sell__c = 'Buy/Sell Information',
-            CRM_Investor_Scouting_Report__c = 'Investor Report',
-            CRM_Additional_Legal_Guidance__c = 'Legal Guidance',
-            CRM_Attendee_Bio_s__c = 'Attendee Bios',
-            CRM_Dress_Code__c = 'Business Casual',
-            CRM_Scheduled_Start_Time_txt__c = '01/01/2026 6:00',
-            Brief_Status__c='Final',
-            CRM_Rating__c='Test',
-            RecordTypeId=newBriefRecordTypeId,
-            CRM_Scheduled_End_Time_txt__c = '01/01/2026 7:00'
-        );
-        insert testEMB1;*/
         
         // Create existing ContentVersion for attachment testing
         ContentVersion existingCV = new ContentVersion(
@@ -198,15 +175,12 @@ public class CRM_EMB_AI_Integration_Outbound_Test {
         
         // Verify success flow
         Executive_Meeting_Brief__c updatedBrief = [SELECT CRM_Agentic_Drafting_Status__c FROM Executive_Meeting_Brief__c LIMIT 1];
-        updatedBrief.CRM_Agentic_Drafting_Status__c='In Progress';
-        update updatedBrief;
         System.assertEquals('In Progress', updatedBrief.CRM_Agentic_Drafting_Status__c);
         
-        /*List<Core_CDB_Integration_Log__c> logs = [SELECT Core_Log_Status_Nm__c FROM Core_CDB_Integration_Log__c];
-        System.assertEquals('Successful', logs[0].Core_Log_Status_Nm__c);*/
+        List<Core_CDB_Integration_Log__c> logs = [SELECT Core_Log_Status_Nm__c FROM Core_CDB_Integration_Log__c];
+        System.assertEquals('Successful', logs[0].Core_Log_Status_Nm__c);
         
         CRM_EMB_AI_Integration_Outbound.updateExecutiveBriefStatus(briefIds);
-        CRM_EMB_AI_Integration_Outbound.deleteExistingRecords(briefIds);
     }
 
     @isTest
@@ -220,8 +194,8 @@ public class CRM_EMB_AI_Integration_Outbound_Test {
         Test.stopTest();
         
         // Verify failure flow
-        /*List<Core_CDB_Integration_Log__c> logs = [SELECT Core_Log_Status_Nm__c FROM Core_CDB_Integration_Log__c];
-        System.assertEquals('Failed', logs[0].Core_Log_Status_Nm__c);*/
+        List<Core_CDB_Integration_Log__c> logs = [SELECT Core_Log_Status_Nm__c FROM Core_CDB_Integration_Log__c];
+        System.assertEquals('Failed', logs[0].Core_Log_Status_Nm__c);
     }
     
     @isTest
@@ -330,7 +304,7 @@ public static void testCreateLogEntriesWithLongData() {
         
         // Test the main callout method
         Map<String, String> testMap = new Map<String, String>();
-    testMap.put(briefIds[0], '{"test": "payload"}');
+		testMap.put(briefIds[0], '{"test": "payload"}');
         
         CRM_EMB_AI_Integration_Outbound.makeCDBCallout(testMap);
         

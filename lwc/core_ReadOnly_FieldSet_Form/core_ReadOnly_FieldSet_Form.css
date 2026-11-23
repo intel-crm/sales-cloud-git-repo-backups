@@ -66,22 +66,3 @@ details > summary {
   top: calc(8% + 3em);
   font-weight: bold;
 }
-.quantity-link {
-  color: #0176d3;
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.quantity-link:hover {
-  color: #014486;
-  text-decoration: none;
-  border-bottom: 1px solid #0176d3;
-}
-
-.quantity-link:focus {
-  outline: 2px solid #0176d3;
-  outline-offset: 2px;
-  border-radius: 2px;
-}

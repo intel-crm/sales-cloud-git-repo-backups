@@ -7,6 +7,7 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
         deleteDupsOnOPIDGrpMem(accountIds);
         deleteDupsOnAccConRltnship(accountIds);
         deleteDupsOnProfileResponse(accountIds);
+        deleteAccountComplainceWatchList(accountIds);
         deleteDuplicateCpe(accountIds);
     }
     //To delete the AccountLegalAgreemntAssociation duplicate records during account merge 
@@ -27,14 +28,14 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     string Key = String.valueOf(legalAggmt.PRM_Account_Id__c)+'_'+(legalAggmt.PRM_Partner_Agreement_Id__c!=null ? String.valueOf(legalAggmt.PRM_Partner_Agreement_Id__r.name) : '');
                     if (accountLegalAggmtList.contains(Key)) {
                         deletionAccountLegalAggmtList.add(legalAggmt);
+                        
                     } else {
                         accountLegalAggmtList.add(Key);
                     }
                 }
                 if(!deletionAccountLegalAggmtList.isEmpty()) {
-                    if (PRM_AccountLegalAgreemntAssociation__c.sObjectType.getDescribe().isDeletable()){
-                        delete deletionAccountLegalAggmtList;
-                    }
+                    delete deletionAccountLegalAggmtList;
+                    
                 }
             }
             
@@ -68,9 +69,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionAccountBnftAsstnList.isEmpty()) {
-                    if (PRM_AccountBenefitAssociation__c.sObjectType.getDescribe().isDeletable()){
                         delete deletionAccountBnftAsstnList;
-                    }
+                    
                     
                 }
             }
@@ -106,9 +106,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionAccountSplAsstnList.isEmpty()) {
-                    if(PRM_Account_Specialty_Association__c.sObjectType.getDescribe().isDeletable()){
                         delete deletionAccountSplAsstnList;
-                    }
+                    
                     
                 }
             }
@@ -143,9 +142,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionOpidGrpMemList.isEmpty()) {
-                    if (Core_Account_Group_Member__c.sObjectType.getDescribe().isDeletable()){
                         delete deletionOpidGrpMemList;
-                    }
+                    
                 }
             }
             
@@ -179,9 +177,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionAccConRltnshipList.isEmpty()) {
-                    if (PRM_Account_Contact_Relationship__c.sObjectType.getDescribe().isDeletable()){
                         delete deletionAccConRltnshipList;
-                    }
+                    
                 }
             }
             
@@ -213,9 +210,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionProfRespList.isEmpty()) {
-                    if (PRM_Profile_Responses__c.sObjectType.getDescribe().isDeletable()){
                         delete deletionProfRespList;
-                    }
+                    
                 }
             }
             
@@ -238,9 +234,10 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
         List<String> accChnlMemList = new List<String>();
             
         acmList = [select id, PRM_Account_Id__c, PRM_Partner_Role__c, PRM_Tier_Name_txt__c,PRM_Status_Nm__c 
-                                                         from PRM_AccountChannelMembership__c where PRM_Account_Id__c =:accountIds
-                                                         order by PRM_Status_Nm__c,CreatedDate
-                                                         ];
+                                                            from PRM_AccountChannelMembership__c where PRM_Account_Id__c =:accountIds
+                                                            order by PRM_Status_Nm__c,CreatedDate
+                                                            ];
+        
         try{
             if(!acmList.isEmpty()) {
                 for(PRM_AccountChannelMembership__c acm : acmList) {
@@ -264,9 +261,8 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                     }
                 }
                 if(!deletionAccountChnlMemList.isEmpty()) {
-                    if (PRM_AccountChannelMembership__c.sObjectType.getDescribe().isDeletable()){
-                    delete deletionAccountChnlMemList;
-                    }
+                        delete deletionAccountChnlMemList;
+                    
                 }
             }
         }catch (Exception ex) {
@@ -297,7 +293,7 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
                         }    
                     }
                 }
-                if(duplAccCpeList.size() >0 && Account_Business_Types__c.sObjectType.getDescribe().isDeletable()){
+                if(duplAccCpeList.size() >0){
                     delete duplAccCpeList;
                 }
             }
@@ -307,4 +303,38 @@ public without sharing class ACM_DeleteDupsOnAccountMergeHandler {
         }
 
     }
-}
+    public static void deleteAccountComplainceWatchList(Set<String> accountIds) {
+        List<Core_Account_Compliance_Watch_List__c> deletionAccountCompWatchLst = new List<Core_Account_Compliance_Watch_List__c>();
+       List<Core_Account_Compliance_Watch_List__c> deletionAccList = new List<Core_Account_Compliance_Watch_List__c> ();  
+        List<string> complaianceWatchListKey = new List<string>();
+        if (Schema.sObjectType.Core_Account_Compliance_Watch_List__c.fields.Core_Account_Id__c.isAccessible() &&
+            Schema.sObjectType.Core_Account_Compliance_Watch_List__c.fields.Core_Type__c .isAccessible()){
+            deletionAccList = [select id,Core_Account_Id__c,Core_Type__c,
+                                                        CreatedDate,Core_Account_Id__r.Core_Business_Party_Id__c
+                                                        from Core_Account_Compliance_Watch_List__c where Core_Account_Id__c =: accountIds
+                                                        order by LastModifiedDate ASC];
+        }
+        try {
+            Map<Id,Set<String>> acctCWLMap = new Map<Id,Set<String>>();
+            for(Core_Account_Compliance_Watch_List__c cwl : deletionAccList){
+                if(acctCWLMap.get(cwl.Core_Account_Id__c) == null || !acctCWLMap.get(cwl.Core_Account_Id__c).contains(cwl.Core_Type__c)){
+                    if(acctCWLMap.get(cwl.Core_Account_Id__c) == null){
+                        acctCWLMap.put(cwl.Core_Account_Id__c,new Set<String>{cwl.Core_Type__c});
+                    }else{
+                        acctCWLMap.get(cwl.Core_Account_Id__c).add(cwl.Core_Type__c);
+                    }
+                }else{
+                    deletionAccountCompWatchLst.add(cwl);
+                }
+            }
+            // for(Core_Account_Compliance_Watch_List__c cwl : deletionAccountCompWatchLst){
+            //     UCD_ACM_AccountDeactivationService.setCWLDeleteDate(cwl.Id, cwl.Core_Account_Id__r.Core_Business_Party_Id__c);
+            // }
+            if(deletionAccountCompWatchLst.size()>0){
+                delete deletionAccountCompWatchLst;
+            }
+        } catch (Exception ex) {
+            UCD_ACM_Logger.error('ACM_DeleteDupsOnAccountMergeHandler','deleteAccountComplainceWatchList','Message: ' + ex.getStackTraceString(),NULL);
+        }
+    }
+    }

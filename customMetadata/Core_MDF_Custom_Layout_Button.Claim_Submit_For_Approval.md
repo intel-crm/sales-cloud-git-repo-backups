@@ -15,10 +15,6 @@
         <value xsi:type="xsd:string">Update a Record</value>
     </values>
     <values>
-        <field>Core_MDF_Filter_Criteria_Field__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Proposal_Based_Ind__c == false AND Core_MDF_OutcomeBased_Ind__c == true AND Core_MDF_Has_Sub_Claims_Ind__c == true AND Core_MDF_Bank_Doc_Hold_Ind__c == True</value>
-    </values>
-    <values>
         <field>Core_MDF_Object_API_Name_nm__c</field>
         <value xsi:type="xsd:string">PartnerFundClaim</value>
     </values>

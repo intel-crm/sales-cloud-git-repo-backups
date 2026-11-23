@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 07-29-2026
+* @last modified on  : 03-25-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHandler  {
@@ -148,6 +148,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
                 update qtmTobeUpdated;
             }  
             Set<Id> quoteIdsToBeUpdated = new Set<Id>();
+            List<SBQQ__Quote__c> quoteToBeUpdated = new List<SBQQ__Quote__c>();
             Map<Id,SBQQ__Quote__c> quotesTobeUpdatedMap = new Map<Id,SBQQ__Quote__c>();
             for(Pricing_Quote_Team__c qtmUpdated : qtmTobeUpdated){
                 if(!quoteIdsToBeUpdated.contains(qtmUpdated.Pricing_Quote_Id__c)){
@@ -241,6 +242,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
                     quoteIdUserIdMap.put(qtm.Pricing_Quote_Id__c, new List<Id>{qtm.Pricing_Quote_Team_Member_Id__c});
                 }               
             }  
+            //system.debug('quoteIdUserIdMap==>'+quoteIdUserIdMap);
             if(qtm.Pricing_Role_Nm__c == Label.Pricing_Quote_Team_Role_Account_Executive){
                 aeDeletedQuotes.add(qtm.Pricing_Quote_Id__c);
                 if(qtm.Pricing_Quote_Team_Member_Id__r.Email.equalsIgnoreCase(qtm.Pricing_Quote_Id__r.Pricing_Intel_Account_Exec_Email_Txt__c) || qtm.Pricing_Quote_Id__r.Pricing_Intel_Account_Exec_Email_Txt__c == null){
@@ -374,14 +376,8 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
                 qtmIds.add(qtm.Id);
             }
             if(qtmIds.size()>0){
-                if(!System.isFuture() && !System.isBatch()){
-                    Pricing_EmailUtility.sendEmail(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template,true);
-                }
-                else{
-                    // Avoid calling @future sendEmail() when already executing in an async context (Batch/Future)
-                    Pricing_EmailUtility.sendEmailInAsyncContext(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template,true);
-                }   
-            }    
+                Pricing_EmailUtility.sendEmail(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template,true);
+            }     
         }
     }
     
@@ -390,6 +386,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
         Set<Id> quoteIds = new Set<Id>();      
         set<Id> quoteLineId = new set<ID>();          
         
+        List<ProcessInstanceWorkitem> processInsWork = new List<ProcessInstanceWorkitem>();
         if(quoteTeam.size() > 0){           
             for(Pricing_Quote_Team__c qtm : quoteTeam){
                 quoteIds.add(qtm.Pricing_Quote_Id__c);

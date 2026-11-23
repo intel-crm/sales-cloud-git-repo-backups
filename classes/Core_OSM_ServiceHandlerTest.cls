@@ -18,32 +18,6 @@ public class Core_OSM_ServiceHandlerTest {
             us1.ProfileId = pro.Id;
             us1.LanguageLocaleKey = 'en_US';
             INSERT us1;
-        User us2 = new User();
-        us2.FirstName = 'test12';
-        us2.LastName = 'user2';
-        us2.Email = 'testuser12@intel.com';
-        us2.Username = 'testinguser12@inteltest.com';
-        us2.Alias = 'testu12';
-        us2.CommunityNickname = 'test.userqwert12';
-        us2.TimeZoneSidKey = 'America/Los_Angeles';
-        us2.LocaleSidKey = 'en_US';
-        us2.EmailEncodingKey = 'UTF-8';
-        us2.ProfileId = pro.Id;
-        us2.LanguageLocaleKey = 'en_US';
-        INSERT us2;
-            /*System.runAs (us1) {
-    PermissionSetAssignment psa = new PermissionSetAssignment (PermissionSetId = '0PSDf000001B1dZOAS', AssigneeId = us1.Id);
-    insert psa;
-    }*/
-        Core_Trigger_Executions__c triggerExecution = new Core_Trigger_Executions__c(
-            Name = 'checkDuplicateOSM',
-            Core_Class_Name__c = 'Core_OpptySupportMappingTriggerHandler',
-            Core_Description__c = 'test',
-            Core_Object__c = 'Core_Opportunity_Support_Mapping__c',
-            Core_Trigger_Events__c = 'before insert, before Update',
-            Core_Active__c = true
-        );
-        insert triggerExecution;
         Map<string,List<Core_Opportunity_Support_Mapping__c>> keyForOSM_CSA = new Map<String,List<Core_Opportunity_Support_Mapping__c>>();
 		 Map<string,List<Core_Opportunity_Support_Mapping__c>>  keyForOSM_TSS = new Map<string,List<Core_Opportunity_Support_Mapping__c>> ();
         Map<string,List<Core_Opportunity_Support_Mapping__c>>  keyForOSM_COE = new Map<string,List<Core_Opportunity_Support_Mapping__c>> ();
@@ -57,7 +31,7 @@ public class Core_OSM_ServiceHandlerTest {
         	 Core_Opportunity_Support_Mapping__c oppmapping2 = new Core_Opportunity_Support_Mapping__c();
             oppmapping2.Geo_Region__c='APJ';
             oppmapping2.Core_OSM_Record_Type__c='CSA';
-        oppmapping2.User__c=us2.id;
+            oppmapping2.User__c=us1.id;
             oppmapping2.Core_Opportunity_Support_Is_Active__c=true;
             oppmappingLst.add(oppmapping2);
         Core_Opportunity_Support_Mapping__c oppmapping3 = new Core_Opportunity_Support_Mapping__c();
@@ -74,7 +48,7 @@ public class Core_OSM_ServiceHandlerTest {
             oppmapping6.Core_OSM_Record_Type__c='TSS';
         	oppmapping6.Geo_Region__c='APJ';
         	oppmapping6.Core_BU__c ='DCAI TSS Support';
-        oppmapping6.User__c=us2.id;
+            oppmapping6.User__c=us1.id;
             oppmapping6.Core_Opportunity_Support_Is_Active__c=true;
         	oppmappingLst.add(oppmapping6);
               Core_Opportunity_Support_Mapping__c oppmapping4 = new Core_Opportunity_Support_Mapping__c();
@@ -88,13 +62,11 @@ public class Core_OSM_ServiceHandlerTest {
            
             oppmapping5.Core_OSM_Record_Type__c='COE';
         	oppmapping5.Core_Opp_Center_of_Excellence__c ='Education';
-        oppmapping5.User__c=us2.id;
-        oppmapping5.Core_Opportunity_Support_Is_Active__c=false;
+            oppmapping5.User__c=us1.id;
+            oppmapping5.Core_Opportunity_Support_Is_Active__c=true;
             oppmappingLst.add(oppmapping5);
         
         	insert oppmappingLst;
-        oppmapping5.Core_Opportunity_Support_Is_Active__c=false;
-        update oppmapping5;
 			for(Core_Opportunity_Support_Mapping__c rec :oppmappingLst)
             {
                 if (rec.Core_OSM_Record_Type__c == 'CSA'){

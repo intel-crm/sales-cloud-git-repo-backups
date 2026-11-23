@@ -7,7 +7,7 @@
 * -----------------------------------------------------------------------------------------------------
 *******************************************************************************************************/
 public without sharing class Core_MDF_ClaimActivityHelper {
-
+    
     //Global - Map of RequestId as key and List of corresponding claims as values
     private static Map<ID,List<PartnerFundClaim>> mapOfReqIdToClaims = new Map<ID,List<PartnerFundClaim>>();
     //Global - Map of RequestId as key and List of corresponding request object as value
@@ -135,7 +135,7 @@ Modified By:        Date:       Changes:
             existingClaimsList = [Select RequestId,request.Core_MDF_Budget_Type_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Escalation_Id__r.Core_MDF_Claim_Submitter_Id__c,Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Id__c,Core_MDF_Escalation_Id__r.RecordTypeId,OwnerId,Core_MDF_owner_swapped_withsubmitter_ind__c,Core_MDF_Claim_Submitter_Id__c from PartnerFundClaim where RequestId IN:setRequestIds];
         }
         //fetching list of activity based on request ids and creating Map of request ID as key and activity as value
-        existingRequests = new Map<Id,PartnerFundRequest>([Select Id,Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Fund_Request_Status__c,CampaignId from PartnerFundRequest where Id IN:setRequestIds]);
+        existingRequests = new Map<Id,PartnerFundRequest>([Select Id,Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Fund_Request_Status__c,CampaignId from PartnerFundRequest where Id IN:setRequestIds]);     
         for(ID reqId : setRequestIds){         
             for(PartnerFundClaim claim : existingClaimsList){
                 
@@ -248,7 +248,7 @@ Sarah Intel
                             pfrIdToPfrRecordMapForUpdate.put(pfr.Id, new PartnerFundRequest(Id = pfr.Id, Core_MDF_Fund_Request_Status__c = InProgressStatus));
                         }
                     }else{
-                        if(pfr.Status == Label.Core_MDF_PFR_Status_Draft_IPA && (cmpBudgetTypes != null && cmpBudgetTypes.contains(pfr.Core_MDF_Budget_Type_nm__c))){                       
+            if(pfr.Status == Label.Core_MDF_PFR_Status_Draft_IPA && (cmpBudgetTypes != null && cmpBudgetTypes.contains(pfr.Core_MDF_Budget_Type_nm__c))){                       
                             pfrIdToPfrRecordMapForUpdate.put(pfr.Id,new PartnerFundRequest(Id = pfr.Id,Status=approvedStatus));
                         }
                     }
@@ -334,7 +334,9 @@ Sarah Intel
         if(pfrIdToPfrRecordMapForUpdate.size() > 0) {
             try {
                 Database.update(pfrIdToPfrRecordMapForUpdate.values(), true);
-            } catch(Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
+            } catch(Exception ex) {
+                Core_MDF_CCP_UtilityClass.logError(ex);
+            }
         }
         
     }
@@ -532,7 +534,7 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
         Map<Id,Id> pfrIdAllocationIdMap = new Map<Id,Id>();
         String pftIdAll;
         //Assign all record type meta data
-        Map<String,Core_MDF_ObjRecType_Budget_FieldSetMap__mdt> recTypeMetaDataMap = Core_MDF_Claim_Utility.mapOfRecTypeMetadata; //TWC3117-18333
+        Map<String,Core_MDF_ClaimActAllocRecTypeMapping__mdt> recTypeMetaDataMap = Core_MDF_Claim_Utility.mapOfRecTypeMetadata;
         if(pMBIdPFRsMap != null && pMBIdPFRsMap.size() > 0){
             for(PartnerFundAllocation pfa : [SELECT Id, BudgetId, ChannelPartnerId
                                              FROM PartnerFundAllocation
@@ -581,7 +583,11 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                             if(allocationRecTypeDevName!=null){
                                 Id pfaRecordTypeId= allocationRecordTypeMap.get(allocationRecTypeDevName).getRecordTypeId();
                                 budgetIdAccountIdPFAMap.put(budgetIdAccountIdStr, 
-                                                            new PartnerFundAllocation(Title = pFRIdPMBMap.get(pfrId).Title,Amount = 0,BudgetId = pFRIdPMBMap.get(pfrId).Id,ChannelPartnerId = pfrRecord.ChannelPartnerId,RecordTypeId = pfaRecordTypeId));
+                                                            new PartnerFundAllocation(Title = pFRIdPMBMap.get(pfrId).Title,
+                                                                                      Amount = 0,
+                                                                                      BudgetId = pFRIdPMBMap.get(pfrId).Id,
+                                                                                      ChannelPartnerId = pfrRecord.ChannelPartnerId,
+                                                                                      RecordTypeId = pfaRecordTypeId));
                             }
                         }
                     }
@@ -596,7 +602,9 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                 for(String budgetIdAccountIdStr : budgetIdAccountIdPFAMap.keySet()){
                     for(PartnerFundRequest pfrRecord : budgetIdAccountIdPFRListMap.get(budgetIdAccountIdStr)){
                         if(pfrRecord.Core_MDF_Fund_Request_Status__c != closedStatus){
-                            pfrMapToBeUpdated.put(pfrRecord.Id,new PartnerFundRequest(Id = pfrRecord.Id,AllocationId = budgetIdAccountIdPFAMap.get(budgetIdAccountIdStr).Id,Status = approvedStatus,Core_MDF_Fund_Request_Status__c=InProgressStatus));
+                            pfrMapToBeUpdated.put(pfrRecord.Id,new PartnerFundRequest(Id = pfrRecord.Id, 
+                                                                                      AllocationId = budgetIdAccountIdPFAMap.get(budgetIdAccountIdStr).Id,
+                                                                                      Status = approvedStatus,Core_MDF_Fund_Request_Status__c=InProgressStatus));
                         }
                         else
                         {
@@ -637,23 +645,20 @@ Modified By:        Date:    19-07-2021   Changes:
         Map<Id, Core_MDF_Escalation__c> escalationMap;
         if(!escalationIdSet.isEmpty()){
             //Query on escalation to get the context of the escalation fields such as claim submitter field and escalation type field.
-            escalationMap = new Map<Id, Core_MDF_Escalation__c>([SELECT ID, Core_MDF_Claim_Submitter_Id__c, Core_MDF_Escalation_Type_nm__c, Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c FROM Core_MDF_Escalation__c WHERE ID IN: escalationIdSet]);
+            escalationMap = new Map<Id, Core_MDF_Escalation__c>([SELECT ID, Core_MDF_Claim_Submitter_Id__c, Core_MDF_Escalation_Type_nm__c FROM Core_MDF_Escalation__c WHERE ID IN: escalationIdSet]);
+            
         }
         
         for(PartnerFundClaim claimObj: claimsToBeProcessed){
-            if (claimObj.Core_MDF_Escalation_Id__c != null && escalationMap != null && escalationMap.containsKey(claimObj.Core_MDF_Escalation_Id__c) &&
-                escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c == 'Sub Activity'){                
-                    claimObj.addError('Unable to create late claim. The selected escalation is invalid. Please select a valid escalation and try again.');
-                    continue;
-                }
-            if(UserInfo.getUserType() == 'PowerPartner') {
+           if(UserInfo.getUserType() == 'PowerPartner') {
                 claimObj.Core_MDF_Claim_Submitter_Id__c = NULL;
             }
             else{
                 //Claim Owner assignment
                 //Based on US843424: added check for Case Type of Escalation and checkbox true
                 if(claimObj.Core_MDF_Escalation_Id__c != NULL && escalationMap!= NULL && escalationMap.containsKey(claimObj.Core_MDF_Escalation_Id__c) &&
-                   escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c != NULL && escalationTypeList.contains(escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Escalation_Type_nm__c)){
+                   escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c != NULL &&
+                   escalationTypeList.contains(escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Escalation_Type_nm__c)){
                        claimObj.OwnerId = escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c;
                    }                   
                 else if(claimObj.Core_MDF_Escalation_Id__c == NULL 

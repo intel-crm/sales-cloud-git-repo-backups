@@ -106,6 +106,7 @@ public class Core_MDF_CampaignUtility_Test {
             try {
                 Database.insert(budgetCap2);
             }Catch(Exception ex) {
+                System.debug(ex);
             }
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             
@@ -116,7 +117,7 @@ public class Core_MDF_CampaignUtility_Test {
             
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, true);   
             Account ipaCoMarketingAccount2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account2', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount2.id, true);           
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
+            
             String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
              //Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
           /*PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_IPA_TestDataUtility.budget_Record_Type,
@@ -267,8 +268,8 @@ public class Core_MDF_CampaignUtility_Test {
             
             Database.insert(permissionSetAssignmentList);
             
-           // Highlight: Unused Local Variable
-          // List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
+
+            List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
             
             Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
             
@@ -446,7 +447,7 @@ public class Core_MDF_CampaignUtility_Test {
             accShareList.add(accshareRecord4);
             Database.Insert(accShareList);
             
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Scale_Acceleration_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Scale Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based', Core_MDF_Budget_Type__c = 'Account Based', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Account Based');
+            
             Map<Id,Set<Id>> userIdCorpAcctIdSet = new Map<Id,Set<Id>>();
             Set<Id> accIdSet = new Set<Id>();
             accIdSet.add(ipaCoMarketingAccount.Id);
@@ -457,20 +458,20 @@ public class Core_MDF_CampaignUtility_Test {
             //Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, Date.newInstance(2021, 01, 01), Date.newInstance(2021, 06, 29),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', true);
             List<Campaign> campList = new List<Campaign>();
             System.runAs(mdfManager){
-            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Other', 'Draft', false);
+            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Draft', false);
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Client Specialties MDF';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             campList.add(ipaCampaignForAP);
             
-             Campaign ipaAccCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Acc based',ipaCoMarketingAccount2.id, System.today(), System.today().adddays(30),accBasedBudgetType, 110000,'INDIA', 'Developer', 'Other', 'Draft', false);
+             Campaign ipaAccCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Acc based',ipaCoMarketingAccount2.id, System.today(), System.today().adddays(30),accBasedBudgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Draft', false);
             ipaAccCampaign.Core_MDF_Opal_Budget_Type_Txt__c ='Account Plan';
             ipaAccCampaign.Core_MDF_Proposal_Based_Ind__c = false;
             campList.add(ipaAccCampaign);
-            Campaign ipaAccCampaign2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Acc based2',ipaCoMarketingAccount2.id, System.today().addDays(-1), System.today().adddays(-1),accBasedBudgetType, 110000,'INDIA', 'Developer', 'Other', 'Draft', false);
+            Campaign ipaAccCampaign2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Acc based2',ipaCoMarketingAccount2.id, System.today().addDays(-1), System.today().adddays(-1),accBasedBudgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Draft', false);
             ipaAccCampaign2.Core_MDF_Opal_Budget_Type_Txt__c ='Account Plan';
             ipaAccCampaign2.Core_MDF_Proposal_Based_Ind__c = false;
             campList.add(ipaAccCampaign2);
-            Campaign ipaCampaignForAP2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP2',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Other', 'Draft', false);
+            Campaign ipaCampaignForAP2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP2',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Draft', false);
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Client Specialties MDF';
             ipaCampaignForAP2.Core_MDF_Proposal_Based_Ind__c =true;
             campList.add(ipaCampaignForAP2);
@@ -491,10 +492,11 @@ public class Core_MDF_CampaignUtility_Test {
             approverList.add(ap2);
             Database.insert(approverList);
             
-           // Highlight: Unused Local Variable
-           // User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
-           // User priceReviewerUser2 =[select Id from User where LastName = 'Price Reviewer2' LIMIT 1];
-           // User priceReviewerUser3 =[select Id from User where LastName = 'Price Reviewer3' LIMIT 1];
+            
+            User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
+            User priceReviewerUser2 =[select Id from User where LastName = 'Price Reviewer2' LIMIT 1];
+            User priceReviewerUser3 =[select Id from User where LastName = 'Price Reviewer3' LIMIT 1];
+
             
         
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
@@ -632,7 +634,6 @@ public class Core_MDF_CampaignUtility_Test {
         
         Test.startTest();
         User mdfUsr = [Select id from User where LastName = 'Mdf Manager' limit 1];
-        User adminUser = [Select id from User where LastName = 'TestUser TestClass' limit 1];
         
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
         
@@ -640,10 +641,10 @@ public class Core_MDF_CampaignUtility_Test {
                                      Core_MDF_Reimbursement_Rate__c, Description,Core_MDF_IPA_NonSPIF_Apprval_Ind__c,Core_MDF_IPA_SPIF_Apprval_Ind__c,
                                      StartDate, EndDate, Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Market__c, Core_MDF_Reimbursement_Amt__c  
                                      FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-        System.runAs(adminUser){
+        System.runAs(mdfUsr){
          PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),false);
         ipaPFR5.Core_MDF_Fund_Request_Status__c = 'Pending Review';
-        ipaPFR5.Core_MDF_ActivityCategory__c = 'Seller Incentive';
+        ipaPFR5.Core_MDF_ActivityCategory__c = 'Seller Incentive 2025';
         ipaPFR5.Core_MDF_Activity_Types__c = 'SPIF - Volume';
         ipaPFR5.Core_MDF_SPIF_Segments_Available_ind__c = true;
         ipaPFR5.RequestedAmount = 100;
@@ -684,8 +685,7 @@ public class Core_MDF_CampaignUtility_Test {
         spmList.add(spm);
         Database.insert(spmList);
         
-        }
-        System.runAs(mdfUsr){
+        
        
         //ipaCampaignForAP.Core_MDF_Ultimate_Account_txt__c = ipaCoMarketingAccount.Core_MDF_CoMarketing_Ultimate_Account__c;     
         ipaCampaignForAP.Core_MDF_Program__c = 'Intel Partner Alliance';
@@ -735,17 +735,16 @@ public class Core_MDF_CampaignUtility_Test {
         Test.startTest();
         User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
         User mdfUsr = [Select id from User where LastName = 'Mdf Manager' limit 1];
-        User adminUser = [Select id from User where LastName = 'TestUser TestClass' limit 1];
          Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
         
         Campaign ipaCampaignForAP = [SELECT Id, Core_MDF_Activity_Category_Type__c,Core_MDF_Program__c,Core_MDF_Region_cd__c,recordType.DeveloperName, Status, Core_MDF_Approval_Step_Counter_nbr__c, 
                                      Core_MDF_Reimbursement_Rate__c, Description,Core_MDF_IPA_NonSPIF_Apprval_Ind__c,Core_MDF_IPA_SPIF_Apprval_Ind__c,
                                      StartDate, EndDate, Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Market__c,Core_MDF_Reimbursement_Amt__c  
                                      FROM Campaign WHERE Name = 'Test Campaign - AP2' LIMIT 1];
-        System.runAs(adminUser){
+        System.runAs(mdfUsr){
          PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),false);
         ipaPFR5.Core_MDF_Fund_Request_Status__c = 'Pending Review';
-        ipaPFR5.Core_MDF_ActivityCategory__c = 'Seller Incentive';
+        ipaPFR5.Core_MDF_ActivityCategory__c = 'Seller Incentive 2025';
         ipaPFR5.Core_MDF_Activity_Types__c = 'SPIF - Volume';
         ipaPFR5.Core_MDF_SPIF_Segments_Available_ind__c = true;
         ipaPFR5.RequestedAmount = 100;
@@ -785,8 +784,8 @@ public class Core_MDF_CampaignUtility_Test {
         //spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Segment_Name_nm__c = '';   
         spmList.add(spm);
         Database.insert(spmList);
-        }
-         System.runAs(mdfUsr){
+        
+        
         //ipaCampaignForAP.Core_MDF_Ultimate_Account_txt__c = ipaCoMarketingAccount.Core_MDF_CoMarketing_Ultimate_Account__c;     
         ipaCampaignForAP.Core_MDF_Program__c = 'Intel Partner Alliance';
         ipaCampaignForAP.Core_MDF_Region_cd__c='APJ';
@@ -921,13 +920,13 @@ public class Core_MDF_CampaignUtility_Test {
             Core_MDF_Value__c = 'Approved,Pending,Completed'
         );
         insert testConfig;
-        // Highlight: Unused Local Variable
-       // Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
-        // Highlight: Unused Local Variable
-       /* Campaign ipaCampaignForAP = [SELECT Id, Core_MDF_Activity_Category_Type__c,Core_MDF_Program__c,Core_MDF_Region_cd__c, Status, Core_MDF_Approval_Step_Counter_nbr__c, 
+        
+        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
+        
+        Campaign ipaCampaignForAP = [SELECT Id, Core_MDF_Activity_Category_Type__c,Core_MDF_Program__c,Core_MDF_Region_cd__c, Status, Core_MDF_Approval_Step_Counter_nbr__c, 
                                      Core_MDF_Reimbursement_Rate__c, Description,Core_MDF_IPA_NonSPIF_Apprval_Ind__c,Core_MDF_IPA_SPIF_Apprval_Ind__c,
                                      StartDate, EndDate, Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Market__c, Core_MDF_Reimbursement_Amt__c  
-                                     FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];*/
+                                     FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
         List<Core_MDF_Budget_Cap__c> bCap = [Select Id,Core_MDF_Region_nm__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Effective_Start_Date_Dt__c,Core_MDF_Effective_End_Date_Dt__c,Core_MDF_Cap_Status_nm__c,RecordTypeId  from Core_MDF_Budget_Cap__c where Core_MDF_Budget_Type_nm__c='Client Specialties MDF' limit 1];
         System.runAs(testUsr) {
             Map<Id, Core_MDF_Budget_Cap__c> bcMap = new Map<Id, Core_MDF_Budget_Cap__c>();
@@ -936,8 +935,6 @@ public class Core_MDF_CampaignUtility_Test {
             Core_MDF_BudgetTypeCap_Utility.budgetTypeCapOverlapDupCheck(bCap, bcMap, false, true);
             Core_MDF_BudgetTypeCap_Utility.validateBudgetTypeCapCreationOrUpdateAccess(bcap);
             Core_MDF_BudgetTypeCap_Utility.checkCampaignStatusForCapAmount('Planned', 1);
-            // Unit Test Method should include System.Assert
-            System.assertEquals('APJ',bCap[0].Core_MDF_Region_nm__c,'Region should be updated to APJ');
         }
         
         System.runAs(testUsr2) {

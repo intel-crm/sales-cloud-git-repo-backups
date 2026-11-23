@@ -16,8 +16,7 @@ public class Core_MDF_ClaimActivityHelper_Test {
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         Profile adminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
-        // Highlight: Unused Local Variable 
-      //  PermissionSet clmCaseRevPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Claim_Case_Reviewer' LIMIT 1];
+        PermissionSet clmCaseRevPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Claim_Case_Reviewer' LIMIT 1];
         List<User> userList= new List<User>();
         
         // Creating User with utility class
@@ -223,8 +222,7 @@ budgetList.add(testBudgetCCF1);*/
         budgetIPA.Core_MDF_Budget_Type_Txt__c='Data Centric Acceleration - MDF';
             budgetList.add(budgetIPA);
             database.insert(budgetList);  
-            // Highlight: Unused Local Variable 
-           // PartnerFundAllocation pfaIPA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('allocation',budgetIPA,ipaCoMarketingAccount, 100000,true);
+            PartnerFundAllocation pfaIPA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('allocation',budgetIPA,ipaCoMarketingAccount, 100000,true);
             // Creating campaigns using utility class
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 'CMP Only',
                                                                         Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
@@ -333,9 +331,7 @@ budgetList.add(testBudgetCCF1);*/
             insert abm1;
             Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accDCF.Id,dcfBank.Id,false);
             insert abm2;
-            // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abm3 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(ipaCoMarketingAccount.Id,ipaBank.Id,true);
-           
+            Core_MDF_Account_Bank_Mapping__c abm3 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(ipaCoMarketingAccount.Id,ipaBank.Id,true);
             // Creating Activity with budget using utility class
             /*   PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequestwithCP(string.valueof(camp.Id),
 Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
@@ -350,7 +346,7 @@ NULL,NULL,'ALBANIA','Consumer',
                                                                                                                     string.valueof(accCCF.id),
                                                                                                                     NULL,NULL,'ALBANIA','Consumer',
                                                                                                                     'Desktop','Intel® Corporate Logo',
-                                                                                                                    'Event','Third Party Event',
+                                                                                                                    'Event','Channel Partner Owned Event',
                                                                                                                     'Draft',false);
             
             testPartnerFundRequestRecord.RequestedAmount=10;
@@ -378,7 +374,7 @@ NULL,NULL,'ALBANIA','Reseller',
                                                                                                                      string.valueof(accDCF.id),
                                                                                                                      dcfAlloc,NULL,'ALBANIA','Reseller',
                                                                                                                      'Server','Intel® Xeon® Platinum Processor',
-                                                                                                                     'Event','Third Party Event',
+                                                                                                                     'Event','Channel Partner Owned Event',
                                                                                                                      'Draft',false);
             
             testPartnerFundRequestRecord1.Title = 'dcfLegacyActivity';
@@ -403,7 +399,6 @@ NULL,NULL,'ALBANIA','Reseller',
             indiaActivity4.Core_MDF_Reimbursement_Rate_txt__c  = '100%';
             indiaActivity4.RequestedAmount =1000;
             indiaActivity4.Amount=1000;
-            indiaActivity4.Core_MDF_Activity_Types__c='Collateral';
             indiaActivity4.Core_MDF_Product_Category_txt__c ='Desktop';
             indiaActivity4.Core_MDF_Budget_Type_nm__c = 'RSA MD';
             indiaActivity4.AllocationId = retailAlloc.Id;
@@ -418,7 +413,6 @@ NULL,NULL,'ALBANIA','Reseller',
             indiaActivity5.Core_MDF_Reimbursement_Rate_txt__c  = '100%';
             indiaActivity5.RequestedAmount =1000;
             indiaActivity5.Amount=1000;
-            indiaActivity5.Core_MDF_Activity_Types__c='Collateral';
             indiaActivity5.Core_MDF_Product_Category_txt__c ='Desktop';
             indiaActivity5.Core_MDF_Budget_Type_nm__c = 'RSA MD';
             indiaActivity5.Status = 'Approved';
@@ -440,7 +434,7 @@ NULL,NULL,'ALBANIA','Consumer',
                                                                                                                     string.valueof(accOpal.id),
                                                                                                                     NULL,NULL,'ALBANIA','Consumer',
                                                                                                                     'Desktop','Intel® Corporate Logo',
-                                                                                                                    'Event','Third Party Event',
+                                                                                                                    'Event','Channel Partner Owned Event',
                                                                                                                     'Draft',false);
             
             opalPartnerFundRequestRecord.RequestedAmount=100;
@@ -494,8 +488,7 @@ NULL,NULL,'ALBANIA','Consumer',
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser){
             Test.starttest();
-            // Highlight: Unused Local Variable
-           // Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
+            Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
             Account acc1 = [SELECT Id,Name FROM Account WHERE Name='Test Account 1' LIMIT 1];
             Account accCCF = [SELECT Id, Name
                               FROM Account
@@ -509,8 +502,7 @@ NULL,NULL,'ALBANIA','Consumer',
                                                                                         ChannelPartnerId = accCCF.Id, 
                                                                                         Amount = 10);
             
-            // Highlight: Unused Local Variable 
-           // String ccfPfrID =  Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
+            String ccfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
             //PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c FROM PartnerFundRequest WHERE RecordTypeId=:ccfPfrID and Core_MDF_Fund_Request_Status__c = 'Planned'  LIMIT 1];
             PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Program__c FROM PartnerFundRequest WHERE Core_MDF_Budget_Type_nm__c='OEM CMP'  LIMIT 1];
             //PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c FROM PartnerFundRequest WHERE Title=''  LIMIT 1];
@@ -518,8 +510,7 @@ NULL,NULL,'ALBANIA','Consumer',
             
             
             //creating ABM for bank1
-            // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
             
             
             PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
@@ -531,8 +522,7 @@ NULL,NULL,'ALBANIA','Consumer',
             indiaClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             insert indiaClaim;
             Test.stoptest();
-            // Unit Test Method should include System.Assert 
-            System.assertEquals('USD', indiaClaim.Core_MDF_Currency__c, 'Claim currency should be USD');
+            
         }  
     }
     
@@ -588,8 +578,7 @@ NULL,NULL,'ALBANIA','Consumer',
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser){
             Test.starttest();
-            // Highlight: Unused Local Variable 
-          //  Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
+            Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
             Account acc1 = [SELECT Id,Name FROM Account WHERE Name='Test Account 1' LIMIT 1];
             Account accOpal = [SELECT Id, Name
                                FROM Account
@@ -604,15 +593,13 @@ NULL,NULL,'ALBANIA','Consumer',
                                                                                         ChannelPartnerId = accOpal.Id, 
                                                                                         Amount = 10);
             
-            // Highlight: Unused Local Variable 
-          //  String ccfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
+            String ccfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
             PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Program__c FROM PartnerFundRequest WHERE Core_MDF_Budget_Type_nm__c='OEM CMP'  LIMIT 1];
             Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
             
             //creating ABM for bank1
-           // Highlight: Unused Local Variable
-          //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accOpal.Id,indiaBank.Id,true);
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accOpal.Id,indiaBank.Id,true);
             
             
             PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
@@ -625,8 +612,7 @@ NULL,NULL,'ALBANIA','Consumer',
             indiaClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             insert indiaClaim;
             Test.stoptest();
-            // Unit Test Method should include System.Assert
-           System.assertNotEquals(null, accOpal.Id, 'Opal Account should exist');  
+            
         }
     }
     
@@ -651,8 +637,7 @@ NULL,NULL,'ALBANIA','Consumer',
             
             //User usr = [select id from user where LastName='Claim Case User'];
             User usrClaimSub = [select id from user where email='claimSub@example.com'];
-           // Highlight: Unused Local Variable 
-          //  Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
+            Campaign camp = [SELECT ID FROM CAMPAIGN WHERE Name='TestCamp' LIMIT 1];
             //Creating PFA using testData Utility
             PartnerMarketingBudget pmb = [SELECT Id
                                           FROM PartnerMarketingBudget
@@ -672,19 +657,16 @@ NULL,NULL,'ALBANIA','Consumer',
             
             
             //insert testPartnerFundAllocation;
-            // Highlight: Unused Local Variable 
-           // String ccfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
+            String ccfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF;  
             //PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c FROM PartnerFundRequest WHERE RecordTypeId=:ccfPfrID and Core_MDF_Fund_Request_Status__c = 'Planned'  LIMIT 1];
             PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Program__c FROM PartnerFundRequest WHERE Core_MDF_Budget_Type_nm__c='OEM CMP'  LIMIT 1];
             Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
             
             //creating ABM for bank1
-          // Highlight: Unused Local Variable 
-          //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
-            // Highlight: Unused Local Variable 
-          //  Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
-          
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
+            
+            Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
             /*    Core_MDF_Escalation__c esc = new Core_MDF_Escalation__c();
 esc.Core_MDF_Escalation_Status_nm__c='Approved';
 esc.Core_MDF_Escalation_Name_txt__c='Test1';
@@ -733,15 +715,14 @@ Database.insert(esc); */
             'Bypass_Claims_Sharing_Partner_Users','Bypass_Claims_Sharing_On_Owner_Change'}, true, true);
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerFundRequest retailActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity4' limit 1];
-        // Highlight: Unused Local Variable
-       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
             
             PartnerFundClaim rmfMdfClaim = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim( Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, retailActivity.Id, retailActivity.Core_MDF_Start_Date__c, retailActivity.Core_MDF_Start_Date__c, 50.00, false);
             rmfMdfClaim.Title = 'RMF MDF Claim';
             rmfMdfClaim.Core_MDF_Type_Txt__c ='Claim';
             rmfMdfClaim.Core_MDF_Currency__c='USD';
-            rmfMdfClaim.Core_MDF_Country_Location_nm__c= 'UNITED KINGDOM'; 
+            rmfMdfClaim.Core_MDF_Country_Location_nm__c= 'RUSSIAN FEDERATION'; 
             rmfMdfClaim.Core_MDF_Quarter_Year_Txt__c = 'Q1-2021';
             rmfMdfClaim.Core_MDF_Region_cd__c='EMEA';
             rmfMdfClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
@@ -777,7 +758,6 @@ Database.insert(esc); */
             //Creating PFA using testData Utility
             Set<Id> campSet = new Set<Id>();
             campSet.add(campDcf.Id);
-            
             PartnerMarketingBudget pmb = [SELECT Id,Core_MDF_Budget_Type_Txt__c
                                           FROM PartnerMarketingBudget
                                           WHERE Title = 'TestBudgetDataDCF'
@@ -786,14 +766,13 @@ Database.insert(esc); */
             Account accDCF = [SELECT Id, Name
                               FROM Account
                               WHERE Name = 'Co-marketing Test Account DCF'];
-            // Highlight: Unused Local Variable 
-           // String dcfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_DCF;
+            
+            String dcfPfrID = Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_DCF;
             
             Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Data_Center_CoMarketing_Fund', true,'1231231230');
             
             //creating ABM for bank1
-            // Highlight: Unused Local Variable 
-          //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accDCF.Id,indiaBank.Id,true);
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accDCF.Id,indiaBank.Id,true);
             
             Test.startTest();
             
@@ -806,7 +785,7 @@ Database.insert(esc); */
                                                                                                                            string.valueof(accDCF.id),
                                                                                                                            NULL,NULL,'ALBANIA','Reseller',
                                                                                                                            'Server','Intel® Xeon® Platinum Processor',
-                                                                                                                           'Event','Third Party Event',
+                                                                                                                           'Event','Channel Partner Owned Event',
                                                                                                                            'Draft',false,true,
                                                                                                                            'Others','Test Other cpDCF');
             testPartnerFundRequestRecord1.RequestedAmount=10000;
@@ -823,7 +802,7 @@ Database.insert(esc); */
                                                                                                                            string.valueof(accDCF.id),
                                                                                                                            NULL,NULL,'ALBANIA','Reseller',
                                                                                                                            'Server','Intel® Xeon® Platinum Processor',
-                                                                                                                           'Event','Third Party Event',
+                                                                                                                           'Event','Channel Partner Owned Event',
                                                                                                                            'Draft',false,true,
                                                                                                                            'Others','Test Other cpDCF');
             testPartnerFundRequestRecord3.RequestedAmount=10000;
@@ -837,7 +816,7 @@ Database.insert(esc); */
                                                                                                                            string.valueof(accDCF.id),
                                                                                                                            NULL,NULL,'ALBANIA','Reseller',
                                                                                                                            'Server','Intel® Xeon® Platinum Processor',
-                                                                                                                           'Event','Third Party Event',
+                                                                                                                           'Event','Channel Partner Owned Event',
                                                                                                                            'Draft',false,true,
                                                                                                                            'Others','Test Other cpDCF');
             testPartnerFundRequestRecord2.RequestedAmount=10000;
@@ -1169,17 +1148,16 @@ Test.stopTest();
                 //database.update(pfr);
                 List<Campaign> campToBeUpdated = new List<Campaign>();
                 campToBeUpdated.add(camp);
-                // Highlight: Unused Local Variable 
-               // List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
-                // Highlight: Unused Local Variable 
-               // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+                List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+                
+                Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
                 
                 
                 
                 PartnerMarketingBudget pmb = [Select id,Title, Description, Core_MDF_Budget_Status__c, StartDate, EndDate, Amount, Core_MDF_Budget_Type_Txt__c,
                                               Core_MDF_Budget_Partner__c,Core_MDF_Program__c, RecordTypeId, IsIgnoreValidation From PartnerMarketingBudget where Id = :camp.Core_MDF_Budget__c];
-                // Highlight: Unused Local Variable 
-              //  PartnerFundAllocation pfa = [Select Id, ChannelPartnerId, Amount from PartnerFundAllocation where BudgetId = :pmb.Id];
+                
+                PartnerFundAllocation pfa = [Select Id, ChannelPartnerId, Amount from PartnerFundAllocation where BudgetId = :pmb.Id];
                 
                 Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
                 
@@ -1196,7 +1174,7 @@ Test.stopTest();
                 List<String> documentIdWithTitle = new List<String>();
                 list<String> tempString = new list<String>();
                 list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-                Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList, null, null, false, null, false, null, false);
+                Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null,null,null,false);
                 String str1 = claim1.Id+';#'+'Test Doc1';
                 String str2 = claim1.Id+';#'+'Test Doc2';
                 
@@ -1222,7 +1200,7 @@ Test.stopTest();
                 }
                 
                 Core_MDF_PartnerFundClaim.ClaimWrap iPAClaimRes = new Core_MDF_PartnerFundClaim.ClaimWrap();
-                iPAClaimRes = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList, null, null, false, null, false, null, false); 
+                iPAClaimRes = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null,null,null,false); 
                 //String iPAClaimRes = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);
                 
                 //System.assertEquals(claim1.ID,iPAClaimRes.claimDetail.Id);
@@ -1343,7 +1321,7 @@ Test.stopTest();
         ipaClaim1.Amount = 300;
         ipaClaim1.Core_MDF_Currency__c = 'USD';
         ipaClaim1.Core_MDF_Audit_Hold__c = true;
-        ipaClaim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';        
+        ipaClaim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         insert ipaClaim1;
     
         Core_MDF_ClaimActivityHelper.processActivityOnClaims(new List<PartnerFundClaim>{ipaClaim,ipaClaim1});               

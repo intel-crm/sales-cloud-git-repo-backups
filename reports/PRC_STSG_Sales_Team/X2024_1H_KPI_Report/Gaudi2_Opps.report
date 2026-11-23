@@ -25,10 +25,16 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -57,7 +63,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Arc™</value>
+            <value>gaudi</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
@@ -79,7 +85,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ARC Opps</name>
+    <name>Gaudi2 Opps</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -105,6 +111,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

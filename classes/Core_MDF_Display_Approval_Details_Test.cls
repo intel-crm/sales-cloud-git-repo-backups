@@ -20,7 +20,7 @@ public class Core_MDF_Display_Approval_Details_Test {
         accList.add(accRecord);
         
         // Creating channel program with utility class
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
         // Creating Intel Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         acc1.Core_MDF_CoMarketingActive__c = true;
@@ -37,9 +37,11 @@ public class Core_MDF_Display_Approval_Details_Test {
         insert acc;
         
         // Creating campaigns using utility class
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today().addDays(-25) , System.today().addYears(+1), 2000, 'Unite', acc.Id,'2-in-1', true);
+        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','CMP Only', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today().addDays(-25) , System.today().addYears(+1), 2000, 'Unite', acc.Id,'2-in-1', false);
+        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+        insert camp;
         Test.startTest();
-
+        List<PartnerFundRequest> testPartnerFundRequestRecordList = new List<PartnerFundRequest>();
         //adding bypass feature to bypass access validation
             List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
@@ -51,8 +53,8 @@ public class Core_MDF_Display_Approval_Details_Test {
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-
-           List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
                     
         PartnerMarketingBudget testBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData',Core_MDF_CCP_TestDataUtility.budget_Record_Type, acc.id, cp.Id , 100000000 , System.today() - 25 , System.today() + 45 , false);
@@ -77,8 +79,6 @@ public class Core_MDF_Display_Approval_Details_Test {
         testPartnerFundRequestObj.budgetid=testBudget.Id;
         testPartnerFundRequestObj.allocationid=allocation.Id;
         testPartnerFundRequestObj.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        testPartnerFundRequestObj.Core_MDF_ActivityCategory__c='';//14285 //Suma
-        testPartnerFundRequestObj.Core_MDF_Activity_Types__c='';//14285 //Suma
         insert(testPartnerFundRequestObj);
         }
     }
@@ -90,7 +90,7 @@ public class Core_MDF_Display_Approval_Details_Test {
         Core_MDF_Display_Approval_Details.getApprovalDetails(pfr.id);
         
         Core_MDF_Display_Approval_Details.InputData inputData =  new Core_MDF_Display_Approval_Details.InputData();
-        inputData.Program = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
+        inputData.Program = 'Client Co-Marketing Fund';
         inputData.BudgetType = 'CCF 1.0';
         inputData.Status = 'Pending Review';
         inputData.SPIFCheck = false;

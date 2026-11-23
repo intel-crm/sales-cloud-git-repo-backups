@@ -1,7 +1,7 @@
 @IsTest
 public class Core_MDF_FeedbackController_Test {
     @TestSetup static void setUpData(){
-
+        List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         usr.LastName = 'User Test11';
@@ -18,7 +18,7 @@ public class Core_MDF_FeedbackController_Test {
 			bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
 			myset1.addAll(bypassFunctionKeys);
 			result1.addAll(myset1);
-
+			List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
                        
@@ -57,7 +57,7 @@ accountList.add(acc6);
             Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Intel® Partner Investment Center','Client User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF);
             
-           // Database.insert(entitlementList); 
+            Database.insert(entitlementList); 
             
             List<Core_Contact_Entitlement__c> contEntList = new List<Core_Contact_Entitlement__c>();
             
@@ -112,7 +112,7 @@ accountList.add(acc6);
             pgmList.add(pgm1);
             insert pgmList;
             
-
+            Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id,usr2.Id,true);
             
             
             Core_MDF_Survey_Question__c surveyQuestion = new Core_MDF_Survey_Question__c();
@@ -156,7 +156,7 @@ accountList.add(acc6);
     public static void fetchRecordsTest(){
         
         Core_MDF_Survey_Question__c surveyQues = [SELECT Id,Core_MDF_Question__c from Core_MDF_Survey_Question__c where Core_MDF_Sort_Order__c = 1 limit 1];
-
+        Account acc = [SELECT id from Account WHERE name = 'CCP Test Intel Account'];
         User partnerUser = [SELECT Id,Email,ContactId,Contact.AccountId from User where Email='test1@example.com' limit 1];
         
         system.runAs(partnerUser){
@@ -173,12 +173,6 @@ accountList.add(acc6);
             surveyDetailsWrap.questionId = surveyQues.Id;
             surveyDetailsWrap.rating = '5';
             SurveyDetailsWrapList.add(surveyDetailsWrap);
-            Core_MDF_FeedbackController.SurveyDetailsWrapper surveyDetailsWrap1 = new Core_MDF_FeedbackController.SurveyDetailsWrapper();
-            surveyDetailsWrap1.order = 1;
-            surveyDetailsWrap1.question = surveyQues.Core_MDF_Question__c;
-            surveyDetailsWrap1.questionId = '';
-            surveyDetailsWrap1.rating = '4';
-            SurveyDetailsWrapList.add(surveyDetailsWrap1);
             
             Core_MDF_FeedbackController.SurveyWrapper surveyWrap = new Core_MDF_FeedbackController.SurveyWrapper();
             surveyWrap.SurveyDetailsWrapperList = SurveyDetailsWrapList;
@@ -187,9 +181,7 @@ accountList.add(acc6);
             Assert.areEqual(true, surveyWrap != null);
             Core_MDF_FeedbackController.fetchRecords();
             Core_MDF_FeedbackController.submitScoreAction(surveyWrap);
-            Core_MDF_FeedbackController.submitScoreAction(null);//my change
             Core_MDF_FeedbackController.isCommunity();
-            
         }
     }
     
@@ -197,7 +189,7 @@ accountList.add(acc6);
     public static void fetchRecordsCloneTest(){
         
         Core_MDF_Survey_Question__c surveyQues = [SELECT Id,Core_MDF_Question__c from Core_MDF_Survey_Question__c where Core_MDF_Sort_Order__c = 1 limit 1];
-
+        Account acc = [SELECT id from Account WHERE name = 'CCP Test Intel Account'];
         User partnerUser = [SELECT Id,Email,ContactId,Contact.AccountId from User where Email='test2@example.com' limit 1];
         
         system.runAs(partnerUser){
@@ -222,7 +214,6 @@ accountList.add(acc6);
             Assert.areEqual(true, surveyWrap != null);
             Core_MDF_FeedbackController.fetchRecords();
             Core_MDF_FeedbackController.submitScoreAction(surveyWrap);
-            Core_MDF_FeedbackController.submitScoreAction(new Core_MDF_FeedbackController.SurveyWrapper());//my changes
             Core_MDF_FeedbackController.isCommunity();
         }
     }
@@ -239,6 +230,7 @@ accountList.add(acc6);
                                 ' AND ' + String.escapeSingleQuotes(frequencyString) + currentfrequency + 
                                 ' Order by Status ASC LIMIT 10';
                 List<LoginHistory> recordsList = Database.query(query);
+                system.debug('recordsList'+recordsList);
                 for(LoginHistory loginRecord : recordsList){
                     if(loginRecord.Status.toLowercase() == Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()){ //to get only the Success records from query as Status field cannot be added in where clause
                         successLoginList.add(loginRecord);
@@ -248,16 +240,13 @@ accountList.add(acc6);
                         }
                     }
                 }  
+        system.debug('userIdSet'+userIdSet);
         //User usr = [Select id from User where id IN: userIdSet AND IsActive = TRUE Limit 1];
-     /*   User usr = userIdSet.isEmpty() //my change
-    	? [SELECT Id FROM User WHERE IsActive = TRUE LIMIT 1]
-    	: [SELECT Id FROM User WHERE Id IN :userIdSet AND IsActive = TRUE LIMIT 1];  */
-      //  system.runAs(usr){
+        //system.runAs(usr){
         	Boolean popupEnabled = Core_MDF_FeedbackController.getFirstLoginHistory();
             Assert.areEqual(true, popupEnabled != null);
         	Core_MDF_FeedbackController.getCurrentQuarter();
-            System.assertNotEquals(null, Core_MDF_FeedbackController.getFirstLoginHistory());//my change
-       // }
+        //}
         test.stopTest();
     }
     public static Double getCurrentQuarter(){

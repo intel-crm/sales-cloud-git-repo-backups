@@ -1,21 +1,6 @@
 ({
 
   doInit: function (component, event, helper) {
-    // NEW: Check AI approval access and store in separate attribute
-    var recordId = component.get("v.recordId");
-    var action = component.get("c.hasAIApprovalAccess");
-    action.setParams({
-        "recordId": recordId
-    });
-    action.setCallback(this, function(response) {
-        if (response.getState() === "SUCCESS") {
-            var hasEmailAccess = response.getReturnValue();
-            component.set("v.hasEmailWhitelistAccess", hasEmailAccess);
-        } else {
-            component.set("v.hasEmailWhitelistAccess", false);
-        }
-    });
-    $A.enqueueAction(action);  
    	helper.loadApprovalFlowAction(component, event, helper);
   },
   
@@ -72,48 +57,14 @@
             component.set('v.showApprovalCommentSection', true);
             component.set('v.isSaveDisable', true);}
  },
-
-  // UPDATED: Handle AI decision click to show detailed popup
-  handleAIDecisionClick: function(component, event, helper) {
-      // Show the popup with existing AI data
-      if (component.get("v.aiSuggestionText")) {
-          component.set("v.showSmartAssistPopup", true);
-      } else {
-          // If somehow AI data is not available, show loading and fetch
-          component.set("v.isLoadingAISuggestion", true);
-          component.set("v.showSmartAssistPopup", true);
-          
-          var recordId = component.get("v.recordId");
-          helper.callAISuggestionService(component, recordId);
-      }
-  },
-
-    // Close Smart Assist Popup
-    closeSmartAssistPopup: function(component, event, helper) {
-        component.set("v.showSmartAssistPopup", false);
-        // Don't clear AI data as we want to keep it for the disclaimer
-    },
   // Function called on click of Cancel or "X" on the layout 
     closeModal: function(component, event, helper) {
-        var recordId = component.get("v.recordId");
-        var communityUrl = component.get("v.externalUser");
-        var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
-        var outcomebaseActivity= component.get("v.isOutcomebaseActivity");
-        if(outcomebaseActivity){
-            var communityUrl = component.get("v.externalUser");
-            var recordId= component.get("v.recordId");
-            var url = communityUrl
-            ? communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId
-            : '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
-            window.location.href = url;
-        }else{
-            var navEvt = $A.get("e.force:navigateToSObject");
-            navEvt.setParams({
-                "recordId": component.get("v.recordId"),
-                "slideDevName": "detail"
-            });
-            navEvt.fire();
-        }
+        var navEvt = $A.get("e.force:navigateToSObject");
+        navEvt.setParams({
+            "recordId": component.get("v.recordId"),
+            "slideDevName": "detail"
+        });
+        navEvt.fire();
     },
   callApprovalProcessAndUpdateField : function (component, event, helper) {
       	component.set("v.disablebuttonName",true);

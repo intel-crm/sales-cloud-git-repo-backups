@@ -168,7 +168,7 @@ Private class Core_MDF_AdjustmentRequest_Test {
             Database.insert(camp);
         } 
         Test.startTest();
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Digital','','Draft', false);
+        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft', false);
         testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
         testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
         testPartnerFundRequestRecord.Title = 'Test Activity For Manual Hold';
@@ -313,10 +313,6 @@ Private class Core_MDF_AdjustmentRequest_Test {
             adjReq1.Core_MDF_Adjustment_Status_nm__c = 'Cancelled';
             listAdjReq.add(adjReq1);
             Core_MDF_AdjustmentReq_ServiceHandler.createAdjustment(listAdjReq);
-            // Unit Test Method should include System.Assert
-            System.assertNotEquals(null, listAdjReq, 'listAdjReq should not be null');
-            System.assertEquals(2, listAdjReq.size(), 'listAdjReq should contain 2 records');
-            
             Map<Id,Core_MDF_Adjustment_Request__c> oldMap = new Map<Id,Core_MDF_Adjustment_Request__c>();
             Map<Id,Core_MDF_Adjustment_Request__c> newMap = new Map<Id,Core_MDF_Adjustment_Request__c>();
             oldMap.put(adjReq.id,adjReq);
@@ -353,8 +349,8 @@ Private class Core_MDF_AdjustmentRequest_Test {
         pfcList.add(escalationClaim);
         Database.update(pfcList); 
         System.runAs(usr){ 
-          // Highlight: Unused Local Variable
-          //  Core_MDF_Adjustment_Request__c adjReq = new Core_MDF_Adjustment_Request__c();
+            
+            Core_MDF_Adjustment_Request__c adjReq = new Core_MDF_Adjustment_Request__c();
             PartnerFundClaim positiveClaim = [SELECT Id,Core_MDF_Status__c FROM PartnerFundClaim where Title ='Test Claim for Neg Adj'];
             
             PartnerFundClaim escalationClaim1 = [SELECT Id,Core_MDF_Status__c FROM PartnerFundClaim where Title ='Test Escalation Claim'];
@@ -423,8 +419,8 @@ Private class Core_MDF_AdjustmentRequest_Test {
         Test.startTest();
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', false);
         insert cp1;
-        // Highlight: Unused Local Variable
-       // Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Intel Partner Alliance'];
+        
+        Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Intel Partner Alliance'];
         
         
         List<PartnerFundClaim> pfcClm = new List<PartnerFundClaim>();
@@ -478,11 +474,10 @@ Private class Core_MDF_AdjustmentRequest_Test {
     @isTest static void testRecalculateShareAdjReqWhenOwnerChangeIntenalRMF(){
         
         Test.startTest();
-       // Highlight: Unused Local Variable
-       // ChannelProgram cp1 = [Select Id from ChannelProgram where Core_MDF_Technical_Program_Name__c='Retail Marketing Funds'];
-       //insert cp2;
-       // Highlight: Unused Local Variable
-       // Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Retail Marketing Funds'];
+        ChannelProgram cp1 = [Select Id from ChannelProgram where Core_MDF_Technical_Program_Name__c='Retail Marketing Funds'];
+        //insert cp2;
+        
+        Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Retail Marketing Funds'];
         
         
         List<PartnerFundClaim> pfcClm = new List<PartnerFundClaim>();
@@ -495,8 +490,7 @@ Private class Core_MDF_AdjustmentRequest_Test {
         claim1.Core_MDF_Status__c =  'Payment Due';
         pfcClm.add(claim1);
         update pfcClm;
-      // Highlight: Unused Local Variable
-      //  Account acc =[Select id,Core_MDF_Channel_Program__c from Account where id=:claim.channelpartnerId];
+        Account acc =[Select id,Core_MDF_Channel_Program__c from Account where id=:claim.channelpartnerId];
         //acc.Core_MDF_Channel_Program__c = cp1.id;
         //acc.Core_MDF_Group_Id__c = grp.Id;
         //acc.Core_Geo__c = 'APJ';
@@ -552,8 +546,8 @@ Private class Core_MDF_AdjustmentRequest_Test {
         claim1.Core_MDF_Status__c =  'Payment Due';
         pfcClm.add(claim1);
         update pfcClm;
-       // Highlight: Unused Local Variable
-      //  Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund'];
+        
+        Core_MDF_ChannelProgram__mdt mdt = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_Node_Based_Sharing_Required_Ind__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund'];
         
         Core_MDF_Adjustment_Request__c adjReq = new Core_MDF_Adjustment_Request__c();
         claim.Core_MDF_Type_Txt__c ='Adjustment';

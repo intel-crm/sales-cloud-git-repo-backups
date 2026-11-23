@@ -1,11 +1,4 @@
-<messaging:emailTemplate subject="{!
-                            RelatedTo.ChannelPartner.Name & ' ' &
-                            IF(
-                                RelatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name,
-                                $Label.Core_MDF_Claim_Payment_Clearance_Email,
-                                $Label.Core_MDF_Claim_Approved_email
-                            )
-                        }"
+<messaging:emailTemplate subject="{!RelatedTo.ChannelPartner.Name} {!$Label.Core_MDF_Claim_Approved_email}"
                          recipientType="User"
                          relatedToType="PartnerFundClaim"
                          renderUsingSystemContextWithoutSharing="true"
@@ -16,13 +9,7 @@
                 <div style="font-size:14px; font-family:Calibri">
                     <p>{!IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner', $Label.Core_MDF_EmailTemp_DearIntelPartner, IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard', $Label.Core_MDF_EmailTemp_DearIntelemployee, ''))}<br/></p>
 
-                    <p>
-                        {!IF(
-                            RelatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name,
-                            $Label.Core_MDF_Claim_EmailTemp_Body7,
-                            $Label.Core_MDF_Claim_EmailTemp_Body3
-                        )}
-                    </p>
+                    <p>{!$Label.Core_MDF_Claim_EmailTemp_Body3}</p>
                     <ul>
                         <li>{!$Label.Core_MDF_IPA_EmailTemp_Field1} {!RelatedTo.ChannelPartner.Name}</li>
                         <li>{!$Label.Core_MDF_EmailTemp_Subj1}: {!RelatedTo.Core_MDF_Claim_Ref_Number__c}</li>
@@ -56,21 +43,17 @@
                         <li>{!$Label.Core_MDF_Reimbursement_Amount_email}:&nbsp;<apex:outputText value="{0,number,$#,##0.00}"><apex:param value="{!relatedTo.Core_MDF_Requested_Reimbursement_Amt__c}" /></apex:outputText></li>
                         
                         <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c !=  $Label.Core_MDF_Co_GTM_program_name}">
-                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Number & ':',$Label.Core_MDF_Activity)}&nbsp;{!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
-                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ':',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}
+                            <li>{!$Label.Core_MDF_Activity} {!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
+                            <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name}
                                 <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner'}"
-                                    value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
-                                            $Label.Core_MDF_Outcome_Community_Link + RelatedTo.RequestId,
-                                            $Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId)}">{!RelatedTo.Request.Title}
+                                    value="{!$Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId}">{!RelatedTo.Request.Title}
                                 </apex:outputLink>
                                 <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard'}"
-                                    value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
-                                            $Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,
-                                            $Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}">
+                                    value="{!$Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId}">
                                     {!RelatedTo.Request.Title}
                                 </apex:outputLink>
                             </li>
-                            <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
+                            <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Nm__c}</li>
                         </apex:outputPanel>
                         
                         <li>{!$Label.Core_MDF_IPA_Comments}: {!RelatedTo.Core_MDF_Comments_Appvr_Only_txt__c}</li>

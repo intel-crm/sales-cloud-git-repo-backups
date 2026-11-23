@@ -14,28 +14,28 @@ public with sharing class Core_MDF_BulkClaimServerController {
     //To hold errors to b displayed
     public static String errorToBeDisplayed = '';
     /**
-* @description : This method is used to Parse the File Uploaded by User. Insert the Batch Record. Attach the Uploaded file to Batch Record. 
-Insert the Batch Stage Records corresponding to the Uploaded File
-* @param base64Data : Content of the File in Base64 format 
-* @param fileName : File Name 
-* @param contentType : Type of the File (CSV)
-*/
+    * @description : This method is used to Parse the File Uploaded by User. Insert the Batch Record. Attach the Uploaded file to Batch Record. 
+    Insert the Batch Stage Records corresponding to the Uploaded File
+    * @param base64Data : Content of the File in Base64 format 
+    * @param fileName : File Name 
+    * @param contentType : Type of the File (CSV)
+    */
     
-    /*******************************************************************************************************************************
-Moved from Custom Metadata (Core_MDF_BulkClaimTemplateParticulars__mdt) to Custom Object (Core_MDF_CCP_Custom_Metadata_Utility__c)
-Below are the field Mapping :
-DeveloperName --> Name
-Core_MDF_Channel_program__c --> Core_MDF_Program__c
-Core_MDF_Claim_Field_API_Name__c --> Core_MDF_Name_Criteria__c
-Core_MDF_Column_Index__c --> Core_MDF_Sort_Order_Nbr__c
-Core_MDF_Field_DataType_Txt__c --> Core_MDF_Field_1_txt__c
-Core_MDF_Stage_Field_API_Name__c --> Core_MDF_Field_2_txt__c
-Core_MDF_Stage_Required_Ind__c --> Core_MDF_Checkbox_Field_1_Ind__c
-Core_MDF_Target_Field_API_Name__c --> Core_MDF_Field_3_txt__c
-Core_MDF_Upload_Record_Type__c --> Core_MDF_Sub_Category__c
-
-To Identity the Bulk Claim records in Core_MDF_CCP_Custom_Metadata_Utility__c Custom object used Core_MDF_Category__c
-Core_MDF_Category__c---> "Bulk Claim Template"
+/*******************************************************************************************************************************
+    Moved from Custom Metadata (Core_MDF_BulkClaimTemplateParticulars__mdt) to Custom Object (Core_MDF_CCP_Custom_Metadata_Utility__c)
+        Below are the field Mapping :
+        DeveloperName --> Name
+        Core_MDF_Channel_program__c --> Core_MDF_Program__c
+        Core_MDF_Claim_Field_API_Name__c --> Core_MDF_Name_Criteria__c
+        Core_MDF_Column_Index__c --> Core_MDF_Sort_Order_Nbr__c
+        Core_MDF_Field_DataType_Txt__c --> Core_MDF_Field_1_txt__c
+        Core_MDF_Stage_Field_API_Name__c --> Core_MDF_Field_2_txt__c
+        Core_MDF_Stage_Required_Ind__c --> Core_MDF_Checkbox_Field_1_Ind__c
+        Core_MDF_Target_Field_API_Name__c --> Core_MDF_Field_3_txt__c
+        Core_MDF_Upload_Record_Type__c --> Core_MDF_Sub_Category__c
+        
+        To Identity the Bulk Claim records in Core_MDF_CCP_Custom_Metadata_Utility__c Custom object used Core_MDF_Category__c
+        Core_MDF_Category__c---> "Bulk Claim Template"
 *********************************************************************************************************************************/
     @AuraEnabled
     public static String parseFile(String base64Data, String fileName, String channelProgramId) {
@@ -47,7 +47,7 @@ Core_MDF_Category__c---> "Bulk Claim Template"
             Id ultimateAccId;
             
             //Map<Id,Core_MDF_BulkClaimTemplateParticulars__mdt> metadataIdToRecordMap = new Map<Id,Core_MDF_BulkClaimTemplateParticulars__mdt>([SELECT Id,Label, Core_MDF_Stage_Field_API_Name__c,Core_MDF_Field_DataType_Txt__c,Core_MDF_Column_Index__c,Core_MDF_Target_Field_API_Name__c, Core_MDF_Stage_Required_Ind__c, Core_MDF_Claim_Field_API_Name__c,Core_MDF_Channel_program__c FROM Core_MDF_BulkClaimTemplateParticulars__mdt WHERE Core_MDF_Channel_program__c = :channelProgramName AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText ORDER BY Core_MDF_Column_Index__c]);
-            
+			
             String whereClause = 'Core_MDF_Program__c = \'' + channelProgramName + '\' ' + 'AND Core_MDF_Sub_Category__c = \'' + Label.Core_MDF_PFCText + '\' ' + 'AND Core_MDF_Category__c = \'' + Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE + '\' ';
             List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
             Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>();
@@ -55,9 +55,10 @@ Core_MDF_Category__c---> "Bulk Claim Template"
                 metadataIdToRecordMap.put(mdtRecords.id,mdtRecords);
             }
                 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
-                                                                     WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];//TWC3117-18333
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
+                                                                     WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
+            
             if(validateUploadedFile(blobData,metadataIdToRecordMap)){
                 // validate user has ultimate account access
                 ultimateAccId = Core_MDF_BulkClaimUtility.validateAccountAccess();
@@ -77,17 +78,17 @@ Core_MDF_Category__c---> "Bulk Claim Template"
             return 'Exception'+e.getMessage();
         }
     }
-    
+
     /**
-* @description: This method is used to create batch and stage record
-* @param listOfClaimBatchStageRecords : List of claim stage records
-* @param ultimateAccId : ultimate account id
-* @param fileName : File Name
-* @param blobData : Content of the File Uploaded by the User in Blob format
-* @param recordType : File NameTo get claim stage record type id
-*/      
+    * @description: This method is used to create batch and stage record
+    * @param listOfClaimBatchStageRecords : List of claim stage records
+    * @param ultimateAccId : ultimate account id
+    * @param fileName : File Name
+    * @param blobData : Content of the File Uploaded by the User in Blob format
+    * @param recordType : File NameTo get claim stage record type id
+    */      
     public static Core_MDF_Claim_Batch__c createBatchAndStageRecords(List<Core_MDF_Claim_Batch_Stage__c> listOfClaimBatchStageRecords,Id ultimateAccId, String channelProgramId,
-                                                                     String fileName, Blob blobData,Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType)//TWC3117-18333
+                                                  String fileName, Blob blobData,Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType)
     {
         //hold claim batch instance 
         Core_MDF_Claim_Batch__c batchInstance = new Core_MDF_Claim_Batch__c();
@@ -102,10 +103,10 @@ Core_MDF_Category__c---> "Bulk Claim Template"
         return batchInstance;        
     }    
     /**
-* @description: This method is used to validate records based on the CSV Data as Input
-* @param metadataIdToRecordMap: contains bulk claim template perticulars
-* @param blobData: Content of the File Uploaded by the User in Blob format 
-*/
+    * @description: This method is used to validate records based on the CSV Data as Input
+    * @param metadataIdToRecordMap: contains bulk claim template perticulars
+    * @param blobData: Content of the File Uploaded by the User in Blob format 
+    */
     public static List<Core_MDF_Claim_Batch_Stage__c> validateDataType(Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap, Blob blobData,Id ultimateAccId,String channelProgramId)
     {
         String csvAsString;
@@ -114,7 +115,7 @@ Core_MDF_Category__c---> "Bulk Claim Template"
         csvAsString = blobData.toString(); //EncodingUtil.base64Encode(base64Data);//base64Data.toString();
         csvFileLines = csvAsString.split('\n');
         List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List <Core_MDF_Claim_Batch_Stage__c>();
-        
+      
         Map<String,String> bankSupplierNumberToLegalEntity = new Map<String,String>();
         Map<String,Boolean> applicableVATPerRequired =  new Map<String, Boolean>();  
         Integer suppNoPosition;
@@ -129,7 +130,7 @@ Core_MDF_Category__c---> "Bulk Claim Template"
         List<Schema.PicklistEntry> activitySubTypePicklistvalues = fieldMap.get('Core_MDF_Activity_SubType_nm__c').getDescribe().getPickListValues();
         List<Schema.PicklistEntry> vatOptInPicklistvalues = fieldMap.get('Core_MDF_VAT_Opt_In__c').getDescribe().getPickListValues();
         List<Schema.PicklistEntry> applicableVATPerPicklistValues = fieldMap.get('Core_MDF_Applicable_VAT_Percentage_nm__c').getDescribe().getPickListValues();
-        String channelProgramName = [Select Core_MDF_Technical_Program_Name__c From ChannelProgram WHERE Id =:channelProgramId LIMIT 1].Core_MDF_Technical_Program_Name__c;
+         String channelProgramName = [Select Core_MDF_Technical_Program_Name__c From ChannelProgram WHERE Id =:channelProgramId LIMIT 1].Core_MDF_Technical_Program_Name__c;
         for(Schema.PicklistEntry currencyField : picklistvalues){
             currencyValueList.add(currencyField.getValue().toUpperCase());
         }
@@ -145,49 +146,49 @@ Core_MDF_Category__c---> "Bulk Claim Template"
         for(Schema.PicklistEntry applicableVATPerInField : applicableVATPerPicklistValues){
             applicableVATPerInList.add(applicableVATPerInField.getValue().toUpperCase());
         }
-        // This section will get executed only for Retail
+	// This section will get executed only for Retail
         if(channelProgramName == Label.Core_MDF_NonTranslateRetailRecordType){
-            
-            //get position of field bank supplier number
-            for(Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord : metadataIdToRecordMap.values())
-            {
-                if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Nbr__c'){
-                    suppNoPosition = (Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c;
-                    break;
-                }
+        
+	//get position of field bank supplier number
+        for(Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord : metadataIdToRecordMap.values())
+        {
+            if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Nbr__c'){
+                suppNoPosition = (Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c;
+                break;
             }
-            
-            //store all files supplier number in set    
-            for(Integer i = 1; i < csvFileLines.size(); i++)
-            {
-                String[] csvRecordData;
-                try {
-                    csvRecordData = csvFileLines[i].split(',');
-                    if(csvRecordData != null && String.isNotBlank(csvRecordData[suppNoPosition])){//ATHR - Deeply Nested if 16209
+        }
+		
+        //store all files supplier number in set    
+        for(Integer i = 1; i < csvFileLines.size(); i++)
+        {
+            String[] csvRecordData;
+            try {
+                csvRecordData = csvFileLines[i].split(',');
+                if(csvRecordData != null){
+                    if(String.isNotBlank(csvRecordData[suppNoPosition])){
                         bankSupplierNumber.add(csvRecordData[suppNoPosition]);
                     }
-                }catch (Exception e) {
-                    System.debug('Exception'+e);
                 }
-                
-            }
+            }catch (Exception e) {}
             
-            List<Core_MDF_Account_Bank_Mapping__c> accountBankMapping = [Select id, Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c, Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name 
-                                                                         from Core_MDF_Account_Bank_Mapping__c 
-                                                                         where Core_MDF_Bank__r.Core_MDF_Supplier_Number__c IN: bankSupplierNumber
-                                                                         AND Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c =: ultimateAccId
-                                                                         AND Core_MDF_Active_ind__c=TRUE];
-            // creating Map of supplier number to Bank Intel code
-            if(accountBankMapping != null && accountBankMapping.size() > 0){
-                for(Core_MDF_Account_Bank_Mapping__c abm : accountBankMapping)
-                {
-                    bankSupplierNumberToLegalEntity.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,abm.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c);
-                }
+        }
+        
+        List<Core_MDF_Account_Bank_Mapping__c> accountBankMapping = [Select id, Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c, Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name 
+                                                                     from Core_MDF_Account_Bank_Mapping__c 
+                                                                     where Core_MDF_Bank__r.Core_MDF_Supplier_Number__c IN: bankSupplierNumber
+                                                                     AND Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c =: ultimateAccId
+                                                                     AND Core_MDF_Active_ind__c=TRUE];
+	// creating Map of supplier number to Bank Intel code
+        if(accountBankMapping != null && accountBankMapping.size() > 0){
+            for(Core_MDF_Account_Bank_Mapping__c abm : accountBankMapping)
+            {
+                bankSupplierNumberToLegalEntity.put(abm.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c,abm.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c);
             }
-            List<Core_MDF_CCP_VAT_Config__mdt> vatConfigMetadata = [select Core_MDF_Legal_Entity__c,Core_MDF_Show_Applicable_VAT_Percentage__c 
-                                                                    from Core_MDF_CCP_VAT_Config__mdt 
-                                                                    where Core_MDF_Program__c = :channelProgramName ];
-            // create map of Intel code of 650 to required Applicable Vat Percentage field
+        }
+        List<Core_MDF_CCP_VAT_Config__mdt> vatConfigMetadata = [select Core_MDF_Legal_Entity__c,Core_MDF_Show_Applicable_VAT_Percentage__c 
+                                                                from Core_MDF_CCP_VAT_Config__mdt 
+                                                                where Core_MDF_Program__c = :channelProgramName ];
+	    // create map of Intel code of 650 to required Applicable Vat Percentage field
             for(Core_MDF_CCP_VAT_Config__mdt vatConfig :vatConfigMetadata ){
                 applicableVATPerRequired.put(vatConfig.Core_MDF_Legal_Entity__c,vatConfig.Core_MDF_Show_Applicable_VAT_Percentage__c);
             }
@@ -204,12 +205,12 @@ Core_MDF_Category__c---> "Bulk Claim Template"
     }
     
     /**
-* @description: This method is used to validate , assign fields on stage records and populate errores based on the CSV Data as Input
-* @param csvRowId: uploaded csv file's row id
-* @param csvFileLines: hold csv file lines
-* @param metadataIdToRecordMap: contains bulk claim template perticulars
-* @param currencyValueList: hold all currency code list 
-*/
+    * @description: This method is used to validate , assign fields on stage records and populate errores based on the CSV Data as Input
+    * @param csvRowId: uploaded csv file's row id
+    * @param csvFileLines: hold csv file lines
+    * @param metadataIdToRecordMap: contains bulk claim template perticulars
+    * @param currencyValueList: hold all currency code list 
+    */
     public static Core_MDF_Claim_Batch_Stage__c fieldAssignToStageRecAndPopulateError(Integer csvRowId,String[] csvFileLines,Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap,List<String> currencyValueList, List<String> countryList, List<String> activitySubTypeList,List<String> vatOptInList, List<String> applicableVATPerInList,Map<String,String> bankSupplierNumberToLegalEntity,Map<String,Boolean> applicableVATPerRequired,Integer suppNoPosition)
     {
         Core_MDF_Claim_Batch_Stage__c claimStageInstance = new Core_MDF_Claim_Batch_Stage__c();            
@@ -228,30 +229,26 @@ Core_MDF_Category__c---> "Bulk Claim Template"
         } 
         return claimStageInstance;  
     }
-    
-    /**
-* @description: This method is used to validate data types and fields based on the CSV Data as Input
-* @param csvRowId: uploaded csv file's row id
-* @param metadataIdToRecordMap: contains bulk claim template perticulars
-* @param claimStageInstance:  hold claim batch stage instance
-* @param csvRecordData: hold csv record
-* @param currencyValueList: hold all currency code list 
-*/
+
+            /**
+    * @description: This method is used to validate data types and fields based on the CSV Data as Input
+    * @param csvRowId: uploaded csv file's row id
+    * @param metadataIdToRecordMap: contains bulk claim template perticulars
+    * @param claimStageInstance:  hold claim batch stage instance
+    * @param csvRecordData: hold csv record
+    * @param currencyValueList: hold all currency code list 
+    */
     public static Core_MDF_Claim_Batch_Stage__c validateCsvDataTypesAndFields(Integer csvRowId,Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord,Core_MDF_Claim_Batch_Stage__c claimStageInstance,String[] csvRecordData,List<String> currencyValueList,List<String> countryList,List<String> activitySubTypeList,List<String> vatOptInList, List<String> applicableVATPerInList,Map<String,String> bankSupplierNumberToLegalEntity,Map<String,Boolean> applicableVATPerRequired,Integer suppNoPosition){
         if(metadataRecord.Core_MDF_Field_1_txt__c == 'Date'){
             Date standardDate = convertDateToStandardDate(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,standardDate);
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_1_txt__c == 'Number'){
+        }else if(metadataRecord.Core_MDF_Field_1_txt__c == 'Number'){
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c] != '') {
-                claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,decimal.valueOf(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]));
+            claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,decimal.valueOf(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]));
             } else {
                 claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c, null);
             }
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Activity_Nbr__c'){
+        }else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Activity_Nbr__c'){
             // input Activity Number : 2179 
             String inputActivityNumber = csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c];
             //Safe Navigation Operator for null check - activity number will be trim(), if it's not null 
@@ -264,17 +261,13 @@ Core_MDF_Category__c---> "Bulk Claim Template"
                 inputActivityNumber = inputActivityNumber.leftPad(8, '0');
                 claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,inputActivityNumber);
             }
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Inv_Receipt_Cur_Cd__c'){
+        }else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Inv_Receipt_Cur_Cd__c'){
             if(currencyValueList.contains(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].toUpperCase())){
                 claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             }else{
                 throw new BulkClaimException(Label.Core_MDF_InvalidCurrencyError+': '+csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             }
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Country_Location_nm__c'){
+        }else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Country_Location_nm__c'){
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= null && countryList.contains(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].toUpperCase())){
                 claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             }else if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c] != null && csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].Contains(';')){
@@ -282,33 +275,30 @@ Core_MDF_Category__c---> "Bulk Claim Template"
             }else if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= null && String.isNotEmpty(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]) && (!countryList.contains(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].toUpperCase()))){
                 throw new BulkClaimException(Label.Core_MDF_Bulk_Claim_Invalid_Country+': '+csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             }
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Activity_SubType_nm__c'){
+        }else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Activity_SubType_nm__c'){
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= null && String.isNotEmpty(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].toUpperCase())){
-            List<String> actSubtypEntered = csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].split(';');
-            Set<String> activitySubtypeSet = new Set<String>();
-            // For trimming the whitespaces for activity sub type values entered
-            for(string actSubtype : actSubtypEntered){
-                activitySubtypeSet.add(actSubtype.trim());
-            }
-            //activitySubtypeSet.addAll(actSubtypEntered);
-            List<String> invalidActivitySubtypes = new List<String>();
-            for(string actSubtype : activitySubtypeSet){
-                if(!activitySubTypeList.contains(actSubtype.toUpperCase()) && String.isNotEmpty(actSubtype)){
-                    invalidActivitySubtypes.add(actSubtype);
+                List<String> actSubtypEntered = csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].split(';');
+                Set<String> activitySubtypeSet = new Set<String>();
+                // For trimming the whitespaces for activity sub type values entered
+                for(string actSubtype : actSubtypEntered){
+                    activitySubtypeSet.add(actSubtype.trim());
                 }
+                //activitySubtypeSet.addAll(actSubtypEntered);
+                List<String> invalidActivitySubtypes = new List<String>();
+                for(string actSubtype : activitySubtypeSet){
+                    if(!activitySubTypeList.contains(actSubtype.toUpperCase()) && String.isNotEmpty(actSubtype)){
+                        invalidActivitySubtypes.add(actSubtype);
+                    }
+                }
+                if(invalidActivitySubtypes != null && invalidActivitySubtypes.size()>0){
+                    throw new BulkClaimException(Label.Core_MDF_Activity_Subtype_Error +': '+String.join(invalidActivitySubtypes,'; '));
+                }
+                List<String> activitySubtypesToPopulate = new List<String>();
+                activitySubtypesToPopulate.addAll(activitySubtypeSet);
+                claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,String.join(activitySubtypesToPopulate,';'));
             }
-            if(invalidActivitySubtypes != null && invalidActivitySubtypes.size()>0){
-                throw new BulkClaimException(Label.Core_MDF_Activity_Subtype_Error +': '+String.join(invalidActivitySubtypes,'; '));
-            }
-            List<String> activitySubtypesToPopulate = new List<String>();
-            activitySubtypesToPopulate.addAll(activitySubtypeSet);
-            claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,String.join(activitySubtypesToPopulate,';'));
         }
-            return claimStageInstance;
-        }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_VAT_Opt_In__c'){
+        else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_VAT_Opt_In__c'){
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= null && vatOptInList.contains(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].trim().toUpperCase())){
                 claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             }
@@ -321,42 +311,43 @@ Core_MDF_Category__c---> "Bulk Claim Template"
                     throw new BulkClaimException(Label.Core_MDF_Invalid_Vat_OptIn_Text+csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]+', '+Label.Core_MDF_Invalid_Vat_OptIn_Text1);
                 }
             }
-            return claimStageInstance;
-        } 
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Nbr__c') {
+        }
+        else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Nbr__c') {
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= '' && csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].length() != 10)
             {
                 throw new BulkClaimException(Label.Core_MDF_Invalid_BankNumber_Text+' '+csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]+' '+Label.Core_MDF_Invalid_Bank_Supplier_Number_Text);
             }
             else
-            {
-                claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c, csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
-            }
-            return claimStageInstance;            
+             {
+                  claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c, csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
+             }
+            
         }
-        if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Account_Nbr__c') {
+        else if(metadataRecord.Core_MDF_Field_2_txt__c == 'Core_MDF_Bank_Account_Nbr__c') {
             if(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]!= '' && csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].length() != 4)
             {
                 throw new BulkClaimException(Label.Core_MDF_Invalid_BankAccountNumber_Text+' '+csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]+' '+Label.Core_MDF_Invalid_Bank_Account_Number_Text);
             }
-            else
-            {
-                claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c, csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
-            }
-            return claimStageInstance;
+             else
+             {
+                  claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c, csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
+             }
+            
         }
+        else{
             //Truncate Fields to 255 characters if greater than 255 characters
-        claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].length() > Integer.valueOf(System.Label.Core_MDF_MaximumTextLimit) ? csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].substring(0, Integer.valueOf(System.Label.Core_MDF_MaximumTextLimit)) : csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);                                                   
+            claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].length() > Integer.valueOf(System.Label.Core_MDF_MaximumTextLimit) ? csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c].substring(0, Integer.valueOf(System.Label.Core_MDF_MaximumTextLimit)) : csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);                                                   
+        }
         return claimStageInstance;
     }    
     
     
     /**
-* @description: This method is used to insert claim batch stage records
-* @param claimBatchStageList: list of claim batch stage records
-* @param batchInstance: claim batch record instance
-*/  
-    public static void insertClaimBatchStageRecords(List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageList,Core_MDF_Claim_Batch__c batchInstance,Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType){//TWC3117-18333
+    * @description: This method is used to insert claim batch stage records
+    * @param claimBatchStageList: list of claim batch stage records
+    * @param batchInstance: claim batch record instance
+    */  
+    public static void insertClaimBatchStageRecords(List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageList,Core_MDF_Claim_Batch__c batchInstance,Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType){
         //list of claim batch stage records to be inserted
         List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List <Core_MDF_Claim_Batch_Stage__c>();
         //Batch Stage Record Id
@@ -366,7 +357,7 @@ Core_MDF_Category__c---> "Bulk Claim Template"
             claimBatchStageRecord.Core_MDF_Batch_ID__c = batchInstance.Id;
             claimBatchStageRecord.RecordtypeId = recordTypeId;
             claimBatchStageRecordList.add(claimBatchStageRecord);
-            
+
         }
         if(claimBatchStageRecordList!=null && claimBatchStageRecordList.size()>0){
             //Insert batch stage records
@@ -439,8 +430,8 @@ Modified By:        Date:      Changes:
     public static Map<String,String> fetchRecordTypeMetaData(){
         
         Map<String,String> mapOfRecordTypes = new Map<String,String>();
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recTypeMetaData:[Select Core_MDF_Channel_Program_txt__c,MasterLabel 
-                                                                       from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){ //TWC3117-18333
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Core_MDF_Channel_Program_txt__c,MasterLabel 
+                                                                       from Core_MDF_ClaimActAllocRecTypeMapping__mdt LIMIT 1000]){
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Channel_Program_txt__c,recTypeMetaData.MasterLabel);  
                                                                        }
         return mapOfRecordTypes;
@@ -491,7 +482,7 @@ Modified By:        Date:      Changes:
         Id pfrRecTypeId;
         List<String> actSubTypeList = new List<String>();
         if(String.isNotEmpty(programName) && programName != NULL){
-            pfrRecTypeDevName = [Select Core_MDF_Activity_RecordType_txt__c from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE Core_MDF_Channel_Program_txt__c =: programName].Core_MDF_Activity_RecordType_txt__c;//TWC3117-18333
+            pfrRecTypeDevName = [Select Core_MDF_Activity_RecordType_txt__c from Core_MDF_ClaimActAllocRecTypeMapping__mdt WHERE Core_MDF_Channel_Program_txt__c =: programName].Core_MDF_Activity_RecordType_txt__c;
         } 
         if(String.isNotEmpty(pfrRecTypeDevName) && pfrRecTypeDevName != NULL){            
             pfrRecTypeId = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get(pfrRecTypeDevName).getRecordTypeId();
@@ -526,7 +517,7 @@ Modified By:        Date:      Changes:
         String strResponse = res.getBody();
         Map<String, Object> resMap = new Map<String, Object>();
         if(String.isNotEmpty(strResponse)){
-            resMap =  (Map<String, Object>) JSON.deserializeUntyped(strResponse);   
+            resMap =  (Map<String, Object>) JSON.deserializeUntyped(strResponse);	
         }
         
         if(resMap != NULL && resMap.containsKey('values')){                                
@@ -586,18 +577,18 @@ Modified By:        Date:      Changes:
         }
         return pLWrapperList;
     }
-    //WW11 - Added by JK Display Info Message for Bulk claim Template
-    @AuraEnabled
-    public static boolean displayInfoMessage() {
+   //WW11 - Added by JK Display Info Message for Bulk claim Template
+   @AuraEnabled
+   public static boolean displayInfoMessage() {
         boolean errorMsgInd;
         try{
-            String infoMessage = Core_MDF_Configuration__c.getValues('Core_MDF_InfoMessageDisplay').Core_MDF_Value__c;
-            if(infoMessage != null && infoMessage == 'true'){
-                errorMsgInd = true;
-            }
+        String infoMessage = Core_MDF_Configuration__c.getValues('Core_MDF_InfoMessageDisplay').Core_MDF_Value__c;
+        if(infoMessage != null && infoMessage == 'true'){
+            errorMsgInd = true;
+        }
         }catch (Exception e) {}
         return errorMsgInd;
-    }
+   }
     // wrapper class with @AuraEnabled
     public class PickListWrapper{
         // Holds the 3 character currency code 

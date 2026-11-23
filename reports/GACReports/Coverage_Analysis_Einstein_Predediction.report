@@ -21,8 +21,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_MDF_Claim_Prediction__c$Core_MDF_Claim_Created_Dt__c</dateColumn>
-        <endDate>2029-12-31</endDate>
+        <endDate>2027-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-01-01</startDate>
+        <startDate>2022-01-01</startDate>
     </timeFrameFilter>
 </Report>

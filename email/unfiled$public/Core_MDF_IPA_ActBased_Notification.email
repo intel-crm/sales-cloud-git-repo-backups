@@ -27,22 +27,13 @@
                         </apex:outputPanel>
                         <p>&nbsp; &nbsp; &nbsp; {!if(AND(RelatedTo.Core_MDF_Program__c == 'Intel Partner Alliance', ISBLANK(RelatedTo.Campaign.Name)), 'Outcome-Based Campaign Name', 'Activity Name')}: {!RelatedTo.Title}</p>
                         <p>&nbsp; &nbsp; &nbsp; {!if(AND(RelatedTo.Core_MDF_Program__c == 'Intel Partner Alliance', ISBLANK(RelatedTo.Campaign.Name)), 'Outcome-Based Number', 'Activity Number')}: {!RelatedTo.Core_MDF_Activity_Number__c}</p>
-                        <p>&nbsp; &nbsp; &nbsp; Start Date: {!RelatedTo.Core_MDF_Start_Date__c}</p>
-                        <p>&nbsp; &nbsp; &nbsp; End Date: {!RelatedTo.Core_MDF_End_Date__c}</p>
                         <p>&nbsp; &nbsp; &nbsp; Budget Type: {!RelatedTo.Core_MDF_Budget_Type_nm__c}</p>
                         <apex:outputPanel rendered="{!if(RelatedTo.Core_MDF_Program__c =='Intel Partner Alliance',true,false)}">
                             <p>&nbsp; &nbsp; &nbsp; Focus Area: {!RelatedTo.Core_MDF_Focus_Area_nm__c}</p>
-                            <apex:outputPanel rendered="{!NOT(RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}">
-                                <p>&nbsp; &nbsp; &nbsp; Budget Amount:&nbsp;
-                                <apex:outputText value="{0, Number,#,##0.00}">
-                                    $<apex:param value="{!RelatedTo.Core_MDF_Activity_Reimbursement_Amt_nbr__c}"/>
-                                </apex:outputText> <br/></p>                
-                            </apex:outputPanel>
-                                <p>&nbsp; &nbsp; &nbsp; Maximum Intel Investment: 
-                                    <apex:outputText value="{0, Number,#,##0.00}">
-                                    $<apex:param value="{!RelatedTo.Core_MDF_Maximum_Intel_Investment_amt__c}"/>
-                                    </apex:outputText></p>
-                                <p>&nbsp; &nbsp; &nbsp; Tactics: {!RelatedTo.Core_MDF_Tactics_nm__c}</p>
+                            <p>&nbsp; &nbsp; &nbsp; Budget Amount:&nbsp;
+                            <apex:outputText value="{0, Number,#,##0.00}">
+                                $<apex:param value="{!RelatedTo.Core_MDF_Activity_Reimbursement_Amt_nbr__c}"/>
+                            </apex:outputText> <br/></p>
                         </apex:outputPanel> 
                         <apex:outputPanel rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'))}">
                             <p>&nbsp; &nbsp; &nbsp; Activity Type: {!RelatedTo.Core_MDF_Activity_Types__c}</p>
@@ -58,19 +49,7 @@
                             <apex:outputText value="{0, date, MMMM d','  yyyy}"> <apex:param value="{!RelatedTo.Core_MDF_ToBeClosedDate__c}" /> </apex:outputText>.
                         </span></p>
                                     
-                        <p>
-                            <strong>
-                                <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
-                                               value="{!$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.Id}">
-                                    {!$Label.Core_MDF_IPA_EmailTemp_Link1}
-                                </apex:outputLink>
-                                <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
-                                               value="{!RelatedTo.Core_MDF_PFRDetailLink__c}">
-                                    {!$Label.Core_MDF_IPA_EmailTemp_Link1}
-                                </apex:outputLink>
-                            </strong> 
-                        </p>
-                        
+                        <p><strong><a href="{!RelatedTo.Core_MDF_PFRDetailLink__c}">{!$Label.Core_MDF_IPA_EmailTemp_Link1}</a>&nbsp;</strong> </p>
                         <p>{!$Label.Core_MDF_IPA_EmailTemp_Body7} </p> 
                                
             

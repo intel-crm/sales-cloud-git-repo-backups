@@ -190,9 +190,6 @@
         <field>WHO_COUNT</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_SCORE</field>
-    </columns>
-    <columns>
         <field>Activity.Core_Account_ID__c</field>
     </columns>
     <columns>
@@ -223,6 +220,9 @@
         <field>Activity.CventEvents__Event__c</field>
     </columns>
     <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
+    <columns>
         <field>Activity.Core_Last_Touch_Marketing_Activity__c</field>
     </columns>
     <columns>
@@ -236,6 +236,9 @@
     </columns>
     <columns>
         <field>Activity.Core_Type_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>Activity.LID__URL__c</field>
     </columns>
     <columns>
         <field>Activity.jiffle__Meeting_UUID__c</field>

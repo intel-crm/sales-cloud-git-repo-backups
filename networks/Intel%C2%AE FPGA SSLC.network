@@ -38,12 +38,6 @@
     <headlessForgotPasswordTemplate>Testt/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
     <headlessRegistrationTemplate>Testt/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
     <networkMemberGroups>
-        <permissionSet>PSG_Internal_Biz_Ops</permissionSet>
-        <permissionSet>PSG_Internal_PMS</permissionSet>
-        <permissionSet>PSG_External_License_User</permissionSet>
-        <permissionSet>PSG_Internal_Customer_Ops</permissionSet>
-        <permissionSet>PSG_Internal_License_User</permissionSet>
-        <permissionSet>PSG_Internal_Telesales_User</permissionSet>
         <profile>admin</profile>
         <profile>it admin</profile>
     </networkMemberGroups>

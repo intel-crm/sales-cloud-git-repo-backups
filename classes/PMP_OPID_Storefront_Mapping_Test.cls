@@ -128,32 +128,4 @@ public class PMP_OPID_Storefront_Mapping_Test {
         System.assert(response!=null,'Error Occured!');
         test.stopTest();
     }
-    
-	@isTest
-    static void getStorefrontRecordsTest() {
-    
-        PMP_Company__c company = new PMP_Company__c(
-            Name = 'Test Company',
-            PMP_IPA_Badge_Tier_Txt__c = 'Gold',
-            PMP_Partner_Country_Txt__c = 'India',
-            PMP_Company_Lifecycle_Status_Nm__c = 'Published',
-            PMP_Benefit_Update_Ind__c = false,
-            PMP_Is_Published_Ind__c = true,
-            PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile
-        );
-        insert company;
-    
-        Test.startTest();
-    
-        PMP_OPID_Storefront_Mapping.StorefrontWrapper result =
-            PMP_OPID_Storefront_Mapping.getStorefrontRecords();
-    
-        Test.stopTest();
-    
-        System.assertNotEquals(null, result);
-        System.assertEquals(true, result.success);
-        System.assertEquals('Fetched successfully', result.message);
-        System.assert(result.ids.size() > 0);
-        System.assert(result.ids.contains(company.Id));
-    }
 }

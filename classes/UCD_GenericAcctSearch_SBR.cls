@@ -398,7 +398,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             if(accResults != null && accResults.size() > 0) {
                  for(Account acct : accResults){
                     mergedResults.add(buildSearchModel(acct));
-                }
+            }
               }
             if(getCustomLabelValue() == 'true'){
             //Performance Logging
@@ -1064,7 +1064,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
                         {
                             if(!String.isEmpty(word))
                             {nameParts.add(word);}
-                        }
+                    }
                         for (Integer i = 0; i < nameParts.size(); i++) {
                              condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
                              decoupledName +='*'+nameParts[i];
@@ -1203,7 +1203,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         if(stateName != null){
             stateName = '\''+stateName+'\'';
         }
-       if(Schema.SObjectType.Account.isAccessible()){  
+       if(Account.SObjectType.getDescribe().isAccessible()){  
         String localSearchQuery;
         if(!name){
             if(String.isNotBlank(countryName)){
@@ -1232,10 +1232,14 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             if(String.isNotBlank(searchStreetName)){
                 decoupledName +=' OR '+  searchStreetName;
             }}
+            System.debug('Mayank decoupledName '+decoupledName);
             localSearchQuery = 'FIND :decoupledName IN ALL Fields  RETURNING Account ('+ cols + ' WHERE '+ condition + ' AND Core_Business_Party_Id__c != null Order by Name ) ';
+            System.debug('Mayank localSearchQuery'+localSearchQuery);
             UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'localSearch', 'searchName-'+ searchName + ',' + '  Local Search Query -'+localSearchQuery, 'SBR');
             List<List<sObject>> localSoslAccountResults = new List<List<sObject>>();
                localSoslAccountResults = Search.query(localSearchQuery);
+               System.debug('Mayank Search.query(localSearchQuery)'+(Search.query(localSearchQuery)));
+               System.debug('Mayank localSoslAccountResults '+localSoslAccountResults);
             if(localSoslAccountResults.size()>0){
                 localAccountResults = localSoslAccountResults[0] ;
             }
@@ -1260,7 +1264,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
 
             UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'localSearch', 'reult from local Search' + localAccountResults.size(), 'SBR');
 
-        } 
+            }
         return localAccountResults;
 
     }
@@ -1316,7 +1320,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             String reltioCondition =  'Core_Business_Party_Id__c IN : reltioBpId' + (String.isNotBlank(recordType)?' AND RecordTypeId = \''+ recordType+'\'':'');            
             String reltioSearchQuery = 'select '+cols+' from Account where '+reltioCondition+'  '+reltioSearchCondition+'   ORDER BY Name limit 20';
 
-            if(Schema.SObjectType.Account.isAccessible()){  
+            if(Account.SObjectType.getDescribe().isAccessible()){  
                 UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'reltioSearchAccount', 'Local Unified Data Query -'+reltioSearchQuery, 'SBR');
                 accountsByBpId = Database.query(reltioSearchQuery); 
 
@@ -1397,15 +1401,15 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     @AuraEnabled
     public static List<DuplicateRecordWrapper> checkForDuplicates(String customername, String alternateLangName, String primaryCountry, String primaryStreet, String primaryCity, String primaryState){
         Id intelAccountRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        customername=customername?.trim().replaceAll('\\s{2,}', ' ');
-        primaryStreet = primaryStreet?.trim().replaceAll('\\s{2,}', ' '); //Ganesh Changes
-        alternateLangName=alternateLangName?.trim().replaceAll('\\s{2,}', ' ');
-        primaryCity=primaryCity?.trim().replaceAll('\\s{2,}', ' ');
+        customername=customername.trim().replaceAll('\\s{2,}', ' ');
+        primaryStreet=primaryStreet.trim().replaceAll('\\s{2,}', ' ');
+        alternateLangName=alternateLangName.trim().replaceAll('\\s{2,}', ' ');
+        primaryCity=primaryCity.trim().replaceAll('\\s{2,}', ' ');
         List<DuplicateRecordWrapper> duplicateRecords=new List<DuplicateRecordWrapper>();
         try{
-			String queryAccount='Select Id, Name, Core_Alternate_Language_Name__c,BillingCountry, Core_Business_Party_Id__c,Owner.Name,BillingStreet, BillingCity, BillingState, BillingPostalCode,Core_Unified_Global_Customer_Name__c FROM Account Where (Name=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (BillingCountry=:primaryCountry AND BillingStreet=:primaryStreet AND BillingCity=:primaryCity AND BillingState=:primaryState AND RecordTypeId=:intelAccountRTId)';
+            String queryAccount='Select Id, Name, Core_Alternate_Language_Name__c,BillingCountry, Core_Business_Party_Id__c,Owner.Name,BillingStreet, BillingCity, BillingState, BillingPostalCode,Core_Unified_Global_Customer_Name__c FROM Account Where (Name=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (BillingCountry=:primaryCountry AND BillingStreet=:primaryStreet AND BillingCity=:primaryCity AND BillingState=:primaryState AND RecordTypeId=:intelAccountRTId)';
             String queryAccountReqQueue='Select Id, Account_Name__c, Core_Alternate_Language_Name__c, Status__c, Address__CountryCode__s, Address__Street__s, Address__City__s,Address__StateCode__s,Address__PostalCode__s,CreatedDate,Requestor_Name__c,Process_Type__c From Account_Create_Request__c Where (Account_Name__c=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (Address__CountryCode__s=:primaryCountry AND Address__Street__s=:primaryStreet AND Address__City__s=:primaryCity AND Address__StateCode__s=:primaryState) AND (Status__c=\'In Process\' OR Status__c=\'Pending Approval\')';
-         	List<Account> duplicateAccounts=Database.query(queryAccount);
+            List<Account> duplicateAccounts=Database.query(queryAccount);
             List<DuplicateRecordWrapper> acctwrapperList=new List<DuplicateRecordWrapper>();
             List<DuplicateRecordWrapper> acctReqwrapperList=new List<DuplicateRecordWrapper>();
             for(Account acctRecord: duplicateAccounts){
@@ -1448,7 +1452,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     }
 
     public class DuplicateRecordWrapper {
-      @AuraEnabled
+	    @AuraEnabled
         public String acctRequestId {get;set;}
 
         @AuraEnabled
@@ -1563,6 +1567,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             returns.put('wwid', s.Core_WWID__c);
             returns.put('id', s.id);
         }
+        System.debug('recordID ' + recordID + 'result ' + returns);
         return returns;
     }
 }

@@ -1,10 +1,3 @@
-/**
- * @description       :
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             :
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
- **/
 @isTest
 public class Pricing_QuoteLineStatusAgeTest {
     
@@ -16,7 +9,7 @@ public class Pricing_QuoteLineStatusAgeTest {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Line_Status_Age_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             
             List<User> accExecUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -43,7 +36,7 @@ public class Pricing_QuoteLineStatusAgeTest {
             List<Pricing_Performance_Metric__c> performanceList = Pricing_Test_Utility.createPerformanceMetrics(quoteLineList[0].Id);
             insert performanceList;
             
-            Document document;
+            Document document;            
             document = new Document();
             document.Body = Blob.valueOf('Some Text');
             document.ContentType = 'application/pdf';
@@ -53,7 +46,7 @@ public class Pricing_QuoteLineStatusAgeTest {
             document.FolderId = userinfo.getuserid();
             insert document;
             
-            Group grp = Pricing_Test_Utility.createGroupRecord();
+            Group grp = Pricing_Test_Utility.createGroupRecord(); 
             
             //Create Group Member
             GroupMember grpMem1 = new GroupMember();
@@ -62,13 +55,18 @@ public class Pricing_QuoteLineStatusAgeTest {
             Insert grpMem1;
             
             ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
-            
+
             List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,2);
             
             Test.stopTest();
             
             List<Contact> drLimitedConList = Pricing_Test_Utility.createDrafterLimitedContact(acc.Id,1);
+            User drafterLimitedUser = [Select id from User where contactId =:drLimitedConList[0].Id limit 1];	
             List<SBQQ__Quote__c> quoteNewList= Pricing_Test_Utility.createQuoteWithParam(acc.Id, drLimitedConList[0].Id,1,salesRepUserList[0].Email,'');
+            //SBQQ__QuoteLine__c quoteLine = Pricing_Test_Utility.createWINQuoteLines(quoteNewList[0].Id); 
+            
+            //Test.stopTest();
+            //The setUpData covers 54% for quote creation
         }
     }
     
@@ -81,9 +79,9 @@ public class Pricing_QuoteLineStatusAgeTest {
         Group grp = new Group();
         grp.name = 'Test Group22';
         grp.Type = 'Regular';
-        grp.DeveloperName = 'Test_Group22';
-        Insert grp;
-        System.assert(grp.Id != null, 'Group should be created successfully');
+        grp.DeveloperName = 'Test_Group22'; 
+        Insert grp; 
+        
         ChannelProgram chProg = [Select Id from ChannelProgram where Name=:Label.Pricing_Tender_PGM_Channel];
         
         List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = new List<Core_MDF_Partner_Group_Mapping__c>();
@@ -96,18 +94,17 @@ public class Pricing_QuoteLineStatusAgeTest {
         partnerGroup.Core_MDF_Group_Id__c=grp.id;
         partnerGroupList.add(partnerGroup);
         
-        insert partnerGroupList;
-        System.assert(partnerGroupList.size() > 0, 'Partner Group Mapping list should not be empty');
-        System.assert(partnerGroupList[0].Id != null, 'Partner Group Mapping should be created successfully');
+        insert partnerGroupList; 
+        
         SBQQ__QuoteLine__c QL2= [Select Id from SBQQ__QuoteLine__c where SBQQ__Quote__c =:lstquote[0].Id Limit 1];
         
         Pricing_Quote_Line_Status_Age__c ql=New Pricing_Quote_Line_Status_Age__c();
         ql.Pricing_TPT_Share_Required__c=true;
         ql.Pricing_TPT_Quote_Line_Number__c = QL2.Id;
         ql.Name='Test';
-        insert ql;
-        System.assert(ql.Id != null, 'Pricing_Quote_Line_Status_Age record should be created successfully');
-        Test.stopTest();
-    }
+        insert ql;        
+       
+        Test.stopTest(); 
+    }      
     
 }

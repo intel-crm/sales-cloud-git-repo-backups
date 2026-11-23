@@ -9,6 +9,34 @@
         <value>Quote Lines</value>
     </caseValues>
     <fieldSets>
+        <label><!-- PSG BM Field set --></label>
+        <name>PSG_BM_Field_set</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG BO Field set --></label>
+        <name>PSG_BO_Field_set</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set DR --></label>
+        <name>PSG_SOS_Field_Set_DR</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set DR with Comp --></label>
+        <name>PSG_SOS_Field_Set_DR_with_Comp</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set No DR --></label>
+        <name>PSG_SOS_Field_Set_No_DR</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set No DR with Comp --></label>
+        <name>PSG_SOS_Field_Set_No_DR_with_Comp</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG TOOLS FIELD SET --></label>
+        <name>PSG_TOOLS_FIELD_SET</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Client-Additional Details --></label>
         <name>Pricing_Client_Additional_Details</name>
     </fieldSets>
@@ -222,26 +250,6 @@
         <name>Pricing_Additional_T_C_s_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Application Agent Status --></label>
-        <name>Pricing_Application_Agent_Status__c</name>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Success</masterLabel>
-            <translation><!-- Success --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Price Rule Name --></label>
-        <name>Pricing_Approval_Price_Rule_Name__c</name>
-    </fields>
-    <fields>
         <help><!-- Approved end date of the tender pricing and last date consumption can happen. --></help>
         <label><!-- Approved Pricing End Date --></label>
         <name>Pricing_Approved_End_Date_Dt__c</name>
@@ -344,34 +352,6 @@
     <fields>
         <label><!-- Cancellation Date --></label>
         <name>Pricing_Cancellation_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Of Change Request ? --></label>
-        <name>Pricing_Change_Request_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Change Request Type --></label>
-        <name>Pricing_Change_Request_Type__c</name>
-        <picklistValues>
-            <masterLabel>Consumption Reason Change</masterLabel>
-            <translation><!-- Consumption Reason Change --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Date Change</masterLabel>
-            <translation><!-- Date Change --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payable Quantity Change</masterLabel>
-            <translation><!-- Payable Quantity Change --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Price Change</masterLabel>
-            <translation><!-- Price Change --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Volume Change</masterLabel>
-            <translation><!-- Volume Change --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- If checked, quote line is an active request to change the quantity and/or the end date. This box will no longer be checked once the change request has been approved or rejected. --></help>
@@ -772,11 +752,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Displays the approved pricing range for HPC based on HPC historical pricing and applicable CAP/YCS2 ceiling thresholds. --></help>
-        <label><!-- HPC Eligible Pricing Envelope --></label>
-        <name>Pricing_HPC_Eligible_Pricing_Envelope__c</name>
-    </fields>
-    <fields>
         <help><!-- (Total Bid without Discount - Net Intel Bid Price) / Total Bid without Discount --></help>
         <label><!-- Intel Bid Discount --></label>
         <name>Pricing_IA_Bid_Discount_Pct__c</name>
@@ -1140,8 +1115,8 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Displays the approved pricing range based on historical pricing and applicable CAP/YCS2 ceiling thresholds. --></help>
-        <label><!-- Eligible Pricing Envelope --></label>
+        <help><!-- +/- 10% of the Recommended Price --></help>
+        <label><!-- Price Interval --></label>
         <name>Pricing_Price_Interval_Txt__c</name>
     </fields>
     <fields>
@@ -1274,11 +1249,6 @@
         <name>Pricing_Quote_Total_Requested_Quantity__c</name>
     </fields>
     <fields>
-        <help><!-- Explanation for the recommended price and eligible pricing envelope. Data and deals referenced --></help>
-        <label><!-- Rationale for Pricing --></label>
-        <name>Pricing_Rationale_for_Pricing__c</name>
-    </fields>
-    <fields>
         <label><!-- Ready for QuoteLetter T&amp;C --></label>
         <name>Pricing_Ready_for_QuoteLetter_T_C_cb__c</name>
     </fields>
@@ -1298,11 +1268,15 @@
     </fields>
     <fields>
         <help><!-- Feedback to help the Pricing AI team understand why the AI model&apos;s recommendation was or was not used. If feedback reason is not listed, select &apos;Other&apos; option and type the feedback in the Reason for Feedback field. --></help>
-        <label><!-- User Feedback on Agent Recommended Price --></label>
+        <label><!-- AI Recommendation Feedback --></label>
         <name>Pricing_Recommendation_FeedBack_Nm__c</name>
         <picklistValues>
             <masterLabel>Aligning to historical customer pricing</masterLabel>
             <translation><!-- Aligning to historical customer pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boreas recommendation too high/low</masterLabel>
+            <translation><!-- Boreas recommendation too high/low --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Multiple sku alignment</masterLabel>
@@ -1311,10 +1285,6 @@
         <picklistValues>
             <masterLabel>Other – Please provide comments</masterLabel>
             <translation><!-- Other – Please provide comments --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pricing Application Agent recommendation too high/low</masterLabel>
-            <translation><!-- Pricing Application Agent recommendation too high/low --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sku not in scope</masterLabel>
@@ -2497,12 +2467,25 @@
         <name>core_cpq_Broken_Cost_Check__c</name>
     </fields>
     <fields>
+        <label><!-- DM End Date --></label>
+        <name>core_cpq_DM_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM Validity Check --></label>
+        <name>core_cpq_DM_Validity_Check__c</name>
+    </fields>
+    <fields>
         <label><!-- Last DM% Refresh Date --></label>
         <name>core_cpq_Last_DM_Refresh_Date__c</name>
     </fields>
     <fields>
         <label><!-- OPN Concatenation --></label>
         <name>core_cpq_OPN_Concatenation_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID --></label>
+        <name>core_cpq_PRID__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- PSG Restricted Product --></label>
@@ -2612,6 +2595,10 @@
     <fields>
         <label><!-- AuthCode Product --></label>
         <name>core_cpq_authcode_product_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCF Flag --></label>
+        <name>core_cpq_ccf_flag_cb__c</name>
     </fields>
     <fields>
         <label><!-- $Change flag --></label>
@@ -2729,6 +2716,11 @@
     <fields>
         <label><!-- Disti % --></label>
         <name>core_cpq_disti_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor Margin # --></label>
+        <name>core_cpq_distributor_margin__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Disti Margin % --></label>
@@ -2986,6 +2978,10 @@
     <fields>
         <label><!-- Price Start Date --></label>
         <name>core_cpq_pricing_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Active Flag --></label>
+        <name>core_cpq_prid_active_cb__c</name>
     </fields>
     <fields>
         <label><!-- PRID Change Alert  --></label>

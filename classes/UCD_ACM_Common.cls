@@ -253,6 +253,20 @@ public without sharing class UCD_ACM_Common {
         } 
         return parentToHasSecondary;
     }
+    
+    @InvocableMethod(label='Get CWL Label')
+    public static List<String> getCWLLabel(List<String> cwlList){
+        List<String> cwlLabels = new List<String>();
+        List<Schema.PicklistEntry> values = Core_Account_Compliance_Watch_List__c.Core_Type__c.getDescribe().getPicklistValues();
+        Map<String,String> cwlApiToLabelMap = new Map<String,String>();
+        For(Schema.PicklistEntry sp : values){
+            cwlApiToLabelMap.put(sp.getValue(),sp.getLabel());
+        }
+        for(String cwl : cwlList){
+            cwlLabels.add(cwlApiToLabelMap.get(cwl));
+        }
+        return cwlLabels;
+    }
 
     /**
 * Method to get Parent of intel accounts based on parent BP Id

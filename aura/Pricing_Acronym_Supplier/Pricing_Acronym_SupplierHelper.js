@@ -18,27 +18,5 @@
                 component.set("v.variant", "Error");
             }
         }
-    },
-    processAIStatus: function (component, event, helper, isRPMUserAlpha) {
-        if (isRPMUserAlpha) {
-            let aiIntegrationStatus = component.get("v.aiIntegrationStatus"); 
-            let quoteProgramType = component.get("v.programType"); 
-            let quoteLineStatus = component.get("v.inputText");
-            
-            if (aiIntegrationStatus == "Success"  && quoteProgramType == "Tender" && quoteLineStatus == "Pending Further Intel Review") {
-                component.set("v.aiIconName", "utility:check");
-                component.set("v.aiAlternativeText", 'Application Agent Status: '+aiIntegrationStatus);
-                component.set("v.aiVariant", "Success");
-            } else if ((aiIntegrationStatus == "In Progress") && quoteProgramType == "Tender" && quoteLineStatus == "Pending Further Intel Review"){
-                component.set("v.aiIconName", "utility:clock");
-                component.set("v.aiAlternativeText", 'Application Agent Status: '+aiIntegrationStatus);
-                component.set("v.aiVariant", "Warning");
-            } else if (aiIntegrationStatus == "Failed" && quoteLineStatus == "Pending Further Intel Review") {
-                component.set("v.aiIconName", "utility:close");
-                component.set("v.aiAlternativeText", 'Application Agent Status: '+aiIntegrationStatus);
-                component.set("v.aiVariant", "Error");
-            }
-        }
-        
     }
 })

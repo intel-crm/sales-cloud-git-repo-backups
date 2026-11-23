@@ -23,24 +23,24 @@ public class Core_IPS_MoveContactWithBatch_Test{
     Account currentAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                           Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                           BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
     insert currentAccount ;
     system.assertNOTEquals(null,currentAccount.id);
         
     Contact currentContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                      Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id, MailingCountry = 'INDIA');
+                                      Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id);
     insert currentContact;
     system.assertNOTEquals(null,currentContact.id);
     
     Account targetAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                           Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                           BillingStreet='1234 testery St', BillingCity='testCity', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                          BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false);
     insert targetAccount;
     system.assertNOTEquals(null,targetAccount.id);
     
     Contact targetContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test',
-                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id, MailingCountry = 'INDIA');
+                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id);
                                                                          
     insert targetContact;
     system.assertNOTEquals(null,targetContact.id); 
@@ -133,7 +133,7 @@ public class Core_IPS_MoveContactWithBatch_Test{
         system.assertNOTEquals(null,currentAccount[0].id);
             
         Contact currentContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount[0].id, MailingCountry = 'INDIA');
+                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount[0].id);
         insert currentContact;
         system.assertNOTEquals(null,currentContact.id);
         
@@ -151,7 +151,7 @@ public class Core_IPS_MoveContactWithBatch_Test{
         system.assertNOTEquals(null,targetAccount2.id);
         
         Contact targetContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id, MailingCountry = 'INDIA');
+                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id);
                                                                              
         insert targetContact;
         system.assertNOTEquals(null,targetContact.id); 
@@ -245,21 +245,20 @@ public class Core_IPS_MoveContactWithBatch_Test{
         Account currentAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
-
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
         insert currentAccount ;
      
         Account targetAcc = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 testery St', BillingCity='testCity', BillingState='OR',
-                                              BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                              BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false);
         insert targetAcc;
      
         
-        Contact currContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id, MailingCountry = 'INDIA');
+        Contact currContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id);
         insert currContact;
        
-        Contact targetAccount = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAcc.Id, MailingCountry = 'INDIA');
+        Contact targetAccount = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAcc.Id);
         insert targetAccount;
        
         Case caseObj = new Case();

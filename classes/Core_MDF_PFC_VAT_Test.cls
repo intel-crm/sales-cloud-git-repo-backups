@@ -251,7 +251,7 @@ PartnerMarketingBudget budget1 = [Select id,TotalAllocatedAmount from PartnerMar
         System.runAs(usrs){
             Campaign camp = [select id,Name,Core_MDF_Budget_Amount_amt__c from Campaign WHERE Name = 'Test Retail Camp 1' LIMIT 1];
             Account accCoMarketing = [select id from Account WHERE Name = 'Test Master Account'];
-            pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast (Pre-2025)','Television','Draft',false);
+            pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(string.valueof(camp.id),Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(accCoMarketing.id),null,null,'UNITED KINGDOM','Business','All-in-One Desktop','Intel® 10ᵗʰ Gen','Broadcast','Podcast','Draft',false);
             pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             pfr.Title = 'Test Retail Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
@@ -439,7 +439,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);  
 
@@ -531,7 +531,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
@@ -560,6 +560,7 @@ static void submitForApproval(Id recordId){
                }
             catch(Exception e)
             {
+                //System.debug(e.getMessage());
            }
         }
         System.runAs(paymentUser)
@@ -599,7 +600,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
@@ -656,7 +657,7 @@ static void submitForApproval(Id recordId){
                 auditDocList2.add(auditDoc);
             }            
             Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1  = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+       saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false);
 
             //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);
                
@@ -700,8 +701,8 @@ static void submitForApproval(Id recordId){
         Core_MDF_Claim_VAT_Info__c vatInfo,vatInfo1;
         boolean claimEligibleforVat = false;
         boolean updateVatInfo = false;
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             test.startTest();
             Core_MDF_Bank__c bank1 = [Select Id,Core_MDF_VAT_pct__c from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
             Core_MDF_Bank__c bank2 = [Select Id,Core_MDF_VAT_pct__c from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test1' limit 1];
@@ -714,12 +715,12 @@ static void submitForApproval(Id recordId){
             claim1.Core_MDF_VAT_Opt_In__c = 'Service Invoice to Intel (VAT may apply)';
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
-            claim1.Core_MDF_Status__c = 'Hold';         
+            claim1.Core_MDF_Status__c = 'Hold';
             claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>(); 
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);
             PartnerFundClaim pfc = [Select id,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Program__c,Core_MDF_VAT_Eligibility_Ind__c,
@@ -759,7 +760,7 @@ static void submitForApproval(Id recordId){
             
             Core_MDF_PartnerFundClaim.ckeckProgramLEForVatOptIn('420',pfc.Core_MDF_Program__c);
             
-        //}
+        }
         
     }
     //Claim Status to denied with no vat record.
@@ -771,8 +772,8 @@ static void submitForApproval(Id recordId){
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
         Case cs;
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             test.startTest();
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
             PartnerFundRequest pfr = [Select Id,Title,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Title = 'Test Retail Activity'];
@@ -788,7 +789,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
@@ -840,10 +841,10 @@ static void submitForApproval(Id recordId){
             }            
             String amt1='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt1,null,false,null,false,null,false);
+       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt1,null,false,null,false);
 
             
-        //}
+        }
             //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);
            User ccrmUser = [SELECT Id,Email FROM User WHERE LastName = 'TestClassClaimCaseReviewwerManager' LIMIT 1];
         CaseShare cshare = new CaseShare(UserOrGroupId = ccrmUser.Id, CaseAccessLevel = 'Edit', CaseId = cs.Id, RowCause = 'Manual' );
@@ -896,7 +897,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
@@ -954,7 +955,7 @@ static void submitForApproval(Id recordId){
             }      
             String amt2='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt2,null,false,null,false,null,false);
+       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt2,null,false,null,false);
       
           }
             //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);
@@ -1010,7 +1011,7 @@ static void submitForApproval(Id recordId){
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             String amt3='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt3,null,false,null,false,null,false);
+       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt3,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
@@ -1068,7 +1069,7 @@ static void submitForApproval(Id recordId){
             }            
             String amt4='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1 = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt4,null,false,null,false,null,false);
+       saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt4,null,false,null,false);
 
         }
         //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);

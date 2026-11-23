@@ -415,14 +415,14 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Q4 2026 - Q3 2027</fullName>
+                    <fullName>Q4 2025 - Q3 2026</fullName>
                     <default>true</default>
-                    <label>Q4 2026 - Q3 2027</label>
+                    <label>Q4 2025 - Q3 2026</label>
                 </value>
                 <value>
-                    <fullName>Q4 2025 - Q3 2026</fullName>
+                    <fullName>Q4 2024 - Q3 2025</fullName>
                     <default>false</default>
-                    <label>Q4 2025 - Q3 2026</label>
+                    <label>Q4 2024 - Q3 2025</label>
                 </value>
                 <value>
                     <fullName>None</fullName>
@@ -465,12 +465,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Q4 2023 - Q3 2024</label>
-                </value>
-                <value>
-                    <fullName>Q4 2024 - Q3 2025</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2024 - Q3 2025</label>
                 </value>
                 <value>
                     <fullName>Q42020-Q32021</fullName>

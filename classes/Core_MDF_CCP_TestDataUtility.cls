@@ -197,7 +197,7 @@ public class Core_MDF_CCP_TestDataUtility {
         else{
             testCampaign.Core_MDF_Technology__c = null;
         }
-
+        
         
         
         //testCampaign.Core_MDF_Brand__c= brandName;
@@ -356,22 +356,13 @@ public class Core_MDF_CCP_TestDataUtility {
         PartnerFundRequest testPartnerFundRequest = NULL;
 
         if (pfaRec == NULL){
-            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*
-            
-            
-            
-            
-            
-            
-            
-            
-            =productType,*/Core_MDF_ActivityCategory__c=activityCategory,
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,
                                                                            Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
                                                                            Core_MDF_Activity_Description__c ='test123');
         }
         else{
             testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,
-                                                           Core_MDF_Brand_nm__c=brand,/*Core_MDF_ProductType__c=productType,*/Core_MDF_ActivityCategory__c=activityCategory,
+                                                           Core_MDF_Brand_nm__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,
                                                                            Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
                                                                            Core_MDF_Activity_Description__c ='test123',AllocationId = pfaRec.Id);
         }
@@ -382,20 +373,20 @@ public class Core_MDF_CCP_TestDataUtility {
         
         return testPartnerFundRequest;
     }
-     public static PartnerFundRequest createRetailActivity(String campaignId,String channelPartnerId,Date startDate,Date endDate,Boolean isInsert){
+     public static PartnerFundRequest createRetailActivity(String campaignId,String channelPartnerId,Date startDate,Date endDate,Boolean isInsert){/*String country,String targetAudience,String productType,String brand,String activityCategory,String activityTypes,String status,*/
         PartnerFundRequest testPartnerFundRequest = NULL;
 
        // if (pfaRec == NULL){
-            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c='INDIA',Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen',Core_MDF_ActivityCategory__c='Sales Readiness',
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c='INDIA',Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen',Core_MDF_ProductType__c='Traditional Notebook',Core_MDF_ActivityCategory__c='Sales Readiness',
                                                                            Core_MDF_Activity_Types__c='In-Store Promotion',RequestedAmount=12345,Core_MDF_TargetAudience__c='Enthusiast Gaming',Core_MDF_Start_Date__c=startDate,Core_MDF_End_Date__c =endDate,Title ='Test Retail',
                                                                            Core_MDF_Activity_Description__c ='Test Retail Description');
-       // }
-       // else{
-           // testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,
-                                                          //  Core_MDF_Brand__c=brand,Core_MDF_ActivityCategory__c=activityCategory,
-                                                                  //         Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
-                                                                    //       Core_MDF_Activity_Description__c ='test123',AllocationId = pfaRec.Id);
-       // }
+        /*}
+        else{
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,
+                                                            Core_MDF_Brand__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,
+                                                                           Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
+                                                                           Core_MDF_Activity_Description__c ='test123',AllocationId = pfaRec.Id);
+        }*/
         
         if(isInsert){
             insert testPartnerFundRequest;
@@ -405,7 +396,7 @@ public class Core_MDF_CCP_TestDataUtility {
     }
     
         public static PartnerFundRequest insertPartnerFundRequest(String campaignId,String recTypeId,String channelPartnerId,PartnerFundAllocation pfaRec,PartnerMarketingBudget pmbRec,String country,String targetAudience,String productType,String brand,String activityCategory,String activityTypes,String status,Boolean isInsert){
-        PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*Core_MDF_ProductType__c=productType,*/Core_MDF_ActivityCategory__c=activityCategory,Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=100,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',Core_MDF_Activity_Description__c ='test123');
+        PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=100,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',Core_MDF_Activity_Description__c ='test123');
         if(isInsert){
             insert testPartnerFundRequest;
         }
@@ -439,7 +430,7 @@ public class Core_MDF_CCP_TestDataUtility {
     }
     public static PartnerFundRequest createPartnerFundRequestwithCP(String campaignId,String recTypeId,String channelPartnerId,PartnerFundAllocation pfaRec,PartnerMarketingBudget pmbRec,String country,String targetAudience,String productType,String brand,String activityCategory,String activityTypes,String status,Boolean isInsert,Boolean cpLed, String cpName, String otherCPName)
     {
-        PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*Core_MDF_ProductType__c=productType,*/Core_MDF_ActivityCategory__c=activityCategory,Core_MDF_Activity_Types__c=activityTypes,Allocation=pfaRec,Budget=pmbRec,RequestedAmount=12345,Amount = 100,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',Core_MDF_Activity_Description__c ='test123',
+        PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,Core_MDF_Activity_Types__c=activityTypes,Allocation=pfaRec,Budget=pmbRec,RequestedAmount=12345,Amount = 100,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',Core_MDF_Activity_Description__c ='test123',
                                                                            Core_MDF_Channel_Partner__c=cpName,Core_MDF_Channel_Partner_Led__c = cpLed,Core_MDF_Other_Channel_Partner__c = otherCPName,Core_MDF_Fund_Request_Status__c='Revision Required');
         if(isInsert){
             insert testPartnerFundRequest;

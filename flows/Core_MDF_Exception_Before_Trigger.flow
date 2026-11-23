@@ -524,7 +524,7 @@ IF(CONTAINS({!Country_Region}, {!Loop_on_Country_Geo_Mapping_Records.Core_MDF_Ge
     <textTemplates>
         <name>All_Country_Region</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>EMEA,PRC,ASMO,APJ</text>
+        <text>EMEA,PRC,ASMO,APJ,INDIA</text>
     </textTemplates>
     <variables>
         <name>Country_Geo_Mapping_Records</name>

@@ -50,7 +50,7 @@ the method will not commit the changes to the database, for committing, explicit
             }
             // modifying the incoming claim list to add the related fields like Allocation.Amount, ChannelPartner.Core_MDF_Enabled_Auto_Transfer__c etc
             // and ordering the list according to the Creation Date of the Claims    
-            
+            PartnerFundClaim clm = [Select Id, Core_MDF_Status__c from PartnerFundClaim where Id IN: originalClaimsTobeProcessed.values() limit 1];
             if(recoveryCheck){
                 claimsTobeProcessed = new Map<ID,PartnerFundClaim>(originalClaimsTobeProcessed);
             }else{
@@ -295,11 +295,7 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
         List<String> MDFBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MDF_BudgetTypes').split(';');
         List<string> pfrProgramSpecific = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Close_Open_Activity_Program').split(';');
         String actionName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BulkPE_ActionName_Claim');
-    	String actionNameRelatedToUpdateActivityStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BulkPE_ActionName_UpdateActivit');
         Map<String, String> claimIdToClaimRefMap = new Map<String, String>();
-    	String inprogress_status = Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_STATUS;
-    	List<String> programList = Label.Core_MDF_Program_Enabled_Tactics.split(',');
-
         try{
       
         for(partnerFundClaim pfcRecord: claimList){
@@ -319,20 +315,8 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
                 RecordList.add(evtObj);
             }
 
-            List<String> allowedStatuses = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_ClaimAllowedCancelStatuses');
-            if(programList.contains(pfcRecord.Core_MDF_Program__c) && pfcRecord.Core_MDF_Activity_Category__c == Label.Core_MDF_Outcome_Based_CatType && pfcRecord.Core_MDF_Status__c != oldClaimMap.get(pfcRecord.Id).Core_MDF_Status__c && allowedStatuses.contains(pfcRecord.Core_MDF_Status__c)){
+            if(pfcRecord.Core_MDF_Program__c == Label.Core_MDF_IPA_Technical_program_name &&  pfcRecord.Core_MDF_Activity_Category__c == Label.Core_MDF_Outcome_Based_CatType && pfcRecord.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled') && pfcRecord.Core_MDF_Status__c != oldClaimMap.get(pfcRecord.Id).Core_MDF_Status__c){
                 claimIdToClaimRefMap.put(pfcRecord.Id, pfcRecord.Core_MDF_Claim_Ref_Number__c);
-            }
-            // Rishabh
-           // When all related claims are cancelled, the Activity status changes to Planned.
-            if(pfcRecord.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled') && pfcRecord.Core_MDF_Activity_Status_nm__c == inprogress_status){
-                PartnerFundClaim pfc = new PartnerFundClaim(Id=pfcRecord.id);
-                pfc.RequestId = pfcRecord.RequestId;
-                Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e(); 
-                evtObj.Core_MDF_JSON_Data__c = JSON.serialize(pfc); 
-                evtObj.Core_MDF_Object_Name__c = 'PartnerFundClaim';
-                evtObj.Core_MDF_Action_Name__c = actionNameRelatedToUpdateActivityStatus;
-                RecordList.add(evtObj);
             }
         }
 
@@ -374,7 +358,6 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
         Map<Id,PartnerFundClaim> claimsToBeReserved = new Map<Id,PartnerFundClaim>();
         
         for(PartnerFundClaim pfc : newclaimMap.values()){
-            if (pfc.Core_MDF_Has_Sub_Claims_Ind__c) { continue; }  //Roshan - Super Claim PIC
             //check if adjustment then break
             Boolean isPICRequiredBasedOnPgm = pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM ? false : isPICRequired;
             if(Core_MDF_Claim_Utility.isType(pfc, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))){continue;}
@@ -393,10 +376,8 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
 
         }
         if(claimsToBeReserved != null && claimsToBeReserved.size()>0){
-            fundReservation(claimsToBeReserved,false);
-            try {
-                Database.update(claimsToBeReserved.values());
-            } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+            fundReservation(claimsToBeReserved,false); 
+            Database.update(claimsToBeReserved.values());
         }
     }
     

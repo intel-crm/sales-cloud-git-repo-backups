@@ -3,11 +3,13 @@ public class Pricing_BatchQuoteShare_ATM_Test {
     //Method to Test Pricing_BatchQuoteShare_ATM class
     static testmethod void batchPricingQuoteShareATMTest(){
         List<AccountTeamMember> accountTeamMembers = new List<AccountTeamMember>();
+        List<Id> accountTeamMemberIds = new List<Id>();
        // List<User> lstATMUsers = Pricing_Test_Utility.createFSEUser();
         List<User> lstATMUsers3 =  Pricing_Test_Utility.createFSEUser();
-        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUserWithParam('Batch_Quote_Share_ATM_Test');
+        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUser();
         List<User> lstATMUsers4 = Pricing_Test_Utility.createAEUser();
         Map<Id,Set<Id>> accIdToUserIdMap = new Map<Id,Set<Id>>();
+        Set<ID> assignedIds=new Set<ID>();
         //Id userId = lstATMUsers[0].id;
         Id userId1 = lstATMUsers3[0].id;
         Boolean ischeck = true;
@@ -16,7 +18,8 @@ public class Pricing_BatchQuoteShare_ATM_Test {
             Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM_Test');
+            Contact con = Pricing_Test_Utility.createContact(acc.Id);
+            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             //List<AccountTeamMember> lstAccountTeamMember = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId);
             accountTeamMembers = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId1);
             Pricing_Test_Utility.createTemplate(lstATMUsers2[0].id);
@@ -79,11 +82,13 @@ public class Pricing_BatchQuoteShare_ATM_Test {
     }
     static testmethod void batchPricingQuoteShareATMTest1(){
         List<AccountTeamMember> accountTeamMembers = new List<AccountTeamMember>();
+        List<Id> accountTeamMemberIds = new List<Id>();
         //List<User> lstATMUsers = Pricing_Test_Utility.createFSEUser();
         List<User> lstATMUsers3 = Pricing_Test_Utility.createFSEUser();
-        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUserWithParam('Batch_Quote_Share_ATM_Test');
+        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUser();
         List<User> lstATMUsers4 = Pricing_Test_Utility.createAEUser();
         Map<Id,Set<Id>> accIdToUserIdMap = new Map<Id,Set<Id>>();
+        Set<ID> assignedIds=new Set<ID>();
         //Id userId = lstATMUsers[0].id;
         Id userId1 = lstATMUsers3[0].id;
         Boolean ischeck = false;
@@ -92,7 +97,8 @@ public class Pricing_BatchQuoteShare_ATM_Test {
             Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM_Test');
+            Contact con = Pricing_Test_Utility.createContact(acc.Id);
+            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             //List<AccountTeamMember> lstAccountTeamMember = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId);
             accountTeamMembers = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId1);
             Pricing_Test_Utility.createTemplate(lstATMUsers2[0].id);

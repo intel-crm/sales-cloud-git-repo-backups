@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 global without sharing class Pricing_MyDealsRetryBatch extends TriggerHandler implements Database.Batchable<sObject>, Database.AllowsCallouts{
     public DateTime dtWhen;
     public Pricing_MyDealsRetryBatch(){
@@ -30,6 +23,9 @@ global without sharing class Pricing_MyDealsRetryBatch extends TriggerHandler im
     }
     public void finish(Database.BatchableContext bc)
     {
+        // Get the batch job information
+        AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
+                          FROM AsyncApexJob WHERE Id =:bc.getJobId()];
         List<Core_Log_Entry__c> lstLogEntryRecords = createLogEntryRecords();
         List<Database.SaveResult> resultsCreateLogRecords = Database.insert(lstLogEntryRecords, false);
     }

@@ -39,9 +39,6 @@ public without sharing class PRM_VxDataStageBatchUtility {
                 mapOfPicklistValues.put(pickListVal.getLabel(),pickListVal.getValue()); //Mapping picklist values with their respective Picklist label as Key 
             } 
         } //loop ends here*/ //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
-        System.debug(LoggingLevel.INFO, 'Before building ID sets, heap=' + Limits.getHeapSize());
-        
-
         for(PRM_Value_Exchange_UCD_Stage__c stageOPID:scope){
             if(stageOPID.PRM_One_Partner_Id__c!=null){
                 opidSet.add(stageOPID.PRM_One_Partner_Id__c);//set of OPID which is picked by batch.
@@ -81,15 +78,6 @@ public without sharing class PRM_VxDataStageBatchUtility {
         Map<String,PRM_Value_Exchange_Data__c> ExistingVXData = new Map<String,PRM_Value_Exchange_Data__c>();// Map of Existing VX Data in main table
         List<PRM_Value_Exchange_UCD_Stage__c> FinalVXDataToInsert = new List<PRM_Value_Exchange_UCD_Stage__c>();//List of VXData records which needs to be updated
         List<Id> Accountfortiermap = new List<Id>();//list of Account Ids from VXStage records
-        // PB fix
-        Set<id> accountIds = new Set<id>();
-        Set<String> salesCalcTextList = new Set<String>();
-        Set<String> timePeriodList = new Set<String>();
-        for(PRM_Value_Exchange_UCD_Stage__c stageOPID:vxStageList){
-            accountIds.add(stageOPID.PRM_Account_Id__c);
-            salesCalcTextList.add(stageOPID.PRM_Sales_Calculation_Group_Txt__c);
-            timePeriodList.add(stageOPID.PRM_Time_Period__c);
-        }
         for( PRM_Value_Exchange_Data__c ExistingVXDataRecord : [Select Id,Name,PRM_Account_Id__c,PRM_One_Partner_Id__c,
                                             PRM_Training_Credit_Points_Count_Nbr__c,PRM_Training_Credit_Points_Report_Nbr__c, 
                                             PRM_Training_credits_tier_report_Nbr__c, PRM_Training_credit_to_next_tier_per_nbr__c,
@@ -99,7 +87,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
                                             PRM_Sales_To_Next_Tier_Report_Nbr__c,PRM_Sales_To_Next_Tier_Nbr__c,
                                             PRM_Total_Sales_Out_Units_Report_Nbr__c,PRM_Total_Sales_Out_Units_Nbr__c,
                                             PRM_Percent_to_next_tier_Nbr__c,PRM_Value_Exchange_ext_id__c,PRM_Sales_Calculation_Group_Txt__c,PRM_Processed_Date_Time_Dt__c,PRM_TimePeriod_Nm__c
-                                            from PRM_Value_Exchange_Data__c where PRM_Account_Id__c IN :accountIds and PRM_Sales_Calculation_Group_Txt__c IN :salesCalcTextList and PRM_TimePeriod_Nm__c IN :timePeriodList]){
+                                            from PRM_Value_Exchange_Data__c]){
                                                 String key = ExistingVXDataRecord.PRM_Account_Id__c + ExistingVXDataRecord.PRM_Sales_Calculation_Group_Txt__c + ExistingVXDataRecord.PRM_TimePeriod_Nm__c +ExistingVXDataRecord.PRM_Sales_Amount_Nbr__c + ExistingVXDataRecord.PRM_Total_Sales_Out_Units_Nbr__c + ExistingVXDataRecord.PRM_Training_Credit_Points_Count_Nbr__c; 
 												String externalIdKey = ExistingVXDataRecord.PRM_Account_Id__c + ExistingVXDataRecord.PRM_Sales_Calculation_Group_Txt__c + ExistingVXDataRecord.PRM_TimePeriod_Nm__c;
 												ExistingVXData.put(key,ExistingVXDataRecord);
@@ -240,9 +228,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
         else{
             Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, 'Message', SEVERITY, ERROR_MESSAGE, '', '', '', '');
         }
-        if(!updateVxStageList.isEmpty() && updateVxStageList.size()>0 && updateVxStageList != null){
        updateVxData(updateVxStageList);
-        }
     }
     public static void updateVxData(List<PRM_Value_Exchange_UCD_Stage__c> updateVxStageList){
         try{

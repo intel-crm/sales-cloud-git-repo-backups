@@ -40,10 +40,6 @@
             <translation>共同行銷活動歷史</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Disbursement Status</masterLabel>
-            <translation>發放狀況</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>保留條件清單歷程記錄</translation>
         </picklistValues>
@@ -66,14 +62,6 @@
         <picklistValues>
             <masterLabel>Partner Group Mapping History</masterLabel>
             <translation>夥伴群組對應歷程記錄</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Breakdown</masterLabel>
-            <translation>付款細分</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Details</masterLabel>
-            <translation>付款詳細資訊</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment History</masterLabel>

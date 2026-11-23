@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>5</activeVersionNumber>
+    <activeVersionNumber>4</activeVersionNumber>
     <description>This Subflow is called from &apos;EBR Framework Reg Request After Flow&apos; flow. This flow handles the logic of creating/Updating the Contact Entitlement Record after Contact Creation.</description>
     <masterLabel>EBR Framework Upsert Contact Entitlement Sub Flow</masterLabel>
 </FlowDefinition>

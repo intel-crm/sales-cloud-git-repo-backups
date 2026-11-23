@@ -38,12 +38,12 @@
     <formulas>
         <name>Core_Coverage_MAQL_FastTrack1Formula</name>
         <dataType>String</dataType>
-        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.DeveloperName = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverage__c)</expression>
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverage__c)</expression>
     </formulas>
     <formulas>
         <name>Core_Coverage_MAQL_FastTrack2Formula</name>
         <dataType>String</dataType>
-        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.DeveloperName = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverage__c)</expression>
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverage__c)</expression>
     </formulas>
     <formulas>
         <name>Core_Coverage_TAL_SAL_FastTrackFormula</name>
@@ -83,7 +83,7 @@
     <formulas>
         <name>F_TAL</name>
         <dataType>String</dataType>
-        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.DeveloperName = &quot;Lead&quot; ),
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ),
  (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))), 
 IF(AND(TEXT(PRIORVALUE($Record.Status))=&quot;Tele Accepted Lead&quot;, ISCHANGED($Record.Status)), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,
 TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverage__c) )</expression>
@@ -91,7 +91,7 @@ TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverag
     <formulas>
         <name>F_TQL</name>
         <dataType>String</dataType>
-        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.DeveloperName = &quot;Lead&quot; ), 
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ), 
 
 (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),
 

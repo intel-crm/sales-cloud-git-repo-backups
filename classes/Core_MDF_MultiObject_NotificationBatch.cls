@@ -41,121 +41,114 @@ global class Core_MDF_MultiObject_NotificationBatch implements Database.Batchabl
     }
     
     global void execute(Database.BatchableContext bc, List<SObject> scope) { 
-        try {
-            Map<SObject, String> mapOfUniqueIdVsSobject = new Map<SObject, String>();
-            Map<SObject, String> mapOfSobjectVAllAccsuniqueKey = new Map<SObject, String>();
-            Set<Id> setOfUltimateAccIds = new Set<Id>();
-            Set<String> listOfIupgmUniqueKey = new Set<String>();
-            Set<String> setOfQueueApiname = new Set<String>();
-            Map<Id,String> mapOfAccIdsVsuniqueKey = new Map<Id,String>();
-            Set<Id> setOfPnumAccIds= new Set<Id>();
-            Set<Id> setOfAccIds= new Set<Id>();
-            Set<Id> setOfPrdIdForManger = new Set<Id>(); 
-            Set<String> setOfPublicGrpNm = new Set<String>();
-            
-            
-            if (currentQuery.objectName == 'PartnerMarketingBudget') {
-                processPartnerMarketingBudget(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey);
+        
+        Map<SObject, String> mapOfUniqueIdVsSobject = new Map<SObject, String>();
+        Map<SObject, String> mapOfSobjectVAllAccsuniqueKey = new Map<SObject, String>();
+        Set<Id> setOfUltimateAccIds = new Set<Id>();
+        Set<String> listOfIupgmUniqueKey = new Set<String>();
+        Set<String> setOfQueueApiname = new Set<String>();
+        Map<Id,String> mapOfAccIdsVsuniqueKey = new Map<Id,String>();
+        Set<Id> setOfPnumAccIds= new Set<Id>();
+        Set<Id> setOfAccIds= new Set<Id>();
+        Set<Id> setOfPrdIdForManger = new Set<Id>(); 
+        Set<String> setOfPublicGrpNm = new Set<String>();
+        
+        
+        if (currentQuery.objectName == 'PartnerMarketingBudget') {
+            processPartnerMarketingBudget(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey);
+        }
+        else if (currentQuery.objectName == 'PartnerFundRequest') {
+            processPartnerFundRequest(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey,setOfAccIds,setOfPrdIdForManger,setOfPublicGrpNm);
+        }
+        else if (currentQuery.objectName == 'Campaign') {
+            processCampaign(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey,setOfAccIds);
+        }
+        
+        if(!setOfQueueApiname.isEmpty()){  
+            Set<String> setOfQueueName = Core_MDF_MultiObjectBatchHandler.getQueuesWithActiveUsers(setOfQueueApiname);    
+            if (!setOfQueueName.isEmpty()) {
+                listOfIupgmUniqueKey.addAll(setOfQueueName);
             }
-            else if (currentQuery.objectName == 'PartnerFundRequest') {
-                processPartnerFundRequest(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey,setOfAccIds,setOfPrdIdForManger,setOfPublicGrpNm);
-            }
-            else if (currentQuery.objectName == 'Campaign') {
-                processCampaign(scope, currentQuery,mapOfUniqueIdVsSobject,mapOfSobjectVAllAccsuniqueKey,setOfUltimateAccIds,setOfQueueApiname,listOfIupgmUniqueKey,setOfAccIds);
+            
+        }
+        if(!setOfAccIds.isEmpty()){
+            for (Core_MDF_Partner_Node_User_Mapping__c pnum : [ SELECT Core_MDF_Account__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__c IN :setOfAccIds
+                                                               AND Core_MDF_User__r.IsActive = true
+                                                               AND Core_MDF_Active_Ind__c = true]) {
+                                                                   setOfPnumAccIds.add(pnum.Core_MDF_Account__c);
+                                                               }
+        }
+        if(!setOfPublicGrpNm.isEmpty()){
+            Set<String> setOfPublicName = Core_MDF_MultiObjectBatchHandler.getPublicGroupsWithActiveUsers(setOfPublicGrpNm);    
+            if (!setOfPublicGrpNm.isEmpty()) {
+                listOfIupgmUniqueKey.addAll(setOfPublicName);
             }
             
-            if(!setOfQueueApiname.isEmpty()){  
-                Set<String> setOfQueueName = Core_MDF_MultiObjectBatchHandler.getQueuesWithActiveUsers(setOfQueueApiname);    
-                if (!setOfQueueName.isEmpty()) {
-                    listOfIupgmUniqueKey.addAll(setOfQueueName);
+        }
+        
+        // Step 3: Identify invalid records
+        if(!mapOfUniqueIdVsSobject.isEmpty()){
+            for (SObject sobj : mapOfUniqueIdVsSobject.keySet()) {
+                if(currentQuery.objectName == 'Campaign'){
+                    Campaign cmp = (Campaign) sobj;
+                    String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
+                    String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
+                    Id pnumAccIds = (cmp.Core_MDF_Approval_Stage_nm__c == Core_MDF_CCP_ConstantClass.PFR_CUSTOMER_ACCEPTANCE) ? cmp.Core_MDF_Account__c: null;
+                    
+                    if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll) && !setOfPnumAccIds.contains(pnumAccIds)) {
+                        Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
+                        csvDataList.add(wrap.toCsvRow());
+                    }
                 }
-                
-            }
-            if(!setOfAccIds.isEmpty()){
-                for (Core_MDF_Partner_Node_User_Mapping__c pnum : [ SELECT Core_MDF_Account__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__c IN :setOfAccIds
-                                                                   AND Core_MDF_User__r.IsActive = true
-                                                                   AND Core_MDF_Active_Ind__c = true]) {
-                                                                       setOfPnumAccIds.add(pnum.Core_MDF_Account__c);
-                                                                   }
-            }
-            if(!setOfPublicGrpNm.isEmpty()){
-                Set<String> setOfPublicName = Core_MDF_MultiObjectBatchHandler.getPublicGroupsWithActiveUsers(setOfPublicGrpNm);    
-                if (!setOfPublicGrpNm.isEmpty()) {
-                    listOfIupgmUniqueKey.addAll(setOfPublicName);
+                else if(currentQuery.objectName == 'PartnerMarketingBudget'){
+                    String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
+                    String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
+                    
+                    if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll)) {
+                        Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
+                        csvDataList.add(wrap.toCsvRow());
+                    }
+                    
                 }
-                
-            }
-            
-            // Step 3: Identify invalid records
-            if(!mapOfUniqueIdVsSobject.isEmpty()){
-                for (SObject sobj : mapOfUniqueIdVsSobject.keySet()) {
-                    if(currentQuery.objectName == 'Campaign'){
-                        Campaign cmp = (Campaign) sobj;
-                        String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
-                        String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
-                        Id pnumAccIds = (cmp.Core_MDF_Approval_Stage_nm__c == Core_MDF_CCP_ConstantClass.PFR_CUSTOMER_ACCEPTANCE) ? cmp.Core_MDF_Account__c: null;
+                else if(currentQuery.objectName == 'PartnerFundRequest'){
+                    PartnerFundRequest pfr = (PartnerFundRequest) sobj;
+                    
+                    String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
+                    String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
+                    Id pnumAccIds = (Core_MDF_CCP_ConstantClass.APPROVAL_STAGE_FOR_EXTERNAL_USER.Contains(pfr.Core_MDF_Approval_Stage__c)) ? pfr.ChannelPartnerId: null; 
+                    Id prfIdForRmfLevelManager = (Core_MDF_CCP_ConstantClass.FIRST_SECOND_LEVEL_MGR.Contains(pfr.Core_MDF_Approval_Stage__c)) ? pfr.Id : null;
+                    
+                    if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll) && !setOfPnumAccIds.contains(pnumAccIds) && !setOfPrdIdForManger.contains(prfIdForRmfLevelManager)) {
                         
-                        if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll) && !setOfPnumAccIds.contains(pnumAccIds)) {
-                            Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
-                            csvDataList.add(wrap.toCsvRow());
-                        }
+                        Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
+                        csvDataList.add(wrap.toCsvRow());
                     }
-                    else if(currentQuery.objectName == 'PartnerMarketingBudget'){
-                        String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
-                        String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
-                        
-                        if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll)) {
-                            Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
-                            csvDataList.add(wrap.toCsvRow());
-                        }
-                        
-                    }
-                    else if(currentQuery.objectName == 'PartnerFundRequest'){
-                        PartnerFundRequest pfr = (PartnerFundRequest) sobj;
-                        
-                        String uniqueKey = mapOfUniqueIdVsSobject.containsKey(sobj) ? mapOfUniqueIdVsSobject.get(sobj) : null;
-                        String uniqueKeyForAll = mapOfSobjectVAllAccsuniqueKey.containsKey(sobj) ? mapOfSobjectVAllAccsuniqueKey.get(sobj) : null;
-                        Id pnumAccIds = (Core_MDF_CCP_ConstantClass.APPROVAL_STAGE_FOR_EXTERNAL_USER.Contains(pfr.Core_MDF_Approval_Stage__c)) ? pfr.ChannelPartnerId: null; 
-                        Id prfIdForRmfLevelManager = (Core_MDF_CCP_ConstantClass.FIRST_SECOND_LEVEL_MGR.Contains(pfr.Core_MDF_Approval_Stage__c)) ? pfr.Id : null;
-                        
-                        if (!listOfIupgmUniqueKey.contains(uniqueKey) && !listOfIupgmUniqueKey.contains(uniqueKeyForAll) && !setOfPnumAccIds.contains(pnumAccIds) && !setOfPrdIdForManger.contains(prfIdForRmfLevelManager)) {
-                            
-                            Core_MDF_SFReportWrapper wrap = new Core_MDF_SFReportWrapper(sobj, currentQuery.objectName);
-                            csvDataList.add(wrap.toCsvRow());
-                        }
-                    }
-                } 
-            }
-        } catch(Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
+                }
+            } 
         }
     }
     
     global void finish(Database.BatchableContext bc) {
-        try {
-            if (recordTrackingId == null) {
-                Core_MDF_Record_Tracking__c rt = new Core_MDF_Record_Tracking__c();
-                rt.Core_MDF_Scope_nm__c = 'Missing Approver Roles Configuration';
-                insert rt;
-                recordTrackingId = rt.Id;
-            }
-            
-            if (csvDataList.size() > 1) {
-                ContentVersion cv = createContentVersion(csvDataList);
-                insert cv;
-                saveAttachment(new List<ContentVersion>{cv});
-            }
-            
-            List<Core_MDF_MultiObjectBatchHandler.Core_MDF_ObjectQuery> queries = Core_MDF_MultiObjectBatchHandler.prepareQueries();
-            Integer nextIndex = currentIndex + 1;
-            if (nextIndex < queries.size()) {
-                Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_Missing_approver_NotifyLogBatch');
-                Database.executeBatch(new Core_MDF_MultiObject_NotificationBatch(nextIndex, recordTrackingId), batchSize); // Add batch size in the custom label confi meta data
-            } else {
-                sendNotificationEmails();
-            }
-        } catch(Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
+        if (recordTrackingId == null) {
+            Core_MDF_Record_Tracking__c rt = new Core_MDF_Record_Tracking__c();
+            rt.Core_MDF_Scope_nm__c = 'Missing Approver Roles Configuration';
+            insert rt;
+            recordTrackingId = rt.Id;
+        }
+        
+        if (csvDataList.size() > 1) {
+            ContentVersion cv = createContentVersion(csvDataList);
+            insert cv;
+            saveAttachment(new List<ContentVersion>{cv});
+        }
+        
+        List<Core_MDF_MultiObjectBatchHandler.Core_MDF_ObjectQuery> queries = Core_MDF_MultiObjectBatchHandler.prepareQueries();
+        Integer nextIndex = currentIndex + 1;
+        if (nextIndex < queries.size()) {
+            Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_Missing_approver_NotifyLogBatch');
+            Database.executeBatch(new Core_MDF_MultiObject_NotificationBatch(nextIndex, recordTrackingId), batchSize); // Add batch size in the custom label confi meta data
+        } else {
+            sendNotificationEmails();
         }
     }
     

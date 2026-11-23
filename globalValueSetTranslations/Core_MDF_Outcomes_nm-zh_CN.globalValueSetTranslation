@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Brand Awareness</masterLabel>
-        <translation><!-- Brand Awareness --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consideration</masterLabel>
-        <translation><!-- Consideration --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Design Wins</masterLabel>
         <translation>设计采纳量</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>其他</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Preference</masterLabel>
-        <translation><!-- Preference --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Intent</masterLabel>
-        <translation><!-- Purchase Intent --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Revenue - Billings</masterLabel>
@@ -39,10 +23,6 @@
     <valueTranslation>
         <masterLabel>Revenue - Pipelines/Opportunities</masterLabel>
         <translation>收入 - 管道/机会</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Share of Voice</masterLabel>
-        <translation><!-- Share of Voice --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Volume - Deal Wins</masterLabel>

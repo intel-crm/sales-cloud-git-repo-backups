@@ -39,12 +39,11 @@ public class Core_MDF_Reopen_Activity_Test {
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
-        
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
-
+        UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
         List<User> usrList=new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -73,7 +72,7 @@ public class Core_MDF_Reopen_Activity_Test {
         database.insert(usrList);
         
         
-
+        List<ChannelProgram> cpList = new List<ChannelProgram>();
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
         ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
         ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', true);
@@ -191,7 +190,7 @@ public class Core_MDF_Reopen_Activity_Test {
         List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>();
         PartnerFundAllocation eefAllocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation EEF',
                                               testBudgetCloud,PrimaryVC,200.0,false);
-		PartnerFundAllocation eefActAllocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation activating EEF',
+        PartnerFundAllocation eefActAllocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation activating EEF',
                                               testBudgetCloud,activatingVC,100.0,false);
         pfaList.add(eefAllocation);
         pfaList.add(eefActAllocation);
@@ -259,8 +258,6 @@ public class Core_MDF_Reopen_Activity_Test {
         pfr2.Core_MDF_Activity_Closure_Type__c='Manual';
         //pfr2.Core_MDF_ATF_Flag_nm__c=System.Label.Core_MDF_ATF_Closed_Status;
         pfr2.Core_MDF_ToBeClosedDate__c=system.today()-5;
-        pfr2.Core_MDF_ActivityCategory__c = '';
-        pfr2.Core_MDF_Activity_Types__c = '';
         pfrList.add(pfr2);
 
         PartnerFundRequest eefPfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(eefCampaign.Id),
@@ -271,9 +268,7 @@ public class Core_MDF_Reopen_Activity_Test {
             eefPfr.RequestedAmount =200;
             eefPfr.Core_MDF_Reimbursement_Rate_txt__c = '100%';
             eefPfr.Core_MDF_Approval_Step_Completed__c=1;
-        	eefPfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
-        eefPfr.Core_MDF_ActivityCategory__c = '';
-        eefPfr.Core_MDF_Activity_Types__c = '';
+            eefPfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
         pfrlist.add(eefPfr);
         
         
@@ -339,8 +334,6 @@ public class Core_MDF_Reopen_Activity_Test {
         MDFpfr.Core_MDF_Activity_Closure_Type__c='Manual';
         MDFpfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
         MDFpfr.Core_MDF_PriorValueOfStatus__c='Planned';
-        MDFpfr.Core_MDF_ActivityCategory__c = '';
-        MDFpfr.Core_MDF_Activity_Types__c = '';
         pfrList.add(MDFpfr);
         
         
@@ -364,8 +357,6 @@ public class Core_MDF_Reopen_Activity_Test {
         OemCmpPfr.Core_MDF_Activity_Closure_Type__c='Manual';
         OemCmpPfr.Core_MDF_PriorValueOfStatus__c='Planned';
         OemCmpPfr.Core_MDF_Fund_Request_Status__c='Pending Review';
-        OemCmpPfr.Core_MDF_ActivityCategory__c = '';
-        OemCmpPfr.Core_MDF_Activity_Types__c = '';
         pfrList.add(OemCmpPfr);
         
         
@@ -388,9 +379,7 @@ public class Core_MDF_Reopen_Activity_Test {
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%';
         OemCmpPfr1.Core_MDF_Activity_Closure_Type__c='Manual';
         OemCmpPfr1.Core_MDF_PriorValueOfStatus__c='Planned';
-        OemCmpPfr1.Core_MDF_Fund_Request_Status__c='Closed';
-        OemCmpPfr1.Core_MDF_ActivityCategory__c = '';
-        OemCmpPfr1.Core_MDF_Activity_Types__c = '';
+        OemCmpPfr1.Core_MDF_Fund_Request_Status__c='Closed'; 
         OemCmpPfr1.RequestedAmount = 1;
         pfrList.add(OemCmpPfr1);
         
@@ -414,9 +403,7 @@ public class Core_MDF_Reopen_Activity_Test {
         OemCmpPfr2.Core_MDF_Reimbursement_Rate_pct__c='100%';
         OemCmpPfr2.Core_MDF_Activity_Closure_Type__c='Manual';
         OemCmpPfr2.Core_MDF_PriorValueOfStatus__c='Planned';
-        OemCmpPfr2.Core_MDF_Fund_Request_Status__c='Closed';
-        OemCmpPfr2.Core_MDF_ActivityCategory__c = '';
-        OemCmpPfr2.Core_MDF_Activity_Types__c = '';        
+        OemCmpPfr2.Core_MDF_Fund_Request_Status__c='Closed';        
         OemCmpPfr2.RequestedAmount = 1;
         pfrList.add(OemCmpPfr2);
         
@@ -429,8 +416,6 @@ public class Core_MDF_Reopen_Activity_Test {
         RetailPfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         RetailPfr.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr.Core_MDF_ActivityCategory__c = '';
-        RetailPfr.Core_MDF_Activity_Types__c = '';
         pfrList.add(RetailPfr);
         
         PartnerFundRequest RetailPfrAd = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp2.Id),string.valueof(accRetail.id),System.today(),System.today(),false); 
@@ -442,8 +427,6 @@ public class Core_MDF_Reopen_Activity_Test {
         RetailPfrAd.Core_MDF_Fund_Request_Status__c = 'Planned';
         RetailPfrAd.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfrAd.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfrAd.Core_MDF_ActivityCategory__c = '';
-        RetailPfrAd.Core_MDF_Activity_Types__c = '';
         pfrList.add(RetailPfrAd);
         
         PartnerFundRequest pfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(oemCamp.Id),
@@ -461,8 +444,6 @@ public class Core_MDF_Reopen_Activity_Test {
         pfr3.Core_MDF_Region_nm__c = 'APJ';
         pfr3.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
         pfr3.Core_MDF_Reimbursement_Rate_txt__c = '100%';
-        pfr3.Core_MDF_ActivityCategory__c = '';
-        pfr3.Core_MDF_Activity_Types__c = '';
         pfrList.add(pfr3);
         System.runAs(usr1){
             Database.insert(pfrList);
@@ -487,7 +468,6 @@ public class Core_MDF_Reopen_Activity_Test {
         RetailPfr1.Core_MDF_Fund_Request_Status__c = 'Planned';
         RetailPfr1.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr1.Core_MDF_Activity_Types__c = '';
         System.runAs(usr1){
             Database.insert(RetailPfr1);
         }
@@ -518,8 +498,6 @@ public class Core_MDF_Reopen_Activity_Test {
         IPApfr2.Core_MDF_Fund_Request_Status__c = 'Pending Review';
         IPApfr2.Core_MDF_Reimbursement_Rate_txt__c = '100%';
         IPApfr2.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        IPApfr2.Core_MDF_ActivityCategory__c = '';
-        IPApfr2.Core_MDF_Activity_Types__c = '';
         IPApfr2.RequestedAmount =1000;
         System.runAs(usr1){
             Database.insert(IPApfr2);
@@ -787,75 +765,23 @@ public class Core_MDF_Reopen_Activity_Test {
     }
     
     
-//US - TWC702-14285: Worked on this test class (no logic/structure change)
-@isTest
-public static void validateActivityCMPTest2(){
-
-    PartnerFundRequest pfr = [
-        SELECT Id,
-               Core_MDF_Program__c,
-               Core_MDF_Proposal_Based_Ind__c,
-               Core_MDF_Budget_Type_nm__c,
-               Core_MDF_Is_Outcome_Based_Ind__c,
-               Core_MDF_Campaign_Amount__c,
-               CampaignId,
-               BudgetId,
-               Campaign.Core_MDF_Reimbursement_Amt__c
-        FROM PartnerFundRequest
-        WHERE Title = 'Test IPA Activity2'
-        LIMIT 1
-    ];
-
-    User usr = [
-        SELECT Id
-        FROM User
-        WHERE LastName = 'Budget Loader CCPTest'
-        LIMIT 1
-    ];
-
-    Test.startTest();
-
-    System.runAs(usr){
-
-        PermissionSet psFinance = [
-            SELECT Id
-            FROM PermissionSet
-            WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr'
-            LIMIT 1
-        ];
-
-        insert new PermissionSetAssignment(
-            AssigneeId = usr.Id,
-            PermissionSetId = psFinance.Id
-        );
-
-        System.assertNotEquals(null, pfr.CampaignId, 'CampaignId must not be null');
-
-        String returnMsg = Core_MDF_Reopen_Activity.validateActivityWithCampaign(pfr);
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertNotEquals(null, returnMsg);
-        System.assert(returnMsg.length() > 0, 'Return message should not be empty');
-
-        Core_MDF_Reopen_Activity.ReopenWrapper wrapper;
-
-        // SAFE JSON handling
-        if (returnMsg != null && returnMsg.trim().startsWith('{')) {
-
-            wrapper = (Core_MDF_Reopen_Activity.ReopenWrapper)
-                JSON.deserialize(returnMsg, Core_MDF_Reopen_Activity.ReopenWrapper.class);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            System.assertNotEquals(null, wrapper, 'Wrapper should not be null');
-            System.assertNotEquals(null, wrapper.validationMsg, 'validationMsg should not be null');
-
-        } else {
-
-            System.assertEquals('success', returnMsg.toLowerCase(),
-                'Expected success response');
+    @isTest
+    public static void validateActivityCMPTest2(){
+        PartnerFundRequest pfr = [select id,Core_MDF_Program__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Budget_Type_nm__c,CampaignId,BudgetId,Campaign.Core_MDF_Reimbursement_Amt__c from PartnerFundRequest where Title = 'Test IPA Activity2' limit 1];
+        Test.startTest();
+        User usr=[select id from User where lastname='Budget Loader CCPTest' limit 1];
+        System.runAs(usr){
+            PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
         }
+        //update pfrList;
+        System.runAs(usr){
+            string returnMsg = Core_MDF_Reopen_Activity.validateActivityWithCampaign(pfr);
+            Assert.isNotNull(returnMsg);
+        }
+        Test.stopTest();
+        
     }
-
-    Test.stopTest();
-}
     
     @isTest
     public static void validateActivityCMPTest3(){
@@ -1005,804 +931,5 @@ test.stopTest();
         //Core_MDF_Reopen_Activity.ReopenWrapper reOpen = (Core_MDF_Reopen_Activity.ReopenWrapper) JSON.deserialize(returnMsg,Core_MDF_Reopen_Activity.ReopenWrapper.class); 
         Test.stopTest();
         Assert.isNotNull(returnMsg);
-    }
-    // Test method specifically for calculateOutcomeBasedAmounts method
-
-
-// Test method specifically for handleOutcomeBasedActivityReopen method
-@isTest
-public static void testHandleOutcomeBasedActivityReopen(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Check if outcome-based activities exist
-    List<PartnerFundRequest> existingOutcome = [select id,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Level_nm__c,
-                                               Core_MDF_Fund_Request_Status__c,Core_MDF_Activity_Closure_Type__c from PartnerFundRequest 
-                                               where Core_MDF_Is_Outcome_Based_Ind__c = true limit 1];
-    
-    PartnerFundRequest parentActivity;
-    if(existingOutcome.isEmpty()) {
-        // Create outcome-based parent activity
-        Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-        Campaign camp = [select id from Campaign limit 1];
-        PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-        PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-        
-        parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                               budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                               'Member Participation in Third-Party Event','Draft',false);
-        parentActivity.RequestedAmount = 100;
-        parentActivity.Title='TESTHandleOutcomeBased';
-        parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-        parentActivity.Core_MDF_Activity_Level_nm__c = null; // Parent activity
-        parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        parentActivity.Core_MDF_Activity_Types__c = '';
-        insert parentActivity;
-        
-        // Create sub-activity
-        PartnerFundRequest subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                              budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                              'Member Participation in Third-Party Event','Draft',false);
-        subActivity.RequestedAmount = 50;
-        subActivity.Title='TESTHandleOutcomeBasedSub';
-        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-        subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-        subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
-        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        subActivity.Core_MDF_Activity_Types__c = '';
-        insert subActivity;
-    } else {
-        parentActivity = existingOutcome[0];
-        // Set parent activity to closed with manual closure
-        parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        System.runAs(user1){
-            update parentActivity;
-        }
-    }
-    
-    System.runAs(usr){
-        // Test reopening parent activity - this should trigger handleOutcomeBasedActivityReopen
-        string returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(parentActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-// Test method for outcome-based activities with zero amounts
-@isTest
-public static void testOutcomeBasedWithZeroAmounts(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Create outcome-based parent activity with zero amount
-    Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-    Campaign camp = [select id from Campaign limit 1];
-    PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-    PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-    
-    PartnerFundRequest parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                             budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                             'Member Participation in Third-Party Event','Draft',false);
-    parentActivity.RequestedAmount = 2;
-    parentActivity.Title='TESTOutcomeBasedZero';
-    parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    parentActivity.Core_MDF_Activity_Level_nm__c = null;
-    parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-     parentActivity.Core_MDF_Activity_Types__c = '';
-    insert parentActivity;
-    
-    System.runAs(usr){
-        // This should test calculateOutcomeBasedAmounts with zero amount
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(parentActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-// Test method for outcome-based activities with no account mappings
-@isTest
-public static void testOutcomeBasedWithNoMappings(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Create a new outcome-based parent activity without mappings
-    Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-    Campaign camp = [select id from Campaign limit 1];
-    PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-    PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-    
-    PartnerFundRequest pfrNoMappings = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                           budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                           'Member Participation in Third-Party Event','Draft',false);
-    pfrNoMappings.RequestedAmount = 100;
-    pfrNoMappings.Title='TESTOutcomeBasedNoMappings';
-    pfrNoMappings.Core_MDF_Fund_Request_Status__c = 'Closed';
-    pfrNoMappings.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    pfrNoMappings.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    pfrNoMappings.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    pfrNoMappings.Core_MDF_Activity_Level_nm__c = null; // Parent activity
-    pfrNoMappings.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    pfrNoMappings.Core_MDF_Activity_Types__c = '';
-    insert pfrNoMappings;
-    
-    System.runAs(usr){
-        // This should test calculateOutcomeBasedAmounts with no mappings
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(pfrNoMappings.id);
-        Assert.isNotNull(returnMsg);
-        
-        // Test reopening - should trigger handleOutcomeBasedActivityReopen
-        returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(pfrNoMappings.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-// Test method for outcome-based sub-activities with different parent scenarios
-@isTest
-public static void testOutcomeBasedSubActivityScenarios(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Check if sub-activities exist
-    List<PartnerFundRequest> existingSubActivities = [select id,Core_MDF_Parent_Activity_Id__c,Core_MDF_Fund_Request_Status__c,
-                                                     Core_MDF_Activity_Closure_Type__c from PartnerFundRequest 
-                                                     where Core_MDF_Activity_Level_nm__c = 'Sub Activity' AND Core_MDF_Is_Outcome_Based_Ind__c = true limit 1];
-    
-    PartnerFundRequest subActivity;
-    if(existingSubActivities.isEmpty()) {
-        // Create parent and sub-activity
-        Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-        Campaign camp = [select id from Campaign limit 1];
-        PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-        PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-        
-        PartnerFundRequest parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                                 budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                                 'Member Participation in Third-Party Event','Draft',false);
-        parentActivity.RequestedAmount = 100;
-        parentActivity.Title='TESTSubActivityParent';
-        parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-        parentActivity.Core_MDF_Activity_Level_nm__c = null;
-        parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        parentActivity.Core_MDF_Activity_Types__c = '';
-        insert parentActivity;
-        
-        subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                           budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                           'Member Participation in Third-Party Event','Draft',false);
-        subActivity.RequestedAmount = 50;
-        subActivity.Title='TESTSubActivityChild';
-        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-        subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-        subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
-        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        subActivity.Core_MDF_Activity_Types__c = '';
-        insert subActivity;
-    } else {
-        subActivity = existingSubActivities[0];
-        // Set sub-activity to closed
-        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        System.runAs(user1){
-            update subActivity;
-        }
-    }
-    
-    System.runAs(usr){
-        // Test validation of sub-activity - should trigger calculateOutcomeBasedAmounts
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(subActivity.id);
-        Assert.isNotNull(returnMsg);
-        
-        // Test reopening sub-activity - should trigger handleOutcomeBasedActivityReopen
-        returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(subActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-// Test method for outcome-based activities with large amounts
-@isTest
-public static void testOutcomeBasedWithLargeAmounts(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Create outcome-based parent activity with large amount
-    Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-    Campaign camp = [select id from Campaign limit 1];
-    PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-    PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-    
-    PartnerFundRequest parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                             budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                             'Member Participation in Third-Party Event','Draft',false);
-    parentActivity.RequestedAmount = 999999;
-    parentActivity.Title='TESTOutcomeBasedLarge';
-    parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    parentActivity.Core_MDF_Activity_Level_nm__c = null;
-    parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    parentActivity.Core_MDF_Activity_Types__c = '';
-    insert parentActivity;
-    
-    System.runAs(usr){
-        // This should test calculateOutcomeBasedAmounts with large amount
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(parentActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-// Test method for outcome-based activities with decimal percentages
-@isTest
-public static void testOutcomeBasedWithDecimalPercentages(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Create outcome-based parent activity
-    Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-    Campaign camp = [select id from Campaign limit 1];
-    PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-    PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-    
-    PartnerFundRequest parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                             budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                             'Member Participation in Third-Party Event','Draft',false);
-    parentActivity.RequestedAmount = 100;
-    parentActivity.Title='TESTOutcomeBasedDecimal';
-    parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    parentActivity.Core_MDF_Activity_Level_nm__c = null;
-    parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    parentActivity.Core_MDF_Activity_Types__c = '';
-    insert parentActivity;
-    
-    // Get accounts for mapping
-    List<Account> accounts = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 2];
-    
-    if(accounts.size() >= 2) {
-        // Create mappings with decimal percentages
-        List<Core_MDF_Outcome_Account_Mapping__c> decimalMappings = new List<Core_MDF_Outcome_Account_Mapping__c>();
-        
-        Core_MDF_Outcome_Account_Mapping__c mapping1 = new Core_MDF_Outcome_Account_Mapping__c();
-        mapping1.Core_MDF_Outcome_Based_CampaignId__c = parentActivity.Id;
-        mapping1.Core_MDF_AccountId__c = accounts[0].Id;
-        mapping1.Core_MDF_Percentage_pct__c = 33.33;
-        mapping1.Core_MDF_Amount_nbr__c = 33.33;
-        mapping1.Core_MDF_Active_Ind__c = true;
-        decimalMappings.add(mapping1);
-        
-        Core_MDF_Outcome_Account_Mapping__c mapping2 = new Core_MDF_Outcome_Account_Mapping__c();
-        mapping2.Core_MDF_Outcome_Based_CampaignId__c = parentActivity.Id;
-        mapping2.Core_MDF_AccountId__c = accounts[1].Id;
-        mapping2.Core_MDF_Percentage_pct__c = 66.67;
-        mapping2.Core_MDF_Amount_nbr__c = 66.67;
-        mapping2.Core_MDF_Active_Ind__c = true;
-        decimalMappings.add(mapping2);
-        
-        insert decimalMappings;
-    }
-    
-    System.runAs(usr){
-        // This should test calculateOutcomeBasedAmounts with decimal percentages
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(parentActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-    // Replace the problematic test methods with these corrected versions:
-
-@isTest
-public static void testValidateActivityCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Test with invalid/null activity ID to trigger catch block
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(null);
-        Assert.isNotNull(returnMsg);
-        
-        // Test with invalid activity ID
-        returnMsg = Core_MDF_Reopen_Activity.validateActivity('001000000000000');
-        Assert.isNotNull(returnMsg);
-        
-        // Test with empty string
-        returnMsg = Core_MDF_Reopen_Activity.validateActivity('');
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testReOpenActivityCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Test with invalid/null activity ID to trigger catch block
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(null);
-        Assert.isNotNull(returnMsg);
-        
-        // Test with invalid activity ID
-        returnMsg = Core_MDF_Reopen_Activity.reOpenActivity('001000000000000');
-        Assert.isNotNull(returnMsg);
-        
-        // Test with empty string
-        returnMsg = Core_MDF_Reopen_Activity.reOpenActivity('');
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testValidateActivityWithCampaignCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Use existing PFR and modify only writable fields
-    PartnerFundRequest existingPfr = [select id,Core_MDF_Budget_Type_nm__c,CampaignId,BudgetId from PartnerFundRequest where title='Test Activity' LIMIT 1];
-    
-    // Create a new PFR instance for testing with null references
-    PartnerFundRequest testPfr = new PartnerFundRequest();
-    testPfr.Core_MDF_Budget_Type_nm__c = existingPfr.Core_MDF_Budget_Type_nm__c;
-    testPfr.CampaignId = null; // This should trigger exception handling
-    testPfr.BudgetId = null;
-    // Don't set Core_MDF_Activity_Reimbursement_Amt_nbr__c as it's not writable
-    
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivityWithCampaign(testPfr);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testGetActClosureDateCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    
-    System.runAs(usr){
-        // Test with null list to trigger catch block
-        Map<String,Date> result = Core_MDF_Reopen_Activity.getActClosureDate(null);
-        Assert.isNotNull(result);
-        
-        // Test with empty list
-        List<PartnerFundRequest> emptyList = new List<PartnerFundRequest>();
-        result = Core_MDF_Reopen_Activity.getActClosureDate(emptyList);
-        Assert.isNotNull(result);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testValidatePfrWithAllocationForAutoTransferCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Use existing PFR and create test scenario
-    PartnerFundRequest existingPfr = [select id,BudgetId,ChannelPartnerId,Amount from PartnerFundRequest where title='Test EEF Activity' LIMIT 1];
-    
-    // Create a new PFR instance for testing with null references
-    PartnerFundRequest testPfr = new PartnerFundRequest();
-    testPfr.BudgetId = null; // This should trigger exception handling
-    testPfr.ChannelPartnerId = null;
-    testPfr.Amount = 500;
-    // Don't set Core_MDF_Activity_Reimbursement_Amt_nbr__c as it's not writable
-    
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.validatePfrWithAllocationForAutoTransfer(testPfr, true);
-        Assert.isNotNull(returnMsg);
-        
-        // Test with false flag
-        returnMsg = Core_MDF_Reopen_Activity.validatePfrWithAllocationForAutoTransfer(testPfr, false);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testOutcomeBasedSubActivitiesCatchBlock(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Create outcome-based parent activity
-    Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-    Campaign camp = [select id from Campaign limit 1];
-    PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-    PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-    
-    PartnerFundRequest parentActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                             budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                             'Member Participation in Third-Party Event','Draft',false);
-    parentActivity.RequestedAmount = 100;
-    parentActivity.Title='TESTOutcomeBasedCatch';
-    parentActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    parentActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    parentActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    parentActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    parentActivity.Core_MDF_Activity_Level_nm__c = null;
-    parentActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    parentActivity.Core_MDF_Activity_Types__c = '';
-    System.runAs(user1){
-        insert parentActivity;
-    }
-    
-    // Create sub-activity
-    PartnerFundRequest subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                                          budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                          'Member Participation in Third-Party Event','Draft',false);
-    subActivity.RequestedAmount = 50;
-    subActivity.Title='TESTOutcomeBasedCatchSub';
-    subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-    subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-    subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-    subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
-    subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    subActivity.Core_MDF_Activity_Types__c = '';
-    System.runAs(user1){
-        insert subActivity;
-    }
-    
-    System.runAs(usr){
-        // This should trigger catch block in validateOutcomeBasedSubActivities
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(parentActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testIsRetailAccountBasedOrEEFMethod(){
-    Test.startTest();
-    
-    // Use existing PFRs to test the method
-    List<PartnerFundRequest> existingPfrs = [select id,Core_MDF_Program__c,Core_MDF_Proposal_Based_Ind__c,
-                                            Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Budget_Type_nm__c 
-                                            from PartnerFundRequest limit 5];
-    
-    for(PartnerFundRequest pfr : existingPfrs) {
-        Boolean result = Core_MDF_Reopen_Activity.isRetailAccountBasedOrEEF(pfr);
-        Assert.isNotNull(result); // Just verify method executes without error
-    }
-    
-    Test.stopTest();
-}
-
-@isTest
-public static void testGetCloseDateMethod(){
-    Test.startTest();
-    
-    // Use existing PFR to test the method
-    PartnerFundRequest existingPfr = [select id,Core_MDF_Program__c,Core_MDF_Budget_Type_nm__c,
-                                     CreatedDate,Core_MDF_Proposal_Based_Ind__c,Core_MDF_End_Date__c from PartnerFundRequest limit 1];
-    
-    Date result = Core_MDF_Reopen_Activity.getCloseDate(existingPfr);
-    // Result might be null if no matching metadata found, so just verify method executes
-    // Assert.isNotNull(result); // Comment this if metadata doesn't exist
-    
-    Test.stopTest();
-}
-
-@isTest
-public static void testReopenWrapperClass(){
-    Test.startTest();
-    
-    // Test ReopenWrapper initialization
-    Core_MDF_Reopen_Activity.ReopenWrapper wrapper = new Core_MDF_Reopen_Activity.ReopenWrapper();
-    Assert.areEqual('', wrapper.validationMsg);
-    Assert.areEqual(0.0, wrapper.pendingClaimableAmount);
-    Assert.areEqual(0.0, wrapper.totalClaimAmount);
-    Assert.areEqual(0.0, wrapper.intelContribution);
-    
-    // Test setting values
-    wrapper.validationMsg = 'Test Message';
-    wrapper.pendingClaimableAmount = 100.0;
-    wrapper.totalClaimAmount = 200.0;
-    wrapper.intelContribution = 300.0;
-    
-    Assert.areEqual('Test Message', wrapper.validationMsg);
-    Assert.areEqual(100.0, wrapper.pendingClaimableAmount);
-    Assert.areEqual(200.0, wrapper.totalClaimAmount);
-    Assert.areEqual(300.0, wrapper.intelContribution);
-    
-    Test.stopTest();
-}
-
-@isTest
-public static void testSubActivityValidationResultClass(){
-    Test.startTest();
-    
-    // Test SubActivityValidationResult initialization
-    Core_MDF_Reopen_Activity.SubActivityValidationResult result = new Core_MDF_Reopen_Activity.SubActivityValidationResult();
-    Assert.areEqual(0, result.claimedAmount);
-    Assert.areEqual(0, result.escAmount);
-    Assert.areEqual(0, result.reimbursementAmount);
-    Assert.areEqual(0, result.allocationAvailAmount);
-    Assert.areEqual(0, result.availableAmount);
-    Assert.isFalse(result.hasError);
-    Assert.areEqual('', result.errorMessage);
-    
-    // Test setting values
-    result.subActivityId = '001000000000001AAA';
-    result.claimedAmount = 100;
-    result.escAmount = 50;
-    result.reimbursementAmount = 200;
-    result.allocationAvailAmount = 150;
-    result.availableAmount = 75;
-    result.hasError = true;
-    result.errorMessage = 'Test Error';
-    
-    Assert.areEqual('001000000000001AAA', result.subActivityId);
-    Assert.areEqual(100, result.claimedAmount);
-    Assert.areEqual(50, result.escAmount);
-    Assert.areEqual(200, result.reimbursementAmount);
-    Assert.areEqual(150, result.allocationAvailAmount);
-    Assert.areEqual(75, result.availableAmount);
-    Assert.isTrue(result.hasError);
-    Assert.areEqual('Test Error', result.errorMessage);
-    
-    Test.stopTest();
-}
-
-@isTest
-public static void testEdgeCasesWithExistingData(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Use existing activity and modify only writable fields
-    PartnerFundRequest testActivity = [select id,Core_MDF_Fund_Request_Status__c,Core_MDF_Activity_Closure_Type__c,
-                                      Core_MDF_ToBeClosedDate__c,Amount from PartnerFundRequest 
-                                      where title='Test Activity' LIMIT 1];
-    
-    testActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    testActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    testActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-    testActivity.Amount = null; // Set to null to test edge case
-    
-    System.runAs(user1){
-        update testActivity;
-    }
-    
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(testActivity.id);
-        Assert.isNotNull(returnMsg);
-        
-        returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(testActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testBoundaryConditions(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Use existing activity and test boundary conditions
-    PartnerFundRequest boundaryActivity = [select id,Core_MDF_Fund_Request_Status__c,Core_MDF_Activity_Closure_Type__c,
-                                          Core_MDF_ToBeClosedDate__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RequestedAmount 
-                                          from PartnerFundRequest where title='Test Activity2' LIMIT 1];
-    
-    boundaryActivity.RequestedAmount = 1; // Minimum amount
-    boundaryActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-    boundaryActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-    boundaryActivity.Core_MDF_ToBeClosedDate__c = System.today(); // Today's date
-    boundaryActivity.Core_MDF_Start_Date__c = System.today(); // Today's date
-    boundaryActivity.Core_MDF_End_Date__c = System.today().addDays(1); // End date after start date
-    
-    System.runAs(user1){
-        update boundaryActivity;
-    }
-    
-    System.runAs(usr){
-        string returnMsg = Core_MDF_Reopen_Activity.validateActivity(boundaryActivity.id);
-        Assert.isNotNull(returnMsg);
-    }
-    Test.stopTest();
-}
-
-@isTest
-public static void testMultipleBTProgramScenarios(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Test with EEF program specifically
-    PartnerFundRequest eefPfr = [select id,Core_MDF_Fund_Request_Status__c,Core_MDF_Activity_Closure_Type__c,
-                                Core_MDF_ToBeClosedDate__c from PartnerFundRequest where title='Test EEF Activity' LIMIT 1];
-    if(eefPfr != null) {
-        eefPfr.Core_MDF_Fund_Request_Status__c = 'Closed';
-        eefPfr.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        eefPfr.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        
-        System.runAs(user1){
-            update eefPfr;
-        }
-        
-        System.runAs(usr){
-            // Test validation for EEF program
-            string returnMsg = Core_MDF_Reopen_Activity.validateActivity(eefPfr.id);
-            Assert.isNotNull(returnMsg);
-            
-            // Test reopening for EEF program
-            returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(eefPfr.id);
-            Assert.isNotNull(returnMsg);
-        }
-    }
-    Test.stopTest();
-}
-
-// Additional test to cover more lines in validateActivityWithCampaign
-@isTest
-public static void testValidateActivityWithCampaignComplexScenarios(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-    
-    // Test with different existing PFRs to cover various scenarios
-    List<PartnerFundRequest> existingPfrs = [select id,Core_MDF_Budget_Type_nm__c,CampaignId,BudgetId,
-                                            Core_MDF_Proposal_Based_Ind__c from PartnerFundRequest 
-                                            where CampaignId != null AND BudgetId != null limit 3];
-    
-    System.runAs(usr){
-        for(PartnerFundRequest pfr : existingPfrs) {
-            string returnMsg = Core_MDF_Reopen_Activity.validateActivityWithCampaign(pfr);
-            Assert.isNotNull(returnMsg);
-        }
-    }
-    Test.stopTest();
-}
-@isTest
-public static void testValidateOutcomeBasedSubActivityScenarios(){
-    Test.startTest();
-    User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
-    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-    
-    System.runAs(usr){
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
-    }
-	PartnerFundRequest subActivity;
- Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
-        Campaign camp = [select id from Campaign limit 1];
-        PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
-        PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
-		List<String> claimCloseStatus = new List<String>{'Closed'};
-		 subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
-                                                                           budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                           'Member Participation in Third-Party Event','Draft',false);
-        subActivity.RequestedAmount = 50;
-        subActivity.Title='TESTSubActivityChild';
-        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
-        subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
-        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
-        subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
-        subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
-      //  subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
-        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
-        subActivity.Core_MDF_Activity_Types__c = '';
-        insert subActivity;
-		System.runAs(usr){
-	Core_MDF_Reopen_Activity.validateOutcomeBasedSubActivities(subActivity.id, claimCloseStatus,subActivity);
-        // Test validation of sub-activity - should trigger calculateOutcomeBasedAmounts
-       // string returnMsg = Core_MDF_Reopen_Activity.validateActivity(subActivity.id);
-       // Assert.isNotNull(returnMsg);
-        
-        // Test reopening sub-activity - should trigger handleOutcomeBasedActivityReopen
-       // returnMsg = Core_MDF_Reopen_Activity.reOpenActivity(subActivity.id);
-       // Assert.isNotNull(testResult);
-    }
-    Test.stopTest();			
-}
-
-    
-    @isTest
-    static void testSubActivityValidationResultWrapperCoverage() {
-        // Instantiate the wrapper
-        Core_MDF_Reopen_Activity.SubActivityValidationResult wrapper =
-            new Core_MDF_Reopen_Activity.SubActivityValidationResult();
-
-        // Set properties just to touch all setters (for code coverage)
-        wrapper.subActivityId = '001000000000001';
-        wrapper.claimedAmount = 100;
-        wrapper.escAmount = 50;
-        wrapper.reimbursementAmount = 25;
-        wrapper.allocationAvailAmount = 10;
-        wrapper.availableAmount = 5;
-        wrapper.hasError = true;
-        wrapper.errorMessage = 'Test Error';
     }
 }

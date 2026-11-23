@@ -168,6 +168,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -190,6 +194,10 @@
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -280,10 +288,6 @@
     <validationRules>
         <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
         <name>Core_IPS_Restrict_Changing_Private</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
-        <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_IPS_Update_Support_Owners --></label>

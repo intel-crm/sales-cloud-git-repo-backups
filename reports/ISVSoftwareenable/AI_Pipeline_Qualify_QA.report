@@ -119,30 +119,8 @@
     <columns>
         <field>Account.Core_Account_ID__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Last_Activity_Date__c</field>
-    </columns>
-    <columns>
-        <field>LAST_ACTIVITY</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Geo__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
-        <field>LAST_STAGE_CHANGE_DATE</field>
-    </columns>
     <description>For QA dashboard - Stage = Qualify</description>
     <filter>
-        <booleanFilter>(1 OR (5 AND 6)) AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -168,22 +146,8 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Ankit Kumar,Ashton Porter,Chris Smart,Christel Thompson,Ellen Farber,George Kondos,Khondoker Mujtaba,Maneesh Durgaiah,Mario DiSanza,Mark Wier,Matthew House,Naveen Kumar,Peter Bas,Robert McLoughlin,Rodney Dahleen,Samanth R,Sameera Kandewatte,Shantanu Priyadarshi,Sonali Singh,Syed Amir Ali,Umair Tariq,XIN FAN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Lost</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>LAST_STAGE_CHANGE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>1/1/2026 12:00 AM</value>
+            <operator>notEqual</operator>
+            <value>Thejas Hosur Ramegowda</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -196,7 +160,7 @@
         <sortOrder>Desc</sortOrder>
         <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>!AI Pipeline (Qualify to DW)</name>
+    <name>AI Pipeline (Qualify to Design Win)</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -195,10 +195,7 @@ Accenture - KS         05/1/2021    Add new MS Claim submitter Role
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> secondaryRolesIUPGMList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         
         Map<String, List<GroupMember>> groupMemberMap = new Map<String, List<GroupMember>>();
-        // Leela - key = intelAccountId + programId, value = Virtual Corp Account Id
-        Map<String, Id> intelAccProgramToVCAcctIdMap = new Map<String, Id>();
-        
-        try{
+        try{                                
             singleAccSpecificBTRoleList = Core_MDF_CCP_ConstantClass.CORE_MDF_SINGLEACC_SPECIFICBT_ROLES.split(';');
             
             allAccWithoutBTAccessRoles = Core_MDF_CCP_ConstantClass.Core_MDF_AllAcc_WithoutBTAccess_Roles.split(';');
@@ -478,19 +475,7 @@ Accenture - KS         05/1/2021    Add new MS Claim submitter Role
                 groupMemberMap = addRoleSpecificIUPGMGroupMember(secondaryRolesIUPGMList);
             }
             if(isPrimaryIUPGMRole){                               
-                if(!accountIdSet.isEmpty() && !programIdSet.isEmpty()){
-                    for(Account vcAcc : [
-                        SELECT Id, Core_MDF_Parent_Fund_Account__c, Core_MDF_Channel_Program__c
-                        FROM Account
-                        WHERE Core_MDF_Parent_Fund_Account__c IN : accountIdSet
-                        AND Core_MDF_Channel_Program__c IN : programIdSet
-                        ]){
-                        String vcKey = (String)vcAcc.Core_MDF_Parent_Fund_Account__c + (String)vcAcc.Core_MDF_Channel_Program__c;
-                        if(!intelAccProgramToVCAcctIdMap.containsKey(vcKey)){
-                            intelAccProgramToVCAcctIdMap.put(vcKey, vcAcc.Id);
-                        }
-                    }
-                }
+                                           
                 //Get PGM based on the Set and create accountProgramGeoGroupIdSetMap Map    
                 
                 if(!accountIdSet.isEmpty() && !programIdSet.isEmpty()){                                
@@ -579,15 +564,11 @@ Accenture - KS         05/1/2021    Add new MS Claim submitter Role
                                     //String accGeoNameFromMap = Store the Account Name and Geo Name                                
                                     String accGeoNameFromMap = accountProgramGeoIdNameMap.get(key);                             
                                     
-                                    Id vcAccId = intelAccProgramToVCAcctIdMap.get((String)accId + (String)programId);
-                                    if(vcAccId == null){
-                                        continue; // No VC => do not create any group
-                                    }
+                                    
                                     
                                     //Remove all the special characters and change to Upper Case                                
-                                    //String accountName = accGeoNameFromMap.split('#')[0].replaceAll('[^a-zA-Z\\s+]', '').deleteWhitespace().toUpperCase();
-                                    //String accountName = accGeoNameFromMap.split('#')[0];
-                                    String accountName = ((String)vcAccId).right(15);
+                                    //String accountName = accGeoNameFromMap.split('#')[0].replaceAll('[^a-zA-Z\\s+]', '').deleteWhitespace().toUpperCase();                                
+                                    String accountName = accGeoNameFromMap.split('#')[0];
                                     
                                     
                                     String programName = programIdMap.get(programId);                               
@@ -1741,8 +1722,8 @@ Modified By   :        Date:       Changes:
             Map<string,string> channelProgramToMasterGroupName = new Map<string,string>();                              
             List<string> groupNames=new List<string>();                             
             //Avoid using Soql / Sosl queries without filters and limits
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  record: [select Core_MDF_Channel_Program_txt__c,Core_MDF_Internal_Master_Group_Name_Txt__c                                
-                                                                   from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  LIMIT 5000]){                                
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt record: [select Core_MDF_Channel_Program_txt__c,Core_MDF_Internal_Master_Group_Name_Txt__c                                
+                                                                   from Core_MDF_ClaimActAllocRecTypeMapping__mdt LIMIT 5000]){                                
                                                                        string key = record.Core_MDF_Channel_Program_txt__c;                                
                                                                        channelProgramToMasterGroupName.put(key,record.Core_MDF_Internal_Master_Group_Name_Txt__c);                                 
                                                                        
@@ -2376,84 +2357,6 @@ public static void validateDuplicateAccounts(List<Core_MDF_Int_Users_Partner_Geo
 }
 
     
-/*****************************************************************************************************
-Method Name   :        validateAccountOnboardedForProgram
-@return       :        void
-@parameters   :        List of Internal Users Partner Geo Mapping records
-Description   :        Validates if the account is onboarded by checking Partner Group Mapping for External access
-Added By      : Gayathri   - [Date]
-******************************************************************************************************/     
-public static void validateAccountOnboardedForProgram(List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList) {
-    try { 
-        // Build candidate Account sets and program names from IUPGM records
-        Set<Id> accountIdSet = new Set<Id>();
-        Set<String> programNameSet = new Set<String>();
-        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> recordsToValidate = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-
-        for (Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : iupgmList) {
-            if (iupgm.Core_MDF_Account_id__c != null &&
-                String.isNotBlank(iupgm.Core_MDF_Program_nm__c)) {
-                
-                accountIdSet.add(iupgm.Core_MDF_Account_id__c);
-                programNameSet.add(iupgm.Core_MDF_Program_nm__c);
-                recordsToValidate.add(iupgm);
-            }
-        }
-        if (accountIdSet.isEmpty()) {
-            return;
-        }
-        // Query accounts to check Core_MDF_CoMarketing_Ultimate_Account__c
-        Set<Id> allAccountsToCheckSet = new Set<Id>();
-        Map<Id, Id> accountToUltimateAccountMap = new Map<Id, Id>();
-        
-        for (Account iupgmaccount : [
-            SELECT Id, Core_MDF_CoMarketing_Ultimate_Account__c
-            FROM Account
-            WHERE Id IN :accountIdSet
-        ]) {
-            if (iupgmaccount.Core_MDF_CoMarketing_Ultimate_Account__c == null) {
-                // If Core_MDF_CoMarketing_Ultimate_Account__c is blank, add current account
-                allAccountsToCheckSet.add(iupgmaccount.Id);
-                accountToUltimateAccountMap.put(iupgmaccount.Id, iupgmaccount.Id); 
-            } else {
-                // If Core_MDF_CoMarketing_Ultimate_Account__c is not blank, add the ultimate account
-                allAccountsToCheckSet.add(iupgmaccount.Core_MDF_CoMarketing_Ultimate_Account__c);
-                accountToUltimateAccountMap.put(iupgmaccount.Id, iupgmaccount.Core_MDF_CoMarketing_Ultimate_Account__c);
-            }
-        }
-        
-
-        // Query onboarded account-program combinations
-        Set<String> onboardedKeySet = new Set<String>();
-        
-        for (Core_MDF_Partner_Group_Mapping__c pgm : [
-            SELECT Core_MDF_Account__c, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
-            FROM Core_MDF_Partner_Group_Mapping__c
-            WHERE Core_MDF_Account__c IN :allAccountsToCheckSet
-              AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c IN :programNameSet
-              AND Core_MDF_Type_Of_Access__c = 'External'
-              AND Core_MDF_Inactive_Ind__c = false
-        ]) {
-            onboardedKeySet.add(pgm.Core_MDF_Account__c + '_' + pgm.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
-        }
-
-        // Get error message
-        String msg = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Account_Not_Onboarded_Error');
-
-        // Validate and add errors (only loop through pre-filtered records)
-        for (Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : recordsToValidate) {
-            // Get the ultimate account ID for key preparation
-            Id ultimateAccountId = accountToUltimateAccountMap.get(iupgm.Core_MDF_Account_id__c);
-            String key = ultimateAccountId + '_' + iupgm.Core_MDF_Program_nm__c;
-            if (!onboardedKeySet.contains(key)) {
-                iupgm.addError(msg);
-            }
-        }
-        
-    } catch (Exception e) {
-        Core_MDF_CCP_UtilityClass.logError(e);
-    }
-}
 /*****************************************************************************************************                              
 Method Name   :        fetchLstOfBudgetTypesAndRegionsLst                              
 @return       :        void                             

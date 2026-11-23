@@ -179,11 +179,9 @@ public with sharing class core_IPS_LEXAddCommentController {
         if( caseWrapperObj.selectedRadioButton!=null ){         
             if(partnerUser){
                 /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               /*Start -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */ 
-                if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable()) {
+                //if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable()) {
                     newComment.Core_IPS_Case_Comment_Type__c = caseWrapperObj.selectedRadioButton;   
-                }
-                /*End -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
+               // }
             } else if(!(externalUser) || (partnerAgentUser)){   
                 /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
                // if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable()) {
@@ -341,35 +339,4 @@ public with sharing class core_IPS_LEXAddCommentController {
             
         }
     }
-    /*Start -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
-    @AuraEnabled(cacheable=true)
-    public static List<Core_IPS_Case_Comments__c> getCaseCommentsForLWC(String caseId) {
-        
-        if (String.isBlank(caseId)) {
-            return new List<Core_IPS_Case_Comments__c>();
-        }
-        
-        if (!Schema.sObjectType.Core_IPS_Case_Comments__c.isAccessible()) {
-            return new List<Core_IPS_Case_Comments__c>();
-        }
-        List<Core_IPS_Case_Comments__c> lstComment = [
-            SELECT Id,
-            CreatedBy.Name,
-            CreatedBy.Email,
-            Core_IPS_Case__c,
-            Core_IPS_Comment_Authored_By_Email__c,
-            Core_IPS_Comment__c,
-            Core_IPS_Rich_Comment__c,
-            Core_IPS_Comment_Authored_By_Name__c,
-            Core_IPS_Case_Comment_Type__c,
-            Core_IPS_Comment_Author_Type__c,
-            CreatedDate
-            FROM Core_IPS_Case_Comments__c
-            WHERE Core_IPS_Case__c = :caseId
-            ORDER BY CreatedDate DESC
-            
-        ];
-        return lstComment;
-    }
-	/*END -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
 }

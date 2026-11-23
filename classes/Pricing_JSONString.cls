@@ -2,12 +2,12 @@
  * @description       : Wrapper class for Mydeals Request Payload 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : Gravity
- * @last modified on  : 07-09-2026
+ * @last modified on  : 04-14-2025
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 //** when ever an attribute is added in this class we have to make sure to add in Pricing_BulkCR_JSONString class as well */
-public virtual class Pricing_JSONString {
-    public virtual class Quote {
+public class Pricing_JSONString {
+    public class Quote {
         public String Id;
         public String Name;
         public String FolioID;
@@ -30,14 +30,14 @@ public virtual class Pricing_JSONString {
         public List<QuoteLine> QuoteLine;
     }
 
-    public virtual class Account {
+    public class Account {
         public String Id;
         public String Name;
         public String CIMId;
         public String CustomerMappingId;
     }
 
-    public virtual class PerformanceMetric {
+    public class PerformanceMetric {
         public String Id;
         public String Name;
         public String PerformanceMetric;
@@ -49,14 +49,14 @@ public virtual class Pricing_JSONString {
     public Header Header;
     public RecordDetails RecordDetails;
 
-    public virtual class Header {
+    public class Header {
         public String source_system;
         public String target_system;
         public String action;
         public String xid;
     }
 
-    public virtual class Product {
+    public class Product {
         public String Id;
         public String Name;
         public String ProductNameEPMID;
@@ -67,7 +67,7 @@ public virtual class Pricing_JSONString {
         public String MaterialID;
     }
 
-    public virtual class QuoteLine {
+    public class QuoteLine {
         public String Id;
         public String Name;
         public Decimal MeetCompPrice;
@@ -101,7 +101,6 @@ public virtual class Pricing_JSONString {
         public String EndCustomerRegion;
         public String Region;
         public String DealDescription;
-        public String RevisionReasonComment;
         public String CustomerDivision;
         public String ConsumptionCustomerPlatform;
         public String ConsumptionReportedSalesGeo;
@@ -111,16 +110,16 @@ public virtual class Pricing_JSONString {
         public List<ErrorMessages> ErrorMessages;
     }
 
-    public virtual class RecordDetails {
+    public class RecordDetails {
         public Quote Quote;
     }
 
-    public virtual class CompetitorProduct {
+    public class CompetitorProduct {
         public String Id;
         public String Name;
     }
     
-    public virtual class ErrorMessages{
+    public class ErrorMessages{
         public String code;
         public String Message;
         public String MessageDetails;

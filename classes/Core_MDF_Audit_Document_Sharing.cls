@@ -1,27 +1,27 @@
 /****************************************************************************************************************************************
-* Class Name        : Core_MDF_Audit_Document_Sharing
-* Test Class  : Core_MDF_Audit_Document_Trigger_Test
-*         Core_MDF_PGM_BatchHelper_Test
-* Created Date      : 7/28/2023
-* Modification Log
-* Developer            Date               Description
-* ---------------------------------------------------------------------------------------------------------------------------------------
+ * Class Name        : Core_MDF_Audit_Document_Sharing
+ * Test Class  : Core_MDF_Audit_Document_Trigger_Test
+ *         Core_MDF_PGM_BatchHelper_Test
+ * Created Date      : 7/28/2023
+ * Modification Log
+ * Developer            Date               Description
+ * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture – Sandesh   28-07-2023         Created for sharing the Audit Document record. 
-*****************************************************************************************************************************************/
+ *****************************************************************************************************************************************/
 public without sharing class Core_MDF_Audit_Document_Sharing {
     
     /***************************************************************************************************** 
-Method Name   :        shareAuditDocToInternalUsers
-@return       :        void
-@parameters   :        List<Core_MDF_Audit_Document__c>
-Description   :         Whenever a record is inserted/updated of Audit Document, this method shares the Audit Document to the Internal Managers 
+    Method Name   :        shareAuditDocToInternalUsers
+    @return       :        void
+    @parameters   :        List<Core_MDF_Audit_Document__c>
+    Description   :         Whenever a record is inserted/updated of Audit Document, this method shares the Audit Document to the Internal Managers 
 according the Account Node on which the Audit Document is created .
-Added By      :        Accenture - Sandesh H - 07/28/2023
-Modified By   :        Date:            Changes: 
-******************************************************************************************************/  
+    Added By      :        Accenture - Sandesh H - 07/28/2023
+    Modified By   :        Date:            Changes: 
+    ******************************************************************************************************/  
     
     public static void shareAuditDocToInternalUsers(List<Core_MDF_Audit_Document__c> auditDocList) {
-        
+      
         // Channel program Sharing      
         List<Core_MDF_RecordGeoShare> recordGeoShareList= new List<Core_MDF_RecordGeoShare>();
         List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList= new List<Core_MDF_RecordPGMShareWrapper>();
@@ -56,10 +56,10 @@ Modified By   :        Date:            Changes:
                         recordGeoShareList.add(new Core_MDF_RecordGeoShare(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.ChannelPartner.Core_Geo__c,NULL,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c));   
                         recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.ChannelPartner.Core_Geo__c,NULL,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c,pfc.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
                     }/*else if(pfc.Core_MDF_Program__c == Label.Core_MDF_CMDF_Program_Name)
-{
-recordGeoShareList.add(new Core_MDF_RecordGeoShare(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.Core_MDF_Region_Cd__c,pfc.Core_MDF_Sub_Region_Cd__c,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c));   
-recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.Core_MDF_Region_Cd__c,pfc.Core_MDF_Sub_Region_Cd__c,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c,pfc.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
-}*/
+                    {
+                        recordGeoShareList.add(new Core_MDF_RecordGeoShare(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.Core_MDF_Region_Cd__c,pfc.Core_MDF_Sub_Region_Cd__c,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c));   
+                        recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.Core_MDF_Region_Cd__c,pfc.Core_MDF_Sub_Region_Cd__c,pfc.Core_MDF_Program__c,pfc.Core_MDF_Budget_Type_Options_Nm__c,pfc.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
+                    }*/
                     else
                     {
                         recordGeoShareList.add(new Core_MDF_RecordGeoShare(auditDocClaimIdNbrToAudiDocIdMap.get(pfc.ID),pfc.Core_MDF_Region_Cd__c,pfc.Core_MDF_Sub_Region_Cd__c,pfc.Core_MDF_Program__c));   
@@ -92,17 +92,17 @@ recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(auditDocClaimIdNbrToAu
         } catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
-        
+    
     }
     
     /***************************************************************************************************** 
-Method Name   :        shareAuditDocToclaim
-@return       :        void
-@parameters   :        Map<Id, Core_MDF_Audit_Document__c>
-Description   :         Whenever a record is inserted/updated of Audit Document, this method shares the Audit Document to claims sharing groups.
-Added By      :        Accenture - Sandesh H - 07/28/2023
-Modified By   :        Date:            Changes: 
-******************************************************************************************************/ 
+    Method Name   :        shareAuditDocToclaim
+    @return       :        void
+    @parameters   :        Map<Id, Core_MDF_Audit_Document__c>
+    Description   :         Whenever a record is inserted/updated of Audit Document, this method shares the Audit Document to claims sharing groups.
+    Added By      :        Accenture - Sandesh H - 07/28/2023
+    Modified By   :        Date:            Changes: 
+    ******************************************************************************************************/ 
     
     public static void shareAuditDocToclaim(Map<Id, Core_MDF_Audit_Document__c> newAuditDocTobeShared){
         Set<Id> claimNodeIdSet = new Set<Id>();
@@ -110,67 +110,74 @@ Modified By   :        Date:            Changes:
         Map<Id,List<Id>> claimIdToPFCShareMapWrite = new Map<Id,List<Id>>();
         Map<Id,List<Id>> auditDocGroupSharingRead = new Map<Id,List<Id>>();
         Map<Id,List<Id>> auditDocGroupSharingWrite = new Map<Id,List<Id>>();
-
         try { 
             List<String> programsForAllUserCCPGroupList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Prog_For_AllUserCCPGroupSharing').split(',');
             List<Group> groupList = [Select Id,Name from Group where Name  = 'AGS_All Users - CCP Internal' limit 1];
-            for(Core_MDF_Audit_Document__c auditDoc : newAuditDocTobeShared.values()){ 
-                claimNodeIdSet.add(auditDoc.Core_MDF_Claim__c);
+        for(Core_MDF_Audit_Document__c auditDoc : newAuditDocTobeShared.values()){ 
+            claimNodeIdSet.add(auditDoc.Core_MDF_Claim__c);
+        }
+        
+        if(!claimNodeIdSet.isEmpty()){
+                for(PartnerFundClaimShare pfcShare : [Select Id, ParentId,UserOrGroupId,UserOrGroup.Name,AccessLevel,RowCause,Parent.Core_MDF_Program__c from PartnerFundClaimShare 
+                                                  where ParentId in: claimNodeIdSet and RowCause = 'Manual' ]){
+                                                          if(programsForAllUserCCPGroupList.contains(pfcShare.Parent.Core_MDF_Program__c) && groupList!=null && groupList.size() > 0){
+                                                              List<Id> groupIdList =claimIdToPFCShareMapWrite.get(pfcShare.ParentId);
+                                                              if(groupIdList!=null && groupIdList.size() > 0){
+                                                                  if(!groupIdList.contains(groupList[0].Id)){
+                                                                      if(claimIdToPFCShareMapWrite.containsKey(pfcShare.ParentId)){
+                                                                          claimIdToPFCShareMapWrite.get(pfcShare.ParentId).add(groupList[0].Id);
+                                                                      }
+                                                                  }
+                                                                  
+                                                              }
+                                                              else{
+                                                                  claimIdToPFCShareMapWrite.put(pfcShare.ParentId, new List<Id>{pfcShare.UserOrGroupId});
+                                                              }
+                                                          }
+                                                      if(pfcShare.AccessLevel == 'Read'){
+                                                          if(claimIdToPFCShareMapRead.containsKey(pfcShare.ParentId)){
+                                                                claimIdToPFCShareMapRead.get(pfcShare.ParentId).add(pfcShare.UserOrGroupId);
+                                                          }else{
+                                                              claimIdToPFCShareMapRead.put(pfcShare.ParentId, new List<Id>{pfcShare.UserOrGroupId});
+                                                          }
+                                                      }
+                                                      else if(pfcShare.AccessLevel == 'Edit'){
+                                                          if(claimIdToPFCShareMapWrite.containsKey(pfcShare.ParentId)){
+                                                                claimIdToPFCShareMapWrite.get(pfcShare.ParentId).add(pfcShare.UserOrGroupId);
+                                                          }else{
+                                                              claimIdToPFCShareMapWrite.put(pfcShare.ParentId, new List<Id>{pfcShare.UserOrGroupId});
+                                                          }
+                                                      }
+                                                      
+                                                  }
+        }
+       
+      for(Core_MDF_Audit_Document__c auditDoc : newAuditDocTobeShared.values())
+        {      
+            if(claimIdToPFCShareMapRead.containsKey(auditDoc.Core_MDF_Claim__c) && claimIdToPFCShareMapRead.get(auditDoc.Core_MDF_Claim__c)!=null) 
+            {
+                auditDocGroupSharingRead.put(auditDoc.Id, claimIdToPFCShareMapRead.get(auditDoc.Core_MDF_Claim__c));
             }
             
-            List<PartnerFundClaimShare> claimShareList = !claimNodeIdSet.isEmpty() ? [SELECT Id, ParentId, UserOrGroupId, UserOrGroup.Name, AccessLevel, RowCause, Parent.Core_MDF_Program__c FROM PartnerFundClaimShare WHERE ParentId IN :claimNodeIdSet AND RowCause = 'Manual'] : new List<PartnerFundClaimShare>();
-
-        	for(PartnerFundClaimShare pfcShare : claimShareList){
-
-            if(!claimIdToPFCShareMapRead.containsKey(pfcShare.ParentId)){
-                claimIdToPFCShareMapRead.put(pfcShare.ParentId, new List<Id>());
-            }
-            if(!claimIdToPFCShareMapWrite.containsKey(pfcShare.ParentId)){
-                claimIdToPFCShareMapWrite.put(pfcShare.ParentId, new List<Id>());
-            }
-
-            if(pfcShare.AccessLevel == 'Read'){
-                claimIdToPFCShareMapRead.get(pfcShare.ParentId).add(pfcShare.UserOrGroupId);
-            }
-
-            if(pfcShare.AccessLevel == 'Edit'){
-                claimIdToPFCShareMapWrite.get(pfcShare.ParentId).add(pfcShare.UserOrGroupId);
-            }
-
-            if(groupList != null && !groupList.isEmpty() && programsForAllUserCCPGroupList.contains(pfcShare.Parent.Core_MDF_Program__c)){
-                List<Id> groupIdList = claimIdToPFCShareMapWrite.get(pfcShare.ParentId);
-                if(groupIdList!=null && groupIdList.size() > 0 && !groupIdList.contains(groupList[0].Id)){
-                    claimIdToPFCShareMapWrite.get(pfcShare.ParentId).add(groupList[0].Id);
-                }
+            if(claimIdToPFCShareMapWrite.containsKey(auditDoc.Core_MDF_Claim__c) && claimIdToPFCShareMapWrite.get(auditDoc.Core_MDF_Claim__c)!=null) 
+            {
+                auditDocGroupSharingWrite.put(auditDoc.Id, claimIdToPFCShareMapWrite.get(auditDoc.Core_MDF_Claim__c));
             }
         }
-            
-            for(Core_MDF_Audit_Document__c auditDoc : newAuditDocTobeShared.values())
-            {      
-                if(claimIdToPFCShareMapRead.containsKey(auditDoc.Core_MDF_Claim__c) && claimIdToPFCShareMapRead.get(auditDoc.Core_MDF_Claim__c)!=null) 
-                {
-                    auditDocGroupSharingRead.put(auditDoc.Id, claimIdToPFCShareMapRead.get(auditDoc.Core_MDF_Claim__c));
-                }
-                
-                if(claimIdToPFCShareMapWrite.containsKey(auditDoc.Core_MDF_Claim__c) && claimIdToPFCShareMapWrite.get(auditDoc.Core_MDF_Claim__c)!=null) 
-                {
-                    auditDocGroupSharingWrite.put(auditDoc.Id, claimIdToPFCShareMapWrite.get(auditDoc.Core_MDF_Claim__c));
-                }
-            }
-            
-            
-            if(auditDocGroupSharingRead!=null && auditDocGroupSharingRead.size() > 0)
-            {
-                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Core_MDF_Audit_Document__c',auditDocGroupSharingRead, 'Read');
-                Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
-            }
-            
-            if(auditDocGroupSharingWrite!=null && auditDocGroupSharingWrite.size() > 0)
-            {
-                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Core_MDF_Audit_Document__c',auditDocGroupSharingWrite, 'Edit');
-                Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
-            }
-            
+        
+        
+        if(auditDocGroupSharingRead!=null && auditDocGroupSharingRead.size() > 0)
+        {
+            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Core_MDF_Audit_Document__c',auditDocGroupSharingRead, 'Read');
+            Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+        }
+        
+        if(auditDocGroupSharingWrite!=null && auditDocGroupSharingWrite.size() > 0)
+        {
+            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Core_MDF_Audit_Document__c',auditDocGroupSharingWrite, 'Edit');
+            Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+        }
+        
         }catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }

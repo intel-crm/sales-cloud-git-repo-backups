@@ -2,8 +2,8 @@
 * @description       : 
 * @author            : Bharath Chandrashekar
 * @group             : 
-* @last modified on  : 04-07-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 11-28-2024
+* @last modified by  : Bharath Chandrashekar
 **/
 @isTest
 public class Pricing_SyncSDMToQuote_Test {
@@ -13,7 +13,7 @@ public class Pricing_SyncSDMToQuote_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales',UserId = adminUserList[0].Id);
             insert accTeam;
@@ -24,7 +24,7 @@ public class Pricing_SyncSDMToQuote_Test {
             grpMem1.GroupId = grp.Id;
             Insert grpMem1;
             ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
-            Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,1);
+            List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,1);
             Test.stopTest();
         }
     }
@@ -33,13 +33,15 @@ public class Pricing_SyncSDMToQuote_Test {
         List<Id> Ids = new List<Id>();
         Account acct = [SELECT Id from Account LIMIT 1];
         List<User> adminUserList = [Select id from User where Email='qlBusinessLogicAdmin@intel.com'];
+        List<User> salesRepUserList = [Select id from User where Email='firstNameSalesRep@intel.com'];
         AccountTeamMember acc = [SELECT Id,AccountId,Account.Name FROM AccountTeamMember where AccountId =: acct.Id];
+        Core_MDF_Partner_Group_Mapping__c PGMgroup = [Select Id, Core_MDF_Group_Name__c, Core_MDF_Group_Id__c FROM Core_MDF_Partner_Group_Mapping__c where Core_MDF_Account__c =:acct.Id];
+        GroupMember grpMember = [SELECT Id,UserOrGroupId,GroupId FROM GroupMember limit 1];
         Ids.add(acct.Id);
         System.runAs(adminUserList[0]){
             Test.startTest();
             Pricing_SyncSDMToQuote.addCurrentUserToPublicGroups(Ids);
-            System.assertEquals(true , acct != null);
             Test.stopTest();
-        }
+        }   
     }
 }

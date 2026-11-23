@@ -138,7 +138,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
                 'Consumer',
                 'Desktop',
                 'Intel® Corporate Logo',
-                'Broadcast (Pre-2025)',
+                'Broadcast',
                 'Radio',
                 'Draft',
                 false
@@ -242,8 +242,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             Core_MDF_Claim__c = claim.Id,
             Core_MDF_Document_Types__c = 'Proof of Cost;Proof of execution;Proof of attribution',
             Core_MDF_App_Document_Types_nm__c ='Proof of Cost;Proof of execution;Proof of attribution',
-            Core_MDF_Document_Title__c = 'Test Doc',
-            Core_MDF_Old_Document_Id__c = 'APP-FILE-001'
+            Core_MDF_Document_Title__c = 'Test Doc'
         );
         insert doc;
         
@@ -338,6 +337,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             LIMIT 1
         ];
         System.assertEquals(true, createdAIBased.Core_MDF_AI_PIC_Review_Ind__c, 'Staged review should be AI (AI-prev branch)');
+        System.assertEquals(5, (Integer)createdAIBased.Core_MDF_CycleNumber_nbr__c, 'Manual cycle carries as-is from last AI-prev (5)');
         //System.assertEquals(4, (Integer)createdAIBased.Core_MDF_AI_CycleNumber_nbr__c, 'AI next = prevAI(3)+1 = 4 for AI-prev branch');
     }
     
@@ -356,8 +356,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             Core_MDF_Claim_ID_id__c = claim.Id,
             Core_MDF_CycleNumber_nbr__c = 1,
             Core_MDF_AI_CycleNumber_nbr__c = 1,
-            Core_MDF_AI_PIC_Review_Ind__c = true,
-            Core_MDF_External_Id__c =  String.valueOf(claim.Id)+'1'
+            Core_MDF_AI_PIC_Review_Ind__c = true
         );
         insert priorAI;
         String compositeKey = String.valueOf(claim.Id) + '-' + String.valueOf(priorAI.Id);
@@ -373,20 +372,19 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         Map<Id, Map<Id, Core_CDB_Integration_Log__c>> claimIdToPicReviewIdToFinalCDBLog = new Map<Id, Map<Id, Core_CDB_Integration_Log__c>>{
             claim.Id => new Map<Id, Core_CDB_Integration_Log__c>{ priorAI.Id => prevLog }
         };
-            Map <Id,Core_MDF_PIC_Review__c> picReviewMap1=new Map <Id,Core_MDF_PIC_Review__c> {priorAI.id => priorAI};
-                Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
-                    
-                    Map<String, String> compToJson = new Map<String, String>{
-                        compositeKey => '{"sample":"payload1"}'
-                            };
-                                Map<String, Integer> prevRetry = new Map<String, Integer>{
-                                    compositeKey => 2
-                                        };
-                                            
-                                            Test.startTest();
+            Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
+                
+                Map<String, String> compToJson = new Map<String, String>{
+                    compositeKey => '{"sample":"payload1"}'
+                        };
+                            Map<String, Integer> prevRetry = new Map<String, Integer>{
+                                compositeKey => 2
+                                    };
+                                        
+                                        Test.startTest();
         Test.setMock(HttpCalloutMock.class, new SuccessHttpMock());
         // Drive fetch path (builds JSON internally) and then explicitly call future once
-        Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap1);
+        Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog);
         Core_MDF_AI_Integration_Outbound.makeCDBCallout(compToJson, prevRetry);
         Test.stopTest();
         
@@ -421,8 +419,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             Core_MDF_Claim_ID_id__c = claim.Id,
             Core_MDF_CycleNumber_nbr__c = 1,
             Core_MDF_AI_CycleNumber_nbr__c = 1,
-            Core_MDF_AI_PIC_Review_Ind__c = true,
-            Core_MDF_External_Id__c =  String.valueOf(claim.Id)+'1'
+            Core_MDF_AI_PIC_Review_Ind__c = true
         );
         insert priorAI;
         String compositeKey = String.valueOf(claim.Id) + '-' + String.valueOf(priorAI.Id);
@@ -438,21 +435,20 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         Map<Id, Map<Id, Core_CDB_Integration_Log__c>> claimIdToPicReviewIdToFinalCDBLog = new Map<Id, Map<Id, Core_CDB_Integration_Log__c>>{
             claim.Id => new Map<Id, Core_CDB_Integration_Log__c>{ priorAI.Id => prevLog }
         };
-            Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
-                
-                // Build payload map and prevRetry map so makeCDBCallout computes newRetryCounter = 3
-                Map<String, String> compToJson = new Map<String, String>{
-                    compositeKey => '{"sample":"payload2"}'
-                        };
-                            Map<String, Integer> prevRetry = new Map<String, Integer>{
-                                compositeKey => 2
-                                    };
-                                        Map<Id,Core_MDF_PIC_Review__c> picReviewMap = new  Map<Id,Core_MDF_PIC_Review__c>{priorAI.Id => priorAI};
-                                            
-                                            Test.startTest();
+        Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
+        
+        // Build payload map and prevRetry map so makeCDBCallout computes newRetryCounter = 3
+        Map<String, String> compToJson = new Map<String, String>{
+            compositeKey => '{"sample":"payload2"}'
+        };
+        Map<String, Integer> prevRetry = new Map<String, Integer>{
+            compositeKey => 2
+        };
+        
+        Test.startTest();
         // Force callout failure so isSuccess = false
         Test.setMock(HttpCalloutMock.class, new FailureHttpMock());
-        Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap);
+        Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog);
         Core_MDF_AI_Integration_Outbound.makeCDBCallout(compToJson, prevRetry);
         Test.stopTest();
         

@@ -1,12 +1,8 @@
 @isTest
 public  class PMP_SendTranslationExceptionEmail_Test {
     
+    
     @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_SendTranslationExceptionEmail.isWorking();
-        System.assertEquals(true, result);
-    }
-   /* @isTest
     static void sendEmail() {
 
      Core_Integration_Inbound_Message__c failedMessages = new Core_Integration_Inbound_Message__c();
@@ -31,5 +27,5 @@ public  class PMP_SendTranslationExceptionEmail_Test {
     Integer emailCount = Limits.getEmailInvocations();
     System.assert(emailCount >= 0, 'Expected at least one email to be sent, but none were sent.');
 
-}*/
+}
 }

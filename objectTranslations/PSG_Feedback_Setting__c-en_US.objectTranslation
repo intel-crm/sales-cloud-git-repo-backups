@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Feedback Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Feedback Setting</value>
+    </caseValues>
+    <fields>
+        <help><!-- Check to activate the emoji feedback form. --></help>
+        <label><!-- Emoji Form --></label>
+        <name>core_cpq_emoji_form__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check to enable the PSG Feedback Form. --></help>
+        <label><!-- Enabled? --></label>
+        <name>core_cpq_enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- End Date for PSG Feedback Form. --></help>
+        <label><!-- End Date --></label>
+        <name>core_cpq_end_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Feedback Interval for new Feedback record. --></help>
+        <label><!-- Feedback Interval --></label>
+        <name>core_cpq_feedback_interval__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Skipped Interval days when to populate again. --></help>
+        <label><!-- Skipped Interval --></label>
+        <name>core_cpq_skipped_interval__c</name>
+    </fields>
+    <fields>
+        <help><!-- Starting date for PSG Feedback form. --></help>
+        <label><!-- Start Date --></label>
+        <name>core_cpq_start_date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

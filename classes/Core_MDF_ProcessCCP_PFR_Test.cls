@@ -22,31 +22,27 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
 *****************************************************************************************************************************************/    
     @TestSetup static void createTestData(){
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-
+        PermissionSet accountManager = [select id from PermissionSet where name='Core_MDF_CCP_Internal_DCF_Acct_Mgr']; //Core_MDF_CCP_Internal_DCF_Account_Manager
         
         Map<String, Id> psetMap = new Map<String, Id>();
         List<PermissionSet> prmsetlst = [select Id, Name from PermissionSet Where Name IN ('Core_MDF_CCP_Internal_DCF_Acct_Mgr', 'Core_MDF_CCP_Internal_Retail_Account_Manager', 'Core_MDF_CCP_External_Activity_Approver','Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr','Core_MDF_CCP_RMF_PRC_Claim_Operations')];
         for(PermissionSet pset : prmsetlst) {
             psetMap.put(pset.Name, pset.Id);
         }
-        list<User> us = New list<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
         usr.UserRoleId = usRole.Id;
-        us.add(usr);
-       // Database.insert(usr);
+        Database.insert(usr);
         
         User usrn1 = Core_MDF_CCP_TestDataUtility.createUser(false);
         usrn1.LastName = 'User Testn1';
         usrn1.UserRoleId = usRole.Id;
-        us.add(usrn1);
-        //Database.insert(usrn1);
+        Database.insert(usrn1);
         
         User usrn2 = Core_MDF_CCP_TestDataUtility.createUser(false);
         usrn2.LastName = 'User Testn2';
         usrn2.UserRoleId = usRole.Id;
-        us.add(usrn2);
-        Database.insert(us);
+        Database.insert(usrn2);
         
         System.runAs(usr){
            	List<String> bypassFunctionKeys = new List<String>();
@@ -85,7 +81,6 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             bypassFunctionKeys.add('Core_MDF_Bypass_TargetSetngValidations');
         	bypassFunctionKeys.add('Bypass_PaymentsBulkAPISharing');
             bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); //14285 Indira
             myset1.addAll(bypassFunctionKeys);
         	result1.addAll(myset1);
         	
@@ -357,7 +352,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             // Creating Criterias for approval required
             List<Core_MDF_Criteria__c> criteriaList = new List<Core_MDF_Criteria__c>();
-/*            Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
+            Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
                                                                                   'Core_MDF_Channel_Partner_Led__c','Equal','true','Core_MDF_Start_Date__c','Greater Than or Equal', String.valueOf(System.today()),
                                                                                   'Core_MDF_Country_nm__c','Equal','INDIA','Core_MDF_ProductType__c','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
             
@@ -365,12 +360,12 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
                                                                                        'Core_MDF_Program__c','Equal','Retail Marketing Funds','RequestedAmount','Greater Than', '0',
                                                                                        'Core_MDF_Country_nm__c','Equal','INDIA','Core_MDF_ProductType__c','Equal','2-in-1','RequestedAmount','Greater Than','0',false);
             criteriaList.add(cr);
-            criteriaList.add(crMulti);*/
+            criteriaList.add(crMulti);
             insert criteriaList;
 
             
             List<Core_MDF_Approver__c> approverList = new List<Core_MDF_Approver__c>();
-           /* Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr1.Id, false);
+            Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr1.Id, false);
             ap1.Core_MDF_Approver_2__c = usr2.Id;
             ap1.Core_MDF_Approver_3__c = usr6.Id;
             ap1.Core_MDF_Approver_4__c = usr7.Id;
@@ -378,31 +373,31 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             ap1.Core_MDF_Active__c=false;
             
             ap1.Core_MDF_Approver_Type__c = 'Internal';
-            approverList.add(ap1);*/
+            approverList.add(ap1);
             
-           /* Core_MDF_Approver__c ap1Retail = Core_MDF_CCP_TestDataUtility.createApprover(crMulti.Id,usr1.Id, false);
+            Core_MDF_Approver__c ap1Retail = Core_MDF_CCP_TestDataUtility.createApprover(crMulti.Id,usr1.Id, false);
             ap1Retail.Core_MDF_Approver_2__c = usr2.Id;
             ap1Retail.Core_MDF_Approver_3__c = usr6.Id;
             ap1Retail.Core_MDF_Approver_4__c = usr7.Id;
             ap1Retail.Core_MDF_Approver_5__c = usr8.Id;
             ap1Retail.Core_MDF_Approver_Type__c = 'Internal';
-            approverList.add(ap1Retail);*/
+            approverList.add(ap1Retail);
             
-            /*Core_MDF_Approver__c ap2 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr3.Id, false);
+            Core_MDF_Approver__c ap2 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr3.Id, false);
             ap2.Core_MDF_Approver_Type__c = 'Internal';
             ap2.Core_MDF_Active__c=false;
-            approverList.add(ap2);*/
+            approverList.add(ap2);
             
-           /* Core_MDF_Approver__c ap3 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr4.Id, false);
+            Core_MDF_Approver__c ap3 = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr4.Id, false);
             ap3.Core_MDF_Approver_2__c = usr5.Id;
             ap3.Core_MDF_Active__c=false;
             ap3.Core_MDF_Approver_Type__c = 'Internal';
-            approverList.add(ap3);*/
+            approverList.add(ap3);
             insert approverList;
             
             List<Core_MDF_Approver__c>  apprList = new List<Core_MDF_Approver__c>();
             List <Core_MDF_Criteria_Rule__c> criteriaRuleList =  new List <Core_MDF_Criteria_Rule__c>();
-           /* Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap1.Id,'Core_MDF_End_Date__c','Less Than',
+            Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap1.Id,'Core_MDF_End_Date__c','Less Than',
                                                                                                String.valueOf(System.today().addDays(2)),true);
             criteriaRuleList.add(crule1);
             
@@ -427,10 +422,10 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             criteriaRuleList.add(crule8);
             Core_MDF_Criteria_Rule__c crule9 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap3.Id,'Core_MDF_TargetAudience__c','Equal',
                                                                                                'Small Business',true);
-            criteriaRuleList.add(crule9);*/
+            criteriaRuleList.add(crule9);
             
             // Retail criteria rules
-           /* Core_MDF_Criteria_Rule__c cruleR1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap1Retail.Id,'Core_MDF_Program__c','Equal',
+            Core_MDF_Criteria_Rule__c cruleR1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap1Retail.Id,'Core_MDF_Program__c','Equal',
                                                                                                 'Retail Marketing Funds',true);
             criteriaRuleList.add(cruleR1);
             Core_MDF_Criteria_Rule__c cruleR2 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(ap1Retail.Id,'RequestedAmount','Greater Than',
@@ -452,7 +447,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             ap1Retail.Core_MDF_Active__c = True;
             Database.update(ap1Retail);
-            crMulti.Core_MDF_Active__c = True;*/
+            crMulti.Core_MDF_Active__c = True;
 
             List<Campaign> campList = new List<Campaign>();
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 'Yes',
@@ -486,7 +481,6 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = false;
             ipaCampaignForAP.Core_MDF_Budget_Type_txt__c = 'Account Plan';
             ipaCampaignForAP.Core_MDF_Approval_Stage_nm__c='L2 Regional Marketing';
-            ipaCampaignForAP.Core_MDF_Technology__c='';  // 14285 Indira
             campList.add(ipaCampaignForAP); 
             
             insert campList;  
@@ -571,7 +565,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             list<PartnerFundRequest> listPRFToBeInserted = new list<PartnerFundRequest>();
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             pfr.Title = 'Test Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Activity';
             pfr.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -581,7 +575,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Creator','Desktop',
-                                                                                            'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                            'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             pfr1.Title = 'Test Activity1';
             pfr1.Core_MDF_Activity_Description__c = 'Test Activity1';
             pfr1.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -592,7 +586,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Small Business','Desktop',
-                                                                                            'Intel® Core™ i9 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                            'Intel® Core™ i9 Processor','Broadcast','Radio','Draft',false);
             pfr2.Title = 'Test Activity2';
             pfr2.Core_MDF_Activity_Description__c = 'Test Activity2';
             pfr2.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -603,7 +597,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr5 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Gaming','Desktop',
-                                                                                            'Intel® Core™ i7 Processor','Out of Home Media (Pre-2025)','Cinema','Draft',false);
+                                                                                            'Intel® Core™ i7 Processor','Out of Home Media','Cinema','Draft',false);
             pfr5.Title = 'Test Activity5';
             pfr5.Core_MDF_Activity_Description__c = 'Test Activity5';
             pfr5.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -614,7 +608,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr6 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                            'Intel® Core™ i7 Processor','Out of Home Media (Pre-2025)','Cinema','Draft',false);
+                                                                                            'Intel® Core™ i7 Processor','Out of Home Media','Cinema','Draft',false);
             pfr6.Title = 'Test Activity6';
             pfr6.Core_MDF_Activity_Description__c = 'Test Activity6';
             pfr6.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -625,7 +619,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr7 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Gaming','Desktop',
-                                                                                            'Intel® Core™ i7 Processor','Out of Home Media (Pre-2025)','Cinema','Draft',false);
+                                                                                            'Intel® Core™ i7 Processor','Out of Home Media','Cinema','Draft',false);
             pfr7.Title = 'Test Activity7';
             pfr7.Core_MDF_Activity_Description__c = 'Test Activity7';
             pfr7.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -637,7 +631,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest pfr8 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Creator','Desktop',
-                                                                                            'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                            'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             pfr8.Title = 'Test Activity8';
             pfr8.Core_MDF_Activity_Description__c = 'Test Activity8';
             pfr8.Core_MDF_Start_Date__c = Date.newInstance(2021, 01, 01);
@@ -647,42 +641,25 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             pfr8.Core_MDF_Channel_Partner_Led__c = True;
             pfr8.Core_MDF_Fund_Request_Status__c = 'Pending Review';
             
-            //PartnerFundRequest testPartnerFundRequest = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today(),System.today(),false); 
-            PartnerFundRequest testPartnerFundRequest = New PartnerFundRequest();
-            testPartnerFundRequest.CampaignId=string.valueof(camp1.Id);
-            testPartnerFundRequest.recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail;
-            testPartnerFundRequest.ChannelPartnerId = string.valueof(acc.id);
-            testPartnerFundRequest.Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen';
-            testPartnerFundRequest.Core_MDF_ActivityCategory__c='Sales Readiness';
-            testPartnerFundRequest.Core_MDF_Start_Date__c=System.today();
-            testPartnerFundRequest.Core_MDF_End_Date__c =System.today();
+            PartnerFundRequest testPartnerFundRequest = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today(),System.today(),false); 
             testPartnerFundRequest.Title ='Retail RSA MD Activity';
             testPartnerFundRequest.Core_MDF_Activity_Description__c ='Retail RSA MD Activity';
             testPartnerFundRequest.Core_MDF_Budget_Type_nm__c ='RSA MD';
             testPartnerFundRequest.RequestedAmount =1000;
             testPartnerFundRequest.Amount=1000;
-            testPartnerFundRequest.Core_MDF_Activity_Types__c = '';
             testPartnerFundRequest.Core_MDF_Country_nm__c = 'AFGHANISTAN';
             testPartnerFundRequest.Core_MDF_Fund_Request_Status__c = 'Planned';
             testPartnerFundRequest.Core_MDF_Budget_Currency_cd__c ='USD';
             testPartnerFundRequest.Core_MDF_Reimbursement_Rate_pct__c='100%';
             testPartnerFundRequest.Core_MDF_TargetAudience__c = 'Partner Sales Force';
             
-            //PartnerFundRequest testPartnerFundRequest1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today(),System.today(),false); 
-            PartnerFundRequest testPartnerFundRequest1 = New PartnerFundRequest();
-            testPartnerFundRequest1.CampaignId=string.valueof(camp1.Id);
-            testPartnerFundRequest1.recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail;
-            testPartnerFundRequest1.ChannelPartnerId = string.valueof(acc.id);
-            testPartnerFundRequest1.Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen';
-            testPartnerFundRequest1.Core_MDF_ActivityCategory__c='Sales Readiness';
-            testPartnerFundRequest1.Core_MDF_Start_Date__c=System.today();
-            testPartnerFundRequest1.Core_MDF_End_Date__c =System.today();
+            PartnerFundRequest testPartnerFundRequest1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today(),System.today(),false); 
+            
             testPartnerFundRequest1.Title ='Retail MDF Activity';
             testPartnerFundRequest1.Core_MDF_Activity_Description__c ='Retail MDF Activity';
             testPartnerFundRequest1.Core_MDF_Budget_Type_nm__c ='Retail MDF';
             testPartnerFundRequest1.RequestedAmount =1000;
             testPartnerFundRequest1.Amount=1000;
-            testPartnerFundRequest1.Core_MDF_Activity_Types__c = '';
             //testPartnerFundRequest1.Core_MDF_Country__c ='United Kingdom';
             testPartnerFundRequest1.Core_MDF_Country_nm__c = 'United Kingdom';
             testPartnerFundRequest1.Core_MDF_Fund_Request_Status__c = 'Planned';
@@ -693,7 +670,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord3,opalbudgetMDF,'INDIA','Consumer','Desktop',
-                                                                                              'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                              'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr.Title = 'Test Activity';
             MDFpfr.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -710,7 +687,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest MDFpfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr1.Title = 'Test Activity';
             MDFpfr1.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr1.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -727,7 +704,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest MDFpfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr2.Title = 'Test Activity';
             MDFpfr2.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr2.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -744,7 +721,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest MDFpfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr3.Title = 'Test Activity';
             MDFpfr3.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr3.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -763,7 +740,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             
             PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord3,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr4.Title = 'Test Activity';
             MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -780,7 +757,7 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
                         
             PartnerFundRequest MDFpfr5 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                                Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),null,opalbudgetMDF,'INDIA','Small Business','Desktop',
-                                                                                               'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                               'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
             MDFpfr5.Title = 'Test Activity';
             MDFpfr5.Core_MDF_Activity_Description__c = 'Test Activity';
             MDFpfr5.Core_MDF_Start_Date__c = Date.newInstance(2022, 01, 01);
@@ -809,19 +786,8 @@ Intel - Narayani Perachi    02/11/2019         Added user and PFR record to test
             }
 
             Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
-            // 14285 Indira - start 
-                     List<Core_MDF_Partner_Node_User_Mapping__c> existingPNUM = [
-                    SELECT Id FROM Core_MDF_Partner_Node_User_Mapping__c 
-                    WHERE Core_MDF_User__r.Email = 'test1@example.com'
-                    AND Core_MDF_Account__r.Name = 'Co-marketing Test Account Retail'
-                ];
             
-                if (existingPNUM.isEmpty()) {
-                    User usr11Query = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
-                    Account accRetailQuery = [SELECT Id FROM Account WHERE Name = 'Co-marketing Test Account Retail' LIMIT 1];
             Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(accRetail.Id, usr11.Id, true);
-                }
-            // 14285 Indira - end
             PermissionSet ccfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             
             // Assigning internal ccf acc mgr permission set to usr1
@@ -919,7 +885,6 @@ Accenture – NZ                Created.
             // 3. Close that Activity.
             pfr.Core_MDF_Fund_Request_Status__c = 'Closed';
             pfr.Core_MDF_Activity_Closure_Type__c = 'No Internal Approval';
-            pfr.Core_MDF_Activity_First_Approver_txt__c=adminUser.Id; // 14285 Indira
             update pfr;
             for(PartnerFundRequestShare shareRec : pfrShareList)
             {
@@ -1060,7 +1025,6 @@ Accenture – Shridhar K        12/23/2018       Created.
         pfr.OwnerId = user.Id;
         pfr.ChannelPartnerId = accRetail.Id; 
         pfr.Core_MDF_Country_nm__c = 'Argentina';
-        pfr.Core_MDF_Activity_First_Approver_txt__c=user.Id; // 14285 Indira
         update pfr;
         System.assert(pfr.Core_MDF_Country_nm__c == 'Argentina');
         test.stopTest();
@@ -1103,7 +1067,6 @@ Accenture – Shridhar K        12/23/2018       Created.
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-        ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
         insert ipaCampaign;
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -1202,7 +1165,7 @@ Accenture – Harika P          11/27/2019       Created./
           System.runAs(adminUser){  
               PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                              Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                                             'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);
+                                                                                             'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
               pfr.Title = 'Test Retail Activity';
               pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
               pfr.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1213,7 +1176,6 @@ Accenture – Harika P          11/27/2019       Created./
               pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
               insert pfr;
               pfr.Core_MDF_Fund_Request_Status__c = 'Revision Required';
-              pfr.Core_MDF_Activity_First_Approver_txt__c=adminUser.Id; // 14285 Indira
               update pfr;
               List<PartnerFundRequest> pfrlst = new List<PartnerFundRequest>();
               pfrlst.add(pfr);
@@ -1241,7 +1203,7 @@ Accenture – Harika P          11/27/2019       Created./
             
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                                           'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);  // 14285 Indira
+                                                                                           'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr.Title = 'Test Retail Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1289,7 +1251,7 @@ Accenture – Harika P          11/27/2019       Created./
             Test.startTest();        
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                                           'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);   // 14285 Indira
+                                                                                           'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr.Title = 'Test Retail Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr.Core_MDF_Start_Date__c = System.today().addDays(-1); //System.today().addDays(17)
@@ -1322,7 +1284,6 @@ Accenture – Harika P          11/27/2019       Created./
             pfr1.Core_MDF_Start_Date__c = System.today().addDays(18);
             pfr1.Core_MDF_Fund_Request_Status__c ='Closed';
             pfr1.Core_MDF_Activity_Closure_Type__c = 'No Internal Approval';
-            pfr1.Core_MDF_Activity_First_Approver_txt__c=adminUser.Id; // 14285 Indira
             pfr1.Core_MDF_ProductType__c='Chromebook';
             update pfr1;
             pfrMap.put(pfr1.Id,pfr1);
@@ -1347,7 +1308,7 @@ Accenture – Harika P          11/27/2019       Created./
         System.runAs(user){
             pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                         Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                        'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);  // 14285 Indira
+                                                                        'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr.Title = 'Test Retail Activity';
             pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1361,7 +1322,7 @@ Accenture – Harika P          11/27/2019       Created./
             
             pfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);   // 14285 Indira
+                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr1.Title = 'Test Retail Activity';
             pfr1.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr1.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1375,7 +1336,7 @@ Accenture – Harika P          11/27/2019       Created./
             
             pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);  // 14285 Indira
+                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr2.Title = 'Test Retail Activity';
             pfr2.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr2.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1389,7 +1350,7 @@ Accenture – Harika P          11/27/2019       Created./
             
             pfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,string.valueof(acc.id),NULL,NULL,'INDIA','Partner Sales Force','Traditional Notebook',
-                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','','Draft',false);  // 14285 Indira
+                                                                         'Intel® 11ᵗʰ Gen','Sales Readiness','In-Store Promotion','Draft',false);
             pfr3.Title = 'Test Retail Activity';
             pfr3.Core_MDF_Activity_Description__c = 'Test Retail Activity';
             pfr3.Core_MDF_Start_Date__c = System.today().addDays(17);
@@ -1428,7 +1389,6 @@ Test.startTest();
 
   Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',coMarketingIPA.id, System.today().addDays(3), System.today().adddays(30), 'Proposal I MDF', 110000,'INDIA', 'Consumer','Apollo Lake', 'Planned', false);
   ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
-  ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
   insert ipaCampaign;
 
   PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,System.today().addDays(4),System.today().addDays(4),false);
@@ -1452,7 +1412,7 @@ Test.startTest();
     
     @isTest
     static void retailNotificatonTest(){
-        
+        Test.startTest();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList2 = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList3 = new List<PartnerFundRequest>();
@@ -1470,29 +1430,14 @@ Test.startTest();
         iupgm.Core_MDF_Active_Ind__c = TRUE;
         iupgm.Core_MDF_All_Accounts_cd__c ='No';
         Database.insert(iupgm);    
-        Test.startTest();
         
-       // PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
-        PartnerFundRequest pfr = New PartnerFundRequest();
-        pfr.CampaignId=string.valueof(cmp.Id);
-        pfr.recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail;
-        pfr.ChannelPartnerId = string.valueof(acc.id);
-        //pfr.Core_MDF_Country_nm__c='INDIA';
-        pfr.Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen';
-        pfr.Core_MDF_ActivityCategory__c='Sales Readiness';
-        //pfr.Core_MDF_Activity_Types__c='In-Store Promotion';
-        //pfr.RequestedAmount=12345;
-        //pfr.Core_MDF_TargetAudience__c='Enthusiast Gaming';
-        pfr.Core_MDF_Start_Date__c=System.today();
-        pfr.Core_MDF_End_Date__c =System.today();
-       // pfr.Title ='Test Retail';
-        //pfr.Core_MDF_Activity_Description__c ='Test Retail Description';
+        
+        PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
         pfr.Title ='Retail RSA MD Activity';
         pfr.Core_MDF_Activity_Description__c ='Retail RSA MD Activity';
         pfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
         pfr.RequestedAmount =1000;
         pfr.Amount=1000;
-        pfr.Core_MDF_Activity_Types__c = '';  // 14285 Indira
         pfr.Core_MDF_Country_nm__c = 'AFGHANISTAN';
         pfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         pfr.Core_MDF_Budget_Currency_cd__c ='USD';
@@ -1507,31 +1452,17 @@ Test.startTest();
         pfr.Core_MDF_Program_Office_Check_ind__c =false;
         pfr.Core_MDF_Price_reviewer_check_ind__c=false;
         pfr.Core_MDF_Require_Additional_Review_ind__c=false;  
-        pfr.Core_MDF_Activity_First_Approver_txt__c=user.Id; // 14285 Indira
+        
         database.update(pfr);
         pfrList2.add(pfr);
         Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pfrList2,accIDSet);
          
-       //pfr1 PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
-        PartnerFundRequest pfr1 = New PartnerFundRequest();
-        pfr1.CampaignId=string.valueof(cmp.Id);
-        pfr1.recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail;
-        pfr1.ChannelPartnerId = string.valueof(acc.id);
-        //pfr.Core_MDF_Country_nm__c='INDIA';
-        pfr1.Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen';
-        pfr1.Core_MDF_ActivityCategory__c='Sales Readiness';
-        //pfr.Core_MDF_Activity_Types__c='In-Store Promotion';
-        //pfr.RequestedAmount=12345;
-        //pfr.Core_MDF_TargetAudience__c='Enthusiast Gaming';
-        pfr1.Core_MDF_Start_Date__c=System.today();
-        pfr1.Core_MDF_End_Date__c =System.today();
-       // pfr.Title ='Test Retail';
+        PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
         pfr1.Title ='Retail RSA MD Activity';
         pfr1.Core_MDF_Activity_Description__c ='Retail RSA MD Activity';
         pfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
         pfr1.RequestedAmount =1000;
         pfr1.Amount=1000;
-        pfr1.Core_MDF_Activity_Types__c = '';  // 14285 Indira
         pfr1.Core_MDF_Country_nm__c = 'AFGHANISTAN';
         pfr1.Core_MDF_Fund_Request_Status__c = 'Pending Approval';
         pfr1.Core_MDF_Budget_Currency_cd__c ='USD';
@@ -1557,7 +1488,6 @@ Test.startTest();
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
-        ipaCampaign.Core_MDF_Technology__c = ''; // 14285 Indira
         insert ipaCampaign;
         List<PartnerFundRequest> pfrList4 = new List<PartnerFundRequest>();
         PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,
@@ -1572,7 +1502,8 @@ Test.startTest();
         pfrList4.add(ipaPFR); 
         Database.insert(pfrList4);
         Set<ID> accIDSet1 = new Set<ID>();
-        accIDSet1.add(coMarketingIPA.id);       
+        accIDSet1.add(coMarketingIPA.id);
+       
         PartnerFundRequest tempVar=[select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c  from PartnerFundRequest where id=:ipaPFR.Id];
         
         Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(new List<PartnerFundRequest>{tempVar},accIDSet1);
@@ -1596,7 +1527,7 @@ Test.startTest();
         // Creating activities using utility class
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1660,7 +1591,7 @@ Test.startTest();
         // Creating activities using utility class
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1702,7 +1633,7 @@ Test.startTest();
         // Creating activities using utility class
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1760,7 +1691,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1805,7 +1736,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1959,7 +1890,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -1999,7 +1930,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -2082,7 +2013,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -2181,7 +2112,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -2268,7 +2199,7 @@ Test.startTest();
         
         PartnerFundRequest MDFpfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecord,pmbRecord,'INDIA','Consumer','Desktop',
-                                                                                           'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr4.Title = 'Test Activity';
         MDFpfr4.Core_MDF_Activity_Description__c = 'Test Activity';
         MDFpfr4.Core_MDF_Start_Date__c = Date.newInstance(2022, 02, 02);
@@ -2359,7 +2290,6 @@ Test.startTest();
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
-        ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
         insert ipaCampaign;
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -2458,7 +2388,6 @@ Test.startTest();
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
-        ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
         insert ipaCampaign;
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -2534,7 +2463,6 @@ Test.startTest();
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-        ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
         insert ipaCampaign;
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -2574,7 +2502,6 @@ Test.startTest();
     
         Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',coMarketingIPA.id, System.today().addDays(3), System.today().adddays(30), 'Proposal I MDF', 110000,'INDIA', 'Consumer','Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-        ipaCampaign.Core_MDF_Technology__c=''; // 14285 Indira
         insert ipaCampaign;
     
         PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,System.today().addDays(4),System.today().addDays(4),false);
@@ -2592,7 +2519,7 @@ Test.startTest();
         oldipaPFR.Core_MDF_Region_nm__c = 'APJ';
         oldipaPFR.Id=ipaPFR.Id;
     
-        PartnerFundRequest tempVar=[select Id,CampaignId,Core_MDF_Activity_Level_nm__c,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c from PartnerFundRequest where id=:ipaPFR.Id];
+        PartnerFundRequest tempVar=[select Id,CampaignId,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c from PartnerFundRequest where id=:ipaPFR.Id];
         tempVar.Core_MDF_Fund_Request_Status__c='Revision Required';
 
       
@@ -2604,41 +2531,8 @@ Test.startTest();
         try{
             Core_MDF_ProcessCCP_PartnerFundRequest.shareActivityWithInternalUsers(new Map<Id,PartnerFundRequest>(),new Map<Id,PartnerFundRequest>{tempVar.Id=>new PartnerFundRequest()});
         }catch(Exception e){}
-        Core_MDF_ProcessCCP_PartnerFundRequest.shareActivityWithAccNodeGroupMethod(new Map<Id,PartnerFundRequest>([select Id,CampaignId,Core_MDF_Activity_Level_nm__c,OwnerId,ChannelPartnerId,Core_MDF_Fund_Request_Status__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c from PartnerFundRequest where id=:ipaPFR.Id]),new Map<Id,PartnerFundRequest>{tempVar.Id=>new PartnerFundRequest() });
+        Core_MDF_ProcessCCP_PartnerFundRequest.shareActivityWithAccNodeGroupMethod(new Map<Id,PartnerFundRequest>([select Id,CampaignId,OwnerId,ChannelPartnerId,Core_MDF_Fund_Request_Status__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c from PartnerFundRequest where id=:ipaPFR.Id]),new Map<Id,PartnerFundRequest>{tempVar.Id=>new PartnerFundRequest() });
       Test.StopTest();
       Assert.isTrue(tempVar != null);
     }   
-  // 14285 Indira - start
- @isTest
-static void test_cancelActivityForCancelledCliamsAndEsclations() {
-
-    // Get existing PFR from test setup
-    PartnerFundRequest pfr = [SELECT Id, Core_MDF_Fund_Request_Status__c 
-                             FROM PartnerFundRequest LIMIT 1];
-
-    // Clone old and new maps
-    PartnerFundRequest oldPfr = pfr.clone(false, true, false, false);
-    oldPfr.Core_MDF_Fund_Request_Status__c = 'In Progress';
-
-    PartnerFundRequest newPfr = pfr.clone(false, true, false, false);
-    newPfr.Id = pfr.Id;
-    newPfr.Core_MDF_Fund_Request_Status__c = 
-        Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status');
-
-    Map<Id, PartnerFundRequest> oldMap = new Map<Id, PartnerFundRequest>{
-        pfr.Id => oldPfr
-    };
-
-    Map<Id, PartnerFundRequest> newMap = new Map<Id, PartnerFundRequest>{
-        pfr.Id => newPfr
-    };
-
-    Test.startTest();
-    Core_MDF_ProcessCCP_PartnerFundRequest.cancelActivityForCancelledCliamsAndEsclations(newMap, oldMap);
-    Test.stopTest();
-
-    System.assert(true, 'Method executed without exception');
-}
-    
-  // 14285 Indira - end
 }

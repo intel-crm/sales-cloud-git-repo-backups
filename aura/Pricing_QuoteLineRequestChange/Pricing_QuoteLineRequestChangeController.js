@@ -15,7 +15,6 @@
         component.set('v.isValidAdditionalTc', 'false');
         component.set('v.isValidDealDesc', 'false');
         component.set('v.isValidAddComment', 'false');
-        component.set('v.isValidRecipients', 'false');
         component.set('v.isLoad', 'false');
         getCurrentDate.setCallback(this, function (response) {
             let state = response.getState(); // NOSONAR
@@ -262,11 +261,6 @@
         const fieldLabel = 'addTCs';
         helper.validateForNonLatinChars(component, event, helper, fieldLabel);
     },
-     onAdditionalRecipientsChange: function (component, event, helper) {
-        const fieldLabel = 'addRecipientsCmp';
-        helper.validateMultipleEmailCheck(component, event, helper, fieldLabel);
-    },
-    
     onDealDescChange: function (component, event, helper) {
         const fieldLabel = 'dealDes';
         helper.validateForNonLatinChars(component, event, helper, fieldLabel);

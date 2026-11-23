@@ -91,6 +91,9 @@
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Country_Location_nm__c</field>
     </columns>
     <columns>
+        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest$Core_MDF_Region_nm__c</field>
     </columns>
     <columns>
@@ -202,6 +205,10 @@
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Exchange_rate__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Reimbursable_Transaction_Amount__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Reimbursement_Percent__c</field>
     </columns>
     <columns>
@@ -251,7 +258,7 @@
     </columns>
     <description>A report that provides information on activities, claims, cases and payments in one view.</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND ((7 AND 10) OR (14 AND 15)) AND 8 AND 9 AND 11 AND 12 AND 13</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10 AND 11 AND 12</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -299,7 +306,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
+            <value>Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Ecosystem Extension Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,CoGTM</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
@@ -313,21 +320,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,ODM Growth Plan - Client MDF,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,DCF 1.0,Co-Engineering</value>
+            <value>Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Co-Engineering</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Region_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>,EMEA,PRC,APJ,ASMO</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Activity_StartYear_txt__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>2023,2024,2025,2026</value>
+            <value>2023,2024,2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Activity_Start_Quarter_txt__c</column>
@@ -335,27 +342,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Q1,Q2,Q3,Q4</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Campaign_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Region_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CoGTM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

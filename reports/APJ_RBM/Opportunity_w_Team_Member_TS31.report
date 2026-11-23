@@ -82,7 +82,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Contributor (33.3%),Contributor (50%),Customer A&amp;E (0%),Team Member (100%),Team member (100% commitment over the lifetime of the opportunity),Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity),Viewer (0%)</value>
+            <value>,Contributor (33.3%),Contributor (50%),Customer A&amp;E (0%),Technical Owner (100%),Viewer (0%)</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

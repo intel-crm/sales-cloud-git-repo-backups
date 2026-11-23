@@ -49,7 +49,7 @@
                     } else {
                         component.set("v.options", options);
                     }
-                } else {
+                } else {                    
                     component.set("v.showMessageScreen", true);
                     helper.cloneQuote(component);
                 }

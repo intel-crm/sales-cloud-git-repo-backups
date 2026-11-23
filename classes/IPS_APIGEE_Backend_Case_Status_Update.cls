@@ -6,7 +6,7 @@
 * Test Class : 
 *   
 ************************************************/
-public without sharing class IPS_APIGEE_Backend_Case_Status_Update implements System.Queueable, Database.AllowsCallouts{ // TWC745-9117 - ATHR Critical fixed by Tushar
+public class IPS_APIGEE_Backend_Case_Status_Update implements System.Queueable, Database.AllowsCallouts{
     
     set<Id> caseIds= new set<Id>();
     

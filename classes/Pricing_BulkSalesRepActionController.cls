@@ -2,8 +2,8 @@
  * @description       : Controller class for Bulk Actions-Approve/Reject/Customer Revision for FSE/SDM
  * @author            : Subhanku
  * @group             : Accenture
- * @last modified on  : 04-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 05-30-2025
+ * @last modified by  : Bharath Chandrashekar
 **/
 public with sharing class Pricing_BulkSalesRepActionController {
 
@@ -19,7 +19,7 @@ public with sharing class Pricing_BulkSalesRepActionController {
             Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c,Pricing_Sales_Rep_Approver__c,Customer_Revision_Count_Cnt__c,Pricing_Other_Product_Nm__c, Pricing_New_Quantity_qty__c, Pricing_Request_Discount_Unit_Price_qty__c, Pricing_Req_Discounted_Unit_Price__c, Pricing_Unit_Qty__c,Pricing_Total_Volume_Qty__c,Pricing_Program_Type_Nm__c,Pricing_SDM_Fast_Track__c,Pricing_Start_Date_dt__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c FROM SBQQ__QuoteLine__c 
             WHERE SBQQ__Quote__c =: quoteId ORDER By Pricing_Quote_Line_Number__c];
 
-        List<Pricing_Quote_Team__c> quoteTeamList = [select id from Pricing_Quote_Team__c where Pricing_Quote_Id__c =: quoteId AND Pricing_Quote_Team_Member_Id__r.IsActive = true AND Pricing_Role_Nm__c = 'FSE/SDM' AND Pricing_Quote_Team_Member_Id__c =: UserInfo.getuserId()];
+        List<Pricing_Quote_Team__c> quoteTeamList = [select id, Pricing_Quote_Id__c, Pricing_Quote_Team_Member_Id__c, Pricing_Role_Nm__c from Pricing_Quote_Team__c where Pricing_Quote_Id__c =: quoteId AND Pricing_Quote_Team_Member_Id__r.IsActive = true AND Pricing_Role_Nm__c = 'FSE/SDM' AND Pricing_Quote_Team_Member_Id__c =: UserInfo.getuserId()];
 
         List < SBQQ__QuoteLine__c > quoteListWithAppRejAccess = new List < SBQQ__QuoteLine__c > ();
         List < User > delegateApprovers = new List < User > ();
@@ -199,7 +199,7 @@ public with sharing class Pricing_BulkSalesRepActionController {
             feedItemInput.subjectId = quoteline.SBQQ__Quote__r.Id;
             //post the chatter
             if(!Test.isRunningTest()){
-                ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
+                ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
             }
         }
     }
@@ -235,11 +235,11 @@ public with sharing class Pricing_BulkSalesRepActionController {
     @AuraEnabled
     public static List<SBQQ__QuoteLine__c> getFIQuoteLineToApproveReject(String recordId){
         try {
-            String recId = String.escapeSingleQuotes(recordId);
+            String recId = '\'' + String.escapeSingleQuotes(recordId) + '\'';
             String getQuoteLinesQuery;
             getQuoteLinesQuery = 'SELECT Id,Pricing_Quote_Line_Number__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_Product_VerticalSegment__c,Pricing_Other_Product_Nm__c,';
             getQuoteLinesQuery += 'Pricing_FI_Net_RPU_Amt__c,Pricing_Total_Volume_Qty__c,Pricing_Additional_T_C_s_Txt__c,Pricing_Additional_Comments_Txt__c,Pricing_Status_Nm__c,Pricing_Product_Nm__r.Name,Pricing_Other_Competitor_Product_Nm__c,';
-            getQuoteLinesQuery += 'SBQQ__Quote__r.Pricing_FI_Partner_Type__c,Pricing_SIPP_Cb__c,Pricing_Competetor_Product__r.Name,Pricing_Rejection_Reason__c,Pricing_Manager__r.Name, Pricing_pm_approval_comments_nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :recId ORDER By Pricing_Quote_Line_Number__c';
+            getQuoteLinesQuery += 'SBQQ__Quote__r.Pricing_FI_Partner_Type__c,Pricing_SIPP_Cb__c,Pricing_Competetor_Product__r.Name,Pricing_Rejection_Reason__c,Pricing_Manager__r.Name, Pricing_pm_approval_comments_nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = '+recId+' ORDER By Pricing_Quote_Line_Number__c';
             return Database.query(getQuoteLinesQuery);
         } catch (Exception e) {
             Pricing_Tender_Utility.logError(e);
@@ -256,8 +256,8 @@ public with sharing class Pricing_BulkSalesRepActionController {
     public static List<PermissionSetAssignment> getFIPricingManagerSearch(String searchKey){
         try {
             //This method is called by LWC to find the user from searchkey
-            String searchText = String.escapeSingleQuotes(searchKey) + '%';               
-            String query =  'SELECT Id, Name, Email, Isactive, IsPortalEnabled FROM User WHERE IsPortalEnabled = false AND ContactId = null AND Isactive = true AND Name LIKE :searchText LIMIT 5';
+            String searchText = '\'' + String.escapeSingleQuotes(searchKey) + '%\'';               
+            String query =  'SELECT Id, Name, Email, Isactive, IsPortalEnabled FROM User WHERE IsPortalEnabled = false AND ContactId = null AND Isactive = true AND Name LIKE '+searchText+' LIMIT 5';
             return Database.query(query); 
         } catch (Exception e) {
             Pricing_Tender_Utility.logError(e);
@@ -304,11 +304,10 @@ public with sharing class Pricing_BulkSalesRepActionController {
     @AuraEnabled
     public static List<SBQQ__QuoteLine__c> getQuoteLineToRejectByRPM(String recordId){
         try {
-            String recId = String.escapeSingleQuotes(recordId);
+            String recId = '\'' + String.escapeSingleQuotes(recordId) + '\'';
             String getQuoteLinesQuery;
-            String statusPFIRCheck = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
             getQuoteLinesQuery = 'SELECT Id,Pricing_Quote_Line_Number__c,Pricing_Other_Product_Nm__c,Pricing_Status_Nm__c,Pricing_Product_Nm__r.Name,Pricing_Integration_Status_Nm__c,';
-            getQuoteLinesQuery += 'Pricing_Rejection_Reason__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :recId AND  Pricing_Status_Nm__c = :statusPFIRCheck AND (Pricing_Integration_Status_Nm__c = null OR Pricing_Integration_Status_Nm__c = \'\') ORDER By Pricing_Quote_Line_Number__c';
+            getQuoteLinesQuery += 'Pricing_Rejection_Reason__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = '+recId+' AND  Pricing_Status_Nm__c =\''+Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview+'\' AND (Pricing_Integration_Status_Nm__c = null OR Pricing_Integration_Status_Nm__c = \'\') ORDER By Pricing_Quote_Line_Number__c';
             return Database.query(getQuoteLinesQuery);
         }catch (Exception e) {
             Pricing_Tender_Utility.logError(e);

@@ -1,4 +1,4 @@
-public with sharing class Core_Ips_ContactDataTable_LWC_Ctrl { // Changed by tushar because for vanuability changes
+public without sharing class Core_Ips_ContactDataTable_LWC_Ctrl {
     public static User loggedInUser;
     public static List<Core_Ips_ContactListView_LWC__mdt> TableComponentMetadata;
     @AuraEnabled(cacheable=true)
@@ -42,7 +42,6 @@ public with sharing class Core_Ips_ContactDataTable_LWC_Ctrl { // Changed by tus
             loggedInUser = [Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id =: UserInfo.getUserId()];
             String loggedInUserAcctId = loggedInUser.Contact.AccountId;
             String loggedInUserContId = loggedInUser.ContactId ;
-            // Venrublity Fix - Refering query to service class
             List<Contact> contactList = [Select id,Name,LastName, FirstName,Core_Status__c, Email, Account.Name, Core_IPS_Active__c, CreatedDate,AccountId From Contact Where AccountId =:loggedInUserAcctId AND Core_IPS_Active__c  = true   limit 50];
             for( Contact con:contactList ){
                 conDataTableData.add(con);

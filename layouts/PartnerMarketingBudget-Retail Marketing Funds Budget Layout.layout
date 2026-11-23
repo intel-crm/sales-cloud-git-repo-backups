@@ -33,10 +33,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Decrease_Budget_Amount_Amt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Maximum_Approved_Budget_Amt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -7,7 +7,6 @@
         if(component.get("v.programName") == $A.get("$Label.c.Core_MDF_Co_GTM_program_name")) {
             component.set("v.isCoGTMProgram", true);
         }
-        let outComeBasedFlag = component.get("v.isOutcomeBasedActivity");
         //Setting File formats
         let fileFormats = $A.get("$Label.c.Core_MDF_AllowedFileTypes").split(",");
         component.set("v.accept", fileFormats);
@@ -15,8 +14,7 @@
         let documentList = [];
         //apex call to get audit document details and user access
         let action = component.get("c.getAuditDocumentDetailsWrapper");
-        //action.setParams({ recordId: recId });
-        action.setParams({ recordId: recId, outComeBasedFlag: outComeBasedFlag  }); //anushya TWC3117-14374
+        action.setParams({ recordId: recId });
         action.setCallback(this, function (res) {
             let state = res.getState();
             if (state.toLowerCase() === "success") {
@@ -30,7 +28,7 @@
                     component.set("v.disableUploadFilesButton", auditDocumentDetailsWrapper.disableDocumentUploadSection);
                     component.set("v.showUploadFileSection", auditDocumentDetailsWrapper.showUploadFileSection);
                     component.set("v.isBulkClaim", auditDocumentDetailsWrapper.isBulkClaim);
-                    component.set("v.isOutcomeBasedAccountBasedAct", auditDocumentDetailsWrapper.isOutComeBased);
+
                     if (auditDocuments.length > 0) {
                         documentList = documentList.concat(auditDocuments);
                     } else {
@@ -107,9 +105,8 @@
             action.setCallback(this, function (res) {
                 let state = res.getState();
                 if (state.toLowerCase() === "success") {
-                    let picStatusWrapper = res.getReturnValue();
-                    component.set("v.isClaimEligibleForPICReview", picStatusWrapper.isClaimAvailableForPIC);
-                    component.set("v.isOutComeBased", picStatusWrapper.isOutComeBased);
+                    let isClaimEligibleForPICReview = res.getReturnValue();
+                    component.set("v.isClaimEligibleForPICReview", isClaimEligibleForPICReview);
                     component.set("v.spinner", false);
                 } else {
                     var message = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
@@ -166,9 +163,9 @@
                     Core_MDF_Download_Document_Title_txt__c:decodeURI(encodedUploadedFileNameWithExt),
                     Core_MDF_Encoded_Document_Title_txt__c:encodedUploadedFileNameWithExt,
                     Core_MDF_Document_Id__c: uploadedFile.documentId,
-                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change
+                    Core_MDF_Document_Types__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
                     Core_MDF_Old_Document_Id__c: this.generateAppId(),
-                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change
+                    Core_MDF_App_Document_Types_nm__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
                     Core_MDF_ContentVersion_Id__c: uploadedFile.contentVersionId,
                     isNewDocument: true,
                 });
@@ -204,8 +201,8 @@
                     Core_MDF_Encoded_Document_Title_txt__c:encodedUploadedFileNameWithExt,
                     Core_MDF_Document_Id__c: uploadedFile.documentId,
                     //Deafult Proof of Cost;Proof of Execution;Proof of Attribution for CoGTM
-                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change
-                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change
+                    Core_MDF_Document_Types__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
+                    Core_MDF_App_Document_Types_nm__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
                     Core_MDF_Old_Document_Id__c: this.generateAppId(),
                     Core_MDF_ContentVersion_Id__c: uploadedFile.contentVersionId,
                     isNewDocument: false,
@@ -220,7 +217,7 @@
         component.set("v.existingDocList", existingDocList);
         this.getDocumentDetails(component, existingDocList);
         //Co-GTM -> Added by VB
-        if (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) { 
+        if (component.get("v.isCoGTMProgram")) {
             component.set("v.isOpen", false);
             component.set("v.displayUploadedFiles", true);
             component.set("v.disableManageDocumentButton", false);
@@ -237,8 +234,7 @@
         let programName;
         if ((component.get("v.auditDocumentDetailsWrapper.sObjName") == 'PartnerFundClaim') && component.get("v.auditDocumentDetailsWrapper.pfcRec.Id") != null) {
             //BudgetType fetched from sObjectDocumentWrapper in case of edit claim and in claim detail page based on the claim record id
-            //budgetType = component.get("v.auditDocumentDetailsWrapper.pfcRec.Core_MDF_Budget_Type_Nm__c");
-            budgetType = component.get("v.auditDocumentDetailsWrapper.pfcRec.Core_MDF_Budget_Type_Options_Nm__c"); //org health
+            budgetType = component.get("v.auditDocumentDetailsWrapper.pfcRec.Core_MDF_Budget_Type_Nm__c");
             programName = component.get("v.auditDocumentDetailsWrapper.pfcRec.Core_MDF_Program__c");
         } else {
             //BugetType passed from Core_MDF_PFC_Create parent component in case of create,clone claim and bulk claim.
@@ -291,7 +287,7 @@
                             requiredDocumentTypes.push(mdt.Document_Type_Label);
                             requiredDocumentTypesList.push(mdt.Core_MDF_Document_Type_nm__c);
                         } else {
-                            if (claimStatus === $A.get("Core_MDF_Claim_Status_Payment_Clearance_Processing") || claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_PIC_Pending") || claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_Paid_and_PIC_Pending")) {
+                            if (claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_PIC_Pending") || claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_Paid_and_PIC_Pending")) {
                                 requiredDocumentTypesList.push(mdt.Core_MDF_Document_Type_nm__c);
                             }
                         }

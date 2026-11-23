@@ -75,18 +75,13 @@ public without sharing class PRM_CompanyProfileController {
                 ];
                 
                 if (PROC_Countries.contains(acct.BillingCountryCode)) {
-                    /*for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain_For_PROC_Region.split(',')) {
+                    for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain_For_PROC_Region.split(',')) {
                         blacklistDomains.add(domains);
-                    }*/
-                    for(String d : System.Label.Blocked_Domains_Prc1.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Prc2.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
+                    }
                 } else {
-                    /*for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain.split(';')) {
+                    for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain.split(';')) {
                         blacklistDomains.add(domains);
-                    }*/
-                    for(String d : System.Label.Blocked_Domains_Non_Prc1.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Non_Prc2.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Non_Prc3.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
+                    }
                 }
                 
                 if (cont.Account_Contact_Relationships__r.size() > 0) {

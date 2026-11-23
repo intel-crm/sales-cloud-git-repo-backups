@@ -12,31 +12,9 @@
     <decisions>
         <name>SQL_SAL_MQL_entrance</name>
         <label>SQL_SAL_MQL_entrance</label>
-        <locationX>842</locationX>
+        <locationX>710</locationX>
         <locationY>395</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>For_MEL</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.SWS_Entrance_Date_MEL__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Marketing Engaged Lead</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>MEL_Entrance</targetReference>
-            </connector>
-            <label>For MEL</label>
-        </rules>
         <rules>
             <name>For_MQL</name>
             <conditionLogic>and</conditionLogic>
@@ -113,7 +91,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lead</stringValue>
@@ -255,7 +233,7 @@ Core_Lead_MAQL_Entrance</description>
         <description>for the Lead wf &quot; Core_Flag_Update &apos;</description>
         <name>Core_Flag_Update</name>
         <label>Core_Flag_Update</label>
-        <locationX>842</locationX>
+        <locationX>710</locationX>
         <locationY>287</locationY>
         <connector>
             <targetReference>SQL_SAL_MQL_entrance</targetReference>
@@ -269,22 +247,9 @@ Core_Lead_MAQL_Entrance</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
-        <name>MEL_Entrance</name>
-        <label>MEL Entrance</label>
-        <locationX>50</locationX>
-        <locationY>503</locationY>
-        <inputAssignments>
-            <field>SWS_Entrance_Date_MEL__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
         <name>MQL_MAQL_Entrance</name>
         <label>MQL&amp;MAQL Entrance</label>
-        <locationX>314</locationX>
+        <locationX>50</locationX>
         <locationY>503</locationY>
         <inputAssignments>
             <field>Core_Entrance_Date_MAQL__c</field>
@@ -298,18 +263,12 @@ Core_Lead_MAQL_Entrance</description>
                 <elementReference>$Flow.CurrentDateTime</elementReference>
             </value>
         </inputAssignments>
-        <inputAssignments>
-            <field>SWS_Exit_Date_MEL__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>SAL_Entrance</name>
         <label>SAL Entrance</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>503</locationY>
         <inputAssignments>
             <field>Core_Entrance_Date_SAL__c</field>
@@ -334,7 +293,7 @@ Core_Lead_MAQL_Entrance</description>
     <recordUpdates>
         <name>SAL_entrance_for_SGL</name>
         <label>SAL entrance for SGL</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>503</locationY>
         <inputAssignments>
             <field>Core_Entrance_Date_SAL__c</field>
@@ -359,7 +318,7 @@ Core_Lead_MAQL_Entrance</description>
     <recordUpdates>
         <name>SGL_Entrance</name>
         <label>SGL Entrance</label>
-        <locationX>578</locationX>
+        <locationX>314</locationX>
         <locationY>503</locationY>
         <inputAssignments>
             <field>SWS_Entrance_Date_SGL__c</field>
@@ -372,7 +331,7 @@ Core_Lead_MAQL_Entrance</description>
     <recordUpdates>
         <name>SQL_Entrance</name>
         <label>SQL Entrance</label>
-        <locationX>1370</locationX>
+        <locationX>1106</locationX>
         <locationY>503</locationY>
         <inputAssignments>
             <field>Core_Entrance_Date_SQL__c</field>
@@ -395,7 +354,7 @@ Core_Lead_MAQL_Entrance</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>716</locationX>
+        <locationX>584</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Core_Flag_Update</targetReference>

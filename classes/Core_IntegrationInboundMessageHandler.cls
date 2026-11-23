@@ -41,9 +41,9 @@ public without sharing class Core_IntegrationInboundMessageHandler {
     public static final String MSG_TYPE_MP_TRANSLATION = 'Marketplace_Translation';
     public static final String MSG_TYPE_MP_TRANSLATION_PARTNER = 'Marketplace Translation - Partner';
     public static final Set<String> SOURCE_SYSTEMS = new Set<String>{'EDW','ECA'};
-        
-        // Map of our Trigger execution flags
-        public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution;
+    
+    // Map of our Trigger execution flags
+    public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution;
     
     // Handle all "Before" logic on inbound messages
     public static void beforeMethod(List<Core_Integration_Inbound_Message__c> oldList,
@@ -101,6 +101,7 @@ public without sharing class Core_IntegrationInboundMessageHandler {
             //-------------------DRACO:Create/Update of Entitlement Status Detail object record - START----------------------//
             
             try{
+                
                 List<string> Contemailid =new List<string>();
                 List<InboundjsonWrapper> InboundReqFields =new List<InboundjsonWrapper>();
                 
@@ -108,6 +109,7 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                 
                 for(Core_Integration_Inbound_Message__c InboundlistItem :newMap.values())
                 { 
+                    
                     if(InboundlistItem.Core_Message_Type__c==ERPM_MSG_BLACKBOX)
                     {
                         jsonWrapper Jsondatawrapper= new jsonWrapper();
@@ -125,12 +127,13 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                         InboundReqFields.add(InboundjsonWrapobj);   
                         
                     }
+                    
                 }
                 
-                for(Contact ContListIds:[Select id,email from Contact where email IN:Contemailid])
-                {
-                    
-                    inboundemail.put(ContListIds.email,ContListIds.id);
+                    for(Contact ContListIds:[Select id,email from Contact where email IN:Contemailid])
+                    {
+                        
+                        inboundemail.put(ContListIds.email,ContListIds.id);
                 }
                 
                 if(InboundReqFields.size() > 0){
@@ -156,17 +159,20 @@ public without sharing class Core_IntegrationInboundMessageHandler {
         List<A_E_Integration_Status_Detail__c> IntegrtionStatusDetailList=new List<A_E_Integration_Status_Detail__c>();
         List<A_E_Integration_Status_Detail__c> IntegrtionStatusDetailDeleteList=new List<A_E_Integration_Status_Detail__c>(); //Draco Change [END] - 22-02-2022 ------- Delete previous integration status detail record if there is no error in the new Inbound
         Map<string,Id> ErrorMapping = new Map<string,Id>();
+        
+        
+        
         for(A_E_Error_Mapping__c errorcde:[Select id,A_E_Error_Code_Txt__c from A_E_Error_Mapping__c ])
         {
             ErrorMapping.put(errorcde.A_E_Error_Code_Txt__c,errorcde.id); 
         }
         //StatusDetails = [Select id,A_E_Contact_Id__c,A_E_Contact_Id__r.Email from A_E_Integration_Status_Detail__c where A_E_Contact_Id__c IN:inboundemail.values()]; //Commented as its used nowherein this code - Akshay[Draco] 22-02-2022
         Map<string,A_E_Integration_Status_Detail__c> StatusDetailsMapping = new Map<string,A_E_Integration_Status_Detail__c>();
+        
         for(A_E_Integration_Status_Detail__c StatusDetailsMapping1:[Select id,A_E_Contact_Id__c,A_E_Contact_Id__r.Email from A_E_Integration_Status_Detail__c where A_E_Contact_Id__c IN:inboundemail.values()])
         {
             StatusDetailsMapping.put(StatusDetailsMapping1.A_E_Contact_Id__r.Email,StatusDetailsMapping1);              
         }
-        
         for(InboundjsonWrapper JsondatawrapperListItem:JsondatawrapperList) 
         {
             if ((JsondatawrapperListItem.inboundSource == SOURCE_ERPM)&&(JsondatawrapperListItem.inboundMessageType== ERPM_MSG_BLACKBOX))
@@ -177,6 +183,8 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                     if(StatusDetailsMapping.containsKey(JsondatawrapperListItem.payloadfield.EmailID))
                     { 
                         //----------------------------------Update------------------------//
+                        
+                        
                         IntegrationStatusDetail.Id=StatusDetailsMapping.get(JsondatawrapperListItem.payloadfield.EmailID).Id;
                     } 
                     //------------------------Upsert (Insert/Update)------------------//
@@ -184,39 +192,40 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                     if(inboundemail.containsKey(JsondatawrapperListItem.payloadfield.EmailID))
                     {
                         IntegrationStatusDetail.A_E_Contact_Id__c=inboundemail.get(JsondatawrapperListItem.payloadfield.EmailID);
+                        
                     }                             
                     
+                    
                     IntegrationStatusDetail.A_E_Integration_Type_Txt__c= SOURCE_ERPM;
+                    
                     IntegrationStatusDetail.A_E_Integration_Status_Txt__c  = ERPM_BBox_Status_Fail;
                     IntegrationStatusDetail.A_E_Integration_Error_Txt__c= JsondatawrapperListItem.payloadfield.ErrorCode;//ErrorText
                     IntegrationStatusDetail.A_E_Integration_Error_Description_Txt__c=JsondatawrapperListItem.payloadfield.ErrorDetails;//ErrorDetails
                     
                     If(ErrorMapping.containskey(JsondatawrapperListItem.payloadfield.ErrorCode))
                     {
+                        
                         IntegrationStatusDetail.A_E_Error_Mapping_Id__c=ErrorMapping.get(JsondatawrapperListItem.payloadfield.ErrorCode);
+                        
                     }
                     else{
                         IntegrationStatusDetail.A_E_Error_Mapping_Id__c=NULL;
                     }
                     IntegrtionStatusDetailList.add(IntegrationStatusDetail);
-                } 
+                    } 
                 //-------------- Draco Change [START] - 22-02-2022 ------- Delete previous integration status detail record if there is no error in the new Inbound -------------//
                 if((JsondatawrapperListItem.payloadfield.Status == 'Success')&&(JsondatawrapperListItem.payloadfield.ErrorCode == NULL) && (StatusDetailsMapping.containsKey(JsondatawrapperListItem.payloadfield.EmailID))){
                     //if(StatusDetailsMapping.containsKey(JsondatawrapperListItem.payloadfield.EmailID)){
-                    IntegrationStatusDetail.Id=StatusDetailsMapping.get(JsondatawrapperListItem.payloadfield.EmailID).Id;
-                    IntegrtionStatusDetailDeleteList.add(IntegrationStatusDetail);
+                        IntegrationStatusDetail.Id=StatusDetailsMapping.get(JsondatawrapperListItem.payloadfield.EmailID).Id;
+                        IntegrtionStatusDetailDeleteList.add(IntegrationStatusDetail);
                     //}
                     
                 }
                 //-------------- Draco Change [END] - 22-02-2022 ------- Delete previous integration status detail record if there is no error in the new Inbound -------------//
             }
         }
-        
-        
         Upsert IntegrtionStatusDetailList;
-        
         Delete IntegrtionStatusDetailDeleteList; //Draco Change [END] - 22-02-2022 ------- Delete previous integration status detail record if there is no error in the new Inbound
-        
     } 
     //---------------------DRACO: 1Create/Update of Entitlement Status Detail object record - END -----------------//
     public static void processMessagesBefore(List<Core_Integration_Inbound_Message__c> oldList,
@@ -224,38 +233,33 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                                              Map<Id,Core_Integration_Inbound_Message__c> oldMap,
                                              Map<Id,Core_Integration_Inbound_Message__c> newMap)
     {
-        try{
-            // Ensure no re-entry
-            if (!hasProcessedNewMessages || !retryForAGSApexExeption) {
-                hasProcessedNewMessages = true;
-                //retryForAGSApexExeption = true; // Added logic to retry processing the Integration Inbound Message in case of Apex Exception
+        // Ensure no re-entry
+        if (!hasProcessedNewMessages || !retryForAGSApexExeption) {
+            hasProcessedNewMessages = true;
+            //retryForAGSApexExeption = true; // Added logic to retry processing the Integration Inbound Message in case of Apex Exception
+            
+            // Only execute this logic if the trigger is turned on
+            if (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                mapFunctionalityNameTriggerExecution.containsKey('processInboundMessages') &&
+                mapFunctionalityNameTriggerExecution.get('processInboundMessages').Core_Active__c) 
+            {
                 
-                // Only execute this logic if the trigger is turned on
-                if (!mapFunctionalityNameTriggerExecution.isEmpty() &&
-                    mapFunctionalityNameTriggerExecution.containsKey('processInboundMessages') &&
-                    mapFunctionalityNameTriggerExecution.get('processInboundMessages').Core_Active__c) 
-                {
+                if (newList.size() > 0) {
                     
-                    if (newList.size() > 0) {
-                        
-                        //Intel Altera Phase1:
-                        //Below code is used for mapping all the inbound message with Message Type Quote
-                        List<Core_Integration_Inbound_Message__c> quoteList = new List<Core_Integration_Inbound_Message__c>();
-                        for( Core_Integration_Inbound_Message__c obj : newList ) {
-                            if( obj.Core_Message_Type__c  == 'Quote') {
-                                quoteList.add(obj);
-                            }
+                    //Intel Altera Phase1:
+                    //Below code is used for mapping all the inbound message with Message Type Quote
+                    List<Core_Integration_Inbound_Message__c> quoteList = new List<Core_Integration_Inbound_Message__c>();
+                    for( Core_Integration_Inbound_Message__c obj : newList ) {
+                        if( obj.Core_Message_Type__c  == 'Quote') {
+                            quoteList.add(obj);
                         }
-                        if(quoteList.size() > 0) {
-                            Core_SalesSupportPSGQuoteSFDCToSiebel.processPSGQuoteMessage(quoteList);
-                        }
-                        
                     }
+                    if(quoteList.size() > 0) {
+                        Core_SalesSupportPSGQuoteSFDCToSiebel.processPSGQuoteMessage(quoteList);
+                    }
+                    
                 }
             }
-        }catch(Exception exp){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = exp.getMessage(), Core_Origin__c = 'Before logic on inbound messages', Core_Project__c = 'Core_IntegrationInboundMessageHandler' , Core_Details__c = 'Error while executing processMessagesBefore method on Core_IntegrationInboundMessageHandler class', Core_Severity__c = 'error', Core_When__c = System.Now());     
-            Insert excepLog;
         }
     }
     
@@ -264,39 +268,39 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                                             Map<Id,Core_Integration_Inbound_Message__c> oldMap,
                                             Map<Id,Core_Integration_Inbound_Message__c> newMap)
     {
-        try{
-            // Ensure no re-entry
-            if (!hasProcessedNewMessagesAfter || !retryForAGSApexExeption) {
-                hasProcessedNewMessagesAfter = true;
-                retryForAGSApexExeption = true; // Added logic to retry processing the Integration Inbound Message in case of Apex Exception            
-                // We know this is an INSERT and it will always contain messages of the same source system & message type,
-                // so just check the first record to see which combination we're processing
-                if (newList.size() > 0) {                    
-                    // Only execute this logic if the trigger is turned on
-                    if ((newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
-                                                                              mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) &&
-                        (mapFunctionalityNameTriggerExecution.get('processInboundMessagesERPM').Core_Active__c)
-                        && newList[0].Core_Message_Type__c == ERPM_MSG_CONTACT){
-                            Core_ERPMInboundMessage_ContactService.processContactMessages(newList[0]);
-                        }/*else if ( (newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
-                        mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) 
-                        && newList[0].Core_Message_Type__c == ERPM_MSG_ACCOUNT) {
-                        Core_IntInboundMsgERPM_Account.processAccountMessages(newList);
+          // Ensure no re-entry
+        if (!hasProcessedNewMessagesAfter || !retryForAGSApexExeption) {
+            hasProcessedNewMessagesAfter = true;
+            retryForAGSApexExeption = true; // Added logic to retry processing the Integration Inbound Message in case of Apex Exception
+            
+            // We know this is an INSERT and it will always contain messages of the same source system & message type,
+            // so just check the first record to see which combination we're processing
+            if (newList.size() > 0) {                    
+                // Only execute this logic if the trigger is turned on
+                if ((newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                    mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) &&
+                    (mapFunctionalityNameTriggerExecution.get('processInboundMessagesERPM').Core_Active__c)
+                    && newList[0].Core_Message_Type__c == ERPM_MSG_CONTACT){
+                    Core_ERPMInboundMessage_ContactService.processContactMessages(newList[0]);
+                }/*else if ( (newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                    mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) 
+                    && newList[0].Core_Message_Type__c == ERPM_MSG_ACCOUNT) {
+                    Core_IntInboundMsgERPM_Account.processAccountMessages(newList);
                 }*/else if ((newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
-                                                                  mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) &&
-            (mapFunctionalityNameTriggerExecution.get('processInboundMessagesERPM').Core_Active__c)
-            && newList[0].Core_Message_Type__c == ERPM_MSG_BLACKBOX) {
-                Core_IntInboundMsgERPM_BlackBox.processBlackboxMessages(newList);
-            } else if ((newList[0].Core_Source_System__c == SOURCE_AGS) && (!mapFunctionalityNameTriggerExecution.isEmpty()) &&
-                       (mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesAGS')) &&
-                       (mapFunctionalityNameTriggerExecution.get('processInboundMessagesAGS').Core_Active__c)
-                       && newList[0].Core_Message_Type__c == MSG_TYPE_ROLE2_0) {
-                           startedFromAGSInboundMsg = true; // No matter waht is ERPM Integration status, we will use this variable to check if the transaction is started from Role 2.0 IIM and it need to send IOM to AGS by bypassing ERPM. Used in Core_Entitlement_Outbound_Integrations class
-                           Core_IntegrationInboundMessageAGS.processMessages2_0(newList);
-                       }
+                    mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) &&
+                    (mapFunctionalityNameTriggerExecution.get('processInboundMessagesERPM').Core_Active__c)
+                    && newList[0].Core_Message_Type__c == ERPM_MSG_BLACKBOX) {
+                            Core_IntInboundMsgERPM_BlackBox.processBlackboxMessages(newList);
+                } else if ((newList[0].Core_Source_System__c == SOURCE_AGS) && (!mapFunctionalityNameTriggerExecution.isEmpty()) &&
+                    (mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesAGS')) &&
+                    (mapFunctionalityNameTriggerExecution.get('processInboundMessagesAGS').Core_Active__c)
+                    && newList[0].Core_Message_Type__c == MSG_TYPE_ROLE2_0) {
+                    startedFromAGSInboundMsg = true; // No matter waht is ERPM Integration status, we will use this variable to check if the transaction is started from Role 2.0 IIM and it need to send IOM to AGS by bypassing ERPM. Used in Core_Entitlement_Outbound_Integrations class
+                    Core_IntegrationInboundMessageAGS.processMessages2_0(newList);
                 }
+            }
             //for bank and payment handling
-                if(newList != NULL && newList.size() > 0){
+            if(newList != NULL && newList.size() > 0){
                 Map<Id,Core_Integration_Inbound_Message__c> newMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
                 Map<Id,Core_Integration_Inbound_Message__c> newMapToBeProcessedForPayments = new Map<Id,Core_Integration_Inbound_Message__c>();
                 for(Core_Integration_Inbound_Message__c iMessageRecord : newList){
@@ -341,10 +345,10 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                         newMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
                     }
                 }
-                //Commented for TranslationEOL
-                /*if(newMapToBeProcessed.size() > 0){
+                
+                if(newMapToBeProcessed.size() > 0){
                     PMP_Partner_Locale_Inbound_Msg.updateLocaleDetails(newMapToBeProcessed);
-                }*/
+                }
             }
             List<Core_Integration_Inbound_Message__c> tenderInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
             List<Core_Integration_Inbound_Message__c> tenderClaimsInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
@@ -378,10 +382,6 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                         integrationSystem.processConsumptionData(tenderConsumptionInboundMsgList);
                     }
                 }
-            }
-        }catch(Exception exp){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = exp.getMessage(), Core_Origin__c = 'After logic on inbound messages', Core_Project__c = 'Core_IntegrationInboundMessageHandler' , Core_Details__c = 'Error while executing processMessagesAfter method on Core_IntegrationInboundMessageHandler class', Core_Severity__c = 'error', Core_When__c = System.Now());     
-            Insert excepLog;
         }
     }
 }

@@ -88,7 +88,7 @@
         <inputParameters>
             <name>templateName</name>
             <value>
-                <elementReference>EmailTemplateName</elementReference>
+                <elementReference>$Label.Core_MDF_EmailTemp_BankDocHold</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_DetermineRecipientsWithGroup</nameSegment>
@@ -135,7 +135,7 @@
         <inputParameters>
             <name>templateName</name>
             <value>
-                <elementReference>EmailTemplateName</elementReference>
+                <elementReference>$Label.Core_MDF_EmailTemp_BankDocHold</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_DetermineRecipientsWithGroup</nameSegment>

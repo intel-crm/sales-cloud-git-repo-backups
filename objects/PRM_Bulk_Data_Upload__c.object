@@ -679,17 +679,6 @@
                     <default>true</default>
                     <label>Bulk Invite</label>
                 </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Auto DZP Enrollment</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Auto DZP Enrollment</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

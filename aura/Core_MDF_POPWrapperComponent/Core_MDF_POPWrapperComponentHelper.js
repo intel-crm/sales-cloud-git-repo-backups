@@ -2,9 +2,8 @@
     checkUserAccessAndFetchAuditDocDetails : function(component, claimId) {
         var action = component.get("c.getAuditDocumentDetailsWrapper");
         action.setParams({
-            recordId: claimId,
-            outComeBasedFlag : false
-        }); 
+            recordId: claimId
+        });
         action.setCallback(this, function(res) {
             var state = res.getState();
             if(state.toLowerCase() === "success") {
@@ -13,7 +12,6 @@
                 component.set("v.disableDocumentUploadSection", auditDocWrapper.disableDocumentUploadSection);
                 component.set("v.claimDetails", auditDocWrapper.pfcRec);
                 component.set("v.existingAuditDocuments", auditDocWrapper.documentList);
-                component.set("v.isOutcomeBasedAccountBasedAct", auditDocWrapper.isOutcomeBased);
                 //check for IPA Program - to display POP required information
                 let claimdetails = auditDocWrapper.pfcRec;
                 if(Object.keys(claimdetails).length > 0) {

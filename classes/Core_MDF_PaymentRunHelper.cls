@@ -319,11 +319,9 @@ Modified By:        Date:       Changes:
                 mdfRecTypeIdList.add(Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId());
                 mdfRecTypeIdList.add(Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Datacenter MDF').getRecordTypeId());
                 for (Core_MDF_Payment_Run__c paymentRunRec: paymentRunRecsToBeProcessed){
-                    if((paymentRunOldMap == null 
+                    if(paymentRunOldMap == null 
                        || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Account_Id__c != paymentRunRec.Core_MDF_Account_Id__c 
-                       || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Run_For_All_Accounts__c != paymentRunRec.Core_MDF_Run_For_All_Accounts__c)
-                       // OOC payment runs select accounts via the OOC flow, so skip the IUPGM account-access check
-                       && !paymentRunRec.Core_MDF_Is_OOC_Payment_Ind__c){
+                       || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Run_For_All_Accounts__c != paymentRunRec.Core_MDF_Run_For_All_Accounts__c){
                            if(!mdfRecTypeIdList.isEmpty() && mdfRecTypeIdList.contains(paymentRunRec.RecordTypeId)){
                                mdfPaymentRunRecords.add(paymentRunRec);
                            }
@@ -398,10 +396,9 @@ Modified By:        Date:       Changes:
                 mdfRecTypeIdList.add(Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Client MDF').getRecordTypeId());
                 mdfRecTypeIdList.add(Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByName().get('Datacenter MDF').getRecordTypeId());
                 for (Core_MDF_Payment_Run__c paymentRunRec: paymentRunRecsToBeProcessed){
-                    if(!paymentRunRec.Core_MDF_Is_OOC_Payment_Ind__c
-                    && (paymentRunOldMap == null 
+                    if(paymentRunOldMap == null 
                        || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Account_Id__c != paymentRunRec.Core_MDF_Account_Id__c 
-                       || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Run_For_All_Accounts__c != paymentRunRec.Core_MDF_Run_For_All_Accounts__c)){
+                       || paymentRunOldMap.get(paymentRunRec.Id).Core_MDF_Run_For_All_Accounts__c != paymentRunRec.Core_MDF_Run_For_All_Accounts__c){
                            if(!mdfRecTypeIdList.isEmpty() && mdfRecTypeIdList.contains(paymentRunRec.RecordTypeId)){
                                mdfPaymentRunRecords.add(paymentRunRec);
                            }
@@ -429,6 +426,7 @@ Modified By:        Date:       Changes:
                         }
                         else{
                             paymentRunRec.Core_MDF_Payment_run_for_Accounts__c = paymentRunRec.Core_MDF_Account_Id__c;
+                            
                             paymentRunRec.Core_MDF_Account_Names__c = paymentRunRec.Core_MDF_Account_Id__r.Name;
                         }
                     }

@@ -10,10 +10,6 @@ import Core_IPS_Supported_Product_HelpText from '@salesforce/label/c.Core_IPS_Su
 import { getRecord } from 'lightning/uiRecordApi';
 import NAME_FIELD from '@salesforce/schema/Opportunity.Name';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-//import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult';
-import getSupportedProducts from '@salesforce/apex/Core_IPS_NewMapHomePageController.getSupportedProducts';
-import getProjectsForOpportunity from '@salesforce/apex/Core_IPS_NewMapHomePageController.getProjectsForOpportunity';
-
 
 
 export default class Core_IPS_Create_Opportunity_PAR extends NavigationMixin(LightningElement){
@@ -249,7 +245,6 @@ getOrgAdmin() {
             this.spinnerOn = false;
         }
         else{
-            this.spinnerOn = false;
             this.showToast('Please select other Product', 'No IPS Support ORG Admins found for selected Product!', 'info'); 
         }
     })

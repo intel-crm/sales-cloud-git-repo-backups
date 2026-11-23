@@ -15,15 +15,15 @@ trigger Core_Product on Product2 (after insert, after update, before update, bef
     Map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     if(trigger.isAfter && Trigger.isInsert){
         //Hari : US1045419 For copying related MSVP,PriceBookEntry,Forward Cost with product inserted.
-        /*if(TriggerHandler.isActive('PSG_Product_changeProductOnRelatedObject')){
-            PSG_ProductBusinessLogic.changeProductOnRelatedObjects(Trigger.new,Trigger.oldMap,true);
+        if(TriggerHandler.isActive('PSG_Product_changeProductOnRelatedObject')){
+            //PSG_ProductBusinessLogic.changeProductOnRelatedObjects(Trigger.new,Trigger.oldMap,true);
         }
         // Sandhya :US1055323 : For moving the extended Attributes from Pre release to Release Product
-        Core_PSG_ActiveProductExtAttrHandler.updateExtAttributesOnActiveProduct(Trigger.new,Trigger.oldMap,true);
+        //Core_PSG_ActiveProductExtAttrHandler.updateExtAttributesOnActiveProduct(Trigger.new,Trigger.oldMap,true);
        // Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnAllProducts(Trigger.new,Trigger.oldMap);
         // Core_ProductHandler.updateSalesVisibleFlagForPSG(Trigger.new,Trigger.oldMap);
-        Core_PSG_Change_Sales_Status.UpdateSalesStatus(Trigger.new, null);
-        */
+        //Core_PSG_Change_Sales_Status.UpdateSalesStatus(Trigger.new, null);
+        
         //TWC3123-618 start
         /*if(mapFunctionalityNameTriggerExecution.containsKey('updateProductEOL') && 
            mapFunctionalityNameTriggerExecution.get('updateProductEOL').Core_Active__c ){
@@ -34,16 +34,15 @@ trigger Core_Product on Product2 (after insert, after update, before update, bef
     }
     //Gireesh:US863168: For Updating Quotable, Shippable and Ordreable flags 
     if(trigger.isAfter && Trigger.isUpdate){
-       /* Core_PSG_Change_Sales_Status.UpdateSalesStatus(Trigger.new, Trigger.oldMap);
+        //Core_PSG_Change_Sales_Status.UpdateSalesStatus(Trigger.new, Trigger.oldMap);
         // Sandhya :US1055323 : For moving the extended Attributes from Pre release to Release Product
-        Core_PSG_ActiveProductExtAttrHandler.updateExtAttributesOnActiveProduct(Trigger.new,Trigger.oldMap,false);
+        //Core_PSG_ActiveProductExtAttrHandler.updateExtAttributesOnActiveProduct(Trigger.new,Trigger.oldMap,false);
         //Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnAllProducts(Trigger.new,Trigger.oldMap);
         // Core_ProductHandler.updateSalesVisibleFlagForPSG(Trigger.new,Trigger.oldMap);
         //Hari : US1045419 For copying related MSVP,PriceBookEntry,Forward Cost with product updated.
         if(TriggerHandler.isActive('PSG_Product_changeProductOnRelatedObject')){
-            PSG_ProductBusinessLogic.changeProductOnRelatedObjects(Trigger.new,Trigger.oldMap,false);
+            //PSG_ProductBusinessLogic.changeProductOnRelatedObjects(Trigger.new,Trigger.oldMap,false);
         }
-        */
         //TWC3123-618 start
         if(mapFunctionalityNameTriggerExecution.containsKey('updateProductEOL') && 
            mapFunctionalityNameTriggerExecution.get('updateProductEOL').Core_Active__c ){
@@ -51,12 +50,12 @@ trigger Core_Product on Product2 (after insert, after update, before update, bef
         }
         //TWC3123-618 end.
     }
-    // if(trigger.isAfter && Trigger.isUpdate){
-    //     if(mapFunctionalityNameTriggerExecution.containsKey('SendUpdatedProductstoOrders') && mapFunctionalityNameTriggerExecution.get('SendUpdatedProductstoOrders').Core_Active__c){
+    if(trigger.isAfter && Trigger.isUpdate){
+        if(mapFunctionalityNameTriggerExecution.containsKey('SendUpdatedProductstoOrders') && mapFunctionalityNameTriggerExecution.get('SendUpdatedProductstoOrders').Core_Active__c){
 
-    //       Core_PSG_Change_Sales_Status.SendUpdatedProductstoOrders(Trigger.new, Trigger.oldMap);    
-    //      }
-    // }
+          //Core_PSG_Change_Sales_Status.SendUpdatedProductstoOrders(Trigger.new, Trigger.oldMap);    
+         }
+    }
     
     // Added by Kavyashree HR (Infosys Team) for US780862.Fetching "Custom Setting" containing details to trigger switch on/off
     
@@ -86,30 +85,26 @@ trigger Core_Product on Product2 (after insert, after update, before update, bef
                
         }
         // Sandhya :US1055323 : For moving the Signal Code from Pre release to Release Product
-        // if(Trigger.isInsert){
-        //     //Commented as part of Signal Code FIX -- Added Alternate Method
-        //     //Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnActiveProduct(Trigger.new);
-        //     Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnAllProducts(Trigger.new,Trigger.oldMap,new Map<String,String>()); 
-        //    Core_PSG_ActiveProductExtAttrHandler.updateProductsWithoutSignalCode(Trigger.new,Trigger.oldMap,true);
-        // }
+        if(Trigger.isInsert){
+            //Commented as part of Signal Code FIX -- Added Alternate Method
+            //Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnActiveProduct(Trigger.new);
+            //Core_PSG_ActiveProductExtAttrHandler.updateSignalCodeOnAllProducts(Trigger.new,Trigger.oldMap,new Map<String,String>()); 
+           //Core_PSG_ActiveProductExtAttrHandler.updateProductsWithoutSignalCode(Trigger.new,Trigger.oldMap,true);
+        }
 
-        // if(Trigger.isUpdate) { 
-        //     if(mapFunctionalityNameTriggerExecution.containsKey('removeSignalCodeUpdatedProducts') && mapFunctionalityNameTriggerExecution.get('removeSignalCodeUpdatedProducts').Core_Active__c){
-		// 		Core_PSG_ActiveProductExtAttrHandler.removeSignalCodeUpdatedProducts(Trigger.new, Trigger.oldMap);
-        //     }
-        //     Core_PSG_ActiveProductExtAttrHandler.updateProductsWithoutSignalCode(Trigger.new,Trigger.oldMap,false);
-        // }
+        if(Trigger.isUpdate) { 
+            if(mapFunctionalityNameTriggerExecution.containsKey('removeSignalCodeUpdatedProducts') && mapFunctionalityNameTriggerExecution.get('removeSignalCodeUpdatedProducts').Core_Active__c){
+				//Core_PSG_ActiveProductExtAttrHandler.removeSignalCodeUpdatedProducts(Trigger.new, Trigger.oldMap);
+            }
+            //Core_PSG_ActiveProductExtAttrHandler.updateProductsWithoutSignalCode(Trigger.new,Trigger.oldMap,false);
+        }
     }
     
     //Added by Kavyashree HR (Infosys Team) for US757567   
     if(Trigger.isBefore){
         if(Trigger.isUpdate){
             Core_ProductHandler.checkProductStatus(Trigger.New);
-            // Core_ProductHandler.updateSalesVisibleFlagForPSG(Trigger.new,Trigger.oldMap);
-            //MM Attributes Update Logic - rohitx.podder@intel.com 07-09-2026
-            if((mapFunctionalityNameTriggerExecution.containsKey('ExecuteProduct_DeactivationAndLogEntry') && !mapFunctionalityNameTriggerExecution.get('ExecuteProduct_DeactivationAndLogEntry').Core_Active__c)){
-                Core_ProductHandler.productMMAttributeValiation(Trigger.New, Trigger.OldMap);
-            }
+            Core_ProductHandler.updateSalesVisibleFlagForPSG(Trigger.new,Trigger.oldMap);
             if(mapFunctionalityNameTriggerExecution.containsKey('isProductNameChanged') && mapFunctionalityNameTriggerExecution.get('isProductNameChanged').Core_Active__c)
                 Core_ProductOpportunity.isProductNameChanged(Trigger.new,Trigger.oldMap); 
         }    

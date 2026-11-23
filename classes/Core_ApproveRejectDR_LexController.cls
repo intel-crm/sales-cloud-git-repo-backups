@@ -28,7 +28,7 @@ public with sharing class Core_ApproveRejectDR_LexController {
         try{
             Map<String,Map<String,Object>> lexMetadataMap = new Core_CustomMetadataObjectController('Core_Lex_AlertMessage__mdt').getAll();
 
-            Core_Design_Registration_Product__c drProd = [Select id,Core_Product_Id__r.Core_Avail_for_New_Designs__c,Core_Design_Product_Status_Nm__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_DR_Eligible_Status__c,PCC_Deal_Eligible_Status__c,RecordTypeId,Core_Design_Registration_Id__c,PCC_Product_Additional_Attribute__c,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,Core_Full_Year_Qty__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c,Core_Target_Resale_Amt__c  from Core_Design_Registration_Product__c where id=:drId];
+            Core_Design_Registration_Product__c drProd = [Select id,Core_Product_Id__r.Core_Avail_for_New_Designs__c,Core_Design_Product_Status_Nm__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_DR_Eligible_Status__c,PCC_Deal_Eligible_Status__c,RecordTypeId,Core_Design_Registration_Id__c,PCC_Product_Additional_Attribute__c,PCC_Product_Additional_Attribute__r.Is_Product_Active__c,Core_Design_Registration_Id__r.PCC_Registration_Type__c,Core_Full_Year_Qty__c,PCC_Competitor_Product__r.Pricing_Active_cb__c,PCC_Quote_Line_Pricing_Start_Date__c,PCC_Quote_Line_Pricing_End_Date__c from Core_Design_Registration_Product__c where id=:drId];
             string drRegType = drProd.Core_Design_Registration_Id__r.PCC_Registration_Type__c;
             //check if product is avaiable for new design | DINESH - 7/27/23 - TWC727-1126
             if ( drProd.Core_Design_Product_Status_Nm__c.contains('Approved')) {
@@ -66,8 +66,6 @@ public with sharing class Core_ApproveRejectDR_LexController {
         else if ( drProd.Core_DR_Eligible_Status__c == false) {alertMsg = lexMetadataMap.containsKey('Core_DDR_InEligible_product') ? String.valueOf(lexMetadataMap.get('Core_DDR_InEligible_product').get('Core_Alert_Message__c')) : '';}
         // Check if the Product is locked
         else if (drProd.Core_Locked_Ind__c == true) {alertMsg = lexMetadataMap.containsKey('Core_DR_Product_Locked') ?  String.valueOf(lexMetadataMap.get('Core_DR_Product_Locked').get('Core_Alert_Message__c')) : '';}
-        else if (drProd.Core_Target_Resale_Amt__c == null || drProd.Core_Target_Resale_Amt__c == 0) {
-        alertMsg = 'Target Resale Price is required for approval. Please populate the Target Resale Price before approving this product.';}
         else{
             drProd.Core_Design_Product_Status_Nm__c = 'Approved';
             // Save the Design Registraion Product object

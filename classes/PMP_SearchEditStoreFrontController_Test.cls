@@ -472,12 +472,12 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         Test.startTest();
         partner.PMP_Company_Information_Language_Nm__c = 'Japanese';
         update partner;
-        PMP_SearchEditStoreFrontController.getCompDesc(formData,partner);
+        PMP_SearchEditStoreFrontController.getCompDesc(formData,partner,'en_US');
         //System.assert(String.isNotEmpty(formData.admin));
         //
         partner.PMP_Company_Information_Language_Nm__c = 'Simplified Chinese';
         update partner;
-        PMP_SearchEditStoreFrontController.getCompDesc(formData,partner);
+        PMP_SearchEditStoreFrontController.getCompDesc(formData,partner,'en_US');
         //PMP_SearchEditStoreFrontController.getCompDesc(formData,partner);
         //System.assert(String.isNotEmpty(formData.admin));
         List<PMP_Company_Translation__c> transList = new List<PMP_Company_Translation__c>();
@@ -511,7 +511,7 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         
         PMP_SearchEditStoreFrontController.updateTranslationRecords(partner.Id,partner.Name,'Simplified Chinese','tag','desc');
          List<PMP_Company_Translation__c> transList = new List<PMP_Company_Translation__c>();
-		 transList = [select id, Name, PMP_Field_Nm__c, PMP_English_Txt__c from PMP_Company_Translation__c LIMIT 10];
+     transList = [select id, Name, PMP_Field_Nm__c, PMP_English_Txt__c from PMP_Company_Translation__c LIMIT 10];
          system.assertNotEquals(NULL,transList,'Failed');
         Test.stopTest();
     }
@@ -670,7 +670,7 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         insert jun;
        
        PMP_Company__c compInfo = [SELECT Id, Name FROM PMP_Company__c WHERE Name = 'test class Account'];
-       //system.debug('compInfo'+compInfo);
+       system.debug('compInfo'+compInfo);
         
        
        

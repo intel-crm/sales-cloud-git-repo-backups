@@ -73,11 +73,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Audit_Reversal_Count_Nbr__c</field>
+                <field>Core_MDF_Claim_Submitter_Message_txt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Claim_Submitter_Message_txt__c</field>
+                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -85,11 +85,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Days_SLA_Remaining__c</field>
+                <field>Core_MDF_Audit_Reversal_Count_Nbr__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -111,15 +107,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Reason_for_Cancellation_txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_MDF_Claim_Review_Closure_Note__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_ClaimReviewClosureHistory_txt__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Days_SLA_Remaining__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -383,19 +375,14 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Case.Core_MDF_Cancel_Case_Aura</actionName>
+            <actionName>Case.Core_MDF_Change_Owner</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Case.Core_MDF_Change_Owner</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Case.Core_MDF_Add_Exception</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>

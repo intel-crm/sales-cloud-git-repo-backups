@@ -125,7 +125,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Core_Opportunity_Features__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(currentOpportunity.Id) + '\'' + 
+                                          'WHERE Core_Opportunity__c = \'' + currentOpportunity.Id + '\'' + 
                                           '  AND IsDeleted = false');
         showOppFeatures = iQueryCount > 0;       
         
@@ -140,7 +140,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Core_Opportunity_Partner__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(currentOpportunity.Id) + '\'' + 
+                                          'WHERE Core_Opportunity__c = \'' + currentOpportunity.Id + '\'' + 
                                           '  AND Core_Partner__r.Core_Deactivated__c = false ' + 
                                           '  AND Core_Partner_Role__c != \'' + VENDOR_TEXT + '\'');
         showOppPartner = iQueryCount > 0;
@@ -156,7 +156,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM OpportunityLineItem ' + 
-                                          'WHERE Opportunity.Id = \'' + String.escapeSingleQuotes(currentOpportunity.Id) + '\'' + 
+                                          'WHERE Opportunity.Id = \'' + currentOpportunity.Id + '\'' + 
                                           '  AND Product2.IsActive = true ' + 
                                           '  AND Product2.isDeleted = false');
         
@@ -165,7 +165,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         // O P P  S O L U T I O N
         iQueryCount = Database.CountQuery('SELECT COUNT() ' + 
                                           'FROM Opportunity_Solution_Area__c ' + 
-                                          'WHERE Core_Opportunity__c = \'' + String.escapeSingleQuotes(currentOpportunity.Id) + '\'');
+                                          'WHERE Core_Opportunity__c = \'' + currentOpportunity.Id + '\'');
         
         showOpportunitySolution = iQueryCount > 0;
 
@@ -222,9 +222,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         return NULL;
     }                   
     public pageReference continueClone() {
-
-        Boolean preValue = Core_OpportunityHandler_2.isNonCloneFunction;
-        Core_OpportunityHandler_2.isNonCloneFunction = false;
+        
         //US102793 : Added a Custom Label to store the error messages -- Ashwin
         List<String> errMsgList = System.label.Core_Opp_CloneCont_Msgs.split(';');
         String strFields = getAllFields('Opportunity');        
@@ -277,7 +275,13 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
             if(isPartner){
                 updateOppPriceBook(oppRec.Id);   
             }               
-        
+        }catch(Exception e){
+            //US102793 : Modified the error message -- Ashwin
+            Apexpages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, errMsgList[1]));
+            Apexpages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, e.getMessage()));
+          
+            return null;
+        }
         
         // CloneTeam has special logic to reflect user selections.
         // The Opportunity Owner and Technical Owner are created automatically by the Opportunity trigger handler.
@@ -323,16 +327,6 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         PageReference pageRef = new PageReference('/' + oppRec.Id);
         pageRef.setRedirect(true);
         return pageRef;
-        }catch(Exception e){
-            //US102793 : Modified the error message -- Ashwin
-            Apexpages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, errMsgList[1]));
-            Apexpages.addMessage(new ApexPages.message(ApexPages.severity.ERROR, e.getMessage()));
-          
-            return null;
-        }
-        finally {
-            Core_OpportunityHandler_2.isNonCloneFunction = preValue;
-        }
         //The below code has been commented as per new lightning migration part added by Sougata//
         /*PageReference pageRef = new PageReference('/' + oppRec.Id + '/e?retURL=/' + oppRec.Id);
             System.debug('#50 pageRef: ' + pageRef.getURL());        
@@ -398,7 +392,6 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         OppRec.Core_IsClone__c = true; // added for TWC3123-2361
         oppRec.Opportunity_Focus__c = '';   
         oppRec.CRM_Opportunity_Revenue__c = 0;
-        oppRec.Core_Opportunity_Products__c = null;//added forr TWC4767-5208
         //TWC4767-4391------START------------
         oppRec.CRM_Audit_Close_Date__c = null;
         oppRec.CRM_Audit_Fail_Reason__c = null;
@@ -688,10 +681,6 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
     
     @future   
     public static  void cloneProductsPartners(Id oldOppId, Id newOppId,String strFields) {  
-
-        Boolean preValue = Core_OpportunityHandler_2.isNonCloneFunction;
-        Core_OpportunityHandler_2.isNonCloneFunction = false;
-
         List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
         Map<String, Core_LogEntry_Switch__c> logSwitch = Core_LogEntry_Switch__c.getall();
        Opportunity  Opptype = [select id,Core_Opportunity_Type__c  from Opportunity where Id=:oldOppId WITH SECURITY_ENFORCED];//TWC3123-5310 - Added WITH SECURITY_ENFORCED
@@ -801,9 +790,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
                 if(logSwitch.get('Core_LogEntry_Check') != null && logSwitch.get('Core_LogEntry_Check').Is_Selected__c){ 
                     insert logEntries;
 
-                }}}finally{
-                    Core_OpportunityHandler_2.isNonCloneFunction = preValue;
-                }    
+                }}}    
         }
     }
     

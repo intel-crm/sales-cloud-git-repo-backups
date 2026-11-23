@@ -25,6 +25,15 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><strong style=\"color: rgb(230, 0, 0);\">Attention: </strong><span style=\"color: rgb(230, 0, 0);\">If you are looking to access the Altera portal, please be aware that the website has moved. Use </span><a href=\"http://distributorportal.altera.com/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(0, 71, 178);\">distributorportal.altera.com</a><span style=\"color: rgb(230, 0, 0);\">&nbsp;going forward and follow login instructions.</span></p><p style=\"text-align: center;\"><br></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "173df194-fe96-4766-a599-1a0af8e5315c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",

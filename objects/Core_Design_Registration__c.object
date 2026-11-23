@@ -1146,11 +1146,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Account_Tier__c, &quot;PSG-Tier
                     <label>COOPER LAKE SP</label>
                 </value>
                 <value>
-                    <fullName>CRESCENT ISLAND</fullName>
-                    <default>false</default>
-                    <label>CRESCENT ISLAND</label>
-                </value>
-                <value>
                     <fullName>Curie</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1172,11 +1167,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Account_Tier__c, &quot;PSG-Tier
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Denlow</label>
-                </value>
-                <value>
-                    <fullName>DUNLOW</fullName>
-                    <default>false</default>
-                    <label>DUNLOW</label>
                 </value>
                 <value>
                     <fullName>Eagleport</fullName>
@@ -1509,11 +1499,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Account_Tier__c, &quot;PSG-Tier
                     <fullName>MALIBOU LAKE</fullName>
                     <default>false</default>
                     <label>MALIBOU LAKE</label>
-                </value>
-                <value>
-                    <fullName>MAPLE STREAM</fullName>
-                    <default>false</default>
-                    <label>MAPLE STREAM</label>
                 </value>
                 <value>
                     <fullName>MAX</fullName>
@@ -1869,11 +1854,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Account_Tier__c, &quot;PSG-Tier
                     <label>WILDCAT LAKE M</label>
                 </value>
                 <value>
-                    <fullName>WILDCAT LAKE REFRESH</fullName>
-                    <default>false</default>
-                    <label>WILDCAT LAKE REFRESH</label>
-                </value>
-                <value>
                     <fullName>WIZARD LAKE</fullName>
                     <default>false</default>
                     <label>WIZARD LAKE</label>
@@ -2053,7 +2033,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Account_Tier__c, &quot;PSG-Tier
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>
@@ -5556,32 +5535,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Partner_Alliance_Program__c, &q
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PCC_Design_Type__c</fullName>
-        <inlineHelpText>Select &quot;Chip-down&quot; if CPU-only. Select &quot;Board-based&quot; for ODM-based solutions.</inlineHelpText>
-        <label>Design Type</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Chip-down</fullName>
-                    <default>false</default>
-                    <label>Chip-down</label>
-                </value>
-                <value>
-                    <fullName>Board-based</fullName>
-                    <default>false</default>
-                    <label>Board-based</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>PCC_Digital_Identifier_Value__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>The end customer&apos;s digital identifier (URL or WeChat address)</inlineHelpText>
@@ -8603,676 +8556,6 @@ IF(INCLUDES(Core_End_Customer_Account_Id__r.Core_Partner_Alliance_Program__c, &q
         </valueSet>
     </fields>
     <fields>
-        <fullName>PCC_ODM_Board_Partner_Account__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Select the ODM(board partner) for Board-based opportunities</inlineHelpText>
-        <label>ODM/Board Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Design-Deal Registrations (ODM/Board Partner Account)</relationshipLabel>
-        <relationshipName>Design_Deal_Registrations</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PCC_ODM_Board_partner__c</fullName>
-        <inlineHelpText>Select the ODM(board partner) for Board-based opportunities</inlineHelpText>
-        <label>ODM/Board partner</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <controllingField>PCC_Design_Type__c</controllingField>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Aaeon</fullName>
-                    <default>false</default>
-                    <label>Aaeon</label>
-                </value>
-                <value>
-                    <fullName>ADLINK</fullName>
-                    <default>false</default>
-                    <label>ADLINK</label>
-                </value>
-                <value>
-                    <fullName>Advantech</fullName>
-                    <default>false</default>
-                    <label>Advantech</label>
-                </value>
-                <value>
-                    <fullName>Asus</fullName>
-                    <default>false</default>
-                    <label>Asus</label>
-                </value>
-                <value>
-                    <fullName>Congatec</fullName>
-                    <default>false</default>
-                    <label>Congatec</label>
-                </value>
-                <value>
-                    <fullName>DFI</fullName>
-                    <default>false</default>
-                    <label>DFI</label>
-                </value>
-                <value>
-                    <fullName>ECS</fullName>
-                    <default>false</default>
-                    <label>ECS</label>
-                </value>
-                <value>
-                    <fullName>IEI</fullName>
-                    <default>false</default>
-                    <label>IEI</label>
-                </value>
-                <value>
-                    <fullName>Kontron</fullName>
-                    <default>false</default>
-                    <label>Kontron</label>
-                </value>
-                <value>
-                    <fullName>Seco</fullName>
-                    <default>false</default>
-                    <label>Seco</label>
-                </value>
-                <value>
-                    <fullName>Tria</fullName>
-                    <default>false</default>
-                    <label>Tria</label>
-                </value>
-                <value>
-                    <fullName>Firich Enterprises</fullName>
-                    <default>false</default>
-                    <label>Firich Enterprises</label>
-                </value>
-                <value>
-                    <fullName>Mitac</fullName>
-                    <default>false</default>
-                    <label>Mitac</label>
-                </value>
-                <value>
-                    <fullName>Protech</fullName>
-                    <default>false</default>
-                    <label>Protech</label>
-                </value>
-                <value>
-                    <fullName>Cincoze</fullName>
-                    <default>false</default>
-                    <label>Cincoze</label>
-                </value>
-                <value>
-                    <fullName>Partner Tech</fullName>
-                    <default>false</default>
-                    <label>Partner Tech</label>
-                </value>
-                <value>
-                    <fullName>Asrock</fullName>
-                    <default>false</default>
-                    <label>Asrock</label>
-                </value>
-                <value>
-                    <fullName>Wistron</fullName>
-                    <default>false</default>
-                    <label>Wistron</label>
-                </value>
-                <value>
-                    <fullName>Vecow</fullName>
-                    <default>false</default>
-                    <label>Vecow</label>
-                </value>
-                <value>
-                    <fullName>Avalue</fullName>
-                    <default>false</default>
-                    <label>Avalue</label>
-                </value>
-                <value>
-                    <fullName>Ricoh PFU Computing</fullName>
-                    <default>false</default>
-                    <label>Ricoh PFU Computing</label>
-                </value>
-                <value>
-                    <fullName>Gigabyte</fullName>
-                    <default>false</default>
-                    <label>Gigabyte</label>
-                </value>
-                <value>
-                    <fullName>Celestica</fullName>
-                    <default>false</default>
-                    <label>Celestica</label>
-                </value>
-                <value>
-                    <fullName>Accton</fullName>
-                    <default>false</default>
-                    <label>Accton</label>
-                </value>
-                <value>
-                    <fullName>Neousys</fullName>
-                    <default>false</default>
-                    <label>Neousys</label>
-                </value>
-                <value>
-                    <fullName>Senao Networks</fullName>
-                    <default>false</default>
-                    <label>Senao Networks</label>
-                </value>
-                <value>
-                    <fullName>Aewin</fullName>
-                    <default>false</default>
-                    <label>Aewin</label>
-                </value>
-                <value>
-                    <fullName>Axiomtek</fullName>
-                    <default>false</default>
-                    <label>Axiomtek</label>
-                </value>
-                <value>
-                    <fullName>Caswell</fullName>
-                    <default>false</default>
-                    <label>Caswell</label>
-                </value>
-                <value>
-                    <fullName>Ennoconn</fullName>
-                    <default>false</default>
-                    <label>Ennoconn</label>
-                </value>
-                <value>
-                    <fullName>Flytech</fullName>
-                    <default>false</default>
-                    <label>Flytech</label>
-                </value>
-                <value>
-                    <fullName>IBASE</fullName>
-                    <default>false</default>
-                    <label>IBASE</label>
-                </value>
-                <value>
-                    <fullName>JETWAY</fullName>
-                    <default>false</default>
-                    <label>JETWAY</label>
-                </value>
-                <value>
-                    <fullName>Lanner</fullName>
-                    <default>false</default>
-                    <label>Lanner</label>
-                </value>
-                <value>
-                    <fullName>MSI</fullName>
-                    <default>false</default>
-                    <label>MSI</label>
-                </value>
-                <value>
-                    <fullName>Nexcom</fullName>
-                    <default>false</default>
-                    <label>Nexcom</label>
-                </value>
-                <value>
-                    <fullName>Portwell</fullName>
-                    <default>false</default>
-                    <label>Portwell</label>
-                </value>
-                <value>
-                    <fullName>SNS Network</fullName>
-                    <default>false</default>
-                    <label>SNS Network</label>
-                </value>
-                <value>
-                    <fullName>V-Series</fullName>
-                    <default>false</default>
-                    <label>V-Series</label>
-                </value>
-                <value>
-                    <fullName>Toshiba</fullName>
-                    <default>false</default>
-                    <label>Toshiba</label>
-                </value>
-                <value>
-                    <fullName>Getac</fullName>
-                    <default>false</default>
-                    <label>Getac</label>
-                </value>
-                <value>
-                    <fullName>Bits &amp; Bytes</fullName>
-                    <default>false</default>
-                    <label>Bits &amp; Bytes</label>
-                </value>
-                <value>
-                    <fullName>Posiflex</fullName>
-                    <default>false</default>
-                    <label>Posiflex</label>
-                </value>
-                <value>
-                    <fullName>SUPER MICRO COMPUTER, INC.</fullName>
-                    <default>false</default>
-                    <label>SUPER MICRO COMPUTER, INC.</label>
-                </value>
-                <value>
-                    <fullName>J&amp;WIPC Technology Development Ltd</fullName>
-                    <default>false</default>
-                    <label>J&amp;WIPC Technology Development Ltd</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN SEAVO TECHNOLOGY CO;LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN SEAVO TECHNOLOGY CO;LTD</label>
-                </value>
-                <value>
-                    <fullName>WEIBU - PRC</fullName>
-                    <default>false</default>
-                    <label>WEIBU - PRC</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</label>
-                </value>
-                <value>
-                    <fullName>DELL CHINA INC</fullName>
-                    <default>false</default>
-                    <label>DELL CHINA INC</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</label>
-                </value>
-                <value>
-                    <fullName>ShenZhen Topstar Technology co., Ltd</fullName>
-                    <default>false</default>
-                    <label>ShenZhen Topstar Technology co., Ltd</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</label>
-                </value>
-                <value>
-                    <fullName>Gifa</fullName>
-                    <default>false</default>
-                    <label>Gifa</label>
-                </value>
-                <value>
-                    <fullName>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</fullName>
-                    <default>false</default>
-                    <label>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</label>
-                </value>
-                <value>
-                    <fullName>Shenzhen Datang Computer Co., Ltd.</fullName>
-                    <default>false</default>
-                    <label>Shenzhen Datang Computer Co., Ltd.</label>
-                </value>
-                <value>
-                    <fullName>CHINA HP CO., LTD.</fullName>
-                    <default>false</default>
-                    <label>CHINA HP CO., LTD.</label>
-                </value>
-                <value>
-                    <fullName>suzhou nodka Automation technology Co., LTD.</fullName>
-                    <default>false</default>
-                    <label>suzhou nodka Automation technology Co., LTD.</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</label>
-                </value>
-                <value>
-                    <fullName>Mele Technologies (shenzhen)Co.,Ltd</fullName>
-                    <default>false</default>
-                    <label>Mele Technologies (shenzhen)Co.,Ltd</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</label>
-                </value>
-                <value>
-                    <fullName>Lenovo (Beijing) Limited</fullName>
-                    <default>false</default>
-                    <label>Lenovo (Beijing) Limited</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</label>
-                </value>
-                <value>
-                    <fullName>E-blue tech .Co, limited</fullName>
-                    <default>false</default>
-                    <label>E-blue tech .Co, limited</label>
-                </value>
-                <value>
-                    <fullName>Shenzhen Minwin Technology CO.,LTd</fullName>
-                    <default>false</default>
-                    <label>Shenzhen Minwin Technology CO.,LTd</label>
-                </value>
-                <value>
-                    <fullName>Guangzhou Special Control Electronic Industrial Co;Ltd.</fullName>
-                    <default>false</default>
-                    <label>Guangzhou Special Control Electronic Industrial Co;Ltd.</label>
-                </value>
-                <value>
-                    <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                    <default>false</default>
-                    <label>SHENZHEN COMSTAR TECHNOLOGY COMPANY</label>
-                </value>
-                <value>
-                    <fullName>Others</fullName>
-                    <default>false</default>
-                    <label>Others</label>
-                </value>
-            </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Aaeon</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>ADLINK</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Advantech</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Asus</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Congatec</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>DFI</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>ECS</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>IEI</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Kontron</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Seco</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Tria</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Firich Enterprises</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Mitac</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Protech</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Cincoze</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Partner Tech</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Asrock</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Wistron</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Vecow</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Avalue</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Ricoh PFU Computing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Gigabyte</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Celestica</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Accton</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Neousys</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Senao Networks</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Aewin</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Axiomtek</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Caswell</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Ennoconn</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Flytech</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>IBASE</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>JETWAY</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Lanner</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>MSI</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Nexcom</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Portwell</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SNS Network</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>V-Series</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Toshiba</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Getac</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Bits &amp; Bytes</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Posiflex</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SUPER MICRO COMPUTER, INC.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>J&amp;WIPC Technology Development Ltd</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN SEAVO TECHNOLOGY CO;LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>WEIBU - PRC</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>DELL CHINA INC</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>ShenZhen Topstar Technology co., Ltd</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Gifa</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Shenzhen Datang Computer Co., Ltd.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>CHINA HP CO., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>suzhou nodka Automation technology Co., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Mele Technologies (shenzhen)Co.,Ltd</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Lenovo (Beijing) Limited</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>E-blue tech .Co, limited</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Shenzhen Minwin Technology CO.,LTd</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Guangzhou Special Control Electronic Industrial Co;Ltd.</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Board-based</controllingFieldValue>
-                <valueName>Others</valueName>
-            </valueSettings>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>PCC_Opportunity_Quote_creation_failed__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Opportunity/Quote creation failed?</label>
@@ -10767,14 +10050,9 @@ $User.Username = Core_Accepted_By_Id__r.Username
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterThan</operation>
-            <value>10/10/2025 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
+            <field>PCC_Registration_Type__c</field>
             <operation>equals</operation>
-            <value>Core_Design_Registration__c.PCC_Deal_Registration_Partner,Core_Design_Registration__c.Deal_Registration_Locked,Core_Design_Registration__c.Deal_Registration_Draft</value>
+            <value>Deal Registration</value>
         </filters>
         <label>All Deals</label>
         <sharedTo>
@@ -11984,7 +11262,7 @@ $User.Username = Core_Accepted_By_Id__r.Username
     </listViews>
     <listViews>
         <fullName>DDR_Pending_Distributor_ASMO</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6) AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
         <columns>NAME</columns>
         <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Partner_Account_Id__c</columns>
@@ -12029,11 +11307,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             <field>Core_Pending_Product_Cnt__c</field>
             <operation>greaterThan</operation>
             <value>0</value>
-        </filters>
-        <filters>
-            <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
-            <operation>notEqual</operation>
-            <value>Israel</value>
         </filters>
         <label>DDR Pending Distributor - ASMO</label>
         <sharedTo>
@@ -13531,10 +12804,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -13572,10 +12841,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13660,10 +12925,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13779,10 +13040,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -13838,6 +13095,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14302,17 +13563,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -17578,293 +16828,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -18537,10 +17500,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -18578,10 +17537,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18666,10 +17621,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18785,10 +17736,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -18844,6 +17791,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19308,17 +18259,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -22584,293 +21524,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -23543,10 +22196,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -23584,10 +22233,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -23672,10 +22317,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -23791,10 +22432,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -23850,6 +22487,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -24314,17 +22955,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -27590,293 +26220,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -28823,6 +27166,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -29264,17 +27611,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -32540,293 +30876,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -33773,6 +31822,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -34214,17 +32267,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -37490,293 +35532,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -38449,10 +36204,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>CRESCENT ISLAND</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -38490,10 +36241,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Cyclone</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DUNLOW</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -38578,10 +36325,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>MALIBOU LAKE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAPLE STREAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -38697,10 +36440,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
-                <fullName>WILDCAT LAKE REFRESH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>WIZARD LAKE</fullName>
                 <default>false</default>
             </values>
@@ -38756,6 +36495,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39220,17 +36963,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -42496,293 +40228,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>SMB</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -43729,6 +41174,10 @@ $User.Username = Core_Accepted_By_Id__r.Username
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -44170,17 +41619,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
             <values>
                 <fullName>Level 2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Design_Type__c</picklist>
-            <values>
-                <fullName>Board-based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chip-down</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -47450,293 +44888,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>PCC_ODM_Board_partner__c</picklist>
-            <values>
-                <fullName>ADLINK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aaeon</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Accton</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advantech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Aewin</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asrock</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Avalue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Axiomtek</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bits %26 Bytes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA HP CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Caswell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Celestica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cincoze</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Congatec</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DELL CHINA INC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DFI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>E-blue tech %2ECo%2C limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ECS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EVOC INTELLIGENT TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ennoconn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Firich Enterprises</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Flytech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Getac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gifa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gigabyte</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guangzhou Special Control Electronic Industrial Co%3BLtd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IBASE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IEI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>J%26WIPC Technology Development Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JETWAY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kontron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo %28Beijing%29 Limited</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MSI</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mele Technologies %28shenzhen%29Co%2E%2CLtd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mitac</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Neousys</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Nexcom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Tech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portwell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Posiflex</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Protech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ricoh PFU Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COLORFUL TECHNOLOGY %26 DEVELOPMENT CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN COMSTAR TECHNOLOGY COMPANY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ELSKY TECHNOLOGY CO%2E%2CLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN SEAVO TECHNOLOGY CO%3BLTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN WEITEMAI TECHNOLOGY CO%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SHENZHEN ZEROONE TECHNOLOGY CO%2E%2C LTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SNS Network</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SUPER MICRO COMPUTER%2C INC%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Senao Networks</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ShenZhen Topstar Technology co%2E%2C Ltd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Datang Computer Co%2E%2C Ltd%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shenzhen Minwin Technology CO%2E%2CLTd</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Toshiba</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V-Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vecow</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEIBU - PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wistron</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>suzhou nodka Automation technology Co%2E%2C LTD%2E</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>PCC_Sub_Industry__c</picklist>
             <values>
                 <fullName>Accommodation</fullName>
@@ -48481,14 +45632,6 @@ LEN(PCC_Consumption_Countries__c) &lt; 2)</errorConditionFormula>
         <errorMessage>Ensure to have minimum of 2 characters</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PCC_DDR_Block_Spl_Chars_DRName</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-NOT($Permission.PCC_Bypass_Automation),
-CONTAINS(Core_Design_Registration_Nm__c, &quot;|&quot;))</errorConditionFormula>
-        <errorMessage>Design Registration Name should not contain the &quot;|&quot; character</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>PCC_EditInactivePicklist</fullName>
         <active>true</active>
         <description>This validation rule will allow the approvers to edit the picklist values(enabled in page layout) in Approved and Resubmitted Status and it will throw a validation if approvers try to edit in any other statuses.</description>
@@ -48562,18 +45705,17 @@ NOT(ISPICKVAL(Core_Submission_Type__c, &apos;M2M&apos;)))</errorConditionFormula
     </validationRules>
     <validationRules>
         <fullName>PCC_FPGA_DesignRegDisable</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Disabling creation of FPGA design registrations and blocking the addition of products on approved Designs by partners</description>
-        <errorConditionFormula>AND(
-    PCC_Registration_Type__c = &apos;Design Registration&apos;,
-    NOT( $Permission.PCC_Bypass_Automation ),
-    ISPICKVAL(Core_Product_Group_Nm__c, &apos;FPGA/Power&apos;),
-    OR(
-        Core_Pending_Product_Cnt__c &gt; 0,
-        Core_Approved_Product_Cnt__c &gt; 0,
-        ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Approved&apos;)
-    )
-)</errorConditionFormula>
+        <errorConditionFormula>OR(AND(
+PCC_Registration_Type__c = &apos;Design Registration&apos;,
+OR(Core_Pending_Product_Cnt__c &gt; 0, Core_Approved_Product_Cnt__c &gt; 0),
+ISPICKVAL(Core_Product_Group_Nm__c, &apos;FPGA/Power&apos;)),
+AND(
+PCC_Registration_Type__c = &apos;Design Registration&apos;,
+ISPICKVAL(Core_Product_Group_Nm__c, &apos;FPGA/Power&apos;),
+ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Approved&apos;)
+))</errorConditionFormula>
         <errorMessage>Registrations for FPGA product group has been disabled. Please refer to the message on Portal for more details</errorMessage>
     </validationRules>
     <validationRules>
@@ -48589,16 +45731,6 @@ NOT(ISPICKVAL(Core_Submission_Type__c, &apos;M2M&apos;)))</errorConditionFormula
     
 )</errorConditionFormula>
         <errorMessage>Internal Comments cannot be updated without End Customer</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_ODM_Partner_Required_For_Board_Based</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-NOT($Permission.PCC_Bypass_Automation),
-ISPICKVAL(PCC_Design_Type__c, &quot;Board-based&quot;),
-ISBLANK(TEXT(PCC_ODM_Board_partner__c))
-)</errorConditionFormula>
-        <errorMessage>ODM/Board Partner is required when Design Type is Board-based.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_ProductSegment_EmbeddedIOT</fullName>

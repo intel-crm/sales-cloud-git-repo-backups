@@ -249,7 +249,7 @@
     </fields>
     <fields>
         <fullName>CPT_SalesOKR_QuarterID__c</fullName>
-        <defaultValue>(&quot;2026, QUARTER 1&quot;)</defaultValue>
+        <defaultValue>(&quot;2025, QUARTER 1&quot;)</defaultValue>
         <externalId>false</externalId>
         <label>SalesOKRQuarterID</label>
         <length>20</length>

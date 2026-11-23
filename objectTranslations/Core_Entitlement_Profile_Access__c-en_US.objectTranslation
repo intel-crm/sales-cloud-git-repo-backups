@@ -280,10 +280,6 @@
             <translation><!-- Datacenter User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Deal Incentive User</masterLabel>
-            <translation><!-- Deal Incentive User --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Deal Reg Financial Incentive Access</masterLabel>
             <translation><!-- Deal Reg Financial Incentive Access --></translation>
         </picklistValues>
@@ -532,10 +528,6 @@
             <translation><!-- Partner Portal- Deal Reg --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Platform Diagnostics External Upload</masterLabel>
-            <translation><!-- Platform Diagnostics External Upload --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Platform Verification Program (PVP) access</masterLabel>
             <translation><!-- Platform Verification Program (PVP) access --></translation>
         </picklistValues>
@@ -638,6 +630,10 @@
         <picklistValues>
             <masterLabel>RMF User</masterLabel>
             <translation><!-- RMF User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RPS Retailer</masterLabel>
+            <translation><!-- RPS Retailer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RPS_Agency(Marketing Studio)</masterLabel>

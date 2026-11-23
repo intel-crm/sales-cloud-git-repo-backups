@@ -1,47 +1,34 @@
 <template>
     <div if:true={showGrid} class="slds-box slds-theme_default">
         <lightning-card>
-
-            <!-- Header -->
             <div slot="title" class="title-container">
                 <h2 class="slds-card__header-title">
                     <span>{nreGridHeader}</span>
                 </h2>
-                <a href={helpEngineeringActivityLink} 
-                   target="_blank"
-                   class="slds-text-link slds-text-body_small">
-                    {helpEngineeringActivityText}
+                <a href={helpEngineeringActivityLink} target="_blank" 
+                class="slds-text-link slds-text-body_small">
+                {helpEngineeringActivityText}
                 </a>
             </div>
-
-            <!-- CREATE ACTIVITY BUTTON (Visible only when allowed) -->
+            
             <div if:true={hasCreateAccess} class="slds-m-around_medium slds-grid slds-grid_align-end">
                 <template if:true={showCreateActivity}>
-                    <lightning-button 
-                        label={createActivityLabel} 
-                        onclick={handleCreateRecords} 
-                        variant="brand"
-                        disabled={disableCreateActivity}>
-                    </lightning-button>
+                    <lightning-button label={createActivityLabel} onclick={handleCreateRecords} variant="brand" disabled={disableCreateActivity}></lightning-button>
                 </template>
             </div>
-
             <div class="slds-m-around_medium">
 
-                <!-- Spinner -->
                 <template if:true={isLoading}>
                     <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
                 </template>
-
-                <!-- Grid Table -->
-                <div class="scrollable-table slds-border_left">
+                <div class="scrollable-table slds-border_left" >
                     <template if:true={data}>
                         <c-core_-m-d-f_-custom_-picklist
                             key-field="Id"
-                            data={data}
-                            columns={columnsMod}
+                            data={data} 
+                            columns={columnsMod} 
                             onvalueselect={handleSelection}
-                            draft-values={draftValues}
+                            draft-values={draftValues} 
                             oncellchange={handleCellChange}
                             errors={dataErrors}
                             onrowaction={handleRowAction}
@@ -51,36 +38,29 @@
                         </c-core_-m-d-f_-custom_-picklist>
                     </template>
                 </div>
-
-                <!-- NEW ACTIVITY BUTTON (Visible only when allowed) -->
-                <template if:true={hasCreateAccess}>
-                    <div class="slds-p-top_medium slds-text-align_left">
+                
+                <!-- Combined section with New Activity button and View More link on same line -Alekhya-->
+                <div if:true={hasCreateAccess} class="slds-p-top_medium slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                    <div class="slds-col">
                         <template if:true={showNewActivity}>
-                            <lightning-button 
-                                label={newActitvityLabel}
-                                onclick={handleAddRow}
-                                disabled={disableNewActivityButton}
-                                variant="neutral">
-                            </lightning-button>
-
-                            <div if:true={disableNewActivityButton}
-                                 class="slds-p-top_small"
-                                 style="color:#0176d3;">
-                                 {limittenActvitiesLabel}
-                            </div>
+                            <lightning-button label={newActitvityLabel} onclick={handleAddRow} disabled={disableNewActivityButton} variant="neutral"></lightning-button>
+                            <div if:true={disableNewActivityButton} class="slds-p-top_small" style="color:#0176d3;">{limittenActvitiesLabel}</div>
                         </template>
                     </div>
-                </template>
-
-                <!-- VIEW MORE ALWAYS VISIBLE -->
-                <div class="slds-p-top_medium slds-text-align_center">
-                    <a href="javascript:void(0);"
-                       onclick={handleViewRecords}
-                       class="slds-text-link">
-                       {createViewLabel}
-                    </a>
+                    <div class="slds-col slds-text-align_center">
+                        <template if:false={disableViewActivity}>
+                            <template if:false={hideViewButton}>
+                                <a href="javascript:void(0);" onclick={handleViewRecords} class="slds-text-link">{createViewLabel}</a>
+                            </template>
+                        </template>
+                        <template if:true={disableViewActivity}>
+                            <span class="slds-text-link slds-is-disabled"></span>
+                        </template>
+                    </div>
+                     <div class="slds-col">
+                        <!-- Empty column for balance -->
+                    </div>
                 </div>
-
             </div>
         </lightning-card>
     </div>

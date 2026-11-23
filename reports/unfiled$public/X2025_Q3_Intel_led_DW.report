@@ -102,7 +102,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AAEON,ACCTON,ADLINK,ADVANTECH,ASROCK INC,AVALUE,AXIOMTEK,BCM,CASWELL,Clevo,COMPAL,DFI,ENNOCONN,Foxconn,FLYTECH,GETAC,GIGA-BYTE,IBASE,IEI,INVENTEC,LANNER,MICRO-STAR INTERNATIONAL,MiTAC,NEOUSYS,NEXCOM,Pegatron,PORTWELL,POSIFLEX,Quanta,SENAO,SINTRONES,Vecow,WISTRON,Wiwynn,WNC Corporation</value>
+            <value>AAEON,ADLINK,ADVANTECH,AEWIN,Arbor,AVALUE,AXIOMTEK,BCM COMPUTERS,CASWELL,DFI,ENNOCONN,FLYTECH,GETAC,IBASE,IEI Integration,LANNER,NEXCOM,PORTWELL,POSIFLEX,SENAO,SINTRONES,ACCTON,Delta Networks Inc,MiTAC Digital Technology,ASROCK INC,COMPAL ELECTRONICS,GIGA-BYTE TECHNOLOGY,MICRO-STAR INTERNATIONAL,WISTRON CORPORATION,INVENTEC CORPORATION,BIOSTAR,QNAP,SHUTTLE,Synology,Uniwill,Sparkle,DELTA,ELITEGROUP COMPUTER SYSTEMS</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
@@ -128,7 +128,7 @@
     </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Segment__c</field>
+        <field>Opportunity.Core_Approval_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>

@@ -281,16 +281,11 @@ global class Core_MDF_DeleteBatchShareRecords implements Database.Batchable<sObj
            
             Core_MDF_Partner_Node_User_Mapping__c pnumInstance = new Core_MDF_Partner_Node_User_Mapping__c();
             List<Core_MDF_Partner_Node_User_Mapping__c> pnumInstanceList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
-            //ATHR - Deeply Nested if 16209
-            if(((isDeleteDuringEdit && errorFlag) || (isDeleteDuringEdit && errorMessage != null) || Test.IsRunningTest()) && pnumList != null){
-                //if(pnumList != null) {
+            if((isDeleteDuringEdit && errorFlag) || (isDeleteDuringEdit && errorMessage != null) || Test.IsRunningTest()){
+                if(pnumList != null) {
                     for(Core_MDF_Partner_Node_User_Mapping__c pnum:pnumList) {
-                        if(!pnumFinalList.contains(pnum)) {
-                            pnumFinalList.add(pnum);
-                        }
-                    }
-                //}
-            }
+                        if(!pnumFinalList.contains(pnum)) {pnumFinalList.add(pnum);}}}}
+                       
             if((isDeleteDuringEdit && errorFlag) || Test.IsRunningTest()) {
                 /*In case of Editing Account User record, 
                 if Exception occurred, updating field & sending support mail - 3_2.3*/

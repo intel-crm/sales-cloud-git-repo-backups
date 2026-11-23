@@ -171,7 +171,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2026-01-09</endDate>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

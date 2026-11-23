@@ -23,12 +23,12 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
            mapFunctionalityNameTriggerExecution.get('OPID_MPI_Junction_Status_Handler').Core_Active__c)){
                 PMP_AccountBenefitPartnerUtility.onAccountMpiRelationStatusChange(newMap,oldMap,mapFunctionalityNameTriggerExecution.containsKey('MPI_Benefit_Backfill_Handler') && mapFunctionalityNameTriggerExecution.get('MPI_Benefit_Backfill_Handler').Core_Active__c);
            }
-      
-      // if((mapFunctionalityNameTriggerExecution.containsKey('PMP_OPID_MPI_OfferingSharing_Handler') && 
+	    
+	    // if((mapFunctionalityNameTriggerExecution.containsKey('PMP_OPID_MPI_OfferingSharing_Handler') && 
         //    mapFunctionalityNameTriggerExecution.get('PMP_OPID_MPI_OfferingSharing_Handler').Core_Active__c)){
         //        PMP_Offering_Sharing.onAccountMPIUpsertOfferSharing(newMap,oldMap);
         //    }
-       /*IPA2.0: US-TWC729-7976*/
+	   	/*IPA2.0: US-TWC729-7976*/
          //Start :added by krishna ch for solution OPID redesign changes.
         /*if(mapFunctionalityNameTriggerExecution.containsKey('PSS_OPIDMPI_Rel__c') 
            && mapFunctionalityNameTriggerExecution.get('PSS_OPIDMPI_Rel__c').Core_Active__c){
@@ -41,7 +41,7 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
             //Calling method shareBasedOnCompanyInfoAccount where sharing is happening based on the Junction Object
              if((mapFunctionalityNameTriggerExecution.containsKey('PMP_Companyinfosharing_handler') && 
            mapFunctionalityNameTriggerExecution.get('PMP_Companyinfosharing_handler').Core_Active__c)){
-              shareBasedOnJunctionObjectInfoAccount(/*oldCompanyInfoList,*/ Trigger.New);
+          		shareBasedOnJunctionObjectInfoAccount(/*oldCompanyInfoList,*/ Trigger.New);
            }
             //TWC3123-654 start
 
@@ -67,7 +67,7 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
         // System.debug('Working inside before insert');       
         if((mapFunctionalityNameTriggerExecution.containsKey('OPID_MPI_Validation_Handler') && 
         mapFunctionalityNameTriggerExecution.get('OPID_MPI_Validation_Handler').Core_Active__c)){
-            PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(Trigger.new,(Map<Id,PMP_OPID_MPI_Rel__c>) Trigger.oldMap);
+            PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(Trigger.new);
         }
         
     }
@@ -80,7 +80,7 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
 
         if((mapFunctionalityNameTriggerExecution.containsKey('OPID_MPI_Validation_Handler') && 
         mapFunctionalityNameTriggerExecution.get('OPID_MPI_Validation_Handler').Core_Active__c)){
-            PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(Trigger.new,(Map<Id,PMP_OPID_MPI_Rel__c>) Trigger.oldMap);
+            PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(Trigger.new);
         }
         
     } 
@@ -99,12 +99,12 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
            mapFunctionalityNameTriggerExecution.get('OPID_MPI_Junction_Status_Handler').Core_Active__c)){
                 PMP_AccountBenefitPartnerUtility.onAccountMpiRelationStatusChange(newMap,oldMap,mapFunctionalityNameTriggerExecution.containsKey('MPI_Benefit_Backfill_Handler') && mapFunctionalityNameTriggerExecution.get('MPI_Benefit_Backfill_Handler').Core_Active__c);
            }
-     
-  //  if((mapFunctionalityNameTriggerExecution.containsKey('PMP_OPID_MPI_OfferingSharing_Handler') && 
+	   
+	//  if((mapFunctionalityNameTriggerExecution.containsKey('PMP_OPID_MPI_OfferingSharing_Handler') && 
     //        mapFunctionalityNameTriggerExecution.get('PMP_OPID_MPI_OfferingSharing_Handler').Core_Active__c)){
     //            PMP_Offering_Sharing.onAccountMPIUpsertOfferSharing(newMap,oldMap);
     //        }
-       /*IPA2.0: US-TWC729-7976*/
+	   	/*IPA2.0: US-TWC729-7976*/
         //Start :added by krishna ch for solution OPID redesign changes.
         /*if(mapFunctionalityNameTriggerExecution.containsKey('PSS_OPIDMPI_Rel__c') 
            && mapFunctionalityNameTriggerExecution.get('PSS_OPIDMPI_Rel__c').Core_Active__c){
@@ -147,7 +147,7 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
                 shareBasedOnJunctionObjectInfoAccount(ActivatedJunctionRecords);
             }
 
-    //TWC3123-654 start
+		//TWC3123-654 start
         Map<Id,PMP_OPID_MPI_Rel__c> oldMapLead = (Map<Id,PMP_OPID_MPI_Rel__c>) Trigger.oldMap; 
         if(mapFunctionalityNameTriggerExecution.containsKey('reprocessLeadSharing') && 
            mapFunctionalityNameTriggerExecution.get('reprocessLeadSharing').Core_Active__c ){
@@ -284,29 +284,29 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
                 Map<Id, Set<PMP_Company__c>> groupIdToCompanyInfoRecords = new Map<Id, Set<PMP_Company__c>>();
                 if(OPIDToMPIJunctionObj != null && !OPIDToMPIJunctionObj.isEmpty())
                 {
-                  for(PMP_OPID_MPI_Rel__c singleJunctionObject : OPIDToMPIJunctionObj)
-                  {
-                      Set<Id> temp = partnerAccIdToCompanyInfoRecordsMap.containsKey(singleJunctionObject.PMP_One_Partner_ID__c)?partnerAccIdToCompanyInfoRecordsMap.get(singleJunctionObject.PMP_One_Partner_ID__c):new Set<Id>();// added by sathish to fix null pointer exception
-                      Set<PMP_Company__c> compayInfoRecords = new Set<PMP_Company__c>();
-                      for(Id singleMPIRecords: temp)
-                      {
-                          compayInfoRecords.add(mapComponayProfile.get(singleMPIRecords));
-                      }
+                	for(PMP_OPID_MPI_Rel__c singleJunctionObject : OPIDToMPIJunctionObj)
+                	{
+                    	Set<Id> temp = partnerAccIdToCompanyInfoRecordsMap.containsKey(singleJunctionObject.PMP_One_Partner_ID__c)?partnerAccIdToCompanyInfoRecordsMap.get(singleJunctionObject.PMP_One_Partner_ID__c):new Set<Id>();// added by sathish to fix null pointer exception
+                    	Set<PMP_Company__c> compayInfoRecords = new Set<PMP_Company__c>();
+                    	for(Id singleMPIRecords: temp)
+                    	{
+                        	compayInfoRecords.add(mapComponayProfile.get(singleMPIRecords));
+                    	}
                     
-                       if(compayInfoRecords != null && !compayInfoRecords.isEmpty())
-                      {
+                   		if(compayInfoRecords != null && !compayInfoRecords.isEmpty())
+                    	{
                         String groupDevName = CORE_MP_STR + singleJunctionObject.PMP_One_Partner_ID__c;
                         
                         if(!String.isBlank(groupDevName))
-                          {
+                        	{
                             Id grpIdRec = groupDevNameToGrpId.get(groupDevName);
-                               if(grpIdRec != null)
-                              {
-                                   groupIdToCompanyInfoRecords.put(grpIdRec, compayInfoRecords);
-                                 }       
-                          }
-                      }
-                  }
+                           		if(grpIdRec != null)
+                            	{
+                               		groupIdToCompanyInfoRecords.put(grpIdRec, compayInfoRecords);
+                               	}       
+                        	}
+                    	}
+                	}
                 }
                 
                 
@@ -375,10 +375,9 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
 
         if(partCompanyInfoShareList != null && !partCompanyInfoShareList.isEmpty()){
             Database.SaveResult[] srList = Database.insert(partCompanyInfoShareList, false);
-			PMP_Utility.logDmlErrors((Object[]) srList, 'PMP_OPID_MPI_Rel_TriggerHandler-sharePartnerCompanyInfo');
         
             // Iterate through each returned result
-            /*for (Database.SaveResult sr : srList) {
+            for (Database.SaveResult sr : srList) {
                 if (sr.isSuccess()) {
                     // Operation was successful, so get the ID of the record that was processed
                     // System.debug('Successfully inserted account. Account ID: ' + sr.getId());
@@ -391,7 +390,7 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
                         // System.debug('Account fields that affected this error: ' + err.getFields());
                     }
                 }
-            }*/
+            }
         }
         
     }
@@ -530,12 +529,8 @@ public with sharing class PMP_OPID_MPI_Rel_TriggerHandler extends TriggerHandler
         List<PMP_Company__Share> partCompanyInfoDeleteShareList 
                 = (List<PMP_Company__Share>)Json.deserialize(jsonString,List<PMP_Company__Share>.class);
         //System.debug('Value of jsonString ::'+jsonString);
-        if(partCompanyInfoDeleteShareList != null && !partCompanyInfoDeleteShareList.isEmpty()){
-            Database.DeleteResult[] delResults = Database.delete(partCompanyInfoDeleteShareList, false);
-            PMP_Utility.logDmlErrors((Object[]) delResults, 'PMP_OPID_MPI_Rel_TriggerHandler-unSharePartnerCompanyInfo');
-        }
-            //Database.delete(partCompanyInfoDeleteShareList, false);
-			
+        if(partCompanyInfoDeleteShareList != null && !partCompanyInfoDeleteShareList.isEmpty())
+            Database.delete(partCompanyInfoDeleteShareList, false);
     }
     
 

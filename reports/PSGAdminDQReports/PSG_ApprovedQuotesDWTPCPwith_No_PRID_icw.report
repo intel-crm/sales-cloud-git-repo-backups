@@ -21,6 +21,16 @@
     <columns>
         <field>SBQQ__QuoteLine__c$SBQQ__Quote__c.SBQQ__Status__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__QuoteLine__c$core_cpq_PRID__c.Name</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(ISBLANK(SBQQ__QuoteLine__c.core_cpq_PRID__c.Name),&quot;No&quot;,&quot;Yes&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>PRID Tagged</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$SBQQ__Quote__c.SBQQ__Status__c</column>
@@ -67,6 +77,11 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>PSG ApprovedQuotes(DW,TP,CP)with No PRID</name>
     <params>
         <name>co</name>

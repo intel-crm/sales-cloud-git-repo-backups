@@ -160,8 +160,8 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
                                                                                              'Consumer',
                                                                                              'Desktop',
                                                                                              'Intel® Core™ i5 Processor',//Intel® Core™ i7+ Processor
-                                                                                             'Event',
-                                                                                             'Joint Event',
+                                                                                             'Broadcast',
+                                                                                             'Podcast',
                                                                                              'Draft',
                                                                                              false);     
         pfRequest.Title = 'Test Activity1';
@@ -215,7 +215,7 @@ Accenture – VD              18-Dec-2019        Refactored to follow best pract
         list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
         Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
         //res = Core_MDF_PartnerFundClaim.saveClaim(pfClaimPAF, auditDocList,null, null);  
-        res = Core_MDF_PartnerFundClaim.saveClaim(pfClaimPAF, auditDocList,null, null,false, null, false, null, false);
+        res = Core_MDF_PartnerFundClaim.saveClaim(pfClaimPAF, auditDocList,null, null,false, null);
         //pfcList.add(pfClaimPAF);
         
         //database.update(pfcList);

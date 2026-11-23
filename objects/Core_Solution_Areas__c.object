@@ -209,11 +209,6 @@
                     <label>Compilers</label>
                 </value>
                 <value>
-                    <fullName>CPU Host for GPU</fullName>
-                    <default>false</default>
-                    <label>CPU Host for GPU</label>
-                </value>
-                <value>
                     <fullName>Database: In Memory</fullName>
                     <default>false</default>
                     <label>Database: In Memory</label>
@@ -1326,6 +1321,11 @@
                     <label>EMEA</label>
                 </value>
                 <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
+                <value>
                     <fullName>PRC</fullName>
                     <default>false</default>
                     <label>PRC</label>
@@ -1357,6 +1357,11 @@
                     <fullName>EMEA</fullName>
                     <default>false</default>
                     <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
                 </value>
                 <value>
                     <fullName>PRC</fullName>
@@ -1436,17 +1441,6 @@
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Solution_Partners_Txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Solution Partners</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Solution_Title__c</fullName>

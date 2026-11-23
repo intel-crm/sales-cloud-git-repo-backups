@@ -1,0 +1,80 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-6">
+        </div>
+        <div class="slds-col slds-size_4-of-6">
+    <lightning-card>
+        <lightning-record-edit-form object-api-name="Sales_License__c" layout-type="Compact" columns="1">
+            <lightning-layout>
+                <lightning-layout-item padding="around-medium" >
+                <div class="slds-m-around_medium main">
+                <p>{label.Sales_diffcontct}</br>{label.Sales_Primaryadminupdate}</p>
+                </br>
+              <!-- <div class="slds-form">
+                    <div class="slds-form-element slds-form-element_horizontal">
+                        <label class="slds-form-element__label slds-text-align_center" for="horizontal-input-id-01">From Primay Admin</label>
+                            <div class="slds-form-element__control">
+                                <lightning-input-field field-name='Sales_License_Primary_Admin_Contact__c' id="fromprimaryName" name="From Primary Admin" onchange={handleFromPrimary} variant="label-hidden"  required="true" ></lightning-input-field>
+                            </div>
+                    </div>  
+                    <div class="slds-form-element slds-form-element_horizontal">
+                        <label class="slds-form-element__label" for="horizontal-input-id-01">To Primary Admin</label>
+                            <div class="slds-form-element__control"></div>
+                                <lightning-input-field field-name='Sales_License_Primary_Admin_Contact__c' id="toprimaryName" name="To Primary Admin"  onchange={handleToPrimary} variant="label-hidden" required="true" ></lightning-input-field> 
+                            </div>
+                    </div> --> 
+                    <lightning-layout-item>
+                    <label class="slds-float_left" for="primaryAdm">{label.Sales_primaryadmin}</label>
+                    <lightning-input-field field-name='Sales_License_Primary_Admin_Contact__c' id="fromprimaryName" name={label.Sales_primaryadmin} onchange={handleFromPrimary} variant="label-hidden"  required="true" ></lightning-input-field>
+                   </lightning-layout-item>
+                   </br>
+                   <lightning-layout-item>
+                    <label class="slds-float_left" for="primaryAdm">{label.Sales_Toprimaryadmin}</label>
+                    <lightning-input-field field-name='Sales_License_Primary_Admin_Contact__c' id="toprimaryName" name={label.Sales_Toprimaryadmin}  onchange={handleToPrimary} variant="label-hidden" required="true" ></lightning-input-field> 
+                   </lightning-layout-item>
+                    &nbsp;
+                    &nbsp;
+                    <lightning-layout-item>
+                    <lightning-button variant="neutral" label={label.Sales_transferlic} class="slds-align_absolute-center" title="Transfer" onclick={handleTransfer} ></lightning-button>      
+                    </lightning-layout-item>
+                </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-record-edit-form>
+    </lightning-card>
+
+    <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+    <template if:true={showModal}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">{label.Sales_OrderClose}</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.TransferPrimaryHtml}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>{label.SalesMoveForwardHtml}
+                    </p>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleNo} title="No">{label.Sales_no}</button>
+                    <button class="slds-button slds-button_brand" onclick={handleYes} title="Yes">{label.Sales_yes}</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</div>
+<div class="slds-col slds-size_1-of-6">
+</div>
+</div> 
+</template>

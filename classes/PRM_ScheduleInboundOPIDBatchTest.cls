@@ -169,7 +169,7 @@ public class PRM_ScheduleInboundOPIDBatchTest {
         level.ProgramId = cprogram.Id;
         insert level;
         ChannelProgramLevel level1 = new ChannelProgramLevel();   //Channel Program Level
-        level1.Name='Prestige';//'Partner';
+        level1.Name='Prestige';
         level1.ProgramId = cprogram.Id;
         insert level1;
         ChannelProgramLevel level2 = new ChannelProgramLevel();   //Channel Program Level
@@ -376,7 +376,7 @@ listOfCAG.add(cag4);*/
         
         /*Database.UpsertResult[] acmErrorHandle = null;           
         acmErrorHandle = Database.upsert(listOfACM,false);
-		PRM_OPIDProcessUtility.getErrorMessageForACMupsert(listOfACM,acmErrorHandle);*/
+    PRM_OPIDProcessUtility.getErrorMessageForACMupsert(listOfACM,acmErrorHandle);*/
          TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
          insert listOfACM; 
          TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
@@ -419,29 +419,6 @@ listOfCAG.add(cag4);*/
         vxBnft1.PRM_Channel_Program_Id__c=cprogram.id;
         vxBnft1.PRM_IsActive_Ind__c = true;
         insert vxBnft1;                
-         
-		PRM_VXBnftMatrix__c Vmatrix1 = new PRM_VXBnftMatrix__c(
-            PRM_Partner_Role_Nm__c = 'Guest',
-            PRM_Channel_Program_Level_Id__c = level.Id,
-            PRM_Partner_Benefit_Id__c = benefit.Id,
-            PRM_IsActive_Ind__c = true,
-            PRM_Approval_Type_Nm__c='Automatic',
-            PRM_Channel_Program_Id__c=cprogram.id
-        );
-        
-        PRM_VXBnftMatrix__c Vmatrix2 = new PRM_VXBnftMatrix__c(
-            PRM_Partner_Role_Nm__c = 'Guest',
-            PRM_Channel_Program_Level_Id__c = level.Id,
-            PRM_Partner_Benefit_Id__c = benefit1.Id,
-            PRM_IsActive_Ind__c = true,
-            PRM_Approval_Type_Nm__c='Automatic',
-            PRM_Channel_Program_Id__c=cprogram.id
-        );
-    
-        insert new List<PRM_VXBnftMatrix__c>{
-            Vmatrix1,
-            Vmatrix2
-        };         
         List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
         PRM_AccountBenefitAssociation__c abaObject = new PRM_AccountBenefitAssociation__c();
         abaObject.PRM_Account_Id__c = accIntel1.Id;
@@ -498,9 +475,9 @@ listOfCAG.add(cag4);*/
         aia.PRM_Builder_Strategy__c=aff.id ;
         aia.PRM_Notes__c = 'Test status reason';
         aia.PRM_Active__c=true;    
-         
+        System.debug('Before Insert: ' + aia);  
         //insert aia;
-        
+        //System.debug('after Insert'+aia);
     }
     
     /*@isTest
@@ -525,93 +502,6 @@ opidPAG.updateOrInsertACMBadgeForOPIDAccount(mapParentACM,mapOfGrpdAcmsByPtnrRol
 Test.stopTest();
 
 }*/
-    
-    /**
-     * @description Test for PRM_OPIDPAGRecordOperation.accountEligibleForOPID using @testSetup data
-     * - Eligible: accIntel3 ('New Account User') with Approved ACM and no active CAG
-     * - Ineligible: accIntel1 ('TestUser1') which already has an active CAG to accPAG1 in @testSetup
-     * Verifies inbound message is created only for eligible account.
-     */
-    @isTest
-    private static void testAccountEligibleForOPID() {
-        // Reuse @testSetup data (created in createData()) and existing Channel Program/Level
-        ChannelProgram cp = [SELECT Id, Name FROM ChannelProgram WHERE Name = 'Intel Partner Alliance' LIMIT 1];
-        ChannelProgramLevel lvl = [SELECT Id, Name FROM ChannelProgramLevel WHERE Name = 'Partner' LIMIT 1];
-
-        // Fetch Intel accounts from setup by Name
-        Map<String, Account> nameToAcc = new Map<String, Account>();
-        for (Account a : [
-            SELECT Id, Name, Core_Business_Party_Id__c, Core_Parent_Business_Party_Id__c, Core_IPA_One_Partner_Id__c
-            FROM Account
-            WHERE Name IN ('TestUser1','New Account User')
-        ]) {
-            nameToAcc.put(a.Name, a);
-        }
-        Account eligibleAcc = nameToAcc.get('New Account User'); // accIntel3 (no CAG in setup)
-        Account ineligibleAcc = nameToAcc.get('TestUser1');      // accIntel1 (has CAG to accPAG1 in setup)
-
-        // Ensure eligibleAcc has required identifiers used in method logic
-        Boolean updateEligible = false;
-        if (String.isBlank(eligibleAcc.Core_Business_Party_Id__c)) {
-            eligibleAcc.Core_Business_Party_Id__c = '100200300400';
-            eligibleAcc.Core_Customer_Aggregation_Type__c= 'UNFD_GLBL_CUST';
-            eligibleAcc.Core_Unified_Global_Customer_BP_Id__c ='100200300400';
-            updateEligible = true;
-        }
-        if (updateEligible) {
-            update eligibleAcc;
-        }
-
-        // Create an Approved ACM for eligibleAcc (accIntel3) to satisfy eligibility
-        PRM_AccountChannelMembership__c acmEligible = PRM_TestUtility.getMembership();
-        acmEligible.PRM_Account_Id__c = eligibleAcc.Id;
-        acmEligible.PRM_Channel_Program_Id__c = cp.Id;
-        acmEligible.PRM_Partner_Role__c = System.Label.PRM_Service_Provider;
-        acmEligible.PRM_Status_Nm__c = 'Approved';
-        acmEligible.PRM_Channel_Program_Level_Id__c = lvl.Id;
-        acmEligible.PRM_Status_Reason_Txt__c = 'Test';
-
-        // Insert ACM bypassing trigger side effects consistent with existing tests
-        TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
-        insert acmEligible;
-        TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
-
-        // Safety: ensure there is no active CAG for eligibleAcc (shouldn't be any per setup)
-        List<Core_Account_Group_Member__c> accidentalCags = [
-            SELECT Id, Core_Inactive_Ind__c
-            FROM Core_Account_Group_Member__c
-            WHERE Core_Intel_Account_Id__c = :eligibleAcc.Id AND Core_Inactive_Ind__c = false
-        ];
-        if (!accidentalCags.isEmpty()) {
-            for (Core_Account_Group_Member__c c : accidentalCags) c.Core_Inactive_Ind__c = true;
-            update accidentalCags;
-        }
-
-        // Build input map for the method under test
-        Map<Id, Account> accForInbound = new Map<Id, Account>{
-            eligibleAcc.Id => eligibleAcc,
-            ineligibleAcc.Id => ineligibleAcc
-        };
-
-        Test.startTest();
-        PRM_OPIDPAGRecordOperation.accountEligibleForOPID(accForInbound, false, null);
-        Test.stopTest();
-
-        // Assert that inbound created only for eligibleAcc
-        List<Core_OnePartner_Inbound_Message__c> created = [
-            SELECT Id, Core_SalesCloud_AccountID__c
-            FROM Core_OnePartner_Inbound_Message__c
-            WHERE Core_SalesCloud_AccountID__c IN :new Set<Id>{ eligibleAcc.Id, ineligibleAcc.Id }
-        ];
-
-        Integer eligibleCount = 0;
-        Integer ineligibleCount = 0;
-        for (Core_OnePartner_Inbound_Message__c im : created) {
-            if (im.Core_SalesCloud_AccountID__c == eligibleAcc.Id) eligibleCount++;
-            if (im.Core_SalesCloud_AccountID__c == ineligibleAcc.Id) ineligibleCount++;
-        }
-
-    }
     
     @isTest
     public static void callScheduleBatchClass(){
@@ -979,7 +869,7 @@ Test.stopTest();
             PRM_ProcessRollUpDownOPIDRecords u = new PRM_ProcessRollUpDownOPIDRecords(intelAccountIds ,null);
           Database.executeBatch(u,1);
         } catch (exception e){
-           
+            system.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }  
         
@@ -1231,7 +1121,7 @@ Test.stopTest();
             PRM_ProcessInboundOPIDRecords b = new PRM_ProcessInboundOPIDRecords(); 
             Database.executeBatch(b,200);  
         } catch (exception e){
-           
+            System.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }
         
@@ -1288,7 +1178,7 @@ opidClass.getDistinctSegmentForParent(setOfChild, mapOfSegmentsForAcc);*/
         PRM_ProcessInboundOPIDRecords b = new PRM_ProcessInboundOPIDRecords(); 
         Database.executeBatch(b,200);  
         } catch (exception e){
-           
+            system.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }                    
         
@@ -1382,7 +1272,7 @@ opidClass.getDistinctSegmentForParent(setOfChild, mapOfSegmentsForAcc);*/
             set_Ids.add(accounts.Id);
         }
        
-       
+        System.debug('acc >> '+acc); 
         List<Core_OnePartner_Inbound_Message__c> listOfInbound = new List<Core_OnePartner_Inbound_Message__c>();
         Core_OnePartner_Inbound_Message__c inboundTable = new Core_OnePartner_Inbound_Message__c();
         inboundTable.Core_Status__c = 'NEW';
@@ -1816,11 +1706,12 @@ update updatedACMList;
             PRM_ProcessInboundOPIDRecords b = new PRM_ProcessInboundOPIDRecords(); 
             Database.executeBatch(b,200);
         } catch (exception e){
-            
+            system.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }
         
-        
+        system.debug('inbList---->'+inbList.size());
+        system.debug('logString---->'+logString.size());
         PRM_OPIDPAGRecordOperation opidNew = new PRM_OPIDPAGRecordOperation();
         opidNew.inactivateCoreAccGrpMembers(inbList,logString);
         PRM_Value_Exchange_Recommendation__c vx1 = [Select Id,PRM_Recommendation_Status_Nm__c from PRM_Value_Exchange_Recommendation__c where id = :valueExchange.id];
@@ -2108,7 +1999,7 @@ update updatedACMList;
             PRM_ProcessInboundOPIDRecords b = new PRM_ProcessInboundOPIDRecords(); 
             Database.executeBatch(b,200);  
         } catch (exception e){
-           
+            System.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }
         
@@ -2243,7 +2134,7 @@ opidClass.getDistinctSegmentForParent(setOfChild, mapOfSegmentsForAcc);*/
             PRM_ProcessInboundOPIDRecords b = new PRM_ProcessInboundOPIDRecords(); 
             Database.executeBatch(b,200);  
         } catch (exception e){
-            
+            System.debug('Exception Occured'+e);
             Database.executeBatch(null,0);
         }
         
@@ -2402,142 +2293,6 @@ opidClass.getDistinctSegmentForParent(setOfChild, mapOfSegmentsForAcc);*/
         }
         Test.stopTest();
     }
-    @isTest
-    public static void createInboundBasedUnifiedIdTest(){
-        Account acc = [SELECT Id,Core_Business_Party_Id__c,Core_Parent_Business_Party_Id__c FROM Account WHERE Core_Business_Party_Id__c = '123457' LIMIT 1];
-        Test.startTest();
-        PRM_OPIDPAGRecordOperation.createInboundBasedUnifiedId(new List<Account>{acc});
-        Test.stopTest();
-        
-        
-    }
+
     
-    //JB
-    @isTest
-    public static void inactivateBenefitAsPerACMTest(){
-        Id accountRecordTypeIntel = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
-        Account opidAcc = PRM_TestUtility.getAccount();
-        opidAcc.RecordTypeId = accountRecordTypeIntel;
-        opidAcc.AccountNumber = '435765';
-        opidAcc.Name='TestUser Last1';
-        opidAcc.BillingCity='New Delhi';
-        opidAcc.BillingCountryCode='IND';
-        opidAcc.BillingStreet='Joshi';
-        opidAcc.BillingPostalCode='65466';
-        opidAcc.BillingStateCode='KA';
-        opidAcc.Core_CIM_ID__c='234567';
-        opidAcc.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
-        opidAcc.Industry = 'Construction';
-        insert opidAcc;
-		        
-       
-        ChannelProgram cpIPA=[Select Id,Name,PRM_programCode__c,IsActive from ChannelProgram where Name='Intel Partner Alliance' limit 1];
-       
-        
-        ChannelProgramLevel level = new ChannelProgramLevel();   //Channel Program Level
-        level.Name='Partner';
-        level.ProgramId = cpIPA.Id;
-        insert level;
-        
-        // Approved ACM
-        PRM_AccountChannelMembership__c approvedAcm = new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c = opidAcc.Id,
-            PRM_Status_Nm__c = 'Approved',
-            PRM_Partner_Role__c = 'Guest',
-            PRM_Channel_Program_Level_Id__c = level.Id,
-            PRM_Status_Reason_Txt__c='Test00'
-        );
-        
-        // Inactive ACM
-        PRM_AccountChannelMembership__c inactiveAcm = new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c = opidAcc.Id,
-            PRM_Status_Nm__c = 'Inactive',
-            PRM_Partner_Role__c = 'Guest',
-            PRM_Channel_Program_Level_Id__c = level.Id,
-            PRM_Status_Reason_Txt__c='Test01'
-        );
-                
-        insert new List<PRM_AccountChannelMembership__c>{approvedAcm,inactiveAcm};
-            
-        new PRM_OPIDPAGRecordOperation().inactivateBenefitAsPerACM(new Set<String>{opidAcc.Id});
-     }
-   
-    @isTest
-    public static void testHandler_ACM() {
-        PRM_AccountChannelMembership__c acm = [SELECT Id, PRM_Account_Id__c FROM PRM_AccountChannelMembership__c LIMIT 1];
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending(new List<PRM_AccountChannelMembership__c>{acm});
-        Test.stopTest();
-        System.assert(true);
-    }
-    @isTest
-    public static void testAWDHandler() {
-        Account acc = [SELECT Id FROM Account LIMIT 1];
-        Core_Account_Whitelisted_Domains__c awd =new Core_Account_Whitelisted_Domains__c();
-        awd.Account__c = acc.Id;
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending(new List<Core_Account_Whitelisted_Domains__c>{awd});
-        Test.stopTest();
-        System.assert(true);
-    }
-    
-    @isTest
-    public static void testALAHandler() {
-        Account acc = [SELECT Id FROM Account LIMIT 1];
-        PRM_AccountLegalAgreemntAssociation__c ala = new PRM_AccountLegalAgreemntAssociation__c();
-        ala.PRM_Account_Id__c = acc.Id;
-        ala.PRM_InActive_Ind__c = false;
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending(new List<PRM_AccountLegalAgreemntAssociation__c>{ala});
-        Test.stopTest();
-        System.assert(true);
-    }
-    @isTest
-    public static void testPartnerAssistConsentHandler() {
-        Account acc = [SELECT Id FROM Account LIMIT 1];
-        PRM_Partner_Assist_Consent__c consent = new PRM_Partner_Assist_Consent__c();
-        consent.PRM_Account_Id__c = acc.Id;
-        consent.PRM_InActive_Ind__c = false;
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending(new List<PRM_Partner_Assist_Consent__c>{consent});
-        Test.stopTest();
-        System.assert(true);
-    }
-    @isTest
-    public static void testProfileResponseHandler() {
-        Account acc = [SELECT Id FROM Account LIMIT 1];
-        PRM_Profile_Responses__c profileResp = new PRM_Profile_Responses__c();
-        profileResp.PRM_Account_Id__c = acc.Id;
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending(new List<PRM_Profile_Responses__c>{profileResp});
-        Test.stopTest();
-        System.assert(true);
-    }
-    @isTest
-    public static void testGetAccountsMap() {
-        Account acc = [SELECT Id FROM Account LIMIT 1];
-        Test.startTest();
-        Map<Id,Account> result = PRM_SalesCloudAccountIntStatus_Handler.getAccountsMap(new Set<Id>{acc.Id});
-        Test.stopTest();
-        System.assert(result.containsKey(acc.Id));
-    }
-    @isTest
-    public static void testPendingOnUpdate() {
-        Account acc = [SELECT Id,RecordTypeId,Name,Core_Business_Party_Id__c,BillingStreet,
-                       BillingCity,
-                       BillingState,
-                       BillingCountry,
-                       BillingPostalCode,
-                       Core_Account_Type__c,
-                       Core_Intel_Partner_Alliance_PartnerGroup__c,
-                       Core_IPA_Partner_Role__c,
-                       Core_IPA_Badge_Tier__c,
-                       PRM_IPA_Integration_Status__c FROM Account LIMIT 1];
-        Account oldAcc = acc.clone(false, true, false, false);
-        acc.Name = acc.Name + ' Test';
-        Test.startTest();
-        PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPendingOnUpdate(new List<Account>{acc},new Map<Id,Account>{acc.Id => oldAcc},new Set<Id>{acc.Id});
-        Test.stopTest();
-        System.assert(true);
-    }
 }

@@ -383,10 +383,6 @@
             <translation><!-- Datacenter and Infrastructure --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Engineering Pods</masterLabel>
-            <translation><!-- Engineering Pods --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Enterprise Applications</masterLabel>
             <translation><!-- Enterprise Applications --></translation>
         </picklistValues>
@@ -487,6 +483,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -632,10 +632,6 @@
         <picklistValues>
             <masterLabel>Energy Conservation and Generation​</masterLabel>
             <translation><!-- Energy Conservation and Generation​ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Engineering Pods</masterLabel>
-            <translation><!-- Engineering Pods --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Enterprise Architecture</masterLabel>

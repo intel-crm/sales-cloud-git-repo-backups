@@ -73,7 +73,7 @@
         <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 6 OR 7 OR 8 OR 9 OR 10) AND 4 AND 5 AND 11 AND 12 AND 13</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 6 OR 7 OR 8 OR 9 OR 10) AND 4 AND 5 AND 11 AND 12</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -157,13 +157,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Custom Silicon,Services</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>mimecast</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

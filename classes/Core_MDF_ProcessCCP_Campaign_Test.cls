@@ -150,8 +150,8 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
             
             
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
-          // Highlight: Unused Local Variable - Indira  
-          //  Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
+            
+            Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
         
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader' LIMIT 1];
         PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver' LIMIT 1];
@@ -186,8 +186,8 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
             insert new PermissionSetAssignment(AssigneeId = mdfBudgetLoader.id, PermissionSetId = ps.Id);
             insert new PermissionSetassignment(AssigneeId = user4.id,PermissionSetId = ps1.Id);
             insert new PermissionSetassignment(AssigneeId = user4.id,PermissionSetId = ps.Id);
-            Id ccfIUPGMRecTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_Co_Marketing_Fund').getRecordTypeId();
-           //Id ccfIUPGMRecTypeId = '012Dz000000BcfdIAC';
+            //Id ccfIUPGMRecTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Client CoMarketing Fund').getRecordTypeId();
+           Id ccfIUPGMRecTypeId = '012Dz000000BcfdIAC';
              Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
              iupgm1.Core_MDF_Program_nm__c = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
@@ -357,13 +357,12 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
             indiaBank.Core_MDF_Bank_Status__c = 'Active';
             indiaBank.Core_MDF_Program__c='Core_MDF_Data_Center_CoMarketing_Fund;Core_MDF_Client_CoMarketing_Fund';
             database.insert(indiaBank);
-            // Highlight: Unused Local Variable - Indira
-          //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.Id,indiaBank.Id,true);
+            
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.Id,indiaBank.Id,true);
             
             Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
-            // Highlight: Unused Local Variable - Indira
-           // Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
             
             
             //Campaign CAP Campaign and Activity
@@ -376,7 +375,7 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
             
             PartnerFundRequest testActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(campCAP.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                     string.valueof(dellCCFAPACIndia.id),pfaDellCCFIndia,pmbRecord,
-                                                                                                    'BRAZIL','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast (Pre-2025)','Podcast','Draft'
+                                                                                                    'BRAZIL','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                     ,false);
             testActivity.Core_MDF_Budget_Type_nm__c = 'MDF';
             testActivity.Core_MDF_Start_Date__c = System.today();
@@ -392,23 +391,21 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
     }      
 @isTest
     static void createCampaignRecords(){
-       // Highlight: Unused Local Variable - Indira
-       // User mdfBudgetLoader = [Select id from User where LastName =  'MDF Budget Loader' Limit 1];
+       
+        User mdfBudgetLoader = [Select id from User where LastName =  'MDF Budget Loader' Limit 1];
         try{
             Test.startTest();
             
             //Creating channel program with utility class
-            // Highlight: Unused Local Variable - Indira
-           /* ChannelProgram cp = [SELECT Id, Name, Core_MDF_Technical_Program_Name__c 
+            ChannelProgram cp = [SELECT Id, Name, Core_MDF_Technical_Program_Name__c 
                                  FROM ChannelProgram 
-                                 WHERE Core_MDF_Technical_Program_Name__c ='Data Center CoMarketing Fund' LIMIT 1]; */
+                                 WHERE Core_MDF_Technical_Program_Name__c ='Data Center CoMarketing Fund' LIMIT 1]; 
             
             ChannelProgram rcp = [SELECT Id, Name, Core_MDF_Technical_Program_Name__c FROM ChannelProgram WHERE Core_MDF_Technical_Program_Name__c ='Retail Marketing Funds' LIMIT 1];            
             //Test.startTest();
            Account acc =  [select id from Account where name = 'DCF Test Account'];
            Account acc1 = [select id,name from Account where name = 'Retail Test Account'];
-          // Highlight: Unused Local Variable - Indira
-       //  Account RetailAcc=[select Id, name from Account where Name='Co-marketing Test Node Account'];
+          Account RetailAcc=[select Id, name from Account where Name='Co-marketing Test Node Account'];
             
             Account acc12 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1234', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                              false);
@@ -460,8 +457,7 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
             Campaign updateCamp=[select Id, Name,StartDate from campaign where name='Campaign CAP Campaign'];
             updateCamp.StartDate= System.today();
            // Database.update(updateCamp);
-           // Highlight: Unused Local Variable - Indira
-           // List<PartnerMarketingBudget> pmbList2 = [Select id, Title, Core_MDF_Budget_Partner__r.name from PartnerMarketingBudget];
+            List<PartnerMarketingBudget> pmbList2 = [Select id, Title, Core_MDF_Budget_Partner__r.name from PartnerMarketingBudget];
             
             
             //Creating Campaign with utility class
@@ -876,73 +872,76 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         insert cs;
         
         camp.Core_MDF_Strategic_Marketing_Fund_Ind__c = true;
-        camp.Core_MDF_Proposal_Based_Ind__c = false;
         update camp;
         Test.stopTest();
     }
     }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
     }
     
-      @isTest static void testRelatedrecords()
- {
- Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
- UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
- // Creating User with utility class 
- Test.startTest();
- User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
- usr.profileId = sysAdminProfile.Id;
- usr.UserRoleId = usRole.Id;
- Database.insert(usr);
- //Running as System Admin
- System.runAs(usr)
- {
+//      @isTest static void testRelatedrecords()
+// {
+//     try{
+// Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
+// UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
+// // Creating User with utility class 
+// Test.startTest();
+// User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+// usr.profileId = sysAdminProfile.Id;
+// usr.UserRoleId = usRole.Id;
+// Database.insert(usr);
+// //Running as System Admin
+// System.runAs(usr)
+// {
 
-  ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Service Provider Co-Marketing Fund','Service Provider CoMarketing Fund', true);
+// ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Service Provider Co-Marketing Fund','Service Provider CoMarketing Fund', true);
 
- // Creating IntelAccount with utility class
- Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account Intel', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
- true);
- Account acc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Co-marketing Test Account_DCF', cp.Id,
-  Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
+// // Creating IntelAccount with utility class
+// Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account Intel', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
+// true);
+// Account acc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Co-marketing Test Account_DCF', cp.Id,
+// Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
 
- PartnerMarketingBudget pmb = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
+// // Creating Budget using utility class
+// PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New1',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
+// acc.Id,cp.Id,200000,System.today().addDays(-5),System.today().addDays(30), true);
 
- // Creating Allocation using utility class
- PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,acc,100000.0,true);
-     List<Campaign> campList = new List<Campaign>();
- // Creating campaigns using utility class
- Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', 
- Core_MDF_CCP_TestDataUtility.Campaign_RecordType_SPCF,
- 'Service Provider CoMarketing Fund',System.today().addDays(-15), 
- System.today().addDays(15), 2000, 'Unite',acc.Id,'Cloud', true);
-     campList.add(camp);
+// // Creating Allocation using utility class
+// PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,acc,100000.0,true);
 
- //Test.stopTest();
- // Creating activities using utility class
- PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
- Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_SPCF,
- string.valueof(acc.id),pfa,pmb,'INDIA','Small Business',
- 'Cloud','Intel® Corporate Logo',
-'','','Draft',false);
- pfr.RequestedAmount = 90000;
- pfr.Amount = 90000;
- pfr.Status = 'Approved';
- pfr.AllocationId = pfa.Id;
- pfr.BudgetId = pmb.Id;
- pfr.Core_MDF_Start_Date__c = system.today().addDays(-5);
- pfr.Core_MDF_End_Date__c = system.today().addDays(5);
+//     List<Campaign> campList = new List<Campaign>();
+// // Creating campaigns using utility class
+// Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', 
+// Core_MDF_CCP_TestDataUtility.Campaign_RecordType_SPCF,
+// 'Service Provider CoMarketing Fund',System.today().addDays(-15), 
+// System.today().addDays(15), 2000, 'Unite',acc.Id,'Cloud', true);
+//     campList.add(camp);
 
- Database.insert(pfr);
- camp.Core_MDF_Reimbursement_Rate__c='90%';
- update camp;
+// //Test.stopTest();
+// // Creating activities using utility class
+// PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
+// Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_SPCF,
+// string.valueof(acc.id),pfa,pmb,'INDIA','Small Business',
+// 'Cloud','Intel® Corporate Logo',
+// 'Broadcast','Podcast','Draft',false);
+// pfr.RequestedAmount = 90000;
+// pfr.Amount = 90000;
+// pfr.Status = 'Approved';
+// pfr.AllocationId = pfa.Id;
+// pfr.BudgetId = pmb.Id;
+// pfr.Core_MDF_Start_Date__c = system.today().addDays(-5);
+// pfr.Core_MDF_End_Date__c = system.today().addDays(5);
+
+// Database.insert(pfr);
+// camp.Core_MDF_Reimbursement_Rate__c='90%';
+// update camp;
     
-     if(campList.size() > 0){
-         Core_MDF_CampaignUtility.notifyFinanceusers(campList);
-     }
- Test.stopTest();
- }
-     
- }  
+//     if(campList.size() > 0){
+//         Core_MDF_CampaignUtility.notifyFinanceusers(campList);
+//     }
+// Test.stopTest();
+// }
+// }  catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
+// }
     @isTest static void testShareUnshareGeneric(){
         try{
         User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test1' LIMIT 1];
@@ -959,11 +958,7 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
            Group grp = [Select id from group where name = 'Core CCP Retail ASMO INTERNAL'];
         campIdToGrpsToBeDeleted.put(RmfCamp.Id, new Set<Id>{grp.Id});
         Core_MDF_ProcessCCP_Campaign.shareUnshareCampaignGenericMethod(campMap, campIdToGrpsToBeDeleted);
-        Core_MDF_ProcessCCP_Campaign.blockCampaignDeletion(campaignList); 
-        Core_MDF_ProcessCCP_Campaign.determineCampaignAttributes(campaignList, campMap, true, true);
-        Core_MDF_ProcessCCP_Campaign.shareUnshareCampaign(campaignList, campMap, true, true);
-            
-
+        
         }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
     }
@@ -986,89 +981,4 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         }
     }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
     }
-    
-@isTest static void testCalculatecampaignCAPAmount_withClaims() {
-         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = usRole.Id;
-        Database.insert(usr);
-        system.runAs(usr) {
-             Test.startTest();
-         ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Core_MDF_Technical_Program_Name__c='Client CoMarketing Fund'  LIMIT 1];
-            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 123', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
-                                                                            true);
-        Account acc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing Test Account123', cp.Id,
-                                                                      Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-        acc.Core_MDF_Parent_Fund_Account__c = acc1.Id;
-        Database.insert(acc); 
-        // Prepare campaign
-        /*Campaign c = new Campaign(Name = 'CAP Test Campaign123', StartDate = Date.today().addDays(-1), EndDate = Date.today().addDays(10),Core_MDF_Account__c = acc.id);
-        insert c;*/       
-        Campaign c = [Select id from campaign where name ='Campaign CAP Campaign'];
-        PartnerMarketingBudget pmb = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
-            
-        PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation123',pmb,acc,10.0,true);
-        
-        PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(c.Id),
-                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
-                                                                                           string.valueof(acc.id),pfa,pmb,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
-                                                                                           'Radio','Draft',false);
-        pfr.RequestedAmount = 9000;
-        pfr.Amount = 90;
-        pfr.Status = 'Approved';
-        pfr.AllocationId = pfa.Id;
-        pfr.BudgetId = pmb.Id;
-        pfr.Core_MDF_Start_Date__c = System.today().addDays(1);
-        pfr.Core_MDF_End_Date__c = System.today().addDays(5);
-        pfr.Core_MDF_Reimbursement_Rate_pct__c = '50%';
-        pfr.Core_MDF_Reimbursement_Rate_txt__c = '50%';
-        pfr.Core_MDF_Budget_Amount_Local_amt__c=10;
-        Database.insert(pfr);
-        
-        Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.id,'Core_MDF_Client_CoMarketing_Fund',true,'1234567890');
-
-        // Create a PartnerFundClaim linked to the PFR and referencing the campaign via Core_MDF_Campaign_Id__
-            
-        //PartnerFundClaim pfc = [Select Id from PartnerFundClaim limit 1];       
-
-       
-            // Call the method with the campaign Id set
-        Map<Id, Decimal> result = Core_MDF_ProcessCCP_Campaign.calculatecampaignCAPAmount(new Set<Id>{c.Id});
-         Core_MDF_ProcessCCP_Campaign.removeApprovalLock(new List<Id>{c.Id});
-        Test.stopTest();
-
-        // Verify the map contains the campaign id and amounts summed correctly (250 + 100 = 350)
-        System.assertNotEquals(null, result, 'Result map must not be null');
-        }
-    }
-    
-    @isTest static void testCheckEdit_removedAndNotRemoved() {
-        Account acc = [Select id from Account where Name ='Co-marketing CCF Test Account'];
-        Campaign oldC = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign Old','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().adddays(30), 10000, 'Consumer Chromebook', acc.Id, '2-in-1', false);
-            oldC.Core_MDF_Opal_Budget_Type_Txt__c= 'MDF';
-            Database.insert(oldC);
-        Campaign newC = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign New','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().adddays(30), 10000, 'Consumer Chromebook', acc.Id, '2-in-1', false);
-            newC.Core_MDF_Opal_Budget_Type_Txt__c= 'MDF';
-            Database.insert(newC);
-        /*Campaign oldC = new Campaign(Name = 'Old', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10), Core_MDF_Account__c=acc.id);
-        insert oldC;
-        Campaign newC = new Campaign(Name = 'New', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10),Core_MDF_Account__c=acc.id);
-        insert newC;   */     
-        String fieldApi = 'Description';
-        // Set old and new values through update (we'll construct maps and call method directly)
-        Campaign oldCampaign = new Campaign(Id = oldC.Id, Description = 'A;B;C');
-        Campaign newCampaignNoRemove = new Campaign(Id = newC.Id, Description = 'A;B;C');
-        Campaign newCampaignRemoved = new Campaign(Id = newC.Id, Description = 'A;C');
-
-        // Directly call checkEdit: when nothing removed should be false
-        Boolean removedFalse = Core_MDF_ProcessCCP_Campaign.checkEdit(newCampaignNoRemove, oldCampaign, fieldApi);
-        System.assertEquals(false, removedFalse, 'No value removed - should return false');
-
-        // When B removed, should return true
-        Boolean removedTrue = Core_MDF_ProcessCCP_Campaign.checkEdit(newCampaignRemoved, oldCampaign, fieldApi);
-        System.assertEquals(true, removedTrue, 'Value removed - should return true');
-    }
-    
 }

@@ -298,7 +298,7 @@ Modification Log :
                     if(!mapEmailToExistingContactId.containskey(populateEmailList.Email)){
                         //Raj Kommera added below code for US96050
                         if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
-                            objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
+                            objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
                             //AccountID: 0013F0000052PUp
                             //Profile ID:  00eo0000000f7GOAAY
                         }else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
@@ -310,7 +310,7 @@ Modification Log :
                     }
                     else{
                        if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
-                            objIPSContact = new Contact(Core_IPS_Active__c = true,Core_Account_Changeable__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId, AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
+                            objIPSContact = new Contact(Core_IPS_Active__c = true,Core_Account_Changeable__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId, AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
                         }//RK add
                         else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
@@ -434,7 +434,7 @@ Modification Log :
         
         // Add the users to the groups
         if (setNewUserIds.size() != 0 ) {
-            String query = 'SELECT Id, Name, ProfileId,Email FROM User WHERE Id IN :setNewUserIds';   //Added Email to queried field Tejaswini   
+            String query = 'SELECT Id, Name, ProfileId FROM User WHERE Id IN :setNewUserIds';        
             List<User> lstUsers = Database.query(query);
             
             // Build the list of user ids and their group ids
@@ -444,16 +444,8 @@ Modification Log :
                 if(mapProfileIdGroupId.containsKey(user.ProfileId) ){
                     Id groupId = mapProfileIdGroupId.get(user.ProfileId);
                 
-                    if (groupId != null) {// User has a ProfileId that has a matching groupId
-                        /*added by Tejaswini for Employee as Customer profil migration to Partner */
-                       if(user.Email!=null && user.Email.Contains('@intel.com') && string.valueof(user.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){
-                           mapUserIdGroupId.put(user.Id, Label.Core_IPS_Employee_As_Customer_PG_Id);
-                        } else {
-                           mapUserIdGroupId.put(user.Id, groupId);
-                        }
-                    	/*End of code by Tejaswini */ 
-
-                    }
+                    if (groupId != null) // User has a ProfileId that has a matching groupId
+                        mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }

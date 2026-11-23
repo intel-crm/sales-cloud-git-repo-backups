@@ -1,0 +1,35 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="{!$Label.Core_MDF_IPA_Proposal_Status_Updated}"  
+                         recipientType="User"
+                         language="{!recipient.LanguageLocaleKey}"  
+                         relatedToType="Campaign">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p> <span style="color: #ff0000;"><strong>{!$Label.Core_MDF_IPA_EmailTemp_ActionReq}</strong></span></p>
+     <p>{!$Label.Core_MDF_EmailTemp_DearPartner}</p>
+     <p>{!$Label.Core_MDF_IPA_EmailTemp_Body4}</p>
+        <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field1} </span>{!relatedTo.Core_MDF_Account__r.Name}</p>
+        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field2} {!relatedTo.Name}</p>
+        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field3}&nbsp;{!relatedTo.Status}</p>
+        <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Country_Location}&nbsp;{!relatedTo.Core_MDF_Market__c}</span></p>
+        <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_Approver_Comment}&nbsp;{!relatedTo.Core_MDF_Comments_Appvr_Only_txt__c}</span></p>
+     <p>{!relatedTo.CreatedBy.Name}&nbsp;{!$Label.Core_MDF_Email_Template_Appr_Req}:<span>&nbsp;</span></p>
+     <p><apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_IPA_EmailTemp_Link1} 
+      </apex:outputLink></p>
+      <p>{!$Label.Core_MDF_IPA_EmailTemp_Body6}</p>
+      <p></p>
+      <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+      <!--<p><span>{!relatedTo.Core_MDF_Program__c}&nbsp;{!$Label.Core_MDF_EmailTemp_Claim_Body5}</span></p>-->
+        <p>{!$Label.Core_MDF_Email_Signature}</p> 
+      <div style="font-family: Calibri;font-size: 12px;">
+      <p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+      <p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+      <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Address}&nbsp;<br /><br/> <a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+      <p></p>
+      </div>
+</body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

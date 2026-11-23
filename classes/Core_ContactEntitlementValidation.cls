@@ -1,10 +1,10 @@
 public without sharing class Core_ContactEntitlementValidation {
-    
+
     public static final String LOG_ENTRY_ORIGIN   = 'Core_ContactEntitlementValidation';
     public static final String LOG_ENTRY_SCOPE_ACCOUNT_UPDATE   = 'Account_Update';
     public static final String LOG_ENTRY_PROJECT  = 'IPA Registrations';
     public static final String LOG_ENTRY_SEVERITY = 'error';
-    
+
     //Start---added by popcornapps
     public static List<Core_Contact_Entitlement_Validation__c> lstconentval = Core_Contact_Entitlement_Validation__c.getall().values();
     public static Map<Id,Core_Contact_Entitlement_Validation__c> mapentIds = new Map<Id,Core_Contact_Entitlement_Validation__c>();
@@ -44,149 +44,150 @@ public without sharing class Core_ContactEntitlementValidation {
             }
             mapConentValErrorMsg.put(validationErrorMsg.Name,validationErrorMsg.Core_Error_Message__c+errormessage2);
         }
+        
+        
     }
     //End----added by popcornapps
-    
     public static List<Id> lContactIdsforEnt =new List<Id>();
     
     
     public static void validateContactEntitlementModified(List<Core_Contact_Entitlement__c> oldList, List<Core_Contact_Entitlement__c> newFullList,
                                                           Map<Id,Core_Contact_Entitlement__c> oldMap, Map<Id,Core_Contact_Entitlement__c> newMap)
     {
-        try{
-            List<Id> lContactIds = new List<Id>();
-            count =0;
-            ipscount=0;
-            mapContactIds = new Map<Id,Integer>();
-            mapIPSContactIds = new Map<Id,Integer>();
-            Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
-            Map<Core_Contact_Entitlement__c, Contact> mContEntitlementsAll = new Map<Core_Contact_Entitlement__c, Contact>();
-            Map<Core_Contact_Entitlement__c, String> mEntitlements = new Map<Core_Contact_Entitlement__c, String>();
-            Map<Id, Boolean> mEntActive = new Map<Id, Boolean>();
-            
-            // Filtering Contact Entitlement with only selected true for validation
-            List<Core_Contact_Entitlement__c> newList = new List<Core_Contact_Entitlement__c>();
-            for(Core_Contact_Entitlement__c ce: newFullList){
-                if(ce.Core_Selected__c ){
-                    newList.add(ce);
-                    //Added by Ealisha
-                    lContactIds.add(ce.Core_Contact_Id__c);
-                }
+        
+        List<Id> lContactIds = new List<Id>();
+        count =0;
+        ipscount=0;
+        mapContactIds = new Map<Id,Integer>();
+        mapIPSContactIds = new Map<Id,Integer>();
+        Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
+        Map<Core_Contact_Entitlement__c, Contact> mContEntitlementsAll = new Map<Core_Contact_Entitlement__c, Contact>();
+        Map<Core_Contact_Entitlement__c, String> mEntitlements = new Map<Core_Contact_Entitlement__c, String>();
+        Map<Id, Boolean> mEntActive = new Map<Id, Boolean>();
+        
+        // Filtering Contact Entitlement with only selected true for validation
+        List<Core_Contact_Entitlement__c> newList = new List<Core_Contact_Entitlement__c>();
+        for(Core_Contact_Entitlement__c ce: newFullList){
+            if(ce.Core_Selected__c ){
+                newList.add(ce);
+                //Added by Ealisha
+                lContactIds.add(ce.Core_Contact_Id__c);
             }
-            
-            //commented by Ealisha and added above to avoid for loop.
-            /*for(Core_Contact_Entitlement__c c : newList) {
+        }
+        
+        //commented by Ealisha and added above to avoid for loop.
+        /*for(Core_Contact_Entitlement__c c : newList) {
 lContactIds.add(c.Core_Contact_Id__c);
 }*/
-            
-            //Added by Geetha as per user story US113583
-            //commented by Ealisha. Added the logic below in 80-97
-            //validateEntitlementType(lContactIds);
-            
-            // Added by prem
-            //Commented by Ealisha and added below inside for
-            /*List<Core_Contact_Entitlement__c> coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
+        
+        //Added by Geetha as per user story US113583
+        //commented by Ealisha. Added the logic below in 80-97
+        //validateEntitlementType(lContactIds);
+        
+        // Added by prem
+        //Commented by Ealisha and added below inside for
+        /*List<Core_Contact_Entitlement__c> coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
 Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c
 from Core_Contact_Entitlement__c 
 where Core_Contact_Id__c =:lContactIds
 AND Core_Selected__c = true];*/
-            //*Added by Ealisha  -start
-            //Utkarsh - US622576 - commented below line to make "coreAllEntitlementList" as global variable and declare it at line no 18.
-            //List<Core_Contact_Entitlement__c> coreAllEntitlementList = new List<Core_Contact_Entitlement__c>();
-            
-            if(lContactIds != null && !lContactIds.isEmpty()) {   // [DRACO Change] - Added null check for reducing stray SOQLs - 29-04-2022
-                for (Core_Contact_Entitlement__c entitlement : [Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
-                                                                Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c,Core_Source__c
-                                                                from Core_Contact_Entitlement__c 
-                                                                where Core_Contact_Id__c =:lContactIds
-                                                                AND Core_Selected__c = true]){
-                                                                    coreAllEntitlementList.add(entitlement);
-                                                                    if(mapContactEntitlement.get(entitlement.Core_Contact_Id__c) != null){
-                                                                        Set<Id> tempSet=mapContactEntitlement.get(entitlement.Core_Contact_Id__c);
-                                                                        tempSet.add(entitlement.Core_Entitlement_Id__c);
-                                                                        mapContactEntitlement.put(entitlement.Core_Contact_Id__c,tempSet);
-                                                                    }else{
-                                                                        mapContactEntitlement.put(entitlement.Core_Contact_Id__c,new Set<id>{entitlement.Core_Entitlement_Id__c});
-                                                                    }
-                                                                    
+        //*Added by Ealisha  -start
+        //Utkarsh - US622576 - commented below line to make "coreAllEntitlementList" as global variable and declare it at line no 18.
+        //List<Core_Contact_Entitlement__c> coreAllEntitlementList = new List<Core_Contact_Entitlement__c>();
+        
+        if(lContactIds != null && !lContactIds.isEmpty()) {   // [DRACO Change] - Added null check for reducing stray SOQLs - 29-04-2022
+            for (Core_Contact_Entitlement__c entitlement : [Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
+                                                            Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c,Core_Source__c
+                                                            from Core_Contact_Entitlement__c 
+                                                            where Core_Contact_Id__c =:lContactIds
+                                                            AND Core_Selected__c = true]){
+                                                                coreAllEntitlementList.add(entitlement);
+                                                                if(mapContactEntitlement.get(entitlement.Core_Contact_Id__c) != null){
+                                                                    Set<Id> tempSet=mapContactEntitlement.get(entitlement.Core_Contact_Id__c);
+                                                                    tempSet.add(entitlement.Core_Entitlement_Id__c);
+                                                                    mapContactEntitlement.put(entitlement.Core_Contact_Id__c,tempSet);
+                                                                }else{
+                                                                    mapContactEntitlement.put(entitlement.Core_Contact_Id__c,new Set<id>{entitlement.Core_Entitlement_Id__c});
                                                                 }
-            } // [DRACO Change] - Added null check for reducing stray SOQLs - 29-04-2022
-            //*Added by Ealisha  -end
-            if(lContactIds != null && !lContactIds.isEmpty()) {
-                List<Contact> contactRecords = [Select Id, Name, AccountId, Account.Name, Account.Core_CNDA_Number__c,Account.Owner.UserRole.Name,Account.PRM_Count_IPA_Terms_And_Conditions__c,
-                                                Account.Core_IPS_Active__c, Core_IPS_Intel_Support_Owner__c, Account.Core_IsODM__c,
-                                                Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
-                                                Core_Local_First_Name__c, Core_Local_Last_Name__c, Account.Core_English_Only_Name__c,
-                                                Account.Core_Alternate_Language_Name__c, Core_Contact_B2B_Indicator__c,Account.Core_IPS_PSG_WOM_Check__c ,
-                                                Account.Core_B2B_Entitlement__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c,
-                                                Core_Personal_Email_Indicator__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Display_Nm__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
-                                                FROM Contact 
-                                                WHERE Id IN :lContactIds];
+                                                                
+                                                            }
+        } // [DRACO Change] - Added null check for reducing stray SOQLs - 29-04-2022
+        //*Added by Ealisha  -end
+        if(lContactIds != null && !lContactIds.isEmpty()) {
+            List<Contact> contactRecords = [Select Id, Name, AccountId, Account.Name, Account.Core_CNDA_Number__c,Account.Owner.UserRole.Name,Account.PRM_Count_IPA_Terms_And_Conditions__c,
+                                            Account.Core_IPS_Active__c, Core_IPS_Intel_Support_Owner__c, Account.Core_IsODM__c,
+                                            Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
+                                            Core_Local_First_Name__c, Core_Local_Last_Name__c, Account.Core_English_Only_Name__c,
+                                            Account.Core_Alternate_Language_Name__c, Core_Contact_B2B_Indicator__c,Account.Core_IPS_PSG_WOM_Check__c ,
+                                            Account.Core_B2B_Entitlement__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c,
+                                            Core_Personal_Email_Indicator__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Display_Nm__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
+                                            FROM Contact 
+                                            WHERE Id IN :lContactIds];
+            
+            //Added by Ealisha. Added the above select query inside for and also put a WHERE clause to only select the active entitlements.
+            List<Core_Entitlement__c> entitlementRecords = new List<Core_Entitlement__c>();
+            for(Core_Entitlement__c ce : [SELECT Id, Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c, Core_IsActive__c FROM Core_Entitlement__c WHERE Core_IsActive__c=true]){
+                entitlementRecords.add(ce);
+                mEntActive.put(ce.Id, ce.Core_IsActive__c);
+            }
+            
+            Map<Id, Contact> mUpdateContEngName = new Map<Id, Contact>();
+            Map<Id, Account> mUpdateAcctEngName = new Map<Id, Account>();
+            
+            for(Core_Contact_Entitlement__c contEntObj : newList){
+                //Skip english only validation if entitlement is InActive OR for existing entitlements
+                //Commented below code by Ealisha since we are only getting the active entitlements from 113
+                //boolean skipEntValidation = skipEntValidation(contEntObj, mEntActive);
                 
-                //Added by Ealisha. Added the above select query inside for and also put a WHERE clause to only select the active entitlements.
-                List<Core_Entitlement__c> entitlementRecords = new List<Core_Entitlement__c>();
-                for(Core_Entitlement__c ce : [SELECT Id, Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c, Core_IsActive__c FROM Core_Entitlement__c WHERE Core_IsActive__c=true]){
-                    entitlementRecords.add(ce);
-                    mEntActive.put(ce.Id, ce.Core_IsActive__c);
-                }
                 
-                Map<Id, Contact> mUpdateContEngName = new Map<Id, Contact>();
-                Map<Id, Account> mUpdateAcctEngName = new Map<Id, Account>();
                 
-                for(Core_Contact_Entitlement__c contEntObj : newList){
-                    //Skip english only validation if entitlement is InActive OR for existing entitlements
-                    //Commented below code by Ealisha since we are only getting the active entitlements from 113
-                    //boolean skipEntValidation = skipEntValidation(contEntObj, mEntActive);
-                    
-                    
-                    
-                    for(Contact contactObj : contactRecords) {
-                        //Commented by Naresh as part of  defect fix.
-                        boolean validateEnglishOnlyFields = validateEnglishOnlyFields(contactObj, mUpdateContEngName, mUpdateAcctEngName);
-                        // Call the local language methods to validate English Only Fields                    
-                        //Commented by Naresh as part of  defect fix.            
-                        if(!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && mEntActive.containsKey(contEntObj.Core_Entitlement_Id__c)){
-                            
-                            //Commented by Naresh
-                            
-                            if(String.isBlank(contactObj.Account.Core_English_Only_Name__c)&&(mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Account_English_Only_Name__c)){
-                                contEntObj.addError(mapConentValErrorMsg.get('System English on Account'));
-                            }
-                            if((String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) && (mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Contact_English_Only_Name__c)) {
-                                contEntObj.addError(mapConentValErrorMsg.get('System English on Contact'));
-                            }
-                        }
-                        // Create a map of contact entitlements to contacts in preparation for validations
-                        if(contEntObj.Core_Contact_Id__c == contactObj.Id) {
-                            mContEntitlements.put(contEntObj, contactObj);
-                        }
-                    }
-                    for(Core_Entitlement__c entObj : entitlementRecords) {
-                        // Create map of contact entitlements to erpm engagement dedup numbers for B2B Indicator updates later
-                        if(contEntObj.Core_Entitlement_Id__c == entObj.Id) {
-                            mEntitlements.put(contEntObj, entObj.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c);
-                        }
-                    }
-                }
-                
-                if(mContEntitlements != null && !mContEntitlements.isEmpty()) {
-                    List<Contact> contactsToUpdate = new List<Contact>();
-                    List<Account> accountsToUpdate = new List<Account>();
-                    Set<Id> contactIds = new Set<Id>();
-                    Set<Id> accountIds = new Set<Id>();
-                    Map<Id, Contact> map_all_contacts = new Map<Id, Contact>();
-                    Map<Id, Id> map_all_accounts_Ids = new Map<Id, Id>();
-                    Map<Id, Boolean> b2b_Flaged_Contacts = new Map<Id, Boolean>();
-                    Map<Id, Boolean> b2b_Flaged_Account = new Map<Id, Boolean>();
-                    
-                    //Added by Ealisha. Trying to have a map for update
-                    Map<Id,Contact> contactsToUpdateMap = new Map<Id,Contact>();
-                    Map<Id,Account> accountsToUpdateMap = new Map<Id,Account>();
-                    
-                    for(Core_Contact_Entitlement__c contEntObj : mContEntitlements.keySet()) {
-                        Contact contactRecord = mContEntitlements.get(contEntObj);
+                for(Contact contactObj : contactRecords) {
+                    //Commented by Naresh as part of  defect fix.
+                    boolean validateEnglishOnlyFields = validateEnglishOnlyFields(contactObj, mUpdateContEngName, mUpdateAcctEngName);
+                    // Call the local language methods to validate English Only Fields                    
+                    //Commented by Naresh as part of  defect fix.            
+                    if(!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && mEntActive.containsKey(contEntObj.Core_Entitlement_Id__c)){
                         
-                        /*
+                        //Commented by Naresh
+                        
+                        if(String.isBlank(contactObj.Account.Core_English_Only_Name__c)&&(mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Account_English_Only_Name__c)){
+                            contEntObj.addError(mapConentValErrorMsg.get('System English on Account'));
+                        }
+                        if((String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) && (mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Contact_English_Only_Name__c)) {
+                            contEntObj.addError(mapConentValErrorMsg.get('System English on Contact'));
+                        }
+                    }
+                    // Create a map of contact entitlements to contacts in preparation for validations
+                    if(contEntObj.Core_Contact_Id__c == contactObj.Id) {
+                        mContEntitlements.put(contEntObj, contactObj);
+                    }
+                }
+                for(Core_Entitlement__c entObj : entitlementRecords) {
+                    // Create map of contact entitlements to erpm engagement dedup numbers for B2B Indicator updates later
+                    if(contEntObj.Core_Entitlement_Id__c == entObj.Id) {
+                        mEntitlements.put(contEntObj, entObj.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c);
+                    }
+                }
+            }
+            
+            if(mContEntitlements != null && !mContEntitlements.isEmpty()) {
+                List<Contact> contactsToUpdate = new List<Contact>();
+                List<Account> accountsToUpdate = new List<Account>();
+                Set<Id> contactIds = new Set<Id>();
+                Set<Id> accountIds = new Set<Id>();
+                Map<Id, Contact> map_all_contacts = new Map<Id, Contact>();
+                Map<Id, Id> map_all_accounts_Ids = new Map<Id, Id>();
+                Map<Id, Boolean> b2b_Flaged_Contacts = new Map<Id, Boolean>();
+                Map<Id, Boolean> b2b_Flaged_Account = new Map<Id, Boolean>();
+                
+                //Added by Ealisha. Trying to have a map for update
+                Map<Id,Contact> contactsToUpdateMap = new Map<Id,Contact>();
+                Map<Id,Account> accountsToUpdateMap = new Map<Id,Account>();
+                
+                for(Core_Contact_Entitlement__c contEntObj : mContEntitlements.keySet()) {
+                    Contact contactRecord = mContEntitlements.get(contEntObj);
+                    
+                    /*
 if(!contactRecord.Core_Contact_B2B_Indicator__c && mEntitlements.get(contEntObj) == 'B2B' && !contactIds.contains(contactRecord.Id)) {
 //Modified by Ealisha. Added Core_English_Only_First_Name__c and Core_English_Only_Last_Name__c as blank value for Contact.
 Contact conRec = new Contact(
@@ -212,465 +213,447 @@ accountIds.add(conRec.AccountId);
 accountsToUpdateMap.put(conRec.AccountId,accRec);
 } 
 } */
-                        
-                        //Added by Ealisha.-start
-                        //check if contact id is in mUpdateContEngName map then add to the above map.
-                        if((mUpdateContEngName != null && mUpdateContEngName.containsKey(contactRecord.Id)) &&  (contactsToUpdateMap != null && contactsToUpdateMap.containsKey(contactRecord.Id))){
-                            Contact c = contactsToUpdateMap.get(contactRecord.Id);
-                            c.Core_English_Only_First_Name__c = mUpdateContEngName.get(contactRecord.Id).Core_English_Only_First_Name__c;
-                            c.Core_English_Only_Last_Name__c = mUpdateContEngName.get(contactRecord.Id).Core_English_Only_Last_Name__c;
-                        }
-                        else if(mUpdateContEngName != null && mUpdateContEngName.containsKey(contactRecord.Id)){
-                            contactsToUpdateMap.put(contactRecord.Id,mUpdateContEngName.get(contactRecord.Id));
-                        }
-                        
-                        //check if account id is in mUpdateAcctEngName map then add to the above map.
-                        if((mUpdateAcctEngName != null && mUpdateAcctEngName.containsKey(contactRecord.AccountId)) && (accountsToUpdateMap != null && accountsToUpdateMap.containsKey(contactRecord.AccountId))){
-                            Account a = accountsToUpdateMap.get(contactRecord.AccountId);
-                            a.Core_English_Only_Name__c = mUpdateAcctEngName.get(contactRecord.AccountId).Core_English_Only_Name__c;
-                        }
-                        else if(mUpdateAcctEngName != null && mUpdateAcctEngName.containsKey(contactRecord.AccountId)){
-                            accountsToUpdateMap.put(contactRecord.AccountId,mUpdateAcctEngName.get(contactRecord.AccountId));
-                        }
-                        
-                        
-                        //Added by Ealisha.-end
-                        
-                        //SKIP ALL validations for Engagments (Core_From_Source__c = true)
-                        
-                        if(contEntObj.Core_From_Source__c){
-                            
-                            continue;
-                        }
-                        
-                        
-                        
-                        // Check for ODM Indicator field
-                        if(!validateIsODM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            
-                            
-                            contEntObj.addError(mapConentValErrorMsg.get('System Non ODM'));
-                        }
-                        // Check for CNDA field
-                        if(!validateCNDANum(contEntObj.Core_Entitlement_Id__c, contactRecord)){
-                            contEntObj.addError(mapConentValErrorMsg.get('System CNDA'));
-                        }
-                        // Check for Engagement in Contact related list
-                        //Utkarsh - Made changes to prevent validation to fire for IPA Registration.
-                        Boolean validatecheck = true;
-                        if(contEntObj.Core_Source__c != null && contEntObj.Core_Source__c != System.Label.PRM_Entitlement_Source){
-                            validatecheck =validateEngagement(contEntObj.Core_Entitlement_Id__c, contactRecord,coreAllEntitlementList);
-                        }
-                        
-                        if(!validatecheck) {
-                            
-                            contEntObj.addError(mapConentValErrorMsg.get(mapENtReqMessages.get(contEntObj.Core_Entitlement_Id__c)));
-                            //contEntObj.addError('NO PSG Basic Engagement');
-                        }
-                        // Check for Intel Support Owner field
-                        if(!validateIntelSupportOwner(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System ISO'));
-                        }
-                        // Check for Account Owner Role field
-                        if(!validateAccountOwnerRole(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Account Owner Role'));
-                        }
-                        // Check for CIM Id on Account
-                        if(!validateCimId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System CIM ID'));
-                        }
-                        //Check for Unified ID on Account
-                        if(!validateUnifiedId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unified ID'));
-                        }
-                        // US90386 Added By Prem
-                        // Check for PSG WOM on Account
-                        if(!validatePSGWOM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System PSG WOM'));
-                        }
-                        if(!validatePersonalEmailIndicator(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System PersonalEmailIndicator'));
-                        }
-                        if(!validateIsODMTrue(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System ODM'));
-                        }
-                        if(!validateUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
-                        }
-                        if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_Employee || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Lead_Development_Representative || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Marketing_specialist ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin_Delegate)
-                        {
-                            if(!validateUniqueMPEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-                                
-                                contEntObj.addError(mapConentValErrorMsg.get('System Unique MP Entitlement'));
-                                
-                            }
-                        }
-                        //Sonali Start (US731136 - Pipeline: CTO Requirement)
-                        /*if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Distributor || contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Reseller){
-if(!validateDCBCUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-
-contEntObj.addError(mapConentValErrorMsg.get('UI Single Entitlement Assignment'));
-}
-}*/
-                        //Sonali END
-                        
-                        //Added by Geetha as per user story US113583
-                        if(!validatePartnerEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
-                        }
-                        //Ended by Geetha as per user story US113583
-                        
-                        //if(!validateEnglishOnly(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                        //contEntObj.addError('English Only on Contact can\'t be blank (Populate from Standard and Alternate if avalible and meet req)');
-                        //}
-                        
+                    
+                    //Added by Ealisha.-start
+                    //check if contact id is in mUpdateContEngName map then add to the above map.
+                    if((mUpdateContEngName != null && mUpdateContEngName.containsKey(contactRecord.Id)) &&  (contactsToUpdateMap != null && contactsToUpdateMap.containsKey(contactRecord.Id))){
+                        Contact c = contactsToUpdateMap.get(contactRecord.Id);
+                        c.Core_English_Only_First_Name__c = mUpdateContEngName.get(contactRecord.Id).Core_English_Only_First_Name__c;
+                        c.Core_English_Only_Last_Name__c = mUpdateContEngName.get(contactRecord.Id).Core_English_Only_Last_Name__c;
+                    }
+                    else if(mUpdateContEngName != null && mUpdateContEngName.containsKey(contactRecord.Id)){
+                        contactsToUpdateMap.put(contactRecord.Id,mUpdateContEngName.get(contactRecord.Id));
                     }
                     
-                    // The following block of code sets the B2B indicator fields on the Contact and Account to TRUE if the Entitlement to be added is listed in Core_Entitlements_B2B_Indicator_Update custom label
-                    /*List<Core_B2B_Flag_Entitlements__c> B2BflaggedEnts = Core_B2B_Flag_Entitlements__c.getall().values();
-for(Contact contactObj : contactRecords) {
-map_all_contacts.put(contactObj.Id, contactObj);
-map_all_accounts_Ids.put(contactObj.AccountId, contactObj.AccountId);
-for(Core_Contact_Entitlement__c contEntObj : contactObj.contact_entitlements__r){
-mContEntitlementsAll.put(contEntObj, contactObj);       
-}
-}
-for(Core_Contact_Entitlement__c contEntObj : mContEntitlementsAll.keySet()) {
-Contact contactRecord = mContEntitlementsAll.get(contEntObj);                  
-for(Core_B2B_Flag_Entitlements__c B2BEnt : B2BflaggedEnts){
-if(B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c && contEntObj.Core_Status__c =='Complete'){
-b2b_Flaged_Contacts.put(contactRecord.Id, true);
-}
-if(!contactRecord.Account.Core_B2B_Entitlement__c && B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c){
-b2b_Flaged_Account.put(contactRecord.AccountId, true);
-}
-}
-}
-
-for(Contact con : map_all_contacts.values()){
-if(b2b_Flaged_Contacts.get(con.Id) == true ){
-Contact conRec = new Contact(
-id=con.Id, 
-AccountId=con.AccountId, 
-Core_Contact_B2B_Indicator__c = true,
-Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
-Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
-contactsToUpdateMap.put(con.Id,conRec);
-}
-else if(b2b_Flaged_Contacts.get(con.Id) == null && con.Core_Contact_B2B_Indicator__c ){
-Contact conRec = new Contact(
-id=con.Id, 
-AccountId=con.AccountId, 
-Core_Contact_B2B_Indicator__c = false,
-Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
-Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
-contactsToUpdateMap.put(con.Id,conRec);
-}
-}
-for(Id accId : map_all_accounts_Ids.values()){
-if(b2b_Flaged_Account.get(accId) != null){
-Account accRec = new Account(
-id=accId, 
-Core_B2B_Entitlement__c = true);
-accountsToUpdateMap.put(accId, accRec);
-}
-}*/
+                    //check if account id is in mUpdateAcctEngName map then add to the above map.
+                    if((mUpdateAcctEngName != null && mUpdateAcctEngName.containsKey(contactRecord.AccountId)) && (accountsToUpdateMap != null && accountsToUpdateMap.containsKey(contactRecord.AccountId))){
+                        Account a = accountsToUpdateMap.get(contactRecord.AccountId);
+                        a.Core_English_Only_Name__c = mUpdateAcctEngName.get(contactRecord.AccountId).Core_English_Only_Name__c;
+                    }
+                    else if(mUpdateAcctEngName != null && mUpdateAcctEngName.containsKey(contactRecord.AccountId)){
+                        accountsToUpdateMap.put(contactRecord.AccountId,mUpdateAcctEngName.get(contactRecord.AccountId));
+                    }
                     
                     
-                    //Added by Ealisha-start
-                    List<Contact> contactsToUpdateNew = new List<Contact>();
+                    //Added by Ealisha.-end
                     
-                    if(contactsToUpdateMap != null && contactsToUpdateMap.size() > 0){
-                        //Added by Ankit
-                        Core_MergeContactHandler.isRecurssive = true;
+                    //SKIP ALL validations for Engagments (Core_From_Source__c = true)
+                    
+                    if(contEntObj.Core_From_Source__c){
                         
-                        for(Id ContactId : contactsToUpdateMap.keySet()){
-                            if(Core_MergeContactHandler.deletedContactIds != null && !Core_MergeContactHandler.deletedContactIds.contains(ContactId)){
-                                contactsToUpdateNew.add(contactsToUpdateMap.get(ContactId));
-                                
-                            }else{
-                                contactsToUpdateNew.add(contactsToUpdateMap.get(ContactId));
-                            }
-                        }
-                        //update contactsToBeUpdated.values();
+                        continue;
+                    }
+                    
+                    
+                    
+                    // Check for ODM Indicator field
+                    if(!validateIsODM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
                         
+                        
+                        contEntObj.addError(mapConentValErrorMsg.get('System Non ODM'));
                     }
-                    if(!contactsToUpdateNew.isEmpty()){
-                        update contactsToUpdateNew ;
+                    // Check for CNDA field
+                    if(!validateCNDANum(contEntObj.Core_Entitlement_Id__c, contactRecord)){
+                        contEntObj.addError(mapConentValErrorMsg.get('System CNDA'));
                     }
-                    if(accountsToUpdateMap != null) {
-                        //update accountsToUpdateMap.values();
-                        //TWC729-7729
-                        List<Core_Log_Entry__c> logEntryToUpdate = new List<Core_Log_Entry__c>();
-                        List<Account> accountListToUpdate = accountsToUpdateMap.values();
-                        list<Database.SaveResult> saveResult = Database.update(accountListToUpdate, false);
-                        for (Integer i = 0; i< saveResult.size(); i++) {
-                            if(!saveResult[i].isSuccess() && accountsToUpdateMap.containskey(saveResult[i].getId())){
-                                String LogEntryId = Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_ACCOUNT_UPDATE, LOG_ENTRY_SEVERITY ,saveResult[i].getErrors()[0].getMessage(),JSON.serialize(new List<Account>{accountListToUpdate[i]}), accountListToUpdate[i].Id, 'Account', accountListToUpdate[i].Id);
-                                Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Id = LogEntryId, Core_Retry_Counter__c = 1);
-                                logEntryToUpdate.add(logEntry);
-                                
-                            }
+                    // Check for Engagement in Contact related list
+                    //Utkarsh - Made changes to prevent validation to fire for IPA Registration.
+                    Boolean validatecheck = true;
+                    if(contEntObj.Core_Source__c != null && contEntObj.Core_Source__c != System.Label.PRM_Entitlement_Source){
+                        validatecheck =validateEngagement(contEntObj.Core_Entitlement_Id__c, contactRecord,coreAllEntitlementList);
+                    }
+                    
+                    if(!validatecheck) {
+                        
+                        contEntObj.addError(mapConentValErrorMsg.get(mapENtReqMessages.get(contEntObj.Core_Entitlement_Id__c)));
+                        //contEntObj.addError('NO PSG Basic Engagement');
+                    }
+                    // Check for Intel Support Owner field
+                    if(!validateIntelSupportOwner(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System ISO'));
+                    }
+                    // Check for Account Owner Role field
+                    if(!validateAccountOwnerRole(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Account Owner Role'));
+                    }
+                    // Check for CIM Id on Account
+                    if(!validateCimId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System CIM ID'));
+                    }
+                    //Check for Unified ID on Account
+                    if(!validateUnifiedId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unified ID'));
+                    }
+                    // US90386 Added By Prem
+                    // Check for PSG WOM on Account
+                    if(!validatePSGWOM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System PSG WOM'));
+                    }
+                    if(!validatePersonalEmailIndicator(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System PersonalEmailIndicator'));
+                    }
+                    if(!validateIsODMTrue(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System ODM'));
+                    }
+                    if(!validateUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
+                    }
+                    if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_Employee || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Lead_Development_Representative || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Marketing_specialist ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin_Delegate)
+                    {
+                        if(!validateUniqueMPEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                            
+                            contEntObj.addError(mapConentValErrorMsg.get('System Unique MP Entitlement'));
+                            
                         }
-                        if(!logEntryToUpdate.isEmpty() && logEntryToUpdate != null){
-                            update logEntryToUpdate;
-                        }
                     }
-                    //Added by Ealisha-end
+                    //Sonali Start (US731136 - Pipeline: CTO Requirement)
+                    /*if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Distributor || contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Reseller){
+                        if(!validateDCBCUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                            
+                            contEntObj.addError(mapConentValErrorMsg.get('UI Single Entitlement Assignment'));
+                        }
+                    }*/
+                    //Sonali END
+                    
+                    //Added by Geetha as per user story US113583
+                    if(!validatePartnerEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
+                    }
+                    //Ended by Geetha as per user story US113583
+                    
+                    //if(!validateEnglishOnly(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                    //contEntObj.addError('English Only on Contact can\'t be blank (Populate from Standard and Alternate if avalible and meet req)');
+                    //}
+                    
                 }
+                
+// The following block of code sets the B2B indicator fields on the Contact and Account to TRUE if the Entitlement to be added is listed in Core_Entitlements_B2B_Indicator_Update custom label
+                /*List<Core_B2B_Flag_Entitlements__c> B2BflaggedEnts = Core_B2B_Flag_Entitlements__c.getall().values();
+                for(Contact contactObj : contactRecords) {
+                    map_all_contacts.put(contactObj.Id, contactObj);
+                    map_all_accounts_Ids.put(contactObj.AccountId, contactObj.AccountId);
+                    for(Core_Contact_Entitlement__c contEntObj : contactObj.contact_entitlements__r){
+                        mContEntitlementsAll.put(contEntObj, contactObj);       
+                    }
+                }
+                for(Core_Contact_Entitlement__c contEntObj : mContEntitlementsAll.keySet()) {
+                    Contact contactRecord = mContEntitlementsAll.get(contEntObj);                  
+                    for(Core_B2B_Flag_Entitlements__c B2BEnt : B2BflaggedEnts){
+                        if(B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c && contEntObj.Core_Status__c =='Complete'){
+                            b2b_Flaged_Contacts.put(contactRecord.Id, true);
+                        }
+                        if(!contactRecord.Account.Core_B2B_Entitlement__c && B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c){
+                            b2b_Flaged_Account.put(contactRecord.AccountId, true);
+                        }
+                    }
+                }
+                
+                for(Contact con : map_all_contacts.values()){
+                    if(b2b_Flaged_Contacts.get(con.Id) == true ){
+                        Contact conRec = new Contact(
+                            id=con.Id, 
+                            AccountId=con.AccountId, 
+                            Core_Contact_B2B_Indicator__c = true,
+                            Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
+                            Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
+                        contactsToUpdateMap.put(con.Id,conRec);
+                    }
+                    else if(b2b_Flaged_Contacts.get(con.Id) == null && con.Core_Contact_B2B_Indicator__c ){
+                        Contact conRec = new Contact(
+                            id=con.Id, 
+                            AccountId=con.AccountId, 
+                            Core_Contact_B2B_Indicator__c = false,
+                            Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
+                            Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
+                        contactsToUpdateMap.put(con.Id,conRec);
+                    }
+                }
+                for(Id accId : map_all_accounts_Ids.values()){
+                    if(b2b_Flaged_Account.get(accId) != null){
+                        Account accRec = new Account(
+                            id=accId, 
+                            Core_B2B_Entitlement__c = true);
+                        accountsToUpdateMap.put(accId, accRec);
+                    }
+                }*/
+                
+                
+                //Added by Ealisha-start
+                List<Contact> contactsToUpdateNew = new List<Contact>();
+                
+                if(contactsToUpdateMap != null && contactsToUpdateMap.size() > 0){
+                    //Added by Ankit
+                    Core_MergeContactHandler.isRecurssive = true;
+                    
+                    for(Id ContactId : contactsToUpdateMap.keySet()){
+                        if(Core_MergeContactHandler.deletedContactIds != null && !Core_MergeContactHandler.deletedContactIds.contains(ContactId)){
+                            contactsToUpdateNew.add(contactsToUpdateMap.get(ContactId));
+                            
+                        }else{
+                            contactsToUpdateNew.add(contactsToUpdateMap.get(ContactId));
+                        }
+                    }
+                    //update contactsToBeUpdated.values();
+                    
+                }
+                
+                if(!contactsToUpdateNew.isEmpty()){
+                    update contactsToUpdateNew;
+                }
+                
+                
+                if(accountsToUpdateMap != null) {
+                    //update accountsToUpdateMap.values();
+                    //TWC729-7729
+                    List<Core_Log_Entry__c> logEntryToUpdate = new List<Core_Log_Entry__c>();
+	                List<Account> accountListToUpdate = accountsToUpdateMap.values();
+	                list<Database.SaveResult> saveResult = Database.update(accountListToUpdate, false);
+	                  for (Integer i = 0; i< saveResult.size(); i++) {
+	                    if(!saveResult[i].isSuccess() && accountsToUpdateMap.containskey(saveResult[i].getId())){
+	                        String LogEntryId = Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_ACCOUNT_UPDATE, LOG_ENTRY_SEVERITY ,saveResult[i].getErrors()[0].getMessage(),JSON.serialize(new List<Account>{accountListToUpdate[i]}), accountListToUpdate[i].Id, 'Account', accountListToUpdate[i].Id);
+	                        Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Id = LogEntryId, Core_Retry_Counter__c = 1);
+                            logEntryToUpdate.add(logEntry);
+
+                        }
+                    }
+                    if(!logEntryToUpdate.isEmpty() && logEntryToUpdate != null){
+                        update logEntryToUpdate;
+                }
+                }
+                //Added by Ealisha-end
             }
-        } catch(Exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(
-                Core_Message__c ='Error in class Core_ContactEntitlementValidation',
-                Core_Origin__c = 'validateContactEntitlementModified', 
-                Core_Project__c = 'Draco',
-                Core_Details__c = e.getMessage(),
-                Core_Severity__c = 'info',
-                Core_When__c = System.Now()
-            );
-            insert excepLog;
         }
     }
+    
+    
     public static void validateContactEntitlement(List<Core_Contact_Entitlement__c> oldList, List<Core_Contact_Entitlement__c> newFullList,
                                                   Map<Id,Core_Contact_Entitlement__c> oldMap, Map<Id,Core_Contact_Entitlement__c> newMap)
     {
-        try{
-            List<Id> lContactIds = new List<Id>();
-            count =0;
-            ipscount=0;
-            mapContactIds = new Map<Id,Integer>();
-            mapIPSContactIds = new Map<Id,Integer>();
-            Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
-            Map<Core_Contact_Entitlement__c, String> mEntitlements = new Map<Core_Contact_Entitlement__c, String>();
-            Map<Id, Boolean> mEntActive = new Map<Id, Boolean>();
-            
-            // Filtering Contact Entitlement with only selected true for validation
-            List<Core_Contact_Entitlement__c> newList = new List<Core_Contact_Entitlement__c>();
-            for(Core_Contact_Entitlement__c ce: newFullList){
-                if(ce.Core_Selected__c ){
-                    newList.add(ce);
-                }
+        
+        List<Id> lContactIds = new List<Id>();
+        count =0;
+        ipscount=0;
+        mapContactIds = new Map<Id,Integer>();
+        mapIPSContactIds = new Map<Id,Integer>();
+        Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
+        Map<Core_Contact_Entitlement__c, String> mEntitlements = new Map<Core_Contact_Entitlement__c, String>();
+        Map<Id, Boolean> mEntActive = new Map<Id, Boolean>();
+        
+        // Filtering Contact Entitlement with only selected true for validation
+        List<Core_Contact_Entitlement__c> newList = new List<Core_Contact_Entitlement__c>();
+        for(Core_Contact_Entitlement__c ce: newFullList){
+            if(ce.Core_Selected__c ){
+                newList.add(ce);
             }
-            
-            for(Core_Contact_Entitlement__c c : newList) {
-                lContactIds.add(c.Core_Contact_Id__c);
-            }
-            
-            //********************************** Start : Change Param by Avanish August 11, 2020 (SOQL Issue)
-            coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
-                                    Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c
-                                    from Core_Contact_Entitlement__c 
-                                    where Core_Contact_Id__c =:lContactIds
-                                    AND Core_Selected__c = true];
-            //Added by Geetha as per user story US113583
-            validateEntitlementType(coreAllEntitlementList);//lContactIds); //Change Param by Avanish August 11, 2020 (SOQL Issue)
-            // Added by prem
-            /*coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
+        }
+        
+        for(Core_Contact_Entitlement__c c : newList) {
+            lContactIds.add(c.Core_Contact_Id__c);
+        }
+        
+        //********************************** Start : Change Param by Avanish August 11, 2020 (SOQL Issue)
+        coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
+                                Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c
+                                from Core_Contact_Entitlement__c 
+                                where Core_Contact_Id__c =:lContactIds
+                                AND Core_Selected__c = true];
+        //Added by Geetha as per user story US113583
+        validateEntitlementType(coreAllEntitlementList);//lContactIds); //Change Param by Avanish August 11, 2020 (SOQL Issue)
+        // Added by prem
+        /*coreAllEntitlementList=[Select id,Core_Contact_Id__c,Core_Type__c,Core_Selected__c,
 Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c
 from Core_Contact_Entitlement__c 
 where Core_Contact_Id__c =:lContactIds
 AND Core_Selected__c = true];*/
-            //********************************** END : Change Param by Avanish August 11, 2020 (SOQL Issue)
+        //********************************** END : Change Param by Avanish August 11, 2020 (SOQL Issue)
+        
+        if(lContactIds != null && !lContactIds.isEmpty()) {
+            List<Contact> contactRecords = [Select Id, Name, AccountId, Account.Name, Account.Core_CNDA_Number__c,Account.Owner.UserRole.Name,Account.PRM_Count_IPA_Terms_And_Conditions__c,
+                                            Account.Core_IPS_Active__c, Core_IPS_Intel_Support_Owner__c, Account.Core_IsODM__c,
+                                            Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
+                                            Core_Local_First_Name__c, Core_Local_Last_Name__c, Account.Core_English_Only_Name__c,
+                                            Account.Core_Alternate_Language_Name__c, Core_Contact_B2B_Indicator__c,Account.Core_IPS_PSG_WOM_Check__c ,
+                                            Account.Core_B2B_Entitlement__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c,
+                                            Core_Personal_Email_Indicator__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
+                                            FROM Contact 
+                                            WHERE Id IN :lContactIds];
+            List<Core_Entitlement__c> entitlementRecords = [SELECT Id, Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c, Core_IsActive__c
+                                                            FROM Core_Entitlement__c];
             
-            if(lContactIds != null && !lContactIds.isEmpty()) {
-                List<Contact> contactRecords = [Select Id, Name, AccountId, Account.Name, Account.Core_CNDA_Number__c,Account.Owner.UserRole.Name,Account.PRM_Count_IPA_Terms_And_Conditions__c,
-                                                Account.Core_IPS_Active__c, Core_IPS_Intel_Support_Owner__c, Account.Core_IsODM__c,
-                                                Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
-                                                Core_Local_First_Name__c, Core_Local_Last_Name__c, Account.Core_English_Only_Name__c,
-                                                Account.Core_Alternate_Language_Name__c, Core_Contact_B2B_Indicator__c,Account.Core_IPS_PSG_WOM_Check__c ,
-                                                Account.Core_B2B_Entitlement__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c,
-                                                Core_Personal_Email_Indicator__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
-                                                FROM Contact 
-                                                WHERE Id IN :lContactIds];
-                List<Core_Entitlement__c> entitlementRecords = [SELECT Id, Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c, Core_IsActive__c
-                                                                FROM Core_Entitlement__c];
+            for(Core_Entitlement__c ce : entitlementRecords){
+                mEntActive.put(ce.Id, ce.Core_IsActive__c);
+            }
+            
+            Map<Id, Contact> mUpdateContEngName = new Map<Id, Contact>();
+            Map<Id, Account> mUpdateAcctEngName = new Map<Id, Account>();
+            
+            for(Core_Contact_Entitlement__c contEntObj : newList)
+            {
+                //Skip english only validation if entitlement is InActive OR for existing entitlements
+                boolean skipEntValidation = skipEntValidation(contEntObj, mEntActive);
                 
-                for(Core_Entitlement__c ce : entitlementRecords){
-                    mEntActive.put(ce.Id, ce.Core_IsActive__c);
-                }
                 
-                Map<Id, Contact> mUpdateContEngName = new Map<Id, Contact>();
-                Map<Id, Account> mUpdateAcctEngName = new Map<Id, Account>();
-                
-                for(Core_Contact_Entitlement__c contEntObj : newList)
-                {
-                    //Skip english only validation if entitlement is InActive OR for existing entitlements
-                    boolean skipEntValidation = skipEntValidation(contEntObj, mEntActive);
+                for(Contact contactObj : contactRecords) {
+                    //Commented by Naresh as part of  defect fix.
+                    boolean validateEnglishOnlyFields = validateEnglishOnlyFields(contactObj, mUpdateContEngName, mUpdateAcctEngName);
+                    // Call the local language methods to validate English Only Fields
                     
+                    //if(!validateEnglishOnlyFields(contactObj)) {
                     
-                    for(Contact contactObj : contactRecords) {
-                        //Commented by Naresh as part of  defect fix.
-                        boolean validateEnglishOnlyFields = validateEnglishOnlyFields(contactObj, mUpdateContEngName, mUpdateAcctEngName);
-                        // Call the local language methods to validate English Only Fields
-                        
-                        //if(!validateEnglishOnlyFields(contactObj)) {
-                        
-                        //Commented by Naresh as part of  defect fix.
-                        
-                        if((!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && !skipEntValidation) && String.isBlank(contactObj.Account.Core_English_Only_Name__c)&&(mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Account_English_Only_Name__c)){
-                            contEntObj.addError(mapConentValErrorMsg.get('System English on Account'));
-                        }
-                        if((!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && !skipEntValidation) && (String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) && (mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Contact_English_Only_Name__c)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System English on Contact'));
-                        }
-                        
-                        /* if(String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) {
+                    //Commented by Naresh as part of  defect fix.
+                    
+                    if((!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && !skipEntValidation) && String.isBlank(contactObj.Account.Core_English_Only_Name__c)&&(mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Account_English_Only_Name__c)){
+                        contEntObj.addError(mapConentValErrorMsg.get('System English on Account'));
+                    }
+                    if((!validateEnglishOnlyFields && !contEntObj.Core_From_Source__c && !skipEntValidation) && (String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) && (mapentIds.keySet().contains(contEntObj.Core_Entitlement_Id__c) && mapentIds.get(contEntObj.Core_Entitlement_Id__c).Core_Contact_English_Only_Name__c)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System English on Contact'));
+                    }
+                    
+                    /* if(String.isBlank(contactObj.Core_English_Only_First_Name__c) || String.isBlank(contactObj.Core_English_Only_Last_Name__c)) {
 contEntObj.addError(mapConentValErrorMsg.get('System English on Contact'));
 }
 if(String.isBlank(contactObj.Account.Core_English_Only_Name__c)){
 contEntObj.addError(mapConentValErrorMsg.get('System English on Account'));
 }*///Commented Earlier
-                        // Create a map of contact entitlements to contacts in preparation for validations
-                        if(contEntObj.Core_Contact_Id__c == contactObj.Id) {
-                            mContEntitlements.put(contEntObj, contactObj);
-                        }
-                    }
-                    for(Core_Entitlement__c entObj : entitlementRecords) {
-                        // Create map of contact entitlements to erpm engagement dedup numbers for B2B Indicator updates later
-                        if(contEntObj.Core_Entitlement_Id__c == entObj.Id) {
-                            mEntitlements.put(contEntObj, entObj.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c);
-                        }
+                    // Create a map of contact entitlements to contacts in preparation for validations
+                    if(contEntObj.Core_Contact_Id__c == contactObj.Id) {
+                        mContEntitlements.put(contEntObj, contactObj);
                     }
                 }
-                
-                if(mUpdateContEngName.size() > 0)
-                    update mUpdateContEngName.values();
-                if(mUpdateAcctEngName.size() > 0)
-                    update mUpdateAcctEngName.values();
-                
-                if(mContEntitlements != null && !mContEntitlements.isEmpty()) {
-                    List<Contact> contactsToUpdate = new List<Contact>();
-                    List<Account> accountsToUpdate = new List<Account>();
-                    Set<Id> contactIds = new Set<Id>();
-                    Set<Id> accountIds = new Set<Id>();
-                    for(Core_Contact_Entitlement__c contEntObj : mContEntitlements.keySet())
-                    {
-                        Contact contactRecord = mContEntitlements.get(contEntObj);
-                        
-                        // The following block of code sets the B2B indicator fields on the Contact and Account to true when the
-                        // ERPM Engagement Dedup Number is set to B2B
-                        if((!contactRecord.Core_Contact_B2B_Indicator__c) && (mEntitlements.get(contEntObj) == 'B2B') && (!contactIds.contains(contactRecord.Id))) {
-                            
-                            
-                            Contact conRec = new Contact(id=contactRecord.Id, AccountId=contactRecord.AccountId, Core_Contact_B2B_Indicator__c = true);
-                            contactsToUpdate.add(conRec);
-                            contactIds.add(contactRecord.Id);
-                            if(!accountIds.contains(conRec.AccountId) && (!contactRecord.Account.Core_B2B_Entitlement__c)) {
-                                Account accRec = new Account(id=conRec.AccountId, Core_B2B_Entitlement__c = true);
-                                accountsToUpdate.add(accRec);
-                                accountIds.add(conRec.AccountId);
-                            }
-                            
-                            
-                        }
-                        
-                        //SKIP ALL validations for Engagments (Core_From_Source__c = true)
-                        
-                        if(contEntObj.Core_From_Source__c){
-                            
-                            continue;
-                        }
-                        
-                        // Check for ODM Indicator field
-                        if(!validateIsODM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            
-                            
-                            contEntObj.addError(mapConentValErrorMsg.get('System Non ODM'));
-                        }
-                        // Check for CNDA field
-                        if(!validateCNDANum(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System CNDA'));
-                        }
-                        // Check for Engagement in Contact related list
-                        //Utkarsh - Made changes to prevent validation to fire for IPA Registration.
-                        Boolean validatecheck = true;
-                        if(contEntObj.Core_Source__c != null && contEntObj.Core_Source__c != System.Label.PRM_Entitlement_Source){
-                            validatecheck =validateEngagement(contEntObj.Core_Entitlement_Id__c, contactRecord,coreAllEntitlementList);
-                        }
-                        
-                        if(!validatecheck) {
-                            
-                            contEntObj.addError(mapConentValErrorMsg.get(mapENtReqMessages.get(contEntObj.Core_Entitlement_Id__c)));
-                            //contEntObj.addError('NO PSG Basic Engagement');
-                        }
-                        // Check for Intel Support Owner field
-                        if(!validateIntelSupportOwner(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System ISO'));
-                        }
-                        // Check for Account Owner Role field
-                        if(!validateAccountOwnerRole(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Account Owner Role'));
-                        }
-                        // Check for CIM Id on Account
-                        if(!validateCimId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System CIM ID'));
-                        }
-                        // Check for Unified Id on Account
-                        if(!validateUnifiedId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unified ID'));
-                        }
-                        // US90386 Added By Prem
-                        // Check for PSG WOM on Account
-                        if(!validatePSGWOM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System PSG WOM'));
-                        }
-                        if(!validatePersonalEmailIndicator(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System PersonalEmailIndicator'));
-                        }
-                        if(!validateIsODMTrue(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System ODM'));
-                        }
-                        if(!validateUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
-                        }
-                        if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_Employee || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Lead_Development_Representative || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Marketing_specialist ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin_Delegate)
-                        {
-                            if(!validateUniqueMPEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-                                
-                                contEntObj.addError(mapConentValErrorMsg.get('System Unique MP Entitlement'));
-                                
-                            }
-                        }
-                        //Sonali Start (US731136 - Pipeline: CTO Requirement)
-                        /*if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Distributor || contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Reseller){
-if(!validateDCBCUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
-
-contEntObj.addError(mapConentValErrorMsg.get('UI Single Entitlement Assignment'));
-}
-}*/
-                        //Sonali END
-                        //Added by Geetha as per user story US113583
-                        if(!validatePartnerEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                            contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
-                        }
-                        //Ended by Geetha as per user story US113583
-                        
-                        //if(!validateEnglishOnly(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
-                        //contEntObj.addError('English Only on Contact can\'t be blank (Populate from Standard and Alternate if avalible and meet req)');
-                        //}
-                        
-                    }
-                    
-                    // Finish updating B2B Indicator Field on contact records
-                    if(contactsToUpdate != null && !contactsToUpdate.isEmpty()) {                 
-                        update contactsToUpdate; 
-                    }
-                    if(accountsToUpdate != null && !accountsToUpdate.isEmpty()) {
-                        update accountsToUpdate;
+                for(Core_Entitlement__c entObj : entitlementRecords) {
+                    // Create map of contact entitlements to erpm engagement dedup numbers for B2B Indicator updates later
+                    if(contEntObj.Core_Entitlement_Id__c == entObj.Id) {
+                        mEntitlements.put(contEntObj, entObj.Core_ERPM_Engagement_Id__r.Core_Technical_DeDup_Number__c);
                     }
                 }
             }
-        }
-        catch(Exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(
-                Core_Message__c ='Error in class Core_ContactEntitlementValidation',
-                Core_Origin__c = 'validateContactEntitlement', 
-                Core_Project__c = 'Draco',
-                Core_Details__c = e.getMessage(),
-                Core_Severity__c = 'info',
-                Core_When__c = System.Now()
-            );
-            insert excepLog;
+            
+            if(mUpdateContEngName.size() > 0)
+                update mUpdateContEngName.values();
+            if(mUpdateAcctEngName.size() > 0)
+                update mUpdateAcctEngName.values();
+            
+            if(mContEntitlements != null && !mContEntitlements.isEmpty()) {
+                List<Contact> contactsToUpdate = new List<Contact>();
+                List<Account> accountsToUpdate = new List<Account>();
+                Set<Id> contactIds = new Set<Id>();
+                Set<Id> accountIds = new Set<Id>();
+                for(Core_Contact_Entitlement__c contEntObj : mContEntitlements.keySet())
+                {
+                    Contact contactRecord = mContEntitlements.get(contEntObj);
+                    
+                    // The following block of code sets the B2B indicator fields on the Contact and Account to true when the
+                    // ERPM Engagement Dedup Number is set to B2B
+                    if((!contactRecord.Core_Contact_B2B_Indicator__c) && (mEntitlements.get(contEntObj) == 'B2B') && (!contactIds.contains(contactRecord.Id))) {
+                        
+                        
+                        Contact conRec = new Contact(id=contactRecord.Id, AccountId=contactRecord.AccountId, Core_Contact_B2B_Indicator__c = true);
+                        contactsToUpdate.add(conRec);
+                        contactIds.add(contactRecord.Id);
+                        if(!accountIds.contains(conRec.AccountId) && (!contactRecord.Account.Core_B2B_Entitlement__c)) {
+                            Account accRec = new Account(id=conRec.AccountId, Core_B2B_Entitlement__c = true);
+                            accountsToUpdate.add(accRec);
+                            accountIds.add(conRec.AccountId);
+                        }
+                        
+                        
+                    }
+                    
+                    //SKIP ALL validations for Engagments (Core_From_Source__c = true)
+                    
+                    if(contEntObj.Core_From_Source__c){
+                        
+                        continue;
+                    }
+                    
+                    // Check for ODM Indicator field
+                    if(!validateIsODM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        
+                        
+                        contEntObj.addError(mapConentValErrorMsg.get('System Non ODM'));
+                    }
+                    // Check for CNDA field
+                    if(!validateCNDANum(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System CNDA'));
+                    }
+                    // Check for Engagement in Contact related list
+                    //Utkarsh - Made changes to prevent validation to fire for IPA Registration.
+                    Boolean validatecheck = true;
+                    if(contEntObj.Core_Source__c != null && contEntObj.Core_Source__c != System.Label.PRM_Entitlement_Source){
+                        validatecheck =validateEngagement(contEntObj.Core_Entitlement_Id__c, contactRecord,coreAllEntitlementList);
+                    }
+                    
+                    if(!validatecheck) {
+                        
+                        contEntObj.addError(mapConentValErrorMsg.get(mapENtReqMessages.get(contEntObj.Core_Entitlement_Id__c)));
+                        //contEntObj.addError('NO PSG Basic Engagement');
+                    }
+                    // Check for Intel Support Owner field
+                    if(!validateIntelSupportOwner(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System ISO'));
+                    }
+                    // Check for Account Owner Role field
+                    if(!validateAccountOwnerRole(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Account Owner Role'));
+                    }
+                    // Check for CIM Id on Account
+                    if(!validateCimId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System CIM ID'));
+                    }
+                    // Check for Unified Id on Account
+                    if(!validateUnifiedId(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unified ID'));
+                    }
+                    // US90386 Added By Prem
+                    // Check for PSG WOM on Account
+                    if(!validatePSGWOM(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System PSG WOM'));
+                    }
+                    if(!validatePersonalEmailIndicator(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System PersonalEmailIndicator'));
+                    }
+                    if(!validateIsODMTrue(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System ODM'));
+                    }
+                    if(!validateUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
+                    }
+                    if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_Employee || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Lead_Development_Representative || contEntObj.Core_Entitlement_Id__c == System.Label.Core_Marketing_specialist ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin ||contEntObj.Core_Entitlement_Id__c == System.Label.Core_Partner_Admin_Delegate)
+                    {
+                        if(!validateUniqueMPEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                            
+                            contEntObj.addError(mapConentValErrorMsg.get('System Unique MP Entitlement'));
+                            
+                        }
+                    }
+                    //Sonali Start (US731136 - Pipeline: CTO Requirement)
+                    /*if(contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Distributor || contEntObj.Core_Entitlement_Id__c == System.Label.Core_CTO_Reseller){
+                        if(!validateDCBCUniqueEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord,'')) {
+                            
+                            contEntObj.addError(mapConentValErrorMsg.get('UI Single Entitlement Assignment'));
+                        }
+                    }*/
+                    //Sonali END
+                    //Added by Geetha as per user story US113583
+                    if(!validatePartnerEntitlement(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                        contEntObj.addError(mapConentValErrorMsg.get('System Unique Entitlement'));
+                    }
+                    //Ended by Geetha as per user story US113583
+                    
+                    //if(!validateEnglishOnly(contEntObj.Core_Entitlement_Id__c, contactRecord)) {
+                    //contEntObj.addError('English Only on Contact can\'t be blank (Populate from Standard and Alternate if avalible and meet req)');
+                    //}
+                    
+                }
+                
+                // Finish updating B2B Indicator Field on contact records
+                if(contactsToUpdate != null && !contactsToUpdate.isEmpty()) {
+                    update contactsToUpdate;
+                }
+                if(accountsToUpdate != null && !accountsToUpdate.isEmpty()) {
+                    update accountsToUpdate;
+                }
+            }
         }
     }
     /* Code Added : Avanish (Draco) : August 6, 2020
@@ -682,218 +665,213 @@ Static Variable created and increment in method : isAddContactEntitlementTrigger
     //Add Or Remove Subordinates
     //@future
     public static void addContactEntitlementSubordinates(List<Core_Contact_Entitlement__c> lConEnt) {
-        try{
-            isAddContactEntitlementTriggerAgain ++;
-            Set<Id> stContactIds = new Set<Id>();
-            Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
-            List<Contact> contactRecords = new List<Contact>();
-            Set<Id> sEntSubToUpdateIds = new Set<Id>();
-            List<Core_Contact_Entitlement__c> lEntSubToUpdate = new List<Core_Contact_Entitlement__c>();
-            List<Core_Contact_Entitlement__c> lEntSubToInsert = new List<Core_Contact_Entitlement__c>();
-            Map<Id,Boolean> mapContEntSelected = new Map<Id,Boolean>();
-            Map<Id,Boolean> mapAccountODM = new Map<Id,Boolean>();
-            Map<Id,String> mapAccountCNDA = new Map<Id,String>();
-            Map<Id,Boolean> mapSubActive = new Map<Id,Boolean>();
-            Set<Id> stAllSubId = new Set<Id>();
-            String updateReasonAutoAssigned = 'Auto Assigned';
-            
-            //Add Subordinates custom settings
-            List<Core_Contact_Entitlement_Subordinates__c> lstConEntSubAdd = Core_Contact_Entitlement_Subordinates__c.getAll().values();
-            
-            // ---------------------------- Added extra condition for make single SOQL - Avanish - August 11, 2020
-            if(!Test.isRunningTest() && lstConEntSubRemove.isEmpty()){ // Normal scenario, when the test execution doesn't happen
-                lstConEntSubRemove = [SELECT Id,Label,MasterLabel,Core_Condition__c,Core_Entitlement_Id__c,Core_Entitlement_Name__c,Core_Entitlement_Subordinate_Id__c,Core_Entitlement_Subordinate_Name__c FROM Contact_Entitlement_Subordinates_Removal__mdt];
-            }else if (Test.isRunningTest()){
-                lstConEntSubRemove = (List<Contact_Entitlement_Subordinates_Removal__mdt>) new ContactEntitlementSubordinatesRemoval().getCustomMetadataRecords('SELECT Id,Label,Core_Condition__c,Core_Entitlement_Id__c,Core_Entitlement_Name__c,Core_Entitlement_Subordinate_Id__c,Core_Entitlement_Subordinate_Name__c FROM Contact_Entitlement_Subordinates_Removal__mdt WHERE DeveloperName = \'Default\'');
+        isAddContactEntitlementTriggerAgain ++;
+        Set<Id> stContactIds = new Set<Id>();
+        Map<Core_Contact_Entitlement__c, Contact> mContEntitlements = new Map<Core_Contact_Entitlement__c, Contact>();
+        List<Contact> contactRecords = new List<Contact>();
+        Set<Id> sEntSubToUpdateIds = new Set<Id>();
+        List<Core_Contact_Entitlement__c> lEntSubToUpdate = new List<Core_Contact_Entitlement__c>();
+        List<Core_Contact_Entitlement__c> lEntSubToInsert = new List<Core_Contact_Entitlement__c>();
+        Map<Id,Boolean> mapContEntSelected = new Map<Id,Boolean>();
+        Map<Id,Boolean> mapAccountODM = new Map<Id,Boolean>();
+        Map<Id,String> mapAccountCNDA = new Map<Id,String>();
+        Map<Id,Boolean> mapSubActive = new Map<Id,Boolean>();
+        Set<Id> stAllSubId = new Set<Id>();
+        String updateReasonAutoAssigned = 'Auto Assigned';
+        
+        //Add Subordinates custom settings
+        List<Core_Contact_Entitlement_Subordinates__c> lstConEntSubAdd = Core_Contact_Entitlement_Subordinates__c.getAll().values();
+        
+        // ---------------------------- Added extra condition for make single SOQL - Avanish - August 11, 2020
+        if(!Test.isRunningTest() && lstConEntSubRemove.isEmpty()){ // Normal scenario, when the test execution doesn't happen
+            lstConEntSubRemove = [SELECT Id,Label,MasterLabel,Core_Condition__c,Core_Entitlement_Id__c,Core_Entitlement_Name__c,Core_Entitlement_Subordinate_Id__c,Core_Entitlement_Subordinate_Name__c FROM Contact_Entitlement_Subordinates_Removal__mdt];
+        }else if (Test.isRunningTest()){
+            lstConEntSubRemove = (List<Contact_Entitlement_Subordinates_Removal__mdt>) new ContactEntitlementSubordinatesRemoval().getCustomMetadataRecords('SELECT Id,Label,Core_Condition__c,Core_Entitlement_Id__c,Core_Entitlement_Name__c,Core_Entitlement_Subordinate_Id__c,Core_Entitlement_Subordinate_Name__c FROM Contact_Entitlement_Subordinates_Removal__mdt WHERE DeveloperName = \'Default\'');
+        }
+        
+        //Loop on trigger.new to prepare set of contact IDs
+        for(Core_Contact_Entitlement__c conEntRef : lConEnt) {
+            stContactIds.add(conEntRef.Core_Contact_Id__c);
+        }
+        
+        //Qeury all existing contact entitlements for the contact set
+        List<Core_Contact_Entitlement__c> lExistingConEnt = [SELECT Id, Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Contact_Id__r.Account.Core_CNDA_Number__c,Core_Contact_Id__r.Account.Core_IsODM__c,Core_Contact_Id__c, Core_Selected__c 
+                                                             FROM Core_Contact_Entitlement__c
+                                                             WHERE Core_Contact_Id__c IN :stContactIds AND Core_Entitlement_Id__r.Core_IsActive__c = true];
+        
+        
+        //Loop on existing entitlements to prepare maps for 'Account ODM flag' and 'Selected flag'
+        for(Core_Contact_Entitlement__c entRef : lExistingConEnt){
+            mapContEntSelected.put(entRef.Core_Entitlement_Id__c,entRef.Core_Selected__c);
+            mapAccountODM.put(entRef.id,entRef.Core_Contact_Id__r.Account.Core_IsODM__c);
+            if(entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c != null && entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c !=''){
+                mapAccountCNDA.put(entRef.id,entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c);
             }
-            
-            //Loop on trigger.new to prepare set of contact IDs
-            for(Core_Contact_Entitlement__c conEntRef : lConEnt) {
-                stContactIds.add(conEntRef.Core_Contact_Id__c);
+        }
+        
+        //Loop on Add Subordinates custom settings to prepare set of Subordinates
+        for(Core_Contact_Entitlement_Subordinates__c subEntRefAdd : lstConEntSubAdd){
+            List<Id> lstMulti = subEntRefAdd.Core_Entitlement_Subordinate_Id__c.split(',');
+            for(Id subId : lstMulti){
+                stAllSubId.add(subId);
             }
-            
-            //Qeury all existing contact entitlements for the contact set
-            List<Core_Contact_Entitlement__c> lExistingConEnt = [SELECT Id, Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Contact_Id__r.Account.Core_CNDA_Number__c,Core_Contact_Id__r.Account.Core_IsODM__c,Core_Contact_Id__c, Core_Selected__c 
-                                                                 FROM Core_Contact_Entitlement__c
-                                                                 WHERE Core_Contact_Id__c IN :stContactIds AND Core_Entitlement_Id__r.Core_IsActive__c = true];
-            
-            
-            //Loop on existing entitlements to prepare maps for 'Account ODM flag' and 'Selected flag'
-            for(Core_Contact_Entitlement__c entRef : lExistingConEnt){
-                mapContEntSelected.put(entRef.Core_Entitlement_Id__c,entRef.Core_Selected__c);
-                mapAccountODM.put(entRef.id,entRef.Core_Contact_Id__r.Account.Core_IsODM__c);
-                if(entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c != null && entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c !=''){
-                    mapAccountCNDA.put(entRef.id,entRef.Core_Contact_Id__r.Account.Core_CNDA_Number__c);
-                }
+        }
+        //Loop on Add Subordinates custom metadata to prepare set of Subordinates
+        for(Contact_Entitlement_Subordinates_Removal__mdt subEntRefRemove : lstConEntSubRemove){
+            List<Id> lstMulti = subEntRefRemove.Core_Entitlement_Subordinate_Id__c.split(',');
+            for(Id subId : lstMulti){
+                stAllSubId.add(subId);
             }
+        }
+        //Loop on Entitlements to prepare active entitlements map
+        for(Core_Entitlement__c entDetailRef : [Select id,Core_IsActive__c FROM Core_Entitlement__c WHERE Id IN : stAllSubId]){
+            mapSubActive.put(entDetailRef.Id,entDetailRef.Core_IsActive__c);
+        }
+        
+        
+        //For loop to Add subordinates
+        for(Core_Contact_Entitlement__c conEntObj : lConEnt){
             
-            //Loop on Add Subordinates custom settings to prepare set of Subordinates
-            for(Core_Contact_Entitlement_Subordinates__c subEntRefAdd : lstConEntSubAdd){
-                List<Id> lstMulti = subEntRefAdd.Core_Entitlement_Subordinate_Id__c.split(',');
-                for(Id subId : lstMulti){
-                    stAllSubId.add(subId);
-                }
-            }
-            //Loop on Add Subordinates custom metadata to prepare set of Subordinates
-            for(Contact_Entitlement_Subordinates_Removal__mdt subEntRefRemove : lstConEntSubRemove){
-                List<Id> lstMulti = subEntRefRemove.Core_Entitlement_Subordinate_Id__c.split(',');
-                for(Id subId : lstMulti){
-                    stAllSubId.add(subId);
-                }
-            }
-            //Loop on Entitlements to prepare active entitlements map
-            for(Core_Entitlement__c entDetailRef : [Select id,Core_IsActive__c FROM Core_Entitlement__c WHERE Id IN : stAllSubId]){
-                mapSubActive.put(entDetailRef.Id,entDetailRef.Core_IsActive__c);
-            }
-            
-            
-            //For loop to Add subordinates
-            for(Core_Contact_Entitlement__c conEntObj : lConEnt){
+            if(conEntObj.Core_Selected__c){
+                List<Core_Contact_Entitlement_Subordinates__c> conEntSub = new List<Core_Contact_Entitlement_Subordinates__c>();
                 
-                if(conEntObj.Core_Selected__c){
-                    List<Core_Contact_Entitlement_Subordinates__c> conEntSub = new List<Core_Contact_Entitlement_Subordinates__c>();
-                    
-                    if(mapAccountODM.get(conEntObj.id)!=null && mapAccountODM.get(conEntObj.id)){
-                        for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : lstConEntSubAdd){
-                            if((conEntSubObj.Core_Is_ODM_True__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (conEntSubObj.Core_Is_CNDA_True__c  && (!String.isBlank(mapAccountCNDA.get(conEntObj.id))))){      //mahendraa
-                                conEntSub.add(conEntSubObj);
-                            }else if((conEntSubObj.Core_Is_ODM_True__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (!conEntSubObj.Core_Is_CNDA_True__c)){
-                                conEntSub.add(conEntSubObj);
-                                
-                            }
+                if(mapAccountODM.get(conEntObj.id)!=null && mapAccountODM.get(conEntObj.id)){
+                    for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : lstConEntSubAdd){
+                        if((conEntSubObj.Core_Is_ODM_True__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (conEntSubObj.Core_Is_CNDA_True__c  && (!String.isBlank(mapAccountCNDA.get(conEntObj.id))))){      //mahendraa
+                            conEntSub.add(conEntSubObj);
+                        }else if((conEntSubObj.Core_Is_ODM_True__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (!conEntSubObj.Core_Is_CNDA_True__c)){
+                            conEntSub.add(conEntSubObj);
+                            
                         }
-                    }else {
-                        for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : lstConEntSubAdd){
-                            if((conEntSubObj.Core_Is_ODM_False__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (conEntSubObj.Core_Is_CNDA_True__c  && !String.isBlank(mapAccountCNDA.get(conEntObj.id)))){
-                                conEntSub.add(conEntSubObj);
-                            }else if((conEntSubObj.Core_Is_ODM_False__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) &&(!conEntSubObj.Core_Is_CNDA_True__c)){
-                                conEntSub.add(conEntSubObj);
-                                
-                            }
-                        }
-                    }
-                    
-                    for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : conEntSub){
                         
-                        if(conEntObj.Core_Entitlement_Id__c == conEntSubObj.Core_Entitlement_Id__c && conEntObj.Core_Selected__c == true){
+                        
+                    }
+                }else {
+                    for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : lstConEntSubAdd){
+                        if((conEntSubObj.Core_Is_ODM_False__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) && (conEntSubObj.Core_Is_CNDA_True__c  && !String.isBlank(mapAccountCNDA.get(conEntObj.id)))){
+                            conEntSub.add(conEntSubObj);
+                        }else if((conEntSubObj.Core_Is_ODM_False__c && conEntSubObj.Core_Entitlement_Id__c == conEntObj.Core_Entitlement_Id__c) &&(!conEntSubObj.Core_Is_CNDA_True__c)){
+                            conEntSub.add(conEntSubObj);
                             
-                            Boolean checkInsOrUpdate = false;
-                            for(Core_Contact_Entitlement__c existingConEntObj : lExistingConEnt){
-                                if(conEntSubObj.Core_Entitlement_Subordinate_Id__c == existingConEntObj.Core_Entitlement_Id__c
-                                   && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
-                                   && !existingConEntObj.Core_Selected__c && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c)){
-                                       Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = true,Core_Status__c='Pending',Core_Source__c = updateReasonAutoAssigned);
-                                       
-                                       if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)) {
-                                           lEntSubToUpdate.add(conEntToUpdate);
-                                       }
-                                       sEntSubToUpdateIds.add(conEntToUpdate.id);
-                                       checkInsOrUpdate = true;
-                                   }else if(conEntSubObj.Core_Entitlement_Subordinate_Id__c == existingConEntObj.Core_Entitlement_Id__c
-                                            && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
-                                            && existingConEntObj.Core_Selected__c){
-                                                checkInsOrUpdate = true;
-                                                
-                                            }
-                            }
-                            if((!checkInsOrUpdate) && (mapSubActive.get(conEntSubObj.Core_Entitlement_Subordinate_Id__c))){
-                                
-                                Core_Contact_Entitlement__c conEntToInsert = new Core_Contact_Entitlement__c(Core_Entitlement_Id__c = conEntSubObj.Core_Entitlement_Subordinate_Id__c,
-                                                                                                             Core_Selected__c = true, Core_Contact_Id__c = conEntObj.Core_Contact_Id__c, Core_Status__c='Pending', Core_Source__c = updateReasonAutoAssigned);
-                                //mEntSubToInsert.put(conEntSubObj.Core_Entitlement_Subordinate_Id__c, conEntToInsert);
-                                //Added by Manikanta START(for bulk upload issue)
-                                lEntSubToInsert.add(conEntToInsert);
-                                //Added by Manikanta END(for bulk upload issue)
-                                
-                            }
+                        }
+                    }
+                }
+                
+                for(Core_Contact_Entitlement_Subordinates__c conEntSubObj : conEntSub){
+                    
+                    if(conEntObj.Core_Entitlement_Id__c == conEntSubObj.Core_Entitlement_Id__c && conEntObj.Core_Selected__c == true){
+                        
+                        Boolean checkInsOrUpdate = false;
+                        for(Core_Contact_Entitlement__c existingConEntObj : lExistingConEnt){
+                            if(conEntSubObj.Core_Entitlement_Subordinate_Id__c == existingConEntObj.Core_Entitlement_Id__c
+                               && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
+                               && !existingConEntObj.Core_Selected__c && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c)){
+                                   Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = true,Core_Status__c='Pending',Core_Source__c = updateReasonAutoAssigned);
+                                   
+                                   if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)) {
+                                       lEntSubToUpdate.add(conEntToUpdate);
+                                   }
+                                   sEntSubToUpdateIds.add(conEntToUpdate.id);
+                                   checkInsOrUpdate = true;
+                               }else if(conEntSubObj.Core_Entitlement_Subordinate_Id__c == existingConEntObj.Core_Entitlement_Id__c
+                                        && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
+                                        && existingConEntObj.Core_Selected__c){
+                                            checkInsOrUpdate = true;
+                                            
+                                        }
+                        }
+                        if((!checkInsOrUpdate) && (mapSubActive.get(conEntSubObj.Core_Entitlement_Subordinate_Id__c))){
+                            
+                            Core_Contact_Entitlement__c conEntToInsert = new Core_Contact_Entitlement__c(Core_Entitlement_Id__c = conEntSubObj.Core_Entitlement_Subordinate_Id__c,
+                                                                                                         Core_Selected__c = true, Core_Contact_Id__c = conEntObj.Core_Contact_Id__c, Core_Status__c='Pending', Core_Source__c = updateReasonAutoAssigned);
+                            //mEntSubToInsert.put(conEntSubObj.Core_Entitlement_Subordinate_Id__c, conEntToInsert);
+                            //Added by Manikanta START(for bulk upload issue)
+                            lEntSubToInsert.add(conEntToInsert);
+                            //Added by Manikanta END(for bulk upload issue)
+                            
                         }
                     }
                 }
             }
-            for(Core_Contact_Entitlement__c conEntObj : lConEnt){
-                
-                Boolean notAdded = true;
-                for(Core_Contact_Entitlement__c tobeUpdated : lEntSubToUpdate){
-                    if(tobeUpdated.id == conEntObj.id){
-                        notAdded = false;
-                    }
+        }
+        for(Core_Contact_Entitlement__c conEntObj : lConEnt){
+            
+            Boolean notAdded = true;
+            for(Core_Contact_Entitlement__c tobeUpdated : lEntSubToUpdate){
+                if(tobeUpdated.id == conEntObj.id){
+                    notAdded = false;
                 }
-                
-                if(!conEntObj.Core_Selected__c && notAdded){
-                    Boolean isAnyEntSelected= false;
-                    for(Contact_Entitlement_Subordinates_Removal__mdt conEntSubObj : lstConEntSubRemove){
-                        if(conEntObj.Core_Entitlement_Id__c == conEntSubObj.Core_Entitlement_Id__c && conEntObj.Core_Selected__c == false){
+            }
+            
+            if(!conEntObj.Core_Selected__c && notAdded){
+                Boolean isAnyEntSelected= false;
+                for(Contact_Entitlement_Subordinates_Removal__mdt conEntSubObj : lstConEntSubRemove){
+                    if(conEntObj.Core_Entitlement_Id__c == conEntSubObj.Core_Entitlement_Id__c && conEntObj.Core_Selected__c == false){
+                        
+                        Boolean checkInsOrUpdate = false;
+                        for(Core_Contact_Entitlement__c existingConEntObj : lExistingConEnt){
                             
-                            Boolean checkInsOrUpdate = false;
-                            for(Core_Contact_Entitlement__c existingConEntObj : lExistingConEnt){
-                                
-                                List<Id> lstMultiSub = conEntSubObj.Core_Entitlement_Subordinate_Id__c.split(',');
-                                for(id subRef :lstMultiSub){
-                                    if(subRef == existingConEntObj.Core_Entitlement_Id__c
-                                       && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
-                                       && existingConEntObj.Core_Selected__c){
+                            List<Id> lstMultiSub = conEntSubObj.Core_Entitlement_Subordinate_Id__c.split(',');
+                            for(id subRef :lstMultiSub){
+                                if(subRef == existingConEntObj.Core_Entitlement_Id__c
+                                   && conEntObj.Core_Contact_Id__c == existingConEntObj.Core_Contact_Id__c
+                                   && existingConEntObj.Core_Selected__c){
+                                       
+                                       if(!String.IsBlank(conEntSubObj.Core_Condition__c)){
                                            
-                                           if(!String.IsBlank(conEntSubObj.Core_Condition__c)){
+                                           List<Id> lstConditionEntIds =  conEntSubObj.Core_Condition__c.split(',');
+                                           for(id entid : lstConditionEntIds){
                                                
-                                               List<Id> lstConditionEntIds =  conEntSubObj.Core_Condition__c.split(',');
-                                               for(id entid : lstConditionEntIds){
-                                                   
-                                                   if(mapContEntSelected.get(entid)!=null && mapContEntSelected.get(entid) == true){
-                                                       isAnyEntSelected = true;
-                                                   }
-                                               }
-                                               if((!isAnyEntSelected) && (mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c) != null && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c))){
-                                                   Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = false, Core_Status__c='Pending');
-                                                   if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)){
-                                                       lEntSubToUpdate.add(conEntToUpdate);
-                                                   }
-                                                   sEntSubToUpdateIds.add(conEntToUpdate.id);
-                                               }
-                                           }else{
-                                               
-                                               if(mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c) != null && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c)){
-                                                   Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = false, Core_Status__c='Pending');
-                                                   if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)){
-                                                       lEntSubToUpdate.add(conEntToUpdate);
-                                                   }
-                                                   sEntSubToUpdateIds.add(conEntToUpdate.id);
+                                               if(mapContEntSelected.get(entid)!=null && mapContEntSelected.get(entid) == true){
+                                                   isAnyEntSelected = true;
                                                }
                                            }
+                                           if((!isAnyEntSelected) && (mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c) != null && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c))){
+                                               Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = false, Core_Status__c='Pending');
+                                               if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)){
+                                                   lEntSubToUpdate.add(conEntToUpdate);
+                                               }
+                                               sEntSubToUpdateIds.add(conEntToUpdate.id);
+                                           }
+                                       }else{
+                                           
+                                           if(mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c) != null && mapSubActive.get(existingConEntObj.Core_Entitlement_Id__c)){
+                                               Core_Contact_Entitlement__c conEntToUpdate = new Core_Contact_Entitlement__c(id=existingConEntObj.id, Core_Selected__c = false, Core_Status__c='Pending');
+                                               if(!sEntSubToUpdateIds.contains(conEntToUpdate.id)){
+                                                   lEntSubToUpdate.add(conEntToUpdate);
+                                               }
+                                               sEntSubToUpdateIds.add(conEntToUpdate.id);
+                                           }
                                        }
-                                }
+                                   }
                             }
                         }
                     }
                 }
             }
-            
-            
-            if(lEntSubToUpdate != null && lEntSubToUpdate.size() > 0){
-                update lEntSubToUpdate;
-            }
-            if(!lEntSubToInsert.isEmpty()){
-                
-                Database.insert(lEntSubToInsert, false);
-            }
-            //Added by Manikanta END(for bulk upload issue)
-        } catch(Exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(
-                Core_Message__c ='Error in class Core_ContactEntitlementValidation',
-                Core_Origin__c = 'addContactEntitlementSubordinates', 
-                Core_Project__c = 'Draco',
-                Core_Details__c = e.getMessage(),
-                Core_Severity__c = 'info',
-                Core_When__c = System.Now()
-            );
-            insert excepLog;
         }
+        
+        
+        if(lEntSubToUpdate != null && lEntSubToUpdate.size() > 0){
+            
+            update lEntSubToUpdate;
+        }
+        
+        if(!lEntSubToInsert.isEmpty()){
+            
+            Database.insert(lEntSubToInsert, false);
+        }
+        //Added by Manikanta END(for bulk upload issue)
     }
+    
     public void filterEntitlementsByProfile() {
         Boolean entCheck = false;
         String userProfileId = UserInfo.getProfileId();
         userProfileId = userProfileId.substring(0, userProfileId.length()-3);
         List<String> lEntNames = new List<String>();
+        
         List<Core_Entitlement_Profile_Access__c> epaObj = [Select id, Core_Entitlements_Allowed__c from Core_Entitlement_Profile_Access__c where Core_Profile_Id__c = :userProfileId];
+        
         
         if(epaObj != null && !epaObj.isEmpty()) {
             entCheck = String.isBlank(epaObj[0].Core_Entitlements_Allowed__c);
@@ -1124,9 +1102,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                        accountToUpdate.Core_English_Only_Name__c = conObj.Account.Name;
                    } else if(checkValidText(conObj.Account.Core_Alternate_Language_Name__c)) {
                        accountToUpdate.Core_English_Only_Name__c = conObj.Account.Core_Alternate_Language_Name__c;
-                   } else if(checkValidText(conObj.Account.Core_Data_Simplified_Account_Nm__c)){
-                       accountToUpdate.Core_English_Only_Name__c = conObj.Account.Core_Data_Simplified_Account_Nm__c;
-                   }else {
+                   } else {
                        return false;
                    }
                    if(accountToUpdate.Id != null)
@@ -1274,49 +1250,49 @@ Sharmila (Team Draco)                 09/09/2024       	Original Version
 * Date              : 8/24/2020
 ******************************************************************************************************************************************/
     /*public static Boolean validateDCBCUniqueEntitlement(Id entId, Contact conObj, String uniqueEntitlementName){
-//mcs =  getCoreContactEntExRecords();
-count=0;
-ipscount=0;
-
-if(mapOfDCBCContIds.get(conObj.id)!=null){
-mapOfDCBCContIds.put(conObj.id,mapOfDCBCContIds.get(conObj.id));
-}else if(mapOfCTOResellerContIds.get(conObj.id)!=null){
-mapOfCTOResellerContIds.put(conObj.id,mapOfCTOResellerContIds.get(conObj.id));
-}else{
-mapOfCTOResellerContIds.put(conObj.id,ipscount);
-mapOfDCBCContIds.put(conObj.id,ipscount);
-}
-
-for(Core_Contact_Entitlement_Exclusive__c csVal:mcs)
+        //mcs =  getCoreContactEntExRecords();
+        count=0;
+        ipscount=0;
+        
+        if(mapOfDCBCContIds.get(conObj.id)!=null){
+            mapOfDCBCContIds.put(conObj.id,mapOfDCBCContIds.get(conObj.id));
+        }else if(mapOfCTOResellerContIds.get(conObj.id)!=null){
+            mapOfCTOResellerContIds.put(conObj.id,mapOfCTOResellerContIds.get(conObj.id));
+        }else{
+            mapOfCTOResellerContIds.put(conObj.id,ipscount);
+            mapOfDCBCContIds.put(conObj.id,ipscount);
+        }
+        
+        for(Core_Contact_Entitlement_Exclusive__c csVal:mcs)
 {
 idsList.addAll((List<ID>)((csVal.Core_Unique_Ids__c).split(',')));
 
 }
-//if(idsList.contains(entId)){
-if(String.isBlank(uniqueEntitlementNames2)){
-uniqueEntitlementNames2=uniqueEntitlementName;
-}else{
-uniqueEntitlementNames2=uniqueEntitlementNames2+', '+uniqueEntitlementName;
-}
-if((entId+'').contains(Label.Core_CTO_Reseller)){
-mapOfCTOResellerContIds.put(conObj.id,1);
-}else if ((entId+'').contains(Label.Core_CTO_Distributor)){
-mapOfDCBCContIds.put(conObj.id,1);
-}
-if(mapOfContIds.get(conObj.id)!=null){
-mapOfContIds.put(conObj.id,mapOfContIds.get(conObj.id)+1);
-}else{
-mapOfContIds.put(conObj.id,++count);
-}
-
-//}
-
-if(mapOfContIds.get(conObj.id)>1 && (mapOfDCBCContIds.get(conObj.id)==1) && (mapOfCTOResellerContIds.get(conObj.id)==1)){ // map contact id count check
-return false;
-}else{
-return true;
-}
-}*/
+        //if(idsList.contains(entId)){
+        if(String.isBlank(uniqueEntitlementNames2)){
+            uniqueEntitlementNames2=uniqueEntitlementName;
+        }else{
+            uniqueEntitlementNames2=uniqueEntitlementNames2+', '+uniqueEntitlementName;
+        }
+        if((entId+'').contains(Label.Core_CTO_Reseller)){
+            mapOfCTOResellerContIds.put(conObj.id,1);
+        }else if ((entId+'').contains(Label.Core_CTO_Distributor)){
+            mapOfDCBCContIds.put(conObj.id,1);
+        }
+        if(mapOfContIds.get(conObj.id)!=null){
+            mapOfContIds.put(conObj.id,mapOfContIds.get(conObj.id)+1);
+        }else{
+            mapOfContIds.put(conObj.id,++count);
+        }
+        
+        //}
+        
+        if(mapOfContIds.get(conObj.id)>1 && (mapOfDCBCContIds.get(conObj.id)==1) && (mapOfCTOResellerContIds.get(conObj.id)==1)){ // map contact id count check
+            return false;
+        }else{
+            return true;
+        }
+    }*/
     
     
     //Added for User Story by Usha
@@ -1487,100 +1463,89 @@ from Core_Contact_Entitlement__c where Core_Contact_Id__c in :lstconObj AND Core
         }
         return false;
     }
-    public static void validateB2BFlaggedContactEntitlement( List<Core_Contact_Entitlement__c> newFullList){
-        try{
-            List<Id> lContactIds = new List<Id>();
-            Map<Core_Contact_Entitlement__c, Contact> mContEntitlementsAll = new Map<Core_Contact_Entitlement__c, Contact>();
-            Map<Id, Contact> map_all_contacts = new Map<Id, Contact>();
-            Map<Id, Id> map_all_accounts_Ids = new Map<Id, Id>();
-            Map<Id, Boolean> b2b_Flaged_Contacts = new Map<Id, Boolean>();
-            Map<Id, Boolean> b2b_Flaged_Account = new Map<Id, Boolean>();
-            for(Core_Contact_Entitlement__c ce: newFullList){
-                lContactIds.add(ce.Core_Contact_Id__c);
-            }
-            if(lContactIds != null && !lContactIds.isEmpty()) {
-                List<Contact> contactRecords = [Select Id, 
-                                                Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
-                                                Core_Contact_B2B_Indicator__c,
-                                                Account.Core_B2B_Entitlement__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Display_Nm__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
-                                                FROM Contact 
-                                                WHERE Id IN :lContactIds];
-                
+public static void validateB2BFlaggedContactEntitlement( List<Core_Contact_Entitlement__c> newFullList){
+  
+        List<Id> lContactIds = new List<Id>();
+        Map<Core_Contact_Entitlement__c, Contact> mContEntitlementsAll = new Map<Core_Contact_Entitlement__c, Contact>();
+        Map<Id, Contact> map_all_contacts = new Map<Id, Contact>();
+        Map<Id, Id> map_all_accounts_Ids = new Map<Id, Id>();
+        Map<Id, Boolean> b2b_Flaged_Contacts = new Map<Id, Boolean>();
+        Map<Id, Boolean> b2b_Flaged_Account = new Map<Id, Boolean>();
+       for(Core_Contact_Entitlement__c ce: newFullList){
+           lContactIds.add(ce.Core_Contact_Id__c);
+       }
+       if(lContactIds != null && !lContactIds.isEmpty()) {
+           List<Contact> contactRecords = [Select Id, 
+                                           Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, FirstName, LastName,
+                                           Core_Contact_B2B_Indicator__c,
+                                           Account.Core_B2B_Entitlement__c,(SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Display_Nm__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
+                                           FROM Contact 
+                                           WHERE Id IN :lContactIds];
+       
                 List<Core_B2B_Flag_Entitlements__c> B2BflaggedEnts = Core_B2B_Flag_Entitlements__c.getall().values();
                 Map<Id,Contact> contactsToUpdateMap = new Map<Id,Contact>();
                 Map<Id,Account> accountsToUpdateMap = new Map<Id,Account>();
-                for(Contact contactObj : contactRecords) {
-                    map_all_contacts.put(contactObj.Id, contactObj);
-                    map_all_accounts_Ids.put(contactObj.AccountId, contactObj.AccountId);
-                    for(Core_Contact_Entitlement__c contEntObj : contactObj.contact_entitlements__r){
-                        if(contEntObj != null){
-                            mContEntitlementsAll.put(contEntObj, contactObj);       
-                        }
-                    }
-                }
-                for(Core_Contact_Entitlement__c contEntObj : mContEntitlementsAll.keySet()) {
-                    Contact contactRecord = mContEntitlementsAll.get(contEntObj);                  
-                    for(Core_B2B_Flag_Entitlements__c B2BEnt : B2BflaggedEnts){
-                        if(B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c && contEntObj.Core_Status__c =='Complete'){
-                            b2b_Flaged_Contacts.put(contactRecord.Id, true);
-                            
-                        }
-                        if(!contactRecord.Account.Core_B2B_Entitlement__c && B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c){
-                            b2b_Flaged_Account.put(contactRecord.AccountId, true);
-                        }
-                    }
-                }
-                
-                for(Contact con : map_all_contacts.values()){
-                    if(b2b_Flaged_Contacts.get(con.Id) == true ){
-                        Contact conRec = new Contact(
-                            id=con.Id, 
-                            AccountId=con.AccountId, 
-                            Core_Contact_B2B_Indicator__c = true,
-                            Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
-                            Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
-                        contactsToUpdateMap.put(con.Id,conRec);
-                        
-                    }
-                    else if(b2b_Flaged_Contacts.get(con.Id) == null && con.Core_Contact_B2B_Indicator__c ){
-                        Contact conRec = new Contact(
-                            id=con.Id, 
-                            AccountId=con.AccountId, 
-                            Core_Contact_B2B_Indicator__c = false,
-                            Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
-                            Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
-                        contactsToUpdateMap.put(con.Id,conRec);
-                        
-                    }
-                }
-                for(Id accId : map_all_accounts_Ids.values()){
-                    if(b2b_Flaged_Account.get(accId) != null){
-                        Account accRec = new Account(
-                            id=accId, 
-                            Core_B2B_Entitlement__c = true);
-                        accountsToUpdateMap.put(accId, accRec);
-                    }
-                }
-                if(!contactsToUpdateMap.isEmpty()){
-                    update contactsToUpdateMap.values();
-                }
-                
-                if(accountsToUpdateMap != null) {
-                    update accountsToUpdateMap.values();
-                }
-            }
-        } catch(Exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(
-                Core_Message__c ='Error in class Core_ContactEntitlementValidation',
-                Core_Origin__c = 'validateB2BFlaggedContactEntitlement', 
-                Core_Project__c = 'Draco',
-                Core_Details__c = e.getMessage(),
-                Core_Severity__c = 'info',
-                Core_When__c = System.Now()
-            );
-            insert excepLog;
-        }                                       
+               for(Contact contactObj : contactRecords) {
+                   map_all_contacts.put(contactObj.Id, contactObj);
+                   map_all_accounts_Ids.put(contactObj.AccountId, contactObj.AccountId);
+                   for(Core_Contact_Entitlement__c contEntObj : contactObj.contact_entitlements__r){
+                       mContEntitlementsAll.put(contEntObj, contactObj);       
+                   }
+               }
+               for(Core_Contact_Entitlement__c contEntObj : mContEntitlementsAll.keySet()) {
+                   Contact contactRecord = mContEntitlementsAll.get(contEntObj);                  
+                   for(Core_B2B_Flag_Entitlements__c B2BEnt : B2BflaggedEnts){
+                       if(B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c && contEntObj.Core_Status__c =='Complete'){
+                           b2b_Flaged_Contacts.put(contactRecord.Id, true);
+                           
+                       }
+                       if(!contactRecord.Account.Core_B2B_Entitlement__c && B2BEnt.Entitlement_Display_Name__c.contains(contEntObj.Core_Display_Nm__c) && B2BEnt.IsActive__c == true && contEntObj.Core_Selected__c){
+                           b2b_Flaged_Account.put(contactRecord.AccountId, true);
+                       }
+                   }
+               }
+               
+               for(Contact con : map_all_contacts.values()){
+                   if(b2b_Flaged_Contacts.get(con.Id) == true ){
+                       Contact conRec = new Contact(
+                           id=con.Id, 
+                           AccountId=con.AccountId, 
+                           Core_Contact_B2B_Indicator__c = true,
+                           Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
+                           Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
+                       contactsToUpdateMap.put(con.Id,conRec);
+                       
+                   }
+                   else if(b2b_Flaged_Contacts.get(con.Id) == null && con.Core_Contact_B2B_Indicator__c ){
+                       Contact conRec = new Contact(
+                           id=con.Id, 
+                           AccountId=con.AccountId, 
+                           Core_Contact_B2B_Indicator__c = false,
+                           Core_English_Only_First_Name__c=con.Core_English_Only_First_Name__c,
+                           Core_English_Only_Last_Name__c=con.Core_English_Only_Last_Name__c);
+                       contactsToUpdateMap.put(con.Id,conRec);
+                       
+                   }
+               }
+               for(Id accId : map_all_accounts_Ids.values()){
+                   if(b2b_Flaged_Account.get(accId) != null){
+                       Account accRec = new Account(
+                           id=accId, 
+                           Core_B2B_Entitlement__c = true);
+                       accountsToUpdateMap.put(accId, accRec);
+                   }
+               }
+               if(!contactsToUpdateMap.isEmpty()){
+                   update contactsToUpdateMap.values();
+               }
+               
+               
+               if(accountsToUpdateMap != null) {
+                   update accountsToUpdateMap.values();
+               }
+        }
     }
+    
     public static Boolean validateAccountTier(List<String> accountIds){
         
         List<Account> accountTier = new List<Account>();
@@ -1606,8 +1571,8 @@ from Core_Contact_Entitlement__c where Core_Contact_Id__c in :lstconObj AND Core
         
         for (PRM_Account_Contact_Relationship__c pcr : lstPCRs) {
             if (pcr.PRM_Relationship_Id__r != null && entitlementName.equalsIgnoreCase(pcr.PRM_Relationship_Id__r.Name.trim())) {
-                return true;
-            }
+                    return true;
+                }
         }
         
         return false;

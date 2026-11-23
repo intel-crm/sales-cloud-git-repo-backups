@@ -37,10 +37,6 @@
                 <behavior>Readonly</behavior>
                 <field>TotalAllocatedAmount</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Maximum_Approved_Budget_Amt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

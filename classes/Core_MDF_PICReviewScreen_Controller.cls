@@ -28,7 +28,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
                  RequestId, Request.Title,Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, Core_MDF_Activity_SubType_nm__c,
                  Core_MDF_Owner_Nm__c, Core_MDF_Bank__c,  Core_MDF_Bank__r.Name, Core_MDF_Region_Cd__c, Core_MDF_Activity_End_Date__c, Core_MDF_Activity_Start_Date__c,
                  Request.Core_MDF_Budget_Amount_Local_amt__c, Request.Core_MDF_Activity_Number__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c, Request.Core_MDF_NEX_Ind__c, Core_MDF_Escalation_Id__r.Name,
-                 ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Campaign_Id__c //added by Sham,16654
+                 ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c,Core_MDF_OutcomeBased_Ind__c //added by Sham
                  from PartnerFundClaim where id =: claimId limit 1];
         
         return claim;
@@ -58,8 +58,9 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         Date today = System.today();
         PartnerFundClaim prc = fetchClaimRecords(claimId, false);
 
+        //Roshan - added for IPA OutcomeBased claims
         Boolean isOutcomeBasedClaim = false;
-        if (prc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && prc.Core_MDF_OutcomeBased_Ind__c == true) {
+        if (prc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && prc.Core_MDF_OutcomeBased_Ind__c == true) {  //Roshan
             isOutcomeBasedClaim = true;
         }
 
@@ -70,7 +71,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
                                                             AND Core_MDF_IneffectiveDate_dt__c >= today AND Core_MDF_Is_Active_ind__c = true
                                                             AND (Core_MDF_Budget_Type_nm__c = :prc.Core_MDF_Budget_Type_Nm__c OR Core_MDF_All_Budget_Types_Ind__c = true)
                                                             AND (Core_MDF_Channel_Program__c = :prc.Core_MDF_Program__c OR Core_MDF_All_Programs_Ind__c = true)
-                                                            AND Core_MDF_Outcome_Based_Indicator_Ind__c = :isOutcomeBasedClaim
+                                                            AND Core_MDF_Outcome_Based_Indicator_Ind__c = :isOutcomeBasedClaim  //Roshan - added for IPA OutcomeBased claims
                                                             ORDER BY Core_MDF_Sort_Order__c];
         return questionList;
         
@@ -151,7 +152,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         PartnerFundClaim claim = new PartnerFundClaim();
         Set<String> kpiFieldsList = fetchKPIFields(claimId);
         String kpiFields;
-        String queryString = 'Select Id,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Currency__c, Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c, Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Bank__c, Core_MDF_Taxes_Local__c, Title, Core_MDF_Claim_Comments__c, Core_MDF_Media_Vehicle__c, Core_MDF_Last_Reviewed_By_id__c, Core_MDF_Last_Reviewed_By_id__r.Name,Core_MDF_VAT_Opt_In__c,Core_MDF_Country_Location_nm__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Quantity_to_Date_Nbr__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c';//16654
+        String queryString = 'Select Id,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Currency__c, Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c, Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Bank__c, Core_MDF_Taxes_Local__c, Title, Core_MDF_Claim_Comments__c, Core_MDF_Media_Vehicle__c, Core_MDF_Last_Reviewed_By_id__c, Core_MDF_Last_Reviewed_By_id__r.Name,Core_MDF_VAT_Opt_In__c,Core_MDF_Country_Location_nm__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Quantity_to_Date_Nbr__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c';  //Roshan
         if(!kpiFieldsList.isEmpty()) {
             for(String kpiField: kpiFieldsList) {
                queryString = queryString + ','+ kpiField;
@@ -266,33 +267,32 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         // Extracting response data from questionData array passed by LWC
         if(!questionData.isEmpty() && questionData!=null)
         {
-            for(QuestionWrapper objVar : wrapper){
+            for(QuestionWrapper objVar : wrapper){	
                 String fileType = objVar.fileType;
                     List<String> filesAffected = new List<String>();
                     String response = objVar.response;
                     if(Core_MDF_CCP_ConstantClass.picQuestionResponses.contains(response))
-                    {
+                    {  
                         for(FileDetails fileName : objVar.fileNames){
                             if(fileName.selected == true) {
                                 filesAffected.add(fileName.originalFileName);
                             }
                         }
                     }
+                    
                     //Inserting PIC Review Result when files affected is selected
                     core_MDF_PICReviewResult__c reviewInput = new core_MDF_PICReviewResult__c();
                     reviewInput.Core_MDF_PIC_Review_id__c = picReviewID;
                     reviewInput.Core_MDF_Question_id__c = objVar.Id;
                     reviewInput.Core_MDF_Response_txt__c = objVar.response;
-                    reviewInput.Core_MDF_Comment_txt__c = objVar.comment; 
+                    reviewInput.Core_MDF_Comment_txt__c = objVar.comment;  //Roshan - added for IPA OutcomeBased claims
                     reviewInput.Core_MDF_FilesAffected_txt__c = String.join(filesAffected, ';'+' ');
-                    reviewInput.Core_MDF_Tactics_nm__c = String.join(objVar.tactic, ';');
-                    reviewInput.Core_MDF_AI_PIC_Review_Detail_Id__c = objVar.aiPicReviewResId;
-                    reviewInput.Core_MDF_AI_Response_Agreement_Nm__c = objVar.agreementToAIResponse;
-                    reviewInput.Core_MDF_Feedback_To_AI_Agent_Txt__c = objVar.feedbackCmtToAIResponse;
-                    reviewInput.Core_MDF_AI_Confidence_Score_Nm__c =  objVar.aiConfidenceScore;
-                    reviewInputList.add(reviewInput);   
-                }
+                    reviewInput.Core_MDF_Tactic_txt__c=String.join(objVar.tactic, ';'+' ');//Swati - added for Tactic
+                    reviewInputList.add(reviewInput);
+                
             }
+        }
+        
         insert reviewInputList;
     }
     
@@ -301,13 +301,10 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
 	Description:        To update claim record after one PIC review cycle
 	@Added By:          Accenture - BD - 1-25-2022
 	Modified By:        Date:       Changes: 
-	Roshan              13 Jan 26   Super Claim PIC changes
 	******************************************************************************************************/ 
     public static void claimUpdateOperations(Core_MDF_PIC_Review__c picReview,Id claimID,Boolean isRecommendedForAudit)
     {
-        List<PartnerFundClaim> claimsToUpdate = new List<PartnerFundClaim>();
-
-        PartnerFundClaim claim = [select id,Core_MDF_Status__c,Status,Core_MDF_Legacy_Claim_Ind__c,Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,Core_MDF_Recommend_For_ClaimReview__c,Core_MDF_RecentInternalComments_txt__c,Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c,Core_MDF_Document_Submission_Missed_Ind__c,Core_MDF_Program__c,Core_MDF_Latest_Review_Cycle_Number_nbr__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Last_Reviewed_By_id__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_Has_Sub_Claims_Ind__c from PartnerFundClaim where id = : claimID];
+        PartnerFundClaim claim = [select id,Core_MDF_Status__c,Status,Core_MDF_Legacy_Claim_Ind__c,Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,Core_MDF_Recommend_For_ClaimReview__c,Core_MDF_RecentInternalComments_txt__c,Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c,Core_MDF_Document_Submission_Missed_Ind__c,Core_MDF_Program__c,Core_MDF_Latest_Review_Cycle_Number_nbr__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Last_Reviewed_By_id__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_OutcomeBased_Ind__c from PartnerFundClaim where id = : claimID];  //Roshan
         claim.Core_MDF_Last_Reviewed_By_id__c = picReview.Core_MDF_ReviewedBy_id__c;
         
         
@@ -346,7 +343,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         if(picReview.Core_MDF_Review_Status_nm__c == label.Core_MDF_PICReview_Status_Failed)
         {
             //  For pre payment PIC Review
-            if(claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending || claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Payment_Clearance_Processing)  //Roshan - Final Outcome Based New Status
+            if(claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending)
             {
 					claimUpdateOnPicFailurePrePayment(claim);                
             }//Pre Payment Ends
@@ -361,29 +358,14 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         else if(picReview.Core_MDF_Review_Status_nm__c == label.Core_MDF_PICReview_Status_Completed)
         {
             claimUpdateOnPicSuccess(claim);
-	    
-            if (claim.Core_MDF_Has_Sub_Claims_Ind__c == true && claim.Core_MDF_PIC_Review_Completed__c == true) {
-                List<PartnerFundClaim> subClaims = [SELECT Id, Core_MDF_PIC_Review_Completed__c, Core_MDF_Eligible_for_PIC__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c = :claim.Id AND Core_MDF_PIC_Review_Completed__c = FALSE];
-
-                for (PartnerFundClaim sub : subClaims) {
-                    sub.Core_MDF_PIC_Review_Completed__c = true;
-                    sub.Core_MDF_Eligible_for_PIC__c = true;
-                    claimsToUpdate.add(sub);
-                }
-            }
             
         } // Success scenario ends
-	
-        claimsToUpdate.add(claim);
-        if (!claimsToUpdate.isEmpty()) {
-            update claimsToUpdate;
-        }
-        //update claim;
+        update claim;
     }
     
     public static void claimUpdateOnPicSuccess(PartnerFundClaim claim){
         // For pre payment PIC Review for both Legacy/Non Legacy
-            if(claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending || claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Payment_Clearance_Processing)  //Roshan - Final Outcome Based New Status
+            if(claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending)
             {
                 claim.Core_MDF_PIC_Review_Completed__c = true;
             }
@@ -397,6 +379,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
     }
     public static void claimUpdateOnPicFailurePrePayment(PartnerFundClaim claim){
 
+        //Roshan
         if (claim.Core_MDF_OutcomeBased_Ind__c && claim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {
             claim.Core_MDF_Status__c = Core_MDF_CCP_ConstantClass.PENDING_ACCOUNT_MANAGER_CLARIFICATION;
         } else {
@@ -431,11 +414,8 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
     public static void claimUpdateOnPicFailurePostPayment(PartnerFundClaim claim){
          claim.Core_MDF_Status__c = label.Core_MDF_Claim_Status_Paid_and_Resubmission_Required;
                 
-                //if(claim.Core_MDF_Legacy_Claim_Ind__c){
-                    if (!claim.Core_MDF_Legacy_Claim_Ind__c) { //ATHR Fix WW19
-                        return;
-                    }
-
+                if(claim.Core_MDF_Legacy_Claim_Ind__c)
+                {
                     claim.Core_MDF_Legacy_Reminder_txt__c = Label.Core_MDF_Legacy_Reminder_1;
                     
                 	if(claim.Core_MDF_Latest_Review_Cycle_Number_nbr__c == Integer.valueOf(label.Core_MDF_Review_Cycle_Number))
@@ -450,7 +430,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
                     	claim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = System.now() + Integer.valueOf(Label.Core_MDF_Document_Submission_Days);
                 	}
                 
-                //}
+                }
     }
 
     /***************************************************************************************************** 
@@ -490,14 +470,11 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         try {
             PartnerFundClaim pfc = fetchClaimRecords(claimId, true);
             if (pfc != null && pfc.Core_MDF_Program__c != null) {
-                /*Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
-                                            WHERE Core_MDF_Channel_Program__c = :pfc.Core_MDF_Program__c  LIMIT 1];*/
-                Core_MDF_ChannelProgram__mdt bpem = [SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt
-                                            WHERE Label = :pfc.Core_MDF_Program__c  LIMIT 1];//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
-                
+                Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+                                            WHERE Core_MDF_Channel_Program__c = :pfc.Core_MDF_Program__c  LIMIT 1];
     
-                if (bpem != null && bpem.Label != null) {
-                    programName = bpem.Core_MDF_Bank_Program_Value__c;//Swati
+                if (bpem != null && bpem.Core_MDF_Channel_Program__c != null) {
+                    programName = bpem.Core_MDF_Bank_Program_Name__c;
 
                     String activityCategoryType = pfc.Core_MDF_Activity_Category__c + '->' + pfc.Core_MDF_Activity_Types__c;
                     if (String.isNotBlank(activityCategoryType) && pfc.Core_MDF_Activity_Start_Date__c != null && pfc.Core_MDF_Activity_End_Date__c != null) {
@@ -564,7 +541,7 @@ Modified By:        Date:       Changes:
         String aiResponse='';
         try {
             Core_MDF_PIC_Review__c latest = [
-                SELECT Id, Core_MDF_AI_PIC_Review_Ind__c, Core_MDF_Review_Status_nm__c, Core_MDF_Overall_AI_Confidence_Score_Nm__c
+                SELECT Id, Core_MDF_AI_PIC_Review_Ind__c, Core_MDF_Review_Status_nm__c
                 FROM Core_MDF_PIC_Review__c
                 WHERE Core_MDF_Claim_ID_id__c = :claimId
                 ORDER BY CreatedDate DESC
@@ -581,9 +558,8 @@ Modified By:        Date:       Changes:
                 // Only fetch results if status is AVAILABLE
                 if (aiResponse == 'AVAILABLE') {
                     responseWrapper.picReviewId = latest.Id;
-                    responseWrapper.overallAIConfScore = latest.Core_MDF_Overall_AI_Confidence_Score_Nm__c;
                     List<Core_MDF_PICReviewResult__c> picReviewResult = [
-                        SELECT Id,Core_MDF_Question_id__c, Core_MDF_Response_txt__c, Core_MDF_Comment_txt__c, Core_MDF_PIC_Review_id__c, Core_MDF_AI_Confidence_Score_Nm__c
+                        SELECT Core_MDF_Question_id__c, Core_MDF_Response_txt__c, Core_MDF_Comment_txt__c, Core_MDF_PIC_Review_id__c
                         FROM Core_MDF_PICReviewResult__c
                         WHERE Core_MDF_PIC_Review_id__c = :latest.Id
                     ];
@@ -608,13 +584,8 @@ Modified By:        Date:       Changes:
         @auraenabled public String fileType{get;set;}
         @auraenabled public String response{get;set;}
         @auraenabled public String questionEnglish{get;set;}
-        @auraenabled public String comment{get;set;}
+        @auraenabled public String comment{get;set;}  //Roshan - added for IPA OutcomeBased claims
         @AuraEnabled public List<String> tactic{get;set;}
-        @AuraEnabled public String agreementToAIResponse{get;set;}
-        @AuraEnabled public String feedbackCmtToAIResponse{get;set;}
-        @AuraEnabled public String aiConfidenceScore{get;set;}
-        @Auraenabled public Id aiPicReviewResId{get;set;}
-        
     }
     
     public class FileDetails{
@@ -657,9 +628,6 @@ Modified By:        Date:       Changes:
     
     @AuraEnabled
     public List<Core_MDF_PICReviewResult__c> picReviewDetails { get; set; }
-
-    @AuraEnabled
-    public String overallAIConfScore { get; set; }
     
     public AIResponseWrapper() {
         this.picReviewDetails = new List<Core_MDF_PICReviewResult__c>();

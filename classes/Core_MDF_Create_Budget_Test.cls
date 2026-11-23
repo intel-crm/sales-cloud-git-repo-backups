@@ -7,12 +7,12 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Intel - SM         02-June-2020                    Created to test IPA Budget Creation
 *****************************************************************************************************************************************/
-@isTest 
+@isTest
 public class Core_MDF_Create_Budget_Test {
     
      // test method for data setup
     @TestSetup static void setUpData(){
-        List<Account> acctList = new List<Account>();  
+        List<Account> acctList = new List<Account>();
         List<User> userList = new List<User>();
 
         List<String> bypassFunctionKeys = new List<String>();
@@ -63,7 +63,7 @@ public class Core_MDF_Create_Budget_Test {
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
 
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-
+        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
                 
          // Creating a map of profile name and profile Id
         Map<String,Id> profileToId = new Map<String,Id>();
@@ -128,7 +128,7 @@ public class Core_MDF_Create_Budget_Test {
             	
         }
         
-
+        Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Accounttest', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);//changed 2nd parameter
         acc.Core_MDF_CoMarketingActive__c = true;//changed to true
         //Test.startTest();
@@ -223,20 +223,17 @@ public class Core_MDF_Create_Budget_Test {
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         //camp.Core_MDF_Budget__c = budget.Id;
         camp.Core_MDF_Reimbursement_Amt__c = 10000;
-        camp.Core_MDF_Technology__c='';//my change
         campList.add(camp);
         
         Campaign camp2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Cancelled',acc2.id, System.today(), System.today().adddays(30),budgetType, 10000,'INDIA', 'Consumer', 'Apollo Lake', 'Draft', false);        
         camp2.Core_MDF_Reimbursement_Amt__c = 10000;
         camp2.Core_MDF_Budget_Type_txt__c = budgetType;
         camp2.Core_MDF_Region_cd__c = 'APJ';
-        camp2.Core_MDF_Technology__c='';//my change
         campList.add(camp2);
         Campaign camp3 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - Cancelled2',acc2.id, System.today(), System.today().adddays(30),budgetType, 100000,'INDIA', 'Consumer', 'Apollo Lake', 'Draft', false);        
         camp3.Core_MDF_Reimbursement_Amt__c = 100000;
         camp3.Core_MDF_Budget_Type_txt__c = budgetType;
         camp3.Core_MDF_Region_cd__c = 'ASMO';
-        camp3.Core_MDF_Technology__c='';//my change
         campList.add(camp3);
         
         Database.insert(campList); 
@@ -270,7 +267,7 @@ public class Core_MDF_Create_Budget_Test {
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();        
         Test.stopTest();
         
-
+        List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
         
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Intel_Partner_Alliance', false,'1231231230');
         bank.Core_MDF_Intel_Company_Code__c = '650';
@@ -348,7 +345,7 @@ public class Core_MDF_Create_Budget_Test {
 
         Test.startTest();
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-
+        User ipaPayAdm = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
             System.runAs(sysAdminUser)
             {
 				List<Campaign> campToBeUpdated = new List<Campaign>();
@@ -361,13 +358,7 @@ public class Core_MDF_Create_Budget_Test {
                 
              	campToBeUpdated.add(camp);  
                 campToBeUpdated.add(camp2); 
-                Map<Campaign,PartnerMarketingBudget> campBudgetMap = new Map<Campaign,PartnerMarketingBudget>();
-                campBudgetMap=Core_MDF_Create_Budget.manageBudget(campToBeUpdated);
-         
-                Assert.areNotEqual(0,campBudgetMap.size());
-                // US - TWC702-14285: Unit Test Method should include System.Assert
-                Assert.isTrue(campBudgetMap.containsKey(camp), 'Campaign 1 should be in the budget map');
-                Assert.isTrue(campBudgetMap.containsKey(camp2), 'Campaign 2 should be in the budget map');
+                Core_MDF_Create_Budget.manageBudget(campToBeUpdated);
             }
          Test.stopTest();
      }
@@ -388,13 +379,9 @@ public class Core_MDF_Create_Budget_Test {
             camp1.Name='Test Campaign - Cancelled3';
             campToBeUpdatedName.add(camp1);
             Core_MDF_Create_Budget.updateBudget(campToBeUpdatedName);
-            Assert.areEqual('Test Campaign - Cancelled3',camp1.Name);
-            Assert.areEqual('Test Campaign - Cancelled2 Budget',pmb.Title);
             List<Campaign> campList = new List<Campaign>();
             campList.add(Camp1);
             Core_MDF_Create_Budget.cancelBudget(campList);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-            Assert.isTrue(true, 'Budget cancellation method executed successfully');
             Test.stopTest();
         }
     }

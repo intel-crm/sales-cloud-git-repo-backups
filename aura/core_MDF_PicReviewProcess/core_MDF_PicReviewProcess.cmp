@@ -10,8 +10,6 @@
         .slds-modal__content {
             padding: 0 0px !important;
             height: auto !important;
-        	overflow-y: auto !important;
-        	max-height: 500px !important;
         }
         
         .cuf-content {

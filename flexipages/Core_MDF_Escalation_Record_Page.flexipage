@@ -300,57 +300,10 @@
                 <fieldItem>Record.Core_MDF_Co_Marketing_Activity_id__c</fieldItem>
                 <identifier>RecordCore_MDF_Co_Marketing_Activity_id_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Escalation_Type_nm__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Late Claim</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
-                        <operator>EQUAL</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Super Activity</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Activity_Name_url__c</fieldItem>
-                <identifier>Recordtest_dummy_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Escalation_Type_nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Late Claim</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
-                        <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Super Activity</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>

@@ -102,6 +102,9 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__TrackingNumber__c</field>
+    </columns>
+    <columns>
         <field>Product2.Core_Product_Type__c</field>
     </columns>
     <columns>

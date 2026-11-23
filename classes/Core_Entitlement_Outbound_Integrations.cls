@@ -24,9 +24,9 @@ Updated Below Methods to stop creating OutBound message for Co-Marketing Record 
 * Draco Team                01/02/2022      Don't change ERPM Integration Status in case of 2.0 flow - ERPM Bypass Logic
 * Draco Team                07/07/2022      Added bug fix for AGS OBM tags mismatch in case of Data load [TWC1811-2597]
 * Draco Team                07/07/2022      Added bug fix for ERPM OBM tags mismatch in case of Data load [TWC1811-2597]
-* Draco Team                22/12/2022      Added logic to stop call to AGS due to ERPM By-pass logic upon Email change
+* Draco Team                22/12/2022     Added logic to stop call to AGS due to ERPM By-pass logic upon Email change
 * Draco Team                25/09/2023      Added logic to send only pending entitlement/role request & role operation in payload as a part of GetRole API EOL Changes
-* Draco Team                20/11/2023      Added logic for Internal and External Entitlements processing and OBM Generation
+* Draco Team                                               20/11/2023                      Added logic for Internal and External Entitlements processing and OBM Generation
 *****************************************************************************************************************************************/
 
 global without sharing class Core_Entitlement_Outbound_Integrations
@@ -151,15 +151,12 @@ global without sharing class Core_Entitlement_Outbound_Integrations
             List<String> conEntName = new List<String>();
             Set <Contact> lstInterContactsAGSUpdate = new Set <Contact>();
             if (onlyInternalEntPendingContacts != null && !onlyInternalEntPendingContacts.isEmpty()){
-                userListInterEntContacts = [SELECT Id, ContactId, IsActive, Core_License_Reclaimed_on_Creation__c FROM User WHERE ContactId IN :onlyInternalEntPendingContacts];
+                userListInterEntContacts = [SELECT Id, ContactId, IsActive FROM User WHERE ContactId IN :onlyInternalEntPendingContacts];
                   
                 for(User usr : userListInterEntContacts){
-                    if(usr.Core_License_Reclaimed_on_Creation__c){
-                        InternalContWithUser.put(usr.ContactId, usr.Core_License_Reclaimed_on_Creation__c);
-                    } else {
-                        InternalContWithUser.put(usr.ContactId, usr.IsActive);
-                    }
-            }
+                    InternalContWithUser.put(usr.ContactId, usr.IsActive);
+                      
+                }
             }
             
             /* Following cases will be considered as Successful and Failed:
@@ -635,92 +632,92 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         String tags = '';
         try{
             if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
-                logEntryMsgString+='\npublishERPMMessage Method invoked at:'+System.Now().format('MM/dd/YYYY HH:MM:SS','PST')+' PST dt@@@';
-                List<Contact> lstcontactsWithPending = new List<Contact>();
-                List<Contact> lstcontactsToPublishERPM = new List<Contact>();
-                List<Contact> lstcontactsNotToPublishERPM = new List<Contact>();
-                
-                //Map<String,ERPM_ContactDetailWrapper> mapERPM_ContactDetailWrapper = new Map<String,ERPM_ContactDetailWrapper>();
-                List<Contact> lstCont = new List<Contact>();
-                if(!hasRun){
-                    logEntryMsgString+='\nList of contacts received for processing: '+lstNewContacts;
-                    logEntryMsgString+='\nMap of old contacts received for processing: '+mapContIdOldContacts;
-                    for(Contact cObj : lstNewContacts)
+            logEntryMsgString+='\npublishERPMMessage Method invoked at:'+System.Now().format('MM/dd/YYYY HH:MM:SS','PST')+' PST dt@@@';
+            List<Contact> lstcontactsWithPending = new List<Contact>();
+            List<Contact> lstcontactsToPublishERPM = new List<Contact>();
+            List<Contact> lstcontactsNotToPublishERPM = new List<Contact>();
+            
+            //Map<String,ERPM_ContactDetailWrapper> mapERPM_ContactDetailWrapper = new Map<String,ERPM_ContactDetailWrapper>();
+            List<Contact> lstCont = new List<Contact>();
+            if(!hasRun){
+                logEntryMsgString+='\nList of contacts received for processing: '+lstNewContacts;
+                logEntryMsgString+='\nMap of old contacts received for processing: '+mapContIdOldContacts;
+                for(Contact cObj : lstNewContacts)
+                {
+                    //Prepare list of contacts that we need to process in ERPM
+                    if(cObj.Core_ERPM_Integration_Status__c == 'Pending' && cObj.Core_ERPM_Integration_Queue_txt__c != 'Full'
+                       && !cObj.Core_IPS_Employee_Customer__c)
                     {
-                        //Prepare list of contacts that we need to process in ERPM
-                        if(cObj.Core_ERPM_Integration_Status__c == 'Pending' && cObj.Core_ERPM_Integration_Queue_txt__c != 'Full'
-                        && !cObj.Core_IPS_Employee_Customer__c)
-                        {
-                            lstcontactsWithPending.add(cObj);
-                        }
-                        if (!String.isBlank(cObj.Core_eRPM_Person_Id__c))
-                            tags += addTag(cObj.Core_eRPM_Person_Id__c);
-                        if (!String.isBlank(cObj.Core_Enterprise_Id__c))
-                            tags += addTag(cObj.Core_Enterprise_Id__c);
-                        if (!String.isBlank(cObj.Email))
-                            tags += addTag(cObj.Email);
-                        if (!String.isBlank(cObj.Id))
-                            tags += addTag(cObj.Id);
-                        logEntryTags = tags;
+                        lstcontactsWithPending.add(cObj);
                     }
-                    Map<Id, Contact> lstcontactsWithPendingMap = new Map<Id, Contact>(lstcontactsWithPending);
-                    if(lstcontactsWithPending != null && !lstcontactsWithPending.isEmpty()) {
-                        lstCont = [SELECT id, Core_eRPM_Person_Id__c, Core_Enterprise_Id__c, FirstName, LastName,Core_Profession__c,
-                                Email, Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, Core_Sales_Do_Not_Contact_Ind__c, Core_Do_Not_Contact_Dtm__c, Core_Do_Not_Contact__c, Core_Marketing_Do_Not_Contact_Dtm__c, Salutation,
-                                Core_Job_Function_Code__c, MailingStreet, MailingCity, MailingStateCode, MailingCountryCode,
-                                MailingPostalCode, Phone, MobilePhone, Core_Preferred_Language__c, Account.Name, Account.Core_CNDA_Number__c, Account.Id,
+                    if (!String.isBlank(cObj.Core_eRPM_Person_Id__c))
+                        tags += addTag(cObj.Core_eRPM_Person_Id__c);
+                    if (!String.isBlank(cObj.Core_Enterprise_Id__c))
+                        tags += addTag(cObj.Core_Enterprise_Id__c);
+                    if (!String.isBlank(cObj.Email))
+                        tags += addTag(cObj.Email);
+                    if (!String.isBlank(cObj.Id))
+                        tags += addTag(cObj.Id);
+                    logEntryTags = tags;
+                }
+                Map<Id, Contact> lstcontactsWithPendingMap = new Map<Id, Contact>(lstcontactsWithPending);
+                if(lstcontactsWithPending != null && !lstcontactsWithPending.isEmpty()) {
+                    lstCont = [SELECT id, Core_eRPM_Person_Id__c, Core_Enterprise_Id__c, FirstName, LastName,Core_Profession__c,
+                               Email, Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, Core_Sales_Do_Not_Contact_Ind__c, Core_Do_Not_Contact_Dtm__c, Core_Do_Not_Contact__c, Core_Marketing_Do_Not_Contact_Dtm__c, Salutation,
+                               Core_Job_Function_Code__c, MailingStreet, MailingCity, MailingStateCode, MailingCountryCode,
+                               MailingPostalCode, Phone, MobilePhone, Core_Preferred_Language__c, Account.Name, Account.Core_CNDA_Number__c, Account.Id,
                                Account.BillingStreet, Account.BillingCity, Account.BillingStateCode, Account.BillingCountryCode,/*Account.Core_CIM_ID__c,*/
-                                Account.BillingPostalCode, Account.ShippingStreet, Account.ShippingCity, Account.ShippingStateCode, Account.ShippingCountryCode,
+                               Account.BillingPostalCode, Account.ShippingStreet, Account.ShippingCity, Account.ShippingStateCode, Account.ShippingCountryCode,
                                Account.ShippingPostalCode, Account.Core_User_Defined_Phone_Number__c, /*Account.Core_Account_Legal_Name__c,*/ Account.Core_IsODM__c,
                                MailingCountry, Account.BillingCountry,Account.ShippingCountry, /*Account.Core_B2B_ERPM_Account_Number__c,*/ Account.Core_English_Only_Name__c,
-                                Account.Core_Alternate_Language_Name__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_User_Defined_Website__c, Account.Core_User_Defined_Number_of_Employees__c,
-                                (SELECT Id,PRM_Status_Nm__c, PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.Name,PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r  WHERE PRM_Relationship_Id__r.Name = :Label.PRM_Entitlement_Employee),
-                                (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c FROM Contact_Subscription_Associations__r where PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c != true),
-                                (Select id, Core_Selected__c,Core_DontNotify__c,Core_Status__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_Entitlement_Id__r.Name,Core_Contact_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c FROM Contact_Entitlements__r),
-                                (SELECT Id, Contact__c, Status__c, Business_Types__c FROM Contact_Business_Types__r WHERE Business_Types__r.Name =: Label.DZP_Business_Type)
-                                FROM Contact
-                                WHERE id IN :lstcontactsWithPendingMap.keySet()];
-                        
-                        
-                        logEntryMsgString+='\nContact Records with Pending Integration Status: '+lstCont;
-                        for(Contact cObj : lstCont){
-                            
-                            Integer iPendingEntCnt = 0;
-                            Integer iPendingEngCnt = 0;
-                            List<Core_Contact_Entitlement__c> lstContEnt = new List<Core_Contact_Entitlement__c>();
+                               Account.Core_Alternate_Language_Name__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_User_Defined_Website__c, Account.Core_User_Defined_Number_of_Employees__c,
+                               (SELECT Id,PRM_Status_Nm__c, PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.Name,PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r  WHERE PRM_Relationship_Id__r.Name = :Label.PRM_Entitlement_Employee),
+                               (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c FROM Contact_Subscription_Associations__r where PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c != true),
+                               (Select id, Core_Selected__c,Core_DontNotify__c,Core_Status__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_Entitlement_Id__r.Name,Core_Contact_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c FROM Contact_Entitlements__r),
+                               (SELECT Id, Contact__c, Status__c, Business_Types__c FROM Contact_Business_Types__r WHERE Business_Types__r.Name =: Label.DZP_Business_Type)
+                               FROM Contact
+                               WHERE id IN :lstcontactsWithPendingMap.keySet()];
                     
-                            for(Core_Contact_Entitlement__c cEnt : cObj.Contact_Entitlements__r){
-                                lstContEnt.add(cEnt);
-                                //if(cEnt.Core_Contact_Id__c == cObj.Id){
-                                    //String status = cEnt.Core_Status__c;
-                                    //String engCode = cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c;
-                                    if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
-                                        iPendingEntCnt ++;
-                                    }
-                                    if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
-                                        iPendingEngCnt ++;
-                                    }
-                                //}
-                            }
-                            
-                            
-                            //prepare list of contacts which we don't want't to publish to ERPM. Added "!Core_ContactHandler.hasRunRepublish" condition to ALWAYS Publish to ERPM in case of Republish
-                            
-                            if(cObj.Core_eRPM_Person_Id__c != null && iPendingEntCnt != 0 && iPendingEngCnt ==0 && subsFlowIntiated == false && !contactUpdate && !Core_ContactHandler.hasRunRepublish){
-                                
-                                lstcontactsNotToPublishERPM.add(cObj);
-                            }
-                            //prepare list of contacts which we want't to publish to ERPM
-                            else{
-                                lstcontactsToPublishERPM.add(cObj);
-                            }
+                    
+                    logEntryMsgString+='\nContact Records with Pending Integration Status: '+lstCont;
+                    for(Contact cObj : lstCont){
+                        
+                        Integer iPendingEntCnt = 0;
+                        Integer iPendingEngCnt = 0;
+                        List<Core_Contact_Entitlement__c> lstContEnt = new List<Core_Contact_Entitlement__c>();
+                   
+                        for(Core_Contact_Entitlement__c cEnt : cObj.Contact_Entitlements__r){
+                            lstContEnt.add(cEnt);
+                            //if(cEnt.Core_Contact_Id__c == cObj.Id){
+                                //String status = cEnt.Core_Status__c;
+                                //String engCode = cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c;
+                                if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
+                                    iPendingEntCnt ++;
+                                }
+                                if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
+                                    iPendingEngCnt ++;
+                                }
+                            //}
                         }
                         
-                        //Call ERPM helper method
-                        generateErpmOutboundMessage(lstcontactsToPublishERPM, lstcontactsNotToPublishERPM, mapContIdOldContacts);
-                        hasRun= true;
+                        
+                        //prepare list of contacts which we don't want't to publish to ERPM. Added "!Core_ContactHandler.hasRunRepublish" condition to ALWAYS Publish to ERPM in case of Republish
+                        
+                        if(cObj.Core_eRPM_Person_Id__c != null && iPendingEntCnt != 0 && iPendingEngCnt ==0 && subsFlowIntiated == false && !contactUpdate && !Core_ContactHandler.hasRunRepublish){
+                            
+                            lstcontactsNotToPublishERPM.add(cObj);
+                        }
+                        //prepare list of contacts which we want't to publish to ERPM
+                        else{
+                            lstcontactsToPublishERPM.add(cObj);
+                        }
                     }
+                    
+                    //Call ERPM helper method
+                    generateErpmOutboundMessage(lstcontactsToPublishERPM, lstcontactsNotToPublishERPM, mapContIdOldContacts);
+                    hasRun= true;
                 }
+            }
             }
         }catch(Exception e){
             logEntryMsgString+='\nException occurred in publishERPMMessage method:'+e.getTypeName() + ': ' + e.getMessage() + ', ' + e.getStackTraceString();    
@@ -888,7 +885,7 @@ pAcctProf.DoNotContactFlag = 'N';
                     Map<String,String> mEngCodes = new Map<String,String>();
                     Map<String,String> mSoftEngCodes = new Map<String,String>();
                     for(Core_Contact_Entitlement__c cEnt : cObj.Contact_Entitlements__r)
-                    {  
+                    {
                         if(cEnt.Core_Contact_Id__c == cObj.Id) /*&& !IsEmailTriggerDisabledForEntitlement(cEnt))*/
                         {
                             if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c)
@@ -897,7 +894,7 @@ pAcctProf.DoNotContactFlag = 'N';
                              
                                 //Boolean selected = cEnt.Core_Selected__c;
                                 String action = (cEnt.Core_Selected__c) ? 'ENGSTSAPRD' : 'ENGSTSRJTD';
-                                   
+                                
                                     if(engCode!= null && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c == 'SEC')
                                     {
                                         if(!mEngCodes.containsKey(engCode))
@@ -981,9 +978,9 @@ pAcctProf.Memberships.add(new Memberships(System.Label.PRM_IPACRMCNTCSENGG, (cOb
 } */                           
                     
                     //Add DZS engagement in Approve/Rejected based on contact business type(DZP) status
-                    
                     if(cObj.Contact_Business_Types__r.Size() > 0 && String.isNotBlank(cObj.Core_Enterprise_Id__c)) {
-						pAcctProf.Memberships.add(new Memberships(Label.UDE_Standard_Engg_Code, (cObj.Contact_Business_Types__r[0].Status__c == 'Approved') ? 'ENGSTSAPRD' : 'ENGSTSRJTD'));
+                                             
+                        pAcctProf.Memberships.add(new Memberships(Label.UDE_Standard_Engg_Code, (cObj.Contact_Business_Types__r[0].Status__c == 'Approved') ? 'ENGSTSAPRD' : 'ENGSTSRJTD'));
                     }
                     // ------------------------------ ERPM Changes : END -------------------------------- //
                     // Always add Sales Soft engagement
@@ -1088,7 +1085,7 @@ lstContEnt = new List<Core_Contact_Entitlement__C>();
     private static String addTag(String tagToAdd) {
         return String.isBlank(tagToAdd) ? '' : (tagToAdd + ';');
             }
-    
+    //This method is no more in Use and related class is being EOL
     global class BoxB_AccountWrapper {
         public String ACCT_ID = '';
         public String ORG_MSTR_NM = '';

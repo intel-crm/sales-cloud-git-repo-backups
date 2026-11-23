@@ -48,7 +48,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Approver_Email_for_Partner</name>
@@ -98,7 +97,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Process_Deal_Lines</name>
@@ -122,7 +120,6 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_FlowApexActionCntroller</nameSegment>
-        <offset>0</offset>
         <outputParameters>
             <assignToReference>DrpsFromApex</assignToReference>
             <name>drpList</name>
@@ -310,7 +307,7 @@
     <decisions>
         <name>Create_opportunity</name>
         <label>Create opportunity</label>
-        <locationX>4062</locationX>
+        <locationX>3864</locationX>
         <locationY>170</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -371,7 +368,7 @@
     <decisions>
         <name>Is_retry</name>
         <label>Is retry?</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>494</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -1079,38 +1076,6 @@ TODAY()
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
-        <name>Publish_failure_event_for_opportunity_creation</name>
-        <label>Publish failure event for opportunity creation</label>
-        <locationX>4538</locationX>
-        <locationY>1034</locationY>
-        <inputAssignments>
-            <field>PCC_Error_Message__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Object__c</field>
-            <value>
-                <stringValue>Opportunity</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Record_ID__c</field>
-            <value>
-                <elementReference>$Record.PCC_Record_ID__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Type__c</field>
-            <value>
-                <stringValue>Failure</stringValue>
-            </value>
-        </inputAssignments>
-        <object>PCC_Deal_Approval_Process_Communication__e</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
         <name>Publish_failure_event_to_deal</name>
         <label>Publish failure event to deal</label>
         <locationX>4274</locationX>
@@ -1337,7 +1302,7 @@ TODAY()
     <recordLookups>
         <name>Get_deal_details</name>
         <label>Get deal details</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>386</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1364,9 +1329,6 @@ TODAY()
         <connector>
             <targetReference>Create_opportunity_record</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Publish_failure_event_for_opportunity_creation</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>DeveloperName</field>
@@ -1494,7 +1456,7 @@ TODAY()
     <recordLookups>
         <name>Get_partner_price_book_id</name>
         <label>Get partner price book id</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1681,7 +1643,7 @@ TODAY()
         <object>TPT_Tracker__c</object>
     </recordUpdates>
     <start>
-        <locationX>3936</locationX>
+        <locationX>3738</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Create_opportunity</targetReference>

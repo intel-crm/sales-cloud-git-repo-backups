@@ -1,5 +1,5 @@
-<aura:component  ></aura:component>
-<!--controller="MarketplaceCreateProductController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
+<aura:component controller="MarketplaceCreateProductController" ></aura:component>
+<!-- implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
     
     <aura:attribute name="recordId" type="String" default="{!recordId}" description="Internal"/>
     <aura:attribute name="category" type="string" description="Internal"/>

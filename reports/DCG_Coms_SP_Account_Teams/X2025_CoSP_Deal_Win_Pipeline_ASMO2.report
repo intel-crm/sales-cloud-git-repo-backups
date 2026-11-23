@@ -10,9 +10,6 @@
     <columns>
         <field>Opportunity$Account</field>
     </columns>
-    <columns>
-        <field>Opportunity$StageName</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
@@ -20,13 +17,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity$StageName</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -59,6 +49,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity$CloseDate</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

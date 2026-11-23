@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>AVP_PRID_Review_Date_Notification</fullName>
+        <description>AVP PRID Review Date Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>core_cpq_prid_reviewer__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_AVP_PRID_Review_Date_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_Notify_for_new_AVP_PRID_APJ</fullName>
+        <description>PSG - Notify for new AVP PRID-APJ</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ags_busops_ap</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_new_AVP_PRID_Notification_busops</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_Notify_for_new_AVP_PRID_ASMO</fullName>
+        <description>PSG - Notify for new AVP PRID-ASMO</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ags_busops_na</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_new_AVP_PRID_Notification_busops</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_Notify_for_new_AVP_PRID_EMEA</fullName>
+        <description>PSG - Notify for new AVP PRID-EMEA</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ags_busops_eu</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_new_AVP_PRID_Notification_busops</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_Notify_for_new_AVP_PRID_PRC</fullName>
+        <description>PSG - Notify for new AVP PRID-PRC</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ags_busops_prc</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_new_AVP_PRID_Notification_busops</template>
+    </alerts>
+    <rules>
+        <fullName>Notify the PRID Reviewer associated with the AVP PRID</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>price_prid__c.core_cpq_type__c</field>
+            <operation>equals</operation>
+            <value>AVP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>price_prid__c.core_cpq_prid_review_date_dt__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Notify AVP PRID Reviewer whenever prior to review date of PRID</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>AVP_PRID_Review_Date_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>price_prid__c.core_cpq_prid_review_date_dt__c</offsetFromField>
+            <timeLength>-30</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>AVP_PRID_Review_Date_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>price_prid__c.core_cpq_prid_review_date_dt__c</offsetFromField>
+            <timeLength>-10</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

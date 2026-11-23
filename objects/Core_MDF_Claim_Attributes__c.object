@@ -319,16 +319,6 @@
                     <label>Technical Activation - # of Downloads</label>
                 </value>
                 <value>
-                    <fullName>Technical Activation - # of Design Wins</fullName>
-                    <default>false</default>
-                    <label>Technical Activation - # of Design Wins</label>
-                </value>
-                <value>
-                    <fullName>Technical Activation - # of Deal Wins</fullName>
-                    <default>false</default>
-                    <label>Technical Activation - # of Deal Wins</label>
-                </value>
-                <value>
                     <fullName>Technical Activation - # of Instances</fullName>
                     <default>false</default>
                     <label>Technical Activation - # of Instances</label>
@@ -352,11 +342,6 @@
                     <fullName>Incentive - # of Deals Registered</fullName>
                     <default>false</default>
                     <label>Incentive - # of Deals Registered</label>
-                </value>
-                <value>
-                    <fullName>Incentive - # of Design Wins</fullName>
-                    <default>false</default>
-                    <label>Incentive - # of Design Wins</label>
                 </value>
                 <value>
                     <fullName>Digital Media Percentage Spend</fullName>
@@ -397,16 +382,6 @@
                     <fullName>Training Percentage Spend</fullName>
                     <default>false</default>
                     <label>Training Percentage Spend</label>
-                </value>
-                <value>
-                    <fullName>Retail Activation - # of Person Days</fullName>
-                    <default>false</default>
-                    <label>Retail Activation - # of Person Days</label>
-                </value>
-                <value>
-                    <fullName>Retail Activation Percentage Spend</fullName>
-                    <default>false</default>
-                    <label>Retail Activation Percentage Spend</label>
                 </value>
                 <value>
                     <fullName>Technical Services - # of Deployments</fullName>
@@ -511,11 +486,6 @@
                     <fullName>Incentive</fullName>
                     <default>false</default>
                     <label>Incentive</label>
-                </value>
-                <value>
-                    <fullName>Retail Activation</fullName>
-                    <default>false</default>
-                    <label>Retail Activation</label>
                 </value>
                 <value>
                     <fullName>Technical Services</fullName>

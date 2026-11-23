@@ -16,10 +16,7 @@
  </table>
 <p>Hello {!relatedTo.CRM_Brief_Reviewer__r.Name},</p>
 
-<p>The executive brief for {!relatedTo.Core_Executive_Meeting_Brief_Name__c} on&nbsp;
-<apex:outputField value="{!relatedTo.CRM_Start_Date__c}" />&nbsp;
-<apex:outputField value="{!relatedTo.CRM_Start_Time__c}" />&nbsp;
-{!relatedTo.CRM_Time_Zone__c} for {!relatedTo.Account__r.Name} has been drafted and is now ready for your review.</p>
+<p>The executive brief for {!relatedTo.Core_Executive_Meeting_Brief_Name__c} on {!relatedTo.CRM_Scheduled_Start_Time_txt__c} for {!relatedTo.Account__r.Name} has been drafted and is now ready for your review.</p>
 
 <p>The generated PDF document is attached to this email. Please review the document and share any
 updates or approvals as needed: <br/>

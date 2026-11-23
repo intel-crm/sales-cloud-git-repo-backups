@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>zip zap &amp; thats that trash services Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>zip zap &amp; thats that trash services Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Inactive_Accounts_Role</parentRole>
+</Role>

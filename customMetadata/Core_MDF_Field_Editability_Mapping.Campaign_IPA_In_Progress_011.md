@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">EndDate,Core_MDF_Comments_Internal_Only__c,Core_MDF_Partner_Contact_txt__c</value>
+        <value xsi:type="xsd:string">EndDate,Core_MDF_Comments_Internal_Only__c</value>
     </values>
     <values>
         <field>Core_MDF_Field_ReadOnly_API_Name__c</field>

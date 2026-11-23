@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-box slds-p-around_xxx-small">
+       <lightning-layout multiple-rows="true">
+          <lightning-layout-item>
+             <lightning-card class="slds-p-left_medium" title={tablename} icon-name="custom:custom28">
+             </lightning-card>
+         
+       <br/>
+					 <lightning-layout-item class="slds-p-left_none slds-p-right_none slds-m-left_none slds-m-right_none">
+							 <template if:true={data}>           
+									 <lightning-datatable key-field="id" data={data} columns={olumnsList} hide-checkbox-column>
+									 </lightning-datatable>               
+							 </template>
+					 </lightning-layout-item>
+               </lightning-layout-item>
+				</lightning-layout>
+        
+    </div>
+ </template>

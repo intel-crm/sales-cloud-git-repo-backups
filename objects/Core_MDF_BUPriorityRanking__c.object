@@ -13,17 +13,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Program_Name__c</fullName>
-        <description>Specify BU Ranking for different programs</description>
-        <externalId>false</externalId>
-        <label>Program Name</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Ranking_nbr__c</fullName>
         <externalId>false</externalId>
         <label>Ranking</label>

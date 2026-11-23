@@ -9,7 +9,7 @@
 
 @isTest(seeAllData=false)
 private class Core_IPS_Case_Interested_PartiesTest {
-    //SFDX Deployment test comment 24112025- added single comment
+    
     @isTest
     private static void testMethod1() {
         
@@ -27,11 +27,7 @@ private class Core_IPS_Case_Interested_PartiesTest {
         sysAdminUsr.get(0).UserName = 'SysAdminUsr'+sysAdminUsr.get(0).UserName;
         sysAdminUsr.get(0).ProfileID =  mapOfProfiles.get('System Administrator');
         sysAdminUsr.get(0).userroleid =  role.ID;
-         User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-           insert sysAdminUsr;
-        }
-        
+        insert sysAdminUsr;
         // Creating SETUP OBJECT (USERROLE) RECORD
         System.RunAs(sysAdminUsr[0]){
             Id nacId = Core_IPS_Case_Interested_Parties.getCaseRecordtypeIDByName('IPS No Assigned Contact Case');

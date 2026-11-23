@@ -52,16 +52,16 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         if(messageTypeSet.contains('Case')){
             Transient Map<String, JSONGenerator> systemJSONMap = Core_IPS_BES_Generate_BackendJSON.generateBackendJSOn(caseRecordList,'Case');
             Transient Map<String, JSONGenerator> caseJSONMap = Core_IPS_BES_Generate_CaseJSON.getJsonForCaseObject(caseidList);
-            Transient Map<String,Object> systemMap;
+            Transient Map<String,Object> SystemMap;
             for(String caseId : caseJSONMap.keySet()){
                 try{
-                    systemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId + 'Case').getAsString());
+                    SystemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId + 'Case').getAsString());
                     Transient JSONGenerator gen = JSON.createGenerator(true);
                     gen.writeStartArray();
                     gen.writeStartObject();
                     gen.writeFieldName(Label.Core_IPS_system_details);
-                    gen.writeObject(systemMap);
-                    if(systemMap.get('action_type') != 'Depromote'){
+                    gen.writeObject(SystemMap);
+                    if(SystemMap.get('action_type') != 'Depromote'){
                     gen.writeFieldName(Label.Core_IPS_issue_information);
                         if(limits.getHeapSize() > 6000000){
                             throw new stringException('Heap size reached....');
@@ -93,10 +93,10 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     gen.WriteEndArray();
                     finalJSONData.put(caseId+caseId, new List<String> {gen.getAsString()});
                 } catch(Exception e) {
-                   
+                   // System.debug('This is in the catch block');
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 } finally {
-                   
+                    //System.debug('inside the finally block');
                 }
             }
             
@@ -112,7 +112,7 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         List<Core_IPS_Case_Attachments__c> atts = new List<Core_IPS_Case_Attachments__c>();
         if(messageTypeSet.contains('Attachment')) {
             String caseId='';
-            Map<String,Object> systemMap;
+            Map<String,Object> SystemMap;
             try{
                 Transient Map<String, JSONGenerator> systemJSONMap = Core_IPS_BES_Generate_BackendJSON.generateBackendJSOn(attachmentRecordList,'Attachment');
                 attachmentJSONMap = Core_IPS_BES_Gen_CaseAttachmentsJSON.getJsonForCaseAttachmentObject(attachmentIdList);
@@ -150,7 +150,8 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                 }
                 }
             } catch(Exception e) {
-                
+                //System.debug('Exception occu '+e.getMessage());
+                //System.debug('reason '+e.getStackTraceString());
                 Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
             }
         }
@@ -162,10 +163,10 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         if(messageTypeSet.contains('Comment')){
             Transient Map<String, JSONGenerator> systemJSONMap = Core_IPS_BES_Generate_BackendJSON.generateBackendJSOn(commentRecordList,'Comment');
             commentJSONMap = Core_IPS_BES_Generate_CaseCommentsJSON.getJsonForCommentObject(commentIdList);
-            Map<String,Object> systemMap;
+            Map<String,Object> SystemMap;
             for(String caseId : commentJSONMap.keySet()){
                 try{
-                    systemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId?.substring(18,36)+'Comment')?.getAsString());
+                    SystemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId?.substring(18,36)+'Comment')?.getAsString());
                     JSONGenerator gen = JSON.createGenerator(true);
                     gen.writeStartArray();
                     gen.writeStartObject();
@@ -182,7 +183,7 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     }
                     //finalList.add((Map<String,String>)finalJSONData);
                 }catch(Exception e){
-                   
+                    //System.debug(e.getMessage()+'-'+e.getLineNumber());
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 }
             }
@@ -209,14 +210,10 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         
         List<Core_IPS_BES_Outbound_Message__c> besOutBoundList = new List<Core_IPS_BES_Outbound_Message__c>();
         /* Tejaswini : Added Status__c to queried fields as part of fix for TWC745-6976 */
-		//String queryString = 'Select Id,Status__c, Core_IPS_Case_ID__c,Core_IPS_BES_Message_Type__c,Comment_Id__c,Core_IPS_Attachment_ID__c,core_IPS_Outbound_Message_ID__c,(select id from BES_Error_Logs__r) from Core_IPS_BES_Outbound_Message__c where ID IN :recordIdList order by CreatedDate desc';
-        /* Start ---- Tushar ----Added isQueryable part of venuability*/
 		String queryString = 'Select Id,Status__c, Core_IPS_Case_ID__c,Core_IPS_BES_Message_Type__c,Comment_Id__c,Core_IPS_Attachment_ID__c,core_IPS_Outbound_Message_ID__c,(select id from BES_Error_Logs__r) from Core_IPS_BES_Outbound_Message__c where ID IN :recordIdList order by CreatedDate desc';
-        // Added by tushar for venuability
-        if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isQueryable()){
+        //if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isQueryable()){
             besOutBoundList = Database.query(queryString);
-        }
-        /* END ---- Tushar ----Added isQueryable part of venuability*/
+        //}
         
        // Integer counter =0;
         //if(besOutBoundList.size()>0) {
@@ -238,7 +235,7 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         for(String caseId: finalJSONData.keySet()) {
             for(String jsonS: finalJSONData.get(caseId)){
                 Core_IPS_BES_ApigeeIntegration.MessageStatus messageStatus = status.get(caseId);
-                outboundMap.get(caseId).core_IPS_Outbound_Message_ID__c = System.Label.Core_IPS_Outbound_Message_ID;
+                outboundMap.get(caseId).core_IPS_Outbound_Message_ID__c = '123';
                 outboundMap.get(caseId).Core_IPS_Case_ID__c = caseId.substring(0,18);
                 		/* Tejaswini : Added outboundMap.get(caseId).status__c != 'IPass Success' condition as part of fix for TWC745-6976 */
 						if(outboundMap.get(caseId).status__c != 'IPass Success'){

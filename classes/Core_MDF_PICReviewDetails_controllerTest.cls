@@ -97,7 +97,6 @@ Modified By:        Date:       Changes:
             
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today(), 20000, 'Always Connected PC', acc2.Id,'Desktop', false);
             camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            camp.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
             database.insert(camp);
             
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Podcast','Draft',false);
@@ -111,8 +110,6 @@ Modified By:        Date:       Changes:
             testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_pct__c = '50%';
             testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '50%';
-            testPartnerFundRequestRecord.Core_MDF_Activity_Types__c='Joint Event';
-            testPartnerFundRequestRecord.Core_MDF_ActivityCategory__c='Event';
             insert testPartnerFundRequestRecord;
             
             

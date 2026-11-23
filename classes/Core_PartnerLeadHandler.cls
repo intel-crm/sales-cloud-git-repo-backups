@@ -86,22 +86,13 @@ public without sharing class Core_PartnerLeadHandler {
 public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean isInsert){
     List<Lead> finalLeadList = new List<Lead>();
     Map<String,List<Lead>> marketingProfileLeadsMap = new Map<String,List<Lead>>();
-    Map<String,List<Lead>> partnerNameLeadsMap = new Map<String,List<Lead>>();
+    Map<String,List<Lead>> partnernameLeadsMap = new Map<String,List<Lead>>();
     Map<String, PMP_Company__c> marketingProfileMap = new Map<String, PMP_Company__c>();
+    
+    processLeads(newLeads, finalLeadList, marketingProfileLeadsMap, partnernameLeadsMap);
 
-    // Temporary workaround for ProcessLeadsCtx compilation issue
-    SWS_LeadWrappers.ProcessLeadsCtx procCtx = new SWS_LeadWrappers.ProcessLeadsCtx();
-    procCtx.finalLeadList = finalLeadList;
-    procCtx.marketingProfileLeadsMap = marketingProfileLeadsMap;
-    procCtx.partnerNameLeadsMap = partnerNameLeadsMap;
-    processLeads(newLeads, procCtx);
-    // rebind local vars in case maps were reassigned in ctx
-    finalLeadList = procCtx.finalLeadList;
-    marketingProfileLeadsMap = procCtx.marketingProfileLeadsMap;
-    partnerNameLeadsMap = procCtx.partnerNameLeadsMap;
-
-    if(!partnerNameLeadsMap.isEmpty()){
-        processPartnerNameLeads(partnerNameLeadsMap);
+    if(!partnernameLeadsMap.isEmpty()){
+        processPartnerNameLeads(partnernameLeadsMap);
     }
     
     if(!marketingProfileLeadsMap.isEmpty()){
@@ -113,24 +104,21 @@ public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean
     }
   }
 
-    // Parameter-bag to reduce parameter list for processLeads
-    // Moved to SWS_LeadWrappers.ProcessLeadsCtx
-
-    private static void processLeads (List<Lead> newLeads, SWS_LeadWrappers.ProcessLeadsCtx ctx){
+    private static void processLeads (List<Lead> newLeads, List<Lead> finalLeadList,Map<String, List<Lead>> marketingProfileLeadsMap, Map<String,List<Lead>> partnernameLeadsMap){
         for(Lead led : newLeads){
             if(led.RecordTypeId == partnerRecTypeId && led.Core_MPI_Id__c == null && !led.Core_Is_Lead_Shared__c && led.PMP_MDA_BizOrg_Id__c <> null){
-                ctx.marketingProfileLeadsMap = generateGroupsNLeadsMap(led, led.PMP_MDA_BizOrg_Id__c, ctx.marketingProfileLeadsMap);
-                ctx.finalLeadList.add(led);
+                marketingProfileLeadsMap = generateGroupsNLeadsMap(led, led.PMP_MDA_BizOrg_Id__c, marketingProfileLeadsMap);
+                finalLeadList.add(led);
             }else if(led.RecordTypeId == partnerRecTypeId && led.Core_MPI_Id__c == null && !led.Core_Is_Lead_Shared__c && led.PMP_MDA_BizOrg_Id__c == null && led.Core_Partner_Name__c <> null){
-                ctx.partnerNameLeadsMap = generateGroupsNLeadsMap(led, led.Core_Partner_Name__c.toLowerCase(), ctx.partnerNameLeadsMap);
-                ctx.finalLeadList.add(led);
+                partnernameLeadsMap = generateGroupsNLeadsMap(led, led.Core_Partner_Name__c.toLowerCase(), partnernameLeadsMap);
+                finalLeadList.add(led);
             }else if(led.RecordTypeId == partnerRecTypeId && led.Core_MPI_Id__c == null && !led.Core_Is_Lead_Shared__c && led.PMP_MDA_BizOrg_Id__c == null && led.Core_Partner_Name__c == null){
                 assignLeadSharingError(led, system.label.Core_No_PartnerId_PartnerName);
             }
         }
     }
 
-    private static void processPartnerNameLeads(Map<String,List<Lead>> partnerNameLeadsMap){
+    private static void processPartnerNameLeads(Map<String,List<Lead>> partnernameLeadsMap){
         Map<String,Core_Partner_Queue_Mapping__c> partnerNameNQueueMap = new Map<String,Core_Partner_Queue_Mapping__c>();
         Map<String,Set<Lead>> OPIDLeadSetMap = new Map<String,Set<Lead>>();
         Map<String, String> OPIDPartnerNameFromQueueMapping = new Map<String, String>();
@@ -138,25 +126,18 @@ public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean
         Set<Lead> tempSet;
         String partnerRecTypeId = Schema.SObjectType.Core_Partner_Queue_Mapping__c.getRecordTypeInfosByName().get(Label.Core_Partner_Queue_Mapping_RecordTypeId).getRecordTypeId();
 
-        List<Core_Partner_Queue_Mapping__c> partnerQueueMappingList = [select Id, Core_Partner_Name__c, PMP_MDA_BizOrg_Id__c from Core_Partner_Queue_Mapping__c where Core_Partner_Name__c IN: partnerNameLeadsMap.keySet() AND Core_Active__c = true AND RecordTypeId=: partnerRecTypeId];
+        List<Core_Partner_Queue_Mapping__c> partnerQueueMappingList = [select Id, Core_Partner_Name__c, PMP_MDA_BizOrg_Id__c from Core_Partner_Queue_Mapping__c where Core_Partner_Name__c IN: partnernameLeadsMap.keySet() AND Core_Active__c = true AND RecordTypeId=: partnerRecTypeId];
         for(Core_Partner_Queue_Mapping__c pqm : partnerQueueMappingList){
             if(pqm.PMP_MDA_BizOrg_Id__c <> null){
                 tempSet = OPIDLeadSetMap.containsKey(pqm.PMP_MDA_BizOrg_Id__c) ? OPIDLeadSetMap.get(pqm.PMP_MDA_BizOrg_Id__c) : new Set<Lead>();
-                tempSet.addAll(partnerNameLeadsMap.get(pqm.Core_Partner_Name__c.toLowerCase()));
+                tempSet.addAll(partnernameLeadsMap.get(pqm.Core_Partner_Name__c.toLowerCase()));
                 OPIDLeadSetMap.put(pqm.PMP_MDA_BizOrg_Id__c, tempSet);
                 OPIDPartnerNameFromQueueMapping.put(pqm.PMP_MDA_BizOrg_Id__c, pqm.Core_Partner_Name__c.toLowerCase());
             }
             partnerNameNQueueMap.put(pqm.Core_Partner_Name__c.toLowerCase(),pqm);
         }
         
-        // Build ctx for assignMPIToLeads to reduce parameter list
-        SWS_LeadWrappers.AssignMpiCtx assignCtx = new SWS_LeadWrappers.AssignMpiCtx();
-        assignCtx.opidLeadSetMap = OPIDLeadSetMap;
-        assignCtx.opidPartnerNameFromQueueMapping = OPIDPartnerNameFromQueueMapping;
-        assignCtx.partnerNameLeadsMap = partnerNameLeadsMap;
-        assignCtx.partnerNameQueueMap = partnerNameNQueueMap;
-        assignCtx.availableOpidFromMpiJunction = availableOPIDFromOPIDMPIJunction;
-        assignMPIToLeads(assignCtx);
+        assignMPIToLeads(OPIDLeadSetMap, OPIDPartnerNameFromQueueMapping, partnernameLeadsMap, partnerNameNQueueMap, availableOPIDFromOPIDMPIJunction);
     }
 
     private static void processMarketingProfileLeads(Map<String, List<Lead>> marketingProfileLeadsMap, Map<String, PMP_Company__c> marketingProfileMap) {
@@ -226,17 +207,15 @@ public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean
     }
 
 
-    // Parameter-bag and refactor to reduce parameter list and fix naming
-    // Moved to SWS_LeadWrappers.AssignMpiCtx
+    private static void assignMPIToLeads(Map<String, Set<Lead>> OPIDLeadSetMap, Map<String, String> OPIDPartnerNameFromQueueMapping, Map<String, List<Lead>> partnernameLeadsMap, Map<String, Core_Partner_Queue_Mapping__c> partnerNameNQueueMap, Set<String> availableOPIDFromOPIDMPIJunction
+    ) {
+        List<PMP_OPID_MPI_Rel__c> OMRList = fetchActiveOPIDMPIRelationships(OPIDLeadSetMap.keySet());
 
-    private static void assignMPIToLeads(SWS_LeadWrappers.AssignMpiCtx ctx) {
-        List<PMP_OPID_MPI_Rel__c> OMRList = fetchActiveOPIDMPIRelationships(ctx.opidLeadSetMap.keySet());
+        updateLeadsWithMPI(OMRList, OPIDLeadSetMap, availableOPIDFromOPIDMPIJunction);
 
-        updateLeadsWithMPI(OMRList, ctx.opidLeadSetMap, ctx.availableOpidFromMpiJunction);
+        assignErrorsForLeadsMissingMPI(OPIDPartnerNameFromQueueMapping, availableOPIDFromOPIDMPIJunction, partnernameLeadsMap);
 
-        assignErrorsForLeadsMissingMPI(ctx.opidPartnerNameFromQueueMapping, ctx.availableOpidFromMpiJunction, ctx.partnerNameLeadsMap);
-
-        assignErrorsForQueueMapIssues(ctx.partnerNameLeadsMap, ctx.partnerNameQueueMap);
+        assignErrorsForQueueMapIssues(partnernameLeadsMap, partnerNameNQueueMap);
     }
 
     private static List<PMP_OPID_MPI_Rel__c> fetchActiveOPIDMPIRelationships(Set<String> OPIDs) {
@@ -245,25 +224,25 @@ public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean
         ];
     }
 
-    private static void updateLeadsWithMPI(List<PMP_OPID_MPI_Rel__c> OMRList, Map<String, Set<Lead>> opidLeadSetMap, Set<String> availableOpidSet) {
+    private static void updateLeadsWithMPI(List<PMP_OPID_MPI_Rel__c> OMRList, Map<String, Set<Lead>> OPIDLeadSetMap, Set<String> availableOPIDSet) {
         for (PMP_OPID_MPI_Rel__c omr : OMRList) {
-            Set<Lead> leads = opidLeadSetMap.get(omr.PMP_One_Partner_ID__c);
+            Set<Lead> leads = OPIDLeadSetMap.get(omr.PMP_One_Partner_ID__c);
             if (leads != null) {
                 for (Lead led : leads) {
                     led.Core_MPI_Id__c = omr.PMP_Marketing_Profile_Id__c;
                     led.Core_Storefront_Name__c = omr.PMP_Marketing_Profile_Id__r.Name;
                 }
-                availableOpidSet.add(omr.PMP_One_Partner_ID__c);
+                availableOPIDSet.add(omr.PMP_One_Partner_ID__c);
             }
         }
     }
 
-    private static void assignErrorsForLeadsMissingMPI(Map<String, String> opidPartnerNameFromQueueMapping, Set<String> availableOpidSet, Map<String, List<Lead>> partnerNameLeadsMap
+    private static void assignErrorsForLeadsMissingMPI(Map<String, String> OPIDPartnerNameFromQueueMapping, Set<String> availableOPIDSet, Map<String, List<Lead>> partnernameLeadsMap
     ) {
-        for (String opid : opidPartnerNameFromQueueMapping.keySet()) {
-            if (!availableOpidSet.contains(opid)) {
-                String partnerName = opidPartnerNameFromQueueMapping.get(opid);
-                List<Lead> leads = partnerNameLeadsMap.get(partnerName);
+        for (String opid : OPIDPartnerNameFromQueueMapping.keySet()) {
+            if (!availableOPIDSet.contains(opid)) {
+                String partnerName = OPIDPartnerNameFromQueueMapping.get(opid);
+                List<Lead> leads = partnernameLeadsMap.get(partnerName);
                 if (leads != null) {
                     for (Lead led : leads) {
                         assignLeadSharingError(led, System.Label.Core_NoMPIRecords);
@@ -273,18 +252,18 @@ public static void populateSegmentMpiInPartnerLeads(List<Lead> newLeads, Boolean
         }
     }
 
-    private static void assignErrorsForQueueMapIssues(Map<String, List<Lead>> partnerNameLeadsMap, Map<String, Core_Partner_Queue_Mapping__c> partnerNameQueueMap
+    private static void assignErrorsForQueueMapIssues(Map<String, List<Lead>> partnernameLeadsMap, Map<String, Core_Partner_Queue_Mapping__c> partnerNameNQueueMap
     ) {
-        for (String partnerName : partnerNameLeadsMap.keySet()) {
-            List<Lead> leads = partnerNameLeadsMap.get(partnerName);
+        for (String partnerName : partnernameLeadsMap.keySet()) {
+            List<Lead> leads = partnernameLeadsMap.get(partnerName);
             if (leads == null) { continue; }
 
-            if (!partnerNameQueueMap.containsKey(partnerName)) {
+            if (!partnerNameNQueueMap.containsKey(partnerName)) {
                 assignErrorToLeads(leads, System.Label.Core_NoQueueMap);
                 continue;
             }
 
-            if (partnerNameQueueMap.get(partnerName).PMP_MDA_BizOrg_Id__c == null) {
+            if (partnerNameNQueueMap.get(partnerName).PMP_MDA_BizOrg_Id__c == null) {
                 assignErrorToLeads(leads, System.Label.Core_No_PartnerId_In_Queue);
             }
         }
@@ -317,14 +296,7 @@ public static void populateGroupsToRoutePartnerLead(List<Lead> newLeads){
     Map<String,List<Lead>> offeringRelatedMPILeadsMap = new Map<String,List<Lead>>();
     List<Lead> finalLeadList = new List<Lead>();
     
-    SWS_LeadWrappers.GroupLeadsCtx glCtx = new SWS_LeadWrappers.GroupLeadsCtx();
-    glCtx.allMpiLeadsMap = allMPILeadsMap;
-    glCtx.offeringRelatedMpiLeadsMap = offeringRelatedMPILeadsMap;
-    glCtx.finalLeadList = finalLeadList;
-    groupLeadsByCriteria(newLeads, glCtx);
-    allMPILeadsMap = glCtx.allMpiLeadsMap;
-    offeringRelatedMPILeadsMap = glCtx.offeringRelatedMpiLeadsMap;
-    finalLeadList = glCtx.finalLeadList;
+    groupLeadsByCriteria(newLeads, allMPILeadsMap, offeringRelatedMPILeadsMap, finalLeadList);
     
     if(allMPILeadsMap.isEmpty()) { return; }
 
@@ -345,14 +317,12 @@ public static void populateGroupsToRoutePartnerLead(List<Lead> newLeads){
 }
 
 
-    // Parameter-bag for grouping criteria
-    // Moved to SWS_LeadWrappers.GroupLeadsCtx
-
-    private static void groupLeadsByCriteria(List<Lead> leads, SWS_LeadWrappers.GroupLeadsCtx ctx){
+    private static void groupLeadsByCriteria(List<Lead> leads, Map<String,List<Lead>> allMPILeadsMap, Map<String,List<Lead>> offeringRelatedMPILeadsMap, List<Lead> finalLeadList
+    ){
         for(Lead led : leads){                
             if(led.RecordTypeId == partnerRecTypeId && led.Core_MPI_Id__c <> null && !led.Core_Is_Lead_Shared__c && led.Core_Lead_Sharing_Error__c == null){
-                ctx.finalLeadList.add(led);
-                ctx.allMpiLeadsMap = generateGroupsNLeadsMap(led, led.Core_MPI_Id__c, ctx.allMpiLeadsMap);
+                finalLeadList.add(led);
+                allMPILeadsMap = generateGroupsNLeadsMap(led, led.Core_MPI_Id__c, allMPILeadsMap);
             }
         }
     }
@@ -483,14 +453,7 @@ public static void populateGroupsToRoutePartnerLead(List<Lead> newLeads){
 			try {
 				update leadsToUpdate;
 			} catch (Exception e) {
-                // Minimal consistent exception logging (preserve no-throw behavior)
-                Core_Exceptions__c excep = new Core_Exceptions__c(
-                Core_Exception__c = 'Failure : ########### - ' + e.getStackTraceString() + ' Cause' + e.getMessage(),
-                Core_Class_Name__c ='Core_PartnerLeadHandler',
-                Core_Method_Name__c ='partnerLeadOwnerUpdate',
-                Core_IPS_Object_Name__c = 'Lead'
-            );
-            insert excep;
+				// Optionally log or handle exception
 			}
 		}
 	}
@@ -606,7 +569,6 @@ public static void populateGroupsToRoutePartnerLead(List<Lead> newLeads){
 * Parameter    : List<Lead> leadList
 */
 public static void shareLeadRecord(List<Lead> leadList){
-    if(isLeadShared) return;
     try {
         isLeadShared = true;
         List<Lead> finalLeadList = filterEligibleLeads(leadList);
@@ -618,12 +580,7 @@ public static void shareLeadRecord(List<Lead> leadList){
 
         // Prepare auxiliary data
         Map<Id, Core_Partner_Queue_Mapping__c> newQueueMap = getPartnerQueueMap();
-        SWS_LeadWrappers.ProcessOlrCtx olrCtx = new SWS_LeadWrappers.ProcessOlrCtx();
-        olrCtx.newQueueMap = newQueueMap;
-        olrCtx.finalLeadMap = finalLeadMap;
-        olrCtx.finalLeadPlclMap = finalLeadPLCLMap;
-        olrCtx.finalGroupsNLeadsMap = finalGroupsNLeadsMap;
-        processOPIDLeadRelationships(finalLeadList, olrCtx);
+        processOPIDLeadRelationships(finalLeadList, newQueueMap, finalLeadMap, finalLeadPLCLMap, finalGroupsNLeadsMap);
 
         if (!finalLeadMap.isEmpty()) {
             if (!finalLeadPLCLMap.isEmpty()) {
@@ -663,15 +620,12 @@ public static void shareLeadRecord(List<Lead> leadList){
         return newQueueMap;
     }
 
-    // Parameter-bag for OLR processing
-    // Moved to SWS_LeadWrappers.ProcessOlrCtx
-
-    private static void processOPIDLeadRelationships(List<Lead> finalLeadList, SWS_LeadWrappers.ProcessOlrCtx ctx
+    private static void processOPIDLeadRelationships(List<Lead> finalLeadList, Map<Id, Core_Partner_Queue_Mapping__c> newQueueMap, Map<String, Lead> finalLeadMap, Map<String, Lead> finalLeadPLCLMap, Map<String, List<String>> finalGroupsNLeadsMap
     ) {
         List<Core_OPID_Lead_Relationship__c> OLRList = [SELECT Id, Core_Lead_Name__c, Core_OPID_Name__c, Core_OPID_Name__r.Id, Core_Public_Group_Ids__c FROM Core_OPID_Lead_Relationship__c WHERE Core_Lead_Name__c IN :finalLeadList];
 
         for(Core_OPID_Lead_Relationship__c olr : OLRList){
-            processGroupsForLead(olr, ctx.finalGroupsNLeadsMap);
+            processGroupsForLead(olr, finalGroupsNLeadsMap);
 
             Lead tempLead = new Lead();
             tempLead.Id = olr.Core_Lead_Name__c;
@@ -679,12 +633,12 @@ public static void shareLeadRecord(List<Lead> leadList){
             tempLead.Core_Reprocess_Lead_Sharing__c = false;
             tempLead.Core_Lead_Sharing_Error__c = null;
 
-            if(ctx.newQueueMap.containsKey(olr.Core_OPID_Name__c) &&
-            ctx.newQueueMap.get(olr.Core_OPID_Name__c).Core_Disposition_as_PLCL__c == true) {     
+            if(newQueueMap.containsKey(olr.Core_OPID_Name__c) &&
+            newQueueMap.get(olr.Core_OPID_Name__c).Core_Disposition_as_PLCL__c == true) {     
                 tempLead.Core_Lead_Status__c = Label.Core_Disposition_as_PLCL_Status;
-                ctx.finalLeadPlclMap.put(olr.Core_Lead_Name__c, tempLead);
+                finalLeadPLCLMap.put(olr.Core_Lead_Name__c, tempLead);
             }
-            ctx.finalLeadMap.put(olr.Core_Lead_Name__c, tempLead);
+            finalLeadMap.put(olr.Core_Lead_Name__c, tempLead);
         }
     }
 
@@ -753,27 +707,217 @@ public static void shareLeadRecord(List<Lead> leadList){
     }
     
     /*
+* Method name  : sendNotificationEmails
+* Description  : Method to filter psg and non psg leads and send notification email
+* Return Type  : void
+* Parameter    : List<Lead> leadList, Boolean isReminder
+
+    public static void sendNotificationEmails(List<Lead> leadList, Boolean isReminder){
+        List<Lead> allLeads = new List<Lead>();
+
+        for(Lead led : leadList){
+            if(led.Core_Is_Lead_Shared__c){
+                allLeads.add(led);
+            }
+        }
+
+        List<Messaging.SingleEmailMessage> emailList = new List<Messaging.SingleEmailMessage>();
+        try{
+            emailList = sendLeadSummary(emailList,allLeads,isReminder);
+            if(!emailList.isEmpty()){
+                List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
+                for(Messaging.SingleEmailMessage mail : emailList){
+                    PRM_EmailLog__c emailLog = new PRM_EmailLog__c();
+                    emailLog.PRM_EmailContent__c = mail.getHtmlBody();
+                    emailLog.PRM_EmailDeliverabilityStatus__c = true;
+                    emailLog.PRM_Subject__c = mail.getSubject();
+                    emailLog.PRM_Timestamp__c = DateTime.now();
+                    emailLog.PRM_User__c = mail.getToAddresses()[0];
+                    emailLog.PRM_Email_API_Response__c = 'Mail sent successfully !!';
+                    emailLogList.add(emailLog);
+                }
+                Map<String,PRM_EmailLog__c> targetIdLog = new Map<String,PRM_EmailLog__c>();
+                for(PRM_EmailLog__c emailLog : emailLogList){
+                    targetIdLog.put(emailLog.PRM_User__c, emailLog);
+                }
+
+                List<Messaging.SendEmailResult> resultList = Messaging.sendEmail(emailList, false);
+
+                for(Messaging.SendEmailResult result : resultList){
+                    if(!result.isSuccess()){
+                        for( Messaging.SendEmailError error : result.getErrors()) {
+                            //in case of targetObjectId received
+                            String targetId= error.getTargetObjectId();
+                            String errorMsg= error.getMessage();
+                            if(targetId !=  null && targetIdLog.get(targetId) != null)
+                            {
+                                PRM_EmailLog__c log = targetIdLog.get(targetId);
+                                log.PRM_EmailDeliverabilityStatus__c = false;
+                                log.PRM_Email_API_Response__c = errorMsg ;
+                            }
+                        }
+                    }
+                }
+                insert emailLogList;
+            }
+        }catch(Exception e){
+            Core_Exceptions__c excep = new Core_Exceptions__c(Core_Class_Name__c = 'Core_PartnerLeadHandler',Core_Method_Name__c = 'sendNotificationEmails',Core_Record_Id__c = allLeads[0].Id,Core_Exception__c = e.getStackTraceString() + ';' + e.getCause() + ';' + e.getMessage(),Core_IPS_Object_Name__c = 'Lead',Core_Login_User_Id__c = userInfo.getUserId());
+            //excep.Core_Class_Name__c = 'Core_PartnerLeadHandler';
+            //excep.Core_Method_Name__c = 'sendNotificationEmails';
+            //excep.Core_Record_Id__c = allLeads[0].Id;
+            //excep.Core_Exception__c = e.getStackTraceString() + ';' + e.getCause() + ';' + e.getMessage();
+            //excep.Core_IPS_Object_Name__c = 'Lead';
+            // excep.Core_Login_User_Id__c = userInfo.getUserId();
+            insert excep;
+        }
+
+    }*/
+    
+    /*
+* Method name  : sendLeadSummary
+* Description  : Method to send lead summary and reminder lead summary
+* Return Type  : List<Messaging.SingleEmailMessage>
+* Parameter    : List<Messaging.SingleEmailMessage> emailList, List<Lead> leadList, boolean isReminder, Boolean isPsg
+*/
+    /* //Added Ruby team logic in this method to send Notification Messages to Account contacts - Bharath: US651055
+    public static List<Messaging.SingleEmailMessage> sendLeadSummary(List<Messaging.SingleEmailMessage> emailList, List<Lead> leadList, boolean isReminder){
+        Map<String,List<Lead>> groupWiseLeadMap = new Map<String,List<Lead>>();
+        Map<String,List<Lead>> tempGroupWiseLeadMap = new Map<String,List<Lead>>();
+        Set<String> groupIdSet = new Set<String>();
+        Set<String> userIdSet = new Set<String>();
+        List<Id> accIdList = new List<Id>();
+        Set<Id> opidAccSet = new Set<Id>();
+        Map<String,List<String>> finalGroupsNLeadsMap = new Map<String,List<String>>();
+        Map<Id,Lead> leadMap = new Map<Id,Lead>(leadList);
+        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get(System.label.PRM_Intel_Account).getRecordTypeId();
+
+        List<Core_OPID_Lead_Relationship__c> LeadOPIDSlst=[Select id,Core_Lead_Name__c, Core_Public_Group_Ids__c, Core_OPID_Name__c from Core_OPID_Lead_Relationship__c  Where Core_Lead_Name__c IN :leadList];
+        for(Core_OPID_Lead_Relationship__c olr : LeadOPIDSlst){
+            for(String Str : olr.Core_Public_Group_Ids__c.split(SYMB_SEMICOLON)){
+                groupIdSet.add(Str);
+                if(finalGroupsNLeadsMap.containsKey(olr.Core_Lead_Name__c)){
+                    finalGroupsNLeadsMap.get(olr.Core_Lead_Name__c).add(Str);
+                }
+                else{
+                    finalGroupsNLeadsMap.put(olr.Core_Lead_Name__c,new List<String>{Str});
+                }
+            }
+        }
+        
+
+        // Ruby Team Changes Start
+        if(groupIdSet.size() > 0){
+            //Query on Group Member to fetch the User Id
+            for(GroupMember gm:[Select Id,GroupId, UserOrGroupId from GroupMember where GroupId IN :groupIdSet]){
+                if(gm.UserOrGroupId != null){
+                    userIdSet.add(gm.UserOrGroupId);
+                }
+            }
+
+            if(userIdSet.size() > 0){
+                for(User us:[Select Id,Name,AccountId,Core_IPA_One_Partner_Id__c from User where Id IN :userIdSet AND Account.RecordTypeId = :intelAccRecTypeId AND Account.Core_Intel_Partner_Alliance_PartnerGroup__c = true]){
+                    if(us.Core_IPA_One_Partner_Id__c != null){
+                        opidAccSet.add(us.Core_IPA_One_Partner_Id__c);
+                    }
+                    else if(us.AccountId != null && us.Core_IPA_One_Partner_Id__c == null && !accIdList.contains(us.AccountId)){
+                        accIdList.add(us.AccountId);
+                    }
+                }
+                if(opidAccSet.size() > 0){
+                    for (Core_Account_Group_Member__c cagm:[Select Id,Name,Core_Partner_Account_Id__c, Core_Intel_Account_Id__c From Core_Account_Group_Member__c Where Core_Partner_Account_Id__c = :opidAccSet AND Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = true and Core_Inactive_Ind__c = false]){
+                        if(!accIdList.contains(cagm.Core_Intel_Account_Id__c)){
+                            accIdList.add(cagm.Core_Intel_Account_Id__c);
+                        }
+                    }
+                }
+            }
+            if(!accIdList.isEmpty() && accIdList.size() > 0){
+                PRM_SendNotificationMessages.upsertMsgLogRecs(accIdList,System.label.PRM_Msgcd_NewLead); //Invoking Ruby team apex class to send Notification Messages
+            }
+        }
+        // Ruby Team changes End
+
+        for( String led : finalGroupsNLeadsMap.keySet()){
+            List<String> PublicGroupIds = finalGroupsNLeadsMap.get(led);
+            
+
+            for(String Gid : PublicGroupIds){
+                tempGroupWiseLeadMap = generateGroupsNLeadsMap(leadMap.get(led),Gid,tempGroupWiseLeadMap);
+            }
+        }
+
+        //filter out the leadsOfEmployees public group to not send any email notifications
+        Map<Id,Group> groupsMap = new Map<Id,Group>([select Id, developerName from Group where Id IN: tempGroupWiseLeadMap.keyset() AND Type =: 'Regular']);
+        for(String grId : tempGroupWiseLeadMap.keyset()){
+            if(groupsMap.containskey(grId)){
+                if(groupsMap.get(grId).developerName.split('_').size() >= 3 && groupsMap.get(grId).developerName.split('_')[2] <> empPublicGroupNameSuffix){
+                    groupWiseLeadMap.put(grId,tempGroupWiseLeadMap.get(grId));
+                }
+            }else{
+                groupWiseLeadMap.put(grId,tempGroupWiseLeadMap.get(grId));
+            }
+        }
+
+        List<GroupMember> gmList = [Select Id, UserOrGroupId,GroupId From GroupMember where GroupId IN: groupWiseLeadMap.keyset()];
+        List<String> tempIdList = new List<String>();
+        for(GroupMember gm : gmList){
+            tempIdList.add(gm.UserOrGroupId);
+        }
+        Map<Id,User> userIdmap = new Map<Id,User>([select Id from User where Id IN: tempIdList]);
+        Map<String,List<String>> userWiseGroupMap = new Map<String,List<String>>();
+        for(GroupMember gm : gmList){
+            if(userIdmap.containskey(gm.UserOrGroupId)){
+                if(userWiseGroupMap.containsKey(gm.UserOrGroupId)){
+                    tempIdList = userWiseGroupMap.get(gm.UserOrGroupId);
+                }else{
+                    tempIdList = new List<String>();
+                }
+                tempIdList.add(gm.GroupId);
+                userWiseGroupMap.put(gm.UserOrGroupId,tempIdList);
+            }
+        }
+
+        Map<String,Set<Lead>> userWiseLeadMap = new Map<String,Set<Lead>>();
+        Set<Lead> tempLeadSet = new Set<Lead>();
+        for(String userId : userWiseGroupMap.keyset()){
+            tempLeadSet = new Set<Lead>();
+            for(String groupId : userWiseGroupMap.get(userId)){
+                tempLeadSet.addAll(groupWiseLeadMap.get(groupId));
+            }
+            userWiseLeadMap.put(userId,tempLeadSet);
+        }
+
+        List<Lead> listOfLead;
+        for(String userId : userWiseLeadMap.keyset()){
+            if(isReminder || (!isReminder && userWiseLeadMap.get(userId).size() >= Integer.valueOf(System.Label.Core_SummaryEmailMinLeadCount))){
+                listOfLead = new List<Lead>();
+                listOfLead.addAll(userWiseLeadMap.get(userId));
+                emailList = prepareGroupWiseEmail(isReminder, userId, listOfLead, emailList);
+            }
+        }
+        return emailList;
+    }*/
+    
+    /*
 * Method name  : prepareGroupWiseEmail
 * Description  : Method to prepare group wise email.
 * Return Type  : List<Messaging.SingleEmailMessage>
 * Parameter    : String groupName, List<String> userIdList, List<Lead> leadList, OrgWideEmailAddress owea, List<Messaging.SingleEmailMessage> emailList
 */
-    // Parameter-bag for simple email prepare to reduce parameter list
-    // Moved to SWS_LeadWrappers.PrepareEmailCtx
-    public static List<Messaging.SingleEmailMessage> prepareGroupWiseEmail(SWS_LeadWrappers.PrepareEmailCtx ctx){
+    public static List<Messaging.SingleEmailMessage> prepareGroupWiseEmail(Boolean isReminder, String userId, List<Lead> leadList, List<Messaging.SingleEmailMessage> emailList){
         List<String> userIdList = new List<String>();
-        userIdList.add(ctx.userId);
+        userIdList.add(userId);
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setToAddresses(userIdList);
-        if(ctx.isReminder){
+        if(isReminder){
             mail.setSubject('Your Leads: Don’t Forget');
         }else{
             mail.setSubject('New Leads For You');
         }
-        mail.setHtmlBody(prepareHtmlBody(ctx.leadList,ctx.isReminder));
+        mail.setHtmlBody(prepareHtmlBody(leadList,isReminder));
         mail.setOrgWideEmailAddressId(fromEmailAddress);
-        ctx.emailList.add(mail);
-        return ctx.emailList;
+        emailList.add(mail);
+        return emailList;
     }
     
     /*
@@ -802,14 +946,14 @@ public static void shareLeadRecord(List<Lead> leadList){
 
         for (Integer days : daysList) {
             emailBody += '<tr><td ' + borderStyle + '><p><strong>Leads over ' + days + ' days past due</strong></p>';
-            emailBody = prepareDisplayableLeads(new SWS_LeadWrappers.DisplayLeadsCtx(baseUrl, listViewUrl, reminderDayWiseLeadsMap.get(days), isReminder), emailBody);
+            emailBody = prepareDisplayableLeads(baseUrl, listViewUrl, reminderDayWiseLeadsMap.get(days), emailBody, isReminder);
         }
         emailBody += buildReminderFooter(listViewUrl, intelLeadHelp, borderStyle);
     } else {
         emailBody += buildNewLeadsHeader(logoUrl, fontStyle);
         emailBody += buildNewLeadsIntro(baseUrl, fontStyle, borderStyle);
         emailBody += '<tr><td ' + borderStyle + '><p><strong>You have ' + leadList.size() + ' new leads:</strong></p>';
-        emailBody = prepareDisplayableLeads(new SWS_LeadWrappers.DisplayLeadsCtx(baseUrl, listViewUrl, leadList, isReminder), emailBody);
+        emailBody = prepareDisplayableLeads(baseUrl, listViewUrl, leadList, emailBody, isReminder);
         emailBody += buildReviewFooter(listViewUrl, intelLeadHelp, borderStyle);
     }
     emailBody += buildCommonFooter(borderStyle, currYear);
@@ -819,14 +963,12 @@ public static void shareLeadRecord(List<Lead> leadList){
 }
 
 // Helper for adding leads to reminder map based on date field
-/* Moved to SWS_LeadWrappers.ReminderParams */
-    
-private static void addLeadToReminderMap(Map<Integer, List<Lead>> leadMap, SWS_LeadWrappers.ReminderParams p){
-    if (p.reminderDate == Date.today()) {
-        Integer days = p.leadCreationDate.daysBetween(p.reminderDate);
-        List<Lead> leads = leadMap.containsKey(days) ? leadMap.get(days) : new List<Lead>();
-        leads.add(p.led);
-        leadMap.put(days, leads);
+private static void addLeadToReminderMap(Map<Integer, List<Lead>> Leadmap, Date leadCreationDate, Date reminderDate, Lead led){
+    if (reminderDate == Date.today()) {
+        Integer days = leadCreationDate.daysBetween(reminderDate);
+        List<Lead> leads = Leadmap.containsKey(days) ? Leadmap.get(days) : new List<Lead>();
+        leads.add(led);
+        Leadmap.put(days, leads);
     }
 }
 
@@ -834,10 +976,10 @@ private static Map<Integer, List<Lead>> buildReminderMap(List<Lead> leadList) {
     Map<Integer, List<Lead>> reminderDayWiseLeadsMap = new Map<Integer, List<Lead>>();
     for (Lead led : leadList) {
         Date leadCreationDate = Date.newInstance(led.CreatedDate.year(), led.CreatedDate.month(), led.CreatedDate.day());
-        addLeadToReminderMap(reminderDayWiseLeadsMap, new SWS_LeadWrappers.ReminderParams(leadCreationDate, led.Core_1st_Reminder__c, led));
-        addLeadToReminderMap(reminderDayWiseLeadsMap, new SWS_LeadWrappers.ReminderParams(leadCreationDate, led.Core_2nd_Reminder__c, led));
-        addLeadToReminderMap(reminderDayWiseLeadsMap, new SWS_LeadWrappers.ReminderParams(leadCreationDate, led.Core_3rd_Reminder__c, led));
-        addLeadToReminderMap(reminderDayWiseLeadsMap, new SWS_LeadWrappers.ReminderParams(leadCreationDate, led.Core_4th_Reminder__c, led));
+        addLeadToReminderMap(reminderDayWiseLeadsMap, leadCreationDate, led.Core_1st_Reminder__c, led);
+        addLeadToReminderMap(reminderDayWiseLeadsMap, leadCreationDate, led.Core_2nd_Reminder__c, led);
+        addLeadToReminderMap(reminderDayWiseLeadsMap, leadCreationDate, led.Core_3rd_Reminder__c, led);
+        addLeadToReminderMap(reminderDayWiseLeadsMap, leadCreationDate, led.Core_4th_Reminder__c, led);
     }
     return reminderDayWiseLeadsMap;
 }
@@ -879,17 +1021,16 @@ private static String buildCommonFooter(String borderStyle, Integer currYear) {
 * Return Type  : String
 * Parameter    : List<Lead> leadList, Integer noOfLeads, String emailBody
 */
-	// Moved to SWS_LeadWrappers.DisplayLeadsCtx
-	public static String prepareDisplayableLeads(SWS_LeadWrappers.DisplayLeadsCtx ctx, String emailBody) {
-		Integer noOfLeads = getDisplayLeadCount(ctx.isReminder);
-		Integer remainingLeadCount = ctx.leadList.size() - noOfLeads;
+	public static String prepareDisplayableLeads(String baseUrl, String listViewUrl, List<Lead> leadList, String emailBody, Boolean isReminder) {
+		Integer noOfLeads = getDisplayLeadCount(isReminder);
+		Integer remainingLeadCount = leadList.size() - noOfLeads;
 
-		for (Integer i = 0; i < Math.min(noOfLeads, ctx.leadList.size()); i++) {
-			Lead lead = ctx.leadList[i];
-			emailBody += formatLeadEntry(lead, ctx.baseUrl, ctx.isReminder);
+		for (Integer i = 0; i < Math.min(noOfLeads, leadList.size()); i++) {
+			Lead lead = leadList[i];
+			emailBody += formatLeadEntry(lead, baseUrl, isReminder);
 		}
 
-		emailBody += formatRemainingLeadNote(remainingLeadCount, ctx.listViewUrl);
+		emailBody += formatRemainingLeadNote(remainingLeadCount, listViewUrl);
 		return emailBody;
 	}
 
@@ -986,6 +1127,215 @@ private static String buildCommonFooter(String borderStyle, Integer currYear) {
 		}
 	}
 
+    
+    /*
+* Method name  : OfferingDetailsforPartnerLead
+* Description  : Method to fetch the Offering related field values based on Offering Id
+* Return Type  : Void
+* Parameter    : List<Lead> leadList
+*/
+    /*Public static void OfferingDetailsforPartnerLead(List<Lead> leadList){
+        List<Lead> OfferingLeadList = new List<Lead>();
+        for(Lead l : leadList){
+            if(l.PMP_Offering_Id__c !=null  && l.RecordTypeId == partnerRecTypeId ){
+                OfferingLeadList.add(l) ; 
+            }
+        }
+        if(OfferingLeadList.size() > 0){
+            OfferingDetails(OfferingLeadList);
+        }
+    }*/
+    
+    /*
+* Method name  : OfferingDetails
+* Description  : Method to fetch the Offering related field values based on Offering Id
+* Return Type  : Void
+* Parameter    : List<Lead> leadList
+*/
+    /*Public static void OfferingDetails(List<Lead> Leadlist){
+        List<String> Industry;
+        List<String> SubIndustry;
+        List<String> Category;
+        List<String> Application;
+        List<String> OfferingIds = new List<String>();
+        List<Id> PartnerOfferingIds = new List<Id>();
+        Map<String,PMP_Partner_Offering__c> OfferingLeadMap= new Map<String,PMP_Partner_Offering__c>();
+        
+        for(Lead l : Leadlist){
+            OfferingIds.add(l.PMP_Offering_Id__c);
+            //OfferingLeadMap.put(l.PMP_Offering_Id__c,l.Id);
+        }
+        
+        // To Fetch the Offering Catregory,Industry,Sub Industry
+        List<PMP_Partner_Offering__c> PartnerOfferingList=[Select id,PMP_Offering_Id__c from PMP_Partner_Offering__c where PMP_Offering_Id__c In :OfferingIds];
+        for(PMP_Partner_Offering__c PartnerOffer : PartnerOfferingList){
+            PartnerOfferingIds.add(PartnerOffer.id);
+            OfferingLeadMap.put(PartnerOffer.PMP_Offering_Id__c,PartnerOffer);
+        }
+        
+        // Deriving the Offering Url
+        if(OfferingLeadMap.size() > 0){
+            for(Lead lst:Leadlist){
+                if(OfferingLeadMap.containskey(lst.PMP_Offering_Id__c)){    
+                    lst.PMP_OfferingURL_For_Internal__c=Url.getSalesforceBaseUrl().toExternalForm() + '/' +OfferingLeadMap.get(lst.PMP_Offering_Id__c).id;  
+                }
+            }
+        }
+        
+        
+        List<PMP_Partner_Offering_Category__c> getOfferCaregories = new List<PMP_Partner_Offering_Category__c>();
+        getOfferCaregories=[Select id,Name,PMP_Category_Id__c,PMP_Ancestor_Category_Cd__c, PMP_Category_Id__r.PMP_Parent_Category_Id__r.Name,
+                            PMP_Category_Id__r.Name,PMP_Offering_Id__c,PMP_Offering_Id__r.PMP_Offering_Id__c from PMP_Partner_Offering_Category__c where PMP_Offering_Id__c In : PartnerOfferingIds];
+        
+        
+        
+        For(Lead L : Leadlist)  {
+            Industry= new List<String>();
+            SubIndustry= new List<String>();
+            Category= new List<String>();
+            Application= new List<String>();
+            for(PMP_Partner_Offering_Category__c off : getOfferCaregories ){   
+                
+                //Fetching the Sub Category
+                if(l.PMP_Offering_Id__c == off.PMP_Offering_Id__r.PMP_Offering_Id__c && off.PMP_Ancestor_Category_Cd__c != null && off.PMP_Ancestor_Category_Cd__c.countMatches('|')==1 &&
+                   off.PMP_Ancestor_Category_Cd__c.contains('NPP_01_TYPE')){
+                       if(off.PMP_Category_Id__r.Name != null){
+                           Category.add(off.PMP_Category_Id__r.Name);
+                       }
+                   }
+                // Fetch the category
+                else if(l.PMP_Offering_Id__c == off.PMP_Offering_Id__r.PMP_Offering_Id__c && off.PMP_Ancestor_Category_Cd__c != null && off.PMP_Ancestor_Category_Cd__c.countMatches('|')==0 &&
+                        off.PMP_Ancestor_Category_Cd__c.contains('NPP_01_TYPE')){
+                            if(off.PMP_Category_Id__r.Name != null){
+                                Category.add(off.PMP_Category_Id__r.Name);
+                            }
+                        }
+                // Fetch the Industry
+                else if(l.PMP_Offering_Id__c == off.PMP_Offering_Id__r.PMP_Offering_Id__c && off.PMP_Ancestor_Category_Cd__c != null && off.PMP_Ancestor_Category_Cd__c.countMatches('|')==0 &&
+                        off.PMP_Ancestor_Category_Cd__c.contains('NPP_01_Industry')){
+                            if(off.PMP_Category_Id__r.Name != null){
+                                Industry.add(off.PMP_Category_Id__r.Name);
+                            }
+                        }
+                // Sub Industry
+                else if(l.PMP_Offering_Id__c == off.PMP_Offering_Id__r.PMP_Offering_Id__c && off.PMP_Ancestor_Category_Cd__c != null && off.PMP_Ancestor_Category_Cd__c.countMatches('|')==1 &&
+                        off.PMP_Ancestor_Category_Cd__c.contains('NPP_01_Industry')){
+                            if(off.PMP_Category_Id__r.Name != null){
+                                SubIndustry.add(off.PMP_Category_Id__r.Name);
+                                
+                            }
+                        }
+                else if(l.PMP_Offering_Id__c == off.PMP_Offering_Id__r.PMP_Offering_Id__c && off.PMP_Ancestor_Category_Cd__c != null && off.PMP_Ancestor_Category_Cd__c.countMatches('|')==0 &&
+                        off.PMP_Ancestor_Category_Cd__c.contains('NPP_01_APP')){
+                            if(off.PMP_Category_Id__r.Name != null){
+                                Application.add(off.PMP_Category_Id__r.Name);
+                                
+                            }
+                        }
+                
+                string allIndustries = string.join(Industry,',');
+                string allSubIndustries = string.join(SubIndustry,',');
+                String Categerymerge=string.join(Category,',');
+                String AllApplications=string.join(Application,',');
+                
+                l.PMP_Offering_MarketIndustry__c=allIndustries;
+                l.PMP_Offering_MarketSubIndustry__c=allSubIndustries;
+                l.PMP_Offering_Category__c=Categerymerge;
+                l.PMP_Offering_MarketApplication__c=AllApplications;
+                
+                
+            }
+            
+        }
+        
+        // To fetch the Fature Tag and Offering Name
+        List<PMP_Partner_Offering__c> offering = [SELECT Id, Name, PMP_Partner_Offering_Nm__c, 
+                                                  PMP_Partner_Offering_Tag_Line_Txt__c,PMP_Offering_Id__c
+                                                  FROM PMP_Partner_Offering__c WHERE Id  In: PartnerOfferingIds];
+        Map<String,PMP_Partner_Offering__c> OfferTagMap= new Map<String,PMP_Partner_Offering__c>();
+        
+        for(PMP_Partner_Offering__c Poff : offering){
+            OfferTagMap.put(Poff.PMP_Offering_Id__c,Poff);
+        }
+        List<String> OfferTagList;
+        
+        OfferTagList= new List<String>();
+        for(Lead l : Leadlist){
+            if(offering.size()>0){
+                if(l.PMP_Offering_Id__c !=null && OfferTagMap.containskey(l.PMP_Offering_Id__c)){
+                    if(OfferTagMap.get(l.PMP_Offering_Id__c).PMP_Offering_Id__c == l.PMP_Offering_Id__c){
+                        l.PMP_Partner_Offering_Nm__c=OfferTagMap.get(l.PMP_Offering_Id__c).PMP_Partner_Offering_Nm__c;
+                        //Added by Kavyashree HR(Infosys Pegasus Team) for the US700424
+                        l.Core_Partner_Offering__c = OfferTagMap.get(l.PMP_Offering_Id__c).Id;
+                    }
+                }
+            }
+        }
+        
+        
+        /// Region and Sub region
+        
+        List<PMP_Partner_Offering_Specification__c> OfferSpec=[select id,Name,PMP_Offering_Id__c,PMP_Offering_Id__r.PMP_Offering_Id__c,PMP_Ancestor_Specification_Cd__c,PMP_Specification_Id__r.Name
+                                                               from PMP_Partner_Offering_Specification__c where 
+                                                               PMP_Offering_Id__c In : PartnerOfferingIds AND PMP_Specification_Id__r.PMP_Active_Ind__c = true 
+                                                               ORDER BY PMP_Specification_Id__r.PMP_Partner_Product_Display_Sequence_Nbr__c]; 
+        
+        
+        List<String> Region;
+        List<String> SubRegion;
+        for(Lead le: Leadlist){
+            Region = new List<String>();
+            SubRegion = new List<String>();
+            for(PMP_Partner_Offering_Specification__c Offsp : OfferSpec){
+                
+                if(le.PMP_Offering_Id__c == Offsp.PMP_Offering_Id__r.PMP_Offering_Id__c && Offsp.PMP_Ancestor_Specification_Cd__c != null && Offsp.PMP_Ancestor_Specification_Cd__c.countMatches('|')==0 &&
+                   Offsp.PMP_Ancestor_Specification_Cd__c.contains('NPP_GeographicCoverage')){
+                       if(Offsp.PMP_Specification_Id__r.Name != null){
+                           Region.add(Offsp.PMP_Specification_Id__r.Name);
+                           
+                       }
+                   }
+                else if(le.PMP_Offering_Id__c == Offsp.PMP_Offering_Id__r.PMP_Offering_Id__c && Offsp.PMP_Ancestor_Specification_Cd__c != null && Offsp.PMP_Ancestor_Specification_Cd__c.countMatches('|')==1 &&
+                        Offsp.PMP_Ancestor_Specification_Cd__c.contains('NPP_GeographicCoverage')){
+                            if(Offsp.PMP_Specification_Id__r.Name != null){
+                                SubRegion.add(Offsp.PMP_Specification_Id__r.Name);
+                                
+                            }
+                        }
+            }
+            string allRegions = string.join(Region,',');
+            string allSubRegions = string.join(SubRegion,',');
+            le.PMP_Offering_Region__c=allRegions;
+            le.PMP_Offering_SubRegion__c=allSubRegions;
+            
+            
+        }
+        //Added by Kavyashree HR (Infosys Team) on 7/21/2020 for the US700424,to avoid recursive call
+        isRecursive = true;
+    }*/
+    
+    /*
+* Method name  : NewPartnerLeadNotification
+* Description  : Method to Send New Email Notification to public group Users
+* Return Type  : Void
+* Parameter    : List<Lead> leadList
+*/
+    /*Public static void NewPartnerLeadNotification(List<Lead> leadList){
+List<Lead> NotifyOwnerGroups = new List<Lead>();
+Map<String,List<String>> finalGroupsNLeadsMap = new Map<String,List<String>>();
+List<String> LeadIds = new List<String>();
+for(Lead l : leadList){
+if(l.RecordTypeId == partnerRecTypeId){
+NotifyOwnerGroups.add(l) ; 
+//  LeadIds.add(l.id);
+}
+}
+
+if(NotifyOwnerGroups.size() > 0){
+sendEmailNotification(NotifyOwnerGroups);
+
+}
+}*/
     
     /*
 * Method name  : sendEmailNotification
@@ -1107,12 +1457,7 @@ private static List<Messaging.SingleEmailMessage> prepareEmails(Map<String, Set<
         leadList.addAll(userWiseLeadMap.get(userId));
 
         for(Integer i = 0; i < count; i++){
-            SWS_LeadWrappers.PrepareTemplEmailCtx pctx = new SWS_LeadWrappers.PrepareTemplEmailCtx();
-            pctx.userId = userId;
-            pctx.leadId = leadList[i].Id;
-            pctx.emailTemplateId = emailTemp.Id;
-            pctx.emailList = emailList;
-            emailList = prepareGroupWiseEmail(pctx);
+            emailList = prepareGroupWiseEmail(userId, leadList[i].Id, emailList, emailTemp.Id);
         }
     }
     return emailList;
@@ -1188,19 +1533,18 @@ private static void sendEmailsAndLog(List<Messaging.SingleEmailMessage> emailLis
     }
 }
     
-    // Moved to SWS_LeadWrappers.PrepareTemplEmailCtx
-    public static List<Messaging.SingleEmailMessage> prepareGroupWiseEmail(SWS_LeadWrappers.PrepareTemplEmailCtx ctx){
+    public static List<Messaging.SingleEmailMessage> prepareGroupWiseEmail(String userId, Id leadId, List<Messaging.SingleEmailMessage> emailList, ID EmailTemplate){
         List<String> userIdList = new List<String>();
-        userIdList.add(ctx.userId);
+        userIdList.add(userId);
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setToAddresses(userIdList);
-        mail.setTemplateId(ctx.emailTemplateId);
-        mail.setTargetObjectId(ctx.leadId); 
+        mail.setTemplateId(EmailTemplate);
+        mail.setTargetObjectId(leadId); 
         mail.setSaveAsActivity(false); 
         mail.setTreatTargetObjectAsRecipient(false);
         mail.setOrgWideEmailAddressId(fromEmailAddress);
-        ctx.emailList.add(mail);
-        return ctx.emailList;
+        emailList.add(mail);
+        return emailList;
     }
     
 	public static void StampOPIDsonLead(List<Lead> leadList){
@@ -1365,12 +1709,7 @@ public static void sendLeadEmailNotifications(List<Account> opidList, Boolean is
         Set<Id> opidAccSet = new Set<Id>();
         Set<Id> accIdSet = new Set<Id>();
 
-        SWS_LeadWrappers.PopulateAccountSetsCtx p = new SWS_LeadWrappers.PopulateAccountSetsCtx();
-        p.userIdSet = userIdSet;
-        p.intelAccRecTypeId = intelAccRecTypeId;
-        p.opidAccSet = opidAccSet;
-        p.accIdSet = accIdSet;
-        populateAccountSets(p);
+        populateAccountSets(userIdSet, intelAccRecTypeId, opidAccSet, accIdSet);
 
         enrichAccountSetFromGroupMembers(opidAccSet, accIdSet);
 
@@ -1389,13 +1728,12 @@ public static void sendLeadEmailNotifications(List<Account> opidList, Boolean is
         return userIdSet;
     }
 
-    // Moved to SWS_LeadWrappers.PopulateAccountSetsCtx
-    private static void populateAccountSets(SWS_LeadWrappers.PopulateAccountSetsCtx ctx){
-        for(User us : [SELECT Id, Name, AccountId, Core_IPA_One_Partner_Id__c FROM User WHERE Id IN :ctx.userIdSet AND Account.RecordTypeId = :ctx.intelAccRecTypeId AND Account.Core_Intel_Partner_Alliance_PartnerGroup__c = true]){
+    private static void populateAccountSets(Set<String> userIdSet, Id intelAccRecTypeId, Set<Id> opidAccSet, Set<Id> accIdSet){
+        for(User us : [SELECT Id, Name, AccountId, Core_IPA_One_Partner_Id__c FROM User WHERE Id IN :userIdSet AND Account.RecordTypeId = :intelAccRecTypeId AND Account.Core_Intel_Partner_Alliance_PartnerGroup__c = true]){
             if(us.Core_IPA_One_Partner_Id__c != null){
-                ctx.opidAccSet.add(us.Core_IPA_One_Partner_Id__c);
-            } else if(us.AccountId != null && us.Core_IPA_One_Partner_Id__c == null && !ctx.accIdSet.contains(us.AccountId)){
-                ctx.accIdSet.add(us.AccountId);
+                opidAccSet.add(us.Core_IPA_One_Partner_Id__c);
+            } else if(us.AccountId != null && us.Core_IPA_One_Partner_Id__c == null && !accIdSet.contains(us.AccountId)){
+                accIdSet.add(us.AccountId);
             }
         }
     }
@@ -1514,12 +1852,7 @@ public static void sendLeadEmailNotifications(List<Account> opidList, Boolean is
                     if(isReminder || (!isReminder && userWiseLeadMap.get(userId).size() >= Integer.valueOf(System.Label.Core_SummaryEmailMinLeadCount))){
                             listOfLead = new List<Lead>();
                             listOfLead.addAll(userWiseLeadMap.get(userId));
-                            SWS_LeadWrappers.PrepareEmailCtx pec = new SWS_LeadWrappers.PrepareEmailCtx();
-                            pec.isReminder = isReminder;
-                            pec.userId = userId;
-                            pec.leadList = listOfLead;
-                            pec.emailList = emailList;
-                            emailList = Core_PartnerLeadHandler.prepareGroupWiseEmail(pec);
+                            emailList = Core_PartnerLeadHandler.prepareGroupWiseEmail(isReminder, userId, listOfLead, emailList);
                                          }
                                       }
                               return emailList;

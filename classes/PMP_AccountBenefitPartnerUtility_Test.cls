@@ -1724,23 +1724,22 @@ public class PMP_AccountBenefitPartnerUtility_Test {
         jun.Is_Active__c=true; 
         junctions.add(jun);
         insert junctions;
-        map<id,pmp_opid_mpi_rel__c> oldmapjun =new map<id,pmp_opid_mpi_rel__c>();
         
         String ids = [SELECT Id FROM Account WHERE Name = 'Greg Thomas'].id;
         Set<Id> id = new Set<Id>();
         id.add(ids);
       
-       PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions,oldmapjun);
+       PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions);
         
         //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
         update company;
-        PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions,oldmapjun);
+        PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions);
         
         company.PMP_Is_Working_Copy_Ind__c = true;
         update company;
         
-        PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions,oldmapjun);
+        PMP_AccountBenefitPartnerUtility.validateMultipleOPIDRelations(junctions);
     }
     
     @isTest static void createBasicAccessPartnerTest(){

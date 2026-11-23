@@ -3204,7 +3204,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                 <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>INDIA</label>
                 </value>
             </valueSetDefinition>
@@ -3237,11 +3236,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                     <fullName>Test</fullName>
                     <default>false</default>
                     <label>Test</label>
-                </value>
-                <value>
-                    <fullName>ProcessEntitlement</fullName>
-                    <default>false</default>
-                    <label>ProcessEntitlement</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -4411,6 +4405,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -4428,10 +4426,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
             <values>
                 <fullName>Others</fullName>
                 <default>true</default>
-            </values>
-            <values>
-                <fullName>ProcessEntitlement</fullName>
-                <default>false</default>
             </values>
             <values>
                 <fullName>Test</fullName>
@@ -4454,6 +4448,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>

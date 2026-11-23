@@ -155,114 +155,16 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fields>
-        <fullName>Core_MDF_AI_Confidence_Score_Nm__c</fullName>
-        <label>AI Confidence Score</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>High</fullName>
-                    <default>false</default>
-                    <label>High</label>
-                </value>
-                <value>
-                    <fullName>Medium</fullName>
-                    <default>false</default>
-                    <label>Medium</label>
-                </value>
-                <value>
-                    <fullName>Low</fullName>
-                    <default>false</default>
-                    <label>Low</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AI_PIC_Review_Detail_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>AI PIC Review Detail Id</label>
-        <referenceTo>Core_MDF_PICReviewResult__c</referenceTo>
-        <relationshipLabel>PIC Review Details</relationshipLabel>
-        <relationshipName>PIC_Review_Details</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AI_Response_Agreement_Nm__c</fullName>
-        <label>Agree with AI Response ?</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Agree</fullName>
-                    <default>false</default>
-                    <label>Agree</label>
-                </value>
-                <value>
-                    <fullName>Disagree</fullName>
-                    <default>false</default>
-                    <label>Disagree</label>
-                </value>
-                <value>
-                    <fullName>Partially Agree</fullName>
-                    <default>false</default>
-                    <label>Partially Agree</label>
-                </value>
-                <value>
-                    <fullName>NA</fullName>
-                    <default>false</default>
-                    <label>NA</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
     <fields>
         <fullName>Core_MDF_Comment_txt__c</fullName>
         <description>To store the comment from the PIC result</description>
         <label>Comment</label>
         <length>32768</length>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_External_Id__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <description>Used for integration purpose. The value will be concatenation of PIC Review Id and Question Id</description>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>45</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Feedback_To_AI_Agent_Txt__c</fullName>
-        <description>To hold the feedback/input comments shared by PIC Reviewer to the Agent(CDB).</description>
-        <label>Feedback to AI/Agent</label>
-        <length>10000</length>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -421,16 +323,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_ManualResp_Equal_AIResp_Ind__c</fullName>
-        <description>Stores Boolean based on Manual Response Vs AI Response</description>
-        <formula>IF(AND(LOWER(Core_MDF_Response_txt__c) = LOWER(Core_MDF_AI_PIC_Review_Detail_Id__r.Core_MDF_Response_txt__c), Core_MDF_PIC_Review_id__r.Core_MDF_AI_PIC_Review_Ind__c = FALSE),true,false)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Is Manual Response Equal AI Response?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_PIC_Review_id__c</fullName>
         <label>PIC Review</label>
         <referenceTo>Core_MDF_PIC_Review__c</referenceTo>
@@ -477,17 +369,14 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Tactics_nm__c</fullName>
-        <label>Tactics</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
+        <fullName>Core_MDF_Tactic_txt__c</fullName>
+        <description>This field is used for IPA outcome based.</description>
+        <label>Tactic</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Tactics</valueSetName>
-        </valueSet>
-        <visibleLines>6</visibleLines>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <label>PIC Review Detail</label>
     <nameField>

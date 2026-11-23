@@ -88,12 +88,6 @@
                                         required={campaignRequiredFields.StartDate} 
                                         disabled={campaignFieldDisabled.StartDate}
                                         onchange={handleDateChanges}></lightning-input>
-                                        <template if:true={showCCFDCFStartDateError}>
-                                            <div class="slds-text-color_error slds-m-top_xx-small">
-                                                {beforeCCFDCFDateText}{formattedCCFDCFBlockDate}.
-                                                <a href="javascript:void(0);" onclick={navigateToActivityComponent}>{afterCCFDCFDateText}</a>
-                                            </div>
-                                        </template>
                                     </lightning-layout-item>
                                 </template>
     
@@ -179,8 +173,6 @@
                                         </lightning-dual-listbox>
                                     </lightning-layout-item>
                                 </template>
-                                
-
                                 <template if:true={loadBudgetTypefields}>  
                                 <template if:false={showAvailableBudgets}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">    
@@ -205,19 +197,6 @@
                                         values={availableBudgetValues} 
                                         onbudgetselection={onBudgetSelection}
                                         ></c-core_-m-d-f_-campaign_-available_-budgets_-picklist>
-                                    </lightning-layout-item>
-                                </template>
-
-                                <template if:true={showApprovalCheckbox}>
-                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
-                                        <lightning-input type="checkbox" 
-                                        name="Core_MDF_Activity_Approval_Required_Ind__c"
-                                        field-level-help={campaignFieldHelpText.Core_MDF_Activity_Approval_Required_Ind__c} 
-                                        checked={isApprovalRequired} 
-                                        label={campaignFieldLabel.Core_MDF_Activity_Approval_Required_Ind__c} 
-                                        required={campaignRequiredFields.Core_MDF_Activity_Approval_Required_Ind__c} 
-                                        disabled={isApprovalCheckboxDisabled}
-                                        ></lightning-input>
                                     </lightning-layout-item>
                                 </template>
     
@@ -251,7 +230,6 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_First_Year_Budget_Amount__c" 
                                         step="0.01" maxlength="16"
-                                        formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_First_Year_Budget_Amount__c} 
                                         value={campaignFieldValue.Core_MDF_First_Year_Budget_Amount__c} 
                                         label={campaignFieldLabel.Core_MDF_First_Year_Budget_Amount__c} 
@@ -266,7 +244,6 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_Second_Year_Budget_Amount__c" 
                                         step="0.01" maxlength="16"
-                                        formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_Second_Year_Budget_Amount__c} 
                                         value={campaignFieldValue.Core_MDF_Second_Year_Budget_Amount__c} 
                                         label={campaignFieldLabel.Core_MDF_Second_Year_Budget_Amount__c} 
@@ -319,7 +296,6 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_Spending_Cap_Amt__c" 
                                         step="0.01" maxlength="16"
-                                        formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_Spending_Cap_Amt__c} 
                                         value={campaignFieldValue.Core_MDF_Spending_Cap_Amt__c} 
                                         label={campaignFieldLabel.Core_MDF_Spending_Cap_Amt__c} 
@@ -462,7 +438,7 @@
                                             <template if:true={multipleValuesSelected}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">
                                                     {label.Core_MDF_Campaign_Outcome_Validation}</p>
-                                            </template>
+                                            </template>                         
                                             <template if:true={outcomeBasedError}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>

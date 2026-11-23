@@ -499,8 +499,8 @@ public class Core_OppApproval_Test {
 
             List<Opportunity> lstOppty1 = [SELECT id, Core_Approver_1__c, Core_Approver_2__c, Core_Approver_3__c, Core_Approver_4__c, Core_Approver_5__c FROM Opportunity WHERE id IN :lstOppty];
             // Check to make sure the manager wasn't given access
-            //List<OpportunityShare> oppShare1 = [select UserOrGroupId, OpportunityId, OpportunityAccessLevel from OpportunityShare
-            //where OpportunityId = :lstOppty1[0].Id and UserOrGroupId = :users[5].Id];
+            List<OpportunityShare> oppShare1 = [select UserOrGroupId, OpportunityId, OpportunityAccessLevel from OpportunityShare
+            where OpportunityId = :lstOppty1[0].Id and UserOrGroupId = :users[5].Id];
             //System.assertEquals(0, oppShare1.size());
             
             // Test: Opportunity owner's manager is inactive, and technical owner's manager is inactive (should fail)
@@ -692,7 +692,6 @@ public class Core_OppApproval_Test {
   //                                                        List<OpportunityLineItem> UpdateProducts, Set<Id> UpdateOpps, List<Core_Log_Entry__c> logEntries, Map<Id, User> opptyIdvsOwnerMap) {
         
         Core_OppApproval.determineProductStatus(OldOpp,opp2,Product,ProductList,OppSet,logEntries,users);
-        system.assertEquals(true,true);
         
 } 
     
@@ -804,6 +803,7 @@ public class Core_OppApproval_Test {
                                            Core_Approver_3__c, Core_Approver_4__c, Core_Approver_5__c,
                                            Core_Technical_Owner__r.ManagerId,Owner.Core_Manager__c,Owner.ManagerId,
                                            Core_Design_Registration_Id__c FROM Opportunity WHERE id IN :lstOppty];
+            System.debug('@@lstOppty1@@' +lstOppty1);
             if(!lstOppty1.isEmpty()){
                 lstOppty1[0].Core_Design_Registration_Id__c = TestDDRlst[0].Id;
                 update lstOppty1[0];
@@ -814,7 +814,6 @@ public class Core_OppApproval_Test {
             }
         }
         Test.stopTest();
-        System.assertEquals(true,true);
     }    
     static testmethod void testOppProductRejectRecall() {
         
@@ -1009,7 +1008,7 @@ public class Core_OppApproval_Test {
             update opps;
         }
         
-        system.assertEquals(true,true);
+    
        assertProductionCanceled(opps, Products = [ SELECT Id, Core_Status__c, OpportunityId, Quantity FROM OpportunityLineItem WHERE OpportunityId IN :opps ]);
     }
     

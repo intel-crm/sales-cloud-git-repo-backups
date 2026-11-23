@@ -149,7 +149,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -174,33 +174,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IsActive__c</fullName>
-        <defaultValue>true</defaultValue>
-        <label>IsActive</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Unique_ID__c</fullName>
-        <externalId>true</externalId>
-        <label>Unique Id</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Deactivation_Date__c</fullName>
-        <label>Deactivation Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
     </fields>
     <fields>
         <fullName>Is_MMID_Blank__c</fullName>
@@ -635,26 +608,6 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>L5_Line_Of_Business_Description__c</fullName>
-        <label>Line Of Business Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>L5_Line_of_Business__c</fullName>
-        <externalId>false</externalId>
-        <label>Line of Business</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>L5_MarketCodeName_WOR__c</fullName>
         <label>L5_MarketCodeName_WOR</label>
         <length>5000</length>
@@ -838,15 +791,6 @@
         <fullName>L5_ProfitCenter__c</fullName>
         <label>L5_ProfitCenter</label>
         <length>5000</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>L5_Profit_Center_Description__c</fullName>
-        <label>Profit Center Description</label>
-        <length>32768</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>

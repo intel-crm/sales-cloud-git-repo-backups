@@ -26,6 +26,15 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         return accountBusinessType;
     }
 
+    public static Core_Account_Compliance_Watch_List__c createComplianceWatchList(Id accountId,String typeCode){
+        Core_Account_Compliance_Watch_List__c complianceWatchList =  new Core_Account_Compliance_Watch_List__c();
+        complianceWatchList.Core_Account_Id__c = accountId;
+        complianceWatchList.Core_Type__c = typeCode;
+        complianceWatchList.Core_Effective_Start_Date__c = system.today()-5;
+        //complianceWatchList.Core_Effective_End_Date__c = system.today()+5;
+        return complianceWatchList;
+    }
+
     public static User createUser(String profileId){
         User u = new User();
         u.firstname = 'ABC';

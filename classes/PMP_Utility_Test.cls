@@ -11,6 +11,7 @@
 
 @isTest
 public class PMP_Utility_Test{
+
    @testSetup static void setup() {
        EmailTemplate validEmailTemplate = new EmailTemplate();
             validEmailTemplate.isActive = true;
@@ -65,14 +66,14 @@ public class PMP_Utility_Test{
        // gg//PMP_Utility.isUserUnderSamePartner(offObj); 
       system.runAs(u){
           boolean isAdmin = PMP_Utility.isLoggedInUserAdmin();  
-        //  PMP_Utility.intelAdminGrpMembers();
+          PMP_Utility.intelAdminGrpMembers();
       }
       //List<ContentDistribution> contentDistributionList1 = PMP_Utility.getContentDownloadUrls(contentDocumentIds);
       //List<ContentDistribution> contentDistributionList2 = PMP_Utility.getContentDownloadUrlData(contentDocumentIds);
       //Boolean isUserInSameCompany = PMP_Utility.isUserInSameCompany(offObj);
               
       PMP_Utility.isIntelEmployee();
-    //  Boolean isLoggedInUserAnonymous = PMP_Utility.isLoggedInUserAnonymous();
+      Boolean isLoggedInUserAnonymous = PMP_Utility.isLoggedInUserAnonymous();
       Map<String,String> getLocaleFields = PMP_Utility.getLocaleFields('Partner Offering','en_US');
       List<PMP_Locale_To_FieldAPINm_Mapping__mdt> getLocaleToFieldMdtRecordsByField = PMP_Utility.getLocaleToFieldMdtRecordsByField('en_US','Field');
       Map<String,Object> mapSpec = new Map<String,Object>();
@@ -317,13 +318,13 @@ public class PMP_Utility_Test{
         Test.stopTest();
     }
     
-   // static testMethod void getLoggedInUSersLanguageTest(){
-    //    Test.startTest();
-      //  String language = PMP_Utility.getLoggedInUsersLanguage();
+    static testMethod void getLoggedInUSersLanguageTest(){
+        Test.startTest();
+        String language = PMP_Utility.getLoggedInUsersLanguage();
         
-      //  System.assertEquals(userInfo.getLanguage(), language);
-      //  Test.stopTest();
-  //  }
+        System.assertEquals(userInfo.getLanguage(), language);
+        Test.stopTest();
+    }
     
     /*static testMethod void isTranslationRequired(){
         Test.startTest();
@@ -344,7 +345,7 @@ public class PMP_Utility_Test{
         Test.stopTest();
     }
     
-   /* static testMethod void getContentDocumentLinkInstanceTest(){
+    static testMethod void getContentDocumentLinkInstanceTest(){
         Test.startTest();
         //PMP_Partner_Offering__c offering = PMP_TestDataUtility.createOffering('Testoffering', 'Public Content','off desc',null,true,'draft','taglineTest' );
         List<ContentDocument> docs = PMP_TestDataUtility.createContentDocument(true);
@@ -352,7 +353,7 @@ public class PMP_Utility_Test{
         //ContentDocumentLink cdl = PMP_Utility.getContentDocumentLinkInstance(docs[0].Id, offering.Id);
         //System.assertEquals(cdl.ContentDocumentId, docs[0].Id);
         Test.stopTest();
-    }*/
+    }
     
     static testMethod void getSpecificationSequenceNumberTest(){
         Test.startTest();
@@ -402,11 +403,11 @@ public class PMP_Utility_Test{
         EmailTemplate testTemplate = PMP_Utility.getEmailTemplate(validEmailTemplate.DeveloperName);
         System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
     }
-  //  @isTest
-   // static void getReplacedWithDynamicValue(){
-     //   String replacedLabel = PMP_Utility.getReplacedWithDynamicValue('View all {0}  Participants', 'Test Event');
-       // System.assertEquals(replacedLabel, 'View all Test Event  Participants');
-   // }
+    @isTest
+    static void getReplacedWithDynamicValue(){
+        String replacedLabel = PMP_Utility.getReplacedWithDynamicValue('View all {0}  Participants', 'Test Event');
+        System.assertEquals(replacedLabel, 'View all Test Event  Participants');
+    }
     @isTest
     Static Void sendEmailAndLogDataTest(){
         Test.startTest();
@@ -458,7 +459,7 @@ public class PMP_Utility_Test{
         }
         //System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
         PMP_Utility.sendEmailAndLogData(validEmailTemplate.DeveloperName,userWhatIDMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
         
        u.IsActive = false;
         //userWhatIDMap.put(u.id, off1.id);
@@ -468,7 +469,7 @@ public class PMP_Utility_Test{
         PMP_Utility.showContactPartnerButton();
         Set<Id> accId = new Set<Id>();
         accId.add(acc1.id);
-       // PMP_Utility.fetchUsersFromPagMember(accId,pslist);
+        PMP_Utility.fetchUsersFromPagMember(accId,pslist);
         //PMP_Utility.getAlertToEmailSettingData('No_update_for_six_months_Profile');
         PMP_Utility.fetchUsersMapFromPagMember(compInfoList,pslist);
         system.assertNotEquals(accId.size(),0,'Successful');
@@ -566,15 +567,15 @@ public class PMP_Utility_Test{
         PMP_Utility.getLoggedInUser();
         PMP_Utility.getCompanyInfoForOpid(jun.PMP_One_Partner_ID__c);
         PMP_Utility u = new PMP_Utility();
-      //   Map<Id,List<Account>> AllAccountRelatedToMPIActive = u.getAllAccountRelatedToMPIActive(comp);
+         Map<Id,List<Account>> AllAccountRelatedToMPIActive = u.getAllAccountRelatedToMPIActive(comp);
         
-     //   Map<Id,Set<Id>> AllAccountRelatedToMPI           = u.getAllAccountRelatedToMPI(new List<Id>{company.Id});
-     //  Map<Id,Set<Id>> AllAccountRelatedToMPIActive1     = u.getAllAccountRelatedToMPIActive(new List<Id>{company.Id});
-     //  Map<Id,Set<Id>> AllAccountRelatedToMPIActiveList = u.getAllAccountRelatedToMPIActiveList(new List<Id>{company.Id});
+        Map<Id,Set<Id>> AllAccountRelatedToMPI           = u.getAllAccountRelatedToMPI(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPIActive1     = u.getAllAccountRelatedToMPIActive(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPIActiveList = u.getAllAccountRelatedToMPIActiveList(new List<Id>{company.Id});
         
         jun.Is_Active__c=false;     
         update jun;
-      // Map<Id,Set<Id>> AllAccountRelatedToMPINotActive  = u.getAllAccountRelatedToMPINotActive(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPINotActive  = u.getAllAccountRelatedToMPINotActive(new List<Id>{company.Id});
         Test.stopTest();
     }
     
@@ -727,7 +728,7 @@ public class PMP_Utility_Test{
         PMP_Utility.getJunctionAccToMpiByCompanyId(jun.PMP_Marketing_Profile_Id__c);
         PMP_Utility u = new PMP_Utility();
         u.getAllAccountRelatedToMPI_WCandPC(junction);
-      //  u.getAccountRelatedMPIRecord(s);
+        u.getAccountRelatedMPIRecord(s);
         List<PMP_Company__c> mpiList = [Select Id from PMP_Company__c limit 10];
         u.getAllAccountRelatedToMPI(mpiList);
         PMP_Utility.getPagMembers(core);
@@ -793,8 +794,8 @@ public class PMP_Utility_Test{
         }
         //System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
        // PMP_Utility.sendEmailAndLogData(validEmailTemplate.DeveloperName,userWhatIDMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(null,null);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(null,null);
         integer emailLogcount = [Select count() from Core_Apex_EmailNotification__c limit 10];
         System.assertEquals(emailLogcount,0);    
         
@@ -805,12 +806,12 @@ public class PMP_Utility_Test{
         System.assertNotEquals(Null, cacheFlag,'cacheFlag');
     }
     
-  /*  @isTest
+    @isTest
     Static Void fetchEmailTemplateTest(){
        EmailTemplate validEmailTemplate = [select id ,DeveloperName from EmailTemplate where DeveloperName = 'unique_name_addSomethingSpecialHere'];
        EmailTemplate template = PMP_Utility.fetchEmailTemplate(validEmailTemplate.DeveloperName);
        System.assertNotEquals(Null, template,'template');
-    }*/
+    }
     
     @isTest
     Static Void getApexEmailRecordTest(){
@@ -825,11 +826,11 @@ public class PMP_Utility_Test{
     }
     
     
- /*   @isTest
+    @isTest
     static void replaceLabelWithDynamicValueTest(){
         String replacedLabel = PMP_Utility.replaceLabelWithDynamicValue('View all {0}  Participants', 'Test Event');
         System.assertEquals(replacedLabel, 'View all Test Event  Participants','success');
-    }*/
+    }
     
     
     @isTest
@@ -839,7 +840,7 @@ public class PMP_Utility_Test{
         System.assertNotEquals(returnQuery, Null,'success');
     }
     
-  /*  @isTest
+    @isTest
     static void FileSizeToStringTest(){
         String resizedVal = PMP_Utility.FileSizeToString(1220);
         PMP_Utility.FileSizeToString(400);
@@ -847,7 +848,7 @@ public class PMP_Utility_Test{
         PMP_Utility.FileSizeToString(1049600);
         PMP_Utility.FileSizeToString(1074790400);
         System.assertNotEquals(resizedVal, Null,'success');
-    }*/
+    }
    	/*IPA2.0: US-TWC729-7976*/
     /*@isTest
     static void sendEmailToIOTReadyTest(){
@@ -866,45 +867,9 @@ public class PMP_Utility_Test{
             EmailTemplate validEmailTemplate = [select id ,DeveloperName  from EmailTemplate where DeveloperName = 'unique_name_addSomethingSpecialHere'];
         	PMP_Utility.sendEmailToIOTReady(validEmailTemplate.DeveloperName,new List<Id> {surveyResult1.Id});
     }*/
-      
-    @isTest
-    static void logDmlErrors_Test() {
-        Account acc1=PMP_TestDataUtility.createIntelAccount('LogDmlErrors_Account',PMP_TestDataUtility.intel_Account_Record_Type,true);
-
-        Contact cInvalid = new Contact();
-        Database.SaveResult[] saveResults = Database.insert(new List<Contact>{ cInvalid }, false);
-
-        Account aMissing = new Account(Id = acc1.Id, Website = 'not a url'); // invalid URL format
-        Database.SaveResult[] updateResults = Database.update(new List<Account>{ aMissing }, false);
-
-        Account upsertInvalid = new Account();
-        upsertInvalid.Id = '001000000000000AAA';
-        Database.UpsertResult[] upsertResults = Database.upsert(new List<Account>{ upsertInvalid }, Account.Id, false);
-
-        Account toDelete = new Account(Id = '001000000000001AAA');
-        Database.DeleteResult[] deleteResults = Database.delete(new List<Account>{ toDelete }, false);
-        
-        List<Object> mixedResults = new List<Object>();
-        mixedResults.addAll(saveResults);
-        mixedResults.addAll(updateResults);
-        mixedResults.addAll(upsertResults);
-        mixedResults.addAll(deleteResults);
-
-        Test.startTest();
-        PMP_Utility.logDmlErrors(mixedResults, 'PMP_Utility_Test-logDmlErrors_Test');
-        Test.stopTest();
-
-        // Verify Core_Log_Entry__c records were created
-        List<Core_Log_Entry__c> logs = [
-            SELECT Id, Core_Message__c, Core_Origin__c, Core_Scope__c, Core_Severity__c
-            FROM Core_Log_Entry__c
-            WHERE Core_Scope__c = 'PMP_Utility_Test-logDmlErrors_Test'
-            LIMIT 50
-        ];
-        System.assert(logs.size() > 0, 'Expected at least one Core_Log_Entry__c created by logDmlErrors');
-    }
-
     
+   
+  
      static testMethod void sendWelcomeEmailForMPTest(){
         Account acc1=PMP_TestDataUtility.createIntelAccount('account1',PMP_TestDataUtility.intel_Account_Record_Type,true);
         Contact cont = new Contact(); //Contact

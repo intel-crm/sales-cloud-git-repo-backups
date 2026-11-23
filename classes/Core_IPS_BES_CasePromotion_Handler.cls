@@ -160,11 +160,9 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                                 caseIdToResponsesMap.put(caseRecord?.Id, caseRecord?.Core_IPS_Responses__r);
                 }
                 if(Core_IPS_Backend_Routing__c.SObjectType.getDescribe().isQueryable()){
-                    //Moved the query to without sharing class - Nuthana -- vanuability
-                    /*mapsupptBackend = [Select Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, Core_IPS_New_Backend_System__c,Core_IPS_New_Backend_System__r.Name,Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, 
+                    mapsupptBackend = [Select Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, Core_IPS_New_Backend_System__c,Core_IPS_New_Backend_System__r.Name,Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, 
                                        Core_IPS_Support_Organization__c,Core_IPS_Supported_Product__r.Name, Core_IPS_Routing_Casetype__c, Core_IPS_Product__c,Environment_Detail_Question__c, Environment_Detail_Question__r.Name, Environment_Detail_Question__r.Core_IPS_Question__c, Environment_Question_Answer__c, Core_IPS_Queue__c, Core_IPS_Supported_Product__c 
-                                       From Core_IPS_Backend_Routing__c Where Core_IPS_Deactivated__c=false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ORDER BY Core_IPS_Backend_Routing_Order__c Asc Limit 1000];*/
-                     mapsupptBackend = (List<Core_IPS_Backend_Routing__c>)Core_IPS_QueryService.queryRecords('SELECT Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, ' +     'Core_IPS_New_Backend_System__c, Core_IPS_New_Backend_System__r.Name, Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, ' +     'Core_IPS_Support_Organization__c, Core_IPS_Supported_Product__r.Name, Core_IPS_Routing_Casetype__c, Core_IPS_Product__c, ' +     'Environment_Detail_Question__c, Environment_Detail_Question__r.Name, Environment_Detail_Question__r.Core_IPS_Question__c, ' +     'Environment_Question_Answer__c, Core_IPS_Queue__c, Core_IPS_Supported_Product__c ' +     'FROM Core_IPS_Backend_Routing__c ' +     'WHERE Core_IPS_Deactivated__c = false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ' +     'ORDER BY Core_IPS_Backend_Routing_Order__c ASC LIMIT 1000',     new Map<String, Object>()); // Empty bind map since there are no variable fi;
+                                       From Core_IPS_Backend_Routing__c Where Core_IPS_Deactivated__c=false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ORDER BY Core_IPS_Backend_Routing_Order__c Asc Limit 1000];
                     
                     Map<Id, List<Core_IPS_Backend_Routing__c>> suppProdToRoutMap = new Map<Id,List<Core_IPS_Backend_Routing__c>>();
                     for(Core_IPS_Backend_Routing__c route: mapsupptBackend){
@@ -198,9 +196,7 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                     for(Case cs : csList){
                      
              //          if(cs.Core_IPS_Assigned_Queue__c != null ){
-                        // Modified key1 by chetan to fix CCG routing for queue based routing critria
-                           // key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c: '';
-                          	key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c : (String.valueOf(cs.OwnerId).startsWith('OOG') ? cs.OwnerId : '');
+                            key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c: '';
                             key2 = ((cs.Core_IPS_Ext_Supported_Product__c != null) ? cs.Core_IPS_Ext_Supported_Product__c : '');
                             key3 = ((cs.Core_Product_Organization__c != null) ? cs.Core_Product_Organization__c :'');
                             key4 = ((cs.Core_CaseType__c != null) ? cs.Core_CaseType__c : '');

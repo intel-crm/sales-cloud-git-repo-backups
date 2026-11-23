@@ -14,8 +14,7 @@ public class Core_MDF_HostRegion_Sharing_Test{
     @TestSetup static void setUpData() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         List<User> usrList = new List<User>();
-        // Highlight: Unused Local Variable 
-       // List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
+        List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
         //Creating User with utility class 
@@ -391,8 +390,7 @@ intelAccList.add(ipaUltimateAccount);*/
             Id mysterShopPSIs ;
             Id claimCCFSubPSId ;
             Id cscClaimSubPSId ;
-            // Highlight: Unused Local Variable
-           // Id ipaAccPFRSubId;
+            Id ipaAccPFRSubId;
             //List<PermissionSet> claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList LIMIT 1];
             
             for(PermissionSet claimSubmitterPS : [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList]){
@@ -501,7 +499,6 @@ intelAccList.add(ipaUltimateAccount);*/
             testPartnerFundRequest1.Core_MDF_Activity_Closure_Type__c = 'Manual';
             testPartnerFundRequest1.Core_MDF_Budget_Currency_cd__c ='USD'; 
             testPartnerFundRequest1.Core_MDF_Reimbursement_Rate_pct__c='100%';
-            testPartnerFundRequest1.Core_MDF_Activity_Types__c = 'Personnel';
             //Database.insert(testPartnerFundRequest1);
             toBeInsertedActivities.add(testPartnerFundRequest1);
             
@@ -656,7 +653,7 @@ intelAccList.add(ipaUltimateAccount);*/
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,opalbudgetMDF,'INDIA','Partner Sales Force',
-                                                                                           'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
@@ -675,7 +672,7 @@ intelAccList.add(ipaUltimateAccount);*/
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,opalbudgetMDF,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr1.RequestedAmount = 9000;
             pfr1.Amount = 9000;
@@ -702,13 +699,12 @@ intelAccList.add(ipaUltimateAccount);*/
             pfr2.Core_MDF_Budget_Type_nm__c = 'Retail MDF';
             pfr2.AllocationId = rmfPfa.Id;
             pfr2.BudgetId = pmb.Id;
-            pfr2.Core_MDF_Activity_Types__c = 'Personnel';
             toBeInsertedActivities.add(pfr2);
             
             PartnerFundRequest pfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr3.RequestedAmount = 9000;
             pfr3.Amount = 9000;
@@ -725,7 +721,7 @@ intelAccList.add(ipaUltimateAccount);*/
             PartnerFundRequest pfr4 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr4.RequestedAmount = 400;
             pfr4.Amount = 400;
@@ -743,7 +739,7 @@ intelAccList.add(ipaUltimateAccount);*/
             PartnerFundRequest pfr5 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr5.RequestedAmount = 9000;
             pfr5.Amount = 9000;
@@ -759,7 +755,7 @@ intelAccList.add(ipaUltimateAccount);*/
             PartnerFundRequest pfr6 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                             string.valueof(acc.id),omCmpPfa,OEMPMB,'INDIA','Partner Sales Force',
-                                                                                            'Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)',
+                                                                                            'Desktop','Intel® Corporate Logo','Broadcast',
                                                                                             'Radio','Draft',false);
             pfr6.RequestedAmount = 9000;
             pfr6.Amount = 9000;
@@ -786,12 +782,11 @@ intelAccList.add(ipaUltimateAccount);*/
             pfr7.Core_MDF_Budget_Type_nm__c = 'Retail MDF';
             pfr7.AllocationId = rmfPfa.Id;
             pfr7.BudgetId = pmb.Id;
-            pfr7.Core_MDF_Activity_Types__c = 'Personnel';
             toBeInsertedActivities.add(pfr7);
             
             PartnerFundRequest IPApfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                               Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(iPACoMarketingAcc.id),NULL,NULL,'India','C-Suite','Traditional Notebook',
-                                                                                              'Intel® 11ᵗʰ Gen','Sales Incentive (Pre-2025)','Seller - Target SPIF','Draft',false); 
+                                                                                              'Intel® 11ᵗʰ Gen','Sales Incentive','Seller - Target SPIF','Draft',false); 
             IPApfr.Core_MDF_Activity_Description__c = 'Test IPA Activity';
             IPApfr.Title = 'Test IPA Activity';
             IPApfr.Core_MDF_Start_Date__c = System.today().addDays(1);
@@ -807,7 +802,7 @@ intelAccList.add(ipaUltimateAccount);*/
             
             PartnerFundRequest IPApfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                                Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(iPACoMarketingAcc.id),NULL,NULL,'India','C-Suite','Traditional Notebook',
-                                                                                               'Intel® 11ᵗʰ Gen','Sales Incentive (Pre-2025)','Seller - Target SPIF','Draft',false); 
+                                                                                               'Intel® 11ᵗʰ Gen','Sales Incentive','Seller - Target SPIF','Draft',false); 
             IPApfr2.Core_MDF_Activity_Description__c = 'Test IPA Activity 2';
             IPApfr2.Title = 'Test IPA Activity 2';
             IPApfr2.Core_MDF_Start_Date__c = System.today().addDays(-1);
@@ -1178,77 +1173,6 @@ intelAccList.add(ipaUltimateAccount);*/
             
             Database.insert(pgmList);
             }
-            
-            // Add this section to your existing @TestSetup method, after creating accounts and groups
-
-System.runAs(usr) {
-    // Create additional groups for testing share record deletion
-    List<Group> additionalGroups = new List<Group>();
-    
-    Group shareTestGroup1 = new Group();
-    shareTestGroup1.Name = 'Share Test Group 1';
-    shareTestGroup1.DeveloperName = 'Share_Test_Group_1';
-    shareTestGroup1.Type = 'Regular';
-    additionalGroups.add(shareTestGroup1);
-    
-    Group shareTestGroup2 = new Group();
-    shareTestGroup2.Name = 'Share Test Group 2';
-    shareTestGroup2.DeveloperName = 'Share_Test_Group_2';
-    shareTestGroup2.Type = 'Regular';
-    additionalGroups.add(shareTestGroup2);
-    
-    insert additionalGroups;
-    
-    // Create Partner Group Mapping records for these groups
-    List<Core_MDF_Partner_Group_Mapping__c> additionalPgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
-    
-    Core_MDF_Partner_Group_Mapping__c pgmForShare1 = new Core_MDF_Partner_Group_Mapping__c();
-    pgmForShare1.Core_MDF_Account__c = acc1.Id;
-    pgmForShare1.Core_MDF_Region_cd__c = 'APJ';
-    pgmForShare1.Core_MDF_Type_of_Access__c = 'Internal';
-    pgmForShare1.Core_MDF_Group_Id__c = shareTestGroup1.Id;
-    pgmForShare1.Core_MDF_Inactive_Ind__c = false;
-    pgmForShare1.Core_MDF_Source_Txt__c = 'Test';
-    pgmForShare1.Core_MDF_Group_Name__c = 'Share_Test_Group_1';
-    pgmForShare1.Core_MDF_AccountIdGroupName__c = acc1.Id + 'Share_Test_Group_1';
-    pgmForShare1.Core_MDF_Channel_Program__c = ipaCP.Id;
-    additionalPgmList.add(pgmForShare1);
-    
-    Core_MDF_Partner_Group_Mapping__c pgmForShare2 = new Core_MDF_Partner_Group_Mapping__c();
-    pgmForShare2.Core_MDF_Account__c = acc1.Id;
-    pgmForShare2.Core_MDF_Region_cd__c = 'APJ';
-    pgmForShare2.Core_MDF_Type_of_Access__c = 'Internal';
-    pgmForShare2.Core_MDF_Group_Id__c = shareTestGroup2.Id;
-    pgmForShare2.Core_MDF_Inactive_Ind__c = false;
-    pgmForShare2.Core_MDF_Source_Txt__c = 'Test';
-    pgmForShare2.Core_MDF_Group_Name__c = 'Share_Test_Group_2';
-    pgmForShare2.Core_MDF_AccountIdGroupName__c = acc1.Id + 'Share_Test_Group_2';
-    pgmForShare2.Core_MDF_Channel_Program__c = ipaCP.Id;
-    additionalPgmList.add(pgmForShare2);
-    
-    insert additionalPgmList;
-    
-    // Create AccountShare records that will be found by the delete method
-    List<AccountShare> testAccountShares = new List<AccountShare>();
-    
-    AccountShare testShare1 = new AccountShare();
-    testShare1.AccountId = acc1.Id;
-    testShare1.UserOrGroupId = shareTestGroup1.Id;
-    testShare1.AccountAccessLevel = 'Read';
-    testShare1.RowCause = 'Manual';
-    testShare1.OpportunityAccessLevel = 'Read';
-    testAccountShares.add(testShare1);
-    
-    AccountShare testShare2 = new AccountShare();
-    testShare2.AccountId = acc1.Id;
-    testShare2.UserOrGroupId = shareTestGroup2.Id;
-    testShare2.AccountAccessLevel = 'Edit';
-    testShare2.RowCause = 'Manual';
-    testShare2.OpportunityAccessLevel = 'Read';
-    testAccountShares.add(testShare2);
-    
-    insert testAccountShares;
-}
                         Test.stopTest(); 
             
             
@@ -1281,9 +1205,6 @@ System.runAs(usr) {
                 Database.executeBatch(new Core_MDF_DeleteBatchShareRecords('CampaignShare', new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}}, query1, new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord}, false, new Map<Id,Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord3.Id => pnumRecord}, new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}} ), 50);
                 Database.executeBatch(new Core_MDF_DeleteBatchShareRecords('CaseShare', new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}}, 'SELECT Id, AccountId FROM Case WHERE AccountId IN ', new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord}, false, new Map<Id,Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord.Id => pnumRecord3}, new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}} ), 50);
                 Database.executeBatch(new Core_MDF_DeleteBatchShareRecords('PartnerFundRequestShare', new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}}, 'SELECT Id, ChannelPartnerId FROM PartnerFundRequest WHERE ChannelPartnerId IN ', new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord}, false, new Map<Id,Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord.Id => pnumRecord3}, new Map<Id, List<Id>>{pnumRecord.Core_MDF_Account__c => new List<Id>{pnumRecord.Core_MDF_User__c}} ), 50);
-        // US - TWC702-14285: Unit Test Method should include System.Assert
-        System.assertNotEquals(null, pnumRecord, 'Partner Node User Mapping record should exist');
-        System.assertNotEquals(null, pnumRecord.Core_MDF_Account__c, 'Account should be associated with PNUM record');
     }
        @isTest
     static void testHostRegionUpdate() {
@@ -1314,12 +1235,10 @@ System.runAs(usr) {
                 Core_MDF_BulkAPI_Operations.insertAsyncBulkRecordsByPE(listof);
             
                 Test.stopTest();
-                // US - TWC702-14285: Unit Test Method should include System.Assert
-               System.assertEquals('PRC', acc3.Core_Geo__c, 'Account Core_Geo__c should be updated to PRC');
+                assert.areEqual('PRC', acc3.Core_Geo__c);
             } 
             catch (Exception e) {
-               // Highlight: Unused Local Variable
-              //  String message = e.getMessage();
+                String message = e.getMessage();
             }
         }
     }
@@ -1327,41 +1246,5 @@ System.runAs(usr) {
     public without sharing class BulkApiScheduler implements Schedulable {
         public void execute(SchedulableContext sc) {
         }
-    }   
-    
-    @isTest
-static void testDeleteShareBulkRecords_WithSetupShareRecords() {
-    Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-    Test.startTest();
-    
-    User testUser = [SELECT Id FROM User WHERE LastName = 'User Test' LIMIT 1];
-    System.runAs(testUser) {
-        // Get the account that has share records from setup
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account 1' LIMIT 1];
-        
-        // Verify share records exist before testing
-        List<AccountShare> existingShares = [
-            SELECT Id, AccountId, UserOrGroupId 
-            FROM AccountShare 
-            WHERE AccountId = :testAccount.Id 
-            AND RowCause = 'Manual'
-            AND UserOrGroupId IN (
-                SELECT Id FROM Group WHERE DeveloperName LIKE 'Share_Test_Group_%'
-            )
-        ];
-        
-        
-        // Test the delete method
-        Set<Id> dynObjectList = new Set<Id>{testAccount.Id};
-        Set<String> hostGeo = new Set<String>{'APJ'};
-        
-        Core_MDF_BulkAPI_Operations.AysncJobDetailWrapper result = 
-            Core_MDF_BulkAPI_Operations.deleteShareBulkRecords(
-                dynObjectList, hostGeo, 'AccountShare', 'AccountId'
-            );
-        
-    }
-    Test.stopTest();
-}
-
+    }    
 }

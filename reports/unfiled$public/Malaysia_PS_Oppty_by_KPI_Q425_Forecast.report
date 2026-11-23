@@ -17,20 +17,27 @@
     </columns>
     <description>for forecasting</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <column>Opportunity$StageName</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Win,Lost</value>
+            <operator>notEqual</operator>
+            <value>,Lost,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Approved_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>LAST_YEAR</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$Core_Opportunity_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ida zulaika,Lai teng tan</value>
+            <value>ida zulaika</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

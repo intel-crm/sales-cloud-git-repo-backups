@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 11-16-2026
+ * @last modified on  : 11-18-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteTeam_SharingController {
@@ -100,6 +100,7 @@ public without sharing class Pricing_QuoteTeam_SharingController {
                 msgOutput.message = Label.Pricing_Quote_Team_Member_Removal_Error;
             }
         }catch(Exception ex){
+            system.debug('Error in deleting Quote Team Member--> '+ex.getMessage());
             //return 'false';
             msgOutput.isSuccess = false;
             msgOutput.message = Label.Pricing_Quote_Team_Member_Removal_Error;
@@ -111,8 +112,9 @@ public without sharing class Pricing_QuoteTeam_SharingController {
     @AuraEnabled(cacheable=true)  
     public static List<User> findRecords(String searchKey) {  
         //This method is called by LWC to find the user from searchkey
-        String searchText = String.escapeSingleQuotes(searchKey) + '%';
-        String query = 'SELECT Id, Name, Email, Isactive, Profile.Name FROM USER WHERE Name LIKE :searchText AND Profile.Name != \'Partner\' AND ContactId = null AND Isactive = true LIMIT 5';
+        String searchText = '\'' + String.escapeSingleQuotes(searchKey) + '%\'';
+        String query = 'SELECT Id, Name, Email, Isactive, Profile.Name FROM USER WHERE Name LIKE '+searchText+' AND Profile.Name != \'Partner\' AND ContactId = null AND Isactive = true LIMIT 5';  
+
         return Database.query(query);
     }
 
@@ -143,7 +145,7 @@ public without sharing class Pricing_QuoteTeam_SharingController {
             Label.Pricing_Tender_PermissionSets_TenderReadOnly,
             Label.Pricing_Tender_PermissionSets_TenderRebateAnalyst
         };
-        List<PermissionSetAssignment> pset = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId= :UserInfo.getUserId() AND 
+        List<PermissionSetAssignment> pset = [SELECT Id, PermissionSet.Name, PermissionSet.Label FROM PermissionSetAssignment WHERE AssigneeId= :UserInfo.getUserId() AND 
                                               PermissionSet.Name IN : permissionSetNames];
         if(pset.size()>0){
             return true;

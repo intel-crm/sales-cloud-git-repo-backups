@@ -24,7 +24,8 @@ public with sharing class Core_MDF_POP_Details {
     @AuraEnabled(cacheable=true)   
     public static POPWrapper getPOPvalues(String popDetail) {   
         Map<String, Object> queryVariabels = (Map<String, Object>) JSON.deserializeUntyped(popDetail);
-              
+        List<String> lstKPImdata = new List<String>();
+        Map<String,String> apiValueMap = new Map<String,String>();               
         
         String strLabel = '';
         String strHeader = '';
@@ -59,9 +60,7 @@ public with sharing class Core_MDF_POP_Details {
                 strLabel = strLabel + '<br /><br />' +System.Label.Core_MDF_ClaimSubmissionDeadlines;    
             } 
             /* US851171 - [RMF Activity] - Claiming Deadline Text in POP Requirement Section - end */
-        } catch(Exception ex) { 
-            logErrorAsync(Core_MDF_CCP_UtilityClass.getErrorDetails(ex));
-        }
+        } catch(Exception ex) {  Core_MDF_CCP_UtilityClass.logError(ex); }
         
         POPWrapper obj = new POPWrapper();
         obj.datamap = strLabel;
@@ -82,7 +81,7 @@ Vivek K                      09/16/2020        Created.
         String strtype = '';  
         String strProgram = ''; 
         String strQuery = '';
-
+        String strSubtype = '';
         String strSType = '';
         
         strCat = String.escapeSingleQuotes(System.Label.Core_MDF_PFR_ActCat); 
@@ -152,9 +151,7 @@ Vivek K                      09/06/2020        Created.
                 strLabel = String.valueOf(langTransList[0].get(objectFieldApiName)).trim();
             }
             
-        }catch(Exception ex) { 
-            logErrorAsync(Core_MDF_CCP_UtilityClass.getErrorDetails(ex));
-        }
+        }catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
         return strLabel;    
     }
     
@@ -170,42 +167,27 @@ Vivek K                      09/06/2020        Created.
         String strLabel = '';
         
         if(String.isNotBlank(displayHeader)) {
-            try {
-                //Get the user language.
-                userLang = (userLang != null && languages.contains(userLang)) ? userLang : 'en_US';
-
-                Core_MDF_History_Header_Translation__mdt[] langTrans;
-                String query = 'Select toLabel(Core_MDF_History_Header_Translation_nm__c) '/*String.escapeSingleQuotes(colToBeQueried)*/+
-                    ' from Core_MDF_History_Header_Translation__mdt where DeveloperName=\''
-                    +String.escapeSingleQuotes(displayHeader)+'\'';
-                String v1 = query;
+            //Get the user language.
+            userLang = (userLang != null && languages.contains(userLang)) ? userLang : 'en_US';
+            String colToBeQueried = 'Core_MDF_'+userLang+'_cd__c';
+            Core_MDF_History_Header_Translation__mdt[] langTrans;
+            String query = 'Select toLabel(Core_MDF_History_Header_Translation_nm__c) '/*String.escapeSingleQuotes(colToBeQueried)*/+
+                ' from Core_MDF_History_Header_Translation__mdt where DeveloperName=\''
+                +String.escapeSingleQuotes(displayHeader)+'\'';
+            String v1 = query;
             
-                langTrans=Database.query(v1);
-                if(langTrans != null && langTrans.size() > 0 /*&& langTrans[0].get(colToBeQueried) != null*/) {
-                    
-                   strLabel = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
-                }
-            } catch(Exception ex) { 
-                logErrorAsync(Core_MDF_CCP_UtilityClass.getErrorDetails(ex));
+            langTrans=Database.query(v1);
+            if(langTrans != null && langTrans.size() > 0 /*&& langTrans[0].get(colToBeQueried) != null*/) {
+                
+               strLabel = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
             }
         }
+        
         return strLabel;    
     } 
     
     public class POPWrapper{
         @AuraEnabled public String datamap = '';
         @AuraEnabled public string displayHeader = '';
-    }  
-
-/****************************************************************************************************************************************
-    Method Name:                                   logErrorAsync
-    Description:                                   Logs error details asynchronously to ensure that failures during error logging
-                                                do not impact the main business transaction. 
-    Added By:                                      Shravani
-    Created Date:                                  05/06/2026
-*****************************************************************************************************************************************/
-    @future
-    public static void logErrorAsync(String errorDetails) {
-        Core_MDF_CCP_UtilityClass.logErrorinLogObject(errorDetails, 'Core_MDF_POP_Details');
-    }
+    }   
 }

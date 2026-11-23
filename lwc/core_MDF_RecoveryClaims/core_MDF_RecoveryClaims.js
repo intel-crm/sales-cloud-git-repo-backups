@@ -10,8 +10,6 @@ import claimNumber from '@salesforce/label/c.Core_MDF_ClaimNumber';
 import geoLabel from '@salesforce/label/c.Core_MDF_Geo';
 import claimStatus from '@salesforce/label/c.Core_MDF_RecoveryClaimStatus';
 import claimAmtLabel from '@salesforce/label/c.Core_MDF_ClaimAmt';
-import processingPrefLabel from '@salesforce/label/c.Core_MDF_Processing_Preference';
-import surePayRecoveryAmtLabel from '@salesforce/label/c.Core_MDF_SettleGetPaidRecoveryAmount';
 import balanceAmtLabel from '@salesforce/label/c.Core_MDF_BalanceAmt';
 import budgetTypeLabel from '@salesforce/label/c.Core_MDF_Budget_Type_PFA';
 import countryLabel from '@salesforce/label/c.Core_MDF_Country';
@@ -34,7 +32,6 @@ import saveLabel from '@salesforce/label/c.Core_MDF_Save';
 import recoveryLabel from '@salesforce/label/c.Core_MDF_Recovery';
 import recoveryAmtError from '@salesforce/label/c.Core_MDF_RecoveryAmountError';
 import readyToRecoverMessage from '@salesforce/label/c.Core_MDF_Ready_To_Recover_Message';
-import processingPrefMessage from '@salesforce/label/c.Core_MDF_ProcessingPrefMsgOnRecoveryUI';
 import selectedForRecovery from '@salesforce/label/c.Core_MDF_SelectedForRecovery';
 import selectedForRecHelpTxt from '@salesforce/label/c.Core_MDF_SelectedForRecHelpTxt';
 import readyForRecHelpTxt from '@salesforce/label/c.Core_MDF_ReadyForRecHelpTxt';
@@ -57,13 +54,11 @@ import informationHeader from '@salesforce/label/c.Core_MDF_Information';
 
 
 const columnsTest = [
-    { label: 'Processing Preference', fieldName: 'processingPref', type: 'text' },
     { label: 'Claim #', fieldName: 'claimID', type: 'text' },
     { label: 'Budget Type', fieldName: 'budgetType', type: 'text' },
     { label: 'Geo', fieldName: 'geo', type: 'text' },
     { label: 'Country', fieldName: 'country', type: 'text' },
     { label: 'Claim Amount', fieldName: 'claimAmt', type: 'currency', typeAttributes: { minimumFractionDigits: 2, maximumFractionDigits: 2 } },
-    { label: 'Settle, then get paid recovery amount', fieldName: 'surePayRecAmt', type: 'currency', typeAttributes: { minimumFractionDigits: 2, maximumFractionDigits: 2 } },
     { label: 'Recovery Amount', fieldName: 'recoveryAmount', type: 'currency', typeAttributes: { minimumFractionDigits: 2, maximumFractionDigits: 2 } },
     { label: 'Balance Amount', fieldName: 'balanceAmt', type: 'currency', typeAttributes: { minimumFractionDigits: 2, maximumFractionDigits: 2 } },
     { label: 'Recovery Budget Amount', fieldName: 'recoveryBudAmt', type: 'text', wrapText: true },
@@ -86,8 +81,6 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
     geoLabel = geoLabel;
     claimStatus = claimStatus;
     claimAmtLabel = claimAmtLabel;
-    processingPrefLabel = processingPrefLabel;
-    surePayRecoveryAmtLabel = surePayRecoveryAmtLabel;
     balanceAmtLabel = balanceAmtLabel;
     budgetTypeLabel = budgetTypeLabel;
     countryLabel = countryLabel;
@@ -105,7 +98,6 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
     recoveryAmtError = recoveryAmtError;
     source = '';
     readyToRecoverMessage = readyToRecoverMessage;
-    processingPrefMessage = processingPrefMessage;
     selectedForRecovery = selectedForRecovery;
     selectedForRecHelpTxt = selectedForRecHelpTxt;
     readyForRecHelpTxt = readyForRecHelpTxt;
@@ -172,7 +164,6 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
     showMessage = false;
     msgToShow = '';
     claimAmount = 0;
-    surePayRecAmt = 0;
     claimRecoveryAmount = 0;
     claimBalanceAmount = 0;
 
@@ -410,20 +401,12 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                                 this.resultList[i].accountId = this.acctValue;
                                 this.resultList[i].program = this.progValue;
                                 this.resultList[i].quarter = this.quarterVal;
-                                this.resultList[i].disableRow = this.resultList[i].disableRow === true;
-                                this.resultList[i].disableSelected = this.resultList[i].disableSelected === true;
-                                this.resultList[i].isRowDisabled  = (this.mode === 'read') || this.resultList[i].disableRow;
-                                this.resultList[i].isSelectedDisabled = this.resultList[i].isRowDisabled || this.resultList[i].disableSelected;
-                                if (this.resultList[i].selected == true){
-                                    this.tempClaims.push(this.resultList[i]);
-                                }
-                                /*this.resultList[i].disableRow = this.resultList[i].disableRow === true;
-                                if (this.resultList[i].selected == true){
+                                if (this.resultList[i].selected == true) {
                                     this.resultList[i].isDisabled = false;
                                     this.tempClaims.push(this.resultList[i]);
                                 } else {
                                     this.resultList[i].isDisabled = true;
-                                }*/
+                                }
                                 if (this.resultList[i].budgetType != null && this.resultList[i].budgetType != '') {
                                     if (!this.budgetOptions.find(budget => budget.label == this.resultList[i].budgetType)) {
                                         this.budgetOptions.push(
@@ -577,8 +560,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
         csvSeperator = ",";
         newLineCharacter = "\n";
         csvIterativeData = "";
-        //csvIterativeData += columnHeader.join(csvSeperator);
-        csvIterativeData += columnHeader.map(header => `"${header.replace(/"/g, '""')}"`).join(csvSeperator);
+        csvIterativeData += columnHeader.join(csvSeperator);
         csvIterativeData += newLineCharacter;
         for (let i = 0; i < jsonRecordsData.length; i++) {
             let counter = 0;
@@ -617,7 +599,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
             if (tempClaims[i].Id == key) {
                 if ((tempClaims[i].recoveryAmount == '' || tempClaims[i].recoveryAmount > tempClaims[i].claimAmt) && selection == true) {
                     tempClaims[i].selected = true;
-                    //tempClaims[i].isDisabled = false;
+                    tempClaims[i].isDisabled = false;
                     tempClaims[i].showCustomValidation = true;
                     tempClaims[i].cssClassName = 'row-color'
                     let found = false;
@@ -633,7 +615,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                 else if (selection == false) {
                     tempClaims[i].selected = false;
                     tempClaims[i].righttoRecover = false;
-                    //tempClaims[i].isDisabled = true;
+                    tempClaims[i].isDisabled = true;
                     tempClaims[i].recoveryAmount = '';
                     tempClaims[i].recoveryBudAmt = '';
                     tempClaims[i].comments = '';
@@ -766,7 +748,6 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                     }
                 }
                 this.claimAmount = this.resultList[i].claimAmt;
-                this.surePayRecAmt = this.resultList[i].surePayRecAmt;
                 this.claimRecoveryAmount = this.resultList[i].recoveryAmount;
                 this.claimBalanceAmount = this.resultList[i].balanceAmt;
                 this.resetClaimRecovery = this.resultList[i].recoveryAmount;
@@ -783,10 +764,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
             for (let i = 0; i < tempClaims.length; i++) {
                 if (tempClaims[i].Id == claimId) {
                     tempClaims[i].recoveryAmount = this.resetClaimRecovery;
-                    let claimAmt = parseFloat(tempClaims[i].claimAmt) || 0;
-                    let surePay = parseFloat(tempClaims[i].surePayRecAmt) || 0;
-                    let available = claimAmt - surePay;
-                    tempClaims[i].balanceAmt = tempClaims[i].recoveryAmount == '' ? '' : (available - tempClaims[i].recoveryAmount).toFixed(2);
+                    tempClaims[i].balanceAmt = tempClaims[i].recoveryAmount == '' ? '' : (tempClaims[i].claimAmt - tempClaims[i].recoveryAmount).toFixed(2);
                     if (!tempClaims[i].selected) {
                         tempClaims[i].recoveryAmount = '';
                         tempClaims[i].balanceAmt = '';
@@ -836,11 +814,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                     }
 
                     this.claimRecoveryAmount = sum;
-                    let claimAmt = parseFloat(tempClaims[i].claimAmt) || 0;
-                    let surePay = parseFloat(tempClaims[i].surePayRecAmt) || 0;
-                    let available = claimAmt - surePay;
-
-                    this.claimBalanceAmount = (available - sum).toFixed(2);
+                    this.claimBalanceAmount = (tempClaims[i].claimAmt - sum).toFixed(2);
                     this.showError = false;
                     this.disableSave = false;
                 } else {
@@ -860,14 +834,10 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
         let selectedClaims = [];
         let tempClaims = this.resultList;
         for (let i = 0; i < tempClaims.length; i++) {
-            if (tempClaims[i].Id == claimId) {
-                let claimAmt = parseFloat(tempClaims[i].claimAmt) || 0;
-                let surePay = parseFloat(tempClaims[i].surePayRecAmt) || 0;
-                let available = claimAmt - surePay; 
+            if (tempClaims[i].Id == claimId) { 
                 if (this.claimBalanceAmount < 0 || this.claimRecoveryAmount < 0) {
                     this.showError = true;
                     this.disableSave = true;
-                    this.availableBalance = available.toFixed(2);
                 }else{
                     this.showError = false;
                     this.showSpinner = true;
@@ -889,15 +859,13 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                     }
                     tempClaims[i].recoveryBudAmt = st;
                     if (tempClaims[i].recoveryAmount == '' || tempClaims[i].recoveryAmount == 0 || tempClaims[i].recoveryAmount < 0) {
-                        if (tempClaims[i].disableSelected === true) {
+                        if (tempClaims[i].cssClassName == 'row-color') {
                             tempClaims[i].selected = true;
-                        } else if (tempClaims[i].cssClassName == 'row-color') {
-                            tempClaims[i].selected = true;
-                            //tempClaims[i].isDisabled = false;
+                            tempClaims[i].isDisabled = false;
                         } else {
                             tempClaims[i].selected = false;
                             tempClaims[i].righttoRecover = false;
-                            //tempClaims[i].isDisabled = true;
+                            tempClaims[i].isDisabled = true;
                         }
                         tempClaims[i].recoveryAmount = '';
                         tempClaims[i].recoveryBudAmt = '';
@@ -907,8 +875,8 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                     //If entered Recovery Amount is valid
                     else if (this.claimRecoveryAmount >= 0) {
                         tempClaims[i].selected = true;
-                        //tempClaims[i].isDisabled = false;                        
-                        tempClaims[i].balanceAmt = (available - tempClaims[i].recoveryAmount).toFixed(2);
+                        tempClaims[i].isDisabled = false;
+                        tempClaims[i].balanceAmt = (tempClaims[i].claimAmt - tempClaims[i].recoveryAmount).toFixed(2);
                         if (tempClaims[i].cssClassName == 'row-color') {
                             this.disableBudgetFilter = false;
                             tempClaims[i].cssClassName = '';

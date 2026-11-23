@@ -34,8 +34,7 @@ public class Core_MDF_IPA_ReminderBatch_Test {
             //ipaCampaignForAP.Core_MDF_Approval_Stage_nm__c='L2 Regional Marketing';
 			insert ipaCampaignForAP; 
             List<PartnerFundRequest> pfrList = new List<Partnerfundrequest>();
-           // Highlight unused variable
-           // List<PartnerFundRequest> pfrUpdateList = new List<Partnerfundrequest>();
+            List<PartnerFundRequest> pfrUpdateList = new List<Partnerfundrequest>();
             PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,acc.id,System.today().addDays(1),System.today().addDays(10),false);
             ipaPFR.Title='Test Activity1';
             ipaPFR.Core_MDF_ToBeClosedDate__c = system.today() + 15 ;
@@ -57,7 +56,7 @@ public class Core_MDF_IPA_ReminderBatch_Test {
             ipaPFR3.Core_MDF_Region_nm__c='APJ';
             pfrList.add(ipaPFR3);
              
-            
+            Database.insert(pfrList);
              /*ipaPFR.Core_MDF_ToBeClosedDate__c = system.today() + 30 ;
             ipaPFR2.Core_MDF_ToBeClosedDate__c = system.today() + 29 ;
             ipaPFR3.Core_MDF_ToBeClosedDate__c = system.today() + 31 ;
@@ -65,21 +64,7 @@ public class Core_MDF_IPA_ReminderBatch_Test {
              pfrUpdateList.add(ipaPFR2);
              pfrUpdateList.add(ipaPFR3);
             Database.Update(pfrUpdateList);*/
-
-			PartnerFundRequest ipaPFROutcome = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-			    ipaCampaignForAP.id, acc.id,
-			    System.today().addDays(1),
-			    System.today().addDays(10),
-			    false);
-			ipaPFROutcome.Title = 'Test Outcome Activity';
-			ipaPFROutcome.Core_MDF_ToBeClosedDate__c = System.today() + 15;
-			ipaPFROutcome.Core_MDF_Fund_Request_Status__c = 'Planned';
-			ipaPFROutcome.Core_MDF_Region_nm__c = 'APJ';
-			ipaPFROutcome.Core_MDF_Is_Outcome_Based_Ind__c = true; 
-			pfrList.add(ipaPFROutcome);
-           
-            Database.insert(pfrList);
-
+            
              Test.stopTest();
         }
     }

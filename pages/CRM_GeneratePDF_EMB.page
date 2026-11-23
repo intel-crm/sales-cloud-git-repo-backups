@@ -20,8 +20,7 @@
                         {!record.Core_Executive_Meeting_Brief_Name__c}
                     </td>
                     <td width="50%" class="value">
-                        {!formattedSchedule}
-                        <!--{!record.CRM_Scheduled_Start_Time_txt__c} - {!record.CRM_Scheduled_End_Time_txt__c}-->
+                        {!record.CRM_Scheduled_Start_Time_txt__c} - {!record.CRM_Scheduled_End_Time_txt__c}
                     </td>
                 </tr>
             </tbody>
@@ -201,7 +200,7 @@
                     <tr>
                         <td class="merge first" width="15%" style="text-align: center; vertical-align: middle; font-weight: bold; background-color: #f0f0f0;">
                             <span><strong>Additional Info</strong></span></td>
-                         <td width="85%" class="value" style="padding: 5px;">
+                       	 <td width="85%" class="value" style="padding: 5px;">
                             <span style="color:#0176d3; font-weight: bold;">Industry Insights/Political Climate</span>
                             <apex:outputText value="{!formatted_Industry_Insights_Political_Climate}" escape="false" />
                         </td>
@@ -236,14 +235,6 @@
                             <apex:outputText value="{!formatted_CRM_Attendee_Bio}" escape="false" />
                         </td>
                     </tr>
-                     <!--tr>
-                        <th width="151" class="label" style="background-color: #f0f0f0">
-                            <span>Agentic Attendee Bio(s)</span>
-                        </th>
-                        <td width="529" class="value">
-                            <span>{!record.CRM_Agentic_Attendee_Bio__c}</span>
-                        </td>
-                    </tr-->
                 </tbody>
             </table>
         </div>

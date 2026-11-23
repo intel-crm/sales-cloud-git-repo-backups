@@ -8,6 +8,9 @@
         <field>SBQQ__Quote__c.core_cpq_cmf_pricing_parent__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>CUST_NAME</field>
     </columns>
     <columns>

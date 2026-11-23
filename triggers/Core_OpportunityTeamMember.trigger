@@ -19,7 +19,7 @@ trigger Core_OpportunityTeamMember on OpportunityTeamMember (before insert, afte
     if(!mapFunctionalityNameTriggerExecution.isEmpty()) {
         if(Trigger.isAfter) {
             if(Trigger.isInsert || Trigger.isUpdate|| Trigger.isDelete) {  
-                if(Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('opportunityTeamMemberQuoteSharing') && 
+                if(mapFunctionalityNameTriggerExecution.containsKey('opportunityTeamMemberQuoteSharing') && 
                    mapFunctionalityNameTriggerExecution.get('opportunityTeamMemberQuoteSharing').Core_Active__c){
                        if(Trigger.isInsert || Trigger.isUpdate){
                          Core_OpportunityTeamMemberHandler.shareOpptyTeamMembertoQuote(Trigger.new);

@@ -79,7 +79,6 @@
                                                 search-placeholder="Search Accounts..." icon-name="standard:account"
                                                 onlookupselected={handleSelectedAccount} filter={accountQueryFilter}
                                                 selected-record={selectedAccount}
-                                                program-record-type={recordTypeDeveloperName} 
                                                 disabled={campaignFieldDisabled.Core_MDF_Account__c}>
                                             </c-core_-m-d-f_-custom-lookup>
                                         </template>
@@ -281,7 +280,6 @@
                                                 field-level-help={campaignFieldHelpText.Core_MDF_Total_Campaign_Cost_Amt__c} 
                                                 value={campaignFieldValue.Core_MDF_Total_Campaign_Cost_Amt__c} 
                                                 label={campaignFieldLabel.Core_MDF_Total_Campaign_Cost_Amt__c} 
-                                                formatter="currency"
                                             	disabled="true">
                                             </lightning-input>
                                             </lightning-layout-item>
@@ -309,7 +307,6 @@
                                                     field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Amt__c}
                                                     value={campaignFieldValue.Core_MDF_Reimbursement_Amt__c}
                                                     label={campaignFieldLabel.Core_MDF_Reimbursement_Amt__c}
-                                                    formatter="currency"
                                                     disabled="true"></lightning-input>
                                             </lightning-layout-item>
                                         </template>
@@ -657,16 +654,8 @@
                                              <template if:true={outcomeBasedError}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>
-                                                <template if:true={hasSelectedOutcomes}>
-                                                <c-core_-m-d-f_-custom-data-table title={campaignPurposeIPAHeader} columns={columns} table-data={rows}
-                                                    ontablechange={handleTableChange}> </c-core_-m-d-f_-custom-data-table>
-                                                <template if:true={isIPAProposalBasedProgram}>
-                                                    <template for:each={outcomeStatements} for:item="stmt">
-                                                        <div key={stmt.id} class="slds-p-top_x-small slds-p-left_medium slds-text-body_regular">
-                                                            {stmt.text}
-                                                        </div>
-                                                    </template>
-                                                </template>
+                                            <template if:true={campaignFieldValue.Core_MDF_Outcomes_nm__c}>
+                                            <c-core_-m-d-f_-custom-data-table title={title} columns={columns} table-data={rows} ontablechange={handleTableChange}> </c-core_-m-d-f_-custom-data-table>
                                                 </template>
                                              <template if:true={campaignRequiredFields.Core_MDF_Other_Outcome_txt__c}>
                                                 <template if:true={campaignFieldVisibility.Core_MDF_Other_Outcome_txt__c}>
@@ -683,55 +672,6 @@
                                                 </template>
                                             </template>
                                         </lightning-layout-item>
-                                    </template>
-                                    <template if:true={proposalBasedIndicatorCamp}>
-                                        <template if:true={campaignFieldVisibility.Core_MDF_Other_Outcome_Criteria_txt__c}>
-                                            <lightning-layout-item flexibility="no-grow" size="6" small-device-size="6" 
-                                                medium-device-size="6" large-device-size="6" padding="around-small">
-                                                <lightning-textarea 
-                                                    name="Core_MDF_Other_Outcome_Criteria_txt__c" 
-                                                    maxlength="5000"
-                                                    field-level-help={campaignFieldHelpText.Core_MDF_Other_Outcome_Criteria_txt__c}
-                                                    value={campaignFieldValue.Core_MDF_Other_Outcome_Criteria_txt__c}
-                                                    label={campaignFieldLabel.Core_MDF_Other_Outcome_Criteria_txt__c}
-                                                    required={campaignRequiredFields.Core_MDF_Other_Outcome_Criteria_txt__c}
-                                                    disabled={campaignFieldDisabled.Core_MDF_Other_Outcome_Criteria_txt__c} 
-                                                    class="textAreaOrPicklistFields">
-                                                </lightning-textarea>
-                                            </lightning-layout-item>
-                                        </template>
-                                        <template if:true={campaignFieldVisibility.Core_MDF_Measurement_Approach_nm__c}>
-                                            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
-                                                medium-device-size="12" large-device-size="12" padding="around-small">
-                                                <lightning-dual-listbox name="Core_MDF_Measurement_Approach_nm__c"
-                                                    data-name="Core_MDF_Measurement_Approach_nm__c"
-                                                    class="textAreaOrPicklistFields"
-                                                    field-level-help={campaignFieldHelpText.Core_MDF_Measurement_Approach_nm__c}
-                                                    label={campaignFieldLabel.Core_MDF_Measurement_Approach_nm__c}
-                                                    source-label={sourceLabelStr} selected-label={selectedLabelStr}
-                                                    value={campaignFieldValue.Core_MDF_Measurement_Approach_nm__c}
-                                                    options={campaignPicValues.Core_MDF_Measurement_Approach_nm__c}
-                                                    required={campaignRequiredFields.Core_MDF_Measurement_Approach_nm__c}
-                                                    disabled={campaignFieldDisabled.Core_MDF_Measurement_Approach_nm__c}
-                                                    size={picklistSize.Core_MDF_Measurement_Approach_nm__c}
-                                                    onchange={handleMeasurementApproachChange}></lightning-dual-listbox>
-                                            </lightning-layout-item>
-                                        </template>
-                                        <template if:true={campaignRequiredFields.Core_MDF_Other_Measurement_Approach_txt__c}>
-                                            <template if:true={campaignFieldVisibility.Core_MDF_Other_Measurement_Approach_txt__c}>
-                                                <lightning-layout-item flexibility="no-grow" size="6" small-device-size="6"
-                                                    medium-device-size="6" large-device-size="6" padding="around-small">
-                                                    <lightning-textarea name="Core_MDF_Other_Measurement_Approach_txt__c" maxlength="255"
-                                                        field-level-help={campaignFieldHelpText.Core_MDF_Other_Measurement_Approach_txt__c}
-                                                        value={campaignFieldValue.Core_MDF_Other_Measurement_Approach_txt__c}
-                                                        label={campaignFieldLabel.Core_MDF_Other_Measurement_Approach_txt__c}
-                                                        required={campaignRequiredFields.Core_MDF_Other_Measurement_Approach_txt__c}
-                                                        disabled={campaignFieldDisabled.Core_MDF_Other_Measurement_Approach_txt__c}
-                                                        class="textAreaOrPicklistFields"
-                                                        onchange={handleOtherMeasurementApproachChange}></lightning-textarea>
-                                                </lightning-layout-item>
-                                            </template>
-                                        </template>
                                     </template>
                                     <template if:true={proposalBasedIndicatorCamp}>
                                         <template if:true={campaignFieldVisibility.Core_MDF_Use_Case_Nm__c}>
@@ -779,22 +719,6 @@
                                                 required={campaignRequiredFields.Core_MDF_Messaging__c}
                                                 disabled={campaignFieldDisabled.Core_MDF_Messaging__c}></lightning-textarea>
                                         </lightning-layout-item>
-                                    </template> 
-                                    <template if:true={proposalBasedIndicatorCamp}>
-                                        <template if:true={campaignFieldVisibility.Core_MDF_Partner_Contact_txt__c}>
-                                            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
-                                                medium-device-size="12" large-device-size="12" padding="around-small">
-                                                <lightning-textarea name="Core_MDF_Partner_Contact_txt__c" maxlength="255" class="textAreaOrPicklistFields"
-                                                    field-level-help={campaignFieldHelpText.Core_MDF_Partner_Contact_txt__c}
-                                                    value={campaignFieldValue.Core_MDF_Partner_Contact_txt__c}
-                                                    label={campaignFieldLabel.Core_MDF_Partner_Contact_txt__c}
-                                                    required={campaignRequiredFields.Core_MDF_Partner_Contact_txt__c}
-                                                    disabled={campaignFieldDisabled.Core_MDF_Partner_Contact_txt__c}
-                                                    onchange={handlePartnerContactChange}></lightning-textarea>
-                                                    <div class="slds-form-element__help informative-text">
-                                                        {label.partnerContactFieldValidation}</div>                                         
-                                                </lightning-layout-item>
-                                        </template> 
                                     </template> 
                                     <template if:true={proposalBasedIndicatorCamp}>
                                         <template if:false={isCommunity}>

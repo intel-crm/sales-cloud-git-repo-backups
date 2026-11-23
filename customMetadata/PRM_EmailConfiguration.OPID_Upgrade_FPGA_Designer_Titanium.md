@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">PSG Basic,FPGA Partner Program Titanium Tier Access,</value>
+        <value xsi:type="xsd:string">PSG Basic,FPGA Partner Program Titanium Tier Access</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>

@@ -75,7 +75,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             coreLogMap.put('Core_Support_Link__c', Label.Core_MDF_CCP_Support_Link);
             coreLogMap.put('Core_Tags__c', objectName + '\t' + 'Co-Marketing') ;
            
-            createLogEntry(coreLogMap);
+            String errorText = createLogEntry(coreLogMap);
     }
     
     /***************************************************************************************************** 
@@ -99,7 +99,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             coreLogMap.put('Core_Support_Email__c', Label.Core_MDF_CCP_Support_Email);
             coreLogMap.put('Core_Support_Link__c', Label.Core_MDF_CCP_Support_Link);
             coreLogMap.put('Core_Tags__c', objectName + '\t' + 'Co-Marketing') ;
-            createLogEntry(coreLogMap);
+            String errorText = createLogEntry(coreLogMap);
     }
 
 // Create Log Object by passing the logobject field names and values in the Map    
@@ -152,27 +152,6 @@ public without sharing class Core_MDF_CCP_UtilityClass{
     }
     
     /***************************************************************************************************** 
-    Method Name:        getErrorDetailsWithCustomMessage
-    @return  :          String
-    @parameters:        Exception - This will contain the Exception that is caught in various other classes. This 
-                        will be called from the logError method.
-    Description:        Whenever an exception is passed as an argument, it will fetch all the details from the 
-                        Exception and return the formed String including additional message passed
-    Added By:           Accenture - Vikas Soni 22/05/2026
-    Modified By:        Date:       Changes: 
-    ******************************************************************************************************/
-    public static String getErrorDetailsWithAdditionalMessage(Exception e, String additionalMessage){
-        return 'Class & Method Name = ' + e.getStackTraceString()?.substringBefore(':') + ';\n' +
-               'Exception Message = ' + e.getMessage() + ';\n' +
-               'Additional Exception Message = ' + additionalMessage + ';\n' +
-               'LineNumber = ' + String.valueOf(e.getLineNumber()) + ';\n' +
-               'StackTrace = ' + e.getStackTraceString() + ';\n' +
-               'Cause =' + e.getCause() + ';\n' +
-               'Exception Type =' + e.getTypeName() + ';\n' +
-               'Logged in user = ' + UserInfo.getName();
-    }
-    
-    /***************************************************************************************************** 
     Method Name:        logError
     @return  :          void
     @parameters:        Exception - This will contain the Exception that is caught in various other classes.
@@ -192,25 +171,6 @@ public without sharing class Core_MDF_CCP_UtilityClass{
            
             logErrorinLogObject(getErrorDetails(e), e.getStackTraceString().substringBefore(':'));
             
-        }
-    }
-    /***************************************************************************************************** 
-    Method Name:        logErrorWithAdditionalMessage
-    @return  :          void
-    @parameters:        Exception - This will contain the Exception that is caught in various other classes.
-    Description:        Whenever an exception is passed as an argument along with additional message, it will call the getErrorDetails method and
-                        pass the string returned to create the Log Entry record through the logErrorinLogObject method.
-    Added By:           Accenture - Vikas Soni - 22/05/2026
-    Modified By:        Date:       Changes: 
-    ******************************************************************************************************/
-    public static void logErrorWithAdditionalMessage(Exception e, String additionalMessage){
-	String message = e.getMessage();
-        
-        if(message.contains('FIELD_CUSTOM_VALIDATION_EXCEPTION')){
-            logErrorAsNormal(getErrorDetails(e), e.getStackTraceString().substringBefore(':'));
-        }
-        else{
-            logErrorinLogObject(getErrorDetailsWithAdditionalMessage(e, additionalMessage), e.getStackTraceString().substringBefore(':'));
         }
     }
 
@@ -251,7 +211,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             if(el.Core_MDF_Tag_txt__c!=null){
             coreLogMap.put('Core_Tags__c',  el.Core_MDF_Tag_txt__c) ;
             }
-            createLogEntry(coreLogMap);
+            String errorText = createLogEntry(coreLogMap);
     }
     
     /***************************************************************************************************** 
@@ -353,19 +313,5 @@ Modified By:        Date:       Changes:
             coreLogMaps.add(coreLogMap);
         }
         createLogEntries(coreLogMaps);
-    }
-
-	public static List<String> collectDmlFailureDetails(List<Id> recordIds, Database.SaveResult[] dmlResults){
-        List<String> failedRecordDetails = new List<String>();
-        Integer sizeToProcess = Math.min(recordIds.size(), dmlResults.size());
-        for(Integer i = 0; i < sizeToProcess; i++){
-            if(!dmlResults[i].isSuccess()){
-                Id recordId = recordIds[i];                
-                for(Database.Error err : dmlResults[i].getErrors()){
-                    failedRecordDetails.add(String.valueOf(recordId) + ' - ' + String.valueOf(err.getStatusCode()) + ': ' + err.getMessage());
-                }
-            }
-        }
-        return failedRecordDetails;
     }
 }

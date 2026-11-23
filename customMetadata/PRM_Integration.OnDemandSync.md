@@ -4,15 +4,15 @@
     <protected>false</protected>
     <values>
         <field>API_Key__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>EndPointURL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/m2r/opid-informatica/v1/manual-services/one-partner-id</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/m2r/opid-informatica/v1/manual-services/one-partner-id</value>
     </values>
     <values>
         <field>Password__c</field>
-        <value xsi:type="xsd:string">Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX</value>
+        <value xsi:type="xsd:string">5PC8Q~sjYX8C2omTuw5bNPHRVjTEsbYXWl9xYc7V</value>
     </values>
     <values>
         <field>Scope__c</field>

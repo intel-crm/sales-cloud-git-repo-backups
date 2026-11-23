@@ -15,8 +15,8 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
 
     static public void getRecords(integer tid){
          // Insert IPS Labels
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        insert ipsLabels;
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        insert IPSLabels;
        
         // inserting product org
         prodOrg = TestUtilities.getSupportOrg();
@@ -43,14 +43,14 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         SuppProductList1 = TestUtilities.getListOfSupportedProduct(3);       
         Integer i = 0;
         
-        for(Core_IPS_Supported_Product__c supportedProductRecord: SuppProductList1){                
+        for(Core_IPS_Supported_Product__c SupportedProductRecord: SuppProductList1){                
             string prodorgid = prodOrg.id;
-            supportedProductRecord.Core_Product__c = ProductList.get(i).id;
-            supportedProductRecord.Core_Product_Organization__c = prodOrg.id;
-            supportedProductRecord.Core_EOIS__c = false;
-            supportedProductRecord.Core_Flag_Status__c = 'Approval Required';
-            supportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
-            supportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
+            SupportedProductRecord.Core_Product__c = ProductList.get(i).id;
+            SupportedProductRecord.Core_Product_Organization__c = prodOrg.id;
+            SupportedProductRecord.Core_EOIS__c = false;
+            SupportedProductRecord.Core_Flag_Status__c = 'Approval Required';
+            SupportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
+            SupportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
             i++;                     
         }
         
@@ -72,22 +72,22 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList;
         
         prodOrg = TestUtilities.getSupportOrg();
-        prodOrg.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg;
         
         
         SuppProductList1 = TestUtilities.getListOfSupportedProduct(3);       
         Integer i = 0;
         
-        for(Core_IPS_Supported_Product__c supportedProductRecord: SuppProductList1){                
+        for(Core_IPS_Supported_Product__c SupportedProductRecord: SuppProductList1){                
             string prodorgid = prodOrg.id;
-            supportedProductRecord.Core_Product__c = ProductList.get(i).id;
-            supportedProductRecord.Core_Product_Organization__c = prodOrg.id;
-            supportedProductRecord.Core_EOIS__c = false;
-            supportedProductRecord.Core_Flag_Status__c = 'Approval Required';
-            supportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
-            supportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
-            supportedProductRecord.core_IPS_public_product__c=false;
+            SupportedProductRecord.Core_Product__c = ProductList.get(i).id;
+            SupportedProductRecord.Core_Product_Organization__c = prodOrg.id;
+            SupportedProductRecord.Core_EOIS__c = false;
+            SupportedProductRecord.Core_Flag_Status__c = 'Approval Required';
+            SupportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
+            SupportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
+            SupportedProductRecord.core_IPS_public_product__c=false;
             i++;                     
         }
         
@@ -120,22 +120,22 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList;
         
         prodOrg = TestUtilities.getSupportOrg();
-        prodOrg.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg;
         
         
         SuppProductList1 = TestUtilities.getListOfSupportedProduct(3);       
         Integer i = 0;
         
-        for(Core_IPS_Supported_Product__c supportedProductRecord: SuppProductList1){                
+        for(Core_IPS_Supported_Product__c SupportedProductRecord: SuppProductList1){                
             string prodorgid = prodOrg.id;
-            supportedProductRecord.Core_Product__c = ProductList.get(i).id;
-            supportedProductRecord.Core_Product_Organization__c = prodOrg.id;
-            supportedProductRecord.Core_EOIS__c = false;
-            supportedProductRecord.Core_Flag_Status__c = 'Auto Approve';
-            supportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
-            supportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
-            supportedProductRecord.core_IPS_public_product__c=false;
+            SupportedProductRecord.Core_Product__c = ProductList.get(i).id;
+            SupportedProductRecord.Core_Product_Organization__c = prodOrg.id;
+            SupportedProductRecord.Core_EOIS__c = false;
+            SupportedProductRecord.Core_Flag_Status__c = 'Auto Approve';
+            SupportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
+            SupportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList.get(i).Core_Unique_ID__c);
+            SupportedProductRecord.core_IPS_public_product__c=false;
             i++;                     
         }
 
@@ -150,22 +150,22 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList1;
         
         prodOrg1 = TestUtilities.getSupportOrg();
-        prodOrg1.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg1.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg1;
         
         
         SuppProductList2 = TestUtilities.getListOfSupportedProduct(3);       
         Integer p = 0;
         
-        for(Core_IPS_Supported_Product__c supportedProductRecord: SuppProductList2){                
+        for(Core_IPS_Supported_Product__c SupportedProductRecord: SuppProductList2){                
             string prodorgid = prodOrg1.id;
-            supportedProductRecord.Core_Product__c = ProductList1.get(p).id;
-            supportedProductRecord.Core_Product_Organization__c = prodOrg1.id;
-            supportedProductRecord.Core_EOIS__c = false;
-            supportedProductRecord.Core_Flag_Status__c = 'Auto Approve';
-            supportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
-            supportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList1.get(p).Core_Unique_ID__c);
-            supportedProductRecord.core_IPS_public_product__c=false;
+            SupportedProductRecord.Core_Product__c = ProductList1.get(p).id;
+            SupportedProductRecord.Core_Product_Organization__c = prodOrg1.id;
+            SupportedProductRecord.Core_EOIS__c = false;
+            SupportedProductRecord.Core_Flag_Status__c = 'Auto Approve';
+            SupportedProductRecord.Core_Product_EPM_ID__c = ProductList.get(i).Core_Unique_ID__c ;
+            SupportedProductRecord.Core_Unique_Supported_Product__c = (prodorgid.substring(0,15)+ProductList1.get(p).Core_Unique_ID__c);
+            SupportedProductRecord.core_IPS_public_product__c=false;
             i++;                     
         }
         
@@ -241,12 +241,12 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         @AuraEnabled
         public String prodEPMId{get;set;}
         @AuraEnabled
-        public String uniqueOrgEpmId{get;set;}
+        public String UniqueOrgEPMId{get;set;}
         @AuraEnabled
         public String prodOrgDescription{get;set;}
         @AuraEnabled
-        public String flagStatus{get;set;}
+        public String FlagStatus{get;set;}
         @AuraEnabled
-        public Core_IPS_Supported_Product__c supProduct{get;set;}
+        public Core_IPS_Supported_Product__c SupProduct{get;set;}
     }
 }

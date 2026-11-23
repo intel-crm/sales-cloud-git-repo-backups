@@ -36,8 +36,6 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
     public Map<Id,String> claimToCostCenterMap  = new Map<Id,String>();
     public Map<Id, Core_MDF_Account_Node_Attributes__c> accountNodeAttributesMap = new Map<Id, Core_MDF_Account_Node_Attributes__c>();
     private static String CoGTMProgram = Core_MDF_CustomLabelConfig.getTextValues('Co_GTM');
-    public Map<String, String> buProdTypeMap = new Map<String, String>();
-    public Map<String, Integer> buPriorityRankingMap = new Map<String, Integer>();
     
     public Core_MDF_Batch_UpdatePaymentRunClaims(Map<String, Core_MDF_PaymentWrapper> paymentWrapperMap,Map<String,Core_MDF_PaymentFileWrapper> paymentFileWrapperMap,Map<String,Map<String,Core_MDF_PaymentFileWrapper>> paymentTypeToFileWrapper, List<PartnerFundClaim> listOfClaims ,Core_MDF_Payment_Run__c prunInstance, List<Core_MDF_Claim_BU_Split__c> claimsBUSplitList,Map<String,List<PartnerFundClaim>> paymentTypeToClaims, Map<Id,String> claimToCostCenterMap, Map<Id, Core_MDF_Account_Node_Attributes__c> accountNodeAttributesMap){
         this.paymentWrapperMap = paymentWrapperMap;
@@ -50,39 +48,10 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
         this.paymentTypeToClaims = paymentTypeToClaims;
         this.claimToCostCenterMap = claimToCostCenterMap;
         this.accountNodeAttributesMap = accountNodeAttributesMap;
-        
-        // Query metadata 
-        if(paymentRunProgram == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM) {
-        initializeMetadataMaps();
-        }
     }
     
     public Iterable<sObject> start(Database.BatchableContext bc) {
         return listOfClaims;
-    }
-    
-    /****************************************************************************************************** 
-     Method Name:        initializeMetadataMaps
-     @return  :          void
-     @parameters:        
-     Description:        This method queries metadata.Only initializes when the program is CoGTM.
-     Added By:           Performance Optimization - 04/14/2026
-     Modified By:        Date:       Changes: 
-    *******************************************************************************************************/
-    private void initializeMetadataMaps() {
-        // Only query metadata if the program is CoGTM
-        for(Core_MDF_CCP_Custom_Metadata_Utility__c buSplits : [SELECT Core_MDF_Field_3_txt__c, Core_MDF_Field_5_txt__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c  WHERE Core_MDF_Program__c =: Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM  AND Core_MDF_Category__c = 'BU Splits' AND Core_MDF_Field_3_txt__c != null]) {
-            if (!buProdTypeMap.containsKey(buSplits.Core_MDF_Field_3_txt__c)) {
-                buProdTypeMap.put(buSplits.Core_MDF_Field_3_txt__c, buSplits.Core_MDF_Field_5_txt__c);
-            }
-        }
-        
-        // Query BU Priority Rankings once for CoGTM program
-        for (Core_MDF_BUPriorityRanking__c pr : [SELECT Core_MDF_Label__c, Core_MDF_Ranking_nbr__c   FROM Core_MDF_BUPriorityRanking__c  WHERE Core_MDF_Program_Name__c = :Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM]) {
-            if (pr.Core_MDF_Label__c != null) {
-                buPriorityRankingMap.put(pr.Core_MDF_Label__c, (Integer)pr.Core_MDF_Ranking_nbr__c);
-            }
-        }
     }
     
     public void execute(Database.BatchableContext bc, List<PartnerFundClaim> claimList) {
@@ -318,15 +287,9 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
                         paymentGroupingKey = claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c + '_' + claim.Core_MDF_Bank__c + '_' + claim.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + '_' + claim.Core_MDF_Quarter_Year_Txt__c +'_'+claim.Core_MDF_C_Type_Ind__c+'_'+claim.Core_MDF_Budget_Type_Options_Nm__c + (glAccount != null ? ('_' + glAccount) : '');
                     }
 
-                    // Append Business Unit for non-VAT customer payments
-                    if(claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) {
-                        // Derive Business Unit using class-level maps queried once in constructor
-                        if(claim != null) {
-                            String businessUnit = Core_MDF_PaymentProcessRetailMdfIPA.deriveBUForClaim(claim, buPriorityRankingMap, buProdTypeMap);
-                            if(businessUnit != null) {
-                                paymentGroupingKey = paymentGroupingKey + '_' + businessUnit;
-                            }
-                        }
+                    // Append Profit Center for non-VAT customer payments
+                    if(claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer && claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null) {
+                        paymentGroupingKey = paymentGroupingKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;
                     }
 
                     // Append MMID for non-VAT customer payments

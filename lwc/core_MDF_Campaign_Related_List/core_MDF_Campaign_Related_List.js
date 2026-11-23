@@ -1,4 +1,4 @@
-import { LightningElement, api, track, wire } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import getFieldsAndRecords from '@salesforce/apex/Core_MDF_GetObjectDetails.getFieldsAndRecords';
 import getFilterCondition from '@salesforce/apex/Core_MDF_GetObjectDetails.getFilterCondition';//Ealay
 import portalBaseURL from '@salesforce/label/c.Core_MDF_PFRCommunityLink';
@@ -7,10 +7,6 @@ import orgBaseURL from '@salesforce/label/c.Core_MDF_Environment_URL';
 import UserType_Standard from '@salesforce/label/c.UserType_Standard';
 import activatingPartnerObjLabel from '@salesforce/label/c.Core_MDF_Activating_Partners_Label';  //WW42 Activating Partner label defect fix
 import contractLineItemLabel from '@salesforce/label/c.Core_MDF_Contract_Line_Item';
-import getClaimData from '@salesforce/apex/Core_MDF_GetObjectDetails.getClaimData';
-import getTableHeader from '@salesforce/apex/Core_MDF_GetObjectDetails.getTableHeader';
-import getLabelValue from '@salesforce/apex/Core_MDF_GetObjectDetails.getLabelValue';
-import evaluateVisibilityCriteria from '@salesforce/apex/Core_MDF_GetObjectDetails.evaluateVisibilityCriteria';
 
 export default class Core_MDF_Generic_Related_List extends LightningElement {
 
@@ -23,16 +19,6 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
     //additional filter condition -> string input
     @api additionalCriteria;
     @api sharingFlag;//to query with user context or not
-    //Conditions to decide whether to display this whole component, e.g. "someField__c = 'IPA';someField__c = 'CoGTM'"
-    @api componentVisibilityCriteria;
-    //Logic that combines the above conditions by index, e.g. "1 AND 2 (3 OR 4)"
-    @api componentVisibilityCriteriaLogic;
-    //Comma separated field API names that should be hidden when no row has a value
-    @api hideColumnIfNoData;
-    //Field API name whose values across all rows are consolidated and shown as text below the table
-    @api messageBelowTable;
-    @track tableMessage; //consolidated text shown below the table
-    @track componentVisible = true; //controls visibility of the entire component
     @track columns;   //columns for List of fields datatable
     @track tableData;   //data for list of fields datatable
 
@@ -47,18 +33,9 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
 
 
     tableColumns;
-    @api tableHeader; 
-    @track showRelatedList = true;
-    @track dynamicTableHeader;
-    @api strLabels; //TWC3117-17837
 
      connectedCallback() {
-        if(this.recordId?.startsWith('0RB')){
-            this.getClaimDetails();
-        }
-        this.resolveTableHeader();
          this.restrictFieldVisiblityCriteria();
-        this.evaluateComponentVisibility();
     }
 
     checkForUndefinedEmptyAndNull(input) {
@@ -83,7 +60,24 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 break;
         }
     }
+    /*async restrictFieldVisiblityCriteria() {
+         console.log('Start restrictFieldVisiblityCriteria');
+        try {
+            this.filterConditionResult = await getFilterCondition({ //checkfieldVisisikity
+                recordId: this.recordId,
+                restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
+            });
+            console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
+ 
+        } catch (error) {
+            this.error = error;
+            console.error('Error in restrictFieldVisiblityCriteria:', error);
+            return false;
+        }
+    }*/
     restrictFieldVisiblityCriteria() {
+        console.log('Start restrictFieldVisiblityCriteria');
+
         getFilterCondition({
             recordId: this.recordId,
             restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
@@ -91,6 +85,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
             .then(result => {
                 this.filterConditionResult = result;
                 this.loadFieldsAndRecords(); 
+                console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
             })
             .catch(error => {
                 this.error = error;
@@ -101,14 +96,12 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
      loadFieldsAndRecords() {
         getFieldsAndRecords({
             relatedobjectApiName: this.relatedobjectApiName,
-            strFields: this.getQueryFields(),
+            strFields: this.strFields,
             criteriaField: this.criteriaFieldAPIName,
             criteriaFieldValue: this.recordId,
             additionalCriteria: this.additionalCriteria,
-            sharingFlag: this.sharingFlag,
-            strLabels: this.strLabels //TWC3117-17837
-        }) 
-       
+            sharingFlag: this.sharingFlag
+        })
             .then(data => {
                 let userType;
                 let records = [];
@@ -140,27 +133,31 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 }
 
                 listOfFields = this.strFields.split(',');//remove the condition according
+                console.log('fieldsDescribe:' + JSON.stringify(fieldsDescribe));
                 //Ealay
+                console.log(' Ealay column hide value -->' + this.restrictFieldVisiblityFieldAPIName);
                 if (!this.filterConditionResult) {
                     //this.restrictFieldVisiblityFieldAPIName = 'Core_MDF_Initial_Baseline_Quantity_nbr__c';
+                    console.log('Outcome-based result is true — removing FlexiPage fields');
                     const fieldsColumnsToRemove = (this.restrictFieldVisiblityFieldAPIName || '').split(',').map(f => f.trim());
                     // Remove only those fields that are in flexipageFieldList
                     listOfFields = listOfFields.filter(field => !fieldsColumnsToRemove.includes(field));
                 }
+                console.log(' Ealay filterConditionResult after -->' + this.filterConditionResult);
+                console.log('listOfFields:' + JSON.stringify(listOfFields));
 
                 //Ealay
                 let items = []; //local array to prepare columns
 
-                const translatedLabels = (this.checkForUndefinedEmptyAndNull(data) && data.translatedLabels)
-                    ? data.translatedLabels
-                    : []; //TWC3117-17837 
                 //prepare the column with type = url 
 
-                listOfFields.map((element, index) => { //TWC3117-17837
+                listOfFields.map(element => {
                     let fldDataType;
                     let fldDetail = fieldsDescribe[element];//fldDetail
                     let fldApi = fldDetail['fieldName'];
-                    let fldLabel = translatedLabels[index] || fldDetail['fieldLabel']; //TWC3117-17837
+                    let fldLabel = fldDetail['fieldLabel'];
+                    console.log('fldLabel : ' + fldLabel);
+                    console.log('tData : ' + fldDetail);
                     fldDataType = fldDetail['dataType'];//fldDataType
                     // it will enter this if-block just once
                     if (fldDataType == 'REFERENCE') {
@@ -168,7 +165,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                         items = [...items,
                         {
                             label: fldLabel,
-                            fieldName: fldApi + '_URL',
+                            fieldName: 'URLField',
                             type: 'url',
                             typeAttributes: {
                                 label: {
@@ -191,27 +188,18 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 //prepare table data
                 this.columns = items;
                 this.tableColumns = this.columns;
+                console.log('this.columns 141' + JSON.stringify(this.columns));
                 this.tableData = [];
                 records.map(item => {
                     let recData = item;
                     let tdata = {};
                     listOfFields.map(fld => {
                         if (refFieldsList.includes(fld)) {
-                            /*let refCol = isCustomObject ? fld.replace('__c', '__r') : fld;
+                            let refCol = isCustomObject ? fld.replace('__c', '__r') : fld;
                             tdata[fld] = recData[refCol]['Name'];
                             tdata['URLField'] = userType == UserType_Standard ? orgBaseURL + this.relatedobjectApiName + '/' + item[fld] + '/view' :
-                                portalBaseURL + communityURLSection + item[fld];*/
+                                portalBaseURL + communityURLSection + item[fld];
 
-                            const relationshipPath = IdToValueMap[fld]; 
-                            const lookupId = item[fld]; 
-                            const urlField = fld + '_URL';
-                            tdata[fld] = '';
-                            tdata[urlField] = '';
-                            if (lookupId && relationshipPath) {
-                                const [relName, relField] = relationshipPath.split('.');
-                                tdata[fld] = recData?.[relName]?.[relField] || '';
-                                tdata[urlField] = userType == UserType_Standard ? orgBaseURL + this.relatedobjectApiName + '/' + lookupId + '/view' : portalBaseURL + communityURLSection + lookupId;
-                            }
                         }
                         else {
                             let rawValue = recData[fld];
@@ -226,13 +214,12 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                     this.tableData.push(tdata);
                 });
 
+                console.log('records', records);
+
                 //create URL with Id and push it into the array
+                console.log('this.tableData 92:' + this.tableData);
+                console.log('this.tableData 95:' + JSON.stringify(this.tableData));
 
-                //hide columns that have no data across all rows
-                this.hideEmptyColumns();
-
-                //consolidate the configured field's values from all rows into the message below the table
-                this.buildTableMessage(records, data);
 
                 //assign values to display Object Name and Record Count on the screen
                 this.recordCount = this.tableData.length;
@@ -245,168 +232,6 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 this.recordCount = 0;  //WW42 Activating Partner label defect fix
                 this.setObjectName(this.relatedobjectApiName, this.objectName);
             })
-    }
-
-    get resolvedHeader() {
-        return this.checkForUndefinedEmptyAndNull(this.dynamicTableHeader) ? this.dynamicTableHeader : this.objectName;
-    }
-    getClaimDetails() {
-        getClaimData({
-            recordId: this.recordId,
-        })
-            .then(result => {
-                this.showRelatedList = result;
-            })
-            .catch(error => {
-                this.error = error;
-            });
-    }
-    resolveTableHeader(){
-        getTableHeader({
-            displayHeader: this.tableHeader,
-        })
-            .then(result => {
-                //Metadata translation found -> use it
-                if (this.checkForUndefinedEmptyAndNull(result)) {
-                    this.dynamicTableHeader = result;
-                    return;
-                }
-                //Otherwise fall back to resolving the value as a Custom Label (localized by user language)
-                return this.resolveCustomLabelHeader();
-            })
-            .catch(error => {
-                this.error = error;
-            });
-    }
-
-    //Resolve the tableHeader value as a Salesforce Custom Label developer name
-    resolveCustomLabelHeader() {
-        if (!this.checkForUndefinedEmptyAndNull(this.tableHeader)) {
-            return;
-        }
-        return getLabelValue({ labelName: this.tableHeader })
-            .then(label => {
-                if (this.checkForUndefinedEmptyAndNull(label)) {
-                    this.dynamicTableHeader = label;
-                }
-            })
-            .catch(error => {
-                this.error = error;
-                console.error('Error in resolveCustomLabelHeader:', error);
-            });
-    }
-
-    //combine showRelatedList (claim logic) with the component visibility criteria result
-    get isComponentVisible() {
-        return this.showRelatedList && this.componentVisible;
-    }
-
-    //Build a single SOQL boolean expression from the criteria conditions and logic input
-    buildVisibilityCriteriaString() {
-        if (!this.checkForUndefinedEmptyAndNull(this.componentVisibilityCriteria)) {
-            return '';
-        }
-        //Split "cond1;cond2;cond3" into a list of conditions
-        const conditions = this.componentVisibilityCriteria
-            .split(';')
-            .map(c => c.trim())
-            .filter(c => c);
-        if (!conditions.length) {
-            return '';
-        }
-        //No logic provided -> simply AND all the conditions together
-        const logic = (this.componentVisibilityCriteriaLogic || '').trim();
-        if (!logic) {
-            return conditions.map(c => '(' + c + ')').join(' AND ');
-        }
-        //Logic provided (e.g. "1 AND 2 OR 3") -> replace each number with its condition
-        return logic.replace(/\d+/g, number => {
-            const condition = conditions[Number(number) - 1];
-            return condition ? '(' + condition + ')' : number;
-        });
-    }
-
-    //Evaluate whether the current record meets the criteria; hide the whole component if not
-    evaluateComponentVisibility() {
-        const criteria = this.buildVisibilityCriteriaString();
-        //No criteria configured -> component stays visible
-        if (!criteria) {
-            this.componentVisible = true;
-            return;
-        }
-        evaluateVisibilityCriteria({
-            recordId: this.recordId,
-            criteria: criteria
-        })
-            .then(result => {
-                this.componentVisible = result;
-            })
-            .catch(error => {
-                this.error = error;
-                console.error('Error in evaluateComponentVisibility:', error);
-                this.componentVisible = true;
-            });
-    }
-
-    //Build the field list to query, appending the messageBelowTable field so its value is available
-    getQueryFields() {
-        const fields = (this.strFields || '').split(',').map(f => f.trim()).filter(f => f);
-        if (this.checkForUndefinedEmptyAndNull(this.messageBelowTable)) {
-            const msgField = this.messageBelowTable.trim();
-            if (!fields.includes(msgField)) {
-                fields.push(msgField);
-            }
-        }
-        return fields.join(',');
-    }
-
-    //Consolidate the configured field's distinct values across all rows into a single text line
-    buildTableMessage(records, data) {
-        if (!this.checkForUndefinedEmptyAndNull(this.messageBelowTable)) {
-            this.tableMessage = '';
-            return;
-        }
-        const field = this.messageBelowTable.trim();
-        const picklistMap = data && data.picklistTranslatedMap ? data.picklistTranslatedMap[field] : undefined;
-        const values = [];
-        (records || []).forEach(item => {
-            let val = item[field];
-            if (picklistMap && picklistMap[val]) {
-                val = picklistMap[val];
-            }
-            if (this.checkForUndefinedEmptyAndNull(val) && !values.includes(val)) {
-                values.push(val);
-            }
-        });
-        this.tableMessage = values.join(', ');
-    }
-
-    //Hide columns whose configured fields have no data in any row
-    hideEmptyColumns() {        if (!this.checkForUndefinedEmptyAndNull(this.hideColumnIfNoData)) {
-            return;
-        }
-        const fieldsToCheck = this.hideColumnIfNoData
-            .split(',')
-            .map(f => f.trim())
-            .filter(f => f);
-        if (!fieldsToCheck.length || !this.tableData || !this.tableData.length) {
-            return;
-        }
-        const emptyFields = fieldsToCheck.filter(field =>
-            this.tableData.every(row => {
-                const val = row[field];
-                return val === undefined || val === null || val === '';
-            })
-        );
-        if (emptyFields.length) {
-            this.columns = this.columns.filter(col => {
-                const baseField = col.type === 'url'
-                    ? col.typeAttributes?.label?.fieldName
-                    : col.fieldName;
-                return !emptyFields.includes(baseField);
-            });
-            this.tableColumns = this.columns;
-        }
     }
 
 }

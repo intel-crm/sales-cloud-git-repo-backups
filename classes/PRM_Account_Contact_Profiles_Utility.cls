@@ -55,6 +55,7 @@ public without sharing class PRM_Account_Contact_Profiles_Utility {
     }
         
     public static PRM_Account_Contact_Profiles_Model.Profiles GetRegRequestAccountProfile(String key, String param) {  
+        //system.debug('GetRegRequestAccountProfile ===> param ===>'+param);
         boolean errorInDecryption = false;
         List<String> regReqEmailsList  =new List<String>();
         Map<String,Boolean> isSysAccMap = new Map<String,Boolean>();
@@ -185,6 +186,7 @@ FROM PRM_Registration_Request__c WHERE Id= :param OR PRM_Enterprise_ID__c= :para
                     } 
                 }
             }
+            //system.debug('JSON ==>'+JSON.serialize(regReq));
             //return JSON.serialize(profiles);
             profiles.ResponseTimeMS = responseTimeCalc();
             return profiles;
@@ -255,7 +257,7 @@ FROM PRM_Registration_Request__c WHERE Id= :param OR PRM_Enterprise_ID__c= :para
         system.debug('getAccountRequestDetailsObj 1 param');
         
         String query = '';
-            query = 'SELECT PRM_CIM_ID__c,PRM_Salesforce_ID__c,PRM_Address_Line_1__c,PRM_Address_Line_2__c,PRM_Alt_CompanyNameLang__c,PRM_Tax_Number__c ,PRM_Partner_Type__c,PRM_CIMStatusDetails__c,PRM_City__c,PRM_Email_ID__c,PRM_Company_Email_Domain__c,PRM_Account_Name__c,PRM_Company_National_ID__c,PRM_Enterprise_ID__c,PRM_EV_flag__c,PRM_First_Name__c,PRM_Profession__c,PRM_Last_Name__c,PRM_Person_Phone_Number__c,PRM_Country__c, PRM_Contact_Country__c, PRM_DeDup_Criteria__c,PRM_Dup_Status__c,PRM_Matching_Contact__c,PRM_Email_Domain_Check__c,PRM_Email_Log__c,PRM_EV_Expired_vs_Pending__c,PRM_isLocked__c,PRM_isSubmitted__c,PRM_Legal_Agreement_Criteria__c,PRM_Legal_Agreements__c,PRM_manualRecordCheck__c,PRM_Channel_Program__c,PRM_Channel_Program__r.Name,PRM_Channel_Program__r.PRM_programCode__c,PRM_Partner_Role__c,PRM_Partner_Segment__c,PRM_Channel_Program_Level__c,PRM_Phy_Address_Line_2__c,PRM_Phy_City__c,PRM_Phy_Country__c,PRM_Phy_State_Province__c,PRM_Phy_Zip_Postal_Code__c,PRM_Preferred_Language__c,PRM_Profile_Response__c,PRM_State_Province__c,PRM_Status__c,PRM_Status_Reason__c,PRM_Subscriptions__c,PRM_Tax_ID_Registration__c,PRM_Company_Size__c,PRM_Account_Phone__c,PRM_Account_URL__c,PRM_Zip_Postal_Code__c,PRM_Wechat_Union_Id__c,Entitlement_Details__r.Name,Job_Title__c,PRM_Channel_Program_Level__r.Name,PRM_Channel_Program_Level__r.PRM_Partner_Tier_Name__c,PRM_Company_Nm_Eng__c FROM PRM_Registration_Request__c WHERE '+param+ 'ORDER BY CreatedDate DESC';
+            query = 'SELECT PRM_CIM_ID__c,PRM_Salesforce_ID__c,PRM_Address_Line_1__c,PRM_Address_Line_2__c,PRM_Partner_Type__c,PRM_CIMStatusDetails__c,PRM_City__c,PRM_Email_ID__c,PRM_Company_Email_Domain__c,PRM_Account_Name__c,PRM_Company_National_ID__c,PRM_Enterprise_ID__c,PRM_EV_flag__c,PRM_First_Name__c,PRM_Profession__c,PRM_Last_Name__c,PRM_Person_Phone_Number__c,PRM_Country__c, PRM_Contact_Country__c, PRM_DeDup_Criteria__c,PRM_Dup_Status__c,PRM_Matching_Contact__c,PRM_Email_Domain_Check__c,PRM_Email_Log__c,PRM_EV_Expired_vs_Pending__c,PRM_isLocked__c,PRM_isSubmitted__c,PRM_Legal_Agreement_Criteria__c,PRM_Legal_Agreements__c,PRM_manualRecordCheck__c,PRM_Channel_Program__c,PRM_Channel_Program__r.Name,PRM_Channel_Program__r.PRM_programCode__c,PRM_Partner_Role__c,PRM_Partner_Segment__c,PRM_Channel_Program_Level__c,PRM_Phy_Address_Line_2__c,PRM_Phy_City__c,PRM_Phy_Country__c,PRM_Phy_State_Province__c,PRM_Phy_Zip_Postal_Code__c,PRM_Preferred_Language__c,PRM_Profile_Response__c,PRM_State_Province__c,PRM_Status__c,PRM_Status_Reason__c,PRM_Subscriptions__c,PRM_Tax_ID_Registration__c,PRM_Company_Size__c,PRM_Account_Phone__c,PRM_Account_URL__c,PRM_Zip_Postal_Code__c,PRM_Wechat_Union_Id__c,Entitlement_Details__r.Name,Job_Title__c,PRM_Channel_Program_Level__r.Name,PRM_Channel_Program_Level__r.PRM_Partner_Tier_Name__c FROM PRM_Registration_Request__c WHERE '+param+ 'ORDER BY CreatedDate DESC';
         
         System.debug('query : '+query);
         List<PRM_Registration_Request__c> newRegs = Database.query(query);
@@ -371,8 +373,6 @@ return acctReqSubs;
         acctReqInfo.ContactPhoneNumber = newReg.PRM_Person_Phone_Number__c;
         acctReqInfo.Country = newReg.PRM_Country__c;
         acctReqInfo.ContactCountry = newReg.PRM_Contact_Country__c;
-        acctReqInfo.CompanyNameEng = newReg.PRM_Company_Nm_Eng__c;
-        acctReqInfo.AltCompanyNameEng  = newReg.PRM_Alt_CompanyNameLang__c;
         acctReqInfo.DuplicateAccountCheck = newReg.PRM_DeDup_Criteria__c;
         acctReqInfo.DuplicateAccountStatus = newReg.PRM_Dup_Status__c;
         acctReqInfo.DuplicateContact = newReg.PRM_Matching_Contact__c;
@@ -389,7 +389,6 @@ return acctReqSubs;
         acctReqInfo.PartnerProgram = newReg.PRM_Channel_Program__c;
         acctReqInfo.PartnerProgramCode = newReg.PRM_Channel_Program__r.PRM_programCode__c;
         acctReqInfo.PartnerRole = newReg.PRM_Partner_Role__c;
-        acctReqInfo.TaxNumber = newReg.PRM_Tax_Number__c;
         //acctReqInfo.PartnerRoleLabel = 
         if(!String.isEmpty(newReg.PRM_Partner_Role__c) /*&& (ipaRefresh||Test.isRunningTest())*/){
             List<Schema.PicklistEntry> pickListValues = PRM_Registration_Request__c.PRM_Partner_Role__c.getDescribe().getPicklistValues();
@@ -466,7 +465,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         }
         return acctReqWrapper;
     }
-  
+    
     private static PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper getAcctIdBasedOnEmailDomain(PRM_Registration_Request__c newReg){
         PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper acctReqInfo = new PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper();
         if(Label.Email_domain_account_mapping.split(',').contains(newReg.PRM_Channel_Program__r.Name) &&
@@ -517,7 +516,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                                       Core_Partner_Alliance_Program__c, Core_IPA_Partner_Segment__c, Core_English_Only_Name__c,
                                       Core_Deactivated__c,Core_Deactivation_Reason__c,Core_B2B_Entitlement__c,Core_B2B_ERPM_Account_Number__c,RecordType.Name,
                                       Core_Business_Party_Id__c,core_data_simplified_account_nm__c,core_data_simplified_local_language_nm__c,core_customer_aggregation_type__c,Unified_Hierarchy_View__c,core_data_country_nm__c,Core_Account_Record_Type__c,Core_IPA_One_Partner_Id__c,
-                                      Owner.Name,Core_Account_Owner_Email__c,   
                                       //Core_IPA_Partner_Prog_Application__c, (SELECT id,Name,Email From Contacts),
                                       (SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Status_Nm__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false),
                                       (SELECT Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c FROM Account_ERPM_Engagements__r),
@@ -533,7 +531,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                                       FROM Account WHERE Id= :AcctSFID];
             System.debug('Listtttt'+accounts);
             list<PRM_AccountBenefitAssociation__c> opidbenefits = new list<PRM_AccountBenefitAssociation__c>();
-            if (!accounts.isEmpty() && accounts[0].Core_Account_Record_Type__c == 'Intel Account'  && accounts[0].Core_IPA_One_Partner_Id__c!=null/*&& (ipaRefresh||Test.isRunningTest())*/){
+            if (!accounts.isEmpty() && accounts[0].Core_Account_Record_Type__c == 'Intel Account' /*&& (ipaRefresh||Test.isRunningTest())*/){
                 opidbenefits = [SELECT PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM PRM_AccountBenefitAssociation__c WHERE PRM_Account_Id__c =: accounts[0].Core_IPA_One_Partner_Id__c and PRM_Status_Nm__c='Active'];
             } //varun
             //OR Core_CIM_ID__c= :param Limit 1
@@ -553,7 +551,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                 //acctProfile.AccountProfile.OnePartnerIDGroupMembers = getOnePartnerIDGroupMembers(accounts[0]);
                 profiles.AccountProfile.AccountLegalAgreements = getAccountLegalAgreements(accounts[0]);
                 profiles.AccountProfile.AccountBusinessTypes = getAccountBusinessType(accounts[0]);   //step 5
-                //profiles.AccountProfile.ComplianceWatchLists=getAccountComplianceWatchLists(accounts[0]);  //Commenting as part of TWC729-8872
+                profiles.AccountProfile.ComplianceWatchLists=getAccountComplianceWatchLists(accounts[0]);
                 //return JSON.serialize(profiles);
                 profiles.ResponseTimeMS = responseTimeCalc();
                 return profiles;
@@ -608,7 +606,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         return accBTs;
         
     }
-   /* private static List<PRM_Account_Contact_Profiles_Model.ComplianceWatchList> getAccountComplianceWatchLists(Account acct){
+    private static List<PRM_Account_Contact_Profiles_Model.ComplianceWatchList> getAccountComplianceWatchLists(Account acct){
         List<PRM_Account_Contact_Profiles_Model.ComplianceWatchList> acctWatchList = new List<PRM_Account_Contact_Profiles_Model.ComplianceWatchList>();
          for(Core_Account_Compliance_Watch_List__c watchList : acct.Core_Account_Id__r){
             PRM_Account_Contact_Profiles_Model.ComplianceWatchList accWL = new PRM_Account_Contact_Profiles_Model.ComplianceWatchList();
@@ -619,7 +617,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
             acctWatchList.add(accWL);  
         }
         return acctWatchList;
-    }  */  //Commenting as part of TWC729-8872
+    }
     
      //For Contact BT
    private static List<PRM_Account_Contact_Profiles_Model.ContactBusinessType>  getContactBusinessType(Contact con){
@@ -664,7 +662,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         return opidms;
     }
     //this method below can be removed as part of IPA 2.0
-    @testvisible
     private static List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> getAccountSpecialityAssociations(Account acct){
         List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> asas = new List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation>();
         for(PRM_Account_Specialty_Association__c acctSpecialityAssoc : acct.Account_Specialty_Associations__r){
@@ -855,7 +852,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                     //output = isProgBased ? ' PRM_Channel_Program__r.Name ='+'\''+Inpvalue+'\'' : ' Entitlement_Details__r.Name ='+'\''+Inpvalue+'\'';
                     //Added for TWC722-325
                     output = isProgBased ? ' PRM_Channel_Program__r.PRM_programCode__c ='+'\''+Inpvalue+'\'' : ' Entitlement_Details__r.Name ='+'\''+Inpvalue+'\'';
-                    output=output+' AND '+ 'PRM_Status__c IN ('+'\'New'+'\','+'\'Rejected'+'\','+'\'Pending'+'\','+'\'Approved'+'\','+'\'PendingwithPartner'+'\')';
+                    output=output+' AND '+ 'PRM_Status__c IN ('+'\'New'+'\','+'\'Rejected'+'\','+'\'Pending'+'\','+'\'Approved'+'\')';
                 }
         }
         else
@@ -915,7 +912,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                           'Core_Partner_Alliance_Program__c,Core_IPA_Partner_Segment__c, Core_English_Only_Name__c,'+
                           'Core_Deactivated__c,Core_Deactivation_Reason__c,Core_B2B_Entitlement__c,Core_B2B_ERPM_Account_Number__c,RecordType.Name,'+
                           'Core_Business_Party_Id__c,core_data_simplified_account_nm__c,core_data_simplified_local_language_nm__c,core_customer_aggregation_type__c,Unified_Hierarchy_View__c,core_data_country_nm__c,'+
-                          'Owner.Name,'+ 'Core_Account_Owner_Email__c,'+      
                           '(SELECT PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Partner_Role__c,PRM_Status_Nm__c,CreatedDate,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r WHERE PRM_Status_Nm__c!=\'Inactive\'),'+
                           '(SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM AccountBenefitAssociations__r WHERE PRM_Status_Nm__c=\'Active\'),'+
                           '(SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Status_Nm__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false AND PRM_Contact_Id__c= :ConId),'+
@@ -927,12 +923,15 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                           '(SELECT PRM_Distributor_Id__r.Name,PRM_Choice_Nm__c,PRM_Consent_Provided_By_Id__r.Name,PRM_Consent_Provided_Date_Dt__c,PRM_Start_Date_Dt__c,PRM_End_Date_Dt__c,PRM_Consent_Provided_Ind__c FROM Partner_Assist_Consent__r), '+
                           '(SELECT  Name, Core_Type__c,Core_Effective_Start_Date__c ,Core_Effective_End_Date__c FROM Core_Account_Id__r)'+
                           'FROM Account WHERE Id=: accId';
+
+            System.debug('Query--'+queryVar);
             List<Account> accounts = New List<Account>();
             accounts=Database.query(queryVar);
             list<PRM_AccountBenefitAssociation__c> opidbenefitrecords = new list<PRM_AccountBenefitAssociation__c>();
-            if (!accounts.isEmpty() && accounts[0].Core_Account_Record_Type__c == 'Intel Account' && accounts[0].Core_IPA_One_Partner_Id__c!=null/* && (ipaRefresh||Test.isRunningTest())*/){
+            if (!accounts.isEmpty() && accounts[0].Core_Account_Record_Type__c == 'Intel Account'/* && (ipaRefresh||Test.isRunningTest())*/){
                 opidbenefitrecords = [SELECT PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM PRM_AccountBenefitAssociation__c WHERE PRM_Account_Id__c =: accounts[0].Core_IPA_One_Partner_Id__c and PRM_Status_Nm__c='Active'];
             }            
+            System.debug('====='+accounts);
             if(accounts.size()>0){
                 
                 //ContAcct.ContactAccount = new PRM_Account_Contact_Profiles_Model.ContactAccountWrapper();
@@ -954,8 +953,7 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                 ContAcct.ContactBasicProfile.ContactSubscriptions = getPersonSubscriptions(conts[0]);
                 ContAcct.ContactBasicProfile.ContactBusinessTypes = getContactBusinessType(conts[0]);
                 ContAcct.ContactBasicProfile.ContactEntitlements = getPersonEntitlements(conts[0]);
-                ContAcct.RegReqConsolidated = getRegistrationRequestDetails(accounts[0],conts[0]);//new method for consolidated regrequestpayload
-                //ContAcct.AccountInformation.ComplianceWatchLists = getAccountComplianceWatchLists(accounts[0]);  //Commenting as part of TWC729-8872
+                ContAcct.AccountInformation.ComplianceWatchLists = getAccountComplianceWatchLists(accounts[0]);
                 return ContAcct;
             }else{
                 return null;
@@ -964,34 +962,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
             return null;
         }
     }
-
-    /*@NJ new method for consolidated regrequestpayload start*/
-    private static PRM_Account_Contact_Profiles_Model.RegistrationRequestDetails getRegistrationRequestDetails( Account acc,Contact con){
-        PRM_Account_Contact_Profiles_Model.RegistrationRequestDetails regReqPayload = new PRM_Account_Contact_Profiles_Model.RegistrationRequestDetails();
-        regReqPayload.FirstName = con.FirstName;
-        regReqPayload.LastName = con.LastName;
-        regReqPayload.Email = con.Email;
-        regReqPayload.PartnerRole = String.isEmpty(acc.Core_IPA_Partner_Role__c)?null:((String) acc.Core_IPA_Partner_Role__c).replace('<br>',',');
-        regReqPayload.EnterpriseId = con.Core_Enterprise_Id__c;
-        regReqPayload.AddressLine1 = acc.BillingStreet;
-        regReqPayload.City = acc.BillingCity;
-        regReqPayload.Country = acc.BillingCountry;
-        regReqPayload.StateProvince = acc.BillingState;
-        regReqPayload.ZipPostalCode = acc.BillingPostalCode;
-        regReqPayload.AccountName = acc.Name;
-        regReqPayload.AccountUrl = acc.Core_User_Defined_Website__c;
-        regReqPayload.PreferredLanguage = con.Core_Preferred_Language__c;
-        regReqPayload.Profession = con.Core_Profession__c;
-        regReqPayload.AccountPhone = acc.Core_User_Defined_Phone_Number__c;
-        regReqPayload.ContactCountry = con.MailingCountry;
-        regReqPayload.LoginStatus = con.Core_Login_Status__c;
-        regReqPayload.SalesforceId = acc.id;
-        return regReqPayload;
-        
-    }
-
-    /*@NJ new method for consolidated regrequestpayload end*/
-
     private static List<PRM_Account_Contact_Profiles_Model.PartnerAssist> getPartnerAssist(Account acct){
         List<PRM_Account_Contact_Profiles_Model.PartnerAssist> PartnerAssist = new List<PRM_Account_Contact_Profiles_Model.PartnerAssist>();
         for(PRM_Partner_Assist_Consent__c partnerConsent : acct.Partner_Assist_Consent__r) {
@@ -1181,8 +1151,6 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         accountInfo.UnifiedCountryCode=null;
             //ContAcct.ContactAccount = new ContactAccountWrapper();
         //ContAcct.ContactAccount.AccountInformation = accountInfo;
-        accountInfo.OwnerName = acct.Owner.Name; //TWC729-9198
-        accountInfo.OwnerEmail = acct.Core_Account_Owner_Email__c;//TWC729-9198
         return accountInfo;
     }
     private Static PRM_Account_Contact_Profiles_Model.Address getAccountPrimaryAddress(Account acct){
@@ -1274,7 +1242,6 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         }
         return aes;      
     }
-    @testvisible
     private static List<PRM_Account_Contact_Profiles_Model.ProfileResponse> getProfileResponses(Id recordId){
         
         String channelProg = 'Intel Partner Alliance';
@@ -1363,7 +1330,7 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
             SELECT PRM_Points_Opt_in_Ind__c, PRM_Points_Not_Eligible_Ind__c,PRM_Points_Opt_in_Dt__c,PRM_Points_Not_Eligible_Dt__c, PRM_Point_Status_Txt__c,PRM_Point_Status_Reason_Txt__c, PRM_Point_Status_Dt__c
             FROM PRM_IPAMembership_Attributes__c
             //WHERE PRM_Account_Id__c =:acct
-            WHERE PRM_Account_Id__c =:accOPID AND PRM_Inactive_ind__c = false
+            WHERE PRM_Account_Id__c =:accOPID
         ];
         
         system.debug('membershipRecords---'+membershipRecords);
@@ -1646,6 +1613,7 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
                         }                   
                     }
                 }                
+                //system.debug('eRPM Account Numbers ===>'+eRPMAcctNumbers);
                 AcctSFID = Core_IntegrationOptimization.GetMatchingAccountSFIDfromCIMID(acctCIMIds, eRPMAcctNumbers);  
             }            
         }
@@ -1678,6 +1646,7 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         ew.StatusCode = 400;
         ew.Message = e.getMessage();
         ew.StackTrace = e.getStackTraceString();
+        system.debug('Exception Cause ==>'+e.getCause());
         profiles.ExceptionDetails = ew;
         profiles.ResponseTimeMS = responseTimeCalc();
         return profiles;

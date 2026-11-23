@@ -34,9 +34,9 @@ public without sharing class PRM_BenefitUtility{
     public static String partnerTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Partner');
     public static String prestigeTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Prestige');
     //----
-    /* public static String TitaniumTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Titanium');
+     public static String TitaniumTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Titanium');
     public static String GoldTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Gold');
-    public static String MemberTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Member');*/
+    public static String MemberTier = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers('Member');
     public static Map<String,String> applicableTiersMap = new Map<String,String>();
     
     public static Id intelRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
@@ -149,7 +149,7 @@ public without sharing class PRM_BenefitUtility{
         }*/ // IPA refresh - switch removal
         
         Map<Id, Id> accountIdRecordTypeIdMap = new Map<Id,Id>();
-        map<id, string> mapAccsWithAcmStatus=new map<Id, string>();
+        
         //Sheetal Changes for opid entltlment Start
         if(accounts != null && ! accounts.isEmpty()){
                 finalAccList.addAll(accIdList);
@@ -170,7 +170,7 @@ public without sharing class PRM_BenefitUtility{
             }else{
             allACMsList = [Select Id, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_Covered_Account__c, PRM_Channel_Program_Id__c, PRM_Channel_Program_Level_Id__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Status_Nm__c,PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName From PRM_AccountChannelMembership__c Where PRM_Channel_Program_Id__r.Name =:System.Label.PRM_Intel_Partner_Alliance AND PRM_Account_Id__c IN :accIdList AND PRM_Partner_Role__c != null AND PRM_Channel_Program_Id__r.Name != null AND PRM_Channel_Program_Level_Id__r.Name !=null];
             }*/ // IPA Refresh - switch removal
-            allACMsList = [Select Id, PRM_Account_Id__c,PRM_Status_Reason_Txt__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_Covered_Account__c, PRM_Channel_Program_Id__c, PRM_Channel_Program_Level_Id__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Status_Nm__c,PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName From PRM_AccountChannelMembership__c Where PRM_Channel_Program_Id__r.Name =:System.Label.PRM_Intel_Partner_Alliance AND PRM_Account_Id__c IN :finalAccList AND PRM_Partner_Role__c != null AND PRM_Channel_Program_Id__r.Name != null AND PRM_Channel_Program_Level_Id__r.Name !=null];
+            allACMsList = [Select Id, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_Covered_Account__c, PRM_Channel_Program_Id__c, PRM_Channel_Program_Level_Id__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Status_Nm__c,PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName From PRM_AccountChannelMembership__c Where PRM_Channel_Program_Id__r.Name =:System.Label.PRM_Intel_Partner_Alliance AND PRM_Account_Id__c IN :finalAccList AND PRM_Partner_Role__c != null AND PRM_Channel_Program_Id__r.Name != null AND PRM_Channel_Program_Level_Id__r.Name !=null];
             
             logEntryMsgString+='\n\nallACMsList returned if sourcecheck true:'+allACMsList;
             if(allACMsList != null && !allACMsList.isEmpty()){
@@ -208,10 +208,6 @@ public without sharing class PRM_BenefitUtility{
                             hasActiveAcm = true;
                             break;
                         }
-                        if(acm.PRM_Status_Nm__c== System.Label.PRM_Status_Inactive && acm.PRM_Status_Reason_Txt__c==system.label.PRM_LastContact_InactivationReason){
-							mapAccsWithAcmStatus.put(acm.PRM_Account_Id__c,acm.PRM_Status_Reason_Txt__c);
-                        
-						}
                     }
                     if(!hasActiveAcm){
                         accWithNoActiveAcm.add(acc);
@@ -222,9 +218,6 @@ public without sharing class PRM_BenefitUtility{
                 for(PRM_AccountbenefitAssociation__c aba:PRM_IPA_Utility.getAccountBenefitAssociationData(accWithNoActiveAcm)){
                     aba.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
                     aba.PRM_Status_Reason_Txt__c = 'Inactivated as account has no active ACM';
-                    if(mapAccsWithAcmStatus.containskey(aba.PRM_Account_Id__c)){
-                         aba.PRM_Status_Reason_Txt__c = mapAccsWithAcmStatus.get(aba.PRM_Account_Id__c);
-                    }
                     abaId.add(aba);
                 }
             }
@@ -302,7 +295,7 @@ public without sharing class PRM_BenefitUtility{
                 }
             } // IPA Refresh - switch removal
             if(ipaRefresh || Test.isRunningTest()){*/
-                for(PRM_IPAMembership_Attributes__c respnseList : [Select PRM_Points_Not_Eligible_Ind__c,PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :accIdList AND PRM_Inactive_ind__c = FALSE]){
+                for(PRM_IPAMembership_Attributes__c respnseList : [Select PRM_Points_Not_Eligible_Ind__c,PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :accIdList ]){
                     ipaMemAttMap.put(respnseList.PRM_Account_Id__c,respnseList);
                 }
                 for(Id accid : accIdList){
@@ -323,6 +316,8 @@ public without sharing class PRM_BenefitUtility{
         if(assignOnlyEntitlement){//for Benefit as well as ENtitlement
             if(acmList != null && !acmList.IsEmpty()){
                 for(PRM_AccountChannelMembership__c acm :acmList){
+                    System.debug('applicableTiersMap ==>'+JSON.serialize(applicableTiersMap));
+                    System.debug('applicableTiersMap : ==>'+applicableTiersMap.get(acm.PRM_Channel_Program_Level_Id__r.Name));
                     String applicableTiers = applicableTiersMap.get(acm.PRM_Channel_Program_Level_Id__r.Name);
                     partnerBenefitList = new List<String>();
                     List<Id> benefitListTemp =new List<Id>();
@@ -338,6 +333,7 @@ public without sharing class PRM_BenefitUtility{
                             Set<Id> tierBenefits = new Set<Id>();
                 // Added as part of US TWC729-3583/3548 ,to add lower tier benefit.
                         //String applicableTiers = PRM_accBenefitAssociationUtility.getApplicableBenefitTiers(acm.PRM_Channel_Program_Level_Id__r.Name);
+                            //System.debug('applicableTiers-->'+applicableTiers);
                             if(
                                 ((acm.PRM_Account_Id__r.RecordTypeId != intelRecordTypeId /*&& ipaRefresh*/) && (applicableTiers.contains(bm.PRM_Channel_Program_Level_Id__r.Name)) && (bm.PRM_Approval_Type_Nm__c == 'Automatic') && (bm.PRM_IsActive_Ind__c = True) &&(acm.PRM_Partner_Role__c == bm.PRM_Partner_Role_Nm__c) && (acm.PRM_Account_Id__r.RecordType.DeveloperName == bm.PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c)) ||
                             (applicableTiers.contains(bm.PRM_Channel_Program_Level_Id__r.Name) && (bm.PRM_Approval_Type_Nm__c == 'Automatic') && (bm.PRM_IsActive_Ind__c = True) &&(acm.PRM_Partner_Role__c == bm.PRM_Partner_Role_Nm__c) && (acm.PRM_Account_Id__r.RecordType.DeveloperName == bm.PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c))){
@@ -450,16 +446,10 @@ public without sharing class PRM_BenefitUtility{
                                 if(!manualBenefits.isEmpty() && !manualBenefits.contains(aba.PRM_Partner_Benefit_Id__c)){
                                             aba.PRM_Status_Nm__c = 'Inactive';
                                             aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
-                                        if(mapAccsWithAcmStatus.containskey(aba.PRM_Account_Id__c)){
-                                         aba.PRM_Status_Reason_Txt__c = mapAccsWithAcmStatus.get(aba.PRM_Account_Id__c);
-                                    }
                                         abaId.add(aba);
                                     }else if(manualBenefits.isEmpty()){
                                         aba.PRM_Status_Nm__c = 'Inactive';
                                         aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
-                                         if(mapAccsWithAcmStatus.containskey(aba.PRM_Account_Id__c)){
-                                         aba.PRM_Status_Reason_Txt__c = mapAccsWithAcmStatus.get(aba.PRM_Account_Id__c);
-                                    }
                                     abaId.add(aba);
                                 }
                             }
@@ -642,6 +632,7 @@ public without sharing class PRM_BenefitUtility{
             }
         }
             
+        System.debug('benefitEntitlementMap -->'+JSON.serialize(benefitEntitlementMap));
             
         Map<Id,Map<String,List<PRM_VXEnttlmntMatrix__c>>> accEntitlementsMap= new Map<Id,Map<String,List<PRM_VXEnttlmntMatrix__c>>>();
         Map<Id,List<id>> accEntilementNotUpdate = new Map<Id,List<id>>(); //TWC729-4156 -Start
@@ -652,6 +643,7 @@ public without sharing class PRM_BenefitUtility{
                 abaLst = [Select Id, Name,PRM_Partner_Benefit_Id__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Status_Nm__c,PRM_Account_Id__r.Name From PRM_AccountBenefitAssociation__c Where PRM_Account_Id__c IN :accounts AND PRM_Partner_Benefit_Id__r.Name in: pointsBenefits];
             }// IPA refresh - switch removal
             
+            System.debug('abaLst -->'+JSON.serialize(abaLst));
             
             for(PRM_AccountBenefitAssociation__c aba : abaLst)
         {
@@ -667,12 +659,17 @@ public without sharing class PRM_BenefitUtility{
         } //TWC729-4156 - End
         for(Account acc :accounts){
             List<Id> accBenefits = new List<Id>();
+                System.debug('benefitMap -->'+JSON.serialize(benefitMap));
+                System.debug('mapOfChildToParentAccount -->'+JSON.serialize(mapOfChildToParentAccount));
+                System.debug('benefitMap -->'+JSON.serialize(benefitMap));
                 if(benefitMap.get(acc.Id) != null){
                     accBenefits = benefitMap.get(acc.Id); // get location account benefits
                 }
                 // get the opid benefits
                 if(/*ipaRefresh &&*/ !benefitMap.isEmpty() && !mapOfChildToParentAccount.isEmpty() && mapOfChildToParentAccount.containsKey(acc.Id) && benefitMap.containsKey(mapOfChildToParentAccount.get(acc.Id))){
                     
+                    System.debug('mapOfChildToParentAccount.get(acc.Id) -->'+JSON.serialize(mapOfChildToParentAccount.get(acc.Id)));
+                    System.debug('benefitMap.get(acc.Id) -->'+JSON.serialize(benefitMap.get(mapOfChildToParentAccount.get(acc.Id))));
                     for(String bnftId : benefitMap.get(mapOfChildToParentAccount.get(acc.Id))){
                         accBenefits.add(bnftId);
                     }
@@ -707,10 +704,11 @@ public without sharing class PRM_BenefitUtility{
             }
         }
         
+            System.debug('accEntitlementsMap ==>'+JSON.serialize(accEntitlementsMap));
             //Fetching ACR records of the att.accounts which is picked by the batch job to process.
             //acrRecords = [Select id,PRM_Account_Id__r.Name,PRM_Relationship_Id__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c,PRM_Account_Id__c, PRM_Contact_Id__c,PRM_Contact_Id__r.Core_IPA_PartnerRole__c,PRM_Partner_Role__c,PRM_Contact_Id__r.Name,PRM_Status_Nm__c,PRM_Contact_Id__r.Core_Login_Status__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :finalAccList AND  PRM_InActive_Ind__c!= true AND PRM_Status_Nm__c =:System.Label.PRM_ACR_Status AND (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.PRM_Status_Active OR (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.IPA_Downgrade_to_B2C AND PRM_Source_Agent__c!= 'Admin Invite')OR PRM_Contact_Id__r.Core_Login_Status__c = '')];
         //TWC729-7584 - ApexGuru
-        acrRecords = [Select id,PRM_Account_Id__r.Name,PRM_Relationship_Id__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c,PRM_Account_Id__c, PRM_Contact_Id__c,PRM_Contact_Id__r.Core_IPA_PartnerRole__c,PRM_Partner_Role__c,PRM_Contact_Id__r.Name,PRM_Status_Nm__c,PRM_Contact_Id__r.Core_Login_Status__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :finalAccList AND LastmodifiedBy.name!='IPA Data Migration User'  AND  PRM_InActive_Ind__c=false AND PRM_Status_Nm__c =:System.Label.PRM_ACR_Status AND (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.PRM_Status_Active OR (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.IPA_Downgrade_to_B2C AND PRM_Source_Agent__c IN ('Partner Invite','Bulk Invite','Bulk Add','Self Registration','External Partner Invite','')) OR PRM_Contact_Id__r.Core_Login_Status__c = '')];
+        acrRecords = [Select id,PRM_Account_Id__r.Name,PRM_Relationship_Id__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c,PRM_Account_Id__c, PRM_Contact_Id__c,PRM_Contact_Id__r.Core_IPA_PartnerRole__c,PRM_Partner_Role__c,PRM_Contact_Id__r.Name,PRM_Status_Nm__c,PRM_Contact_Id__r.Core_Login_Status__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :finalAccList AND  PRM_InActive_Ind__c=false AND PRM_Status_Nm__c =:System.Label.PRM_ACR_Status AND (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.PRM_Status_Active OR (PRM_Contact_Id__r.Core_Login_Status__c =:System.Label.IPA_Downgrade_to_B2C AND PRM_Source_Agent__c IN ('Partner Invite','Bulk Invite','Bulk Add','Self Registration','External Partner Invite','')) OR PRM_Contact_Id__r.Core_Login_Status__c = '')];
         logEntryMsgString+='\n\nacrRecords returned:'+acrRecords;
         List<PRM_Batch_Entitlement__c> beListTemp = new List<PRM_Batch_Entitlement__c>();
         
@@ -735,6 +733,7 @@ public without sharing class PRM_BenefitUtility{
       }
         }
     
+            System.debug('existingContEntMap -->'+JSON.serialize(existingContEntMap));
     
         if(acrRecords != null && !acrRecords.IsEmpty()){
             for(PRM_Account_Contact_Relationship__c acr :acrRecords){
@@ -774,7 +773,7 @@ public without sharing class PRM_BenefitUtility{
                         entitlements.addAll(entitlementWithoutBenefitmap.get(keyForEnt + '-' + 'Partner'));
                     }
                     
-                }/*else if(acm != null && acm.PRM_Channel_Program_Level_Id__r.Name == 'Titanium'){
+                }else if(acm != null && acm.PRM_Channel_Program_Level_Id__r.Name == 'Titanium'){
             if(entitlementWithoutBenefitmap.containsKey(keyForEnt + '-' + 'Titanium')){
                                 entitlements.addAll(entitlementWithoutBenefitmap.get(keyForEnt + '-' + 'Titanium'));
                         }
@@ -793,12 +792,14 @@ public without sharing class PRM_BenefitUtility{
                         }
             }else if(acm != null && entitlementWithoutBenefitmap.containsKey(keyForEnt  + '-' + 'Member')){
             entitlements.addAll(entitlementWithoutBenefitmap.get(keyForEnt  + '-' + 'Member'));
-        }  */                                      
+        }                                        
                 
                 entitlementsList.addAll(entitlements);
+                System.debug('entitlementsList -->'+JSON.serialize(entitlementsList));
                 
                 if(entitlementsList != null && !entitlementsList.IsEmpty()){ // Assigning entitlements based on the benefits get assigned.
                     for(integer i=0; i<entitlementsList.size(); i++){
+                            System.debug('entitlementsList[i].PRM_Entitlement_Id__c -->'+JSON.serialize(entitlementsList[i]));
                       
                         if(!existingContEntMap.containsKey(acr.PRM_Contact_Id__c) || !existingContEntMap.get(acr.PRM_Contact_Id__c).contains(entitlementsList[i].PRM_Entitlement_Id__c)){
                            // entId.add(entitlements[i].PRM_Entitlement_Id__c);                            
@@ -830,6 +831,7 @@ public without sharing class PRM_BenefitUtility{
     
                     
          logEntryMsgString+='\n\nfinalCEList identified:'+finalCEList;
+            System.debug('finalCEList -->'+JSON.serialize(finalCEList));
         if(!isAdminProcess){
           
             if(finalCEList != null && !finalCEList.IsEmpty()){
@@ -866,6 +868,7 @@ public without sharing class PRM_BenefitUtility{
                 }
             }
                 
+                System.debug('beListTemp -->'+JSON.serialize(beListTemp));
          
             If(beListTemp != null && !beListTemp.IsEmpty()){
                 logEntryMsgString+='\n\nupserting batch entitlements'+beListTemp;

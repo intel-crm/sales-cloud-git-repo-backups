@@ -107,7 +107,7 @@
         <name>Core_Reject_flag_updateCondition</name>
         <dataType>Boolean</dataType>
         <expression>AND(
-OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.DeveloperName}=&quot;Lead&quot;),
+OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.Name}=&quot;Lead&quot;),
 ISPICKVAL({!$Record.Core_Lead_State__c}, &apos;In Pursuit&apos;),
 ISPICKVAL({!$Record__Prior.Core_Lead_State__c}, &apos;Terminated&apos;),
 NOT(ISPICKVAL({!$Record__Prior.Core_Lead_Status__c}, &apos;Unreachable&apos;)),
@@ -125,7 +125,7 @@ ISCHANGED({!$Record.Core_Lead_State__c})
     <formulas>
         <name>F_Core_Lead_to_Account_Conversion_FlagUpdate</name>
         <dataType>Boolean</dataType>
-        <expression>OR( AND( OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.DeveloperName }=&quot;Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;) ), AND( {!$Record.RecordType.Name}=&quot;Partner Lead&quot;  ) )</expression>
+        <expression>OR( AND( OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.Name}=&quot;Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;) ), AND( {!$Record.RecordType.Name}=&quot;Partner Lead&quot;  ) )</expression>
     </formulas>
     <formulas>
         <description>for the LEAD WF

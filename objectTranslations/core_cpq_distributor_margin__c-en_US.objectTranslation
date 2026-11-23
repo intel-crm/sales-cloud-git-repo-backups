@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Distributor Margin</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Distributor Margins</value>
+    </caseValues>
+    <fields>
+        <label><!-- Design Reg Approved Date --></label>
+        <name>core_Design_Reg_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Tier --></label>
+        <name>core_cpq_Account_Tier_Txt__c</name>
+        <picklistValues>
+            <masterLabel>PSG-Tier 1</masterLabel>
+            <translation><!-- PSG-Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 2</masterLabel>
+            <translation><!-- PSG-Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 3</masterLabel>
+            <translation><!-- PSG-Tier 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 4</masterLabel>
+            <translation><!-- PSG-Tier 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>core_cpq_Active_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Registration --></label>
+        <name>core_cpq_Approved_Registration_Txt__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disty Margin % --></label>
+        <name>core_cpq_Disty_Margin_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>core_cpq_Effective_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Margin GEO --></label>
+        <name>core_cpq_Margin_GEO_Txt__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>core_cpq_Partner_Program_Txt__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Demand Creation - Distribution</masterLabel>
+            <translation><!-- PSG Demand Creation - Distribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Demand Creation - Hybrid</masterLabel>
+            <translation><!-- PSG Demand Creation - Hybrid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Demand Creation - PSG</masterLabel>
+            <translation><!-- PSG Demand Creation - PSG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Price Book --></label>
+        <name>core_cpq_Price_Book__c</name>
+        <relationshipLabel><!-- Distributor Margins --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Registered Product --></label>
+        <name>core_cpq_Registered_Product_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM Type --></label>
+        <name>core_cpq_dm_type__c</name>
+        <picklistValues>
+            <masterLabel>Farmer</masterLabel>
+            <translation><!-- Farmer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hunter</masterLabel>
+            <translation><!-- Hunter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>core_cpq_end_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>core_cpq_product_family_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>core_cpq_unique_id__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Distributor Margin Record Type --></label>
+        <name>PSG_Distributor_Margin_Record_Type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

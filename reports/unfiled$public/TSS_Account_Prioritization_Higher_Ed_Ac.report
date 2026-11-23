@@ -14,6 +14,9 @@
         <field>Account.Core_Domestic_Ultimate_DUNS__c</field>
     </columns>
     <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>

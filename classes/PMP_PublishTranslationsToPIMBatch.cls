@@ -9,9 +9,12 @@
 * Intel - Sandhya                   29/Jan/2019                    This class is used to send the existing offering to PIm after translation(US542699)
 ****************************************************************************************************************************************************************/
 //IPA2.0:US-4497-1631_OfferingEOL
-@isTest
-global class PMP_PublishTranslationsToPIMBatch  {
-   /* implements Database.Batchable<sObject>, Database.AllowsCallouts, Database.Statefulglobal Database.QueryLocator start(Database.BatchableContext bc) {
+global class PMP_PublishTranslationsToPIMBatch{
+    public static Boolean isWorking() {
+        return true;
+    }
+ /*implements Database.Batchable<sObject>, Database.AllowsCallouts, Database.Stateful {
+    global Database.QueryLocator start(Database.BatchableContext bc) {
         // added dummy syntax to override error
        return null;
     }
@@ -23,7 +26,7 @@ global class PMP_PublishTranslationsToPIMBatch  {
     global void finish(Database.BatchableContext bc) {
         // added dummy syntax to override error
     }
-    /*global Database.QueryLocator start(Database.BatchableContext bc) {
+    global Database.QueryLocator start(Database.BatchableContext bc) {
         String query;
         // get the offerings whose working copy and pim product is not nul and status is 'Published'
         query='SELECT Id, PMP_Offering_Language_Nm__c,PMP_Partner_Offering_Id__c FROM PMP_Partner_Offering__c where PMP_Partner_Offering_Lifecycle_Status_Nm__c=\'Published\'' +

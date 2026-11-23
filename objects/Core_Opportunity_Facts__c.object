@@ -1163,16 +1163,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Sustainability_Compliance__c</fullName>
-        <externalId>false</externalId>
-        <label>Sustainability Compliance</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_System_Integrator__c</fullName>
         <externalId>false</externalId>
         <label>System Integrator</label>

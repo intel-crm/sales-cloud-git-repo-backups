@@ -203,8 +203,8 @@
                 Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
                 // System.debug('here=='+TestDDRupdate_Rej[0].Core_Design_Registration_Status_Nm__c);
                 DRproducts.Core_Design_Registration_Id__c = TestDDRlst[1].id;
-                DRproducts.Core_Product_Id__c = products2[1].Id;
-                DRproducts.Core_Target_Resale_Amt__c = 25;
+                DRproducts.Core_Product_Id__c = products2[0].Id;
+                DRproducts.Core_Target_Resale_Amt__c = 20;
                 DRproducts.Core_Full_Year_Qty__c = 3;
                 DRproducts.Core_Design_Product_Status_Nm__c = 'Pending';
                 insert DRproducts;

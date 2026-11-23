@@ -7,7 +7,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         List<PMP_Static_Constants__c> stList  = new List<PMP_Static_Constants__c>();
         PMP_Static_Constants__c st = new PMP_Static_Constants__c();
         st.Name = 'PMP_PIM_Industry_Id';
-        st.PMP_Value__c = 'NPP_01_Industry'; 
+        st.PMP_Value__c = 'NPP_01_Industry';
         stList.add(st); 
         PMP_Static_Constants__c st1 = new PMP_Static_Constants__c();
         st1.Name = 'PMP_PIM_Application_Id';
@@ -171,8 +171,8 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         insert testPartner2;
         
         
-        //TranslationEOL
-       /* PMP_Company_Translation__c trans = new PMP_Company_Translation__c();
+        
+        PMP_Company_Translation__c trans = new PMP_Company_Translation__c();
         trans.Name = 'test';
         trans.PMP_English_Txt__c = 'test';
         trans.PMP_Japanese_Txt__c = 'test';
@@ -181,7 +181,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         trans.PMP_Company_Information_Id__c = testPartner1.Id;
        // trans.PMP_Field_Nm__c = 'Description';
         insert trans;
-        */
+        
         PMP_Partner_Specialty__c ps=new PMP_Partner_Specialty__c();
         ps.Name='Artificial Intelligence Speciality';
         ps.PMP_Partner_Specialty_English_Dsc__c='test';
@@ -239,28 +239,26 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
  
     @isTest static void testGetPartnerList(){
         Test.startTest();
-        //TranslationEOL
-       // PMP_Company_Translation__c trans = [select id from PMP_Company_Translation__c where Name='test'];
-       // Id [] fixedSearchResults= new Id[1];
-       // fixedSearchResults[0] = trans.Id;
-       // Test.setFixedSearchResults(fixedSearchResults);
+        PMP_Company_Translation__c trans = [select id from PMP_Company_Translation__c where Name='test'];
+        Id [] fixedSearchResults= new Id[1];
+        fixedSearchResults[0] = trans.Id;
+        Test.setFixedSearchResults(fixedSearchResults);
 		PMP_Company__c comp = [select id from PMP_Company__c where Name='testPartner1' limit 1];        
         
-        system.assertEquals( 0 , PMP_SearchPartnerController.getPartnerList('',new List<String> {'testPartner1'}).size(),'Failed');
-        system.assertNotEquals( NULL , PMP_SearchPartnerController.getPartnerList('testPartner1',new List<String> {comp.Id}).size(),'Failed');
+        system.assertEquals( 0 , PMP_SearchPartnerController.getPartnerList('',new List<String> {'test'}).size(),'Failed');
+        system.assertNotEquals( NULL , PMP_SearchPartnerController.getPartnerList('test',new List<String> {comp.Id}).size(),'Failed');
         
         Test.stopTest();
     }
     
     @isTest static void testGetPartnerListforRLpage(){
         Test.startTest();
-        //TranslationEOL
-       /* PMP_Company_Translation__c trans = [select id from PMP_Company_Translation__c where Name='test'];
+        PMP_Company_Translation__c trans = [select id from PMP_Company_Translation__c where Name='test'];
         Id [] fixedSearchResults= new Id[1];
         fixedSearchResults[0] = trans.Id;
-        Test.setFixedSearchResults(fixedSearchResults);*/
-        PMP_Company__c comp = [select id from PMP_Company__c where Name='testPartner1' limit 1]; 
-        system.assertEquals( 0 , PMP_SearchPartnerController.SerachPartnersByName('testPartner1').size(),'Failed');
+        Test.setFixedSearchResults(fixedSearchResults);
+        
+        system.assertEquals( 1 , PMP_SearchPartnerController.SerachPartnersByName('test').size(),'Failed');
         
         Test.stopTest();
     }

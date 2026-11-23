@@ -9,10 +9,6 @@
         <value>Escalonamentos</value>
     </caseValues>
     <fields>
-        <label>Nome da atividade</label>
-        <name>Core_MDF_Activity_Name_url__c</name>
-    </fields>
-    <fields>
         <label><!-- Approval Flag --></label>
         <name>Core_MDF_Approval_Flag_ind__c</name>
     </fields>
@@ -325,10 +321,6 @@ Claim Submitter --></errorMessage>
 Escalation Name,  Activity Name,
 Claim Submitter --></errorMessage>
         <name>Core_MDF_Late_Claim_Required_Fields</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Escalations can only be created for Outcome Based Campaign records. --></errorMessage>
-        <name>Core_MDF_Prevent_Sub_Activity</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Escalation cannot be created on an Activity that is not Approved and Closed. --></errorMessage>

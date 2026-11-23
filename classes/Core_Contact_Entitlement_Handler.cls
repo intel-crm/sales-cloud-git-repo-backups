@@ -41,7 +41,7 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
        Core_ContactEntitlementHelper.updateAccountFields(updateMembChngIndAccounts,updateB2BFlagAccounts);               
        //Core_ContactEntitlementHelper.triggerAfterMethodFirstEntry=false;
        //}    
-       Core_ContactEntitlementHelper.removeSharingForStorefronts(Trigger.new, (Map<Id,Core_Contact_Entitlement__c>) Trigger.oldMap, 'AFTER_UPDATE');
+      
        for(Core_Contact_Entitlement__c conEntRef : (List<Core_Contact_Entitlement__c>)trigger.new){
            Core_Contact_Entitlement__c conEntRefOld = oldMap.get(conEntRef.Id);
            if(conEntRef.Core_Selected__c != conEntRefOld.Core_Selected__c){
@@ -124,7 +124,6 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
    //Method includes logic which executes before deletion of records
    public override void beforeDelete(){
        List<Account> updateMembChngIndAccounts = Core_ContactEntitlementHelper.updateMembershipChangeInd(Trigger.old, null, 'AFTER_DELETE'); 
-	   Core_ContactEntitlementHelper.removeSharingForStorefronts(Trigger.old, null, 'AFTER_DELETE');
        Core_ContactEntitlementHelper.updateAccountFields(updateMembChngIndAccounts,null); 
    }      
 }

@@ -18,11 +18,11 @@ public without sharing class Core_MDF_CampaignCreatePage {
     public static String Account_based_Indicator = Core_MDF_CCP_ConstantClass.Account_based_Indicator;
     public static primPartIUPGMAccWrapper getIUPGMAccounts(){       
         primPartIUPGMAccWrapper primPartAccWrp = new primPartIUPGMAccWrapper();
-        //String iupgmQuery = 'Select id,name,Core_MDF_Account_id__c, Core_MDF_Account_id__r.name,Core_MDF_All_Accounts_cd__c,Core_MDF_Active_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c where Core_MDF_Role_nm__c = :EEF_Primary_Partner_Account_Manager and Core_MDF_Active_Ind__c = true'; //TWC3117-16123
-        //String userId = String.valueOf(UserInfo.getUserId()); //TWC3117-16123
-        //iupgmQuery+=' and Core_MDF_User_id__c = :userId'; //TWC3117-16123
+        String iupgmQuery = 'Select id,name,Core_MDF_Account_id__c, Core_MDF_Account_id__r.name,Core_MDF_All_Accounts_cd__c,Core_MDF_Active_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c where Core_MDF_Role_nm__c = :EEF_Primary_Partner_Account_Manager and Core_MDF_Active_Ind__c = true';
+        String userId = String.valueOf(UserInfo.getUserId());
+        iupgmQuery+=' and Core_MDF_User_id__c = :userId';
         boolean allAccountflag = false;
-        //List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = database.query(iupgmQuery); //TWC3117-16123
+        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = database.query(iupgmQuery);
         List<Id> accountList = new List<Id>();
         for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm:[Select id,name,Core_MDF_Account_id__c, Core_MDF_Account_id__r.name,Core_MDF_All_Accounts_cd__c,Core_MDF_Active_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c 
                                                             where Core_MDF_Role_nm__c = :EEF_Primary_Partner_Account_Manager and Core_MDF_Active_Ind__c = true and Core_MDF_User_id__c = :UserInfo.getUserId()]){
@@ -77,13 +77,6 @@ public without sharing class Core_MDF_CampaignCreatePage {
     }
 
     public static List<sObject> getSearch(String searchTerm, string myObject, String filter) {
-        // Validate inputs
- 
-        if (searchTerm == null || searchTerm.trim() == '' || myObject == null || myObject.trim() == '') {
-            return new List<sObject>();
-        }
-        
-        
         String myQuery = null;
         String sanitizedMyObj = String.escapeSingleQuotes(myObject);
         String searchTrm = String.escapeSingleQuotes(searchTerm);
@@ -92,14 +85,8 @@ public without sharing class Core_MDF_CampaignCreatePage {
         if(filter != null && filter != ''){
             myQuery = 'SELECT Id, Name FROM '+sanitizedMyObj+' WHERE Name LIKE  \'%' + searchTrm + '%\' AND '+filt+' LIMIT  10';
         }
-        
-        // Ensure query is not null before executing
-        if (myQuery != null) {
-            List<sObject> lookUpList = database.query(myQuery);
-            return lookUpList;
-        } else {
-            return new List<sObject>();
-        }
+        List<sObject> lookUpList = database.query(myQuery);
+        return lookUpList;
     }
 
     @AuraEnabled(cacheable=true)
@@ -139,7 +126,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
     @AuraEnabled 
     public static String saveCampaign(Campaign campaignObj, List<CampaignBudgetWrapperClass> campaignBudgets, List<PartnerFundRequest> pfrList, String campAmountFields, String selectedActPartners, List<Map<String, String>> contractLineItemRecordsToSave, List<OutcomeWrapper> outcomeWrapperList, List<ActivityToActivityAttributesWrapper> activityToActivityAttrWrapperList, Boolean hasTacticMetrics) {
         String returnValue='';
-         List<String> validOutcomeMetricProgram = Core_MDF_CCP_ConstantClass.validOutcomeMetricProgramName;
+  List<String> validOutcomeMetricProgram = Core_MDF_CCP_ConstantClass.validOutcomeMetricProgramName;
         //US1082875: [IPA MDF] - Campaign - Clone a Proposal - Save capability
         List<PartnerFundRequest> insertPFR = new List<PartnerFundRequest>();
         List<String> conDocListIds = new List<String>();
@@ -161,10 +148,10 @@ public without sharing class Core_MDF_CampaignCreatePage {
                     campaignObj.Core_MDF_Reimbursement_Amt__c = decimal.valueOf(wrapper.reimbursementAmount); 
                 }
         
-            }
+            }    
             campaignObj.Core_MDF_Partner_Mapping_Txt__c   = selectedActPartners;
-            upsert campaignObj;
-            returnValue = campaignObj.Id;
+            upsert campaignObj;  
+            returnValue = campaignObj.Id;         
             Campaign camRecord = [SELECT Id, Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Program__c,Core_MDF_Channel_Program__c,Core_MDF_CampOutcomeOpt_In_Ind__c,Core_MDF_Outcome_Detail_Edited_Ind__c from Campaign where id = :campaignObj.Id LIMIT 1];
             if(camRecord.Core_MDF_Opal_Budget_Type_Txt__c != null){                
                 if(campaignBudgets != null && !campaignBudgets.isEmpty()){
@@ -173,7 +160,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
                 }
             }
             if(campaignObj.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM && !contractLineItemRecordsToSave.isEmpty()){
-                saveCampaignContractLineItems(campaignObj.Id, contractLineItemRecordsToSave);
+              saveCampaignContractLineItems(campaignObj.Id, contractLineItemRecordsToSave);
             }
             if(campaignObj.Core_MDF_Program__c == EEF_PROGRAM){
                 saveCampToISVMapping(campaignObj);
@@ -187,27 +174,12 @@ public without sharing class Core_MDF_CampaignCreatePage {
                 Map<string,string> errIdToMsg = new Map<string,string>();
                 string oppValidationMsg = System.Label.Core_MDF_OpportunityID_Error;
 
-                 //Executes only when IPA Outcome based campaign clone
+                //Executes only when IPA Outcome based campaign clone
                 List<PartnerFundRequest> outcomeBasedActivityList = new List<PartnerFundRequest>();
                 if(hasTacticMetrics){
-                    // Filter activities to only those whose Id is present in pfrList (to avoid unwanted data)
-                    Set<Id> validPfrIds = new Set<Id>();
-                    for(PartnerFundRequest pfrRec : pfrList){
-                        if(pfrRec != null && pfrRec.Id != null){
-                            validPfrIds.add(pfrRec.Id);
-                        }
-                    }
-
-                    List<ActivityToActivityAttributesWrapper> activityToActivityAttrWrapperTempList = new List<ActivityToActivityAttributesWrapper>();
                     for(ActivityToActivityAttributesWrapper wrap : activityToActivityAttrWrapperList){
-                        if(wrap != null && wrap.activity != null && wrap.activity.Id != null){
-                            if(!validPfrIds.isEmpty() && validPfrIds.contains(wrap.activity.Id)){
-                                outcomeBasedActivityList.add(wrap.activity);
-                                activityToActivityAttrWrapperTempList.add(wrap);
-                            }
-                        }
+                        outcomeBasedActivityList.add(wrap.activity);
                     }
-                    activityToActivityAttrWrapperList = activityToActivityAttrWrapperTempList;
                 }
 
                 for(PartnerFundRequest p : (hasTacticMetrics ? outcomeBasedActivityList : pfrList)){
@@ -235,10 +207,9 @@ public without sharing class Core_MDF_CampaignCreatePage {
                         String objName = '';
                         String oppId = p.Core_MDF_Opportunity_id__c;
                      try{
-                        //ATHR - Deeply Nested if 16209
-                        //if(oppId instanceOf Id){
-                            objName = oppId instanceOf Id ? Id.valueOf(oppId).getSObjectType().getDescribe().getName() : '';
-                        //}
+                        if(oppId instanceOf Id){
+                            objName = Id.valueOf(oppId).getSObjectType().getDescribe().getName();
+                        }
                         if(String.isBlank(objName) || objName != Core_MDF_CCP_ConstantClass.OPPORTUNITY_OBJECT_NAME ){
                             errIdToMsg.put(p.Core_MDF_Opportunity_id__c,oppValidationMsg);
                         }}
@@ -253,11 +224,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
                 
             }
             //Added by Hema
-            //ATHR - Deeply Nested if 16209
-            if(insertPFR.isEmpty()){
-               return returnValue;
-            }
-            //if(!insertPFR.isEmpty()){
+            if(!insertPFR.isEmpty()){
                 for(PartnerFundRequest pfr : insertPFR)
                 { 
                     if(pfr.Core_MDF_Content_DocumentIds_txt__c !=null){
@@ -271,11 +238,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
                 if(!conDocListIds.isEmpty()){
                     for(ContentDocument docuLink : [SELECT Id, LatestPublishedVersionId FROM ContentDocument WHERE Id IN: conDocListIds]){
                         for(Id pfrId : pfrmap.keySet()){
-                            //ATHR - Deeply Nested if 16209
-                            if(docuLink == null || docuLink.Id == null || pfrmap.get(pfrId) == null || !pfrmap.get(pfrId).contains(docuLink.Id)) {
-                                continue;
-                            }
-                            //if(pfrmap.get(pfrId).contains(docuLink.Id)){ 
+                            if(pfrmap.get(pfrId).contains(docuLink.Id)){ 
                                 ContentDocumentLink odocLink = new ContentDocumentLink(ContentDocumentId = docuLink.Id,LinkedEntityId=pfrId,ShareType='I',Visibility='AllUsers');
                                 FeedItem chatterDetail = new FeedItem();
                                 chatterDetail.ParentId = pfrId;
@@ -284,7 +247,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
                                 chatterDetail.Visibility = 'AllUsers';
                                 chatterfiles.add(chatterDetail);
                                 conDocuLink.add(odocLink);
-                            //}
+                            }
                         }
                     }  
                     insert(conDocuLink);
@@ -294,22 +257,22 @@ public without sharing class Core_MDF_CampaignCreatePage {
                 //For IPA Outcome based Proposal Clone - Create Activity Attribute(Tactic Metrics) records
                 List<Core_MDF_Activity_Attributes__c> activityAttributeListToInsert = new List<Core_MDF_Activity_Attributes__c>();
                 for(ActivityToActivityAttributesWrapper wrapper : activityToActivityAttrWrapperList){
-                    Id activityId = (wrapper != null && wrapper.activity != null) ? wrapper.activity.Id : null;
+                    Id activityId = wrapper.activity.Id;
                     for(Core_MDF_Activity_Attributes__c activityAttribute : wrapper.activityAttribute){
-                        if(activityId != null && activityAttribute != null && activityAttribute.Core_MDF_Is_Active_Ind__c){
-                                activityAttribute.Id = null;
-                                activityAttribute.Core_MDF_Is_Active_Ind__c = true;
-                                activityAttribute.Core_MDF_Co_Marketing_Activity__c = activityId;
-                                activityAttributeListToInsert.add(activityAttribute);
-                        }
+                        if(activityAttribute.Core_MDF_Is_Active_Ind__c){
+      activityAttribute.Id = null;
+                        activityAttribute.Core_MDF_Is_Active_Ind__c = true;
+                        activityAttribute.Core_MDF_Co_Marketing_Activity__c = activityId;
+                        activityAttributeListToInsert.add(activityAttribute);
                     }
+                }
                 }
 
                 if(!activityAttributeListToInsert.isEmpty()){
                     insert activityAttributeListToInsert;
                 }
 
-            //}
+            }
         }
         
         catch(Exception e){
@@ -335,7 +298,7 @@ public without sharing class Core_MDF_CampaignCreatePage {
     {
         for(Schema.FieldSetMember fieldMember : sObj.getDescribe().fieldSets.getMap().get(fieldSetName).getFields()){
             String fieldName = fieldMember.getFieldPath();
-            if((isCommunityUser && fieldName != 'Core_MDF_Proposal_Score_nbr__c' && fieldName != 'Core_MDF_Reason_for_Back_Dating_Nm__c' && fieldName != 'Core_MDF_PCT_Notes_txt__c') || !isCommunityUser) {
+            if((isCommunityUser && fieldName != 'Core_MDF_Proposal_Score_nbr__c' && fieldName != 'Core_MDF_Reason_for_Back_Dating_Nm__c') || !isCommunityUser) {
                 if(!fieldList.contains(fieldMember.getFieldPath()))
                 {
                     FieldSetMemberWrapperClass wrapper = new FieldSetMemberWrapperClass();
@@ -565,24 +528,20 @@ return budgetTypeString;
                     }
                 }
             } 
-            //ATHR - Deeply Nested if 16209
-            if(budgetFromMetaData == null || budgetFromMetaData.isEmpty()){
-                return budgetTypeMap;
-            }
-            //if(!budgetFromMetaData.isEmpty()){
+            
+            if(!budgetFromMetaData.isEmpty()){
                 if(operation == 'edit'){
                     if(String.isNotBlank(isProposalBased)){
                         recordType = isProposalBased == 'true' ? Proposal_based_Indicator : Account_based_Indicator;
                     }
-                    //ATHR - Deeply Nested if 16209
-                    if(string.isNotBlank(recordType) && recordTypeBudgetMap.get(recordType) != null){
-                        //if(recordTypeBudgetMap.get(recordType) != null){
+                    if(string.isNotBlank(recordType)){
+                        if(recordTypeBudgetMap.get(recordType) != null){
                             mdfBudgetType = recordTypeBudgetMap.get(recordType);
                             for(String b:mdfBudgetType){
                                 budgetTypeMap.put(b,validBudgetTypeOptions.get(b));
                             }
                             
-                        //}
+                        }
                     }
                     
                     budgetTypeString = string.join((Iterable<String>)mdfBudgetType,';');
@@ -604,7 +563,7 @@ return budgetTypeString;
                         budgetTypeString = string.join((Iterable<String>)budgetFromMetaData,';');
                     }
                 }    
-            //}
+            }
             
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}  
         return budgetTypeMap;
@@ -622,14 +581,14 @@ return budgetTypeString;
         String userId = UserInfo.getUserId();
         Set<String> psNameSet = new Set<String>();
         //Boolean isPropInd ;
-        //List<Core_MDF_Field_Editability_Mapping__mdt> fieldEditibilityList = [SELECT Core_MDF_Field_API_Name__c, Core_MDF_Permission_Set_API_Name__c,Core_MDF_Field_ReadOnly_API_Name__c FROM Core_MDF_Field_Editability_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:objectName AND Core_MDF_Record_Type_Developer_Name__c =:recTypeDevloperName AND Core_MDF_Status__c =:status AND Active__c = true]; //TWC3117-16123
+        List<Core_MDF_Field_Editability_Mapping__mdt> fieldEditibilityList = [SELECT Core_MDF_Field_API_Name__c, Core_MDF_Permission_Set_API_Name__c,Core_MDF_Field_ReadOnly_API_Name__c FROM Core_MDF_Field_Editability_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:objectName AND Core_MDF_Record_Type_Developer_Name__c =:recTypeDevloperName AND Core_MDF_Status__c =:status AND Active__c = true];
         for(PermissionSetAssignment psa : [SELECT PermissionSet.Name FROM PermissionSetAssignment WHERE AssigneeId = :userId]) {
             psNameSet.add(psa.PermissionSet.Name);
         }
         
         for(Core_MDF_Field_Editability_Mapping__mdt fem : [SELECT Core_MDF_Field_API_Name__c, Core_MDF_Permission_Set_API_Name__c,Core_MDF_Proposal_Based_Ind__c, Core_MDF_Field_ReadOnly_API_Name__c FROM Core_MDF_Field_Editability_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:objectName AND Core_MDF_Record_Type_Developer_Name__c =:recTypeDevloperName AND Core_MDF_Status__c =:status AND Active__c = true AND Core_MDF_Proposal_Based_Ind__c =:proposalBasedIndicator AND Core_MDF_Is_Claim_Associated_Ind__c =:claimAssociatedIndicator]) {
             if(psNameSet != null && psNameSet.contains(fem.Core_MDF_Permission_Set_API_Name__c) && String.isNotBlank(fem.Core_MDF_Field_API_Name__c)) {
-                fieldApiNameSet.addAll(fem.Core_MDF_Field_API_Name__c.split(','));
+                fieldApiNameSet.addAll(fem.Core_MDF_Field_API_Name__c.split(','));    
             }
             //added by aditya
             if(psNameSet != null && psNameSet.contains(fem.Core_MDF_Permission_Set_API_Name__c) && String.isNotBlank(fem.Core_MDF_Field_ReadOnly_API_Name__c)) {
@@ -659,15 +618,14 @@ return budgetTypeString;
     
     @AuraEnabled
     public static sObject loadRecord(String recordId,String operation, String objectName, List<String> fieldSetName){
-        List<String> fieldstoExclude = Core_MDF_CCP_ConstantClass.CAMPAIGN_EXCLUDED_FIELDS;
+         List<String> fieldstoExclude = Core_MDF_CCP_ConstantClass.CAMPAIGN_EXCLUDED_FIELDS;
         sObject recordObj;
         String sanitiziedCampaignId = String.escapeSingleQuotes(recordId);
         String sanitizedObjectName = String.escapeSingleQuotes(objectName);
         String sQuery = 'SELECT Id, ';
-        Schema.SObjectType sObj = Schema.getGlobalDescribe().get(sanitizedObjectName);//ATHR Fix
         for(string fieldSet : fieldSetName){
             if(String.isNotBlank(recordId) && String.isNotBlank(sanitizedObjectName) && String.isNotBlank(fieldSet) ) {
-                //Schema.SObjectType sObj = Schema.getGlobalDescribe().get(sanitizedObjectName);
+                Schema.SObjectType sObj = Schema.getGlobalDescribe().get(sanitizedObjectName);
                 for(Schema.FieldSetMember fieldMember : sObj.getDescribe().fieldSets.getMap().get(fieldSet).getFields()){
                     if((operation == 'clone' && !fieldstoExclude.contains(fieldMember.getFieldPath())) || operation == 'edit'){
                     sQuery += fieldMember.getFieldPath() + ', ';
@@ -677,7 +635,7 @@ return budgetTypeString;
         sQuery += ' RecordTypeId, RecordType.Name, RecordType.DeveloperName, Core_MDF_Account__r.Name, Core_MDF_Account__r.Core_MDF_Active_Ind__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Account__r.Core_MDF_Virtual_Corp_Account_Id__c, Core_MDF_Channel_Program__c, Core_MDF_Approver_1_id__c, Core_MDF_Approver_2_id__c,Core_MDF_Approver_3_id__c,Core_MDF_Approver_4_id__c,Core_MDF_Approver_5_id__c,Core_MDF_Approver_6_id__c,Core_MDF_Approver_7_id__c,Core_MDF_Approver_8_id__c,Core_MDF_Approver_9_id__c,Core_MDF_Approver_10_id__c ';
         sQuery += ' FROM ' + sanitizedObjectName + ' WHERE Id =:sanitiziedCampaignId ';
         }
-    recordObj = Database.query(sQuery);
+  recordObj = Database.query(sQuery);
         return recordObj;
     }
     
@@ -691,11 +649,7 @@ return budgetTypeString;
         Map<String, String> options = new Map<String, String>();
         Schema.SObjectType sObj = Schema.getGlobalDescribe().get(pickListObj);
         List<String> fieldSetNameList = new List<String>();
-        //ATHR - Deeply Nested if 16209
-        if(fieldSetMap == null || fieldSetMap.isEmpty()){
-            return wrapperList;
-        }
-        //if(!fieldSetMap.isEmpty()){
+        if(!fieldSetMap.isEmpty()){
             for(Core_MDF_RecordType_FieldSet_Mapping__mdt fieldSet : fieldSetMap)
             {
               //Metadata disposition - changed text field references to picklist fields
@@ -703,12 +657,8 @@ return budgetTypeString;
             }
             for(string fieldSetName : fieldSetNameList){
                 for(Schema.FieldSetMember fieldMember : sObj.getDescribe().fieldSets.getMap().get(fieldSetName).getFields()){
-                    //ATHR - Deeply Nested if 16209
-                    if(fieldList.contains(fieldMember.getFieldPath())){
-                        continue;
-                    }
-                    //if(!fieldList.contains(fieldMember.getFieldPath()))
-                    //{
+                    if(!fieldList.contains(fieldMember.getFieldPath()))
+                    {
                         FieldSetMemberWrapperClass wrapper = new FieldSetMemberWrapperClass();
                         wrapper.isRequired = fieldMember.getRequired();
                         wrapper.fieldType = String.valueOf(fieldMember.getType());
@@ -724,10 +674,10 @@ return budgetTypeString;
                             wrapper.pickListValues = options;
                         }
                         wrapperList.add(wrapper);
-                    //}
+                    }
                 }
             }        
-        //}
+        }
         return wrapperList;
         
     }
@@ -798,8 +748,8 @@ return budgetTypeString;
     public static Boolean multipleGeosSelected(List<String> campaignSelectedCountries, string program){
         Boolean isMultipleGeosSelected = False;
         String geo = Core_MDF_ProcessCCP_Campaign.returnsGeoForCampaign(campaignSelectedCountries);
-        //ATHR - Deeply Nested if 16209
-        /*if(geo.split(';').Size() > 1){
+        
+        if(geo.split(';').Size() > 1){
             //NP - WW33 Consider ASMO LAR/NAR as one Region for IPA
             if(program == 'Intel Partner Alliance'){
                 for(string geoVal : geo.split(';')){
@@ -810,19 +760,6 @@ return budgetTypeString;
         }
         else {
             isMultipleGeosSelected = false;
-        }*/
-        if (geo.split(';').size() <= 1) {
-            isMultipleGeosSelected = false;
-        } else if (program != 'Intel Partner Alliance') {
-            isMultipleGeosSelected = true;
-        } else {
-            isMultipleGeosSelected = false;
-            for (String geoVal : geo.split(';')) {
-                if (!geoVal.contains('ASMO')) {
-                    isMultipleGeosSelected = true;
-                    break;
-                }
-            }
         }
         return isMultipleGeosSelected;
     }
@@ -841,7 +778,11 @@ return budgetTypeString;
         Boolean isClaimsAssociated = false;
         try{
             Integer noOfClaims = [Select count() from PartnerFundClaim where Core_MDF_Program__c = 'Intel Partner Alliance' and Core_MDF_Status__c != 'Cancelled' and Core_MDF_Campaign_Id__c = :campaignId];
-            isClaimsAssociated = (noOfClaims > 0);
+            if(noOfClaims > 0){
+                isClaimsAssociated = true;
+            }else{
+                isClaimsAssociated = false;
+            }
         } catch (Exception e) {throw new AuraHandledException(e.getMessage());}
         return isClaimsAssociated;
     }
@@ -886,14 +827,14 @@ return budgetTypeString;
             Map<String, String> budgetTypesFromCampObj = new Map<String, String>();
             List<String> recTypeNameLst = new List<String>();
       
-            //Roshan
+      //Roshan
             Boolean optAccountBenefitAssociation = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_OptAccountBenefitAssoc'); 
             Set<Id> setOfOnePartnerIds = new Set<Id>();
             Map<Id, Set<Id>> mapOfOPIDtoSetofAccountId = new Map<Id, Set<Id>>();  
 
             Schema.DescribeFieldResult fieldResult = Campaign.Core_MDF_Opal_Budget_Type_Txt__c.getDescribe();
             List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-
+            
             for( Schema.PicklistEntry f : ple)
             {
                 budgetTypesFromCampObj.put(f.getValue(), f.getLabel());
@@ -914,9 +855,9 @@ return budgetTypeString;
             
             for(Core_MDF_BudgetType_Benefit_Mappings__c budToBenMdt:budgetTypeBenefitMapping/*[select Core_MDF_Budget_Type__c,Core_MDF_RecordType__c,Core_MDF_Partner_Benefit__c  from Core_MDF_BudgetType_Benefit_Mapping__mdt where Core_MDF_IsActive__c=true and Core_MDF_Program_Nm__c =: program]*/){
                 //applicableBenefitsFromMdt.put(budToBenMdt.Core_MDF_Partner_Benefit__c, budToBenMdt.Core_MDF_Budget_Type__c);
-
+                
                 //Roshan
-                if (!applicableBenefitsFromMdt.containsKey(budToBenMdt.Core_MDF_Partner_Benefit__c)) {
+        if (!applicableBenefitsFromMdt.containsKey(budToBenMdt.Core_MDF_Partner_Benefit__c)) {
                     applicableBenefitsFromMdt.put(budToBenMdt.Core_MDF_Partner_Benefit__c, new Set<String>());
                 }
                 applicableBenefitsFromMdt.get(budToBenMdt.Core_MDF_Partner_Benefit__c).add(budToBenMdt.Core_MDF_Budget_Type__c);
@@ -940,31 +881,31 @@ return budgetTypeString;
             
             if(!unifiedIdSet.isEmpty())
             {
-                List<PRM_IPA_Affiliation__c> prmIPAAff = Core_MDF_Account_Utility.fetchPRMIPAAffiliation(accountIds,null);
+              List<PRM_IPA_Affiliation__c> prmIPAAff = Core_MDF_Account_Utility.fetchPRMIPAAffiliation(accountIds,null);
                 for(PRM_IPA_Affiliation__c accIpaAff :prmIPAAff){
                     MDFExcluded.add(accIpaAff.PRM_Account__c);
-                }
-                List<Account> unifiedAccounts = Core_MDF_Account_Utility.fetchUnifiedIdAccounts(unifiedIdSet);
+            }
+            List<Account> unifiedAccounts = Core_MDF_Account_Utility.fetchUnifiedIdAccounts(unifiedIdSet);
             for(Account acc : unifiedAccounts){
                     String primeIdOrUnifiedField = acc.Core_Unified_Global_Customer_BP_Id__c;
                                             if(!MDFExcluded.contains(acc.Id))
                                             {                       
-                        mapOfIntelAccountandUnifiedId.put(acc.Id,primeIdOrUnifiedField);
+                                                mapOfIntelAccountandUnifiedId.put(acc.Id,primeIdOrUnifiedField);
                                                 setOfAccIds.add(acc.Id);
-
-                        //Roshan 
-                        if (acc.Core_IPA_One_Partner_Id__c != null) {
-                            setOfOnePartnerIds.add(acc.Core_IPA_One_Partner_Id__c);
-                            if (!mapOfOPIDtoSetofAccountId.containsKey(acc.Core_IPA_One_Partner_Id__c)) {
-                                mapOfOPIDtoSetofAccountId.put(acc.Core_IPA_One_Partner_Id__c, new Set<Id>());
-                            }
-                            mapOfOPIDtoSetofAccountId.get(acc.Core_IPA_One_Partner_Id__c).add(acc.Id);
-                        }
-
-                    }                          
+            
+                                                //Roshan
+                                                if (acc.Core_IPA_One_Partner_Id__c != null) {
+                                                    setOfOnePartnerIds.add(acc.Core_IPA_One_Partner_Id__c);
+                                                    if (!mapOfOPIDtoSetofAccountId.containsKey(acc.Core_IPA_One_Partner_Id__c)) {
+                                                        mapOfOPIDtoSetofAccountId.put(acc.Core_IPA_One_Partner_Id__c, new Set<Id>());
+                                                    }
+                                                    mapOfOPIDtoSetofAccountId.get(acc.Core_IPA_One_Partner_Id__c).add(acc.Id);
+                                                }
+            
+                                            }
                                             
-                }
-
+            }
+                
                 //Get the benefits for all accts: PAG accts as well as all the related accts
                 /*for(PRM_Account_Specialty_Association__c asa : [SELECT ID, PRM_Account_Id__c, PRM_Specialty_Id__r.name from PRM_Account_Specialty_Association__c 
                                                                 WHERE PRM_Account_Id__c IN:setOfAccIds and PRM_Specialty_Id__r.name IN: applicableBenefitsFromMdt.keySet() and PRM_InActive_Ind__c = FALSE ]){
@@ -978,7 +919,7 @@ return budgetTypeString;
                 }*/
     
     //Roshan
-                String setOfGeneralizedAccountds = optAccountBenefitAssociation ? '(\'' + String.join(new List<Id>(setOfOnePartnerIds), '\', \'') + '\')' : '(\'' + String.join(new List<Id>(setOfAccIds), '\', \'') + '\')';
+    String setOfGeneralizedAccountds = optAccountBenefitAssociation ? '(\'' + String.join(new List<Id>(setOfOnePartnerIds), '\', \'') + '\')' : '(\'' + String.join(new List<Id>(setOfAccIds), '\', \'') + '\')';
 
                 Map<Id, Set<String>> accountIdToBenefitMap = Core_MDF_CampaignCreatePage.getAccountToBenefitsMap(optAccountBenefitAssociation, setOfGeneralizedAccountds);
 
@@ -992,7 +933,7 @@ return budgetTypeString;
                         }
                     }
                 }
-                for (Id accId : accountIdToBenefitMap.keySet()) {
+    for (Id accId : accountIdToBenefitMap.keySet()) {
                     String unifiedId = mapOfIntelAccountandUnifiedId.get(accId);
                     if (String.isNotBlank(unifiedId)) {
                         if (!unifiedIdToBenefitList.containsKey(unifiedId)) {
@@ -1002,7 +943,7 @@ return budgetTypeString;
                     }
                 }
             }                                        
-
+            
             for(Id acctId:accIdList){
                 Set<String> benList = new Set<String>();
                 Map<String,String> budgetTypeMap = new Map<String,String>();
@@ -1010,7 +951,7 @@ return budgetTypeString;
                 if(coMktAcctToUnifiedIdMap.containsKey(acctId) && coMktAcctToUnifiedIdMap.get(acctId) !=Null){
                     unifiedId = coMktAcctToUnifiedIdMap.get(acctId);
                 }
-            
+                
                 if(String.isNotBlank(unifiedId) && unifiedIdToBenefitList.containsKey(unifiedId) && unifiedIdToBenefitList.get(unifiedId) !=Null){
                     benList.addAll(unifiedIdToBenefitList.get(unifiedId));
                 }
@@ -1026,7 +967,7 @@ return budgetTypeString;
                         }
                     }
                 }*/
-
+    
                 //Roshan
                 for(String benifit : benList) {
                     if (applicableBenefitsFromMdt.containsKey(benifit)) {
@@ -1041,7 +982,7 @@ return budgetTypeString;
                         }
                     }
                 }
-
+    
                 accIdBudgetTypeMap.put(acctId, budgetTypeMap);
                 benefitsApplicable.put(acctId,benList);
             }  
@@ -1054,16 +995,16 @@ return budgetTypeString;
         
         public Map<id,PartnerMarketingBudget> getBudgetsForCampaign(id accountID, date campStartDate, date campEndDate, List<string> campBudgetType){
             
-            //List<string> budgetList = new List<string>(); 
-            //Map<id,string> budgetMap = new Map<id,string>(); 
+            List<string> budgetList = new List<string>();
+            Map<id,string> budgetMap = new Map<id,string>();
             List<string> budgetStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Opal_Available_Budget_Status').split(',');
             Map<id,PartnerMarketingBudget> pmbMap = new Map<id,PartnerMarketingBudget>();
             
-            //Roshan - Removed CoGTM condition to allow cross year budgets
+            //DE111190: Devint3 | All the budgets are visible under a budget type even if the budgets does not overlap
             try{
                 for(PartnerMarketingBudget budgetRecord :[select Title,Core_MDF_Budget_Type_Txt__c, StartDate, EndDate, id, Core_MDF_Budget_Status__c, Core_MDF_Budget_Partner__c,Core_MDF_budget_ref_nbr__c
                                                           from PartnerMarketingBudget 
-                                                          where ((StartDate <= :campStartDate AND EndDate >= :campStartDate) OR (StartDate >= :campStartDate AND StartDate <= :campEndDate))
+                                                          where ((Core_MDF_Program_Nm__c = :Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM and (StartDate <= :campStartDate AND EndDate >= :campStartDate)) OR ((Core_MDF_Program_Nm__c != :Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM) and ((StartDate <= :campStartDate AND EndDate >= :campStartDate) OR (StartDate >= :campStartDate AND StartDate <= :campEndDate))))
                                                           and Core_MDF_Budget_Partner__c = :accountID
                                                           and Core_MDF_Budget_Type_Txt__c in :campBudgetType 
                                                           and TotalAllocatedAmount >0 ]){
@@ -1128,11 +1069,11 @@ return budgetTypeString;
                 campaignBudget.Core_MDF_Reimbursement_Amt__c = i.budgetRAmount.setScale(2,RoundingMode.HALF_UP);
                 if(budgetIdToAmtMap != null && budgetIdToAmtMap.size() > 0) {
                   Decimal actBudgetAmount = budgetIdToAmtMap.get(i.budgetId);
-                    if(i.budgetRAmount < actBudgetAmount) {
+                  if(i.budgetRAmount < actBudgetAmount) {
                       Decimal rrPercentOnBudget = (i.budgetRR != null) ? Decimal.valueOf(i.budgetRR.removeEnd('%')) : 0;
                       Decimal calculatedTotalAmount = (actBudgetAmount * (100 / rrPercentOnBudget));
-                        budgetsAmountErrorList.add('Campaign Spending Limit (USD) entered should be Greater than or equal to $' + calculatedTotalAmount.setScale(2,RoundingMode.HALF_UP) );
-                        continue;
+                      budgetsAmountErrorList.add('Campaign Spending Limit (USD) entered should be Greater than or equal to $' + calculatedTotalAmount.setScale(2,RoundingMode.HALF_UP) );
+                      continue;
                     }
                 }
                 campaignBudget.Core_MDF_Reimbursement_Rate_Pct__c = i.budgetRR;
@@ -1148,8 +1089,10 @@ return budgetTypeString;
                 for(Database.UpsertResult sr : saveList) {
                     if(sr.isSuccess()){
                         returnValue = 'Success';
-                    } else {                         
+                    } else {
+                        if (!sr.isSuccess()) {  
                             for(Database.Error err : sr.getErrors()) { errs += ' ' + err.getMessage(); }
+                        }
                     }
                 }
             }
@@ -1246,11 +1189,7 @@ return budgetTypeString;
                         decimal amount = 0.0;
                         
                         //String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + pfr.BudgetId + pfr.Core_MDF_Budget_Type_nm__c;
-                        //ATHR - Deeply Nested if 16209
-                        if(pfr.Amount == null){
-                            continue;
-                        }
-                        //if(pfr.Amount != null){
+                        if(pfr.Amount != null){
                             totalEscAmt = pfrIdEscAmtMap.containskey(pfr.Id) ? pfrIdEscAmtMap.get(pfr.Id) : 0;
                             totalClaimedAmt = pfrIdClaimAmtMap.containskey(pfr.Id) ? pfrIdClaimAmtMap.get(pfr.Id) : 0;
                             totalClaimEscConsumedAmt = totalEscAmt + totalClaimedAmt;
@@ -1263,7 +1202,7 @@ return budgetTypeString;
                             }else{
                                 budgetIdAmtMap.put(pfr.BudgetId, amount); 
                             }                                                                        
-                        //}
+                        }
                         
                     }
                 }
@@ -1283,13 +1222,9 @@ return budgetTypeString;
             }    
             List<Core_MDF_Campaign_Outcomes__c> recordsToUpsert = new List<Core_MDF_Campaign_Outcomes__c>();
             Set<String> incomingOutcomes = new Set<String>();    
-             if (outcomeWrapperList != null && !outcomeWrapperList.isEmpty()) {
+            if (outcomeWrapperList != null && !outcomeWrapperList.isEmpty()) {
                 for (OutcomeWrapper wrapper : outcomeWrapperList) {
-                    //ATHR - Deeply Nested if 16209
-                    if (wrapper == null || String.isBlank(wrapper.outcome)){
-                        continue;
-                    }                
-                    //if (String.isNotBlank(wrapper.outcome)) {
+                    if (String.isNotBlank(wrapper.outcome)) {
                         incomingOutcomes.add(wrapper.outcome);
                         Core_MDF_Campaign_Outcomes__c record;
                         if (existingOutcomeMap.containsKey(wrapper.outcome)) {
@@ -1300,22 +1235,20 @@ return budgetTypeString;
                             record.Core_MDF_Outcomes_nm__c = wrapper.outcome;
                         }
                         record.Core_MDF_Active_Ind__c = true;
-                       record.Core_MDF_Initial_Baseline_Quantity_nbr__c = wrapper.baselineQuantity != null ? Integer.valueOf(wrapper.baselineQuantity) : null;
+                        record.Core_MDF_Initial_Baseline_Quantity_nbr__c = wrapper.baselineQuantity != null ? Integer.valueOf(wrapper.baselineQuantity) : null;
                         record.Core_MDF_Goal_Quantity_nbr__c = wrapper.goalQuantity != null ? Integer.valueOf(wrapper.goalQuantity) : null;
                         record.Core_MDF_Outcome_Criteria_txt__c = wrapper.outcomeCriteria;
-                        record.Core_MDF_Baseline_Period_nm__c = String.isNotBlank(wrapper.baselinePeriod) ? wrapper.baselinePeriod : null;
                         record.Core_MDF_Quantity_nbr__c = String.isNotBlank(wrapper.quantity) ? Integer.valueOf(wrapper.quantity) : null;
-                        record.Core_MDF_Campaign_Purpose_Desc_txt__c = wrapper.campaignPurposeDescription;
                         recordsToUpsert.add(record);
-                    //}
+                    }
                 }
-            } 
+            }    
             for (Core_MDF_Campaign_Outcomes__c existingOutcome : existingOutcomeMap.values()) {
                     if (((incomingOutcomes != null && !incomingOutcomes.contains(existingOutcome.Core_MDF_Outcomes_nm__c)) ) && existingOutcome.Core_MDF_Active_Ind__c) {
                     existingOutcome.Core_MDF_Active_Ind__c = false;
                     recordsToUpsert.add(existingOutcome);
                 }
-            }  
+            }    
             if (!recordsToUpsert.isEmpty()) {upsert recordsToUpsert;}    
         } catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(e.getMessage());}
     }
@@ -1324,9 +1257,9 @@ return budgetTypeString;
     public static List<OutcomeWrapper> getCampaignOutcomes(Id campaignId) {
         List<OutcomeWrapper> wrapperList = new List<OutcomeWrapper>();
         try{
-            for (Core_MDF_Campaign_Outcomes__c rec : [SELECT Id,Core_MDF_Outcomes_nm__c, Core_MDF_Initial_Baseline_Quantity_nbr__c, Core_MDF_Goal_Quantity_nbr__c, Core_MDF_Outcome_Criteria_txt__c, Core_MDF_Baseline_Period_nm__c, Core_MDF_Quantity_nbr__c
+            for (Core_MDF_Campaign_Outcomes__c rec : [SELECT Core_MDF_Outcomes_nm__c, Core_MDF_Initial_Baseline_Quantity_nbr__c, Core_MDF_Goal_Quantity_nbr__c, Core_MDF_Outcome_Criteria_txt__c, Core_MDF_Quantity_nbr__c
                 FROM Core_MDF_Campaign_Outcomes__c WHERE Core_MDF_Campaign_Id__c = :campaignId AND Core_MDF_Active_Ind__c = true]) {
-                wrapperList.add(new OutcomeWrapper(rec.Id, rec.Core_MDF_Outcomes_nm__c,rec.Core_MDF_Outcomes_nm__c, String.valueOf(rec.Core_MDF_Initial_Baseline_Quantity_nbr__c), String.valueOf(rec.Core_MDF_Goal_Quantity_nbr__c), rec.Core_MDF_Outcome_Criteria_txt__c, rec.Core_MDF_Baseline_Period_nm__c, String.valueOf(rec.Core_MDF_Quantity_nbr__c)));
+                wrapperList.add(new OutcomeWrapper(rec.Id, rec.Core_MDF_Outcomes_nm__c,rec.Core_MDF_Outcomes_nm__c, String.valueOf(rec.Core_MDF_Initial_Baseline_Quantity_nbr__c), String.valueOf(rec.Core_MDF_Goal_Quantity_nbr__c), rec.Core_MDF_Outcome_Criteria_txt__c, String.valueOf(rec.Core_MDF_Quantity_nbr__c)));
             }
         }catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e);
@@ -1342,25 +1275,22 @@ return budgetTypeString;
         @AuraEnabled public String baselineQuantity { get; set; }
         @AuraEnabled public String goalQuantity { get; set; }
         @AuraEnabled public String outcomeCriteria { get; set; }
-        @AuraEnabled public String baselinePeriod { get; set; }
         @AuraEnabled public String quantity { get; set; } 
-        @AuraEnabled public String campaignPurposeDescription { get; set; }
     
         public OutcomeWrapper() {}
     
-        public OutcomeWrapper(Id recordId, String outcome, String outcomeLabel, String baselineQuantity, String goalQuantity, String outcomeCriteria, String baselinePeriod, String quantity) {
+        public OutcomeWrapper(Id recordId, String outcome, String outcomeLabel, String baselineQuantity, String goalQuantity, String outcomeCriteria, String quantity) {
             this.recordId = recordId;
             this.outcome = outcome;
             this.outcomeLabel = outcomeLabel;
             this.baselineQuantity = baselineQuantity;
             this.goalQuantity = goalQuantity;
             this.outcomeCriteria = outcomeCriteria;
-            this.baselinePeriod = baselinePeriod;
             this.quantity = quantity; 
         }
     }
     
-    
+
 /***********************************************************************************************************   
 Method Name:        getDependentPicklistValues 
 @return  :          Map<String,List<String>> (Control values, List of Dependent values)
@@ -1439,8 +1369,8 @@ public static List<String> getDependentPicklistValues(String fieldAPI, List<Stri
                 || campRecord.Core_MDF_Approval_Stage_nm__c == 'Price Reviewer' || campRecord.Core_MDF_Approval_Stage_nm__c == 'Legal Reviewer' || campRecord.Core_MDF_Approval_Stage_nm__c == 'Business Approver') 
                 && (((isPriceReviewer || isL1Approver) && recTypeDevloperName == 'Core_MDF_Intel_Partner_Alliance') || isL2Approver || ((isLegalReviewer || isBusinessApprover) && recTypeDevloperName == Core_MDF_CCP_ConstantClass.CMP_CO_GTM_RECORDTYPE))){
                     isUserApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(campRecord, UserInfo.getUserId());
-            }
-
+                }
+            
             
             
             
@@ -1448,13 +1378,13 @@ public static List<String> getDependentPicklistValues(String fieldAPI, List<Stri
             if (campRecord.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && (campRecord.Status == Core_MDF_CCP_ConstantClass.CAMPAIGN_IN_PROGRESS || campRecord.Status == Core_MDF_CCP_ConstantClass.CAMPAIGN_PLANNED)) {
                 editCampWrap.isClaimAssociated = checkClaimsAssociatedToCampaign(campaignId);
             } else {
-                editCampWrap.isClaimAssociated = campRecord.Core_MDF_Claims_Created_Ind__c;
+            editCampWrap.isClaimAssociated = campRecord.Core_MDF_Claims_Created_Ind__c;
             }
             editCampWrap.isUserL1Approver = isL1Approver && isUserApprover ? true : false;
             editCampWrap.isUserL2Approver = isL2Approver && isUserApprover ? true : false;
             editCampWrap.isUserPriceReviewer = isPriceReviewer && isUserApprover ? true : false;
             editCampWrap.isUserLegalReviewer = isLegalReviewer && isUserApprover ? true : false;
-            editCampWrap.isUserBusinessApprover = isBusinessApprover && isUserApprover ? true : false;
+      editCampWrap.isUserBusinessApprover = isBusinessApprover && isUserApprover ? true : false;
             
             if((recTypeDevloperName == 'Core_MDF_Intel_Partner_Alliance' || recTypeDevloperName == Core_MDF_CCP_ConstantClass.CMP_CO_GTM_RECORDTYPE) && campRecord.Core_MDF_Proposal_Based_Ind__c == true){  
                 if(!isUserApprover)
@@ -1662,8 +1592,8 @@ created By: Namratha        Date: 1st April 2024
                         techApprIUPGMUserIdToIUPGMWrapperMap.put(iupgm.Core_MDF_User_id__c, new DualListboxWrapper(iupgm.Core_MDF_User_id__c, iupgm.Core_MDF_User_id__r.Name));
                     } else if(iupgm.Core_MDF_Role_nm__c == 'Core_MDF_CCP_Internal_Co_GTM_Account_Manager' && iupgm.Core_MDF_All_Accounts_cd__c == 'No'){                        
                         accManagerIUPGMUserIdToIUPGMWrapperMap.put(iupgm.Core_MDF_User_id__c, new DualListboxWrapper(iupgm.Core_MDF_User_id__c, iupgm.Core_MDF_User_id__r.Name));
-                    }
                 }                
+            }
             }
             UserRecordsAndDefaultUserWrapper accManagerIUPGMsWrapper = new UserRecordsAndDefaultUserWrapper();
             accManagerIUPGMsWrapper.defaultOptions = (new List<String>{String.valueOf(UserInfo.getUserId())});
@@ -1702,7 +1632,7 @@ created By: Namratha        Date: 1st April 2024
             throw new AuraHandledException(err.getMessage());
         }
     }
-
+    
      /****************************************************************************************************** 
     Method Name:        getAccountToBenefitsMap
     @return  :          Map of Intel/OPID account Id to the set of benefits
@@ -1714,7 +1644,7 @@ created By: Namratha        Date: 1st April 2024
 
         Map<Id, Set<String>> accountToBenefitMap = new Map<Id, Set<String>>();
         
-        Set<String> applicableBenefitsSet = new Set<String>();
+  Set<String> applicableBenefitsSet = new Set<String>();
         for (Core_MDF_BudgetType_Benefit_Mappings__c mdfPartnerBenefit : [SELECT Core_MDF_Partner_Benefit__c FROM Core_MDF_BudgetType_Benefit_Mappings__c WHERE Core_MDF_Program_Nm__c = :Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name') AND Core_MDF_IsActive__c = TRUE]) {
             applicableBenefitsSet.add(mdfPartnerBenefit.Core_MDF_Partner_Benefit__c);
         }
@@ -1750,29 +1680,6 @@ created By: Namratha        Date: 1st April 2024
         return accountToBenefitMap;
     }
 
-    /****************************************************************************************************** 
-    Method Name:        getDomainsForAccount
-    @return  :          List of domains
-    Description:        This method is used to get the domains associated with accounts
-    Created By:         Accenture - Aditya | Date: 28/06/2026
-    Modified By:  
-    *******************************************************************************************************/ 
-    @AuraEnabled
-    public static List<Core_MDF_Partner_Group_Domain_Mapping__c> getDomainsForAccount(String accountId) {
-        try {
-            if (String.isBlank(accountId)) {
-                return new List<Core_MDF_Partner_Group_Domain_Mapping__c>();
-            }
-
-            List<Core_MDF_Partner_Group_Domain_Mapping__c> domains = [ SELECT Name FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__r.Core_MDF_Virtual_Corp_nm__c = :accountId and Core_MDF_Active_Ind__c = true];
-            
-            return domains;
-        } catch (Exception err) {
-            Core_MDF_CCP_UtilityClass.logError(err);
-            throw new AuraHandledException(err.getMessage());
-        }
-    }
-    
     public class EditCampaignLockWrapper {
         @AuraEnabled public Boolean isEditProposalAccess  { get; set; }
         @AuraEnabled public String returnValue  { get; set; }

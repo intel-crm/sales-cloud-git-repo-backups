@@ -250,15 +250,10 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
                     List<Core_MDF_Bank__c> bankList = (List<Core_MDF_Bank__c>) scope;
                     List<Core_MDF_Bank__c> bankListToBeProcessed = new List<Core_MDF_Bank__c>();
                     
-                    /*for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem :([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                    for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem :([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
                                                                               FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])){
                         channelProgramBankProgramMap.put(bpem.Core_MDF_Channel_Program__c, bpem.Core_MDF_Bank_Program_Name__c);
-                    }*/
-                    
-                    for(Core_MDF_ChannelProgram__mdt bpem :([SELECT Label, Core_MDF_Bank_Program_Value__c
-                                                                              FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                        channelProgramBankProgramMap.put(bpem.Label, bpem.Core_MDF_Bank_Program_Value__c);
-                    }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
+                    }
                     
                     for(ChannelProgram cp :[SELECT Id, Name
                                             FROM ChannelProgram
@@ -340,13 +335,10 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
                     List<Core_MDF_Exception_Account_Mapping__c> exptList = (List<Core_MDF_Exception_Account_Mapping__c>) scope;
                     List<Core_MDF_Exception_Account_Mapping__c> exptListToBeProcessed = new List<Core_MDF_Exception_Account_Mapping__c>();
                     
-                    /*for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem :([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                    for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem :([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
                                                                               FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])) {
                         channelProgramBankProgramMap.put(bpem.Core_MDF_Channel_Program__c, bpem.Core_MDF_Bank_Program_Name__c);
-                    }*/
-                    for(Core_MDF_ChannelProgram__mdt bpem :([SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                        channelProgramBankProgramMap.put(bpem.Label, bpem.Core_MDF_Bank_Program_Value__c);
-                    }// Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
+                    }
                         
                     for(ChannelProgram cp :[SELECT Id, Name
                                             FROM ChannelProgram

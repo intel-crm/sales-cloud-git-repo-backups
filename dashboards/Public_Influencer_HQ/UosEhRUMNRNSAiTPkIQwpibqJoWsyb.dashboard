@@ -276,8 +276,8 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -285,7 +285,8 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
                 <header>Partner/SA/SLED Team #1.5OKR Tracker (Activities)</header>
@@ -312,9 +313,9 @@
                     <axisBinding>y</axisBinding>
                     <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
                 </chartSummary>
-                <componentType>ColumnStacked</componentType>
+                <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
+                    <column>CREATED</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
@@ -322,25 +323,23 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_Status__c</groupingColumn>
+                <groupingColumn>FULL_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>USA SLED Pipeline 4 YR Waterfall</header>
+                <header>USA SLED Past Due</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/USA_SLED_Pipeline_3YR_Waterfall</report>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
+                <report>unfiled$public/USA_SLED_Past_Due</report>
                 <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
+                <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
@@ -361,14 +360,14 @@
                 <dashboardFilterColumns>
                     <column>FULL_NAME</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
+                <decimalPrecision>1</decimalPrecision>
+                <displayUnits>Millions</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -385,7 +384,7 @@
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
+                <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
@@ -398,21 +397,22 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
+                    <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
+                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>ACCOWNER</column>
+                    <column>FULL_NAME</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>0</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CREATED_BY</groupingColumn>
-                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Vendor__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -420,17 +420,17 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>SLED Team #MMOKR Tracker (Activities)</header>
+                <header>Partner/SA/SLED Pipeline #1.5OKR (Demand Gen$)</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/RAL_Team_CustomerOKR_Tracker</report>
+                <report>unfiled$public/Partner_SA_SLED_Pipeline_1_5OKR</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
-                <title>Sum of #CustomerOKR &amp; # ExecutiveOKR</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
@@ -451,18 +451,18 @@
                 <dashboardFilterColumns>
                     <column>FULL_NAME</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>1</decimalPrecision>
-                <displayUnits>Thousands</displayUnits>
+                <decimalPrecision>2</decimalPrecision>
+                <displayUnits>Millions</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
+                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
@@ -470,13 +470,14 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>USA SLED Pipeline Won L30</header>
+                <header>USA SLED Submitted Opportunities</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/USA_SLED_Pipeline_Won_L10</report>
+                <report>unfiled$public/Dashboard_USA_SLED_Submitted_Opps</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
+                <title>Approval Required</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>24</rowIndex>
@@ -535,22 +536,21 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
-                    <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                    <column>RowCount</column>
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
+                    <column>ACCOWNER</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>1</decimalPrecision>
-                <displayUnits>Millions</displayUnits>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_UCD_Opportunity_Product_Vendor__c</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -558,17 +558,18 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+                        <sortColumn>RowCount</sortColumn>
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Partner/SA/SLED DG$ #1.5OKR</header>
+                <header>RAL Team #MMEOKR Tracker</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/Partner_SA_SLED_Pipeline_1_5OKR</report>
+                <report>unfiled$public/RAL_Team_CustomerOKR_Tracker</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
+                <title>Sum of #CustomerOKR &amp; # ExecutiveOKR</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>24</rowIndex>
@@ -585,9 +586,9 @@
                     <axisBinding>y</axisBinding>
                     <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
                 </chartSummary>
-                <componentType>Donut</componentType>
+                <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
-                    <column>CREATED</column>
+                    <column>FULL_NAME</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
@@ -595,23 +596,25 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Status__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>USA SLED Past Due</header>
+                <header>USA SLED Pipeline 3YR Waterfall</header>
                 <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>unfiled$public/USA_SLED_Past_Due</report>
+                <report>unfiled$public/USA_SLED_Pipeline_3YR_Waterfall</report>
                 <showPercentage>false</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
+                <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>32</rowIndex>
@@ -627,18 +630,18 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
+                <componentType>BarStacked</componentType>
                 <dashboardFilterColumns>
                     <column>ACCOWNER</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>0</decimalPrecision>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CREATED_DATE</groupingColumn>
-                <groupingColumn>CREATED_BY</groupingColumn>
+                <groupingColumn>ACCOWNER</groupingColumn>
+                <groupingColumn>Activity.Core_Subtype_of_Activity__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -646,16 +649,17 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
                 <header>Partner/SLED/SA Activities</header>
                 <legendPosition>Right</legendPosition>
                 <report>unfiled$public/Partner_SLED_SA_Activities</report>
                 <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
+                <title>All Actviities in SFDC</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>32</rowIndex>
@@ -664,51 +668,6 @@
         <dashboardGridComponents>
             <colSpan>4</colSpan>
             <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOWNER</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>0</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>DUE_DATE</groupingColumn>
-                <groupingColumn>ASSIGNED</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Team #StrategicOKR Activity Tracker</header>
-                <legendPosition>Right</legendPosition>
-                <report>unfiled$public/Team_SIEOKR_Activity_Tracker</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <title>#SmartInfraOKR + #HPCOKR</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>32</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -721,105 +680,14 @@
                 <dashboardFilterColumns>
                     <column>FULL_NAME</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>3</decimalPrecision>
-                <displayUnits>Millions</displayUnits>
+                <decimalPrecision>2</decimalPrecision>
+                <displayUnits>Thousands</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
                 <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>USA SLED Submitted Opportunities</header>
-                <legendPosition>Right</legendPosition>
-                <report>unfiled$public/USA_SLED_Submitted_Opportunities</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>40</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>4</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>1</decimalPrecision>
-                <displayUnits>Millions</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>ADDRESS1_COUNTRY_CODE</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Global Education Pipeline</header>
-                <legendPosition>Right</legendPosition>
-                <report>unfiled$public/Global_Education_Pipeline_25_Wins</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>40</rowIndex>
-            <rowSpan>16</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOWNER</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>DUE_DATE</groupingColumn>
-                <groupingColumn>ASSIGNED</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Vendor__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -830,17 +698,17 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Team #1.5OKR + #StrategicOKR Tracker</header>
+                <header>Partner/SA/SLED #StrategicOKR DG$</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/Team_1_5OKR_StrategicOKR_Tracker</report>
+                <report>unfiled$public/Partner_SA_SLED_StrategicOKR_DG</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
-                <title># of #StrategicOKR with #1.5OKR Partners</title>
+                <title>Sum of #HPCOKR and #SmartInfraOKR DG$</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>40</rowIndex>
+            <rowIndex>32</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -885,7 +753,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>48</rowIndex>
+            <rowIndex>40</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -895,22 +763,21 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
-                    <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                    <column>RowCount</column>
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
+                    <column>ACCOWNER</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>2</decimalPrecision>
-                <displayUnits>Thousands</displayUnits>
+                <decimalPrecision>0</decimalPrecision>
+                <displayUnits>Integer</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_Vendor__c</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -921,14 +788,106 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Partner/SA/SLED #StrategicOKR DG$</header>
+                <header>Team #StrategicOKR Activity Tracker</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/Partner_SA_SLED_StrategicOKR_DG</report>
+                <report>unfiled$public/Team_SIEOKR_Activity_Tracker</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
-                <title>Sum of #HPCOKR and #SmartInfraOKR DG$</title>
+                <title>#SmartInfraOKR + #HPCOKR</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>40</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>AMOUNT</column>
+                </chartSummary>
+                <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>OWNER_FULL_NAME</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>1</decimalPrecision>
+                <displayUnits>Millions</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
+                <groupingColumn>MEMBER_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>SLED_SA Team Member Demand Gen$</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/SLED_SA_Team_Member_Demand_Gen</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <title>Pipeline Values</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>48</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>ACCOWNER</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Integer</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Team #1.5OKR + #StrategicOKR Tracker</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/Team_1_5OKR_StrategicOKR_Tracker</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <title># of #StrategicOKR with #1.5OKR Partners</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>48</rowIndex>

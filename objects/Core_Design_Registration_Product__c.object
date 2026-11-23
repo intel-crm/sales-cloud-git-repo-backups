@@ -612,7 +612,7 @@
     <fields>
         <fullName>Core_Target_Resale_Amt__c</fullName>
         <description>Same as Sales Price on Oppty Line</description>
-        <inlineHelpText>Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.</inlineHelpText>
+        <inlineHelpText>Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.</inlineHelpText>
         <label>Target Resale Price</label>
         <precision>18</precision>
         <required>false</required>
@@ -631,7 +631,7 @@
     </fields>
     <fields>
         <fullName>DDR_Target_Resale_Price_Note__c</fullName>
-        <defaultValue>&quot;Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.&quot;</defaultValue>
+        <defaultValue>&quot;Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&quot;</defaultValue>
         <label>Target Resale Price Note</label>
         <length>1024</length>
         <trackHistory>false</trackHistory>
@@ -2182,12 +2182,6 @@ NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;
         <errorMessage>Editing the product is not allowed. If you want to make changes, please cancel the current product and submit a new one.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>DDR_Restrict_FPGA_Product</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),CONTAINS(Core_Product_Id__r.Core_Product_Type__c, &quot;FPGA&quot;))</errorConditionFormula>
-        <errorMessage>Registrations for FPGA product group has been disabled.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>PCC_Competitor_System_Model_is_Required</fullName>
         <active>true</active>
         <description>Competitor System Model is Required if it is Deal and product is FIN Eligible</description>
@@ -2300,12 +2294,6 @@ ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,
         <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;), ISBLANK( PCC_System_Model__c ),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
         <errorDisplayField>PCC_System_Model__c</errorDisplayField>
         <errorMessage>Required</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_TargetResalePrice_Mandatory</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISBLANK(Core_Target_Resale_Amt__c) &amp;&amp; ISPICKVAL(Core_Design_Product_Status_Nm__c ,&quot;Approved&quot; )</errorConditionFormula>
-        <errorMessage>Target Resale Price should not be blank or zero.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_ValidationOnProductEligibility</fullName>

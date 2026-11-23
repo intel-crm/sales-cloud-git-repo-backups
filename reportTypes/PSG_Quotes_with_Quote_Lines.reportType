@@ -5,6 +5,10 @@
     <deployed>true</deployed>
     <description>PSG Quotes with Quote Lines</description>
     <join>
+        <join>
+            <outerJoin>true</outerJoin>
+            <relationship>PRIDs__r</relationship>
+        </join>
         <outerJoin>false</outerJoin>
         <relationship>SBQQ__LineItems__r</relationship>
     </join>
@@ -1983,6 +1987,11 @@
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>core_cpq_PRID__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_prid_alert__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
@@ -2389,6 +2398,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_ccf_flag_cb__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_msvpl2_approval__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -2429,12 +2443,62 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_active_cb__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_active_pricing_cb__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_review_date_dt__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_cps_cb__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_prid_pos__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_prid_reviewer__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_prid_review_date_dt__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Quote_Line_Number_Txt__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_prid_active_cb__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.CreatedDate</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>
     </sections>
     <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_prid_pos__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r.PRIDs__r</table>
+        </columns>
         <masterLabel>PRID</masterLabel>
     </sections>
 </ReportType>

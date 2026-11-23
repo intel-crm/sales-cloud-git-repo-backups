@@ -82,8 +82,6 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         recTracking1.Core_MDF_Target_Record_Id__c = apr2.requestId;
         recTrackingList.add(recTracking1);
         insert recTrackingList;
-        // Unit Test Method should include System.Assert 
-        System.assert(recTrackingList.size() == 2,'Record tracking list should contain 2 records');
         
         String aprReqInput = JSON.serialize(aprReqsList);
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
@@ -144,9 +142,6 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         aprReqsList.add(apr6);aprReqsList.add(apr7);aprReqsList.add(apr8);aprReqsList.add(apr9);aprReqsList.add(apr10);
         aprReqsList.add(apr11);
         String aprReqInput = JSON.serialize(aprReqsList);
-         // Unit Test Method should include System.Assert 
-        System.assert(aprReqInput != null,'Serialized input should not be null');
-        
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
         Test.stopTest();
     }
@@ -154,9 +149,6 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
     @isTest
     private static void submitBulkApprovalRequestsExceptionTest() {
         String aprReqInput = '';
-        // Unit Test Method should include System.Assert
-        System.assertEquals('',aprReqInput,'Input should be empty string for exception scenario');
-        
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
     }
 }

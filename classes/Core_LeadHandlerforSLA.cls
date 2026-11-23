@@ -10,34 +10,32 @@ Modification Log :
 * Mahesh                 3/25/2019               US314046-Block selection of existing opportunity while converting a lead
 --------------------------------------------------------------------------------------------*/
 public without sharing class Core_LeadHandlerforSLA {    
-    
-    // Ensure that the trigger is running only once opportunity mapping
-    public static Boolean isExistingOpportunity = true;
-    public static Boolean invalidAccountValidationRecursion = false;
-    
     /*
-    * Method name  : checkListedOwnerOrNotOnUpdate
+    * Method name  : CheckListedOwnerorNotUpdate
     * Description  : Check if the updated owner is in custom setting or Not
     * Return Type  : VOID
     * Parameter    : List Trigger.new,Trigger.Old
     */
-    public static void CheckListedOwnerorNotOnUpdate(List<Lead> listNew, List<Lead> listOld) {
+    
+    //Ensure that the trigger is running only once opportunity mapping
+    public static boolean isExistingOpportunity = true;
+    public static boolean invalidAccountValidationRecursion = false;
+    public static void CheckListedOwnerorNotOnUpdate(List<Lead> listNew,List<Lead> listOld){
         
-        List<Lead> leaddetails = listNew;
+        List<Lead> leaddetails=listNew;
         
         Set<String> EmailSet = new Set<String>();  
         for (Core_SLA_Listed_Users__c rv : Core_SLA_Listed_Users__c.getAll().values()) {
-            if (rv.Core_WWID__c != null) {
+            if(rv.Core_WWID__c!=null){
                 EmailSet.add(rv.Core_WWID__c);
             }
         }        
         
-        // Update SLA Listed User flag based on WWID match
-        for (lead l : leaddetails) {
-            if (EmailSet.contains(l.Core_User_WWID__c)) {
-                l.Core_SLA_Listed_User__c = true;
-            } else {
-                l.Core_SLA_Listed_User__c = false;
+        for(lead l : leaddetails){
+            if(EmailSet.contains(l.Core_User_WWID__c)){
+                l.Core_SLA_Listed_User__c=true;
+            }else{
+                l.Core_SLA_Listed_User__c=false;
             }
         }
     }    
@@ -46,22 +44,22 @@ public without sharing class Core_LeadHandlerforSLA {
     * Method name  : CheckListedOwnerorNot
     * Description  : Check if the Lead owner is in custom setting or Not
     * Return Type  : VOID
-    * Parameter    : List Trigger.new
+    * Parameter    : List Trigger.new,Trigger.Old
     */
-    public static void CheckListedOwnerorNot(List<Lead> listNew) {
-        List<Lead> leaddetails = listNew;
+    
+    public static void CheckListedOwnerorNot(List<Lead> listNew){
+        List<Lead> leaddetails=listNew;
         
         Set<String> EmailSet = new Set<String>();  
         for (Core_SLA_Listed_Users__c rv : Core_SLA_Listed_Users__c.getAll().values()) {
             EmailSet.add(rv.Core_WWID__c);
         }        
         
-        // Update SLA Listed User flag based on WWID match
-        for (lead l : leaddetails) {
-            if (EmailSet.contains(l.Core_User_WWID__c)) {
-                l.Core_SLA_Listed_User__c = true;
-            } else {
-                l.Core_SLA_Listed_User__c = false;
+        for(lead l : leaddetails){
+            if(EmailSet.contains(l.Core_User_WWID__c)){
+                l.Core_SLA_Listed_User__c=true;
+            }else{
+                l.Core_SLA_Listed_User__c=false;
             }
         }     
     }    
@@ -93,114 +91,35 @@ public without sharing class Core_LeadHandlerforSLA {
         }
     }*/
     
-    /*
-    * Method name  : blockAccountConvertForRejectedAndRequested
-    * Description  : Block account conversion for rejected and requested accounts
-    * Return Type  : VOID
-    * Parameter    : List Trigger.new
-    */
-    public static void BlockAccountconvertforRejectedAndRequested(List<Lead> listOfNewLeads) {
-        // Check recursion guard
-        if (invalidAccountValidationRecursion) {
-            return;
-        }
-        
-        Set<Id> accountIds = collectConvertedAccountIds(listOfNewLeads);
-        
-        // Early return if no account IDs to process
-        if (accountIds.isEmpty()) {
-            return;
-        }
-        
-        // Set recursion guard
-        invalidAccountValidationRecursion = true;
-        
-        // Check CRUD permissions before SOQL
-        if (!Schema.sObjectType.Account.isAccessible()) {
-            return;
-        }
-        
-        Map<Id, Account> accountIdLeadIdMap = new Map<Id, Account>([
-            SELECT Id, CreatedDate, RecordtypeId, Recordtype.developername  
-            FROM Account 
-            WHERE Id IN :accountIds
-        ]);
-        
-        validateAndAddErrors(listOfNewLeads, accountIdLeadIdMap);
-    }
-
-    /*
-    * Method name  : collectConvertedAccountIds
-    * Description  : Helper method to collect converted account IDs from leads
-    * Return Type  : Set<Id>
-    * Parameter    : List<Lead> listOfNewLeads
-    */
-    private static Set<Id> collectConvertedAccountIds(List<Lead> listOfNewLeads) {
-        Set<Id> accountIds = new Set<Id>();
-        
-        for (Lead currentLead : listOfNewLeads) {
-            Boolean leadConverted = Test.isRunningTest() ? true : currentLead.IsConverted;
-            
-            if (leadConverted && currentLead.convertedAccountId != null) {
-                accountIds.add(currentLead.convertedAccountId);
+    public static void BlockAccountconvertforRejectedAndRequested(List<Lead> listNew){
+        Set<Id> AccIds = new Set<Id>(); 
+        Boolean LeadConverted = false;
+        for(Lead lead : listNew) {
+            if(Test.isRunningTest()){
+                LeadConverted = true;
+            }else{
+                LeadConverted = lead.IsConverted;
+            }
+            if (LeadConverted) {
+                AccIds.add(lead.convertedAccountId);
             }
         }
-        
-        return accountIds;
-    }
-
-    /*
-    * Method name  : validateAndAddErrors
-    * Description  : Helper method to validate account types and add errors
-    * Return Type  : VOID
-    * Parameter    : List<Lead> listOfNewLeads, Map<Id, Account> accountIdLeadIdMap
-    */
-    private static void validateAndAddErrors(List<Lead> listOfNewLeads, Map<Id, Account> accountIdLeadIdMap) {
-        // Early return if no accounts to validate
-        if (accountIdLeadIdMap.isEmpty()) {
-            return;
-        }
-        
-        String blockAccountOnConvertMessage = Label.Core_BlockAccOnConvertMesg;
-        
-        for (Lead currentLead : listOfNewLeads) {
-            if (!currentLead.IsConverted || currentLead.convertedAccountId == null) {
-                continue;
-            }
-            
-            Account convertedAccount = accountIdLeadIdMap.get(currentLead.convertedAccountId);
-            
-            if (shouldBlockAccountConversion(convertedAccount)) {
-                currentLead.addError(blockAccountOnConvertMessage);
+        if(AccIds.size() > 0 && AccIds != Null){
+            if(!invalidAccountValidationRecursion)
+                invalidAccountValidationRecursion = true;
+            else 
+                return;
+            Map<Id,Account> AccIdLeadIdMap = new Map<Id,Account>([select Id,CreatedDate,RecordtypeId,Recordtype.developername  from Account WHERE Id IN :AccIds]);
+            String BlockAccOnConvertMesg = Label.Core_BlockAccOnConvertMesg;
+            if(AccIdLeadIdMap.size() > 0){
+                for(Lead L : listNew){
+                    if(L.IsConverted){
+                        if((AccIdLeadIdMap.get(L.convertedAccountId).Recordtype.developername == Label.Core_Rejected_Account || AccIdLeadIdMap.get(L.convertedAccountId).Recordtype.developername == Label.Core_Requested_Account || AccIdLeadIdMap.get(L.convertedAccountId).Recordtype.developername == Label.Core_End_Customer_Deal_Account) && L.convertedAccountId <> null && L.isConverted && AccIdLeadIdMap.get(L.convertedAccountId).Recordtype.developername <> null ){
+                            L.addError(BlockAccOnConvertMesg);
+                        }
+                    }
+                }
             }
         }
-    }
-
-    /*
-    * Method name  : shouldBlockAccountConversion
-    * Description  : Helper method to determine if account conversion should be blocked
-    * Return Type  : Boolean
-    * Parameter    : Account convertedAccount
-    */
-    private static Boolean shouldBlockAccountConversion(Account convertedAccount) {
-        if (convertedAccount == null || 
-            convertedAccount.Recordtype == null || 
-            convertedAccount.Recordtype.developername == null) {
-            return false;
-        }
-        
-        return isInvalidAccountType(convertedAccount.Recordtype.developername);
-    }
-    
-    /*
-    * Method name  : isInvalidAccountType
-    * Description  : Helper method to check if account type is invalid for conversion
-    * Return Type  : Boolean
-    * Parameter    : String recordTypeDeveloperName
-    */
-    private static Boolean isInvalidAccountType(String recordTypeDeveloperName) {
-        return (recordTypeDeveloperName == Label.Core_Rejected_Account || 
-                recordTypeDeveloperName == Label.Core_Requested_Account || 
-                recordTypeDeveloperName == Label.Core_End_Customer_Deal_Account);
     }
 }

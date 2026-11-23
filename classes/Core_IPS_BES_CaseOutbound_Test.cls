@@ -100,21 +100,24 @@ public class Core_IPS_BES_CaseOutbound_Test{
         insert excecutionsList;
 
         
-        List<string> profileNames = new List<string> {'System Administrator'};
-        List<Account> accounts = new List<Account> ();
-        List<User> internalSfUsers = new List<User> ();
+        List<string> ListOfProfileNames = new List<string> {'System Administrator'};
+        List<Account> ListOfAccounts = new List<Account> ();
+        List<User> ListOfInternalSfUsers = new List<User> ();
         
-        List<Core_IPS_Supported_Product__c> supportedProducts = new List<Core_IPS_Supported_Product__c>();
-        List<Core_IPS_Project__c> ipsProjects = new List<Core_IPS_Project__c> ();
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = new List<Core_IPS_Supported_Product__c>();
+        List<Core_IPS_Project__c> ListOfIpsProjects = new List<Core_IPS_Project__c> ();
         Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
         Core_IPS_Product_Issue_Category__c subCategory = new Core_IPS_Product_Issue_Category__c();
         Core_IPS_Product_Issue_Category__c caseCat = new Core_IPS_Product_Issue_Category__c();
        
-          Map<String,ID> profilesByName = new Map<String,ID>();
-        for(Profile prof : [select id, name from Profile where name IN: profileNames]){
-            profilesByName.put(prof.name, prof.id);
+          Map<String,ID> MapOfProfiles = new Map<String,ID>();
+        for(Profile prof : [select id, name from Profile where name IN: ListOfProfileNames]){
+            MapOfProfiles.put(prof.name, prof.id);
         }
-        SysAdminUsr = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
+        //List<User> SysAdminUsr = new List<User> ();
+        SysAdminUsr = TestUtilities.getListOfUser(1);
+         SysAdminUsr.get(0).UserName = 'SysAdminUsr'+SysAdminUsr.get(0).UserName;
+        SysAdminUsr.get(0).ProfileID =  MapOfProfiles.get('System Administrator');
        
          UserRole role = new UserRole();
         role.name='CEO';
@@ -122,92 +125,92 @@ public class Core_IPS_BES_CaseOutbound_Test{
         System.RunAs(SysAdminUsr[0]){
             insert role;
         }
-        internalSfUsers = TestUtilities.getListOfUser(1);
-        internalSfUsers.get(0).ProfileID =  profilesByName.get('System Administrator');
-        internalSfUsers.get(0).userroleid = role.id;
+        ListOfInternalSfUsers = TestUtilities.getListOfUser(1);
+        ListOfInternalSfUsers.get(0).ProfileID =  MapOfProfiles.get('System Administrator');
+        ListOfInternalSfUsers.get(0).userroleid = role.id;
         // Creating SETUP OBJECT (USER) RECORD
         System.RunAs(SysAdminUsr[0]){
-            insert internalSfUsers;
+            insert ListOfInternalSfUsers;
         }  
          Group testGroup = new Group(Name='IPS - Unassigned Cases', Type='Queue');
         insert testGroup;
-        List<GroupMember> groupMembers = new List<GroupMember>(); 
+        List<GroupMember> GMList = new List<GroupMember>(); 
          System.runAs(SysAdminUsr[0])
         {
             //Associating queue with group AND to the Case object
             QueuesObject testQueue = new QueueSObject(QueueID = testGroup.id, SObjectType = 'Case');
             insert testQueue;
-            GroupMember groupMember = new GroupMember();
-            groupMember.GroupId = testGroup.Id;
-            groupMember.UserOrGroupId =internalSfUsers[0].Id;
-            groupMembers.add(groupMember);
-            insert groupMembers;
+            GroupMember GM = new GroupMember();
+            GM.GroupId = testGroup.Id;
+            GM.UserOrGroupId =ListOfInternalSfUsers[0].Id;
+            GMList.add(GM);
+            insert GMList;
         }
         Core_IPS_Labels__c ipsLabel = new Core_IPS_Labels__c(Name='CloseCaseEditPermission',Value__c='System Administrator');
         insert ipsLabel;
-        Account accountRecord1 = TestUtilities.getAccount();
-        accountRecord1.Core_IPS_Active__c = true;
-        accountRecord1.ownerid = internalSfUsers.get(0).id;
-        accountRecord1.Core_Military_Aerospace_and_Government__c = true;
-        accounts.add(accountRecord1);
-        insert accounts;
-        List<Core_IPS_Labels__c>  labels = TestUtilities.getIPSLabel();
-        insert labels;
-        System.assert(accounts[0].Id != null, 'Account Record not created');
+        Account AccountRec1 = TestUtilities.getAccount();
+        AccountRec1.Core_IPS_Active__c = true;
+        AccountRec1.ownerid = ListOfInternalSfUsers.get(0).id;
+        AccountRec1.Core_Military_Aerospace_and_Government__c = true;
+        ListOfAccounts.add(AccountRec1);
+        insert ListOfAccounts;
+        List<Core_IPS_Labels__c>  LstLabels = TestUtilities.getIPSLabel();
+        insert LstLabels;
+        System.assert(ListOfAccounts[0].Id != null, 'Account Record not created');
         
-         List<Contact> contacts = TestUtilities.getListOfContact(1);
-        contacts.get(0).Accountid = accounts.get(0).Id;
-        contacts.get(0).Core_IPS_Intel_Support_Owner__c = internalSfUsers.get(0).id;
-        contacts.get(0).ownerid = internalSfUsers.get(0).id;
-        contacts.get(0).Core_IPS_Active__c =TRUE;
-    	contacts.get(0).MailingCountry = 'India';
-        insert contacts;
+         List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
+        ListOfContacts.get(0).Accountid = ListOfAccounts.get(0).Id;
+        ListOfContacts.get(0).Core_IPS_Intel_Support_Owner__c = ListOfInternalSfUsers.get(0).id;
+        ListOfContacts.get(0).ownerid = ListOfInternalSfUsers.get(0).id;
+        ListOfContacts.get(0).Core_IPS_Active__c =TRUE;
+	ListOfContacts.get(0).MailingCountry = 'India';
+        insert ListOfContacts;
 
-        List<Core_IPS_Product_Organization__c> supportOrganizations  = TestUtilities.getListOfSupportOrg(1);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
         
-        insert supportOrganizations;
+        insert ListOfSupportOrg;
         
-        List<Product2> products = TestUtilities.getListOfProduct(1);
-        insert products;
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(1);
+        insert ListOfProducts;
         
-        supportedProducts = TestUtilities.getListOfSupportedProduct(1);
-        supportedProducts.get(0).Core_Product__c = products.get(0).id;
-        supportedProducts.get(0).Core_Product_Organization__c = supportOrganizations.get(0).id;
-        insert supportedProducts;
+        ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
+        ListOfSupportedProduct.get(0).Core_Product__c = ListOfProducts.get(0).id;
+        ListOfSupportedProduct.get(0).Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
+        insert ListOfSupportedProduct;
         
-        System.assert(supportedProducts[0].id != null,'Supported product Record not created');
+        System.assert(ListOfSupportedProduct[0].id != null,'Supported product Record not created');
         // Create Design Project Record
-        ipsProjects = TestUtilities.getListOfIpsProjects(1);
-        insert ipsProjects;
-        System.assert(ipsProjects.get(0).Id != null, 'Design Project Record not created');
+        ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        insert ListOfIpsProjects;
+        System.assert(ListOfIpsProjects.get(0).Id != null, 'Design Project Record not created');
         // Create IPS Product Record
-        List<Core_IPS_Product__c> ipsProducts = TestUtilities.getListOfIpsProducts(1);
-        ipsProducts.get(0).Core_IPS_Project__c = ipsProjects.get(0).id;
-        ipsProducts.get(0).Core_Supported_Product__c = supportedProducts.get(0).id;
-        ipsProducts.get(0).Status__c = 'Submitted';
-        insert ipsProducts;
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(1);
+        ListOfIpsProducts.get(0).Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
+        ListOfIpsProducts.get(0).Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
+        ListOfIpsProducts.get(0).Status__c = 'Submitted';
+        insert ListOfIpsProducts;
         
         
-        Core_IPS_Master_Issue_Category__c masterCaseCategory = TestUtilities.getMasterCaseCategories();
-        masterCaseCategory.Core_type__c = 'Case Category';
-        insert masterCaseCategory;
+        Core_IPS_Master_Issue_Category__c MasterCaseCategory = TestUtilities.getMasterCaseCategories();
+        MasterCaseCategory.Core_type__c = 'Case Category';
+        insert MasterCaseCategory;
         
-        Core_IPS_Master_Issue_Category__c masterCategory = TestUtilities.getMasterCaseCategories();
-        masterCategory.Core_Master_Issue_Category__c = masterCaseCategory.id;            
-        insert masterCategory;
+        Core_IPS_Master_Issue_Category__c MasterCategory = TestUtilities.getMasterCaseCategories();
+        MasterCategory.Core_Master_Issue_Category__c = MasterCaseCategory.id;            
+        insert MasterCategory;
         
          caseCat = TestUtilities.getCaseCategories();
-        caseCat.Core_Issue_Category_Name__c = masterCategory.id;
+        caseCat.Core_Issue_Category_Name__c = MasterCategory.id;
         caseCat.Core_Type__c = 'Case Category';
         insert caseCat;
         
         subCategory = TestUtilities.getCaseCategories();
-        subCategory.Core_Issue_Sub_Category_Name__c = masterCategory.id;
+        subCategory.Core_Issue_Sub_Category_Name__c = MasterCategory.id;
         subCategory.Core_Type__c = 'Case Subcategory';
         insert subCategory; 
         List<Core_IPS_Project__c> projList=new List<Core_IPS_Project__c>();
        
-        projectcase=ipsProjects[0];
+        projectcase=ListOfIpsProjects[0];
     }
     
     public static TestMethod void backendPromotionTest(){
@@ -237,15 +240,15 @@ public class Core_IPS_BES_CaseOutbound_Test{
         backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
         insert backendRoutingRule;
         
-        List<Account> accounts = [SELECT Id from Account LIMIT 999];
-         List<Contact> contacts = [SELECT Id from Contact LIMIT 999];
-		  List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Account> ListOfAccounts = [SELECT Id from Account LIMIT 999];
+         List<Contact> ListOfContacts = [SELECT Id from Contact LIMIT 999];
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> caseCat = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> subCategory = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -284,81 +287,81 @@ public class Core_IPS_BES_CaseOutbound_Test{
         Map<string,string> quesAnsMap= new Map<string,string>();
         	quesAnsMap.put('DefaultedValue','Ans 1');
          Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
-        Case caseRecord = new Case();
-        Case firstCaseRecord = new Case();
-        Case selfAssignedCaseRecord = new Case();
-        Case secondCaseRecord = new Case();
-        caseRecord.AccountId=accounts.get(0).Id;
-        caseRecord.ContactId=contacts.get(0).id;  
-        caseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-        caseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-        caseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-        caseRecord.Core_Issue_Description__c = 'test'; 
-        caseRecord.Core_External_Issue_Category__c = 'Nova';
-        caseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
-        caseRecord.Subject='TestSubject';
-        caseRecord.Core_CaseType__c='Issue';
-        caseRecord.Core_IPS_Issue_source__c='n/a';
-        caseRecord.core_ips_project_case__c=projectcase.id;
+        Case CaseRecord = new Case();
+        Case CaseRecord1 = new Case();
+        Case CaseRecordSA = new Case();
+        Case CaseRecord2 = new Case();
+        CaseRecord.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord.Core_Issue_Description__c = 'test'; 
+        CaseRecord.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
+        CaseRecord.Subject='TestSubject';
+        CaseRecord.Core_CaseType__c='Issue';
+        CaseRecord.Core_IPS_Issue_source__c='n/a';
+        CaseRecord.core_ips_project_case__c=projectcase.id;
         //CaseRecord.Core_IPS_Backend_System__r.Name= backendSystem.Name;
-        RecordType caseRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        caseRecord.recordTypeId = caseRecordType.Id;
-        caseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
-        caseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
-        RecordType selfAssignedCaseRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
-        selfAssignedCaseRecord = caseRecord.clone(false,true);
-        selfAssignedCaseRecord.RecordTypeId = selfAssignedCaseRecordType.Id;
-        selfAssignedCaseRecord.Core_IPS_New_Backend_System__c =backendSystem1.Id;
-        selfAssignedCaseRecord.Status = 'Open';
-        selfAssignedCaseRecord.Core_Sub_Status__c = 'Investigating';
-        selfAssignedCaseRecord.HSD_Mirror_Status__c = 'open';
-        selfAssignedCaseRecord.HSD_Mirror_Reason__c = 'new';
-        selfAssignedCaseRecord.Core_Environment_Details__c ='DefaultedValue';
-        secondCaseRecord.AccountId=accounts.get(0).Id;
-        secondCaseRecord.ContactId=contacts.get(0).id;  
-        secondCaseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-        secondCaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-        secondCaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-        secondCaseRecord.Core_Issue_Description__c = 'test'; 
-        secondCaseRecord.Core_External_Issue_Category__c = 'Nova';
-        secondCaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
-        secondCaseRecord.Subject='TestSubject';
-        secondCaseRecord.Core_CaseType__c='Issue';
-        secondCaseRecord.Core_IPS_Issue_source__c='n/a';
-        secondCaseRecord.core_ips_project_case__c=projectcase.id;
+        RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord.recordTypeId = RT.Id;
+        CaseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
+        CaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        RecordType RT2 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
+        CaseRecordSA = CaseRecord.clone(false,true);
+        CaseRecordSA.RecordTypeId = RT2.Id;
+        CaseRecordSA.Core_IPS_New_Backend_System__c =backendSystem1.Id;
+        CaseRecordSA.Status = 'Open';
+        CaseRecordSA.Core_Sub_Status__c = 'Investigating';
+        CaseRecordSA.HSD_Mirror_Status__c = 'open';
+        CaseRecordSA.HSD_Mirror_Reason__c = 'new';
+        CaseRecordSA.Core_Environment_Details__c ='DefaultedValue';
+        CaseRecord2.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord2.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord2.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord2.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord2.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord2.Core_Issue_Description__c = 'test'; 
+        CaseRecord2.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord2.Core_External_Issue_Subcategory__c = 'XMM7560';
+        CaseRecord2.Subject='TestSubject';
+        CaseRecord2.Core_CaseType__c='Issue';
+        CaseRecord2.Core_IPS_Issue_source__c='n/a';
+        CaseRecord2.core_ips_project_case__c=projectcase.id;
         //CaseRecord.Core_IPS_Backend_System__r.Name= backendSystem.Name;
-        RecordType caseCreateRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        secondCaseRecord.recordTypeId = caseCreateRecordType.Id;
-        secondCaseRecord.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
-        secondCaseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
-        secondCaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
-        secondCaseRecord.Core_IPS_New_Backend_System__c =backendSystem1.Id;
+        RecordType RT1 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord2.recordTypeId = RT1.Id;
+        CaseRecord2.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
+        CaseRecord2.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
+        CaseRecord2.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        CaseRecord2.Core_IPS_New_Backend_System__c =backendSystem1.Id;
         List<Case> caseList = new List<Case>();
-        caseList.add(caseRecord);
-        caseList.add(selfAssignedCaseRecord);
+        caseList.add(CaseRecord);
+        caseList.add(CaseRecordSA);
         //caseList.add(CaseRecord2);
         Test.startTest();
             Database.DMLOptions dmo = new Database.DMLOptions();
             dmo.assignmentRuleHeader.useDefaultRule = true;
-            caseRecord.setOptions(dmo);
-        	selfAssignedCaseRecord.setOptions(dmo);
-        	secondCaseRecord.setOptions(dmo);
+            CaseRecord.setOptions(dmo);
+        	CaseRecordSA.setOptions(dmo);
+        	CaseRecord2.setOptions(dmo);
             insert caseList; //CaseRecord;
-        	insert secondCaseRecord;
+        	insert CaseRecord2;
         List<Case> updateCaseRecs = new List<Case>();
         List<Case> caseRecords =[select id,Contact.Id,Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c,Core_IPS_BackendID__c, Core_IPS_BES_Promote_Status__c,Core_IPS_New_Backend_System__c from case where Id IN:caseList];
         for(Case caseRec:caseRecords){
             caseRec.Core_Case_Closure__c ='Customer>Duplicate';
-            caseRec.Contact.Id = contacts[0].id;
+            caseRec.Contact.Id = ListOfContacts[0].id;
             updateCaseRecs.add(caseRec);
         }
         update updateCaseRecs;
         
-        selfAssignedCaseRecord.HSD_Mirror_Reason__c = 'awaiting_customer';
+        CaseRecordSA.HSD_Mirror_Reason__c = 'awaiting_customer';
         update caseList;
        
             insertCoreResponse(caseList[0].Id);
-        insertCoreResponse(secondCaseRecord.Id);
+        insertCoreResponse(CaseRecord2.Id);
             List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
             outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
         	outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
@@ -375,11 +378,11 @@ public class Core_IPS_BES_CaseOutbound_Test{
             outboundObject[1].Core_IPS_Case_ID__c = caseList[1].Id; 
             outboundObject[1].Status__c = 'Apigee Success';
             outboundObject[2].core_IPS_Outbound_Message_ID__c = '123';
-            outboundObject[2].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[2].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[2].Status__c = 'Apigee Success';
             outboundObject[2].Comment_Id__c = 'a1nDU000002e4LfYAI';
             outboundObject[3].core_IPS_Outbound_Message_ID__c = '1234';
-            outboundObject[3].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[3].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[3].Status__c = 'Apigee Success';
             outboundObject[3].Comment_Id__c = 'a1nDU000002e4LfYAI';
             update outboundObject;
@@ -400,7 +403,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
             outboundObject[2].Status__c = 'Apigee Failed';
             outboundObject[3].Status__c = 'Apigee Failed';
             update outboundObject;
-            
+        
         }
         
         
@@ -430,7 +433,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
             outboundObjectRec[0].Status__c = 'Apigee Success';
             update outboundObjectRec;
            
-               // Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObjectRec[0].Id});   //commented by Tushar
+                Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObjectRec[0].Id});
         }
         
         Test.stopTest();
@@ -466,15 +469,15 @@ public class Core_IPS_BES_CaseOutbound_Test{
         backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
         insert backendRoutingRule;
         
-        List<Account> accounts = [SELECT Id from Account LIMIT 999];
-         List<Contact> contacts = [SELECT Id from Contact LIMIT 999];
-        List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Account> ListOfAccounts = [SELECT Id from Account LIMIT 999];
+         List<Contact> ListOfContacts = [SELECT Id from Contact LIMIT 999];
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> caseCat = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> subCategory = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -513,36 +516,36 @@ public class Core_IPS_BES_CaseOutbound_Test{
         Map<string,string> quesAnsMap= new Map<string,string>();
         	quesAnsMap.put('DefaultedValue','Ans 1');
          Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
-        Case secondCaseRecord = new Case();
-        secondCaseRecord.AccountId=accounts.get(0).Id;
-        secondCaseRecord.ContactId=contacts.get(0).id;  
-        secondCaseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-        secondCaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-        secondCaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-        secondCaseRecord.Core_Issue_Description__c = 'test'; 
-        secondCaseRecord.Core_External_Issue_Category__c = 'Nova';
-        secondCaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
-        secondCaseRecord.Subject='TestSubject';
-        secondCaseRecord.Core_CaseType__c='Issue';
-        secondCaseRecord.Core_IPS_Issue_source__c='n/a';
-        secondCaseRecord.core_ips_project_case__c=projectcase.id;
+        Case CaseRecord2 = new Case();
+        CaseRecord2.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord2.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord2.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord2.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord2.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord2.Core_Issue_Description__c = 'test'; 
+        CaseRecord2.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord2.Core_External_Issue_Subcategory__c = 'XMM7560';
+        CaseRecord2.Subject='TestSubject';
+        CaseRecord2.Core_CaseType__c='Issue';
+        CaseRecord2.Core_IPS_Issue_source__c='n/a';
+        CaseRecord2.core_ips_project_case__c=projectcase.id;
         //CaseRecord.Core_IPS_Backend_System__r.Name= backendSystem.Name;
-        RecordType caseCreateRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        secondCaseRecord.recordTypeId = caseCreateRecordType.Id;
-        secondCaseRecord.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
-        secondCaseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
-        secondCaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
-        secondCaseRecord.Core_IPS_New_Backend_System__c =backendSystem1.Id;
+        RecordType RT1 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord2.recordTypeId = RT1.Id;
+        CaseRecord2.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
+        CaseRecord2.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
+        CaseRecord2.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        CaseRecord2.Core_IPS_New_Backend_System__c =backendSystem1.Id;
         List<Case> caseList = new List<Case>();
         //caseList.add(CaseRecord2);
         Test.startTest();
             Database.DMLOptions dmo = new Database.DMLOptions();
             dmo.assignmentRuleHeader.useDefaultRule = true;
-        	secondCaseRecord.setOptions(dmo);
+        	CaseRecord2.setOptions(dmo);
             insert caseList; //CaseRecord;
-        	insert secondCaseRecord;
+        	insert CaseRecord2;
         List<Case> updateCaseRecs = new List<Case>();
-        insertCoreResponse(secondCaseRecord.Id);
+        insertCoreResponse(CaseRecord2.Id);
             List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
             outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
         	outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
@@ -553,11 +556,11 @@ public class Core_IPS_BES_CaseOutbound_Test{
             
         if(outboundObject!=null && outboundObject.size()>0){
             outboundObject[2].core_IPS_Outbound_Message_ID__c = '123';
-            outboundObject[2].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[2].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[2].Status__c = 'Apigee Success';
             outboundObject[2].Comment_Id__c = 'a1nDU000002e4LfYAI';
             outboundObject[3].core_IPS_Outbound_Message_ID__c = '1234';
-            outboundObject[3].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[3].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[3].Status__c = 'Apigee Success';
             outboundObject[3].Comment_Id__c = 'a1nDU000002e4LfYAI';
             update outboundObject;
@@ -591,16 +594,16 @@ public class Core_IPS_BES_CaseOutbound_Test{
         
         
         CaseHistory ch = new CaseHistory();
-        ch.CaseId = secondCaseRecord.Id;
+        ch.CaseId = CaseRecord2.Id;
         ch.Field = 'Core_Sub_Status__c';
         
         insert ch;
         //Core_IPS_BES_HSD_CustomLogic chL= new Core_IPS_BES_HSD_CustomLogic();
-        Core_IPS_BES_HSD_CustomLogic.processDCGStatusReasonLogic(secondCaseRecord.Id,new Map<String,CaseHistory>{secondCaseRecord.Id+'Core_Sub_Status__c' => ch});
+        Core_IPS_BES_HSD_CustomLogic.processDCGStatusReasonLogic(CaseRecord2.Id,new Map<String,CaseHistory>{CaseRecord2.Id+'Core_Sub_Status__c' => ch});
         //{'caseList[1].Id+\'Core_Sub_Status__c\'' => ch};
         
         Case c = new Case();
-        c.Id = secondCaseRecord.Id;
+        c.Id = CaseRecord2.Id;
         c.Subject = 'Test Subject';
         c.Status = 'Open';
         c.Core_Sub_Status__c = 'Investigating';
@@ -625,14 +628,14 @@ public class Core_IPS_BES_CaseOutbound_Test{
     }
     //added by Rajashekar
     public static TestMethod void backendPromotionTest2(){
-         Map<String,ID> profilesByName = new Map<String,ID>();
-        List<string> profileNames = new List<string> {'System Administrator'};
-        for(Profile prof : [select id, name from Profile where name IN: profileNames]){
-            profilesByName.put(prof.name, prof.id);
+         Map<String,ID> MapOfProfiles = new Map<String,ID>();
+        List<string> ListOfProfileNames = new List<string> {'System Administrator'};
+        for(Profile prof : [select id, name from Profile where name IN: ListOfProfileNames]){
+            MapOfProfiles.put(prof.name, prof.id);
         }
         SysAdminUsr = TestUtilities.getListOfUser(1);
          SysAdminUsr.get(0).UserName = 'SysAdminUsr'+SysAdminUsr.get(0).UserName;
-        SysAdminUsr.get(0).ProfileID =  profilesByName.get('System Administrator');
+        SysAdminUsr.get(0).ProfileID =  MapOfProfiles.get('System Administrator');
        //System.RunAs(SysAdminUsr[0]){ 
         Core_Trigger_Executions__c triggerExecution = new Core_Trigger_Executions__c(Name= 'enableIPSCaseBackendRouting', Core_Active__c = true,
                                                                                      Core_Class_Name__c = 'Core_IPS_BES_CasePromotion_Handler', Core_Object__c = 'Case',
@@ -640,15 +643,15 @@ public class Core_IPS_BES_CaseOutbound_Test{
         insert triggerExecution;
         List<Core_IPS_Supported_Product__c> supportedProduct = [SELECT Id from Core_IPS_Supported_Product__c LIMIT 999];
         
-        List<Account> accounts = [SELECT Id from Account LIMIT 999];
-         List<Contact> contacts = [SELECT Id from Contact LIMIT 999];
-        List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Account> ListOfAccounts = [SELECT Id from Account LIMIT 999];
+         List<Contact> ListOfContacts = [SELECT Id from Contact LIMIT 999];
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> caseCat = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> subCategory = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -687,33 +690,33 @@ public class Core_IPS_BES_CaseOutbound_Test{
         Map<string,string> quesAnsMap= new Map<string,string>();
         	quesAnsMap.put('DefaultedValue','Ans 1');
          Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
-        Case secondCaseRecord = new Case();
-        secondCaseRecord.AccountId=accounts.get(0).Id;
-        secondCaseRecord.ContactId=contacts.get(0).id;  
-        secondCaseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-        secondCaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-        secondCaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-        secondCaseRecord.Core_Issue_Description__c = 'test'; 
-        secondCaseRecord.Core_External_Issue_Category__c = 'Nova';
-        secondCaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
-        secondCaseRecord.Subject='TestSubject';
+        Case CaseRecord2 = new Case();
+        CaseRecord2.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord2.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord2.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord2.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord2.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord2.Core_Issue_Description__c = 'test'; 
+        CaseRecord2.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord2.Core_External_Issue_Subcategory__c = 'XMM7560';
+        CaseRecord2.Subject='TestSubject';
         //CaseRecord2.Core_IPS_New_Backend_System__c = null;
-        secondCaseRecord.Core_CaseType__c='Issue';
-        secondCaseRecord.Core_IPS_Issue_source__c='n/a';
-        secondCaseRecord.core_ips_project_case__c=projectcase.id;
-        RecordType caseCreateRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        secondCaseRecord.recordTypeId = caseCreateRecordType.Id;
-        secondCaseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
-        secondCaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        CaseRecord2.Core_CaseType__c='Issue';
+        CaseRecord2.Core_IPS_Issue_source__c='n/a';
+        CaseRecord2.core_ips_project_case__c=projectcase.id;
+        RecordType RT1 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord2.recordTypeId = RT1.Id;
+        CaseRecord2.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
+        CaseRecord2.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
         List<Case> caseList = new List<Case>();
         Test.startTest();
             Database.DMLOptions dmo = new Database.DMLOptions();
             dmo.assignmentRuleHeader.useDefaultRule = true;
-        	secondCaseRecord.setOptions(dmo);
+        	CaseRecord2.setOptions(dmo);
             insert caseList; //CaseRecord;
-        	insert secondCaseRecord;
+        	insert CaseRecord2;
         List<Case> updateCaseRecs = new List<Case>();
-        insertCoreResponse(secondCaseRecord.Id);
+        insertCoreResponse(CaseRecord2.Id);
             List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
             outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
         	outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
@@ -724,12 +727,12 @@ public class Core_IPS_BES_CaseOutbound_Test{
             
         if(outboundObject!=null && outboundObject.size()>0){
             outboundObject[2].core_IPS_Outbound_Message_ID__c = '123';
-            outboundObject[2].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[2].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[2].Status__c = 'Apigee Success';
             outboundObject[2].Comment_Id__c = 'a1nDU000002e4LfYAI';
             outboundObject[2].Core_IPS_BES_Depromote_Id__c = 'a1nDU000002e4LfYAI';
             outboundObject[3].core_IPS_Outbound_Message_ID__c = '1234';
-            outboundObject[3].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[3].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[3].Status__c = 'Apigee Success';
             outboundObject[3].Comment_Id__c = 'a1nDU000002e4LfYAI';
             outboundObject[3].Core_IPS_BES_Depromote_Id__c = 'a1nDU000002e4LfYAI';
@@ -757,7 +760,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
         }
         
         Case c = new Case();
-        c.Id = secondCaseRecord.Id;
+        c.Id = CaseRecord2.Id;
         c.Subject = 'Test Subject';
         c.Status = 'Open';
         c.Core_Sub_Status__c = 'Investigating';
@@ -807,15 +810,15 @@ public class Core_IPS_BES_CaseOutbound_Test{
         backendRoutingRule.Core_IPS_Auto_Promote__c = true;
         backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
         insert backendRoutingRule;
-        List<Account> accounts = [SELECT Id from Account LIMIT 999];
-         List<Contact> contacts = [SELECT Id from Contact LIMIT 999];
-        List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Account> ListOfAccounts = [SELECT Id from Account LIMIT 999];
+         List<Contact> ListOfContacts = [SELECT Id from Contact LIMIT 999];
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> caseCat = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> subCategory = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -854,41 +857,41 @@ public class Core_IPS_BES_CaseOutbound_Test{
         Map<string,string> quesAnsMap= new Map<string,string>();
         	quesAnsMap.put('DefaultedValue','Ans 1');
          Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
-        Case secondCaseRecord = new Case();
-        secondCaseRecord.AccountId=accounts.get(0).Id;
-        secondCaseRecord.ContactId=contacts.get(0).id;  
-        secondCaseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-        secondCaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-        secondCaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-        secondCaseRecord.Core_Issue_Description__c = 'test'; 
-        secondCaseRecord.Core_External_Issue_Category__c = 'Nova';
-        secondCaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
-        secondCaseRecord.Subject='TestSubject';
-        secondCaseRecord.Core_CaseType__c='Issue';
-        secondCaseRecord.Core_IPS_Issue_source__c='n/a';
-        secondCaseRecord.core_ips_project_case__c=projectcase.id;
+        Case CaseRecord2 = new Case();
+        CaseRecord2.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord2.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord2.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord2.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord2.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord2.Core_Issue_Description__c = 'test'; 
+        CaseRecord2.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord2.Core_External_Issue_Subcategory__c = 'XMM7560';
+        CaseRecord2.Subject='TestSubject';
+        CaseRecord2.Core_CaseType__c='Issue';
+        CaseRecord2.Core_IPS_Issue_source__c='n/a';
+        CaseRecord2.core_ips_project_case__c=projectcase.id;
         //CaseRecord.Core_IPS_Backend_System__r.Name= backendSystem.Name;
-        RecordType caseCreateRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        secondCaseRecord.recordTypeId = caseCreateRecordType.Id;
-        secondCaseRecord.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
-        secondCaseRecord.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
-        secondCaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
-        secondCaseRecord.Core_IPS_New_Backend_System__c =backendSystem1.Id;
+        RecordType RT1 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord2.recordTypeId = RT1.Id;
+        CaseRecord2.Core_IPS_BackendID__c = 'a1nDU000002e4LfYAI';
+        CaseRecord2.Core_IPS_EDQ_Filtering_Question__c ='bkc_or_sw_version';
+        CaseRecord2.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        CaseRecord2.Core_IPS_New_Backend_System__c =backendSystem1.Id;
         List<Case> caseList = new List<Case>();
         //caseList.add(CaseRecord2);
         Test.startTest();
             Database.DMLOptions dmo = new Database.DMLOptions();
             dmo.assignmentRuleHeader.useDefaultRule = true;
-        	secondCaseRecord.setOptions(dmo);
+        	CaseRecord2.setOptions(dmo);
             insert caseList; //CaseRecord;
-        	insert secondCaseRecord;
+        	insert CaseRecord2;
         Core_IPS_Case_Attachments__c attachmentRec = new Core_IPS_Case_Attachments__c();
-        attachmentRec.Core_Case__c = secondCaseRecord.Id;
+        attachmentRec.Core_Case__c = CaseRecord2.Id;
         attachmentRec.Core_IPS_BES_Promote_Status__c ='In Progress';
         attachmentRec.Core_File_Description__c = 'testAttachment';
         //insert attachmentRec;
         List<Case> updateCaseRecs = new List<Case>();
-        insertCoreResponse(secondCaseRecord.Id);
+        insertCoreResponse(CaseRecord2.Id);
             List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
             outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
         	outboundObject.add(new Core_IPS_BES_Outbound_Message__c());
@@ -899,11 +902,11 @@ public class Core_IPS_BES_CaseOutbound_Test{
             
         if(outboundObject!=null && outboundObject.size()>0){
             outboundObject[2].core_IPS_Outbound_Message_ID__c = '123';
-            outboundObject[2].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[2].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[2].Status__c = 'Apigee Success';
             outboundObject[2].Core_IPS_Attachment_ID__c = 'a1nDU000002e4LfYAI';
             outboundObject[3].core_IPS_Outbound_Message_ID__c = '1234';
-            outboundObject[3].Core_IPS_Case_ID__c = secondCaseRecord.Id; 
+            outboundObject[3].Core_IPS_Case_ID__c = CaseRecord2.Id; 
             outboundObject[3].Status__c = 'Apigee Success';
             outboundObject[3].Core_IPS_Attachment_ID__c = 'a1nDU000002e4LfYAI';
             update outboundObject;
@@ -937,16 +940,16 @@ public class Core_IPS_BES_CaseOutbound_Test{
         
         
         CaseHistory ch = new CaseHistory();
-        ch.CaseId = secondCaseRecord.Id;
+        ch.CaseId = CaseRecord2.Id;
         ch.Field = 'Core_Sub_Status__c';
         
         insert ch;
         //Core_IPS_BES_HSD_CustomLogic chL= new Core_IPS_BES_HSD_CustomLogic();
-        Core_IPS_BES_HSD_CustomLogic.processDCGStatusReasonLogic(secondCaseRecord.Id,new Map<String,CaseHistory>{secondCaseRecord.Id+'Core_Sub_Status__c' => ch});
+        Core_IPS_BES_HSD_CustomLogic.processDCGStatusReasonLogic(CaseRecord2.Id,new Map<String,CaseHistory>{CaseRecord2.Id+'Core_Sub_Status__c' => ch});
         //{'caseList[1].Id+\'Core_Sub_Status__c\'' => ch};
         
         Case c = new Case();
-        c.Id = secondCaseRecord.Id;
+        c.Id = CaseRecord2.Id;
         c.Subject = 'Test Subject';
         c.Status = 'Open';
         c.Core_Sub_Status__c = 'Investigating';
@@ -969,7 +972,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
         //insert CaseRecord1;
       
     }
-  
+    
       public static TestMethod void backendPromotionTestGED(){
        
          Core_Trigger_Executions__c triggerExecution = new Core_Trigger_Executions__c(Name= 'enableIPSCaseBackendRouting', Core_Active__c = true,
@@ -999,15 +1002,15 @@ public class Core_IPS_BES_CaseOutbound_Test{
         backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
         insert backendRoutingRule;
         
-        List<Account> accounts = [SELECT Id from Account LIMIT 999];
-         List<Contact> contacts = [SELECT Id from Contact LIMIT 999];
-        List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Account> ListOfAccounts = [SELECT Id from Account LIMIT 999];
+         List<Contact> ListOfContacts = [SELECT Id from Contact LIMIT 999];
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> caseCat = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         List<Core_IPS_Product_Issue_Category__c> subCategory = [SELECT Id from Core_IPS_Product_Issue_Category__c LIMIT 999];
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -1037,46 +1040,46 @@ public class Core_IPS_BES_CaseOutbound_Test{
         insert lstAnswer;
         
         Core_IPS_Project__c projectcase=new Core_IPS_Project__c();
-                 Case caseRecord = new Case();
-                Case firstCaseRecord = new Case();
-                Case selfAssignedCaseRecord = new Case();
-                caseRecord.AccountId=accounts.get(0).Id;
-                caseRecord.ContactId=contacts.get(0).id;  
-                caseRecord.Core_IPS_Product_Org1__c=supportOrganizations.get(0).id;
-                caseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
-                caseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
-                caseRecord.Core_Issue_Description__c = 'test';
-                    caseRecord.Core_External_Issue_Category__c = 'Nova';
-                caseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
+         Case CaseRecord = new Case();
+        Case CaseRecord1 = new Case();
+        Case CaseRecordSA = new Case();
+        CaseRecord.AccountId=ListOfAccounts.get(0).Id;
+        CaseRecord.ContactId=ListOfContacts.get(0).id;  
+        CaseRecord.Core_IPS_Product_Org1__c=ListOfSupportOrg.get(0).id;
+        CaseRecord.Core_Case_Issue_Category__c = caseCat[0].id;
+        CaseRecord.Core_case_issue_sub_category__c = subCategory[0].id;
+        CaseRecord.Core_Issue_Description__c = 'test';
+          CaseRecord.Core_External_Issue_Category__c = 'Nova';
+        CaseRecord.Core_External_Issue_Subcategory__c = 'XMM7560';
 
-        caseRecord.Subject='TestSubject';
-        caseRecord.Core_CaseType__c='Issue';
-        caseRecord.Core_IPS_Issue_source__c='n/a';
-        caseRecord.core_ips_project_case__c=projectcase.id;
-        RecordType caseRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
-        caseRecord.recordTypeId = caseRecordType.Id;
-        caseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
-        RecordType selfAssignedCaseRecordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
-        selfAssignedCaseRecord = caseRecord.clone(false,true);
-        selfAssignedCaseRecord.RecordTypeId = selfAssignedCaseRecordType.Id;
+        CaseRecord.Subject='TestSubject';
+        CaseRecord.Core_CaseType__c='Issue';
+        CaseRecord.Core_IPS_Issue_source__c='n/a';
+        CaseRecord.core_ips_project_case__c=projectcase.id;
+        RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
+        CaseRecord.recordTypeId = RT.Id;
+        CaseRecord.Core_IPS_Partner_Sup_Owner__c = userinfo.getuserid();
+        RecordType RT2 = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
+        CaseRecordSA = CaseRecord.clone(false,true);
+        CaseRecordSA.RecordTypeId = RT2.Id;
         
         Test.startTest();
             Database.DMLOptions dmo = new Database.DMLOptions();
             dmo.assignmentRuleHeader.useDefaultRule = true;
-            caseRecord.setOptions(dmo);
-            insert caseRecord;
+            CaseRecord.setOptions(dmo);
+            insert CaseRecord;
             
           
         
-              caseRecord.Core_IPS_New_Backend_System__c = null;
-          update caseRecord;
+           CaseRecord.Core_IPS_New_Backend_System__c = null;
+        update CaseRecord;
         
           Test.stopTest();
      }
     
     static void insertCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) { //ATHR Query limit fix
+        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
             for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                 Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                 objResponse.Core_IPS_Case__c = caseId;
@@ -1099,18 +1102,18 @@ public class Core_IPS_BES_CaseOutbound_Test{
         backendSystem.Name = 'EMBED - HSDES IoT Platform';
         backendSystem.Core_IPS_Target_System__c = 'hsdes:iot_platf:bug';
         insert backendSystem;
-                    List<Core_IPS_Product_Organization__c> supportOrganizations = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
-                List<Core_IPS_Supported_Product__c> supportedProducts = [SELECT Id from Core_IPS_Supported_Product__c LIMIT 999];
+		  List<Core_IPS_Product_Organization__c> ListOfSupportOrg = [SELECT Id from Core_IPS_Product_Organization__c LIMIT 999];
+        List<Core_IPS_Supported_Product__c> ListOfProduct = [SELECT Id from Core_IPS_Supported_Product__c LIMIT 999];
         Core_IPS_Backend_Routing__c backendRoutingRule = new Core_IPS_Backend_Routing__c();
         backendRoutingRule.Core_IPS_Backend_Routing_Order__c = 1;
-        backendRoutingRule.Core_IPS_Supported_Product__c = supportedProducts[0].Id;
+        backendRoutingRule.Core_IPS_Supported_Product__c = ListOfProduct[0].Id;
         backendRoutingRule.Core_IPS_Auto_Promote__c = true;
         backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
         insert backendRoutingRule;
         
          List<Core_IPS_Question__c> lstCoreQuestion = TestUtilities.getlstCoreQuestion(9);    
         for(Core_IPS_Question__c objQues : lstCoreQuestion) {
-            objQues.Core_IPS_Product_Organization__c = supportOrganizations.get(0).id;
+            objQues.Core_IPS_Product_Organization__c = ListOfSupportOrg.get(0).id;
         }
         lstCoreQuestion[1].Core_IPS_Datatype__c = 'Text Area';
         lstCoreQuestion[6].Core_IPS_Datatype__c = 'Text Area';
@@ -1158,7 +1161,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
         caseRecord.Core_Issue_Description__c = 'test';
         caseRecord.Core_External_Issue_Category__c = 'Firmware/BIOS';
         caseRecord.Core_External_Issue_Subcategory__c = 'BIOS';
-        caseRecord.Core_IPS_Supported_Product__c = supportedProducts[0].Id;
+        caseRecord.Core_IPS_Supported_Product__c = ListOfProduct[0].Id;
 	    caseRecord.Core_IPS_New_Backend_System__c = backendSystem.Id;
         caseRecord.Core_Environment_Details__c = 'DefaultedValue';
         Map<String, List<Core_IPS_BES_AllTenants_CustomMapping__c>> customMapping = Core_IPS_BES_Generate_CaseJSON.prepareCustomSettingData();
@@ -1191,6 +1194,8 @@ public class Core_IPS_BES_CaseOutbound_Test{
         }
         statusNReason = Core_IPS_BES_HSD_CustomLogic.getStatusNReasonForIOT(caseRecord, 'Status', customMapping.get('EMBED - HSDES IoT Platform'));
         System.assertEquals('complete', statusNReason, 'Status and reason returned are not correct');
+        caseRecord.Status = 'Close-Pending';
+        caseRecord.Core_Sub_Status__c = 'Closed';
         caseRecord.Core_Environment_Details__c = '';
         update caseRecord;
          Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id,outboundObject[1].Id});
@@ -1213,38 +1218,7 @@ public class Core_IPS_BES_CaseOutbound_Test{
         caseRecord.Core_External_Issue_Subcategory__c = 'BIOS';
 
         Map<String, List<Core_IPS_BES_AllTenants_CustomMapping__c>> customMapping = Core_IPS_BES_Generate_CaseJSON.prepareCustomSettingData();
-        List<Core_IPS_BES_Error_Log__c> erList = new List<Core_IPS_BES_Error_Log__c>();
-
-        Core_IPS_BES_Error_Log__c errorLog = new Core_IPS_BES_Error_Log__c(
-            Core_IPS_Error_Description__c = 'test description',
-            Core_IPS_Status__c = 'test status',
-            Core_IPS_Outbound_Message_Id__c =null
-        );
         
-        Core_IPS_BES_Error_Log__c errorLog1 = new Core_IPS_BES_Error_Log__c(
-            Core_IPS_Error_Description__c = 'test description',
-            Core_IPS_Status__c = null
-        );
-        
-        Core_IPS_BES_Error_Log__c errorLog2 = new Core_IPS_BES_Error_Log__c(
-            Core_IPS_Error_Description__c = null,
-            Core_IPS_Status__c = 'Test Status1'
-        );
-        
-        erList.add(errorLog);
-        erList.add(errorLog1);
-        erList.add(errorLog2);
-        
-        insert erList;
-        
-        // Get list of inserted record IDs
-        List<Id> errorLogIds = new List<Id>();
-        for (Core_IPS_BES_Error_Log__c record : erList) {
-            errorLogIds.add(record.Id);
-        }
-
-		System.debug(errorLogIds);
-        //Core_IPS_BES_JSONTriggerHandler.getJsonInvockable(errorLogIds);
         Test.startTest();
         String statusNReason = Core_IPS_BES_HSD_CustomLogic.getSourceType(caseRecord, customMapping);
         System.assertEquals('firmware', statusNReason, 'source_type returned is not correct');

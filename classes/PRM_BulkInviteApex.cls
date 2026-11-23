@@ -34,7 +34,7 @@ public with sharing class PRM_BulkInviteApex {
     string result;
     List<bulkDataWrapper> ObjList = new List<bulkDataWrapper>();
     if(string.isNotBlank(rowData)){
-        ObjList =(List<bulkDataWrapper>)System.JSON.deserialize(rowData, 	List<bulkDataWrapper>.class);
+        ObjList =(List<bulkDataWrapper>)System.JSON.deserialize(rowData,   List<bulkDataWrapper>.class);
         system.debug('ObjList-->'+ObjList);
     }
        
@@ -45,19 +45,13 @@ public with sharing class PRM_BulkInviteApex {
             bulkNew.PRM_AccountId__c=accId;
             bulkNew.PRM_First_Name__c=row.firstname;
             bulkNew.PRM_Last_Name__c=row.lastname;
-            //bulkNew.PRM_ContactEmail__c=row.ContactEmail.toLowercase();
-            //bulkNew.PRM_Mailing_Country__c=row.ContactCountry;
-             if (row!=null && row.ContactEmail != null){
-                bulkNew.PRM_ContactEmail__c = row.ContactEmail.toLowerCase();
-			}
-            if(row!=null && row.ContactCountry != null){
-            	bulkNew.PRM_Mailing_Country__c=row.ContactCountry;
-            }
+            bulkNew.PRM_ContactEmail__c=row.ContactEmail.toLowercase();
+            bulkNew.PRM_Mailing_Country__c=row.ContactCountry;
             bulkListToInsert.add(bulkNew);
         }
         list<string> resulLitst=new list<string>();
-        //string result1;
-        //map<string,list<string>> mapResult=new  map<string,list<string>> ();
+        string result1;
+        map<string,list<string>> mapResult=new  map<string,list<string>> ();
        if(!bulkListToInsert.isempty()){
 
         list<Database.saveResult> saveLogBulkLst =  Database.insert(bulkListToInsert,false); 
@@ -101,7 +95,7 @@ public with sharing class PRM_BulkInviteApex {
     @AuraEnabled 
     public static string getstatus() {
         string userEmail=string.valueOf(user.email);
-        //list<string> statusList=new list<string>();
+        list<string> statusList=new list<string>();
         string stautsBulk;
         integer countSuccess=0,countFail=0;
         datetime dtTime= Datetime.now().addMinutes(Integer.valueOf(system.label.PRM_getstatus_Time));// -8
@@ -169,7 +163,7 @@ public static string retryStatusOver(){
             string bulkRecStringFail,bulkRecStringForExcelFail='',statuss;
             list<PRM_Bulk_Data_Upload__c>  bulkUploadStatusCheckList= [select id,PRM_Status__c,CreatedDate, PRM_ContactEmail__c,CreatedById, CreatedBy.Email,PRM_First_Name__c, PRM_Last_Name__c,PRM_Mailing_Country__c
             from PRM_Bulk_Data_Upload__c where PRM_Status__c='New' and  CreatedBy.Email=:userEmail and CreatedDate >=:dtTime];
-        	
+          
                 if(!bulkUploadStatusCheckList.isempty()){
                     for(PRM_Bulk_Data_Upload__c bulkUpdate:bulkUploadStatusCheckList){
                         bulkUpdate.PRM_Status__c='Discarded'; statuss='records not processed. Please try again';

@@ -396,7 +396,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 
                 //check for duplicate records:
                 if(Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isAccessible()){
-                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c,PRM_Contact_Id__c from PRM_ContactSubscriptionAssociation__c where PRM_Partner_Subscription_Id__c in : subscriptionIds and PRM_Contact_Id__c =: contactIds WITH SECURITY_ENFORCED])
+                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c,PRM_Contact_Id__c from PRM_ContactSubscriptionAssociation__c where PRM_Partner_Subscription_Id__c in : subscriptionIds and PRM_Contact_Id__c =: contactIds WITH SECURITY_ENFORCED])
                     {
                         existingCSAMap.put(String.valueOf(csa.PRM_Partner_Subscription_Id__c)+String.valueOf(csa.PRM_Contact_Id__c),csa);
                     }
@@ -415,7 +415,6 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                                  
                                 if(existingCSAMap != null && existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) != null) { cntSubscrAssoc = existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) ; }
                                 cntSubscrAssoc.PRM_Status_Nm__c = 'Active';
-                                cntSubscrAssoc.PRM_Status_Reason_Txt__c ='Activated as contact is eligible for Subscription';//TWC729-8089 : Adding reason text 
                                 contactSubscriptionUpsertList.add(cntSubscrAssoc);
                             }
                             else if(cbtStatus == System.Label.ER_Rejected)
@@ -426,7 +425,6 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                                     
                                     if(existingCSAMap != null && existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) != null) { cntSubscrAssoc = existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) ; }
                                     cntSubscrAssoc.PRM_Status_Nm__c = 'Inactive';
-                                    cntSubscrAssoc.PRM_Status_Reason_Txt__c ='Inactivated as contact is not eligible for Subscription';//TWC729-8089 : Adding reason text 
                                     contactSubscriptionUpsertList.add(cntSubscrAssoc);                  
                                 
                             }

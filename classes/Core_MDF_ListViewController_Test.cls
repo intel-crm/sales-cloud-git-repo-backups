@@ -26,7 +26,7 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
         usr.LastName = 'User Test';
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
-
+        List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
          
         Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
         for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_Program_Adm',
@@ -187,13 +187,6 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
             cstStng.Core_MDF_Visible_to_all_users_ind__c = true;
             cstStng.Name= 'Record 55';
             database.insert(cstStng);
-            List<String> bypassFunctionKeys = new List<String>();//suma
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
 
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmMDF = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgmMDF.Core_MDF_Account_id__c = acc1.id;
@@ -295,7 +288,8 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
                 Test.setCurrentPage(pageRef);
                 
                 ApexPages.currentPage().getParameters().put('ObjName','Core_MDF_Bank__c');
-
+                Core_MDF_ExternalListViewExport lvc = new Core_MDF_ExternalListViewExport();
+                Core_MDF_Bank__c ac = new Core_MDF_Bank__c();
 
                 ListView lv = [SELECT Id, Name, DeveloperName FROM ListView  WHERE sObjectType = 'Core_MDF_Bank__c' AND Name='All'];
 
@@ -313,15 +307,25 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
 
                         
                 //listViewInstance.oListViewWrapper lvio = new listViewInstance.oListViewWrapper();
-
+                String label1 = listViewInstance.label;
+                String developerName = listViewInstance.developerName;
+                String listViewId = listViewInstance.listViewId;
             
                 //lvc.exportToExcel();
                 //lvc.exportToCSV();
                 
                 Core_MDF_ExternalListViewExport.SingleColumn singleColumnInstance = new Core_MDF_ExternalListViewExport.SingleColumn();
-                  
+                String ascendingLabel = singleColumnInstance.ascendingLabel;
+                String descendingLabel = singleColumnInstance.descendingLabel;
+                String sortDirection = singleColumnInstance.sortDirection;
+                Integer sortIndex = singleColumnInstance.sortIndex;
+                Boolean sortable = singleColumnInstance.sortable;
+                String selectListItem = singleColumnInstance.selectListItem;    
+                Boolean hidden = singleColumnInstance.hidden;
+                String fieldNameOrPath = singleColumnInstance.fieldNameOrPath;             
+                String type = singleColumnInstance.type;                   
                 String label = singleColumnInstance.label;
-
+                Boolean isDateType = singleColumnInstance.isDateType;
                 
         
         }

@@ -70,10 +70,10 @@ public without sharing class UCD_ACM_AccountReqQueueTriggerHandler {
                 }
             }
             
-            if(!insertIntegrationMessages.isEmpty() && Schema.sObjectType.ACM_Integration_Message_Queue__c.isCreateable()) {
+            if(!insertIntegrationMessages.isEmpty()) {
                 insert insertIntegrationMessages;
             }
-            if(!updateIntegrationMessages.isEmpty() && Schema.sObjectType.ACM_Integration_Message_Queue__c.isUpdateable()) {
+            if(!updateIntegrationMessages.isEmpty()) {
                 update updateIntegrationMessages;
             }
             

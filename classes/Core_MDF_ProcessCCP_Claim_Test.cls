@@ -253,7 +253,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
                                                                                                   'Consumer',
                                                                                                   'Desktop',
                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                  'Broadcast (Pre-2025)',
+                                                                                                  'Broadcast',
                                                                                                   'Podcast',
                                                                                                   'Draft',
                                                                                                   false);
@@ -271,7 +271,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         
         PartnerFundRequest indiaActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFAPACIndia.id),pfaDellCCFIndia,pmbRecord,
-                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast (Pre-2025)','Podcast','Draft'
+                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                  ,false);
         indiaActivity.Title = 'indiaActivity';
         indiaActivity.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -286,7 +286,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         
         PartnerFundRequest indiaActivity1 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFAPAC.id),pfaDellCCFIndia,pmbRecord,
-                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast (Pre-2025)','Podcast','Draft'
+                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                  ,false);
         indiaActivity1.Title = 'indiaActivity1';
         indiaActivity1.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -303,7 +303,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         
         PartnerFundRequest indiaActivity2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFAPAC.id),pfaDellCCFIndia,pmbRecord,
-                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast (Pre-2025)','Podcast','Draft'
+                                                                                                 'ANGOLA','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                  ,false);
         indiaActivity2.Title = 'indiaActivity2';
         indiaActivity2.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -403,7 +403,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         ruleList.add(rule6);
         Database.insert(rule6);   
 
-    Test.stopTest();
+		Test.stopTest();
         List<PartnerFundAllocation> allocList = new List<PartnerFundAllocation>();
         PartnerFundAllocation retailMDFAllocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('retailAlloc',retailMDFbudget,dellRMFVirtualCorp,200.0,false);
         allocList.add(retailMDFAllocation);
@@ -438,7 +438,6 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         indiaActivity4.Core_MDF_Product_Category_txt__c ='Notebook/Mobile';
         indiaActivity4.AllocationId = retailMDFAllocation.Id;
         indiaActivity4.Core_MDF_TargetAudience__c = 'Small and Medium Business';
-        indiaActivity4.Core_MDF_Activity_Types__c = 'Personnel';
         database.insert(indiaActivity4);
         
         Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellRMFVirtualCorp.Id,retailBank.Id,false);
@@ -1229,7 +1228,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         picConfig.Core_MDF_Value__c='5';
         picConfig.Core_MDF_Category__c ='Claim';
         insert picConfig;
-     
+		 
         Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Claims_ABM_Validation','Bypass_Claims_Amt_vs_Budget_Amt_Check',
             'Bypass_Claims_Amt_vs_Camp_Amt_Check','Bypass_Claims_Duplicate_Check',
             'Bypass_Claim_OwnerLang_EmailTemp','Bypass_Claims_Sharing_Internal_Users',
@@ -1244,12 +1243,12 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         List<PartnerFundClaim> newClaimList = new List<PartnerFundClaim>();
         Map<Id, PartnerFundClaim> tempClaimMap = new Map<Id, PartnerFundClaim>();
         System.runAs(clmCaseUser){
-      Core_MDF_Bank__c indiaBank = [Select id from Core_MDF_Bank__c where Name = 'Test'];
+    	Core_MDF_Bank__c indiaBank = [Select id from Core_MDF_Bank__c where Name = 'Test'];
             User partnerUser1 = [Select Id from User Where Email = 'test1@example.com' limit 1];
             PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
          
             claim1 = Core_MDF_CCP_TestDataUtility.createClaim('UtilityClaim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, indiaActivity.Id, System.today()-1, System.today()-1, 50.00, System.today()-1, indiaBank.Id, false);
-           claim1.Core_MDF_Budget_Type_Options_Nm__c = 'OEM CMP';
+       		claim1.Core_MDF_Budget_Type_Options_Nm__c = 'OEM CMP';
             claim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
        
             Database.insert(claim1);

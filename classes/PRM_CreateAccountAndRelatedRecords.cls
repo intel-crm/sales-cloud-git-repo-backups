@@ -430,7 +430,6 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
                         businessEvent = System.label.PRM_Welcome_Email_New_Event;  
                         //update existingAccount;
                         // PRM_CreateAccountAndRelatedRecords.processRegistrationRecords(existingAccount, existingContact,isIPA,regReqRecord, isACRActive, isACMActive) ;
-
                         processRegRecordWrapper wrapperRec = new processRegRecordWrapper(existingAccount, existingContact,isIPA,regReqRecord, isACRActive, isACMActive, regRequestFilesMap.get(regReqRecord.id));
                         processRegRecordWrapperList.add(wrapperRec);
                     }
@@ -680,23 +679,15 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
                             logEntryMsgString+='\nError -->'+result.getErrors()+'Id -->'+result.getId();
                         }
                     }
-                    List<Account> accForAcctNumUpdate = new List<Account>();
                     for(Account acc : allAccListForEnqueue){
                         if(accNumUpdateSet.contains(acc.id)){
-                            Account accnt = new Account();
-                            accnt.id=acc.id;
-                            accnt.accountNumber = String.valueOf(accNum + accListSize);//1000 + 3
-                            accnt.Core_User_Defined_Website__c = acc.Core_User_Defined_Website__c;
-                            accnt.Core_Intel_Partner_Alliance_PartnerGroup__c = acc.Core_Intel_Partner_Alliance_PartnerGroup__c;
-                            accnt.Core_Account_Type__c = acc.Core_Account_Type__c;
-                            accnt.Core_IPA_Partner_Role__c = acc.Core_IPA_Partner_Role__c;
+                            acc.accountNumber = String.valueOf(accNum + accListSize);//1000 + 3
                             accListSize++;
-                            accForAcctNumUpdate.add(accnt);
+
                         }
                     }
                     Schema.SObjectType acc = Schema.Account.getSObjectType();
-                    logEntryMsgString+='\naccForAcctNumUpdate: '+accForAcctNumUpdate;
-                    System.enqueueJob(new PRM_RegReqProcessingQueueable(accForAcctNumUpdate,null,false,'Update_Account',null,true));//TWC729-7729//NJ
+                    System.enqueueJob(new PRM_RegReqProcessingQueueable(allAccListForEnqueue,null,false,'Update_Account',null,true));//TWC729-7729
                     }
                  //insert newAccount;
                 if(!accountListToUpsert.IsEmpty()) { 
@@ -951,6 +942,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
                         {
                             cont =  new Contact();
                             cont = createUpdateContactFromRegRequest(cont, acc.id, regRequest, contactSegment);
+                            logEntryMsgString+='\n***Creating Contact Record***';
                             // upsertData(new List<Contact> {cont});
                             contactSet.add(cont);
                             regReqIdContactMap.put(regRequest.id,cont);
@@ -1835,18 +1827,8 @@ inputParameters.put('EmailContent_Setup',emailSetup.Id);
                
                 if(existingACRMap != null && existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c)) != null )
                 {
-                   
                     accConRel = existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c));
-                    
-                    if(regRequest.PRM_Is_Returning_User__c &&
-                       String.isNotBlank(regRequest.PRM_Review_Note_txt__c))//TWC729-9379  PCR status reason should be UIOLI Return Journey when the contact has come through Self Reg process of UIOLI
-                    {
-                        accConRel.PRM_Status_Reason_Txt__c = regRequest.PRM_Review_Note_txt__c;
-                    }
-                    else
-                    {
-                        accConRel.PRM_Status_Reason_Txt__c = 'Approved as part of Self Registration';
-                    }
+                    accConRel.PRM_Status_Reason_Txt__c = 'Approved as part of Self Registration';
                     string conemail=String.ValueOf(cont.Email);
         Core_Entitlement_Outbound_Integrations.mapOfContactActivatingACR.put(conemail,true);
                     //system.debug('Existing record found'+accConRel);

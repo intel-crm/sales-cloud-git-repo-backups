@@ -83,7 +83,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             Map<Id, String> objIdMsgMap = new Map<Id, String>(); //objId==>core log entry msg
             Map<Id, String> objIdDetailsMap = new Map<Id, String>(); //objId==>core log entry details(Request payload)
             List<SBQQ__Quote__C> quoteList = [SELECT Id,Name,Pricing_End_Customer__r.Name,Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,Pricing_End_Customer_Country_Nm__c,Pricing_End_Customer_Name__c,Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Account_Executive_Nm__c,Pricing_Intel_Sales_Rep_Email_Txt__c,SBQQ__SalesRep__c,Pricing_Account_Executive_Nm__r.Name, SBQQ__SalesRep__r.Name,Pricing_End_Customer_URL__c FROM SBQQ__Quote__C WHERE Id IN: recordIdList]; //CH
-            Map<String, UCD_BizOrgRequestModel.AccountDetail> endCustCountryRequestPayloadMap = new Map<String, UCD_BizOrgRequestModel.AccountDetail>();//'customer Name : Country'==>Request Payload
+      	    Map<String, UCD_BizOrgRequestModel.AccountDetail> endCustCountryRequestPayloadMap = new Map<String, UCD_BizOrgRequestModel.AccountDetail>();//'customer Name : Country'==>Request Payload
             Map<String, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>> customerCountryResponsePayloadsMap = new  Map<String, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>>();//'customer Name : Country' ==> response payloads
             List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> errorResponseList = new List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>();//to create log entry in bulk scenario
             List<Pricing_Quote_Team__c> quoteTeamList = [SELECT Id, Pricing_Quote_Team_Member_Id__c, Pricing_Quote_Id__c,Pricing_Role_Nm__c,Pricing_Quote_Team_Member_Id__r.Email,Pricing_Quote_Team_Member_Id__r.Name FROM Pricing_Quote_Team__c WHERE Pricing_Quote_Id__c IN: recordIdList AND Pricing_Quote_Team_Member_Id__r.IsActive = true AND Pricing_Grant_Access_Ind__c = true];
@@ -251,6 +251,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
     //method to create record in staging object 
     public static void createPISRecord(Map<Id, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>> recordIdResponseMap) {
         List<Pricing_Integration_Staging__c> stagingList = new List<Pricing_Integration_Staging__c>();
+        List<String> accountIdList =  new List<String>();
         List<Pricing_Integration_Staging__c> existingStagingRecordList = [SELECT Id, Pricing_SObjectId__c,Pricing_QuoteID__c, Pricing_UCD_Response_Type__c 
                                                                          FROM  Pricing_Integration_Staging__c 
                                                                          WHERE Pricing_Message_Type__c =:Label.Pricing_UCD_PIS_Message_Type 

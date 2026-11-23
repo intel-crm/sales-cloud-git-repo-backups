@@ -24,13 +24,13 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String CS_MDF_BUDGET_TYPE ='Client Specialties MDF';
     public static final String PR_MDF_BUDGET_TYPE = 'Proposal I MDF';
     public static final String EEF_BUDGET_TYPE = 'Cloud';
-    public static final String RMF_RSA_MD_BUDGET_TYPE = 'RSA MD';//Swati
+    
     //PFR APPROVAL STAGE
     public static final String PFR_L1_APPROVAL = 'L1 Approval';
     public static final String PFR_L2_APPROVAL = 'L2 Approval';
     public static final String PFR_FIRST_LEVEL_MGR = 'First Level Manager';
     public static final String PFR_SECOND_LEVEL_MGR = 'Second Level Manager';
-    public static final String PFR_PRICE_REVIEWER = 'Price Reviewer';    
+  public static final String PFR_PRICE_REVIEWER = 'Price Reviewer';    
     public static final String PFR_CUSTOMER_ACCEPTANCE = 'Customer Acceptance';
     //public static final String PFR_L2_REGIONAL_SALES = 'L2 Regional Sales';
     //public static final String PFR_L2_REGIONAL_MARKETING = 'L2 Regional Marketing';
@@ -40,7 +40,7 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String PFR_CANCELLED_STATUS = 'Cancelled';
     public static final String PFR_REJECTED_STATUS = 'Rejected';
     public static final String PFR_APPROVED_STATUS = 'Approved';
-    public static final String PFR_RR_STATUS = 'Revision Required';
+  public static final String PFR_RR_STATUS = 'Revision Required';
     public static final String PFR_PLANNED_STATUS = 'Planned';   
     public static final String PFR_PENDING_APPROVAL_STATUS = 'Pending Approval';
     public static final String PFR_PENDING_STATUS = 'Pending';
@@ -55,9 +55,9 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String PFR_RMF_PROGRAM = 'Retail Marketing Funds';
     public static final String PFR_EEF_PROGRAM = 'Ecosystem Extension Fund';
     //PFR ACTIVITY CATEGORY
-    public static final String PFR_EVENT_CATEGORY = 'Event (Pre-2025)';
-    public static final String PFR_EVENT_2025_CATEGORY = 'Event';
-    public static final String PFR_PRINT_MEDIA_CATEGORY = 'Print Media (Pre-2025)';
+    public static final String PFR_EVENT_CATEGORY = 'Event';
+    public static final String PFR_EVENT_2025_CATEGORY = 'Event 2025';
+    public static final String PFR_PRINT_MEDIA_CATEGORY = 'Print Media';
     public static final String PFR_JOINT_EVENT_CATEGORY = 'Joint Event';
     public static final String PFR_THIRD_PARTY_CATEGORY = 'Third Party Event';
     //PFR SUB GEO
@@ -92,10 +92,9 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String ESC_PENDING_REVIEW_STATUS = 'Pending Review';
     //CLAIM
     public static final String TYPE_CLAIM = 'Claim';
-    public static final String PENDING_ACCOUNT_MANAGER_CLARIFICATION = 'Pending Account Manager Clarification';
+    public static final String PENDING_ACCOUNT_MANAGER_CLARIFICATION = 'Pending Account Manager Clarification';  //Roshan
     public static final String PENDING_CLARIFICATION = 'Pending Clarification'; 
     public static final String BULK_CLAIM_TEMPLATE = 'Bulk Claim Template';
-    
     //To Throw mandatory error if Event Name is Blank for below mentioned Activity Types
     public static final string EVENT_ACTIVITY_TYPE = 'Other (Event),Third Party Event,Joint Event';
     
@@ -109,7 +108,7 @@ public class Core_MDF_CCP_ConstantClass {
     //CAMPAIGN
     public static final String COMPLETED_APPROVAL_LEVEL = 'L1 Approval';
     public static final Integer INCREMENT_STEP_COUNTER = 0;
-    public static final String CAMPAIGN_ALL_REGION = 'APJ;ASMO;EMEA;PRC';
+    public static final String CAMPAIGN_ALL_REGION = 'APJ;ASMO;EMEA;PRC;INDIA';
     public static final String CO_ENGINEERING_DEFAULT_ACT_CAT_TYPE = 'Innovation ->Engineering';
     public static final String CAMPAIGN_ATF_DATE = 'ATF Date';
 
@@ -126,7 +125,7 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String CAMPAIGN_PENDING_APPROVAL = 'Pending Approval';
     public static final String CAMPAIGN_PROPOSAL_ACCEPTED = 'Proposal Accepted';
     public static final String CAMPAIGN_DECLINED = 'Declined';
-    public static final String CAMPAIGN_ACCEPTED = 'Campaign Accepted';
+    public static final String CAMPAIGN_ACCEPTED = 'Campaign Accepted';  // Roshan - CoGTM Intermediate status
 
     //EXCEPTION STATUS
     public static final String EXCEPTION_PENDING_REVIEW = 'Pending Review';
@@ -145,7 +144,7 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String L2_APPROVAL = 'L2 Approval';
     public static final String FIRST_LEVEL_MGR = 'First Level Manager';
     public static final String SECOND_LEVEL_MGR = 'Second Level Manager';
-    public static final String PRICE_REVIEWER = 'Price Reviewer';    
+  public static final String PRICE_REVIEWER = 'Price Reviewer';    
     public static final String CUSTOMER_ACCEPTANCE = 'Customer Acceptance';
     public static final String L2_REGIONAL_SALES = 'L2 Regional Sales';
     public static final String L2_REGIONAL_MARKETING = 'L2 Regional Marketing';
@@ -158,9 +157,9 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String CUSTOMER_ACCEPTANCE_ACTIVATING_PARTNER = 'Customer Acceptance (Activating Partner)';
     public static final String PFR_EEF_ACTIVATINGPARTNER = 'ActivatingPartner';
     public static final String PFR_EEF_PRIMARYPARTNER = 'PrimaryPartner';
-    public static final String LEGAL_REVIEWER = 'Legal Reviewer';  //Co-GTM campaign setup 
+    public static final String LEGAL_REVIEWER = 'Legal Reviewer';  //Roshan - Co-GTM campaign setup 
     public static final String BUSINESS_APPROVER = 'Business Approver'; 
-    public static final String Technical_Approver = 'Technical Approver'; //Co-GTM Claim
+    public static final String Technical_Approver = 'Technical Approver'; //Roshan Co-GTM Claim
     public static final String Account_Manager = 'Account Manager'; //Swati IPA Claim
     //ROLE
      public static final String CCF_PRICE_REVIEWER = 'Core_MDF_CCP_Internal_Price_Reviewer';    
@@ -195,9 +194,6 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String CCFB_TECHNICAL_PROGRAM_NAME = 'Client CoMarketing Fund Boost';
     public static final String SPCF_TECHNICAL_PROGRAM_NAME = 'Service Provider CoMarketing Fund';
     
-    //PFR Sub Activity
-    public static final String PFR_SUB_ACTIVITY = 'Sub Activity';
-    
     public static final List<String> validOutcomeMetricProgramName = new List<String>{'Client CoMarketing Fund','Data Center CoMarketing Fund','Intel Partner Alliance','Retail Marketing Funds'};
 
     
@@ -210,10 +206,8 @@ public class Core_MDF_CCP_ConstantClass {
     @AuraEnabled
     public final String defaultRR_Pct = '50%';
     
-    //added for IPA OutcomeBased claims
+    //Roshan - added for IPA OutcomeBased claims
     public static final String CLAIM_APPROVAL_MAPPING = 'Core_MDF_Claim_Approval_Role_Mappings';
-
-    public static final String CCRM_CUSTOM_PS = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager';  //Roshan - Case Cancellation
 
     //Account PartnerType
     public static final String ACTIVATING_PARTNER = 'Activating Partner';
@@ -228,7 +222,7 @@ public class Core_MDF_CCP_ConstantClass {
    
     public static final String IPA_PROP_EMAIL_TEMPLATE = 'Core_MDF_NotifyProposalApprovers' ;
 
-    //modified for hiding comments for external user for CoGTM
+    //Roshan - modified for hiding comments for external user for CoGTM
     //public string CAMPAIGN_APPROVAL_HISTORY_JSON ='[ {"record":[{"step_Name": "Price Reviewer","comments_masked": "true","comments_desc":"Please contact your Account Manager for details"}],"ps_name":"Core_MDF_CCP_External_IPA_Proposal_Manager"}]';
     public string CAMPAIGN_APPROVAL_HISTORY_JSON = '[{"record": [{"step_Name": "Price Reviewer","comments_masked": "true","comments_desc": "Please contact your Account Manager for details"}],"ps_name": "ALLUSERS"}, {"record": [{"step_Name": "Legal Reviewer","comments_masked": "true","comments_desc": "Please contact your Account Manager for details"}],"ps_name": "ALLUSERS"},{"record": [{"step_Name": "Business Approver","comments_masked": "true","comments_desc": "Please contact your Account Manager for details"}],"ps_name": "ALLUSERS"}]';
     public string PFR_IPA_ACCBASED_EXT_APPROVAL_HISTORY_JSON = '[{"record":[{"step_Name": "Price Reviewer","comments_masked": "true","comments_desc":"Please contact your Account Manager for details"}],"ps_name":"Core_MDF_CCP_External_IPA_Activity_Manager"}]';
@@ -289,8 +283,6 @@ public class Core_MDF_CCP_ConstantClass {
     Public static List<String> L2_APPROVAL_STAGES = new List<String>{'L2 Regional Marketing','L2 Regional Sales'};   
 
     Public static Set<String> ipaReminderEmailTemplates = new Set<String>{'Core_MDF_IPA_ReminderNotification','Core_MDF_IPA_ReminderNotification_Ext'}; 
-    Public static Set<String> ipaOutcomebaseReminderEmailTemplates = new Set<String>{'Core_MDF_IPA_OB_RemindNotify_Int','Core_MDF_IPA_OB_RemindNotify_Ext'};  //RR
-
      public static final String ipaClaimSubmitterPS ='Core_MDF_CCP_External_IPA_Claim_Submitter';
      public static final String allAccountYes ='Yes';
          
@@ -364,7 +356,7 @@ public class Core_MDF_CCP_ConstantClass {
 
 
     @AuraEnabled
-    public final String campaignIPAMultiSelectFieldsOnUI = 'Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_Product_Type__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Industry_Nm__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Use_Case_Nm__c,Core_MDF_Focus_Area_nm__c,Core_MDF_Measurement_Approach_nm__c';
+    public final String campaignIPAMultiSelectFieldsOnUI = 'Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_Product_Type__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Industry_Nm__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Use_Case_Nm__c,Core_MDF_Focus_Area_nm__c';
 
     @AuraEnabled
     public final String campaignRMFMultiSelectFieldsOnUI = 'Core_MDF_Audience__c,Core_MDF_Brand__c,Core_MDF_Technology__c,Core_MDF_Product_Type__c,Core_MDF_Initiative_nm__c';
@@ -398,7 +390,7 @@ public class Core_MDF_CCP_ConstantClass {
                                                                 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver;Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver;Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader;Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin;Core_MDF_Internal_EEF_Activity_POR_Approver;' +
                                     'Core_MDF_CCP_Internal_CCFB_Account_Manager;Core_MDF_CCP_Internal_IPA_Budget_Loader;Core_MDF_CCP_Internal_IPA_Budget_Approver;Core_MDF_CCP_Internal_IPA_Program_Adm;Core_MDF_Internal_IPA_Exception_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer;' +
                                                                 'Core_MDF_Internal_EEF_Budget_Loader;Core_MDF_Internal_EEF_Budget_Approver;Core_MDF_Internal_EEF_Budget_Manager;Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr;Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr;Core_MDF_Internal_EEF_Activity_L2_Approver;'+
-                                    'Core_MDF_CCP_Internal_Co_GTM_Budget_Loader;Core_MDF_CCP_Internal_Co_GTM_Budget_Approver;Core_MDF_CCP_Internal_Co_GTM_Budget_Manager;Core_MDF_CCP_Internal_Co_GTM_Account_Manager;Core_MDF_CCP_Internal_Co_GTM_L2_Approver;Core_MDF_Internal_Co_GTM_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer;Core_MDF_CCP_Internal_Report_Viewer;Core_MDF_CCP_Internal_Co_GTM_Payment_Adm';
+                                    'Core_MDF_CCP_Internal_Co_GTM_Budget_Loader;Core_MDF_CCP_Internal_Co_GTM_Budget_Approver;Core_MDF_CCP_Internal_Co_GTM_Budget_Manager;Core_MDF_CCP_Internal_Co_GTM_Account_Manager;Core_MDF_CCP_Internal_Co_GTM_L2_Approver;Core_MDF_Internal_Co_GTM_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer;Core_MDF_CCP_Internal_Report_Viewer';
    
    Public Static string Core_MDF_AllAcc_WithoutBTAccess_Roles = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver;Core_MDF_CCP_Internal_RMF_Activity_Approver;Core_MDF_CCP_Internal_RMF_Activity_Reviewer;Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver;Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver;'+
                                      'Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_Price_Reviewer;Core_MDF_CCP_Int_Read_Only;Core_MDF_CCP_Internal_IPA_Finance_Usr;Core_MDF_CCP_Internal_IPA_Budget_Loader;'+
@@ -419,7 +411,7 @@ public class Core_MDF_CCP_ConstantClass {
                                                 'Core_MDF_Internal_EEF_Activity_POR_Approver;Core_MDF_Internal_EEF_Program_Adm;Core_MDF_Internal_EEF_Exception_Reviewer;Core_MDF_CCP_Internal_Report_Viewer';
 
    public static string Co_GTM_BUDGETTYPE_ROLES = 'Core_MDF_CCP_Internal_Co_GTM_Budget_Loader;Core_MDF_CCP_Internal_Co_GTM_Budget_Approver;Core_MDF_CCP_Internal_Co_GTM_Budget_Manager;Core_MDF_CCP_Internal_Co_GTM_Account_Manager;Core_MDF_CCP_Int_Read_Only;'+
-                               'Core_MDF_CCP_Internal_Co_GTM_L2_Approver;Core_MDF_CCP_Internal_Co_GTM_POR_Approver;Core_MDF_CCP_Internal_Co_GTM_Program_Adm;Core_MDF_Internal_Co_GTM_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer;Core_MDF_CCP_Internal_Report_Viewer;Core_MDF_CCP_Internal_Co_GTM_Payment_Adm';
+                               'Core_MDF_CCP_Internal_Co_GTM_L2_Approver;Core_MDF_CCP_Internal_Co_GTM_POR_Approver;Core_MDF_CCP_Internal_Co_GTM_Program_Adm;Core_MDF_Internal_Co_GTM_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer;Core_MDF_CCP_Internal_Report_Viewer';
 
    Public Static string EEF_ACTIVATING_PRIMARY_PARTNER_ROLES = 'Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr;Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr;Core_MDF_Internal_EEF_Budget_Manager;Core_MDF_Internal_EEF_Budget_Loader;Core_MDF_Internal_EEF_Budget_Approver';
    
@@ -444,11 +436,10 @@ public class Core_MDF_CCP_ConstantClass {
     public static final String ClaimScore_Notification = 'Core_MDF_ClaimScore_Notification';
     public static final String PIC_Completed_Notification = 'Core_MDF_PIC_Completed_Notification';
     public static final String Paid_Claims_Notification = 'Core_MDF_Paid_Claims_Notification';
-    public static final String PIC_Completed_IPA_OutcomeBased_Notification = 'Core_MDF_IPA_PIC_Completed_Notification';//indu 
+    
     //Campaign purpose notification templates
     
     public static final String Campaign_Purpose_Notification = 'Core_MDF_Reminder_Result_Quantity'; // Added by RS
-    public static final String Activity_Purpose_Notification = 'Core_MDF_Reminder_Result_Value'; // Added by RS
     public static final String Outcome_Claim_Rejection_Notification = 'Core_MDF_Outcome_Claim_Rejection'; // Akash
     //PGM Access Type
     public static final String INTERNAL = 'INTERNAL';
@@ -541,112 +532,12 @@ public class Core_MDF_CCP_ConstantClass {
   public static final String IPA_PROPOSAL_MDF_BUDGET_TYPE = 'Proposal II MDF'; 
     public static final String CO_GTM_BUDGET_TYPE = 'Co-Engineering'; 
     public static final String GEO_WW = 'WW';
-    Public static List<String>  ALL_REGION = new List<String>{'APJ', 'ASMO', 'EMEA', 'PRC'};
-    Public static List<String>  ALL_REGION_FOR_RMF = new List<String>{'APJ', 'ASMO', 'EMEA',  'PRC'};
+    Public static List<String>  ALL_REGION = new List<String>{'APJ', 'ASMO', 'EMEA', 'INDIA', 'PRC'};
+    Public static List<String>  ALL_REGION_FOR_RMF = new List<String>{'APJ', 'ASMO', 'EMEA', 'INDIA', 'PRC'};
     Public static List<String>  Budget_Type_For_IPA_EEF_COGTM = new List<String>{'Account Plan', 'Cloud', 'Co-Engineering'};
     Public static List<String> Prog_For_CCF_DCF_EEF_COGTM_FOR_IUPGM =  new List<string>{'Client','Datacenter','Ecosystem Extension Fund','CoGTM'};
     //Public static Map<String, string> stageToClassificationMap_PFR = new Map<String, string>{'L2 Sales' => 'Sales', 'L2 Marketing' => 'Marketing'};
     Public static List<String>  FIRST_SECOND_LEVEL_MGR = new List<String>{'First Level Manager', 'Second Level Manager'};
-    Public static List<String>  APPROVAL_STAGE_FOR_EXTERNAL_USER = new List<String>{'Customer Acceptance', 'Customer Acceptance (Primary Partner)','Customer Acceptance (Activating Partner)'};   
-    Public static List<String>  IPA_PROPOSAL_BUDGET_TYPE = new List<String>{'Proposal II MDF', 'Proposal I MDF'};
-	   
-    // =========================================================================
-    // IUPGM CHATBOT AUTOMATION CONSTANTS
-    // =========================================================================
-
-    // ── IUPGM Request Status Values ───────────────────────────────────────────
-    public static final String IUPGM_STATUS_NEW                   = 'New';
-    public static final String IUPGM_STATUS_AGS_USER_PENDING      = 'AGS_User_Creation_Pending';
-    public static final String IUPGM_STATUS_AGS_PS_PENDING        = 'AGS_PS_Pending';
-    public static final String IUPGM_STATUS_COMPLETED             = 'Completed';
-    public static final String IUPGM_STATUS_SKIPPED               = 'Skipped';
-    public static final String IUPGM_STATUS_ERROR                 = 'Error';
-    public static final String IUPGM_STATUS_VALIDATION_FAILED     = 'Validation_Failed';
-    public static final String IUPGM_STATUS_EXTERNAL_USER_BLOCKED = 'External_User_Blocked';
-    public static final String IUPGM_STATUS_AGS_REJECTED          = 'AGS_Rejected';
-
-    // ── IUPGM AGS Status Values ───────────────────────────────────────────────
-    public static final String IUPGM_AGS_STATUS_SUBMITTED         = 'Submitted';
-    public static final String IUPGM_AGS_STATUS_APPROVED          = 'Approved';
-    public static final String IUPGM_AGS_STATUS_REJECTED          = 'Rejected';
-    public static final String IUPGM_AGS_STATUS_ERROR             = 'Error';
-
-    // ── IUPGM AGS Request Type Values ─────────────────────────────────────────
-    public static final String IUPGM_AGS_TYPE_CREATE_USER         = 'CREATE_USER';
-    public static final String IUPGM_AGS_TYPE_PS_REQUEST          = 'PERMISSION_SET_REQUEST';
-
-    // ── IUPGM Action Values ───────────────────────────────────────────────────
-    public static final String IUPGM_ACTION_CREATE                = 'CREATE';
-    public static final String IUPGM_ACTION_UPDATE                = 'UPDATE';
-    public static final String IUPGM_ACTION_ACTIVATE              = 'ACTIVATE';
-    public static final String IUPGM_ACTION_SKIP                  = 'SKIP';
-    /** Sentinel written by AccessModelService on per-record exceptions. */
-    public static final String IUPGM_ACTION_ERROR                 = 'ERROR';
-
-    // ── IUPGM Status Sets ─────────────────────────────────────────────────────
-    /** All statuses after which no further processing occurs. */
-    public static final Set<String> IUPGM_TERMINAL_STATUSES = new Set<String>{
-        IUPGM_STATUS_COMPLETED, IUPGM_STATUS_SKIPPED, IUPGM_STATUS_ERROR,
-        IUPGM_STATUS_VALIDATION_FAILED, IUPGM_STATUS_EXTERNAL_USER_BLOCKED,
-        IUPGM_STATUS_AGS_REJECTED
-    };
-
-    public static final Set<String> IUPGM_SUCCESS_STATUSES = new Set<String>{
-        IUPGM_STATUS_COMPLETED, IUPGM_STATUS_SKIPPED
-    };
-
-    public static final Set<String> IUPGM_FAILURE_STATUSES = new Set<String>{
-        IUPGM_STATUS_ERROR, IUPGM_STATUS_VALIDATION_FAILED,
-        IUPGM_STATUS_EXTERNAL_USER_BLOCKED, IUPGM_STATUS_AGS_REJECTED
-    };
-
-    /**
-     * Statuses representing a finished (non-retriable) failure.
-     * A record in one of these statuses does NOT block a fresh re-submission.
-     */
-    public static final Set<String> IUPGM_NON_ACTIVE_STATUSES = new Set<String>{
-        IUPGM_STATUS_ERROR, IUPGM_STATUS_VALIDATION_FAILED,
-        IUPGM_STATUS_EXTERNAL_USER_BLOCKED, IUPGM_STATUS_AGS_REJECTED
-    };
-    public static final String IUPGM_CORE_ACCESS_ROLE_LABEL  = 'Sales CRM (Salesforce)--Core Access';
-    // ── IUPGM Limits ─────────────────────────────────────────────────────────
-    
-    public static final Integer IUPGM_AGS_CALLOUT_BATCH_SIZE = 40;
-
-    /** Bulk chatbot: maximum users per single /validateRequest or /submitRequest. */
-    public static final Integer IUPGM_BULK_USER_LIMIT        = 100;
-
-    public static String buildIupgmIdempotencyKey(
-        Id      userId,
-        String  program,
-        String  psName,
-        String  geo,
-        Id      accountId,
-        Boolean allAccountAccess,
-        String  approvalRegion,
-        String  activityClass
-    ) {
-        String accountSeg = (allAccountAccess == true)
-            ? 'ALL'
-            : (accountId != null ? String.valueOf(accountId).left(18) : 'NULL');
-
-        String raw = String.join(new List<String>{
-            userId         != null ? String.valueOf(userId).left(18) : 'NULL',
-            program        != null ? program.trim()                  : 'NULL',
-            psName         != null ? psName.trim()                   : 'NULL',
-            accountSeg,
-            geo            != null ? geo.trim()                      : 'NULL',
-            approvalRegion != null ? approvalRegion.trim()           : 'NULL',
-            activityClass  != null ? activityClass.trim()            : 'NULL'
-        }, '§');
-
-        return raw.length() <= 255 ? raw : raw.left(255);
-    }
-
-    public static String newIupgmCorrelationId() {
-        return 'COR-'
-            + EncodingUtil.convertToHex(
-                Crypto.generateAESKey(128)
-              ).left(12).toUpperCase();
-    }
+    Public static List<String>  APPROVAL_STAGE_FOR_EXTERNAL_USER = new List<String>{'Customer Acceptance', 'Customer Acceptance (Primary Partner)','Customer Acceptance (Activating Partner)'};
+        
 }

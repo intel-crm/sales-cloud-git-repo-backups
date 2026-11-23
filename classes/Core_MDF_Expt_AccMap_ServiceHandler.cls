@@ -43,10 +43,10 @@ Accenture SB        24-03-2025         Method to initialize fields for Exception
         }
         //Querying the assoicated exception fields and stamping the same on Exception Account Mapping
         Map<Id,Core_MDF_Exception__c> exptMap = new Map<Id,Core_MDF_Exception__c>(
-            									[Select id,Core_MDF_Country_Region_nm__c,Core_MDF_Exception_Status_nm__c,Core_MDF_Program_nm__c,Core_MDF_Region_txt__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Select_All_Accounts_ind__c from Core_MDF_Exception__c Where id IN: exptIds]);
+                                                [Select id,Core_MDF_Country_Region_nm__c,Core_MDF_Exception_Status_nm__c,Core_MDF_Program_nm__c,Core_MDF_Region_txt__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Select_All_Accounts_ind__c from Core_MDF_Exception__c Where id IN: exptIds]);
         
         Map<Id,Account> accMap = new Map<Id,Account>(
-            									[Select id,RecordType.Name from Account Where id IN: accIds]);
+                                                [Select id,RecordType.Name from Account Where id IN: accIds]);
         
         for(Core_MDF_Exception__c expt:exptMap.values()){
             if(expt.Core_MDF_Program_nm__c == 'Core_MDF_Intel_Partner_Alliance'){ipaExptIds.add(expt.id);
@@ -185,7 +185,7 @@ to country chosen in exception
                                                                                          if(!exceptionIdCountryErrorCheckMap.get(excpt)){exceptionIdCountryErrorCheckMap.put(excpt, false);}}
                                                                                   else{exceptionIdCountryErrorCheckMap.put(excpt, true);}}}}
                                                                           if(exceptionIdCountryErrorCheckMap.get(excpt)){excpt.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Exception_MultiGeo_Error'));return false;}}}
-                                                              return true;
+                                                                     return true;
                                                           }
 /*****************************************************************************************************
 Method Name:        isExceptionReviewer
@@ -258,7 +258,7 @@ Accenture SB        24-03-2025         Exception Trigger Service Handler which h
 Accenture SB        24-03-2025         Exception Trigger Service Handler which handles the sharing of the Exception Account Mapping & Exception with appropriate Internal users
 *****************************************************************************************************************************************/    
     public static void shareEAM(Map<Id,Core_MDF_Exception_Account_Mapping__c> newMapAEM){
-		try{
+        try{
             
             List<Id> priamryAccId = new List<Id>();
             List<Id> activatingAccId = new List<Id>();
@@ -315,7 +315,7 @@ Accenture SB        24-03-2025         Exception Trigger Service Handler which h
             
             List<Core_MDF_RecordGeoShare> recordGeoShareList = new List<Core_MDF_RecordGeoShare>(); 
             List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList= new List<Core_MDF_RecordPGMShareWrapper>();
-			List<Core_MDF_RecordGeoShare> recordGeoShareListEAM = new List<Core_MDF_RecordGeoShare>(); 
+        List<Core_MDF_RecordGeoShare> recordGeoShareListEAM = new List<Core_MDF_RecordGeoShare>(); 
             List<Core_MDF_RecordPGMShareWrapper> recordPGMShareListEAM= new List<Core_MDF_RecordPGMShareWrapper>();            
             
             //This contains the mapping of account Id and its related programs. This will be fetched from the Account Hierarchy
@@ -809,7 +809,7 @@ Accenture SB        24-03-2025         Exception Trigger Service Handler which h
                         }
                     }
                 }
-            }
+            }    
             //Insert Share Records For the Exception
             if(exptAccMapShareSet != NULL && exptAccMapShareSet.size() > 0){
                 List < Core_MDF_Exception_Account_Mapping__Share > exptAccMapShareList = new List< Core_MDF_Exception_Account_Mapping__Share >();
@@ -876,13 +876,10 @@ Accenture Mohit         10/5/2025     Method to create datasets for using in sha
         String AccQueryStr = '';
         Set<String> subGeoStringSet;
         
-        /*for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
+        for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
                                                                    FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt])){
                                                                        channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Name__c , bpem.Core_MDF_Channel_Program__c);
-                                                                   }*/
-        for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Value__c , bpem.Label);
-            }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
+                                                                   }
         
         //Get Channel program Id and Core_MDF name
         for (ChannelProgram cpList : [SELECT Id, Name
@@ -1280,36 +1277,6 @@ Accenture Mohit         24/03/2025    Method to prepare Map of Ultimate Exceptio
         }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
-    
-    public static void refreshExternalSharingForUpdatedEAM(
-        Map<Id,Core_MDF_Exception_Account_Mapping__c> newEAMMap,
-        Map<Id,Core_MDF_Exception_Account_Mapping__c> oldEAMMap
-    ){
-        Set<Id> exceptionIdsToRefresh = new Set<Id>();
-        for(Core_MDF_Exception_Account_Mapping__c updatedEAM : newEAMMap.values()){
-            Core_MDF_Exception_Account_Mapping__c oldEAM = oldEAMMap.get(updatedEAM.Id);
-            if(updatedEAM.Core_MDF_Active_ind__c != oldEAM.Core_MDF_Active_ind__c
-               || updatedEAM.Core_MDF_Exception_Status_txt__c != oldEAM.Core_MDF_Exception_Status_txt__c
-               || updatedEAM.Core_MDF_Account_id__c != oldEAM.Core_MDF_Account_id__c
-               || updatedEAM.Core_MDF_Program_txt__c != oldEAM.Core_MDF_Program_txt__c
-               || updatedEAM.Core_MDF_Expose_Externally_ind__c != oldEAM.Core_MDF_Expose_Externally_ind__c){
-                if(updatedEAM.Core_MDF_Exception_id__c != null){
-                    exceptionIdsToRefresh.add(updatedEAM.Core_MDF_Exception_id__c);
-                }
-            }
-        }
-        if(!exceptionIdsToRefresh.isEmpty()){
-            Map<Id,Core_MDF_Exception__c> exceptionsToRefresh = new Map<Id,Core_MDF_Exception__c>(
-                [SELECT Id FROM Core_MDF_Exception__c WHERE Id IN :exceptionIdsToRefresh]
-            );
-            Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(
-                exceptionsToRefresh,
-                exceptionsToRefresh,
-                true
-            );
-        }
-    }
-
        /****************************************************************************************************************************************
 * Metthod Name        : shareRecordsWithExtUsers
 * Created Date        : 12/20/2024 
@@ -1341,13 +1308,11 @@ Accenture Mohit         12/20/2024      Method to share exceptions and exception
         Map<Id, Core_MDF_Exception_Account_Mapping__c> excpNewMap = new  Map<Id, Core_MDF_Exception_Account_Mapping__c>();
         
 
-		
+        
         //Iterating over exceptions newmap for which we have to delete existing share record and create new based on account select
         for(Core_MDF_Exception_Account_Mapping__c excpOnUpdate : newEAMmap.values()){
                 if(excpOnUpdate.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status && 
-                    excpOnUpdate.Core_MDF_Account_id__c != NULL
-                    && excpOnUpdate.Core_MDF_Active_ind__c
-                    && excpOnUpdate.Core_MDF_Expose_Externally_ind__c == true
+                    excpOnUpdate.Core_MDF_Account_id__c != NULL && excpOnUpdate.Core_MDF_Expose_Externally_ind__c == true
                    ){
                        excpNewMap.put(excpOnUpdate.Core_MDF_Exception_id__c,excpOnUpdate);   
                    }
@@ -1357,14 +1322,10 @@ Accenture Mohit         12/20/2024      Method to share exceptions and exception
             List<Core_MDF_Exception__Share> exceptionShareList = new List<Core_MDF_Exception__Share>();
             List<Core_MDF_Exception_Account_Mapping__Share> exceptionAccMapShareList = new List<Core_MDF_Exception_Account_Mapping__Share>();
     
-           /* for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
+            for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
                                                                        FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt])){
                                                                            channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Name__c , bpem.Core_MDF_Channel_Program__c);
-                                                                       }*/
-            for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
-                channelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Value__c , bpem.Label);
-            }//Core_MDF_BankProgram_Entitlement_Mapping__mdt optimization
-            
+                                                                       }
              Map<String,String> channelProgramNameIdMap = new Map<String,String>();
             //Map of Program Name to Channel Program ID
              for (ChannelProgram cpList : [SELECT Id, Name FROM ChannelProgram WHERE Name =: channelProgramNameMap.values() ORDER BY CreatedDate] ){
@@ -1390,10 +1351,7 @@ Accenture Mohit         12/20/2024      Method to share exceptions and exception
             for(Core_MDF_Exception_Account_Mapping__c expt: excpNewMap.values()){
                 Set<String> channelPrgIdAccId = new Set<String>();
                 
-                if(expt.Core_MDF_Program_txt__c != Null && expt.Core_MDF_Account_id__c != NUll
-                   && expt.Core_MDF_Active_ind__c
-                   && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status
-                   && expt.Core_MDF_Expose_Externally_ind__c){
+                if(expt.Core_MDF_Program_txt__c != Null && expt.Core_MDF_Account_id__c != NUll && expt.Core_MDF_Exception_Status_txt__c == Label.Core_MDF_Exception_Approved_Status && expt.Core_MDF_Expose_Externally_ind__c){
                     if(expt.Core_MDF_Program_txt__c != Label.Core_MDF_Retail_Program){
                         String progName = channelProgramNameMap!=null && channelProgramNameMap.containskey(expt.Core_MDF_Program_txt__c)?
                                                                             channelProgramNameMap.get(expt.Core_MDF_Program_txt__c) :'';
@@ -1463,9 +1421,9 @@ Accenture Mohit         12/20/2024      Method to share exceptions and exception
             
             if(!exptAccMapShareSet.isEmpty()){List <Core_MDF_Exception_Account_Mapping__Share> exptAccMapShareList = new List< Core_MDF_Exception_Account_Mapping__Share >();exptAccMapShareList.addAll(exptAccMapShareSet);database.insert(exptAccMapShareList,false);
             }
-    	}
+        }
     }
-	public static Core_MDF_Exception__Share createExceptionShareExt(String exceptionId, String ugId){
+    public static Core_MDF_Exception__Share createExceptionShareExt(String exceptionId, String ugId){
         Core_MDF_Exception__Share expShare = new Core_MDF_Exception__Share();
         expShare.ParentId = exceptionId;
         expShare.RowCause = 'Exception_External_Sharing__c';
@@ -1481,5 +1439,5 @@ Accenture Mohit         12/20/2024      Method to share exceptions and exception
         expShare.AccessLevel = 'Edit';
         expShare.UserOrGroupId = ugId;
         return expShare;
-    }    
+    }  
 }

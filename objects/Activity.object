@@ -114,25 +114,6 @@
     </actionOverrides>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Assigned_To_User_Region__c</fullName>
-        <externalId>false</externalId>
-        <formula>Owner:User.Core_User_Geo__c</formula>
-        <label>Assigned To - User Region</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Assigned_To_User_manager__c</fullName>
-        <externalId>false</externalId>
-        <formula>Owner:User.Manager.Email</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Assigned To - User manager</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Account_ID__c</fullName>
         <description>Populated during task generation from Sales Campaigns, so we can use it later to prevent duplicate tasks (for a specific account) from being created</description>
         <externalId>false</externalId>
@@ -560,6 +541,20 @@ IF(TEXT(ActivitySubtype) == &apos;Event&apos;,&apos;Meeting&apos;, TEXT(Core_Tas
         <relationshipName>Activities</relationshipName>
         <required>false</required>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LID__Date_Sent__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Date Sent</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LID__URL__c</fullName>
+        <deprecated>false</deprecated>
+        <label>URL</label>
+        <required>false</required>
+        <type>Url</type>
     </fields>
     <fields>
         <fullName>jiffle__Meeting_UUID__c</fullName>

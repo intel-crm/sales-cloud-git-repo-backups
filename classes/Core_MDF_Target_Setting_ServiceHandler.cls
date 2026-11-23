@@ -14,7 +14,7 @@ Called on   :   Before Insert
         }
         catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);  
-            throw e;
+            throw e; 
         }
     }
     
@@ -29,7 +29,7 @@ Called on   :   Before Update
         }
         catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);  
-            throw e;
+            throw e; 
         }
     }
     
@@ -43,7 +43,7 @@ Called on   :   After Insert
         List<Core_MDF_Target_Setting_Line_Item__c> lineItemsList= new List<Core_MDF_Target_Setting_Line_Item__c>();
         List<Core_MDF_Target_Setting_LineItem_Config__c> LineItemConfigList = new List<Core_MDF_Target_Setting_LineItem_Config__c>();
         List<String> TopAccEnabledBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_TrgtStngTopAccEnabledBdgtTypes').split(';');
-
+        Map<Id, String> accIdToGeoMap = new Map<Id,String>();
         Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>> programToLineItemListMap = new Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>>();
         Map<String, List<Account>> programToAccListMap = new Map<String, List<Account>>();
         Set<String> programIdSet = new Set<String>();
@@ -90,20 +90,11 @@ Called on   :   After Insert
                 }
                 if(!targetSettingList.isEmpty()){
                     for(Core_MDF_Target_Setting__c targetSetting : targetSettingList){
-                      
-                        
-                            if (!idToProgramMap.containsKey(targetSetting.Core_MDF_Program_Name__c) ||
-                                !programToLineItemListMap.containsKey(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) ||
-                                programToLineItemListMap.get(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) == null) {
-                                continue; //US - TWC702-14285
-                            }
-
+                        if(idToProgramMap.containsKey(targetSetting.Core_MDF_Program_Name__c) && programToLineItemListMap.containsKey(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) && programToLineItemListMap.get(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) != null){
                             for(Core_MDF_Target_Setting_LineItem_Config__c configRecord : programToLineItemListMap.get(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c))){
                                 //Add top accounts for those budget types which are configured in TopAccEnabledBudgetTypes metadata rec
-                                //US - TWC702-14285 - Added the below commented if conditions 
-                                if(TopAccEnabledBudgetTypes.contains(configRecord.Core_MDF_Budget_Type_txt__c) 
-                                && programToAccListMap.containsKey(configRecord.Core_MDF_Program_txt__c) 
-                                && programToAccListMap.get(configRecord.Core_MDF_Program_txt__c) != null){
+                                if(TopAccEnabledBudgetTypes.contains(configRecord.Core_MDF_Budget_Type_txt__c)){
+                                    if(programToAccListMap.containsKey(configRecord.Core_MDF_Program_txt__c) && programToAccListMap.get(configRecord.Core_MDF_Program_txt__c) != null){
                                         for(Account acc : programToAccListMap.get(configRecord.Core_MDF_Program_txt__c)){
                                             //pickup records from custom setting which matches the host region of account 
                                             if(acc.Core_Geo__c == configRecord.Core_MDF_Region_txt__c){
@@ -120,7 +111,7 @@ Called on   :   After Insert
                                                 lineItemsList.add(topAccountLineItems);
                                             }
                                         }
-                                   
+                                    }
                                 }
                                 // to add All Other Account's records in Target Setting Line Item
                                 Core_MDF_Target_Setting_Line_Item__c otherAccountLineItems = new Core_MDF_Target_Setting_Line_Item__c();
@@ -134,7 +125,7 @@ Called on   :   After Insert
                                 otherAccountLineItems.RecordTypeId = lineItemIPARecTypeId;
                                 lineItemsList.add(otherAccountLineItems);
                             }
-                        
+                        }
                     }
                 }
                 if(!lineItemsList.isEmpty()){
@@ -144,7 +135,7 @@ Called on   :   After Insert
         }
         catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);  
-            throw e;
+            throw e; 
         } 
     }
     
@@ -161,7 +152,7 @@ Called on   :   Before Insert, Before Update
             Set<String> programSet = new Set<String>();
             Integer recordIdCount = 1;
             Map<String,Core_MDF_Target_Setting__c> idToTargetSetRecMap = new Map<String,Core_MDF_Target_Setting__c>();
-
+            Set<String> executedRecId = new Set<String>();
             Map<String,Core_MDF_Target_Setting__c> draftTargetSettingMap = new Map<String,Core_MDF_Target_Setting__c>();
             set<String> duplicateRecIdSet = new set<String>();
             Map<String,Core_MDF_Target_Setting__c> subDraftTargetSetMap = new Map<String,Core_MDF_Target_Setting__c>();
@@ -183,65 +174,50 @@ Called on   :   Before Insert, Before Update
                                                                           LIMIT 50000];
             
             
-            // Flatten nested IF: use guard clause + continue to avoid else nesting - //US - TWC702-14285
-             if(existingTargetSettingList == null || existingTargetSettingList.isEmpty()){
-                targetSettingList = idToTargetSetRecMap.Values();
-                
-            }else{
-                
-				for(Core_MDF_Target_Setting__c newRec : idToTargetSetRecMap.Values()){
+            if(existingTargetSettingList != null && !existingTargetSettingList.isEmpty()){
+                for(Core_MDF_Target_Setting__c newRec : idToTargetSetRecMap.Values()){
                     for(Core_MDF_Target_Setting__c existingRec: existingTargetSettingList){
-                        // Flatten nested IF: use guard clause + continue to avoid else nesting - //US - TWC702-14285
                         if(validateOverlapingRecs(newRec,existingRec)){
                             newRec.addError(Label.Core_MDF_Target_Setting_Overlap_Error);
-                            continue; //US - TWC702-14285
-                        }
+                        }else{
                             targetSettingList.add(newRec);
-                        
+                        }
                     }
                 }
+            }else{
+                targetSettingList = idToTargetSetRecMap.Values();
             }
             
             
-            
-            //US - TWC702-14285 - Begin 
             if(targetSettingList != null && !targetSettingList.isEmpty()){ 
-                    for(Core_MDF_Target_Setting__c newRec : targetSettingList){
-                        if(draftTargetSettingMap.isEmpty()){
-                            draftTargetSettingMap.put(newRec.Id,newRec);
-                        }
-                        if(!subDraftTargetSetMap.isEmpty()){
-                            for(string recId: subDraftTargetSetMap.keySet()){
-                                if(!draftTargetSettingMap.containsKey(recId)){
-                                    draftTargetSettingMap.put(recId,subDraftTargetSetMap.get(recId));
-                                }
+                for(Core_MDF_Target_Setting__c newRec : targetSettingList){
+                    if(draftTargetSettingMap.isEmpty()){
+                        draftTargetSettingMap.put(newRec.Id,newRec);
+                    }
+                    if(!subDraftTargetSetMap.isEmpty()){
+                        for(string recId: subDraftTargetSetMap.keySet()){
+                            if(!draftTargetSettingMap.containsKey(recId)){
+                                draftTargetSettingMap.put(recId,subDraftTargetSetMap.get(recId));
                             }
-                        }
-
-                        if(draftTargetSettingMap.containsKey(newRec.Id)){
-                            continue;
-                        }
-
-                        for(Core_MDF_Target_Setting__c draftRec: draftTargetSettingMap.Values()){
-                            if(duplicateRecIdSet.contains(newRec.Id)){
-                                continue;
-                            }
-
-                            if(validateOverlapingRecs(newRec,draftRec)){
-                                duplicateRecIdSet.add(newRec.Id);
-                                if(subDraftTargetSetMap.containsKey(newRec.Id)){
-                                    subDraftTargetSetMap.remove(newRec.Id);
-                                }
-                                newRec.addError(Label.Core_MDF_Target_Setting_Overlap_Error);
-                                continue;
-                            }
-                            subDraftTargetSetMap.put(newRec.Id,newRec);
                         }
                     }
-            } 
-            //US - TWC702-14285 - End
-
-
+                    if(!draftTargetSettingMap.containsKey(newRec.Id)){
+                        for(Core_MDF_Target_Setting__c draftRec: draftTargetSettingMap.Values()){
+                            if(!duplicateRecIdSet.contains(newRec.Id)){
+                                if(validateOverlapingRecs(newRec,draftRec)){
+                                    duplicateRecIdSet.add(newRec.Id);
+                                    if(subDraftTargetSetMap.containsKey(newRec.Id)){
+                                        subDraftTargetSetMap.remove(newRec.Id);
+                                    }
+                                    newRec.addError(Label.Core_MDF_Target_Setting_Overlap_Error);
+                                }else{
+                                    subDraftTargetSetMap.put(newRec.Id,newRec);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             for(Core_MDF_Target_Setting__c targetSettingRecord : newTargetSettingList){
                 if(isInsert){
                     targetSettingRecord.id = null;
@@ -276,7 +252,7 @@ Called on   :   Before Update
             }
             catch(Exception e) {
                 Core_MDF_CCP_UtilityClass.logError(e);  
-                throw e;
+                throw e; 
             }
         }
     }
@@ -350,7 +326,7 @@ Called on   :   Before Insert
         Set<String> programIdSet = new Set<String>();
         Map<String,String> idToProgramMap = new Map<String,String>();
         
-
+        Map<String, Schema.SObjectField> fieldsMap = Schema.getGlobalDescribe().get('Core_MDF_Target_Setting__c').getDescribe().Fields.getMap();
         try{
 
             for(Core_MDF_Target_Setting__c targetSettingRecord : newTargetSettingList){

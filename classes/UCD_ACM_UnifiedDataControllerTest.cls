@@ -82,7 +82,14 @@ public class UCD_ACM_UnifiedDataControllerTest {
 
         insert acc1;
 
-        List<Business_Types__c> businessTypes = new List<Business_Types__c>();
+        
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'DPL'));
+        insert complianceWatchLists;
+        
+        
+       List<Business_Types__c> businessTypes = new List<Business_Types__c>();
         businessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createBusinessType('Direct Price Exception','DIR_PRC_EXCPT1'));
         businessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createBusinessType('Supply Demand Revenue','SD_REV1'));
         insert businessTypes;

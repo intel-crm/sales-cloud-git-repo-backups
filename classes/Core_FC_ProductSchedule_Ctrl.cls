@@ -673,7 +673,6 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
         }
         else{
             email.setHtmlBody('Hello, <br/><br/>'+opptyObj.Owner.Name+', has requested for 6QPS approval for the below Opportunity. <br/><br/> Account Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+opptyObj.Account.name+'<br/> Opportunity Name: &nbsp;'+opptyObj.Name+'<br/><br/> '+globalUrl+'/'+opptyObj.Id+'<br/><br/>');  
-            email.setOrgWideEmailAddressId(ORGWIDE_EMAIL);
         }
         
         try{

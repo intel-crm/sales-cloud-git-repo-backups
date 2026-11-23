@@ -32,10 +32,10 @@
     </values>
     <values>
         <field>Core_MDF_Geo__c</field>
-        <value xsi:type="xsd:string">APJ</value>
+        <value xsi:type="xsd:string">INDIA</value>
     </values>
     <values>
         <field>Core_MDF_Sub_Geo__c</field>
-        <value xsi:type="xsd:string">SEA</value>
+        <value xsi:type="xsd:string">INDIA</value>
     </values>
 </CustomMetadata>

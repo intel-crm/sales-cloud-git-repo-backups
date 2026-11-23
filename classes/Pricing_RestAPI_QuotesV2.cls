@@ -438,7 +438,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                         }
                         if(isValid){
                             
-                            Pricing_BulkSalesRepActionController.recordApproval(quoteLineList, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
+                            String msg = Pricing_BulkSalesRepActionController.recordApproval(quoteLineList, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
                             String res = 'Recall successful.';
                             List<QuoteLineMsg> qliList = new List<QuoteLineMsg>();
                             for(SBQQ__QuoteLine__c qli: quoteLineList){
@@ -677,7 +677,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                     }
                     SBQQ__Quote__c quote = !String.isBlank(recId) ? [Select Id, SBQQ__Account__c,Pricing_Program_Type_Nm__c from SBQQ__Quote__c where id = :quoteId and SBQQ__Account__c = :currentUser.AccountId Limit 1] 
                         : [Select Id, SBQQ__Account__c,Pricing_Program_Type_Nm__c from SBQQ__Quote__c where name = :quoteName and SBQQ__Account__c = :currentUser.AccountId Limit 1];
-                    quoteId = quote.Id;
+                            quoteId = quote.Id;
                     isClient = (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)?true:false;
                     isValid=true;
                 }catch(Exception  exp){
@@ -725,7 +725,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
             response.successContent = new List<GetQuoteDetailsModifyInnDays>();    
             String currentUserAccountId = [Select Id, AccountId from User where Id = :UserInfo.getUserId()].AccountId;
             String query = 'SELECT Id, Name, LastModifiedDate, LastModifiedBy.Name,LastModifiedById, Pricing_Customer_Reference_Id__c ' + 
-                           'FROM SBQQ__Quote__c WHERE SBQQ__Account__c = :currentUserAccountId AND LastModifiedDate = LAST_N_DAYS:' + n +' order by LastModifiedDate desc';
+                           'FROM SBQQ__Quote__c WHERE SBQQ__Account__c = \'' + currentUserAccountId + '\''+ ' AND LastModifiedDate = LAST_N_DAYS:' + n +' order by LastModifiedDate desc';
                
             List<SBQQ__Quote__c> quotesList = Database.query(query);
             if(quotesList.size() > 0){
@@ -906,6 +906,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
         else if(type.toLowerCase() == 'quote'){
             quotes = Database.query(Label.Pricing_RestAPI_GetQuoteQuery);
         }
+        List<Pricing_Performance_Metric__c> pmList = new List<Pricing_Performance_Metric__c>();
         Set<Id> quoteLineIds = new Set<Id>();
         for(SBQQ__QuoteLine__c qli :quotes.SBQQ__LineItems__r){
             quoteLineIds.add(qli.Id);
@@ -1924,7 +1925,7 @@ properties to form the response
                 }
             }else{
                 Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-            response.errorContent.errorMessage = Label.Pricing_Tender_API_Quote_SVD_Resubmit_Error_Msg;
+		        response.errorContent.errorMessage = Label.Pricing_Tender_API_Quote_SVD_Resubmit_Error_Msg;
             }            
         }catch(Exception exp){
             Pricing_RestAPI_Util.processException(exp, Pricing_RestAPI_ResponseCodes.ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);            
@@ -1977,6 +1978,7 @@ properties to form the response
                 List<Pricing_Quote_Line_Status_Age__c> pricingTPTList = new List<Pricing_Quote_Line_Status_Age__c>();
                 List<Pricing_Quote_Team__c> quoteTeamList = new List<Pricing_Quote_Team__c>();
                 SBQQ__Quote__c quoteDel = [SELECT id,CreatedbyId,SBQQ__PrimaryContact__c,OwnerId from SBQQ__Quote__c where Id =:recId];
+                integer count = [SELECT count() FROM PermissionSetAssignment WHERE AssigneeId = : Userinfo.getUserId() AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_PricingTenderPartnerAdministrator];
                 comList = [SELECT id,Pricing_Quote__c FROM Pricing_Comments__c where Pricing_Quote__c =: recId];
                 documentShareList = [SELECT id, Pricing_Quote_Id__c FROM Pricing_Document__c where Pricing_Quote_Id__c =: recId];
                 pricingTPTList = [SELECT id FROM Pricing_Quote_Line_Status_Age__c where Pricing_TPT_Quote_Line_Number__r.SBQQ__Quote__c =: recId];

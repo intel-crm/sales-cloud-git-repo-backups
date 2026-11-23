@@ -103,17 +103,17 @@
     <actionOverrides>
         <actionName>Edit</actionName>
         <comment>Will be redirected to custom page for IPS and standard page to others.</comment>
-        <content>Core_IPS_CaseEditPage</content>
-        <formFactor>Large</formFactor>
+        <content>Core_Case_New_LandingEditPage</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
         <comment>Will be redirected to custom page for IPS and standard page to others.</comment>
-        <content>Core_Case_New_LandingEditPage</content>
+        <content>Core_IPS_CaseEditPage</content>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
@@ -3365,20 +3365,6 @@ Feb/05/2016 - Abhishek Arya - DE18390 - Change the field label from &apos;GEC St
         <fullName>Core_IPS_New_Backend_System__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Backend System</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Core_IPS_Backend_System2__c.Core_IPS_Backend_System_URL__c</field>
-                <operation>notEqual</operation>
-                <value></value>
-            </filterItems>
-            <filterItems>
-                <field>Core_IPS_Backend_System2__c.Core_IPS_Backend_System_URL__c</field>
-                <operation>startsWith</operation>
-                <value>https</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>Core_IPS_Backend_System2__c</referenceTo>
         <relationshipLabel>Cases</relationshipLabel>
         <relationshipName>Cases</relationshipName>
@@ -4172,28 +4158,6 @@ Note : If you are pasting images into this field, the size limit is 100KB.</inli
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_AddClaimReviewClosure_Note_txt__c</fullName>
-        <description>This field will be shown on the Edit Case quickaction to capture the latest notes provided by the user. After saving, these notes will be concatenated with the contents of Core_MDF_Claim_Review_Closure_Note__c (shown on the detail page)</description>
-        <label>Claim Review Closure Note</label>
-        <length>5000</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AddInternalCaseClosureNotes_txt__c</fullName>
-        <description>This field will be shown on the Edit Case quickaction to capture the latest notes provided by the user. After saving, these notes will be concatenated with the contents of Core_MDF_Internal_Case_Closure_Notes__c (shown on the detail page)</description>
-        <label>Internal Case Closure Note</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Adjustment_Amount_Local__c</fullName>
         <externalId>false</externalId>
         <label>Adjustment Amount (Local Currency)</label>
@@ -4731,17 +4695,6 @@ Note : If you are pasting images into this field, the size limit is 100KB.</inli
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_ClaimReviewClosureHistory_txt__c</fullName>
-        <description>Read only field to store the date appended logs of Claim Review Closure Note.</description>
-        <label>Claim Review Closure Note History</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Claim_Amount_USD__c</fullName>
@@ -5343,12 +5296,11 @@ IF( HOUR( TIMENOW() ) &gt;= 13 ,
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
+        <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
             <valueSetName>Core_MDF_Product_Type</valueSetName>
         </valueSet>
-        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_QuantityofImpressionsinstances__c</fullName>
@@ -5366,16 +5318,6 @@ IF( HOUR( TIMENOW() ) &gt;= 13 ,
     <fields>
         <fullName>Core_MDF_ReasonForMoreDocumentation__c</fullName>
         <label>Reason For More Documentation Required</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Reason_for_Cancellation_txt__c</fullName>
-        <label>Reason for Cancellation</label>
         <length>32768</length>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -6254,69 +6196,6 @@ NULL))))</formula>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Cases</relationshipLabel>
-        <relationshipName>Cases</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Cases</relationshipLabel>
-        <relationshipName>Cases</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>IsClosedOnCreate</fullName>
@@ -14039,23 +13918,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_007_EMBED_Device_Management_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>EMBED - Device Management TK</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_007_EMBED_Device_Management</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_007_EMBED_Device_Management</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_007_EMBED_HW_ECSI_India_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -18473,57 +18335,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Android_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Android</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Android</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Android</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Linux_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Linux</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Linux</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Linux</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Unassigned_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Unassigned</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Unassigned</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Unassigned</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_022_Cascade_Lake_UBER_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -19580,15 +19391,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <queue>Core_IPS_Org_028_SMG_Projects_Unassigned</queue>
         <sharedTo>
             <group>Core_IPS_Org_028_SMG_Projects_Unassigned</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Unassigned_Case</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IGT – Unassigned</label>
-        <queue>Core_IPS_Org_029_Unassigned</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -33022,10 +32824,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <picklistValues>
             <picklist>Core_MDF_Activity_Category__c</picklist>
             <values>
-                <fullName>Audio</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Audio 2025</fullName>
                 <default>false</default>
             </values>
@@ -33034,19 +32832,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Broadcast %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Buyer Incentive 2025</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33058,15 +32844,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33086,19 +32864,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lead Management %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Online Ad</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Out of Home</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33110,10 +32880,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Out of Home Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
@@ -33122,15 +32888,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Paid Social Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Print</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33142,14 +32900,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Print Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Production</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Production 2025</fullName>
                 <default>false</default>
             </values>
@@ -33158,23 +32908,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purchase Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Sales Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Readiness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33186,15 +32924,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Search Engine Marketing %28SEM%29 %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Search Performance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33206,23 +32936,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tech Exploration %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Technical Sales 2025</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -34485,10 +34203,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>4th Gen Intel%C2%AE Xeon%C2%AE Scalable processors with Intel%C2%AE vRAN Boost</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>6ᵗʰ %E2%80%93 7ᵗʰ Gen</fullName>
                 <default>false</default>
             </values>
@@ -34581,10 +34295,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE AI</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Agilex%E2%84%A2</fullName>
                 <default>false</default>
             </values>
@@ -34594,14 +34304,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Extreme Processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -34662,14 +34364,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Processor Family</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra X7</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra X9</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -34861,10 +34555,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Infrastructure Processing Unit %28Intel%C2%AE IPU%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE IoT Market Ready Solutions</fullName>
                 <default>false</default>
             </values>
@@ -34953,10 +34643,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Robotics</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE SGX</fullName>
                 <default>false</default>
             </values>
@@ -34998,14 +34684,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Xeon%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 processors with Performance%E2%80%91cores %28P%E2%80%91cores%29%2C 6700%2F6500 Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 system%E2%80%91on%E2%80%91chip %28SoC%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35383,10 +35061,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36152,10 +35826,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cloud</fullName>
                 <default>false</default>
             </values>
@@ -36173,10 +35843,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Edge Gateway</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Edge%2FIOT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36284,10 +35950,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Networking%2FEthernet</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Notebook</fullName>
                 <default>false</default>
             </values>
@@ -36324,10 +35986,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Telco</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Thin and Light</fullName>
                 <default>false</default>
             </values>
@@ -36353,10 +36011,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Workstation - Mobile</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Xeon</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -36696,10 +36350,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Arrow Lake %28ARL%29 - HX%2FS Refresh Core Ultra Series 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Arrow Lake %28ARL%29 Intel Core Ultra %28Series 2%29</fullName>
                 <default>false</default>
             </values>
@@ -36852,14 +36502,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Geti%E2%84%A2 Software</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Granite Rapids</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Granulate</fullName>
                 <default>false</default>
             </values>
@@ -36868,15 +36510,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>HX%2FS Refresh Core%E2%84%A2 Ultra Series 2 %28Arrow Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Habana Gaudi</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Habana%C2%AE Gaudi%C2%AE</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36900,14 +36534,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel Geti%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Libraries %2F Tools</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel Power Management</fullName>
                 <default>false</default>
             </values>
@@ -36928,35 +36554,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE 4th Generation Xeon%C2%AE Scalable Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE AMX %28Advanced Matrix Extensions%29%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE AVX %28Advanced Vector Extensions%29%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Advanced Encryption Standard New Instructions %28Intel%C2%AE AES%E2%80%91NI%E2%84%A2%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Agilex%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 A-series Graphics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 Pro B50 graphics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 Pro B60 Graphics</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36972,62 +36570,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Atom%C2%AE x7000 Series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 3 %28Wildcat Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 3 processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra 200S series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra 200V Series processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 1 %28Meteor Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 2 %28Arrow Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 2 %28Lunar Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 3 %28Panther Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 i3%E2%80%91N300 processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %2813th Gen%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %2814th Gen%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %28Series 2%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Cyclone%C2%AE</fullName>
                 <default>false</default>
             </values>
@@ -37036,15 +36578,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Dynamic Device Personalization %28DDP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Ethernet Network Adapters</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Ethernet Solutions%C2%AE</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37092,27 +36626,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Pentium%C2%AE P6000 processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Processor N Series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE QuickAssist Technology %28Intel%C2%AE QAT%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE RealSense%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Intel%C2%AE Silicon Photonics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Software Guard Extensions %28Intel%C2%AE SGX%E2%84%A2%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37124,83 +36642,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE  600 Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 4th Generation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 5th Generation %28Emerald Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 5th Generation Scalable Processors %28Emerald Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 %28E%E2%80%91core%29 Processors %28Granite Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 %28P%E2%80%91core%29 Processors %28Granite Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 Processors %28Granite Rapids E-Core%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 Processors %28Granite Rapids P-Core%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 SoC %28Granite Rapids-D%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 W Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6300 Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6500P Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6500P-B Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6700P processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6700P-B Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6900P Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE Max Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE vPro%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE vRAN AI Development Kit%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE vRAN Boost</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37229,10 +36671,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Modern Devices</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Moon Lake</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37300,14 +36738,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Panther Lake %28PTL%29 Intel Core Ultra Series 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Panther Lake %28PTL%29 Intel Core Ultra Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Parker Ridge - Atom C5xxx</fullName>
                 <default>false</default>
             </values>
@@ -37360,10 +36790,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Razor Lake</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Rendering Toolkit %26 Deep%C2%A0Neural%C2%A0Network Library%C2%A0</fullName>
                 <default>false</default>
             </values>
@@ -37385,10 +36811,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>SGX</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGX%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37468,18 +36890,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Wildcat Lake %28WCL%29 Intel Core Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wildcat Lake %28WCL%29 Intel Core Ultra Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wildcat Lake Refresh</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>X Series</fullName>
                 <default>false</default>
             </values>
@@ -37504,19 +36914,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>oneAPI%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>vPro</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>vPro Essentials</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vPro Fleet Services</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39318,10 +38720,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <picklistValues>
             <picklist>Core_MDF_Activity_Category__c</picklist>
             <values>
-                <fullName>Audio</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Audio 2025</fullName>
                 <default>false</default>
             </values>
@@ -39330,19 +38728,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Broadcast %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Buyer Incentive 2025</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39354,15 +38740,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39382,19 +38760,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Lead Management %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Online Ad</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Out of Home</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39406,10 +38776,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Out of Home Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
@@ -39418,15 +38784,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Paid Social Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Print</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39438,14 +38796,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Print Media %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Production</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Production 2025</fullName>
                 <default>false</default>
             </values>
@@ -39454,23 +38804,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Purchase Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Sales Incentive %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sales Readiness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness %28Pre-2025%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39482,15 +38820,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Search Engine Marketing %28SEM%29 %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Search Performance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39502,23 +38832,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tech Exploration %28Pre-2025%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Technical Sales 2025</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -40781,10 +40099,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>4th Gen Intel%C2%AE Xeon%C2%AE Scalable processors with Intel%C2%AE vRAN Boost</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>6ᵗʰ %E2%80%93 7ᵗʰ Gen</fullName>
                 <default>false</default>
             </values>
@@ -40877,10 +40191,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE AI</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Agilex%E2%84%A2</fullName>
                 <default>false</default>
             </values>
@@ -40890,14 +40200,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Extreme Processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -40958,14 +40260,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Processor Family</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra X7</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra X9</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -41157,10 +40451,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Infrastructure Processing Unit %28Intel%C2%AE IPU%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE IoT Market Ready Solutions</fullName>
                 <default>false</default>
             </values>
@@ -41249,10 +40539,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Robotics</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE SGX</fullName>
                 <default>false</default>
             </values>
@@ -41294,14 +40580,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Intel%C2%AE Xeon%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 processors with Performance%E2%80%91cores %28P%E2%80%91cores%29%2C 6700%2F6500 Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 system%E2%80%91on%E2%80%91chip %28SoC%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -41679,10 +40957,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42448,10 +41722,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Cloud</fullName>
                 <default>false</default>
             </values>
@@ -42469,10 +41739,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Edge Gateway</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Edge%2FIOT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42580,10 +41846,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Networking%2FEthernet</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Notebook</fullName>
                 <default>false</default>
             </values>
@@ -42620,10 +41882,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Telco</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Thin and Light</fullName>
                 <default>false</default>
             </values>
@@ -42649,10 +41907,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Workstation - Mobile</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Xeon</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -42992,10 +42246,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Arrow Lake %28ARL%29 - HX%2FS Refresh Core Ultra Series 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Arrow Lake %28ARL%29 Intel Core Ultra %28Series 2%29</fullName>
                 <default>false</default>
             </values>
@@ -43148,14 +42398,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Geti%E2%84%A2 Software</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Granite Rapids</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Granulate</fullName>
                 <default>false</default>
             </values>
@@ -43164,15 +42406,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>HX%2FS Refresh Core%E2%84%A2 Ultra Series 2 %28Arrow Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Habana Gaudi</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Habana%C2%AE Gaudi%C2%AE</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43196,14 +42430,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel Geti%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Libraries %2F Tools</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel Power Management</fullName>
                 <default>false</default>
             </values>
@@ -43224,35 +42450,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE 4th Generation Xeon%C2%AE Scalable Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE AMX %28Advanced Matrix Extensions%29%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE AVX %28Advanced Vector Extensions%29%C2%AE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Advanced Encryption Standard New Instructions %28Intel%C2%AE AES%E2%80%91NI%E2%84%A2%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Agilex%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 A-series Graphics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 Pro B50 graphics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Arc%E2%84%A2 Pro B60 Graphics</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43268,62 +42466,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Atom%C2%AE x7000 Series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 3 %28Wildcat Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Series 3 processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra 200S series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra 200V Series processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 1 %28Meteor Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 2 %28Arrow Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 2 %28Lunar Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 Ultra Series 3 %28Panther Lake%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 i3%E2%80%91N300 processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %2813th Gen%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %2814th Gen%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 processors %28Series 2%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Cyclone%C2%AE</fullName>
                 <default>false</default>
             </values>
@@ -43332,15 +42474,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Dynamic Device Personalization %28DDP%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Ethernet Network Adapters</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Ethernet Solutions%C2%AE</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43388,27 +42522,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Pentium%C2%AE P6000 processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Processor N Series processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE QuickAssist Technology %28Intel%C2%AE QAT%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE RealSense%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Intel%C2%AE Silicon Photonics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Software Guard Extensions %28Intel%C2%AE SGX%E2%84%A2%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43420,83 +42538,7 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE  600 Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 4th Generation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 5th Generation %28Emerald Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 5th Generation Scalable Processors %28Emerald Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 %28E%E2%80%91core%29 Processors %28Granite Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 %28P%E2%80%91core%29 Processors %28Granite Rapids%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 Processors %28Granite Rapids E-Core%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 Processors %28Granite Rapids P-Core%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 SoC %28Granite Rapids-D%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6 W Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6300 Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6500P Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6500P-B Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6700P processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6700P-B Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE 6900P Processors</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE Max Series</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE vPro%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE vRAN AI Development Kit%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE vRAN Boost</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43525,10 +42567,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Modern Devices</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Moon Lake</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43596,14 +42634,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Panther Lake %28PTL%29 Intel Core Ultra Series 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Panther Lake %28PTL%29 Intel Core Ultra Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Parker Ridge - Atom C5xxx</fullName>
                 <default>false</default>
             </values>
@@ -43656,10 +42686,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Razor Lake</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Rendering Toolkit %26 Deep%C2%A0Neural%C2%A0Network Library%C2%A0</fullName>
                 <default>false</default>
             </values>
@@ -43681,10 +42707,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>SGX</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGX%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43764,18 +42786,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>Wildcat Lake %28WCL%29 Intel Core Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wildcat Lake %28WCL%29 Intel Core Ultra Series 3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wildcat Lake Refresh</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>X Series</fullName>
                 <default>false</default>
             </values>
@@ -43800,19 +42810,11 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>oneAPI%E2%84%A2</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>vPro</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>vPro Essentials</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vPro Fleet Services</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -55542,7 +54544,7 @@ NOT(ISCHANGED(RecordTypeId)), $Profile.Name!=&apos;IT Admin&apos;, $Profile.Name
         <fullName>IPS_Altera_Go_Live_Case_Restriction</fullName>
         <active>true</active>
         <description>Restricting the user to create/edit cases with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Product_Org_Number__c = &apos;025&apos;,Asset.Name &lt;&gt; &apos;Licensed Products&apos;)</errorConditionFormula>
         <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
     </validationRules>
     <validationRules>

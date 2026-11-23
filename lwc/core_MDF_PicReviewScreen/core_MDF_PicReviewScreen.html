@@ -8,8 +8,7 @@
     </template>
     <!--Header for PIC Review Process-->
     <div class="modal-header slds-modal__header slds-var-m-bottom_large">
-        <!--<h2 class="title slds-text-heading--medium slds-hyphenate">{picLabel.picReviewScreenHeader}{claimReferenceId}</h2>-->
-        <h2 class="title slds-text-heading--medium slds-hyphenate">{headerLabel}{claimReferenceId}</h2><!--16654-->
+        <h2 class="title slds-text-heading--medium slds-hyphenate">{picLabel.picReviewScreenHeader}{claimReferenceId}</h2>
     </div>
     <!--Expandablse section implementation to display the claim and activity details-->
     <template if:true={isPICReviewer}>
@@ -23,8 +22,7 @@
                                 class="slds-button slds-section__title-action" onclick={toggleClaimAndActvityDetails}>
                                 <lightning-icon icon-name={iconNames} size="x-small" aria-hidden="true"
                                     class="accordion-chevron-icon"></lightning-icon>
-       
-                                <label class="slds-var-p-left_medium">{accordionTitle}</label>
+                                <label class="slds-var-p-left_medium">{picLabel.picReviewScreenAccordionTitle}</label>
                             </button>
                         </h3>
                         <!--claim and activity details displayed in the expandable section-->

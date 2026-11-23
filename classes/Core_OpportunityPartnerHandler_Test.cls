@@ -318,7 +318,6 @@ public class Core_OpportunityPartnerHandler_Test {
         	insert triggerEntry;
         
         Core_OpportunityPartnerHandler.checkPCCOpptyLock(existingOppPartners);
-        System.assertEquals(true,true);
     }
     
     

@@ -36,6 +36,13 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Name</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_prid_active_cb__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__ProductName__c</field>
     </columns>
     <columns>

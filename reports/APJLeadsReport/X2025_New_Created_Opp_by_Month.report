@@ -84,9 +84,6 @@
     <columns>
         <field>CUST_CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>FK_$Opportunity.Core_Distributor__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>FK_$Account.Core_Sales_Groups__c</column>
@@ -107,7 +104,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>LAST_YEAR</value>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_CREATED_DATE</column>
@@ -129,20 +126,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>IND,JPN,KOR,TWN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2025 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>12/31/2025 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
